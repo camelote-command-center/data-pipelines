@@ -3,15 +3,31 @@
 Zefix Swiss Company Registry — Bulk Import Pipeline
 
 Downloads CSV exports of all 26 Swiss cantons from Basel Open Data
-and upserts them into the zefix_companies table on Supabase.
+and upserts them into zefix_companies on one or more Supabase projects.
 
 Source:  https://data-bs.ch/stata/zefix_handelsregister/all_cantons/
-Target:  camelote_data Supabase → public.zefix_companies
-Schedule: 1st of every month via GitHub Actions
+Destinations:
+    - camelote_data (required) — command center database
+    - lamap         (optional) — if LAMAP_SUPABASE_URL is set
+    - yooneet       (optional) — if YOONEET_SUPABASE_URL is set
+
+Each canton CSV is downloaded ONCE and upserted to ALL active destinations.
 
 Environment variables (set by GitHub Actions secrets):
-    SUPABASE_URL          - camelote_data project URL
-    SUPABASE_SERVICE_KEY  - camelote_data service_role key
+    SUPABASE_URL              - camelote_data project URL (required)
+    SUPABASE_SERVICE_KEY      - camelote_data service_role key (required)
+    SUPABASE_SCHEMA           - camelote_data schema (default: public)
+    SUPABASE_TABLE            - camelote_data table (default: zefix_companies)
+
+    LAMAP_SUPABASE_URL        - lamap project URL (optional)
+    LAMAP_SUPABASE_SERVICE_KEY - lamap service_role key (optional)
+    LAMAP_SCHEMA              - lamap schema (default: bronze)
+    LAMAP_TABLE               - lamap table (default: zefix_companies)
+
+    YOONEET_SUPABASE_URL        - yooneet project URL (optional)
+    YOONEET_SUPABASE_SERVICE_KEY - yooneet service_role key (optional)
+    YOONEET_SCHEMA              - yooneet schema (default: public)
+    YOONEET_TABLE               - yooneet table (default: zefix_companies)
 """
 
 import os
@@ -32,6 +48,45 @@ ALL_CANTONS = [
     "JU", "LU", "NE", "NW", "OW", "SG", "SH", "SO", "SZ", "TG",
     "TI", "UR", "VD", "VS", "ZG", "ZH",
 ]
+
+
+def build_destinations():
+    """
+    Build list of destination Supabase projects from environment variables.
+    camelote_data is always required. Others are optional.
+    """
+    destinations = []
+
+    # Primary — always required
+    destinations.append({
+        "name": "camelote_data",
+        "url": os.environ.get("SUPABASE_URL", ""),
+        "key": os.environ.get("SUPABASE_SERVICE_KEY", ""),
+        "schema": os.environ.get("SUPABASE_SCHEMA", "public"),
+        "table": os.environ.get("SUPABASE_TABLE", "zefix_companies"),
+    })
+
+    # Secondary — lamap (optional)
+    if os.environ.get("LAMAP_SUPABASE_URL"):
+        destinations.append({
+            "name": "lamap",
+            "url": os.environ["LAMAP_SUPABASE_URL"],
+            "key": os.environ["LAMAP_SUPABASE_SERVICE_KEY"],
+            "schema": os.environ.get("LAMAP_SCHEMA", "bronze"),
+            "table": os.environ.get("LAMAP_TABLE", "zefix_companies"),
+        })
+
+    # Secondary — yooneet (optional)
+    if os.environ.get("YOONEET_SUPABASE_URL"):
+        destinations.append({
+            "name": "yooneet",
+            "url": os.environ["YOONEET_SUPABASE_URL"],
+            "key": os.environ["YOONEET_SUPABASE_SERVICE_KEY"],
+            "schema": os.environ.get("YOONEET_SCHEMA", "public"),
+            "table": os.environ.get("YOONEET_TABLE", "zefix_companies"),
+        })
+
+    return destinations
 
 
 def download_csv(canton):
@@ -85,70 +140,91 @@ def parse_csv(csv_text, canton):
     return records
 
 
-def import_canton(canton):
-    """Download + parse + upsert one canton. Returns rows upserted."""
+def upsert_to_destinations(destinations, records, canton):
+    """
+    Upsert parsed records to all destinations.
+    Returns dict of {dest_name: rows_upserted}.
+    """
+    results = {}
+    for dest in destinations:
+        print(f"  → {dest['name']} ({dest['schema']}.{dest['table']})")
+        upserted = batch_upsert(
+            url=dest["url"],
+            key=dest["key"],
+            table=dest["table"],
+            records=records,
+            conflict_column="uid",
+            schema=dest["schema"],
+            batch_size=500,
+        )
+        results[dest["name"]] = upserted
+        print(f"    Upserted: {upserted}/{len(records)} rows")
+    return results
+
+
+def import_canton(canton, destinations):
+    """Download + parse + upsert one canton to all destinations."""
     print(f"\n{'='*50}")
     print(f"  Canton: {canton}")
     print(f"{'='*50}")
 
-    # Download
+    # Download (once)
     try:
         csv_text = download_csv(canton)
     except Exception as e:
         print(f"  DOWNLOAD FAILED: {e}")
-        return -1  # signal failure
+        return None  # signal failure
 
-    # Parse
+    # Parse (once)
     records = parse_csv(csv_text, canton)
     print(f"  Downloaded: {len(records)} rows")
 
     if not records:
         print("  No records to import, skipping")
-        return 0
+        return {}
 
-    # Upsert via shared client
-    upserted = batch_upsert(
-        table="zefix_companies",
-        records=records,
-        conflict_column="uid",
-        batch_size=500,
-    )
-
-    print(f"  Upserted:   {upserted}/{len(records)} rows")
-    return upserted
+    # Upsert to all destinations
+    results = upsert_to_destinations(destinations, records, canton)
+    return results
 
 
 def main():
-    # Validate environment
-    supabase_url = os.environ.get("SUPABASE_URL", "")
-    supabase_key = os.environ.get("SUPABASE_SERVICE_KEY", "")
+    # Build destinations from env vars
+    destinations = build_destinations()
 
-    if not supabase_url or not supabase_key:
+    # Validate primary destination
+    primary = destinations[0]
+    if not primary["url"] or not primary["key"]:
         print("ERROR: SUPABASE_URL and SUPABASE_SERVICE_KEY environment variables are required")
         sys.exit(1)
 
+    dest_names = [d["name"] for d in destinations]
+
     print("=" * 50)
     print("  Zefix Import Pipeline")
-    print(f"  Target: camelote_data (zefix_companies)")
+    print(f"  Destinations: {', '.join(dest_names)}")
     print(f"  Cantons: ALL ({len(ALL_CANTONS)})")
     print("=" * 50)
 
-    total_upserted = 0
+    # Track totals per destination
+    totals = {d["name"]: 0 for d in destinations}
     failed_cantons = []
 
     for canton in ALL_CANTONS:
-        result = import_canton(canton)
-        if result < 0:
+        results = import_canton(canton, destinations)
+        if results is None:
             failed_cantons.append(canton)
         else:
-            total_upserted += result
+            for dest_name, count in results.items():
+                totals[dest_name] += count
         time.sleep(0.5)  # rate limiting between cantons
 
     # Summary
     print("\n" + "=" * 50)
     print("  IMPORT COMPLETE")
-    print(f"  Total upserted: {total_upserted:,} companies")
-    print(f"  Cantons OK:     {len(ALL_CANTONS) - len(failed_cantons)}/{len(ALL_CANTONS)}")
+    for dest_name, total in totals.items():
+        print(f"  {dest_name}: {total:,} companies upserted")
+    print(f"  Cantons OK: {len(ALL_CANTONS) - len(failed_cantons)}/{len(ALL_CANTONS)}")
 
     if failed_cantons:
         print(f"  FAILED cantons: {', '.join(failed_cantons)}")

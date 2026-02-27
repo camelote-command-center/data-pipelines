@@ -16,5 +16,13 @@ jobs:
       - run: pip install -r requirements.txt
       - run: python pipelines/zefix/import.py
         env:
+          # Primary — camelote_data (required)
           SUPABASE_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
           SUPABASE_SERVICE_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+          # Secondary — lamap (optional)
+          LAMAP_SUPABASE_URL: ${{ secrets.LAMAP_SUPABASE_URL }}
+          LAMAP_SUPABASE_SERVICE_KEY: ${{ secrets.LAMAP_SUPABASE_SERVICE_KEY }}
+          LAMAP_SCHEMA: bronze
+          # Secondary — yooneet (optional)
+          YOONEET_SUPABASE_URL: ${{ secrets.YOONEET_SUPABASE_URL }}
+          YOONEET_SUPABASE_SERVICE_KEY: ${{ secrets.YOONEET_SUPABASE_SERVICE_KEY }}
