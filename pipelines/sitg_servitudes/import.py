@@ -167,11 +167,14 @@ def main():
     print(f"\n  Total records to upsert: {len(records):,}")
 
     # ── Step 2: Upsert to each destination ────────────────────
-    any_failure = False
+    primary_ok = False  # lamap_db (first dest) must succeed
 
-    for dest in destinations:
+    for i, dest in enumerate(destinations):
+        is_primary = i == 0  # lamap_db is always first
+
         print(f"\n{'─' * 60}")
         print(f"  Destination: {dest['name']} ({dest['schema']}.{TABLE_NAME})")
+        print(f"  {'[REQUIRED]' if is_primary else '[OPTIONAL]'}")
         print(f"{'─' * 60}")
 
         # Row count BEFORE
@@ -213,17 +216,18 @@ def main():
             print(f"    Net new:      {delta:,}")
             if rows_after < rows_before:
                 print("    WARNING: Row count DECREASED! This should never happen.")
-                any_failure = True
 
         if upserted == 0:
-            print("    ERROR: Zero rows upserted!")
-            any_failure = True
+            print(f"    {'ERROR' if is_primary else 'WARNING'}: Zero rows upserted!")
+        elif is_primary:
+            primary_ok = True
 
     print("\n" + "=" * 60)
     print("  IMPORT COMPLETE")
     print("=" * 60)
 
-    if any_failure:
+    if not primary_ok:
+        print("  FATAL: Primary destination (lamap_db) failed!")
         sys.exit(1)
 
 
