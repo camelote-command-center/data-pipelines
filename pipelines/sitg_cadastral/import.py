@@ -1,26 +1,20 @@
 #!/usr/bin/env python3
 """
-SITG Cadastral & Ownership — Import Pipeline (config-driven)
+SITG Cadastral & Ownership — Import Pipeline (config-driven, pure ArcGIS)
 
-Fetches 7 SITG datasets and upserts into lamap_db (+ optional Yooneet):
-  1. CAD_PARCELLE_MENSU        — Survey parcels             (ArcGIS, polygon)
-  2. RDPPF_SYNTH_DYN_EXTRACT   — RDPPF synthesis by EGRID   (CSV)
-  3. CAD_DDP                   — Permanent separate rights   (CSV)
-  4. CAD_PPE                   — Co-ownership by floor       (ArcGIS, point)
-  5. CAD_BATIMENT_HORSOL        — Above-ground buildings     (CSV)
-  6. CAD_BATIMENT_SOUSOL        — Underground buildings      (CSV)
-  7. CAD_ADRESSE                — Cadastral addresses        (CSV)
+Fetches 7 SITG datasets via ArcGIS REST API and upserts into lamap_db (+ optional Yooneet):
+  1. CAD_PARCELLE_MENSU        — Survey parcels             (polygon)
+  2. RDPPF_SYNTH_DYN_EXTRACT   — RDPPF synthesis by EGRID   (polygon)
+  3. CAD_DDP                   — Permanent separate rights   (polygon)
+  4. CAD_PPE                   — Co-ownership by floor       (point)
+  5. CAD_BATIMENT_HORSOL        — Above-ground buildings     (polygon)
+  6. CAD_BATIMENT_SOUSOL        — Underground buildings      (polygon)
+  7. CAD_ADRESSE                — Cadastral addresses        (point)
 
-This is a clean Python rewrite of LamapParser parsers:
-  - parcelAndOwnership.js
-  - aboveGroundBuildingElements.js
-  - administrativeBoundariesAndAddress.js
+All datasets use the SITG ArcGIS REST API (Hosted FeatureServer).
+No CSV downloads, no filesystem operations.
 
 CONFIG-DRIVEN: Adding a new SITG table is just adding a dict to DATASETS.
-
-Two source types:
-  - "arcgis" : uses shared/sitg_arcgis.py  (with geometry)
-  - "csv"    : uses shared/sitg_csv.py     (no geometry)
 
 DATA SAFETY:
     - UPSERT only (INSERT ... ON CONFLICT DO UPDATE).
@@ -45,14 +39,12 @@ import requests
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 from shared.supabase_client import batch_upsert
 from shared.sitg_arcgis import fetch_all_features
-from shared.sitg_csv import fetch_csv_features
 
 # ──────────────────────────────────────────────────────────────
 # Dataset configs
 #
 # Adding a new SITG table = adding a dict here.
-#   source:           "arcgis" or "csv"
-#   url:              ArcGIS FeatureServer URL or CSV ZIP URL
+#   url:              ArcGIS FeatureServer URL
 #   table:            Target table name in lamap_db
 #   conflict_column:  Column with UNIQUE constraint for upsert
 #   field_renames:    Optional dict to rename API fields → table columns
@@ -77,17 +69,22 @@ DATASETS = [
         "name": "RDPPF servitudes synthèse",
         "code": "ge_rdppf_synth",
         "table": "RDPPF_SYNTH_DYN_EXTRACT",
-        "source": "csv",
-        "url": "https://ge.ch/sitg/geodata/SITG/OPENDATA/RDPPF_SYNTH_DYN_EXTRACT-CSV.zip",
+        "source": "arcgis",
+        "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/rdppf_synth_dyn_extract/FeatureServer/0",
         "conflict_column": "egrid",
+        # Table already has shape__area / shape__length columns — no rename needed
     },
     {
         "name": "DDP droits distincts",
         "code": "ge_cad_ddp",
         "table": "CAD_DDP",
-        "source": "csv",
-        "url": "https://ge.ch/sitg/geodata/SITG/OPENDATA/CAD_DDP-CSV.zip",
+        "source": "arcgis",
+        "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/cad_ddp/FeatureServer/0",
         "conflict_column": "objectid",
+        "field_renames": {
+            "shape__area": "shape_area",
+            "shape__length": "shape_len",
+        },
     },
     {
         "name": "PPE copropriété",
@@ -101,25 +98,38 @@ DATASETS = [
         "name": "Bâtiments hors-sol",
         "code": "ge_cad_batiment_horsol",
         "table": "CAD_BATIMENT_HORSOL",
-        "source": "csv",
-        "url": "https://ge.ch/sitg/geodata/SITG/OPENDATA/CAD_BATIMENT_HORSOL-CSV.zip",
+        "source": "arcgis",
+        "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/cad_batiment_horsol/FeatureServer/0",
         "conflict_column": "objectid",
+        "field_renames": {
+            "shape__area": "shape_area",
+            "shape__length": "shape_len",
+        },
     },
     {
         "name": "Bâtiments sous-sol",
         "code": "ge_cad_batiment_sousol",
         "table": "CAD_BATIMENT_SOUSOL",
-        "source": "csv",
-        "url": "https://ge.ch/sitg/geodata/SITG/OPENDATA/CAD_BATIMENT_SOUSOL-CSV.zip",
+        "source": "arcgis",
+        "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/cad_batiment_sousol/FeatureServer/0",
         "conflict_column": "objectid",
+        "field_renames": {
+            "shape__area": "shape_area",
+            "shape__length": "shape_len",
+        },
     },
     {
         "name": "Adresses cadastrales",
         "code": "ge_cad_adresse",
         "table": "CAD_ADRESSE",
-        "source": "csv",
-        "url": "https://ge.ch/sitg/geodata/SITG/OPENDATA/CAD_ADRESSE-CSV.zip",
+        "source": "arcgis",
+        "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/cad_adresse/FeatureServer/0",
         "conflict_column": "objectid",
+        # ArcGIS returns x/y fields but table has e/n (Swiss easting/northing)
+        "field_renames": {
+            "x": "e",
+            "y": "n",
+        },
     },
 ]
 
@@ -238,7 +248,7 @@ def process_destination(
 
         print(f"\n{'━' * 60}")
         print(f"  [{ds['name']}] → {dest_schema}.{table}")
-        print(f"  Source: {ds['source']} | Records fetched: {len(records):,}")
+        print(f"  Records fetched: {len(records):,}")
         print(f"{'━' * 60}")
 
         if not records:
@@ -277,10 +287,7 @@ def process_destination(
         else:
             # Strip geometry if column doesn't exist or records don't have it
             work_records = [{k: v for k, v in r.items() if k != "geometry"} for r in work_records]
-            if ds["source"] == "csv":
-                print("  Geometry: not available (CSV source)")
-            else:
-                print("  Geometry: column not found in table, stripping")
+            print("  Geometry: column not found in table, stripping")
 
         # Row count BEFORE
         rows_before = get_row_count(dest_url, dest_key, dest_schema, table)
@@ -348,17 +355,11 @@ def main():
     for ds in DATASETS:
         print(f"\n{'━' * 60}")
         print(f"  Fetching: {ds['name']}")
-        print(f"  Source:   {ds['source']} → {ds['url'][:80]}...")
+        print(f"  URL:      {ds['url'][:80]}...")
         print(f"{'━' * 60}")
 
         try:
-            if ds["source"] == "arcgis":
-                records = fetch_all_features(ds["url"], include_geometry=True)
-            elif ds["source"] == "csv":
-                records = fetch_csv_features(ds["url"])
-            else:
-                print(f"  ERROR: Unknown source type '{ds['source']}'")
-                records = []
+            records = fetch_all_features(ds["url"], include_geometry=True)
         except Exception as e:
             print(f"  FETCH ERROR: {e}")
             records = []
