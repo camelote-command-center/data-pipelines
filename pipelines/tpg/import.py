@@ -296,6 +296,7 @@ def process_dataset(
     dest_url: str,
     dest_key: str,
     dest_schema: str,
+    batch_size: int = 500,
 ) -> bool:
     """Upsert one dataset. Returns True if successful."""
     print(f"\n{'━' * 60}")
@@ -358,7 +359,7 @@ def process_dataset(
         records=records,
         conflict_column=conflict_column,
         schema=dest_schema,
-        batch_size=500,
+        batch_size=batch_size,
     )
 
     # Row count AFTER
@@ -441,6 +442,7 @@ def main():
         dest_url=lamap_url,
         dest_key=lamap_key,
         dest_schema=lamap_schema,
+        batch_size=20,  # Small batches — polyline geometry payloads are large
     )
     if not ok:
         all_ok = False
