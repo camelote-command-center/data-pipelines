@@ -196,9 +196,13 @@ def fetch_tpg_lignes() -> list[dict]:
                 snake_key = _key_to_snake_case(k)
                 row[snake_key] = v
 
-            # Add geometry as GeoJSON
-            if geom:
-                row["geometry"] = json.dumps(geom)
+            # Convert ArcGIS polyline to GeoJSON MultiLineString
+            if geom and "paths" in geom:
+                geojson = {
+                    "type": "MultiLineString",
+                    "coordinates": geom["paths"],
+                }
+                row["geometry"] = json.dumps(geojson)
 
             all_records.append(row)
 
