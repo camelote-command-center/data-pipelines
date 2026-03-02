@@ -1,0 +1,24 @@
+name: SITG Business & Energy Import
+on:
+  schedule:
+    - cron: '0 3 1 * *'   # Monthly 1st at 03:00 UTC
+  workflow_dispatch:
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: python pipelines/sitg_business_energy/import.py
+        env:
+          LAMAP_SUPABASE_URL: ${{ secrets.LAMAP_SUPABASE_URL }}
+          LAMAP_SUPABASE_SERVICE_KEY: ${{ secrets.LAMAP_SUPABASE_SERVICE_KEY }}
+          LAMAP_SCHEMA: bronze
+          YOONEET_SUPABASE_URL: ${{ secrets.YOONEET_SUPABASE_URL }}
+          YOONEET_SUPABASE_SERVICE_KEY: ${{ secrets.YOONEET_SUPABASE_SERVICE_KEY }}
+          YOONEET_SCHEMA: bronze
