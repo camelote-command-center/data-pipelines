@@ -225,6 +225,16 @@ def process_destination(
             work_records = [{k: v for k, v in r.items() if k != "geometry"} for r in work_records]
             print("  Geometry: column not found in table, stripping")
 
+        # Normalise keys: PostgREST requires all objects in a batch to have
+        # identical keys.  Some ArcGIS features may lack optional fields
+        # (e.g. geometry on features with NULL shape).
+        all_keys = set()
+        for r in work_records:
+            all_keys |= r.keys()
+        for r in work_records:
+            for k in all_keys:
+                r.setdefault(k, None)
+
         # Row count BEFORE
         rows_before = get_row_count(dest_url, dest_key, dest_schema, table)
         print(f"  Rows before: {rows_before or 'unknown'}")
