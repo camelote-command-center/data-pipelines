@@ -1,0 +1,394 @@
+#!/usr/bin/env python3
+"""
+SITG Cadastral & Ownership — Import Pipeline (config-driven)
+
+Fetches 7 SITG datasets and upserts into lamap_db (+ optional Yooneet):
+  1. CAD_PARCELLE_MENSU        — Survey parcels             (ArcGIS, polygon)
+  2. RDPPF_SYNTH_DYN_EXTRACT   — RDPPF synthesis by EGRID   (CSV)
+  3. CAD_DDP                   — Permanent separate rights   (CSV)
+  4. CAD_PPE                   — Co-ownership by floor       (ArcGIS, point)
+  5. CAD_BATIMENT_HORSOL        — Above-ground buildings     (CSV)
+  6. CAD_BATIMENT_SOUSOL        — Underground buildings      (CSV)
+  7. CAD_ADRESSE                — Cadastral addresses        (CSV)
+
+This is a clean Python rewrite of LamapParser parsers:
+  - parcelAndOwnership.js
+  - aboveGroundBuildingElements.js
+  - administrativeBoundariesAndAddress.js
+
+CONFIG-DRIVEN: Adding a new SITG table is just adding a dict to DATASETS.
+
+Two source types:
+  - "arcgis" : uses shared/sitg_arcgis.py  (with geometry)
+  - "csv"    : uses shared/sitg_csv.py     (no geometry)
+
+DATA SAFETY:
+    - UPSERT only (INSERT ... ON CONFLICT DO UPDATE).
+    - Never truncates or deletes existing data.
+    - Row count should only go UP or stay the same.
+
+Environment variables:
+    LAMAP_SUPABASE_URL          - Lamap Supabase project URL (required)
+    LAMAP_SUPABASE_SERVICE_KEY  - service_role key (required)
+    LAMAP_SCHEMA                - target schema (default: bronze)
+    YOONEET_SUPABASE_URL        - Yooneet Supabase project URL (optional)
+    YOONEET_SUPABASE_SERVICE_KEY - service_role key (optional)
+    YOONEET_SCHEMA              - target schema (default: bronze)
+"""
+
+import os
+import sys
+
+import requests
+
+# Add repo root to path so we can import shared/
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+from shared.supabase_client import batch_upsert
+from shared.sitg_arcgis import fetch_all_features
+from shared.sitg_csv import fetch_csv_features
+
+# ──────────────────────────────────────────────────────────────
+# Dataset configs
+#
+# Adding a new SITG table = adding a dict here.
+#   source:           "arcgis" or "csv"
+#   url:              ArcGIS FeatureServer URL or CSV ZIP URL
+#   table:            Target table name in lamap_db
+#   conflict_column:  Column with UNIQUE constraint for upsert
+#   field_renames:    Optional dict to rename API fields → table columns
+# ──────────────────────────────────────────────────────────────
+
+DATASETS = [
+    {
+        "name": "Parcelles cadastrales",
+        "code": "ge_cad_parcelle_mensu",
+        "table": "CAD_PARCELLE_MENSU",
+        "source": "arcgis",
+        "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/cad_parcelle_mensu/FeatureServer/0",
+        "conflict_column": "objectid",
+        # ArcGIS returns SHAPE__Area/SHAPE__Length → shape__area/shape__length
+        # but table columns (from CSV era) are shape_area/shape_len
+        "field_renames": {
+            "shape__area": "shape_area",
+            "shape__length": "shape_len",
+        },
+    },
+    {
+        "name": "RDPPF servitudes synthèse",
+        "code": "ge_rdppf_synth",
+        "table": "RDPPF_SYNTH_DYN_EXTRACT",
+        "source": "csv",
+        "url": "https://ge.ch/sitg/geodata/SITG/OPENDATA/RDPPF_SYNTH_DYN_EXTRACT-CSV.zip",
+        "conflict_column": "egrid",
+    },
+    {
+        "name": "DDP droits distincts",
+        "code": "ge_cad_ddp",
+        "table": "CAD_DDP",
+        "source": "csv",
+        "url": "https://ge.ch/sitg/geodata/SITG/OPENDATA/CAD_DDP-CSV.zip",
+        "conflict_column": "objectid",
+    },
+    {
+        "name": "PPE copropriété",
+        "code": "ge_cad_ppe",
+        "table": "CAD_PPE",
+        "source": "arcgis",
+        "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/cad_ppe/FeatureServer/0",
+        "conflict_column": "objectid",
+    },
+    {
+        "name": "Bâtiments hors-sol",
+        "code": "ge_cad_batiment_horsol",
+        "table": "CAD_BATIMENT_HORSOL",
+        "source": "csv",
+        "url": "https://ge.ch/sitg/geodata/SITG/OPENDATA/CAD_BATIMENT_HORSOL-CSV.zip",
+        "conflict_column": "objectid",
+    },
+    {
+        "name": "Bâtiments sous-sol",
+        "code": "ge_cad_batiment_sousol",
+        "table": "CAD_BATIMENT_SOUSOL",
+        "source": "csv",
+        "url": "https://ge.ch/sitg/geodata/SITG/OPENDATA/CAD_BATIMENT_SOUSOL-CSV.zip",
+        "conflict_column": "objectid",
+    },
+    {
+        "name": "Adresses cadastrales",
+        "code": "ge_cad_adresse",
+        "table": "CAD_ADRESSE",
+        "source": "csv",
+        "url": "https://ge.ch/sitg/geodata/SITG/OPENDATA/CAD_ADRESSE-CSV.zip",
+        "conflict_column": "objectid",
+    },
+]
+
+# Fields that exist in the JS-era table but we no longer manage
+EXCLUDE_FIELDS = {"iteration"}
+
+
+# ──────────────────────────────────────────────────────────────
+# Helpers
+# ──────────────────────────────────────────────────────────────
+
+def get_row_count(url: str, key: str, schema: str, table: str) -> int | None:
+    """Get current row count via PostgREST HEAD request."""
+    endpoint = f"{url.rstrip('/')}/rest/v1/{table}?select=count"
+    headers = {
+        "apikey": key,
+        "Authorization": f"Bearer {key}",
+        "Prefer": "count=exact",
+    }
+    if schema and schema != "public":
+        headers["Accept-Profile"] = schema
+    try:
+        r = requests.head(endpoint, headers=headers, timeout=30)
+        cr = r.headers.get("content-range", "")
+        if "/" in cr:
+            return int(cr.split("/")[1])
+    except Exception as e:
+        print(f"  Warning: could not get row count: {e}")
+    return None
+
+
+def has_column(url: str, key: str, schema: str, table: str, column: str) -> bool:
+    """Check if a column exists in the target table via PostgREST."""
+    endpoint = f"{url.rstrip('/')}/rest/v1/{table}?select={column}&limit=0"
+    headers = {
+        "apikey": key,
+        "Authorization": f"Bearer {key}",
+    }
+    if schema and schema != "public":
+        headers["Accept-Profile"] = schema
+    try:
+        r = requests.get(endpoint, headers=headers, timeout=10)
+        return r.status_code == 200
+    except Exception:
+        return False
+
+
+def get_table_columns(url: str, key: str, schema: str, table: str) -> set[str]:
+    """Discover existing columns in a table via PostgREST."""
+    endpoint = f"{url.rstrip('/')}/rest/v1/{table}?limit=1"
+    headers = {
+        "apikey": key,
+        "Authorization": f"Bearer {key}",
+    }
+    if schema and schema != "public":
+        headers["Accept-Profile"] = schema
+    try:
+        r = requests.get(endpoint, headers=headers, timeout=15)
+        if r.status_code == 200:
+            rows = r.json()
+            if rows:
+                return set(rows[0].keys())
+    except Exception as e:
+        print(f"  Warning: could not discover table columns: {e}")
+    return set()
+
+
+def apply_field_renames(records: list[dict], renames: dict[str, str]) -> list[dict]:
+    """Rename fields in all records according to the mapping."""
+    if not renames:
+        return records
+    for r in records:
+        for old_name, new_name in renames.items():
+            if old_name in r:
+                r[new_name] = r.pop(old_name)
+    return records
+
+
+def filter_to_known_columns(
+    records: list[dict], known_columns: set[str], exclude: set[str]
+) -> list[dict]:
+    """Keep only columns that exist in the target table, minus excluded."""
+    if not known_columns:
+        # If we couldn't discover columns, just strip excluded fields
+        for r in records:
+            for f in exclude:
+                r.pop(f, None)
+        return records
+
+    allowed = known_columns - exclude
+    return [{k: v for k, v in r.items() if k in allowed} for r in records]
+
+
+# ──────────────────────────────────────────────────────────────
+# Process a single destination
+# ──────────────────────────────────────────────────────────────
+
+def process_destination(
+    dest_name: str,
+    dest_url: str,
+    dest_key: str,
+    dest_schema: str,
+    datasets_with_records: list[tuple[dict, list[dict]]],
+) -> bool:
+    """Upsert all datasets into one destination. Returns True if all succeeded."""
+    print(f"\n{'=' * 60}")
+    print(f"  Destination: {dest_name} ({dest_schema})")
+    print(f"{'=' * 60}")
+
+    all_ok = True
+
+    for ds, records in datasets_with_records:
+        table = ds["table"]
+        conflict = ds["conflict_column"]
+        renames = ds.get("field_renames", {})
+
+        print(f"\n{'━' * 60}")
+        print(f"  [{ds['name']}] → {dest_schema}.{table}")
+        print(f"  Source: {ds['source']} | Records fetched: {len(records):,}")
+        print(f"{'━' * 60}")
+
+        if not records:
+            print("  No records. Skipping.")
+            continue
+
+        # Make a copy so renames/filtering don't affect other destinations
+        work_records = [dict(r) for r in records]
+
+        # Apply field renames (e.g. shape__area → shape_area)
+        work_records = apply_field_renames(work_records, renames)
+
+        # Remove excluded fields
+        for r in work_records:
+            for f in EXCLUDE_FIELDS:
+                r.pop(f, None)
+
+        # Discover table columns and filter out unknown ones
+        known_cols = get_table_columns(dest_url, dest_key, dest_schema, table)
+        if known_cols:
+            before_keys = set()
+            for r in work_records[:1]:
+                before_keys = set(r.keys())
+            work_records = filter_to_known_columns(work_records, known_cols, EXCLUDE_FIELDS)
+            after_keys = set()
+            for r in work_records[:1]:
+                after_keys = set(r.keys())
+            dropped = before_keys - after_keys
+            if dropped:
+                print(f"  Dropped unknown columns: {', '.join(sorted(dropped))}")
+
+        # Check geometry column
+        geom_exists = has_column(dest_url, dest_key, dest_schema, table, "geometry")
+        if geom_exists and any("geometry" in r for r in work_records[:1]):
+            print("  Geometry: included")
+        else:
+            # Strip geometry if column doesn't exist or records don't have it
+            work_records = [{k: v for k, v in r.items() if k != "geometry"} for r in work_records]
+            if ds["source"] == "csv":
+                print("  Geometry: not available (CSV source)")
+            else:
+                print("  Geometry: column not found in table, stripping")
+
+        # Row count BEFORE
+        rows_before = get_row_count(dest_url, dest_key, dest_schema, table)
+        print(f"  Rows before: {rows_before or 'unknown'}")
+
+        # Upsert
+        upserted = batch_upsert(
+            url=dest_url,
+            key=dest_key,
+            table=table,
+            records=work_records,
+            conflict_column=conflict,
+            schema=dest_schema,
+            batch_size=500,
+        )
+
+        # Row count AFTER
+        rows_after = get_row_count(dest_url, dest_key, dest_schema, table)
+
+        print(f"\n  Results:")
+        print(f"    Upserted:     {upserted:,}")
+        print(f"    Rows before:  {rows_before or 'unknown'}")
+        print(f"    Rows after:   {rows_after or 'unknown'}")
+
+        if rows_before is not None and rows_after is not None:
+            delta = rows_after - rows_before
+            print(f"    Net new:      {delta:,}")
+            if rows_after < rows_before:
+                print("    WARNING: Row count DECREASED!")
+
+        if upserted == 0:
+            print("    ERROR: Zero rows upserted!")
+            all_ok = False
+
+    return all_ok
+
+
+# ──────────────────────────────────────────────────────────────
+# Main
+# ──────────────────────────────────────────────────────────────
+
+def main():
+    # ── Required: Lamap ──
+    lamap_url = os.environ.get("LAMAP_SUPABASE_URL", "")
+    lamap_key = os.environ.get("LAMAP_SUPABASE_SERVICE_KEY", "")
+    lamap_schema = os.environ.get("LAMAP_SCHEMA", "bronze")
+
+    if not lamap_url or not lamap_key:
+        print("ERROR: LAMAP_SUPABASE_URL and LAMAP_SUPABASE_SERVICE_KEY are required")
+        sys.exit(1)
+
+    # ── Optional: Yooneet ──
+    yooneet_url = os.environ.get("YOONEET_SUPABASE_URL", "")
+    yooneet_key = os.environ.get("YOONEET_SUPABASE_SERVICE_KEY", "")
+    yooneet_schema = os.environ.get("YOONEET_SCHEMA", "bronze")
+
+    print("=" * 60)
+    print("  SITG Cadastral & Ownership Pipeline")
+    print(f"  Datasets: {len(DATASETS)}")
+    print("=" * 60)
+
+    # ── Fetch all datasets ──
+    datasets_with_records: list[tuple[dict, list[dict]]] = []
+
+    for ds in DATASETS:
+        print(f"\n{'━' * 60}")
+        print(f"  Fetching: {ds['name']}")
+        print(f"  Source:   {ds['source']} → {ds['url'][:80]}...")
+        print(f"{'━' * 60}")
+
+        try:
+            if ds["source"] == "arcgis":
+                records = fetch_all_features(ds["url"], include_geometry=True)
+            elif ds["source"] == "csv":
+                records = fetch_csv_features(ds["url"])
+            else:
+                print(f"  ERROR: Unknown source type '{ds['source']}'")
+                records = []
+        except Exception as e:
+            print(f"  FETCH ERROR: {e}")
+            records = []
+
+        datasets_with_records.append((ds, records))
+
+    # ── Upsert to Lamap (required) ──
+    lamap_ok = process_destination(
+        "lamap_db", lamap_url, lamap_key, lamap_schema, datasets_with_records
+    )
+
+    # ── Upsert to Yooneet (optional) ──
+    if yooneet_url and yooneet_key:
+        yooneet_ok = process_destination(
+            "yooneet", yooneet_url, yooneet_key, yooneet_schema, datasets_with_records
+        )
+        if not yooneet_ok:
+            print("\n  WARNING: Yooneet had failures (optional destination)")
+    else:
+        print("\n  Yooneet: not configured, skipping")
+
+    # ── Final status ──
+    print("\n" + "=" * 60)
+    print("  IMPORT COMPLETE")
+    print("=" * 60)
+
+    if not lamap_ok:
+        print("  FAILED: Lamap had errors")
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
