@@ -423,14 +423,14 @@ def build_record(element: dict, commune_name: str) -> dict | None:
     # Geometry as GeoJSON point
     geometry = json.dumps({"type": "Point", "coordinates": [lon, lat]})
 
-    # Code and description
-    code = code or ""
-    description = CODE_DESCRIPTIONS.get(code, fclass.replace("_", " ").title())
-    name = tags.get("name", "") or ""
+    # Code (integer column) and description
+    code_int = int(code) if code else None
+    description = CODE_DESCRIPTIONS.get(code or "", fclass.replace("_", " ").title())
+    name = tags.get("name") or None
 
     return {
         "osm_id": osm_id,
-        "code": code,
+        "code": code_int,
         "fclass": fclass,
         "name": name,
         "description": description,
