@@ -33,6 +33,7 @@ import requests
 # Add repo root to path so we can import shared/
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 from shared.supabase_client import batch_upsert
+from shared.freshness import get_dataset_meta, update_dataset_meta
 
 
 # ──────────────────────────────────────────────────────────────
@@ -44,6 +45,7 @@ TABLE = "OSM"
 CONFLICT_COLUMN = "osm_id"
 BATCH_SIZE = 1000
 LOG_EVERY = 10000
+DATASET_CODE = "ext_osm"
 
 # Tag keys to query, in priority order (first match determines fclass)
 TAG_PRIORITY = [
@@ -445,6 +447,8 @@ def main():
     lamap_url = os.environ.get("LAMAP_SUPABASE_URL", "")
     lamap_key = os.environ.get("LAMAP_SUPABASE_SERVICE_KEY", "")
     lamap_schema = os.environ.get("LAMAP_SCHEMA", "bronze")
+    camelote_url = os.environ.get("CAMELOTE_SUPABASE_URL", "")
+    camelote_key = os.environ.get("CAMELOTE_SUPABASE_KEY", "")
 
     if not lamap_url or not lamap_key:
         print("ERROR: LAMAP_SUPABASE_URL and LAMAP_SUPABASE_SERVICE_KEY are required")
@@ -455,6 +459,12 @@ def main():
     print("  Source: Overpass API — Canton de Genève")
     print(f"  Target: {lamap_schema}.{TABLE}")
     print("=" * 60)
+
+    # ── Show previous metadata ──
+    meta = get_dataset_meta(camelote_url, camelote_key, DATASET_CODE)
+    if meta and meta.get("last_acquired_at"):
+        print(f"\n  Last acquired: {meta['last_acquired_at'].isoformat()}")
+        print(f"  Previous record count: {meta.get('record_count', 'unknown')}")
 
     # ── Row count BEFORE ──
     rows_before = get_row_count(lamap_url, lamap_key, lamap_schema, TABLE)
@@ -556,6 +566,13 @@ def main():
     if total_upserted == 0:
         print("  FAILED: Zero rows upserted!")
         sys.exit(1)
+
+    # ── Update dataset metadata ──
+    update_dataset_meta(
+        camelote_url, camelote_key, DATASET_CODE,
+        record_count=rows_after,
+        status="active",
+    )
 
 
 if __name__ == "__main__":

@@ -37,6 +37,7 @@ import requests
 # Add repo root to path so we can import shared/
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 from shared.supabase_client import batch_upsert
+from shared.freshness import update_dataset_meta
 
 
 # ──────────────────────────────────────────────────────────────
@@ -46,6 +47,7 @@ from shared.supabase_client import batch_upsert
 GRAPHQL_URL = "https://hasura-scrapers-fqs3j3myvq-ew.a.run.app/v1/graphql"
 TABLE = "RealAdvisor"
 CONFLICT_COLUMN = "providerId"
+DATASET_CODE = "ext_realadvisor"
 
 GRAPHQL_HEADERS = {
     "accept": "application/json",
@@ -257,6 +259,8 @@ def main():
     lamap_url = os.environ.get("LAMAP_SUPABASE_URL", "")
     lamap_key = os.environ.get("LAMAP_SUPABASE_SERVICE_KEY", "")
     lamap_schema = os.environ.get("LAMAP_SCHEMA", "bronze")
+    camelote_url = os.environ.get("CAMELOTE_SUPABASE_URL", "")
+    camelote_key = os.environ.get("CAMELOTE_SUPABASE_KEY", "")
 
     if not lamap_url or not lamap_key:
         print("ERROR: LAMAP_SUPABASE_URL and LAMAP_SUPABASE_SERVICE_KEY are required")
@@ -391,6 +395,13 @@ def main():
     if upserted == 0:
         print("  FAILED: Zero rows upserted!")
         sys.exit(1)
+
+    # ── Update dataset metadata ──
+    update_dataset_meta(
+        camelote_url, camelote_key, DATASET_CODE,
+        record_count=rows_after,
+        status="active",
+    )
 
 
 if __name__ == "__main__":

@@ -43,6 +43,7 @@ import requests
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 from shared.supabase_client import batch_upsert
 from shared.sitg_arcgis import fetch_all_features
+from shared.freshness import get_dataset_meta, update_dataset_meta
 
 # ──────────────────────────────────────────────────────────────
 # Dataset configs
@@ -143,6 +144,21 @@ DATASETS = [
 
 # Fields that exist in the ArcGIS response but we never manage
 EXCLUDE_FIELDS = {"iteration", "globalid"}
+
+
+def get_arcgis_count(url: str) -> int | None:
+    """Quick query to get the total feature count from an ArcGIS FeatureServer."""
+    try:
+        r = requests.get(
+            f"{url}/query",
+            params={"where": "1=1", "returnCountOnly": "true", "f": "json"},
+            timeout=15,
+        )
+        if r.status_code == 200:
+            return r.json().get("count")
+    except Exception:
+        pass
+    return None
 
 
 # ──────────────────────────────────────────────────────────────
@@ -413,6 +429,8 @@ def main():
     lamap_url = os.environ.get("LAMAP_SUPABASE_URL", "")
     lamap_key = os.environ.get("LAMAP_SUPABASE_SERVICE_KEY", "")
     lamap_schema = os.environ.get("LAMAP_SCHEMA", "bronze")
+    camelote_url = os.environ.get("CAMELOTE_SUPABASE_URL", "")
+    camelote_key = os.environ.get("CAMELOTE_SUPABASE_KEY", "")
 
     if not lamap_url or not lamap_key:
         print("ERROR: LAMAP_SUPABASE_URL and LAMAP_SUPABASE_SERVICE_KEY are required")
@@ -423,7 +441,7 @@ def main():
     print(f"  Datasets: {len(DATASETS)}")
     print("=" * 60)
 
-    # ── Fetch all datasets ──
+    # ── Fetch datasets (with freshness pre-check) ──
     datasets_with_records: list[tuple[dict, list[dict]]] = []
 
     for ds in DATASETS:
@@ -431,6 +449,17 @@ def main():
         print(f"  Fetching: {ds['name']}")
         print(f"  URL:      {ds['url'][:80]}...")
         print(f"{'━' * 60}")
+
+        # Freshness pre-check: compare source count with stored count
+        meta = get_dataset_meta(camelote_url, camelote_key, ds["code"])
+        if meta and meta.get("record_count"):
+            source_count = get_arcgis_count(ds["url"])
+            if source_count is not None and source_count == meta["record_count"]:
+                print(f"  Source count ({source_count:,}) matches stored count — skipping")
+                datasets_with_records.append((ds, []))
+                continue
+            elif source_count is not None:
+                print(f"  Source count: {source_count:,} vs stored: {meta['record_count']:,} — fetching")
 
         try:
             records = fetch_all_features(ds["url"], include_geometry=True)
@@ -444,6 +473,16 @@ def main():
     lamap_ok = process_destination(
         "lamap_db", lamap_url, lamap_key, lamap_schema, datasets_with_records
     )
+
+    # ── Update dataset metadata ──
+    for ds, records in datasets_with_records:
+        if records:
+            rows_after = get_row_count(lamap_url, lamap_key, lamap_schema, ds["table"])
+            update_dataset_meta(
+                camelote_url, camelote_key, ds["code"],
+                record_count=rows_after,
+                status="active",
+            )
 
     # ── Final status ──
     print("\n" + "=" * 60)
