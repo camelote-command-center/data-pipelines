@@ -29,8 +29,14 @@ import sys
 import time
 from datetime import datetime
 
+import cloudscraper
 import requests
 from bs4 import BeautifulSoup
+
+# cloudscraper handles Cloudflare anti-bot; used for HTML pages
+_scraper = cloudscraper.create_scraper(
+    browser={"browser": "chrome", "platform": "darwin", "mobile": False}
+)
 
 # Add repo root to path so we can import shared/
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
@@ -119,10 +125,10 @@ def get_postal_number(text: str) -> str | None:
 
 
 def fetch_html(url: str) -> BeautifulSoup | None:
-    """Fetch page HTML with retries. Returns parsed soup."""
+    """Fetch page HTML with retries. Uses cloudscraper to bypass bot protection."""
     for attempt in range(1, 4):
         try:
-            r = requests.get(url, headers=BROWSER_HEADERS, timeout=30)
+            r = _scraper.get(url, headers=BROWSER_HEADERS, timeout=30)
             if r.status_code == 200:
                 return BeautifulSoup(r.text, "html.parser")
             print(f"    HTTP {r.status_code} for {url}")
@@ -237,7 +243,7 @@ def fetch_streets_graphql(link: str) -> list[dict]:
     }
 
     try:
-        r = requests.post(
+        r = _scraper.post(
             GRAPHQL_URL, headers=GRAPHQL_HEADERS, json=payload, timeout=30
         )
         if r.status_code == 200:
