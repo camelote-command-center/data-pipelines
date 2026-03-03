@@ -29,14 +29,9 @@ import sys
 import time
 from datetime import datetime
 
-import cloudscraper
 import requests
 from bs4 import BeautifulSoup
-
-# cloudscraper handles Cloudflare anti-bot; used for HTML pages
-_scraper = cloudscraper.create_scraper(
-    browser={"browser": "chrome", "platform": "darwin", "mobile": False}
-)
+from curl_cffi import requests as cffi_requests
 
 # Add repo root to path so we can import shared/
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
@@ -125,10 +120,12 @@ def get_postal_number(text: str) -> str | None:
 
 
 def fetch_html(url: str) -> BeautifulSoup | None:
-    """Fetch page HTML with retries. Uses cloudscraper to bypass bot protection."""
+    """Fetch page HTML with retries. Uses curl_cffi for browser TLS fingerprint."""
     for attempt in range(1, 4):
         try:
-            r = _scraper.get(url, headers=BROWSER_HEADERS, timeout=30)
+            r = cffi_requests.get(
+                url, headers=BROWSER_HEADERS, impersonate="chrome", timeout=30,
+            )
             if r.status_code == 200:
                 return BeautifulSoup(r.text, "html.parser")
             print(f"    HTTP {r.status_code} for {url}")
@@ -243,8 +240,9 @@ def fetch_streets_graphql(link: str) -> list[dict]:
     }
 
     try:
-        r = _scraper.post(
-            GRAPHQL_URL, headers=GRAPHQL_HEADERS, json=payload, timeout=30
+        r = cffi_requests.post(
+            GRAPHQL_URL, headers=GRAPHQL_HEADERS, json=payload,
+            impersonate="chrome", timeout=30,
         )
         if r.status_code == 200:
             data = r.json()
