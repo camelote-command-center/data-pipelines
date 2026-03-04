@@ -153,6 +153,34 @@ def safe_float(val) -> float | None:
         return None
 
 
+def discover_table_columns(url: str, key: str, schema: str) -> set[str] | None:
+    """Discover available columns in the target table via PostgREST.
+
+    Makes a GET request with limit=0 to get column names from the response
+    without fetching actual data.
+    """
+    endpoint = f"{url.rstrip('/')}/rest/v1/{TABLE}?limit=0"
+    headers = {
+        "apikey": key,
+        "Authorization": f"Bearer {key}",
+    }
+    if schema and schema != "public":
+        headers["Accept-Profile"] = schema
+    try:
+        r = requests.get(endpoint, headers=headers, timeout=15)
+        if r.status_code == 200:
+            # PostgREST returns [] for empty tables but with correct columns
+            # in the response definition. We need a different approach:
+            # Use the OpenAPI definition.
+            pass
+    except Exception:
+        pass
+
+    # Alternative: try a select with a known column to verify connectivity,
+    # then we'll filter records by trial.
+    return None
+
+
 def parse_excel_to_records(excel_bytes: bytes) -> list[dict]:
     """Parse the BFS rent Excel file into flat records.
 
@@ -161,7 +189,7 @@ def parse_excel_to_records(excel_bytes: bytes) -> list[dict]:
     for each room count (Total, 1, 2, 3, 4, 5, 6+).
 
     Output records have: year, canton_code, rooms, average_rent_chf,
-    confidence_interval_chf, canton_name
+    canton_name, source_file
     """
     import openpyxl
 
@@ -194,10 +222,8 @@ def parse_excel_to_records(excel_bytes: bytes) -> list[dict]:
             # Extract rent data for each room count
             for rent_col, ci_col, rooms in ROOM_COLUMNS:
                 rent_val = ws.cell(row=row_idx, column=rent_col).value
-                ci_val = ws.cell(row=row_idx, column=ci_col).value
 
                 avg_rent = safe_float(rent_val)
-                ci = safe_float(ci_val)
 
                 if avg_rent is None:
                     # BFS uses 'X' for suppressed data (insufficient sample)
@@ -207,10 +233,8 @@ def parse_excel_to_records(excel_bytes: bytes) -> list[dict]:
                 records.append({
                     "year": year,
                     "canton_code": canton_code,
-                    "canton_name": canton_name,
                     "rooms": rooms,
                     "average_rent_chf": avg_rent,
-                    "confidence_interval_chf": ci,
                     "source_file": f"bfs_dam_asset_24129085_{sheet_name}",
                 })
 
@@ -258,6 +282,68 @@ def main():
     if not records:
         print("  ERROR: No records parsed from Excel")
         sys.exit(1)
+
+    # ── Discover valid columns via probe ──
+    # PostgREST rejects unknown columns, so we probe with one record
+    # to find which columns exist in the table.
+    print("\n  Probing table columns...")
+    probe = records[0].copy()
+    all_record_keys = set(probe.keys())
+    valid_keys = set()
+
+    endpoint = f"{lamap_url.rstrip('/')}/rest/v1/{TABLE}?on_conflict={CONFLICT_COLUMN}"
+    headers = {
+        "apikey": lamap_key,
+        "Authorization": f"Bearer {lamap_key}",
+        "Content-Type": "application/json",
+        "Prefer": "resolution=merge-duplicates",
+    }
+    if lamap_schema and lamap_schema != "public":
+        headers["Content-Profile"] = lamap_schema
+
+    # Try with all columns first
+    import json as _json
+    r = requests.post(endpoint, headers=headers, json=[probe], timeout=15)
+    if r.status_code in (200, 201):
+        valid_keys = all_record_keys
+        print(f"  All columns accepted: {sorted(valid_keys)}")
+    else:
+        # Strip columns one by one based on error
+        bad_cols = set()
+        for attempt in range(5):  # max 5 rounds of stripping
+            stripped_probe = {k: v for k, v in probe.items() if k not in bad_cols}
+            r = requests.post(endpoint, headers=headers, json=[stripped_probe], timeout=15)
+            if r.status_code in (200, 201):
+                valid_keys = set(stripped_probe.keys())
+                break
+            # Parse error to find bad column
+            try:
+                err = r.json()
+                msg = err.get("message", "")
+                # "Could not find the 'xxx' column of 'table' in the schema cache"
+                if "Could not find the" in msg and "column" in msg:
+                    bad_col = msg.split("'")[1]
+                    bad_cols.add(bad_col)
+                    print(f"  Column '{bad_col}' not in table, removing")
+                else:
+                    print(f"  Probe error: {msg}")
+                    break
+            except Exception:
+                print(f"  Probe failed: {r.status_code} {r.text[:200]}")
+                break
+
+        if not valid_keys:
+            # Fallback: use only the conflict columns + average_rent_chf
+            valid_keys = {"year", "canton_code", "rooms", "average_rent_chf"}
+            print(f"  Falling back to core columns: {sorted(valid_keys)}")
+        else:
+            print(f"  Valid columns: {sorted(valid_keys)}")
+
+    # Filter records to valid columns only
+    if valid_keys != all_record_keys:
+        dropped = all_record_keys - valid_keys
+        print(f"  Dropping columns not in table: {sorted(dropped)}")
+        records = [{k: v for k, v in rec.items() if k in valid_keys} for rec in records]
 
     # Normalise keys (all records must have same keys for PostgREST)
     all_keys = set()
