@@ -106,9 +106,45 @@ def sad_headers(xsrf: str) -> dict:
 # ------------------------------------------------------------------
 
 def camel_to_snake(name: str) -> str:
-    """Convert camelCase to snake_case."""
-    s1 = re.sub(r"([A-Z])", r"_\1", name)
-    return s1.lower().lstrip("_")
+    """
+    Convert camelCase to snake_case.
+    Handles consecutive uppercase (e.g. statutDA → statut_da, not statut_d_a).
+    """
+    # Insert underscore before uppercase letters that follow a lowercase letter
+    s1 = re.sub(r"([a-z0-9])([A-Z])", r"\1_\2", name)
+    # Insert underscore between consecutive uppercase and following lowercase
+    s2 = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1_\2", s1)
+    return s2.lower()
+
+
+# Explicit field name overrides for SAD API → table column mapping
+# These handle cases where camel_to_snake doesn't produce the right result
+FIELD_OVERRIDES = {
+    "idAutorisation": "id_autorisation",
+    "numeroComplementaire": "numero_complementaire",
+    "dateStatut": "date_statut",
+    "statutDA": "statut_da",
+    "dateDepot": "date_depot",
+    "dateAcceptation": "date_acceptation",
+    "numeroBordereau": "numero_bordereau",
+    "proprietaireAdresse": "proprietaire_adresse",
+    "mandataireAdresse": "mandataire_adresse",
+    "requerantPrincipal": "requerant_principal",
+    "requerantPrincipalAdresse": "requerant_principal_adresse",
+    "requerantSecondaire": "requerant_secondaire",
+    "requerantSecondaireAdresse": "requerant_secondaire_adresse",
+    "remarqueDossier": "remarque_dossier",
+    "isRemarqueDiffusable": "is_remarque_diffusable",
+    "remarqueDA": "remarque_da",
+    "isRemarqueDADiffusable": "is_remarque_da_diffusable",
+    "codeAmenagement": "code_amenagement",
+    "origineDossier": "origine_dossier",
+    "codeInstanceDirectrice": "code_instance_directrice",
+    "libelleInstanceDirectrice": "libelle_instance_directrice",
+    "decisionGlobInstanceDirectrice": "decision_glob_instance_directrice",
+    "avisFaoInstanceDirectrice": "avis_fao_instance_directrice",
+    "dateFinValidInstanceDirectrice": "date_fin_valid_instance_directrice",
+}
 
 
 def parse_sad_date(date_str: str | None) -> datetime | None:
@@ -300,11 +336,11 @@ def fetch_decisions(
 def transform_record(raw: dict) -> dict:
     """
     Transform a SAD API record to match the bronze table schema.
-    Converts camelCase keys to snake_case.
+    Uses explicit field mappings where available, falls back to camelCase→snake_case.
     """
     record = {}
     for k, v in raw.items():
-        snake_key = camel_to_snake(k)
+        snake_key = FIELD_OVERRIDES.get(k, camel_to_snake(k))
         # Normalise empty strings to None
         if isinstance(v, str) and not v.strip():
             v = None
