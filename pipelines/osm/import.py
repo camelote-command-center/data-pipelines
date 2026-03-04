@@ -3,10 +3,12 @@
 OSM (OpenStreetMap) — Import Pipeline
 
 Fetches geographic features from OpenStreetMap via the Overpass API
-for Canton de Genève and upserts into bronze."OSM" on lamap_db.
+for Suisse Romande (cantons GE, VD, FR, VS, NE, JU) and upserts into
+bronze."OSM" on lamap_db.
 
 Strategy:
-  1. Fetch all Geneva commune relations from Overpass
+  1. For each Suisse Romande canton, fetch commune relations via Overpass
+     area filter using ISO3166-2 codes (e.g. area["ISO3166-2"="CH-GE"])
   2. For each commune, query all relevant features via area filter
      → commune assignment is automatic (no shapely needed)
   3. Map OSM tags → fclass / code / description (Geofabrik convention)
@@ -46,6 +48,22 @@ CONFLICT_COLUMN = "osm_id"
 BATCH_SIZE = 1000
 LOG_EVERY = 10000
 DATASET_CODE = "ext_osm"
+
+# Suisse Romande cantons — ISO 3166-2 codes
+# Order: smallest first to fail fast if there's an issue
+CANTONS = [
+    ("NE", "CH-NE"),   # Neuchâtel        ~27 communes
+    ("JU", "CH-JU"),   # Jura             ~53 communes
+    ("GE", "CH-GE"),   # Genève           ~45 communes
+    ("FR", "CH-FR"),   # Fribourg         ~121 communes
+    ("VS", "CH-VS"),   # Valais           ~123 communes
+    ("VD", "CH-VD"),   # Vaud             ~300 communes (largest → last)
+]
+
+# Delay between Overpass queries (seconds) — be respectful to the API
+QUERY_DELAY = 3
+# Extra delay between cantons (seconds) — give the API breathing room
+CANTON_DELAY = 15
 
 # Tag keys to query, in priority order (first match determines fclass)
 TAG_PRIORITY = [
@@ -309,20 +327,44 @@ def overpass_query(query: str, timeout: int = 120) -> dict | None:
     return None
 
 
+def probe_canton_column(url: str, key: str, schema: str) -> bool:
+    """Check if the 'canton' column exists in the OSM table.
+
+    Makes a lightweight GET with select=canton&limit=0. If PostgREST
+    returns 200 the column exists; a 400 with PGRST204 means it doesn't.
+    This is read-only and never writes to the database.
+    """
+    endpoint = f"{url.rstrip('/')}/rest/v1/{TABLE}?select=canton&limit=0"
+    headers = {
+        "apikey": key,
+        "Authorization": f"Bearer {key}",
+    }
+    if schema and schema != "public":
+        headers["Accept-Profile"] = schema
+    try:
+        r = requests.get(endpoint, headers=headers, timeout=10)
+        return r.status_code == 200
+    except Exception:
+        return False
+
+
 # ──────────────────────────────────────────────────────────────
 # Data fetching
 # ──────────────────────────────────────────────────────────────
 
-def get_communes() -> list[dict]:
-    """Fetch all commune relations in Geneva canton from Overpass."""
-    query = """
-[out:json][timeout:30];
-rel["boundary"="administrative"]["admin_level"="4"]["name"="Genève"];
-map_to_area -> .canton;
+def get_canton_communes(iso_code: str) -> list[dict]:
+    """Fetch all commune relations in a canton from Overpass.
+
+    Uses ISO 3166-2 area filter (e.g. area["ISO3166-2"="CH-GE"])
+    which works reliably for bilingual cantons like FR and VS.
+    """
+    query = f"""
+[out:json][timeout:60];
+area["ISO3166-2"="{iso_code}"]->.canton;
 rel(area.canton)["boundary"="administrative"]["admin_level"="8"];
 out tags;
 """
-    data = overpass_query(query, timeout=30)
+    data = overpass_query(query, timeout=60)
     if not data:
         return []
 
@@ -392,7 +434,12 @@ def determine_fclass(tags: dict) -> tuple[str | None, str | None, str | None]:
     return None, None, None
 
 
-def build_record(element: dict, commune_name: str) -> dict | None:
+def build_record(
+    element: dict,
+    commune_name: str,
+    canton: str | None = None,
+    include_canton: bool = True,
+) -> dict | None:
     """Build a database record from an Overpass element."""
     tags = element.get("tags", {})
     _tag_key, fclass, code = determine_fclass(tags)
@@ -428,7 +475,7 @@ def build_record(element: dict, commune_name: str) -> dict | None:
     description = CODE_DESCRIPTIONS.get(code or "", fclass.replace("_", " ").title())
     name = tags.get("name") or None
 
-    return {
+    record = {
         "osm_id": osm_id,
         "code": code_int,
         "fclass": fclass,
@@ -437,6 +484,11 @@ def build_record(element: dict, commune_name: str) -> dict | None:
         "commune": commune_name,
         "geometry": geometry,
     }
+
+    if include_canton and canton:
+        record["canton"] = canton
+
+    return record
 
 
 # ──────────────────────────────────────────────────────────────
@@ -454,9 +506,10 @@ def main():
         print("ERROR: LAMAP_SUPABASE_URL and LAMAP_SUPABASE_SERVICE_KEY are required")
         sys.exit(1)
 
+    canton_labels = ", ".join(c[0] for c in CANTONS)
     print("=" * 60)
-    print("  OSM (OpenStreetMap) Pipeline")
-    print("  Source: Overpass API — Canton de Genève")
+    print("  OSM (OpenStreetMap) Pipeline — Suisse Romande")
+    print(f"  Cantons: {canton_labels}")
     print(f"  Target: {lamap_schema}.{TABLE}")
     print("=" * 60)
 
@@ -470,62 +523,115 @@ def main():
     rows_before = get_row_count(lamap_url, lamap_key, lamap_schema, TABLE)
     print(f"  Rows before: {rows_before:,}" if rows_before is not None else "  Rows before: unknown")
 
-    # ── Fetch communes ──
-    print("\n  Fetching Geneva communes from Overpass...")
-    communes = get_communes()
-    if not communes:
-        print("  ERROR: Could not fetch communes")
-        sys.exit(1)
-    print(f"  Found {len(communes)} communes")
+    # ── Probe: does the canton column exist? ──
+    include_canton = probe_canton_column(lamap_url, lamap_key, lamap_schema)
+    if include_canton:
+        print("  Canton column: found — will populate")
+    else:
+        print("  Canton column: not found — skipping (add column to table to enable)")
 
-    # ── Build tag union query (reused for each commune) ──
+    # ── Build tag union query (reused for every commune) ──
     tag_union = build_tag_union()
 
-    # ── Process each commune ──
+    # ── Process each canton ──
     all_records = []
     seen_ids = set()
     total_raw = 0
+    total_communes = 0
+    canton_stats = {}
     start_time = time.time()
 
-    for i, commune in enumerate(communes):
-        name = commune["name"]
-        area_id = commune["area_id"]
-        print(f"\n  [{i + 1}/{len(communes)}] {name} (area {area_id})")
+    for canton_idx, (canton_code, iso_code) in enumerate(CANTONS):
+        canton_start = time.time()
 
-        elements = fetch_commune_features(area_id, tag_union)
-        total_raw += len(elements)
-        commune_count = 0
+        print(f"\n{'━' * 60}")
+        print(f"  Canton {canton_idx + 1}/{len(CANTONS)}: {canton_code} ({iso_code})")
+        print(f"{'━' * 60}")
 
-        for el in elements:
-            record = build_record(el, name)
-            if not record:
-                continue
-            # Deduplicate: keep first occurrence (earlier commune wins)
-            if record["osm_id"] in seen_ids:
-                continue
-            seen_ids.add(record["osm_id"])
-            all_records.append(record)
-            commune_count += 1
+        # ── Fetch communes for this canton ──
+        print(f"  Fetching communes...")
+        communes = get_canton_communes(iso_code)
+        if not communes:
+            print(f"  WARNING: No communes found for {canton_code}, skipping")
+            canton_stats[canton_code] = {"communes": 0, "records": 0, "raw": 0}
+            continue
 
-        print(f"    Overpass: {len(elements)} elements → {commune_count} records")
+        print(f"  Found {len(communes)} communes")
+        total_communes += len(communes)
+        canton_raw = 0
+        canton_records_start = len(all_records)
 
-        # Progress logging
-        if len(all_records) > 0 and len(all_records) % LOG_EVERY < commune_count:
-            elapsed = time.time() - start_time
-            print(f"    ── Total so far: {len(all_records):,} records ({elapsed:.0f}s)")
+        # Wait after the commune-list query
+        time.sleep(QUERY_DELAY)
 
-        # Rate limit: be respectful to Overpass API
-        time.sleep(3)
+        # ── Process each commune in this canton ──
+        for i, commune in enumerate(communes):
+            name = commune["name"]
+            area_id = commune["area_id"]
 
+            # Print every commune for small cantons, every 10th for large ones
+            verbose = len(communes) <= 60 or (i % 10 == 0) or (i == len(communes) - 1)
+            if verbose:
+                print(f"\n  [{i + 1}/{len(communes)}] {name}")
+
+            elements = fetch_commune_features(area_id, tag_union)
+            total_raw += len(elements)
+            canton_raw += len(elements)
+            commune_count = 0
+
+            for el in elements:
+                record = build_record(el, name, canton=canton_code, include_canton=include_canton)
+                if not record:
+                    continue
+                # Deduplicate: keep first occurrence (earlier commune wins)
+                if record["osm_id"] in seen_ids:
+                    continue
+                seen_ids.add(record["osm_id"])
+                all_records.append(record)
+                commune_count += 1
+
+            if verbose:
+                print(f"    {len(elements)} elements → {commune_count} new records")
+
+            # Progress logging
+            if len(all_records) > 0 and len(all_records) % LOG_EVERY < commune_count:
+                elapsed = time.time() - start_time
+                print(f"    ── Total so far: {len(all_records):,} records ({elapsed:.0f}s)")
+
+            # Rate limit: be respectful to Overpass API
+            time.sleep(QUERY_DELAY)
+
+        canton_records = len(all_records) - canton_records_start
+        canton_elapsed = time.time() - canton_start
+        canton_stats[canton_code] = {
+            "communes": len(communes),
+            "records": canton_records,
+            "raw": canton_raw,
+        }
+        print(f"\n  ── {canton_code} complete: {len(communes)} communes, "
+              f"{canton_raw:,} raw → {canton_records:,} records ({canton_elapsed:.0f}s)")
+
+        # Extra delay between cantons to avoid Overpass rate limits
+        if canton_idx < len(CANTONS) - 1:
+            print(f"  Waiting {CANTON_DELAY}s before next canton...")
+            time.sleep(CANTON_DELAY)
+
+    # ── Summary of Overpass phase ──
+    overpass_elapsed = time.time() - start_time
     print(f"\n{'━' * 60}")
-    print(f"  Overpass complete: {total_raw:,} raw elements → {len(all_records):,} unique records")
+    print(f"  Overpass complete ({overpass_elapsed / 60:.1f} min)")
+    print(f"  Cantons: {len(canton_stats)}, Communes: {total_communes}")
+    print(f"  Raw elements: {total_raw:,} → Unique records: {len(all_records):,}")
+    for code, stats in canton_stats.items():
+        print(f"    {code}: {stats['communes']} communes, {stats['records']:,} records")
+    print(f"{'━' * 60}")
 
     if not all_records:
         print("  ERROR: No records fetched")
         sys.exit(1)
 
     # ── Upsert in batches ──
-    print(f"  Upserting {len(all_records):,} records (batch size {BATCH_SIZE})...")
+    print(f"\n  Upserting {len(all_records):,} records (batch size {BATCH_SIZE})...")
 
     total_upserted = 0
     for i in range(0, len(all_records), BATCH_SIZE):
@@ -550,8 +656,9 @@ def main():
     # ── Summary ──
     elapsed = time.time() - start_time
     print(f"\n{'=' * 60}")
-    print("  IMPORT COMPLETE")
-    print(f"  Communes queried: {len(communes)}")
+    print("  IMPORT COMPLETE — Suisse Romande")
+    print(f"  Cantons:          {canton_labels}")
+    print(f"  Communes queried: {total_communes}")
     print(f"  Raw elements:     {total_raw:,}")
     print(f"  Unique records:   {len(all_records):,}")
     print(f"  Rows upserted:    {total_upserted:,}")
