@@ -57,7 +57,7 @@ SAD_REFERENTIEL_URL = f"{SAD_BASE}/api/referentiel"
 SAD_INIT_URL = f"{SAD_BASE}/recherche/autorisationConstruire"
 
 TABLE = "SAD"
-CONFLICT_COLUMN = "id_autorisation"
+CONFLICT_COLUMN = "type,numero,numero_complementaire"
 BATCH_SIZE = 500
 PAGE_SIZE = 100
 DATASET_CODE = "ge_sad"
