@@ -53,6 +53,8 @@ def _upsert_single_batch(url, key, table, records, conflict_column, schema="publ
             elif r.status_code >= 500:
                 wait = RETRY_BACKOFF_BASE ** attempt
                 print(f"    Server error {r.status_code}, retrying in {wait}s (attempt {attempt}/{MAX_RETRIES})")
+                if attempt == 1:
+                    print(f"    Response: {r.text[:500]}")
                 time.sleep(wait)
                 continue
             else:

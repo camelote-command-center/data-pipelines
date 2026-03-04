@@ -381,6 +381,16 @@ def main():
             print(f"  Dropped unknown columns: {', '.join(sorted(dropped))}")
         all_records = filtered
 
+    # -- Deduplicate by feature_id --
+    seen = {}
+    for rec in all_records:
+        fid = rec.get("feature_id")
+        if fid is not None:
+            seen[fid] = rec  # last wins
+    if len(seen) < len(all_records):
+        print(f"  Deduplicated: {len(all_records):,} → {len(seen):,} unique feature_ids")
+    all_records = list(seen.values())
+
     # -- Normalise keys --
     all_keys = set()
     for r in all_records:
