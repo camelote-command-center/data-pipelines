@@ -1,0 +1,13 @@
+{
+  "name": "properstar",
+  "private": true,
+  "scripts": {
+    "fetch": "tsx fetch-listings.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2"
+  },
+  "devDependencies": {
+    "tsx": "^4"
+  }
+}

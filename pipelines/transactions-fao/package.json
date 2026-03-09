@@ -1,0 +1,17 @@
+{
+  "name": "transactions-fao",
+  "private": true,
+  "scripts": {
+    "fetch": "tsx fetch-transactions.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0",
+    "@supabase/supabase-js": "^2",
+    "cheerio": "^1",
+    "https-proxy-agent": "^7",
+    "playwright": "^1"
+  },
+  "devDependencies": {
+    "tsx": "^4"
+  }
+}

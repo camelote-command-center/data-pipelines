@@ -1,0 +1,27 @@
+name: FAO LDTR
+
+on:
+  schedule:
+    - cron: '30 4 * * 6'  # Weekly Saturday at 04:30 UTC
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: cd pipelines/fao-ldtr && npm ci
+      - name: Install Playwright browsers
+        run: cd pipelines/fao-ldtr && npx playwright install chromium --with-deps
+      - name: Fetch FAO LDTR records
+        run: cd pipelines/fao-ldtr && npx tsx fetch-ldtr.ts
+        env:
+          SUPABASE_URL: ${{ secrets.LAMAP_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.LAMAP_SUPABASE_SERVICE_KEY }}
+          WEBSHARE_PROXY_USER: ${{ secrets.WEBSHARE_PROXY_USER }}
+          WEBSHARE_PROXY_PASS: ${{ secrets.WEBSHARE_PROXY_PASS }}
+          TWO_CAPTCHA_API_KEY: ${{ secrets.TWO_CAPTCHA_API_KEY }}

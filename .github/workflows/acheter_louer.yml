@@ -1,0 +1,26 @@
+name: AcheterLouer (Listings)
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # Daily at 02:00 UTC
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: cd pipelines/acheter-louer && npm ci
+      - name: Install Playwright browsers
+        run: cd pipelines/acheter-louer && npx playwright install chromium --with-deps
+      - name: Fetch AcheterLouer listings
+        run: cd pipelines/acheter-louer && npx tsx fetch-listings.ts
+        env:
+          SUPABASE_URL: ${{ secrets.LAMAP_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.LAMAP_SUPABASE_SERVICE_KEY }}
+          WEBSHARE_PROXY_USER: ${{ secrets.WEBSHARE_PROXY_USER }}
+          WEBSHARE_PROXY_PASS: ${{ secrets.WEBSHARE_PROXY_PASS }}

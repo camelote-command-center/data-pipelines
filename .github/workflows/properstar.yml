@@ -1,0 +1,22 @@
+name: Properstar (Listings)
+
+on:
+  schedule:
+    - cron: '0 1 * * *'  # Daily at 01:00 UTC
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: cd pipelines/properstar && npm ci
+      - name: Fetch Properstar listings
+        run: cd pipelines/properstar && npx tsx fetch-listings.ts
+        env:
+          SUPABASE_URL: ${{ secrets.LAMAP_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.LAMAP_SUPABASE_SERVICE_KEY }}
