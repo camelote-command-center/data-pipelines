@@ -27,7 +27,7 @@ import * as cheerio from 'cheerio';
 
 const URL_MAIN = 'https://www.immobilier.ch';
 const BATCH_SIZE = 100;
-const RATE_LIMIT_MS = 500;
+const RATE_LIMIT_MS = 300;
 
 const HEADERS: Record<string, string> = {
   'user-agent':
@@ -214,7 +214,7 @@ function formatListing(data: Record<string, any>): Record<string, unknown> {
   };
 
   // Images — store original URLs
-  const medias = data.en?.medias || data.fr?.medias || [];
+  const medias = data.fr?.medias || [];
   const images = medias
     .filter((m: any) => m.videoType === 0 && !m.src?.endsWith('.pdf'))
     .filter((m: any) => /\.(jpg|jpeg|png|gif|bmp|tiff)$/i.test(m.src || ''))
@@ -242,7 +242,10 @@ async function main() {
   console.log('='.repeat(60));
 
   const startTime = Date.now();
-  const allRecords: Record<string, unknown>[] = [];
+  const UPSERT_EVERY = 200;
+  let pendingRecords: Record<string, unknown>[] = [];
+  let totalFetched = 0;
+  let totalUpserted = 0;
   const seenUrls = new Set<string>();
 
   for (const canton of CANTONS) {
@@ -281,31 +284,36 @@ async function main() {
 
       console.log(`    ${allIds.length} listing IDs collected`);
 
-      // Fetch details for each listing
+      // Fetch details for each listing (French only — saves 2/3 of API calls)
       let detailCount = 0;
       for (const id of allIds) {
         try {
-          // Fetch in all 3 languages
-          const langData: Record<string, any> = {};
-          for (const lang of ['fr', 'en', 'de']) {
-            const apiUrl = `${URL_MAIN}/api/objects/${id}?idObject=${id}&lang=${lang}`;
-            const data = await httpGet(apiUrl);
-            await sleep(RATE_LIMIT_MS);
-            if (data) langData[lang] = data;
-          }
+          const apiUrl = `${URL_MAIN}/api/objects/${id}?idObject=${id}&lang=fr`;
+          const frData = await httpGet(apiUrl);
+          await sleep(RATE_LIMIT_MS);
 
-          if (!langData.fr?.fullPathUrl) continue;
+          if (!frData?.fullPathUrl) continue;
+          const langData: Record<string, any> = { fr: frData };
 
           const adUrl = langData.fr.fullPathUrl as string;
           if (seenUrls.has(adUrl)) continue;
           seenUrls.add(adUrl);
 
           const record = formatListing(langData);
-          allRecords.push(record);
+          pendingRecords.push(record);
+          totalFetched++;
 
           detailCount++;
           if (detailCount % 100 === 0) {
             console.log(`    Fetched ${detailCount} details...`);
+          }
+
+          // Incremental upsert to save progress
+          if (pendingRecords.length >= UPSERT_EVERY) {
+            console.log(`    Upserting ${pendingRecords.length} records...`);
+            const n = await upsertBronze('immobilier', pendingRecords, 'ad_url', BATCH_SIZE);
+            totalUpserted += n;
+            pendingRecords = [];
           }
         } catch (err) {
           console.error(`    Error fetching listing ${id}: ${err}`);
@@ -316,27 +324,24 @@ async function main() {
     }
   }
 
-  console.log(`\n  Total records: ${allRecords.length}`);
-
-  if (allRecords.length === 0) {
-    console.log('  No listings to upsert. Exiting.');
-    console.log('='.repeat(60));
-    return;
+  // Flush remaining records
+  if (pendingRecords.length > 0) {
+    console.log(`\n  Upserting final ${pendingRecords.length} records...`);
+    const n = await upsertBronze('immobilier', pendingRecords, 'ad_url', BATCH_SIZE);
+    totalUpserted += n;
   }
 
-  // Upsert
-  console.log(`\n  Upserting ${allRecords.length} records (batch size: ${BATCH_SIZE})...`);
-  const totalUpserted = await upsertBronze('immobilier', allRecords, 'ad_url', BATCH_SIZE);
+  console.log(`\n  Total records fetched: ${totalFetched}`);
 
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
   console.log(`\n${'='.repeat(60)}`);
   console.log('  IMPORT COMPLETE');
-  console.log(`  Listings fetched:  ${allRecords.length}`);
+  console.log(`  Listings fetched:  ${totalFetched}`);
   console.log(`  Records upserted:  ${totalUpserted}`);
   console.log(`  Duration:          ${elapsed}s`);
   console.log('='.repeat(60));
 
-  if (totalUpserted === 0 && allRecords.length > 0) {
+  if (totalUpserted === 0 && totalFetched > 0) {
     console.error('  FAILED: Zero rows upserted despite having records!');
     process.exit(1);
   }

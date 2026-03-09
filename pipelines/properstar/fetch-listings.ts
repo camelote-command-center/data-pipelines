@@ -32,7 +32,7 @@ const SEARCH_API = 'https://search-api.listglobally.com/api/v2/searches?count=20
 const MAP_API = 'https://search-api.listglobally.com/api/v2/searches/map?facet=admAreaLevel2,count:0';
 const DETAILS_API = 'https://listings-api.listglobally.com/api/v2/listings';
 const BATCH_SIZE = 100;
-const RATE_LIMIT_MS = 1_000;
+const RATE_LIMIT_MS = 500;
 
 const HEADERS_BASE: Record<string, string> = {
   accept:
@@ -403,8 +403,11 @@ async function main() {
   // 1. Get auth token
   await getAuthorization();
 
-  // 2. Fetch + format all listings
-  const allRecords: Record<string, unknown>[] = [];
+  // 2. Fetch + format all listings (with incremental upserts every 200 records)
+  const UPSERT_EVERY = 200;
+  let pendingRecords: Record<string, unknown>[] = [];
+  let totalFetched = 0;
+  let totalUpserted = 0;
   const seenIds = new Set<number>();
 
   for (const { canton, placeId } of CANTONS) {
@@ -425,11 +428,20 @@ async function main() {
         if (!detail) continue;
 
         const record = formatListing(canton, detail);
-        allRecords.push(record);
+        pendingRecords.push(record);
+        totalFetched++;
 
         detailCount++;
         if (detailCount % 100 === 0) {
           console.log(`    Fetched ${detailCount} details...`);
+        }
+
+        // Incremental upsert to save progress
+        if (pendingRecords.length >= UPSERT_EVERY) {
+          console.log(`    Upserting ${pendingRecords.length} records...`);
+          const n = await upsertBronze('properstar', pendingRecords, 'ad_url', BATCH_SIZE);
+          totalUpserted += n;
+          pendingRecords = [];
         }
 
         await sleep(RATE_LIMIT_MS);
@@ -439,28 +451,25 @@ async function main() {
     }
   }
 
-  console.log(`\n  Total records: ${allRecords.length}`);
-
-  if (allRecords.length === 0) {
-    console.log('  No listings to upsert. Exiting.');
-    console.log('='.repeat(60));
-    return;
+  // Flush remaining records
+  if (pendingRecords.length > 0) {
+    console.log(`\n  Upserting final ${pendingRecords.length} records...`);
+    const n = await upsertBronze('properstar', pendingRecords, 'ad_url', BATCH_SIZE);
+    totalUpserted += n;
   }
 
-  // 3. Upsert
-  console.log(`\n  Upserting ${allRecords.length} records (batch size: ${BATCH_SIZE})...`);
-  const totalUpserted = await upsertBronze('properstar', allRecords, 'ad_url', BATCH_SIZE);
+  console.log(`\n  Total records fetched: ${totalFetched}`);
 
   // Summary
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
   console.log(`\n${'='.repeat(60)}`);
   console.log('  IMPORT COMPLETE');
-  console.log(`  Listings fetched:  ${allRecords.length}`);
+  console.log(`  Listings fetched:  ${totalFetched}`);
   console.log(`  Records upserted:  ${totalUpserted}`);
   console.log(`  Duration:          ${elapsed}s`);
   console.log('='.repeat(60));
 
-  if (totalUpserted === 0 && allRecords.length > 0) {
+  if (totalUpserted === 0 && totalFetched > 0) {
     console.error('  FAILED: Zero rows upserted despite having records!');
     process.exit(1);
   }
