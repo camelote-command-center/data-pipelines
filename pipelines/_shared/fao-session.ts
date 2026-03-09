@@ -39,12 +39,17 @@ export async function createFaoSession(
     try {
       const pUrl = proxyUrl();
       const proxyParts = new URL(pUrl);
+      // Use .origin to avoid trailing colon when port is default (80 for http)
+      const proxyServer = proxyParts.port
+        ? `${proxyParts.protocol}//${proxyParts.hostname}:${proxyParts.port}`
+        : proxyParts.origin;
+      console.log(`  Proxy server: ${proxyServer}`);
 
       browser = await chromium.launch({
         headless: true,
         args: ['--disable-blink-features=AutomationControlled'],
         proxy: {
-          server: `${proxyParts.protocol}//${proxyParts.hostname}:${proxyParts.port}`,
+          server: proxyServer,
           username: proxyParts.username,
           password: proxyParts.password,
         },
@@ -70,7 +75,7 @@ export async function createFaoSession(
         }
       });
 
-      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30_000 });
+      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60_000 });
 
       // Check if we got redirected to CAPTCHA
       const currentUrl = page.url();

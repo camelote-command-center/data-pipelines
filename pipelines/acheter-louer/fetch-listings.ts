@@ -58,22 +58,41 @@ const TX_TYPES = [
 let browser: Browser;
 
 async function launchBrowser(): Promise<void> {
-  const pUrl = proxyUrl();
-  const parsed = new URL(pUrl);
+  // Proxy is optional — if env vars not set, launch without proxy
+  const useProxy = process.env.WEBSHARE_PROXY_USER && process.env.WEBSHARE_PROXY_PASS;
 
-  browser = await chromium.launch({
-    headless: true,
-    args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-blink-features=AutomationControlled',
-    ],
-    proxy: {
-      server: `${parsed.protocol}//${parsed.hostname}:${parsed.port}`,
-      username: parsed.username,
-      password: parsed.password,
-    },
-  });
+  if (useProxy) {
+    const pUrl = proxyUrl();
+    const parsed = new URL(pUrl);
+    // Use .origin to avoid trailing colon when port is default (80 for http)
+    const proxyServer = parsed.port
+      ? `${parsed.protocol}//${parsed.hostname}:${parsed.port}`
+      : parsed.origin;
+
+    browser = await chromium.launch({
+      headless: true,
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-blink-features=AutomationControlled',
+      ],
+      proxy: {
+        server: proxyServer,
+        username: parsed.username,
+        password: parsed.password,
+      },
+    });
+  } else {
+    console.log('    (no proxy configured, launching direct)');
+    browser = await chromium.launch({
+      headless: true,
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-blink-features=AutomationControlled',
+      ],
+    });
+  }
 }
 
 async function newPage(): Promise<Page> {
@@ -137,7 +156,7 @@ async function parseDetailPage(page: Page, link: string): Promise<Record<string,
   const idObject = rawIdObject.replace('.html', '').trim();
 
   try {
-    await page.goto(link, { waitUntil: 'domcontentloaded', timeout: 30_000 });
+    await page.goto(link, { waitUntil: 'domcontentloaded', timeout: 60_000 });
     await page.waitForSelector(
       '#content > div:nth-child(5) > div.header-details > div > div > div.col-sm-8.col-md-9.hr-details > h1',
       { timeout: 15_000 },
@@ -279,7 +298,7 @@ async function main() {
 
         const searchPage = await newPage();
 
-        await searchPage.goto(firstUrl, { waitUntil: 'domcontentloaded', timeout: 30_000 });
+        await searchPage.goto(firstUrl, { waitUntil: 'domcontentloaded', timeout: 60_000 });
 
         // Accept cookies if present
         try {
@@ -319,13 +338,13 @@ async function main() {
 
           // Navigate to first URL first for cookies, then to offset page
           if (p > 0) {
-            await listPage.goto(firstUrl, { waitUntil: 'domcontentloaded', timeout: 30_000 });
+            await listPage.goto(firstUrl, { waitUntil: 'domcontentloaded', timeout: 60_000 });
             await sleep(1_000);
           }
 
           await listPage.goto(
             `https://www.acheter-louer.ch/?page=result&pos=${offset}&action=back`,
-            { waitUntil: 'domcontentloaded', timeout: 30_000 },
+            { waitUntil: 'domcontentloaded', timeout: 60_000 },
           );
 
           try {
