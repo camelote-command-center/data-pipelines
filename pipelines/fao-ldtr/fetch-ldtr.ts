@@ -24,7 +24,6 @@
 import * as cheerio from 'cheerio';
 import { upsertBronze, sleep } from '../_shared/supabase.js';
 import { createFaoSession } from '../_shared/fao-session.js';
-import { proxyAgent } from '../_shared/proxy.js';
 
 // ---------------------------------------------------------------------------
 // Config
@@ -34,6 +33,21 @@ const RUBRIQUE = 168;
 const RESULTS_PER_PAGE = 50;
 const BATCH_SIZE = 100;
 const RATE_LIMIT_MS = 1_000;
+const DAYS_BACK = 13; // ~2 weeks to cover missing data from Feb 24
+
+function formatDate(d: Date): string {
+  return d.toISOString().split('T')[0];
+}
+
+function getDateRange(): { dateFrom: string; dateTo: string } {
+  const now = new Date();
+  const from = new Date(now);
+  from.setDate(from.getDate() - DAYS_BACK);
+  return {
+    dateFrom: formatDate(from),
+    dateTo: formatDate(now),
+  };
+}
 
 // Geneva communes for validation (from dev's constants)
 const COMMUNES = new Set([
@@ -76,8 +90,8 @@ function parseFrenchDate(day: string, month: string, year: string): string | nul
 // HTTP fetch with cookies + proxy
 // ---------------------------------------------------------------------------
 
-async function fetchPage(pageNum: number, cookies: string): Promise<string> {
-  const url = `https://fao.ge.ch/recherche?resultsPerPage=${RESULTS_PER_PAGE}&rubrique=${RUBRIQUE}&dateFrom=&dateTo=&type=exact&mot-cle=&exclude=&page=${pageNum}`;
+async function fetchPage(pageNum: number, cookies: string, dateFrom: string, dateTo: string): Promise<string> {
+  const url = `https://fao.ge.ch/recherche?resultsPerPage=${RESULTS_PER_PAGE}&rubrique=${RUBRIQUE}&dateFrom=${dateFrom}&dateTo=${dateTo}&type=exact&mot-cle=&exclude=&page=${pageNum}`;
 
   const res = await fetch(url, {
     headers: {
@@ -222,14 +236,16 @@ async function main() {
   console.log('='.repeat(60));
 
   const startTime = Date.now();
+  const { dateFrom, dateTo } = getDateRange();
+  console.log(`  Date range: ${dateFrom} to ${dateTo}`);
 
   // 1. Get session cookies
   console.log('\n  Solving CAPTCHA...');
-  const { cookies } = await createFaoSession(RUBRIQUE);
+  const { cookies } = await createFaoSession(RUBRIQUE, dateFrom, dateTo);
 
   // 2. Fetch first page to get total count
   console.log('  Fetching first page...');
-  const firstPageHtml = await fetchPage(1, cookies);
+  const firstPageHtml = await fetchPage(1, cookies, dateFrom, dateTo);
 
   const $ = cheerio.load(firstPageHtml);
   const rawResults = $(
@@ -254,7 +270,7 @@ async function main() {
   // Parse remaining pages
   for (let p = 2; p <= pages; p++) {
     try {
-      const html = await fetchPage(p, cookies);
+      const html = await fetchPage(p, cookies, dateFrom, dateTo);
       const records = parsePage(html);
       allRecords.push(...records);
       console.log(`  Page ${p}/${pages}: ${records.length} records`);
@@ -262,9 +278,9 @@ async function main() {
     } catch (err) {
       if (String(err).includes('CAPTCHA_REDIRECT')) {
         console.log('  CAPTCHA redirect detected, re-solving...');
-        const newSession = await createFaoSession(RUBRIQUE);
+        const newSession = await createFaoSession(RUBRIQUE, dateFrom, dateTo);
         // Retry this page
-        const html = await fetchPage(p, newSession.cookies);
+        const html = await fetchPage(p, newSession.cookies, dateFrom, dateTo);
         const records = parsePage(html);
         allRecords.push(...records);
         console.log(`  Page ${p}/${pages}: ${records.length} records (after re-auth)`);

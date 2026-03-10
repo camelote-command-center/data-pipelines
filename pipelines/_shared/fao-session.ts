@@ -37,23 +37,33 @@ export async function createFaoSession(
     let browser: Browser | null = null;
 
     try {
-      const pUrl = proxyUrl();
-      const proxyParts = new URL(pUrl);
-      // Use .origin to avoid trailing colon when port is default (80 for http)
-      const proxyServer = proxyParts.port
-        ? `${proxyParts.protocol}//${proxyParts.hostname}:${proxyParts.port}`
-        : proxyParts.origin;
-      console.log(`  Proxy server: ${proxyServer}`);
+      // Proxy is optional — if env vars not set, launch without proxy
+      const useProxy = process.env.WEBSHARE_PROXY_USER && process.env.WEBSHARE_PROXY_PASS;
 
-      browser = await chromium.launch({
-        headless: true,
-        args: ['--disable-blink-features=AutomationControlled'],
-        proxy: {
-          server: proxyServer,
-          username: proxyParts.username,
-          password: proxyParts.password,
-        },
-      });
+      if (useProxy) {
+        const pUrl = proxyUrl();
+        const proxyParts = new URL(pUrl);
+        const proxyServer = proxyParts.port
+          ? `${proxyParts.protocol}//${proxyParts.hostname}:${proxyParts.port}`
+          : proxyParts.origin;
+        console.log(`  Proxy server: ${proxyServer}`);
+
+        browser = await chromium.launch({
+          headless: true,
+          args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-blink-features=AutomationControlled'],
+          proxy: {
+            server: proxyServer,
+            username: proxyParts.username,
+            password: proxyParts.password,
+          },
+        });
+      } else {
+        console.log('  (no proxy configured, launching direct)');
+        browser = await chromium.launch({
+          headless: true,
+          args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-blink-features=AutomationControlled'],
+        });
+      }
 
       const context = await browser.newContext();
       await context.clearCookies();

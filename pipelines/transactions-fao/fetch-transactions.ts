@@ -39,7 +39,7 @@ const RUBRIQUE = 137;
 const RESULTS_PER_PAGE = 50;
 const BATCH_SIZE = 50;
 const RATE_LIMIT_MS = 1_000;
-const DAYS_BACK = 6;
+const DAYS_BACK = 13;
 
 // ---------------------------------------------------------------------------
 // Anthropic client
@@ -424,6 +424,16 @@ async function main() {
         continue;
       }
 
+      // Bug fix: Split building_id PPE feuillet suffix (e.g. "27/157-108" → id="27/157", feuillet="108")
+      for (const building of parsedData.Buildings) {
+        const bid = building['Building ID'] || '';
+        const feuilletMatch = bid.match(/^(\d+\/\d+)-(\d+)$/);
+        if (feuilletMatch) {
+          building['Building ID'] = feuilletMatch[1];
+          building['Feuillet number'] = feuilletMatch[2];
+        }
+      }
+
       // Format keys to snake_case
       const formatted = formatKeys(parsedData);
 
@@ -443,8 +453,9 @@ async function main() {
         // DB column price is varchar — store as string
         price: formatted.price ? String(formatted.price).replace(/[^\d]/g, '') || null : null,
         type_of_transaction: formatted.type_of_transaction || null,
-        old_owner_s: formatted.old_owner_s_ || formatted['old_owner(s)'] || null,
-        new_owner_s: formatted.new_owner_s_ || formatted['new_owner(s)'] || null,
+        // DB columns old_owner_s, new_owner_s are JSONB — pass arrays directly
+        old_owner_s: formatted.old_owner_s || null,
+        new_owner_s: formatted.new_owner_s || null,
         // DB column buildings is varchar — stringify if object
         buildings: formatted.buildings
           ? (typeof formatted.buildings === 'string' ? formatted.buildings : JSON.stringify(formatted.buildings))
