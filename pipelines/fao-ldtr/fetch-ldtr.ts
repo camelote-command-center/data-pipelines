@@ -33,7 +33,7 @@ const RUBRIQUE = 168;
 const RESULTS_PER_PAGE = 50;
 const BATCH_SIZE = 100;
 const RATE_LIMIT_MS = 1_000;
-const DAYS_BACK = 13; // ~2 weeks to cover missing data from Feb 24
+const DAYS_BACK = 6;
 
 function formatDate(d: Date): string {
   return d.toISOString().split('T')[0];
