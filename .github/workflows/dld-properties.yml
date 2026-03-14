@@ -1,0 +1,89 @@
+name: DLD Properties & Reference Data
+
+on:
+  schedule:
+    - cron: '0 6 1 * *' # 1st of month, 06:00 UTC
+  workflow_dispatch:
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci
+
+      - name: Ingest Projects
+        run: |
+          npx tsx src/index.ts \
+            --source projects \
+            --from $(date -d '90 days ago' +%Y-%m-%d) \
+            --to $(date +%Y-%m-%d)
+        env:
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          DUBAI_PULSE_API_KEY: ${{ secrets.DUBAI_PULSE_API_KEY }}
+          DUBAI_PULSE_API_SECRET: ${{ secrets.DUBAI_PULSE_API_SECRET }}
+
+      - name: Ingest Units
+        run: |
+          npx tsx src/index.ts \
+            --source units \
+            --from $(date -d '90 days ago' +%Y-%m-%d) \
+            --to $(date +%Y-%m-%d)
+        env:
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          DUBAI_PULSE_API_KEY: ${{ secrets.DUBAI_PULSE_API_KEY }}
+          DUBAI_PULSE_API_SECRET: ${{ secrets.DUBAI_PULSE_API_SECRET }}
+
+      - name: Ingest Buildings
+        run: |
+          npx tsx src/index.ts \
+            --source buildings \
+            --from $(date -d '90 days ago' +%Y-%m-%d) \
+            --to $(date +%Y-%m-%d)
+        env:
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          DUBAI_PULSE_API_KEY: ${{ secrets.DUBAI_PULSE_API_KEY }}
+          DUBAI_PULSE_API_SECRET: ${{ secrets.DUBAI_PULSE_API_SECRET }}
+
+      - name: Ingest Land
+        run: |
+          npx tsx src/index.ts \
+            --source land \
+            --from $(date -d '90 days ago' +%Y-%m-%d) \
+            --to $(date +%Y-%m-%d)
+        env:
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          DUBAI_PULSE_API_KEY: ${{ secrets.DUBAI_PULSE_API_KEY }}
+          DUBAI_PULSE_API_SECRET: ${{ secrets.DUBAI_PULSE_API_SECRET }}
+
+      - name: Ingest Brokers
+        run: |
+          npx tsx src/index.ts \
+            --source brokers \
+            --from $(date -d '90 days ago' +%Y-%m-%d) \
+            --to $(date +%Y-%m-%d)
+        env:
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          DUBAI_PULSE_API_KEY: ${{ secrets.DUBAI_PULSE_API_KEY }}
+          DUBAI_PULSE_API_SECRET: ${{ secrets.DUBAI_PULSE_API_SECRET }}
+
+      - name: Ingest Developers
+        run: |
+          npx tsx src/index.ts \
+            --source developers \
+            --from $(date -d '90 days ago' +%Y-%m-%d) \
+            --to $(date +%Y-%m-%d)
+        env:
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          DUBAI_PULSE_API_KEY: ${{ secrets.DUBAI_PULSE_API_KEY }}
+          DUBAI_PULSE_API_SECRET: ${{ secrets.DUBAI_PULSE_API_SECRET }}

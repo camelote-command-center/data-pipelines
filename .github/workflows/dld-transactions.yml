@@ -1,0 +1,41 @@
+name: DLD Transactions & Rentals
+
+on:
+  schedule:
+    - cron: '0 5 * * 6' # Saturday 05:00 UTC
+  workflow_dispatch:
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci
+
+      - name: Ingest Transactions (last 7 days)
+        run: |
+          npx tsx src/index.ts \
+            --source transactions \
+            --from $(date -d '7 days ago' +%Y-%m-%d) \
+            --to $(date +%Y-%m-%d)
+        env:
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          DUBAI_PULSE_API_KEY: ${{ secrets.DUBAI_PULSE_API_KEY }}
+          DUBAI_PULSE_API_SECRET: ${{ secrets.DUBAI_PULSE_API_SECRET }}
+
+      - name: Ingest Rentals (last 7 days)
+        run: |
+          npx tsx src/index.ts \
+            --source rentals \
+            --from $(date -d '7 days ago' +%Y-%m-%d) \
+            --to $(date +%Y-%m-%d)
+        env:
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          DUBAI_PULSE_API_KEY: ${{ secrets.DUBAI_PULSE_API_KEY }}
+          DUBAI_PULSE_API_SECRET: ${{ secrets.DUBAI_PULSE_API_SECRET }}

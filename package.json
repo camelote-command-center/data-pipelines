@@ -1,0 +1,22 @@
+{
+  "name": "dubai-data-pipeline",
+  "version": "1.0.0",
+  "description": "Dubai Land Department data ingestion pipeline via Dubai Pulse API into Supabase",
+  "type": "module",
+  "scripts": {
+    "ingest": "tsx src/index.ts",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "csv-parse": "^5.5.6",
+    "pg": "^8.20.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/pg": "^8.18.0",
+    "tsx": "^4.15.0",
+    "typescript": "^5.5.0"
+  }
+}
