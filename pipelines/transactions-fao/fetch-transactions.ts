@@ -75,6 +75,10 @@ function getDateRange(): { dateFrom: string; dateTo: string } {
 // HTTP fetch with cookies
 // ---------------------------------------------------------------------------
 
+const FETCH_TIMEOUT_MS = 120_000;
+const FETCH_RETRIES = 3;
+const FETCH_BACKOFF_MS = [5_000, 15_000, 30_000];
+
 async function fetchPage(
   pageNum: number,
   cookies: string,
@@ -83,22 +87,46 @@ async function fetchPage(
 ): Promise<string> {
   const url = `https://fao.ge.ch/recherche?resultsPerPage=${RESULTS_PER_PAGE}&rubrique=${RUBRIQUE}&dateFrom=${dateFrom}&dateTo=${dateTo}&type=exact&mot-cle=&exclude=&page=${pageNum}`;
 
-  const res = await fetch(url, {
-    headers: {
-      Cookie: cookies,
-      'User-Agent':
-        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
-    },
-  });
+  for (let attempt = 0; attempt <= FETCH_RETRIES; attempt++) {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 
-  if (!res.ok) throw new Error(`HTTP ${res.status} for page ${pageNum}`);
-  const text = await res.text();
+      const res = await fetch(url, {
+        headers: {
+          Cookie: cookies,
+          'User-Agent':
+            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
+        },
+        signal: controller.signal,
+      });
 
-  if (text.includes('FAOCaptcha_CaptchaImage')) {
-    throw new Error('CAPTCHA_REDIRECT');
+      clearTimeout(timeoutId);
+
+      if (!res.ok) throw new Error(`HTTP ${res.status} for page ${pageNum}`);
+      const text = await res.text();
+
+      if (text.includes('FAOCaptcha_CaptchaImage')) {
+        throw new Error('CAPTCHA_REDIRECT');
+      }
+
+      return text;
+    } catch (err) {
+      // Don't retry CAPTCHA redirects — caller handles re-auth
+      if (String(err).includes('CAPTCHA_REDIRECT')) throw err;
+
+      if (attempt < FETCH_RETRIES) {
+        const delay = FETCH_BACKOFF_MS[attempt] ?? 30_000;
+        console.log(`  Fetch page ${pageNum} failed (attempt ${attempt + 1}/${FETCH_RETRIES + 1}): ${err}`);
+        console.log(`  Retrying in ${delay / 1_000}s...`);
+        await sleep(delay);
+      } else {
+        throw err;
+      }
+    }
   }
 
-  return text;
+  throw new Error(`fetchPage ${pageNum} failed after ${FETCH_RETRIES + 1} attempts`);
 }
 
 // ---------------------------------------------------------------------------
@@ -352,6 +380,7 @@ async function main() {
   allRaw.push(...firstRaw);
   console.log(`  Page 1/${pages}: ${firstRaw.length} transactions`);
 
+  let pageFailures = 0;
   for (let p = 2; p <= pages; p++) {
     try {
       const html = await fetchPage(p, cookies, dateFrom, dateTo);
@@ -362,16 +391,26 @@ async function main() {
     } catch (err) {
       if (String(err).includes('CAPTCHA_REDIRECT')) {
         console.log('  CAPTCHA redirect, re-solving...');
-        const newSession = await createFaoSession(RUBRIQUE, dateFrom, dateTo);
-        cookies = newSession.cookies;
-        const html = await fetchPage(p, cookies, dateFrom, dateTo);
-        const raw = extractTransactions(html);
-        allRaw.push(...raw);
-        console.log(`  Page ${p}/${pages}: ${raw.length} transactions (after re-auth)`);
+        try {
+          const newSession = await createFaoSession(RUBRIQUE, dateFrom, dateTo);
+          cookies = newSession.cookies;
+          const html = await fetchPage(p, cookies, dateFrom, dateTo);
+          const raw = extractTransactions(html);
+          allRaw.push(...raw);
+          console.log(`  Page ${p}/${pages}: ${raw.length} transactions (after re-auth)`);
+        } catch (reAuthErr) {
+          console.error(`  Failed page ${p} even after re-auth: ${reAuthErr}`);
+          pageFailures++;
+        }
       } else {
-        console.error(`  Error on page ${p}: ${err}`);
+        console.error(`  Error on page ${p} (skipping): ${err}`);
+        pageFailures++;
       }
     }
+  }
+
+  if (pageFailures > 0) {
+    console.log(`  WARNING: ${pageFailures}/${pages - 1} pages failed to fetch`);
   }
 
   console.log(`\n  Total raw transactions: ${allRaw.length}`);
