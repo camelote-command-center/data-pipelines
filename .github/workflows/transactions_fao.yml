@@ -1,0 +1,27 @@
+name: FAO Transactions
+
+on:
+  schedule:
+    - cron: '0 4 * * 6'  # Weekly Saturday at 04:00 UTC
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: cd pipelines/_shared && npm ci
+      - run: cd pipelines/transactions-fao && npm ci
+      - name: Install Playwright browsers
+        run: cd pipelines/transactions-fao && npx playwright install chromium --with-deps
+      - name: Fetch FAO Transactions
+        run: cd pipelines/transactions-fao && npx tsx fetch-transactions.ts
+        env:
+          SUPABASE_URL: ${{ secrets.LAMAP_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.LAMAP_SUPABASE_SERVICE_KEY }}
+          TWO_CAPTCHA_API_KEY: ${{ secrets.TWO_CAPTCHA_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

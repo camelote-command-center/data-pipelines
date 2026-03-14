@@ -4,7 +4,7 @@
   "description": "Dubai Land Department data ingestion pipeline via Dubai Pulse API into Supabase",
   "type": "module",
   "scripts": {
-    "ingest": "tsx src/index.ts",
+    "ingest": "tsx index.ts",
     "build": "tsc",
     "typecheck": "tsc --noEmit"
   },

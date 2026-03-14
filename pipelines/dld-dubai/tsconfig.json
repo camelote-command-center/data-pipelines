@@ -6,12 +6,12 @@
     "esModuleInterop": true,
     "strict": true,
     "outDir": "dist",
-    "rootDir": "src",
+    "rootDir": ".",
     "resolveJsonModule": true,
     "declaration": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*"],
+  "include": ["**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }

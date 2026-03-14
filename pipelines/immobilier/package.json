@@ -1,0 +1,14 @@
+{
+  "name": "immobilier",
+  "private": true,
+  "scripts": {
+    "fetch": "tsx fetch-listings.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2",
+    "cheerio": "^1"
+  },
+  "devDependencies": {
+    "tsx": "^4"
+  }
+}

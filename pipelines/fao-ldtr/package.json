@@ -1,0 +1,16 @@
+{
+  "name": "fao-ldtr",
+  "private": true,
+  "scripts": {
+    "fetch": "tsx fetch-ldtr.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2",
+    "cheerio": "^1",
+    "https-proxy-agent": "^7",
+    "playwright": "^1"
+  },
+  "devDependencies": {
+    "tsx": "^4"
+  }
+}

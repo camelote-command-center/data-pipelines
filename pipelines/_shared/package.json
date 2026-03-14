@@ -1,0 +1,9 @@
+{
+  "name": "shared-utils",
+  "private": true,
+  "dependencies": {
+    "@supabase/supabase-js": "^2",
+    "https-proxy-agent": "^7",
+    "playwright": "^1"
+  }
+}
