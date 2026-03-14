@@ -23,7 +23,5 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.LAMAP_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.LAMAP_SUPABASE_SERVICE_KEY }}
-          WEBSHARE_PROXY_USER: ${{ secrets.WEBSHARE_PROXY_USER }}
-          WEBSHARE_PROXY_PASS: ${{ secrets.WEBSHARE_PROXY_PASS }}
           TWO_CAPTCHA_API_KEY: ${{ secrets.TWO_CAPTCHA_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

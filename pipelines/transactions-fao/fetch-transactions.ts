@@ -20,8 +20,6 @@
  * Environment variables:
  *   SUPABASE_URL              - Supabase project URL  (required)
  *   SUPABASE_SERVICE_ROLE_KEY - service_role key      (required)
- *   WEBSHARE_PROXY_USER       - proxy username        (required)
- *   WEBSHARE_PROXY_PASS       - proxy password        (required)
  *   TWO_CAPTCHA_API_KEY       - 2Captcha API key     (required)
  *   ANTHROPIC_API_KEY         - Anthropic API key    (required)
  */

@@ -5,14 +5,11 @@
  * and rubrique 168 (LDTR). Returns session cookies for use with plain HTTP requests.
  *
  * Env vars:
- *   WEBSHARE_PROXY_USER  - proxy username
- *   WEBSHARE_PROXY_PASS  - proxy password
  *   TWO_CAPTCHA_API_KEY  - 2Captcha API key
  */
 
 import { chromium, type Browser } from 'playwright';
 import { solveCaptcha } from './captcha.js';
-import { proxyUrl } from './proxy.js';
 
 const MAX_CAPTCHA_RETRIES = 5;
 const GOTO_TIMEOUT_MS = 120_000;
@@ -39,33 +36,11 @@ export async function createFaoSession(
     let browser: Browser | null = null;
 
     try {
-      // Proxy is optional — if env vars not set, launch without proxy
-      const useProxy = process.env.WEBSHARE_PROXY_USER && process.env.WEBSHARE_PROXY_PASS;
-
-      if (useProxy) {
-        const pUrl = proxyUrl();
-        const proxyParts = new URL(pUrl);
-        const proxyServer = proxyParts.port
-          ? `${proxyParts.protocol}//${proxyParts.hostname}:${proxyParts.port}`
-          : proxyParts.origin;
-        console.log(`  Proxy server: ${proxyServer}`);
-
-        browser = await chromium.launch({
-          headless: true,
-          args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-blink-features=AutomationControlled'],
-          proxy: {
-            server: proxyServer,
-            username: proxyParts.username,
-            password: proxyParts.password,
-          },
-        });
-      } else {
-        console.log('  (no proxy configured, launching direct)');
-        browser = await chromium.launch({
-          headless: true,
-          args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-blink-features=AutomationControlled'],
-        });
-      }
+      console.log('  Launching browser (direct connection)...');
+      browser = await chromium.launch({
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-blink-features=AutomationControlled'],
+      });
 
       const context = await browser.newContext();
       await context.clearCookies();
@@ -165,107 +140,16 @@ export async function createFaoSession(
     }
   }
 
-  // Fallback: try up to 3 times without proxy in case the proxy is the problem
-  const MAX_DIRECT_RETRIES = 3;
-  console.log('  All proxy attempts failed — trying direct connection as fallback...');
-
-  for (let directAttempt = 0; directAttempt < MAX_DIRECT_RETRIES; directAttempt++) {
-    let browser: Browser | null = null;
-    try {
-      browser = await chromium.launch({
-        headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-blink-features=AutomationControlled'],
-      });
-
-      const context = await browser.newContext();
-      await context.clearCookies();
-      const page = await context.newPage();
-
-      let captchaText: string | null = null;
-      page.on('response', async (response) => {
-        const respUrl = response.url();
-        if (respUrl.includes('captcha-handler?get=image')) {
-          try {
-            const buffer = await response.body();
-            const base64 = buffer.toString('base64');
-            captchaText = await solveCaptcha(base64);
-          } catch (err) {
-            console.error(`  CAPTCHA image intercept error: ${err}`);
-          }
-        }
-      });
-
-      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: GOTO_TIMEOUT_MS });
-
-      const currentUrl = page.url();
-      if (!currentUrl.includes('captcha')) {
-        const rawCookies = await context.cookies();
-        const cookieStr = rawCookies.map((c) => `${c.name}=${c.value}`).join('; ');
-        await browser.close();
-        console.log('  FAO session established (direct, no proxy)');
-        return { cookies: cookieStr };
-      }
-
-      try {
-        await page.waitForSelector('#FAOCaptcha_CaptchaImage', { state: 'visible', timeout: 15_000 });
-      } catch {
-        console.log(`  CAPTCHA image not found on direct attempt ${directAttempt + 1}/${MAX_DIRECT_RETRIES}`);
-        await browser.close();
-        continue;
-      }
-
-      const deadline = Date.now() + 60_000;
-      while (!captchaText && Date.now() < deadline) {
-        await new Promise((r) => setTimeout(r, 1_000));
-      }
-
-      if (!captchaText) {
-        console.log(`  CAPTCHA not solved in time on direct attempt ${directAttempt + 1}/${MAX_DIRECT_RETRIES}`);
-        await browser.close();
-        continue;
-      }
-
-      const inputSelector = 'input[name="fao_captcha[captchaCode]"]';
-      await page.fill(inputSelector, '');
-      await page.click(inputSelector);
-      await page.waitForTimeout(2_000);
-
-      for (const char of captchaText) {
-        await page.keyboard.press(char);
-        await page.waitForTimeout(200);
-      }
-
-      await page.click('#fao_captcha_submit');
-      await page.waitForTimeout(2_000);
-
-      const afterUrl = page.url();
-      if (!afterUrl.includes('captcha')) {
-        const rawCookies = await context.cookies();
-        const cookieStr = rawCookies.map((c) => `${c.name}=${c.value}`).join('; ');
-        console.log('  FAO session established (direct, no proxy)');
-        await browser.close();
-        return { cookies: cookieStr };
-      }
-
-      console.log(`  CAPTCHA rejected on direct attempt ${directAttempt + 1}/${MAX_DIRECT_RETRIES}`);
-      await browser.close();
-    } catch (err) {
-      if (browser) await browser.close();
-      console.error(`  Direct attempt ${directAttempt + 1}/${MAX_DIRECT_RETRIES} failed: ${err}`);
-    }
-  }
-
-  throw new Error(`Failed to create FAO session after ${MAX_CAPTCHA_RETRIES} proxy + ${MAX_DIRECT_RETRIES} direct attempts`);
+  throw new Error(`Failed to create FAO session after ${MAX_CAPTCHA_RETRIES} attempts`);
 }
 
 /**
- * Fetch a page from fao.ge.ch with session cookies, via proxy.
- * If redirected to CAPTCHA, re-solves it automatically.
+ * Fetch a page from fao.ge.ch with session cookies.
+ * If redirected to CAPTCHA, throws CAPTCHA_REDIRECT error.
  */
 export async function faoFetch(
   url: string,
   cookies: string,
-  proxyAgentInstance?: import('https-proxy-agent').HttpsProxyAgent<string>,
 ): Promise<string> {
   const response = await fetch(url, {
     headers: {
@@ -273,8 +157,6 @@ export async function faoFetch(
       'User-Agent':
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
     },
-    // @ts-ignore — Node 18+ supports dispatcher for proxy
-    ...(proxyAgentInstance ? { dispatcher: proxyAgentInstance } : {}),
   });
 
   const text = await response.text();
