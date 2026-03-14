@@ -165,90 +165,97 @@ export async function createFaoSession(
     }
   }
 
-  // Fallback: try once without proxy in case the proxy is the problem
+  // Fallback: try up to 3 times without proxy in case the proxy is the problem
+  const MAX_DIRECT_RETRIES = 3;
   console.log('  All proxy attempts failed — trying direct connection as fallback...');
-  let browser: Browser | null = null;
-  try {
-    browser = await chromium.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-blink-features=AutomationControlled'],
-    });
 
-    const context = await browser.newContext();
-    await context.clearCookies();
-    const page = await context.newPage();
-
-    let captchaText: string | null = null;
-    page.on('response', async (response) => {
-      const respUrl = response.url();
-      if (respUrl.includes('captcha-handler?get=image')) {
-        try {
-          const buffer = await response.body();
-          const base64 = buffer.toString('base64');
-          captchaText = await solveCaptcha(base64);
-        } catch (err) {
-          console.error(`  CAPTCHA image intercept error: ${err}`);
-        }
-      }
-    });
-
-    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: GOTO_TIMEOUT_MS });
-
-    const currentUrl = page.url();
-    if (!currentUrl.includes('captcha')) {
-      const rawCookies = await context.cookies();
-      const cookieStr = rawCookies.map((c) => `${c.name}=${c.value}`).join('; ');
-      await browser.close();
-      console.log('  FAO session established (direct, no proxy)');
-      return { cookies: cookieStr };
-    }
-
+  for (let directAttempt = 0; directAttempt < MAX_DIRECT_RETRIES; directAttempt++) {
+    let browser: Browser | null = null;
     try {
-      await page.waitForSelector('#FAOCaptcha_CaptchaImage', { state: 'visible', timeout: 15_000 });
-    } catch {
+      browser = await chromium.launch({
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-blink-features=AutomationControlled'],
+      });
+
+      const context = await browser.newContext();
+      await context.clearCookies();
+      const page = await context.newPage();
+
+      let captchaText: string | null = null;
+      page.on('response', async (response) => {
+        const respUrl = response.url();
+        if (respUrl.includes('captcha-handler?get=image')) {
+          try {
+            const buffer = await response.body();
+            const base64 = buffer.toString('base64');
+            captchaText = await solveCaptcha(base64);
+          } catch (err) {
+            console.error(`  CAPTCHA image intercept error: ${err}`);
+          }
+        }
+      });
+
+      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: GOTO_TIMEOUT_MS });
+
+      const currentUrl = page.url();
+      if (!currentUrl.includes('captcha')) {
+        const rawCookies = await context.cookies();
+        const cookieStr = rawCookies.map((c) => `${c.name}=${c.value}`).join('; ');
+        await browser.close();
+        console.log('  FAO session established (direct, no proxy)');
+        return { cookies: cookieStr };
+      }
+
+      try {
+        await page.waitForSelector('#FAOCaptcha_CaptchaImage', { state: 'visible', timeout: 15_000 });
+      } catch {
+        console.log(`  CAPTCHA image not found on direct attempt ${directAttempt + 1}/${MAX_DIRECT_RETRIES}`);
+        await browser.close();
+        continue;
+      }
+
+      const deadline = Date.now() + 60_000;
+      while (!captchaText && Date.now() < deadline) {
+        await new Promise((r) => setTimeout(r, 1_000));
+      }
+
+      if (!captchaText) {
+        console.log(`  CAPTCHA not solved in time on direct attempt ${directAttempt + 1}/${MAX_DIRECT_RETRIES}`);
+        await browser.close();
+        continue;
+      }
+
+      const inputSelector = 'input[name="fao_captcha[captchaCode]"]';
+      await page.fill(inputSelector, '');
+      await page.click(inputSelector);
+      await page.waitForTimeout(2_000);
+
+      for (const char of captchaText) {
+        await page.keyboard.press(char);
+        await page.waitForTimeout(200);
+      }
+
+      await page.click('#fao_captcha_submit');
+      await page.waitForTimeout(2_000);
+
+      const afterUrl = page.url();
+      if (!afterUrl.includes('captcha')) {
+        const rawCookies = await context.cookies();
+        const cookieStr = rawCookies.map((c) => `${c.name}=${c.value}`).join('; ');
+        console.log('  FAO session established (direct, no proxy)');
+        await browser.close();
+        return { cookies: cookieStr };
+      }
+
+      console.log(`  CAPTCHA rejected on direct attempt ${directAttempt + 1}/${MAX_DIRECT_RETRIES}`);
       await browser.close();
-      throw new Error(`Failed to create FAO session after ${MAX_CAPTCHA_RETRIES} proxy attempts + 1 direct attempt`);
+    } catch (err) {
+      if (browser) await browser.close();
+      console.error(`  Direct attempt ${directAttempt + 1}/${MAX_DIRECT_RETRIES} failed: ${err}`);
     }
-
-    const deadline = Date.now() + 60_000;
-    while (!captchaText && Date.now() < deadline) {
-      await new Promise((r) => setTimeout(r, 1_000));
-    }
-
-    if (!captchaText) {
-      await browser.close();
-      throw new Error(`Failed to create FAO session after ${MAX_CAPTCHA_RETRIES} proxy attempts + 1 direct attempt`);
-    }
-
-    const inputSelector = 'input[name="fao_captcha[captchaCode]"]';
-    await page.fill(inputSelector, '');
-    await page.click(inputSelector);
-    await page.waitForTimeout(2_000);
-
-    for (const char of captchaText) {
-      await page.keyboard.press(char);
-      await page.waitForTimeout(200);
-    }
-
-    await page.click('#fao_captcha_submit');
-    await page.waitForTimeout(2_000);
-
-    const afterUrl = page.url();
-    if (!afterUrl.includes('captcha')) {
-      const rawCookies = await context.cookies();
-      const cookieStr = rawCookies.map((c) => `${c.name}=${c.value}`).join('; ');
-      console.log('  FAO session established (direct, no proxy)');
-      await browser.close();
-      return { cookies: cookieStr };
-    }
-
-    await browser.close();
-  } catch (err) {
-    if (browser) await browser.close();
-    console.error(`  Direct fallback also failed: ${err}`);
   }
 
-  throw new Error(`Failed to create FAO session after ${MAX_CAPTCHA_RETRIES} proxy attempts + 1 direct attempt`);
+  throw new Error(`Failed to create FAO session after ${MAX_CAPTCHA_RETRIES} proxy + ${MAX_DIRECT_RETRIES} direct attempts`);
 }
 
 /**
