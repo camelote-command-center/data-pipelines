@@ -66,7 +66,7 @@ const HEADERS_API: Record<string, string> = {
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36',
 };
 
-// Canton placeIds from dev's code
+// Canton placeIds — Suisse Romande (original 7)
 const CANTONS = [
   { canton: 'geneve', placeId: 'ChIJ6-LQkwZljEcRObwLezWVtqA' },
   { canton: 'vaud', placeId: 'ChIJtZALbaItjEcRUNgYQIj_AAE' },
@@ -75,6 +75,26 @@ const CANTONS = [
   { canton: 'berne', placeId: 'ChIJdxs61MA5jkcRmmVXBP5fVcs' },
   { canton: 'neuchatel', placeId: 'ChIJm81S1RkKjkcRBGS2VWjDXCM' },
   { canton: 'valais', placeId: 'ChIJF5p_6psij0cRYNgYQIj_AAE' },
+  // German-speaking cantons (19)
+  { canton: 'zurich', placeId: 'ChIJa_ltU3EKkEcRfy571124_mM' },
+  { canton: 'aargau', placeId: 'ChIJK32y9fMXkEcRfc5XB_gNGvg' },
+  { canton: 'basel-landschaft', placeId: 'ChIJNQdrO_i1kUcRE3lb88jFOqw' },
+  { canton: 'basel-stadt', placeId: 'ChIJZW5Lc163kUcR_qJqDx28q3Y' },
+  { canton: 'graubunden', placeId: 'ChIJGwykPoKRhEcRENgYQIj_AAE' },
+  { canton: 'luzern', placeId: 'ChIJIQ3mFsjlj0cRINcYQIj_AAE' },
+  { canton: 'st-gallen', placeId: 'ChIJoRAKiyTDmkcR6o3KFbp6rgs' },
+  { canton: 'ticino', placeId: 'ChIJg946LtqXhUcRuN5YORraPgw' },
+  { canton: 'thurgau', placeId: 'ChIJQXF3xLXrmkcR3143PnN4ED4' },
+  { canton: 'solothurn', placeId: 'ChIJyQT15fgkjkcRNQMSD5syOis' },
+  { canton: 'schwyz', placeId: 'ChIJNX_63JZLhUcRYFgHLO5Xzb0' },
+  { canton: 'schaffhausen', placeId: 'ChIJj3-TjqF3kEcRhTthzBjvZsc' },
+  { canton: 'zug', placeId: 'ChIJgR05O1mqmkcRovjNQ3_Mi_U' },
+  { canton: 'appenzell-ausserrhoden', placeId: 'ChIJ979wCHEfm0cRD6-ER66wR4E' },
+  { canton: 'appenzell-innerrhoden', placeId: 'ChIJh1Ha4mQXm0cRT4yedLMmXbA' },
+  { canton: 'glarus', placeId: 'ChIJG4ysI7EthUcRVROZoIdLIuw' },
+  { canton: 'nidwalden', placeId: 'ChIJ58I7cff1j0cRYNcYQIj_AAE' },
+  { canton: 'obwalden', placeId: 'ChIJ7zEf3Efyj0cRO9o02ufd0UM' },
+  { canton: 'uri', placeId: 'ChIJh70oMINDhUcR16HLniPoKFA' },
 ];
 
 const TRANSACTION_TYPES = ['Rent', 'Sell'] as const;

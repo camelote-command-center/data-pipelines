@@ -35,6 +35,9 @@ const BATCH_SIZE = 100;
 const PAGE_SIZE = 50;
 const PAGE_LOAD_WAIT = 2_000;
 
+// NOTE: acheter-louer.ch only assigns numeric region IDs to Suisse Romande cantons.
+// German/Italian-speaking cantons are not available via the region-based search API.
+// Region IDs 9+ map to sub-regions or international listings, not additional cantons.
 const CANTONS: { name: string; region: number }[] = [
   { name: 'Geneva', region: 3 },
   { name: 'Vaud', region: 8 },

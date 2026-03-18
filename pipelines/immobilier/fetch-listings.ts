@@ -35,7 +35,15 @@ const HEADERS: Record<string, string> = {
   'content-type': 'application/json',
 };
 
-const CANTONS = ['geneva', 'vaud', 'fribourg', 'jura', 'berne', 'neuchatel', 'valais'];
+const CANTONS = [
+  // Suisse Romande (original 7)
+  'geneva', 'vaud', 'fribourg', 'jura', 'berne', 'neuchatel', 'valais',
+  // German-speaking & Italian-speaking cantons (19)
+  'zurich', 'argovie', 'bale-campagne', 'bale-ville', 'grisons', 'lucerne',
+  'st-gall', 'tessin', 'thurgovie', 'soleure', 'schwyz', 'schaffhouse',
+  'zoug', 'appenzell-rhodes-exterieures', 'appenzell-rhodes-interieures',
+  'glaris', 'nidwald', 'obwald', 'uri',
+];
 const OFFER_TYPES = ['buy', 'rent'] as const;
 
 // ---------------------------------------------------------------------------
