@@ -1,0 +1,26 @@
+name: France DVF Update
+
+on:
+  schedule:
+    - cron: '0 6 25 4 *'  # April 25 at 06:00 UTC
+    - cron: '0 6 25 10 *' # October 25 at 06:00 UTC
+  workflow_dispatch:
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: cd pipelines/fr-dvf && npm ci
+
+      - name: Run DVF ingestion
+        run: cd pipelines/fr-dvf && npx tsx src/index.ts
+        env:
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
