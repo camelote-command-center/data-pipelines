@@ -1,0 +1,20 @@
+{
+  "name": "il-nadlan-pipeline",
+  "version": "1.0.0",
+  "description": "Israel Nadlan (real estate) transaction pipeline from nadlan.gov.il",
+  "type": "module",
+  "scripts": {
+    "ingest": "tsx src/index.ts",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "puppeteer": "^23.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "tsx": "^4.15.0",
+    "typescript": "^5.5.0"
+  }
+}

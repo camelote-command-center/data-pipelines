@@ -1,0 +1,29 @@
+name: Israel Nadlan Transactions
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # Every Monday at 06:00 UTC
+  workflow_dispatch:
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: cd pipelines/il-nadlan && npm ci
+
+      - name: Ingest transactions (last 7 days)
+        run: |
+          cd pipelines/il-nadlan && npx tsx src/index.ts \
+            --source transactions \
+            --from $(date -d '7 days ago' +%Y-%m-%d) \
+            --to $(date +%Y-%m-%d)
+        env:
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
