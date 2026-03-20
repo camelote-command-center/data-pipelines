@@ -1,4 +1,12 @@
+import { createClient } from '@supabase/supabase-js';
 import { supabase } from '../config/supabase.js';
+
+function schemaClient(schema: string) {
+  return createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
+    auth: { persistSession: false, autoRefreshToken: false },
+    db: { schema },
+  });
+}
 
 export async function startIngestion(
   source: string,
@@ -29,10 +37,10 @@ export async function completeIngestion(
 ): Promise<void> {
   const { error } = await supabase.rpc('complete_ingestion', {
     p_log_id: logId,
-    p_fetched: fetched,
-    p_inserted: inserted,
-    p_updated: updated,
-    p_failed: failed,
+    p_records_fetched: fetched,
+    p_records_inserted: inserted,
+    p_records_updated: updated,
+    p_records_failed: failed,
     p_error: errorMsg || null,
   });
 
@@ -51,7 +59,7 @@ export async function dedupTransactions(): Promise<number> {
 }
 
 export async function promoteTransactions(since?: string): Promise<number> {
-  const { data, error } = await supabase.rpc('promote_transactions', {
+  const { data, error } = await schemaClient('silver_il').rpc('promote_transactions', {
     p_since: since || new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(),
   });
   if (error) {
@@ -62,7 +70,7 @@ export async function promoteTransactions(since?: string): Promise<number> {
 }
 
 export async function refreshMarketData(monthsBack?: number): Promise<number> {
-  const { data, error } = await supabase.rpc('refresh_market_data', {
+  const { data, error } = await schemaClient('gold_il').rpc('refresh_market_data', {
     p_months_back: monthsBack || 12,
   });
   if (error) {
