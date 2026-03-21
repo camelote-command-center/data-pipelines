@@ -26,7 +26,7 @@
 
 import Anthropic from '@anthropic-ai/sdk';
 import * as cheerio from 'cheerio';
-import { upsertBronze, sleep } from '../_shared/supabase.js';
+import { supabase, upsertBronze, sleep } from '../_shared/supabase.js';
 import { createFaoSession } from '../_shared/fao-session.js';
 
 // ---------------------------------------------------------------------------
@@ -37,7 +37,7 @@ const RUBRIQUE = 137;
 const RESULTS_PER_PAGE = 50;
 const BATCH_SIZE = 50;
 const RATE_LIMIT_MS = 1_000;
-const DAYS_BACK = 6;
+const MIN_LOOKBACK_DAYS = 30;
 
 // ---------------------------------------------------------------------------
 // Anthropic client
@@ -59,14 +59,35 @@ function formatDate(d: Date): string {
   return d.toISOString().split('T')[0];
 }
 
-function getDateRange(): { dateFrom: string; dateTo: string } {
+async function getDateRange(): Promise<{ dateFrom: string; dateTo: string }> {
+  // Allow env-var overrides for one-off backfills
+  if (process.env.START_DATE && process.env.END_DATE) {
+    return { dateFrom: process.env.START_DATE, dateTo: process.env.END_DATE };
+  }
+
   const now = new Date();
-  const from = new Date(now);
-  from.setDate(from.getDate() - DAYS_BACK);
-  return {
-    dateFrom: formatDate(from),
-    dateTo: formatDate(now),
-  };
+
+  // Safety-net floor: always at least MIN_LOOKBACK_DAYS
+  const floor = new Date(now);
+  floor.setDate(floor.getDate() - MIN_LOOKBACK_DAYS);
+
+  // Query DB for the latest publication date we already have
+  const { data } = await supabase
+    .schema('bronze')
+    .from('transactions')
+    .select('fao_publication_date')
+    .order('fao_publication_date', { ascending: false })
+    .limit(1);
+
+  let dbMax: Date | null = null;
+  if (data?.[0]?.fao_publication_date) {
+    dbMax = new Date(data[0].fao_publication_date);
+  }
+
+  // Use the earlier of (30 days ago) or (latest DB date) so we never skip a gap
+  const dateFrom = dbMax && dbMax < floor ? formatDate(dbMax) : formatDate(floor);
+
+  return { dateFrom, dateTo: formatDate(now) };
 }
 
 // ---------------------------------------------------------------------------
@@ -347,7 +368,7 @@ async function main() {
   console.log('='.repeat(60));
 
   const startTime = Date.now();
-  const { dateFrom, dateTo } = getDateRange();
+  const { dateFrom, dateTo } = await getDateRange();
   console.log(`  Date range: ${dateFrom} to ${dateTo}`);
 
   // 1. Get session cookies
@@ -480,9 +501,19 @@ async function main() {
       const faoPublicationDate =
         parseFrenchDate(formatted.fao_publication_date) || formatted.fao_publication_date || null;
 
+      // Regex fallback for affaire number (belt-and-suspenders)
+      const affaireRegex = raw.details.match(/Affaire\s+(\d{4}\/\d+\/\d+)/);
+      const affaireNumber = formatted.affaire_number || raw.affaireNumber || (affaireRegex ? affaireRegex[1] : null);
+
+      if (!affaireNumber) {
+        console.error(`  No affaire number for transaction, skipping`);
+        parseErrors++;
+        continue;
+      }
+
       // Build record — DO NOT supply type_clean_list (trigger handles it)
       const record: Record<string, unknown> = {
-        affaire_number: formatted.affaire_number || raw.affaireNumber,
+        affaire_number: affaireNumber,
         date_of_transaction: dateOfTransaction,
         fao_publication_date: faoPublicationDate,
         commune: formatted.commune || null,
@@ -523,18 +554,66 @@ async function main() {
   console.log(`\n  Upserting ${allRecords.length} records (batch size: ${BATCH_SIZE})...`);
   const totalUpserted = await upsertBronze('transactions', allRecords, 'affaire_number', BATCH_SIZE);
 
+  // 6. End-of-run validation
+  const { data: latestRow } = await supabase
+    .schema('bronze')
+    .from('transactions')
+    .select('fao_publication_date, affaire_number')
+    .order('fao_publication_date', { ascending: false })
+    .limit(1);
+
+  const latestDate = latestRow?.[0]?.fao_publication_date ?? 'unknown';
+
+  // Count rows with null affaire_number among newly upserted records
+  const nullAffaireCount = allRecords.filter(
+    (r) => !r.affaire_number && String(r.transaction ?? '').includes('Affaire'),
+  ).length;
+
+  // Check for recent data (within last 7 days)
+  const sevenDaysAgo = new Date();
+  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+  const { count: recentCount } = await supabase
+    .schema('bronze')
+    .from('transactions')
+    .select('*', { count: 'exact', head: true })
+    .gte('fao_publication_date', formatDate(sevenDaysAgo));
+
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+
+  // Summary
   console.log(`\n${'='.repeat(60)}`);
-  console.log('  IMPORT COMPLETE');
-  console.log(`  Transactions found: ${allRaw.length}`);
-  console.log(`  Records parsed:     ${allRecords.length}`);
-  console.log(`  Parse errors:       ${parseErrors}`);
-  console.log(`  Records upserted:   ${totalUpserted}`);
-  console.log(`  Duration:           ${elapsed}s`);
+  console.log('  === RUN SUMMARY ===');
+  console.log(`  Date range scraped:              ${dateFrom} to ${dateTo}`);
+  console.log(`  Gazette pages processed:         ${pages}`);
+  console.log(`  Transactions extracted:          ${allRaw.length}`);
+  console.log(`  Records parsed:                  ${allRecords.length}`);
+  console.log(`  Parse errors:                    ${parseErrors}`);
+  console.log(`  Rows upserted to DB:             ${totalUpserted}`);
+  console.log(`  Rows with null affaire:          ${nullAffaireCount}`);
+  console.log(`  Latest fao_publication_date in DB: ${latestDate}`);
+  console.log(`  Rows with pub date in last 7d:   ${recentCount ?? 'unknown'}`);
+  console.log(`  Duration:                        ${elapsed}s`);
   console.log('='.repeat(60));
 
+  // Validation gates
+  let failed = false;
+
   if (totalUpserted === 0 && allRecords.length > 0) {
-    console.error('  FAILED: Zero rows upserted despite having records!');
+    console.error('  VALIDATION FAILED: Zero rows upserted despite having records!');
+    failed = true;
+  }
+
+  if ((recentCount ?? 0) === 0) {
+    console.error('  VALIDATION FAILED: No rows with fao_publication_date in the last 7 days!');
+    failed = true;
+  }
+
+  if (nullAffaireCount > 0) {
+    console.error(`  VALIDATION FAILED: ${nullAffaireCount} newly inserted row(s) have null affaire despite text containing "Affaire"!`);
+    failed = true;
+  }
+
+  if (failed) {
     process.exit(1);
   }
 }
