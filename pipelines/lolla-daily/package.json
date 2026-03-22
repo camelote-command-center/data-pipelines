@@ -1,0 +1,18 @@
+{
+  "name": "lolla-daily",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "ingest": "tsx fetch-lolla.ts",
+    "ingest:seed": "SEED_MODE=1 tsx fetch-lolla.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0",
+    "@supabase/supabase-js": "^2",
+    "cheerio": "^1"
+  },
+  "devDependencies": {
+    "tsx": "^4",
+    "@types/node": "^20"
+  }
+}
