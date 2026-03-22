@@ -1,0 +1,47 @@
+name: Lolla Daily Promotion
+
+on:
+  schedule:
+    - cron: '0 8 * * *'  # Daily at 08:00 UTC (2h after scraper)
+  workflow_dispatch:
+    inputs:
+      batch_size:
+        description: 'Number of ads to promote (default 25, randomised ±30% internally)'
+        required: false
+        default: '25'
+        type: string
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Promote lolla ads to listings
+        run: |
+          BATCH="${{ github.event.inputs.batch_size || '25' }}"
+          echo "Calling bronze.promote_lolla_batch($BATCH)..."
+
+          RESPONSE=$(curl -sf \
+            "${{ secrets.XOXO_SUPABASE_URL }}/rest/v1/rpc/promote_lolla_batch" \
+            -H "apikey: ${{ secrets.XOXO_SUPABASE_SERVICE_KEY }}" \
+            -H "Authorization: Bearer ${{ secrets.XOXO_SUPABASE_SERVICE_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"batch_size\": $BATCH}")
+
+          echo "Response: $RESPONSE"
+
+          # Parse and log result
+          PROMOTED=$(echo "$RESPONSE" | jq -r '.promoted_count // 0')
+          SKIP_CITY=$(echo "$RESPONSE" | jq -r '.skipped_no_city // 0')
+          SKIP_CAT=$(echo "$RESPONSE" | jq -r '.skipped_no_category // 0')
+
+          echo "promoted_count=$PROMOTED"
+          echo "skipped_no_city=$SKIP_CITY"
+          echo "skipped_no_category=$SKIP_CAT"
+
+          echo "## Lolla Promotion Results" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Metric | Count |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|--------|-------|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Promoted | $PROMOTED |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Skipped (no city) | $SKIP_CITY |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Skipped (no category) | $SKIP_CAT |" >> "$GITHUB_STEP_SUMMARY"

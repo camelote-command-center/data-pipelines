@@ -1,0 +1,21 @@
+name: Forum Discussion Seeder
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  seed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: cd pipelines/forum-seeder && npm ci
+      - name: Seed forum discussions
+        run: cd pipelines/forum-seeder && npx tsx seed.ts
+        env:
+          SUPABASE_URL: ${{ secrets.XOXO_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.XOXO_SUPABASE_SERVICE_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}

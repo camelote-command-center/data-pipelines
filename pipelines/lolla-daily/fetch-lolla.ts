@@ -33,6 +33,7 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import Anthropic from '@anthropic-ai/sdk';
 import * as cheerio from 'cheerio';
+import { normalizePhone } from './shared.js';
 
 // ---------------------------------------------------------------------------
 // Config
@@ -213,19 +214,36 @@ interface ScrapedAd {
   source_url: string;
 }
 
-function normalizePhone(raw: string): string | null {
+// normalizePhone imported from _shared/phone.ts
+
+// ---------------------------------------------------------------------------
+// Description cleaning — strip lolla.ch boilerplate & self-promotion
+// ---------------------------------------------------------------------------
+
+function cleanDescription(raw: string | null): string | null {
   if (!raw) return null;
-  // Strip everything except digits and leading +
-  let cleaned = raw.replace(/[^\d+]/g, '');
-  // Convert 0041... to +41...
-  if (cleaned.startsWith('0041')) cleaned = '+41' + cleaned.slice(4);
-  // Convert 041... to +41...
-  else if (cleaned.startsWith('041') && cleaned.length > 10) cleaned = '+41' + cleaned.slice(3);
-  // Convert 07x... to +417x...
-  else if (cleaned.startsWith('0') && cleaned.length === 10) cleaned = '+41' + cleaned.slice(1);
-  // Already has +
-  else if (!cleaned.startsWith('+') && cleaned.length >= 10) cleaned = '+' + cleaned;
-  return cleaned || null;
+  let d = raw;
+
+  // Lolla self-promotion phrases (FR / EN / ES)
+  d = d.replace(/Dis[- ]?moi que tu m['']as vu[e]? sur Lolla\s*!?/gi, '');
+  d = d.replace(/Tell me that you saw me on Lolla\s*!?/gi, '');
+  d = d.replace(/Dime que me viste en Lolla\s*!?/gi, '');
+  d = d.replace(/Oui,?\s*je suis sur Lolla et j['']aime [çc]a\s*!?/gi, '');
+  d = d.replace(/Invitez[- ]moi [àa] vous rendre visite [àa] Lolla\s*!?/gi, '');
+
+  // Uncensored photos preamble + lolla URLs
+  d = d.replace(/Pour voir mes photos non censur[ée]es\s*:?\s*/gi, '');
+  d = d.replace(/https?:\/\/(?:www\.)?lolla\.ch\/ad\/[^\s)}\]"]*/gi, '');
+
+  // Incall / Outcall boilerplate (already parsed into boolean columns)
+  d = d.replace(/Incall\s*:?\s*Je re[çc]ois en (?:appartement priv[ée]|salon)\.?\s*/gi, '');
+  d = d.replace(/Incall\s*:?\s*Recibo en apartamento privado\.?\s*[¡!]?\s*/gi, '');
+  d = d.replace(/Outcall\s*:?\s*Je (?:peux me d[ée]placer|ne me d[ée]place pas)\.?\s*/gi, '');
+
+  // Collapse leftover whitespace
+  d = d.replace(/\n{3,}/g, '\n\n').trim();
+
+  return d || null;
 }
 
 function parseAdPage(html: string, adUrl: AdUrl): ScrapedAd | null {
@@ -296,12 +314,13 @@ function parseAdPage(html: string, adUrl: AdUrl): ScrapedAd | null {
   });
 
   // ---------- Description ----------
-  const description = $('.AdOneDescription').text().trim() || null;
+  const rawDescription = $('.AdOneDescription').text().trim() || null;
+  const description = cleanDescription(rawDescription);
 
   // ---------- Services raw (embedded in description) ----------
   let servicesRaw: string | null = null;
-  // Services are in the free-text description; pass description to Claude later
-  if (description) servicesRaw = description;
+  // Pass raw (pre-clean) description to Claude so service keywords aren't lost
+  if (rawDescription) servicesRaw = rawDescription;
 
   // ---------- Incall / Outcall ----------
   const descHtml = $('.AdOneDescription').html() || '';
@@ -500,64 +519,44 @@ async function syncToContactsLeads(records: ScrapedAd[]): Promise<{ new: number;
   const leads = Array.from(byPhone.values());
   console.log(`  Contacts: ${leads.length} unique phone numbers from ${records.length} ads`);
 
-  let newCount = 0;
-  let updatedCount = 0;
+  let totalUpserted = 0;
 
   for (let i = 0; i < leads.length; i += BATCH_SIZE) {
     const batch = leads.slice(i, i + BATCH_SIZE);
+    const batchNum = Math.floor(i / BATCH_SIZE) + 1;
+    const totalBatches = Math.ceil(leads.length / BATCH_SIZE);
 
-    for (const ad of batch) {
-      // Check if already exists
-      const { data: existing } = await xoxo
-        .from('contacts_leads')
-        .select('id, phone_number')
-        .eq('phone_number', ad.phone!)
-        .maybeSingle();
+    const rows = batch.map((ad) => ({
+      nickname: ad.nickname,
+      phone_number: ad.phone,                                // already normalised during scrape
+      whatsapp_number: normalizePhone(ad.whatsapp) || ad.phone, // normalise whatsapp too
+      canton: ad.canton,
+      city: ad.city,
+      category: mapCategory(ad.category),
+      status: 'new',
+      description: ad.description?.slice(0, 2000) || null,
+      source_url: ad.source_url,
+    }));
 
-      const leadData = {
-        nickname: ad.nickname,
-        phone_number: ad.phone,
-        whatsapp_number: ad.whatsapp || ad.phone,
-        canton: ad.canton,
-        city: ad.city,
-        category: mapCategory(ad.category),
-        status: 'new',
-        description: ad.description?.slice(0, 2000) || null,
-        source_url: ad.source_url,
-      };
+    // ON CONFLICT (phone_number) DO UPDATE — respects the UNIQUE constraint
+    const { error, count } = await xoxo
+      .from('contacts_leads')
+      .upsert(rows, {
+        onConflict: 'phone_number',
+        count: 'exact',
+        ignoreDuplicates: false,       // DO UPDATE, not DO NOTHING
+      });
 
-      if (existing) {
-        // Update location + photos (the provider may have moved)
-        const { error } = await xoxo
-          .from('contacts_leads')
-          .update({
-            canton: leadData.canton,
-            city: leadData.city,
-            description: leadData.description,
-            source_url: leadData.source_url,
-            nickname: leadData.nickname,
-          })
-          .eq('id', existing.id);
-
-        if (!error) updatedCount++;
-      } else {
-        const { error } = await xoxo
-          .from('contacts_leads')
-          .insert(leadData);
-
-        if (error) {
-          // May fail on unique constraint — that's fine
-          if (!error.message.includes('duplicate')) {
-            console.error(`  Contact insert error: ${error.message}`);
-          }
-        } else {
-          newCount++;
-        }
-      }
+    if (error) {
+      console.error(`  contacts_leads batch ${batchNum}/${totalBatches} error: ${error.message}`);
+      continue;
     }
+
+    totalUpserted += count ?? batch.length;
+    console.log(`  contacts_leads batch ${batchNum}/${totalBatches}: ${count ?? batch.length} rows`);
   }
 
-  return { new: newCount, updated: updatedCount };
+  return { new: totalUpserted, updated: 0 };
 }
 
 // ---------------------------------------------------------------------------

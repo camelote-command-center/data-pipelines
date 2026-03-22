@@ -1,0 +1,31 @@
+name: Blog Article Generator
+
+on:
+  schedule:
+    - cron: '0 10 * * 1'  # Every Monday at 10:00 UTC
+  workflow_dispatch:
+    inputs:
+      batch_size:
+        description: 'Number of articles to generate (default 5)'
+        required: false
+        default: '5'
+        type: string
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: cd pipelines/blog-generator && npm ci
+      - name: Generate blog articles
+        run: cd pipelines/blog-generator && npx tsx generate.ts
+        env:
+          SUPABASE_URL: ${{ secrets.XOXO_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.XOXO_SUPABASE_SERVICE_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+          BATCH_SIZE: ${{ github.event.inputs.batch_size || '5' }}
