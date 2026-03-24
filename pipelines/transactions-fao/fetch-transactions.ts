@@ -26,7 +26,7 @@
 
 import Anthropic from '@anthropic-ai/sdk';
 import * as cheerio from 'cheerio';
-import { supabase, upsertBronze, sleep } from '../_shared/supabase.js';
+import { supabase, upsertBronze, sleep, verifyBronzeAccess } from '../_shared/supabase.js';
 import { createFaoSession } from '../_shared/fao-session.js';
 
 // ---------------------------------------------------------------------------
@@ -368,6 +368,10 @@ async function main() {
   console.log('='.repeat(60));
 
   const startTime = Date.now();
+
+  // 0. Verify DB connectivity before spending hours scraping
+  await verifyBronzeAccess('transactions');
+
   const { dateFrom, dateTo } = await getDateRange();
   console.log(`  Date range: ${dateFrom} to ${dateTo}`);
 

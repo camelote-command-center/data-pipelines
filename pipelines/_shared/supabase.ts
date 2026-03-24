@@ -21,6 +21,25 @@ if (!supabaseUrl || !supabaseKey) {
 export const supabase: SupabaseClient = createClient(supabaseUrl, supabaseKey);
 
 // ---------------------------------------------------------------------------
+// Startup connectivity check — fail fast if bronze schema is unreachable
+// ---------------------------------------------------------------------------
+
+export async function verifyBronzeAccess(table: string): Promise<void> {
+  const { error } = await supabase
+    .schema('bronze')
+    .from(table)
+    .select('*', { count: 'exact', head: true });
+
+  if (error) {
+    console.error(`FATAL: Cannot access bronze.${table}: ${error.message}`);
+    console.error(`Check that SUPABASE_URL points to the correct project and bronze schema is exposed in PostgREST.`);
+    console.error(`SUPABASE_URL: ${supabaseUrl}`);
+    process.exit(1);
+  }
+  console.log(`  ✓ Verified access to bronze.${table}`);
+}
+
+// ---------------------------------------------------------------------------
 // Batch upsert into bronze schema
 // ---------------------------------------------------------------------------
 

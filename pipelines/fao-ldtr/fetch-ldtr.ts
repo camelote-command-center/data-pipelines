@@ -20,7 +20,7 @@
  */
 
 import * as cheerio from 'cheerio';
-import { upsertBronze, sleep } from '../_shared/supabase.js';
+import { upsertBronze, sleep, verifyBronzeAccess } from '../_shared/supabase.js';
 import { createFaoSession } from '../_shared/fao-session.js';
 
 // ---------------------------------------------------------------------------
@@ -260,6 +260,10 @@ async function main() {
   console.log('='.repeat(60));
 
   const startTime = Date.now();
+
+  // 0. Verify DB connectivity before spending hours scraping
+  await verifyBronzeAccess('FAO_LDTR');
+
   const { dateFrom, dateTo } = getDateRange();
   console.log(`  Date range: ${dateFrom} to ${dateTo}`);
 

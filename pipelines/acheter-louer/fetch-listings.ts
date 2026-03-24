@@ -24,7 +24,7 @@
 
 import { chromium, type Browser, type Page } from 'playwright';
 import * as cheerio from 'cheerio';
-import { upsertBronze, sleep } from '../_shared/supabase.js';
+import { upsertBronze, sleep, verifyBronzeAccess } from '../_shared/supabase.js';
 import { proxyUrl } from '../_shared/proxy.js';
 
 // ---------------------------------------------------------------------------
@@ -287,6 +287,10 @@ async function main() {
   console.log('='.repeat(60));
 
   const startTime = Date.now();
+
+  // 0. Verify DB connectivity before spending hours scraping
+  await verifyBronzeAccess('acheterLouer');
+
   const allRecords: Record<string, unknown>[] = [];
 
   for (const { name: canton, region } of CANTONS) {

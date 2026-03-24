@@ -20,7 +20,7 @@
  *   SUPABASE_SERVICE_ROLE_KEY - service_role key     (required)
  */
 
-import { upsertBronze, sleep } from '../_shared/supabase.js';
+import { upsertBronze, sleep, verifyBronzeAccess } from '../_shared/supabase.js';
 
 // ---------------------------------------------------------------------------
 // Config
@@ -419,6 +419,9 @@ async function main() {
   console.log('='.repeat(60));
 
   const startTime = Date.now();
+
+  // 0. Verify DB connectivity before spending hours scraping
+  await verifyBronzeAccess('properstar');
 
   // 1. Get auth token
   await getAuthorization();
