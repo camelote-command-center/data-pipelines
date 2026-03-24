@@ -298,7 +298,7 @@ async function promoteAds() {
       }
 
       // Ensure media rows exist
-      await ensureMedia(listingId, ad.photo_urls || []);
+      await ensureMedia(listingId, ad.photo_urls || [], ad.nickname, ad.city, category);
       promoted++;
     } else {
       // Insert new listing
@@ -343,7 +343,7 @@ async function promoteAds() {
         .eq('id', listingId);
 
       // Insert media rows (photos)
-      await ensureMedia(listingId, ad.photo_urls || []);
+      await ensureMedia(listingId, ad.photo_urls || [], ad.nickname, ad.city, category);
 
       // Mark bronze row as promoted
       await xoxo
@@ -372,36 +372,109 @@ async function promoteAds() {
 // Media helper: ensure photos exist in media table
 // ---------------------------------------------------------------------------
 
-async function ensureMedia(listingId: string, photoUrls: string[]) {
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '')
+    .slice(0, 50);
+}
+
+async function downloadAndUploadImage(
+  listingId: string,
+  lollaUrl: string,
+  fileName: string,
+  isAvatar: boolean,
+): Promise<string | null> {
+  // Lolla hotlink-protects SizeD. Use SizeC (596x1080) instead.
+  const sizesToTry = ['SizeC', 'SizeB'];
+  for (const size of sizesToTry) {
+    const tryUrl = lollaUrl.replace(/\/Size[A-Z]\//i, `/${size}/`);
+    try {
+      const res = await fetch(tryUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+          'Accept': 'image/*,*/*;q=0.8',
+        },
+      });
+      if (!res.ok) continue;
+      const buffer = Buffer.from(await res.arrayBuffer());
+      if (buffer.length < 1000) continue;
+
+      const folder = isAvatar ? 'avatar' : 'photo';
+      const path = `${listingId}/${folder}/${fileName}`;
+      const contentType = res.headers.get('content-type') || 'image/jpeg';
+
+      const { error } = await xoxo.storage
+        .from('listing-media')
+        .upload(path, buffer, { contentType, upsert: true });
+
+      if (error) { console.error(`    Upload err: ${error.message}`); return null; }
+
+      return `${XOXO_URL}/storage/v1/object/public/listing-media/${path}`;
+    } catch { continue; }
+  }
+  return null;
+}
+
+async function ensureMedia(
+  listingId: string,
+  photoUrls: string[],
+  nickname: string | null,
+  city: string | null,
+  category: string | null,
+) {
   if (!photoUrls || photoUrls.length === 0) return;
 
-  // Check existing media for this listing
   const { data: existing } = await xoxo
     .from('media')
     .select('url')
     .eq('listing_id', listingId);
 
   const existingUrls = new Set((existing || []).map((m: any) => m.url));
-
-  const newPhotos = photoUrls.filter((url) => !existingUrls.has(url));
-  if (newPhotos.length === 0) return;
-
   const isFirstPhoto = (existing || []).length === 0;
 
-  const rows = newPhotos.map((url, i) => ({
-    listing_id: listingId,
-    profile_id: null,
-    type: (isFirstPhoto && i === 0) ? 'avatar' : 'photo',
-    url,
-    status: 'approved',
-  }));
+  let avatarUrl: string | null = null;
 
-  const { error } = await xoxo
-    .from('media')
-    .insert(rows);
+  for (let i = 0; i < photoUrls.length; i++) {
+    const lollaUrl = photoUrls[i];
+    // Skip if already migrated
+    if (existingUrls.has(lollaUrl)) continue;
 
-  if (error) {
-    console.error(`  Media insert error for ${listingId}: ${error.message}`);
+    const isAvatar = isFirstPhoto && i === 0;
+    const ext = lollaUrl.match(/\.(jpg|jpeg|png|webp)/i)?.[1] || 'jpg';
+    const parts: string[] = [];
+    if (category) parts.push(slugify(category));
+    if (city) parts.push(slugify(city));
+    if (nickname) parts.push(slugify(nickname));
+    parts.push(String(i + 1));
+    const fileName = parts.join('-') + '.' + ext;
+
+    const storageUrl = await downloadAndUploadImage(listingId, lollaUrl, fileName, isAvatar);
+    if (!storageUrl) continue;
+
+    await xoxo
+      .from('media')
+      .insert({
+        listing_id: listingId,
+        profile_id: null,
+        type: isAvatar ? 'avatar' : 'photo',
+        url: storageUrl,
+        status: 'approved',
+      });
+
+    if (isAvatar) avatarUrl = storageUrl;
+    await new Promise((r) => setTimeout(r, 200));
+  }
+
+  // Update avatar_url on listing
+  if (avatarUrl) {
+    await xoxo
+      .from('listings_ads')
+      .update({ avatar_url: avatarUrl })
+      .eq('id', listingId);
   }
 }
 
