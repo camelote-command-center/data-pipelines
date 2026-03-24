@@ -276,8 +276,13 @@ function parseAdPage(html: string, adUrl: AdUrl): ScrapedAd | null {
     const decoded = waOnclick
       .replace(/\\u0026/g, '&')
       .replace(/%26/g, '&');
-    const waMatch = decoded.match(/phone=([^&"'\s)]+)/);
+    // Only capture digits and + for the phone parameter
+    const waMatch = decoded.match(/phone=([\d+]+)/);
     if (waMatch) whatsapp = normalizePhone(waMatch[1]);
+  }
+  // Fallback: if WhatsApp looks like garbage after normalizing, use phone number
+  if (whatsapp && phone && whatsapp.length > phone.length + 2) {
+    whatsapp = phone;
   }
 
   // ---------- Canton ----------

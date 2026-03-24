@@ -37,8 +37,14 @@ export function normalizePhone(raw: string | null | undefined): string | null {
     cleaned = '41' + cleaned.slice(1);
   }
 
-  // 5. Reject junk (< 10 digits)
-  if (cleaned.length < 10) return null;
+  // 5. Reject junk (< 10 digits or > 15 digits per E.164)
+  if (cleaned.length < 10 || cleaned.length > 15) return null;
+
+  // 6. Swiss numbers should be exactly 11 digits (41 + 9-digit subscriber)
+  //    Truncate if we have a valid Swiss prefix with trailing garbage
+  if (cleaned.startsWith('41') && cleaned.length > 11) {
+    cleaned = cleaned.slice(0, 11);
+  }
 
   return cleaned;
 }
