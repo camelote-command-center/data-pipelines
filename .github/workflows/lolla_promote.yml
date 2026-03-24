@@ -26,14 +26,15 @@ jobs:
             -H "apikey: ${{ secrets.XOXO_SUPABASE_SERVICE_KEY }}" \
             -H "Authorization: Bearer ${{ secrets.XOXO_SUPABASE_SERVICE_KEY }}" \
             -H "Content-Type: application/json" \
+            -H "Content-Profile: bronze" \
             -d "{\"batch_size\": $BATCH}")
 
           echo "Response: $RESPONSE"
 
           # Parse and log result
-          PROMOTED=$(echo "$RESPONSE" | jq -r '.promoted_count // 0')
-          SKIP_CITY=$(echo "$RESPONSE" | jq -r '.skipped_no_city // 0')
-          SKIP_CAT=$(echo "$RESPONSE" | jq -r '.skipped_no_category // 0')
+          PROMOTED=$(echo "$RESPONSE" | jq -r '.[0].promoted_count // 0')
+          SKIP_CITY=$(echo "$RESPONSE" | jq -r '.[0].skipped_no_city // 0')
+          SKIP_CAT=$(echo "$RESPONSE" | jq -r '.[0].skipped_no_category // 0')
 
           echo "promoted_count=$PROMOTED"
           echo "skipped_no_city=$SKIP_CITY"
