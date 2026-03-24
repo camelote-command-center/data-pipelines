@@ -3,7 +3,9 @@
   "private": true,
   "scripts": {
     "ingest": "tsx fetch-lolla.ts",
-    "ingest:seed": "SEED_MODE=1 tsx fetch-lolla.ts"
+    "ingest:seed": "SEED_MODE=1 tsx fetch-lolla.ts",
+    "promote": "tsx promote.ts",
+    "promote:fix": "FIX_EXISTING=1 tsx promote.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0",

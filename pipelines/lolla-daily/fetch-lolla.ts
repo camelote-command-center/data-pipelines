@@ -272,7 +272,11 @@ function parseAdPage(html: string, adUrl: AdUrl): ScrapedAd | null {
   let whatsapp: string | null = null;
   const waOnclick = $('[class*="ItemViewPhone_ButtonWhatsApp"]').attr('onclick');
   if (waOnclick) {
-    const waMatch = waOnclick.match(/phone=([^&"']+)/);
+    // Decode unicode escapes (\u0026 → &) and URL encoding (%26 → &) first
+    const decoded = waOnclick
+      .replace(/\\u0026/g, '&')
+      .replace(/%26/g, '&');
+    const waMatch = decoded.match(/phone=([^&"'\s)]+)/);
     if (waMatch) whatsapp = normalizePhone(waMatch[1]);
   }
 

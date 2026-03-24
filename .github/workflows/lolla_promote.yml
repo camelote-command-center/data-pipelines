@@ -6,43 +6,34 @@ on:
   workflow_dispatch:
     inputs:
       batch_size:
-        description: 'Number of ads to promote (default 25, randomised ±30% internally)'
+        description: 'Number of ads to promote (default 25)'
         required: false
         default: '25'
         type: string
+      fix_existing:
+        description: 'Re-sync already promoted listings (fix missing data)'
+        required: false
+        default: '0'
+        type: choice
+        options:
+          - '0'
+          - '1'
 
 jobs:
   promote:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: cd pipelines/_shared && npm ci
+      - run: cd pipelines/lolla-daily && npm ci
       - name: Promote lolla ads to listings
-        run: |
-          BATCH="${{ github.event.inputs.batch_size || '25' }}"
-          echo "Calling bronze.promote_lolla_batch($BATCH)..."
-
-          RESPONSE=$(curl -sf \
-            "${{ secrets.XOXO_SUPABASE_URL }}/rest/v1/rpc/promote_lolla_batch" \
-            -H "apikey: ${{ secrets.XOXO_SUPABASE_SERVICE_KEY }}" \
-            -H "Authorization: Bearer ${{ secrets.XOXO_SUPABASE_SERVICE_KEY }}" \
-            -H "Content-Type: application/json" \
-            -H "Content-Profile: bronze" \
-            -d "{\"batch_size\": $BATCH}")
-
-          echo "Response: $RESPONSE"
-
-          # Parse and log result
-          PROMOTED=$(echo "$RESPONSE" | jq -r '.[0].promoted_count // 0')
-          SKIP_CITY=$(echo "$RESPONSE" | jq -r '.[0].skipped_no_city // 0')
-          SKIP_CAT=$(echo "$RESPONSE" | jq -r '.[0].skipped_no_category // 0')
-
-          echo "promoted_count=$PROMOTED"
-          echo "skipped_no_city=$SKIP_CITY"
-          echo "skipped_no_category=$SKIP_CAT"
-
-          echo "## Lolla Promotion Results" >> "$GITHUB_STEP_SUMMARY"
-          echo "| Metric | Count |" >> "$GITHUB_STEP_SUMMARY"
-          echo "|--------|-------|" >> "$GITHUB_STEP_SUMMARY"
-          echo "| Promoted | $PROMOTED |" >> "$GITHUB_STEP_SUMMARY"
-          echo "| Skipped (no city) | $SKIP_CITY |" >> "$GITHUB_STEP_SUMMARY"
-          echo "| Skipped (no category) | $SKIP_CAT |" >> "$GITHUB_STEP_SUMMARY"
+        run: cd pipelines/lolla-daily && npx tsx promote.ts
+        env:
+          SUPABASE_URL: ${{ secrets.XOXO_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.XOXO_SUPABASE_SERVICE_KEY }}
+          BATCH_SIZE: ${{ github.event.inputs.batch_size || '25' }}
+          FIX_EXISTING: ${{ github.event.inputs.fix_existing || '0' }}
