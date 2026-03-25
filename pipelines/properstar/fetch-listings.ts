@@ -131,12 +131,14 @@ async function getAuthorization(maxAttempts = 5): Promise<void> {
       }
 
       attempts++;
-      console.log(`  No token in Set-Cookie (attempt ${attempts}/${maxAttempts})`);
-      await sleep(2_000);
+      const backoff = Math.min(120_000, 10_000 * Math.pow(2, attempts - 1));
+      console.log(`  No token in Set-Cookie (attempt ${attempts}/${maxAttempts}), waiting ${(backoff / 1000).toFixed(0)}s...`);
+      await sleep(backoff);
     } catch (err) {
       attempts++;
-      console.error(`  Auth error (attempt ${attempts}): ${err}`);
-      await sleep(2_000);
+      const backoff = Math.min(120_000, 10_000 * Math.pow(2, attempts - 1));
+      console.error(`  Auth error (attempt ${attempts}): ${err}, waiting ${(backoff / 1000).toFixed(0)}s...`);
+      await sleep(backoff);
     }
   }
 
@@ -433,11 +435,27 @@ async function main() {
   let totalUpserted = 0;
   const seenIds = new Set<number>();
 
+  let authExhausted = false;
+
   for (const { canton, placeId } of CANTONS) {
+    if (authExhausted) break;
+
     for (const txType of TRANSACTION_TYPES) {
+      if (authExhausted) break;
+
       console.log(`\n  [${canton.toUpperCase()}] ${txType}:`);
 
-      const listings = await fetchListings(placeId, txType);
+      let listings: any[];
+      try {
+        listings = await fetchListings(placeId, txType);
+      } catch (err: any) {
+        if (err.message?.includes('authorization')) {
+          console.error(`  Auth exhausted at [${canton}/${txType}], flushing data and stopping.`);
+          authExhausted = true;
+          break;
+        }
+        throw err;
+      }
       console.log(`    Found ${listings.length} listings`);
 
       let detailCount = 0;
@@ -447,7 +465,17 @@ async function main() {
         seenIds.add(idObject);
 
         const detailUrl = `${DETAILS_API}/${idObject}?mode=ItemDetails&currencyId=CHF`;
-        const detail = await apiGet(detailUrl);
+        let detail: any;
+        try {
+          detail = await apiGet(detailUrl);
+        } catch (err: any) {
+          if (err.message?.includes('authorization')) {
+            console.error(`  Auth exhausted at [${canton}/${txType}] detail ${idObject}, flushing data and stopping.`);
+            authExhausted = true;
+            break;
+          }
+          throw err;
+        }
         if (!detail) continue;
 
         const record = formatListing(canton, detail);
@@ -492,10 +520,18 @@ async function main() {
   console.log(`  Duration:          ${elapsed}s`);
   console.log('='.repeat(60));
 
+  if (authExhausted) {
+    console.log('  WARNING: Auth was rate-limited — partial import only.');
+    console.log('  Remaining cantons will be caught on the next scheduled run.');
+  }
+
   if (totalUpserted === 0 && totalFetched > 0) {
     console.error('  FAILED: Zero rows upserted despite having records!');
     process.exit(1);
   }
+
+  // Partial runs due to auth exhaustion are OK — exit 0 so the workflow
+  // doesn't show as failed when it successfully saved partial data
 }
 
 main().catch((err) => {
