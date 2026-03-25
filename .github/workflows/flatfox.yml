@@ -1,0 +1,28 @@
+name: Flatfox (Listings)
+
+on:
+  schedule:
+    - cron: '0 3 * * *'  # Daily at 03:00 UTC
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Max listings to fetch (empty = all)'
+        required: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: cd pipelines/_shared && npm ci
+      - run: cd pipelines/flatfox && npm ci
+      - name: Fetch Flatfox listings
+        run: cd pipelines/flatfox && npx tsx fetch-listings.ts
+        env:
+          RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          FLATFOX_LIMIT: ${{ github.event.inputs.limit }}
