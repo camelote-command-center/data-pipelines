@@ -28,7 +28,8 @@ export async function verifyBronzeAccess(table: string): Promise<void> {
   const { error } = await supabase
     .schema('bronze')
     .from(table)
-    .select('*', { count: 'exact', head: true });
+    .select('*')
+    .limit(1);
 
   if (error) {
     console.error(`FATAL: Cannot access bronze.${table}: ${error.message}`);
