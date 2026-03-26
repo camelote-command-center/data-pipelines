@@ -2,7 +2,7 @@ name: SAD Import
 
 on:
   schedule:
-    - cron: '30 5 * * 1'  # Weekly Monday at 05:30 UTC
+    - cron: '30 5 * * *'  # Daily at 05:30 UTC
   workflow_dispatch:
 
 jobs:
