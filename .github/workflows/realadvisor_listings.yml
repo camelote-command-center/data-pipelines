@@ -1,0 +1,28 @@
+name: RealAdvisor (Listings)
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Daily at 06:00 UTC (07:00 CET)
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Max listings per portal (empty = all)'
+        required: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: cd pipelines/_shared && npm ci
+      - run: cd pipelines/realadvisor && npm ci
+      - name: Fetch RealAdvisor listings
+        run: cd pipelines/realadvisor && npx tsx fetch-listings.ts
+        env:
+          RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          REALADVISOR_LIMIT: ${{ github.event.inputs.limit }}
