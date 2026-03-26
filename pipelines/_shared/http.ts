@@ -1,8 +1,9 @@
 /**
- * Shared HTTP client with proxy support and exponential backoff.
+ * Shared HTTP client with proxy fallback and exponential backoff.
  *
- * When WEBSHARE_PROXY_USER and WEBSHARE_PROXY_PASS are set, all requests
- * go through the Webshare rotating proxy. Otherwise, direct fetch is used.
+ * Strategy: try DIRECT first. If blocked (403/503), retry via PROXY.
+ * This avoids proxy issues (407, bad auth) when direct access works,
+ * and only uses the proxy as a fallback when the site blocks us.
  *
  * Usage:
  *   import { httpFetch } from '../_shared/http.js';
@@ -11,33 +12,52 @@
 
 import { HttpsProxyAgent } from 'https-proxy-agent';
 
-// Node 20 fetch doesn't support proxy natively, so we use node-fetch-style
-// workaround: we set the global dispatcher via undici if proxy is configured.
-
 const PROXY_HOST = 'p.webshare.io';
 const PROXY_PORT = 80;
 
 let agent: HttpsProxyAgent<string> | undefined;
+let proxyAvailable: boolean | null = null; // null = untested
 
 function getAgent(): HttpsProxyAgent<string> | undefined {
   if (agent) return agent;
 
   const user = process.env.WEBSHARE_PROXY_USER;
   const pass = process.env.WEBSHARE_PROXY_PASS;
-
   if (!user || !pass) return undefined;
 
-  const url = `http://${user}:${pass}@${PROXY_HOST}:${PROXY_PORT}`;
-  agent = new HttpsProxyAgent(url);
-  console.log('  Proxy configured: Webshare rotating proxy');
+  agent = new HttpsProxyAgent(`http://${user}:${pass}@${PROXY_HOST}:${PROXY_PORT}`);
   return agent;
 }
 
+async function fetchViaProxy(url: string, init?: any): Promise<Response | null> {
+  const proxyAgent = getAgent();
+  if (!proxyAgent || proxyAvailable === false) return null;
+
+  try {
+    const nodeFetch = (await import('node-fetch' as any)).default;
+    const res = (await nodeFetch(url, { ...init, agent: proxyAgent })) as unknown as Response;
+
+    if (res.status === 407) {
+      console.log('  Proxy auth failed (407) — disabling proxy for this run');
+      proxyAvailable = false;
+      return null;
+    }
+
+    if (proxyAvailable === null) {
+      console.log('  Proxy active: Webshare rotating proxy');
+      proxyAvailable = true;
+    }
+    return res;
+  } catch (err: any) {
+    console.log(`  Proxy error: ${err.message} — falling back to direct`);
+    proxyAvailable = false;
+    return null;
+  }
+}
+
 /**
- * Fetch with optional proxy and exponential backoff retry.
- *
- * Retries on: 429, 503, 502, 500, network errors.
- * Does NOT retry on: 404, 403, 401 (these are terminal).
+ * Fetch with exponential backoff retry.
+ * On blocking responses (403/503), automatically falls back to proxy.
  */
 export async function httpFetch(
   url: string,
@@ -45,40 +65,39 @@ export async function httpFetch(
 ): Promise<Response> {
   const retry = init?.retry ?? 0;
   const maxRetries = init?.maxRetries ?? 8;
-  const proxyAgent = getAgent();
 
   try {
-    // Use native fetch — if proxy is available, we'll handle it via
-    // the HTTPS_PROXY env var approach or direct agent injection.
-    // Node 20's undici-based fetch doesn't support agent directly,
-    // so we use the http module import for proxied requests.
-    let res: Response;
+    // 1. Try direct
+    const res = await fetch(url, init);
 
-    if (proxyAgent) {
-      // Use node's http module via https-proxy-agent
-      const { default: nodeFetch } = await import('node-fetch' as any).catch(() => ({ default: null }));
-      if (nodeFetch) {
-        res = (await nodeFetch(url, { ...init, agent: proxyAgent } as any)) as unknown as Response;
-      } else {
-        // Fallback: set env var and hope undici picks it up
-        res = await fetch(url, init);
-      }
-    } else {
-      res = await fetch(url, init);
+    // 2. If blocked, try proxy before retrying
+    if ([403, 503].includes(res.status) && retry === 0) {
+      const proxyRes = await fetchViaProxy(url, init);
+      if (proxyRes && proxyRes.ok) return proxyRes;
+      // Proxy also failed or unavailable — continue with retry logic
     }
 
-    // Retry on transient server errors
+    // 3. Retry on transient errors
     if ([429, 500, 502, 503].includes(res.status)) {
-      if (retry >= maxRetries) return res; // Give up, let caller handle
+      if (retry >= maxRetries) return res;
 
       const backoff = Math.min(120_000, 3_000 * Math.pow(2, retry));
       console.log(`  HTTP ${res.status} on ${url.split('?')[0]}, retry ${retry + 1}/${maxRetries} in ${(backoff / 1000).toFixed(0)}s...`);
       await new Promise((r) => setTimeout(r, backoff));
+
+      // On retry, try proxy if available
+      const proxyRes = await fetchViaProxy(url, init);
+      if (proxyRes && proxyRes.ok) return proxyRes;
+
       return httpFetch(url, { ...init, retry: retry + 1, maxRetries } as any);
     }
 
     return res;
   } catch (err: any) {
+    // Network error — try proxy
+    const proxyRes = await fetchViaProxy(url, init);
+    if (proxyRes) return proxyRes;
+
     if (retry >= maxRetries) throw err;
 
     const backoff = Math.min(120_000, 3_000 * Math.pow(2, retry));
