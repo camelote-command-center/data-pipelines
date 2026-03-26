@@ -2,7 +2,7 @@ name: Properstar (Listings)
 
 on:
   schedule:
-    - cron: '0 1 * * *'  # Daily at 01:00 UTC
+    - cron: '0 8 * * *'  # Daily at 08:00 UTC (09:00 CET)
   workflow_dispatch:
 
 jobs:
@@ -21,3 +21,5 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.LAMAP_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.LAMAP_SUPABASE_SERVICE_KEY }}
+          WEBSHARE_PROXY_USER: ${{ secrets.WEBSHARE_PROXY_USER }}
+          WEBSHARE_PROXY_PASS: ${{ secrets.WEBSHARE_PROXY_PASS }}

@@ -2,7 +2,7 @@ name: Immobilier (Listings)
 
 on:
   schedule:
-    - cron: '30 1 * * *'  # Daily at 01:30 UTC
+    - cron: '30 8 * * *'  # Daily at 08:30 UTC (09:30 CET)
   workflow_dispatch:
 
 jobs:
@@ -21,3 +21,5 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.LAMAP_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.LAMAP_SUPABASE_SERVICE_KEY }}
+          WEBSHARE_PROXY_USER: ${{ secrets.WEBSHARE_PROXY_USER }}
+          WEBSHARE_PROXY_PASS: ${{ secrets.WEBSHARE_PROXY_PASS }}

@@ -21,6 +21,7 @@
  */
 
 import { upsertBronze, sleep, verifyBronzeAccess } from '../_shared/supabase.js';
+import { httpFetch } from '../_shared/http.js';
 
 // ---------------------------------------------------------------------------
 // Config
@@ -110,7 +111,7 @@ async function getAuthorization(maxAttempts = 5): Promise<void> {
 
   while (attempts < maxAttempts) {
     try {
-      const res = await fetch(BASE_URL, { headers: HEADERS_BASE, redirect: 'manual' });
+      const res = await httpFetch(BASE_URL, { headers: HEADERS_BASE, redirect: 'manual', maxRetries: 0 } as any);
       const setCookie = res.headers.getSetCookie?.() || [];
 
       const tokenCookie = setCookie.find((c) => c.startsWith('token'));
@@ -151,16 +152,16 @@ async function getAuthorization(maxAttempts = 5): Promise<void> {
 
 async function apiGet(url: string, retry = 0): Promise<any> {
   try {
-    const res = await fetch(url, {
+    const res = await httpFetch(url, {
       headers: { ...HEADERS_API, authorization },
-    });
+    } as any);
 
     if (res.status === 404) return null;
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
     return await res.json();
   } catch (err) {
-    if (retry >= 10) throw err;
+    if (retry >= 5) throw err;
 
     await sleep(5_000);
     await getAuthorization();
@@ -170,17 +171,17 @@ async function apiGet(url: string, retry = 0): Promise<any> {
 
 async function apiPost(url: string, body: string, retry = 0): Promise<any> {
   try {
-    const res = await fetch(url, {
+    const res = await httpFetch(url, {
       method: 'POST',
       headers: { ...HEADERS_API, authorization },
       body,
-    });
+    } as any);
 
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
     return await res.json();
   } catch (err) {
-    if (retry >= 10) throw err;
+    if (retry >= 5) throw err;
 
     await sleep(5_000);
     await getAuthorization();

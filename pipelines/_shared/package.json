@@ -4,6 +4,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2",
     "https-proxy-agent": "^7",
+    "node-fetch": "^3.3.2",
     "playwright": "^1"
   }
 }

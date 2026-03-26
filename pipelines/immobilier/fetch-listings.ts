@@ -19,6 +19,7 @@
  */
 
 import { upsertBronze, sleep, verifyBronzeAccess } from '../_shared/supabase.js';
+import { httpFetch } from '../_shared/http.js';
 import * as cheerio from 'cheerio';
 
 // ---------------------------------------------------------------------------
@@ -50,24 +51,19 @@ const OFFER_TYPES = ['buy', 'rent'] as const;
 // HTTP helper with retry
 // ---------------------------------------------------------------------------
 
-async function httpGet(url: string, retry = 0): Promise<any> {
-  try {
-    const res = await fetch(url, { headers: HEADERS });
-    if (!res.ok) {
-      if (res.status === 404) return null;
-      throw new Error(`HTTP ${res.status}`);
-    }
+async function httpGet(url: string): Promise<any> {
+  const res = await httpFetch(url, { headers: HEADERS } as any);
 
-    const contentType = res.headers.get('content-type') || '';
-    if (contentType.includes('application/json')) {
-      return await res.json();
-    }
-    return await res.text();
-  } catch (err) {
-    if (retry >= 10) throw err;
-    await sleep(2_000);
-    return httpGet(url, retry + 1);
+  if (!res.ok) {
+    if (res.status === 404) return null;
+    throw new Error(`HTTP ${res.status} from ${url.split('?')[0]}`);
   }
+
+  const contentType = res.headers.get('content-type') || '';
+  if (contentType.includes('application/json')) {
+    return await res.json();
+  }
+  return await res.text();
 }
 
 // ---------------------------------------------------------------------------
