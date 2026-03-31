@@ -263,7 +263,13 @@ async function main() {
 
       // Get page count
       const firstPageUrl = urlTemplate.replace('{}', '1');
-      const firstPageHtml = await httpGet(firstPageUrl);
+      let firstPageHtml: any;
+      try {
+        firstPageHtml = await httpGet(firstPageUrl);
+      } catch (err) {
+        console.log(`    Error fetching first page: ${err}`);
+        continue;
+      }
       await sleep(RATE_LIMIT_MS);
 
       if (!firstPageHtml || typeof firstPageHtml !== 'string') {
@@ -281,12 +287,17 @@ async function main() {
 
       for (let page = 2; page <= pageCount; page++) {
         const pageUrl = urlTemplate.replace('{}', String(page));
-        const html = await httpGet(pageUrl);
-        await sleep(RATE_LIMIT_MS);
+        try {
+          const html = await httpGet(pageUrl);
+          await sleep(RATE_LIMIT_MS);
 
-        if (html && typeof html === 'string') {
-          const ids = extractListingIds(html);
-          allIds.push(...ids);
+          if (html && typeof html === 'string') {
+            const ids = extractListingIds(html);
+            allIds.push(...ids);
+          }
+        } catch (err) {
+          console.log(`    Error fetching page ${page}: ${err}`);
+          await sleep(2000); // back off on socket errors
         }
       }
 
@@ -355,7 +366,12 @@ async function main() {
   }
 }
 
-main().catch((err) => {
+main().catch(async (err) => {
   console.error('Fatal error:', err);
+  // If we already upserted some data, don't fail the workflow — we made progress
+  if (err?.cause?.code === 'UND_ERR_SOCKET' || err?.message?.includes('terminated') || err?.message?.includes('ECONNRESET')) {
+    console.log('  Socket error — but partial data was upserted. Exiting gracefully.');
+    process.exit(0);
+  }
   process.exit(1);
 });

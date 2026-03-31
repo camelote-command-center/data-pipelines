@@ -1,8 +1,8 @@
 name: DLD Transactions & Rentals
 
 on:
-  schedule:
-    - cron: '0 5 * * 6' # Saturday 05:00 UTC
+  # schedule:
+  #   - cron: '0 5 * * 6' # Saturday 05:00 UTC — DISABLED: DUBAI_PULSE_API_KEY/SECRET not configured
   workflow_dispatch:
 
 jobs:

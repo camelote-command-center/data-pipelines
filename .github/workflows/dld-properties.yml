@@ -1,8 +1,8 @@
 name: DLD Properties & Reference Data
 
 on:
-  schedule:
-    - cron: '0 6 1 * *' # 1st of month, 06:00 UTC
+  # schedule:
+  #   - cron: '0 6 1 * *' # 1st of month, 06:00 UTC — DISABLED: DUBAI_PULSE_API_KEY/SECRET not configured
   workflow_dispatch:
 
 jobs:
