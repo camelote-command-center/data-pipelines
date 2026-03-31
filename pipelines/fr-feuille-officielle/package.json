@@ -1,0 +1,18 @@
+{
+  "name": "fr-feuille-officielle",
+  "private": true,
+  "scripts": {
+    "discover": "tsx discover-issues.ts",
+    "fetch:transactions": "tsx fetch-transactions.ts",
+    "fetch:permits": "tsx fetch-permits.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2",
+    "@types/proj4": "^2.5.6",
+    "cheerio": "^1",
+    "proj4": "^2.20.3"
+  },
+  "devDependencies": {
+    "tsx": "^4"
+  }
+}

@@ -1,0 +1,89 @@
+name: VD - ACTIS Backfill (Building Permits)
+
+on:
+  workflow_dispatch:
+    inputs:
+      strategy:
+        description: 'Run strategy'
+        required: false
+        default: 'continue'
+        type: choice
+        options:
+          - continue    # Resume from state.json
+          - parallel    # Split remaining range into 3 parallel jobs
+          - custom      # Use start_id + chunk_size
+      start_id:
+        description: 'Custom start ID (for custom strategy)'
+        required: false
+      chunk_size:
+        description: 'IDs per job'
+        required: false
+        default: '20000'
+
+jobs:
+  # For 'parallel' strategy: split the full remaining range into 3 jobs
+  compute-ranges:
+    if: inputs.strategy == 'parallel'
+    runs-on: ubuntu-latest
+    outputs:
+      ranges: ${{ steps.calc.outputs.ranges }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: calc
+        run: |
+          LAST=$(python3 -c "import json; print(json.load(open('pipelines/vd-sad-actis/state.json')).get('last_processed_id', 41161))")
+          END=245500
+          RANGE=$((END - LAST))
+          CHUNK=$((RANGE / 3))
+          echo "ranges=[{\"start\":$((LAST+1)),\"end\":$((LAST+CHUNK))},{\"start\":$((LAST+CHUNK+1)),\"end\":$((LAST+2*CHUNK))},{\"start\":$((LAST+2*CHUNK+1)),\"end\":$END}]" >> $GITHUB_OUTPUT
+
+  parallel-backfill:
+    if: inputs.strategy == 'parallel'
+    needs: compute-ranges
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    strategy:
+      matrix:
+        range: ${{ fromJson(needs.compute-ranges.outputs.ranges) }}
+      max-parallel: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: cd pipelines/vd-sad-actis && npm ci
+      - name: Run backfill segment
+        run: |
+          cd pipelines/vd-sad-actis
+          CHUNK=$(( ${{ matrix.range.end }} - ${{ matrix.range.start }} + 1 ))
+          npx tsx fetch-and-parse.ts ${{ matrix.range.start }} $CHUNK
+        env:
+          SUPABASE_URL: ${{ secrets.LAMAP_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.LAMAP_SUPABASE_SERVICE_KEY }}
+
+  # For 'continue' or 'custom' strategy: single job
+  single-backfill:
+    if: inputs.strategy != 'parallel'
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: cd pipelines/vd-sad-actis && npm ci
+      - name: Run backfill
+        run: |
+          cd pipelines/vd-sad-actis
+          npx tsx fetch-and-parse.ts ${{ inputs.start_id || '' }} ${{ inputs.chunk_size || '20000' }}
+        env:
+          SUPABASE_URL: ${{ secrets.LAMAP_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.LAMAP_SUPABASE_SERVICE_KEY }}
+      - name: Commit state
+        run: |
+          cd pipelines/vd-sad-actis
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add state.json
+          git diff --cached --quiet || git commit -m "Update ACTIS backfill progress [skip ci]"
+          git push

@@ -1,0 +1,17 @@
+{
+  "name": "vd-sad-actis",
+  "private": true,
+  "scripts": {
+    "probe": "tsx probe-range.ts",
+    "fetch": "tsx fetch-and-parse.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2",
+    "p-limit": "^7.3.0",
+    "proj4": "^2"
+  },
+  "devDependencies": {
+    "@types/proj4": "^2",
+    "tsx": "^4"
+  }
+}
