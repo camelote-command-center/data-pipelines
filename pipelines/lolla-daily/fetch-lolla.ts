@@ -48,6 +48,7 @@ const FETCH_RETRIES = 3;
 const FETCH_BACKOFF_MS = [3_000, 8_000, 15_000];
 const SEED_SAMPLE_RATE = 0.8;    // 80% for seed mode
 const DATASET_CODE = 'lolla_daily';
+const MAX_ADS_PER_RUN = 500;     // cap daily runs to stay within 120-min timeout
 
 // ---------------------------------------------------------------------------
 // Env validation
@@ -676,8 +677,19 @@ async function main() {
       const existingAds = adUrls.filter((a) => existingSet.has(a.lollaId));
       const rescrapeAds = existingAds.filter(() => Math.random() < 0.10);
 
-      adUrls = [...newAds, ...rescrapeAds];
-      console.log(`  Daily mode: ${newAds.length} new + ${rescrapeAds.length} re-scrape = ${adUrls.length} total`);
+      // Cap total ads per run to stay within GitHub Actions timeout
+      // Prioritize new ads over re-scrape
+      const combined = [...newAds, ...rescrapeAds];
+      if (combined.length > MAX_ADS_PER_RUN) {
+        const cappedNew = newAds.slice(0, MAX_ADS_PER_RUN);
+        const remaining = MAX_ADS_PER_RUN - cappedNew.length;
+        const cappedRescrape = remaining > 0 ? rescrapeAds.slice(0, remaining) : [];
+        adUrls = [...cappedNew, ...cappedRescrape];
+        console.log(`  Daily mode: ${newAds.length} new + ${rescrapeAds.length} re-scrape = ${combined.length} total (capped to ${adUrls.length})`);
+      } else {
+        adUrls = combined;
+        console.log(`  Daily mode: ${newAds.length} new + ${rescrapeAds.length} re-scrape = ${adUrls.length} total`);
+      }
     }
 
     // 3. Fetch and parse each ad
