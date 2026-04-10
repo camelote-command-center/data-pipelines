@@ -18,7 +18,7 @@
  *   SUPABASE_SERVICE_ROLE_KEY - service_role key     (required)
  */
 
-import { upsertBronze, sleep, verifyBronzeAccess } from '../_shared/supabase.js';
+import { upsertBronze, sleep, verifyBronzeAccess, markStaleListings } from '../_shared/supabase.js';
 import { httpFetch } from '../_shared/http.js';
 import * as cheerio from 'cheerio';
 
@@ -140,6 +140,7 @@ function formatListing(data: Record<string, any>): Record<string, unknown> {
   const ad: Record<string, unknown> = {
     publishing_status: 'online',
     time_online: 1,
+    last_seen_at: new Date().toISOString(),
     source: 'immobilier',
     idObject: frData.idObject ?? null,
     priceFormatted: frData.priceFormatted ?? null,
@@ -364,6 +365,9 @@ async function main() {
     console.error('  FAILED: Zero rows upserted despite having records!');
     process.exit(1);
   }
+
+  // Mark stale listings as offline
+  await markStaleListings('immobilier', 100, totalFetched);
 }
 
 main().catch(async (err) => {

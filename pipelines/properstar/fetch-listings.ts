@@ -20,7 +20,7 @@
  *   SUPABASE_SERVICE_ROLE_KEY - service_role key     (required)
  */
 
-import { upsertBronze, sleep, verifyBronzeAccess } from '../_shared/supabase.js';
+import { upsertBronze, sleep, verifyBronzeAccess, markStaleListings } from '../_shared/supabase.js';
 import { httpFetch } from '../_shared/http.js';
 
 // ---------------------------------------------------------------------------
@@ -309,6 +309,7 @@ function formatListing(canton: string, resData: any): Record<string, unknown> {
     publishing_status: 'online',
     source: 'properstar',
     time_online: 1,
+    last_seen_at: new Date().toISOString(),
     offerType: data.transactionType?.name || data.transactionType?.id || null,
     price: data.price?.values?.[0]?.value ?? null,
     object: data.type?.name || data.type?.id || null,
@@ -533,6 +534,13 @@ async function main() {
 
   // Partial runs due to auth exhaustion are OK — exit 0 so the workflow
   // doesn't show as failed when it successfully saved partial data
+
+  // Mark stale listings as offline (only on full runs, not auth-exhausted partials)
+  if (!authExhausted) {
+    await markStaleListings('properstar', 100, totalFetched);
+  } else {
+    console.log('  Skipping stale check: partial run (auth exhausted)');
+  }
 }
 
 main().catch((err) => {

@@ -24,7 +24,7 @@
 
 import { chromium, type Browser, type Page } from 'playwright';
 import * as cheerio from 'cheerio';
-import { upsertBronze, sleep, verifyBronzeAccess } from '../_shared/supabase.js';
+import { upsertBronze, sleep, verifyBronzeAccess, markStaleListings } from '../_shared/supabase.js';
 import { proxyUrl } from '../_shared/proxy.js';
 
 // ---------------------------------------------------------------------------
@@ -390,6 +390,7 @@ async function main() {
                   ad_url: link,
                   publishing_status: 'online',
                   time_online: 1,
+                  last_seen_at: new Date().toISOString(),
                 });
               }
             } catch (err) {
@@ -434,6 +435,9 @@ async function main() {
     console.error('  FAILED: Zero rows upserted despite having records!');
     process.exit(1);
   }
+
+  // Mark stale listings as offline
+  await markStaleListings('acheterLouer', 50, allRecords.length);
 }
 
 main().catch((err) => {

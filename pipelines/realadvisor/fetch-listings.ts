@@ -17,7 +17,7 @@
  *   REALADVISOR_LIMIT                - max listings total (optional, for testing)
  */
 
-import { verifyAccess, upsert, sleep } from '../_shared/re-llm.js';
+import { verifyAccess, upsert, sleep, markStaleListings } from '../_shared/re-llm.js';
 
 // ---------------------------------------------------------------------------
 // Config
@@ -182,6 +182,8 @@ function mapListing(node: any): Record<string, unknown> {
     images: node.images?.length ? node.images : null,
     published_at: node.createdAt || null,
     updated_at: new Date().toISOString(),
+    publishing_status: 'online',
+    last_seen_at: new Date().toISOString(),
   };
 }
 
@@ -279,6 +281,9 @@ async function main() {
     console.error('  FAILED: Zero rows upserted despite having records!');
     process.exit(1);
   }
+
+  // Mark stale listings as offline
+  await markStaleListings('bronze_ch', 'realadvisor_listings', 'id', 1000, totalFetched);
 }
 
 main().catch((err) => {

@@ -18,7 +18,7 @@
  *   FLATFOX_LIMIT                    - max listings to fetch (optional, for testing)
  */
 
-import { verifyAccess, upsert, sleep } from '../_shared/re-llm.js';
+import { verifyAccess, upsert, sleep, markStaleListings } from '../_shared/re-llm.js';
 
 // ---------------------------------------------------------------------------
 // Config
@@ -129,6 +129,8 @@ function mapListing(raw: any): Record<string, unknown> {
       : null,
     published_at: raw.published || null,
     updated_at: new Date().toISOString(),
+    publishing_status: 'online',
+    last_seen_at: new Date().toISOString(),
   };
 }
 
@@ -220,6 +222,9 @@ async function main() {
     console.error('  FAILED: Zero rows upserted despite having records!');
     process.exit(1);
   }
+
+  // Mark stale listings as offline
+  await markStaleListings('bronze_ch', 'flatfox', 'url', 500, totalFetched);
 }
 
 main().catch((err) => {

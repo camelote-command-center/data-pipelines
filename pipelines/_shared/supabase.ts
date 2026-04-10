@@ -82,6 +82,57 @@ export async function upsertBronze(
 }
 
 // ---------------------------------------------------------------------------
+// Mark stale listings as offline
+// ---------------------------------------------------------------------------
+
+/**
+ * Mark listings as offline if not seen in `staleDays` days.
+ *
+ * Safety: only runs if the parser fetched at least `minFetchedCount` records
+ * in this run (prevents mass-deactivation on partial/failed runs).
+ */
+export async function markStaleListings(
+  table: string,
+  minFetchedCount: number,
+  actualFetchedCount: number,
+  staleDays = 3,
+): Promise<number> {
+  if (actualFetchedCount < minFetchedCount) {
+    console.log(
+      `  Skipping stale check: only ${actualFetchedCount} fetched (min: ${minFetchedCount})`,
+    );
+    return 0;
+  }
+
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - staleDays);
+  const cutoffISO = cutoff.toISOString();
+
+  const { data, error } = await supabase
+    .schema('bronze')
+    .from(table)
+    .update({ publishing_status: 'offline', time_online: 0 })
+    .eq('publishing_status', 'online')
+    .lt('last_seen_at', cutoffISO)
+    .select('ad_url');
+
+  if (error) {
+    console.error(`  Mark stale error: ${error.message}`);
+    return 0;
+  }
+
+  const marked = data?.length ?? 0;
+  if (marked > 0) {
+    console.log(
+      `  Marked ${marked} listings as offline (not seen since ${cutoffISO.split('T')[0]})`,
+    );
+  } else {
+    console.log(`  No stale listings found (cutoff: ${cutoffISO.split('T')[0]})`);
+  }
+  return marked;
+}
+
+// ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
 
