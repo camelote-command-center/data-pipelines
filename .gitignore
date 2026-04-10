@@ -4,5 +4,7 @@ node_modules/
 .env.*
 !.env.example
 .DS_Store
+__pycache__/
+*.pyc
 data/
 state.json
