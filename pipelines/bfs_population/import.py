@@ -43,20 +43,23 @@ from shared.freshness import get_dataset_meta, update_dataset_meta
 # Config
 # ──────────────────────────────────────────────────────────────
 
-# opendata.swiss dataset search — searches for BFS population data
-OPENDATA_SEARCH_URL = (
-    "https://opendata.swiss/api/3/action/package_search"
-    "?q=bevoelkerung+gemeinde+bfs&rows=10"
-)
-
-# Direct BFS ASSET URLs (fallback) — BFS population by commune
+# Direct BFS ASSET URLs (PRIMARY) — BFS population by commune
 # Asset IDs change over time; we try several from newest to oldest.
-BFS_FALLBACK_ASSET_IDS = [
+BFS_ASSET_IDS = [
     "36451447",  # 2025 provisional population by commune
     "34447410",  # 2024 provisional population by commune
     "32007762",  # older asset (may be gone)
 ]
 BFS_ASSET_URL_TEMPLATE = "https://dam-api.bfs.admin.ch/hub/api/dam/assets/{}/master"
+
+# opendata.swiss dataset search (FALLBACK) — searches for BFS population data
+OPENDATA_SEARCH_URL = (
+    "https://opendata.swiss/api/3/action/package_search"
+    "?q=bevoelkerung+gemeinde+bfs&rows=10"
+)
+
+# Reject URLs from cantonal portals (they return partial/unrelated data)
+REJECTED_DOMAINS = {"data.zg.ch", "data.bs.ch", "data.bl.ch", "data.be.ch", "data.zh.ch"}
 
 TABLE = "bfs_population"
 CONFLICT_COLUMN = "year,bfs_commune_number"
@@ -146,6 +149,13 @@ def get_row_count(url: str, key: str, schema: str) -> int | None:
     return None
 
 
+def _is_rejected_url(url: str) -> bool:
+    """Reject URLs from cantonal portals that return partial/unrelated data."""
+    from urllib.parse import urlparse
+    domain = urlparse(url).hostname or ""
+    return domain in REJECTED_DOMAINS
+
+
 def find_csv_url_opendata() -> str | None:
     """Search opendata.swiss for the BFS population CSV download URL."""
     try:
@@ -155,6 +165,7 @@ def find_csv_url_opendata() -> str | None:
         results = data.get("result", {}).get("results", [])
 
         for dataset in results:
+            org = (dataset.get("organization", {}) or {}).get("name", "")
             for resource in dataset.get("resources", []):
                 fmt = (resource.get("format") or "").lower()
                 url = resource.get("url", "")
@@ -163,16 +174,20 @@ def find_csv_url_opendata() -> str | None:
                     "gemeinde" in name or "commune" in name or "population" in name
                     or "bevoelkerung" in name
                 ):
-                    print(f"  Found CSV: {_resource_name_str(resource.get('name'))}")
+                    if _is_rejected_url(url):
+                        print(f"  Skipped (cantonal portal): {url}")
+                        continue
+                    print(f"  Found CSV: {_resource_name_str(resource.get('name'))} (org: {org})")
                     return url
 
-        # Broader search: any CSV resource
+        # Broader search: any CSV resource (still filtering cantonal portals)
         for dataset in results:
             for resource in dataset.get("resources", []):
                 fmt = (resource.get("format") or "").lower()
-                if fmt in ("csv", "text/csv"):
+                url = resource.get("url", "")
+                if fmt in ("csv", "text/csv") and not _is_rejected_url(url):
                     print(f"  Found CSV (broad match): {_resource_name_str(resource.get('name'))}")
-                    return resource.get("url")
+                    return url
 
     except Exception as e:
         print(f"  Warning: opendata.swiss search failed: {e}")
@@ -282,31 +297,34 @@ def main():
     rows_before = get_row_count(lamap_url, lamap_key, lamap_schema)
     print(f"\n  Rows before: {rows_before:,}" if rows_before is not None else "\n  Rows before: unknown")
 
-    # ── Find CSV URL ──
-    print("\n  Searching opendata.swiss for BFS population data...")
-    csv_url = find_csv_url_opendata()
-
     # ── Download CSV ──
     start = time.time()
     text = None
+    csv_url = None
 
-    if csv_url:
+    # Strategy 1: BFS DAM API (primary — direct asset download)
+    print("\n  Trying BFS DAM API assets...")
+    for asset_id in BFS_ASSET_IDS:
+        asset_url = BFS_ASSET_URL_TEMPLATE.format(asset_id)
+        print(f"  Trying asset {asset_id}...")
         try:
-            text = download_csv(csv_url)
-        except requests.exceptions.HTTPError as e:
-            print(f"  Warning: opendata.swiss URL failed ({e}), trying fallbacks...")
+            text = download_csv(asset_url)
+            csv_url = asset_url
+            print(f"  Success: asset {asset_id}")
+            break
+        except requests.exceptions.HTTPError:
+            print(f"  Asset {asset_id} not available, trying next...")
+            continue
 
+    # Strategy 2: opendata.swiss search (fallback)
     if not text:
-        for asset_id in BFS_FALLBACK_ASSET_IDS:
-            fallback_url = BFS_ASSET_URL_TEMPLATE.format(asset_id)
-            print(f"  Trying fallback asset {asset_id}...")
+        print("\n  BFS DAM assets unavailable, searching opendata.swiss...")
+        csv_url = find_csv_url_opendata()
+        if csv_url:
             try:
-                text = download_csv(fallback_url)
-                csv_url = fallback_url
-                break
-            except requests.exceptions.HTTPError:
-                print(f"  Asset {asset_id} not available, trying next...")
-                continue
+                text = download_csv(csv_url)
+            except requests.exceptions.HTTPError as e:
+                print(f"  Warning: opendata.swiss URL failed ({e})")
 
     if not text:
         print("  ERROR: Could not download population data from any source")
