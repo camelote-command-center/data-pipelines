@@ -61,7 +61,10 @@ OPENDATA_SEARCH_URL = (
 )
 
 # Reject URLs from cantonal portals (they return partial/unrelated data)
-REJECTED_DOMAINS = {"data.zg.ch", "data.bs.ch", "data.bl.ch", "data.be.ch", "data.zh.ch"}
+REJECTED_DOMAINS = {
+    "data.zg.ch", "data.bs.ch", "data.bl.ch", "data.be.ch", "data.zh.ch",
+    "daten.statistik.zh.ch",
+}
 
 TABLE = "bfs_population"
 CONFLICT_COLUMN = "year,bfs_commune_number"
@@ -163,13 +166,22 @@ def get_row_count(url: str, key: str, schema: str) -> int | None:
 # XLSX Parser (BFS DAM API format)
 # ──────────────────────────────────────────────────────────────
 
-def download_binary(url: str) -> bytes:
-    """Download file content as bytes."""
-    print(f"  Downloading: {url}")
-    r = requests.get(url, timeout=120)
-    r.raise_for_status()
-    print(f"  Downloaded {len(r.content):,} bytes")
-    return r.content
+def download_binary(url: str, retries: int = 3) -> bytes:
+    """Download file content as bytes with retry on timeout."""
+    for attempt in range(1, retries + 1):
+        try:
+            print(f"  Downloading: {url}" + (f" (attempt {attempt})" if attempt > 1 else ""))
+            r = requests.get(url, timeout=120)
+            r.raise_for_status()
+            print(f"  Downloaded {len(r.content):,} bytes")
+            return r.content
+        except (requests.exceptions.ConnectionError, requests.exceptions.Timeout) as e:
+            if attempt < retries:
+                wait = attempt * 10
+                print(f"  Timeout/connection error, retrying in {wait}s...")
+                time.sleep(wait)
+            else:
+                raise
 
 
 def parse_xlsx_to_records(xlsx_bytes: bytes) -> list[dict]:
