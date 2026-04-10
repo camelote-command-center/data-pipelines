@@ -1,7 +1,9 @@
 import { createClient } from '@supabase/supabase-js';
 import type { PricePaidRecord } from './parse-transform.js';
 
-const BATCH_SIZE = 5000;
+const BATCH_SIZE = 2000;
+const DELETE_CHUNK_SIZE = 200;
+const RETRY_DELAY_MS = 3000;
 
 function getClient() {
   const url = process.env.SUPABASE_URL;
@@ -58,7 +60,17 @@ export async function ingest(records: PricePaidRecord[]): Promise<IngestStats> {
       }
 
       const { error } = await supabase.from('price_paid').insert(newRows);
-      if (error) throw error;
+      if (error) {
+        // Retry once on timeout errors (common on cold starts)
+        if (error.message?.includes('timeout') || error.code === '57014') {
+          console.warn(`[Ingest:Add] Batch ${batchNum}/${totalBatches} timed out, retrying after ${RETRY_DELAY_MS}ms...`);
+          await new Promise((r) => setTimeout(r, RETRY_DELAY_MS));
+          const { error: retryError } = await supabase.from('price_paid').insert(newRows);
+          if (retryError) throw retryError;
+        } else {
+          throw error;
+        }
+      }
 
       stats.inserted += newRows.length;
       stats.skipped += batch.length - newRows.length;
@@ -108,9 +120,12 @@ export async function ingest(records: PricePaidRecord[]): Promise<IngestStats> {
 
     try {
       const ids = batch.map((r) => r.transaction_id);
-      const { error } = await supabase.from('price_paid').delete().in('transaction_id', ids);
-
-      if (error) throw error;
+      // Chunk deletes into small batches to avoid PostgREST URL length limits
+      for (let j = 0; j < ids.length; j += DELETE_CHUNK_SIZE) {
+        const chunk = ids.slice(j, j + DELETE_CHUNK_SIZE);
+        const { error } = await supabase.from('price_paid').delete().in('transaction_id', chunk);
+        if (error) throw error;
+      }
       stats.deleted += batch.length;
       console.log(`[Ingest:Delete] Batch ${batchNum}/${totalBatches}: ${batch.length} deleted`);
     } catch (err: any) {

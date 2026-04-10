@@ -49,11 +49,14 @@ OPENDATA_SEARCH_URL = (
     "?q=bevoelkerung+gemeinde+bfs&rows=10"
 )
 
-# Direct BFS ASSET URL (fallback) — BFS population by commune
-# This asset ID may change; the opendata.swiss search is more stable.
-BFS_FALLBACK_URL = (
-    "https://dam-api.bfs.admin.ch/hub/api/dam/assets/32007762/master"
-)
+# Direct BFS ASSET URLs (fallback) — BFS population by commune
+# Asset IDs change over time; we try several from newest to oldest.
+BFS_FALLBACK_ASSET_IDS = [
+    "36451447",  # 2025 provisional population by commune
+    "34447410",  # 2024 provisional population by commune
+    "32007762",  # older asset (may be gone)
+]
+BFS_ASSET_URL_TEMPLATE = "https://dam-api.bfs.admin.ch/hub/api/dam/assets/{}/master"
 
 TABLE = "bfs_population"
 CONFLICT_COLUMN = "year,bfs_commune_number"
@@ -114,6 +117,15 @@ COLUMN_MAP = {
 # Helpers
 # ──────────────────────────────────────────────────────────────
 
+def _resource_name_str(name) -> str:
+    """Extract a plain string from a resource name that may be a multilingual dict."""
+    if isinstance(name, dict):
+        return name.get("de") or name.get("en") or name.get("fr") or next(iter(name.values()), "")
+    if isinstance(name, str):
+        return name
+    return ""
+
+
 def get_row_count(url: str, key: str, schema: str) -> int | None:
     """Get current row count via PostgREST HEAD request."""
     endpoint = f"{url.rstrip('/')}/rest/v1/{TABLE}?select=count"
@@ -146,12 +158,12 @@ def find_csv_url_opendata() -> str | None:
             for resource in dataset.get("resources", []):
                 fmt = (resource.get("format") or "").lower()
                 url = resource.get("url", "")
-                name = (resource.get("name") or "").lower()
+                name = _resource_name_str(resource.get("name")).lower()
                 if fmt in ("csv", "text/csv") and (
                     "gemeinde" in name or "commune" in name or "population" in name
                     or "bevoelkerung" in name
                 ):
-                    print(f"  Found CSV: {resource.get('name')}")
+                    print(f"  Found CSV: {_resource_name_str(resource.get('name'))}")
                     return url
 
         # Broader search: any CSV resource
@@ -159,7 +171,7 @@ def find_csv_url_opendata() -> str | None:
             for resource in dataset.get("resources", []):
                 fmt = (resource.get("format") or "").lower()
                 if fmt in ("csv", "text/csv"):
-                    print(f"  Found CSV (broad match): {resource.get('name')}")
+                    print(f"  Found CSV (broad match): {_resource_name_str(resource.get('name'))}")
                     return resource.get("url")
 
     except Exception as e:
@@ -273,13 +285,32 @@ def main():
     # ── Find CSV URL ──
     print("\n  Searching opendata.swiss for BFS population data...")
     csv_url = find_csv_url_opendata()
-    if not csv_url:
-        print("  opendata.swiss search failed, using fallback URL")
-        csv_url = BFS_FALLBACK_URL
 
     # ── Download CSV ──
     start = time.time()
-    text = download_csv(csv_url)
+    text = None
+
+    if csv_url:
+        try:
+            text = download_csv(csv_url)
+        except requests.exceptions.HTTPError as e:
+            print(f"  Warning: opendata.swiss URL failed ({e}), trying fallbacks...")
+
+    if not text:
+        for asset_id in BFS_FALLBACK_ASSET_IDS:
+            fallback_url = BFS_ASSET_URL_TEMPLATE.format(asset_id)
+            print(f"  Trying fallback asset {asset_id}...")
+            try:
+                text = download_csv(fallback_url)
+                csv_url = fallback_url
+                break
+            except requests.exceptions.HTTPError:
+                print(f"  Asset {asset_id} not available, trying next...")
+                continue
+
+    if not text:
+        print("  ERROR: Could not download population data from any source")
+        sys.exit(1)
 
     # ── Parse ──
     print("\n  Parsing CSV...")

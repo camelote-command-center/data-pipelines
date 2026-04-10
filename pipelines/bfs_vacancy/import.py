@@ -101,9 +101,26 @@ COLUMN_MAP = {
 }
 
 
+# Expected columns in a valid BFS vacancy CSV (at least some of these must be present)
+EXPECTED_VACANCY_HEADERS = {
+    "leerwohnungsziffer", "leerwohnungsquote", "vacancy_rate_pct",
+    "taux_vacance", "quote", "leerwohnungen", "logements_vacants",
+    "vacant_dwellings", "leerstehend",
+}
+
+
 # ──────────────────────────────────────────────────────────────
 # Helpers
 # ──────────────────────────────────────────────────────────────
+
+def _resource_name_str(name) -> str:
+    """Extract a plain string from a resource name that may be a multilingual dict."""
+    if isinstance(name, dict):
+        return name.get("de") or name.get("en") or name.get("fr") or next(iter(name.values()), "")
+    if isinstance(name, str):
+        return name
+    return ""
+
 
 def get_row_count(url: str, key: str, schema: str) -> int | None:
     endpoint = f"{url.rstrip('/')}/rest/v1/{TABLE}?select=count"
@@ -124,6 +141,25 @@ def get_row_count(url: str, key: str, schema: str) -> int | None:
     return None
 
 
+def _validate_vacancy_csv(csv_url: str) -> bool:
+    """Download the first few KB of a CSV and check it has vacancy-related columns."""
+    try:
+        r = requests.get(csv_url, timeout=30, stream=True)
+        r.raise_for_status()
+        # Read just the first 4KB to check headers
+        chunk = next(r.iter_content(4096, decode_unicode=True), "")
+        r.close()
+        if not chunk:
+            return False
+        first_line = chunk.split("\n")[0].lower()
+        # Normalise for matching
+        normalised = first_line.replace(" ", "_").replace("-", "_").replace('"', '')
+        return any(h in normalised for h in EXPECTED_VACANCY_HEADERS)
+    except Exception as e:
+        print(f"  Warning: could not validate CSV at {csv_url}: {e}")
+        return False
+
+
 def find_csv_url_opendata() -> str | None:
     """Search opendata.swiss for the BFS vacancy CSV download URL."""
     try:
@@ -132,12 +168,25 @@ def find_csv_url_opendata() -> str | None:
         data = r.json()
         results = data.get("result", {}).get("results", [])
 
+        csv_candidates = []
         for dataset in results:
+            dataset_title = _resource_name_str(dataset.get("title")).lower() if isinstance(dataset.get("title"), dict) else (dataset.get("title") or "").lower()
             for resource in dataset.get("resources", []):
                 fmt = (resource.get("format") or "").lower()
                 if fmt in ("csv", "text/csv"):
-                    print(f"  Found CSV: {resource.get('name')}")
-                    return resource.get("url")
+                    name = _resource_name_str(resource.get("name")).lower()
+                    url = resource.get("url", "")
+                    csv_candidates.append((name, dataset_title, url))
+
+        # Try each candidate, validating it has vacancy columns
+        for name, dataset_title, url in csv_candidates:
+            print(f"  Checking CSV: {name} (dataset: {dataset_title})")
+            if _validate_vacancy_csv(url):
+                print(f"  Validated CSV with vacancy columns: {name}")
+                return url
+            else:
+                print(f"  Skipped (no vacancy columns): {name}")
+
     except Exception as e:
         print(f"  Warning: opendata.swiss search failed: {e}")
     return None
