@@ -581,6 +581,18 @@ def main():
         print("  ERROR: No records parsed from any source")
         sys.exit(1)
 
+    # Deduplicate by (year, canton_code) — keep first occurrence (newest sheet)
+    seen = set()
+    unique_records = []
+    for rec in records:
+        key = (rec["year"], rec["canton_code"])
+        if key not in seen:
+            seen.add(key)
+            unique_records.append(rec)
+    if len(unique_records) < len(records):
+        print(f"  Deduplicated: {len(records)} → {len(unique_records)} (removed {len(records) - len(unique_records)} duplicates)")
+    records = unique_records
+
     # Normalise keys
     all_keys = set()
     for rec in records:
