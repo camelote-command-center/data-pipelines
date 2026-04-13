@@ -22,3 +22,13 @@ jobs:
           YOONEET_SUPABASE_URL: ${{ secrets.YOONEET_SUPABASE_URL }}
           YOONEET_SUPABASE_SERVICE_KEY: ${{ secrets.YOONEET_SUPABASE_SERVICE_KEY }}
           YOONEET_SCHEMA: bronze
+      - name: Update dataset metadata
+        if: always()
+        run: |
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?workflow_file=eq.sitg_authorizations.yml" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+            -d "{\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"last_error\":null}"
+        env:
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
