@@ -37,6 +37,7 @@ import requests
 # Add repo root to path so we can import shared/
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 from shared.supabase_client import batch_upsert
+from shared.freshness import update_dataset_meta
 
 # ──────────────────────────────────────────────────────────────
 # Config
@@ -475,6 +476,19 @@ def main():
             sys.exit(1)
     print(f"  Fetch errors:        {errors}")
     print("=" * 55)
+
+    # ── Step 5: Update dataset metadata on camelote_data ──
+    cmd_url = os.environ.get("CAMELOTE_DATA_SUPABASE_URL", "")
+    cmd_key = os.environ.get("CAMELOTE_DATA_SUPABASE_SERVICE_KEY", "")
+    if cmd_url and cmd_key:
+        update_dataset_meta(
+            url=cmd_url,
+            key=cmd_key,
+            dataset_code="ext_simap",
+            record_count=rows_after,
+        )
+    else:
+        print("  Skipping metadata update (CAMELOTE_DATA env vars not set)")
 
 
 if __name__ == "__main__":
