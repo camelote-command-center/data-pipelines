@@ -1,0 +1,75 @@
+name: SILGeneve parser
+
+on:
+  schedule:
+    # Sunday at 05:00 UTC (after FAO Saturday ~04:00 UTC).
+    # Weekly is plenty — Geneva real-estate laws change rarely.
+    - cron: "0 5 * * 0"
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: "Reason for manual run"
+        required: false
+        default: "manual test"
+
+concurrency:
+  group: silgeneve-parser
+  cancel-in-progress: false
+
+jobs:
+  scrape-and-upsert:
+    name: Scrape SILGeneve and upsert to re-LLM
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run SILGeneve parser
+        env:
+          RE_LLM_DB_URL: ${{ secrets.RE_LLM_DB_URL }}
+        run: python pipelines/silgeneve/parser.py
+
+      - name: Update dataset metadata
+        if: always()
+        run: |
+          COUNT=$(curl -s \
+            -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
+            -H "Accept-Profile: bronze_ch" \
+            -H "Prefer: count=exact" \
+            --head "$URL/rest/v1/silgeneve_laws?select=*" \
+            | grep -i content-range | sed 's|.*/||' | tr -d '\r')
+          STATUS_PAYLOAD="{\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"record_count\":${COUNT:-0}"
+          if [ "${{ job.status }}" = "success" ]; then
+            STATUS_PAYLOAD="${STATUS_PAYLOAD},\"last_error\":null,\"status\":\"active\"}"
+          else
+            STATUS_PAYLOAD="${STATUS_PAYLOAD},\"last_error\":\"Workflow failed at $(date -u +%Y-%m-%dT%H:%M:%SZ) — check Actions log\",\"status\":\"error\"}"
+          fi
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.ge_silgeneve_laws" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+            -d "$STATUS_PAYLOAD"
+        env:
+          URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+
+      - name: Upload parser log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: silgeneve-parser-log-${{ github.run_id }}
+          path: pipelines/silgeneve/*.log
+          if-no-files-found: ignore
+          retention-days: 14

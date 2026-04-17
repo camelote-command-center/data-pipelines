@@ -1,0 +1,196 @@
+{
+  "_comment": "Geneva cantonal real-estate-related laws and regulations, sourced from SILGeneve. URL pattern: https://silgeneve.ch/legis/data/{url_slug}. Update this file to add or remove laws.",
+  "_url_base": "https://silgeneve.ch/legis/data/",
+  "laws": [
+    {
+      "rsge": "L 5 05",
+      "url_slug": "rsg_l5_05.htm",
+      "short_name": "LCI",
+      "full_title": "Loi sur les constructions et les installations diverses",
+      "law_type": "loi",
+      "domain": "construction",
+      "priority": 1,
+      "notes": "Loi-cadre pour toute construction à Genève: zones, gabarits, distances, autorisations"
+    },
+    {
+      "rsge": "L 5 05.01",
+      "url_slug": "rsg_l5_05p01.htm",
+      "short_name": "RCI",
+      "full_title": "Règlement d'application de la loi sur les constructions et les installations diverses",
+      "law_type": "reglement",
+      "domain": "construction",
+      "priority": 1,
+      "notes": "Règlement d'application de la LCI"
+    },
+    {
+      "rsge": "L 5 20",
+      "url_slug": "rsg_l5_20.htm",
+      "short_name": "LDTR",
+      "full_title": "Loi sur les démolitions, transformations et rénovations de maisons d'habitation",
+      "law_type": "loi",
+      "domain": "logement",
+      "priority": 1,
+      "notes": "LA loi critique pour tout bien à Genève: démolitions, transformations, changements d'affectation, aliénations"
+    },
+    {
+      "rsge": "L 5 20.01",
+      "url_slug": "rsg_l5_20p01.htm",
+      "short_name": "RDTR",
+      "full_title": "Règlement d'application de la loi sur les démolitions, transformations et rénovations de maisons d'habitation",
+      "law_type": "reglement",
+      "domain": "logement",
+      "priority": 1,
+      "notes": "Règlement d'application LDTR (pénurie, 90 jours plates-formes location, revenu médian)"
+    },
+    {
+      "rsge": "L 5 20.05",
+      "url_slug": "rsg_l5_20p05.htm",
+      "short_name": "ArRLoyers",
+      "full_title": "Arrêté relatif à la révision des loyers répondant aux besoins prépondérants de la population",
+      "law_type": "arrete",
+      "domain": "logement",
+      "priority": 2,
+      "notes": "Fourchette des loyers 'besoins prépondérants' — révisée tous les 2 ans"
+    },
+    {
+      "rsge": "I 4 05",
+      "url_slug": "rsg_i4_05.htm",
+      "short_name": "LGL",
+      "full_title": "Loi générale sur le logement et la protection des locataires",
+      "law_type": "loi",
+      "domain": "logement",
+      "priority": 1,
+      "notes": "HLM, HBM, HM, HCM, subventions, aide au logement, surtaxes"
+    },
+    {
+      "rsge": "I 4 05.01",
+      "url_slug": "rsg_i4_05p01.htm",
+      "short_name": "RGL",
+      "full_title": "Règlement d'exécution de la loi générale sur le logement et la protection des locataires",
+      "law_type": "reglement",
+      "domain": "logement",
+      "priority": 1,
+      "notes": "Règlement LGL: surtaxes, subventions personnalisées, barèmes revenus"
+    },
+    {
+      "rsge": "L 1 30",
+      "url_slug": "rsg_l1_30.htm",
+      "short_name": "LaLAT",
+      "full_title": "Loi d'application de la loi fédérale sur l'aménagement du territoire",
+      "law_type": "loi",
+      "domain": "amenagement",
+      "priority": 1,
+      "notes": "Zones de construction, plan directeur cantonal, zones ordinaires/développement"
+    },
+    {
+      "rsge": "L 1 35",
+      "url_slug": "rsg_l1_35.htm",
+      "short_name": "LGZD",
+      "full_title": "Loi générale sur les zones de développement",
+      "law_type": "loi",
+      "domain": "amenagement",
+      "priority": 1,
+      "notes": "Zones de développement: PLQ, contrôle prix, vente appartements"
+    },
+    {
+      "rsge": "L 1 40",
+      "url_slug": "rsg_l1_40.htm",
+      "short_name": "LExt",
+      "full_title": "Loi sur l'extension des voies de communication et l'aménagement des quartiers ou localités",
+      "law_type": "loi",
+      "domain": "amenagement",
+      "priority": 2,
+      "notes": "PLQ — plans localisés de quartier"
+    },
+    {
+      "rsge": "L 1 45",
+      "url_slug": "rsg_l1_45.htm",
+      "short_name": "LRoutes",
+      "full_title": "Loi sur les routes",
+      "law_type": "loi",
+      "domain": "amenagement",
+      "priority": 3,
+      "notes": "Servitudes routières, limites, distances"
+    },
+    {
+      "rsge": "L 1 10",
+      "url_slug": "rsg_l1_10.htm",
+      "short_name": "LPE-GE",
+      "full_title": "Loi d'application de la loi fédérale sur la protection de l'environnement",
+      "law_type": "loi",
+      "domain": "environnement",
+      "priority": 2,
+      "notes": "Nuisances, bruit, sites pollués, OPAM — impact direct autorisations construire"
+    },
+    {
+      "rsge": "L 3 05",
+      "url_slug": "rsg_l3_05.htm",
+      "short_name": "LPMNS",
+      "full_title": "Loi sur la protection des monuments, de la nature et des sites",
+      "law_type": "loi",
+      "domain": "patrimoine",
+      "priority": 2,
+      "notes": "Monuments classés, protection zones, impact travaux immobiliers"
+    },
+    {
+      "rsge": "L 4 05",
+      "url_slug": "rsg_l4_05.htm",
+      "short_name": "LEn",
+      "full_title": "Loi sur l'énergie",
+      "law_type": "loi",
+      "domain": "energie",
+      "priority": 1,
+      "notes": "Normes énergétiques bâtiments, rénovation, IDC, chauffages fossiles"
+    },
+    {
+      "rsge": "L 4 05.01",
+      "url_slug": "rsg_l4_05p01.htm",
+      "short_name": "REn",
+      "full_title": "Règlement d'application de la loi sur l'énergie",
+      "law_type": "reglement",
+      "domain": "energie",
+      "priority": 1,
+      "notes": "Règlement énergie: normes HPE, THPE, indice de dépense de chaleur"
+    },
+    {
+      "rsge": "B 7 05",
+      "url_slug": "rsg_b7_05.htm",
+      "short_name": "LEx",
+      "full_title": "Loi sur l'expropriation pour cause d'utilité publique",
+      "law_type": "loi",
+      "domain": "expropriation",
+      "priority": 3,
+      "notes": "Indemnités, procédure, expropriation temporaire d'usage (LDTR art. 26-38)"
+    },
+    {
+      "rsge": "F 3 10",
+      "url_slug": "rsg_f3_10.htm",
+      "short_name": "LCP",
+      "full_title": "Loi sur les contributions publiques",
+      "law_type": "loi",
+      "domain": "fiscalite",
+      "priority": 2,
+      "notes": "Impôt immobilier complémentaire, droits d'enregistrement, impôt bénéfice/gain immobilier"
+    },
+    {
+      "rsge": "D 3 30",
+      "url_slug": "rsg_d3_30.htm",
+      "short_name": "LIPP",
+      "full_title": "Loi sur l'imposition des personnes physiques",
+      "law_type": "loi",
+      "domain": "fiscalite",
+      "priority": 2,
+      "notes": "Valeur locative, déductions immobilières, fortune"
+    },
+    {
+      "rsge": "E 1 05",
+      "url_slug": "rsg_e1_05.htm",
+      "short_name": "LOJ",
+      "full_title": "Loi sur l'organisation judiciaire",
+      "law_type": "loi",
+      "domain": "procedure",
+      "priority": 3,
+      "notes": "TAPI, Chambre admin, tribunal des baux"
+    }
+  ]
+}
