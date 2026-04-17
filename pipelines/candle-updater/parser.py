@@ -39,6 +39,15 @@ CAMELOTE_SUPABASE_URL = os.environ.get("CAMELOTE_SUPABASE_URL")
 CAMELOTE_SUPABASE_KEY = os.environ.get("CAMELOTE_SUPABASE_KEY")
 DATASET_ID = os.environ.get("CANDLE_UPDATER_DATASET_ID")
 
+# WebShare HTTP proxy — needed because GitHub Actions runners are in
+# US datacenters and Binance returns HTTP 451 (geo-blocked).
+PROXY_USER = os.environ.get("WEBSHARE_PROXY_USER")
+PROXY_PASS = os.environ.get("WEBSHARE_PROXY_PASS")
+PROXY_URL = (
+    f"http://{PROXY_USER}:{PROXY_PASS}@p.webshare.io:80"
+    if PROXY_USER and PROXY_PASS else None
+)
+
 BINANCE_URL = "https://api.binance.com/api/v3/klines"
 
 # All assets to ingest (Binance symbol -> DB asset name)
@@ -447,6 +456,11 @@ def main():
 
     session = requests.Session()
     session.headers["User-Agent"] = "candle-updater/2.0"
+    if PROXY_URL:
+        session.proxies = {"http": PROXY_URL, "https": PROXY_URL}
+        print(f"  Using WebShare proxy (user: {PROXY_USER})")
+    else:
+        print("  No proxy configured, connecting directly")
 
     log_id = start_acquisition_log()
 
