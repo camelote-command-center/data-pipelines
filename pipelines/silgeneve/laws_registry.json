@@ -153,16 +153,6 @@
       "notes": "Règlement énergie: normes HPE, THPE, indice de dépense de chaleur"
     },
     {
-      "rsge": "B 7 05",
-      "url_slug": "rsg_b7_05.htm",
-      "short_name": "LEx",
-      "full_title": "Loi sur l'expropriation pour cause d'utilité publique",
-      "law_type": "loi",
-      "domain": "expropriation",
-      "priority": 3,
-      "notes": "Indemnités, procédure, expropriation temporaire d'usage (LDTR art. 26-38)"
-    },
-    {
       "rsge": "F 3 10",
       "url_slug": "rsg_f3_10.htm",
       "short_name": "LCP",
