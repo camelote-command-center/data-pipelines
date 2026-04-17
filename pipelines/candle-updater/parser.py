@@ -369,8 +369,12 @@ def _get_camelote_conn():
         return None
     if _camelote_conn is None or _camelote_conn.closed:
         import psycopg2
-        _camelote_conn = psycopg2.connect(CAMELOTE_DATA_DB_URL)
-        _camelote_conn.autocommit = True
+        try:
+            _camelote_conn = psycopg2.connect(CAMELOTE_DATA_DB_URL)
+            _camelote_conn.autocommit = True
+        except Exception as e:
+            print(f"  [WARN] Could not connect to camelote_data: {e}")
+            return None
     return _camelote_conn
 
 
