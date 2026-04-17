@@ -1,0 +1,24 @@
+name: Candle Updater
+
+on:
+  schedule:
+    - cron: '5 0,12 * * *'  # 00:05 and 12:05 UTC
+  workflow_dispatch:
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: python pipelines/candle-updater/parser.py
+        env:
+          BACKTESTING_DB_PASSWORD: ${{ secrets.BACKTESTING_DB_PASSWORD }}
+          CAMELOTE_DATA_DB_URL: ${{ secrets.CAMELOTE_DATA_DB_URL }}
+          CAMELOTE_SUPABASE_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CAMELOTE_SUPABASE_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+          CANDLE_UPDATER_DATASET_ID: ${{ secrets.CANDLE_UPDATER_DATASET_ID }}
