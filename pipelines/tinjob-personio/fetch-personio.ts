@@ -277,12 +277,12 @@ async function upsertPositions(
 ): Promise<number> {
   if (positions.length === 0) return 0;
 
-  const source = `ats:personio:${tenantSlug}`;
+  const source = "personio";
   const rows = positions.map((p) => {
     const applyUrl = `https://${tenantSlug}.jobs.personio.de/job/${p.id}`;
-    const externalId = String(p.id);
+    const externalId = `${tenantSlug}:${p.id}`;
     return {
-      id: `${source}::${externalId}`,
+      id: `${source}:${externalId}`,
       source,
       external_id: externalId,
       ats_tenant_id: tenantId,

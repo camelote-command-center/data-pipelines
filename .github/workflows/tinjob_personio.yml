@@ -27,7 +27,7 @@ jobs:
           COUNT=$(curl -s \
             -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
             -H "Prefer: count=exact" \
-            --head "$URL/rest/v1/job_listings?source=like.ats:personio:*" \
+            --head "$URL/rest/v1/job_listings?source=eq.personio" \
             | grep -i content-range | sed 's|.*/||' | tr -d '\r')
           if [ "${{ job.status }}" = "success" ]; then
             PAYLOAD="{\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"record_count\":${COUNT:-0},\"last_error\":null,\"status\":\"active\"}"
