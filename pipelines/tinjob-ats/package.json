@@ -1,0 +1,16 @@
+{
+  "name": "tinjob-ats",
+  "private": true,
+  "scripts": {
+    "greenhouse": "tsx fetch-greenhouse.ts",
+    "ashby": "tsx fetch-ashby.ts",
+    "smartrecruiters": "tsx fetch-smartrecruiters.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2"
+  },
+  "devDependencies": {
+    "tsx": "^4",
+    "@types/node": "^20"
+  }
+}

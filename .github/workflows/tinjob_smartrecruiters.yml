@@ -1,0 +1,45 @@
+name: tinjob SmartRecruiters
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Daily at 06:00 UTC
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: cd pipelines/tinjob-ats && npm ci
+      - name: Fetch SmartRecruiters ATS jobs
+        run: cd pipelines/tinjob-ats && npx tsx fetch-smartrecruiters.ts
+        env:
+          SUPABASE_URL: ${{ secrets.TINJOB_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.TINJOB_SUPABASE_SERVICE_KEY }}
+
+      - name: Update dataset metadata on Camelote
+        if: always()
+        run: |
+          COUNT=$(curl -s \
+            -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
+            -H "Prefer: count=exact" \
+            --head "$URL/rest/v1/job_listings?source=eq.smartrecruiters" \
+            | grep -i content-range | sed 's|.*/||' | tr -d '\r')
+          if [ "${{ job.status }}" = "success" ]; then
+            PAYLOAD="{\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"record_count\":${COUNT:-0},\"last_error\":null,\"status\":\"active\"}"
+          else
+            PAYLOAD="{\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"record_count\":${COUNT:-0},\"last_error\":\"Workflow failed at $(date -u +%Y-%m-%dT%H:%M:%SZ) — check Actions log\",\"status\":\"error\"}"
+          fi
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.tj_smartrecruiters" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+            -d "$PAYLOAD"
+        env:
+          URL: ${{ secrets.TINJOB_SUPABASE_URL }}
+          KEY: ${{ secrets.TINJOB_SUPABASE_SERVICE_KEY }}
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
