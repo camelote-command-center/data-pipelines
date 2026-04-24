@@ -1,0 +1,88 @@
+# Per-PDF map page hints provided by Ilan during v0.2.1 rollout.
+# These pages are confirmed map-pages by the human, but their legends don't
+# parse with v0.2's legend.py (alternate template not urbaplan). The v0.3
+# alternate-template detector will consume this file to know which pages
+# to target when bypassing classify + using a dedicated legend variant.
+#
+# Key = PDF filename (relative to PDCom/); value = {map_pages: [ints], notes: str}
+# "a" prefix in the source message means "annex" section page numbering —
+# normalized to flat page indices here (requires verification against the PDF).
+
+pdcom_aire_la_ville_complet.pdf:
+  map_pages: [10, 16, 21, 37, 46, 50, 54, 59, 67, 99, 112, 117, 126, 128, 130, 132, 134, 136, 143]
+  notes: "v0.2 found 0 map pages (max 155 drawings/page — low vector density). v0.3 needs to handle."
+
+pdcom_avusy_2e_rapport.pdf:
+  # "a-prefixed" numbers from Ilan indicate annex section; may need separate section offset
+  map_pages_annex_raw:
+    - 15
+    - 19
+    - 25
+    - 27
+    - 33
+    - 43
+    - 47
+    - 53
+    - 56
+    - 57
+    - 59
+    - 62
+    - 63
+    - 65
+    - 68
+    - 69
+    - 71
+    - 74
+    - 78
+    - 79
+    - 81
+    - 82
+    - 84
+    - 87
+    - 90
+    - 92
+    - 101
+    - 103
+    - 107
+    - 108
+    - 112
+    - 113
+    - 115
+    - 118
+    - 119
+    - 128
+    - 129
+    - 130
+    - 132
+    - 133
+    - 134
+    - 135
+    - 137
+    - 139
+    - 143
+    - 145
+    - 149
+    - 152
+    - 163
+    - 167
+    - 173
+    - 189
+    - 199
+    - 202
+    - 213
+    - 215
+    - 217
+    - 219
+    - 223
+    - 227
+    - 235
+    - 255
+    - 256
+    - 257
+    - 259
+  notes: >-
+    v0.2 found 0 map pages (drawings < 500 on all pages, often < 100).
+    Likely raster-embedded or low-vector-density template. Annex page indices
+    need to be converted to absolute PDF page indices before use.
+
+# More commune hints to be added as Ilan supplies them.

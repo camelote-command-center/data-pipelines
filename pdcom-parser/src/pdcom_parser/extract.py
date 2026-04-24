@@ -328,7 +328,12 @@ def extract_layers(page: fitz.Page, legend: dict, max_area_frac: float = 0.35, m
             if polys and map_clip is not None:
                 polys = [p.intersection(map_clip) for p in polys]
                 polys = [p for p in polys if not p.is_empty and p.area >= min_area]
-            if polys:
+            # Safety cap: a legitimate legend entry produces at most a few hundred
+            # polygons. More = basemap color collision; skip unary_union (O(n log n)
+            # with very large constant for complex geometry) and keep raw list.
+            if len(polys) > 3000:
+                merged = None
+            elif polys:
                 try:
                     merged = unary_union(polys)
                 except Exception:

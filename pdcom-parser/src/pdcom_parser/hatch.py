@@ -35,11 +35,18 @@ def _cluster_endpoints(points: list[tuple[float, float]], eps: float = 8.0) -> l
     return list(groups.values())
 
 
+_MAX_HATCH_LINES = 600  # cap for O(n²) clustering; 600 endpoints → 360k comparisons ≈ 2s
+
+
 def recover_hatch_zones(lines: list[LineString], eps_pt: float = 8.0, min_cluster_lines: int = 4, ratio: float = 0.15) -> list[Polygon]:
-    """Given all stroke lines of one color, cluster endpoints and return concave-hull polygons."""
+    """Given all stroke lines of one color, cluster endpoints and return concave-hull polygons.
+
+    Capped at _MAX_HATCH_LINES: if more, bail (pages with thousands of stroke-matched
+    lines are usually basemap noise, not a real hatched zone)."""
     if not lines:
         return []
-    # Collect endpoints tagged by line index for reconstruction
+    if len(lines) > _MAX_HATCH_LINES:
+        return []
     pts = []
     owner = []
     for li, ls in enumerate(lines):

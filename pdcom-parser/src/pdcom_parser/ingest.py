@@ -109,10 +109,28 @@ def match_pdf_to_commune(pdf_path: Path, communes: list[dict], threshold: int = 
     )
 
 
+_ATLAS_KEYWORDS = ("atlas", "plan_directeur_cantonal", "pdcant")
+
+
+def _is_canton_atlas(path: Path) -> bool:
+    """Detect cantonal atlases that aren't commune-level PDCom docs.
+    Spec §5 Case 4: skip with ingest_status='canton_atlas_not_commune_pdcom'."""
+    name = path.stem.lower()
+    return any(kw in name for kw in _ATLAS_KEYWORDS)
+
+
 def build_ingest_manifest(pdf_dir: Path, communes: list[dict]) -> dict:
-    manifest: dict = {"matched": {}, "needs_review": [], "unmatched": []}
+    manifest: dict = {"matched": {}, "needs_review": [], "unmatched": [], "canton_atlas": []}
     pdf_files = sorted(pdf_dir.rglob("*.pdf"))
     for path in pdf_files:
+        if _is_canton_atlas(path):
+            manifest["canton_atlas"].append({
+                "path": str(path),
+                "sha256": sha256_of(path),
+                "size_bytes": path.stat().st_size,
+                "reason": "canton_atlas_not_commune_pdcom",
+            })
+            continue
         m = match_pdf_to_commune(path, communes)
         rec = {
             "path": str(path),
@@ -140,7 +158,12 @@ def build_ingest_manifest(pdf_dir: Path, communes: list[dict]) -> dict:
 def write_manifest_yaml(manifest: dict, path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     # Flatten matched keys to strings for YAML
-    out = {"matched": {}, "needs_review": manifest["needs_review"], "unmatched": manifest["unmatched"]}
+    out = {
+        "matched": {},
+        "needs_review": manifest["needs_review"],
+        "unmatched": manifest["unmatched"],
+        "canton_atlas": manifest.get("canton_atlas", []),
+    }
     for bfs, data in manifest["matched"].items():
         out["matched"][int(bfs)] = {"name": data["commune_name"], "pdfs": data["pdfs"]}
     with path.open("w", encoding="utf-8") as f:

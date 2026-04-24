@@ -26,6 +26,21 @@ def _page_type_to_status(page_type: str) -> str | None:
     return None
 
 
+def _guess_template(pdf: fitz.Document, first_map_page_idx: int | None) -> str:
+    """Rough fingerprint of which firm's template the PDCom uses. Checked once per
+    PDF on the first map page. 'urbaplan_standard' is the reference template
+    (matches v0.2 fixture); anything else we fail to recognise is 'alternate_legend'."""
+    if first_map_page_idx is None:
+        return "unknown"
+    try:
+        text = pdf[first_map_page_idx].get_text().lower()
+    except Exception:
+        return "unknown"
+    if "urbaplan" in text:
+        return "urbaplan_standard"
+    return "alternate_legend"
+
+
 def extract_pdf(
     pdf_path: Path,
     commune_bfs: int,
@@ -42,8 +57,44 @@ def extract_pdf(
     features_by_page: dict[int, list[dict]] = {}
     all_layer_entries: list[dict] = []
 
+    first_map_page_idx: int | None = None
+    legend_failed_streak = 0
+    LEGEND_FAILED_BAIL_THRESHOLD = 15  # after 15 consecutive map pages with 0 legend entries, bail
     with fitz.open(pdf_path) as pdf:
         total_pages = pdf.page_count
+        for pi in range(total_pages):
+            if first_map_page_idx is None and classify_page(pdf[pi])["type"] == "map":
+                first_map_page_idx = pi
+                break
+        template_guess = _guess_template(pdf, first_map_page_idx)
+        # Fast-path skip: if the first map page doesn't look like urbaplan template,
+        # we have no legend detector that works for it. Skip the whole PDF in v0.2 —
+        # tagged as alternate_legend for v0.3 to pick up.
+        if template_guess == "alternate_legend":
+            append_log(log_path, {
+                "kind": "pdf_bail", "commune_bfs": commune_bfs, "pdf": pdf_path.name,
+                "reason": "alternate_legend template — v0.2 legend detector doesn't handle it",
+                "template_guess": "alternate_legend",
+            })
+            manifest = {
+                "commune_bfs": commune_bfs, "commune_name": commune_name,
+                "pdf_filename": pdf_path.name, "pdf_page_count": total_pages,
+                "pages_processed": 0, "pages_map": 0, "pages_ok": 0,
+                "pages_legend_failed": 0, "pages_low_confidence": 0,
+                "features_total": 0, "themes_found": [],
+                "template_guess": template_guess, "pages": [],
+            }
+            write_manifest(output_dir / "manifest.json", manifest)
+            try:
+                render_qa_image(boundary_lv95, [], output_dir / "qa.png",
+                                title=f"{commune_name} — {pdf_path.name} (alternate_legend — skipped)")
+            except Exception:
+                pass
+            append_log(log_path, {"kind": "commune", "commune_bfs": commune_bfs,
+                                   "commune_name": commune_name, "pdf": pdf_path.name,
+                                   "status": "skipped_alternate_template",
+                                   "pages_ok": 0, "pages_total_map": 0, "features": 0})
+            return {"manifest": manifest, "features_by_page": {}, "pages_report": []}
         for pi in range(total_pages):
             page = pdf[pi]
             page_number = pi + 1
@@ -82,7 +133,12 @@ def extract_pdf(
                 page_rec["legend_json"] = {"entries_detected": len(entries_ok), "map_title": legend.get("title")}
                 pages_report.append(page_rec)
                 append_log(log_path, {"kind": "page", "commune_bfs": commune_bfs, "page": page_number, "status": "legend_failed", "entries_detected": len(entries_ok), "feature_count": 0})
+                legend_failed_streak += 1
+                if legend_failed_streak >= LEGEND_FAILED_BAIL_THRESHOLD:
+                    append_log(log_path, {"kind": "pdf_bail", "commune_bfs": commune_bfs, "pdf": pdf_path.name, "reason": f"{LEGEND_FAILED_BAIL_THRESHOLD} consecutive map pages with <3 legend entries — alternate template"})
+                    break
                 continue
+            legend_failed_streak = 0
 
             title = legend.get("title", "")
             legend_labels = [e.get("label", "") for e in legend.get("entries", [])]
@@ -203,14 +259,24 @@ def extract_pdf(
     except Exception as e:
         append_log(log_path, {"kind": "qa", "commune_bfs": commune_bfs, "status": "failed", "error": str(e)})
 
+    pages_map = sum(1 for p in pages_report if p["page_type"] == "map")
+    pages_ok = sum(1 for p in pages_report if p["extraction_status"] == "ok")
+    pages_legend_failed = sum(1 for p in pages_report if p["extraction_status"] == "legend_failed")
+    pages_low_confidence = sum(1 for p in pages_report if p["extraction_status"] == "low_confidence")
+    themes_found = sorted({p.get("map_theme") for p in pages_report if p.get("map_theme") and p.get("map_theme") != "unknown"})
     manifest = {
         "commune_bfs": commune_bfs,
         "commune_name": commune_name,
         "pdf_filename": pdf_path.name,
         "pdf_page_count": total_pages,
         "pages_processed": len(pages_report),
-        "pages_ok": sum(1 for p in pages_report if p["extraction_status"] == "ok"),
+        "pages_map": pages_map,
+        "pages_ok": pages_ok,
+        "pages_legend_failed": pages_legend_failed,
+        "pages_low_confidence": pages_low_confidence,
         "features_total": sum(len(v) for v in features_by_page.values()),
+        "themes_found": themes_found,
+        "template_guess": template_guess,
         "pages": pages_report,
     }
     write_manifest(output_dir / "manifest.json", manifest)
