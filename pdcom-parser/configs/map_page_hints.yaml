@@ -85,4 +85,32 @@ pdcom_avusy_2e_rapport.pdf:
     Likely raster-embedded or low-vector-density template. Annex page indices
     need to be converted to absolute PDF page indices before use.
 
+pdcom_bernex_annexes_environnement.pdf:
+  map_pages: [7, 8, 10, 13, 14, 15, 19, 20, 22, 23, 26, 27, 29, 30, 32, 34, 35, 48, 61, 72, 77, 79, 83, 85, 90, 95]
+  notes: "v0.2 classify detected 0 map pages on this PDF."
+
+pdcom_bernex_plan_de_synthese.pdf:
+  map_pages: [3]
+  notes: "1-page doc; v0.2 classified it as text."
+
+pdcom_bernex_plan_directeur_communal.pdf:
+  map_pages: [17, 21, 24, 26, 29, 30, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 57, 61, 65, 68, 70, 71, 72, 78, 80, 82, 84, 87, 89, 90, 92, 93, 97, 98, 100, 101, 102, 104, 106, 119, 122, 123, 124, 127, 128, 130, 131, 139, 148, 149, 150, 151, 162, 169, 170, 173, 209, 217, 221, 237, 252, 256, 260, 273, 277, 281, 283, 292]
+  notes: "v0.2 classify detected 6 map pages; legends didn't parse. 74 real map pages per hints — alternate_legend template."
+
+pdcom_bernex_plan_directeur_des_energies_rapport_complet.pdf:
+  map_pages: [12, 15, 16, 22, 23, 31, 32, 34, 44, 46, 49, 59, 81]
+  notes: "v0.2 classify detected 0 map pages."
+
+pdcom_bernex_plan_directeur_des_energies_rapport_de_synthese.pdf:
+  map_pages: [11]
+  notes: "Single map page in synthesis doc."
+
+pdcom_bernex_plan_directeur_des_infrastructures_sportives.pdf:
+  map_pages: [48, 49]
+  notes: "v0.2 classify detected 15 map pages (over-inclusive); only 2 real maps."
+
+pdcom_bernex_strategie_d_evolution_de_la_zone_5_carte_de_synthese.pdf:
+  map_pages: [2]
+  notes: "Single carte de synthèse."
+
 # More commune hints to be added as Ilan supplies them.
