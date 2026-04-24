@@ -100,28 +100,31 @@ def load_commune_results(db_url: str, commune_bfs: int, commune_name: str, pdf_r
                 page_id_by_number[p["page_number"]] = cur.fetchone()[0]
                 counts["pages"] += 1
 
+            rows = []
             for page_num, feats in features_geojson_by_page.items():
                 page_id = page_id_by_number.get(page_num)
                 if not page_id:
                     continue
                 for f in feats:
-                    cur.execute(
-                        """
-                        INSERT INTO bronze_ch.pdcom_features (
-                            page_id, commune_bfs, map_theme, layer_label, layer_slug,
-                            source_color, fill_type, geometry, georef_confidence, properties
-                        )
-                        VALUES (%s,%s,%s,%s,%s,%s,%s, ST_SetSRID(ST_GeomFromGeoJSON(%s), 2056), %s, %s)
-                        """,
-                        (
-                            page_id, commune_bfs, f["map_theme"], f["label"], f["slug"],
-                            f.get("color"), f["fill_type"],
-                            json.dumps(f["geometry"]),
-                            f.get("confidence"),
-                            Jsonb(f.get("properties", {})),
-                        ),
+                    rows.append((
+                        page_id, commune_bfs, f["map_theme"], f["label"], f["slug"],
+                        f.get("color"), f["fill_type"],
+                        json.dumps(f["geometry"]),
+                        f.get("confidence"),
+                        Jsonb(f.get("properties", {})),
+                    ))
+            if rows:
+                cur.executemany(
+                    """
+                    INSERT INTO bronze_ch.pdcom_features (
+                        page_id, commune_bfs, map_theme, layer_label, layer_slug,
+                        source_color, fill_type, geometry, georef_confidence, properties
                     )
-                    counts["features"] += 1
+                    VALUES (%s,%s,%s,%s,%s,%s,%s, ST_SetSRID(ST_GeomFromGeoJSON(%s), 2056), %s, %s)
+                    """,
+                    rows,
+                )
+                counts["features"] = len(rows)
         conn.commit()
     return counts
 

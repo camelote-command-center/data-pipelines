@@ -15,6 +15,10 @@ STABLE
 SECURITY DEFINER
 SET search_path = public, ref, pg_temp
 AS $$
+    -- Note: ref.plots.commune_bfs uses FAO municipal codes (e.g. 6612)
+    -- while ref.communes.commune_bfs (and ref.pdcom_zones.commune_bfs)
+    -- uses federal BFS codes (e.g. 11431). Join through ref.communes
+    -- by name to pre-filter spatially to the right commune.
     SELECT
         z.map_theme,
         z.layer_slug,
@@ -27,7 +31,8 @@ AS $$
         z.source_color,
         z.adoption_date
     FROM ref.plots p
-    JOIN ref.pdcom_zones z ON z.commune_bfs = p.commune_bfs
+    JOIN ref.communes c ON c.commune_name = p.commune_name
+    JOIN ref.pdcom_zones z ON z.commune_bfs = c.commune_bfs
     WHERE p.egrid = p_egrid
       AND ST_Intersects(p.geometry, z.geometry)
     ORDER BY overlap_pct DESC NULLS LAST, z.map_theme, z.layer_slug;
