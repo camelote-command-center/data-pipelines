@@ -198,4 +198,24 @@ pdcom_genthod_2e_rapport.pdf:
   map_pages: [14, 15, 16, 29, 32, 34, 36, 39, 44, 46, 49, 50, 52, 53, 56, 57, 63, 65, 66, 68, 72, 75, 76, 79, 88, 100, 129, 142, 143, 144, 146, 148, 151, 157, 161, 165, 170, 186, 189, 193]
   notes: "v0.2 classify detected 0 map pages. 40 real maps per hints."
 
+pdcom_grand-saconnex_2e_pietons.pdf:
+  map_pages: [1]
+  notes: "Single pietons map."
+
+pdcom_grand-saconnex_2e_rapport.pdf:
+  map_pages: [50, 59, 60, 67, 81, 86, 87, 95, 111, 125, 127, 171, 180, 187, 188, 189, 193, 201, 205, 206, 207, 209, 221, 226, 230, 241, 261, 263, 279, 315, 318, 321, 331, 335]
+  notes: "v0.2 classify detected 0 map pages; 34 real maps per hints."
+
+pdcom_grand-saconnex_2e_synthese.pdf:
+  map_pages: [1]
+  notes: "Single synthesis map."
+
+pdcom_grand-saconnex_2e_z5.pdf:
+  map_pages: [1]
+  notes: "Single zone-5 map."
+
+pdcom_meyrin_2e_maj_rapport.pdf:
+  map_pages: [21, 59, 69, 81, 109, 133, 159, 162, 181, 186, 195, 205, 237, 257, 285, 287, 289, 291, 307, 317]
+  notes: "v0.2 classify detected 0 map pages; 20 real maps per hints."
+
 # More commune hints to be added as Ilan supplies them.
