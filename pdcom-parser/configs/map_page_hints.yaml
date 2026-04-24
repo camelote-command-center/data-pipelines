@@ -218,4 +218,30 @@ pdcom_meyrin_2e_maj_rapport.pdf:
   map_pages: [21, 59, 69, 81, 109, 133, 159, 162, 181, 186, 195, 205, 237, 257, 285, 287, 289, 291, 307, 317]
   notes: "v0.2 classify detected 0 map pages; 20 real maps per hints."
 
-# More commune hints to be added as Ilan supplies them.
+pdcom_pregny-chambesy_2e_pietons.pdf:
+  map_pages: [1]
+  notes: "Single pietons map."
+
+pdcom_pregny-chambesy_2e_rapport.pdf:
+  # This PDF already extracts partially via urbaplan_standard in v0.2.1 (2 ok / 10 detected / 556 features).
+  # Hints reveal 102 real map pages — v0.2 is catching ~10% of actual content even on urbaplan template.
+  map_pages: [18, 21, 22, 26, 33, 34, 35, 36, 37, 39, 42, 45, 46, 47, 48, 52, 54, 55, 56, 57, 58, 59, 63, 64, 65, 66, 69, 75, 80, 85, 95, 108, 109, 112, 114, 119, 121, 127, 131, 134, 136, 138, 140, 142, 144, 146, 153, 158, 168, 170, 172, 178, 180, 182, 188, 189, 190, 199, 201, 203, 213, 225, 229, 231, 233, 235, 237, 247, 249, 256, 258, 260, 264, 266, 268, 272, 278, 280, 281, 282, 283, 284, 285, 286, 288, 290, 292, 294, 296, 298, 300, 302, 304, 335, 336, 337, 338, 339, 340, 341, 342, 349]
+  notes: >-
+    v0.2.1 extracted 2/10 ok (556 features, urbaplan_standard). Hints list 102 real map pages
+    — so v0.3 classify threshold tweaks + these hints should expand Pregny-Chambésy coverage ~10×.
+
+pdcom_pregny-chambesy_2e_synthese.pdf:
+  map_pages: [1]
+  notes: "Single synthesis map."
+
+pdcom_pregny-chambesy_2e_sz5.pdf:
+  map_pages: [1, 2]
+  notes: "2 maps in zone-5 strategy doc."
+
+pdcom_troinex.pdf:
+  map_pages: [12, 16, 18, 25, 28, 29, 31, 35, 36, 56, 57, 58, 59, 66, 67, 68, 69, 70, 71, 72, 77, 80, 83, 87, 102, 103, 104, 105, 106, 109, 110, 111, 113, 136, 161, 177, 179, 182, 183, 187, 195, 198, 206, 213, 216, 220, 222, 224, 230, 233, 237, 238, 241, 246, 255, 271, 272, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 289, 290, 291, 293, 295, 304, 305]
+  notes: "v0.2 classify detected 0 map pages. 74 real maps per hints."
+
+pdcom_veyrier_2e_rapport.pdf:
+  map_pages: [17, 20, 33, 34, 41, 42, 43, 46, 59, 62, 63, 73, 80, 86, 87, 88, 93, 97, 102, 103, 104, 117, 120, 127, 136, 140, 144, 154, 161, 191, 192, 193, 194, 195, 196, 197, 203, 216, 218, 220, 229, 230, 239, 243, 276, 306]
+  notes: "v0.2 classify detected 0 map pages. 46 real maps per hints."
