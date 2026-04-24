@@ -4,8 +4,12 @@ import math
 from typing import Iterable
 
 import fitz
-from shapely.geometry import LineString, MultiPolygon, Point, Polygon, box
+from shapely.geometry import LineString, MultiLineString, MultiPolygon, Point, Polygon, box
 from shapely.ops import unary_union
+
+
+MIN_FEATURE_AREA_M2 = 200.0
+MAX_FEATURE_AREA_FRAC_OF_COMMUNE = 0.30
 
 
 def _colors_match(a, b, tol: int = 2) -> bool:
@@ -147,6 +151,131 @@ def _map_box_yflip(map_bbox: list[float], page_h: float):
     ny0 = page_h - y1
     ny1 = page_h - y0
     return box(x0, ny0, x1, ny1)
+
+
+def clip_and_score_layers(
+    layers_lv95: dict[str, dict],
+    commune_boundary_lv95: Polygon,
+    page_conf: float,
+) -> list[dict]:
+    """Clip every polygon in layers_lv95 to the commune boundary (Fix 1),
+    drop features violating world-coordinate area filters (Fix 2),
+    and compute per-feature confidence = page_conf * clip_ratio (Fix 4).
+
+    Returns flat list of feature dicts ready for DB insert / GeoJSON export.
+    Each feature carries `clip_ratio`, `page_conf`, `original_area_m2`,
+    `clipped_area_m2` in its `properties` so downstream can audit.
+    """
+    commune_area_m2 = commune_boundary_lv95.area  # LV95 is metric (metres)
+    max_area = commune_area_m2 * MAX_FEATURE_AREA_FRAC_OF_COMMUNE
+
+    features: list[dict] = []
+    dropped_log: list[dict] = []
+
+    for slug, entry in layers_lv95.items():
+        fill_type = entry.get("fill_type", "solid")
+        label = entry.get("label") or slug
+        color = entry.get("color")
+
+        for g in entry.get("geoms", []):
+            if g is None or getattr(g, "is_empty", False):
+                continue
+
+            if fill_type == "stroke_only":
+                # LineString: intersect with commune, skip area filters.
+                try:
+                    clipped = g.intersection(commune_boundary_lv95)
+                except Exception:
+                    continue
+                if clipped.is_empty:
+                    continue
+                original_len = g.length
+                clipped_len = clipped.length if hasattr(clipped, "length") else 0.0
+                if original_len <= 0 or clipped_len <= 0:
+                    continue
+                clip_ratio = clipped_len / original_len if original_len > 0 else 0.0
+                # Skip if almost nothing remains (mostly outside)
+                if clipped_len < 1.0:
+                    dropped_log.append({"slug": slug, "reason": "clipped_len<1m", "label": label})
+                    continue
+                feature_conf = round(page_conf * clip_ratio, 3)
+                # Normalize to list of LineStrings
+                geoms_out = []
+                if clipped.geom_type == "LineString":
+                    geoms_out = [clipped]
+                elif clipped.geom_type == "MultiLineString":
+                    geoms_out = list(clipped.geoms)
+                elif hasattr(clipped, "geoms"):
+                    geoms_out = [gg for gg in clipped.geoms if gg.geom_type in ("LineString", "MultiLineString")]
+                for geom_out in geoms_out:
+                    features.append({
+                        "slug": slug, "label": label, "fill_type": fill_type, "color": color,
+                        "geom": geom_out,
+                        "confidence": feature_conf,
+                        "properties": {
+                            "page_conf": round(page_conf, 3),
+                            "clip_ratio": round(clip_ratio, 3),
+                            "original_length_m": round(original_len, 2),
+                            "clipped_length_m": round(clipped_len, 2),
+                        },
+                    })
+            else:
+                # Polygonal feature (solid or hatch-derived): full clip + area filters.
+                try:
+                    original_area = g.area
+                    clipped = g.intersection(commune_boundary_lv95)
+                except Exception:
+                    continue
+                if clipped.is_empty:
+                    dropped_log.append({"slug": slug, "reason": "zero_intersection", "label": label})
+                    continue
+                clipped_area = clipped.area
+                if original_area <= 0:
+                    continue
+                clip_ratio = clipped_area / original_area
+
+                # Area filters (Fix 2)
+                if clipped_area < MIN_FEATURE_AREA_M2:
+                    dropped_log.append({
+                        "slug": slug, "reason": "below_min_area",
+                        "area_m2": round(clipped_area, 1), "label": label,
+                    })
+                    continue
+                if clipped_area > max_area:
+                    dropped_log.append({
+                        "slug": slug, "reason": "above_max_area",
+                        "area_m2": round(clipped_area, 1),
+                        "pct_of_commune": round(100 * clipped_area / commune_area_m2, 1),
+                        "label": label,
+                    })
+                    continue
+
+                feature_conf = round(page_conf * clip_ratio, 3)
+
+                # Normalize to Polygons
+                geoms_out = []
+                if clipped.geom_type == "Polygon":
+                    geoms_out = [clipped]
+                elif clipped.geom_type == "MultiPolygon":
+                    geoms_out = list(clipped.geoms)
+                elif hasattr(clipped, "geoms"):
+                    geoms_out = [gg for gg in clipped.geoms if gg.geom_type in ("Polygon", "MultiPolygon")]
+                for geom_out in geoms_out:
+                    if geom_out.area < MIN_FEATURE_AREA_M2:
+                        continue
+                    features.append({
+                        "slug": slug, "label": label, "fill_type": fill_type, "color": color,
+                        "geom": geom_out,
+                        "confidence": feature_conf,
+                        "properties": {
+                            "page_conf": round(page_conf, 3),
+                            "clip_ratio": round(clip_ratio, 3),
+                            "original_area_m2": round(original_area, 1),
+                            "clipped_area_m2": round(clipped_area, 1),
+                        },
+                    })
+
+    return features, dropped_log
 
 
 def extract_layers(page: fitz.Page, legend: dict, max_area_frac: float = 0.35, min_area: float = 4.0) -> dict[str, dict]:

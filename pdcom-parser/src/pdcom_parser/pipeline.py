@@ -10,11 +10,12 @@ from shapely.geometry import shape
 from shapely.ops import transform as shp_transform
 
 from .classify import classify_page
-from .extract import extract_layers
+from .extract import clip_and_score_layers, extract_layers
 from .georef import georeference
 from .hatch import recover_hatch_zones
 from .legend import detect_legend
 from .normalize import classify_theme
+from .qa import render_qa_image
 from .report import append_log
 from .export import write_layer_geojson, write_manifest, write_combined_geojson
 
@@ -84,7 +85,8 @@ def extract_pdf(
                 continue
 
             title = legend.get("title", "")
-            theme = classify_theme(title)
+            legend_labels = [e.get("label", "") for e in legend.get("entries", [])]
+            theme = classify_theme(title, legend_labels=legend_labels)
             page_rec["map_title"] = title
             page_rec["map_theme"] = theme
             page_rec["legend_json"] = {"title": title, "entries": legend.get("entries", []), "map_bbox": legend.get("map_bbox"), "legend_bbox": legend.get("legend_bbox")}
@@ -130,35 +132,76 @@ def extract_pdf(
                 append_log(log_path, {"kind": "page", "commune_bfs": commune_bfs, "page": page_number, "status": "low_confidence", "confidence": confidence, "feature_count": 0})
                 continue
 
+            # Fix 1 + 2 + 4: clip to commune polygon in LV95, world-coord area filters,
+            # per-feature confidence = page_conf × clip_ratio.
+            features_clipped, drops = clip_and_score_layers(layers_lv95, boundary_lv95, confidence)
+
             # Export per-page layer files + accumulate features for DB insert
             page_dir = output_dir / f"pages/p{page_number:03d}_{theme or 'unknown'}"
             feats_for_page: list[dict] = []
-            for slug, entry in layers_lv95.items():
-                ge = [g for g in entry.get("geoms", []) if g is not None and not g.is_empty]
-                if not ge:
-                    continue
-                write_layer_geojson(page_dir / f"{slug}.geojson", {**entry, "geoms": ge}, slug)
-                for g in ge:
-                    from shapely.geometry import mapping
-                    feats_for_page.append({
-                        "map_theme": theme or "unknown",
-                        "label": entry.get("label"),
-                        "slug": slug,
-                        "color": entry.get("color"),
-                        "fill_type": entry.get("fill_type"),
-                        "geometry": mapping(g),
-                        "confidence": round(confidence, 3),
-                        "properties": {"page_number": page_number},
-                    })
-                all_layer_entries.append({**entry, "slug": slug, "map_theme": theme, "page_number": page_number})
+            # Group by slug for per-layer geojson file (carry per-feature properties through)
+            by_slug_entries: dict[str, dict] = {}
+            for f in features_clipped:
+                from shapely.geometry import mapping
+                props = {**f.get("properties", {}), "page_number": page_number, "confidence": f["confidence"]}
+                feats_for_page.append({
+                    "map_theme": theme or "unknown",
+                    "label": f["label"],
+                    "slug": f["slug"],
+                    "color": f["color"],
+                    "fill_type": f["fill_type"],
+                    "geometry": mapping(f["geom"]),
+                    "confidence": f["confidence"],
+                    "properties": props,
+                })
+                slot = by_slug_entries.setdefault(f["slug"], {
+                    "slug": f["slug"], "label": f["label"], "color": f["color"],
+                    "fill_type": f["fill_type"], "geom_props": [],
+                })
+                slot["geom_props"].append((f["geom"], props))
+            for slug, entry in by_slug_entries.items():
+                write_layer_geojson(page_dir / f"{slug}.geojson", entry, slug)
+                all_layer_entries.append({
+                    **entry,
+                    "geoms": [gp[0] for gp in entry["geom_props"]],
+                    "map_theme": theme, "page_number": page_number,
+                })
+
             features_by_page[page_number] = feats_for_page
             page_rec["extraction_status"] = "ok"
+            page_rec["features_count"] = len(feats_for_page)
+            page_rec["dropped_count"] = len(drops)
             pages_report.append(page_rec)
-            append_log(log_path, {"kind": "page", "commune_bfs": commune_bfs, "page": page_number, "status": "ok", "confidence": round(confidence, 3), "feature_count": len(feats_for_page), "theme": theme})
+            append_log(log_path, {
+                "kind": "page", "commune_bfs": commune_bfs, "page": page_number,
+                "status": "ok", "confidence": round(confidence, 3),
+                "feature_count": len(feats_for_page), "dropped_count": len(drops),
+                "theme": theme,
+            })
 
     # Combined GeoJSON per commune
     combined = output_dir / "combined/all_layers.geojson"
     combined_count = write_combined_geojson(combined, all_layer_entries)
+
+    # QA image (Fix 6). One PNG per PDF output dir; overlays features on commune boundary.
+    try:
+        qa_features = []
+        for entry in all_layer_entries:
+            for g in entry.get("geoms", []):
+                qa_features.append({
+                    "geom": g,
+                    "color": entry.get("color"),
+                    "label": entry.get("label"),
+                    "fill_type": entry.get("fill_type", "solid"),
+                })
+        render_qa_image(
+            boundary_lv95,
+            qa_features,
+            output_dir / "qa.png",
+            title=f"{commune_name} — {pdf_path.name} ({len(qa_features)} features)",
+        )
+    except Exception as e:
+        append_log(log_path, {"kind": "qa", "commune_bfs": commune_bfs, "status": "failed", "error": str(e)})
 
     manifest = {
         "commune_bfs": commune_bfs,
