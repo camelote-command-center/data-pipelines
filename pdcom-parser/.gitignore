@@ -10,3 +10,4 @@ tests/fixtures/*.pdf
 *.egg-info/
 dist/
 build/
+data/signals_cache.json
