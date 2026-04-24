@@ -167,4 +167,35 @@ pdcom_dardagny_rapport_de_conformite_20171018.pdf:
   map_pages: [6, 7]
   notes: "v0.2 classify found 0 map pages. Only 2 real maps in this older conformity report."
 
+pdcom_geneve_2e_atlas_transition.pdf:
+  map_pages: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65]
+  notes: >-
+    v0.2.1 tagged this file as 'canton_atlas' and skipped. Ilan''s hints include
+    52 map pages — so v0.3 should process it after all, mapped to Genève commune
+    (bfs=12099). Revisit the _is_canton_atlas() filter in ingest.py.
+
+pdcom_geneve_2e_concept_carte.pdf:
+  map_pages: [1]
+  notes: "Single concept map."
+
+pdcom_geneve_2e_concept.pdf:
+  map_pages: [42, 43, 45, 46, 57, 64, 72, 77, 84, 85]
+  notes: "10 maps in concept doc."
+
+pdcom_geneve_2e_consultation_citoyenne.pdf:
+  map_pages: [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+  notes: "12 consecutive map pages — consultation atlas section."
+
+pdcom_geneve_2e_mesures.pdf:
+  map_pages: [11, 16, 38, 45, 51, 57, 62, 67, 73, 82, 99, 106, 112, 157]
+  notes: "14 maps in mesures doc."
+
+pdcom_geneve_2e_synthese.pdf:
+  map_pages: [1]
+  notes: "Single synthesis map."
+
+pdcom_genthod_2e_rapport.pdf:
+  map_pages: [14, 15, 16, 29, 32, 34, 36, 39, 44, 46, 49, 50, 52, 53, 56, 57, 63, 65, 66, 68, 72, 75, 76, 79, 88, 100, 129, 142, 143, 144, 146, 148, 151, 157, 161, 165, 170, 186, 189, 193]
+  notes: "v0.2 classify detected 0 map pages. 40 real maps per hints."
+
 # More commune hints to be added as Ilan supplies them.
