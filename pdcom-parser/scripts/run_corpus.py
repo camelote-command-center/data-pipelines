@@ -40,7 +40,12 @@ sys.path.insert(0, str(ROOT / "src"))
 from pdcom_parser.ingest import build_ingest_manifest, write_manifest_yaml  # noqa: E402
 from pdcom_parser.db import get_communes_geneva_lv95, load_commune_results, connect  # noqa: E402
 from pdcom_parser.pipeline import extract_pdf  # noqa: E402
+from pdcom_parser.hints import load_hint_files, load_page_plan  # noqa: E402
 from pdcom_parser import __version__  # noqa: E402
+
+
+AUTO_HINTS_PATH = ROOT / "configs" / "map_page_hints_auto.yaml"
+MANUAL_HINTS_PATH = ROOT / "configs" / "map_page_hints.yaml"
 
 
 def _slug(name: str) -> str:
@@ -59,6 +64,13 @@ def run_extraction(pdf_dir: Path, output_dir: Path, boundaries_dir: Path, lamap_
     print(f"[ingest] {sum(len(v['pdfs']) for v in manifest['matched'].values())} PDFs across {len(manifest['matched'])} communes; "
           f"{len(manifest['needs_review'])} review, {len(manifest['unmatched'])} unmatched, "
           f"{len(manifest.get('canton_atlas', []))} canton atlases")
+
+    # v0.3: load hints (auto-classified + manual) + build reject-labels set
+    auto_hints, manual_hints = load_hint_files(AUTO_HINTS_PATH, MANUAL_HINTS_PATH)
+    reject_labels = {c["commune_name"] for c in communes}  # any GE commune name → reject as layer_label
+    print(f"[hints] auto={len(auto_hints.get('pdfs', {})) if auto_hints else 0} PDFs, "
+          f"manual={len(manual_hints) if manual_hints else 0} PDFs, "
+          f"reject_labels={len(reject_labels)} commune names")
 
     # Export boundaries
     boundaries_dir.mkdir(parents=True, exist_ok=True)
@@ -98,7 +110,12 @@ def run_extraction(pdf_dir: Path, output_dir: Path, boundaries_dir: Path, lamap_
         }
         for pdf_rec in entry["pdfs"]:
             pdf_path = Path(pdf_rec["path"])
-            print(f"[extract] {bfs} {commune_name}: {pdf_path.name}", flush=True)
+            page_plan = load_page_plan(pdf_path.name, auto_hints, manual_hints)
+            # v0.3: if hints exist for this PDF, use them. Otherwise fall back
+            # to legacy classify-based path.
+            effective_plan = page_plan if (page_plan.map_pages or page_plan.maybe_pages) else None
+            hint_tag = f"hints={len(page_plan.map_pages)}m+{len(page_plan.maybe_pages)}?" if effective_plan else "auto"
+            print(f"[extract] {bfs} {commune_name}: {pdf_path.name} [{hint_tag}]", flush=True)
             out_sub = commune_dir / pdf_path.stem.replace("/", "_")
             signal.signal(signal.SIGALRM, _timeout_handler)
             signal.alarm(PDF_TIMEOUT_SEC)
@@ -111,6 +128,8 @@ def run_extraction(pdf_dir: Path, output_dir: Path, boundaries_dir: Path, lamap_
                     output_dir=out_sub,
                     log_path=log_path,
                     min_confidence=0.5,
+                    page_plan=effective_plan,
+                    reject_labels=reject_labels,
                 )
                 signal.alarm(0)
             except _Timeout:

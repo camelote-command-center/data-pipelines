@@ -49,57 +49,91 @@ def extract_pdf(
     output_dir: Path,
     log_path: Path,
     min_confidence: float = 0.5,
+    page_plan: "PagePlan | None" = None,
+    reject_labels: set[str] | None = None,
 ) -> dict:
-    """Run extraction on all pages of a PDF. Returns a manifest dict."""
+    """Run extraction on all pages of a PDF. Returns a manifest dict.
+
+    v0.3 changes:
+    - When `page_plan` is provided, process ONLY the pages listed there
+      (bypass classify entirely). `map` pages use min_confidence=0.8,
+      `maybe` pages use 0.85 (stricter to compensate for lower confidence hints).
+    - `reject_labels` is a set of strings (normalized lowercase) — layer_labels
+      matching any entry are dropped as leaks (commune-name-as-label protection).
+    """
+    from .hints import PagePlan  # local import to avoid circular
     boundary_lv95 = shape(boundary_lv95_geojson)
 
     pages_report: list[dict] = []
     features_by_page: dict[int, list[dict]] = {}
     all_layer_entries: list[dict] = []
+    reject_labels_lower = {l.lower().strip() for l in (reject_labels or set())}
 
     first_map_page_idx: int | None = None
     legend_failed_streak = 0
-    LEGEND_FAILED_BAIL_THRESHOLD = 15  # after 15 consecutive map pages with 0 legend entries, bail
+    LEGEND_FAILED_BAIL_THRESHOLD = 15
+
     with fitz.open(pdf_path) as pdf:
         total_pages = pdf.page_count
-        for pi in range(total_pages):
-            if first_map_page_idx is None and classify_page(pdf[pi])["type"] == "map":
-                first_map_page_idx = pi
-                break
-        template_guess = _guess_template(pdf, first_map_page_idx)
-        # Fast-path skip: if the first map page doesn't look like urbaplan template,
-        # we have no legend detector that works for it. Skip the whole PDF in v0.2 —
-        # tagged as alternate_legend for v0.3 to pick up.
-        if template_guess == "alternate_legend":
-            append_log(log_path, {
-                "kind": "pdf_bail", "commune_bfs": commune_bfs, "pdf": pdf_path.name,
-                "reason": "alternate_legend template — v0.2 legend detector doesn't handle it",
-                "template_guess": "alternate_legend",
-            })
-            manifest = {
-                "commune_bfs": commune_bfs, "commune_name": commune_name,
-                "pdf_filename": pdf_path.name, "pdf_page_count": total_pages,
-                "pages_processed": 0, "pages_map": 0, "pages_ok": 0,
-                "pages_legend_failed": 0, "pages_low_confidence": 0,
-                "features_total": 0, "themes_found": [],
-                "template_guess": template_guess, "pages": [],
-            }
-            write_manifest(output_dir / "manifest.json", manifest)
-            try:
-                render_qa_image(boundary_lv95, [], output_dir / "qa.png",
-                                title=f"{commune_name} — {pdf_path.name} (alternate_legend — skipped)")
-            except Exception:
-                pass
-            append_log(log_path, {"kind": "commune", "commune_bfs": commune_bfs,
-                                   "commune_name": commune_name, "pdf": pdf_path.name,
-                                   "status": "skipped_alternate_template",
-                                   "pages_ok": 0, "pages_total_map": 0, "features": 0})
-            return {"manifest": manifest, "features_by_page": {}, "pages_report": []}
-        for pi in range(total_pages):
-            page = pdf[pi]
-            page_number = pi + 1
-            info = classify_page(page)
 
+        # v0.3: hints-driven page selection. When a plan is supplied, skip all
+        # pages not in it and bypass classify for pages that ARE in it.
+        if page_plan is not None:
+            pages_to_process = sorted(page_plan.all_pages)
+            append_log(log_path, {
+                "kind": "pdf_plan", "commune_bfs": commune_bfs, "pdf": pdf_path.name,
+                "map_pages": len(page_plan.map_pages), "maybe_pages": len(page_plan.maybe_pages),
+            })
+            template_guess = "hints_driven"
+        else:
+            # Legacy v0.2 behaviour: detect first map page → guess template → skip alternates
+            for pi in range(total_pages):
+                if first_map_page_idx is None and classify_page(pdf[pi])["type"] == "map":
+                    first_map_page_idx = pi
+                    break
+            template_guess = _guess_template(pdf, first_map_page_idx)
+            if template_guess == "alternate_legend":
+                append_log(log_path, {
+                    "kind": "pdf_bail", "commune_bfs": commune_bfs, "pdf": pdf_path.name,
+                    "reason": "alternate_legend template — v0.2 legend detector doesn't handle it",
+                    "template_guess": "alternate_legend",
+                })
+                manifest = {
+                    "commune_bfs": commune_bfs, "commune_name": commune_name,
+                    "pdf_filename": pdf_path.name, "pdf_page_count": total_pages,
+                    "pages_processed": 0, "pages_map": 0, "pages_ok": 0,
+                    "pages_legend_failed": 0, "pages_low_confidence": 0,
+                    "features_total": 0, "themes_found": [],
+                    "template_guess": template_guess, "pages": [],
+                }
+                write_manifest(output_dir / "manifest.json", manifest)
+                try:
+                    render_qa_image(boundary_lv95, [], output_dir / "qa.png",
+                                    title=f"{commune_name} — {pdf_path.name} (alternate_legend — skipped)")
+                except Exception:
+                    pass
+                append_log(log_path, {"kind": "commune", "commune_bfs": commune_bfs,
+                                       "commune_name": commune_name, "pdf": pdf_path.name,
+                                       "status": "skipped_alternate_template",
+                                       "pages_ok": 0, "pages_total_map": 0, "features": 0})
+                return {"manifest": manifest, "features_by_page": {}, "pages_report": []}
+            pages_to_process = list(range(1, total_pages + 1))
+
+        for page_number in pages_to_process:
+            pi = page_number - 1
+            if pi < 0 or pi >= total_pages:
+                continue
+            page = pdf[pi]
+
+            # Determine effective confidence gate for this page
+            if page_plan is not None:
+                is_maybe_page = page_number in page_plan.maybe_pages and page_number not in page_plan.map_pages
+                page_min_confidence = 0.85 if is_maybe_page else min_confidence
+            else:
+                is_maybe_page = False
+                page_min_confidence = min_confidence
+
+            info = classify_page(page)
             page_rec = {
                 "page_number": page_number,
                 "page_type": info["type"],
@@ -110,14 +144,17 @@ def extract_pdf(
                 "legend_json": None,
                 "georef_confidence": None,
                 "extraction_status": None,
+                "hints_tier": "maybe" if is_maybe_page else ("map" if page_plan else "auto"),
             }
 
-            non_map = _page_type_to_status(info["type"])
-            if non_map:
-                page_rec["extraction_status"] = "skipped"
-                pages_report.append(page_rec)
-                append_log(log_path, {"kind": "page", "commune_bfs": commune_bfs, "page": page_number, "status": "nonmap", "type": info["type"], "feature_count": 0})
-                continue
+            # Non-map skip only applies when NO hints drive us (hints override classify)
+            if page_plan is None:
+                non_map = _page_type_to_status(info["type"])
+                if non_map:
+                    page_rec["extraction_status"] = "skipped"
+                    pages_report.append(page_rec)
+                    append_log(log_path, {"kind": "page", "commune_bfs": commune_bfs, "page": page_number, "status": "nonmap", "type": info["type"], "feature_count": 0})
+                    continue
 
             try:
                 legend = detect_legend(page)
@@ -134,7 +171,10 @@ def extract_pdf(
                 pages_report.append(page_rec)
                 append_log(log_path, {"kind": "page", "commune_bfs": commune_bfs, "page": page_number, "status": "legend_failed", "entries_detected": len(entries_ok), "feature_count": 0})
                 legend_failed_streak += 1
-                if legend_failed_streak >= LEGEND_FAILED_BAIL_THRESHOLD:
+                # Only bail early in legacy (non-hints) mode. In hints mode we trust the
+                # hints file — each listed page might use a different template; don't
+                # bail on a streak of failures in one section.
+                if page_plan is None and legend_failed_streak >= LEGEND_FAILED_BAIL_THRESHOLD:
                     append_log(log_path, {"kind": "pdf_bail", "commune_bfs": commune_bfs, "pdf": pdf_path.name, "reason": f"{LEGEND_FAILED_BAIL_THRESHOLD} consecutive map pages with <3 legend entries — alternate template"})
                     break
                 continue
@@ -182,15 +222,30 @@ def extract_pdf(
 
             page_rec["georef_confidence"] = round(confidence, 3)
 
-            if confidence < min_confidence:
+            if confidence < page_min_confidence:
                 page_rec["extraction_status"] = "low_confidence"
                 pages_report.append(page_rec)
-                append_log(log_path, {"kind": "page", "commune_bfs": commune_bfs, "page": page_number, "status": "low_confidence", "confidence": confidence, "feature_count": 0})
+                append_log(log_path, {"kind": "page", "commune_bfs": commune_bfs, "page": page_number, "status": "low_confidence", "confidence": confidence, "gate": page_min_confidence, "feature_count": 0})
                 continue
 
             # Fix 1 + 2 + 4: clip to commune polygon in LV95, world-coord area filters,
             # per-feature confidence = page_conf × clip_ratio.
             features_clipped, drops = clip_and_score_layers(layers_lv95, boundary_lv95, confidence)
+
+            # v0.3: commune-name-as-label leak filter ("Bellevue" bug fix).
+            # Drop any feature whose legend label matches a commune name in the canton.
+            if reject_labels_lower:
+                before = len(features_clipped)
+                features_clipped = [
+                    f for f in features_clipped
+                    if (f.get("label") or "").strip().lower() not in reject_labels_lower
+                ]
+                dropped_for_commune_name = before - len(features_clipped)
+                if dropped_for_commune_name > 0:
+                    append_log(log_path, {
+                        "kind": "commune_name_label_dropped", "commune_bfs": commune_bfs,
+                        "page": page_number, "count": dropped_for_commune_name,
+                    })
 
             # Export per-page layer files + accumulate features for DB insert
             page_dir = output_dir / f"pages/p{page_number:03d}_{theme or 'unknown'}"

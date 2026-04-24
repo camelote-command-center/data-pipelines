@@ -109,12 +109,16 @@ def match_pdf_to_commune(pdf_path: Path, communes: list[dict], threshold: int = 
     )
 
 
-_ATLAS_KEYWORDS = ("atlas", "plan_directeur_cantonal", "pdcant")
+# v0.3: atlas auto-skip removed. In v0.2.1 we skipped any filename containing
+# "atlas" as canton-level, but Ilan's hints confirm the Genève atlas has 52
+# extractable commune-scale map pages. Let name-matching handle it — the
+# "geneve_2e_atlas_transition" filename still fuzzy-matches to Genève (bfs 12099).
+# Keeping `pdcant` (Plan directeur cantonal) in the list because those are
+# unambiguously canton-wide planning docs not tied to a single commune.
+_ATLAS_KEYWORDS = ("plan_directeur_cantonal", "pdcant")
 
 
 def _is_canton_atlas(path: Path) -> bool:
-    """Detect cantonal atlases that aren't commune-level PDCom docs.
-    Spec §5 Case 4: skip with ingest_status='canton_atlas_not_commune_pdcom'."""
     name = path.stem.lower()
     return any(kw in name for kw in _ATLAS_KEYWORDS)
 
