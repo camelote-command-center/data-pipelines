@@ -40,15 +40,34 @@ def slugify_label(label: str) -> str:
     return s or "unknown"
 
 
-def classify_theme(title: str) -> str:
-    if not title:
-        return "unknown"
+def classify_theme(title: str, legend_labels: list[str] | None = None) -> str:
+    """Classify a map's theme. Prefer title; fall back to voting across legend labels
+    (many 'unknown'-titled sub-area maps have clearly-themed legend content)."""
     cfg = _load_yaml("theme_keywords").get("themes", {})
-    lo = _strip_accents(title).lower()
-    for theme, kws in cfg.items():
-        for kw in kws:
-            if _strip_accents(kw).lower() in lo:
-                return theme
+
+    def _score(text: str) -> str:
+        if not text:
+            return "unknown"
+        lo = _strip_accents(text).lower()
+        for theme, kws in cfg.items():
+            for kw in kws:
+                if _strip_accents(kw).lower() in lo:
+                    return theme
+        return "unknown"
+
+    t = _score(title or "")
+    if t != "unknown":
+        return t
+    # Fallback: vote across legend labels
+    if legend_labels:
+        votes: dict[str, int] = {}
+        for lbl in legend_labels:
+            th = _score(lbl)
+            if th == "unknown":
+                continue
+            votes[th] = votes.get(th, 0) + 1
+        if votes:
+            return max(votes.items(), key=lambda kv: kv[1])[0]
     return "unknown"
 
 

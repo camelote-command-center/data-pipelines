@@ -242,6 +242,15 @@ def load(output: Path):
                             fc = json.load(f)
                         for feat in fc.get("features", []):
                             props = feat.get("properties", {})
+                            # Preserve per-feature properties (page_conf, clip_ratio, original_area_m2,
+                            # clipped_area_m2 etc.) that pipeline.py emitted.
+                            feat_conf = props.get("confidence")
+                            if feat_conf is None:
+                                feat_conf = next((p.get("georef_confidence") for p in pdf_manifest["pages"] if p["page_number"] == page_num), None)
+                            # Everything except the per-feature identity fields stays in properties jsonb
+                            db_props = {k: v for k, v in props.items()
+                                        if k not in ("layer_slug", "label", "color", "fill_type", "confidence")}
+                            db_props["page_number"] = page_num
                             features_by_page.setdefault(page_num, []).append({
                                 "map_theme": next((p["map_theme"] for p in pdf_manifest["pages"] if p["page_number"] == page_num), "unknown") or "unknown",
                                 "label": props.get("label"),
@@ -249,8 +258,8 @@ def load(output: Path):
                                 "color": props.get("color"),
                                 "fill_type": props.get("fill_type"),
                                 "geometry": feat["geometry"],
-                                "confidence": next((p.get("georef_confidence") for p in pdf_manifest["pages"] if p["page_number"] == page_num), None),
-                                "properties": {"page_number": page_num},
+                                "confidence": feat_conf,
+                                "properties": db_props,
                             })
 
             rec = {

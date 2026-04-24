@@ -26,10 +26,15 @@ def classify_page(page: fitz.Page) -> dict:
         info["type"] = "toc"
         return info
 
-    if info["drawing_count"] >= 500 and info["total_text_chars"] < 3000:
+    # Real thematic maps typically have many drawings + minimal text (only legend labels + title).
+    # "Programme de mise en œuvre" tables also have many drawings (colored cells) but with
+    # much more text. Tighten the map heuristic to rule those out.
+    if info["drawing_count"] >= 500 and info["total_text_chars"] < 1500:
         info["type"] = "map"
     elif info["drawing_count"] < 100 and info["total_text_chars"] > 500:
         info["type"] = "text"
+    elif info["total_text_chars"] > 1500:
+        info["type"] = "text"   # programme/table page
     elif page.number == 0:
         info["type"] = "cover"
 

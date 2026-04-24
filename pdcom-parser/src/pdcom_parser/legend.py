@@ -82,13 +82,44 @@ def _cluster_swatches(candidates: list[dict], anchor: fitz.Rect | None, page_rec
         region.x1 = min(region.x1, page_rect.x1)
         region.y1 = min(anchor.y1 + max(page_rect.height * 0.6, 300), page_rect.y1)
         return [c for c in candidates if region.intersects(_rect_of(c))]
-    # fallback: bottom-right quadrant
+    # No LEGENDE anchor: try bottom-right quadrant first
     region = fitz.Rect(page_rect.x1 * 0.55, page_rect.y1 * 0.4, page_rect.x1, page_rect.y1)
     in_region = [c for c in candidates if region.intersects(_rect_of(c))]
-    return in_region or candidates
+    # Tables/programme pages can have hundreds of small fills mimicking swatches.
+    # A real legend has at most ~30 swatches; if we see >60, bail — better to
+    # emit legend_failed than to invent labels.
+    if in_region and len(in_region) <= 60:
+        return in_region
+    if len(candidates) > 60:
+        return []
+    return candidates
 
 
 _SKIP_LABELS = {"echelle", "legende", "légende", "commune de", "plan directeur", "urbaplan"}
+
+_MAX_LABEL_LEN = 120  # real legend labels are short; paragraph text isn't
+_MAX_HORIZONTAL_GAP_PT = 40  # tightened from 80 (paragraph text reach)
+
+# Paragraph-text rejection patterns — a label matching any of these is NOT a legend label
+_SENTENCE_BREAK = re.compile(r"\.\s+[A-ZÉÈÊÀÂÎÔÛÇ]")       # ". Next"
+_ENDS_WITH_COLON = re.compile(r":\s*$")
+_STARTS_WITH_BULLET = re.compile(r"^\s*(?:[>•·]|-\s|–\s|—\s)")
+_PURE_NUMERIC_PATTERN = re.compile(r"^\s*\d+(?:\.\d+)?(?:\s*[-–]\s*\d+(?:\.\d+)?)?\s*$")
+_MULTI_SENTENCE = re.compile(r"[.!?]\s+\w+.*[.!?]")        # at least two sentences
+
+
+def _is_paragraph_text(s: str) -> bool:
+    if _SENTENCE_BREAK.search(s):
+        return True
+    if _ENDS_WITH_COLON.search(s):
+        return True
+    if _STARTS_WITH_BULLET.search(s):
+        return True
+    if _PURE_NUMERIC_PATTERN.match(s):
+        return True
+    if _MULTI_SENTENCE.search(s):
+        return True
+    return False
 
 
 def _is_noise_label(label: str) -> bool:
@@ -105,32 +136,65 @@ def _is_noise_label(label: str) -> bool:
     return False
 
 
-def _pair_swatch_to_label(swatch_rect: fitz.Rect, texts: list[dict]) -> str | None:
-    best = None
+def _pair_swatch_to_label(
+    swatch_rect: fitz.Rect,
+    texts: list[dict],
+    legend_center_x: float | None = None,
+) -> str | None:
+    """Pair a swatch with its label. Tightened in v0.2:
+    - horizontal gap ≤ 40 pt (was 80)
+    - cleaned label ≤ 120 chars
+    - reject paragraph-text patterns (sentence breaks, colons, bullets, numeric ranges, multi-sentence)
+    - positional sanity: text must be on the side opposite to the legend center
+      (swatches left-of-center → labels to their right; swatches right-of-center → labels to their left)
+    """
+    # Decide allowed side based on swatch vs legend center
+    allow_right = True
+    allow_left = False
+    if legend_center_x is not None:
+        swatch_cx = (swatch_rect.x0 + swatch_rect.x1) / 2
+        if swatch_cx > legend_center_x:
+            # swatch is on the right → labels likely to its left
+            allow_right = False
+            allow_left = True
+
+    best_cleaned = None
     best_score = 1e9
     for t in texts:
         tb: fitz.Rect = t["bbox"]
-        if tb.x0 < swatch_rect.x1 - 2:
-            continue  # text must be to the right
-        dx = tb.x0 - swatch_rect.x1
-        if not (5 <= dx <= 120):
+        text = t["text"]
+        if len(text) > _MAX_LABEL_LEN:
+            continue
+        # Clean separators first, then test for paragraph patterns.
+        cleaned = re.sub(r"^[\s\-/–—>·•]+", "", text).strip()
+        cleaned = re.sub(r"[\s\-/–—]+$", "", cleaned).strip()
+        if not cleaned:
+            continue
+        if len(cleaned) > _MAX_LABEL_LEN:
+            continue
+        if _is_paragraph_text(cleaned):
+            continue
+        if _is_noise_label(cleaned):
+            continue
+        # Horizontal side + gap
+        if tb.x0 >= swatch_rect.x1 - 2 and allow_right:
+            dx = tb.x0 - swatch_rect.x1
+        elif tb.x1 <= swatch_rect.x0 + 2 and allow_left:
+            dx = swatch_rect.x0 - tb.x1
+        else:
+            continue
+        if not (5 <= dx <= _MAX_HORIZONTAL_GAP_PT):
             continue
         y_center_swatch = (swatch_rect.y0 + swatch_rect.y1) / 2
         y_center_text = (tb.y0 + tb.y1) / 2
         dy = abs(y_center_text - y_center_swatch)
-        if dy > max(8, (swatch_rect.height + tb.height) / 2):
+        if dy > max(6, (swatch_rect.height + tb.height) / 2):
             continue
         score = dx + dy * 2
         if score < best_score:
             best_score = score
-            best = t["text"]
-    if not best:
-        return None
-    cleaned = re.sub(r"^[\s\-/–—]+", "", best).strip()
-    cleaned = re.sub(r"[\s\-/–—]+$", "", cleaned).strip()
-    if _is_noise_label(cleaned):
-        return None
-    return cleaned or None
+            best_cleaned = cleaned
+    return best_cleaned
 
 
 _MONTHS = r"(?:janvier|février|fevrier|mars|avril|mai|juin|juillet|août|aout|septembre|octobre|novembre|décembre|decembre)"
@@ -185,13 +249,27 @@ def detect_legend(page: fitz.Page) -> dict:
     anchor = _find_legend_anchor(texts)
     swatches = _cluster_swatches(candidates, anchor, page_rect)
 
+    # Compute legend center x from swatch cluster centroid (for positional sanity in pairing)
+    legend_center_x = None
+    if swatches:
+        xs = []
+        for sw in swatches:
+            r = _rect_of(sw)
+            if r is None:
+                continue
+            xs.append((r.x0 + r.x1) / 2)
+        if xs:
+            legend_center_x = sum(xs) / len(xs)
+
     raw_entries = []
+    unlabeled = 0
     for sw in swatches:
         rect = _rect_of(sw)
         if rect is None:
             continue
-        label = _pair_swatch_to_label(rect, texts)
+        label = _pair_swatch_to_label(rect, texts, legend_center_x=legend_center_x)
         if not label:
+            unlabeled += 1
             continue
         fill_type = _classify_fill_type(sw)
         if fill_type == "solid":
@@ -273,4 +351,5 @@ def detect_legend(page: fitz.Page) -> dict:
         "map_bbox": [map_bbox.x0, map_bbox.y0, map_bbox.x1, map_bbox.y1],
         "title": title,
         "entries": entries,
+        "swatch_unlabeled": unlabeled,
     }

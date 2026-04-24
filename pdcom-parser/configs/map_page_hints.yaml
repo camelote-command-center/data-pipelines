@@ -1,0 +1,247 @@
+# Per-PDF map page hints provided by Ilan during v0.2.1 rollout.
+# These pages are confirmed map-pages by the human, but their legends don't
+# parse with v0.2's legend.py (alternate template not urbaplan). The v0.3
+# alternate-template detector will consume this file to know which pages
+# to target when bypassing classify + using a dedicated legend variant.
+#
+# Key = PDF filename (relative to PDCom/); value = {map_pages: [ints], notes: str}
+# "a" prefix in the source message means "annex" section page numbering —
+# normalized to flat page indices here (requires verification against the PDF).
+
+pdcom_aire_la_ville_complet.pdf:
+  map_pages: [10, 16, 21, 37, 46, 50, 54, 59, 67, 99, 112, 117, 126, 128, 130, 132, 134, 136, 143]
+  notes: "v0.2 found 0 map pages (max 155 drawings/page — low vector density). v0.3 needs to handle."
+
+pdcom_avusy_2e_rapport.pdf:
+  # "a-prefixed" numbers from Ilan indicate annex section; may need separate section offset
+  map_pages_annex_raw:
+    - 15
+    - 19
+    - 25
+    - 27
+    - 33
+    - 43
+    - 47
+    - 53
+    - 56
+    - 57
+    - 59
+    - 62
+    - 63
+    - 65
+    - 68
+    - 69
+    - 71
+    - 74
+    - 78
+    - 79
+    - 81
+    - 82
+    - 84
+    - 87
+    - 90
+    - 92
+    - 101
+    - 103
+    - 107
+    - 108
+    - 112
+    - 113
+    - 115
+    - 118
+    - 119
+    - 128
+    - 129
+    - 130
+    - 132
+    - 133
+    - 134
+    - 135
+    - 137
+    - 139
+    - 143
+    - 145
+    - 149
+    - 152
+    - 163
+    - 167
+    - 173
+    - 189
+    - 199
+    - 202
+    - 213
+    - 215
+    - 217
+    - 219
+    - 223
+    - 227
+    - 235
+    - 255
+    - 256
+    - 257
+    - 259
+  notes: >-
+    v0.2 found 0 map pages (drawings < 500 on all pages, often < 100).
+    Likely raster-embedded or low-vector-density template. Annex page indices
+    need to be converted to absolute PDF page indices before use.
+
+pdcom_bernex_annexes_environnement.pdf:
+  map_pages: [7, 8, 10, 13, 14, 15, 19, 20, 22, 23, 26, 27, 29, 30, 32, 34, 35, 48, 61, 72, 77, 79, 83, 85, 90, 95]
+  notes: "v0.2 classify detected 0 map pages on this PDF."
+
+pdcom_bernex_plan_de_synthese.pdf:
+  map_pages: [3]
+  notes: "1-page doc; v0.2 classified it as text."
+
+pdcom_bernex_plan_directeur_communal.pdf:
+  map_pages: [17, 21, 24, 26, 29, 30, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 57, 61, 65, 68, 70, 71, 72, 78, 80, 82, 84, 87, 89, 90, 92, 93, 97, 98, 100, 101, 102, 104, 106, 119, 122, 123, 124, 127, 128, 130, 131, 139, 148, 149, 150, 151, 162, 169, 170, 173, 209, 217, 221, 237, 252, 256, 260, 273, 277, 281, 283, 292]
+  notes: "v0.2 classify detected 6 map pages; legends didn't parse. 74 real map pages per hints — alternate_legend template."
+
+pdcom_bernex_plan_directeur_des_energies_rapport_complet.pdf:
+  map_pages: [12, 15, 16, 22, 23, 31, 32, 34, 44, 46, 49, 59, 81]
+  notes: "v0.2 classify detected 0 map pages."
+
+pdcom_bernex_plan_directeur_des_energies_rapport_de_synthese.pdf:
+  map_pages: [11]
+  notes: "Single map page in synthesis doc."
+
+pdcom_bernex_plan_directeur_des_infrastructures_sportives.pdf:
+  map_pages: [48, 49]
+  notes: "v0.2 classify detected 15 map pages (over-inclusive); only 2 real maps."
+
+pdcom_bernex_strategie_d_evolution_de_la_zone_5_carte_de_synthese.pdf:
+  map_pages: [2]
+  notes: "Single carte de synthèse."
+
+pdcom_carouge_broch1.pdf:
+  map_pages: [29, 35, 38, 61, 65, 66, 76, 81, 95, 101, 105, 114, 119, 121, 122, 131, 139, 140, 141, 153, 163, 171]
+  notes: "v0.2 classify detected 3 map pages. alternate_legend template."
+
+pdcom_carouge_broch2.pdf:
+  map_pages: [8, 12, 16, 20, 38, 56, 72, 74, 76, 78, 87, 90, 95, 98, 105, 107, 108, 109, 112, 113, 117, 118, 120, 129, 131, 145, 147, 149, 151, 153, 155, 157, 159, 161, 163]
+  notes: "v0.2 classify detected 13 map pages. alternate_legend template."
+
+pdcom_carouge_broch3.pdf:
+  map_pages: [4, 5, 6, 7, 14, 15, 16, 17, 18, 19, 20, 21, 23, 24, 31, 32, 33, 36]
+  notes: "v0.2 classify detected 6 map pages. alternate_legend template."
+
+pdcom_carouge_plans.pdf:
+  map_pages: [1, 2, 3, 4, 5]
+  notes: "All-maps brochure — dedicated plans document."
+
+pdcom_chenebougeries_2e_rapport.pdf:
+  # This PDF v0.2 already extracts successfully (urbaplan_standard). Hints useful for
+  # v0.3 to catch the map pages v0.2 currently misses (classify threshold / legend detection).
+  map_pages: [22, 29, 42, 53, 63, 64, 72, 73, 74, 85, 86, 87, 88, 99, 102, 107, 113, 119, 125, 131, 137, 143, 151, 157, 167]
+  notes: "v0.2.1 extracted 10/15 ok; hints list 25 pages. 10 map pages currently missed by classify or legend detection."
+
+pdcom_choulex_2e_rapport.pdf:
+  map_pages: [27, 31, 37, 41, 45, 50, 52, 53, 54, 55, 56, 60, 61, 62, 67, 72, 73, 74, 75, 84, 88, 92, 94, 105, 107, 109, 111, 113, 115, 119, 123, 142, 154, 158, 162, 166, 172, 178, 184, 188, 190, 192, 196, 200, 204, 208, 212, 223]
+  notes: "v0.2 classify detected 0 map pages on this PDF. 48 real maps per hints."
+
+pdcom_cologny_2e_energie.pdf:
+  map_pages: [13, 15, 18, 19, 20, 21, 22, 25, 29, 30, 32, 35, 66, 68, 69, 70, 71, 72, 73, 74, 75, 77, 78, 90, 92]
+  notes: "v0.2 classify detected 1 map page; template=alternate_legend. 25 real maps per hints."
+
+pdcom_cologny_2e_rapport.pdf:
+  map_pages: [23, 24, 29, 34, 37, 44, 47, 51, 57, 59, 61, 65, 66, 67, 68, 71, 72, 73, 75, 82, 83, 87, 89, 91, 93, 95, 97, 99, 101, 103, 105, 107, 111, 117, 121, 127, 133, 149, 153, 163, 174, 180, 186, 192, 198, 208, 216, 220, 224]
+  notes: "v0.2 hung in PyMuPDF C-code on this PDF (killed by OS timeout). 49 real maps per hints — alternate_legend."
+
+pdcom_cologny_2e_synthese.pdf:
+  map_pages: [1]
+  notes: "Single synthesis map."
+
+pdcom_corsier_2e_pietons.pdf:
+  map_pages: [1]
+  notes: "Single map in pietons doc."
+
+pdcom_corsier_2e_rapport.pdf:
+  map_pages: [12, 14, 23, 30, 31, 32, 33, 34, 35, 36, 44, 45, 46, 49, 51, 64, 71, 73, 85, 86, 100, 101, 102, 103, 104, 108, 115, 123, 131, 139, 153, 155, 167, 169]
+  notes: "v0.2 detected 9 map pages (urbaplan_standard fingerprint) but all failed legend. 34 real maps per hints."
+
+pdcom_corsier_2e_synthese.pdf:
+  map_pages: [1]
+  notes: "Single synthesis map."
+
+pdcom_dardagny_rapport_de_conformite_20171018.pdf:
+  map_pages: [6, 7]
+  notes: "v0.2 classify found 0 map pages. Only 2 real maps in this older conformity report."
+
+pdcom_geneve_2e_atlas_transition.pdf:
+  map_pages: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65]
+  notes: >-
+    v0.2.1 tagged this file as 'canton_atlas' and skipped. Ilan''s hints include
+    52 map pages — so v0.3 should process it after all, mapped to Genève commune
+    (bfs=12099). Revisit the _is_canton_atlas() filter in ingest.py.
+
+pdcom_geneve_2e_concept_carte.pdf:
+  map_pages: [1]
+  notes: "Single concept map."
+
+pdcom_geneve_2e_concept.pdf:
+  map_pages: [42, 43, 45, 46, 57, 64, 72, 77, 84, 85]
+  notes: "10 maps in concept doc."
+
+pdcom_geneve_2e_consultation_citoyenne.pdf:
+  map_pages: [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+  notes: "12 consecutive map pages — consultation atlas section."
+
+pdcom_geneve_2e_mesures.pdf:
+  map_pages: [11, 16, 38, 45, 51, 57, 62, 67, 73, 82, 99, 106, 112, 157]
+  notes: "14 maps in mesures doc."
+
+pdcom_geneve_2e_synthese.pdf:
+  map_pages: [1]
+  notes: "Single synthesis map."
+
+pdcom_genthod_2e_rapport.pdf:
+  map_pages: [14, 15, 16, 29, 32, 34, 36, 39, 44, 46, 49, 50, 52, 53, 56, 57, 63, 65, 66, 68, 72, 75, 76, 79, 88, 100, 129, 142, 143, 144, 146, 148, 151, 157, 161, 165, 170, 186, 189, 193]
+  notes: "v0.2 classify detected 0 map pages. 40 real maps per hints."
+
+pdcom_grand-saconnex_2e_pietons.pdf:
+  map_pages: [1]
+  notes: "Single pietons map."
+
+pdcom_grand-saconnex_2e_rapport.pdf:
+  map_pages: [50, 59, 60, 67, 81, 86, 87, 95, 111, 125, 127, 171, 180, 187, 188, 189, 193, 201, 205, 206, 207, 209, 221, 226, 230, 241, 261, 263, 279, 315, 318, 321, 331, 335]
+  notes: "v0.2 classify detected 0 map pages; 34 real maps per hints."
+
+pdcom_grand-saconnex_2e_synthese.pdf:
+  map_pages: [1]
+  notes: "Single synthesis map."
+
+pdcom_grand-saconnex_2e_z5.pdf:
+  map_pages: [1]
+  notes: "Single zone-5 map."
+
+pdcom_meyrin_2e_maj_rapport.pdf:
+  map_pages: [21, 59, 69, 81, 109, 133, 159, 162, 181, 186, 195, 205, 237, 257, 285, 287, 289, 291, 307, 317]
+  notes: "v0.2 classify detected 0 map pages; 20 real maps per hints."
+
+pdcom_pregny-chambesy_2e_pietons.pdf:
+  map_pages: [1]
+  notes: "Single pietons map."
+
+pdcom_pregny-chambesy_2e_rapport.pdf:
+  # This PDF already extracts partially via urbaplan_standard in v0.2.1 (2 ok / 10 detected / 556 features).
+  # Hints reveal 102 real map pages — v0.2 is catching ~10% of actual content even on urbaplan template.
+  map_pages: [18, 21, 22, 26, 33, 34, 35, 36, 37, 39, 42, 45, 46, 47, 48, 52, 54, 55, 56, 57, 58, 59, 63, 64, 65, 66, 69, 75, 80, 85, 95, 108, 109, 112, 114, 119, 121, 127, 131, 134, 136, 138, 140, 142, 144, 146, 153, 158, 168, 170, 172, 178, 180, 182, 188, 189, 190, 199, 201, 203, 213, 225, 229, 231, 233, 235, 237, 247, 249, 256, 258, 260, 264, 266, 268, 272, 278, 280, 281, 282, 283, 284, 285, 286, 288, 290, 292, 294, 296, 298, 300, 302, 304, 335, 336, 337, 338, 339, 340, 341, 342, 349]
+  notes: >-
+    v0.2.1 extracted 2/10 ok (556 features, urbaplan_standard). Hints list 102 real map pages
+    — so v0.3 classify threshold tweaks + these hints should expand Pregny-Chambésy coverage ~10×.
+
+pdcom_pregny-chambesy_2e_synthese.pdf:
+  map_pages: [1]
+  notes: "Single synthesis map."
+
+pdcom_pregny-chambesy_2e_sz5.pdf:
+  map_pages: [1, 2]
+  notes: "2 maps in zone-5 strategy doc."
+
+pdcom_troinex.pdf:
+  map_pages: [12, 16, 18, 25, 28, 29, 31, 35, 36, 56, 57, 58, 59, 66, 67, 68, 69, 70, 71, 72, 77, 80, 83, 87, 102, 103, 104, 105, 106, 109, 110, 111, 113, 136, 161, 177, 179, 182, 183, 187, 195, 198, 206, 213, 216, 220, 222, 224, 230, 233, 237, 238, 241, 246, 255, 271, 272, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 289, 290, 291, 293, 295, 304, 305]
+  notes: "v0.2 classify detected 0 map pages. 74 real maps per hints."
+
+pdcom_veyrier_2e_rapport.pdf:
+  map_pages: [17, 20, 33, 34, 41, 42, 43, 46, 59, 62, 63, 73, 80, 86, 87, 88, 93, 97, 102, 103, 104, 117, 120, 127, 136, 140, 144, 154, 161, 191, 192, 193, 194, 195, 196, 197, 203, 216, 218, 220, 229, 230, 239, 243, 276, 306]
+  notes: "v0.2 classify detected 0 map pages. 46 real maps per hints."

@@ -136,8 +136,11 @@ def georeference(
         ny0 = page_h - y1
         ny1 = page_h - y0
         params = _compute_transform_bbox((x0, ny0, x1, ny1), target_bbox)
-        # Confidence: we trust map_bbox as PDF-frame → LV95-bbox. Score reflects
-        # the aspect-ratio agreement (1.0 if perfectly matching).
+        # Page confidence reflects transform reliability, not aspect-ratio agreement.
+        # Non-uniform scale always lands bbox-on-bbox, so raw aspect mismatch
+        # doesn't indicate bad geometry — features after transform land correctly.
+        # Floor at 0.85 (we trust the map_bbox → commune_bbox fit) and modestly
+        # boost for aspect agreement (better-shaped map frame → better feature placement).
         pw = x1 - x0
         ph = y1 - y0
         tw = target_bbox[2] - target_bbox[0]
@@ -148,7 +151,7 @@ def georeference(
             ratio_agreement = min(pdf_ratio, target_ratio) / max(pdf_ratio, target_ratio)
         else:
             ratio_agreement = 0.0
-        conf = 0.5 + 0.4 * ratio_agreement  # [0.5, 0.9] range
+        conf = 0.85 + 0.15 * ratio_agreement  # [0.85, 1.00] range
     else:
         pdf_boundary = detect_commune_boundary(page)
         if pdf_boundary is None:

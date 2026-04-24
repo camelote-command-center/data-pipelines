@@ -13,17 +13,29 @@ def _to_feature(geom, props: dict) -> dict:
 
 def write_layer_geojson(path: Path, entry: dict, layer_slug: str, epsg: int = 2056) -> int:
     path.parent.mkdir(parents=True, exist_ok=True)
-    geoms = entry.get("geoms", [])
+    # Accept either entry["geoms"] (simple list) or entry["geom_props"] (geom+props pairs).
     features = []
-    for g in geoms:
-        if g is None or getattr(g, "is_empty", False):
-            continue
-        features.append(_to_feature(g, {
-            "layer_slug": layer_slug,
-            "label": entry.get("label"),
-            "color": entry.get("color"),
-            "fill_type": entry.get("fill_type"),
-        }))
+    if "geom_props" in entry:
+        for g, props in entry["geom_props"]:
+            if g is None or getattr(g, "is_empty", False):
+                continue
+            features.append(_to_feature(g, {
+                "layer_slug": layer_slug,
+                "label": entry.get("label"),
+                "color": entry.get("color"),
+                "fill_type": entry.get("fill_type"),
+                **props,
+            }))
+    else:
+        for g in entry.get("geoms", []) or []:
+            if g is None or getattr(g, "is_empty", False):
+                continue
+            features.append(_to_feature(g, {
+                "layer_slug": layer_slug,
+                "label": entry.get("label"),
+                "color": entry.get("color"),
+                "fill_type": entry.get("fill_type"),
+            }))
     fc = {
         "type": "FeatureCollection",
         "crs": {"type": "name", "properties": {"name": f"EPSG:{epsg}"}},
