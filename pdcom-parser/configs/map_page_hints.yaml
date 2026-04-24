@@ -113,4 +113,30 @@ pdcom_bernex_strategie_d_evolution_de_la_zone_5_carte_de_synthese.pdf:
   map_pages: [2]
   notes: "Single carte de synthèse."
 
+pdcom_carouge_broch1.pdf:
+  map_pages: [29, 35, 38, 61, 65, 66, 76, 81, 95, 101, 105, 114, 119, 121, 122, 131, 139, 140, 141, 153, 163, 171]
+  notes: "v0.2 classify detected 3 map pages. alternate_legend template."
+
+pdcom_carouge_broch2.pdf:
+  map_pages: [8, 12, 16, 20, 38, 56, 72, 74, 76, 78, 87, 90, 95, 98, 105, 107, 108, 109, 112, 113, 117, 118, 120, 129, 131, 145, 147, 149, 151, 153, 155, 157, 159, 161, 163]
+  notes: "v0.2 classify detected 13 map pages. alternate_legend template."
+
+pdcom_carouge_broch3.pdf:
+  map_pages: [4, 5, 6, 7, 14, 15, 16, 17, 18, 19, 20, 21, 23, 24, 31, 32, 33, 36]
+  notes: "v0.2 classify detected 6 map pages. alternate_legend template."
+
+pdcom_carouge_plans.pdf:
+  map_pages: [1, 2, 3, 4, 5]
+  notes: "All-maps brochure — dedicated plans document."
+
+pdcom_chenebougeries_2e_rapport.pdf:
+  # This PDF v0.2 already extracts successfully (urbaplan_standard). Hints useful for
+  # v0.3 to catch the map pages v0.2 currently misses (classify threshold / legend detection).
+  map_pages: [22, 29, 42, 53, 63, 64, 72, 73, 74, 85, 86, 87, 88, 99, 102, 107, 113, 119, 125, 131, 137, 143, 151, 157, 167]
+  notes: "v0.2.1 extracted 10/15 ok; hints list 25 pages. 10 map pages currently missed by classify or legend detection."
+
+pdcom_choulex_2e_rapport.pdf:
+  map_pages: [27, 31, 37, 41, 45, 50, 52, 53, 54, 55, 56, 60, 61, 62, 67, 72, 73, 74, 75, 84, 88, 92, 94, 105, 107, 109, 111, 113, 115, 119, 123, 142, 154, 158, 162, 166, 172, 178, 184, 188, 190, 192, 196, 200, 204, 208, 212, 223]
+  notes: "v0.2 classify detected 0 map pages on this PDF. 48 real maps per hints."
+
 # More commune hints to be added as Ilan supplies them.
