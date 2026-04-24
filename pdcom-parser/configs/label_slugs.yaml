@@ -1,0 +1,15 @@
+# Manual aliases: label substrings → canonical layer slug.
+# slugify_label() falls back to generic ASCII-slugify when no alias matches.
+aliases:
+  "périmètre de développement": perimetre_developpement
+  "périmètre développement": perimetre_developpement
+  "périmètre a": perimetre_A
+  "périmètre b": perimetre_B
+  "plan de site": plan_site
+  "espace public parc": espace_public_parc_place
+  "parc, place": espace_public_parc_place
+  "préau": preau_sport
+  "sport": preau_sport
+  "cours d'eau": cours_eau
+  "continuité biologique": continuite_biologique
+  "continuite biologique": continuite_biologique

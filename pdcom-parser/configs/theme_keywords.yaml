@@ -1,0 +1,49 @@
+themes:
+  espace_public:
+    - "espace public"
+    - "espaces publics"
+  patrimoine_bati:
+    - "patrimoine"
+    - "protection du patrimoine"
+    - "patrimoine bâti"
+    - "patrimoine bati"
+  elements_naturels:
+    - "éléments naturels"
+    - "elements naturels"
+    - "nature"
+    - "biodiversité"
+    - "biodiversite"
+    - "paysage et biodiversité"
+  mobilite:
+    - "mobilité"
+    - "mobilite"
+    - "transports"
+    - "circulation"
+    - "piétons"
+    - "pietons"
+    - "vélos"
+    - "velos"
+  affectation:
+    - "zone d'affectation"
+    - "affectation"
+    - "zones d'affectation"
+  equipements:
+    - "équipements"
+    - "equipements"
+    - "centralités"
+    - "centralites"
+  paysage:
+    - "paysage"
+  risques:
+    - "risques"
+    - "dangers"
+  energie:
+    - "énergies"
+    - "energies"
+    - "énergie"
+    - "energie"
+  synthese:
+    - "synthèse"
+    - "synthese"
+    - "carte de synthèse"
+    - "plan de synthèse"
