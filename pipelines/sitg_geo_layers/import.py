@@ -2,7 +2,7 @@
 """
 SITG Geo Layers — Import Pipeline (config-driven, pure ArcGIS)
 
-Fetches 7 SITG geo-enriched datasets via ArcGIS REST API and upserts into lamap_db:
+Fetches 7 SITG geo-enriched datasets via ArcGIS REST API and upserts into re-llm bronze_ch:
   1. ge_sitg_classement_geo          — Protected buildings      (polygon)
   2. ge_sitg_bruit_routier_geo       — Road noise measurements  (polyline)
   3. ge_sitg_solaire_geo             — Solar potential           (polygon)
@@ -28,9 +28,9 @@ DATA SAFETY:
     - Row count should only go UP or stay the same.
 
 Environment variables:
-    LAMAP_SUPABASE_URL          - Lamap Supabase project URL (required)
-    LAMAP_SUPABASE_SERVICE_KEY  - service_role key (required)
-    LAMAP_SCHEMA                - target schema (default: bronze)
+    RE_LLM_SUPABASE_URL              - re-llm Supabase project URL (required)
+    RE_LLM_SUPABASE_SERVICE_ROLE_KEY - service_role key (required)
+    RE_LLM_SCHEMA                    - target schema (default: bronze_ch)
 """
 
 import json
@@ -65,7 +65,7 @@ DATASETS = [
     },
     {
         "name": "Bruit routier",
-        "code": "ge_rdppf_dsopb_bruit",
+        "code": "ge_rdppf_dsopb",
         "table": "ge_sitg_bruit_routier_geo",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/BRUIT_ROUTIER_MESURE_AUX_FACADES_DES_BATIMENTS/FeatureServer/0",
         "conflict_column": "objectid",
@@ -129,7 +129,7 @@ DATASETS = [
     },
     {
         "name": "RDPPF DSOPB",
-        "code": "ge_rdppf_dsopb",
+        "code": "ge_rdppf_dsopb_planning",
         "table": "ge_sitg_rdppf_dsopb_geo",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/RDPPF_DSOPB/FeatureServer/0",
         "conflict_column": "objectid",
@@ -425,15 +425,15 @@ def process_destination(
 # ──────────────────────────────────────────────────────────────
 
 def main():
-    # ── Required: Lamap ──
-    lamap_url = os.environ.get("LAMAP_SUPABASE_URL", "")
-    lamap_key = os.environ.get("LAMAP_SUPABASE_SERVICE_KEY", "")
-    lamap_schema = os.environ.get("LAMAP_SCHEMA", "bronze")
+    # ── Required: re-llm ──
+    rellm_url = os.environ.get("RE_LLM_SUPABASE_URL", "")
+    rellm_key = os.environ.get("RE_LLM_SUPABASE_SERVICE_ROLE_KEY", "")
+    rellm_schema = os.environ.get("RE_LLM_SCHEMA", "bronze_ch")
     camelote_url = os.environ.get("CAMELOTE_SUPABASE_URL", "")
     camelote_key = os.environ.get("CAMELOTE_SUPABASE_KEY", "")
 
-    if not lamap_url or not lamap_key:
-        print("ERROR: LAMAP_SUPABASE_URL and LAMAP_SUPABASE_SERVICE_KEY are required")
+    if not rellm_url or not rellm_key:
+        print("ERROR: RE_LLM_SUPABASE_URL and RE_LLM_SUPABASE_SERVICE_ROLE_KEY are required")
         sys.exit(1)
 
     print("=" * 60)
@@ -469,15 +469,15 @@ def main():
 
         datasets_with_records.append((ds, records))
 
-    # ── Upsert to Lamap (required) ──
-    lamap_ok = process_destination(
-        "lamap_db", lamap_url, lamap_key, lamap_schema, datasets_with_records
+    # ── Upsert to re-llm (required) ──
+    rellm_ok = process_destination(
+        "re-llm", rellm_url, rellm_key, rellm_schema, datasets_with_records
     )
 
     # ── Update dataset metadata ──
     for ds, records in datasets_with_records:
         if records:
-            rows_after = get_row_count(lamap_url, lamap_key, lamap_schema, ds["table"])
+            rows_after = get_row_count(rellm_url, rellm_key, rellm_schema, ds["table"])
             update_dataset_meta(
                 camelote_url, camelote_key, ds["code"],
                 record_count=rows_after,
@@ -489,8 +489,8 @@ def main():
     print("  IMPORT COMPLETE")
     print("=" * 60)
 
-    if not lamap_ok:
-        print("  FAILED: Lamap had errors")
+    if not rellm_ok:
+        print("  FAILED: re-llm had errors")
         sys.exit(1)
 
 
