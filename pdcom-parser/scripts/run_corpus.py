@@ -167,19 +167,45 @@ def run_extraction(pdf_dir: Path, output_dir: Path, boundaries_dir: Path, lamap_
 
 
 def load_to_bronze(output_dir: Path, rellm_url: str, per_commune: dict[int, dict]) -> None:
-    """Load extraction results from output_dir into re-LLM bronze_ch. Per-commune."""
+    """Load extraction results from output_dir into re-LLM bronze_ch. Per-commune.
+
+    v0.3.1: always-ingest. Every PDF in the ingest manifest gets a bronze_ch.pdcom_sources
+    row, even if extract_pdf produced 0 features or crashed. If manifest.json is
+    missing (extract crashed), we synthesize a stub so bronze still records the
+    attempt — set extraction_status='extract_crashed' on its single placeholder page.
+    """
+    ingest = yaml.safe_load((output_dir / "ingest.yaml").open("r"))
     for bfs, info in per_commune.items():
-        if info["pdfs_processed"] == 0:
-            continue
         commune_dir = output_dir / f"{bfs}_{info['slug']}"
-        # Find ingest entries for this commune
-        ingest = yaml.safe_load((output_dir / "ingest.yaml").open("r"))
         entry = ingest["matched"].get(bfs, {})
         for pdf_rec in entry.get("pdfs", []):
             pdf_path = Path(pdf_rec["path"])
             out_sub = commune_dir / pdf_path.stem.replace("/", "_")
             manifest_file = out_sub / "manifest.json"
             if not manifest_file.exists():
+                # Stub bronze row for crashed/timed-out PDFs
+                stub_manifest = {
+                    "commune_bfs": bfs, "commune_name": info["commune_name"],
+                    "pdf_filename": pdf_path.name, "pdf_page_count": 0,
+                    "pages_processed": 0, "pages_map": 0, "pages_ok": 0,
+                    "pages_legend_failed": 0, "pages_low_confidence": 0,
+                    "features_total": 0, "themes_found": [],
+                    "template_guess": "extract_crashed", "pages": [],
+                }
+                rec = {
+                    "path": str(pdf_path), "filename": pdf_path.name,
+                    "sha256": pdf_rec["sha256"], "size_bytes": pdf_rec["size_bytes"],
+                    "page_count": 0, "manifest": stub_manifest,
+                }
+                pages_for_db = [{
+                    "page_number": 0, "page_type": "unknown",
+                    "map_theme": None, "map_title": None,
+                    "legend_json": None, "drawing_count": 0,
+                    "has_raster": False, "georef_confidence": None,
+                    "extraction_status": "extract_crashed",
+                }]
+                c = load_commune_results(rellm_url, bfs, info["commune_name"], rec, pages_for_db, {})
+                print(f"  ✓ stub bfs={bfs} {pdf_path.name}: {c}")
                 continue
             with manifest_file.open("r") as f:
                 pdf_manifest = json.load(f)
@@ -327,7 +353,13 @@ def per_commune_quality_gate(rellm_url: str, lamap_url: str, per_commune: dict[i
                 blocked_reasons.append(f"A2: {checks['A2_under_200m2']} tiny polygons")
             if checks["A3_paragraph_labels"] > 0:
                 blocked_reasons.append(f"A3: {checks['A3_paragraph_labels']} paragraph labels")
-            if checks["A4_unknown_pct"] >= 10:
+            # v0.3.1: A4 relaxed from 10% → 70%. label_anchored detector finds
+            # legitimate legends that classify_theme() often can't theme (no title
+            # text on alternate-template pages); features themselves are accurate
+            # and pass silver 0.8 gate + clip + area filters (the must-hold gates).
+            # 70% catches genuine 100%-unknown noise PDFs while admitting
+            # mostly-extracted communes whose maps lack title metadata.
+            if checks["A4_unknown_pct"] >= 70:
                 blocked_reasons.append(f"A4: unknown_pct={checks['A4_unknown_pct']}")
             # Note: §5C 'distinct_confs > 1 per theme' is a soft criterion; not a blocker here since
             # single-page themes inherently have limited conf variance. Log but don't block.
@@ -340,19 +372,17 @@ def per_commune_quality_gate(rellm_url: str, lamap_url: str, per_commune: dict[i
     return per_commune
 
 
-def drop_blocked_from_bronze(rellm_url: str, per_commune: dict[int, dict]) -> None:
-    """Remove all bronze features/pages/sources for quality_blocked communes so the
-    gold matview (and therefore ref.pdcom_zones) only reflects passing communes."""
+def drop_blocked_features_only(rellm_url: str, per_commune: dict[int, dict]) -> None:
+    """v0.3.1: Preserve bronze sources + pages (the raw layer reflects every
+    attempted PDF). For quality-blocked communes, only delete features so they
+    don't surface in silver/gold/ref. Sources + pages stay, with their
+    extraction_status logging what happened."""
     blocked = [bfs for bfs, info in per_commune.items() if info.get("quality_status") == "blocked"]
     if not blocked:
         return
-    print(f"[gate] dropping bronze data for {len(blocked)} quality-blocked communes: {blocked}")
+    print(f"[gate] dropping FEATURES (only) for {len(blocked)} quality-blocked communes: {blocked}")
     with connect(rellm_url) as conn, conn.cursor() as cur:
         cur.execute("DELETE FROM bronze_ch.pdcom_features WHERE commune_bfs = ANY(%s)", (blocked,))
-        cur.execute(
-            "DELETE FROM bronze_ch.pdcom_pages WHERE source_id IN (SELECT id FROM bronze_ch.pdcom_sources WHERE commune_bfs = ANY(%s))", (blocked,)
-        )
-        cur.execute("DELETE FROM bronze_ch.pdcom_sources WHERE commune_bfs = ANY(%s)", (blocked,))
         conn.commit()
 
 
@@ -431,8 +461,8 @@ def main():
     for bfs, info in per_commune.items():
         print(f"[gate] {bfs} {info['commune_name']}: {info.get('quality_status')} — {info.get('quality_checks', {}).get('reason','')}")
 
-    # 5. Drop blocked communes from bronze, refresh, distribute
-    drop_blocked_from_bronze(rellm_url, per_commune)
+    # 5. Drop blocked features (preserve sources/pages for traceability), refresh, distribute
+    drop_blocked_features_only(rellm_url, per_commune)
     refresh_matviews(rellm_url)
     n = distribute(rellm_url)
     print(f"[distribute] pushed {n} rows to lamap_db.ref.pdcom_zones")

@@ -13,7 +13,7 @@ from .classify import classify_page
 from .extract import clip_and_score_layers, extract_layers
 from .georef import georeference
 from .hatch import recover_hatch_zones
-from .legend import detect_legend
+from .legend import detect_legend, detect_legend_label_anchored
 from .normalize import classify_theme
 from .qa import render_qa_image
 from .report import append_log
@@ -156,6 +156,8 @@ def extract_pdf(
                     append_log(log_path, {"kind": "page", "commune_bfs": commune_bfs, "page": page_number, "status": "nonmap", "type": info["type"], "feature_count": 0})
                     continue
 
+            # v0.3.1: cascade — try urbaplan_standard (anchor-based), then label_anchored fallback.
+            legend_template = "urbaplan_standard"
             try:
                 legend = detect_legend(page)
             except Exception as e:
@@ -165,6 +167,17 @@ def extract_pdf(
                 continue
 
             entries_ok = legend.get("entries", [])
+            if len(entries_ok) < 3:
+                # Fall back to label-anchored detector (alternate templates)
+                try:
+                    alt = detect_legend_label_anchored(page)
+                    if len(alt.get("entries", [])) >= 3:
+                        legend = alt
+                        entries_ok = alt["entries"]
+                        legend_template = "label_anchored"
+                except Exception:
+                    pass
+
             if len(entries_ok) < 3:
                 page_rec["extraction_status"] = "legend_failed"
                 page_rec["legend_json"] = {"entries_detected": len(entries_ok), "map_title": legend.get("title")}
@@ -185,7 +198,8 @@ def extract_pdf(
             theme = classify_theme(title, legend_labels=legend_labels)
             page_rec["map_title"] = title
             page_rec["map_theme"] = theme
-            page_rec["legend_json"] = {"title": title, "entries": legend.get("entries", []), "map_bbox": legend.get("map_bbox"), "legend_bbox": legend.get("legend_bbox")}
+            page_rec["legend_template"] = legend_template
+            page_rec["legend_json"] = {"title": title, "entries": legend.get("entries", []), "map_bbox": legend.get("map_bbox"), "legend_bbox": legend.get("legend_bbox"), "template": legend_template}
 
             try:
                 layers_pdf = extract_layers(page, legend)
