@@ -251,22 +251,45 @@ def has_column(url: str, key: str, schema: str, table: str, column: str) -> bool
 
 
 def get_table_columns(url: str, key: str, schema: str, table: str) -> set[str]:
-    """Discover existing columns in a table via PostgREST."""
-    endpoint = f"{url.rstrip('/')}/rest/v1/{table}?limit=1"
+    """Discover existing columns in a table via PostgREST.
+
+    Tries first to read column names from a sample row. If the table is
+    empty (no rows yet), falls back to PostgREST's OpenAPI spec, which
+    exposes column definitions for every table regardless of row count.
+    """
     headers = {
         "apikey": key,
         "Authorization": f"Bearer {key}",
     }
     if schema and schema != "public":
         headers["Accept-Profile"] = schema
+
+    # Path 1: try a sample row
     try:
-        r = requests.get(endpoint, headers=headers, timeout=15)
+        r = requests.get(
+            f"{url.rstrip('/')}/rest/v1/{table}?limit=1", headers=headers, timeout=15
+        )
         if r.status_code == 200:
             rows = r.json()
             if rows:
                 return set(rows[0].keys())
     except Exception as e:
-        print(f"  Warning: could not discover table columns: {e}")
+        print(f"  Warning: could not discover columns via row probe: {e}")
+
+    # Path 2: empty table — read OpenAPI spec at the schema root
+    try:
+        r = requests.get(f"{url.rstrip('/')}/rest/v1/", headers=headers, timeout=15)
+        if r.status_code == 200:
+            spec = r.json()
+            defs = spec.get("definitions") or {}
+            tdef = defs.get(table)
+            if tdef:
+                props = tdef.get("properties") or {}
+                if props:
+                    return set(props.keys())
+    except Exception as e:
+        print(f"  Warning: could not discover columns via OpenAPI: {e}")
+
     return set()
 
 
