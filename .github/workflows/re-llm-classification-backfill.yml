@@ -1,0 +1,29 @@
+name: re-LLM classification backfill
+
+on:
+  schedule:
+    - cron: '30 4 * * *'   # daily 04:30 UTC, after re-LLM sync jobs (03:15 / 04:00)
+  workflow_dispatch:
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        working-directory: re-llm-classification
+        run: pip install -r requirements.txt
+
+      - name: Run backfill
+        working-directory: re-llm-classification
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SUPABASE_RE_LLM_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_RE_LLM_SERVICE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+        run: python classify_existing.py
