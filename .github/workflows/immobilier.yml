@@ -19,15 +19,15 @@ jobs:
       - name: Fetch Immobilier listings
         run: cd pipelines/immobilier && npx tsx fetch-listings.ts
         env:
-          SUPABASE_URL: ${{ secrets.LAMAP_SUPABASE_URL }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.LAMAP_SUPABASE_SERVICE_KEY }}
+          RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
           WEBSHARE_PROXY_USER: ${{ secrets.WEBSHARE_PROXY_USER }}
           WEBSHARE_PROXY_PASS: ${{ secrets.WEBSHARE_PROXY_PASS }}
       - name: Update dataset metadata
         if: always()
         run: |
           COUNT=$(curl -s -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
-            -H "Accept-Profile: bronze" -H "Prefer: count=estimated" \
+            -H "Accept-Profile: bronze_ch" -H "Prefer: count=estimated" \
             --head "$URL/rest/v1/immobilier?select=*" \
             | grep -i content-range | sed 's|.*/||' | tr -d '\r')
           curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.ext_immobilier" \
@@ -35,7 +35,7 @@ jobs:
             -H "Content-Type: application/json" -H "Prefer: return=minimal" \
             -d "{\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"record_count\":${COUNT:-0},\"last_error\":null}"
         env:
-          URL: ${{ secrets.LAMAP_SUPABASE_URL }}
-          KEY: ${{ secrets.LAMAP_SUPABASE_SERVICE_KEY }}
+          URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
           CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
           CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}

@@ -17,8 +17,8 @@ jobs:
       - run: pip install -r requirements.txt
       - run: python pipelines/realadvisor/import.py
         env:
-          LAMAP_SUPABASE_URL: ${{ secrets.LAMAP_SUPABASE_URL }}
-          LAMAP_SUPABASE_SERVICE_KEY: ${{ secrets.LAMAP_SUPABASE_SERVICE_KEY }}
-          LAMAP_SCHEMA: bronze
+          RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          RE_LLM_SCHEMA: bronze_ch
           CAMELOTE_SUPABASE_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
           CAMELOTE_SUPABASE_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}

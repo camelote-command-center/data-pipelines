@@ -45,7 +45,7 @@ from shared.freshness import update_dataset_meta
 # ──────────────────────────────────────────────────────────────
 
 GRAPHQL_URL = "https://hasura-scrapers-fqs3j3myvq-ew.a.run.app/v1/graphql"
-TABLE = "RealAdvisor"
+TABLE = "realadvisor"
 CONFLICT_COLUMN = "providerId"
 DATASET_CODE = "ext_realadvisor"
 
@@ -256,14 +256,14 @@ def extract_date_from_stats(price_stats: list) -> tuple[int, int]:
 # ──────────────────────────────────────────────────────────────
 
 def main():
-    lamap_url = os.environ.get("LAMAP_SUPABASE_URL", "")
-    lamap_key = os.environ.get("LAMAP_SUPABASE_SERVICE_KEY", "")
-    lamap_schema = os.environ.get("LAMAP_SCHEMA", "bronze")
+    lamap_url = os.environ.get("RE_LLM_SUPABASE_URL", "")
+    lamap_key = os.environ.get("RE_LLM_SUPABASE_SERVICE_ROLE_KEY", "")
+    lamap_schema = os.environ.get("RE_LLM_SCHEMA", "bronze_ch")
     camelote_url = os.environ.get("CAMELOTE_SUPABASE_URL", "")
     camelote_key = os.environ.get("CAMELOTE_SUPABASE_KEY", "")
 
     if not lamap_url or not lamap_key:
-        print("ERROR: LAMAP_SUPABASE_URL and LAMAP_SUPABASE_SERVICE_KEY are required")
+        print("ERROR: RE_LLM_SUPABASE_URL and RE_LLM_SUPABASE_SERVICE_ROLE_KEY are required")
         sys.exit(1)
 
     print("=" * 60)

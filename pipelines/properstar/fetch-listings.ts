@@ -16,11 +16,11 @@
  *   npx tsx fetch-listings.ts
  *
  * Environment variables:
- *   SUPABASE_URL              - Supabase project URL (required)
- *   SUPABASE_SERVICE_ROLE_KEY - service_role key     (required)
+ *   RE_LLM_SUPABASE_URL              - re-LLM Supabase URL (required)
+ *   RE_LLM_SUPABASE_SERVICE_ROLE_KEY - service_role key     (required)
  */
 
-import { upsertBronze, sleep, verifyBronzeAccess, markStaleListings } from '../_shared/supabase.js';
+import { upsert, sleep, verifyAccess, markStaleListings } from '../_shared/re-llm.js';
 import { httpFetch } from '../_shared/http.js';
 
 // ---------------------------------------------------------------------------
@@ -425,7 +425,7 @@ async function main() {
   const startTime = Date.now();
 
   // 0. Verify DB connectivity before spending hours scraping
-  await verifyBronzeAccess('properstar');
+  await verifyAccess('bronze_ch', 'properstar');
 
   // 1. Get auth token
   await getAuthorization();
@@ -492,7 +492,7 @@ async function main() {
         // Incremental upsert to save progress
         if (pendingRecords.length >= UPSERT_EVERY) {
           console.log(`    Upserting ${pendingRecords.length} records...`);
-          const n = await upsertBronze('properstar', pendingRecords, 'ad_url', BATCH_SIZE);
+          const n = await upsert('bronze_ch', 'properstar', pendingRecords, 'ad_url', BATCH_SIZE);
           totalUpserted += n;
           pendingRecords = [];
         }
@@ -507,7 +507,7 @@ async function main() {
   // Flush remaining records
   if (pendingRecords.length > 0) {
     console.log(`\n  Upserting final ${pendingRecords.length} records...`);
-    const n = await upsertBronze('properstar', pendingRecords, 'ad_url', BATCH_SIZE);
+    const n = await upsert('bronze_ch', 'properstar', pendingRecords, 'ad_url', BATCH_SIZE);
     totalUpserted += n;
   }
 
@@ -537,7 +537,7 @@ async function main() {
 
   // Mark stale listings as offline (only on full runs, not auth-exhausted partials)
   if (!authExhausted) {
-    await markStaleListings('properstar', 100, totalFetched);
+    await markStaleListings('bronze_ch', 'properstar', 'ad_url', 100, totalFetched);
   } else {
     console.log('  Skipping stale check: partial run (auth exhausted)');
   }

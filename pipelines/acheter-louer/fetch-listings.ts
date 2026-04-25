@@ -16,15 +16,15 @@
  *   npx tsx fetch-listings.ts
  *
  * Environment variables:
- *   SUPABASE_URL              - Supabase project URL  (required)
- *   SUPABASE_SERVICE_ROLE_KEY - service_role key      (required)
- *   WEBSHARE_PROXY_USER       - proxy username        (required)
- *   WEBSHARE_PROXY_PASS       - proxy password        (required)
+ *   RE_LLM_SUPABASE_URL              - re-LLM Supabase URL (required)
+ *   RE_LLM_SUPABASE_SERVICE_ROLE_KEY - service_role key     (required)
+ *   WEBSHARE_PROXY_USER              - proxy username       (required)
+ *   WEBSHARE_PROXY_PASS              - proxy password       (required)
  */
 
 import { chromium, type Browser, type Page } from 'playwright';
 import * as cheerio from 'cheerio';
-import { upsertBronze, sleep, verifyBronzeAccess, markStaleListings } from '../_shared/supabase.js';
+import { upsert, sleep, verifyAccess, markStaleListings } from '../_shared/re-llm.js';
 import { proxyUrl } from '../_shared/proxy.js';
 
 // ---------------------------------------------------------------------------
@@ -289,7 +289,7 @@ async function main() {
   const startTime = Date.now();
 
   // 0. Verify DB connectivity before spending hours scraping
-  await verifyBronzeAccess('acheterLouer');
+  await verifyAccess('bronze_ch', 'acheter_louer');
 
   const allRecords: Record<string, unknown>[] = [];
 
@@ -421,7 +421,7 @@ async function main() {
 
   // Upsert
   console.log(`\n  Upserting ${allRecords.length} records (batch size: ${BATCH_SIZE})...`);
-  const totalUpserted = await upsertBronze('acheterLouer', allRecords, 'ad_url', BATCH_SIZE);
+  const totalUpserted = await upsert('bronze_ch', 'acheter_louer', allRecords, 'ad_url', BATCH_SIZE);
 
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
   console.log(`\n${'='.repeat(60)}`);
@@ -437,7 +437,7 @@ async function main() {
   }
 
   // Mark stale listings as offline
-  await markStaleListings('acheterLouer', 50, allRecords.length);
+  await markStaleListings('bronze_ch', 'acheter_louer', 'ad_url', 50, allRecords.length);
 }
 
 main().catch((err) => {
