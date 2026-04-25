@@ -136,6 +136,77 @@ def _is_noise_label(label: str) -> bool:
     return False
 
 
+_DANGLING_SUFFIX_RE = re.compile(
+    r"\s+(?:à|de|du|des|et|en|au|aux|par|pour|sur|sous|la|le|les|liée?s?\s+à)\s*$",
+    re.IGNORECASE,
+)
+
+
+def _clean_label_text(s: str) -> str:
+    """Strip leading bullets/dashes/separators and trailing separators. Same
+    cleaning rule used in _pair_swatch_to_label so labels are normalized consistently."""
+    if not s:
+        return s
+    s = re.sub(r"^[\s\-/–—>·•]+", "", s).strip()
+    s = re.sub(r"[\s\-/–—]+$", "", s).strip()
+    return s
+
+
+def _join_continuation_lines(seed_text: dict, texts: list[dict]) -> str:
+    """v0.4 truncated-label fix: if a legend label ends with a dangling connector
+    word (à, de, et, lié à, …), look for a text line directly below at similar x
+    that's likely a continuation, and append it. Up to two continuation lines.
+
+    Returns the cleaned, joined label. Falls back to the cleaned seed if the
+    join would produce a paragraph-shaped string."""
+    seed_clean = _clean_label_text(seed_text["text"])
+    if not _DANGLING_SUFFIX_RE.search(seed_clean):
+        return seed_clean
+    seed_bbox = seed_text["bbox"]
+    out = seed_clean
+    line_h = seed_bbox.height or 12
+    cur_y = seed_bbox.y1
+    cur_x0 = seed_bbox.x0
+    for _ in range(2):  # at most 2 continuation lines
+        cand = None
+        cand_dy = 1e9
+        for t in texts:
+            tb = t["bbox"]
+            if t is seed_text:
+                continue
+            # must be directly below (within 1.5 line heights) and close in x0
+            if tb.y0 < cur_y - 2:
+                continue
+            dy = tb.y0 - cur_y
+            if dy > 1.5 * line_h:
+                continue
+            if abs(tb.x0 - cur_x0) > 8:
+                continue
+            txt = _clean_label_text(t["text"])
+            if not txt or len(txt) > 80:
+                continue
+            # The continuation line must NOT itself look like a fresh legend label.
+            if _is_paragraph_text(txt):
+                continue
+            if _is_noise_label(txt):
+                continue
+            if dy < cand_dy:
+                cand = t
+                cand_dy = dy
+        if cand is None:
+            break
+        candidate_join = (out + " " + _clean_label_text(cand["text"])).strip()
+        # Reject the join if it produced a paragraph-shaped string.
+        if _is_paragraph_text(candidate_join):
+            break
+        out = candidate_join
+        cur_y = cand["bbox"].y1
+        cur_x0 = cand["bbox"].x0
+        if not _DANGLING_SUFFIX_RE.search(out):
+            break
+    return out
+
+
 def _pair_swatch_to_label(
     swatch_rect: fitz.Rect,
     texts: list[dict],
@@ -158,7 +229,7 @@ def _pair_swatch_to_label(
             allow_right = False
             allow_left = True
 
-    best_cleaned = None
+    best_text = None
     best_score = 1e9
     for t in texts:
         tb: fitz.Rect = t["bbox"]
@@ -193,8 +264,11 @@ def _pair_swatch_to_label(
         score = dx + dy * 2
         if score < best_score:
             best_score = score
-            best_cleaned = cleaned
-    return best_cleaned
+            best_text = t
+    if best_text is None:
+        return None
+    # v0.4: append continuation lines for dangling-word labels.
+    return _join_continuation_lines(best_text, texts)
 
 
 _MONTHS = r"(?:janvier|février|fevrier|mars|avril|mai|juin|juillet|août|aout|septembre|octobre|novembre|décembre|decembre)"
@@ -289,9 +363,31 @@ def detect_legend_label_anchored(page: fitz.Page) -> dict:
 
     swatch_drawings = [d for d in drawings if _is_swatch_candidate(d)]
     raw_entries: list[dict] = []
+    consumed_text_ids: set[int] = set()
     for c in col_items:
+        if id(c) in consumed_text_ids:
+            continue
         bbox = c["bbox"]
-        label = c["text"]
+        # v0.4: join continuation lines for truncated labels. Track consumed
+        # lines so they don't double up as their own legend entries.
+        label = _join_continuation_lines(c, texts)
+        # If join produced a longer label, mark the next col_items lines
+        # below `c` as consumed up to the joined length.
+        if label != c["text"].strip():
+            line_h = bbox.height or 12
+            cur_y = bbox.y1
+            for t in col_items:
+                if id(t) in consumed_text_ids or t is c:
+                    continue
+                if t["bbox"].y0 < cur_y - 2:
+                    continue
+                if t["bbox"].y0 - cur_y > 1.5 * line_h:
+                    continue
+                if abs(t["bbox"].x0 - bbox.x0) > 8:
+                    continue
+                if t["text"].strip() and t["text"].strip() in label:
+                    consumed_text_ids.add(id(t))
+                    cur_y = t["bbox"].y1
         y_center = (bbox.y0 + bbox.y1) / 2
         best = None
         best_score = 1e9

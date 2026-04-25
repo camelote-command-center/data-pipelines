@@ -114,16 +114,18 @@ def load_commune_results(db_url: str, commune_bfs: int, commune_name: str, pdf_r
                         Jsonb(f.get("properties", {})),
                     ))
             if rows:
-                cur.executemany(
-                    """
-                    INSERT INTO bronze_ch.pdcom_features (
-                        page_id, commune_bfs, map_theme, layer_label, layer_slug,
-                        source_color, fill_type, geometry, georef_confidence, properties
-                    )
-                    VALUES (%s,%s,%s,%s,%s,%s,%s, ST_SetSRID(ST_GeomFromGeoJSON(%s), 2056), %s, %s)
-                    """,
-                    rows,
+                # v0.4: chunk large inserts so Supabase pooler doesn't drop the
+                # connection on PDFs with tens of thousands of features.
+                CHUNK = 2000
+                stmt = """
+                INSERT INTO bronze_ch.pdcom_features (
+                    page_id, commune_bfs, map_theme, layer_label, layer_slug,
+                    source_color, fill_type, geometry, georef_confidence, properties
                 )
+                VALUES (%s,%s,%s,%s,%s,%s,%s, ST_SetSRID(ST_GeomFromGeoJSON(%s), 2056), %s, %s)
+                """
+                for start in range(0, len(rows), CHUNK):
+                    cur.executemany(stmt, rows[start:start + CHUNK])
                 counts["features"] = len(rows)
         conn.commit()
     return counts
