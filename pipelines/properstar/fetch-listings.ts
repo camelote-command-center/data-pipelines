@@ -111,7 +111,16 @@ async function getAuthorization(maxAttempts = 5): Promise<void> {
 
   while (attempts < maxAttempts) {
     try {
-      const res = await httpFetch(BASE_URL, { headers: HEADERS_BASE, redirect: 'manual', maxRetries: 0 } as any);
+      // Properstar's homepage is geo-blocked by Azure Front Door against
+      // datacenter IPs (GH Actions, Hostinger). Only the homepage call needs
+      // a residential CH IP — the listglobally API afterwards is fine direct.
+      // Bandwidth impact: ~10 KB per attempt, a handful of attempts/day.
+      const res = await httpFetch(BASE_URL, {
+        headers: HEADERS_BASE,
+        redirect: 'manual',
+        maxRetries: 0,
+        useResidential: true,
+      } as any);
       const setCookie = res.headers.getSetCookie?.() || [];
 
       const tokenCookie = setCookie.find((c) => c.startsWith('token'));

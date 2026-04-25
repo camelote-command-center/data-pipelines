@@ -5,54 +5,93 @@
  * This avoids proxy issues (407, bad auth) when direct access works,
  * and only uses the proxy as a fallback when the site blocks us.
  *
+ * Two proxy flavours:
+ *   - Datacenter (cheap, fast, often blocked) — Webshare "Proxy Server" plan
+ *     env: WEBSHARE_PROXY_USER / WEBSHARE_PROXY_PASS
+ *   - Residential (expensive, slower, defeats geo/datacenter blocks) —
+ *     Webshare "Rotating Residential" plan
+ *     env: WEBSHARE_RESIDENTIAL_USER / WEBSHARE_RESIDENTIAL_PASS / WEBSHARE_RESIDENTIAL_HOST
+ *
  * Usage:
  *   import { httpFetch } from '../_shared/http.js';
- *   const res = await httpFetch('https://example.com', { headers: {...} });
+ *   await httpFetch(url, { headers: {...} });                 // direct → datacenter fallback
+ *   await httpFetch(url, { useResidential: true, ... });      // straight through residential
  */
 
 import { HttpsProxyAgent } from 'https-proxy-agent';
 
-const PROXY_HOST = 'p.webshare.io';
-const PROXY_PORT = 80;
+const DC_PROXY_HOST = 'p.webshare.io';
+const DC_PROXY_PORT = 80;
 
-let agent: HttpsProxyAgent<string> | undefined;
-let proxyAvailable: boolean | null = null; // null = untested
+let dcAgent: HttpsProxyAgent<string> | undefined;
+let dcAvailable: boolean | null = null;
 
-function getAgent(): HttpsProxyAgent<string> | undefined {
-  if (agent) return agent;
+let resAgent: HttpsProxyAgent<string> | undefined;
+let resLogged = false;
 
+function getDatacenterAgent(): HttpsProxyAgent<string> | undefined {
+  if (dcAgent) return dcAgent;
   const user = process.env.WEBSHARE_PROXY_USER;
   const pass = process.env.WEBSHARE_PROXY_PASS;
   if (!user || !pass) return undefined;
+  dcAgent = new HttpsProxyAgent(`http://${user}:${pass}@${DC_PROXY_HOST}:${DC_PROXY_PORT}`);
+  return dcAgent;
+}
 
-  agent = new HttpsProxyAgent(`http://${user}:${pass}@${PROXY_HOST}:${PROXY_PORT}`);
-  return agent;
+export function getResidentialAgent(): HttpsProxyAgent<string> | undefined {
+  if (resAgent) return resAgent;
+  const user = process.env.WEBSHARE_RESIDENTIAL_USER;
+  const pass = process.env.WEBSHARE_RESIDENTIAL_PASS;
+  const host = process.env.WEBSHARE_RESIDENTIAL_HOST ?? `${DC_PROXY_HOST}:${DC_PROXY_PORT}`;
+  if (!user || !pass) return undefined;
+  resAgent = new HttpsProxyAgent(`http://${user}:${pass}@${host}`);
+  if (!resLogged) {
+    console.log(`  Residential proxy configured: ${host} (user ${user})`);
+    resLogged = true;
+  }
+  return resAgent;
+}
+
+// Back-compat alias for callers that imported the old name.
+function getAgent(): HttpsProxyAgent<string> | undefined {
+  return getDatacenterAgent();
 }
 
 async function fetchViaProxy(url: string, init?: any): Promise<Response | null> {
-  const proxyAgent = getAgent();
-  if (!proxyAgent || proxyAvailable === false) return null;
+  const proxyAgent = getDatacenterAgent();
+  if (!proxyAgent || dcAvailable === false) return null;
 
   try {
     const nodeFetch = (await import('node-fetch' as any)).default;
     const res = (await nodeFetch(url, { ...init, agent: proxyAgent })) as unknown as Response;
 
     if (res.status === 407) {
-      console.log('  Proxy auth failed (407) — disabling proxy for this run');
-      proxyAvailable = false;
+      console.log('  Datacenter proxy auth failed (407) — disabling for this run');
+      dcAvailable = false;
       return null;
     }
 
-    if (proxyAvailable === null) {
-      console.log('  Proxy active: Webshare rotating proxy');
-      proxyAvailable = true;
+    if (dcAvailable === null) {
+      console.log('  Proxy active: Webshare datacenter');
+      dcAvailable = true;
     }
     return res;
   } catch (err: any) {
-    console.log(`  Proxy error: ${err.message} — falling back to direct`);
-    proxyAvailable = false;
+    console.log(`  Datacenter proxy error: ${err.message} — falling back to direct`);
+    dcAvailable = false;
     return null;
   }
+}
+
+async function fetchViaResidential(url: string, init?: any): Promise<Response> {
+  const ag = getResidentialAgent();
+  if (!ag) {
+    throw new Error(
+      'Residential proxy required but WEBSHARE_RESIDENTIAL_USER/PASS not configured',
+    );
+  }
+  const nodeFetch = (await import('node-fetch' as any)).default;
+  return (await nodeFetch(url, { ...init, agent: ag })) as unknown as Response;
 }
 
 /**
@@ -61,10 +100,16 @@ async function fetchViaProxy(url: string, init?: any): Promise<Response | null> 
  */
 export async function httpFetch(
   url: string,
-  init?: RequestInit & { retry?: number; maxRetries?: number },
+  init?: RequestInit & { retry?: number; maxRetries?: number; useResidential?: boolean },
 ): Promise<Response> {
   const retry = init?.retry ?? 0;
   const maxRetries = init?.maxRetries ?? 8;
+
+  // Residential mode: skip the direct/datacenter ladder entirely.
+  if (init?.useResidential) {
+    const { useResidential, retry: _r, maxRetries: _m, ...rest } = init;
+    return fetchViaResidential(url, rest);
+  }
 
   try {
     // 1. Try direct
