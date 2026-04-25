@@ -240,6 +240,166 @@ def _classify_fill_type(drawing: dict) -> str:
     return "solid"
 
 
+def detect_legend_label_anchored(page: fitz.Page) -> dict:
+    """v0.3.1: alternate-template fallback. Find a vertical column of legend-like
+    text (≥4 short non-paragraph labels stacked at consistent x), then pair each
+    label leftward to the nearest filled swatch within ~80pt.
+
+    Covers the citec/viridis/generic_grid patterns: legend on the side of the
+    map without a 'Légende' anchor word, swatches embedded inline with labels.
+    """
+    page_rect = page.rect
+    drawings = page.get_drawings()
+    texts = _text_blocks(page)
+
+    candidates = []
+    for t in texts:
+        s = t["text"]
+        s = re.sub(r"^[\s\-/–—>·•]+", "", s).strip()
+        s = re.sub(r"[\s\-/–—]+$", "", s).strip()
+        if not s or len(s) < 3 or len(s) > 80:
+            continue
+        if _is_paragraph_text(s):
+            continue
+        if _is_noise_label(s):
+            continue
+        candidates.append({"bbox": t["bbox"], "text": s})
+
+    if len(candidates) < 4:
+        return {
+            "legend_bbox": None, "map_bbox": [0, 0, page_rect.x1, page_rect.y1],
+            "title": "", "entries": [], "swatch_unlabeled": 0,
+        }
+
+    # Group by x0 bucket (5pt). Real legend columns have many labels at constant x.
+    by_xb: dict[int, list[dict]] = {}
+    for c in candidates:
+        xb = round(c["bbox"].x0 / 5) * 5
+        by_xb.setdefault(xb, []).append(c)
+    cols = [(xb, items) for xb, items in by_xb.items() if len(items) >= 4]
+    if not cols:
+        return {
+            "legend_bbox": None, "map_bbox": [0, 0, page_rect.x1, page_rect.y1],
+            "title": "", "entries": [], "swatch_unlabeled": 0,
+        }
+    # Pick the densest column; tie-break right-most (legends usually right side).
+    cols.sort(key=lambda c: (-len(c[1]), -c[0]))
+    _, col_items = cols[0]
+    col_items.sort(key=lambda c: c["bbox"].y0)
+
+    swatch_drawings = [d for d in drawings if _is_swatch_candidate(d)]
+    raw_entries: list[dict] = []
+    for c in col_items:
+        bbox = c["bbox"]
+        label = c["text"]
+        y_center = (bbox.y0 + bbox.y1) / 2
+        best = None
+        best_score = 1e9
+        for d in swatch_drawings:
+            sr = _rect_of(d)
+            if sr is None:
+                continue
+            if sr.x1 > bbox.x0 + 2:  # swatch must end left of label
+                continue
+            dx = bbox.x0 - sr.x1
+            if dx < 2 or dx > 80:
+                continue
+            sw_y_center = (sr.y0 + sr.y1) / 2
+            dy = abs(sw_y_center - y_center)
+            tol = max(8, (sr.height + bbox.height) / 2 + 3)
+            if dy > tol:
+                continue
+            score = dx + dy * 2
+            if score < best_score:
+                best_score = score
+                best = d
+        if best is None:
+            continue
+        rect = _rect_of(best)
+        has_fill = best.get("fill") is not None and best.get("fill_opacity", 1) > 0.1
+        has_stroke = best.get("color") is not None
+        if has_fill:
+            color = best.get("fill")
+            fill_type = "solid"
+        elif has_stroke:
+            color = best.get("color")
+            fill_type = "stroke_only"
+        else:
+            continue
+        if color is None:
+            continue
+        if fill_type == "solid" and _is_near_white(color):
+            continue
+        if _has_hatch_pattern(best):
+            fill_type = "hatch"
+        raw_entries.append({
+            "label": label,
+            "slug": slugify_label(label),
+            "fill_color": list(color[:3]) if color else None,
+            "fill_color_hex": rgb_to_hex(color),
+            "fill_type": fill_type,
+            "swatch_bbox": [rect.x0, rect.y0, rect.x1, rect.y1],
+        })
+
+    # Require swatch column to be tight: most swatches should share an x bucket.
+    # If swatches are scattered all over the page, we picked random fills not legend.
+    if raw_entries:
+        sw_xs = [round(((e["swatch_bbox"][0] + e["swatch_bbox"][2]) / 2) / 10) * 10 for e in raw_entries]
+        from collections import Counter
+        sw_x_counts = Counter(sw_xs).most_common(1)
+        if sw_x_counts and sw_x_counts[0][1] < max(3, int(0.6 * len(raw_entries))):
+            # swatches not clustered → likely false positives
+            return {
+                "legend_bbox": None, "map_bbox": [0, 0, page_rect.x1, page_rect.y1],
+                "title": "", "entries": [], "swatch_unlabeled": 0,
+            }
+
+    # Dedupe by (color, fill_type)
+    by_color: dict[tuple, dict] = {}
+    for e in raw_entries:
+        key = (e["fill_color_hex"], e["fill_type"])
+        if key not in by_color:
+            by_color[key] = e
+    # And by slug, preferring solid > stroke_only > hatch
+    _priority = {"solid": 0, "stroke_only": 1, "hatch": 2}
+    by_slug: dict[str, dict] = {}
+    for e in by_color.values():
+        prev = by_slug.get(e["slug"])
+        if prev is None or _priority[e["fill_type"]] < _priority[prev["fill_type"]]:
+            by_slug[e["slug"]] = e
+    entries = list(by_slug.values())
+
+    legend_bbox = None
+    if entries:
+        xs0 = min(e["swatch_bbox"][0] for e in entries)
+        ys0 = min(e["swatch_bbox"][1] for e in entries)
+        ys1 = max(e["swatch_bbox"][3] for e in entries)
+        legend_x1 = max(c["bbox"].x1 for c in col_items)
+        legend_bbox = fitz.Rect(
+            max(0, xs0 - 4), max(0, ys0 - 4),
+            min(page_rect.x1, legend_x1 + 6), min(page_rect.y1, ys1 + 6),
+        )
+
+    map_bbox = fitz.Rect(page_rect)
+    if legend_bbox is not None:
+        if legend_bbox.x0 > page_rect.width * 0.5:
+            map_bbox.x1 = min(map_bbox.x1, legend_bbox.x0 - 2)
+        elif legend_bbox.x1 < page_rect.width * 0.5:
+            map_bbox.x0 = max(map_bbox.x0, legend_bbox.x1 + 2)
+        elif legend_bbox.y0 > page_rect.height * 0.5:
+            map_bbox.y1 = min(map_bbox.y1, legend_bbox.y0 - 2)
+        elif legend_bbox.y1 < page_rect.height * 0.5:
+            map_bbox.y0 = max(map_bbox.y0, legend_bbox.y1 + 2)
+
+    return {
+        "legend_bbox": [legend_bbox.x0, legend_bbox.y0, legend_bbox.x1, legend_bbox.y1] if legend_bbox else None,
+        "map_bbox": [map_bbox.x0, map_bbox.y0, map_bbox.x1, map_bbox.y1],
+        "title": _find_title(texts, page_rect, legend_bbox),
+        "entries": entries,
+        "swatch_unlabeled": 0,
+    }
+
+
 def detect_legend(page: fitz.Page) -> dict:
     page_rect = page.rect
     drawings = page.get_drawings()
