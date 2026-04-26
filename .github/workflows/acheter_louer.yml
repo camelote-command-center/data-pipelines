@@ -23,9 +23,10 @@ jobs:
         env:
           RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
           RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
-          # Proxy disabled — WebShare proxy unreachable from GH Actions runners
-          # WEBSHARE_PROXY_USER: ${{ secrets.WEBSHARE_PROXY_USER }}
-          # WEBSHARE_PROXY_PASS: ${{ secrets.WEBSHARE_PROXY_PASS }}
+          # Residential proxy required — Cloudflare JA3 fingerprinting blocks datacenter IPs
+          WEBSHARE_RESIDENTIAL_USER: ${{ secrets.WEBSHARE_RESIDENTIAL_USER }}
+          WEBSHARE_RESIDENTIAL_PASS: ${{ secrets.WEBSHARE_RESIDENTIAL_PASS }}
+          WEBSHARE_RESIDENTIAL_HOST: ${{ secrets.WEBSHARE_RESIDENTIAL_HOST }}
       - name: Update dataset metadata
         if: always()
         run: |

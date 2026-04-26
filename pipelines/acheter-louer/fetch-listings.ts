@@ -61,11 +61,24 @@ const TX_TYPES = [
 let browser: Browser;
 
 async function launchBrowser(): Promise<void> {
-  // Proxy is optional — if env vars not set, launch without proxy
-  const useProxy = process.env.WEBSHARE_PROXY_USER && process.env.WEBSHARE_PROXY_PASS;
+  // Prefer residential proxy when configured (Cloudflare JA3 fingerprinting on
+  // datacenter IPs blocks the parser). Fall back to datacenter pool, then direct.
+  const resUser = process.env.WEBSHARE_RESIDENTIAL_USER;
+  const resPass = process.env.WEBSHARE_RESIDENTIAL_PASS;
+  const resHost = process.env.WEBSHARE_RESIDENTIAL_HOST;
+  const dcUser = process.env.WEBSHARE_PROXY_USER;
+  const dcPass = process.env.WEBSHARE_PROXY_PASS;
 
-  if (useProxy) {
-    const pUrl = proxyUrl();
+  let pUrl: string | null = null;
+  if (resUser && resPass && resHost) {
+    pUrl = `http://${resUser}:${resPass}@${resHost}`;
+    console.log(`    (using residential proxy: ${resHost})`);
+  } else if (dcUser && dcPass) {
+    pUrl = proxyUrl();
+    console.log('    (using datacenter proxy)');
+  }
+
+  if (pUrl) {
     const parsed = new URL(pUrl);
     // Use .origin to avoid trailing colon when port is default (80 for http)
     const proxyServer = parsed.port
