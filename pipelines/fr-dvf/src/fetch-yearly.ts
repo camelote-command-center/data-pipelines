@@ -55,25 +55,23 @@ async function discoverYears(): Promise<number[]> {
 }
 
 /**
- * Download the full national CSV for a given year.
- * The URL pattern is: /latest/csv/{year}/full.csv.gz or /latest/csv/{year}/departements/ etc.
- * We'll try the "full" national file first.
+ * Open a streaming, gunzipped read of the year's full CSV.
+ * Returns a Web ReadableStream of decompressed UTF-8 bytes — never materializes
+ * the full file in memory (the 2025 file exceeds V8's 512MB string cap).
  */
-async function downloadYear(targetYear: number): Promise<string> {
+async function openYearStream(targetYear: number): Promise<ReadableStream<Uint8Array>> {
   const url = `${BASE_URL}/${targetYear}/full.csv.gz`;
-  console.log(`[Fetch] Downloading DVF for ${targetYear} from ${url}`);
+  console.log(`[Fetch] Streaming DVF for ${targetYear} from ${url}`);
   const res = await fetchWithRetry(url);
-  const buffer = await res.arrayBuffer();
-  const ds = new DecompressionStream('gzip');
-  const decompressed = new Response(new Blob([buffer]).stream().pipeThrough(ds));
-  const text = await decompressed.text();
-  console.log(`[Fetch] Downloaded and decompressed ${(text.length / 1024 / 1024).toFixed(1)} MB`);
-  return text;
+  if (!res.body) throw new Error('Response has no body');
+  return res.body.pipeThrough(new DecompressionStream('gzip'));
 }
 
-export async function fetchYearlyCSV(year?: number): Promise<{ csv: string; year: number }> {
+export async function fetchYearlyCSV(
+  year?: number,
+): Promise<{ stream: ReadableStream<Uint8Array>; year: number }> {
   if (year) {
-    return { csv: await downloadYear(year), year };
+    return { stream: await openYearStream(year), year };
   }
 
   // Auto mode: walk discovered years from newest to oldest, falling back on
@@ -83,8 +81,8 @@ export async function fetchYearlyCSV(year?: number): Promise<{ csv: string; year
   const tried: number[] = [];
   for (const candidate of years) {
     try {
-      const csv = await downloadYear(candidate);
-      return { csv, year: candidate };
+      const stream = await openYearStream(candidate);
+      return { stream, year: candidate };
     } catch (err: any) {
       tried.push(candidate);
       if (err instanceof HttpError && err.status === 404) {
