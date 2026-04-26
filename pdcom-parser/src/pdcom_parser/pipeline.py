@@ -14,6 +14,7 @@ from .extract import clip_and_score_layers, extract_layers
 from .georef import georeference
 from .hatch import recover_hatch_zones
 from .legend import detect_legend, detect_legend_label_anchored
+from .label_quality import should_drop_label, override_theme
 from .normalize import classify_theme
 from .qa import render_qa_image
 from .report import append_log
@@ -261,6 +262,24 @@ def extract_pdf(
                         "page": page_number, "count": dropped_for_commune_name,
                     })
 
+            # v0.4: garbage / place-name / commune-basemap blocklists + theme overrides.
+            quality_drops: dict[str, int] = {}
+            kept = []
+            for f in features_clipped:
+                lbl = (f.get("label") or "").strip()
+                drop, reason = should_drop_label(lbl, commune_bfs)
+                if drop:
+                    quality_drops[reason] = quality_drops.get(reason, 0) + 1
+                    continue
+                kept.append(f)
+            features_clipped = kept
+            if quality_drops:
+                append_log(log_path, {
+                    "kind": "label_quality_dropped", "commune_bfs": commune_bfs,
+                    "page": page_number, "by_reason": quality_drops,
+                })
+
+
             # Export per-page layer files + accumulate features for DB insert
             page_dir = output_dir / f"pages/p{page_number:03d}_{theme or 'unknown'}"
             feats_for_page: list[dict] = []
@@ -268,9 +287,13 @@ def extract_pdf(
             by_slug_entries: dict[str, dict] = {}
             for f in features_clipped:
                 from shapely.geometry import mapping
+                # v0.4: per-feature theme override based on label (e.g. botanical → elements_naturels).
+                feature_theme = override_theme(f.get("label") or "", theme) or theme or "unknown"
                 props = {**f.get("properties", {}), "page_number": page_number, "confidence": f["confidence"]}
+                if feature_theme != (theme or "unknown"):
+                    props["theme_override_applied"] = True
                 feats_for_page.append({
-                    "map_theme": theme or "unknown",
+                    "map_theme": feature_theme,
                     "label": f["label"],
                     "slug": f["slug"],
                     "color": f["color"],

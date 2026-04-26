@@ -1,0 +1,92 @@
+# PDCom v0.4: label-quality config. Used by parser and silver matview.
+# Applied AFTER feature extraction, BEFORE silver materialization.
+
+# Regex patterns that match a "garbage" label — drop these at extraction time.
+# Patterns are applied with re.search() against the cleaned label.
+garbage_label_patterns:
+  # Pure numbers / percentages / measurements (e.g. "38%", "5% à 0%", "10 à 25 cm")
+  - '^\s*\d+(?:[\.,]\d+)?\s*(?:%|cm|m|m2|m²)?(?:\s*à\s*\d+(?:[\.,]\d+)?\s*(?:%|cm|m|m2|m²)?)?\s*$'
+  # Lone right-paren/bracket (e.g. "Zone 5)")
+  - '^[\)\]]\s*$'
+  # Lone left-paren with little after
+  - '^\s*[\(\[].{0,3}$'
+
+# Place / neighborhood names that get captured as legend labels — drop them.
+# Lowercase comparison (after _strip_accents).
+# Generally specific to GE; expand as new ones are discovered.
+place_name_blocklist:
+  - aubepine
+  - oltramare
+  - genthod bellevue
+  - creux de genthod
+  - chambesy
+  - bellevue mollies
+  - mont blanc
+  - pont de drize
+  - fontenette
+  - sgv
+  - campagne de st georges
+  - cologny
+  - vesenaz
+  - corsier village
+  - meinier village
+  - bachet de pesay
+  - les acacias
+  - praille acacias vernets
+  - pav
+  - vernier village
+
+# Per-commune basemap blocklist. Lancy specifically embeds extensive
+# basemap usage data on map pages (commerce/leisure/equipment categories).
+# Match by lowercased substring.
+commune_basemap_blocklist:
+  12624:  # Lancy
+    - petits supermarches
+    - grands supermarches
+    - supermarches
+    - boulangerie
+    - boucherie
+    - kiosque
+    - tea room
+    - restaurants
+    - restaurant
+    - lieu de culte
+    - rdv amoureux
+    - lieu des loisirs
+    - parc prefere
+    - case pmr
+    - solaire
+    - incineration ordures
+    - commerce de detail
+    - type de locaux
+    - batiment ou equipement recense
+    - batiment ou equipement majeur
+    - pratique associative
+    - pratique libre
+    - pratique sportive
+    - orientations de la strategie
+    - escrime
+    - vallon de cours d
+    - clinique hopital foyer
+    - ecole creche
+    - habitation
+    - bureau
+
+# Theme override map. If the label matches a regex (case-insensitive),
+# force the theme to the given value, overriding the page-level classification.
+# Applied after page-level classify_theme().
+theme_overrides:
+  elements_naturels:
+    - '\b(?:foret|forets|bois|bosquet|bosquets|arborisation|chene|chenes|hetre|tilleul|erable|peuplier|saule|saules)\b'
+    - '\b(?:vegetation|haie|haies|arbre|arbres|verger|vergers|cordon\s+boise|continuite\s+vegetale)\b'
+  mobilite:
+    - '\b(?:pieton|pietons|cycliste|cyclistes|cheminement|axe\s+routier|voirie|tpg|tram|bus|gare|halte)\b'
+  affectation:
+    - '\b(?:plq|zone\s+a\s+batir|zone\s+a\s+batir|secteur\s+d.acquisition|perimetre\s+de\s+developpement|zone\s+de\s+developpement)\b'
+  patrimoine_bati:
+    - '\b(?:monument|patrimoine|recensement|releve|isos|icomos|classe|classee|inventaire|protege|protegee)\b'
+
+# Conservative typo fixes applied at silver. Only unambiguous, documented typos.
+typo_fixes:
+  - { pattern: '\bRésau\b', replacement: 'Réseau' }
+  - { pattern: '\brésau\b', replacement: 'réseau' }
