@@ -34,7 +34,7 @@ jobs:
             -H "Accept-Profile: bronze_ch" -H "Prefer: count=estimated" \
             --head "$URL/rest/v1/acheter_louer?select=*" \
             | grep -i content-range | sed 's|.*/||' | tr -d '\r')
-          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.ext_acheter_louer" \
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.ext_acheterlouer" \
             -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
             -H "Content-Type: application/json" -H "Prefer: return=minimal" \
             -d "{\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"record_count\":${COUNT:-0},\"last_error\":null}"
