@@ -15,6 +15,8 @@ dataset metadata via shared/freshness.py.
 """
 
 import os
+import random
+import re
 import sys
 import time
 import traceback
@@ -39,14 +41,23 @@ CAMELOTE_SUPABASE_URL = os.environ.get("CAMELOTE_SUPABASE_URL")
 CAMELOTE_SUPABASE_KEY = os.environ.get("CAMELOTE_SUPABASE_KEY")
 DATASET_ID = os.environ.get("CANDLE_UPDATER_DATASET_ID")
 
-# WebShare HTTP proxy — needed because GitHub Actions runners are in
-# US datacenters and Binance returns HTTP 451 (geo-blocked).
+# WebShare rotating proxy pool — fetched live from the WebShare API.
+# Required because GitHub Actions runners are in US datacenters and
+# Binance returns HTTP 451 (geo-blocked) without a non-US proxy.
+#
+# WEBSHARE_API_TOKEN is generated in WebShare dashboard → API page.
+# WEBSHARE_PROXY_USER / WEBSHARE_PROXY_PASS are kept as a fallback for
+# Backbone Connection accounts (single endpoint p.webshare.io:80).
+WEBSHARE_API_TOKEN = os.environ.get("WEBSHARE_API_TOKEN")
 PROXY_USER = os.environ.get("WEBSHARE_PROXY_USER")
 PROXY_PASS = os.environ.get("WEBSHARE_PROXY_PASS")
-PROXY_URL = (
-    f"http://{PROXY_USER}:{PROXY_PASS}@p.webshare.io:80"
-    if PROXY_USER and PROXY_PASS else None
+WEBSHARE_LIST_URL = (
+    "https://proxy.webshare.io/api/v2/proxy/list/"
+    "?mode=direct&page=1&page_size=100"
 )
+PROXY_POOL_SIZE = 100              # how many proxies to pull from the API
+PROXY_FETCH_RETRIES = 5            # transport-level retries with rotation
+PROXY_FETCH_TIMEOUT = 30           # per-request timeout (seconds)
 
 BINANCE_URL = "https://api.binance.com/api/v3/klines"
 
@@ -77,6 +88,154 @@ INGEST_PAIRS = [(a, t) for a in ASSETS for t in TIMEFRAMES]
 BINANCE_LIMIT = 1000      # max candles per request
 BATCH_SIZE = 1000          # rows per DB insert
 MIN_DELAY = 0.12           # seconds between Binance requests
+
+# ---------------------------------------------------------------------------
+# WebShare rotating proxy pool
+# ---------------------------------------------------------------------------
+
+_PROXY_REDACT = re.compile(r"://[^@]+@")
+
+
+def _redact(proxy_url):
+    """Strip user:pass from a proxy URL for safe logging."""
+    return _PROXY_REDACT.sub("://***@", proxy_url)
+
+
+class ProxyPool:
+    """Round-robin pool of WebShare proxies with permanent failure tracking."""
+
+    def __init__(self, proxies):
+        if not proxies:
+            raise RuntimeError("ProxyPool requires at least one proxy URL")
+        self._proxies = list(proxies)
+        random.shuffle(self._proxies)
+        self._bad = set()
+        self._index = 0
+
+    @classmethod
+    def from_webshare_api(cls, api_token):
+        """Fetch the live proxy list from WebShare. Returns ProxyPool or raises."""
+        r = requests.get(
+            WEBSHARE_LIST_URL,
+            headers={"Authorization": f"Token {api_token}"},
+            timeout=20,
+        )
+        r.raise_for_status()
+        results = r.json().get("results", [])
+        urls = [
+            f"http://{p['username']}:{p['password']}@{p['proxy_address']}:{p['port']}"
+            for p in results
+            if p.get("valid", True)
+        ]
+        if not urls:
+            raise RuntimeError("WebShare API returned an empty proxy list")
+        print(f"  Proxy pool: loaded {len(urls)} proxies from WebShare API")
+        return cls(urls)
+
+    @classmethod
+    def from_backbone(cls, user, password):
+        """Single-proxy pool for Backbone Connection accounts. Fallback only."""
+        url = f"http://{user}:{password}@p.webshare.io:80"
+        print("  Proxy pool: using single Backbone endpoint (p.webshare.io:80)")
+        return cls([url])
+
+    def current(self):
+        """Return the current proxy URL, skipping known-bad entries."""
+        for _ in range(len(self._proxies)):
+            url = self._proxies[self._index % len(self._proxies)]
+            if url not in self._bad:
+                return url
+            self._index += 1
+        raise RuntimeError("All proxies in pool are bad")
+
+    def rotate(self):
+        self._index = (self._index + 1) % len(self._proxies)
+
+    def mark_bad(self, url):
+        self._bad.add(url)
+        self._index = (self._index + 1) % len(self._proxies)
+
+    def healthy_count(self):
+        return len(self._proxies) - len(self._bad)
+
+
+class RotatingSession:
+    """Drop-in replacement for requests.Session that rotates proxies on failure."""
+
+    # HTTP status codes that mean "this proxy is bad, try another"
+    _PROXY_BAD_STATUS = {407}
+    # HTTP status codes that mean "rotate but don't kill the proxy"
+    _ROTATE_STATUS = {502, 503, 504}
+
+    def __init__(self, pool, headers=None):
+        self.pool = pool
+        self.headers = dict(headers or {})
+
+    def get(self, url, **kwargs):
+        kwargs.setdefault("timeout", PROXY_FETCH_TIMEOUT)
+        merged_headers = dict(self.headers)
+        merged_headers.update(kwargs.get("headers") or {})
+        kwargs["headers"] = merged_headers
+
+        last_exc = None
+        for attempt in range(PROXY_FETCH_RETRIES):
+            try:
+                proxy = self.pool.current()
+            except RuntimeError as e:
+                # Pool exhausted — surface a clear error
+                raise RuntimeError(
+                    f"All {self.pool.healthy_count()} proxies marked bad; "
+                    f"original error: {last_exc}"
+                ) from e
+
+            kwargs["proxies"] = {"http": proxy, "https": proxy}
+            try:
+                r = requests.get(url, **kwargs)
+                if r.status_code in self._PROXY_BAD_STATUS:
+                    print(f"    [PROXY] HTTP {r.status_code} via {_redact(proxy)}, dropping")
+                    self.pool.mark_bad(proxy)
+                    continue
+                if r.status_code in self._ROTATE_STATUS:
+                    self.pool.rotate()
+                return r
+            except (
+                requests.exceptions.ProxyError,
+                requests.exceptions.ConnectionError,
+                requests.exceptions.Timeout,
+            ) as e:
+                print(f"    [PROXY] {type(e).__name__} via {_redact(proxy)}, rotating")
+                self.pool.mark_bad(proxy)
+                last_exc = e
+                continue
+
+        raise requests.exceptions.RequestException(
+            f"Exhausted {PROXY_FETCH_RETRIES} proxy rotations for {url}: {last_exc}"
+        )
+
+
+def build_session():
+    """Build the HTTP session with proxy rotation if configured, else direct."""
+    headers = {"User-Agent": "candle-updater/3.0"}
+
+    if WEBSHARE_API_TOKEN:
+        try:
+            pool = ProxyPool.from_webshare_api(WEBSHARE_API_TOKEN)
+            return RotatingSession(pool, headers=headers)
+        except Exception as e:
+            print(f"  [WARN] Could not load WebShare proxy list: {e}")
+
+    if PROXY_USER and PROXY_PASS:
+        try:
+            pool = ProxyPool.from_backbone(PROXY_USER, PROXY_PASS)
+            return RotatingSession(pool, headers=headers)
+        except Exception as e:
+            print(f"  [WARN] Could not configure Backbone proxy: {e}")
+
+    print("  [WARN] No proxy configured — Binance will likely return HTTP 451")
+    session = requests.Session()
+    session.headers.update(headers)
+    return session
+
 
 # ---------------------------------------------------------------------------
 # DB helpers (psycopg2 for bulk insert performance)
@@ -454,13 +613,7 @@ def main():
     print(f"  {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
     print("=" * 60)
 
-    session = requests.Session()
-    session.headers["User-Agent"] = "candle-updater/2.0"
-    if PROXY_URL:
-        session.proxies = {"http": PROXY_URL, "https": PROXY_URL}
-        print(f"  Using WebShare proxy (user: {PROXY_USER})")
-    else:
-        print("  No proxy configured, connecting directly")
+    session = build_session()
 
     log_id = start_acquisition_log()
 
