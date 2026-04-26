@@ -17,12 +17,12 @@ DATA SAFETY:
     - Row count should only go UP or stay the same.
 
 Environment variables:
-    LAMAP_SUPABASE_URL          - Lamap Supabase project URL (required)
-    LAMAP_SUPABASE_SERVICE_KEY  - service_role key (required)
-    LAMAP_SCHEMA                - target schema (default: bronze)
-    YOONEET_SUPABASE_URL        - Yooneet Supabase project URL (optional)
-    YOONEET_SUPABASE_SERVICE_KEY - service_role key (optional)
-    YOONEET_SCHEMA              - target schema (default: bronze)
+    RE_LLM_SUPABASE_URL              - re-LLM Supabase project URL (required)
+    RE_LLM_SUPABASE_SERVICE_ROLE_KEY - service_role key            (required)
+    RE_LLM_SCHEMA                    - target schema               (default: bronze_ch)
+    YOONEET_SUPABASE_URL             - Yooneet Supabase project URL (optional)
+    YOONEET_SUPABASE_SERVICE_KEY     - service_role key             (optional)
+    YOONEET_SCHEMA                   - target schema                (default: bronze)
 """
 
 import os
@@ -43,7 +43,10 @@ DATASETS = [
     {
         "name": "Autorisations dossiers",
         "code": "ge_sit_autor_dossier",
+        # Yooneet still uses the original lamap_db-style table name (capitalized).
         "table": "SIT_AUTOR_DOSSIER",
+        # re-LLM uses snake_case ge_-prefixed names in schema bronze_ch.
+        "rellm_table": "ge_sit_autor_dossier",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/sit_autor_dossier/FeatureServer/0",
         "conflict_column": "objectid",
@@ -52,6 +55,7 @@ DATASETS = [
         "name": "Autorisations objets",
         "code": "ge_sit_autor_objet",
         "table": "SIT_AUTOR_OBJET",
+        "rellm_table": "ge_sit_autor_objet",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/sit_autor_objet/FeatureServer/0",
         "conflict_column": "objectid",
@@ -157,8 +161,14 @@ def process_destination(
     dest_key: str,
     dest_schema: str,
     datasets_with_records: list[tuple[dict, list[dict]]],
+    table_field: str = "table",
 ) -> bool:
-    """Upsert all datasets into one destination. Returns True if all succeeded."""
+    """Upsert all datasets into one destination. Returns True if all succeeded.
+
+    `table_field` picks which key in each dataset dict holds the destination
+    table name. Default "table" preserves the lamap_db / Yooneet code path.
+    Pass "rellm_table" to route into re-LLM's snake_case names.
+    """
     print(f"\n{'=' * 60}")
     print(f"  Destination: {dest_name} ({dest_schema})")
     print(f"{'=' * 60}")
@@ -166,7 +176,7 @@ def process_destination(
     all_ok = True
 
     for ds, records in datasets_with_records:
-        table = ds["table"]
+        table = ds[table_field]
         conflict = ds["conflict_column"]
         renames = ds.get("field_renames", {})
 
@@ -263,13 +273,13 @@ def process_destination(
 # ──────────────────────────────────────────────────────────────
 
 def main():
-    # ── Required: Lamap ──
-    lamap_url = os.environ.get("LAMAP_SUPABASE_URL", "")
-    lamap_key = os.environ.get("LAMAP_SUPABASE_SERVICE_KEY", "")
-    lamap_schema = os.environ.get("LAMAP_SCHEMA", "bronze")
+    # ── Required: re-LLM ──
+    rellm_url = os.environ.get("RE_LLM_SUPABASE_URL", "")
+    rellm_key = os.environ.get("RE_LLM_SUPABASE_SERVICE_ROLE_KEY", "")
+    rellm_schema = os.environ.get("RE_LLM_SCHEMA", "bronze_ch")
 
-    if not lamap_url or not lamap_key:
-        print("ERROR: LAMAP_SUPABASE_URL and LAMAP_SUPABASE_SERVICE_KEY are required")
+    if not rellm_url or not rellm_key:
+        print("ERROR: RE_LLM_SUPABASE_URL and RE_LLM_SUPABASE_SERVICE_ROLE_KEY are required")
         sys.exit(1)
 
     # ── Optional: Yooneet ──
@@ -299,9 +309,10 @@ def main():
 
         datasets_with_records.append((ds, records))
 
-    # ── Upsert to Lamap (required) ──
-    lamap_ok = process_destination(
-        "lamap_db", lamap_url, lamap_key, lamap_schema, datasets_with_records
+    # ── Upsert to re-LLM (required) ──
+    rellm_ok = process_destination(
+        "re-LLM", rellm_url, rellm_key, rellm_schema, datasets_with_records,
+        table_field="rellm_table",
     )
 
     # ── Upsert to Yooneet (optional) ──
@@ -319,8 +330,8 @@ def main():
     print("  IMPORT COMPLETE")
     print("=" * 60)
 
-    if not lamap_ok:
-        print("  FAILED: Lamap had errors")
+    if not rellm_ok:
+        print("  FAILED: re-LLM had errors")
         sys.exit(1)
 
 
