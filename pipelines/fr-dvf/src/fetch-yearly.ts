@@ -3,14 +3,22 @@ const BASE_URL = 'https://files.data.gouv.fr/geo-dvf/latest/csv';
 const MAX_RETRIES = 3;
 const RETRY_DELAYS = [5_000, 15_000, 30_000];
 
+class HttpError extends Error {
+  constructor(public status: number, message: string) {
+    super(message);
+  }
+}
+
 async function fetchWithRetry(url: string): Promise<Response> {
   for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
     try {
       const res = await fetch(url);
-      if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+      if (!res.ok) throw new HttpError(res.status, `HTTP ${res.status}: ${res.statusText}`);
       return res;
     } catch (err: any) {
       console.error(`[Fetch] Attempt ${attempt + 1}/${MAX_RETRIES} failed: ${err.message}`);
+      // Don't retry 404s — file genuinely missing; let caller try another year.
+      if (err instanceof HttpError && err.status === 404) throw err;
       if (attempt < MAX_RETRIES - 1) {
         const delay = RETRY_DELAYS[attempt];
         console.log(`[Fetch] Retrying in ${delay / 1000}s...`);
@@ -51,33 +59,40 @@ async function discoverYears(): Promise<number[]> {
  * The URL pattern is: /latest/csv/{year}/full.csv.gz or /latest/csv/{year}/departements/ etc.
  * We'll try the "full" national file first.
  */
-export async function fetchYearlyCSV(year?: number): Promise<{ csv: string; year: number }> {
-  const years = await discoverYears();
-  const targetYear = year ?? years[years.length - 1]; // latest year
-
-  // geo-dvf serves per-department files, so we download the full national one
+async function downloadYear(targetYear: number): Promise<string> {
   const url = `${BASE_URL}/${targetYear}/full.csv.gz`;
   console.log(`[Fetch] Downloading DVF for ${targetYear} from ${url}`);
+  const res = await fetchWithRetry(url);
+  const buffer = await res.arrayBuffer();
+  const ds = new DecompressionStream('gzip');
+  const decompressed = new Response(new Blob([buffer]).stream().pipeThrough(ds));
+  const text = await decompressed.text();
+  console.log(`[Fetch] Downloaded and decompressed ${(text.length / 1024 / 1024).toFixed(1)} MB`);
+  return text;
+}
 
-  try {
-    const res = await fetchWithRetry(url);
-    const buffer = await res.arrayBuffer();
-
-    // Decompress gzip
-    const ds = new DecompressionStream('gzip');
-    const decompressed = new Response(
-      new Blob([buffer]).stream().pipeThrough(ds),
-    );
-    const text = await decompressed.text();
-    console.log(`[Fetch] Downloaded and decompressed ${(text.length / 1024 / 1024).toFixed(1)} MB`);
-    return { csv: text, year: targetYear };
-  } catch (err: any) {
-    // Fallback: try without .gz
-    console.log(`[Fetch] Gzip failed, trying uncompressed CSV...`);
-    const fallbackUrl = `${BASE_URL}/${targetYear}/full.csv`;
-    const res = await fetchWithRetry(fallbackUrl);
-    const text = await res.text();
-    console.log(`[Fetch] Downloaded ${(text.length / 1024 / 1024).toFixed(1)} MB`);
-    return { csv: text, year: targetYear };
+export async function fetchYearlyCSV(year?: number): Promise<{ csv: string; year: number }> {
+  if (year) {
+    return { csv: await downloadYear(year), year };
   }
+
+  // Auto mode: walk discovered years from newest to oldest, falling back on
+  // 404s. The published directory listing sometimes contains a year whose
+  // full.csv.gz hasn't been generated yet (race between directory and file).
+  const years = (await discoverYears()).slice().sort((a, b) => b - a); // newest first
+  const tried: number[] = [];
+  for (const candidate of years) {
+    try {
+      const csv = await downloadYear(candidate);
+      return { csv, year: candidate };
+    } catch (err: any) {
+      tried.push(candidate);
+      if (err instanceof HttpError && err.status === 404) {
+        console.log(`[Fetch] ${candidate} not published yet (404) — trying previous year`);
+        continue;
+      }
+      throw err;
+    }
+  }
+  throw new Error(`No DVF year file available. Tried: ${tried.join(', ')}`);
 }
