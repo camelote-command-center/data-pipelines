@@ -15,6 +15,53 @@ function parseArgs(argv: string[]): { year?: number } {
   return {};
 }
 
+/**
+ * Read enough bytes from the stream to see the first newline (header line),
+ * pick the more frequent of '|' or ',' as the delimiter, and return a new
+ * Readable that yields the buffered prefix followed by the rest of the source.
+ */
+async function sniffDelimiter(
+  source: Readable,
+): Promise<{ delimiter: string; prefixed: Readable }> {
+  const MAX_PEEK = 64 * 1024;
+  return new Promise((resolve, reject) => {
+    const buffered: Buffer[] = [];
+    let totalLen = 0;
+    let done = false;
+
+    const onData = (chunk: Buffer) => {
+      if (done) return;
+      buffered.push(chunk);
+      totalLen += chunk.length;
+      const joined = Buffer.concat(buffered).toString('utf8');
+      const nl = joined.indexOf('\n');
+      if (nl === -1 && totalLen < MAX_PEEK) return;
+
+      done = true;
+      source.off('data', onData);
+      source.off('error', onError);
+      source.pause();
+
+      const headerLine = nl !== -1 ? joined.slice(0, nl) : joined;
+      const pipeCount = (headerLine.match(/\|/g) ?? []).length;
+      const commaCount = (headerLine.match(/,/g) ?? []).length;
+      const delimiter = pipeCount >= commaCount && pipeCount > 0 ? '|' : ',';
+
+      // Put the buffered bytes back so downstream consumers see them.
+      for (let i = buffered.length - 1; i >= 0; i--) source.unshift(buffered[i]);
+      resolve({ delimiter, prefixed: source });
+    };
+    const onError = (err: Error) => {
+      if (done) return;
+      done = true;
+      reject(err);
+    };
+
+    source.on('data', onData);
+    source.on('error', onError);
+  });
+}
+
 function addStats(into: IngestStats, from: IngestStats): void {
   into.inserted += from.inserted;
   into.skipped += from.skipped;
@@ -29,11 +76,16 @@ async function main(): Promise<void> {
   // 1. Open streaming download
   const { stream, year: actualYear } = await fetchYearlyCSV(year);
 
-  // 2. Stream-parse CSV → batched transform → ingest
+  // 2. Sniff delimiter from the first line, then stream-parse.
+  // DVF historically used '|' but 2025 onward uses ','. We peek the header
+  // line off the front of the stream and pick whichever delimiter occurs more.
   const nodeStream = Readable.fromWeb(stream as any);
-  const parser = nodeStream.pipe(
+  const { delimiter, prefixed } = await sniffDelimiter(nodeStream);
+  console.log(`[Parse] Detected delimiter: ${JSON.stringify(delimiter)}`);
+
+  const parser = prefixed.pipe(
     parse({
-      delimiter: '|',
+      delimiter,
       columns: true,
       skip_empty_lines: true,
       relax_column_count: true,
