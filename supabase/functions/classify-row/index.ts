@@ -123,11 +123,12 @@ Deno.serve(async (req) => {
     }
 
     const updatePayload: Record<string, unknown> = {
+      domain: cls.domain,
       asset_classes: cls.asset_classes,
       topics: cls.topics,
       tags: cls.tags,
       categorization_confidence: cls.confidence,
-      categorization_version: 1,
+      categorization_version: 2,
       categorization_status: cls.status,
     };
     // documents has no chunk_type column (per file 01)

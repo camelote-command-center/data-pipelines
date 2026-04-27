@@ -15,6 +15,7 @@ export async function writeReviewIfNeeded(
     source_table: sourceTable,
     source_id: sourceId,
     content_excerpt: contentExcerpt.slice(0, 1000),
+    suggested_domain: cls.domain,
     suggested_asset_classes: cls.asset_classes,
     suggested_topics: cls.topics,
     suggested_chunk_type: cls.chunk_type,
