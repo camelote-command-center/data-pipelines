@@ -212,26 +212,41 @@ function parseCard($: cheerio.CheerioAPI, el: cheerio.Element): Record<string, u
 // Page navigation
 // ---------------------------------------------------------------------------
 
-async function readSearchPage(page: Page, url: string): Promise<{ html: string; total: number } | null> {
+async function readSearchPage(page: Page, url: string): Promise<string | null> {
   try {
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60_000 });
   } catch (err: any) {
     console.log(`      goto failed: ${err.message}`);
     return null;
   }
+  // Wait for either real cards OR an explicit "no results" marker. The DOM
+  // can take a moment to populate after domcontentloaded; if neither appears,
+  // we still return the HTML so the caller can decide.
   try {
-    await page.waitForSelector('#listing-results > div > div:nth-child(1)', { timeout: 15_000 });
+    await page.waitForSelector('[data-idobj]', { timeout: 15_000 });
   } catch {
-    return { html: await page.content(), total: 0 };
+    /* no cards — return whatever we have */
   }
-  const html = await page.content();
-  const $ = cheerio.load(html);
-  const totalText = $(
-    '#results-filters > div > div > div > table > tbody > tr > td:nth-child(1) > span.nb-results',
-  )
-    .text()
-    .trim();
-  return { html, total: parseInt(totalText, 10) || 0 };
+  return await page.content();
+}
+
+/**
+ * Pull the largest `data-useposresult` value from the pagination block. That
+ * is the offset of the LAST page. Plus PAGE_SIZE → total result count.
+ * Falls back to single-page (offset=0) if no pagination is rendered.
+ */
+function maxOffset(html: string): number {
+  const matches = html.matchAll(/data-useposresult="(\d+)"/g);
+  let max = 0;
+  for (const m of matches) {
+    const n = parseInt(m[1], 10);
+    if (n > max) max = n;
+  }
+  return max;
+}
+
+function countCards(html: string): number {
+  return (html.match(/data-idobj="\d+"/g) || []).length;
 }
 
 // ---------------------------------------------------------------------------
@@ -264,9 +279,9 @@ async function main() {
         const page = await ctx.newPage();
 
         // Page 1: load with full search criteria; this seeds the session.
-        const first = await readSearchPage(page, firstUrl);
-        if (!first || first.total === 0) {
-          console.log('    No results found');
+        const firstHtml = await readSearchPage(page, firstUrl);
+        if (!firstHtml) {
+          console.log('    Page 1 fetch failed');
           await ctx.close();
           await browser.close();
           continue;
@@ -278,8 +293,17 @@ async function main() {
           if (cookieBtn) await cookieBtn.click({ timeout: 3_000 });
         } catch { /* none */ }
 
-        const pages = Math.ceil(first.total / PAGE_SIZE);
-        console.log(`    ${first.total} results, ${pages} pages`);
+        const cardsP1 = countCards(firstHtml);
+        if (cardsP1 === 0) {
+          console.log('    No listings on page 1 (likely empty region)');
+          await ctx.close();
+          await browser.close();
+          continue;
+        }
+
+        const lastOffset = maxOffset(firstHtml);
+        const pages = Math.floor(lastOffset / PAGE_SIZE) + 1;
+        console.log(`    ${cardsP1} cards on page 1, ~${pages} pages total`);
 
         // Card-extract a single HTML blob and push to allRecords
         const collect = (html: string) => {
@@ -301,19 +325,23 @@ async function main() {
           return added;
         };
 
-        let n = collect(first.html);
+        let n = collect(firstHtml);
         console.log(`    Page 1/${pages}: +${n}`);
 
         for (let p = 1; p < pages; p++) {
           const offset = p * PAGE_SIZE;
           const url = `https://www.acheter-louer.ch/?page=result&pos=${offset}&action=back`;
-          const r = await readSearchPage(page, url);
-          if (!r) {
+          const html = await readSearchPage(page, url);
+          if (!html) {
             console.log(`    Page ${p + 1}/${pages}: failed, skipping`);
             continue;
           }
-          n = collect(r.html);
+          n = collect(html);
           console.log(`    Page ${p + 1}/${pages}: +${n}`);
+          if (n === 0) {
+            console.log('    Empty page — stopping pagination early');
+            break;
+          }
           await sleep(PAGE_LOAD_WAIT);
         }
 
