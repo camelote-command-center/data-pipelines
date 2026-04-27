@@ -1,16 +1,16 @@
-name: FAO Multi — Frequent (weekly)
+name: FAO Multi — Sparse (quarterly)
 
-# High-volume rubriques (≥1 publication/day on average): scrape weekly with a
-# 14-day lookback so we always overlap the previous run.
+# Low-volume rubriques (<1 publication/day on average): scrape quarterly with
+# a 100-day lookback (full quarter + buffer for late publications).
 #
-# Bucket source: 14-day sample taken 2026-04-27 — 91/72/97 each averaged
-# 10+ rows/day. Sparse rubriques live in fao_multi_quarterly.yml.
-# Refine after fao_multi_backfill.yml completes if real frequencies differ.
+# Bucket source: 14-day sample taken 2026-04-27 — these averaged <1 row/day,
+# many had zero. Refine after fao_multi_backfill.yml completes if real
+# frequencies differ.
 
 on:
   schedule:
-    # Weekly Saturday at 05:00 UTC (after FAO Transactions @04:00 + LDTR @04:30)
-    - cron: '0 5 * * 6'
+    # Quarterly: 1st of Jan/Apr/Jul/Oct at 05:30 UTC
+    - cron: '30 5 1 1,4,7,10 *'
   workflow_dispatch:
     inputs:
       rubrique:
@@ -18,13 +18,12 @@ on:
         required: false
         type: string
       days_back:
-        description: 'Lookback window in days (default 14)'
+        description: 'Lookback window in days (default 100)'
         required: false
-        default: '14'
+        default: '100'
         type: string
 
 jobs:
-  # When dispatched with a single rubrique we run a 1-element matrix; otherwise full list.
   resolve-matrix:
     runs-on: ubuntu-latest
     outputs:
@@ -35,13 +34,13 @@ jobs:
           if [ -n "${{ inputs.rubrique }}" ]; then
             echo "rubriques=[${{ inputs.rubrique }}]" >> "$GITHUB_OUTPUT"
           else
-            echo 'rubriques=[72, 91, 97]' >> "$GITHUB_OUTPUT"
+            echo 'rubriques=[84, 90, 135, 136, 213, 217, 322]' >> "$GITHUB_OUTPUT"
           fi
 
   fetch:
     needs: resolve-matrix
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
     strategy:
       fail-fast: false
       max-parallel: 2
@@ -60,11 +59,10 @@ jobs:
         run: cd pipelines/fao-multi && npx tsx fetch-fao.ts
         env:
           RUBRIQUE: ${{ matrix.rubrique }}
-          DAYS_BACK: ${{ inputs.days_back || '14' }}
+          DAYS_BACK: ${{ inputs.days_back || '100' }}
           RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
           RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
-          # Satisfies the import-time env check in pipelines/_shared/supabase.ts
-          # (transitively imported by captcha.ts for `sleep`). The client is never used.
+          # Satisfies pipelines/_shared/supabase.ts import-time check.
           SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
           TWO_CAPTCHA_API_KEY: ${{ secrets.TWO_CAPTCHA_API_KEY }}
