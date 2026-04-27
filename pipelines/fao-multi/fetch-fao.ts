@@ -294,24 +294,21 @@ function readTotal(html: string): number {
 }
 
 // ---------------------------------------------------------------------------
-// Main
+// One window — solve CAPTCHA, fetch all pages, upsert. Returns counts.
 // ---------------------------------------------------------------------------
 
-async function main() {
-  console.log('='.repeat(60));
-  console.log(`  FAO Multi — Rubrique ${RUBRIQUE}`);
-  console.log(`  Source: fao.ge.ch (rubrique=${RUBRIQUE})`);
-  console.log(`  Target: ${SCHEMA}.${TABLE} on re-llm`);
-  console.log('='.repeat(60));
+interface WindowResult {
+  extracted: number;
+  upserted: number;
+  pages: number;
+  pageFailures: number;
+  durationSec: string;
+}
 
-  const startTime = Date.now();
-
-  await verifyAccess(SCHEMA, TABLE);
-
-  const { dateFrom, dateTo } = getDateRange();
+async function runWindow(dateFrom: string, dateTo: string): Promise<WindowResult> {
+  const t0 = Date.now();
   console.log(`  Date range: ${dateFrom} → ${dateTo}`);
-
-  console.log('\n  Solving CAPTCHA...');
+  console.log('  Solving CAPTCHA...');
   let { cookies } = await createFaoSession(RUBRIQUE, dateFrom, dateTo);
 
   console.log('  Fetching first page...');
@@ -322,7 +319,7 @@ async function main() {
 
   const allRows: ParsedRow[] = [];
   allRows.push(...parsePage(firstHtml));
-  console.log(`  Page 1/${pages}: ${allRows.length} rows`);
+  if (total > 0) console.log(`  Page 1/${pages}: ${allRows.length} rows`);
 
   let pageFailures = 0;
   for (let p = 2; p <= pages; p++) {
@@ -353,19 +350,13 @@ async function main() {
     }
   }
 
-  if (pageFailures > 0) {
-    console.log(`  WARNING: ${pageFailures}/${pages - 1} pages failed`);
-  }
-
-  console.log(`\n  Total rows extracted: ${allRows.length}`);
-
   if (allRows.length === 0) {
-    console.log('  No rows to upsert. Exiting.');
-    return;
+    const elapsed = ((Date.now() - t0) / 1000).toFixed(1);
+    console.log(`  No rows in window. (${elapsed}s)`);
+    return { extracted: 0, upserted: 0, pages, pageFailures, durationSec: elapsed };
   }
 
-  // Drop in-batch duplicates (same rubrique + same affaire/raw_text). Otherwise the
-  // upsert errors with "ON CONFLICT cannot affect row a second time".
+  // Drop in-batch duplicates so ON CONFLICT doesn't error on same key twice.
   const seen = new Set<string>();
   const deduped = allRows.filter((r) => {
     const key = `${r.rubrique}|${r.affaire ?? `md5:${r.raw_text}`}`;
@@ -374,10 +365,9 @@ async function main() {
     return true;
   });
   if (deduped.length !== allRows.length) {
-    console.log(`  Deduplicated within batch: ${allRows.length} → ${deduped.length}`);
+    console.log(`  Deduplicated: ${allRows.length} → ${deduped.length}`);
   }
 
-  // Records for upsert — let the generated dedup_key compute itself in DB.
   const records = deduped.map((r) => ({
     rubrique: r.rubrique,
     affaire: r.affaire,
@@ -389,22 +379,79 @@ async function main() {
     fields: r.fields,
   }));
 
-  console.log(`\n  Upserting ${records.length} records (batch size: ${BATCH_SIZE})...`);
+  console.log(`  Upserting ${records.length} records...`);
   const totalUpserted = await upsert(SCHEMA, TABLE, records, ON_CONFLICT, BATCH_SIZE);
+  const elapsed = ((Date.now() - t0) / 1000).toFixed(1);
+  console.log(`  ✓ Window done: ${totalUpserted} upserted in ${elapsed}s`);
+  return {
+    extracted: allRows.length,
+    upserted: totalUpserted,
+    pages,
+    pageFailures,
+    durationSec: elapsed,
+  };
+}
 
-  const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
-  console.log('\n' + '='.repeat(60));
-  console.log('  IMPORT COMPLETE');
-  console.log(`  Rubrique:          ${RUBRIQUE}`);
-  console.log(`  Date range:        ${dateFrom} → ${dateTo}`);
-  console.log(`  Pages:             ${pages}`);
-  console.log(`  Rows extracted:    ${allRows.length}`);
-  console.log(`  Rows upserted:     ${totalUpserted}`);
-  console.log(`  Page failures:     ${pageFailures}`);
-  console.log(`  Duration:          ${elapsed}s`);
+// ---------------------------------------------------------------------------
+// Main — single window OR multi-year backfill
+// ---------------------------------------------------------------------------
+
+async function main() {
+  console.log('='.repeat(60));
+  console.log(`  FAO Multi — Rubrique ${RUBRIQUE}`);
+  console.log(`  Target: ${SCHEMA}.${TABLE} on re-llm`);
   console.log('='.repeat(60));
 
-  if (totalUpserted === 0 && records.length > 0) {
+  const t0 = Date.now();
+  await verifyAccess(SCHEMA, TABLE);
+
+  const startYear = parseInt(process.env.BACKFILL_START_YEAR ?? '', 10);
+  const endYear = parseInt(process.env.BACKFILL_END_YEAR ?? '', 10);
+  const isBackfill = Number.isFinite(startYear) && Number.isFinite(endYear);
+
+  if (isBackfill) {
+    console.log(`  BACKFILL: ${startYear} → ${endYear} (year-by-year)`);
+    let totalExtracted = 0;
+    let totalUpserted = 0;
+    const yearFailures: number[] = [];
+    for (let y = startYear; y <= endYear; y++) {
+      console.log(`\n--- Year ${y} ---`);
+      try {
+        const r = await runWindow(`${y}-01-01`, `${y}-12-31`);
+        totalExtracted += r.extracted;
+        totalUpserted += r.upserted;
+      } catch (err) {
+        console.error(`  Year ${y} FAILED: ${err}`);
+        yearFailures.push(y);
+      }
+    }
+    const elapsed = ((Date.now() - t0) / 1000).toFixed(1);
+    console.log('\n' + '='.repeat(60));
+    console.log('  BACKFILL COMPLETE');
+    console.log(`  Rubrique:        ${RUBRIQUE}`);
+    console.log(`  Years:           ${startYear}–${endYear}`);
+    console.log(`  Rows extracted:  ${totalExtracted}`);
+    console.log(`  Rows upserted:   ${totalUpserted}`);
+    console.log(`  Years failed:    ${yearFailures.length === 0 ? 'none' : yearFailures.join(', ')}`);
+    console.log(`  Duration:        ${elapsed}s`);
+    console.log('='.repeat(60));
+    return;
+  }
+
+  // Single-window mode
+  const { dateFrom, dateTo } = getDateRange();
+  const r = await runWindow(dateFrom, dateTo);
+  const elapsed = ((Date.now() - t0) / 1000).toFixed(1);
+  console.log('\n' + '='.repeat(60));
+  console.log('  IMPORT COMPLETE');
+  console.log(`  Rubrique:        ${RUBRIQUE}`);
+  console.log(`  Date range:      ${dateFrom} → ${dateTo}`);
+  console.log(`  Rows extracted:  ${r.extracted}`);
+  console.log(`  Rows upserted:   ${r.upserted}`);
+  console.log(`  Duration:        ${elapsed}s`);
+  console.log('='.repeat(60));
+
+  if (r.upserted === 0 && r.extracted > 0) {
     console.error('  FAILED: zero rows upserted despite having records');
     process.exit(1);
   }

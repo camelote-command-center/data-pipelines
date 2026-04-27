@@ -1,0 +1,66 @@
+name: FAO Multi — Backfill
+
+# One-off historical backfill. Each matrix job covers one rubrique × full year range,
+# iterating year-by-year inside the parser (fresh CAPTCHA per year).
+
+on:
+  workflow_dispatch:
+    inputs:
+      start_year:
+        description: 'Earliest year to backfill (FAO archive starts ~2008)'
+        required: true
+        default: '2008'
+        type: string
+      end_year:
+        description: 'Latest year (inclusive)'
+        required: true
+        default: '2026'
+        type: string
+      rubriques:
+        description: 'Comma-separated rubrique list (default = all 10)'
+        required: false
+        default: '72,84,90,91,97,135,136,213,217,322'
+        type: string
+
+jobs:
+  resolve-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      rubriques: ${{ steps.set.outputs.rubriques }}
+    steps:
+      - id: set
+        run: |
+          # Convert comma-separated list into a JSON array for the matrix.
+          arr=$(echo '${{ inputs.rubriques }}' | python3 -c "import sys,json; print(json.dumps([int(x) for x in sys.stdin.read().strip().split(',') if x.strip()]))")
+          echo "rubriques=$arr" >> "$GITHUB_OUTPUT"
+
+  fetch:
+    needs: resolve-matrix
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        rubrique: ${{ fromJson(needs.resolve-matrix.outputs.rubriques) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: cd pipelines/_shared && npm ci
+      - run: cd pipelines/fao-multi && npm ci
+      - name: Install Playwright browsers
+        run: cd pipelines/fao-multi && npx playwright install chromium --with-deps
+      - name: Backfill rubrique ${{ matrix.rubrique }}
+        run: cd pipelines/fao-multi && npx tsx fetch-fao.ts
+        env:
+          RUBRIQUE: ${{ matrix.rubrique }}
+          BACKFILL_START_YEAR: ${{ inputs.start_year }}
+          BACKFILL_END_YEAR: ${{ inputs.end_year }}
+          RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          # Satisfies pipelines/_shared/supabase.ts import-time check.
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          TWO_CAPTCHA_API_KEY: ${{ secrets.TWO_CAPTCHA_API_KEY }}
