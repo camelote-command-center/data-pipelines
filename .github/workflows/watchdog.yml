@@ -1,0 +1,92 @@
+name: Watchdog (overdue dataset re-trigger)
+
+# Reliability net for GitHub Actions cron drift / silent skips and any
+# workflow that ran successfully but didn't PATCH datasets.last_acquired_at.
+# Every 2h: query camelote datasets, find rows past their freshness budget,
+# and `gh workflow run` the matching workflow_file. Skips if the same workflow
+# already has a queued/in_progress run, to avoid double-trigger.
+
+on:
+  schedule:
+    - cron: '17 */2 * * *'  # every 2h at :17 (off-peak minute)
+  workflow_dispatch:
+
+permissions:
+  actions: write   # needed for `gh workflow run`
+  contents: read
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+      CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sweep stale datasets
+        run: |
+          set -euo pipefail
+
+          # Freshness budget by frequency (seconds). Generous grace absorbs
+          # GitHub Actions cron drift (often 1-2h late at peak).
+          declare -A BUDGET=(
+            [daily]=129600       # 36h
+            [weekly]=864000      # 10d
+            [monthly]=2851200    # 33d
+            [quarterly]=8035200  # 93d
+            [yearly]=32486400    # 376d
+          )
+
+          rows=$(curl -s -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            "$CMD_URL/rest/v1/datasets?select=code,name,frequency,workflow_file,last_acquired_at&status=eq.active&workflow_file=not.is.null")
+
+          now=$(date -u +%s)
+          declare -A TRIGGERED=()
+          stale_count=0
+          triggered_count=0
+
+          while read -r row; do
+            code=$(echo "$row"   | jq -r '.code')
+            name=$(echo "$row"   | jq -r '.name')
+            freq=$(echo "$row"   | jq -r '.frequency')
+            wf=$(echo "$row"     | jq -r '.workflow_file')
+            last=$(echo "$row"   | jq -r '.last_acquired_at // empty')
+
+            budget=${BUDGET[$freq]:-}
+            if [ -z "$budget" ]; then continue; fi      # skip on_demand/unknown
+            if [ -z "$last" ];   then last_ts=0
+            else last_ts=$(date -u -d "$last" +%s 2>/dev/null || echo 0); fi
+
+            age=$(( now - last_ts ))
+            if [ "$age" -lt "$budget" ]; then continue; fi
+
+            stale_count=$((stale_count + 1))
+            echo "STALE: $code ($name) — freq=$freq age=${age}s budget=${budget}s wf=$wf"
+
+            # Dedupe: only trigger each workflow_file once per sweep
+            if [ -n "${TRIGGERED[$wf]:-}" ]; then
+              echo "  already triggered $wf this sweep — skipping"
+              continue
+            fi
+
+            # Skip if a run for this workflow is already queued/in_progress
+            active=$(gh run list --workflow="$wf" --limit=5 \
+              --json status --jq '[.[] | select(.status=="queued" or .status=="in_progress")] | length')
+            if [ "$active" -gt 0 ]; then
+              echo "  $wf already running ($active active) — skipping"
+              TRIGGERED[$wf]=1
+              continue
+            fi
+
+            echo "  triggering: gh workflow run $wf"
+            if gh workflow run "$wf"; then
+              triggered_count=$((triggered_count + 1))
+              TRIGGERED[$wf]=1
+            else
+              echo "  trigger FAILED for $wf"
+            fi
+          done < <(echo "$rows" | jq -c '.[]')
+
+          echo "Sweep complete: $stale_count stale row(s), $triggered_count workflow(s) triggered"
