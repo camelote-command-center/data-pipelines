@@ -1,28 +1,27 @@
 /**
- * AcheterLouer — Listing Fetcher
+ * AcheterLouer — Listing Fetcher (search-card mode)
  *
- * Fetches property listings from acheter-louer.ch using Playwright (JS rendering)
- * and upserts them into bronze."acheterLouer".
+ * Fetches property listings from acheter-louer.ch by parsing search-result
+ * cards directly. Per-listing detail navigation is skipped to reduce
+ * residential-proxy bandwidth ~10-20× (similar to the Homegate SSR insight).
+ *
+ * Trade-off: detail-page-only fields are lost (year_of_construction,
+ * surface_m2, floor, full description, full image gallery, agency phone).
+ * Cards still provide id, URL, title, price, rooms, postal/city, object
+ * type, short teaser, single thumbnail, and agency logo.
  *
  * Workflow:
- *   1. Launch Playwright with proxy
- *   2. For each canton × transaction type (buy/rent):
- *      - Navigate to search results, extract total count
- *      - Paginate through results (50/page)
- *      - For each listing, navigate to detail page and parse
- *   3. Map to bronze schema and upsert on ad_url
+ *   1. Launch Playwright with residential proxy, block images/css/fonts.
+ *   2. For each canton × buy/rent: navigate to first page, get total count,
+ *      then paginate via ?pos=offset&action=back (cookies persist in context).
+ *   3. Parse cards from search-result HTML, map to bronze schema, upsert.
  *
- * Usage:
- *   npx tsx fetch-listings.ts
- *
- * Environment variables:
- *   RE_LLM_SUPABASE_URL              - re-LLM Supabase URL (required)
- *   RE_LLM_SUPABASE_SERVICE_ROLE_KEY - service_role key     (required)
- *   WEBSHARE_PROXY_USER              - proxy username       (required)
- *   WEBSHARE_PROXY_PASS              - proxy password       (required)
+ * Why Playwright at all? acheter-louer.ch is behind Cloudflare with JA3
+ * fingerprinting — plain fetch returns 403. A headless browser is required
+ * to defeat the TLS challenge, but loading detail pages per-listing is not.
  */
 
-import { chromium, type Browser, type Page } from 'playwright';
+import { chromium, type Browser, type BrowserContext, type Page } from 'playwright';
 import * as cheerio from 'cheerio';
 import { upsert, sleep, verifyAccess, markStaleListings } from '../_shared/re-llm.js';
 import { proxyUrl } from '../_shared/proxy.js';
@@ -33,11 +32,8 @@ import { proxyUrl } from '../_shared/proxy.js';
 
 const BATCH_SIZE = 100;
 const PAGE_SIZE = 50;
-const PAGE_LOAD_WAIT = 2_000;
+const PAGE_LOAD_WAIT = 1_500;
 
-// NOTE: acheter-louer.ch only assigns numeric region IDs to Suisse Romande cantons.
-// German/Italian-speaking cantons are not available via the region-based search API.
-// Region IDs 9+ map to sub-regions or international listings, not additional cantons.
 const CANTONS: { name: string; region: number }[] = [
   { name: 'Geneva', region: 3 },
   { name: 'Vaud', region: 8 },
@@ -48,21 +44,22 @@ const CANTONS: { name: string; region: number }[] = [
   { name: 'Valais', region: 7 },
 ];
 
-// t=1 for buy, t=2 for rent
+// t=1 buy, t=2 rent
 const TX_TYPES = [
-  { label: 'Buy', t: 1 },
-  { label: 'Rent', t: 2 },
+  { label: 'Buy', t: 1, offer: 'achat' },
+  { label: 'Rent', t: 2, offer: 'location' },
 ] as const;
 
+// Block heavy resources to cut bandwidth on the search-result pages.
+const BLOCKED_RESOURCES = new Set(['image', 'media', 'font', 'stylesheet']);
+
 // ---------------------------------------------------------------------------
-// Browser management
+// Browser
 // ---------------------------------------------------------------------------
 
 let browser: Browser;
 
 async function launchBrowser(): Promise<void> {
-  // Prefer residential proxy when configured (Cloudflare JA3 fingerprinting on
-  // datacenter IPs blocks the parser). Fall back to datacenter pool, then direct.
   const resUser = process.env.WEBSHARE_RESIDENTIAL_USER;
   const resPass = process.env.WEBSHARE_RESIDENTIAL_PASS;
   const resHost = process.env.WEBSHARE_RESIDENTIAL_HOST;
@@ -78,20 +75,20 @@ async function launchBrowser(): Promise<void> {
     console.log('    (using datacenter proxy)');
   }
 
+  const launchArgs = [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-blink-features=AutomationControlled',
+  ];
+
   if (pUrl) {
     const parsed = new URL(pUrl);
-    // Use .origin to avoid trailing colon when port is default (80 for http)
     const proxyServer = parsed.port
       ? `${parsed.protocol}//${parsed.hostname}:${parsed.port}`
       : parsed.origin;
-
     browser = await chromium.launch({
       headless: true,
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-blink-features=AutomationControlled',
-      ],
+      args: launchArgs,
       proxy: {
         server: proxyServer,
         username: parsed.username,
@@ -100,208 +97,156 @@ async function launchBrowser(): Promise<void> {
     });
   } else {
     console.log('    (no proxy configured, launching direct)');
-    browser = await chromium.launch({
-      headless: true,
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-blink-features=AutomationControlled',
-      ],
-    });
+    browser = await chromium.launch({ headless: true, args: launchArgs });
   }
 }
 
-async function newPage(): Promise<Page> {
+async function newContext(): Promise<BrowserContext> {
   const context = await browser.newContext({
     userAgent:
-      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36',
+      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
   });
-  return context.newPage();
+  // Drop heavy resource types — we only need the HTML for card parsing.
+  await context.route('**/*', (route) => {
+    if (BLOCKED_RESOURCES.has(route.request().resourceType())) {
+      route.abort().catch(() => {});
+    } else {
+      route.continue().catch(() => {});
+    }
+  });
+  return context;
 }
 
 // ---------------------------------------------------------------------------
-// Detail table parser
+// Card parser
 // ---------------------------------------------------------------------------
 
-function getOtherData($: cheerio.CheerioAPI): Record<string, unknown> {
-  const res: Record<string, unknown> = {};
-  const table = $(
-    '#content > div:nth-child(9) > div.row > div > div > div > table > tbody > tr',
-  );
+const ID_FROM_URL = /-(\d+)\.html$/;
+const POSTAL_CITY = /^(\d{4})\s+(.+)$/;
+const ID_DIGITS = /^\d+$/;
 
-  table.each((_, row) => {
-    const key = $(row).find('td:eq(0)').text().trim();
-    const value = $(row).find('td:eq(1)').text().trim();
-    if (!value) return;
+function parseCard($: cheerio.CheerioAPI, el: cheerio.Element): Record<string, unknown> | null {
+  const card = $(el);
+  const idAttr = card.find('[data-idobj]').first().attr('data-idobj')?.trim();
+  const idObject = idAttr && ID_DIGITS.test(idAttr) ? idAttr : null;
 
-    const mapping: Record<string, string> = {
-      'Surface utilisable (m2)': 'usable_surface_m2',
-      'Surface du terrain (m2)': 'land_surface_m2',
-      'Surface (m2)': 'surface_m2',
-      'Année de rénovation': 'year_of_renovation',
-      'Surface habitable (m2)': 'living_surface_m2',
-      'Année de construction': 'year_of_construction',
-      Parking: 'parking',
-      Vue: 'view',
-      Etat: 'condition',
-      'Date de disponibilité': 'availability_date',
-      Etage: 'floor',
-      'Volume (m3)': 'volume_m3',
-      'Garage(s)': 'garages',
-      'Parc(s) extérieur(s)': 'outdoor_parking_spaces',
-      'Parc(s) intérieur(s)': 'indoor_parking_spaces',
-      'Surface utile': 'usable_surface',
-    };
-
-    const field = mapping[key];
-    if (field) res[field] = value;
+  // Find the first detail-page link (skip mailto/contact anchors).
+  let href: string | undefined;
+  card.find('a[href^="/fr/"]').each((_, a) => {
+    if (href) return;
+    const h = $(a).attr('href');
+    if (h && ID_FROM_URL.test(h)) href = h.replace('#contact', '');
   });
+  if (!idObject || !href) return null;
 
-  return res;
-}
+  const adUrl = `https://www.acheter-louer.ch${href}`;
 
-// ---------------------------------------------------------------------------
-// Parse a single detail page
-// ---------------------------------------------------------------------------
-
-async function parseDetailPage(page: Page, link: string): Promise<Record<string, unknown> | null> {
-  if (link.includes('javascript')) return null;
-
-  const linkSplit = link.split('-');
-  const rawIdObject = linkSplit[linkSplit.length - 1];
-  const idObject = rawIdObject.replace('.html', '').trim();
-
-  try {
-    await page.goto(link, { waitUntil: 'domcontentloaded', timeout: 60_000 });
-    await page.waitForSelector(
-      '#content > div:nth-child(5) > div.header-details > div > div > div.col-sm-8.col-md-9.hr-details > h1',
-      { timeout: 15_000 },
-    );
-  } catch {
-    return null;
-  }
-
-  const content = await page.content();
-  const $ = cheerio.load(content);
-
-  const result: Record<string, unknown> = { idObject };
+  // URL pattern: /fr/{achat|location}-immobilier/{type}/{city}/{slug}-{id}.html
+  const segments = href.split('/').filter(Boolean);
+  const offerSegment = segments[1] || '';   // achat-immobilier | location-immobilier
+  const offerType = offerSegment.startsWith('location') ? 'location' : 'achat';
+  // URL can be /fr/{offer}/{type}/{city}/... OR /fr/{offer}/{agency}/{type}/{city}/...
+  // Pick the first known object-type slug after the offer segment.
+  const KNOWN_TYPES = new Set(['appartement', 'maison', 'terrain', 'commercial', 'parking', 'immeuble']);
+  const object = segments.slice(2, -1).find((s) => KNOWN_TYPES.has(s)) || null;
 
   // Price
-  const rawPrice = $(
-    '#content > div:nth-child(5) > div.header-details > div > div > div.col-sm-8.col-md-9.hr-details > div.tablediv > div.fs-28.fw-500.js-price',
-  )
-    .text()
-    .trim();
-  result.priceFormatted = rawPrice || null;
-  const textPrice = rawPrice.replace(/\D/g, '');
-  result.price = textPrice ? parseInt(textPrice, 10) : null;
+  const priceText = card.find('.price span').first().text().trim();
+  const priceFormatted = priceText || null;
+  const priceDigits = priceText.replace(/\D/g, '');
+  const price = priceDigits ? parseInt(priceDigits, 10) : null;
 
-  // Title + address
-  const title = $(
-    '#content > div:nth-child(5) > div.header-details > div > div > div.col-sm-8.col-md-9.hr-details > h1',
-  )
-    .text()
-    .trim();
-  result.ad_title = title || null;
-
-  const match = title.match(/(\d{4})\s+([^-\n]+)/);
-  result.address = {
-    no_postal: match?.[1] || null,
-    city: match?.[2]?.trim() || null,
+  // Title block: "<h2>Maison à vendre<br>1241 Puplinge..."
+  const titleHtml = card.find('h2.vign-title').first().html() || '';
+  const titleParts = titleHtml
+    .split(/<br\s*\/?>/i)
+    .map((s) => cheerio.load(`<x>${s}</x>`)('x').text().trim())
+    .filter(Boolean);
+  const ad_title = titleParts[0] || null;
+  const postalCityLine = titleParts[1] || '';
+  const postalMatch = postalCityLine.match(POSTAL_CITY);
+  const address = {
+    no_postal: postalMatch?.[1] || null,
+    city: postalMatch?.[2]?.trim() || null,
     street: null,
   };
 
-  // Object type + offer type
-  result.object = $('#d > a > span').text().trim() || null;
-  result.offerType = $('#a > a > span').text().trim() || null;
+  // Teaser description (em headline + body text)
+  const headline = card.find('.vign-desc em').first().text().trim() || null;
+  const body = card.find('.vign-desc').first().clone();
+  body.find('em').remove();
+  const teaser = body.text().replace(/\s+/g, ' ').trim() || null;
+  const description = [headline, teaser].filter(Boolean);
 
-  // Description
-  result.descriptionTitle =
-    $(
-      '#content > div.container.content-details > div.row.m-top-15.m-bot-20 > div > h2 > i',
-    )
-      .text()
-      .trim() || null;
+  // Single thumbnail image (only one available at card level)
+  let img = card.find('.imgObj img').first().attr('src') || null;
+  if (img && img.startsWith('//')) img = `https:${img}`;
+  const images = img ? [{ url: img }] : null;
 
-  const rawShareText = $(
-    '#requestBtn > div.hidden-xs > p.text-center.p-top-5.sm-p-bot-30 > a:nth-child(4)',
-  ).attr('href');
-  result.shareText = rawShareText
-    ? decodeURIComponent(
-        rawShareText.replace('mailto://?subject=', '').replace('&body=', ', '),
-      )
+  // Agency logo only — no name/phone/address available on the card
+  const logoStyle = card.find('.agency_logo').first().attr('style') || '';
+  const logoMatch = logoStyle.match(/url\(['"]?([^'")]+)['"]?\)/);
+  const agencyLogo = logoMatch?.[1] || null;
+  const agency = agencyLogo
+    ? { name: null, image: null, logo: { url: agencyLogo }, city: null, emails: [], phone: null }
     : null;
 
-  const rawDescription = $(
-    '#content > div.container.content-details > div:nth-child(2) > div.col-sm-9 > div > p',
-  )
-    .html();
-  result.description = rawDescription
-    ? rawDescription
-        .split('<br>')
-        .map((s) => s.trim())
-        .filter(Boolean)
-    : null;
-
-  // Other data from table
-  const otherData = getOtherData($);
-
-  // Agency
-  const agencySelector = $(
-    '#content > div.container.hidden-print.js-file-request-anchor > div.crosslisting > div.row.p-top-30.p-bot-30.m-top-20.m-bot-50.bg-white.fw-400.contact.text-center > div:nth-child(1)',
-  );
-  const agencyImage = agencySelector.find('div:eq(0) > img').attr('src') || null;
-  const agencyInfo = agencySelector
-    .find('div:eq(1)')
-    .contents()
-    .filter(function (this: any) { return this.nodeType === 3; })
-    .text()
-    .trim();
-  const [agencyName, , agencyAddress] = (agencyInfo || '').split('\n').map((el) => el.trim());
-  const agencyPhone = agencySelector
-    .find('div:eq(1) > div')
-    .contents()
-    .filter(function (this: any) { return this.nodeType === 3; })
-    .text()
-    .trim();
-  result.agency = {
-    name: agencyName || null,
-    image: agencyImage ? { url: agencyImage } : null,
-    logo: null,
-    city: agencyAddress || null,
-    emails: [],
-    phone: agencyPhone || null,
+  return {
+    idObject,
+    priceFormatted,
+    price,
+    ad_title,
+    address,
+    object,
+    offerType,
+    descriptionTitle: headline,
+    shareText: null,
+    description: description.length ? description : null,
+    agency,
+    images,
+    ad_url: adUrl,
   };
-
-  // Images — store original URLs
-  const imageRows = $('#owl-container > div > div.owl-stage-outer > div > div');
-  const images: { url: string }[] = [];
-  imageRows.each((_, row) => {
-    let src = $(row).find('div > a > img').attr('src');
-    if (src) {
-      if (src.startsWith('//')) src = `https:${src}`;
-      images.push({ url: src });
-    }
-  });
-  result.images = images.length ? images : null;
-
-  return { ...result, ...otherData };
 }
 
 // ---------------------------------------------------------------------------
-// Main pipeline
+// Page navigation
+// ---------------------------------------------------------------------------
+
+async function readSearchPage(page: Page, url: string): Promise<{ html: string; total: number } | null> {
+  try {
+    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60_000 });
+  } catch (err: any) {
+    console.log(`      goto failed: ${err.message}`);
+    return null;
+  }
+  try {
+    await page.waitForSelector('#listing-results > div > div:nth-child(1)', { timeout: 15_000 });
+  } catch {
+    return { html: await page.content(), total: 0 };
+  }
+  const html = await page.content();
+  const $ = cheerio.load(html);
+  const totalText = $(
+    '#results-filters > div > div > div > table > tbody > tr > td:nth-child(1) > span.nb-results',
+  )
+    .text()
+    .trim();
+  return { html, total: parseInt(totalText, 10) || 0 };
+}
+
+// ---------------------------------------------------------------------------
+// Main
 // ---------------------------------------------------------------------------
 
 async function main() {
   console.log('='.repeat(60));
-  console.log('  AcheterLouer — Listing Pipeline');
+  console.log('  AcheterLouer — Listing Pipeline (card mode)');
   console.log('  Source: acheter-louer.ch');
-  console.log('  Target: bronze."acheterLouer"');
+  console.log('  Target: bronze_ch.acheter_louer');
   console.log('='.repeat(60));
 
   const startTime = Date.now();
 
-  // 0. Verify DB connectivity before spending hours scraping
   await verifyAccess('bronze_ch', 'acheter_louer');
 
   const allRecords: Record<string, unknown>[] = [];
@@ -310,112 +255,69 @@ async function main() {
     for (const { label, t } of TX_TYPES) {
       console.log(`\n  [${canton.toUpperCase()}] ${label}:`);
 
-      // Launch a fresh browser per canton/type to avoid memory leaks
       await launchBrowser();
 
       try {
         const firstUrl = `https://www.acheter-louer.ch/?t=${t}&page=result&tri=&triSens=&dist=0&commune=&region=${region}&bounds=&area=&npa=&p=&communeName=&prixMin=&prixMax=&surfaceMin=&surfaceMax=&pieceMin=&pieceMax=&ns=`;
 
-        const searchPage = await newPage();
+        const ctx = await newContext();
+        const page = await ctx.newPage();
 
-        await searchPage.goto(firstUrl, { waitUntil: 'domcontentloaded', timeout: 60_000 });
-
-        // Accept cookies if present
-        try {
-          const cookieBtn = await searchPage.waitForSelector('#onetrust-accept-btn-handler', { timeout: 5_000 });
-          if (cookieBtn) await cookieBtn.click();
-        } catch { /* no cookie banner */ }
-
-        // Wait for results
-        try {
-          await searchPage.waitForSelector('#listing-results > div > div:nth-child(1)', { timeout: 15_000 });
-        } catch {
+        // Page 1: load with full search criteria; this seeds the session.
+        const first = await readSearchPage(page, firstUrl);
+        if (!first || first.total === 0) {
           console.log('    No results found');
+          await ctx.close();
           await browser.close();
           continue;
         }
 
-        // Get total count
-        const content = await searchPage.content();
-        const $ = cheerio.load(content);
-        const resultsText = $(
-          '#results-filters > div > div > div > table > tbody > tr > td:nth-child(1) > span.nb-results',
-        )
-          .text()
-          .trim();
-        const totalResults = parseInt(resultsText, 10) || 0;
-        const pages = Math.ceil(totalResults / PAGE_SIZE);
-        console.log(`    ${totalResults} results, ${pages} pages`);
+        // Accept cookies if present
+        try {
+          const cookieBtn = await page.$('#onetrust-accept-btn-handler');
+          if (cookieBtn) await cookieBtn.click({ timeout: 3_000 });
+        } catch { /* none */ }
 
-        await searchPage.close();
+        const pages = Math.ceil(first.total / PAGE_SIZE);
+        console.log(`    ${first.total} results, ${pages} pages`);
 
-        // Process each page
-        for (let p = 0; p < pages; p++) {
+        // Card-extract a single HTML blob and push to allRecords
+        const collect = (html: string) => {
+          const $ = cheerio.load(html);
+          let added = 0;
+          $('#listing-results > div > div').each((_, el) => {
+            const rec = parseCard($, el);
+            if (!rec) return;
+            allRecords.push({
+              ...rec,
+              source: 'acheter-louer',
+              canton,
+              publishing_status: 'online',
+              time_online: 1,
+              last_seen_at: new Date().toISOString(),
+            });
+            added++;
+          });
+          return added;
+        };
+
+        let n = collect(first.html);
+        console.log(`    Page 1/${pages}: +${n}`);
+
+        for (let p = 1; p < pages; p++) {
           const offset = p * PAGE_SIZE;
-          console.log(`    Page ${p + 1}/${pages}`);
-
-          const listPage = await newPage();
-
-          // Navigate to first URL first for cookies, then to offset page
-          if (p > 0) {
-            await listPage.goto(firstUrl, { waitUntil: 'domcontentloaded', timeout: 60_000 });
-            await sleep(1_000);
-          }
-
-          await listPage.goto(
-            `https://www.acheter-louer.ch/?page=result&pos=${offset}&action=back`,
-            { waitUntil: 'domcontentloaded', timeout: 60_000 },
-          );
-
-          try {
-            await listPage.waitForSelector('#listing-results > div > div', { timeout: 15_000 });
-          } catch {
-            console.log('      No results on this page');
-            await listPage.close();
+          const url = `https://www.acheter-louer.ch/?page=result&pos=${offset}&action=back`;
+          const r = await readSearchPage(page, url);
+          if (!r) {
+            console.log(`    Page ${p + 1}/${pages}: failed, skipping`);
             continue;
           }
-
-          const pageContent = await listPage.content();
-          const $page = cheerio.load(pageContent);
-          const rows = $page('#listing-results > div > div');
-
-          // Collect detail links
-          const links: string[] = [];
-          rows.each((_, row) => {
-            const rawLink = $page(row).find('div > a').attr('href');
-            if (rawLink && !rawLink.includes('javascript')) {
-              links.push(`https://www.acheter-louer.ch${rawLink.replace('#contact', '')}`);
-            }
-          });
-
-          await listPage.close();
-
-          // Parse each detail page
-          for (const link of links) {
-            const detailPage = await newPage();
-            try {
-              const data = await parseDetailPage(detailPage, link);
-              if (data) {
-                allRecords.push({
-                  ...data,
-                  source: 'acheter-louer',
-                  canton,
-                  ad_url: link,
-                  publishing_status: 'online',
-                  time_online: 1,
-                  last_seen_at: new Date().toISOString(),
-                });
-              }
-            } catch (err) {
-              console.error(`      Error parsing ${link}: ${err}`);
-            } finally {
-              await detailPage.close();
-            }
-
-            await sleep(PAGE_LOAD_WAIT);
-          }
+          n = collect(r.html);
+          console.log(`    Page ${p + 1}/${pages}: +${n}`);
+          await sleep(PAGE_LOAD_WAIT);
         }
 
+        await ctx.close();
         await browser.close();
       } catch (err) {
         console.error(`    Error for ${canton} ${label}: ${err}`);
@@ -432,25 +334,35 @@ async function main() {
     return;
   }
 
-  // Upsert
-  console.log(`\n  Upserting ${allRecords.length} records (batch size: ${BATCH_SIZE})...`);
-  const totalUpserted = await upsert('bronze_ch', 'acheter_louer', allRecords, 'ad_url', BATCH_SIZE);
+  // Dedupe by ad_url — same listing can appear in multiple cantons in border cases.
+  const seen = new Set<string>();
+  const deduped = allRecords.filter((r) => {
+    const url = r.ad_url as string;
+    if (seen.has(url)) return false;
+    seen.add(url);
+    return true;
+  });
+  if (deduped.length !== allRecords.length) {
+    console.log(`  Deduped: ${allRecords.length} → ${deduped.length}`);
+  }
+
+  console.log(`\n  Upserting ${deduped.length} records (batch size: ${BATCH_SIZE})...`);
+  const totalUpserted = await upsert('bronze_ch', 'acheter_louer', deduped, 'ad_url', BATCH_SIZE);
 
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
   console.log(`\n${'='.repeat(60)}`);
   console.log('  IMPORT COMPLETE');
-  console.log(`  Listings fetched:  ${allRecords.length}`);
+  console.log(`  Listings fetched:  ${deduped.length}`);
   console.log(`  Records upserted:  ${totalUpserted}`);
   console.log(`  Duration:          ${elapsed}s`);
   console.log('='.repeat(60));
 
-  if (totalUpserted === 0 && allRecords.length > 0) {
+  if (totalUpserted === 0 && deduped.length > 0) {
     console.error('  FAILED: Zero rows upserted despite having records!');
     process.exit(1);
   }
 
-  // Mark stale listings as offline
-  await markStaleListings('bronze_ch', 'acheter_louer', 'ad_url', 50, allRecords.length);
+  await markStaleListings('bronze_ch', 'acheter_louer', 'ad_url', 50, deduped.length);
 }
 
 main().catch((err) => {
