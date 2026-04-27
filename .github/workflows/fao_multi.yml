@@ -1,0 +1,59 @@
+name: FAO Multi
+
+on:
+  schedule:
+    # Weekly Saturday at 05:00 UTC (after FAO Transactions @04:00 + LDTR @04:30)
+    - cron: '0 5 * * 6'
+  workflow_dispatch:
+    inputs:
+      rubrique:
+        description: 'Single rubrique to fetch (leave blank to run the full matrix)'
+        required: false
+        type: string
+      days_back:
+        description: 'Lookback window in days (default 7)'
+        required: false
+        default: '7'
+        type: string
+
+jobs:
+  # When dispatched with a single rubrique we run a 1-element matrix; otherwise full list.
+  resolve-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      rubriques: ${{ steps.set.outputs.rubriques }}
+    steps:
+      - id: set
+        run: |
+          if [ -n "${{ inputs.rubrique }}" ]; then
+            echo "rubriques=[${{ inputs.rubrique }}]" >> "$GITHUB_OUTPUT"
+          else
+            echo 'rubriques=[72, 84, 90, 91, 97, 135, 136, 213, 217, 322]' >> "$GITHUB_OUTPUT"
+          fi
+
+  fetch:
+    needs: resolve-matrix
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        rubrique: ${{ fromJson(needs.resolve-matrix.outputs.rubriques) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: cd pipelines/_shared && npm ci
+      - run: cd pipelines/fao-multi && npm ci
+      - name: Install Playwright browsers
+        run: cd pipelines/fao-multi && npx playwright install chromium --with-deps
+      - name: Fetch FAO rubrique ${{ matrix.rubrique }}
+        run: cd pipelines/fao-multi && npx tsx fetch-fao.ts
+        env:
+          RUBRIQUE: ${{ matrix.rubrique }}
+          DAYS_BACK: ${{ inputs.days_back || '7' }}
+          RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          TWO_CAPTCHA_API_KEY: ${{ secrets.TWO_CAPTCHA_API_KEY }}
