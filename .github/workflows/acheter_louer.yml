@@ -1,8 +1,10 @@
 name: AcheterLouer (Listings)
 
 on:
-  schedule:
-    - cron: '0 2 * * *'  # Daily at 02:00 UTC
+  # Schedule disabled 2026-04-27 — Webshare residential proxy bandwidth
+  # exhausted; cron re-enabled once quota is topped up / resets.
+  # schedule:
+  #   - cron: '0 2 * * *'  # Daily at 02:00 UTC
   workflow_dispatch:
 
 jobs:
