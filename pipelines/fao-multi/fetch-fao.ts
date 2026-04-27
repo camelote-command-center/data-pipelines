@@ -277,7 +277,10 @@ function parsePage(html: string): ParsedRow[] {
 }
 
 // ---------------------------------------------------------------------------
-// Total-results selector — try both formats used across rubriques
+// Total-results selector — informational only. FAO's count widget is
+// unreliable for long date windows (returns wrong values for full-year
+// queries, see https://github.com/camelote-command-center/data-pipelines).
+// We paginate until we hit a short page rather than trusting this number.
 // ---------------------------------------------------------------------------
 
 function readTotal(html: string): number {
@@ -290,8 +293,18 @@ function readTotal(html: string): number {
       .text()
       .trim();
   const m = txt.match(/^\s*(\d+)/);
-  return m ? parseInt(m[1], 10) : 0;
+  return m ? parseInt(m[1], 10) : -1;
 }
+
+// Fingerprint a page so we can detect FAO returning identical content for
+// successive pages (shouldn't happen but is a guardrail against infinite loops).
+function pageFingerprint(rows: ParsedRow[]): string {
+  if (rows.length === 0) return 'empty';
+  const r = rows[0];
+  return `${r.publication_date ?? ''}|${r.affaire ?? ''}|${r.raw_text.slice(0, 120)}`;
+}
+
+const MAX_PAGES_PER_WINDOW = 5_000;
 
 // ---------------------------------------------------------------------------
 // One window — solve CAPTCHA, fetch all pages, upsert. Returns counts.
@@ -311,49 +324,74 @@ async function runWindow(dateFrom: string, dateTo: string): Promise<WindowResult
   console.log('  Solving CAPTCHA...');
   let { cookies } = await createFaoSession(RUBRIQUE, dateFrom, dateTo);
 
-  console.log('  Fetching first page...');
-  const firstHtml = await fetchPage(1, cookies, dateFrom, dateTo);
-  const total = readTotal(firstHtml);
-  const pages = Math.max(1, Math.ceil(total / RESULTS_PER_PAGE));
-  console.log(`  Total results: ${total}, pages: ${pages}`);
+  console.log('  Fetching page 1...');
+  let firstHtml = await fetchPage(1, cookies, dateFrom, dateTo);
+  const reportedTotal = readTotal(firstHtml);
+  console.log(`  Reported total (informational, may be wrong): ${reportedTotal}`);
 
   const allRows: ParsedRow[] = [];
-  allRows.push(...parsePage(firstHtml));
-  if (total > 0) console.log(`  Page 1/${pages}: ${allRows.length} rows`);
-
   let pageFailures = 0;
-  for (let p = 2; p <= pages; p++) {
-    try {
-      const html = await fetchPage(p, cookies, dateFrom, dateTo);
-      const rows = parsePage(html);
-      allRows.push(...rows);
-      console.log(`  Page ${p}/${pages}: ${rows.length} rows`);
-      await sleep(RATE_LIMIT_MS);
-    } catch (err) {
-      if (String(err).includes('CAPTCHA_REDIRECT')) {
-        console.log('  CAPTCHA redirect, re-solving...');
-        try {
-          const newSession = await createFaoSession(RUBRIQUE, dateFrom, dateTo);
-          cookies = newSession.cookies;
-          const html = await fetchPage(p, cookies, dateFrom, dateTo);
-          const rows = parsePage(html);
-          allRows.push(...rows);
-          console.log(`  Page ${p}/${pages}: ${rows.length} rows (after re-auth)`);
-        } catch (reAuthErr) {
-          console.error(`  Failed page ${p} after re-auth: ${reAuthErr}`);
+  let p = 1;
+  let lastFingerprint = '';
+  let html = firstHtml;
+
+  while (p <= MAX_PAGES_PER_WINDOW) {
+    if (p > 1) {
+      try {
+        html = await fetchPage(p, cookies, dateFrom, dateTo);
+      } catch (err) {
+        if (String(err).includes('CAPTCHA_REDIRECT')) {
+          console.log('  CAPTCHA redirect, re-solving...');
+          try {
+            const newSession = await createFaoSession(RUBRIQUE, dateFrom, dateTo);
+            cookies = newSession.cookies;
+            html = await fetchPage(p, cookies, dateFrom, dateTo);
+          } catch (reAuthErr) {
+            console.error(`  Failed page ${p} after re-auth: ${reAuthErr}`);
+            pageFailures++;
+            break; // can't recover this session; bail rather than silently truncate
+          }
+        } else {
+          console.error(`  Error on page ${p}: ${err}`);
           pageFailures++;
+          break;
         }
-      } else {
-        console.error(`  Error on page ${p} (skipping): ${err}`);
-        pageFailures++;
       }
     }
+
+    const rows = parsePage(html);
+    if (rows.length === 0) {
+      console.log(`  Page ${p}: 0 rows — end of window.`);
+      break;
+    }
+
+    const fp = pageFingerprint(rows);
+    if (fp === lastFingerprint && p > 1) {
+      console.log(`  Page ${p}: same fingerprint as previous — FAO is no longer paginating, stopping.`);
+      break;
+    }
+    lastFingerprint = fp;
+
+    allRows.push(...rows);
+    console.log(`  Page ${p}: ${rows.length} rows (cumulative: ${allRows.length})`);
+
+    if (rows.length < RESULTS_PER_PAGE) {
+      console.log(`  Page ${p}: short page (${rows.length} < ${RESULTS_PER_PAGE}) — last page.`);
+      break;
+    }
+
+    p++;
+    await sleep(RATE_LIMIT_MS);
+  }
+
+  if (p > MAX_PAGES_PER_WINDOW) {
+    console.log(`  WARNING: hit MAX_PAGES_PER_WINDOW (${MAX_PAGES_PER_WINDOW}); stopping.`);
   }
 
   if (allRows.length === 0) {
     const elapsed = ((Date.now() - t0) / 1000).toFixed(1);
     console.log(`  No rows in window. (${elapsed}s)`);
-    return { extracted: 0, upserted: 0, pages, pageFailures, durationSec: elapsed };
+    return { extracted: 0, upserted: 0, pages: p, pageFailures, durationSec: elapsed };
   }
 
   // Drop in-batch duplicates so ON CONFLICT doesn't error on same key twice.
@@ -386,7 +424,7 @@ async function runWindow(dateFrom: string, dateTo: string): Promise<WindowResult
   return {
     extracted: allRows.length,
     upserted: totalUpserted,
-    pages,
+    pages: p,
     pageFailures,
     durationSec: elapsed,
   };
