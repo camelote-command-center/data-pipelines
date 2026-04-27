@@ -1,0 +1,13 @@
+{
+  "name": "lindas-multi",
+  "private": true,
+  "scripts": {
+    "fetch": "tsx fetch-lindas.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2"
+  },
+  "devDependencies": {
+    "tsx": "^4"
+  }
+}

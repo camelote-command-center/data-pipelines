@@ -1,0 +1,57 @@
+name: LINDAS Multi
+
+# Generic SPARQL-driven fetch for Linked Data Switzerland datasets.
+# Each matrix job pulls one dataset slug (defined in pipelines/lindas-multi/datasets.ts).
+# Lands rows into re-llm bronze_ch.lindas_observations (one row per RDF subject).
+
+on:
+  schedule:
+    # Monthly on the 1st at 06:00 UTC
+    - cron: '0 6 1 * *'
+  workflow_dispatch:
+    inputs:
+      dataset:
+        description: 'Single dataset slug to fetch (leave blank to run the full matrix)'
+        required: false
+        type: string
+
+jobs:
+  resolve-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      datasets: ${{ steps.set.outputs.datasets }}
+    steps:
+      - id: set
+        run: |
+          if [ -n "${{ inputs.dataset }}" ]; then
+            echo "datasets=[\"${{ inputs.dataset }}\"]" >> "$GITHUB_OUTPUT"
+          else
+            echo 'datasets=["opendataswiss-meta", "curia", "termdat", "bfe_ogd115_gest_bilanz", "bfe_ogd18_anzahl_gesuche", "bfe_ogd18_auszahlungen", "bfe_ogd18_energiewirkung", "bfe_ogd18_co2wirkung", "sfa_state_accounts_cat9"]' >> "$GITHUB_OUTPUT"
+          fi
+
+  fetch:
+    needs: resolve-matrix
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        dataset: ${{ fromJson(needs.resolve-matrix.outputs.datasets) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: cd pipelines/_shared && npm ci
+      - run: cd pipelines/lindas-multi && npm ci
+      - name: Fetch LINDAS dataset ${{ matrix.dataset }}
+        run: cd pipelines/lindas-multi && npx tsx fetch-lindas.ts
+        env:
+          DATASET: ${{ matrix.dataset }}
+          RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          # Satisfies the import-time env check in pipelines/_shared/supabase.ts
+          # (transitively imported via shared modules). The lamap client is never used.
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
