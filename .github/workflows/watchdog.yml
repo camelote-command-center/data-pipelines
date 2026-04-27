@@ -8,7 +8,7 @@ name: Watchdog (overdue dataset re-trigger)
 
 on:
   schedule:
-    - cron: '17 */2 * * *'  # every 2h at :17 (off-peak minute)
+    - cron: '17 * * * *'  # every hour at :17 (off-peak minute)
   workflow_dispatch:
 
 permissions:
@@ -29,12 +29,13 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Freshness budget by frequency (seconds). Generous grace absorbs
-          # GitHub Actions cron drift (often 1-2h late at peak).
+          # Freshness budget by frequency (seconds). Tight enough to fire
+          # before the dashboard flags a row as overdue, generous enough to
+          # absorb normal GitHub Actions cron drift (~1-2h at peak).
           declare -A BUDGET=(
-            [daily]=129600       # 36h
-            [weekly]=864000      # 10d
-            [monthly]=2851200    # 33d
+            [daily]=93600        # 26h
+            [weekly]=691200      # 8d
+            [monthly]=2764800    # 32d
             [quarterly]=8035200  # 93d
             [yearly]=32486400    # 376d
           )
