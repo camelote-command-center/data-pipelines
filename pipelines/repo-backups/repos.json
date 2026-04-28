@@ -3,6 +3,65 @@
     { "org": "camelote-command-center", "repo": "camelote-command-center", "is_lovable": true },
     { "org": "camelote-command-center", "repo": "data-pipelines", "is_lovable": false },
     { "org": "camelote-command-center", "repo": "supabase-registry", "is_lovable": false },
-    { "org": "camelote-command-center", "repo": "startup-first-aid-kits", "is_lovable": false }
+    { "org": "camelote-command-center", "repo": "startup-first-aid-kits", "is_lovable": false },
+
+    { "org": "Cameloteio", "repo": "BillionairesList_lovable", "is_lovable": true },
+    { "org": "Cameloteio", "repo": "camelote", "is_lovable": false },
+    { "org": "Cameloteio", "repo": "LamapScrapers", "is_lovable": false },
+    { "org": "Cameloteio", "repo": "LamapParser", "is_lovable": false },
+    { "org": "Cameloteio", "repo": "trading-bot", "is_lovable": false },
+    { "org": "Cameloteio", "repo": "lamap-pdf-service", "is_lovable": false },
+    { "org": "Cameloteio", "repo": "LamapParserDashboard", "is_lovable": false },
+    { "org": "Cameloteio", "repo": "pixxels", "is_lovable": false },
+    { "org": "Cameloteio", "repo": "helveti-ads-old-87366", "is_lovable": false },
+    { "org": "Cameloteio", "repo": "helveti-ads", "is_lovable": false },
+    { "org": "Cameloteio", "repo": "xoxo-old-32804", "is_lovable": false },
+    { "org": "Cameloteio", "repo": "LamapParsers", "is_lovable": false },
+    { "org": "Cameloteio", "repo": "LamapHoliday", "is_lovable": false },
+    { "org": "Cameloteio", "repo": "BLopenAi", "is_lovable": false },
+    { "org": "Cameloteio", "repo": "billionaireslist", "is_lovable": false },
+    { "org": "Cameloteio", "repo": "billionaireslistAdmin", "is_lovable": false },
+
+    { "org": "Camelote-io", "repo": "777", "is_lovable": false },
+    { "org": "Camelote-io", "repo": "scraper-fao", "is_lovable": false },
+    { "org": "Camelote-io", "repo": "scraper-sad", "is_lovable": false },
+
+    { "org": "BillionairesList", "repo": "parsers", "is_lovable": false },
+    { "org": "BillionairesList", "repo": "billionaireslist", "is_lovable": false },
+
+    { "org": "xoxo-ch", "repo": "helveti-ad-sync", "is_lovable": false },
+    { "org": "xoxo-ch", "repo": "helveti-ads", "is_lovable": false },
+
+    { "org": "lamap-2025", "repo": "lamap-2025", "is_lovable": false },
+    { "org": "lamap-2025", "repo": "lamap-admin-cms", "is_lovable": false },
+    { "org": "lamap-2025", "repo": "crm-express", "is_lovable": false },
+
+    { "org": "pixxels-io", "repo": "pixxels-io", "is_lovable": false },
+
+    { "org": "Chatabase", "repo": "chatabase.ai", "is_lovable": false },
+    { "org": "Chatabase", "repo": "database-chat-buddy", "is_lovable": true },
+
+    { "org": "pixxels-communities", "repo": "hh-geneve", "is_lovable": false },
+
+    { "org": "affluent-family-office", "repo": "affluent-family-office", "is_lovable": false },
+
+    { "org": "agents-pixxels", "repo": "command-hub", "is_lovable": false },
+
+    { "org": "temp-lamap-crm", "repo": "mycrm-v.2", "is_lovable": false },
+
+    { "org": "smartbills-ch", "repo": "swiss-fin-guide", "is_lovable": true },
+
+    { "org": "agent-platform-backend", "repo": "agent-platform-backend", "is_lovable": false },
+
+    { "org": "lamap-lbi", "repo": "geneva-insight-terminal", "is_lovable": true },
+
+    { "org": "rf-ch-com", "repo": "registrefoncier-guide", "is_lovable": true },
+    { "org": "rf-ch-com", "repo": "landed-intel-global", "is_lovable": true },
+
+    { "org": "xghozt-bot", "repo": "polymarket-bot", "is_lovable": false },
+    { "org": "xghozt-bot", "repo": "ghost-buddy-repro", "is_lovable": true },
+    { "org": "xghozt-bot", "repo": "bot-buddy", "is_lovable": true },
+
+    { "org": "jobs-ch", "repo": "tinjob", "is_lovable": false }
   ]
 }
