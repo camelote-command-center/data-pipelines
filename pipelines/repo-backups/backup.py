@@ -25,6 +25,7 @@ Required env:
 
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -69,8 +70,17 @@ def gh_get_paginated(url: str, token: str) -> list:
 
 
 def run(cmd: list, cwd: str | None = None, check: bool = True) -> subprocess.CompletedProcess:
-    print(f"$ {' '.join(cmd)}", flush=True)
-    return subprocess.run(cmd, cwd=cwd, check=check, capture_output=True, text=True)
+    # Redact tokens embedded in URLs for logs
+    safe = [re.sub(r"x-access-token:[^@]+@", "x-access-token:***@", str(a)) for a in cmd]
+    print(f"$ {' '.join(safe)}", flush=True)
+    res = subprocess.run(cmd, cwd=cwd, check=False, capture_output=True, text=True)
+    if res.stdout:
+        print(res.stdout, flush=True)
+    if res.stderr:
+        print(res.stderr, file=sys.stderr, flush=True)
+    if check and res.returncode != 0:
+        raise subprocess.CalledProcessError(res.returncode, safe)
+    return res
 
 
 def clone_mirror(org: str, repo: str, token: str, dest: Path) -> str:
