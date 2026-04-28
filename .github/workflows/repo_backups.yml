@@ -1,0 +1,62 @@
+name: Repo Backups (DR snapshots → R2)
+
+on:
+  schedule:
+    - cron: '17 4 * * 0'  # Sundays 04:17 UTC
+  workflow_dispatch:
+    inputs:
+      single_repo:
+        description: 'Optional: back up one repo only (e.g. data-pipelines). Leave empty for all.'
+        required: false
+        default: ''
+
+jobs:
+  build-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: set
+        run: |
+          if [ -n "${{ inputs.single_repo }}" ]; then
+            jq -c --arg name "${{ inputs.single_repo }}" \
+              '{include: [.repos[] | select(.repo == $name)]}' \
+              pipelines/repo-backups/repos.json >> matrix.json
+          else
+            jq -c '{include: .repos}' pipelines/repo-backups/repos.json > matrix.json
+          fi
+          echo "matrix=$(cat matrix.json)" >> "$GITHUB_OUTPUT"
+          cat matrix.json
+
+  backup:
+    needs: build-matrix
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix: ${{ fromJson(needs.build-matrix.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install zstd
+        run: sudo apt-get update -qq && sudo apt-get install -y zstd
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install -r requirements.txt
+
+      - name: Run backup
+        env:
+          TARGET_ORG: ${{ matrix.org }}
+          TARGET_REPO: ${{ matrix.repo }}
+          TARGET_IS_LOVABLE: ${{ matrix.is_lovable }}
+          GITHUB_TOKEN: ${{ secrets.BACKUP_GH_PAT }}
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET: ${{ secrets.R2_BUCKET }}
+        run: python pipelines/repo-backups/backup.py

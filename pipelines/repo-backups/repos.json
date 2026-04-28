@@ -1,0 +1,8 @@
+{
+  "repos": [
+    { "org": "camelote-command-center", "repo": "camelote-command-center", "is_lovable": true },
+    { "org": "camelote-command-center", "repo": "data-pipelines", "is_lovable": false },
+    { "org": "camelote-command-center", "repo": "supabase-registry", "is_lovable": false },
+    { "org": "camelote-command-center", "repo": "startup-first-aid-kits", "is_lovable": false }
+  ]
+}
