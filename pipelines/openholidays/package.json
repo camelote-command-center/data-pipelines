@@ -1,0 +1,7 @@
+{
+  "name": "openholidays",
+  "private": true,
+  "scripts": { "fetch": "tsx fetch-openholidays.ts" },
+  "dependencies": { "@supabase/supabase-js": "^2" },
+  "devDependencies": { "tsx": "^4" }
+}

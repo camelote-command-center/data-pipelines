@@ -1,0 +1,36 @@
+name: opendata.fr.ch
+
+# Fribourg open data via OpenDataSoft v2. Catalog + records.
+# Monthly cron.
+
+on:
+  schedule:
+    - cron: '45 6 1 * *'    # 1st of month 06:45 UTC
+  workflow_dispatch:
+    inputs:
+      only_dataset:
+        description: 'Single dataset_id to fetch (leave blank for all)'
+        required: false
+        type: string
+      max_records:
+        description: 'Cap records per dataset (0 = unlimited)'
+        required: false
+        default: '0'
+        type: string
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: cd pipelines/opendata-fr && npm ci
+      - name: Fetch opendata.fr.ch
+        run: cd pipelines/opendata-fr && npx tsx fetch-opendata-fr.ts
+        env:
+          ONLY_DATASET: ${{ inputs.only_dataset }}
+          MAX_RECORDS_PER_DATASET: ${{ inputs.max_records || '0' }}
+          RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}

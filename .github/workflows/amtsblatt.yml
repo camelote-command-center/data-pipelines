@@ -1,0 +1,40 @@
+name: amtsblattportal
+
+# Daily incremental ingest of Swiss official gazette publications.
+# Backfill via workflow_dispatch (start_date / end_date).
+
+on:
+  schedule:
+    - cron: '0 7 * * *'    # daily 07:00 UTC
+  workflow_dispatch:
+    inputs:
+      start_date:
+        description: 'YYYY-MM-DD — backfill start (leave blank for incremental)'
+        required: false
+        type: string
+      end_date:
+        description: 'YYYY-MM-DD — backfill end (leave blank for incremental)'
+        required: false
+        type: string
+      tenant:
+        description: 'Restrict to a single tenant (e.g. kabge, shab) — blank for all'
+        required: false
+        type: string
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: cd pipelines/amtsblattportal && npm ci
+      - name: Fetch amtsblattportal
+        run: cd pipelines/amtsblattportal && npx tsx fetch-amtsblatt.ts
+        env:
+          START_DATE: ${{ inputs.start_date }}
+          END_DATE: ${{ inputs.end_date }}
+          TENANT: ${{ inputs.tenant }}
+          RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}

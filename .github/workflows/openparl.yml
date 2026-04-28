@@ -1,0 +1,31 @@
+name: OpenParlData
+
+# Swiss parliamentary data — bodies + affairs for Suisse-romande indexed bodies.
+# Monthly cron.
+
+on:
+  schedule:
+    - cron: '30 6 1 * *'    # 1st of month 06:30 UTC
+  workflow_dispatch:
+    inputs:
+      romande_only:
+        description: 'Restrict affairs to Suisse-romande bodies (true/false)'
+        required: false
+        default: 'true'
+        type: string
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: cd pipelines/openparl && npm ci
+      - name: Fetch OpenParlData
+        run: cd pipelines/openparl && npx tsx fetch-openparl.ts
+        env:
+          ROMANDE_ONLY: ${{ inputs.romande_only || 'true' }}
+          RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}

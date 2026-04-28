@@ -1,0 +1,7 @@
+{
+  "name": "amtsblattportal",
+  "private": true,
+  "scripts": { "fetch": "tsx fetch-amtsblatt.ts" },
+  "dependencies": { "@supabase/supabase-js": "^2" },
+  "devDependencies": { "tsx": "^4" }
+}

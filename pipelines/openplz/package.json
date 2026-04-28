@@ -1,0 +1,7 @@
+{
+  "name": "openplz",
+  "private": true,
+  "scripts": { "fetch": "tsx fetch-openplz.ts" },
+  "dependencies": { "@supabase/supabase-js": "^2" },
+  "devDependencies": { "tsx": "^4" }
+}
