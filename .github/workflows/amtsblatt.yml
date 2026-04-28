@@ -29,6 +29,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: '20' }
+      - run: cd pipelines/_shared && npm ci
       - run: cd pipelines/amtsblattportal && npm ci
       - name: Fetch amtsblattportal
         run: cd pipelines/amtsblattportal && npx tsx fetch-amtsblatt.ts

@@ -22,6 +22,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: '20' }
+      - run: cd pipelines/_shared && npm ci
       - run: cd pipelines/openparl && npm ci
       - name: Fetch OpenParlData
         run: cd pipelines/openparl && npx tsx fetch-openparl.ts

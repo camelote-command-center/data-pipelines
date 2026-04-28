@@ -15,6 +15,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: '20' }
+      - run: cd pipelines/_shared && npm ci
       - run: cd pipelines/openholidays && npm ci
       - name: Fetch OpenHolidays
         run: cd pipelines/openholidays && npx tsx fetch-openholidays.ts
