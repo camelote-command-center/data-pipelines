@@ -1,0 +1,12 @@
+{
+  "name": "news-rss",
+  "private": true,
+  "scripts": { "fetch": "tsx fetch-news.ts" },
+  "dependencies": {
+    "@supabase/supabase-js": "^2",
+    "@extractus/article-extractor": "^8",
+    "rss-parser": "^3",
+    "cheerio": "^1"
+  },
+  "devDependencies": { "tsx": "^4" }
+}
