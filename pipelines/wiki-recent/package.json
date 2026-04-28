@@ -1,0 +1,7 @@
+{
+  "name": "wiki-recent",
+  "private": true,
+  "scripts": { "fetch": "tsx fetch-wiki-recent.ts" },
+  "dependencies": { "@supabase/supabase-js": "^2" },
+  "devDependencies": { "tsx": "^4" }
+}

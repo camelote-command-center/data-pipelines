@@ -1,0 +1,47 @@
+name: court-decisions
+
+# Daily incremental ingest of Swiss judicial decisions filtered to RE-relevant
+# chambers. Backfill via workflow_dispatch (start_date / end_date).
+
+on:
+  schedule:
+    - cron: '0 5 * * *'    # daily 05:00 UTC
+  workflow_dispatch:
+    inputs:
+      start_date:
+        description: 'YYYY-MM-DD — backfill start (leave blank for incremental)'
+        required: false
+        type: string
+      end_date:
+        description: 'YYYY-MM-DD — backfill end (leave blank for incremental)'
+        required: false
+        type: string
+      only_kammer:
+        description: 'Restrict to one chamber key (e.g. GE_CJ_004) — blank for all'
+        required: false
+        type: string
+      max_per_kammer:
+        description: 'Cap per-chamber fetch count (0 = unlimited)'
+        required: false
+        default: '0'
+        type: string
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: cd pipelines/_shared && npm ci
+      - run: cd pipelines/court-decisions && npm ci
+      - name: Fetch court decisions
+        run: cd pipelines/court-decisions && npx tsx fetch-court-decisions.ts
+        env:
+          START_DATE: ${{ inputs.start_date }}
+          END_DATE: ${{ inputs.end_date }}
+          ONLY_KAMMER: ${{ inputs.only_kammer }}
+          MAX_PER_KAMMER: ${{ inputs.max_per_kammer || '0' }}
+          RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}

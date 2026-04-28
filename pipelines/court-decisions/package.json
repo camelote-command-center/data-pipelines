@@ -1,0 +1,7 @@
+{
+  "name": "court-decisions",
+  "private": true,
+  "scripts": { "fetch": "tsx fetch-court-decisions.ts" },
+  "dependencies": { "@supabase/supabase-js": "^2" },
+  "devDependencies": { "tsx": "^4" }
+}

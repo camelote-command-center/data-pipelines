@@ -1,0 +1,36 @@
+name: wiki-recent
+
+# Daily edit-velocity log for our watched Geneva-RE Wikipedia entities.
+
+on:
+  schedule:
+    - cron: '0 5 * * *'   # daily 05:00 UTC (after court-decisions; same hour OK)
+  workflow_dispatch:
+    inputs:
+      lookback_days:
+        description: 'How many days back to fetch revisions (default 7)'
+        required: false
+        default: '7'
+        type: string
+      only_language:
+        description: 'Restrict to one language (fr, de) — blank for all'
+        required: false
+        type: string
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: cd pipelines/_shared && npm ci
+      - run: cd pipelines/wiki-recent && npm ci
+      - name: Fetch Wikipedia revisions
+        run: cd pipelines/wiki-recent && npx tsx fetch-wiki-recent.ts
+        env:
+          LOOKBACK_DAYS: ${{ inputs.lookback_days || '7' }}
+          ONLY_LANGUAGE: ${{ inputs.only_language }}
+          RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
