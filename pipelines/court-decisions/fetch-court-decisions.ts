@@ -95,7 +95,9 @@ function buildQuery(kammer: Kammer, dateFrom: string, dateTo: string, from: numb
     size,
     query: {
       bool: {
-        must: [{ term: { 'hierarchy.keyword': kammer.key } }],
+        // entscheidsuche indexes `hierarchy` as a plain text array (no .keyword
+        // sub-field). `term` on the array means "array contains this exact value".
+        must: [{ term: { hierarchy: kammer.key } }],
         filter: [{ range: { date: { gte: dateFrom, lte: dateTo } } }],
       },
     },
