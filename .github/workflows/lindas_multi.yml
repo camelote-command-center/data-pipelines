@@ -26,7 +26,7 @@ jobs:
           if [ -n "${{ inputs.dataset }}" ]; then
             echo "datasets=[\"${{ inputs.dataset }}\"]" >> "$GITHUB_OUTPUT"
           else
-            echo 'datasets=["opendataswiss-meta", "curia", "termdat", "bfe_ogd115_gest_bilanz", "bfe_ogd18_anzahl_gesuche", "bfe_ogd18_auszahlungen", "bfe_ogd18_energiewirkung", "bfe_ogd18_co2wirkung", "sfa_state_accounts_cat9"]' >> "$GITHUB_OUTPUT"
+            echo 'datasets=["opendataswiss-meta", "curia", "termdat", "bfe_ogd115_gest_bilanz", "bfe_ogd18_anzahl_gesuche", "bfe_ogd18_auszahlungen", "bfe_ogd18_energiewirkung", "bfe_ogd18_co2wirkung", "foen_bfs_cofog_national", "sfa_state_accounts_cat9"]' >> "$GITHUB_OUTPUT"
           fi
 
   fetch:

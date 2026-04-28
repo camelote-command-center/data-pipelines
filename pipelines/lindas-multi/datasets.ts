@@ -87,6 +87,16 @@ export const DATASETS: LindasDataset[] = [
     tags: ['lindas', 'sfoe', 'energy', 'gebaeudeprogramm', 'co2_effect'],
   },
 
+  // Cube — environment / FOEN COFOG (gov spending classification)
+  {
+    slug: 'foen_bfs_cofog_national',
+    descriptor_url: 'https://environment.ld.admin.ch/foen/BFS_cofog_national/3',
+    graph_iri: 'https://lindas.admin.ch/foen/cube',
+    kind: 'cube',
+    cube_iri: 'https://environment.ld.admin.ch/foen/BFS_cofog_national/3',
+    tags: ['lindas', 'foen', 'environment', 'cofog', 'government_finance'],
+  },
+
   // Cube — culture / state accounts
   {
     slug: 'sfa_state_accounts_cat9',

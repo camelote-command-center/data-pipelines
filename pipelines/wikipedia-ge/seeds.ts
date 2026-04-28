@@ -25,12 +25,18 @@ export const SEED_SPARQL: SparqlSeed[] = [
   {
     name: 'ge_communes',
     category: 'commune',
-    // All "commune of Switzerland" (Q70208) located in canton of Geneva (Q11911).
-    // Includes the 45 GE communes.
+    // All "Municipality of Switzerland" (Q70208) located transitively in
+    // Canton of Geneva (Q11917). Returns all 45 GE communes.
+    //
+    // BUG FIX 2026-04-28: was Q11911 (Canton of Berne — wrong canton) and the
+    // non-transitive P131. The combination returned 7 random Bernese communes
+    // whose P131 happened to point directly at the canton, missing the rest
+    // and obviously missing all of Geneva. Switched to P131+ defensively so
+    // the pattern survives future cantons whose communes sit under a district.
     query: `
       SELECT DISTINCT ?item WHERE {
         ?item wdt:P31 wd:Q70208 ;
-              wdt:P131 wd:Q11911 .
+              wdt:P131+ wd:Q11917 .
       }
     `,
   },
