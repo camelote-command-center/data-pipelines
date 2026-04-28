@@ -143,17 +143,28 @@ export const FEEDS: NewsFeed[] = [
     tags: ['news', 'rss', 'nzz', 'finanzen', 'finance'],
   },
 
-  // ── SWI swissinfo (FR via sitemap, federal multilingual)
+  // ── SWI swissinfo — news-specific sitemap (FR/DE), updated continuously.
+  // The generic /sitemap.xml has stale lastmod dates; /<lang>/sitemap-news.xml
+  // is a flat <urlset> with last ~100 articles + real publication_date.
+  // Treated as a flat-urlset sitemap (no sub-index walk).
   {
     slug: 'swissinfo-fr',
     publisher: 'SWI swissinfo.ch',
     kind: 'sitemap',
-    url: 'https://www.swissinfo.ch/sitemap.xml',
+    url: 'https://www.swissinfo.ch/fre/sitemap-news.xml',
     language: 'fr',
     tags: ['news', 'sitemap', 'swissinfo', 'fr', 'multilingual'],
-    sitemap_lookback_days: 2,
-    // Filter to /fre/ paths. Other languages can be added as separate feeds.
-    sitemap_url_regex: '^https://www\\.swissinfo\\.ch/fre/.+',
+    sitemap_lookback_days: 7,
+    max_items: 100,
+  },
+  {
+    slug: 'swissinfo-de',
+    publisher: 'SWI swissinfo.ch',
+    kind: 'sitemap',
+    url: 'https://www.swissinfo.ch/ger/sitemap-news.xml',
+    language: 'de',
+    tags: ['news', 'sitemap', 'swissinfo', 'de', 'multilingual'],
+    sitemap_lookback_days: 7,
     max_items: 100,
   },
 ];

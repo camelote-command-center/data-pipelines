@@ -78,45 +78,75 @@ async function discoverSitemap(feed: NewsFeed): Promise<CandidateItem[]> {
   const indexRes = await fetch(feed.url, {
     headers: { 'User-Agent': 'camelote-data-pipelines/news-rss', Accept: 'application/xml' },
   });
-  if (!indexRes.ok) throw new Error(`sitemap-index HTTP ${indexRes.status} on ${feed.url}`);
+  if (!indexRes.ok) throw new Error(`sitemap HTTP ${indexRes.status} on ${feed.url}`);
   const indexXml = await indexRes.text();
   const $ = cheerio.load(indexXml, { xmlMode: true });
 
-  // Sub-sitemap selection: include those with lastmod within lookback.
+  const cap = feed.max_items ?? MAX_ITEMS_PER_FEED;
+  const urlRe = feed.sitemap_url_regex ? new RegExp(feed.sitemap_url_regex) : null;
   const lookbackDays = feed.sitemap_lookback_days ?? 1;
   const cutoff = Date.now() - lookbackDays * 86_400_000;
-  const subUrls: string[] = [];
-  $('sitemap').each((_, el) => {
-    const loc = $(el).find('loc').text().trim();
-    const lastmod = $(el).find('lastmod').text().trim();
-    if (!loc) return;
-    if (lastmod) {
-      const t = Date.parse(lastmod);
-      if (Number.isFinite(t) && t < cutoff) return;
-    }
-    subUrls.push(loc);
-  });
 
-  const urlRe = feed.sitemap_url_regex ? new RegExp(feed.sitemap_url_regex) : null;
+  // Detect format: <sitemapindex> (walk sub-sitemaps) vs <urlset> (flat list).
+  // Some publishers (SWI swissinfo) use a flat urlset at /<lang>/sitemap-news.xml
+  // with one <url> per article + <news:publication_date>; that's the most useful
+  // shape because the dates are real and current.
   const items: CandidateItem[] = [];
-  const cap = feed.max_items ?? MAX_ITEMS_PER_FEED;
-  for (const sub of subUrls) {
-    if (items.length >= cap) break;
-    const r = await fetch(sub, {
-      headers: { 'User-Agent': 'camelote-data-pipelines/news-rss', Accept: 'application/xml' },
+
+  if (indexXml.includes('<sitemapindex')) {
+    // Sub-index format. Pick sub-sitemaps with lastmod >= cutoff (or no lastmod).
+    const subUrls: string[] = [];
+    $('sitemap').each((_, el) => {
+      const loc = $(el).find('loc').text().trim();
+      const lastmod = $(el).find('lastmod').text().trim();
+      if (!loc) return;
+      if (lastmod) {
+        const t = Date.parse(lastmod);
+        if (Number.isFinite(t) && t < cutoff) return;
+      }
+      subUrls.push(loc);
     });
-    if (!r.ok) continue;
-    const xml = await r.text();
-    const $$ = cheerio.load(xml, { xmlMode: true });
-    $$('url').each((_, el) => {
+    for (const sub of subUrls) {
+      if (items.length >= cap) break;
+      try {
+        const r = await fetch(sub, {
+          headers: { 'User-Agent': 'camelote-data-pipelines/news-rss', Accept: 'application/xml' },
+        });
+        if (!r.ok) continue;
+        const xml = await r.text();
+        const $$ = cheerio.load(xml, { xmlMode: true });
+        $$('url').each((_, el) => {
+          if (items.length >= cap) return false;
+          const loc = $$(el).find('loc').text().trim();
+          const lastmod = $$(el).find('lastmod').text().trim() || null;
+          if (!loc) return;
+          if (urlRe && !urlRe.test(loc)) return;
+          items.push({ url: loc, feed_title: '', feed_published_at: lastmod, feed_summary: null });
+        });
+      } catch (err) {
+        console.error(`    sub-sitemap ${sub} failed: ${err}`);
+      }
+      await sleep(POLITENESS_MS);
+    }
+  } else {
+    // Flat <urlset>. Pull URLs directly; honor news:publication_date if present.
+    $('url').each((_, el) => {
       if (items.length >= cap) return false;
-      const loc = $$(el).find('loc').text().trim();
-      const lastmod = $$(el).find('lastmod').text().trim() || null;
+      const loc = $(el).find('loc').text().trim();
       if (!loc) return;
       if (urlRe && !urlRe.test(loc)) return;
-      items.push({ url: loc, feed_title: '', feed_published_at: lastmod, feed_summary: null });
+      // news:publication_date (Google News sitemap extension) > <lastmod>
+      const newsDate =
+        $(el).find('news\\:publication_date, publication_date').first().text().trim();
+      const lastmod = $(el).find('lastmod').text().trim();
+      const dateStr = newsDate || lastmod || null;
+      if (dateStr) {
+        const t = Date.parse(dateStr);
+        if (Number.isFinite(t) && t < cutoff) return;
+      }
+      const newsTitle = $(el).find('news\\:title, title').first().text().trim() || '';
+      items.push({ url: loc, feed_title: newsTitle, feed_published_at: dateStr, feed_summary: null });
     });
-    await sleep(POLITENESS_MS);
   }
   return items;
 }
