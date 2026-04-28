@@ -1,0 +1,55 @@
+name: Wikipedia Geneva (RE knowledge)
+
+on:
+  schedule:
+    - cron: '0 7 1 * *'   # 1st of month at 07:00 UTC
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: cd pipelines/_shared && npm ci
+      - run: cd pipelines/wikipedia-ge && npm ci
+      - name: Fetch Wikipedia / Wikidata for Geneva RE seeds
+        run: cd pipelines/wikipedia-ge && npx tsx fetch-wikipedia.ts
+        env:
+          RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          # Satisfies pipelines/_shared/supabase.ts import-time check
+          # (transitively imported by re-llm.ts → upsert helpers).
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+      - name: Update dataset metadata (success)
+        if: success()
+        run: |
+          COUNT=$(curl -s -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
+            -H "Accept-Profile: bronze_ch" -H "Prefer: count=estimated" \
+            --head "$URL/rest/v1/wikipedia_articles?select=*" \
+            | grep -i content-range | sed 's|.*/||' | tr -d '\r')
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.ext_wikipedia_ge" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+            -d "{\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"record_count\":${COUNT:-0},\"last_error\":null}"
+        env:
+          URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+      - name: Report failure to camelote_data
+        if: failure()
+        run: |
+          MSG="GitHub Actions run ${{ github.run_id }} failed at $(date -u +%Y-%m-%dT%H:%M:%SZ). See https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          ESC=$(printf '%s' "$MSG" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.ext_wikipedia_ge" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+            -d "{\"last_error\":${ESC}}"
+        env:
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}

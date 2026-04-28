@@ -1,0 +1,13 @@
+{
+  "name": "wikipedia-ge",
+  "private": true,
+  "scripts": {
+    "fetch": "tsx fetch-wikipedia.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2"
+  },
+  "devDependencies": {
+    "tsx": "^4"
+  }
+}
