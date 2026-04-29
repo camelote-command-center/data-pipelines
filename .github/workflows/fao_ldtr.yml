@@ -21,22 +21,27 @@ jobs:
       - name: Fetch FAO LDTR records
         run: cd pipelines/fao-ldtr && npx tsx fetch-ldtr.ts
         env:
-          SUPABASE_URL: ${{ secrets.LAMAP_SUPABASE_URL }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.LAMAP_SUPABASE_SERVICE_KEY }}
+          # Phase 3c (2026-04-29): repointed from lamap_db to re-llm. Parser
+          # logical-table 'FAO_LDTR' resolves to physical 'fao_ldtr' on
+          # re-llm.bronze_ch via SUPABASE_TABLE_FAO_LDTR.
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_SCHEMA: bronze_ch
+          SUPABASE_TABLE_FAO_LDTR: fao_ldtr
           TWO_CAPTCHA_API_KEY: ${{ secrets.TWO_CAPTCHA_API_KEY }}
       - name: Update dataset metadata
         if: always()
         run: |
           COUNT=$(curl -s -H "apikey: $KEY" -H "Authorization: Bearer $KEY" \
-            -H "Accept-Profile: bronze" -H "Prefer: count=estimated" \
-            --head "$URL/rest/v1/FAO_LDTR?select=*" \
+            -H "Accept-Profile: bronze_ch" -H "Prefer: count=estimated" \
+            --head "$URL/rest/v1/fao_ldtr?select=*" \
             | grep -i content-range | sed 's|.*/||' | tr -d '\r')
           curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.ge_fao_ldtr" \
             -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
             -H "Content-Type: application/json" -H "Prefer: return=minimal" \
             -d "{\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"record_count\":${COUNT:-0},\"last_error\":null}"
         env:
-          URL: ${{ secrets.LAMAP_SUPABASE_URL }}
-          KEY: ${{ secrets.LAMAP_SUPABASE_SERVICE_KEY }}
+          URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
           CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
           CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}

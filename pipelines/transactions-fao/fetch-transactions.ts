@@ -26,7 +26,7 @@
 
 import Anthropic from '@anthropic-ai/sdk';
 import * as cheerio from 'cheerio';
-import { supabase, upsertBronze, sleep, verifyBronzeAccess } from '../_shared/supabase.js';
+import { supabase, upsertBronze, sleep, verifyBronzeAccess, BRONZE_SCHEMA, resolveTable } from '../_shared/supabase.js';
 import { createFaoSession } from '../_shared/fao-session.js';
 
 // ---------------------------------------------------------------------------
@@ -73,8 +73,8 @@ async function getDateRange(): Promise<{ dateFrom: string; dateTo: string }> {
 
   // Query DB for the latest publication date we already have
   const { data } = await supabase
-    .schema('bronze')
-    .from('transactions')
+    .schema(BRONZE_SCHEMA)
+    .from(resolveTable('transactions'))
     .select('fao_publication_date')
     .order('fao_publication_date', { ascending: false })
     .limit(1);
@@ -560,8 +560,8 @@ async function main() {
 
   // 6. End-of-run validation
   const { data: latestRow } = await supabase
-    .schema('bronze')
-    .from('transactions')
+    .schema(BRONZE_SCHEMA)
+    .from(resolveTable('transactions'))
     .select('fao_publication_date, affaire_number')
     .order('fao_publication_date', { ascending: false })
     .limit(1);
@@ -577,8 +577,8 @@ async function main() {
   const sevenDaysAgo = new Date();
   sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
   const { count: recentCount } = await supabase
-    .schema('bronze')
-    .from('transactions')
+    .schema(BRONZE_SCHEMA)
+    .from(resolveTable('transactions'))
     .select('*', { count: 'exact', head: true })
     .gte('fao_publication_date', formatDate(sevenDaysAgo));
 

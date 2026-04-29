@@ -21,8 +21,15 @@ jobs:
       - name: Fetch FAO Transactions
         run: cd pipelines/transactions-fao && npx tsx fetch-transactions.ts
         env:
-          SUPABASE_URL: ${{ secrets.LAMAP_SUPABASE_URL }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.LAMAP_SUPABASE_SERVICE_KEY }}
+          # Phase 3c (2026-04-29): repointed from lamap_db to re-llm. Parser
+          # now writes to re-llm.bronze_ch.fao_transactions via SUPABASE_SCHEMA
+          # + SUPABASE_TABLE_TRANSACTIONS overrides in _shared/supabase.ts.
+          # Lamap_db legacy bronze.transactions stops growing; lamap_db ref.*
+          # continues to read from re-llm via FDW push.
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          SUPABASE_SCHEMA: bronze_ch
+          SUPABASE_TABLE_TRANSACTIONS: fao_transactions
           TWO_CAPTCHA_API_KEY: ${{ secrets.TWO_CAPTCHA_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       - name: Update dataset metadata
