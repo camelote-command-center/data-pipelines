@@ -179,6 +179,11 @@ function parsePage(html: string): Record<string, unknown>[] {
         .join(' ')
         .split(':')
         .join(': '),
+      // Defaults — both columns are NOT NULL in bronze; supabase-js sends
+      // explicit null (not omit) for missing fields, which would override
+      // the column default. Initialize to [] so missing keys leave [] in DB.
+      acheteur_list: [],
+      vendeur_list: [],
     };
 
     for (const line of fields) {
