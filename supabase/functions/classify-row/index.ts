@@ -1,9 +1,14 @@
 // Unified classify-row endpoint. Receives {schema, table, row_id} from AFTER INSERT
 // triggers via pg_net.http_post. Idempotent: re-fetches the row and skips if already
 // classified. Trigger-rejected updates leave the row 'pending' for batch backfill.
+//
+// Routing: tries DeepSeek V3 first (cheap, ~7x cheaper than Sonnet), falls back to
+// Sonnet 4.6 if DeepSeek returns null (API error) or status='needs_review' (low
+// confidence or validation failure). Sonnet only runs when DeepSeek isn't sufficient.
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.4";
-import { classify, ClassifyInput } from "../_shared/classifier.ts";
+import { classify as classifySonnet, ClassifyInput, Classification } from "../_shared/classifier.ts";
+import { classify as classifyDeepSeek } from "../_shared/classifier-deepseek.ts";
 import { writeReviewIfNeeded } from "../_shared/review.ts";
 
 const corsHeaders = {
@@ -116,10 +121,32 @@ Deno.serve(async (req) => {
       excerptForReview = r.content ?? "";
     }
 
-    const cls = await classify(input);
+    // Two-tier routing: DeepSeek V3 (cheap) first, Sonnet 4.6 fallback.
+    // Fall back to Sonnet when DeepSeek either:
+    //   - returns null (API error / parse failure)
+    //   - returns status='needs_review' (confidence < 0.75 OR vocab validation failed)
+    // Sonnet's verdict wins if it returns auto where DeepSeek didn't.
+    let cls: Classification | null = await classifyDeepSeek(input);
+    let usedModel = "deepseek-chat";
+
+    if (!cls || cls.status === "needs_review") {
+      const sonnetCls = await classifySonnet(input);
+      if (sonnetCls) {
+        // Sonnet succeeded — prefer it if it's auto, or if DeepSeek had no result
+        if (!cls || sonnetCls.status === "auto") {
+          cls = sonnetCls;
+          usedModel = "claude-sonnet-4-6";
+        } else if (sonnetCls.confidence > cls.confidence) {
+          // Both needs_review — pick higher confidence
+          cls = sonnetCls;
+          usedModel = "claude-sonnet-4-6";
+        }
+      }
+    }
+
     if (!cls) {
-      // API/network error — leave row 'pending'. Batch backfill catches it.
-      return jsonResp({ ok: false, deferred: true, reason: "classifier api error" });
+      // Both classifiers failed (network/parse errors). Leave row 'pending'.
+      return jsonResp({ ok: false, deferred: true, reason: "classifier api error (both providers failed)" });
     }
 
     const updatePayload: Record<string, unknown> = {
@@ -168,6 +195,7 @@ Deno.serve(async (req) => {
       ok: true,
       status: cls.status,
       confidence: cls.confidence,
+      model: usedModel,
       schema,
       table,
       row_id: rowId,

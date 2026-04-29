@@ -1,19 +1,11 @@
-// Knowledge classifier — v2 (multi-domain).
-//
-// Adds AXIS 0 = domain (24 values, mutually exclusive). AXIS 1 (asset_classes) and
-// AXIS 2 (topics) are now domain-conditional: their valid keys depend on the chosen
-// domain. AXIS 3 (chunk_type) stays domain-agnostic.
-//
-// Vocabularies are fetched once at cold start from `knowledge_global.{domains, topics,
-// asset_classes, chunk_types}` and cached for the life of the function instance.
-//
-// Implementation note: raw fetch (not @anthropic-ai/sdk) to match existing edge
-// functions in this repo.
+// Knowledge classifier — DeepSeek V3 variant (deepseek-chat).
+// DeepSeek's API is OpenAI-compatible: same chat/completions shape,
+// same function-calling format. Only difference is base URL + model id.
 
-const ANTHROPIC_API_KEY = Deno.env.get("ANTHROPIC_API_KEY");
+const DEEPSEEK_API_KEY = Deno.env.get("DEEPSEEK_API_KEY");
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
-const MODEL = "claude-sonnet-4-6";
+const MODEL = "deepseek-chat";
 const CONFIDENCE_THRESHOLD = 0.75;
 
 // ---- Vocab loading & cache ----------------------------------------------------
@@ -34,7 +26,7 @@ let _vocabPromise: Promise<Vocab> | null = null;
 
 async function loadVocab(): Promise<Vocab> {
   if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
-    throw new Error("classifier loadVocab: SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY not set");
+    throw new Error("classifier-deepseek loadVocab: SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY not set");
   }
   const headers = {
     apikey: SUPABASE_SERVICE_ROLE_KEY,
@@ -152,24 +144,29 @@ Honest 0–1 self-assessment. ≥ 0.85 only when unambiguous.
 # REASONING
 1–2 sentences, in the source language.
 
-Always output via the classify tool.`;
+Always output via the classify function.`;
 }
 
+// OpenAI-compatible function-calling shape (DeepSeek follows this exactly)
 function buildTool(v: Vocab) {
   return {
-    name: "classify",
-    description: "Classify a knowledge item across the four taxonomy axes (domain + asset_classes + topics + chunk_type).",
-    input_schema: {
-      type: "object" as const,
-      required: ["domain", "topics", "chunk_type", "confidence", "reasoning"],
-      properties: {
-        domain:        { type: "string", enum: v.domains.map(d => d.key) },
-        asset_classes: { type: "array",  items: { type: "string" } },
-        topics:        { type: "array", minItems: 1, items: { type: "string" } },
-        chunk_type:    { type: "string", enum: v.chunkTypes },
-        tags:          { type: "array", maxItems: 5, items: { type: "string", pattern: "^[a-z0-9_]+$" } },
-        confidence:    { type: "number", minimum: 0, maximum: 1 },
-        reasoning:     { type: "string" },
+    type: "function" as const,
+    function: {
+      name: "classify",
+      description: "Classify a knowledge item across the four taxonomy axes (domain + asset_classes + topics + chunk_type).",
+      parameters: {
+        type: "object" as const,
+        required: ["domain", "topics", "chunk_type", "confidence", "reasoning"],
+        properties: {
+          domain:        { type: "string", enum: v.domains.map(d => d.key) },
+          asset_classes: { type: "array",  items: { type: "string" } },
+          topics:        { type: "array", minItems: 1, items: { type: "string" } },
+          chunk_type:    { type: "string", enum: v.chunkTypes },
+          tags:          { type: "array", maxItems: 5, items: { type: "string", pattern: "^[a-z0-9_]+$" } },
+          confidence:    { type: "number", minimum: 0, maximum: 1 },
+          reasoning:     { type: "string" },
+        },
+        additionalProperties: false,
       },
     },
   };
@@ -198,11 +195,11 @@ export type ClassifyInput = {
   country?: string | null;
 };
 
-// ---- Anthropic call -----------------------------------------------------------
+// ---- DeepSeek call ------------------------------------------------------------
 
 type RawClassification = Omit<Classification, "status">;
 
-async function callAnthropic(
+async function callDeepSeek(
   v: Vocab,
   input: ClassifyInput,
   systemPrompt: string,
@@ -211,39 +208,36 @@ async function callAnthropic(
   const userMsg = renderUserMessage(input) +
     (correctiveNote ? `\n\n[CORRECTION] ${correctiveNote}` : "");
 
-  const resp = await fetch("https://api.anthropic.com/v1/messages", {
+  const resp = await fetch("https://api.deepseek.com/chat/completions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "x-api-key": ANTHROPIC_API_KEY!,
-      "anthropic-version": "2023-06-01",
+      "Authorization": `Bearer ${DEEPSEEK_API_KEY!}`,
     },
     body: JSON.stringify({
       model: MODEL,
       max_tokens: 1024,
-      // cache_control on the last system block caches tools + system together
-      // (render order: tools → system → messages). The system prompt + tool
-      // schema is stable across calls within a function instance (vocab is
-      // loaded once at cold start), so this prefix is highly cacheable.
-      // Empirically verified: cache_read_input_tokens=2103 on every call after
-      // the first (Sonnet 4.6's cache minimum is 2048 tokens; we clear it).
-      system: [{ type: "text", text: systemPrompt, cache_control: { type: "ephemeral" } }],
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userMsg },
+      ],
       tools: [buildTool(v)],
-      tool_choice: { type: "tool", name: "classify" },
-      messages: [{ role: "user", content: userMsg }],
+      tool_choice: { type: "function", function: { name: "classify" } },
     }),
   });
   if (!resp.ok) {
-    console.error("classify api error:", resp.status, await resp.text());
+    console.error("classify-deepseek api error:", resp.status, await resp.text());
     return null;
   }
   const json = await resp.json();
-  for (const block of json.content ?? []) {
-    if (block.type === "tool_use" && block.name === "classify") {
-      return block.input as RawClassification;
-    }
+  const toolCall = json?.choices?.[0]?.message?.tool_calls?.[0];
+  if (!toolCall || toolCall.function?.name !== "classify") return null;
+  try {
+    return JSON.parse(toolCall.function.arguments) as RawClassification;
+  } catch (err) {
+    console.error("classify-deepseek: failed to parse tool args:", err);
+    return null;
   }
-  return null;
 }
 
 // ---- Server-side validation of classifier output ------------------------------
@@ -275,21 +269,21 @@ function validateAgainstVocab(v: Vocab, c: RawClassification): ValidationResult 
 // ---- Public API ---------------------------------------------------------------
 
 export async function classify(input: ClassifyInput): Promise<Classification | null> {
-  if (!ANTHROPIC_API_KEY) {
-    console.error("classify: ANTHROPIC_API_KEY not set");
+  if (!DEEPSEEK_API_KEY) {
+    console.error("classify-deepseek: DEEPSEEK_API_KEY not set");
     return null;
   }
   try {
     const v = await getVocab();
     const systemPrompt = buildSystemPrompt(v);
 
-    let raw = await callAnthropic(v, input, systemPrompt);
+    let raw = await callDeepSeek(v, input, systemPrompt);
     if (!raw) return null;
 
     let validation = validateAgainstVocab(v, raw);
     if (!validation.ok) {
-      console.warn("classify: invalid output, retrying once:", validation.reason);
-      raw = await callAnthropic(
+      console.warn("classify-deepseek: invalid output, retrying once:", validation.reason);
+      raw = await callDeepSeek(
         v, input, systemPrompt,
         `Your previous response was invalid: ${validation.reason}. Re-classify, picking topics ONLY from the per-domain vocab.`,
       );
@@ -297,10 +291,8 @@ export async function classify(input: ClassifyInput): Promise<Classification | n
       validation = validateAgainstVocab(v, raw);
     }
 
-    // Final shape — even if still invalid, send back as needs_review
     const stillInvalid = !validation.ok;
     let asset_classes = raw.asset_classes ?? [];
-    // Strip asset_classes for any non-real_estate domain (rule, not error)
     if (raw.domain !== "real_estate") asset_classes = [];
 
     const conf = Math.max(0, Math.min(1, Number(raw.confidence) || 0));
@@ -315,7 +307,7 @@ export async function classify(input: ClassifyInput): Promise<Classification | n
       status: (!stillInvalid && conf >= CONFIDENCE_THRESHOLD) ? "auto" : "needs_review",
     };
   } catch (err) {
-    console.error("classify error:", err);
+    console.error("classify-deepseek error:", err);
     return null;
   }
 }
