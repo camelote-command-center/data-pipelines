@@ -2,9 +2,17 @@ name: Watchdog (overdue dataset re-trigger)
 
 # Reliability net for GitHub Actions cron drift / silent skips and any
 # workflow that ran successfully but didn't PATCH datasets.last_acquired_at.
-# Every 2h: query camelote datasets, find rows past their freshness budget,
-# and `gh workflow run` the matching workflow_file. Skips if the same workflow
-# already has a queued/in_progress run, to avoid double-trigger.
+#
+# Hourly: query camelote_data.datasets, find rows past their per-row
+# overdue threshold, and `gh workflow run` the matching workflow_file.
+#
+# Single source of truth for "overdue" — this matches the dashboard
+# exactly:
+#   overdue ≡ days_since_update > expected_days_between_updates + delay_threshold_days
+#
+# Skips if the same workflow already has a queued/in_progress run, to
+# avoid double-trigger. Dedupes per sweep so multi-dataset workflows
+# (e.g. sitg_urban_programs.yml ↔ 3 datasets) fire once.
 
 on:
   schedule:
@@ -29,19 +37,11 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Freshness budget by frequency (seconds). Tight enough to fire
-          # before the dashboard flags a row as overdue, generous enough to
-          # absorb normal GitHub Actions cron drift (~1-2h at peak).
-          declare -A BUDGET=(
-            [daily]=93600        # 26h
-            [weekly]=691200      # 8d
-            [monthly]=2764800    # 32d
-            [quarterly]=8035200  # 93d
-            [yearly]=32486400    # 376d
-          )
-
+          # Pull every active dataset row that has a workflow_file and a
+          # configured threshold. Per-row threshold lets us match the
+          # dashboard exactly — no separate budget table to drift.
           rows=$(curl -s -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
-            "$CMD_URL/rest/v1/datasets?select=code,name,frequency,workflow_file,last_acquired_at&status=eq.active&workflow_file=not.is.null")
+            "$CMD_URL/rest/v1/datasets?select=code,name,frequency,workflow_file,last_acquired_at,expected_days_between_updates,delay_threshold_days&status=eq.active&workflow_file=not.is.null&frequency=neq.on_demand")
 
           now=$(date -u +%s)
           declare -A TRIGGERED=()
@@ -49,22 +49,33 @@ jobs:
           triggered_count=0
 
           while read -r row; do
-            code=$(echo "$row"   | jq -r '.code')
-            name=$(echo "$row"   | jq -r '.name')
-            freq=$(echo "$row"   | jq -r '.frequency')
-            wf=$(echo "$row"     | jq -r '.workflow_file')
-            last=$(echo "$row"   | jq -r '.last_acquired_at // empty')
+            code=$(jq -r '.code'                         <<<"$row")
+            name=$(jq -r '.name'                         <<<"$row")
+            wf=$(jq   -r '.workflow_file'                <<<"$row")
+            last=$(jq -r '.last_acquired_at // empty'    <<<"$row")
+            exp=$(jq  -r '.expected_days_between_updates // 0' <<<"$row")
+            thr=$(jq  -r '.delay_threshold_days // 0'    <<<"$row")
 
-            budget=${BUDGET[$freq]:-}
-            if [ -z "$budget" ]; then continue; fi      # skip on_demand/unknown
-            if [ -z "$last" ];   then last_ts=0
-            else last_ts=$(date -u -d "$last" +%s 2>/dev/null || echo 0); fi
+            # Skip rows with no threshold config — can't decide overdue.
+            if [ "$exp" = "0" ] && [ "$thr" = "0" ]; then continue; fi
 
+            # overdue_seconds = (expected_days + delay_threshold_days) * 86400
+            budget=$(( (exp + thr) * 86400 ))
+
+            if [ -z "$last" ]; then
+              # never_run: surface but don't trigger blindly (could be a not-yet-built parser)
+              echo "NEVER_RUN: $code ($name) wf=$wf — surfacing only, not triggering"
+              continue
+            fi
+
+            last_ts=$(date -u -d "$last" +%s 2>/dev/null || echo 0)
             age=$(( now - last_ts ))
             if [ "$age" -lt "$budget" ]; then continue; fi
 
             stale_count=$((stale_count + 1))
-            echo "STALE: $code ($name) — freq=$freq age=${age}s budget=${budget}s wf=$wf"
+            age_days=$(( age / 86400 ))
+            budget_days=$(( budget / 86400 ))
+            echo "STALE: $code ($name) — age=${age_days}d threshold=${budget_days}d wf=$wf"
 
             # Dedupe: only trigger each workflow_file once per sweep
             if [ -n "${TRIGGERED[$wf]:-}" ]; then
