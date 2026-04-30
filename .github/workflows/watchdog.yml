@@ -59,8 +59,12 @@ jobs:
             # Skip rows with no threshold config — can't decide overdue.
             if [ "$exp" = "0" ] && [ "$thr" = "0" ]; then continue; fi
 
-            # overdue_seconds = (expected_days + delay_threshold_days) * 86400
-            budget=$(( (exp + thr) * 86400 ))
+            # Trigger as soon as days_since_update > expected_days_between_updates.
+            # This matches the dashboard's "warning" (yellow) state — we want the
+            # watchdog to recover BEFORE a row goes red ("overdue" = expected +
+            # delay_threshold_days). Previously we waited until the red threshold,
+            # which left ~delay_threshold_days of yellow lag visible to the user.
+            budget=$(( exp * 86400 ))
 
             if [ -z "$last" ]; then
               # never_run: surface but don't trigger blindly (could be a not-yet-built parser)
