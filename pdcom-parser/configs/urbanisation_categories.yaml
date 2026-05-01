@@ -1,0 +1,73 @@
+# PDCom v0.5 / urbanisation track. The 6 canonical zoning categories used by
+# silver_ch.pdcom_urbanisation. Each entry defines the label-to-category matcher.
+#
+# Matching logic (see urbanisation_extractor.match_label_to_category):
+#   normalize(s) = strip_accents(lower(s)) → drop "(...)" → drop "selon fiche A0X du PDCn" → collapse whitespace
+#   Tier 1 (conf=0.95) = normalize(raw_label) == normalize(canonical_label)
+#   Tier 2 (conf=0.80-0.94) = primary AND any-of-require AND none-of-reject AND
+#                              rapidfuzz.partial_ratio(norm(raw), norm(canon)) >= 80
+#                              AND len(norm(raw)) >= 6
+#   Tier 3 = drop, log to per-PDF unmatched_labels list
+
+plq_a_etablir_existant:
+  canonical_label: "Secteur à développer (PLQ) à établir / existant"
+  primary_terms:
+    - "plq"
+    - "plans localises de quartier"
+    - "secteur a developper"
+  require_one_of: []   # PLQ alone is unambiguous in the urbanisation context
+  reject_if_contains: []
+
+mz_court_moyen_terme:
+  canonical_label: "Périmètre de planification du développement par MZ (court – moyen terme), selon fiche A03 du PDCn"
+  primary_terms:
+    - "mz"
+    - "modification de zone"
+    - "perimetre de planification"
+  require_one_of:
+    - "court"
+    - "court-moyen"
+    - "court moyen"
+  reject_if_contains:
+    - "long"
+
+mz_moyen_long_terme:
+  canonical_label: "Périmètre de planification du développement par MZ (moyen – long terme), selon fiche A03 du PDCn"
+  primary_terms:
+    - "mz"
+    - "modification de zone"
+    - "perimetre de planification"
+  require_one_of:
+    - "long"
+    - "moyen-long"
+    - "moyen long"
+  reject_if_contains: []
+
+densification_accrue:
+  canonical_label: "Périmètre de densification accrue, selon fiche A04 du PDCn"
+  primary_terms:
+    - "densification accrue"
+    - "perimetre de densification"
+    - "fiche a04"
+  require_one_of: []
+  reject_if_contains: []
+
+a_proteger_a_menager:
+  canonical_label: "Secteur à protéger, à ménager"
+  primary_terms:
+    - "a proteger"
+    - "a menager"
+    - "secteur a proteger"
+    - "secteur sensible"
+    - "secteur protege"
+  require_one_of: []
+  reject_if_contains: []
+
+planification_imperative:
+  canonical_label: "Périmètre A : planification impérative"
+  primary_terms:
+    - "planification imperative"
+    - "image directrice imperative"
+    - "perimetre a"
+  require_one_of: []
+  reject_if_contains: []
