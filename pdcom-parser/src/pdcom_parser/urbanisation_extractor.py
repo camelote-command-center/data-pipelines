@@ -61,6 +61,32 @@ def _strip_accents(s: str) -> str:
     return "".join(c for c in n if unicodedata.category(c) != "Mn")
 
 
+# v2.2: meta-label rejection — drop document titles, fiche references, filename
+# leakage, and all-caps headers BEFORE keyword matching. Polygons attached to
+# these labels are noise (page-content frames, not legend entries). Patterns
+# applied to the RAW (un-normalized) label so case/accent signals are preserved.
+_META_LABEL_PATTERNS = [
+    # Filename leakage: starts with digit run + _/- + alphanumeric jumble
+    re.compile(r"^\d+[_-][A-Za-z0-9_-]+$"),
+    # "Fiche XX:" / "Fiche XXa." prefixes — section references, not zone labels
+    re.compile(r"^[Ff][Ii][Cc][Hh][Ee]\s+\d+[a-z]?\s*[:.]"),
+    # Strategy/section titles starting with "Stratégie d…" / "STRATÉGIE D…"
+    re.compile(r"^Stratégie\s+[Dd]"),
+    re.compile(r"^STRATÉGIE\s+D"),
+    # All-caps document headers: 15+ chars, mostly uppercase + digits/punct only
+    re.compile(r"^[A-ZÀ-Ÿ\s\d\.\-_:'’«»]{15,}$"),
+]
+
+
+def is_meta_label(raw_label: str) -> bool:
+    """True if the label looks like a document title, fiche reference, or
+    filename leakage rather than a real legend entry."""
+    if not raw_label:
+        return True
+    s = raw_label.strip()
+    return any(p.search(s) for p in _META_LABEL_PATTERNS)
+
+
 def normalize_for_match(s: str) -> str:
     """Lowercased, accent-stripped, dashes normalized, PDCn boilerplate dropped,
     whitespace collapsed. Parens are PRESERVED so disambiguators inside them
@@ -87,9 +113,13 @@ class CategoryMatch:
 def match_label_to_category(raw_label: str) -> CategoryMatch | None:
     """Match raw_label against the 6 categories. Returns the most-specific
     match per priority_order. Other matches go to alternate_categories.
-    Returns None if nothing matches.
+    Returns None if nothing matches OR if the label is a meta-label (document
+    title / fiche reference / filename leakage / all-caps header).
     """
     if not raw_label:
+        return None
+    # v2.2: meta-label rejection on raw label (preserves case/accent signals)
+    if is_meta_label(raw_label):
         return None
     norm = normalize_for_match(raw_label)
     if not norm:
@@ -495,10 +525,31 @@ def write_urbanisation_features(
     features: list[UrbanisationFeature],
     pdf_sha256: str,
 ) -> int:
-    """Idempotent per-PDF write to silver_ch.pdcom_urbanisation. DELETE WHERE
-    pdf_sha256=%s, then INSERT all rows. Looks up source_url via
-    bronze_ch.pdcom_sources by sha256."""
+    """Per-commune-scoped write to silver_ch.pdcom_urbanisation.
+
+    v2.2: clears ALL prior rows for this commune (not just same-PDF rows). The
+    multi-PDF picker can choose a different best-PDF across runs (e.g. Perly
+    flipping from carte-de-synthese to rapport), and per-PDF DELETE leaves
+    orphans from the abandoned PDF. Per-commune DELETE eliminates the orphan
+    class. Trade-off: less idempotent per-PDF (re-running the same PDF is
+    still safe; running multiple PDFs sequentially for the same commune
+    overwrites — but the corpus run already calls this once per commune end-
+    to-end, so this matches the actual usage pattern).
+
+    Looks up source_url via bronze_ch.pdcom_sources by sha256.
+    """
     import json
+
+    if not features:
+        # Even with no features, we should clear the commune's prior rows so
+        # a previously-extractable PDF that now produces nothing is reflected.
+        # But we need a commune_bfs to scope. If features is empty we skip —
+        # the caller (run command) handles coverage_blocked separately and
+        # doesn't call this function in that path.
+        conn.commit()
+        return 0
+
+    commune_bfs = features[0].commune_bfs
 
     with conn.cursor() as cur:
         cur.execute(
@@ -508,14 +559,11 @@ def write_urbanisation_features(
         row = cur.fetchone()
         source_url = row[0] if row else None
 
+        # v2.2: per-commune DELETE (handles multi-PDF-picker swap case)
         cur.execute(
-            "DELETE FROM silver_ch.pdcom_urbanisation WHERE pdf_sha256 = %s",
-            (pdf_sha256,),
+            "DELETE FROM silver_ch.pdcom_urbanisation WHERE commune_bfs = %s",
+            (commune_bfs,),
         )
-
-        if not features:
-            conn.commit()
-            return 0
 
         rows = [
             (

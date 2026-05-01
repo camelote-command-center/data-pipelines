@@ -1,6 +1,7 @@
 """Unit tests for the v0.5.2 urbanisation v2 keyword matcher (promoteur-focused)."""
 from pdcom_parser.urbanisation_extractor import (
     extract_year_from_filename,
+    is_meta_label,
     match_label_to_category,
     normalize_for_match,
 )
@@ -172,6 +173,64 @@ def test_off_topic_drops():
     assert match_label_to_category("Cheminement piéton") is None
     assert match_label_to_category("") is None
     assert match_label_to_category(None) is None  # type: ignore[arg-type]
+
+
+# ─── Meta-label rejection (v2.2) ───────────────────────────────────────────────
+
+def test_meta_filename_jumble_rejected():
+    """Filename leakage: digit-prefixed alphanumeric jumble."""
+    assert is_meta_label("19181_Stratz5-biodiv9000_200929-awy") is True
+    assert match_label_to_category("19181_Stratz5-biodiv9000_200929-awy") is None
+
+
+def test_meta_fiche_reference_rejected():
+    """Fiche XX: section reference, not a zone label."""
+    assert is_meta_label("Fiche 07a: Stratégie d'évolution de la zone 5 (ouest)") is True
+    assert is_meta_label("FICHE 12: Modification de zone") is True
+    assert is_meta_label("Fiche 07b. Stratégie d'évolution") is True
+    assert match_label_to_category("Fiche 07a: Stratégie d'évolution de la zone 5") is None
+
+
+def test_meta_strategie_title_rejected():
+    """Stratégie d… document title prefix."""
+    assert is_meta_label("Stratégie d'évolution de la zone 5") is True
+    assert is_meta_label("STRATÉGIE D'ÉVOLUTION DE LA ZONE 5") is True
+
+
+def test_meta_all_caps_header_rejected():
+    """Long all-caps document headers."""
+    assert is_meta_label("PLAN DIRECTEUR COMMUNAL D'ANIERES") is True
+    assert is_meta_label("CARTE DE SYNTHÈSE COMMUNALE") is True
+
+
+def test_meta_short_uppercase_not_rejected():
+    """'Z5' / 'PLQ' alone should NOT be rejected as meta — too short."""
+    assert is_meta_label("Z5") is False
+    assert is_meta_label("PLQ") is False
+    assert is_meta_label("MZ") is False
+
+
+def test_meta_real_legend_label_passes():
+    """Real legend labels with mixed case should pass meta-rejection."""
+    assert is_meta_label("Zone 5") is False
+    assert is_meta_label("Périmètre de densification accrue") is False
+    assert is_meta_label("Zone agricole") is False
+    assert is_meta_label("PLQ à établir") is False
+
+
+def test_meta_strategie_uppercase_in_keyword_match_path():
+    """Even the actual Vandoeuvres-style 'Stratégie d'évolution de la zone 5'
+    must NOT contribute features to zone_5 — it's a title, not a legend."""
+    # Confirm it's caught by meta-rejection (the matcher returns None)
+    assert match_label_to_category("Stratégie d'évolution de la zone 5") is None
+    assert match_label_to_category("STRATÉGIE D'ÉVOLUTION DE LA ZONE 5") is None
+
+
+def test_meta_does_not_clobber_real_a_proteger():
+    """A real label with 'Stratégie' as a non-prefix must still be checked
+    for keywords. Currently meta-rejection only fires on prefix patterns
+    so 'Renforcer la stratégie de protection' should NOT be rejected."""
+    assert is_meta_label("Renforcer la stratégie de protection") is False
 
 
 # ─── Year extraction ───────────────────────────────────────────────────────────
