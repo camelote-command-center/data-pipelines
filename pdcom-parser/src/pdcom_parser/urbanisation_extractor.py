@@ -1,12 +1,11 @@
-"""v0.5 PDCom urbanisation track — focused extraction from carte-de-synthèse /
-strategie-d-evolution-de-la-zone-5 PDFs into 6 canonical zoning categories.
+"""v0.5.2 PDCom urbanisation v2 — promoteur-focused full-GE extraction.
 
-Separate from v0.4's pipeline.extract_pdf() — this is a slim parallel orchestrator
-that calls the same low-level primitives (legend, extract, georef) but writes
-directly to silver_ch.pdcom_urbanisation (no bronze, no matview, no gold).
+6 categories: zone_5, densification_accrue, plq_a_etablir, plq_realise,
+a_proteger, exploitable. Keyword-any + excludes matcher with priority
+resolution (most-specific wins; others go to alternate_categories[]).
 
-Tier 1/2/3 label-to-category matcher is config-driven via
-configs/urbanisation_categories.yaml.
+Reuses v0.4 primitives: legend.detect_legend_label_anchored,
+extract.extract_layers, georef.georeference, extract.clip_and_score_layers.
 """
 from __future__ import annotations
 
@@ -15,13 +14,10 @@ import unicodedata
 from dataclasses import dataclass, field
 from functools import lru_cache
 from pathlib import Path
-from typing import Iterable
 
 import fitz
 import yaml
-from rapidfuzz import fuzz
 from shapely.geometry import MultiPolygon, Polygon, mapping, shape
-from shapely.ops import unary_union
 
 from .extract import clip_and_score_layers, extract_layers
 from .georef import georeference
@@ -29,20 +25,32 @@ from .ingest import sha256_of
 from .legend import detect_legend, detect_legend_label_anchored
 
 
-# ─── Config loader ─────────────────────────────────────────────────────────────
+# ─── Config ────────────────────────────────────────────────────────────────────
 
 _CFG_PATH = Path(__file__).resolve().parents[2] / "configs" / "urbanisation_categories.yaml"
 
 
 @lru_cache(maxsize=1)
-def _categories() -> dict:
+def _config() -> dict:
     if not _CFG_PATH.exists():
         raise FileNotFoundError(f"Urbanisation categories config missing: {_CFG_PATH}")
     with _CFG_PATH.open("r", encoding="utf-8") as f:
         return yaml.safe_load(f) or {}
 
 
-# ─── Label normalization ───────────────────────────────────────────────────────
+@lru_cache(maxsize=1)
+def _categories() -> dict[str, dict]:
+    return _config().get("categories", {})
+
+
+@lru_cache(maxsize=1)
+def _priority() -> list[str]:
+    cfg = _config()
+    pri = cfg.get("priority_order", []) or list(cfg.get("categories", {}).keys())
+    return list(pri)
+
+
+# ─── Normalization ─────────────────────────────────────────────────────────────
 
 _BOILER_RE = re.compile(r"selon\s+fiche\s+a\d+\s+du\s+pdcn", re.IGNORECASE)
 _WS_RE = re.compile(r"\s+")
@@ -54,13 +62,9 @@ def _strip_accents(s: str) -> str:
 
 
 def normalize_for_match(s: str) -> str:
-    """Normalize a label for substring/fuzzy comparison: strip accents, lowercase,
-    collapse en/em-dash to ASCII hyphen, drop 'selon fiche A0X du PDCn' boilerplate,
-    collapse whitespace.
-
-    NOTE: parenthesized clauses are PRESERVED — for the MZ category the disambiguator
-    'court' vs 'long' lives inside the parens of the canonical label.
-    """
+    """Lowercased, accent-stripped, dashes normalized, PDCn boilerplate dropped,
+    whitespace collapsed. Parens are PRESERVED so disambiguators inside them
+    (e.g. 'court' vs 'long') survive."""
     if not s:
         return ""
     out = _strip_accents(s).lower()
@@ -70,71 +74,68 @@ def normalize_for_match(s: str) -> str:
     return out
 
 
-# ─── Tier 1/2/3 matcher ────────────────────────────────────────────────────────
+# ─── Matcher ───────────────────────────────────────────────────────────────────
 
 @dataclass
 class CategoryMatch:
-    key: str
+    category_key: str
     canonical_label: str
-    confidence: float  # 0.95 (Tier 1) or 0.80–0.94 (Tier 2)
-    tier: int           # 1 or 2
+    matched_keywords: list[str]
+    alternate_categories: list[str]
 
 
 def match_label_to_category(raw_label: str) -> CategoryMatch | None:
-    """Apply Tier 1 (exact normalized equality) → Tier 2 (primary + require + reject + partial_ratio≥80)
-    → Tier 3 (drop). Returns None on Tier 3.
-
-    For ambiguous matches (multiple categories Tier-2 match), pick the one with
-    highest partial_ratio score; if ties, pick the one with the most non-empty
-    `require_one_of` matches (most specific).
+    """Match raw_label against the 6 categories. Returns the most-specific
+    match per priority_order. Other matches go to alternate_categories.
+    Returns None if nothing matches.
     """
     if not raw_label:
         return None
     norm = normalize_for_match(raw_label)
     if not norm:
         return None
-    cfg = _categories()
 
-    # Tier 1 — exact normalized equality on canonical_label
-    for key, entry in cfg.items():
-        if normalize_for_match(entry["canonical_label"]) == norm:
-            return CategoryMatch(key=key, canonical_label=entry["canonical_label"], confidence=0.95, tier=1)
+    cats = _categories()
+    matched: list[tuple[str, list[str]]] = []  # (key, hit_keywords)
 
-    # Tier 2 — primary + require + reject + partial_ratio
-    if len(norm) < 6:
+    def _word_in(needle: str, hay: str) -> bool:
+        """Substring match with word boundaries on both sides — prevents
+        'constructible' from matching inside 'inconstructible', or 'plq' from
+        matching inside 'plquelque'. Allows multi-word keywords."""
+        if not needle:
+            return False
+        return re.search(r"(?<![a-z0-9])" + re.escape(needle) + r"(?![a-z0-9])", hay) is not None
+
+    for key, entry in cats.items():
+        any_kw = [normalize_for_match(k) for k in entry.get("keywords_any", []) or []]
+        excl_kw = [normalize_for_match(k) for k in entry.get("keywords_excludes", []) or []]
+        if any(_word_in(e, norm) for e in excl_kw):
+            continue
+        hits = [k for k in any_kw if _word_in(k, norm)]
+        if hits:
+            matched.append((key, hits))
+
+    if not matched:
         return None
-    candidates: list[tuple[float, str, str, int]] = []  # (score, key, canon, require_hits)
-    for key, entry in cfg.items():
-        primary = [normalize_for_match(p) for p in entry.get("primary_terms", [])]
-        require = [normalize_for_match(p) for p in entry.get("require_one_of", []) or []]
-        reject = [normalize_for_match(p) for p in entry.get("reject_if_contains", []) or []]
-        # Primary: at least one must appear as substring
-        if not any(p and p in norm for p in primary):
-            continue
-        # Reject: none must appear
-        if any(r and r in norm for r in reject):
-            continue
-        # Require: if list non-empty, at least one must appear
-        require_hits = sum(1 for r in require if r and r in norm)
-        if require and require_hits == 0:
-            continue
-        # Partial ratio against canonical_label
-        ratio = fuzz.partial_ratio(norm, normalize_for_match(entry["canonical_label"]))
-        if ratio < 80:
-            continue
-        candidates.append((ratio, key, entry["canonical_label"], require_hits))
 
-    if not candidates:
-        return None
-    # Pick best: highest ratio, then most require_hits as tiebreak
-    candidates.sort(key=lambda c: (-c[0], -c[3]))
-    ratio, key, canon, _ = candidates[0]
-    # Map ratio 80→0.80, 100→0.94 (reserve 0.95 for Tier 1)
-    confidence = round(0.80 + (ratio - 80) / 20 * 0.14, 3)
-    return CategoryMatch(key=key, canonical_label=canon, confidence=confidence, tier=2)
+    # Resolve via priority order
+    pri = _priority()
+    matched_keys_set = {k for k, _ in matched}
+    resolved_key = next((k for k in pri if k in matched_keys_set), matched[0][0])
+
+    # Aggregate keywords for the resolved match
+    resolved_kws = next((kws for k, kws in matched if k == resolved_key), [])
+    alternates = [k for k in pri if k in matched_keys_set and k != resolved_key]
+
+    return CategoryMatch(
+        category_key=resolved_key,
+        canonical_label=cats[resolved_key]["canonical_label"],
+        matched_keywords=sorted(set(resolved_kws)),
+        alternate_categories=alternates,
+    )
 
 
-# ─── Feature dataclass + extraction ────────────────────────────────────────────
+# ─── Feature dataclass ─────────────────────────────────────────────────────────
 
 @dataclass
 class UrbanisationFeature:
@@ -143,14 +144,15 @@ class UrbanisationFeature:
     category_key: str
     category_label: str
     raw_label: str
-    source_color: str          # hex
-    source_pdf: str            # filename
+    source_color: str
+    source_pdf: str
     source_page: int
-    geometry: object           # shapely Polygon or MultiPolygon (LV95)
-    confidence: float          # geom-confidence, separate from label match
-    label_match_confidence: float
-    label_match_tier: int
-    pdf_sha256: str = ""       # filled by caller
+    geometry: object
+    confidence: float
+    alternate_categories: list[str] = field(default_factory=list)
+    match_keywords: list[str] = field(default_factory=list)
+    map_freshness_year: int | None = None
+    pdf_sha256: str = ""
 
 
 @dataclass
@@ -166,21 +168,205 @@ class ExtractionReport:
     features: list[UrbanisationFeature] = field(default_factory=list)
     page_confidences: list[float] = field(default_factory=list)
     notes: list[str] = field(default_factory=list)
+    map_freshness_year: int | None = None
 
 
-def _ensure_multipolygon(geom) -> MultiPolygon | None:
+# ─── Helpers ───────────────────────────────────────────────────────────────────
+
+_YEAR_RE = re.compile(r"(?<!\d)(20[12]\d|19[89]\d)(?!\d)")
+
+
+def extract_year_from_filename(filename: str) -> int | None:
+    """Pull a year signal from the filename (2018, 2020, etc.). None if absent."""
+    matches = _YEAR_RE.findall(filename)
+    if not matches:
+        return None
+    return max(int(y) for y in matches)
+
+
+def _normalize_geom(geom):
+    """Pass through Polygons (as MultiPolygon) and LineStrings (as MultiLineString).
+    Drop empty/null. The schema accepts geometry(Geometry, 2056) so both kinds
+    are stored — stroke_only zone outlines are still valuable for visualization."""
+    from shapely.geometry import LineString, MultiLineString
     if geom is None or getattr(geom, "is_empty", False):
         return None
     if geom.geom_type == "MultiPolygon":
         return geom
     if geom.geom_type == "Polygon":
         return MultiPolygon([geom])
+    if geom.geom_type == "MultiLineString":
+        return geom
+    if geom.geom_type == "LineString":
+        return MultiLineString([geom])
     if hasattr(geom, "geoms"):
         polys = [g for g in geom.geoms if g.geom_type == "Polygon" and not g.is_empty]
-        if not polys:
-            return None
-        return MultiPolygon(polys)
+        if polys:
+            return MultiPolygon(polys)
+        lines = [g for g in geom.geoms if g.geom_type == "LineString" and not g.is_empty]
+        if lines:
+            return MultiLineString(lines)
     return None
+
+
+# ─── Per-PDF extraction ────────────────────────────────────────────────────────
+
+def _find_extended_label(anchor_text: str, all_lines: list[dict]) -> str | None:
+    """If anchor is short (e.g. 'Secteur B'), find a longer line elsewhere on
+    the page that starts with the anchor followed by ': ' or ' - ' or ' :'.
+    Used for legends where the swatch nameplate is short but the keyword-bearing
+    description is in a separate paragraph.
+    """
+    a = anchor_text.strip()
+    if len(a) > 25:
+        return None
+    norm_a = a.rstrip(":").strip()
+    for ln in all_lines:
+        t = ln["text"].strip()
+        if t == a:
+            continue
+        if (t.startswith(norm_a + " :") or t.startswith(norm_a + ":")
+                or t.startswith(norm_a + " - ") or t.startswith(norm_a + " — ")
+                or t.startswith(norm_a + " – ")):
+            if len(t) > len(norm_a) + 2:
+                return t
+    return None
+
+
+def _build_keyword_first_legend(page) -> dict:
+    """v2 swatch-first legend detection.
+
+    For each filled swatch on the page:
+      1. Find its anchor label = nearest text line within ~140pt (any direction).
+      2. Try keyword-matching that anchor. If matches → record entry.
+      3. Else look for an *extended* form of the anchor (e.g. anchor 'Secteur B'
+         and somewhere on the page 'Secteur B : Z5 densification accrue'). If
+         the extended form matches → record entry, use extended as raw_label.
+      4. Else drop.
+
+    This handles two layouts:
+      - Direct: swatch + keyword-bearing label adjacent (most synthese maps).
+      - Indirect: swatch + short nameplate + extended description elsewhere
+        (Anières-style).
+
+    Basemap clutter, mobility lines etc. don't match canonical keywords →
+    naturally filtered out.
+    """
+    from .legend import _is_swatch_candidate, _rect_of, _is_near_white
+    from .normalize import slugify_label, rgb_to_hex
+    page_rect = page.rect
+    drawings = page.get_drawings()
+    swatches = [d for d in drawings if _is_swatch_candidate(d)]
+
+    raw = page.get_text("dict")
+    all_lines = []
+    for block in raw.get("blocks", []) or []:
+        if "lines" not in block:
+            continue
+        for line in block["lines"]:
+            bbox = line.get("bbox")
+            text = " ".join(s.get("text", "") for s in line.get("spans", [])).strip()
+            if not text or not bbox:
+                continue
+            all_lines.append({"bbox": _rect_t(bbox), "text": text})
+
+    by_color: dict[str, dict] = {}   # hex → best entry (prefer solid over stroke_only)
+
+    for d in swatches:
+        r = _rect_of(d)
+        if r is None:
+            continue
+        # Find nearest text line — within ~140pt (more permissive than label_anchored).
+        best_ln = None
+        best_score = 1e9
+        for ln in all_lines:
+            tb = ln["bbox"]
+            if tb.x0 >= r.x1 - 2:
+                dx = tb.x0 - r.x1
+                side = "right"
+            elif tb.x1 <= r.x0 + 2:
+                dx = r.x0 - tb.x1
+                side = "left"
+            else:
+                # Overlap horizontally: only accept if vertically close
+                dx = 0
+                side = "vert"
+            if dx > 140:
+                continue
+            sw_cy = (r.y0 + r.y1) / 2
+            ln_cy = (tb.y0 + tb.y1) / 2
+            dy = abs(sw_cy - ln_cy)
+            tol = max(20, (r.height + tb.height) / 2 + 8)
+            if dy > tol:
+                continue
+            # Prefer right-side labels (legend convention), then closer
+            penalty = 0 if side == "right" else 5
+            score = dx + dy * 1.5 + penalty
+            if score < best_score:
+                best_score = score
+                best_ln = ln
+        if best_ln is None:
+            continue
+
+        # Try direct keyword match first
+        anchor_text = best_ln["text"]
+        match = match_label_to_category(anchor_text)
+        used_label = anchor_text
+        if match is None:
+            # Look for an extended form of this short label elsewhere on the page
+            extended = _find_extended_label(anchor_text, all_lines)
+            if extended:
+                match = match_label_to_category(extended)
+                if match is not None:
+                    used_label = extended
+        if match is None:
+            continue
+
+        # Hydrate color
+        has_fill = d.get("fill") is not None and d.get("fill_opacity", 1) > 0.1
+        has_stroke = d.get("color") is not None
+        if has_fill:
+            color = d.get("fill")
+            fill_type = "solid"
+        elif has_stroke:
+            color = d.get("color")
+            fill_type = "stroke_only"
+        else:
+            continue
+        if color is None:
+            continue
+        if fill_type == "solid" and _is_near_white(color):
+            continue
+        hex_color = rgb_to_hex(color)
+        new_entry = {
+            "label": used_label, "slug": slugify_label(used_label),
+            "fill_color": list(color[:3]) if color else None,
+            "fill_color_hex": hex_color, "fill_type": fill_type,
+            "swatch_bbox": [r.x0, r.y0, r.x1, r.y1],
+        }
+        existing = by_color.get(hex_color)
+        if existing is None:
+            by_color[hex_color] = new_entry
+        else:
+            # Prefer solid over stroke_only (downstream extract_layers prefers polygons)
+            if existing["fill_type"] == "stroke_only" and fill_type == "solid":
+                by_color[hex_color] = new_entry
+
+    entries = list(by_color.values())
+    if not entries:
+        return {"entries": [], "title": "", "map_bbox": None, "legend_bbox": None, "swatch_unlabeled": 0}
+
+    xs = [e["swatch_bbox"][0] for e in entries] + [e["swatch_bbox"][2] for e in entries]
+    ys = [e["swatch_bbox"][1] for e in entries] + [e["swatch_bbox"][3] for e in entries]
+    legend_bbox = [min(xs) - 4, min(ys) - 4, max(xs) + 8, max(ys) + 8]
+    map_bbox = [0, 0, page_rect.x1, page_rect.y1]
+    return {"entries": entries, "title": "", "map_bbox": map_bbox, "legend_bbox": legend_bbox, "swatch_unlabeled": 0}
+
+
+def _rect_t(bbox):
+    """Tiny helper: convert PyMuPDF bbox (4-tuple) to fitz.Rect."""
+    import fitz as _fitz
+    return _fitz.Rect(bbox)
 
 
 def extract_urbanisation_pdf(
@@ -188,28 +374,42 @@ def extract_urbanisation_pdf(
     commune_bfs: int,
     commune_name: str,
     boundary_lv95_geojson: dict,
-    legend_mode: str = "anchored",      # "anchored" (default) | "cascade"
+    legend_mode: str = "anchored",
+    pages: list[int] | None = None,    # 1-indexed; if None, process all
 ) -> ExtractionReport:
-    """Run urbanisation extraction on a single PDF. Returns a report — caller
-    decides whether to persist features (see write_urbanisation_features)."""
+    """Run urbanisation v2 extraction on a single PDF. Returns a report — caller
+    decides whether to persist features.
+
+    Args:
+        pages: Optional 1-indexed page list to restrict extraction to.
+               Used for the Genève atlas (page 9 only).
+    """
     boundary_lv95 = shape(boundary_lv95_geojson)
-    rpt = ExtractionReport(pdf_path=pdf_path, commune_bfs=commune_bfs, commune_name=commune_name)
+    rpt = ExtractionReport(
+        pdf_path=pdf_path, commune_bfs=commune_bfs, commune_name=commune_name,
+        map_freshness_year=extract_year_from_filename(pdf_path.name),
+    )
 
     with fitz.open(pdf_path) as pdf:
-        for pi in range(pdf.page_count):
+        page_indices = [p - 1 for p in pages] if pages else list(range(pdf.page_count))
+        for pi in page_indices:
+            if pi < 0 or pi >= pdf.page_count:
+                continue
             page = pdf[pi]
             page_number = pi + 1
             rpt.pages_processed += 1
 
-            # 1) Legend detection — anchored first; cascade falls back to detect_legend
-            legend = None
+            # v2: keyword-first legend detection (much higher recall on these focused PDFs).
+            # If it produces nothing, fall back to v0.3.1 detector(s).
             try:
-                if legend_mode == "cascade":
-                    legend = detect_legend(page)
-                    if not legend.get("entries") or len(legend["entries"]) < 2:
+                legend = _build_keyword_first_legend(page)
+                if not legend.get("entries"):
+                    if legend_mode == "cascade":
+                        legend = detect_legend(page)
+                        if not legend.get("entries") or len(legend["entries"]) < 2:
+                            legend = detect_legend_label_anchored(page)
+                    else:
                         legend = detect_legend_label_anchored(page)
-                else:
-                    legend = detect_legend_label_anchored(page)
             except Exception as e:
                 rpt.notes.append(f"page {page_number}: legend detector raised {e}")
                 continue
@@ -219,33 +419,30 @@ def extract_urbanisation_pdf(
             rpt.pages_with_legend += 1
             rpt.legend_entries_total += len(entries)
 
-            # 2) Map each legend entry through the Tier 1/2/3 matcher.
-            #    Build a filtered legend dict with only matched entries — extract_layers
-            #    will only hydrate polygons matching those colors.
+            # Match each legend entry. The keyword-first detector pre-filters via match,
+            # so its entries are already guaranteed matchable — but we still need the
+            # CategoryMatch object to know category_key/label/keywords/alternates.
             matched_entries = []
             entry_meta: list[CategoryMatch] = []
             for e in entries:
                 lbl = e.get("label") or ""
-                match = match_label_to_category(lbl)
-                if match is None:
+                m = match_label_to_category(lbl)
+                if m is None:
                     rpt.unmatched_labels.append(lbl)
                     continue
                 matched_entries.append(e)
-                entry_meta.append(match)
+                entry_meta.append(m)
             if not matched_entries:
                 continue
             rpt.matched_entries += len(matched_entries)
 
             filtered_legend = {**legend, "entries": matched_entries}
-
-            # 3) Hydrate polygons per matched legend color.
             try:
                 layers_pdf = extract_layers(page, filtered_legend)
             except Exception as e:
                 rpt.notes.append(f"page {page_number}: extract_layers raised {e}")
                 continue
 
-            # 4) Georeference to LV95.
             try:
                 layers_lv95, page_conf = georeference(
                     layers_pdf, boundary_lv95, page,
@@ -256,43 +453,38 @@ def extract_urbanisation_pdf(
                 continue
             rpt.page_confidences.append(round(page_conf, 3))
 
-            # 5) Commune-clip + area filters; computes per-feature confidence.
             features_clipped, _drops = clip_and_score_layers(layers_lv95, boundary_lv95, page_conf)
 
-            # 6) Map back from layer slug → category match (entry_meta)
-            #    extract_layers keys layers by entry["slug"]; build a lookup.
             slug_to_match: dict[str, CategoryMatch] = {}
-            slug_to_raw_label: dict[str, str] = {}
+            slug_to_raw: dict[str, str] = {}
             for e, m in zip(matched_entries, entry_meta):
                 slug = e.get("slug") or ""
                 if slug:
                     slug_to_match[slug] = m
-                    slug_to_raw_label[slug] = e.get("label") or ""
+                    slug_to_raw[slug] = e.get("label") or ""
 
             for f in features_clipped:
                 slug = f.get("slug") or ""
                 m = slug_to_match.get(slug)
                 if m is None:
                     continue
-                geom = _ensure_multipolygon(f.get("geom"))
+                geom = _normalize_geom(f.get("geom"))
                 if geom is None:
                     continue
                 color_hex = f.get("color") or "#000000"
                 rpt.features.append(UrbanisationFeature(
-                    commune_bfs=commune_bfs,
-                    commune_name=commune_name,
-                    category_key=m.key,
+                    commune_bfs=commune_bfs, commune_name=commune_name,
+                    category_key=m.category_key,
                     category_label=m.canonical_label,
-                    raw_label=slug_to_raw_label.get(slug, "") or f.get("label") or "",
+                    raw_label=slug_to_raw.get(slug, "") or f.get("label") or "",
                     source_color=str(color_hex),
-                    source_pdf=pdf_path.name,
-                    source_page=page_number,
+                    source_pdf=pdf_path.name, source_page=page_number,
                     geometry=geom,
                     confidence=round(float(f.get("confidence") or 0.0), 3),
-                    label_match_confidence=m.confidence,
-                    label_match_tier=m.tier,
+                    alternate_categories=m.alternate_categories,
+                    match_keywords=m.matched_keywords,
+                    map_freshness_year=rpt.map_freshness_year,
                 ))
-
     return rpt
 
 
@@ -303,13 +495,12 @@ def write_urbanisation_features(
     features: list[UrbanisationFeature],
     pdf_sha256: str,
 ) -> int:
-    """Idempotent per-PDF write to silver_ch.pdcom_urbanisation. Single transaction:
-    DELETE WHERE pdf_sha256=%s, then INSERT all rows. Looks up source_url via
-    bronze_ch.pdcom_sources by sha256 (NULL if not present)."""
+    """Idempotent per-PDF write to silver_ch.pdcom_urbanisation. DELETE WHERE
+    pdf_sha256=%s, then INSERT all rows. Looks up source_url via
+    bronze_ch.pdcom_sources by sha256."""
     import json
 
     with conn.cursor() as cur:
-        # Look up source_url from bronze if the same PDF was previously ingested
         cur.execute(
             "SELECT source_url FROM bronze_ch.pdcom_sources WHERE pdf_sha256 = %s LIMIT 1",
             (pdf_sha256,),
@@ -317,7 +508,6 @@ def write_urbanisation_features(
         row = cur.fetchone()
         source_url = row[0] if row else None
 
-        # Atomic per-PDF replace
         cur.execute(
             "DELETE FROM silver_ch.pdcom_urbanisation WHERE pdf_sha256 = %s",
             (pdf_sha256,),
@@ -334,6 +524,9 @@ def write_urbanisation_features(
                 pdf_sha256,
                 json.dumps(mapping(f.geometry)),
                 f.confidence,
+                f.alternate_categories or [],
+                f.match_keywords or [],
+                f.map_freshness_year,
             )
             for f in features
         ]
@@ -341,13 +534,13 @@ def write_urbanisation_features(
         INSERT INTO silver_ch.pdcom_urbanisation (
             commune_bfs, commune_name, category_key, category_label,
             raw_label, source_color, source_pdf, source_page, source_url,
-            pdf_sha256, geometry, confidence
+            pdf_sha256, geometry, confidence,
+            alternate_categories, match_keywords, map_freshness_year
         )
         VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,
                 ST_Multi(ST_SetSRID(ST_GeomFromGeoJSON(%s), 2056)),
-                %s)
+                %s,%s,%s,%s)
         """
-        # Chunk to avoid pooler timeout on large batches
         CHUNK = 500
         for start in range(0, len(rows), CHUNK):
             cur.executemany(stmt, rows[start:start + CHUNK])
@@ -356,10 +549,8 @@ def write_urbanisation_features(
 
 
 def post_batch_dedup(conn) -> int:
-    """After all PDFs are written, dedupe across (commune_bfs, category_key,
-    geohash9). Same physical zone might appear in multiple candidate PDFs for
-    one commune (e.g. carte-de-synthese + strategie). Keep highest-confidence row.
-    Returns count of rows deleted."""
+    """Same-physical-zone dedup across PDFs/pages within a (commune_bfs, category_key).
+    Keep highest-confidence row per (commune, category, geohash9)."""
     with conn.cursor() as cur:
         cur.execute("""
             WITH ranked AS (
@@ -381,22 +572,85 @@ def post_batch_dedup(conn) -> int:
 
 # ─── Discovery ─────────────────────────────────────────────────────────────────
 
-_FILENAME_PATTERNS = [
-    re.compile(r"strategie.*evolution.*zone.*5", re.IGNORECASE),
-    re.compile(r"carte.*synth[eè]se", re.IGNORECASE),
-    re.compile(r"synth[eè]se", re.IGNORECASE),
-    re.compile(r"urbanisation", re.IGNORECASE),
-    re.compile(r"zones.*urbanisation", re.IGNORECASE),
-    re.compile(r"plan.*directeur.*synth[eè]se", re.IGNORECASE),
-    re.compile(r"affectation", re.IGNORECASE),
-    re.compile(r"image.*directrice", re.IGNORECASE),
-    re.compile(r"evolution.*urbanisation", re.IGNORECASE),
-]
+# Synthèse-style filename signals
+_SYNTHESE_RE = re.compile(
+    r"(synth[eè]se|carte|urbanisation|densification|evolution|affectation|image[_ ]directrice|concept[_ ]carte|plan-localise-de-quartier|villas|directrice|z5\b|zone[_ ]?5\b)",
+    re.IGNORECASE,
+)
+# Rapport (long-document) signal — fallback only for communes with no synthèse
+_RAPPORT_RE = re.compile(r"(rapport|complet)", re.IGNORECASE)
+# Out-of-scope: paths inside this folder are knowledge re-extraction (separate task)
+_NEW_MISSING = "New Missing PDCom"
 
 
-def discover_candidate_pdfs(*roots: Path, page_count_threshold: int = 8) -> list[dict]:
-    """Find candidate PDFs: filename pattern OR ≤ page_count_threshold pages.
-    Returns list of dicts: {path, filename, page_count, size_bytes, match_reason, commune_slug}."""
+def _commune_slug_from_filename(filename: str) -> str:
+    """Crude commune slug: token between 'pdcom_' and the next descriptor.
+    'pdcom_aire_la_ville_complet.pdf' → 'aire_la_ville' (best-effort)."""
+    name = filename.lower()
+    if name.startswith("pdcom_"):
+        name = name[len("pdcom_"):]
+    name = name.rsplit(".", 1)[0]
+    # Take everything up to a known descriptor token
+    descriptors = (
+        "_2e_", "_strategie", "_carte", "_synth", "_synthese", "_plan_de", "_plans",
+        "_rapport", "_complet", "_pdcp", "_z5", "_sz5", "_concept", "_atlas",
+        "_pietons", "_energie", "_consultation", "_mesures", "_annexes",
+        "_zone-villas", "_zone_villas", "_strategie_d_evolution", "_pdcp-village",
+        "_carte-densification", "_plan-synthese", "_plan_synthese",
+        "_plan-de-site", "_hameau", "_plan-localise", "_evolution",
+        "_z5-planification", "_image-directrice", "_image_directrice",
+        "_directeur", "_de-synthese", "_de_synthese", "_-densification",
+    )
+    cuts = sorted([name.find(d) for d in descriptors if name.find(d) > 0])
+    if cuts:
+        name = name[:cuts[0]]
+    # Normalize hyphens/underscores to single token
+    name = re.sub(r"[_\-]+", "_", name).strip("_")
+    return name
+
+
+def _score_pdf_candidate(path: Path, page_count: int) -> int:
+    """Higher score = better synthèse candidate. See spec §Discovery."""
+    name = path.name.lower()
+    score = 0
+    if "synthese" in name or "synthèse" in name or "synth" in name:
+        score += 3
+    if "carte" in name or "urbanisation" in name or "densification" in name:
+        score += 2
+    if "Plans de Synthese" in str(path) or "plans_de_synthese" in str(path).lower():
+        score += 1
+    # Year signal
+    year = extract_year_from_filename(name)
+    if year:
+        # +1 per recent year band: 2024+, 2020-2023, 2017-2019, etc.
+        if year >= 2024:
+            score += 3
+        elif year >= 2020:
+            score += 2
+        elif year >= 2017:
+            score += 1
+    if "atlas" in name:
+        score -= 2
+    if "concept" in name:
+        score -= 2
+    if "pietons" in name or "energie" in name:
+        score -= 3   # cleanly off-topic for urbanisation
+    if "annexes" in name or "mesures" in name:
+        score -= 2
+    # Page-count bonus: focused = 1-2 pages; rapport = 50+
+    if page_count <= 2:
+        score += 2
+    elif page_count <= 8:
+        score += 1
+    elif page_count > 50:
+        score -= 2
+    return score
+
+
+def discover_candidate_pdfs(*roots: Path) -> list[dict]:
+    """Walk roots recursively. Excludes paths under 'New Missing PDCom' (knowledge
+    re-extraction is a separate task). Returns one dict per PDF with score, year,
+    page count, classification (synthese / rapport / off-topic)."""
     out: list[dict] = []
     seen: set[Path] = set()
     for root in roots:
@@ -405,32 +659,67 @@ def discover_candidate_pdfs(*roots: Path, page_count_threshold: int = 8) -> list
         for p in sorted(root.rglob("*.pdf")):
             if p in seen:
                 continue
+            # Skip the knowledge re-extraction folder
+            if _NEW_MISSING in p.parts:
+                continue
             seen.add(p)
-            name = p.name
-            filename_match = any(rx.search(name) for rx in _FILENAME_PATTERNS)
             try:
                 with fitz.open(p) as pdf:
                     page_count = pdf.page_count
             except Exception:
                 continue
-            page_match = page_count <= page_count_threshold
-            if not (filename_match or page_match):
-                continue
-            reasons = []
-            if filename_match:
-                reasons.append("filename")
-            if page_match:
-                reasons.append("page_count")
-            # Crude commune slug: token between "pdcom_" prefix and the next descriptor
-            slug = name.lower().replace("pdcom_", "", 1)
-            slug = re.split(r"[_\-\.]", slug)[0] if slug else ""
+            name = p.name
+            is_synth = bool(_SYNTHESE_RE.search(name))
+            is_rapport = bool(_RAPPORT_RE.search(name)) and page_count > 10
+            score = _score_pdf_candidate(p, page_count)
+            commune_slug = _commune_slug_from_filename(name)
+            year = extract_year_from_filename(name)
             out.append({
                 "path": p,
                 "filename": name,
                 "page_count": page_count,
                 "size_bytes": p.stat().st_size,
-                "match_reason": "/".join(reasons),
-                "commune_slug": slug,
+                "is_synthese": is_synth,
+                "is_rapport": is_rapport,
+                "score": score,
+                "commune_slug": commune_slug,
+                "year": year,
             })
-    out.sort(key=lambda r: (r["commune_slug"], r["filename"]))
+    out.sort(key=lambda r: (r["commune_slug"], -r["score"], r["filename"]))
+    return out
+
+
+def best_candidate_per_commune(rows: list[dict]) -> dict[str, dict]:
+    """Group candidates by commune slug (filename heuristic), pick the best by score.
+    NOTE: filename slugs are noisy (e.g. 'anieres_01' vs 'anieres'). Prefer
+    `group_by_commune_bfs()` which uses ingest.match_pdf_to_commune for canonical
+    commune resolution."""
+    by_slug: dict[str, list[dict]] = {}
+    for r in rows:
+        by_slug.setdefault(r["commune_slug"], []).append(r)
+    out: dict[str, dict] = {}
+    for slug, lst in by_slug.items():
+        lst.sort(key=lambda r: (-r["score"], -(r["year"] or 0), r["page_count"]))
+        out[slug] = {"best": lst[0], "all": lst}
+    return out
+
+
+def group_by_commune_bfs(rows: list[dict], communes: list[dict]) -> dict[int, dict]:
+    """Resolve each candidate to a federal BFS via ingest.match_pdf_to_commune
+    (fuzzy match against canton communes), group by BFS. Each group sorted by
+    score desc, then year desc, then page_count asc."""
+    from .ingest import match_pdf_to_commune
+    out: dict[int, dict] = {}
+    for r in rows:
+        m = match_pdf_to_commune(r["path"], communes)
+        if m.commune_bfs is None:
+            continue
+        bfs = m.commune_bfs
+        out.setdefault(bfs, {"all": [], "commune_name": None})
+        if out[bfs]["commune_name"] is None:
+            out[bfs]["commune_name"] = m.commune_name
+        out[bfs]["all"].append({**r, "match_status": m.status, "match_score": m.score})
+    for bfs, info in out.items():
+        info["all"].sort(key=lambda r: (-r["score"], -(r["year"] or 0), r["page_count"]))
+        info["best"] = info["all"][0]
     return out

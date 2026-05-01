@@ -1,73 +1,133 @@
-# PDCom v0.5 / urbanisation track. The 6 canonical zoning categories used by
-# silver_ch.pdcom_urbanisation. Each entry defines the label-to-category matcher.
+# PDCom v0.5.2 / urbanisation v2 — promoteur-focused 6 categories.
 #
-# Matching logic (see urbanisation_extractor.match_label_to_category):
-#   normalize(s) = strip_accents(lower(s)) → drop "(...)" → drop "selon fiche A0X du PDCn" → collapse whitespace
-#   Tier 1 (conf=0.95) = normalize(raw_label) == normalize(canonical_label)
-#   Tier 2 (conf=0.80-0.94) = primary AND any-of-require AND none-of-reject AND
-#                              rapidfuzz.partial_ratio(norm(raw), norm(canon)) >= 80
-#                              AND len(norm(raw)) >= 6
-#   Tier 3 = drop, log to per-PDF unmatched_labels list
+# Audience: real-estate developers. They want to know:
+#   1. Where is Zone 5 (suburban villa zone — primary dev target)
+#   2. Where is the parcel constructible vs not exploitable
+#   3. Where the commune intends future development (PLQ, MZ, densification accrue)
+#   4. What is NOT constructible (protected, lake shore, ag zone)
+#
+# Match logic (urbanisation_extractor.match_label_to_category):
+#   norm = strip_accents(lower(s)) → drop "selon fiche A0X du PDCn" boilerplate → collapse whitespace
+#   For each category (in priority order):
+#     match if any keywords_any substring is in norm AND no keywords_excludes is in norm
+#   Most-specific wins as category_key. Other matches → alternate_categories[].
+#
+# Priority (most specific first):
+#   densification_accrue > plq_a_etablir > plq_realise > a_proteger > zone_5 > exploitable
 
-plq_a_etablir_existant:
-  canonical_label: "Secteur à développer (PLQ) à établir / existant"
-  primary_terms:
-    - "plq"
-    - "plans localises de quartier"
-    - "secteur a developper"
-  require_one_of: []   # PLQ alone is unambiguous in the urbanisation context
-  reject_if_contains: []
+categories:
+  densification_accrue:
+    canonical_label: "Périmètre de densification accrue"
+    description: "Where the commune wants more density on Zone 5 parcels — high-value dev signal"
+    keywords_any:
+      - "densification accrue"
+      - "fiche a04"
+      - "z5 densification"
+      - "potentiel de densification"
+      - "densification de type"          # Anières variant: type 1/2/3
+      - "fort potentiel de densification" # Bernex variant
+    keywords_excludes: []
 
-mz_court_moyen_terme:
-  canonical_label: "Périmètre de planification du développement par MZ (court – moyen terme), selon fiche A03 du PDCn"
-  primary_terms:
-    - "mz"
-    - "modification de zone"
-    - "perimetre de planification"
-  require_one_of:
-    - "court"
-    - "court-moyen"
-    - "court moyen"
-  reject_if_contains:
-    - "long"
+  plq_a_etablir:
+    canonical_label: "Secteur à développer (PLQ) à établir"
+    description: "Where a Plan Localisé de Quartier is planned but not adopted — active dev pipeline"
+    keywords_any:
+      - "plq a etablir"
+      - "plq à établir"
+      - "secteur a developper"
+      - "secteur à développer"
+      - "potentiel constructible"
+      - "a urbaniser"
+      - "à urbaniser"
+      - "modification de zone"
+      - "perimetre de planification"
+      - "périmètre de planification"
+    keywords_excludes:
+      - "realise"
+      - "réalisé"
+      - "en force"
+      - "existant"
 
-mz_moyen_long_terme:
-  canonical_label: "Périmètre de planification du développement par MZ (moyen – long terme), selon fiche A03 du PDCn"
-  primary_terms:
-    - "mz"
-    - "modification de zone"
-    - "perimetre de planification"
-  require_one_of:
-    - "long"
-    - "moyen-long"
-    - "moyen long"
-  reject_if_contains: []
+  plq_realise:
+    canonical_label: "PLQ réalisé / en force"
+    description: "Where a Plan Localisé de Quartier exists or is built — opportunity gone or in execution"
+    keywords_any:
+      - "plq realise"
+      - "plq réalisé"
+      - "plq en force"
+      - "plans de detail realises"
+      - "plans de détail réalisés"
+      - "plans de detail en force"
+      - "plans de détail en force"
+      - "secteur realise"
+      - "secteur réalisé"
+    keywords_excludes: []
 
-densification_accrue:
-  canonical_label: "Périmètre de densification accrue, selon fiche A04 du PDCn"
-  primary_terms:
-    - "densification accrue"
-    - "perimetre de densification"
-    - "fiche a04"
-  require_one_of: []
-  reject_if_contains: []
+  a_proteger:
+    canonical_label: "Secteur à protéger / à ménager (non constructible)"
+    description: "Protected zones — no development opportunity"
+    keywords_any:
+      - "a proteger"
+      - "à protéger"
+      - "a menager"
+      - "à ménager"
+      - "secteur de protection"
+      - "rives du lac"
+      - "non derogatoire"
+      - "non dérogatoire"
+      - "zone agricole"
+      - "zone de verdure"
+      - "espace vert protege"
+      - "espace vert protégé"
+      - "secteur sensible"
+      - "inconstructible"
+      - "non constructible"
+      - "site construit d'importance nationale"
+      - "alignements de chenes"
+      - "cours d'eau a proteger"
+      - "limite a la foret"
+      - "reaffecter a l'agriculture"
+      - "declassement zone agricole"
+    keywords_excludes:
+      - "patrimoine bati"
+      - "patrimoine bâti"
 
-a_proteger_a_menager:
-  canonical_label: "Secteur à protéger, à ménager"
-  primary_terms:
-    - "a proteger"
-    - "a menager"
-    - "secteur a proteger"
-    - "secteur sensible"
-    - "secteur protege"
-  require_one_of: []
-  reject_if_contains: []
+  zone_5:
+    canonical_label: "Zone 5"
+    description: "Suburban villa zone — primary dev target for promoteurs"
+    keywords_any:
+      - "zone 5"
+      - "zone villa"
+      - "z5"
+      - "5e zone"
+      - "zone villas"
+    keywords_excludes:
+      - "ferroviaire"
 
-planification_imperative:
-  canonical_label: "Périmètre A : planification impérative"
-  primary_terms:
-    - "planification imperative"
-    - "image directrice imperative"
-    - "perimetre a"
-  require_one_of: []
-  reject_if_contains: []
+  exploitable:
+    canonical_label: "Constructible / encore exploitable"
+    description: "Catch-all for parcels with remaining dev potential, not in more specific categories above"
+    keywords_any:
+      - "potentiel constructible"
+      - "encore exploitable"
+      - "parcelle libre"
+      - "reserve fonciere"
+      - "réserve foncière"
+      - "constructible"
+    keywords_excludes:
+      - "non constructible"
+      - "non exploitable"
+      - "ne pas construire"
+      - "inconstructible"
+      - "limite inconstructible"
+      - "distance inconstructible"
+      - "surface inconstructible"
+
+# Resolution priority: index in this list = priority. First match wins as category_key.
+priority_order:
+  - densification_accrue
+  - plq_a_etablir
+  - plq_realise
+  - a_proteger
+  - zone_5
+  - exploitable
