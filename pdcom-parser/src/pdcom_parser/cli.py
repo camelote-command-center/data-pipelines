@@ -350,5 +350,388 @@ def discover_cmd(commune_bfs: int):
 main.add_command(discover_cmd, name="discover")
 
 
+# ─── v0.5 / urbanisation focused-extraction track ────────────────────────────
+
+@main.group("urbanisation")
+def urbanisation_grp():
+    """v0.5 focused urbanisation track: extract zoning polygons from carte-de-synthèse
+    PDFs into 6 canonical categories. re-LLM only — does not touch lamap_db.
+    """
+
+
+def _default_pdf_roots() -> list[Path]:
+    base = Path.home() / "Desktop" / "Lamap Reshape" / "PDCom"
+    return [base, base / "new_ones"]
+
+
+def _default_qa_dir() -> Path:
+    return Path.home() / "Desktop" / "Lamap Reshape" / "PDCom" / "qa_urbanisation"
+
+
+def _default_pdf_roots() -> list[Path]:  # type: ignore[no-redef]
+    return [Path.home() / "Desktop" / "Lamap Reshape" / "PDCom"]
+
+
+@urbanisation_grp.command("discover")
+@click.option("--pdf-root", type=click.Path(exists=True, file_okay=False, path_type=Path),
+              multiple=True, help="One or more directories to scan (default: ~/Desktop/Lamap Reshape/PDCom recursively, EXCLUDING 'New Missing PDCom/').")
+def urbanisation_discover(pdf_root):
+    """v2 Phase 1 — list candidate PDFs, grouped per GE commune (via fuzzy filename
+    match against ref.communes). Best-pick per commune by score."""
+    from .urbanisation_extractor import discover_candidate_pdfs, group_by_commune_bfs
+    roots = list(pdf_root) if pdf_root else _default_pdf_roots()
+    rows = discover_candidate_pdfs(*roots)
+    communes = get_communes_geneva_lv95(_lamap_db_url())
+    grouped = group_by_commune_bfs(rows, communes)
+    n_resolved = sum(len(g["all"]) for g in grouped.values())
+    click.echo(f"# Candidate PDFs: {len(rows)} found, {n_resolved} resolved to {len(grouped)} GE communes (excluding 'New Missing PDCom/')")
+    click.echo(f"\n| commune | bfs | n_candidates | best_score | best_candidate | year | pages |")
+    click.echo(  "|---------|----:|--------------:|-----------:|----------------|------|------:|")
+    for bfs in sorted(grouped):
+        info = grouped[bfs]
+        best = info["best"]
+        click.echo(f"| {info['commune_name']} | {bfs} | {len(info['all'])} | {best['score']} | {best['filename']} | {best['year'] or '-'} | {best['page_count']} |")
+    click.echo("\n# All candidates per commune\n")
+    for bfs in sorted(grouped):
+        info = grouped[bfs]
+        click.echo(f"## {info['commune_name']} (bfs={bfs})")
+        for r in info["all"]:
+            click.echo(f"  - score={r['score']:>2} year={r['year'] or '-':<5} pages={r['page_count']:>3}  {r['filename']}")
+
+
+def _build_commune_lookup(lamap_url: str) -> dict[str, dict]:
+    """Fetch GE communes once; index by lowered name AND simplified slug for filename matching."""
+    communes = get_communes_geneva_lv95(lamap_url)
+    out: dict[str, dict] = {}
+    for c in communes:
+        # multiple keys for the same commune
+        name = c["commune_name"]
+        keys = {name.lower(), name.lower().replace("(ge)", "").strip()}
+        # slug-style: lowercase, dashes / underscores, accent-stripped
+        import unicodedata
+        slug = unicodedata.normalize("NFD", name.lower())
+        slug = "".join(ch for ch in slug if unicodedata.category(ch) != "Mn")
+        slug = slug.replace(" ", "-").replace("'", "-").replace("(ge)", "").strip("-")
+        keys.add(slug)
+        # also without dashes
+        keys.add(slug.replace("-", ""))
+        for k in keys:
+            if k:
+                out[k] = c
+    return out
+
+
+def _resolve_commune_for_pdf(pdf_filename: str, communes_by_key: dict, lamap_url: str) -> dict | None:
+    """Use ingest.match_pdf_to_commune for fuzzy filename → commune resolution."""
+    from .ingest import match_pdf_to_commune
+    communes_list = get_communes_geneva_lv95(lamap_url)
+    # match_pdf_to_commune wants a Path
+    m = match_pdf_to_commune(Path(pdf_filename), communes_list)
+    if m.commune_bfs is None:
+        return None
+    for c in communes_list:
+        if c["commune_bfs"] == m.commune_bfs:
+            return c
+    return None
+
+
+def _default_qa_dir_v2() -> Path:
+    return Path.home() / "Desktop" / "Lamap Reshape" / "PDCom" / "qa_urbanisation_v2"
+
+
+CALIBRATION_V2_TARGETS = [
+    ("anieres",         "pdcom_anieres_carte-densification-v2.pdf"),
+    ("bernex",          "pdcom_bernex_strategie_d_evolution_de_la_zone_5_carte_de_synthese.pdf"),
+    ("bardonnex",       "pdcom_bardonnex_synthese.pdf"),
+    ("bellevue",        "pdcom_bellevue_carte.pdf"),
+    ("lancy",           "pdcom_lancy_2020-carte-de-synthese.pdf"),
+]
+
+
+@urbanisation_grp.command("calibrate")
+@click.option("--pdf",
+              default=None,
+              type=click.Path(exists=True, dir_okay=False, path_type=Path),
+              help="Single PDF; if omitted, runs the 5-commune v2 calibration suite.")
+@click.option("--legend-mode", type=click.Choice(["anchored", "cascade"]), default="cascade")
+@click.option("--qa-dir", type=click.Path(path_type=Path), default=None)
+def urbanisation_calibrate(pdf: Path | None, legend_mode: str, qa_dir: Path | None):
+    """v2 calibration. By default, runs the 5-commune suite (Anières, Bernex, Bardonnex,
+    Bellevue, Lancy). Per-commune pass = ≥2 categories matched + mean conf ≥0.80.
+    Suite pass = 4 of 5 communes pass. Use --pdf for single-PDF mode."""
+    from .urbanisation_extractor import extract_urbanisation_pdf
+    from .qa import render_qa_image
+    from shapely.geometry import shape
+
+    qa_dir = qa_dir or _default_qa_dir_v2()
+    qa_dir.mkdir(parents=True, exist_ok=True)
+
+    lamap_url = _lamap_db_url()
+    communes_by_key = _build_commune_lookup(lamap_url)
+
+    def _calibrate_one(pdf_path: Path, expected_slug: str | None = None) -> tuple[bool, dict]:
+        commune = _resolve_commune_for_pdf(pdf_path.name, communes_by_key, lamap_url)
+        if commune is None:
+            return False, {"error": f"could not resolve commune for {pdf_path.name}"}
+        click.echo(f"\n=== {commune['commune_name']} — {pdf_path.name} ===")
+        rpt = extract_urbanisation_pdf(
+            pdf_path=pdf_path, commune_bfs=commune["commune_bfs"],
+            commune_name=commune["commune_name"],
+            boundary_lv95_geojson=commune["boundary_lv95_geojson"],
+            legend_mode=legend_mode,
+        )
+        by_cat: dict[str, list] = {}
+        for f in rpt.features:
+            by_cat.setdefault(f.category_key, []).append(f)
+        all_confs = [f.confidence for f in rpt.features]
+        mean_conf = sum(all_confs) / len(all_confs) if all_confs else 0.0
+        click.echo(f"  pages: {rpt.pages_processed} processed, {rpt.pages_with_legend} with legend")
+        click.echo(f"  legend entries: {rpt.legend_entries_total} total, {rpt.matched_entries} matched, {len(rpt.unmatched_labels)} unmatched")
+        click.echo(f"  features: {len(rpt.features)} across {len(by_cat)} categories  → {sorted(by_cat.keys())}")
+        click.echo(f"  mean confidence: {mean_conf:.3f}")
+        if rpt.unmatched_labels:
+            click.echo(f"  unmatched labels (sample):")
+            for u in rpt.unmatched_labels[:8]:
+                click.echo(f"    - {u!r}")
+        # QA PNG
+        qa_path = qa_dir / f"{commune['commune_bfs']}_{pdf_path.stem}_calibration.png"
+        boundary = shape(commune["boundary_lv95_geojson"])
+        qa_features = [{"geom": f.geometry, "color": f.source_color,
+                        "label": f.category_label, "fill_type": "solid"} for f in rpt.features]
+        try:
+            render_qa_image(boundary, qa_features, qa_path,
+                            title=f"{commune['commune_name']} — {pdf_path.name}")
+            click.echo(f"  QA PNG: {qa_path}")
+        except Exception as e:
+            click.echo(f"  QA render failed: {e}")
+        # v2 pass criteria: ≥2 categories matched, mean conf ≥0.80
+        passed = len(by_cat) >= 2 and mean_conf >= 0.80
+        return passed, {
+            "commune": commune["commune_name"], "pdf": pdf_path.name,
+            "passed": passed, "categories": sorted(by_cat.keys()),
+            "n_features": len(rpt.features), "mean_conf": round(mean_conf, 3),
+            "unmatched_count": len(rpt.unmatched_labels),
+            "unmatched_sample": rpt.unmatched_labels[:5],
+        }
+
+    if pdf is not None:
+        passed, info = _calibrate_one(pdf)
+        click.echo(f"\n{'✓' if passed else '❌'} {info}")
+        sys.exit(0 if passed else 2)
+
+    # 5-commune suite
+    click.echo("v2 calibration suite — 5 communes (4/5 must pass)\n")
+    pdf_root = Path.home() / "Desktop" / "Lamap Reshape" / "PDCom"
+    results = []
+    for slug, fname in CALIBRATION_V2_TARGETS:
+        # Search recursively
+        matches = list(pdf_root.rglob(fname))
+        if not matches:
+            click.echo(f"  ! {slug}: PDF missing on disk: {fname}")
+            results.append({"commune": slug, "pdf": fname, "passed": False, "error": "not_found"})
+            continue
+        passed, info = _calibrate_one(matches[0], expected_slug=slug)
+        results.append(info)
+    click.echo("\n=== v2 calibration suite summary ===")
+    click.echo(f"\n| commune | PDF | categories | features | mean conf | passed |")
+    click.echo(  "|---------|-----|------------|---------:|----------:|--------|")
+    for r in results:
+        if "error" in r:
+            click.echo(f"| {r.get('commune', '?')} | {r.get('pdf', '?')} | (NOT FOUND) | - | - | ❌ |")
+            continue
+        cats = ",".join(r["categories"]) if r["categories"] else "-"
+        click.echo(f"| {r['commune']} | {r['pdf']} | {cats} | {r['n_features']} | {r['mean_conf']:.3f} | {'✓' if r['passed'] else '❌'} |")
+    n_pass = sum(1 for r in results if r.get("passed"))
+    click.echo(f"\n{n_pass}/5 communes passed.")
+    if n_pass < 4:
+        click.echo("❌ SUITE FAILED — fewer than 4 of 5 communes passed. Review unmatched labels above and tune YAML keywords.")
+        sys.exit(2)
+    click.echo("✓ Suite passed (4/5 minimum met).")
+
+
+# Genève special-case: pages-per-PDF override
+GENEVE_PAGE_OVERRIDES = {
+    "pdcom_geneve_2e_atlas_transition.pdf": [9],
+}
+
+
+@urbanisation_grp.command("run")
+@click.option("--pdf-root", type=click.Path(exists=True, file_okay=False, path_type=Path),
+              multiple=True)
+@click.option("--legend-mode", type=click.Choice(["anchored", "cascade"]), default="cascade")
+@click.option("--qa-dir", type=click.Path(path_type=Path), default=None)
+@click.option("--skip-calibration-gate", is_flag=True, default=False,
+              help="Skip the calibration pre-flight (debug only).")
+def urbanisation_run(pdf_root, legend_mode, qa_dir, skip_calibration_gate):
+    """v2 corpus run. Per commune: try candidates in score order, pick the one
+    yielding the most categories, persist that one. Genève: atlas page 9 only.
+    Generates per-commune QA PNGs."""
+    import psycopg
+    from .urbanisation_extractor import (
+        discover_candidate_pdfs,
+        extract_urbanisation_pdf,
+        group_by_commune_bfs,
+        post_batch_dedup,
+        write_urbanisation_features,
+    )
+    from .ingest import sha256_of
+    from .qa import render_qa_image
+    from shapely.geometry import shape
+
+    qa_dir = qa_dir or _default_qa_dir_v2()
+    qa_dir.mkdir(parents=True, exist_ok=True)
+    roots = list(pdf_root) if pdf_root else _default_pdf_roots()
+
+    lamap_url = _lamap_db_url()
+    rellm_url = _rellm_db_url()
+    communes_by_key = _build_commune_lookup(lamap_url)
+    communes_list = get_communes_geneva_lv95(lamap_url)
+
+    # Calibration pre-flight (5-commune suite, 4/5 must pass)
+    if not skip_calibration_gate:
+        click.echo("[gate] running 5-commune v2 calibration suite …")
+        pdf_root_p = Path.home() / "Desktop" / "Lamap Reshape" / "PDCom"
+        n_pass = 0
+        for slug, fname in CALIBRATION_V2_TARGETS:
+            matches = list(pdf_root_p.rglob(fname))
+            if not matches:
+                click.echo(f"  ! {slug}: PDF missing on disk: {fname}")
+                continue
+            commune = _resolve_commune_for_pdf(matches[0].name, communes_by_key, lamap_url)
+            if commune is None:
+                continue
+            rpt = extract_urbanisation_pdf(
+                pdf_path=matches[0], commune_bfs=commune["commune_bfs"],
+                commune_name=commune["commune_name"],
+                boundary_lv95_geojson=commune["boundary_lv95_geojson"],
+                legend_mode=legend_mode,
+            )
+            cats = {f.category_key for f in rpt.features}
+            confs = [f.confidence for f in rpt.features]
+            mean_conf = sum(confs) / len(confs) if confs else 0.0
+            ok = len(cats) >= 2 and mean_conf >= 0.80
+            click.echo(f"  {'✓' if ok else '❌'} {slug}: cats={sorted(cats)}, n={len(rpt.features)}, mean conf={mean_conf:.3f}")
+            if ok:
+                n_pass += 1
+        if n_pass < 4:
+            raise click.ClickException(f"Calibration suite FAILED ({n_pass}/5 passed; need ≥4). Run `pdcom urbanisation calibrate` for details.")
+        click.echo(f"[gate] ✓ Calibration suite passed ({n_pass}/5)")
+
+    rows = discover_candidate_pdfs(*roots)
+    grouped = group_by_commune_bfs(rows, communes_list)
+    click.echo(f"[run] {len(rows)} candidates resolved to {len(grouped)} GE communes")
+
+    by_commune_features: dict[int, list] = {}
+    by_commune_meta: dict[int, dict] = {}
+    chosen_pdf_per_commune: dict[int, dict] = {}
+    summary: list[dict] = []
+    bfs_to_commune = {c["commune_bfs"]: c for c in communes_list}
+
+    with psycopg.connect(rellm_url) as conn:
+        for bfs in sorted(grouped):
+            info = grouped[bfs]
+            commune = bfs_to_commune.get(bfs)
+            if commune is None:
+                continue
+            best_attempt: dict | None = None
+            for cand in info["all"]:
+                pdf_path: Path = cand["path"]
+                pages_override = GENEVE_PAGE_OVERRIDES.get(pdf_path.name)
+                try:
+                    rpt = extract_urbanisation_pdf(
+                        pdf_path=pdf_path, commune_bfs=commune["commune_bfs"],
+                        commune_name=commune["commune_name"],
+                        boundary_lv95_geojson=commune["boundary_lv95_geojson"],
+                        legend_mode=legend_mode,
+                        pages=pages_override,
+                    )
+                except Exception as e:
+                    click.echo(f"  ✗ {pdf_path.name}: extract raised {e}")
+                    continue
+                cats = {f.category_key for f in rpt.features}
+                # Score this attempt: # categories, then # features, then year recency
+                attempt_score = (len(cats), len(rpt.features), cand["year"] or 0)
+                if best_attempt is None or attempt_score > best_attempt["score"]:
+                    best_attempt = {
+                        "score": attempt_score, "rpt": rpt, "cand": cand,
+                        "commune": commune, "pdf_path": pdf_path,
+                    }
+                if len(cats) >= 3:
+                    break
+
+            if best_attempt is None or not best_attempt["rpt"].features:
+                click.echo(f"  · {commune['commune_name']:<22}: no features extracted")
+                summary.append({
+                    "commune_name": commune["commune_name"], "commune_bfs": bfs,
+                    "status": "coverage_blocked", "features": 0,
+                    "candidates_tried": len(info["all"]),
+                })
+                continue
+
+            ba = best_attempt
+            pdf_path = ba["pdf_path"]
+            rpt = ba["rpt"]
+
+            sha = sha256_of(pdf_path)
+            for f in rpt.features:
+                f.pdf_sha256 = sha
+            n_written = write_urbanisation_features(conn, rpt.features, sha)
+            cats = sorted({f.category_key for f in rpt.features})
+            click.echo(f"  ✓ {commune['commune_name']:<22} {pdf_path.name}: "
+                       f"{n_written} feats, cats={cats}")
+            summary.append({
+                "commune_name": commune["commune_name"], "commune_bfs": bfs,
+                "chosen_pdf": pdf_path.name, "year": ba["cand"]["year"],
+                "candidates_tried": len(info["all"]),
+                "status": "ok", "features": n_written, "categories": cats,
+            })
+            by_commune_features.setdefault(bfs, []).extend(rpt.features)
+            by_commune_meta[bfs] = commune
+            chosen_pdf_per_commune[bfs] = {
+                "pdf": pdf_path.name, "year": ba["cand"]["year"], "score": ba["cand"]["score"],
+            }
+
+        click.echo("[run] post-batch dedup …")
+        n_dedup = post_batch_dedup(conn)
+        click.echo(f"[run] dedup removed {n_dedup} rows")
+
+    # Per-commune QA PNGs (after dedup — re-fetch features from DB to reflect dedup)
+    click.echo("[run] generating per-commune QA PNGs …")
+    with psycopg.connect(rellm_url) as conn, conn.cursor() as cur:
+        for bfs, commune in by_commune_meta.items():
+            cur.execute("""
+                SELECT category_key, category_label, source_color,
+                       ST_AsGeoJSON(geometry) AS geom_json
+                FROM silver_ch.pdcom_urbanisation
+                WHERE commune_bfs = %s
+            """, (bfs,))
+            rows_db = cur.fetchall()
+            if not rows_db:
+                continue
+            boundary = shape(commune["boundary_lv95_geojson"])
+            qa_features = []
+            for row in rows_db:
+                from json import loads
+                geom = shape(loads(row[3]))
+                qa_features.append({"geom": geom, "color": row[2], "label": row[1], "fill_type": "solid"})
+            slug = commune["commune_name"].lower().replace(" ", "_").replace("(", "").replace(")", "")
+            qa_path = qa_dir / f"{bfs}_{slug}.png"
+            try:
+                render_qa_image(boundary, qa_features, qa_path,
+                                title=f"{commune['commune_name']} — urbanisation v2 ({len(qa_features)} feats)")
+            except Exception as e:
+                click.echo(f"  ! QA PNG failed for {commune['commune_name']}: {e}")
+
+    # Final batch summary
+    click.echo("\n[run] v2 batch summary:")
+    ok = [s for s in summary if s["status"] == "ok"]
+    blocked = [s for s in summary if s["status"] == "coverage_blocked"]
+    click.echo(f"  communes OK: {len(ok)}, coverage_blocked: {len(blocked)}")
+    click.echo(f"  total features written: {sum(s['features'] for s in summary)}")
+    if blocked:
+        click.echo(f"  blocked: {[s['commune_name'] for s in blocked]}")
+    click.echo(f"  QA PNGs: {qa_dir}")
+
+
 if __name__ == "__main__":
     main()

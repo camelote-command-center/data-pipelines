@@ -1,0 +1,133 @@
+# PDCom v0.5.2 / urbanisation v2 — promoteur-focused 6 categories.
+#
+# Audience: real-estate developers. They want to know:
+#   1. Where is Zone 5 (suburban villa zone — primary dev target)
+#   2. Where is the parcel constructible vs not exploitable
+#   3. Where the commune intends future development (PLQ, MZ, densification accrue)
+#   4. What is NOT constructible (protected, lake shore, ag zone)
+#
+# Match logic (urbanisation_extractor.match_label_to_category):
+#   norm = strip_accents(lower(s)) → drop "selon fiche A0X du PDCn" boilerplate → collapse whitespace
+#   For each category (in priority order):
+#     match if any keywords_any substring is in norm AND no keywords_excludes is in norm
+#   Most-specific wins as category_key. Other matches → alternate_categories[].
+#
+# Priority (most specific first):
+#   densification_accrue > plq_a_etablir > plq_realise > a_proteger > zone_5 > exploitable
+
+categories:
+  densification_accrue:
+    canonical_label: "Périmètre de densification accrue"
+    description: "Where the commune wants more density on Zone 5 parcels — high-value dev signal"
+    keywords_any:
+      - "densification accrue"
+      - "fiche a04"
+      - "z5 densification"
+      - "potentiel de densification"
+      - "densification de type"          # Anières variant: type 1/2/3
+      - "fort potentiel de densification" # Bernex variant
+    keywords_excludes: []
+
+  plq_a_etablir:
+    canonical_label: "Secteur à développer (PLQ) à établir"
+    description: "Where a Plan Localisé de Quartier is planned but not adopted — active dev pipeline"
+    keywords_any:
+      - "plq a etablir"
+      - "plq à établir"
+      - "secteur a developper"
+      - "secteur à développer"
+      - "potentiel constructible"
+      - "a urbaniser"
+      - "à urbaniser"
+      - "modification de zone"
+      - "perimetre de planification"
+      - "périmètre de planification"
+    keywords_excludes:
+      - "realise"
+      - "réalisé"
+      - "en force"
+      - "existant"
+
+  plq_realise:
+    canonical_label: "PLQ réalisé / en force"
+    description: "Where a Plan Localisé de Quartier exists or is built — opportunity gone or in execution"
+    keywords_any:
+      - "plq realise"
+      - "plq réalisé"
+      - "plq en force"
+      - "plans de detail realises"
+      - "plans de détail réalisés"
+      - "plans de detail en force"
+      - "plans de détail en force"
+      - "secteur realise"
+      - "secteur réalisé"
+    keywords_excludes: []
+
+  a_proteger:
+    canonical_label: "Secteur à protéger / à ménager (non constructible)"
+    description: "Protected zones — no development opportunity"
+    keywords_any:
+      - "a proteger"
+      - "à protéger"
+      - "a menager"
+      - "à ménager"
+      - "secteur de protection"
+      - "rives du lac"
+      - "non derogatoire"
+      - "non dérogatoire"
+      - "zone agricole"
+      - "zone de verdure"
+      - "espace vert protege"
+      - "espace vert protégé"
+      - "secteur sensible"
+      - "inconstructible"
+      - "non constructible"
+      - "site construit d'importance nationale"
+      - "alignements de chenes"
+      - "cours d'eau a proteger"
+      - "limite a la foret"
+      - "reaffecter a l'agriculture"
+      - "declassement zone agricole"
+    keywords_excludes:
+      - "patrimoine bati"
+      - "patrimoine bâti"
+
+  zone_5:
+    canonical_label: "Zone 5"
+    description: "Suburban villa zone — primary dev target for promoteurs"
+    keywords_any:
+      - "zone 5"
+      - "zone villa"
+      - "z5"
+      - "5e zone"
+      - "zone villas"
+    keywords_excludes:
+      - "ferroviaire"
+
+  exploitable:
+    canonical_label: "Constructible / encore exploitable"
+    description: "Catch-all for parcels with remaining dev potential, not in more specific categories above"
+    keywords_any:
+      - "potentiel constructible"
+      - "encore exploitable"
+      - "parcelle libre"
+      - "reserve fonciere"
+      - "réserve foncière"
+      - "constructible"
+    keywords_excludes:
+      - "non constructible"
+      - "non exploitable"
+      - "ne pas construire"
+      - "inconstructible"
+      - "limite inconstructible"
+      - "distance inconstructible"
+      - "surface inconstructible"
+
+# Resolution priority: index in this list = priority. First match wins as category_key.
+priority_order:
+  - densification_accrue
+  - plq_a_etablir
+  - plq_realise
+  - a_proteger
+  - zone_5
+  - exploitable
