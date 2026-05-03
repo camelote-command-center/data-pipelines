@@ -3,31 +3,16 @@
 Zefix Swiss Company Registry — Bulk Import Pipeline
 
 Downloads CSV exports of all 26 Swiss cantons from Basel Open Data
-and upserts them into zefix_companies on one or more Supabase projects.
+and upserts them into re-LLM bronze_ch.zefix_companies.
 
 Source:  https://data-bs.ch/stata/zefix_handelsregister/all_cantons/
-Destinations:
-    - camelote_data (required) — command center database
-    - lamap         (optional) — if LAMAP_SUPABASE_URL is set
-    - yooneet       (optional) — if YOONEET_SUPABASE_URL is set
-
-Each canton CSV is downloaded ONCE and upserted to ALL active destinations.
+Destination: re-LLM (znrvddgmczdqoucmykij), schema bronze_ch, table zefix_companies
 
 Environment variables (set by GitHub Actions secrets):
-    SUPABASE_URL              - camelote_data project URL (required)
-    SUPABASE_SERVICE_KEY      - camelote_data service_role key (required)
-    SUPABASE_SCHEMA           - camelote_data schema (default: public)
-    SUPABASE_TABLE            - camelote_data table (default: zefix_companies)
-
-    LAMAP_SUPABASE_URL        - lamap project URL (optional)
-    LAMAP_SUPABASE_SERVICE_KEY - lamap service_role key (optional)
-    LAMAP_SCHEMA              - lamap schema (default: bronze)
-    LAMAP_TABLE               - lamap table (default: zefix_companies)
-
-    YOONEET_SUPABASE_URL        - yooneet project URL (optional)
-    YOONEET_SUPABASE_SERVICE_KEY - yooneet service_role key (optional)
-    YOONEET_SCHEMA              - yooneet schema (default: public)
-    YOONEET_TABLE               - yooneet table (default: zefix_companies)
+    RE_LLM_SUPABASE_URL              - re-LLM project URL (required)
+    RE_LLM_SUPABASE_SERVICE_ROLE_KEY - re-LLM service_role key (required)
+    RE_LLM_SCHEMA                    - schema (default: bronze_ch)
+    RE_LLM_TABLE                     - table (default: zefix_companies)
 """
 
 import os
@@ -37,7 +22,6 @@ import io
 import time
 import requests
 
-# Add repo root to path so we can import shared/
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 from shared.supabase_client import batch_upsert
 
@@ -50,43 +34,23 @@ ALL_CANTONS = [
 ]
 
 
-def build_destinations():
-    """
-    Build list of destination Supabase projects from environment variables.
-    camelote_data is always required. Others are optional.
-    """
-    destinations = []
-
-    # Primary — always required
-    destinations.append({
-        "name": "camelote_data",
-        "url": os.environ.get("SUPABASE_URL", ""),
-        "key": os.environ.get("SUPABASE_SERVICE_KEY", ""),
-        "schema": os.environ.get("SUPABASE_SCHEMA", "public"),
-        "table": os.environ.get("SUPABASE_TABLE", "zefix_companies"),
-    })
-
-    # Secondary — lamap (optional)
-    if os.environ.get("LAMAP_SUPABASE_URL"):
-        destinations.append({
-            "name": "lamap",
-            "url": os.environ["LAMAP_SUPABASE_URL"],
-            "key": os.environ["LAMAP_SUPABASE_SERVICE_KEY"],
-            "schema": os.environ.get("LAMAP_SCHEMA", "bronze"),
-            "table": os.environ.get("LAMAP_TABLE", "zefix_companies"),
-        })
-
-    # Secondary — yooneet (optional)
-    if os.environ.get("YOONEET_SUPABASE_URL"):
-        destinations.append({
-            "name": "yooneet",
-            "url": os.environ["YOONEET_SUPABASE_URL"],
-            "key": os.environ["YOONEET_SUPABASE_SERVICE_KEY"],
-            "schema": os.environ.get("YOONEET_SCHEMA", "public"),
-            "table": os.environ.get("YOONEET_TABLE", "zefix_companies"),
-        })
-
-    return destinations
+def build_destination():
+    """Single re-LLM destination from environment variables."""
+    url = os.environ.get("RE_LLM_SUPABASE_URL", "")
+    key = os.environ.get("RE_LLM_SUPABASE_SERVICE_ROLE_KEY", "")
+    if not url or not key:
+        print(
+            "ERROR: RE_LLM_SUPABASE_URL and RE_LLM_SUPABASE_SERVICE_ROLE_KEY "
+            "environment variables are required"
+        )
+        sys.exit(1)
+    return {
+        "name": "re-LLM",
+        "url": url,
+        "key": key,
+        "schema": os.environ.get("RE_LLM_SCHEMA", "bronze_ch"),
+        "table": os.environ.get("RE_LLM_TABLE", "zefix_companies"),
+    }
 
 
 def download_csv(canton):
@@ -140,90 +104,67 @@ def parse_csv(csv_text, canton):
     return records
 
 
-def upsert_to_destinations(destinations, records, canton):
-    """
-    Upsert parsed records to all destinations.
-    Returns dict of {dest_name: rows_upserted}.
-    """
-    results = {}
-    for dest in destinations:
-        print(f"  → {dest['name']} ({dest['schema']}.{dest['table']})")
-        upserted = batch_upsert(
-            url=dest["url"],
-            key=dest["key"],
-            table=dest["table"],
-            records=records,
-            conflict_column="uid",
-            schema=dest["schema"],
-            batch_size=500,
-        )
-        results[dest["name"]] = upserted
-        print(f"    Upserted: {upserted}/{len(records)} rows")
-    return results
+def upsert_to_destination(dest, records):
+    """Upsert parsed records to the destination. Returns rows upserted."""
+    print(f"  → {dest['name']} ({dest['schema']}.{dest['table']})")
+    upserted = batch_upsert(
+        url=dest["url"],
+        key=dest["key"],
+        table=dest["table"],
+        records=records,
+        conflict_column="uid",
+        schema=dest["schema"],
+        batch_size=500,
+    )
+    print(f"    Upserted: {upserted}/{len(records)} rows")
+    return upserted
 
 
-def import_canton(canton, destinations):
-    """Download + parse + upsert one canton to all destinations."""
+def import_canton(canton, dest):
+    """Download + parse + upsert one canton."""
     print(f"\n{'='*50}")
     print(f"  Canton: {canton}")
     print(f"{'='*50}")
 
-    # Download (once)
     try:
         csv_text = download_csv(canton)
     except Exception as e:
         print(f"  DOWNLOAD FAILED: {e}")
-        return None  # signal failure
+        return None
 
-    # Parse (once)
     records = parse_csv(csv_text, canton)
     print(f"  Downloaded: {len(records)} rows")
 
     if not records:
         print("  No records to import, skipping")
-        return {}
+        return 0
 
-    # Upsert to all destinations
-    results = upsert_to_destinations(destinations, records, canton)
-    return results
+    return upsert_to_destination(dest, records)
 
 
 def main():
-    # Build destinations from env vars
-    destinations = build_destinations()
-
-    # Validate primary destination
-    primary = destinations[0]
-    if not primary["url"] or not primary["key"]:
-        print("ERROR: SUPABASE_URL and SUPABASE_SERVICE_KEY environment variables are required")
-        sys.exit(1)
-
-    dest_names = [d["name"] for d in destinations]
+    dest = build_destination()
 
     print("=" * 50)
     print("  Zefix Import Pipeline")
-    print(f"  Destinations: {', '.join(dest_names)}")
+    print(f"  Destination: {dest['name']} ({dest['schema']}.{dest['table']})")
     print(f"  Cantons: ALL ({len(ALL_CANTONS)})")
     print("=" * 50)
 
-    # Track totals per destination
-    totals = {d["name"]: 0 for d in destinations}
+    total = 0
     failed_cantons = []
 
     for canton in ALL_CANTONS:
-        results = import_canton(canton, destinations)
-        if results is None:
+        count = import_canton(canton, dest)
+        if count is None:
             failed_cantons.append(canton)
         else:
-            for dest_name, count in results.items():
-                totals[dest_name] += count
-        time.sleep(0.5)  # rate limiting between cantons
+            total += count
+        time.sleep(0.5)
 
-    # Summary
     print("\n" + "=" * 50)
     print("  IMPORT COMPLETE")
-    for dest_name, total in totals.items():
-        print(f"  {dest_name}: {total:,} companies upserted")
+    print(f"  {dest['name']}: {total:,} companies upserted")
     print(f"  Cantons OK: {len(ALL_CANTONS) - len(failed_cantons)}/{len(ALL_CANTONS)}")
 
     if failed_cantons:
