@@ -2,7 +2,7 @@
 """
 SITG Business & Energy — Import Pipeline (config-driven, pure ArcGIS)
 
-Fetches 3 SITG datasets via ArcGIS REST API and upserts into lamap_db (+ optional Yooneet):
+Fetches 3 SITG datasets via ArcGIS REST API and upserts into re-LLM bronze_ch:
   1. REG_ENTREPRISE_ETABLISSEMENT   — Business registry         (point)
   2. OCEN_ETAT_IDC_PUBLIC           — Energy expenditure index   (point)
   3. SCANE_RELATION_BATI_CHAUDIERE  — Building-boiler relations  (polyline)
@@ -18,12 +18,9 @@ DATA SAFETY:
     - Row count should only go UP or stay the same.
 
 Environment variables:
-    LAMAP_SUPABASE_URL          - Lamap Supabase project URL (required)
-    LAMAP_SUPABASE_SERVICE_KEY  - service_role key (required)
-    LAMAP_SCHEMA                - target schema (default: bronze)
-    YOONEET_SUPABASE_URL        - Yooneet Supabase project URL (optional)
-    YOONEET_SUPABASE_SERVICE_KEY - service_role key (optional)
-    YOONEET_SCHEMA              - target schema (default: bronze)
+    RE_LLM_SUPABASE_URL              - re-LLM Supabase project URL (required)
+    RE_LLM_SUPABASE_SERVICE_ROLE_KEY - service_role key (required)
+    RE_LLM_SCHEMA                    - target schema (default: bronze_ch)
 """
 
 import os
@@ -44,7 +41,7 @@ DATASETS = [
     {
         "name": "Entreprises REG",
         "code": "ge_reg_entreprise",
-        "table": "REG_ENTREPRISE_ETABLISSEMENT",
+        "table": "ge_reg_entreprises",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/reg_entreprise_etablissement/FeatureServer/0",
         "conflict_column": "objectid",
@@ -52,7 +49,7 @@ DATASETS = [
     {
         "name": "IDC énergie",
         "code": "ge_ocen_idc",
-        "table": "OCEN_ETAT_IDC_PUBLIC",
+        "table": "ge_ocen_idc",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/ocen_etat_idc_public/FeatureServer/0",
         "conflict_column": "objectid",
@@ -60,7 +57,7 @@ DATASETS = [
     {
         "name": "Chaudières bâtiments",
         "code": "ge_scane_chaudiere",
-        "table": "SCANE_RELATION_BATI_CHAUDIERE",
+        "table": "ge_scane_chaudiere",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/scane_relation_bati_chaudiere/FeatureServer/0",
         "conflict_column": "objectid",
@@ -276,20 +273,14 @@ def process_destination(
 # ──────────────────────────────────────────────────────────────
 
 def main():
-    # ── Required: Lamap ──
-    lamap_url = os.environ.get("LAMAP_SUPABASE_URL", "")
-    lamap_key = os.environ.get("LAMAP_SUPABASE_SERVICE_KEY", "")
-    lamap_schema = os.environ.get("LAMAP_SCHEMA", "bronze")
+    # ── Required: re-LLM ──
+    rellm_url = os.environ.get("RE_LLM_SUPABASE_URL", "")
+    rellm_key = os.environ.get("RE_LLM_SUPABASE_SERVICE_ROLE_KEY", "")
+    rellm_schema = os.environ.get("RE_LLM_SCHEMA", "bronze_ch")
 
-    if not lamap_url or not lamap_key:
-        print("ERROR: LAMAP_SUPABASE_URL and LAMAP_SUPABASE_SERVICE_KEY are required")
+    if not rellm_url or not rellm_key:
+        print("ERROR: RE_LLM_SUPABASE_URL and RE_LLM_SUPABASE_SERVICE_ROLE_KEY are required")
         sys.exit(1)
-
-    # ── Optional: Yooneet ──
-    yooneet_url = os.environ.get("YOONEET_SUPABASE_URL", "")
-    yooneet_key = os.environ.get("YOONEET_SUPABASE_SERVICE_KEY", "")
-    yooneet_schema = os.environ.get("YOONEET_SCHEMA", "bronze")
-
     print("=" * 60)
     print("  SITG Business & Energy Pipeline")
     print(f"  Datasets: {len(DATASETS)}")
@@ -312,28 +303,17 @@ def main():
 
         datasets_with_records.append((ds, records))
 
-    # ── Upsert to Lamap (required) ──
-    lamap_ok = process_destination(
-        "lamap_db", lamap_url, lamap_key, lamap_schema, datasets_with_records
+    # ── Upsert to re-LLM (required) ──
+    rellm_ok = process_destination(
+        "re-LLM", rellm_url, rellm_key, rellm_schema, datasets_with_records
     )
-
-    # ── Upsert to Yooneet (optional) ──
-    if yooneet_url and yooneet_key:
-        yooneet_ok = process_destination(
-            "yooneet", yooneet_url, yooneet_key, yooneet_schema, datasets_with_records
-        )
-        if not yooneet_ok:
-            print("\n  WARNING: Yooneet had failures (optional destination)")
-    else:
-        print("\n  Yooneet: not configured, skipping")
-
     # ── Final status ──
     print("\n" + "=" * 60)
     print("  IMPORT COMPLETE")
     print("=" * 60)
 
-    if not lamap_ok:
-        print("  FAILED: Lamap had errors")
+    if not rellm_ok:
+        print("  FAILED: re-LLM had errors")
         sys.exit(1)
 
 
