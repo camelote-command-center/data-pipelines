@@ -3,7 +3,7 @@
 GWR (Federal Building Register) — Import Pipeline
 
 Downloads the Swiss federal building register (Gebaeude- und Wohnungsregister)
-from BFS and upserts into bronze."HOUSING_STATS_BUILDING" on lamap_db.
+from BFS and upserts into bronze_ch.bfs_rebl_buildings on re-LLM.
 
 Source:  https://public.madd.bfs.admin.ch/ch.zip
          → gebaeude_batiment_edificio.csv (tab-delimited, ~3.3M rows)
@@ -17,9 +17,9 @@ DATA SAFETY:
     - Row count should only go UP or stay the same.
 
 Environment variables:
-    LAMAP_SUPABASE_URL          - Lamap Supabase project URL (required)
-    LAMAP_SUPABASE_SERVICE_KEY  - service_role key (required)
-    LAMAP_SCHEMA                - target schema (default: bronze)
+    RE_LLM_SUPABASE_URL              - re-LLM Supabase project URL (required)
+    RE_LLM_SUPABASE_SERVICE_ROLE_KEY - service_role key (required)
+    RE_LLM_SCHEMA                    - target schema (default: bronze_ch)
 """
 
 import csv
@@ -43,7 +43,7 @@ from shared.freshness import source_modified_since, get_dataset_meta, update_dat
 
 ZIP_URL = "https://public.madd.bfs.admin.ch/ch.zip"
 CSV_FILENAME = "gebaeude_batiment_edificio.csv"
-TABLE = "HOUSING_STATS_BUILDING"
+TABLE = "bfs_rebl_buildings"
 CONFLICT_COLUMN = "egid"
 BATCH_SIZE = 1000
 LOG_EVERY = 10000
@@ -235,20 +235,20 @@ def stream_upsert(
 # ──────────────────────────────────────────────────────────────
 
 def main():
-    lamap_url = os.environ.get("LAMAP_SUPABASE_URL", "")
-    lamap_key = os.environ.get("LAMAP_SUPABASE_SERVICE_KEY", "")
-    lamap_schema = os.environ.get("LAMAP_SCHEMA", "bronze")
+    rellm_url = os.environ.get("RE_LLM_SUPABASE_URL", "")
+    rellm_key = os.environ.get("RE_LLM_SUPABASE_SERVICE_ROLE_KEY", "")
+    rellm_schema = os.environ.get("RE_LLM_SCHEMA", "bronze_ch")
     camelote_url = os.environ.get("CAMELOTE_SUPABASE_URL", "")
     camelote_key = os.environ.get("CAMELOTE_SUPABASE_KEY", "")
 
-    if not lamap_url or not lamap_key:
-        print("ERROR: LAMAP_SUPABASE_URL and LAMAP_SUPABASE_SERVICE_KEY are required")
+    if not rellm_url or not rellm_key:
+        print("ERROR: RE_LLM_SUPABASE_URL and RE_LLM_SUPABASE_SERVICE_ROLE_KEY are required")
         sys.exit(1)
 
     print("=" * 60)
     print("  GWR (Federal Building Register) Pipeline")
     print(f"  Source: {ZIP_URL}")
-    print(f"  Target: {lamap_schema}.{TABLE}")
+    print(f"  Target: {rellm_schema}.{TABLE}")
     print("=" * 60)
 
     # ── Freshness pre-check ──
@@ -266,7 +266,7 @@ def main():
 
     # ── Discover table columns ──
     print("\n  Discovering table columns...")
-    table_columns = get_table_columns(lamap_url, lamap_key, lamap_schema, TABLE)
+    table_columns = get_table_columns(rellm_url, rellm_key, rellm_schema, TABLE)
     if not table_columns:
         print("  ERROR: Could not discover table columns")
         sys.exit(1)
@@ -275,7 +275,7 @@ def main():
     print(f"  Table has {len(table_columns)} columns, {len(allowed)} writable")
 
     # ── Row count BEFORE ──
-    rows_before = get_row_count(lamap_url, lamap_key, lamap_schema, TABLE)
+    rows_before = get_row_count(rellm_url, rellm_key, rellm_schema, TABLE)
     print(f"  Rows before: {rows_before:,}" if rows_before is not None else "  Rows before: unknown")
 
     # ── Download ZIP ──
@@ -285,7 +285,7 @@ def main():
     csv_name = find_csv_in_zip(zip_data)
 
     # ── Stream & Upsert ──
-    print(f"\n  Streaming {csv_name} → {lamap_schema}.{TABLE}")
+    print(f"\n  Streaming {csv_name} → {rellm_schema}.{TABLE}")
     print(f"  Batch size: {BATCH_SIZE}, logging every {LOG_EVERY:,} rows")
     print(f"{'━' * 60}")
 
@@ -294,14 +294,14 @@ def main():
         zip_data=zip_data,
         csv_name=csv_name,
         allowed_columns=allowed,
-        url=lamap_url,
-        key=lamap_key,
-        schema=lamap_schema,
+        url=rellm_url,
+        key=rellm_key,
+        schema=rellm_schema,
     )
     elapsed = time.time() - start
 
     # ── Row count AFTER ──
-    rows_after = get_row_count(lamap_url, lamap_key, lamap_schema, TABLE)
+    rows_after = get_row_count(rellm_url, rellm_key, rellm_schema, TABLE)
 
     # ── Summary ──
     print(f"\n{'=' * 60}")
