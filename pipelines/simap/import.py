@@ -3,7 +3,7 @@
 Simap Swiss Public Procurement — Import Pipeline
 
 Fetches public tender publications from the simap.ch REST API and upserts
-them into lamap_db's bronze."Simap" table.
+them into re-LLM bronze_ch.simap.
 
 This is a clean Python rewrite of LamapParser/parsers/simap.js.  It preserves
 the same API endpoints, field mapping, JSON column serialisation, and
@@ -15,13 +15,13 @@ DATA SAFETY:
     - Row count should only go UP or stay the same.
 
 Source:  https://www.simap.ch/
-Table:   bronze."Simap"
+Table:   bronze_ch.simap
 Key:     (project_number, publication_number)
 
 Environment variables:
-    LAMAP_SUPABASE_URL          - Lamap Supabase project URL (required)
-    LAMAP_SUPABASE_SERVICE_KEY  - service_role key (required)
-    LAMAP_SCHEMA                - target schema (default: bronze)
+    RE_LLM_SUPABASE_URL              - re-LLM Supabase project URL (required)
+    RE_LLM_SUPABASE_SERVICE_ROLE_KEY - service_role key (required)
+    RE_LLM_SCHEMA                    - target schema (default: bronze_ch)
 """
 
 import os
@@ -43,7 +43,7 @@ from shared.freshness import update_dataset_meta
 # Config
 # ──────────────────────────────────────────────────────────────
 
-TABLE_NAME = "Simap"  # case-sensitive, matches existing table
+TABLE_NAME = "simap"
 CONFLICT_COLUMNS = "project_number,publication_number"
 
 SEARCH_URL = "https://www.simap.ch/rest/publications/v2/project/project-search"
@@ -233,7 +233,7 @@ def get_publication_details(project_id, publication_id):
 def parse_publication(raw):
     """
     Transform raw publication-detail JSON into a flat dict matching the
-    bronze."Simap" column structure.  Mirrors formatData() from simap.js.
+    bronze_ch.simap column structure.  Mirrors formatData() from simap.js.
     """
     base = raw.get("base") or {}
     decision = raw.get("decision") or {}
@@ -373,17 +373,17 @@ def get_row_count(url, key, schema, table):
 # ──────────────────────────────────────────────────────────────
 
 def main():
-    url = os.environ.get("LAMAP_SUPABASE_URL", "")
-    key = os.environ.get("LAMAP_SUPABASE_SERVICE_KEY", "")
-    schema = os.environ.get("LAMAP_SCHEMA", "bronze")
+    url = os.environ.get("RE_LLM_SUPABASE_URL", "")
+    key = os.environ.get("RE_LLM_SUPABASE_SERVICE_ROLE_KEY", "")
+    schema = os.environ.get("RE_LLM_SCHEMA", "bronze_ch")
 
     if not url or not key:
-        print("ERROR: LAMAP_SUPABASE_URL and LAMAP_SUPABASE_SERVICE_KEY are required")
+        print("ERROR: RE_LLM_SUPABASE_URL and RE_LLM_SUPABASE_SERVICE_ROLE_KEY are required")
         sys.exit(1)
 
     print("=" * 55)
     print("  Simap Import Pipeline")
-    print(f"  Destination: lamap_db ({schema}.{TABLE_NAME})")
+    print(f"  Destination: re-LLM ({schema}.{TABLE_NAME})")
     print("=" * 55)
 
     # ── Safety: count rows BEFORE import ──
@@ -447,7 +447,7 @@ def main():
         print("  No records to upsert. Exiting.")
         return
 
-    # ── Step 4: Upsert to lamap_db ──
+    # ── Step 4: Upsert to re-LLM ──
     print(f"\n  Upserting to {schema}.{TABLE_NAME}...")
     upserted = batch_upsert(
         url=url,
