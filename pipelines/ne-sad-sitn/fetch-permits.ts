@@ -2,7 +2,7 @@
  * NE SITN WFS Pipeline — Neuchatel Building Permits
  *
  * Fetches building permits from the SITN (Systeme d'information du territoire
- * neuchatelois) WFS service and upserts them into bronze.sad_national.
+ * neuchatelois) WFS service and upserts them into bronze_ch.sad_national.
  *
  * Two layers are fetched:
  *   - at034_autorisation_construire_pendant  (pending / enquete publique)
@@ -300,7 +300,7 @@ function mapFeature(
 
 async function upsertBatch(records: SadNationalRecord[]): Promise<number> {
   const { error, count } = await supabase
-    .schema('bronze')
+    .schema('bronze_ch')
     .from('sad_national')
     .upsert(records, { onConflict: 'source_id,canton', count: 'exact' });
 
@@ -319,7 +319,7 @@ async function upsertBatch(records: SadNationalRecord[]): Promise<number> {
 async function main() {
   console.log('='.repeat(60));
   console.log('  NE SITN WFS Pipeline — Neuchatel Building Permits');
-  console.log('  Target: bronze.sad_national');
+  console.log('  Target: bronze_ch.sad_national');
   console.log('='.repeat(60));
 
   const startTime = Date.now();

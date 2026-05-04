@@ -16,5 +16,5 @@ jobs:
       - run: cd pipelines/ne-sad-sitn && npm ci
       - run: cd pipelines/ne-sad-sitn && npx tsx fetch-permits.ts
         env:
-          SUPABASE_URL: ${{ secrets.LAMAP_SUPABASE_URL }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.LAMAP_SUPABASE_SERVICE_KEY }}
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
