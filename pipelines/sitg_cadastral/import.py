@@ -2,14 +2,14 @@
 """
 SITG Cadastral & Ownership — Import Pipeline (config-driven, pure ArcGIS)
 
-Fetches 7 SITG datasets via ArcGIS REST API and upserts into lamap_db (+ optional Yooneet):
-  1. CAD_PARCELLE_MENSU        — Survey parcels             (polygon)
-  2. RDPPF_SYNTH_DYN_EXTRACT   — RDPPF synthesis by EGRID   (polygon)
-  3. CAD_DDP                   — Permanent separate rights   (polygon)
-  4. CAD_PPE                   — Co-ownership by floor       (point)
-  5. CAD_BATIMENT_HORSOL        — Above-ground buildings     (polygon)
-  6. CAD_BATIMENT_SOUSOL        — Underground buildings      (polygon)
-  7. CAD_ADRESSE                — Cadastral addresses        (point)
+Fetches 7 SITG datasets via ArcGIS REST API and upserts into re-LLM bronze_ch:
+  1. ge_cad_parcelles              — Survey parcels             (polygon)
+  2. ge_rdppf_synthese             — RDPPF synthesis by EGRID   (polygon)
+  3. ge_cad_ddp                    — Permanent separate rights  (polygon)
+  4. ge_cad_ppe                    — Co-ownership by floor      (point)
+  5. ge_cad_batiments              — Above-ground buildings     (polygon)
+  6. ge_cad_batiments_souterrains  — Underground buildings      (polygon)
+  7. ge_cad_adresses               — Cadastral addresses        (point)
 
 All datasets use the SITG ArcGIS REST API (Hosted FeatureServer).
 No CSV downloads, no filesystem operations.
@@ -22,12 +22,9 @@ DATA SAFETY:
     - Row count should only go UP or stay the same.
 
 Environment variables:
-    LAMAP_SUPABASE_URL          - Lamap Supabase project URL (required)
-    LAMAP_SUPABASE_SERVICE_KEY  - service_role key (required)
-    LAMAP_SCHEMA                - target schema (default: bronze)
-    YOONEET_SUPABASE_URL        - Yooneet Supabase project URL (optional)
-    YOONEET_SUPABASE_SERVICE_KEY - service_role key (optional)
-    YOONEET_SCHEMA              - target schema (default: bronze)
+    RE_LLM_SUPABASE_URL              - re-LLM Supabase project URL (required)
+    RE_LLM_SUPABASE_SERVICE_ROLE_KEY - service_role key (required)
+    RE_LLM_SCHEMA                    - target schema (default: bronze_ch)
 """
 
 import os
@@ -54,7 +51,7 @@ DATASETS = [
     {
         "name": "Parcelles cadastrales",
         "code": "ge_cad_parcelle_mensu",
-        "table": "CAD_PARCELLE_MENSU",
+        "table": "ge_cad_parcelles",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/cad_parcelle_mensu/FeatureServer/0",
         "conflict_column": "objectid",
@@ -68,7 +65,7 @@ DATASETS = [
     {
         "name": "RDPPF servitudes synthèse",
         "code": "ge_rdppf_synth",
-        "table": "RDPPF_SYNTH_DYN_EXTRACT",
+        "table": "ge_rdppf_synthese",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/rdppf_synth_dyn_extract/FeatureServer/0",
         "conflict_column": "egrid",
@@ -77,7 +74,7 @@ DATASETS = [
     {
         "name": "DDP droits distincts",
         "code": "ge_cad_ddp",
-        "table": "CAD_DDP",
+        "table": "ge_cad_ddp",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/cad_ddp/FeatureServer/0",
         "conflict_column": "objectid",
@@ -89,7 +86,7 @@ DATASETS = [
     {
         "name": "PPE copropriété",
         "code": "ge_cad_ppe",
-        "table": "CAD_PPE",
+        "table": "ge_cad_ppe",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/cad_ppe/FeatureServer/0",
         "conflict_column": "objectid",
@@ -97,7 +94,7 @@ DATASETS = [
     {
         "name": "Bâtiments hors-sol",
         "code": "ge_cad_batiment_horsol",
-        "table": "CAD_BATIMENT_HORSOL",
+        "table": "ge_cad_batiments",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/cad_batiment_horsol/FeatureServer/0",
         "conflict_column": "objectid",
@@ -109,7 +106,7 @@ DATASETS = [
     {
         "name": "Bâtiments sous-sol",
         "code": "ge_cad_batiment_sousol",
-        "table": "CAD_BATIMENT_SOUSOL",
+        "table": "ge_cad_batiments_souterrains",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/cad_batiment_sousol/FeatureServer/0",
         "conflict_column": "objectid",
@@ -121,7 +118,7 @@ DATASETS = [
     {
         "name": "Adresses cadastrales",
         "code": "ge_cad_adresse",
-        "table": "CAD_ADRESSE",
+        "table": "ge_cad_adresses",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/cad_adresse/FeatureServer/0",
         "conflict_column": "objectid",
@@ -340,19 +337,14 @@ def process_destination(
 # ──────────────────────────────────────────────────────────────
 
 def main():
-    # ── Required: Lamap ──
-    lamap_url = os.environ.get("LAMAP_SUPABASE_URL", "")
-    lamap_key = os.environ.get("LAMAP_SUPABASE_SERVICE_KEY", "")
-    lamap_schema = os.environ.get("LAMAP_SCHEMA", "bronze")
+    # ── Required: re-LLM ──
+    rellm_url = os.environ.get("RE_LLM_SUPABASE_URL", "")
+    rellm_key = os.environ.get("RE_LLM_SUPABASE_SERVICE_ROLE_KEY", "")
+    rellm_schema = os.environ.get("RE_LLM_SCHEMA", "bronze_ch")
 
-    if not lamap_url or not lamap_key:
-        print("ERROR: LAMAP_SUPABASE_URL and LAMAP_SUPABASE_SERVICE_KEY are required")
+    if not rellm_url or not rellm_key:
+        print("ERROR: RE_LLM_SUPABASE_URL and RE_LLM_SUPABASE_SERVICE_ROLE_KEY are required")
         sys.exit(1)
-
-    # ── Optional: Yooneet ──
-    yooneet_url = os.environ.get("YOONEET_SUPABASE_URL", "")
-    yooneet_key = os.environ.get("YOONEET_SUPABASE_SERVICE_KEY", "")
-    yooneet_schema = os.environ.get("YOONEET_SCHEMA", "bronze")
 
     print("=" * 60)
     print("  SITG Cadastral & Ownership Pipeline")
@@ -376,28 +368,18 @@ def main():
 
         datasets_with_records.append((ds, records))
 
-    # ── Upsert to Lamap (required) ──
-    lamap_ok = process_destination(
-        "lamap_db", lamap_url, lamap_key, lamap_schema, datasets_with_records
+    # ── Upsert to re-LLM (required) ──
+    rellm_ok = process_destination(
+        "re-LLM", rellm_url, rellm_key, rellm_schema, datasets_with_records
     )
-
-    # ── Upsert to Yooneet (optional) ──
-    if yooneet_url and yooneet_key:
-        yooneet_ok = process_destination(
-            "yooneet", yooneet_url, yooneet_key, yooneet_schema, datasets_with_records
-        )
-        if not yooneet_ok:
-            print("\n  WARNING: Yooneet had failures (optional destination)")
-    else:
-        print("\n  Yooneet: not configured, skipping")
 
     # ── Final status ──
     print("\n" + "=" * 60)
     print("  IMPORT COMPLETE")
     print("=" * 60)
 
-    if not lamap_ok:
-        print("  FAILED: Lamap had errors")
+    if not rellm_ok:
+        print("  FAILED: re-LLM had errors")
         sys.exit(1)
 
 
