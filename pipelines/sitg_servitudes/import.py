@@ -3,7 +3,7 @@
 SITG Servitudes (RFO_TOUTES_SERVITUDES) — Import Pipeline
 
 Fetches land-registry easement/servitude data from the SITG ArcGIS REST API
-and upserts into bronze."RFO_TOUTES_SERVITUDES".
+and upserts into bronze_ch.ge_rfo_servitudes.
 
 This is a clean Python rewrite of LamapParser/parsers/legalConstraints.js.
 It preserves the same API endpoint, field mapping, and table structure, with
@@ -21,16 +21,14 @@ DATA SAFETY:
     - Row count should only go UP or stay the same.
 
 Source:  https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/RFO_TOUTES_SERVITUDES/FeatureServer/0
-Table:   bronze."RFO_TOUTES_SERVITUDES"
+Table:   bronze_ch.ge_rfo_servitudes
 Key:     objectid
 Geom:    Polygon (WGS84)
 
 Environment variables:
-    LAMAP_SUPABASE_URL          - Lamap Supabase project URL (required)
-    LAMAP_SUPABASE_SERVICE_KEY  - service_role key (required)
-    LAMAP_SCHEMA                - target schema (default: bronze)
-    YOONEET_SUPABASE_URL        - Yooneet Supabase project URL (optional)
-    YOONEET_SUPABASE_SERVICE_KEY - Yooneet service_role key (optional)
+    RE_LLM_SUPABASE_URL              - re-LLM Supabase project URL (required)
+    RE_LLM_SUPABASE_SERVICE_ROLE_KEY - service_role key (required)
+    RE_LLM_SCHEMA                    - target schema (default: bronze_ch)
 """
 
 import os
@@ -51,7 +49,7 @@ API_URL = (
     "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted"
     "/RFO_TOUTES_SERVITUDES/FeatureServer/0"
 )
-TABLE_NAME = "RFO_TOUTES_SERVITUDES"
+TABLE_NAME = "ge_rfo_servitudes"
 CONFLICT_COLUMN = "objectid"
 
 # Fields that exist in the JS-era table but we no longer use
@@ -106,32 +104,21 @@ def build_destinations() -> list[dict]:
     """Build list of Supabase destinations from env vars."""
     destinations = []
 
-    # Lamap (required)
-    lamap_url = os.environ.get("LAMAP_SUPABASE_URL", "")
-    lamap_key = os.environ.get("LAMAP_SUPABASE_SERVICE_KEY", "")
-    lamap_schema = os.environ.get("LAMAP_SCHEMA", "bronze")
+    # re-LLM (required)
+    rellm_url = os.environ.get("RE_LLM_SUPABASE_URL", "")
+    rellm_key = os.environ.get("RE_LLM_SUPABASE_SERVICE_ROLE_KEY", "")
+    rellm_schema = os.environ.get("RE_LLM_SCHEMA", "bronze_ch")
 
-    if lamap_url and lamap_key:
+    if rellm_url and rellm_key:
         destinations.append({
-            "name": "lamap_db",
-            "url": lamap_url,
-            "key": lamap_key,
-            "schema": lamap_schema,
+            "name": "re-LLM",
+            "url": rellm_url,
+            "key": rellm_key,
+            "schema": rellm_schema,
         })
     else:
-        print("ERROR: LAMAP_SUPABASE_URL and LAMAP_SUPABASE_SERVICE_KEY are required")
+        print("ERROR: RE_LLM_SUPABASE_URL and RE_LLM_SUPABASE_SERVICE_ROLE_KEY are required")
         sys.exit(1)
-
-    # Yooneet (optional)
-    yooneet_url = os.environ.get("YOONEET_SUPABASE_URL", "")
-    yooneet_key = os.environ.get("YOONEET_SUPABASE_SERVICE_KEY", "")
-    if yooneet_url and yooneet_key:
-        destinations.append({
-            "name": "yooneet",
-            "url": yooneet_url,
-            "key": yooneet_key,
-            "schema": "bronze",
-        })
 
     return destinations
 
@@ -167,10 +154,10 @@ def main():
     print(f"\n  Total records to upsert: {len(records):,}")
 
     # ── Step 2: Upsert to each destination ────────────────────
-    primary_ok = False  # lamap_db (first dest) must succeed
+    primary_ok = False  # re-LLM (first dest) must succeed
 
     for i, dest in enumerate(destinations):
-        is_primary = i == 0  # lamap_db is always first
+        is_primary = i == 0  # re-LLM is always first
 
         print(f"\n{'─' * 60}")
         print(f"  Destination: {dest['name']} ({dest['schema']}.{TABLE_NAME})")
@@ -227,7 +214,7 @@ def main():
     print("=" * 60)
 
     if not primary_ok:
-        print("  FATAL: Primary destination (lamap_db) failed!")
+        print("  FATAL: Primary destination (re-LLM) failed!")
         sys.exit(1)
 
 
