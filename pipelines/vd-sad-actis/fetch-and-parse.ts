@@ -2,7 +2,7 @@
  * fetch-and-parse.ts — ACTIS VD building permit backfill
  *
  * Iterates through numeric IDs on the ACTIS REST endpoint, parses the HTML
- * response into structured fields, and upserts into bronze.sad_national.
+ * response into structured fields, and upserts into bronze_ch.sad_national.
  *
  * Uses p-limit for concurrent requests (default: 10 parallel) with adaptive
  * throttling on errors.
@@ -293,7 +293,7 @@ function parsePermit(rawText: string, urlId: number): ParsedPermit | null {
 async function upsertBatch(batch: ParsedPermit[]): Promise<number> {
   if (batch.length === 0) return 0;
   const { error } = await supabase
-    .schema('bronze')
+    .schema('bronze_ch')
     .from('sad_national')
     .upsert(batch as any[], { onConflict: 'source_id,canton' });
   if (error) {

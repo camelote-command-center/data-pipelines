@@ -58,8 +58,8 @@ jobs:
           CHUNK=$(( ${{ matrix.range.end }} - ${{ matrix.range.start }} + 1 ))
           npx tsx fetch-and-parse.ts ${{ matrix.range.start }} $CHUNK
         env:
-          SUPABASE_URL: ${{ secrets.LAMAP_SUPABASE_URL }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.LAMAP_SUPABASE_SERVICE_KEY }}
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
 
   # For 'continue' or 'custom' strategy: single job
   single-backfill:
@@ -77,8 +77,8 @@ jobs:
           cd pipelines/vd-sad-actis
           npx tsx fetch-and-parse.ts ${{ inputs.start_id || '' }} ${{ inputs.chunk_size || '20000' }}
         env:
-          SUPABASE_URL: ${{ secrets.LAMAP_SUPABASE_URL }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.LAMAP_SUPABASE_SERVICE_KEY }}
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
       - name: Commit state
         run: |
           cd pipelines/vd-sad-actis
