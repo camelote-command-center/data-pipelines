@@ -4,7 +4,7 @@ OSM (OpenStreetMap) — Import Pipeline
 
 Fetches geographic features from OpenStreetMap via the Overpass API
 for Suisse Romande (cantons GE, VD, FR, VS, NE, JU) and upserts into
-bronze."OSM" on lamap_db.
+bronze_ch.osm on re-LLM.
 
 Strategy:
   1. For each Suisse Romande canton, fetch commune relations via Overpass
@@ -20,9 +20,9 @@ DATA SAFETY:
     - Never truncates or deletes existing data.
 
 Environment variables:
-    LAMAP_SUPABASE_URL          - Lamap Supabase project URL (required)
-    LAMAP_SUPABASE_SERVICE_KEY  - service_role key (required)
-    LAMAP_SCHEMA                - target schema (default: bronze)
+    RE_LLM_SUPABASE_URL              - re-LLM Supabase project URL (required)
+    RE_LLM_SUPABASE_SERVICE_ROLE_KEY - service_role key (required)
+    RE_LLM_SCHEMA                    - target schema (default: bronze_ch)
 """
 
 import json
@@ -43,7 +43,7 @@ from shared.freshness import get_dataset_meta, update_dataset_meta
 # ──────────────────────────────────────────────────────────────
 
 OVERPASS_URL = "https://overpass-api.de/api/interpreter"
-TABLE = "OSM"
+TABLE = "osm"
 CONFLICT_COLUMN = "osm_id"
 BATCH_SIZE = 1000
 LOG_EVERY = 10000
@@ -496,21 +496,21 @@ def build_record(
 # ──────────────────────────────────────────────────────────────
 
 def main():
-    lamap_url = os.environ.get("LAMAP_SUPABASE_URL", "")
-    lamap_key = os.environ.get("LAMAP_SUPABASE_SERVICE_KEY", "")
-    lamap_schema = os.environ.get("LAMAP_SCHEMA", "bronze")
+    rellm_url = os.environ.get("RE_LLM_SUPABASE_URL", "")
+    rellm_key = os.environ.get("RE_LLM_SUPABASE_SERVICE_ROLE_KEY", "")
+    rellm_schema = os.environ.get("RE_LLM_SCHEMA", "bronze_ch")
     camelote_url = os.environ.get("CAMELOTE_SUPABASE_URL", "")
     camelote_key = os.environ.get("CAMELOTE_SUPABASE_KEY", "")
 
-    if not lamap_url or not lamap_key:
-        print("ERROR: LAMAP_SUPABASE_URL and LAMAP_SUPABASE_SERVICE_KEY are required")
+    if not rellm_url or not rellm_key:
+        print("ERROR: RE_LLM_SUPABASE_URL and RE_LLM_SUPABASE_SERVICE_ROLE_KEY are required")
         sys.exit(1)
 
     canton_labels = ", ".join(c[0] for c in CANTONS)
     print("=" * 60)
     print("  OSM (OpenStreetMap) Pipeline — Suisse Romande")
     print(f"  Cantons: {canton_labels}")
-    print(f"  Target: {lamap_schema}.{TABLE}")
+    print(f"  Target: {rellm_schema}.{TABLE}")
     print("=" * 60)
 
     # ── Show previous metadata ──
@@ -520,11 +520,11 @@ def main():
         print(f"  Previous record count: {meta.get('record_count', 'unknown')}")
 
     # ── Row count BEFORE ──
-    rows_before = get_row_count(lamap_url, lamap_key, lamap_schema, TABLE)
+    rows_before = get_row_count(rellm_url, rellm_key, rellm_schema, TABLE)
     print(f"  Rows before: {rows_before:,}" if rows_before is not None else "  Rows before: unknown")
 
     # ── Probe: does the canton column exist? ──
-    include_canton = probe_canton_column(lamap_url, lamap_key, lamap_schema)
+    include_canton = probe_canton_column(rellm_url, rellm_key, rellm_schema)
     if include_canton:
         print("  Canton column: found — will populate")
     else:
@@ -637,12 +637,12 @@ def main():
     for i in range(0, len(all_records), BATCH_SIZE):
         batch = all_records[i : i + BATCH_SIZE]
         upserted = batch_upsert(
-            url=lamap_url,
-            key=lamap_key,
+            url=rellm_url,
+            key=rellm_key,
             table=TABLE,
             records=batch,
             conflict_column=CONFLICT_COLUMN,
-            schema=lamap_schema,
+            schema=rellm_schema,
             batch_size=BATCH_SIZE,
         )
         total_upserted += upserted
@@ -651,7 +651,7 @@ def main():
             print(f"    Progress: {total_upserted:,} / {len(all_records):,} upserted")
 
     # ── Row count AFTER ──
-    rows_after = get_row_count(lamap_url, lamap_key, lamap_schema, TABLE)
+    rows_after = get_row_count(rellm_url, rellm_key, rellm_schema, TABLE)
 
     # ── Summary ──
     elapsed = time.time() - start_time
