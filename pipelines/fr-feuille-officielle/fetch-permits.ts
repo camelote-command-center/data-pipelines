@@ -2,7 +2,7 @@
  * FR Feuille Officielle — Building Permit Fetcher (Category 21)
  *
  * Fetches building permit articles from the Feuille officielle du canton de
- * Fribourg and upserts them into bronze.sad_national.
+ * Fribourg and upserts them into bronze_ch.sad_national.
  *
  * Each article page contains a 3-column HTML table:
  *   Column 1: commune, address, LV95 coordinates
@@ -445,7 +445,7 @@ async function processYear(year: number): Promise<SadNationalRecord[]> {
 
 async function upsertBatch(records: SadNationalRecord[]): Promise<number> {
   const { error, count } = await supabase
-    .schema('bronze')
+    .schema('bronze_ch')
     .from('sad_national')
     .upsert(records, { onConflict: 'source_id,canton', count: 'exact' });
 
@@ -461,7 +461,7 @@ async function main() {
   console.log('='.repeat(60));
   console.log('  FR Feuille Officielle — Building Permit Pipeline');
   console.log('  Source: fo.fr.ch (category 21, 3-column table)');
-  console.log('  Target: bronze.sad_national');
+  console.log('  Target: bronze_ch.sad_national');
   console.log('='.repeat(60));
 
   const startTime = Date.now();

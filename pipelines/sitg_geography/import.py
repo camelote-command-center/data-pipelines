@@ -21,9 +21,9 @@ DATA SAFETY:
     - Row count should only go UP or stay the same.
 
 Environment variables:
-    LAMAP_SUPABASE_URL          - Lamap Supabase project URL (required)
-    LAMAP_SUPABASE_SERVICE_KEY  - service_role key (required)
-    LAMAP_SCHEMA                - target schema (default: bronze)
+    RE_LLM_SUPABASE_URL              - re-LLM Supabase project URL (required)
+    RE_LLM_SUPABASE_SERVICE_ROLE_KEY - service_role key (required)
+    RE_LLM_SCHEMA                    - target schema (default: bronze_ch)
 """
 
 import os
@@ -44,7 +44,7 @@ DATASETS = [
     {
         "name": "Communes",
         "code": "ge_cad_commune",
-        "table": "CAD_COMMUNE",
+        "table": "ge_cad_communes",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/cad_commune/FeatureServer/0",
         "conflict_column": "objectid",
@@ -56,7 +56,7 @@ DATASETS = [
     {
         "name": "Piscines",
         "code": "ge_cad_piscine",
-        "table": "CAD_PISCINE",
+        "table": "ge_cad_piscines",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/cad_piscine/FeatureServer/0",
         "conflict_column": "objectid",
@@ -68,7 +68,7 @@ DATASETS = [
     {
         "name": "Vérandas",
         "code": "ge_cad_veranda",
-        "table": "CAD_VERANDA",
+        "table": "ge_cad_verandas",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/cad_veranda/FeatureServer/0",
         "conflict_column": "objectid",
@@ -80,7 +80,7 @@ DATASETS = [
     {
         "name": "Sites pollués",
         "code": "ge_gol_sites_pollues",
-        "table": "GOL_SITES_POLLUES",
+        "table": "ge_gol_sites_pollues",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/gol_sites_pollues/FeatureServer/0",
         "conflict_column": "objectid",
@@ -89,7 +89,7 @@ DATASETS = [
     {
         "name": "Adresses agglomération",
         "code": "ge_geo_adresse_agglo",
-        "table": "GEO_ADRESSE_AGGLO",
+        "table": "ge_adresse_agglo",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/geo_adresse_agglo/FeatureServer/0",
         "conflict_column": "objectid",
@@ -101,7 +101,7 @@ DATASETS = [
     {
         "name": "Surfaces agricoles",
         "code": "ge_agr_surface_agricole",
-        "table": "AGR_SURFACE_AGRICOLE_RECENSEE",
+        "table": "ge_agr_surface_agricole",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/agr_surface_agricole_recensee/FeatureServer/0",
         "conflict_column": "objectid",
@@ -319,13 +319,13 @@ def process_destination(
 # ──────────────────────────────────────────────────────────────
 
 def main():
-    # ── Required: Lamap ──
-    lamap_url = os.environ.get("LAMAP_SUPABASE_URL", "")
-    lamap_key = os.environ.get("LAMAP_SUPABASE_SERVICE_KEY", "")
-    lamap_schema = os.environ.get("LAMAP_SCHEMA", "bronze")
+    # ── Required: re-LLM ──
+    rellm_url = os.environ.get("RE_LLM_SUPABASE_URL", "")
+    rellm_key = os.environ.get("RE_LLM_SUPABASE_SERVICE_ROLE_KEY", "")
+    rellm_schema = os.environ.get("RE_LLM_SCHEMA", "bronze_ch")
 
-    if not lamap_url or not lamap_key:
-        print("ERROR: LAMAP_SUPABASE_URL and LAMAP_SUPABASE_SERVICE_KEY are required")
+    if not rellm_url or not rellm_key:
+        print("ERROR: RE_LLM_SUPABASE_URL and RE_LLM_SUPABASE_SERVICE_ROLE_KEY are required")
         sys.exit(1)
 
     print("=" * 60)
@@ -350,9 +350,9 @@ def main():
 
         datasets_with_records.append((ds, records))
 
-    # ── Upsert to Lamap (required) ──
-    lamap_ok = process_destination(
-        "lamap_db", lamap_url, lamap_key, lamap_schema, datasets_with_records
+    # ── Upsert to re-LLM (required) ──
+    rellm_ok = process_destination(
+        "re-LLM", rellm_url, rellm_key, rellm_schema, datasets_with_records
     )
 
     # ── Final status ──
@@ -360,8 +360,8 @@ def main():
     print("  IMPORT COMPLETE")
     print("=" * 60)
 
-    if not lamap_ok:
-        print("  FAILED: Lamap had errors")
+    if not rellm_ok:
+        print("  FAILED: re-LLM had errors")
         sys.exit(1)
 
 

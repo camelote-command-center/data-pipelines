@@ -3,7 +3,7 @@
 Minergie — Import Pipeline
 
 Fetches Minergie certified buildings in Switzerland from the geo.admin.ch
-REST API and upserts into bronze."minergie" on lamap_db.
+REST API and upserts into bronze_ch.minergie on re-LLM.
 
 Source:  geo.admin.ch MapServer identify endpoint
          Layer: ch.bfe.minergiegebaeude
@@ -21,9 +21,9 @@ DATA SAFETY:
     - Row count should only go UP or stay the same.
 
 Environment variables:
-    LAMAP_SUPABASE_URL          - Lamap Supabase project URL (required)
-    LAMAP_SUPABASE_SERVICE_KEY  - service_role key (required)
-    LAMAP_SCHEMA                - target schema (default: bronze)
+    RE_LLM_SUPABASE_URL              - re-LLM Supabase project URL (required)
+    RE_LLM_SUPABASE_SERVICE_ROLE_KEY - service_role key (required)
+    RE_LLM_SCHEMA                    - target schema (default: bronze_ch)
     CAMELOTE_SUPABASE_URL       - Camelote command-center URL (optional)
     CAMELOTE_SUPABASE_KEY       - Camelote service_role key (optional)
 """
@@ -313,20 +313,20 @@ def create_minergie_table(url: str, key: str, schema: str) -> bool:
 # ------------------------------------------------------------------
 
 def main():
-    lamap_url = os.environ.get("LAMAP_SUPABASE_URL", "")
-    lamap_key = os.environ.get("LAMAP_SUPABASE_SERVICE_KEY", "")
-    lamap_schema = os.environ.get("LAMAP_SCHEMA", "bronze")
+    rellm_url = os.environ.get("RE_LLM_SUPABASE_URL", "")
+    rellm_key = os.environ.get("RE_LLM_SUPABASE_SERVICE_ROLE_KEY", "")
+    rellm_schema = os.environ.get("RE_LLM_SCHEMA", "bronze_ch")
     camelote_url = os.environ.get("CAMELOTE_SUPABASE_URL", "")
     camelote_key = os.environ.get("CAMELOTE_SUPABASE_KEY", "")
 
-    if not lamap_url or not lamap_key:
-        print("ERROR: LAMAP_SUPABASE_URL and LAMAP_SUPABASE_SERVICE_KEY are required")
+    if not rellm_url or not rellm_key:
+        print("ERROR: RE_LLM_SUPABASE_URL and RE_LLM_SUPABASE_SERVICE_ROLE_KEY are required")
         sys.exit(1)
 
     print("=" * 60)
     print("  Minergie (Certified Buildings) Pipeline")
     print(f"  Source: geo.admin.ch — {LAYER}")
-    print(f"  Target: {lamap_schema}.{TABLE}")
+    print(f"  Target: {rellm_schema}.{TABLE}")
     print("=" * 60)
 
     # -- Previous metadata --
@@ -336,12 +336,12 @@ def main():
         print(f"  Previous record count: {meta.get('record_count', 'unknown')}")
 
     # -- Check table exists --
-    if not table_exists(lamap_url, lamap_key, lamap_schema, TABLE):
-        create_minergie_table(lamap_url, lamap_key, lamap_schema)
+    if not table_exists(rellm_url, rellm_key, rellm_schema, TABLE):
+        create_minergie_table(rellm_url, rellm_key, rellm_schema)
         sys.exit(1)
 
     # -- Row count BEFORE --
-    rows_before = get_row_count(lamap_url, lamap_key, lamap_schema, TABLE)
+    rows_before = get_row_count(rellm_url, rellm_key, rellm_schema, TABLE)
     print(
         f"  Rows before: {rows_before:,}" if rows_before is not None
         else "  Rows before: unknown"
@@ -363,7 +363,7 @@ def main():
         sys.exit(1)
 
     # -- Discover table columns and filter --
-    table_cols = get_table_columns(lamap_url, lamap_key, lamap_schema, TABLE)
+    table_cols = get_table_columns(rellm_url, rellm_key, rellm_schema, TABLE)
     exclude = {"id", "created_at", "updated_at"}
     if table_cols:
         allowed = table_cols - exclude
@@ -403,17 +403,17 @@ def main():
     print(f"\n  Upserting {len(all_records):,} records (batch size {BATCH_SIZE})...")
 
     total_upserted = batch_upsert(
-        url=lamap_url,
-        key=lamap_key,
+        url=rellm_url,
+        key=rellm_key,
         table=TABLE,
         records=all_records,
         conflict_column=CONFLICT_COLUMN,
-        schema=lamap_schema,
+        schema=rellm_schema,
         batch_size=BATCH_SIZE,
     )
 
     # -- Row count AFTER --
-    rows_after = get_row_count(lamap_url, lamap_key, lamap_schema, TABLE)
+    rows_after = get_row_count(rellm_url, rellm_key, rellm_schema, TABLE)
 
     # -- Summary --
     elapsed = time.time() - start_time

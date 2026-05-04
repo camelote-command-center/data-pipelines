@@ -2,7 +2,7 @@
 """
 SITG Urban Programs & Construction Potential — Import Pipeline
 
-Fetches 3 SITG datasets from ArcGIS REST API and upserts into lamap_db:
+Fetches 3 SITG datasets from ArcGIS REST API and upserts into re-LLM bronze_ch:
   1. SIT_PROG_DENS          — Villas-district densification programs  (polygons)
   2. OLS_LOGEMENT_SUBV       — Subsidized housing                     (polygons)
   3. SIT_SURELEVATION_BATIMENT — Buildings that can be raised          (polygons)
@@ -18,9 +18,9 @@ DATA SAFETY:
     - Row count should only go UP or stay the same.
 
 Environment variables:
-    LAMAP_SUPABASE_URL          - Lamap Supabase project URL (required)
-    LAMAP_SUPABASE_SERVICE_KEY  - service_role key (required)
-    LAMAP_SCHEMA                - target schema (default: bronze)
+    RE_LLM_SUPABASE_URL              - re-LLM Supabase project URL (required)
+    RE_LLM_SUPABASE_SERVICE_ROLE_KEY - service_role key (required)
+    RE_LLM_SCHEMA                    - target schema (default: bronze_ch)
 """
 
 import os
@@ -40,19 +40,19 @@ from shared.sitg_arcgis import fetch_all_features
 DATASETS = [
     {
         "key": "villas_district_densification_program",
-        "table": "SIT_PROG_DENS",
+        "table": "ge_sit_prog_dens",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/sit_prog_dens/FeatureServer/0",
         "conflict_column": "objectid",
     },
     {
         "key": "subsidized_housing",
-        "table": "OLS_LOGEMENT_SUBV",
+        "table": "ge_ols_logement_subv",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/ols_logement_subv/FeatureServer/0",
         "conflict_column": "objectid",
     },
     {
         "key": "buildings_that_can_be_raised",
-        "table": "SIT_SURELEVATION_BATIMENT",
+        "table": "ge_sit_surelevation",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/sit_surelevation_batiment/FeatureServer/0",
         "conflict_column": "objectid",
     },
@@ -107,17 +107,17 @@ def has_column(url: str, key: str, schema: str, table: str, column: str) -> bool
 # ──────────────────────────────────────────────────────────────
 
 def main():
-    dest_url = os.environ.get("LAMAP_SUPABASE_URL", "")
-    dest_key = os.environ.get("LAMAP_SUPABASE_SERVICE_KEY", "")
-    dest_schema = os.environ.get("LAMAP_SCHEMA", "bronze")
+    dest_url = os.environ.get("RE_LLM_SUPABASE_URL", "")
+    dest_key = os.environ.get("RE_LLM_SUPABASE_SERVICE_ROLE_KEY", "")
+    dest_schema = os.environ.get("RE_LLM_SCHEMA", "bronze_ch")
 
     if not dest_url or not dest_key:
-        print("ERROR: LAMAP_SUPABASE_URL and LAMAP_SUPABASE_SERVICE_KEY are required")
+        print("ERROR: RE_LLM_SUPABASE_URL and RE_LLM_SUPABASE_SERVICE_ROLE_KEY are required")
         sys.exit(1)
 
     print("=" * 60)
     print("  SITG Urban Programs & Construction Potential Pipeline")
-    print(f"  Destination: lamap_db ({dest_schema})")
+    print(f"  Destination: re-LLM ({dest_schema})")
     print(f"  Datasets: {len(DATASETS)}")
     print("=" * 60)
 
