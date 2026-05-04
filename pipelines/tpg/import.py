@@ -16,9 +16,9 @@ DATA SAFETY:
     - Row count should only go UP or stay the same.
 
 Environment variables:
-    LAMAP_SUPABASE_URL          - Lamap Supabase project URL (required)
-    LAMAP_SUPABASE_SERVICE_KEY  - service_role key (required)
-    LAMAP_SCHEMA                - target schema (default: bronze)
+    RE_LLM_SUPABASE_URL              - re-LLM Supabase project URL (required)
+    RE_LLM_SUPABASE_SERVICE_ROLE_KEY - service_role key (required)
+    RE_LLM_SCHEMA                    - target schema (default: bronze_ch)
 """
 
 import json
@@ -393,12 +393,12 @@ def process_dataset(
 
 def main():
     # ── Required: Lamap ──
-    lamap_url = os.environ.get("LAMAP_SUPABASE_URL", "")
-    lamap_key = os.environ.get("LAMAP_SUPABASE_SERVICE_KEY", "")
-    lamap_schema = os.environ.get("LAMAP_SCHEMA", "bronze")
+    rellm_url = os.environ.get("RE_LLM_SUPABASE_URL", "")
+    rellm_key = os.environ.get("RE_LLM_SUPABASE_SERVICE_ROLE_KEY", "")
+    rellm_schema = os.environ.get("RE_LLM_SCHEMA", "bronze_ch")
 
-    if not lamap_url or not lamap_key:
-        print("ERROR: LAMAP_SUPABASE_URL and LAMAP_SUPABASE_SERVICE_KEY are required")
+    if not rellm_url or not rellm_key:
+        print("ERROR: RE_LLM_SUPABASE_URL and RE_LLM_SUPABASE_SERVICE_ROLE_KEY are required")
         sys.exit(1)
 
     print("=" * 60)
@@ -422,9 +422,9 @@ def main():
         records=arrets,
         conflict_column="arretcodelong",
         field_renames={},
-        dest_url=lamap_url,
-        dest_key=lamap_key,
-        dest_schema=lamap_schema,
+        dest_url=rellm_url,
+        dest_key=rellm_key,
+        dest_schema=rellm_schema,
     )
     if not ok:
         all_ok = False
@@ -443,9 +443,9 @@ def main():
         records=lignes,
         conflict_column="objectid",
         field_renames=FIELD_RENAMES.get("ge_tpg_lignes", {}),
-        dest_url=lamap_url,
-        dest_key=lamap_key,
-        dest_schema=lamap_schema,
+        dest_url=rellm_url,
+        dest_key=rellm_key,
+        dest_schema=rellm_schema,
         batch_size=20,  # Small batches — polyline geometry payloads are large
     )
     if not ok:
