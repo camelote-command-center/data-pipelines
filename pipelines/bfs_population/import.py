@@ -2,16 +2,21 @@
 """
 BFS Population by Commune — Import Pipeline
 
-Downloads commune-level population data from the Swiss Federal Statistical
-Office (BFS) via BFS DAM API and upserts into bronze_ch.bfs_population
+Downloads commune-level population history from the Swiss Federal Statistical
+Office (BFS) via the PX-X JSON-stat2 API and upserts into bronze_ch.bfs_population
 on re-LLM.
 
-Source:  BFS DAM API / opendata.swiss (fallback)
-         Dataset: Ständige Wohnbevölkerung nach Gemeinde
-         XLSX/CSV download
+Source:  BFS PX-X portal
+         Dataset: px-x-0102020000_201
+                  "Demografische Bilanz nach institutionellen Gliederungen"
+         Year-end stock by canton/district/commune × nationality × sex × component.
+         We pull one query per year, restricted to demographic component 16
+         ("Bestand am 31. Dezember"), sex=Total, all 3 nationality categories.
 
 Target:  bronze_ch.bfs_population
 Conflict: year,bfs_commune_number
+
+Year range: 1995-2024 by default (override with BFS_POP_YEARS env var, e.g. "2024" or "2020-2024").
 
 DATA SAFETY:
     - UPSERT only. Never truncates or deletes.
@@ -21,57 +26,50 @@ Environment variables:
     RE_LLM_SUPABASE_URL              - re-LLM Supabase project URL (required)
     RE_LLM_SUPABASE_SERVICE_ROLE_KEY - service_role key (required)
     RE_LLM_SCHEMA                    - target schema (default: bronze_ch)
-    CAMELOTE_SUPABASE_URL       - Command center URL (optional, for metadata)
-    CAMELOTE_SUPABASE_KEY       - Command center key (optional)
+    BFS_POP_YEARS                    - optional override, e.g. "2024" or "1995-2024"
+    CAMELOTE_SUPABASE_URL            - Command center URL (optional, for metadata)
+    CAMELOTE_SUPABASE_KEY            - Command center key (optional)
 """
 
-import csv
-import io
+import json
 import os
 import re
 import sys
 import time
 
-import openpyxl
 import requests
 
-# Add repo root to path so we can import shared/
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 from shared.supabase_client import batch_upsert
-from shared.freshness import get_dataset_meta, update_dataset_meta
+from shared.freshness import update_dataset_meta
 
 
 # ──────────────────────────────────────────────────────────────
 # Config
 # ──────────────────────────────────────────────────────────────
 
-# Direct BFS ASSET URLs (PRIMARY) — BFS population by commune (XLSX)
-# Asset IDs change over time; we try several from newest to oldest.
-BFS_ASSET_IDS = [
-    "36451447",  # 2025 provisional population by commune
-    "34447410",  # 2024 provisional population by commune
-    "32007762",  # older asset (may be gone)
-]
-BFS_ASSET_URL_TEMPLATE = "https://dam-api.bfs.admin.ch/hub/api/dam/assets/{}/master"
+PXWEB_URL = "https://www.pxweb.bfs.admin.ch/api/v1/de/px-x-0102020000_201/px-x-0102020000_201.px"
 
-# opendata.swiss dataset search (FALLBACK) — searches for BFS population data
-OPENDATA_SEARCH_URL = (
-    "https://opendata.swiss/api/3/action/package_search"
-    "?q=bevoelkerung+gemeinde+bfs&rows=10"
-)
+# Dataset dimensions (from metadata):
+#   Jahr                                              -> year
+#   Kanton (-) / Bezirk (>>) / Gemeinde (......)      -> entity
+#   Staatsangehörigkeit (Kategorie)                   -> 0=Total, 1=Schweiz, 2=Ausland
+#   Geschlecht                                        -> 0=Total
+#   Demografische Komponente                          -> 16=Bestand am 31. Dezember
+DIM_YEAR = "Jahr"
+DIM_ENTITY = "Kanton (-) / Bezirk (>>) / Gemeinde (......)"
+DIM_NATIONALITY = "Staatsangehörigkeit (Kategorie)"
+DIM_SEX = "Geschlecht"
+DIM_COMPONENT = "Demografische Komponente"
 
-# Reject URLs from cantonal portals (they return partial/unrelated data)
-REJECTED_DOMAINS = {
-    "data.zg.ch", "data.bs.ch", "data.bl.ch", "data.be.ch", "data.zh.ch",
-    "daten.statistik.zh.ch",
-}
+DEFAULT_FIRST_YEAR = 1995
+DEFAULT_LAST_YEAR = 2024  # PX-X dataset upper bound at time of writing
 
 TABLE = "bfs_population"
 CONFLICT_COLUMN = "year,bfs_commune_number"
-BATCH_SIZE = 500
+BATCH_SIZE = 1000
 DATASET_CODE = "ch_bfs_population"
 
-# Canton abbreviation → code (for "- Zürich" → canton tracking)
 CANTON_NAME_TO_CODE = {
     "zürich": "ZH", "bern": "BE", "bern / berne": "BE", "luzern": "LU", "uri": "UR",
     "schwyz": "SZ", "obwalden": "OW", "nidwalden": "NW", "glarus": "GL",
@@ -89,67 +87,14 @@ CANTON_NAME_TO_CODE = {
     "jura": "JU",
 }
 
-# Column mapping for CSV fallback
-COLUMN_MAP = {
-    "jahr": "year", "annee": "year", "year": "year", "stichtag": "year",
-    "gemeinde_nummer": "bfs_commune_number", "gemeindenummer": "bfs_commune_number",
-    "gemeinde-nr.": "bfs_commune_number", "bfs_nr": "bfs_commune_number",
-    "bfs_commune_number": "bfs_commune_number", "no_commune": "bfs_commune_number",
-    "commune_id": "bfs_commune_number",
-    "gemeindename": "commune_name", "gemeinde": "commune_name",
-    "commune": "commune_name", "commune_name": "commune_name", "nom_commune": "commune_name",
-    "kanton": "canton_code", "kantonskuerzel": "canton_code",
-    "canton": "canton_code", "canton_code": "canton_code", "kt": "canton_code",
-    "bevoelkerung": "total_population", "total": "total_population",
-    "total_population": "total_population", "einwohner": "total_population",
-    "population_totale": "total_population", "wohnbevoelkerung": "total_population",
-    "schweizer": "swiss_nationals", "swiss_nationals": "swiss_nationals",
-    "schweizer_innen": "swiss_nationals", "suisses": "swiss_nationals",
-    "auslaender": "foreign_nationals", "auslaender_innen": "foreign_nationals",
-    "foreign_nationals": "foreign_nationals", "etrangers": "foreign_nationals",
-}
-
 
 # ──────────────────────────────────────────────────────────────
 # Helpers
 # ──────────────────────────────────────────────────────────────
 
-def _resource_name_str(name) -> str:
-    """Extract a plain string from a resource name that may be a multilingual dict."""
-    if isinstance(name, dict):
-        return name.get("de") or name.get("en") or name.get("fr") or next(iter(name.values()), "")
-    if isinstance(name, str):
-        return name
-    return ""
-
-
-def _is_rejected_url(url: str) -> bool:
-    """Reject URLs from cantonal portals that return partial/unrelated data."""
-    from urllib.parse import urlparse
-    domain = urlparse(url).hostname or ""
-    return domain in REJECTED_DOMAINS
-
-
-def _safe_int(val) -> int | None:
-    """Convert a cell value to int, handling floats and strings."""
-    if val is None:
-        return None
-    try:
-        if isinstance(val, float):
-            return int(val)
-        return int(str(val).strip().replace("'", "").replace(" ", ""))
-    except (ValueError, TypeError):
-        return None
-
-
 def get_row_count(url: str, key: str, schema: str) -> int | None:
-    """Get current row count via PostgREST HEAD request."""
     endpoint = f"{url.rstrip('/')}/rest/v1/{TABLE}?select=count"
-    headers = {
-        "apikey": key,
-        "Authorization": f"Bearer {key}",
-        "Prefer": "count=exact",
-    }
+    headers = {"apikey": key, "Authorization": f"Bearer {key}", "Prefer": "count=exact"}
     if schema and schema != "public":
         headers["Accept-Profile"] = schema
     try:
@@ -158,241 +103,139 @@ def get_row_count(url: str, key: str, schema: str) -> int | None:
         if "/" in cr:
             return int(cr.split("/")[1])
     except Exception as e:
-        print(f"  Warning: could not get row count: {e}")
+        print(f"  Warning: row count lookup failed: {e}")
     return None
 
 
+def parse_years_env(env_val: str | None) -> list[int]:
+    if not env_val:
+        return list(range(DEFAULT_FIRST_YEAR, DEFAULT_LAST_YEAR + 1))
+    s = env_val.strip()
+    if "-" in s:
+        a, b = s.split("-", 1)
+        return list(range(int(a), int(b) + 1))
+    return [int(y) for y in s.split(",")]
+
+
 # ──────────────────────────────────────────────────────────────
-# XLSX Parser (BFS DAM API format)
+# PX-X fetch + parse
 # ──────────────────────────────────────────────────────────────
 
-def download_binary(url: str, retries: int = 3) -> bytes:
-    """Download file content as bytes with retry on timeout."""
+def fetch_year(year: int, retries: int = 3) -> dict:
+    """POST a query for a single year and return parsed JSON-stat2."""
+    query = {
+        "query": [
+            {"code": DIM_YEAR, "selection": {"filter": "item", "values": [str(year)]}},
+            {"code": DIM_ENTITY, "selection": {"filter": "all", "values": ["*"]}},
+            {"code": DIM_NATIONALITY, "selection": {"filter": "item", "values": ["0", "1", "2"]}},
+            {"code": DIM_SEX, "selection": {"filter": "item", "values": ["0"]}},
+            {"code": DIM_COMPONENT, "selection": {"filter": "item", "values": ["16"]}},
+        ],
+        "response": {"format": "json-stat2"},
+    }
+    last_err = None
     for attempt in range(1, retries + 1):
         try:
-            print(f"  Downloading: {url}" + (f" (attempt {attempt})" if attempt > 1 else ""))
-            r = requests.get(url, timeout=120)
+            r = requests.post(PXWEB_URL, json=query, timeout=180)
             r.raise_for_status()
-            print(f"  Downloaded {len(r.content):,} bytes")
-            return r.content
-        except (requests.exceptions.ConnectionError, requests.exceptions.Timeout) as e:
+            return r.json()
+        except (requests.exceptions.ConnectionError,
+                requests.exceptions.Timeout,
+                requests.exceptions.HTTPError) as e:
+            last_err = e
             if attempt < retries:
                 wait = attempt * 10
-                print(f"  Timeout/connection error, retrying in {wait}s...")
+                print(f"    {year}: error ({e}); retrying in {wait}s...")
                 time.sleep(wait)
-            else:
-                raise
+    raise RuntimeError(f"fetch_year({year}) failed after {retries} attempts: {last_err}")
 
 
-def parse_xlsx_to_records(xlsx_bytes: bytes) -> list[dict]:
+def jsonstat_to_records(data: dict, year: int) -> list[dict]:
     """
-    Parse BFS population XLSX.
+    Pivot a single-year JSON-stat2 response to one record per commune.
 
-    Single sheet with structure:
-      Row 0: title containing date "am 31.12.YYYY"
-      Row 1: subtitle
-      Row 2: column group headers (Total, Schweizer, Ausländer)
-      Row 3: sub-headers (Total, Mann, Frau for each group)
-      Row 4: Switzerland total
-      Row 5+: Data rows:
-        "- Zürich" → canton header
-        ">> Bezirk Name" → district header
-        "......0001 Commune Name" → commune data
-
-    Columns: [Region, Total-Total, Total-M, Total-F, CH-Total, CH-M, CH-F, Ausl-Total, Ausl-M, Ausl-F]
+    Iterates over entities in order; tracks current canton from "- <CantonName>"
+    headers. Communes match "......NNNN <Name>".
     """
-    wb = openpyxl.load_workbook(io.BytesIO(xlsx_bytes), read_only=True, data_only=True)
-    records = []
+    dims = data["dimension"]
+    dim_order = data["id"]  # e.g. ['Jahr','Kanton (...)', 'Staatsangehörigkeit ...', 'Geschlecht', 'Demografische Komponente']
+    sizes = data["size"]
+    values = data["value"]
 
-    ws = wb[wb.sheetnames[0]]
-    rows = list(ws.iter_rows(values_only=True))
+    entity_dim = dims[DIM_ENTITY]["category"]
+    nat_dim = dims[DIM_NATIONALITY]["category"]
 
-    if len(rows) < 5:
-        print("  ERROR: XLSX has fewer than 5 rows")
-        wb.close()
-        return []
+    entity_index = entity_dim["index"]   # code -> position
+    entity_label = entity_dim["label"]   # code -> "Schweiz" / "- Zürich" / ">> Bezirk Affoltern" / "......0001 Aeugst..."
+    nat_index = nat_dim["index"]
+    nat_codes_by_pos = {pos: code for code, pos in nat_index.items()}
 
-    # Extract year from title row (e.g., "am 31.12.2025")
-    title = str(rows[0][1] or "") + " " + str(rows[0][0] or "")
-    year_match = re.search(r'(\d{2})\.(\d{2})\.(\d{4})', title)
-    if year_match:
-        year = int(year_match.group(3))
-    else:
-        # Try to find any 4-digit year
-        year_match = re.search(r'(20\d{2})', title)
-        if year_match:
-            year = int(year_match.group(1))
-        else:
-            print(f"  ERROR: Could not extract year from title: {title}")
-            wb.close()
-            return []
+    # Stride math for flat array indexing
+    strides = []
+    s = 1
+    for sz in reversed(sizes):
+        strides.append(s)
+        s *= sz
+    strides.reverse()
 
-    print(f"  Detected year: {year}")
+    def value_at(coord):
+        flat = sum(c * st for c, st in zip(coord, strides))
+        return values[flat]
 
-    # Column indices (0-based):
-    # 0: Region name
-    # 1: Total population (Total-Total)
-    # 4: Swiss nationals (CH-Total)
-    # 7: Foreign nationals (Ausl-Total)
-    COL_TOTAL = 1
-    COL_SWISS = 4
-    COL_FOREIGN = 7
+    pos_year = list(dim_order).index(DIM_YEAR)
+    pos_entity = list(dim_order).index(DIM_ENTITY)
+    pos_nat = list(dim_order).index(DIM_NATIONALITY)
+    pos_sex = list(dim_order).index(DIM_SEX)
+    pos_comp = list(dim_order).index(DIM_COMPONENT)
+
+    # Sort entities by position so we walk them in display order (canton -> district -> communes)
+    entities_ordered = sorted(entity_label.items(), key=lambda kv: entity_index[kv[0]])
 
     current_canton = None
+    records = []
+    commune_re = re.compile(r"^\.{4,}(\d+)\s+(.*)")
 
-    for row in rows:
-        if not row or not row[0]:
-            continue
-
-        cell = str(row[0]).strip()
-
+    for code, label in entities_ordered:
         # Canton header: "- Zürich"
-        if cell.startswith("- "):
-            canton_name = cell[2:].strip().lower()
-            # Strip footnote markers
-            canton_name = re.sub(r'\s*\d+\)\s*$', '', canton_name).strip()
+        if label.startswith("- "):
+            canton_name = label[2:].strip().lower()
+            canton_name = re.sub(r"\s*\d+\)\s*$", "", canton_name).strip()
             current_canton = CANTON_NAME_TO_CODE.get(canton_name)
             if not current_canton:
-                print(f"  Warning: unknown canton '{cell[2:].strip()}'")
+                print(f"    Warning: unknown canton '{label[2:].strip()}' at year {year}")
             continue
 
-        # Commune data: "......0001 Commune Name"
-        m = re.match(r'\.{4,}(\d+)\s+(.*)', cell)
+        m = commune_re.match(label)
         if not m:
             continue
 
         bfs_number = int(m.group(1))
-        commune_name = m.group(2).strip()
-        # Strip footnote markers from commune name
-        commune_name = re.sub(r'\s*\d+\)\s*$', '', commune_name).strip()
+        commune_name = re.sub(r"\s*\d+\)\s*$", "", m.group(2).strip()).strip()
 
-        record = {
+        ent_pos = entity_index[code]
+
+        # Build coordinates for each nationality value
+        coord = [0] * len(sizes)
+        coord[pos_year] = 0
+        coord[pos_entity] = ent_pos
+        coord[pos_sex] = 0
+        coord[pos_comp] = 0
+
+        per_nat = {}
+        for nat_pos, nat_code in nat_codes_by_pos.items():
+            coord[pos_nat] = nat_pos
+            per_nat[nat_code] = value_at(coord)
+
+        rec = {
             "year": year,
             "bfs_commune_number": bfs_number,
             "commune_name": commune_name,
             "canton_code": current_canton,
-            "total_population": _safe_int(row[COL_TOTAL]) if COL_TOTAL < len(row) else None,
-            "swiss_nationals": _safe_int(row[COL_SWISS]) if COL_SWISS < len(row) else None,
-            "foreign_nationals": _safe_int(row[COL_FOREIGN]) if COL_FOREIGN < len(row) else None,
+            "total_population": per_nat.get("0"),
+            "swiss_nationals": per_nat.get("1"),
+            "foreign_nationals": per_nat.get("2"),
         }
-        records.append(record)
-
-    wb.close()
-    return records
-
-
-# ──────────────────────────────────────────────────────────────
-# CSV Parser (opendata.swiss fallback)
-# ──────────────────────────────────────────────────────────────
-
-def find_csv_url_opendata() -> str | None:
-    """Search opendata.swiss for the BFS population CSV download URL."""
-    try:
-        r = requests.get(OPENDATA_SEARCH_URL, timeout=30)
-        r.raise_for_status()
-        data = r.json()
-        results = data.get("result", {}).get("results", [])
-
-        for dataset in results:
-            org = (dataset.get("organization", {}) or {}).get("name", "")
-            for resource in dataset.get("resources", []):
-                fmt = (resource.get("format") or "").lower()
-                url = resource.get("url", "")
-                name = _resource_name_str(resource.get("name")).lower()
-                if fmt in ("csv", "text/csv") and (
-                    "gemeinde" in name or "commune" in name or "population" in name
-                    or "bevoelkerung" in name
-                ):
-                    if _is_rejected_url(url):
-                        print(f"  Skipped (cantonal portal): {url}")
-                        continue
-                    print(f"  Found CSV: {_resource_name_str(resource.get('name'))} (org: {org})")
-                    return url
-
-        # Broader search: any CSV resource (still filtering cantonal portals)
-        for dataset in results:
-            for resource in dataset.get("resources", []):
-                fmt = (resource.get("format") or "").lower()
-                url = resource.get("url", "")
-                if fmt in ("csv", "text/csv") and not _is_rejected_url(url):
-                    print(f"  Found CSV (broad match): {_resource_name_str(resource.get('name'))}")
-                    return url
-
-    except Exception as e:
-        print(f"  Warning: opendata.swiss search failed: {e}")
-    return None
-
-
-def download_csv(csv_url: str) -> str:
-    """Download CSV content as text."""
-    print(f"  Downloading: {csv_url}")
-    r = requests.get(csv_url, timeout=120)
-    r.raise_for_status()
-    text = r.content.decode("utf-8-sig")
-    print(f"  Downloaded {len(text):,} characters")
-    return text
-
-
-def detect_delimiter(text: str) -> str:
-    """Detect CSV delimiter (semicolon or comma)."""
-    first_line = text.split("\n")[0]
-    if first_line.count(";") > first_line.count(","):
-        return ";"
-    return ","
-
-
-def parse_csv_to_records(text: str) -> list[dict]:
-    """Parse CSV text into table records using column mapping."""
-    delimiter = detect_delimiter(text)
-    reader = csv.DictReader(io.StringIO(text), delimiter=delimiter)
-
-    header_map = {}
-    if reader.fieldnames:
-        for h in reader.fieldnames:
-            key = h.strip().lower().replace(" ", "_").replace("-", "_")
-            if key in COLUMN_MAP:
-                header_map[h] = COLUMN_MAP[key]
-
-    if not header_map:
-        print(f"  WARNING: Could not map any CSV headers")
-        print(f"  Available headers: {reader.fieldnames}")
-        return []
-
-    print(f"  Mapped columns: {header_map}")
-
-    records = []
-    for row in reader:
-        record = {}
-        for csv_col, table_col in header_map.items():
-            val = row.get(csv_col, "").strip()
-            record[table_col] = val if val else None
-
-        if not record.get("bfs_commune_number") or not record.get("year"):
-            continue
-
-        try:
-            record["bfs_commune_number"] = int(record["bfs_commune_number"])
-        except (ValueError, TypeError):
-            continue
-
-        year_val = record.get("year", "")
-        if year_val:
-            try:
-                if "-" in str(year_val):
-                    record["year"] = int(str(year_val).split("-")[0])
-                else:
-                    record["year"] = int(year_val)
-            except (ValueError, TypeError):
-                continue
-
-        for col in ("total_population", "swiss_nationals", "foreign_nationals"):
-            if record.get(col) is not None:
-                try:
-                    record[col] = int(record[col])
-                except (ValueError, TypeError):
-                    record[col] = None
-
-        records.append(record)
+        records.append(rec)
 
     return records
 
@@ -407,6 +250,7 @@ def main():
     rellm_schema = os.environ.get("RE_LLM_SCHEMA", "bronze_ch")
     camelote_url = os.environ.get("CAMELOTE_SUPABASE_URL", "")
     camelote_key = os.environ.get("CAMELOTE_SUPABASE_KEY", "")
+    years = parse_years_env(os.environ.get("BFS_POP_YEARS"))
 
     if not rellm_url or not rellm_key:
         print("ERROR: RE_LLM_SUPABASE_URL and RE_LLM_SUPABASE_SERVICE_ROLE_KEY are required")
@@ -414,118 +258,58 @@ def main():
 
     print("=" * 60)
     print("  BFS Population by Commune Pipeline")
+    print(f"  Source: {PXWEB_URL}")
     print(f"  Target: {rellm_schema}.{TABLE}")
+    print(f"  Years:  {years[0]}-{years[-1]} ({len(years)} years)")
     print("=" * 60)
 
-    # ── Row count BEFORE ──
     rows_before = get_row_count(rellm_url, rellm_key, rellm_schema)
     print(f"\n  Rows before: {rows_before:,}" if rows_before is not None else "\n  Rows before: unknown")
 
-    # ── Download & Parse ──
     start = time.time()
-    records = []
-    source_url = None
+    all_records: list[dict] = []
+    for year in years:
+        t0 = time.time()
+        data = fetch_year(year)
+        recs = jsonstat_to_records(data, year)
+        all_records.extend(recs)
+        print(f"  {year}: {len(recs):,} commune rows ({time.time()-t0:.1f}s)")
 
-    # Strategy 1: BFS DAM API (primary — XLSX with commune data)
-    print("\n  Trying BFS DAM API assets (XLSX)...")
-    for asset_id in BFS_ASSET_IDS:
-        asset_url = BFS_ASSET_URL_TEMPLATE.format(asset_id)
-        print(f"  Trying asset {asset_id}...")
-        try:
-            data = download_binary(asset_url)
-            content_type = ""
-            try:
-                r = requests.head(asset_url, timeout=10)
-                content_type = r.headers.get("content-type", "")
-            except Exception:
-                pass
+    print(f"\n  Parsed {len(all_records):,} total commune-year rows")
 
-            # Detect format: XLSX or CSV
-            if (content_type and "spreadsheet" in content_type) or data[:4] == b'PK\x03\x04':
-                print("  Detected XLSX format, parsing...")
-                records = parse_xlsx_to_records(data)
-            else:
-                print("  Detected CSV format, parsing...")
-                text = data.decode("utf-8-sig")
-                records = parse_csv_to_records(text)
-
-            if records:
-                source_url = asset_url
-                print(f"  Success: asset {asset_id} → {len(records):,} records")
-                break
-            else:
-                print(f"  Asset {asset_id}: downloaded but parsed 0 records, trying next...")
-        except requests.exceptions.HTTPError:
-            print(f"  Asset {asset_id} not available, trying next...")
-            continue
-        except Exception as e:
-            print(f"  Asset {asset_id} error: {e}, trying next...")
-            continue
-
-    # Strategy 2: opendata.swiss search (fallback — CSV)
-    if not records:
-        print("\n  BFS DAM assets unavailable, searching opendata.swiss...")
-        csv_url = find_csv_url_opendata()
-        if csv_url:
-            try:
-                text = download_csv(csv_url)
-                print("\n  Parsing CSV...")
-                records = parse_csv_to_records(text)
-                if records:
-                    source_url = csv_url
-            except requests.exceptions.HTTPError as e:
-                print(f"  Warning: opendata.swiss URL failed ({e})")
-
-    print(f"  Parsed {len(records):,} records total")
-
-    if not records:
-        print("  ERROR: Could not download or parse population data from any source")
+    if not all_records:
+        print("  ERROR: parsed zero rows")
         sys.exit(1)
 
-    # Normalise keys
-    all_keys = set()
-    for rec in records:
-        all_keys |= rec.keys()
-    for rec in records:
-        for k in all_keys:
-            rec.setdefault(k, None)
-
-    # ── Upsert ──
-    print(f"\n  Upserting {len(records):,} records...")
+    print(f"\n  Upserting {len(all_records):,} records...")
     upserted = batch_upsert(
         url=rellm_url,
         key=rellm_key,
         table=TABLE,
-        records=records,
+        records=all_records,
         conflict_column=CONFLICT_COLUMN,
         schema=rellm_schema,
         batch_size=BATCH_SIZE,
     )
 
     elapsed = time.time() - start
-
-    # ── Row count AFTER ──
     rows_after = get_row_count(rellm_url, rellm_key, rellm_schema)
 
-    # ── Summary ──
     print(f"\n{'=' * 60}")
     print("  IMPORT COMPLETE")
-    print(f"  Source:          {source_url}")
-    print(f"  Records parsed:  {len(records):,}")
+    print(f"  Records parsed:  {len(all_records):,}")
     print(f"  Rows upserted:   {upserted:,}")
     print(f"  Rows before:     {rows_before:,}" if rows_before is not None else "  Rows before:     unknown")
     print(f"  Rows after:      {rows_after:,}" if rows_after is not None else "  Rows after:      unknown")
     if rows_before is not None and rows_after is not None:
-        delta = rows_after - rows_before
-        print(f"  Net new:         {delta:,}")
+        print(f"  Net new:         {rows_after - rows_before:,}")
     print(f"  Duration:        {elapsed:.1f}s")
     print("=" * 60)
 
     if upserted == 0:
-        print("  FAILED: Zero rows upserted!")
+        print("  FAILED: zero rows upserted")
         sys.exit(1)
 
-    # ── Update dataset metadata ──
     update_dataset_meta(
         camelote_url, camelote_key, DATASET_CODE,
         record_count=rows_after,
