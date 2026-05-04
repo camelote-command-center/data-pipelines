@@ -2,7 +2,7 @@
 """
 SITG Demographics — Import Pipeline (config-driven, pure ArcGIS)
 
-Fetches 9 SITG datasets via ArcGIS REST API and upserts into lamap_db:
+Fetches 9 SITG datasets via ArcGIS REST API and upserts into re-LLM bronze_ch:
   1. OCS_POPBATLOG_COMMUNE          — Population/buildings by commune   (polygon)
   2. OCS_POPULATION_SSECTEUR        — Population by sub-sector          (polygon)
   3. OCS_POPBATLOG_VGE_SECTEUR      — Population/buildings by sector    (polygon)
@@ -24,9 +24,9 @@ DATA SAFETY:
     - Row count should only go UP or stay the same.
 
 Environment variables:
-    LAMAP_SUPABASE_URL          - Lamap Supabase project URL (required)
-    LAMAP_SUPABASE_SERVICE_KEY  - service_role key (required)
-    LAMAP_SCHEMA                - target schema (default: bronze)
+    RE_LLM_SUPABASE_URL              - re-LLM Supabase project URL (required)
+    RE_LLM_SUPABASE_SERVICE_ROLE_KEY - service_role key (required)
+    RE_LLM_SCHEMA                    - target schema (default: bronze_ch)
 """
 
 import os
@@ -47,7 +47,7 @@ DATASETS = [
     {
         "name": "Population & bâtiments / commune",
         "code": "ge_ocs_popbatlog_commune",
-        "table": "OCS_POPBATLOG_COMMUNE",
+        "table": "ge_ocs_popbatlog_commune",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/ocs_popbatlog_commune/FeatureServer/0",
         "conflict_column": "objectid",
@@ -59,7 +59,7 @@ DATASETS = [
     {
         "name": "Population / sous-secteur",
         "code": "ge_ocs_population_ssecteur",
-        "table": "OCS_POPULATION_SSECTEUR",
+        "table": "ge_ocs_population_ssecteur",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/ocs_population_ssecteur/FeatureServer/0",
         "conflict_column": "objectid",
@@ -71,7 +71,7 @@ DATASETS = [
     {
         "name": "Population & bâtiments / secteur",
         "code": "ge_ocs_popbatlog_vge_secteur",
-        "table": "OCS_POPBATLOG_VGE_SECTEUR",
+        "table": "ge_ocs_popbatlog_vge_secteur",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/ocs_popbatlog_vge_secteur/FeatureServer/0",
         "conflict_column": "objectid",
@@ -84,7 +84,7 @@ DATASETS = [
     {
         "name": "Emploi / commune",
         "code": "ge_ocs_emploi_commune",
-        "table": "OCS_EMPLOI_COMMUNE",
+        "table": "ge_ocs_emploi_commune",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/ocs_emploi_commune/FeatureServer/0",
         "conflict_column": "objectid",
@@ -96,7 +96,7 @@ DATASETS = [
     {
         "name": "Emploi / secteur",
         "code": "ge_ocs_emploi_vge_secteur",
-        "table": "OCS_EMPLOI_VGE_SECTEUR",
+        "table": "ge_ocs_emploi_vge_secteur",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/ocs_emploi_vge_secteur/FeatureServer/0",
         "conflict_column": "objectid",
@@ -109,7 +109,7 @@ DATASETS = [
     {
         "name": "Zones macaron",
         "code": "ge_otc_macaron",
-        "table": "OTC_MACARON",
+        "table": "ge_otc_macaron",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/otc_macaron/FeatureServer/0",
         # ArcGIS has no 'objectid' field for this layer — uses 'fid' instead
@@ -123,7 +123,7 @@ DATASETS = [
     {
         "name": "Stationnement voie publique",
         "code": "ge_otc_stationnement",
-        "table": "OTC_STATIONNEMENT_V_PUBLIQUE",
+        "table": "ge_otc_stationnement",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/otc_stationnement_v_publique/FeatureServer/0",
         "conflict_column": "objectid",
@@ -134,7 +134,7 @@ DATASETS = [
     {
         "name": "Aménagements 2 roues",
         "code": "ge_otc_amenag_2roues",
-        "table": "OTC_AMENAG_2ROUES",
+        "table": "ge_otc_amenag_2roues",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/otc_amenag_2roues/FeatureServer/0",
         "conflict_column": "objectid",
@@ -146,7 +146,7 @@ DATASETS = [
     {
         "name": "Parcelles cadastrales historiques",
         "code": "ge_cad_parcelle_mensu_histo",
-        "table": "CAD_PARCELLE_MENSU_HISTO",
+        "table": "ge_cad_parcelles_histo",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/cad_parcelle_mensu_histo/FeatureServer/0",
         "conflict_column": "objectid",
@@ -362,13 +362,13 @@ def process_destination(
 # ──────────────────────────────────────────────────────────────
 
 def main():
-    # ── Required: Lamap ──
-    lamap_url = os.environ.get("LAMAP_SUPABASE_URL", "")
-    lamap_key = os.environ.get("LAMAP_SUPABASE_SERVICE_KEY", "")
-    lamap_schema = os.environ.get("LAMAP_SCHEMA", "bronze")
+    # ── Required: re-LLM ──
+    rellm_url = os.environ.get("RE_LLM_SUPABASE_URL", "")
+    rellm_key = os.environ.get("RE_LLM_SUPABASE_SERVICE_ROLE_KEY", "")
+    rellm_schema = os.environ.get("RE_LLM_SCHEMA", "bronze_ch")
 
-    if not lamap_url or not lamap_key:
-        print("ERROR: LAMAP_SUPABASE_URL and LAMAP_SUPABASE_SERVICE_KEY are required")
+    if not rellm_url or not rellm_key:
+        print("ERROR: RE_LLM_SUPABASE_URL and RE_LLM_SUPABASE_SERVICE_ROLE_KEY are required")
         sys.exit(1)
 
     print("=" * 60)
@@ -394,8 +394,8 @@ def main():
         datasets_with_records.append((ds, records))
 
     # ── Upsert to Lamap (required) ──
-    lamap_ok = process_destination(
-        "lamap_db", lamap_url, lamap_key, lamap_schema, datasets_with_records
+    rellm_ok = process_destination(
+        "re-LLM", rellm_url, rellm_key, rellm_schema, datasets_with_records
     )
 
     # ── Final status ──
@@ -403,8 +403,8 @@ def main():
     print("  IMPORT COMPLETE")
     print("=" * 60)
 
-    if not lamap_ok:
-        print("  FAILED: Lamap had errors")
+    if not rellm_ok:
+        print("  FAILED: re-LLM had errors")
         sys.exit(1)
 
 
