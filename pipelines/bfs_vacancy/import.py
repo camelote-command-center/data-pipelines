@@ -1,41 +1,49 @@
 #!/usr/bin/env python3
 """
-BFS Vacancy Rates — Import Pipeline
+BFS Vacancy Rates — Commune-level Import Pipeline
 
-Downloads vacancy rate data (Leerwohnungszaehlung) from the Swiss Federal
-Statistical Office (BFS) via BFS DAM API and upserts into
-bronze.bfs_vacancy_rates on lamap_db.
+Downloads commune-level vacancy data (Leerwohnungszählung) from BFS via the
+SDMX REST API and upserts into bronze_ch.bfs_vacancy_rates on re-LLM.
 
-Source:  BFS DAM API / opendata.swiss (fallback)
-         Dataset: Leer stehende Wohnungen nach Kantonen (T 09.03.04.03)
-         XLSX download from BFS DAM API
+Source:  BFS / Office fédéral de la statistique
+         Dataflow: CH1.LWZ:DF_LWZ_1 (1.0.0)
+         Title: "Vacant dwellings by region, canton, district, municipality,
+         number of rooms and type of vacant dwelling"
+         Years: 1995-present (annual, reference date June 1)
+         Released: usually September of the same year
 
-Target:  bronze.bfs_vacancy_rates
-Conflict: year,canton_code
+SDMX REST endpoint:
+    https://disseminate.stats.swiss/rest/data/CH1.LWZ,DF_LWZ_1,1.0.0/all
+    Accept: application/vnd.sdmx.data+csv;version=2.0.0
 
-Currently ~700+ rows at canton level (26 cantons × ~26 years).
-BFS publishes annually (usually September).
+Filter: WOHN_ANZAHL=_T (all room counts), LEERWOHN_TYP=_T (all vacancy types).
+        DIFF_REGION_REF=POLG (commune level - all rows in totals slice).
+        Skip GR_KT_GDE=8100 (Switzerland total aggregate).
+
+Target:  bronze_ch.bfs_vacancy_rates on re-LLM
+Conflict: year, bfs_commune_number
+
+Coverage: ~2,200 communes × 31 years (1995-2025) → ~57k commune-year pairs.
+Many older years have NULL counts for smaller communes (data quality varies).
 
 DATA SAFETY:
     - UPSERT only. Never truncates or deletes.
     - Row count should only go UP or stay the same.
 
 Environment variables:
-    LAMAP_SUPABASE_URL          - Lamap Supabase project URL (required)
-    LAMAP_SUPABASE_SERVICE_KEY  - service_role key (required)
-    LAMAP_SCHEMA                - target schema (default: bronze)
-    CAMELOTE_SUPABASE_URL       - Command center URL (optional, for metadata)
-    CAMELOTE_SUPABASE_KEY       - Command center key (optional)
+    RE_LLM_SUPABASE_URL              - re-LLM Supabase project URL (required)
+    RE_LLM_SUPABASE_SERVICE_ROLE_KEY - service_role key (required)
+    RE_LLM_SCHEMA                    - target schema (default: bronze_ch)
+    CAMELOTE_SUPABASE_URL            - Command center URL (optional, for metadata)
+    CAMELOTE_SUPABASE_KEY            - Command center key (optional)
 """
 
 import csv
 import io
 import os
-import re
 import sys
 import time
 
-import openpyxl
 import requests
 
 # Add repo root to path so we can import shared/
@@ -48,126 +56,180 @@ from shared.freshness import get_dataset_meta, update_dataset_meta
 # Config
 # ──────────────────────────────────────────────────────────────
 
-# Direct BFS ASSET URLs (PRIMARY) — national vacancy data by canton (XLSX)
-# Dataset: "Leer stehende Wohnungen nach Kantonen" (T 09.03.04.03)
-BFS_ASSET_IDS = [
-    "36153026",  # DE — 2025 edition, multi-sheet XLSX
-    "36153028",  # EN — same data in English
-]
-BFS_ASSET_URL_TEMPLATE = "https://dam-api.bfs.admin.ch/hub/api/dam/assets/{}/master"
-
-# opendata.swiss search (FALLBACK)
-OPENDATA_SEARCH_URL = (
-    "https://opendata.swiss/api/3/action/package_search"
-    "?q=leerwohnungsziffer+leerwohnung+bfs&rows=10"
-)
-
-# Reject URLs from cantonal portals (they return partial/unrelated data)
-REJECTED_DOMAINS = {
-    "data.zg.ch", "data.bs.ch", "data.bl.ch", "data.be.ch", "data.zh.ch",
-    "daten.statistik.zh.ch",
-}
+SDMX_URL = "https://disseminate.stats.swiss/rest/data/CH1.LWZ,DF_LWZ_1,1.0.0/all"
+SDMX_ACCEPT = "application/vnd.sdmx.data+csv;version=2.0.0"
 
 TABLE = "bfs_vacancy_rates"
-CONFLICT_COLUMN = "year,canton_code"
-BATCH_SIZE = 500
+CONFLICT_COLUMN = "year,bfs_commune_number"
+BATCH_SIZE = 1000
 DATASET_CODE = "ch_bfs_vacancy_rates"
 
-# Swiss canton name → code mapping (German names as used in BFS XLSX)
-CANTON_NAME_TO_CODE = {
-    "zürich": "ZH", "bern": "BE", "luzern": "LU", "uri": "UR",
-    "schwyz": "SZ", "obwalden": "OW", "nidwalden": "NW", "glarus": "GL",
-    "zug": "ZG", "freiburg": "FR", "fribourg": "FR",
-    "solothurn": "SO", "basel-stadt": "BS", "basel-landschaft": "BL",
-    "schaffhausen": "SH", "appenzell a.rh.": "AR", "appenzell ausserrhoden": "AR",
-    "appenzell i.rh.": "AI", "appenzell innerrhoden": "AI",
-    "st. gallen": "SG", "st.gallen": "SG", "graubünden": "GR",
-    "aargau": "AG", "thurgau": "TG", "tessin": "TI", "ticino": "TI",
-    "waadt": "VD", "vaud": "VD", "wallis": "VS", "valais": "VS",
-    "neuenburg": "NE", "neuchâtel": "NE", "genf": "GE", "genève": "GE",
-    "jura": "JU",
-    # English names (for EN asset)
-    "zurich": "ZH", "berne": "BE", "lucerne": "LU",
-    "freiburg/fribourg": "FR", "basle-city": "BS", "basle-country": "BL",
-    "appenzell outer rhodes": "AR", "appenzell inner rhodes": "AI",
-    "st.gall": "SG", "grisons": "GR", "ticino": "TI",
-    "vaud": "VD", "valais": "VS", "neuchatel": "NE", "geneva": "GE",
-}
+# Filter: only the commune-aggregate slice (totals across rooms and types)
+# Skip Switzerland total (8100) and any aggregate codes
+EXCLUDED_GR_KT_GDE_CODES = {"8100"}
 
-SWISS_CANTONS = set(CANTON_NAME_TO_CODE.values())
 
-# Column mapping for CSV fallback
-COLUMN_MAP = {
-    # Year
-    "jahr": "year",
-    "annee": "year",
-    "year": "year",
-    "stichtag": "year",
-    # Canton
-    "kanton": "canton_code",
-    "kantonskuerzel": "canton_code",
-    "canton": "canton_code",
-    "canton_code": "canton_code",
-    "kt": "canton_code",
-    "kanton_kuerzel": "canton_code",
-    # Commune (for commune-level data if available)
-    "gemeinde_nummer": "bfs_commune_number",
-    "gemeindenummer": "bfs_commune_number",
-    "bfs_nr": "bfs_commune_number",
-    "bfs_commune_number": "bfs_commune_number",
-    "no_commune": "bfs_commune_number",
-    # Commune name
-    "gemeindename": "commune_name",
-    "gemeinde": "commune_name",
-    "commune": "commune_name",
-    "commune_name": "commune_name",
-    # Dwelling counts
-    "wohnungen_total": "total_dwellings",
-    "total_dwellings": "total_dwellings",
-    "gesamtzahl": "total_dwellings",
-    "wohnungsbestand": "total_dwellings",
-    "total_logements": "total_dwellings",
-    # Vacant
-    "leerwohnungen": "vacant_dwellings",
-    "leer": "vacant_dwellings",
-    "vacant_dwellings": "vacant_dwellings",
-    "leerstehend": "vacant_dwellings",
-    "logements_vacants": "vacant_dwellings",
-    # Vacancy rate
-    "leerwohnungsziffer": "vacancy_rate_pct",
-    "vacancy_rate_pct": "vacancy_rate_pct",
-    "quote": "vacancy_rate_pct",
-    "taux_vacance": "vacancy_rate_pct",
-    "leerwohnungsquote": "vacancy_rate_pct",
-}
+# ──────────────────────────────────────────────────────────────
+# Fetch
+# ──────────────────────────────────────────────────────────────
 
-# Expected columns in a valid BFS vacancy CSV (for CSV fallback validation)
-EXPECTED_VACANCY_HEADERS = {
-    "leerwohnungsziffer", "leerwohnungsquote", "vacancy_rate_pct",
-    "taux_vacance", "quote", "leerwohnungen", "logements_vacants",
-    "vacant_dwellings", "leerstehend",
-}
+def fetch_sdmx_csv() -> str:
+    """Download the SDMX CSV. Returns CSV text."""
+    print(f"  Fetching SDMX CSV from {SDMX_URL}")
+    r = requests.get(
+        SDMX_URL,
+        headers={
+            "User-Agent": "Mozilla/5.0 (camelote-data-pipelines)",
+            "Accept": SDMX_ACCEPT,
+        },
+        timeout=600,
+    )
+    r.raise_for_status()
+    print(f"  Downloaded: {len(r.content):,} bytes")
+    return r.content.decode("utf-8")
+
+
+def parse_csv_to_records(csv_text: str) -> list[dict]:
+    """
+    Parse SDMX CSV. Filter to totals slice (WOHN_ANZAHL=_T, LEERWOHN_TYP=_T).
+    Pivot V (vacant_dwellings count) and PC (vacancy_rate_pct) into a single row
+    per (commune, year).
+    """
+    reader = csv.DictReader(io.StringIO(csv_text))
+
+    # Aggregate by (commune_code, year)
+    by_key: dict[tuple, dict] = {}
+    skipped_aggregate = 0
+    skipped_non_total = 0
+
+    for row in reader:
+        if row.get("WOHN_ANZAHL") != "_T" or row.get("LEERWOHN_TYP") != "_T":
+            skipped_non_total += 1
+            continue
+
+        gr_kt_gde = (row.get("GR_KT_GDE") or "").strip()
+        if not gr_kt_gde or gr_kt_gde in EXCLUDED_GR_KT_GDE_CODES:
+            skipped_aggregate += 1
+            continue
+
+        # Skip non-commune entities (cantons / districts). DIFF_REGION_REF=POLG = commune.
+        # In the DF_LWZ_1 totals slice, all rows are POLG, but defensive check.
+        region_ref = row.get("DIFF_REGION_REF", "")
+        if region_ref and region_ref != "POLG":
+            skipped_aggregate += 1
+            continue
+
+        try:
+            commune_number = int(gr_kt_gde)
+        except ValueError:
+            skipped_aggregate += 1
+            continue
+
+        try:
+            year = int(row.get("TIME_PERIOD", ""))
+        except ValueError:
+            continue
+
+        measure = row.get("MEASURE_DIMENSION", "")
+        obs_value = row.get("OBS_VALUE", "")
+        if obs_value == "":
+            obs_value = None
+        else:
+            try:
+                obs_value = float(obs_value)
+            except ValueError:
+                obs_value = None
+
+        key = (year, commune_number)
+        rec = by_key.setdefault(key, {
+            "year": year,
+            "bfs_commune_number": commune_number,
+            "vacant_dwellings": None,
+            "vacancy_rate_pct": None,
+        })
+
+        if measure == "V":
+            rec["vacant_dwellings"] = int(obs_value) if obs_value is not None else None
+        elif measure == "PC":
+            rec["vacancy_rate_pct"] = obs_value
+
+    # Build final list, dropping rows that have neither V nor PC
+    records = []
+    for rec in by_key.values():
+        if rec["vacant_dwellings"] is not None or rec["vacancy_rate_pct"] is not None:
+            records.append(rec)
+
+    print(f"  Parsed: {len(records):,} commune-year rows")
+    print(f"  Skipped (non-total slice): {skipped_non_total:,}")
+    print(f"  Skipped (aggregate or non-commune): {skipped_aggregate:,}")
+    return records
+
+
+# ──────────────────────────────────────────────────────────────
+# Enrich with canton_code / commune_name from bfs_population
+# ──────────────────────────────────────────────────────────────
+
+def fetch_commune_lookup(url: str, key: str, schema: str) -> dict[int, dict]:
+    """
+    Build a {bfs_commune_number → {canton_code, commune_name}} lookup from
+    bronze_ch.bfs_population (most recent year per commune).
+
+    Returns empty dict if bfs_population is empty (graceful no-op).
+    """
+    endpoint = (
+        f"{url.rstrip('/')}/rest/v1/bfs_population"
+        "?select=bfs_commune_number,canton_code,commune_name,year"
+        "&order=year.desc&limit=10000"
+    )
+    headers = {
+        "apikey": key,
+        "Authorization": f"Bearer {key}",
+    }
+    if schema and schema != "public":
+        headers["Accept-Profile"] = schema
+    try:
+        r = requests.get(endpoint, headers=headers, timeout=60)
+        if r.status_code != 200:
+            print(f"  Warning: commune lookup HTTP {r.status_code}; skipping enrichment")
+            return {}
+        rows = r.json() or []
+        # Take the latest record per commune
+        seen: dict[int, dict] = {}
+        for row in rows:
+            cn = row.get("bfs_commune_number")
+            if cn and cn not in seen:
+                seen[cn] = {
+                    "canton_code": row.get("canton_code"),
+                    "commune_name": row.get("commune_name"),
+                }
+        print(f"  Commune lookup: {len(seen):,} entries from bfs_population")
+        return seen
+    except Exception as e:
+        print(f"  Warning: commune lookup failed ({e}); skipping enrichment")
+        return {}
+
+
+def enrich_records(records: list[dict], lookup: dict[int, dict]) -> list[dict]:
+    """Add canton_code and commune_name from lookup; leave NULL if not found."""
+    matched = 0
+    for r in records:
+        meta = lookup.get(r["bfs_commune_number"])
+        if meta:
+            r["canton_code"] = meta.get("canton_code")
+            r["commune_name"] = meta.get("commune_name")
+            matched += 1
+        else:
+            r["canton_code"] = None
+            r["commune_name"] = None
+    if lookup:
+        pct = 100 * matched / len(records) if records else 0
+        print(f"  Enrichment: {matched:,}/{len(records):,} matched ({pct:.1f}%)")
+    return records
 
 
 # ──────────────────────────────────────────────────────────────
 # Helpers
 # ──────────────────────────────────────────────────────────────
-
-def _resource_name_str(name) -> str:
-    """Extract a plain string from a resource name that may be a multilingual dict."""
-    if isinstance(name, dict):
-        return name.get("de") or name.get("en") or name.get("fr") or next(iter(name.values()), "")
-    if isinstance(name, str):
-        return name
-    return ""
-
-
-def _is_rejected_url(url: str) -> bool:
-    """Reject URLs from cantonal portals that return partial/unrelated data."""
-    from urllib.parse import urlparse
-    domain = urlparse(url).hostname or ""
-    return domain in REJECTED_DOMAINS
-
 
 def get_row_count(url: str, key: str, schema: str) -> int | None:
     endpoint = f"{url.rstrip('/')}/rest/v1/{TABLE}?select=count"
@@ -183,332 +245,9 @@ def get_row_count(url: str, key: str, schema: str) -> int | None:
         cr = r.headers.get("content-range", "")
         if "/" in cr:
             return int(cr.split("/")[1])
-    except Exception as e:
-        print(f"  Warning: could not get row count: {e}")
+    except Exception:
+        pass
     return None
-
-
-def _extract_canton_code(region_name: str) -> str | None:
-    """Extract 2-letter canton code from a region name like 'Zürich', 'ZH', 'Zürich (ZH)', or 'Bern 5)'."""
-    if not region_name:
-        return None
-    stripped = region_name.strip()
-    # Try parenthesised code first: "Zürich (ZH)"
-    m = re.search(r'\(([A-Z]{2})\)', stripped)
-    if m and m.group(1) in SWISS_CANTONS:
-        return m.group(1)
-    # Strip footnote markers like "5)" or " 5)"
-    cleaned = re.sub(r'\s*\d+\)\s*$', '', stripped).strip()
-    # Try bare 2-letter code
-    if len(cleaned) == 2 and cleaned.upper() in SWISS_CANTONS:
-        return cleaned.upper()
-    # Try name lookup
-    return CANTON_NAME_TO_CODE.get(cleaned.lower())
-
-
-def _safe_int(val) -> int | None:
-    """Convert a cell value to int, handling floats and strings."""
-    if val is None:
-        return None
-    try:
-        if isinstance(val, float):
-            return int(val)
-        return int(str(val).strip().replace("'", "").replace(" ", ""))
-    except (ValueError, TypeError):
-        return None
-
-
-def _safe_float(val) -> float | None:
-    """Convert a cell value to float."""
-    if val is None:
-        return None
-    try:
-        return float(val)
-    except (ValueError, TypeError):
-        return None
-
-
-# ──────────────────────────────────────────────────────────────
-# XLSX Parser (BFS DAM API format)
-# ──────────────────────────────────────────────────────────────
-
-def download_xlsx(url: str, retries: int = 3) -> bytes:
-    """Download XLSX content as bytes with retry on timeout."""
-    for attempt in range(1, retries + 1):
-        try:
-            print(f"  Downloading: {url}" + (f" (attempt {attempt})" if attempt > 1 else ""))
-            r = requests.get(url, timeout=120)
-            r.raise_for_status()
-            print(f"  Downloaded {len(r.content):,} bytes")
-            return r.content
-        except (requests.exceptions.ConnectionError, requests.exceptions.Timeout) as e:
-            if attempt < retries:
-                wait = attempt * 10
-                print(f"  Timeout/connection error, retrying in {wait}s...")
-                time.sleep(wait)
-            else:
-                raise
-
-
-def parse_xlsx_to_records(xlsx_bytes: bytes) -> list[dict]:
-    """
-    Parse BFS vacancy XLSX (multi-sheet, one sheet per year).
-
-    Each sheet is named with a year (e.g. "2025(base StatBL2024)").
-    Structure per sheet:
-      Row 0: title
-      Rows 1-4: multi-row headers (Wohnungsbestand, Leerwohnungen by rooms, Total, ..., Leerwohnungsziffer)
-      Row 5: "Total" (Switzerland total)
-      Rows 6+: Grossregionen and Cantons intermixed
-      Footer rows: footnotes
-
-    We extract canton-level rows (identified by canton name lookup).
-    Wohnungsbestand is column 1, vacant Total is column 8, Leerwohnungsziffer is the last numeric column.
-    """
-    wb = openpyxl.load_workbook(io.BytesIO(xlsx_bytes), read_only=True, data_only=True)
-    records = []
-
-    for sheet_name in wb.sheetnames:
-        # Try to extract year from sheet name
-        year_match = re.search(r'(\d{4})', sheet_name)
-        if not year_match:
-            print(f"  Skipping sheet: {sheet_name} (no year)")
-            continue
-
-        year = int(year_match.group(1))
-        if year < 1980 or year > 2100:
-            continue
-
-        ws = wb[sheet_name]
-        rows = list(ws.iter_rows(values_only=True))
-
-        if len(rows) < 6:
-            continue
-
-        # Find column indices by scanning header rows and the "Total" data row
-        col_total_dwellings = None  # Wohnungsbestand (may not exist in older sheets)
-        col_vacant_total = None     # Total vacant dwellings
-        col_vacancy_rate = None     # Leerwohnungsziffer
-
-        # Scan header rows for known labels
-        for i, row in enumerate(rows[:10]):
-            row_strs = [str(c or "").lower().strip() for c in row]
-            combined = " ".join(row_strs)
-            for j, cell in enumerate(row_strs):
-                if "wohnungsbestand" in cell or "housing stock" in cell:
-                    col_total_dwellings = j
-                if "leerwohnungsziffer" in cell or "leerwohnungs-" in cell or "vacancy rate" in cell:
-                    col_vacancy_rate = j
-                # "ziffer" on a separate row (multi-row header)
-                if cell.startswith("ziffer") and col_vacancy_rate is None:
-                    col_vacancy_rate = j
-
-        # Find the "Total" header for vacant dwellings
-        for i in range(min(10, len(rows))):
-            row_strs = [str(c or "").lower().strip() for c in rows[i]]
-            for j, cell in enumerate(row_strs):
-                if cell == "total" and j > 1:  # Skip first column
-                    col_vacant_total = j
-                    break
-            if col_vacant_total:
-                break
-
-        # If we still don't have vacancy_rate, detect from the "Total" (Switzerland) data row
-        # by finding the last small numeric value (vacancy rates are typically 0.3-5.0%)
-        total_row = None
-        for i, row in enumerate(rows[5:20], start=5):
-            region = str(row[0] or "").strip().lower() if row[0] else ""
-            if region == "total":
-                total_row = row
-                break
-
-        if total_row and col_vacancy_rate is None:
-            for j in range(len(total_row) - 1, 0, -1):
-                val = _safe_float(total_row[j])
-                if val is not None and 0 < val < 10:
-                    col_vacancy_rate = j
-                    break
-
-        # Also detect col_vacant_total from the Total row if header scan missed it
-        if total_row and col_vacant_total is None:
-            # Find a column with a large value that looks like total vacant dwellings
-            # It's the largest value before the subcategory columns
-            best_j = None
-            best_val = 0
-            start_col = (col_total_dwellings or 0) + 1
-            end_col = (col_vacancy_rate or len(total_row)) - 1
-            for j in range(start_col, end_col):
-                val = _safe_int(total_row[j])
-                if val is not None and val > best_val:
-                    best_val = val
-                    best_j = j
-            if best_j:
-                col_vacant_total = best_j
-
-        # Parse all data rows
-        canton_count = 0
-        for row in rows:
-            if not row or not row[0]:
-                continue
-
-            region = str(row[0]).strip()
-            if not region or region.startswith("1)") or region.startswith("2)") or "©" in region:
-                continue
-
-            canton_code = _extract_canton_code(region)
-            if not canton_code:
-                continue
-
-            record = {
-                "year": year,
-                "canton_code": canton_code,
-                "total_dwellings": _safe_int(row[col_total_dwellings]) if col_total_dwellings is not None and col_total_dwellings < len(row) else None,
-                "vacant_dwellings": _safe_int(row[col_vacant_total]) if col_vacant_total is not None and col_vacant_total < len(row) else None,
-                "vacancy_rate_pct": _safe_float(row[col_vacancy_rate]) if col_vacancy_rate is not None and col_vacancy_rate < len(row) else None,
-                "source": "BFS Leerwohnungszaehlung",
-            }
-            records.append(record)
-            canton_count += 1
-
-        if canton_count > 0:
-            print(f"  Sheet {sheet_name}: {canton_count} cantons")
-        else:
-            print(f"  Sheet {sheet_name}: 0 cantons (check format)")
-
-    wb.close()
-    return records
-
-
-# ──────────────────────────────────────────────────────────────
-# CSV Parser (opendata.swiss fallback)
-# ──────────────────────────────────────────────────────────────
-
-def _validate_vacancy_csv(csv_url: str) -> bool:
-    """Download the first few KB of a CSV and check it has vacancy-related columns."""
-    try:
-        r = requests.get(csv_url, timeout=30, stream=True)
-        r.raise_for_status()
-        chunk = next(r.iter_content(4096, decode_unicode=True), "")
-        r.close()
-        if not chunk:
-            return False
-        first_line = chunk.split("\n")[0].lower()
-        normalised = first_line.replace(" ", "_").replace("-", "_").replace('"', '')
-        # Must have vacancy columns AND canton/region column
-        has_vacancy = any(h in normalised for h in EXPECTED_VACANCY_HEADERS)
-        has_canton = any(k in normalised for k in ("kanton", "canton", "kt", "kantonskuerzel"))
-        return has_vacancy and has_canton
-    except Exception as e:
-        print(f"  Warning: could not validate CSV at {csv_url}: {e}")
-        return False
-
-
-def find_csv_url_opendata() -> str | None:
-    """Search opendata.swiss for the BFS vacancy CSV download URL."""
-    try:
-        r = requests.get(OPENDATA_SEARCH_URL, timeout=30)
-        r.raise_for_status()
-        data = r.json()
-        results = data.get("result", {}).get("results", [])
-
-        csv_candidates = []
-        for dataset in results:
-            dataset_title = _resource_name_str(dataset.get("title")).lower() if isinstance(dataset.get("title"), dict) else (dataset.get("title") or "").lower()
-            for resource in dataset.get("resources", []):
-                fmt = (resource.get("format") or "").lower()
-                if fmt in ("csv", "text/csv"):
-                    url = resource.get("url", "")
-                    if _is_rejected_url(url):
-                        print(f"  Skipped (cantonal portal): {url}")
-                        continue
-                    name = _resource_name_str(resource.get("name")).lower()
-                    csv_candidates.append((name, dataset_title, url))
-
-        for name, dataset_title, url in csv_candidates:
-            print(f"  Checking CSV: {name} (dataset: {dataset_title})")
-            if _validate_vacancy_csv(url):
-                print(f"  Validated CSV with vacancy + canton columns: {name}")
-                return url
-            else:
-                print(f"  Skipped (missing vacancy or canton columns): {name}")
-
-    except Exception as e:
-        print(f"  Warning: opendata.swiss search failed: {e}")
-    return None
-
-
-def download_csv(csv_url: str) -> str:
-    print(f"  Downloading: {csv_url}")
-    r = requests.get(csv_url, timeout=120)
-    r.raise_for_status()
-    text = r.content.decode("utf-8-sig")
-    print(f"  Downloaded {len(text):,} characters")
-    return text
-
-
-def detect_delimiter(text: str) -> str:
-    first_line = text.split("\n")[0]
-    if first_line.count(";") > first_line.count(","):
-        return ";"
-    return ","
-
-
-def parse_csv_to_records(text: str) -> list[dict]:
-    delimiter = detect_delimiter(text)
-    reader = csv.DictReader(io.StringIO(text), delimiter=delimiter)
-
-    header_map = {}
-    if reader.fieldnames:
-        for h in reader.fieldnames:
-            key = h.strip().lower().replace(" ", "_").replace("-", "_")
-            if key in COLUMN_MAP:
-                header_map[h] = COLUMN_MAP[key]
-
-    if not header_map:
-        print(f"  WARNING: Could not map any CSV headers")
-        print(f"  Available headers: {reader.fieldnames}")
-        return []
-
-    print(f"  Mapped columns: {header_map}")
-
-    records = []
-    for row in reader:
-        record = {}
-        for csv_col, table_col in header_map.items():
-            val = row.get(csv_col, "").strip()
-            record[table_col] = val if val else None
-
-        if not record.get("canton_code") or not record.get("year"):
-            continue
-
-        # Type conversions
-        year_val = record.get("year", "")
-        try:
-            if "-" in str(year_val):
-                record["year"] = int(str(year_val).split("-")[0])
-            else:
-                record["year"] = int(year_val)
-        except (ValueError, TypeError):
-            continue
-
-        for col in ("total_dwellings", "vacant_dwellings", "bfs_commune_number"):
-            if record.get(col) is not None:
-                try:
-                    record[col] = int(record[col])
-                except (ValueError, TypeError):
-                    record[col] = None
-
-        if record.get("vacancy_rate_pct") is not None:
-            try:
-                record["vacancy_rate_pct"] = float(record["vacancy_rate_pct"])
-            except (ValueError, TypeError):
-                record["vacancy_rate_pct"] = None
-
-        # Add source
-        record["source"] = "BFS Leerwohnungszaehlung"
-        records.append(record)
-
-    return records
 
 
 # ──────────────────────────────────────────────────────────────
@@ -516,131 +255,89 @@ def parse_csv_to_records(text: str) -> list[dict]:
 # ──────────────────────────────────────────────────────────────
 
 def main():
-    lamap_url = os.environ.get("LAMAP_SUPABASE_URL", "")
-    lamap_key = os.environ.get("LAMAP_SUPABASE_SERVICE_KEY", "")
-    lamap_schema = os.environ.get("LAMAP_SCHEMA", "bronze")
+    rellm_url = os.environ.get("RE_LLM_SUPABASE_URL", "")
+    rellm_key = os.environ.get("RE_LLM_SUPABASE_SERVICE_ROLE_KEY", "")
+    rellm_schema = os.environ.get("RE_LLM_SCHEMA", "bronze_ch")
     camelote_url = os.environ.get("CAMELOTE_SUPABASE_URL", "")
     camelote_key = os.environ.get("CAMELOTE_SUPABASE_KEY", "")
 
-    if not lamap_url or not lamap_key:
-        print("ERROR: LAMAP_SUPABASE_URL and LAMAP_SUPABASE_SERVICE_KEY are required")
+    if not rellm_url or not rellm_key:
+        print("ERROR: RE_LLM_SUPABASE_URL and RE_LLM_SUPABASE_SERVICE_ROLE_KEY are required")
         sys.exit(1)
 
     print("=" * 60)
-    print("  BFS Vacancy Rates Pipeline")
-    print(f"  Target: {lamap_schema}.{TABLE}")
+    print("  BFS Vacancy Rates — Commune-level Pipeline")
+    print(f"  Source:   BFS SDMX (CH1.LWZ:DF_LWZ_1)")
+    print(f"  Target:   {rellm_schema}.{TABLE} on re-LLM")
+    print(f"  Conflict: {CONFLICT_COLUMN}")
     print("=" * 60)
+
+    # ── Freshness pre-check ──
+    if camelote_url and camelote_key:
+        meta = get_dataset_meta(camelote_url, camelote_key, DATASET_CODE)
+        if meta and meta.get("last_acquired_at"):
+            print(f"\n  Last acquired: {meta['last_acquired_at'].isoformat()}")
 
     # ── Row count BEFORE ──
-    rows_before = get_row_count(lamap_url, lamap_key, lamap_schema)
+    rows_before = get_row_count(rellm_url, rellm_key, rellm_schema)
     print(f"\n  Rows before: {rows_before:,}" if rows_before is not None else "\n  Rows before: unknown")
 
-    # ── Download & Parse ──
+    # ── Fetch SDMX CSV ──
     start = time.time()
-    records = []
-    source_url = None
+    csv_text = fetch_sdmx_csv()
 
-    # Strategy 1: BFS DAM API (primary — XLSX with multi-sheet canton data)
-    print("\n  Trying BFS DAM API assets (XLSX)...")
-    for asset_id in BFS_ASSET_IDS:
-        asset_url = BFS_ASSET_URL_TEMPLATE.format(asset_id)
-        try:
-            xlsx_bytes = download_xlsx(asset_url)
-            print("\n  Parsing XLSX...")
-            records = parse_xlsx_to_records(xlsx_bytes)
-            if records:
-                source_url = asset_url
-                print(f"  Success: asset {asset_id} → {len(records):,} records")
-                break
-            else:
-                print(f"  Asset {asset_id}: downloaded but parsed 0 records, trying next...")
-        except requests.exceptions.HTTPError:
-            print(f"  Asset {asset_id} not available, trying next...")
-            continue
-        except Exception as e:
-            print(f"  Asset {asset_id} parse error: {e}, trying next...")
-            continue
-
-    # Strategy 2: opendata.swiss CSV search (fallback)
+    # ── Parse + filter ──
+    records = parse_csv_to_records(csv_text)
     if not records:
-        print("\n  BFS DAM assets unavailable, searching opendata.swiss for CSV...")
-        csv_url = find_csv_url_opendata()
-        if csv_url:
-            try:
-                text = download_csv(csv_url)
-                print("\n  Parsing CSV...")
-                records = parse_csv_to_records(text)
-                if records:
-                    source_url = csv_url
-            except requests.exceptions.HTTPError as e:
-                print(f"  Warning: opendata.swiss URL failed ({e})")
-
-    print(f"  Parsed {len(records):,} records total")
-
-    if not records:
-        print("  ERROR: No records parsed from any source")
+        print("\n  No records to upsert. Exiting.")
         sys.exit(1)
 
-    # Deduplicate by (year, canton_code) — keep first occurrence (newest sheet)
-    seen = set()
-    unique_records = []
-    for rec in records:
-        key = (rec["year"], rec["canton_code"])
-        if key not in seen:
-            seen.add(key)
-            unique_records.append(rec)
-    if len(unique_records) < len(records):
-        print(f"  Deduplicated: {len(records)} → {len(unique_records)} (removed {len(records) - len(unique_records)} duplicates)")
-    records = unique_records
-
-    # Normalise keys
-    all_keys = set()
-    for rec in records:
-        all_keys |= rec.keys()
-    for rec in records:
-        for k in all_keys:
-            rec.setdefault(k, None)
+    # ── Enrich with canton_code / commune_name ──
+    lookup = fetch_commune_lookup(rellm_url, rellm_key, rellm_schema)
+    records = enrich_records(records, lookup)
 
     # ── Upsert ──
-    print(f"\n  Upserting {len(records):,} records...")
+    print(f"\n  Upserting {len(records):,} rows in batches of {BATCH_SIZE}")
     upserted = batch_upsert(
-        url=lamap_url,
-        key=lamap_key,
+        url=rellm_url,
+        key=rellm_key,
         table=TABLE,
         records=records,
         conflict_column=CONFLICT_COLUMN,
-        schema=lamap_schema,
+        schema=rellm_schema,
         batch_size=BATCH_SIZE,
     )
 
     elapsed = time.time() - start
 
     # ── Row count AFTER ──
-    rows_after = get_row_count(lamap_url, lamap_key, lamap_schema)
+    rows_after = get_row_count(rellm_url, rellm_key, rellm_schema)
 
-    # ── Summary ──
     print(f"\n{'=' * 60}")
-    print("  IMPORT COMPLETE")
-    print(f"  Source:          {source_url}")
-    print(f"  Records parsed:  {len(records):,}")
-    print(f"  Rows upserted:   {upserted:,}")
-    print(f"  Rows before:     {rows_before:,}" if rows_before is not None else "  Rows before:     unknown")
-    print(f"  Rows after:      {rows_after:,}" if rows_after is not None else "  Rows after:      unknown")
+    print(f"  IMPORT COMPLETE")
+    print(f"  Rows processed:   {len(records):,}")
+    print(f"  Rows upserted:    {upserted:,}")
+    print(f"  Rows before:      {rows_before:,}" if rows_before is not None else "  Rows before:      unknown")
+    print(f"  Rows after:       {rows_after:,}" if rows_after is not None else "  Rows after:       unknown")
     if rows_before is not None and rows_after is not None:
         delta = rows_after - rows_before
-        print(f"  Net new:         {delta:,}")
-    print(f"  Duration:        {elapsed:.1f}s")
+        print(f"  Net new:          {delta:,}")
+        if rows_after < rows_before:
+            print("  WARNING: Row count DECREASED!")
+    print(f"  Duration:         {elapsed / 60:.1f} min")
     print("=" * 60)
 
     if upserted == 0:
         print("  FAILED: Zero rows upserted!")
         sys.exit(1)
 
-    update_dataset_meta(
-        camelote_url, camelote_key, DATASET_CODE,
-        record_count=rows_after,
-        status="active",
-    )
+    # ── Update dataset metadata ──
+    if camelote_url and camelote_key:
+        update_dataset_meta(
+            camelote_url, camelote_key, DATASET_CODE,
+            record_count=rows_after,
+            status="active",
+        )
 
 
 if __name__ == "__main__":
