@@ -2,7 +2,7 @@
  * FR Feuille Officielle — Transaction Fetcher (Category 15)
  *
  * Fetches property transaction articles from the Feuille officielle du canton
- * de Fribourg and upserts them into bronze.transactions_national.
+ * de Fribourg and upserts them into bronze_ch.transactions_national.
  *
  * Workflow:
  *   1. For each year, fetch the archive page to discover issues
@@ -10,7 +10,7 @@
  *   3. For each district page, find article node links
  *   4. Fetch each article page, extract commune headers + transaction blocks
  *   5. Parse structured data using parser.ts
- *   6. Upsert into bronze.transactions_national in batches
+ *   6. Upsert into bronze_ch.transactions_national in batches
  *
  * Usage:
  *   npx tsx fetch-transactions.ts           # current year only
@@ -343,7 +343,7 @@ async function processYear(year: number): Promise<TransactionRecord[]> {
 
 async function upsertBatch(records: TransactionRecord[]): Promise<number> {
   const { error, count } = await supabase
-    .schema('bronze')
+    .schema('bronze_ch')
     .from('transactions_national')
     .upsert(records, { onConflict: 'source_id,canton', count: 'exact' });
 
@@ -359,7 +359,7 @@ async function main() {
   console.log('='.repeat(60));
   console.log('  FR Feuille Officielle — Transaction Pipeline');
   console.log('  Source: fo.fr.ch (category 15)');
-  console.log('  Target: bronze.transactions_national');
+  console.log('  Target: bronze_ch.transactions_national');
   console.log('='.repeat(60));
 
   const startTime = Date.now();

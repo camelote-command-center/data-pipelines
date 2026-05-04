@@ -20,7 +20,7 @@ for (let i = 0; i < data.length; i += BATCH) {
     `(${esc(r.source_id)}, ${esc(r.canton)}, ${esc(r.permit_type)}, ${esc(r.status)}, ${esc(r.description)}, ${esc(r.applicant)}, ${esc(r.owner)}, ${esc(r.commune)}, ${esc(r.address)}, ${esc(r.parcel_number)}, ${esc(r.zone)}, ${r.submission_date ? esc(r.submission_date) : 'NULL'}, ${r.publication_date ? esc(r.publication_date) : 'NULL'}, ${r.decision_date ? esc(r.decision_date) : 'NULL'}, ${r.display_start ? esc(r.display_start) : 'NULL'}, ${r.display_end ? esc(r.display_end) : 'NULL'}, ${r.geometry ? esc(r.geometry) : 'NULL'}, ${esc(r.source_url)}, ${esc(r.source_system)}, ${escJson(r.raw_data)})`
   ).join(',\n');
 
-  const sql = `INSERT INTO bronze.sad_national (source_id, canton, permit_type, status, description, applicant, owner, commune, address, parcel_number, zone, submission_date, publication_date, decision_date, display_start, display_end, geometry, source_url, source_system, raw_data)
+  const sql = `INSERT INTO bronze_ch.sad_national (source_id, canton, permit_type, status, description, applicant, owner, commune, address, parcel_number, zone, submission_date, publication_date, decision_date, display_start, display_end, geometry, source_url, source_system, raw_data)
 VALUES ${values}
 ON CONFLICT (source_id, canton) DO UPDATE SET description=EXCLUDED.description, applicant=EXCLUDED.applicant, commune=EXCLUDED.commune, address=EXCLUDED.address, parcel_number=EXCLUDED.parcel_number, geometry=EXCLUDED.geometry, source_url=EXCLUDED.source_url, raw_data=EXCLUDED.raw_data;`;
 
