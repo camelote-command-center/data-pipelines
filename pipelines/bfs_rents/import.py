@@ -4,14 +4,14 @@ BFS Average Rents — Import Pipeline
 
 Downloads average rent data (Mietpreisstrukturerhebung) from the Swiss
 Federal Statistical Office (BFS) via the BFS DAM API and upserts into
-bronze.bfs_average_rents on lamap_db.
+bronze_ch.bfs_average_rents on re-LLM.
 
 Source:  BFS DAM API
          Asset 24129085: "Durchschnittlicher Mietpreis in Franken
          nach Zimmerzahl und Kanton" (all 26 cantons + CH total)
          Excel file parsed with openpyxl
 
-Target:  bronze.bfs_average_rents
+Target:  bronze_ch.bfs_average_rents
 Conflict: year,canton_code,rooms
 
 DATA SAFETY:
@@ -19,9 +19,9 @@ DATA SAFETY:
     - Row count should only go UP or stay the same.
 
 Environment variables:
-    LAMAP_SUPABASE_URL          - Lamap Supabase project URL (required)
-    LAMAP_SUPABASE_SERVICE_KEY  - service_role key (required)
-    LAMAP_SCHEMA                - target schema (default: bronze)
+    RE_LLM_SUPABASE_URL              - re-LLM Supabase project URL (required)
+    RE_LLM_SUPABASE_SERVICE_ROLE_KEY - service_role key (required)
+    RE_LLM_SCHEMA                    - target schema (default: bronze_ch)
     CAMELOTE_SUPABASE_URL       - Command center URL (optional, for metadata)
     CAMELOTE_SUPABASE_KEY       - Command center key (optional)
 """
@@ -250,24 +250,24 @@ def parse_excel_to_records(excel_bytes: bytes) -> list[dict]:
 # ──────────────────────────────────────────────────────────────
 
 def main():
-    lamap_url = os.environ.get("LAMAP_SUPABASE_URL", "")
-    lamap_key = os.environ.get("LAMAP_SUPABASE_SERVICE_KEY", "")
-    lamap_schema = os.environ.get("LAMAP_SCHEMA", "bronze")
+    rellm_url = os.environ.get("RE_LLM_SUPABASE_URL", "")
+    rellm_key = os.environ.get("RE_LLM_SUPABASE_SERVICE_ROLE_KEY", "")
+    rellm_schema = os.environ.get("RE_LLM_SCHEMA", "bronze_ch")
     camelote_url = os.environ.get("CAMELOTE_SUPABASE_URL", "")
     camelote_key = os.environ.get("CAMELOTE_SUPABASE_KEY", "")
 
-    if not lamap_url or not lamap_key:
-        print("ERROR: LAMAP_SUPABASE_URL and LAMAP_SUPABASE_SERVICE_KEY are required")
+    if not rellm_url or not rellm_key:
+        print("ERROR: RE_LLM_SUPABASE_URL and RE_LLM_SUPABASE_SERVICE_ROLE_KEY are required")
         sys.exit(1)
 
     print("=" * 60)
     print("  BFS Average Rents Pipeline")
-    print(f"  Target: {lamap_schema}.{TABLE}")
+    print(f"  Target: {rellm_schema}.{TABLE}")
     print(f"  Source: BFS DAM API (asset 24129085)")
     print("=" * 60)
 
     # ── Row count BEFORE ──
-    rows_before = get_row_count(lamap_url, lamap_key, lamap_schema)
+    rows_before = get_row_count(rellm_url, rellm_key, rellm_schema)
     print(f"\n  Rows before: {rows_before:,}" if rows_before is not None else "\n  Rows before: unknown")
 
     # ── Download Excel ──
@@ -291,15 +291,15 @@ def main():
     all_record_keys = set(probe.keys())
     valid_keys = set()
 
-    endpoint = f"{lamap_url.rstrip('/')}/rest/v1/{TABLE}?on_conflict={CONFLICT_COLUMN}"
+    endpoint = f"{rellm_url.rstrip('/')}/rest/v1/{TABLE}?on_conflict={CONFLICT_COLUMN}"
     headers = {
-        "apikey": lamap_key,
-        "Authorization": f"Bearer {lamap_key}",
+        "apikey": rellm_key,
+        "Authorization": f"Bearer {rellm_key}",
         "Content-Type": "application/json",
         "Prefer": "resolution=merge-duplicates",
     }
-    if lamap_schema and lamap_schema != "public":
-        headers["Content-Profile"] = lamap_schema
+    if rellm_schema and rellm_schema != "public":
+        headers["Content-Profile"] = rellm_schema
 
     # Try with all columns first
     import json as _json
@@ -356,19 +356,19 @@ def main():
     # ── Upsert ──
     print(f"\n  Upserting {len(records):,} records...")
     upserted = batch_upsert(
-        url=lamap_url,
-        key=lamap_key,
+        url=rellm_url,
+        key=rellm_key,
         table=TABLE,
         records=records,
         conflict_column=CONFLICT_COLUMN,
-        schema=lamap_schema,
+        schema=rellm_schema,
         batch_size=BATCH_SIZE,
     )
 
     elapsed = time.time() - start
 
     # ── Row count AFTER ──
-    rows_after = get_row_count(lamap_url, lamap_key, lamap_schema)
+    rows_after = get_row_count(rellm_url, rellm_key, rellm_schema)
 
     # ── Summary ──
     print(f"\n{'=' * 60}")
