@@ -2,10 +2,12 @@
 """
 TPG — Import Pipeline (standalone fetcher)
 
-Fetches 2 TPG datasets and upserts into lamap_db:
-  1. ge_tpg_arrets   — Bus/tram stops  (point)   — TPG Opendatasoft API
-  2. ge_tpg_lignes   — Transit lines   (polyline) — SITG ArcGIS REST API
+Fetches 3 TPG datasets and upserts into bronze_ch on re-LLM:
+  1. ge_tpg_arrets                    — Bus/tram stops  (point)   — TPG Opendatasoft API
+  2. ge_tpg_lignes                    — Transit lines   (polyline) — SITG ArcGIS REST API
      (TPG's own API does not publish ligne data, so we fall back to SITG.)
+  3. ge_tpg_frequentation_mensuelle   — Monthly boardings/alightings per stop per line
+                                        — TPG Opendatasoft CSV export (bulk download)
 
 STANDALONE: Does NOT use shared/sitg_arcgis.py.
 All fetching logic is self-contained in this file.
@@ -40,6 +42,10 @@ from shared.supabase_client import batch_upsert
 
 TPG_ARRETS_API = "https://opendata.tpg.ch/api/explore/v2.1/catalog/datasets/arrets/records"
 SITG_LIGNES_URL = "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/tpg_lignes/FeatureServer/0"
+TPG_FREQ_CSV = (
+    "https://opendata.tpg.ch/api/explore/v2.1/catalog/datasets/"
+    "montees-mensuelles-par-arret-par-ligne/exports/csv"
+)
 
 MAX_RETRIES = 3
 RETRY_BACKOFF = 2
@@ -216,6 +222,76 @@ def fetch_tpg_lignes() -> list[dict]:
 
     print(f"  Total lignes fetched: {len(all_records):,}")
     return all_records
+
+
+def fetch_tpg_frequentation(stops_geo: dict[str, tuple[float, float]] | None = None) -> list[dict]:
+    """
+    Fetch monthly boardings/alightings per stop per line via the
+    Opendatasoft CSV export endpoint (single bulk download — no pagination).
+
+    Optionally enriches each row with a Point GeoJSON geometry by looking up
+    arret_code_long in `stops_geo` (a dict produced by fetch_tpg_arrets).
+    """
+    import csv
+    import io
+
+    print("  Downloading TPG frequentation CSV export…")
+    r = requests.get(TPG_FREQ_CSV, timeout=120)
+    r.raise_for_status()
+    text = r.text.lstrip("﻿")
+    print(f"  Bytes received: {len(text):,}")
+
+    rows = []
+    reader = csv.DictReader(io.StringIO(text), delimiter=";")
+    for rec in reader:
+        code = (rec.get("arret_code_long") or "").strip() or None
+        try:
+            montees = float(rec["nb_de_montees"]) if rec.get("nb_de_montees") else None
+        except ValueError:
+            montees = None
+        try:
+            descentes = float(rec["nb_de_descentes"]) if rec.get("nb_de_descentes") else None
+        except ValueError:
+            descentes = None
+        try:
+            annee = int(rec["annee"][:4]) if rec.get("annee") else None
+        except ValueError:
+            annee = None
+        try:
+            idx_mois = int(rec["indice_du_mois"]) if rec.get("indice_du_mois") else None
+        except ValueError:
+            idx_mois = None
+        defs_raw = (rec.get("donnees_definitives") or "").strip().lower()
+        donnees_definitives = True if defs_raw == "true" else (False if defs_raw == "false" else None)
+
+        # Normalise mois to YYYY-MM (source already uses this format)
+        mois = (rec.get("mois") or "").strip() or None
+
+        row = {
+            "mois": mois,
+            "ligne": (rec.get("ligne") or "").strip() or None,
+            "ligne_type_act": (rec.get("ligne_type_act") or "").strip() or None,
+            "arret": (rec.get("arret") or "").strip() or None,
+            "arret_code_long": code,
+            "nb_de_montees": montees,
+            "nb_de_descentes": descentes,
+            "annee": annee,
+            "indice_du_mois": idx_mois,
+            "donnees_definitives": donnees_definitives,
+        }
+
+        if stops_geo and code and code in stops_geo:
+            lon, lat = stops_geo[code]
+            row["geometry"] = json.dumps({
+                "type": "Point",
+                "crs": {"type": "name", "properties": {"name": "EPSG:4326"}},
+                "coordinates": [lon, lat],
+            })
+
+        rows.append(row)
+
+    print(f"  Total frequentation rows parsed: {len(rows):,}")
+    return rows
 
 
 # ──────────────────────────────────────────────────────────────
@@ -403,7 +479,7 @@ def main():
 
     print("=" * 60)
     print("  TPG Pipeline")
-    print("  Datasets: 2 (arrets + lignes)")
+    print("  Datasets: 3 (arrets + lignes + frequentation_mensuelle)")
     print("=" * 60)
 
     all_ok = True
@@ -415,6 +491,15 @@ def main():
     print(f"{'━' * 60}")
 
     arrets = fetch_tpg_arrets()
+
+    # Build stop-code → (lon, lat) lookup for frequentation enrichment.
+    stops_geo: dict[str, tuple[float, float]] = {}
+    for a in arrets:
+        code = a.get("arretcodelong")
+        lon = a.get("lon")
+        lat = a.get("lat")
+        if code and lon is not None and lat is not None:
+            stops_geo[code] = (lon, lat)
 
     ok = process_dataset(
         name="TPG Arrêts",
@@ -447,6 +532,28 @@ def main():
         dest_key=rellm_key,
         dest_schema=rellm_schema,
         batch_size=20,  # Small batches — polyline geometry payloads are large
+    )
+    if not ok:
+        all_ok = False
+
+    # ── 3. TPG Frequentation mensuelle (Opendatasoft CSV export) ──
+    print(f"\n{'━' * 60}")
+    print("  Fetching: TPG Frequentation mensuelle")
+    print(f"  URL: {TPG_FREQ_CSV}")
+    print(f"{'━' * 60}")
+
+    frequentation = fetch_tpg_frequentation(stops_geo=stops_geo)
+
+    ok = process_dataset(
+        name="TPG Frequentation mensuelle",
+        table="ge_tpg_frequentation_mensuelle",
+        records=frequentation,
+        conflict_column="mois,ligne,ligne_type_act,arret_code_long",
+        field_renames={},
+        dest_url=rellm_url,
+        dest_key=rellm_key,
+        dest_schema=rellm_schema,
+        batch_size=1000,
     )
     if not ok:
         all_ok = False
