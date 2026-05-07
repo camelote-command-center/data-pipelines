@@ -51,6 +51,12 @@ DATASETS = [
         "conflict_column": "objectid",
     },
     {
+        "key": "controlled_price_housing",
+        "table": "ge_ols_logement_control",
+        "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/ols_logement_control/FeatureServer/0",
+        "conflict_column": "objectid",
+    },
+    {
         "key": "buildings_that_can_be_raised",
         "table": "ge_sit_surelevation",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/sit_surelevation_batiment/FeatureServer/0",
@@ -59,7 +65,8 @@ DATASETS = [
 ]
 
 # Fields that exist in the JS-era table but we no longer use
-EXCLUDE_FIELDS = {"iteration"}
+# globalid is excluded because it's an ArcGIS-only identifier and the conflict key is objectid.
+EXCLUDE_FIELDS = {"iteration", "globalid"}
 
 
 # ──────────────────────────────────────────────────────────────

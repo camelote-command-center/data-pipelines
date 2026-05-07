@@ -52,10 +52,19 @@ DATASETS = [
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/PCMOB_CHANTIER_CONSULT/FeatureServer/0",
         "conflict_column": "objectid",
     },
+    {
+        "name": "SIG chantiers actuels (polygons)",
+        "code": "ge_sig_chantier_actuel",
+        "table": "ge_sig_chantier_actuel",
+        "source": "arcgis",
+        "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/sig_chantier_actuel/FeatureServer/0",
+        "conflict_column": "objectid",
+    },
 ]
 
 # Fields that exist in the source but we do not store
-EXCLUDE_FIELDS: set[str] = set()
+# globalid is an ArcGIS-only identifier — conflict key is objectid.
+EXCLUDE_FIELDS: set[str] = {"globalid"}
 
 
 # ──────────────────────────────────────────────────────────────
