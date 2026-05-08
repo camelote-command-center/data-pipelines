@@ -29,8 +29,12 @@ Environment variables:
 
 import os
 import sys
+from datetime import datetime, timezone
 
 import requests
+
+# Set once per run — used as the soft-delete watermark for `soft_delete=True` datasets.
+SYNC_STARTED_AT = datetime.now(timezone.utc).isoformat()
 
 # Add repo root to path so we can import shared/
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
@@ -116,6 +120,17 @@ DATASETS = [
         },
     },
     {
+        "name": "Bâtiments projetés (planned/under-construction)",
+        "code": "ge_cad_bati_projet",
+        "table": "ge_cad_bati_projet",
+        "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/cad_bati_projet/FeatureServer/0",
+        "conflict_column": "objectid",
+        # Source archives rows after construction → flag deleted_at, never hard-delete.
+        # Per SITG: "Après construction et dépôt du dossier de cadastration ces objets sont
+        # archivés (voir couche Historique des bâtiments hors-sol et sous-sol)".
+        "soft_delete": True,
+    },
+    {
         "name": "Adresses cadastrales",
         "code": "ge_cad_adresse",
         "table": "ge_cad_adresses",
@@ -172,6 +187,44 @@ def has_column(url: str, key: str, schema: str, table: str, column: str) -> bool
         return r.status_code == 200
     except Exception:
         return False
+
+
+def patch_count(
+    url: str,
+    key: str,
+    schema: str,
+    table: str,
+    filters: dict[str, str],
+    payload: dict,
+) -> int:
+    """PATCH a table with filters; return count of affected rows.
+
+    `filters` is a dict of {column: postgrest_op_value}, e.g. {"deleted_at": "is.null"}.
+    Filter values are URL-encoded (notably `+` in ISO timestamps must become `%2B`).
+    Returns 0 on failure (logged).
+    """
+    from urllib.parse import quote
+    qs = "&".join(f"{col}={quote(op, safe='.')}" for col, op in filters.items())
+    endpoint = f"{url.rstrip('/')}/rest/v1/{table}?{qs}"
+    headers = {
+        "apikey": key,
+        "Authorization": f"Bearer {key}",
+        "Content-Type": "application/json",
+        "Prefer": "count=exact,return=minimal",
+    }
+    if schema and schema != "public":
+        headers["Content-Profile"] = schema
+    try:
+        r = requests.patch(endpoint, headers=headers, json=payload, timeout=60)
+        if r.status_code in (200, 204):
+            cr = r.headers.get("content-range", "")
+            if "/" in cr:
+                return int(cr.split("/")[1])
+            return 0
+        print(f"  Warning: PATCH returned {r.status_code}: {r.text[:200]}")
+    except Exception as e:
+        print(f"  Warning: PATCH failed: {e}")
+    return 0
 
 
 def get_table_columns(url: str, key: str, schema: str, table: str) -> set[str]:
@@ -286,6 +339,12 @@ def process_destination(
             work_records = [{k: v for k, v in r.items() if k != "geometry"} for r in work_records]
             print("  Geometry: column not found in table, stripping")
 
+        # Touch `last_seen_at` on every sync so soft-delete logic can detect
+        # which rows are missing from the source (only if column exists).
+        if "last_seen_at" in known_cols:
+            for r in work_records:
+                r["last_seen_at"] = SYNC_STARTED_AT
+
         # Normalise keys: PostgREST requires all objects in a batch to have
         # identical keys.  Some ArcGIS features may lack optional fields
         # (e.g. geometry on features with NULL shape).
@@ -328,6 +387,29 @@ def process_destination(
         if upserted == 0:
             print("    ERROR: Zero rows upserted!")
             all_ok = False
+
+        # Soft-delete reconciliation (opt-in per dataset).
+        # For tables with `last_seen_at` + `deleted_at`, after a successful sync:
+        #   - Mark rows that were NOT touched (last_seen_at < SYNC_STARTED_AT) as deleted.
+        #   - Resurrect any previously-deleted row that came back in this sync.
+        if ds.get("soft_delete") and upserted > 0:
+            archived = patch_count(
+                dest_url, dest_key, dest_schema, table,
+                filters={
+                    "last_seen_at": f"lt.{SYNC_STARTED_AT}",
+                    "deleted_at": "is.null",
+                },
+                payload={"deleted_at": SYNC_STARTED_AT},
+            )
+            resurrected = patch_count(
+                dest_url, dest_key, dest_schema, table,
+                filters={
+                    "last_seen_at": f"gte.{SYNC_STARTED_AT}",
+                    "deleted_at": "not.is.null",
+                },
+                payload={"deleted_at": None},
+            )
+            print(f"    Soft-delete:  {archived} archived, {resurrected} resurrected")
 
     return all_ok
 
