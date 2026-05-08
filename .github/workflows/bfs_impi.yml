@@ -1,0 +1,24 @@
+name: BFS IMPI Import
+
+on:
+  schedule:
+    # Quarterly: 25th of Feb / May / Aug / Nov at 09:00 UTC.
+    # BFS publishes IMPI ~25th of the second month after each quarter end.
+    - cron: '0 9 25 2,5,8,11 *'
+  workflow_dispatch:
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: python pipelines/bfs_impi/import.py
+        env:
+          RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          RE_LLM_SCHEMA: bronze_ch
