@@ -1,0 +1,47 @@
+name: SIRENE Bulk Load (manual)
+
+# DO NOT add a schedule. Bulk load is intentionally manual + local-preferred.
+# Estimated runtime: 30-60 min. Downloads ~3 GB of parquet from data.gouv.fr.
+# GHA Ubuntu runners have ~14 GB free disk — plenty — but the user prefers to
+# run this on a dev Mac so it can be interrupted mid-run if needed.
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Which stages to run"
+        required: true
+        default: "all"
+        type: choice
+        options: [all, unite-legale-only, etablissement-only]
+      limit_rows:
+        description: "Stop after N matched rows per stage (0 = no limit, for smoke tests)"
+        required: false
+        default: "0"
+
+jobs:
+  bulk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240   # 4h hard cap
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - name: Run bulk loader
+        env:
+          RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          RE_LLM_SCHEMA: bronze_fr
+          SIRENE_CACHE_DIR: ${{ runner.temp }}/sirene_cache
+        run: |
+          ARGS=""
+          case "${{ github.event.inputs.mode }}" in
+            unite-legale-only)  ARGS="--unite-legale-only" ;;
+            etablissement-only) ARGS="--etablissement-only" ;;
+          esac
+          if [ "${{ github.event.inputs.limit_rows }}" != "0" ]; then
+            ARGS="$ARGS --limit-rows ${{ github.event.inputs.limit_rows }}"
+          fi
+          python pipelines/sirene/import.py --mode bulk $ARGS

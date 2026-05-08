@@ -1,0 +1,32 @@
+name: SIRENE Incremental Sync
+
+# Cron is INTENTIONALLY DISABLED until INSEE_CLIENT_ID and INSEE_CLIENT_SECRET
+# secrets are provisioned. Tracking bug: cbb09d8c-56ab-4374-9846-edcf8418432b.
+#
+# Once creds are in place, uncomment the schedule block and verify the parser
+# exits cleanly with a 0-row sync (idempotency check) before letting natural
+# cron run unattended.
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '0 5 * * *'   # daily at 05:00 UTC, after INSEE's nightly publication ~02:00 CET
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - name: Run incremental sync
+        env:
+          RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          RE_LLM_SCHEMA: bronze_fr
+          INSEE_CLIENT_ID: ${{ secrets.INSEE_CLIENT_ID }}
+          INSEE_CLIENT_SECRET: ${{ secrets.INSEE_CLIENT_SECRET }}
+        run: python pipelines/sirene/import.py --mode incremental
