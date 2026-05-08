@@ -1,0 +1,25 @@
+name: BFS Rent CPI Import
+
+on:
+  schedule:
+    # Monthly: 10th of every month at 08:00 UTC.
+    # BFS publishes the CPI (Landesindex der Konsumentenpreise) early in each
+    # month, typically around the 4th–8th. We fire on the 10th to be safe.
+    - cron: '0 8 10 * *'
+  workflow_dispatch:
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: python pipelines/bfs_rent_cpi/import.py
+        env:
+          RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          RE_LLM_SCHEMA: bronze_ch
