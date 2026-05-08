@@ -2,7 +2,7 @@ name: BFS Rents Import
 
 on:
   schedule:
-    - cron: '0 9 1 1,4,7,10 *'  # quarterly: 1st of Jan/Apr/Jul/Oct at 9:00 UTC
+    - cron: '0 9 5 12 *'  # yearly: 5 December at 09:00 UTC (BFS publishes SE rent data annually in late autumn)
   workflow_dispatch:
 
 jobs:
