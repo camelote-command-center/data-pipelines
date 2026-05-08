@@ -1,0 +1,25 @@
+name: BFS Construction Price Index Import
+
+on:
+  schedule:
+    # Semi-annual: 15 April + 15 October at 09:00 UTC.
+    # BFS publishes the Baupreisindex (BAP) ~mid-April (April reference) and
+    # ~mid-October (October reference). We fire after publication.
+    - cron: '0 9 15 4,10 *'
+  workflow_dispatch:
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - run: python pipelines/bfs_construction_price_index/import.py
+        env:
+          RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          RE_LLM_SCHEMA: bronze_ch
