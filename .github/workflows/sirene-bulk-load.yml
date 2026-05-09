@@ -1,11 +1,22 @@
-name: SIRENE Bulk Load (manual)
+name: SIRENE Bulk Load
 
-# DO NOT add a schedule. Bulk load is intentionally manual + local-preferred.
-# Estimated runtime: 30-60 min. Downloads ~3 GB of parquet from data.gouv.fr.
-# GHA Ubuntu runners have ~14 GB free disk — plenty — but the user prefers to
-# run this on a dev Mac so it can be interrupted mid-run if needed.
+# Two ways this fires:
+#   - Monthly cron (5th of each month at 06:00 UTC) — INSEE publishes the new
+#     parquet stock files on the 1st of each month; we wait 4 days for the
+#     data.gouv.fr CDN to mirror reliably and to avoid colliding with other
+#     1st-of-month parsers (zefix, sitg, …).
+#   - Manual workflow_dispatch — for re-runs, smoke tests, or partial reloads.
+#
+# Runtime: ~2 h on a GHA Ubuntu runner against Supabase Frankfurt (matches
+# the 31.97.122.135 VPS one-off run on 2026-05-09 — 1h 58m for 6.76 M
+# etablissements). 4 h hard cap below.
+#
+# Idempotent: UPSERT on siren / siret. Re-running the same release is a no-op
+# for unchanged rows; only changed rows get UPDATEd.
 
 on:
+  schedule:
+    - cron: '0 6 5 * *'
   workflow_dispatch:
     inputs:
       mode:
@@ -33,15 +44,24 @@ jobs:
         env:
           RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
           RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          # Direct Postgres DSN — used by _siren_set_from_db for fast (~10s)
+          # whitelist load of the 4.8M-SIREN companies table. Without it the
+          # parser falls back to PostgREST pagination, which 500'd at offset
+          # 1.2M during the first VPS run on 2026-05-09. Reusing the existing
+          # repo-wide secret RE_LLM_DB_URL.
+          RE_LLM_DATABASE_URL: ${{ secrets.RE_LLM_DB_URL }}
           RE_LLM_SCHEMA: bronze_fr
           SIRENE_CACHE_DIR: ${{ runner.temp }}/sirene_cache
         run: |
+          # Schedule fires set inputs to empty; default to "all"
+          MODE="${{ github.event.inputs.mode }}"
+          LIMIT="${{ github.event.inputs.limit_rows }}"
           ARGS=""
-          case "${{ github.event.inputs.mode }}" in
+          case "${MODE:-all}" in
             unite-legale-only)  ARGS="--unite-legale-only" ;;
             etablissement-only) ARGS="--etablissement-only" ;;
           esac
-          if [ "${{ github.event.inputs.limit_rows }}" != "0" ]; then
-            ARGS="$ARGS --limit-rows ${{ github.event.inputs.limit_rows }}"
+          if [ -n "$LIMIT" ] && [ "$LIMIT" != "0" ]; then
+            ARGS="$ARGS --limit-rows $LIMIT"
           fi
           python pipelines/sirene/import.py --mode bulk $ARGS
