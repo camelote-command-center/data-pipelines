@@ -252,18 +252,28 @@ def _required_env(name: str) -> str:
 
 
 def _siren_set_from_db(url: str, key: str, schema: str) -> set[str]:
-    """Pull all SIREN values currently in bronze_fr.companies (paginated)."""
+    """Pull all SIREN values currently in bronze_fr.companies (paginated).
+
+    PostgREST/Supabase caps responses at 1000 rows per request regardless of
+    `limit` (server-side `db-max-rows` setting). We use the `Range` header
+    +`Prefer: count=exact` to read the total upfront, then page in chunks of
+    exactly 1000. The loop stops when the page is empty or offset reaches total.
+    """
     print("  Loading SIREN whitelist from bronze_fr.companies …")
     sirens: set[str] = set()
-    page_size = 5000
+    page_size = 1000  # matches Supabase server-side max
     offset = 0
     headers = {
         "apikey": key,
         "Authorization": f"Bearer {key}",
         "Accept-Profile": schema,
+        "Prefer": "count=exact",
     }
+    endpoint = f"{url.rstrip('/')}/rest/v1/companies"
+
+    # First page also returns Content-Range with the total
+    total: int | None = None
     while True:
-        endpoint = f"{url.rstrip('/')}/rest/v1/companies"
         r = requests.get(
             endpoint,
             params={"select": "siren", "limit": page_size, "offset": offset},
@@ -271,6 +281,14 @@ def _siren_set_from_db(url: str, key: str, schema: str) -> set[str]:
             timeout=120,
         )
         r.raise_for_status()
+        if total is None:
+            cr = r.headers.get("content-range", "")
+            if "/" in cr:
+                try:
+                    total = int(cr.split("/")[1])
+                    print(f"    total in companies: {total:,}")
+                except ValueError:
+                    total = None
         chunk = r.json()
         if not chunk:
             break
@@ -278,11 +296,14 @@ def _siren_set_from_db(url: str, key: str, schema: str) -> set[str]:
             s = row.get("siren")
             if s:
                 sirens.add(str(s))
-        offset += page_size
-        if len(chunk) < page_size:
+        offset += len(chunk)
+        if total is not None and offset >= total:
             break
-        if offset % 50_000 == 0:
-            print(f"    loaded {offset:,} SIRENs so far…")
+        # Defensive — if we got less than a full page and have no total, stop
+        if total is None and len(chunk) < page_size:
+            break
+        if offset % 100_000 == 0:
+            print(f"    loaded {offset:,}/{total or '?'} SIRENs so far…")
     print(f"  Whitelist size: {len(sirens):,} SIRENs")
     return sirens
 
