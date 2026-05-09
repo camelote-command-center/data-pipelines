@@ -252,14 +252,50 @@ def _required_env(name: str) -> str:
 
 
 def _siren_set_from_db(url: str, key: str, schema: str) -> set[str]:
-    """Pull all SIREN values currently in bronze_fr.companies (paginated).
+    """Pull all SIREN values currently in bronze_fr.companies.
 
-    PostgREST/Supabase caps responses at 1000 rows per request regardless of
-    `limit` (server-side `db-max-rows` setting). We use the `Range` header
-    +`Prefer: count=exact` to read the total upfront, then page in chunks of
-    exactly 1000. The loop stops when the page is empty or offset reaches total.
+    Two paths, in preference order:
+
+      1. Direct psycopg2 to the Supabase Postgres (set RE_LLM_DATABASE_URL).
+         Single SELECT, server-side cursor, ~10s for 5M rows.
+         Strongly preferred — PostgREST 1000-row pagination at this scale
+         tends to 500 partway through (saw 500 at offset 1.2M during the
+         first VPS run on 2026-05-09).
+
+      2. PostgREST paginated GET fallback (page_size=1000 — Supabase server-side
+         cap). Slow + occasionally flaky for >1M rows, but works without
+         direct DB access. Has retry on 5xx.
     """
     print("  Loading SIREN whitelist from bronze_fr.companies …")
+
+    dsn = os.environ.get("RE_LLM_DATABASE_URL")
+    if dsn:
+        return _siren_set_via_psycopg2(dsn, schema)
+
+    print("    (no RE_LLM_DATABASE_URL set; falling back to PostgREST pagination)")
+    return _siren_set_via_postgrest(url, key, schema)
+
+
+def _siren_set_via_psycopg2(dsn: str, schema: str) -> set[str]:
+    import psycopg2
+
+    sirens: set[str] = set()
+    t0 = time.time()
+    with psycopg2.connect(dsn, connect_timeout=30) as conn:
+        # Use a server-side cursor to avoid pulling 5M rows into client memory at once
+        with conn.cursor(name="sirene_whitelist") as cur:
+            cur.itersize = 50_000
+            cur.execute(f"SELECT siren FROM {schema}.companies")
+            for (s,) in cur:
+                if s:
+                    sirens.add(str(s))
+                    if len(sirens) % 500_000 == 0:
+                        print(f"    loaded {len(sirens):,} SIRENs ({time.time() - t0:.0f}s)")
+    print(f"  Whitelist size: {len(sirens):,} SIRENs (psycopg2, {time.time() - t0:.0f}s)")
+    return sirens
+
+
+def _siren_set_via_postgrest(url: str, key: str, schema: str) -> set[str]:
     sirens: set[str] = set()
     page_size = 1000  # matches Supabase server-side max
     offset = 0
@@ -270,17 +306,33 @@ def _siren_set_from_db(url: str, key: str, schema: str) -> set[str]:
         "Prefer": "count=exact",
     }
     endpoint = f"{url.rstrip('/')}/rest/v1/companies"
-
-    # First page also returns Content-Range with the total
     total: int | None = None
+
     while True:
-        r = requests.get(
-            endpoint,
-            params={"select": "siren", "limit": page_size, "offset": offset},
-            headers=headers,
-            timeout=120,
-        )
-        r.raise_for_status()
+        # Retry on 5xx — saw a 500 at offset 1.2M on a real run
+        for attempt in range(5):
+            try:
+                r = requests.get(
+                    endpoint,
+                    params={"select": "siren", "limit": page_size, "offset": offset},
+                    headers=headers,
+                    timeout=120,
+                )
+                if r.status_code == 200:
+                    break
+                if r.status_code >= 500:
+                    wait = 2 ** attempt
+                    print(f"    {r.status_code} at offset {offset}; sleep {wait}s")
+                    time.sleep(wait)
+                    continue
+                r.raise_for_status()
+            except requests.exceptions.RequestException as e:
+                wait = 2 ** attempt
+                print(f"    {e}; sleep {wait}s")
+                time.sleep(wait)
+        else:
+            raise RuntimeError(f"Gave up at offset {offset}")
+
         if total is None:
             cr = r.headers.get("content-range", "")
             if "/" in cr:
@@ -299,12 +351,12 @@ def _siren_set_from_db(url: str, key: str, schema: str) -> set[str]:
         offset += len(chunk)
         if total is not None and offset >= total:
             break
-        # Defensive — if we got less than a full page and have no total, stop
         if total is None and len(chunk) < page_size:
             break
         if offset % 100_000 == 0:
             print(f"    loaded {offset:,}/{total or '?'} SIRENs so far…")
-    print(f"  Whitelist size: {len(sirens):,} SIRENs")
+
+    print(f"  Whitelist size: {len(sirens):,} SIRENs (PostgREST fallback)")
     return sirens
 
 
