@@ -28,6 +28,7 @@ import Anthropic from '@anthropic-ai/sdk';
 import * as cheerio from 'cheerio';
 import { supabase, upsertBronze, sleep, verifyBronzeAccess, BRONZE_SCHEMA, resolveTable } from '../_shared/supabase.js';
 import { createFaoSession } from '../_shared/fao-session.js';
+import { cleanSwissPrice, validateParsedPrice } from './price.js';
 
 // ---------------------------------------------------------------------------
 // Config
@@ -292,6 +293,12 @@ async function parseTransactionWithClaude(
 ): Promise<any> {
   try {
     const response = await anthropic.messages.create({
+      // Sonnet was shown to hallucinate a digit-group on a CHF 1.875M sale
+      // (Pittard, 2026-02-19), duplicating "'000" into "1'875'000'000". The
+      // downstream regex extraction in price.ts now overrides any LLM-supplied
+      // price with the raw-text regex match, so this hallucination is caught
+      // and corrected before insert. Optional follow-up: try Opus for better
+      // digit fidelity once we confirm the right model string for this project.
       model: 'claude-sonnet-4-20250514',
       max_tokens: 4096,
       messages: [
@@ -446,6 +453,7 @@ async function main() {
   // 4. Parse each transaction with Claude
   console.log('\n  Parsing transactions with Claude Sonnet...');
   const allRecords: Record<string, unknown>[] = [];
+  const quarantined: Record<string, unknown>[] = [];
   let parseErrors = 0;
 
   for (let i = 0; i < allRaw.length; i++) {
@@ -515,6 +523,35 @@ async function main() {
         continue;
       }
 
+      // ──────────────────────────────────────────────────────────────
+      // Price extraction (regex over raw gazette text wins; LLM is fallback)
+      // See pipelines/transactions-fao/price.ts for the two-bug history.
+      // ──────────────────────────────────────────────────────────────
+      const llmCleanedPrice = formatted.price
+        ? cleanSwissPrice(String(formatted.price))
+        : null;
+      const validation = validateParsedPrice(raw.details, llmCleanedPrice);
+
+      if (!validation.ok) {
+        // Quarantine the row instead of inserting bad data.
+        console.error(`  Quarantining ${affaireNumber}: ${validation.reason} (price=${validation.parsedPrice})`);
+        quarantined.push({
+          affaire_number: affaireNumber,
+          reason: validation.reason,
+          parsed_price: validation.parsedPrice,
+          raw_regex_price: null,
+          llm_payload: parsedData,
+          raw_text: raw.details,
+          warnings: null,
+        });
+        parseErrors++;
+        continue;
+      }
+
+      if (validation.warning) {
+        console.warn(`  ⚠ ${affaireNumber}: ${validation.warning}`);
+      }
+
       // Build record — DO NOT supply type_clean_list (trigger handles it)
       const record: Record<string, unknown> = {
         affaire_number: affaireNumber,
@@ -522,8 +559,10 @@ async function main() {
         fao_publication_date: faoPublicationDate,
         commune: formatted.commune || null,
         commune_number: formatted.commune_number || null,
-        // DB column price is varchar — store as string
-        price: formatted.price ? String(formatted.price).replace(/[^\d]/g, '') || null : null,
+        // DB column price is varchar — store as cleaned numeric-as-string.
+        // The value here comes from price.ts validateParsedPrice() which
+        // always prefers the regex extraction over the LLM's value.
+        price: validation.price,
         type_of_transaction: formatted.type_of_transaction || null,
         // DB columns old_owner_s, new_owner_s are JSONB — pass arrays directly
         old_owner_s: formatted.old_owner_s || null,
@@ -547,7 +586,21 @@ async function main() {
     await sleep(500);
   }
 
-  console.log(`\n  Parsed: ${allRecords.length}, errors: ${parseErrors}`);
+  console.log(`\n  Parsed: ${allRecords.length}, errors: ${parseErrors}, quarantined: ${quarantined.length}`);
+
+  // Flush quarantine first (so even if main upsert fails, the rejected rows are logged)
+  if (quarantined.length > 0) {
+    console.log(`\n  Quarantining ${quarantined.length} row(s) to bronze_ch.fao_transactions_parse_errors...`);
+    const { error: qError } = await supabase
+      .schema(BRONZE_SCHEMA)
+      .from('fao_transactions_parse_errors')
+      .insert(quarantined);
+    if (qError) {
+      console.error(`  Quarantine insert FAILED: ${qError.message}`);
+    } else {
+      console.log(`  ✓ ${quarantined.length} row(s) quarantined`);
+    }
+  }
 
   if (allRecords.length === 0) {
     console.log('  No records to upsert. Exiting.');
@@ -592,6 +645,7 @@ async function main() {
   console.log(`  Transactions extracted:          ${allRaw.length}`);
   console.log(`  Records parsed:                  ${allRecords.length}`);
   console.log(`  Parse errors:                    ${parseErrors}`);
+  console.log(`  Rows quarantined:                ${quarantined.length}`);
   console.log(`  Rows upserted to DB:             ${totalUpserted}`);
   console.log(`  Rows with null affaire:          ${nullAffaireCount}`);
   console.log(`  Latest fao_publication_date in DB: ${latestDate}`);
