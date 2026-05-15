@@ -417,16 +417,39 @@ class CadastralUpsertClient:
 # ──────────────────────────────────────────────────────────────
 
 def _rest(url: str, key: str, method: str, path: str, **kw) -> dict | list | None:
+    """REST helper with same retry profile as the upsert client — survives
+    Supabase 522 outages, SSL drops, transient ConnectionResetError, etc."""
     h = {"apikey": key, "Authorization": f"Bearer {key}",
          "Content-Type": "application/json", "Accept-Profile": "bronze_ch",
          "Content-Profile": "bronze_ch"}
     h.update(kw.pop("headers", {}))
-    r = requests.request(method, f"{url}/rest/v1{path}", headers=h, **kw)
-    r.raise_for_status()
-    if r.text:
-        try: return r.json()
-        except Exception: return None
-    return None
+    full_url = f"{url}/rest/v1{path}"
+    backoff = 5.0
+    last_err = None
+    for attempt in range(6):
+        try:
+            r = requests.request(method, full_url, headers=h, **kw)
+            r.raise_for_status()
+            if r.text:
+                try: return r.json()
+                except Exception: return None
+            return None
+        except (requests.exceptions.SSLError,
+                requests.exceptions.ConnectionError,
+                requests.exceptions.Timeout) as e:
+            last_err = e
+            print(f"[warn] _rest {method} transient attempt {attempt+1}/6: "
+                  f"{type(e).__name__}; retrying in {backoff:.0f}s", flush=True)
+            time.sleep(backoff); backoff *= 2
+        except requests.exceptions.HTTPError as e:
+            if e.response is not None and 500 <= e.response.status_code < 600:
+                last_err = e
+                print(f"[warn] _rest {method} {e.response.status_code} attempt {attempt+1}/6; "
+                      f"retrying in {backoff:.0f}s", flush=True)
+                time.sleep(backoff); backoff *= 2
+                continue
+            raise
+    raise last_err if last_err else RuntimeError("_rest failed after retries")
 
 
 def runs_insert(url: str, key: str, run_id: str, canton_code: str,
@@ -790,13 +813,22 @@ def _run_one_canton(canton: str, run_id: str, cfg: TierConfig, args,
 
 
 def _detect_first_refresh(url: str, key: str, canton: str) -> bool:
+    """Best-effort flag check; failures default to False (don't kill the walk)."""
     h = {"apikey": key, "Authorization": f"Bearer {key}", "Accept-Profile": "bronze_ch"}
-    r = requests.get(
-        f"{url}/rest/v1/federal_cadastral_parcels?select=source_url"
-        f"&canton_code=eq.{canton}&source_url=eq.api3.geo.admin.ch/identify&limit=1",
-        headers=h, timeout=30)
-    r.raise_for_status()
-    return len(r.json()) == 0
+    backoff = 5.0
+    for attempt in range(4):
+        try:
+            r = requests.get(
+                f"{url}/rest/v1/federal_cadastral_parcels?select=source_url"
+                f"&canton_code=eq.{canton}&source_url=eq.api3.geo.admin.ch/identify&limit=1",
+                headers=h, timeout=30)
+            r.raise_for_status()
+            return len(r.json()) == 0
+        except Exception as e:
+            print(f"[warn] _detect_first_refresh attempt {attempt+1}/4: {type(e).__name__}; retry {backoff:.0f}s", flush=True)
+            time.sleep(backoff); backoff *= 2
+    print(f"[warn] _detect_first_refresh gave up; assuming refresh (False)")
+    return False
 
 
 class _MaxTilesReached(Exception): pass
