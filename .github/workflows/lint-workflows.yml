@@ -1,0 +1,32 @@
+name: Lint workflows
+
+# Guards against the silent-success bug class:
+#   - bug 66298402: workflows with no PATCH → dashboard stuck yellow
+#   - bug 07bf060b: workflows with `if: always()` PATCH → failures look successful
+#
+# Fails the PR if any parser workflow doesn't update camelote_data.datasets.
+# Allow-list utilities/backfills in scripts/check_workflow_patches.py.
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/**.yml'
+      - 'scripts/check_workflow_patches.py'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/**.yml'
+      - 'scripts/check_workflow_patches.py'
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check every parser workflow has a metadata PATCH
+        run: python scripts/check_workflow_patches.py
