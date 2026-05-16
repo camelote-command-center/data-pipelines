@@ -24,3 +24,27 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+
+      - name: PATCH last_acquired_at on success
+        if: success()
+        run: |
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?workflow_file=eq.fr-dvf.yml" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+            -d "{\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"last_error\":null}"
+        env:
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+
+      - name: PATCH last_error on failure
+        if: failure()
+        run: |
+          MSG="GitHub Actions run ${{ github.run_id }} failed at $(date -u +%Y-%m-%dT%H:%M:%SZ). See https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          ESC=$(printf '%s' "$MSG" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?workflow_file=eq.fr-dvf.yml" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+            -d "{\"last_error\":${ESC}}"
+        env:
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
