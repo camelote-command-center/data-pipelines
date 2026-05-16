@@ -608,8 +608,33 @@ async function main() {
   }
 
   // 5. Upsert — DO NOT supply type_clean_list
-  console.log(`\n  Upserting ${allRecords.length} records (batch size: ${BATCH_SIZE})...`);
-  const totalUpserted = await upsertBronze('transactions', allRecords, 'affaire_number', BATCH_SIZE);
+  // Dedupe within batch by affaire_number to avoid:
+  //   "ON CONFLICT DO UPDATE command cannot affect row a second time"
+  // which aborts a whole batch and silently drops every row in it. On
+  // 2026-05-16's scheduled run this dropped batch 1/6 = 50 records,
+  // including the ~95 fresh transactions dated 2026-05-15 that FAO had
+  // just published. Last occurrence wins — most-recently-parsed copy
+  // of each affaire.
+  const dedupMap = new Map<string, typeof allRecords[number]>();
+  let withinBatchDupes = 0;
+  for (const rec of allRecords) {
+    const key = rec.affaire_number;
+    if (typeof key !== 'string' || !key) {
+      // Preserve null-affaire rows (already counted by the null-affaire
+      // validation gate below) — index them by a unique synthetic key.
+      dedupMap.set(`__null_${dedupMap.size}`, rec);
+      continue;
+    }
+    if (dedupMap.has(key)) withinBatchDupes++;
+    dedupMap.set(key, rec);
+  }
+  const dedupedRecords = Array.from(dedupMap.values());
+  if (withinBatchDupes > 0) {
+    console.log(`  Deduped ${withinBatchDupes} within-batch duplicate(s) by affaire_number`);
+  }
+
+  console.log(`\n  Upserting ${dedupedRecords.length} records (batch size: ${BATCH_SIZE})...`);
+  const totalUpserted = await upsertBronze('transactions', dedupedRecords, 'affaire_number', BATCH_SIZE);
 
   // 6. End-of-run validation
   const { data: latestRow } = await supabase
