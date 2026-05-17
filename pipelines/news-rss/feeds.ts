@@ -17,8 +17,8 @@ export interface NewsFeed {
   /** Human-readable publisher name. */
   publisher: string;
   /** Source type. */
-  kind: 'rss' | 'sitemap';
-  /** Feed URL (RSS) or sitemap-index URL. */
+  kind: 'rss' | 'sitemap' | 'newsdata-api' | 'gnews-api';
+  /** Feed URL (RSS) or sitemap-index URL. For API kinds, this is documentation-only. */
   url: string;
   /** ISO 639-1 language code of the articles. */
   language: 'fr' | 'de' | 'it' | 'en';
@@ -141,6 +141,59 @@ export const FEEDS: NewsFeed[] = [
     url: 'https://www.nzz.ch/finanzen.rss',
     language: 'de',
     tags: ['news', 'rss', 'nzz', 'finanzen', 'finance'],
+  },
+
+  // ── Blick (DE — Ringier flagship). 3 sub-feeds. Keyword filter (in
+  //    fetch-news.ts → isEconomicBusinessRealEstate) drops non-econ items;
+  //    Politik + News carry noise but housing/SNB/federal-council items matter.
+  {
+    slug: 'blick_wirtschaft',
+    publisher: 'Blick',
+    kind: 'rss',
+    url: 'https://www.blick.ch/wirtschaft.rss',
+    language: 'de',
+    tags: ['news', 'rss', 'blick', 'de', 'wirtschaft', 'business'],
+  },
+  {
+    slug: 'blick_politik',
+    publisher: 'Blick',
+    kind: 'rss',
+    url: 'https://www.blick.ch/politik.rss',
+    language: 'de',
+    tags: ['news', 'rss', 'blick', 'de', 'politik'],
+  },
+  {
+    slug: 'blick_news',
+    publisher: 'Blick',
+    kind: 'rss',
+    url: 'https://www.blick.ch/news.rss',
+    language: 'de',
+    tags: ['news', 'rss', 'blick', 'de', 'general'],
+  },
+
+  // ── newsdata.io aggregator (DE+FR+EN, server-filtered to CH + business).
+  //    Single feed entry; adapter pages through nextPage.
+  //    Env: NEWSDATA_API_KEY (GHA secret). Missing key → adapter skips.
+  {
+    slug: 'newsdata_ch',
+    publisher: 'newsdata.io',
+    kind: 'newsdata-api',
+    url: 'https://newsdata.io/api/1/latest',
+    language: 'de', // dataset-level fallback; real lang lives per-article
+    tags: ['news', 'api', 'newsdata', 'aggregator', 'business'],
+    max_items: 100,
+  },
+
+  // ── GNews aggregator (DE+FR+EN, one call per language).
+  //    Env: GNEWS_API_KEY (GHA secret). Missing key → adapter skips.
+  {
+    slug: 'gnews_ch',
+    publisher: 'GNews',
+    kind: 'gnews-api',
+    url: 'https://gnews.io/api/v4/top-headlines',
+    language: 'de', // dataset-level fallback
+    tags: ['news', 'api', 'gnews', 'aggregator', 'business'],
+    max_items: 100,
   },
 
   // ── SWI swissinfo — news-specific sitemap (FR/DE), updated continuously.

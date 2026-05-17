@@ -151,10 +151,190 @@ async function discoverSitemap(feed: NewsFeed): Promise<CandidateItem[]> {
   return items;
 }
 
+// ---------------------------------------------------------------------------
+// API adapters (newsdata.io + GNews) + keyword filter.
+// ---------------------------------------------------------------------------
+
+const NEWSDATA_API_KEY = process.env.NEWSDATA_API_KEY;
+const GNEWS_API_KEY = process.env.GNEWS_API_KEY;
+const API_LANGS = ['de', 'fr', 'en'] as const;
+
+// Always-allow: pure business / economy / real-estate / finance terms.
+const ALWAYS_ALLOW_KEYWORDS = [
+  // de
+  'wirtschaft', 'immobilien', 'immobilie', 'konjunktur', 'unternehmen', 'bank',
+  'börse', 'boerse', 'markt', 'hypothek', 'miete', 'mieten', 'mietzins', 'bau',
+  'baugewerbe', 'zins', 'zinsen', 'inflation', 'kmu', 'industrie', 'aktie',
+  'aktien', 'geschäft', 'geschaeft', 'konsum', 'franken', 'snb', 'nationalbank',
+  'wohnungsmarkt', 'eigenheim',
+  // fr
+  'économie', 'economie', 'immobilier', 'entreprise', 'bourse', 'marché',
+  'marche', 'hypothèque', 'hypotheque', 'loyer', 'construction', 'taux',
+  'inflation', 'pme', 'industrie', 'action', 'affaires', 'consommation',
+  'franc', 'bns', 'logement',
+  // en
+  'economy', 'real estate', 'business', 'mortgage', 'rent', 'rental', 'bank',
+  'market', 'swiss franc', 'finance', 'snb', 'housing', 'inflation', 'stocks',
+];
+
+// Allow only if these appear (econ/RE policy terms — explicitly Swiss).
+const POLICY_KEYWORDS = [
+  'ldtr', 'rdppf', 'bundesrat', 'conseil fédéral', 'conseil federal',
+  'federal council', 'zoning', 'raumplanung', 'aménagement du territoire',
+  'amenagement du territoire', 'housing policy', 'wohnpolitik',
+  'politique du logement', 'mietrecht', 'droit du bail', 'lex koller',
+];
+
+function normalize(s: string | null | undefined): string {
+  return (s ?? '').toLowerCase();
+}
+
+/** Keyword gate: business/econ/RE plus Swiss econ-policy items. */
+function isEconomicBusinessRealEstate(item: { title: string; description: string | null; }): boolean {
+  const hay = `${normalize(item.title)} ${normalize(item.description)}`;
+  if (!hay.trim()) return false;
+  for (const kw of ALWAYS_ALLOW_KEYWORDS) {
+    if (hay.includes(kw)) return true;
+  }
+  for (const kw of POLICY_KEYWORDS) {
+    if (hay.includes(kw)) return true;
+  }
+  return false;
+}
+
+interface NewsdataArticle {
+  link?: string;
+  title?: string;
+  description?: string;
+  pubDate?: string;
+  content?: string;
+}
+
+async function discoverNewsdataApi(feed: NewsFeed): Promise<CandidateItem[]> {
+  if (!NEWSDATA_API_KEY) {
+    console.warn('    NEWSDATA_API_KEY not set — skipping newsdata.io adapter');
+    return [];
+  }
+  const cap = feed.max_items ?? MAX_ITEMS_PER_FEED;
+  const items: CandidateItem[] = [];
+  let nextPage: string | null = null;
+  const langParam = API_LANGS.join(',');
+  // Free tier: comma-separated languages supported, country=ch, category=business.
+  let pages = 0;
+  while (items.length < cap && pages < 10) {
+    const params = new URLSearchParams({
+      apikey: NEWSDATA_API_KEY,
+      country: 'ch',
+      category: 'business',
+      language: langParam,
+    });
+    if (nextPage) params.set('page', nextPage);
+    const url = `${feed.url}?${params.toString()}`;
+    const res = await fetch(url, { headers: { 'User-Agent': 'camelote-data-pipelines/news-rss' } });
+    if (!res.ok) {
+      console.warn(`    newsdata.io HTTP ${res.status}: ${await res.text().then(t => t.slice(0, 200))}`);
+      break;
+    }
+    const json = await res.json() as { status?: string; results?: NewsdataArticle[]; nextPage?: string | null };
+    if (json.status !== 'success') {
+      console.warn(`    newsdata.io status=${json.status}; stopping`);
+      break;
+    }
+    for (const a of json.results ?? []) {
+      if (!a.link) continue;
+      items.push({
+        url: a.link,
+        feed_title: a.title ?? '(untitled)',
+        feed_published_at: a.pubDate ?? null,
+        feed_summary: a.description ?? a.content ?? null,
+      });
+      if (items.length >= cap) break;
+    }
+    nextPage = json.nextPage ?? null;
+    pages++;
+    if (!nextPage) break;
+    await sleep(POLITENESS_MS);
+  }
+  return items;
+}
+
+interface GnewsArticle {
+  url?: string;
+  title?: string;
+  description?: string;
+  content?: string;
+  publishedAt?: string;
+}
+
+async function discoverGnewsApi(feed: NewsFeed): Promise<CandidateItem[]> {
+  if (!GNEWS_API_KEY) {
+    console.warn('    GNEWS_API_KEY not set — skipping GNews adapter');
+    return [];
+  }
+  const cap = feed.max_items ?? MAX_ITEMS_PER_FEED;
+  const items: CandidateItem[] = [];
+  // GNews free tier: 100 req/day, ≤10 articles/call. One call per language → ≤30 articles.
+  for (const lang of API_LANGS) {
+    if (items.length >= cap) break;
+    const params = new URLSearchParams({
+      apikey: GNEWS_API_KEY,
+      country: 'ch',
+      category: 'business',
+      lang,
+      max: '10',
+    });
+    const url = `${feed.url}?${params.toString()}`;
+    const res = await fetch(url, { headers: { 'User-Agent': 'camelote-data-pipelines/news-rss' } });
+    if (!res.ok) {
+      console.warn(`    gnews.io (${lang}) HTTP ${res.status}: ${await res.text().then(t => t.slice(0, 200))}`);
+      continue;
+    }
+    const json = await res.json() as { articles?: GnewsArticle[] };
+    for (const a of json.articles ?? []) {
+      if (!a.url) continue;
+      items.push({
+        url: a.url,
+        feed_title: a.title ?? '(untitled)',
+        feed_published_at: a.publishedAt ?? null,
+        feed_summary: a.description ?? a.content ?? null,
+      });
+      if (items.length >= cap) break;
+    }
+    await sleep(POLITENESS_MS);
+  }
+  return items;
+}
+
 async function discoverFeed(feed: NewsFeed): Promise<CandidateItem[]> {
   if (feed.kind === 'rss') return discoverRss(feed);
   if (feed.kind === 'sitemap') return discoverSitemap(feed);
+  if (feed.kind === 'newsdata-api') return discoverNewsdataApi(feed);
+  if (feed.kind === 'gnews-api') return discoverGnewsApi(feed);
   throw new Error(`unknown feed kind: ${(feed as NewsFeed).kind}`);
+}
+
+/**
+ * Topic gate for sources that span beyond pure business (Blick all three feeds
+ * + both APIs). Allowlist Swiss econ/RE/business + econ-policy keywords; drop
+ * the rest before the expensive article-extraction step.
+ *
+ * Returns items unchanged for source kinds that are already topic-scoped (e.g.
+ * Le Temps économie, NZZ Wirtschaft, Wüest Partner) — keyword filter is only
+ * applied to Blick + the 2 API aggregators.
+ */
+const KEYWORD_FILTER_SLUGS = new Set([
+  'blick_wirtschaft', 'blick_politik', 'blick_news',
+  'newsdata_ch', 'gnews_ch',
+]);
+
+function applyKeywordFilter(feed: NewsFeed, items: CandidateItem[]): CandidateItem[] {
+  if (!KEYWORD_FILTER_SLUGS.has(feed.slug)) return items;
+  const kept = items.filter((i) =>
+    isEconomicBusinessRealEstate({ title: i.feed_title, description: i.feed_summary }),
+  );
+  const dropped = items.length - kept.length;
+  if (dropped > 0) console.log(`    keyword-filter: dropped ${dropped} / kept ${kept.length}`);
+  return kept;
 }
 
 // ---------------------------------------------------------------------------
@@ -347,6 +527,9 @@ async function processFeed(feed: NewsFeed): Promise<void> {
     return;
   }
   console.log(`    discovered: ${candidates.length}`);
+
+  // Topic gate (Blick + APIs only) — drop non-econ items before dedup/extract.
+  candidates = applyKeywordFilter(feed, candidates);
 
   // Dedup against news_index.
   const unseen = await filterUnseen(candidates);
