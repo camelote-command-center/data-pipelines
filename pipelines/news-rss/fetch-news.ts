@@ -323,7 +323,7 @@ async function discoverFeed(feed: NewsFeed): Promise<CandidateItem[]> {
  * applied to Blick + the 2 API aggregators.
  */
 const KEYWORD_FILTER_SLUGS = new Set([
-  'blick_wirtschaft', 'blick_politik', 'blick_news',
+  // Add 'blick_*' back here once we find real RSS URLs (see feeds.ts note).
   'newsdata_ch', 'gnews_ch',
 ]);
 
@@ -603,7 +603,15 @@ async function main() {
   console.log('='.repeat(64));
 }
 
-main().catch((err) => {
-  console.error('Fatal error:', err);
-  process.exit(1);
-});
+main()
+  .then(() => {
+    // supabase-js keeps http2 keep-alive connections + internal timers that
+    // prevent Node from exiting cleanly. The 2026-05-17 run hung for 84 min
+    // after the last feed completed before hitting the 90-min job timeout —
+    // dashboard then reported a false failure. Force-exit on clean completion.
+    process.exit(0);
+  })
+  .catch((err) => {
+    console.error('Fatal error:', err);
+    process.exit(1);
+  });

@@ -143,33 +143,11 @@ export const FEEDS: NewsFeed[] = [
     tags: ['news', 'rss', 'nzz', 'finanzen', 'finance'],
   },
 
-  // ── Blick (DE — Ringier flagship). 3 sub-feeds. Keyword filter (in
-  //    fetch-news.ts → isEconomicBusinessRealEstate) drops non-econ items;
-  //    Politik + News carry noise but housing/SNB/federal-council items matter.
-  {
-    slug: 'blick_wirtschaft',
-    publisher: 'Blick',
-    kind: 'rss',
-    url: 'https://www.blick.ch/wirtschaft.rss',
-    language: 'de',
-    tags: ['news', 'rss', 'blick', 'de', 'wirtschaft', 'business'],
-  },
-  {
-    slug: 'blick_politik',
-    publisher: 'Blick',
-    kind: 'rss',
-    url: 'https://www.blick.ch/politik.rss',
-    language: 'de',
-    tags: ['news', 'rss', 'blick', 'de', 'politik'],
-  },
-  {
-    slug: 'blick_news',
-    publisher: 'Blick',
-    kind: 'rss',
-    url: 'https://www.blick.ch/news.rss',
-    language: 'de',
-    tags: ['news', 'rss', 'blick', 'de', 'general'],
-  },
+  // ── Blick: TEMPORARILY DEAD-LISTED (2026-05-17). The /wirtschaft.rss style
+  //    URLs guessed from blick.ch/services/rss-feeds-id100896.html returned 404
+  //    on the GHA run, and the index page itself is Akamai-403 from any local
+  //    probe so we can't introspect. Re-attempt when we can confirm a real path
+  //    (try /api/rss/* or /feed/* patterns, or scrape the page from a Swiss IP).
 
   // ── newsdata.io aggregator (DE+FR+EN, server-filtered to CH + business).
   //    Single feed entry; adapter pages through nextPage.
