@@ -394,14 +394,24 @@ async function main() {
   const countSelector =
     '#block-2 > div.panel-pane.pane-edg-2016-fao-search-pane > div > div.nombre-resultats > p > em';
   let countText = $(countSelector).text().trim();
-  const countMatch = countText.match(/^\d+/);
-  if (!countMatch) {
+  // FAO renders the count in two forms:
+  //   "N résultats correspondent à votre recherche"  (single-page window)
+  //   "1 - 50 sur N résultats"                       (multi-page window)
+  // And N uses the Swiss thousand separator: "1'594".
+  // Original regex `/^\d+/` captured the leading "1" in the multi-page form
+  // and silently truncated every fetch to one page (50 rows).
+  // Fix: strip Swiss separators ('  ʼ ,  ), then prefer the number after
+  // " sur ", else fall back to the largest number on the page.
+  const cleanedText = countText.replace(/['’ʼ\s,](?=\d{3}\b)/g, '');
+  const surMatch = cleanedText.match(/\bsur\s+(\d+)/i);
+  const allNums = (cleanedText.match(/\d+/g) || []).map((n) => parseInt(n, 10));
+  if (!surMatch && allNums.length === 0) {
     console.log('  No results found. Exiting.');
     return;
   }
-  const total = parseInt(countMatch[0], 10);
+  const total = surMatch ? parseInt(surMatch[1], 10) : Math.max(...allNums);
   const pages = Math.ceil(total / RESULTS_PER_PAGE);
-  console.log(`  Total results: ${total}, pages: ${pages}`);
+  console.log(`  Total results: ${total}, pages: ${pages} (raw count text: "${countText}")`);
 
   // 3. Extract raw transactions from all pages
   const allRaw: RawTransaction[] = [];
