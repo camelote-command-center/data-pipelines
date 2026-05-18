@@ -1,0 +1,82 @@
+risk,parser,file_line,operation,target_table,load_pattern,trigger,verdict
+REVIEW_SAFE,silgeneve,parser.py:454,"DELETE FROM bronze_ch.silgeneve_articles WHERE law_rsge=%s AND article_number != ALL(%s)",bronze_ch.silgeneve_articles,scoped_child_prune_under_parent_upsert,weekly_cron,SAFE - guarded by if current_numbers; only prunes one law's stale articles
+LOW_OUT_OF_SCOPE,dld-dubai,migrate.mjs:392,DELETE...USING dedup self-join filtered,bronze_ae.transactions,dedup_function_DDL,DISABLED,Wrong schema (UAE); pipeline not running; filtered deletes
+LOW_OUT_OF_SCOPE,dld-dubai,migrate.mjs:406,DELETE...USING dedup self-join filtered,bronze_ae.rentals,dedup_function_DDL,DISABLED,Wrong schema (UAE); pipeline not running; filtered deletes
+LOW_OUT_OF_SCOPE,dld-dubai,verify.mjs:24,DELETE WHERE source='test',bronze_ae.ingestion_log,smoke_test_cleanup,manual_only,Filtered to test rows
+SAFE_FALSE_POSITIVE,amtsblattportal,sql/01_bronze_schema.sql:5,-- Rollback comment,n/a,DDL_comment,manual_psql,Never executed
+SAFE_FALSE_POSITIVE,court-decisions,sql/01_bronze_index.sql:5,-- Rollback comment,n/a,DDL_comment,manual_psql,Never executed
+SAFE_FALSE_POSITIVE,fao-multi,sql/01_bronze_schema.sql:6,-- Rollback comment,n/a,DDL_comment,manual_psql,Never executed
+SAFE_FALSE_POSITIVE,lindas-multi,sql/01_bronze_schema.sql:9,-- Rollback comment,n/a,DDL_comment,manual_psql,Never executed
+SAFE_FALSE_POSITIVE,news-rss,sql/01_bronze_index.sql:5,-- Rollback comment,n/a,DDL_comment,manual_psql,Never executed
+SAFE_FALSE_POSITIVE,opendata-fr,sql/01_bronze_schema.sql:5,-- Rollback comment,n/a,DDL_comment,manual_psql,Never executed
+SAFE_FALSE_POSITIVE,openholidays,sql/01_bronze_schema.sql:4,-- Rollback comment,n/a,DDL_comment,manual_psql,Never executed
+SAFE_FALSE_POSITIVE,openparl,sql/01_bronze_schema.sql:6,-- Rollback comment,n/a,DDL_comment,manual_psql,Never executed
+SAFE_FALSE_POSITIVE,openplz,sql/01_bronze_schema.sql:6,-- Rollback comment,n/a,DDL_comment,manual_psql,Never executed
+SAFE_FALSE_POSITIVE,wiki-recent,sql/01_bronze_schema.sql:8,-- Rollback comment,n/a,DDL_comment,manual_psql,Never executed
+SAFE_FALSE_POSITIVE,wikipedia-ge,sql/01_bronze_wikipedia.sql:16,-- Rollback comment,n/a,DDL_comment,manual_psql,Never executed
+SAFE_FALSE_POSITIVE,fao-multi,fetch-fao.ts:352,code comment 'silently truncate',n/a,natural_language_comment,n/a,Comment only
+SAFE_FALSE_POSITIVE,silgeneve,parser.py:18,docstring 'never TRUNCATE',n/a,docstring,n/a,Docstring only
+SAFE_FALSE_POSITIVE,sitg_servitudes,import.py:16,docstring 'No delete no truncate',n/a,docstring,n/a,Docstring only
+SAFE,acheter-louer,via _shared/supabase.ts batchUpsert,UPSERT,bronze_ch.listings,append_update,scheduled,UPSERT-only
+SAFE,properstar,via _shared batchUpsert,UPSERT,bronze_ch.listings,append_update,scheduled,UPSERT-only (currently CF-blocked)
+SAFE,immobilier,via _shared batchUpsert,UPSERT,bronze_ch.listings,append_update,scheduled,UPSERT-only
+SAFE,flatfox,via _shared batchUpsert,UPSERT,bronze_ch.listings,append_update,scheduled,UPSERT-only
+SAFE,homegate,via _shared batchUpsert,UPSERT,bronze_ch.listings,append_update,scheduled,UPSERT-only
+SAFE,fao-ldtr,via _shared batchUpsert,UPSERT,bronze_ch.fao_ldtr_*,append_update,scheduled,UPSERT-only
+SAFE,fao-multi,inline+helper,UPSERT,bronze_ch.ge_fao_publications,append_update,scheduled,UPSERT-only
+SAFE,transactions-fao,helper,UPSERT,bronze_ch.fao_transactions,append_update,scheduled,UPSERT-only
+SAFE,realadvisor,helper,UPSERT,bronze_ch.listings,append_update,scheduled,UPSERT-only
+SAFE,news-rss,helper,UPSERT,bronze_ch.news_index,append_update,scheduled,UPSERT-only
+SAFE,amtsblattportal,helper,UPSERT,bronze_ch.amtsblatt_publications,append_update,scheduled,UPSERT-only
+SAFE,bfs_construction_price_index,inline,UPSERT,bronze_ch.bfs_*,append_update,scheduled,UPSERT-only
+SAFE,bfs_dwellings,inline,UPSERT,bronze_ch.bfs_*,append_update,scheduled,UPSERT-only
+SAFE,bfs_impi,inline,UPSERT,bronze_ch.bfs_*,append_update,scheduled,UPSERT-only
+SAFE,bfs_population,inline,UPSERT,bronze_ch.bfs_*,append_update,scheduled,UPSERT-only
+SAFE,bfs_rent_cpi,inline,UPSERT,bronze_ch.bfs_*,append_update,scheduled,UPSERT-only
+SAFE,bfs_rents,inline,UPSERT,bronze_ch.bfs_*,append_update,scheduled,UPSERT-only
+SAFE,bfs_vacancy,inline,UPSERT,bronze_ch.bfs_*,append_update,scheduled,UPSERT-only
+SAFE,candle-updater,inline,UPSERT,bronze_ch.candles,append_update,scheduled,UPSERT-only
+SAFE,court-decisions,helper,UPSERT,bronze_ch.court_decisions_index,append_update,scheduled,UPSERT-only
+SAFE,forbes-billionaires,inline,UPSERT,bronze_global.forbes_*,append_update,scheduled,UPSERT-only
+SAFE,fr-feuille-officielle,inline,UPSERT,bronze_fr.*,append_update,scheduled,UPSERT-only
+SAFE,gwr,helper,UPSERT,bronze_ch.gwr_*,append_update,scheduled,UPSERT-only
+SAFE,lindas-multi,helper,UPSERT,bronze_ch.lindas_observations,append_update,scheduled,UPSERT-only
+SAFE,lolla-daily,helper,UPSERT,bronze_ch.lolla_*,append_update_capped_500,scheduled,UPSERT-only
+SAFE,minergie,helper,UPSERT,bronze_ch.minergie_*,append_update,scheduled,UPSERT-only
+SAFE,ne-sad-sitn,inline,UPSERT,bronze_ch.ne_*,append_update,scheduled,UPSERT-only
+SAFE,opendata-fr,helper,UPSERT,bronze_ch.opendata_fr_*,append_update,scheduled,UPSERT-only
+SAFE,openholidays,helper,UPSERT,bronze_ch.openholidays,append_update,scheduled,UPSERT-only
+SAFE,openparl,helper,UPSERT,bronze_ch.openparl_records,append_update,scheduled,UPSERT-only
+SAFE,openplz,helper,UPSERT,bronze_ch.openplz_records,append_update,scheduled,UPSERT-only
+SAFE,osm,helper,UPSERT,bronze_ch.osm_*,append_update,scheduled,UPSERT-only
+SAFE,sad,helper,UPSERT,bronze_ch.sad_*,append_update,scheduled,UPSERT-only
+SAFE,silgeneve,inline,UPSERT parent + scoped DELETE child,bronze_ch.silgeneve_laws+articles,parent_upsert_child_scoped_prune,scheduled,UPSERT-only on parent; scoped guarded prune on child
+SAFE,simap,helper,UPSERT,bronze_ch.simap_*,append_update,scheduled,UPSERT-only
+SAFE,sirene,helper,UPSERT,bronze_fr.sirene_*,append_update,scheduled,UPSERT-only
+SAFE,sitg_authorizations,helper,UPSERT,bronze_ch.sitg_*,append_update,scheduled,UPSERT-only
+SAFE,sitg_business_energy,helper,UPSERT,bronze_ch.sitg_*,append_update,scheduled,UPSERT-only
+SAFE,sitg_cadastral,helper,UPSERT,bronze_ch.sitg_*,append_update,scheduled,UPSERT-only
+SAFE,sitg_chantiers,helper,UPSERT,bronze_ch.sitg_*,append_update,scheduled,UPSERT-only
+SAFE,sitg_demographics,helper,UPSERT,bronze_ch.sitg_*,append_update,scheduled,UPSERT-only
+SAFE,sitg_dip_schools,helper,UPSERT,bronze_ch.sitg_*,append_update,scheduled,UPSERT-only
+SAFE,sitg_geo_layers,helper,UPSERT,bronze_ch.sitg_*,append_update,scheduled,UPSERT-only
+SAFE,sitg_geography,helper,UPSERT,bronze_ch.sitg_*,append_update,scheduled,UPSERT-only
+SAFE,sitg_servitudes,helper,UPSERT(objectid),bronze_ch.ge_rfo_servitudes,append_update,scheduled,UPSERT-only; docstring states 'No delete no truncate'
+SAFE,sitg_urban_programs,helper,UPSERT,bronze_ch.sitg_*,append_update,scheduled,UPSERT-only
+SAFE,snb,helper,UPSERT,bronze_ch.snb_*,append_update,scheduled,UPSERT-only
+SAFE,tinjob-ats,inline,UPSERT,bronze_*.tinjob_*,append_update,scheduled,UPSERT-only
+SAFE,tinjob-personio,inline,UPSERT,bronze_*.tinjob_*,append_update,scheduled,UPSERT-only
+SAFE,tpg,helper,UPSERT,bronze_ch.tpg_*,append_update,scheduled,UPSERT-only
+SAFE,vd-sad-actis,inline,UPSERT,bronze_ch.vd_*,append_update,scheduled,UPSERT-only
+SAFE,wiki-recent,helper,UPSERT,bronze_ch.wikipedia_edit_log,append_update,scheduled,UPSERT-only
+SAFE,wikipedia-ge,helper,UPSERT,bronze_ch.wikipedia_articles+wikidata_entities,append_update,scheduled,UPSERT-only
+SAFE,zefix,helper,UPSERT,bronze_ch.zefix_*,append_update,scheduled,UPSERT-only
+NA,blog-generator,—,no_DB_writes,—,—,—,Scaffolding
+NA,forum-seeder,—,no_DB_writes,—,—,—,Seeder script
+NA,fr-dvf,—,no_DB_writes,—,—,—,Placeholder pipeline
+NA,il-nadlan,—,no_DB_writes,—,—,—,Placeholder pipeline
+NA,uk-price-paid,—,no_DB_writes,—,—,—,Placeholder pipeline
+NA,repo-backups,—,no_DB_writes,—,—,—,Repo archive mirror
+NA,federal_cadastral_parcels_t1,—,no_DB_writes,—,—,—,Sub-tile fetcher
+NA,federal_cadastral_parcels_t2,—,no_DB_writes,—,—,—,Sub-tile fetcher
+NA,federal_cadastral_parcels_t3,—,no_DB_writes,—,—,—,Sub-tile fetcher
