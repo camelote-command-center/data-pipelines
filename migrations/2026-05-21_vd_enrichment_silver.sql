@@ -218,8 +218,9 @@ FROM bronze_ch.vd_lausanne_dp ldp
 WHERE ldp.deleted_at IS NULL
 WITH NO DATA;
 COMMENT ON MATERIALIZED VIEW silver_ch.cadastral_plots_vd IS
-  'VD Domaine Public parcels (federal_cadastral_parcels excludes DP). DP-only complement. '
-  'egrid uses synthetic ''dp_<source_pk>'' since DP has no real EGRID.';
+  'VD Domaine Public parcels (federal cadastre excludes DP). egrid is synthesized as '
+  '''dp_'' || source_pk because DP parcels have no federal EGRID. Consumers expecting '
+  'real federal EGRIDs MUST filter type_propriete = ''DP'' to exclude these rows.';
 CREATE UNIQUE INDEX IF NOT EXISTS cadastral_plots_vd_egrid_idx ON silver_ch.cadastral_plots_vd (egrid);
 CREATE INDEX        IF NOT EXISTS cadastral_plots_vd_geom_idx  ON silver_ch.cadastral_plots_vd USING GIST (geometry);
 CREATE INDEX        IF NOT EXISTS cadastral_plots_vd_ncnp_idx  ON silver_ch.cadastral_plots_vd (no_commune_no_parcelle);
