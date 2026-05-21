@@ -140,6 +140,42 @@ DATASETS = [
         },
         "batch_size": 500,
     },
+    # ── Added 2026-05-21 — close out lamap_db NO_MATCH gap (bronze drop audit). ──
+    # 3 SITG layers that existed on lamap_db.bronze but had no re-llm equivalent.
+    # All three confirmed live at SITG ArcGIS catalog (counts: 2340/527/77 features).
+    {
+        "name": "Mobilite douce",
+        "code": "ge_gmo_mobilite_douce",
+        "table": "ge_sitg_mobilite_douce_geo",
+        "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/GMO_MOBILITE_DOUCE/FeatureServer/0",
+        "conflict_column": "objectid",
+        "geom_type": "polyline",
+        "field_renames": {
+            "shape__length": "shape_length",
+        },
+        "batch_size": 500,
+    },
+    {
+        "name": "Parkings publics",
+        "code": "ge_otc_parking",
+        "table": "ge_sitg_parking_geo",
+        "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/OTC_PARKING/FeatureServer/0",
+        "conflict_column": "objectid",
+        "geom_type": "point",
+        "field_renames": {},
+        "batch_size": 500,
+    },
+    {
+        "name": "Stations taxi",
+        "code": "ge_otc_station_taxi",
+        "table": "ge_sitg_station_taxi_geo",
+        # OTC_STATION_TAXI uses `fid` (not `objectid`) as its identity column.
+        "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/OTC_STATION_TAXI/FeatureServer/0",
+        "conflict_column": "fid",
+        "geom_type": "point",
+        "field_renames": {},
+        "batch_size": 500,
+    },
 ]
 
 # Fields that exist in the ArcGIS response but we never manage
