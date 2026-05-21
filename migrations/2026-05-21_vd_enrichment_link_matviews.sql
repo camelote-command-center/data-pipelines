@@ -25,53 +25,75 @@ BEGIN;
 -- ----------------------------------------------------------------------------
 -- 1. silver_ch.bldg_to_plot   (NATIONAL bridge — egid → egrid → canton)
 -- ----------------------------------------------------------------------------
--- Building point built in EPSG:2056 (LV95 meters, RegBL gkode/gkodn). Transformed
--- to 4326 inline for the ST_Within against cadastral_plots (4326). The stored
--- building_point_geom remains in 2056 so downstream distance ops (ST_DWithin in
--- meters) work without re-projection. Memory mitigation: planner handles per-canton
--- batches naturally via the canton_code equality join.
+-- 1a. silver_ch.bldg_pts  (helper matview — staged building points in 4326)
 -- ----------------------------------------------------------------------------
-CREATE MATERIALIZED VIEW IF NOT EXISTS silver_ch.bldg_to_plot AS
-WITH building_points AS (
-  SELECT
-    b.egid,
-    upper(b.gdekt) AS canton_code,
+-- Construct every active building's point in EPSG:2056 (LV95 from RegBL gkode/gkodn),
+-- ST_Transform once to EPSG:4326, persist + GIST-index. This lets the bldg_to_plot
+-- spatial join below run as index-nested-loop (GIST on both sides of ST_Within),
+-- avoiding the multi-hour hash-join with massive temp spill we paid for on the v1
+-- monolithic body. Refresh cadence: weekly. Source-of-truth for building geometry
+-- alignment with silver_ch.cadastral_plots.
+-- ----------------------------------------------------------------------------
+CREATE MATERIALIZED VIEW IF NOT EXISTS silver_ch.bldg_pts AS
+SELECT
+  b.egid,
+  upper(b.gdekt) AS canton_code,
+  ST_Transform(
     ST_SetSRID(
       ST_MakePoint(
         NULLIF(b.gkode,'')::double precision,
         NULLIF(b.gkodn,'')::double precision
       ), 2056
-    ) AS pt_2056
-  FROM bronze_ch.bfs_rebl_buildings b
-  WHERE b.egid IS NOT NULL AND b.egid <> ''
-    AND b.gkode IS NOT NULL AND b.gkode <> ''
-    AND b.gkodn IS NOT NULL AND b.gkodn <> ''
-    AND b.gstat IN ('1003','1004','1005')   -- existing/in-construction/projected
-),
-building_points_4326 AS (
-  SELECT egid, canton_code, pt_2056,
-         ST_Transform(pt_2056, 4326) AS pt_4326
-    FROM building_points
-)
+    ),
+    4326
+  ) AS pt
+FROM bronze_ch.bfs_rebl_buildings b
+WHERE b.egid IS NOT NULL AND b.egid <> ''
+  AND b.gkode IS NOT NULL AND b.gkode <> ''
+  AND b.gkodn IS NOT NULL AND b.gkodn <> ''
+  AND b.gstat IN ('1003','1004','1005')   -- existing / in-construction / projected
+WITH NO DATA;
+
+COMMENT ON MATERIALIZED VIEW silver_ch.bldg_pts IS
+  'Helper: federal RegBL active buildings as Points, aligned with silver_ch.cadastral_plots '
+  '(EPSG:4326) so the bldg_to_plot ST_Within join runs as index-nested-loop. Refreshed weekly. '
+  'NOT for public read; internal staging.';
+COMMENT ON COLUMN silver_ch.bldg_pts.pt IS
+  'SRID 4326 (WGS84). ST_Transformed from source bronze SRID 2056. Aligned with '
+  'silver_ch.cadastral_plots.geometry to enable index-nested-loop joins.';
+
+CREATE UNIQUE INDEX IF NOT EXISTS bldg_pts_egid_idx   ON silver_ch.bldg_pts (egid);
+CREATE INDEX        IF NOT EXISTS bldg_pts_pt_gist    ON silver_ch.bldg_pts USING GIST (pt);
+CREATE INDEX        IF NOT EXISTS bldg_pts_canton_idx ON silver_ch.bldg_pts (canton_code);
+
+
+-- ----------------------------------------------------------------------------
+-- 1b. silver_ch.bldg_to_plot  (NATIONAL bridge — egid ↔ egrid)
+-- ----------------------------------------------------------------------------
+-- Reads silver_ch.bldg_pts (GIST-indexed) and joins against silver_ch.cadastral_plots
+-- (GIST-indexed) on matching canton + ST_Within. Both sides indexed → fast nested loop
+-- instead of hash spill. Stored building_point_geom kept in source coord ref (4326);
+-- consumers needing meters call ST_Transform(building_point_geom, 2056) at read time.
+-- ----------------------------------------------------------------------------
+CREATE MATERIALIZED VIEW IF NOT EXISTS silver_ch.bldg_to_plot AS
 SELECT
   bp.egid,
   p.egrid,
   p.canton_code,
-  bp.pt_2056 AS building_point_geom,
+  bp.pt AS building_point_geom,
   now() AS updated_at
-FROM building_points_4326 bp
+FROM silver_ch.bldg_pts bp
 JOIN silver_ch.cadastral_plots p
   ON p.canton_code = bp.canton_code
  AND p.geometry IS NOT NULL
- AND ST_Within(bp.pt_4326, p.geometry)
+ AND ST_Within(bp.pt, p.geometry)
 WITH NO DATA;
 
 COMMENT ON MATERIALIZED VIEW silver_ch.bldg_to_plot IS
   'NATIONAL building↔plot bridge. egid (per-building, federal RegBL) → egrid (per-parcel, '
-  'federal cadastre). Spatial ST_Within join (point transformed to 4326 inline; plot is '
-  '4326). Stored building_point_geom is EPSG:2056 (LV95 meters) for downstream distance ops. '
-  'Refresh cadence: weekly. DEFERRED DEBT: GE matviews currently use other join paths; '
-  'future consolidation can rewrite them to read from this bridge.';
+  'federal cadastre). Reads silver_ch.bldg_pts (4326, GIST) JOIN cadastral_plots (4326, GIST). '
+  'Refresh cadence: weekly. DEFERRED DEBT: GE matviews currently use other join paths; future '
+  'consolidation can rewrite them to read from this bridge.';
 
 CREATE UNIQUE INDEX IF NOT EXISTS bldg_to_plot_pk_idx
   ON silver_ch.bldg_to_plot (egid, egrid);
