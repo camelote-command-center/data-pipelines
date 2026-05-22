@@ -19,6 +19,7 @@
 -- ============================================================================
 
 BEGIN;
+SET LOCAL statement_timeout = '3600s';   -- ST_MakeValid on 84K-row polygon tables exceeds default 10min
 
 DO $$
 DECLARE
