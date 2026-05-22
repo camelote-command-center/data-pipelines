@@ -15,6 +15,7 @@ Env:
 """
 from __future__ import annotations
 import argparse
+import json
 import logging
 import os
 import socket
@@ -23,7 +24,7 @@ import time
 from datetime import datetime, timezone
 
 from pipelines.vd_enrichment._shared.arcgis_query import (
-    ArcGISConfig, iter_features, esri_to_wkt
+    ArcGISConfig, ARCGIS_BASE, iter_features, esri_to_wkt
 )
 from pipelines.vd_enrichment._shared.upsert import (
     UpsertResult, get_conn, upsert_batch, soft_delete_missing,
@@ -87,6 +88,9 @@ def main():
     log.info(f"Run id={run_id}  host={host}  started_at={run_started_at.isoformat()}  dry_run={args.dry_run}")
 
     cfg = ArcGISConfig(layer_id=39, layer_name=SOURCE_LAYER, page_size=1000)
+    endpoint = f"{ARCGIS_BASE}/{cfg.layer_id}/query"
+    log.info(f"SOURCE_ENDPOINT: {endpoint}  layer_name={cfg.layer_name}")
+
     batch: list[tuple] = []
     result = UpsertResult()
     seen = 0
@@ -95,6 +99,16 @@ def main():
         for f in iter_features(cfg):
             batch.append(_row_from_feature(f, run_started_at))
             seen += 1
+            if seen == 1:
+                # Field-mapping smoke test debug — emit raw attrs + parsed tuple on first feature
+                log.info("FIRST_FEATURE_DEBUG " + json.dumps({
+                    "source_endpoint": endpoint,
+                    "source_layer": SOURCE_LAYER,
+                    "raw_attributes": f.get("attributes", {}),
+                    "raw_geometry_keys": list((f.get("geometry") or {}).keys()),
+                    "parsed_columns": COLUMNS,
+                    "parsed_row": [str(v)[:200] if v is not None else None for v in batch[-1]],
+                }, default=str, ensure_ascii=False))
             if len(batch) >= 1000:
                 if conn:
                     upsert_batch(conn, TABLE, PK_COLS, COLUMNS, batch, run_started_at)
