@@ -53,6 +53,11 @@ def run_arcgis_parser(
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--limit", type=int, default=None,
                     help="Stop after N features total across all configured layers")
+    ap.add_argument("--where", type=str, default=None,
+                    help="ArcGIS WHERE clause override (default: 1=1). "
+                         "Use for chunked parallel runs, e.g. 'MOD(OBJECTID,10)=0'.")
+    ap.add_argument("--shard-tag", type=str, default=None,
+                    help="Tag in the run log to identify which shard this process is.")
     args = ap.parse_args()
 
     host = os.environ.get("PARSER_HOST") or f"vps-{socket.gethostname()}"
@@ -61,7 +66,8 @@ def run_arcgis_parser(
     conn = get_conn() if not args.dry_run else None
     run_id = record_run_start(conn, dataset_code, host) if conn else -1
     log.info(f"Run id={run_id} host={host} started_at={run_started_at.isoformat()} "
-             f"dry_run={args.dry_run} table={table}")
+             f"dry_run={args.dry_run} table={table} "
+             f"where={args.where or '1=1'} shard_tag={args.shard_tag or '-'}")
 
     result = UpsertResult()
     total_seen = 0
@@ -74,7 +80,8 @@ def run_arcgis_parser(
         for spec in layers:
             endpoint = f"{ARCGIS_BASE}/{spec.layer_id}/query"
             log.info(f"SOURCE_ENDPOINT[{spec.source_layer}]: {endpoint}")
-            cfg = ArcGISConfig(layer_id=spec.layer_id, layer_name=spec.source_layer, page_size=1000)
+            cfg = ArcGISConfig(layer_id=spec.layer_id, layer_name=spec.source_layer,
+                               page_size=1000, where=args.where or "1=1")
             layer_seen = 0
             batch: list[tuple] = []
             for f in iter_features(cfg):
@@ -111,7 +118,11 @@ def run_arcgis_parser(
                 log.info(f"Limit {args.limit} reached; stopping layer iteration")
                 break
 
-        if conn:
+        # Skip soft-delete in sharded mode: each shard only touches its own slice,
+        # so the "rows untouched this run" set spuriously includes other shards' rows.
+        # Soft-delete is the responsibility of an unshardged "reaper" pass run after
+        # all shards complete.
+        if conn and not args.where:
             result.soft_deleted = soft_delete_missing(
                 conn, table, "source_layer", [s.source_layer for s in layers], run_started_at
             )
