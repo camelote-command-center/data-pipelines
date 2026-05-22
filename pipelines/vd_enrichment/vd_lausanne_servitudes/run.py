@@ -109,9 +109,11 @@ def main():
         for source_layer in SOURCE_LAYERS:
             cfg = WFSConfig(layer_name=source_layer, srs=2056,
                             max_features=args.limit if args.limit else None)
+            # Mirror what wfs_query.iter_features actually requests (default GML,
+            # no OUTPUTFORMAT — Lausanne MapServer rejects geojson for these layers).
             endpoint = (WFS_BASE
                         + f"&SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature"
-                        + f"&TYPENAME=ms:{source_layer}&OUTPUTFORMAT=geojson&SRSNAME=EPSG:2056")
+                        + f"&TYPENAME=ms:{source_layer}&SRSNAME=EPSG:2056")
             log.info(f"SOURCE_ENDPOINT[{source_layer}]: {endpoint}")
 
             layer_seen = 0
