@@ -30,8 +30,11 @@ SET LOCAL statement_timeout = '1800s';
 DO $$
 DECLARE updated_count bigint;
 BEGIN
+  -- ST_MakeValid on severely-broken polygons can produce GeometryCollection
+  -- (mixed dim). ST_CollectionExtract(_, 3) extracts polygon parts only, so
+  -- the result fits the geometry(MultiPolygon, 2056) column.
   UPDATE bronze_ch.federal_cadastral_parcels
-     SET geometry = ST_MakeValid(geometry)
+     SET geometry = ST_CollectionExtract(ST_MakeValid(geometry), 3)::geometry(MultiPolygon, 2056)
    WHERE canton_code = 'VD'
      AND geometry IS NOT NULL
      AND NOT ST_IsValid(geometry);
