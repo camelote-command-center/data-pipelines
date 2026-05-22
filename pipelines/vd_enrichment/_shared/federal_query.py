@@ -1,5 +1,17 @@
 """
-Federal GeoAdmin api3.geo.admin.ch iterator. Used for ch.bav.haltestellen-oev.
+Federal GeoAdmin iterator.
+
+TODO (deferred to follow-up PR): replace /find endpoint with the correct bulk-extract path.
+  The /find endpoint requires `searchText` to be non-empty (returns HTTP 400 with empty text),
+  so it can't be used to bulk-extract all features in a layer. Correct paths to evaluate:
+    (a) Direct dataset download: https://data.geo.admin.ch/<layer>/<layer>/data.{csv,gpkg,geojson}
+    (b) MapServer/<layerId>/query?where=1=1&outFields=*&f=geojson   (REST query)
+    (c) Federal WFS at https://wms.geo.admin.ch/?service=WFS
+  Discovered via VPS3 dry-run 2026-05-22 (HTTP 400 from /find).
+  Until fixed, federal_bav_transit parser is non-functional. Not on this PR's critical path
+  (deferred to follow-up PR per scope adjustment).
+
+Used for: ch.bav.haltestellen-oev (currently broken — see TODO above).
 
 Pattern: GeoAdmin /find endpoint with searchField=* (returns all features matching a
 bbox, paged via offset). For national coverage, we walk CH bbox grid because /find
