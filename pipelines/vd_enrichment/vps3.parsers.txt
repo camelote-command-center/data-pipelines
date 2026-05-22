@@ -1,0 +1,3 @@
+# VPS3 — federal + energy group (host 46.202.153.114)
+vd_lausanne_energie_cad_bati
+federal_bav_transit

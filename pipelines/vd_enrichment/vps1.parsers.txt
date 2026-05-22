@@ -1,0 +1,7 @@
+# VPS1 — cadastre group (host 145.223.82.190)
+vd_batiment_rcb
+vd_batiment_projete
+vd_ddp_pts
+vd_lausanne_ddp
+vd_lausanne_dp
+vd_lausanne_servitudes

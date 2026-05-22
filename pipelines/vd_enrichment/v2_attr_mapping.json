@@ -1,0 +1,462 @@
+{
+  "version": "v2.0",
+  "generated_at": "2026-05-21",
+  "scope": "VD/Lausanne enrichment — bronze + silver + gold ext_vd. RDPPF deferred. Building polygon footprints deferred.",
+  "conventions": {
+    "bronze_naming": "bronze_ch.vd_<dataset>  (canton-wide source)  OR  bronze_ch.vd_lausanne_<dataset>  (Lausanne-only source)",
+    "silver_naming": "silver_ch.cadastral_<concept>_vd  (mirror of _ge)  OR  silver_ch.<concept>  (national new, 3 cases)",
+    "discriminator_column": "source_layer (text NOT NULL, in PK for multi-layer bronzes, CHECK constraint enumerating valid values)",
+    "soft_delete": "first_seen_at / last_seen_at / deleted_at on every bronze table. Parser sets last_seen_at = run_started_at on touched rows; rows untouched get deleted_at = run_started_at on next pass.",
+    "crs": "All geometry in EPSG:2056 (Swiss CH1903+/LV95). Bronze stores native; silver matview converts to common CRS if needed.",
+    "field_naming": "Bronze columns = snake_case of source field name. Silver columns match _ge precedent shapes."
+  },
+
+  "bronzes": [
+    {
+      "name": "bronze_ch.vd_batiment_rcb",
+      "concept": "buildings",
+      "source": "canton-vd",
+      "source_endpoint": "https://agsgc.map.vd.ch/agsgc/rest/services/OGC/wmsVD/MapServer/39/query",
+      "source_pk_column": "arcgis_objectid",
+      "geometry_type": "Point",
+      "fields": [
+        {"src": "EGID", "src_alias": "EGID", "src_type": "esriFieldTypeString", "bronze_col": "egid", "bronze_type": "text"},
+        {"src": "NO_CADASTR", "src_alias": "N° du bâtiment sur le plan cadastral", "src_type": "esriFieldTypeString", "bronze_col": "no_cadastr", "bronze_type": "text"},
+        {"src": "CATEGORIE_TXT", "src_alias": "Catégorie du bâtiment", "src_type": "esriFieldTypeString", "bronze_col": "categorie_txt", "bronze_type": "text"},
+        {"src": "CLASSE_TXT", "src_alias": "Classe de bâtiment", "src_type": "esriFieldTypeString", "bronze_col": "classe_txt", "bronze_type": "text"},
+        {"src": "STATUT_TXT", "src_alias": "Statut", "src_type": "esriFieldTypeString", "bronze_col": "statut_txt", "bronze_type": "text"},
+        {"src": "CONS_ANNEE", "src_alias": "Année de construction", "src_type": "esriFieldTypeInteger", "bronze_col": "cons_annee", "bronze_type": "integer"},
+        {"src": "CONS_PERIO_TXT", "src_alias": "Période de construction", "src_type": "esriFieldTypeString", "bronze_col": "cons_perio_txt", "bronze_type": "text"},
+        {"src": "SURFACE", "src_alias": "Surface au sol [m2]", "src_type": "esriFieldTypeDouble", "bronze_col": "surface_m2", "bronze_type": "numeric"},
+        {"src": "NB_NIV_TOT", "src_alias": "Nombre de niveaux total", "src_type": "esriFieldTypeInteger", "bronze_col": "nb_niv_tot", "bronze_type": "integer"},
+        {"src": "CHAUF1_SYS_TXT", "src_type": "esriFieldTypeString", "bronze_col": "chauf1_sys_txt", "bronze_type": "text"},
+        {"src": "CHAUF1_NRG_TXT", "src_type": "esriFieldTypeString", "bronze_col": "chauf1_nrg_txt", "bronze_type": "text"},
+        {"src": "CHAUF2_SYS_TXT", "src_type": "esriFieldTypeString", "bronze_col": "chauf2_sys_txt", "bronze_type": "text"},
+        {"src": "CHAUF2_NRG_TXT", "src_type": "esriFieldTypeString", "bronze_col": "chauf2_nrg_txt", "bronze_type": "text"},
+        {"src": "EAU1_SYS_TXT", "src_type": "esriFieldTypeString", "bronze_col": "eau1_sys_txt", "bronze_type": "text"},
+        {"src": "EAU1_NRG_TXT", "src_type": "esriFieldTypeString", "bronze_col": "eau1_nrg_txt", "bronze_type": "text"},
+        {"src": "EAU2_SYS_TXT", "src_type": "esriFieldTypeString", "bronze_col": "eau2_sys_txt", "bronze_type": "text"},
+        {"src": "EAU2_NRG_TXT", "src_type": "esriFieldTypeString", "bronze_col": "eau2_nrg_txt", "bronze_type": "text"},
+        {"src": "SRE", "src_alias": "Surface de référence énergétique", "src_type": "esriFieldTypeDouble", "bronze_col": "sre_m2", "bronze_type": "numeric"},
+        {"src": "ABRI_PCI", "src_type": "esriFieldTypeString", "bronze_col": "abri_pci", "bronze_type": "text"},
+        {"src": "NO_CAMAC", "src_type": "esriFieldTypeString", "bronze_col": "no_camac", "bronze_type": "text"},
+        {"src": "OBJECTID", "src_type": "esriFieldTypeOID", "bronze_col": "arcgis_objectid", "bronze_type": "bigint"},
+        {"src": "SHAPE", "src_type": "esriFieldTypeGeometry", "bronze_col": "geometry", "bronze_type": "geometry(Point,2056)"}
+      ],
+      "primary_key": ["source_layer", "arcgis_objectid"],
+      "silver_target": "silver_ch.cadastral_buildings_vd"
+    },
+
+    {
+      "name": "bronze_ch.vd_zone_affectation",
+      "concept": "pga_zones",
+      "source": "canton-vd",
+      "source_endpoint": "https://agsgc.map.vd.ch/agsgc/rest/services/OGC/wmsVD/MapServer/36/query",
+      "source_pk_column": "arcgis_objectid",
+      "geometry_type": "Polygon",
+      "fields": [
+        {"src": "CODE_VD_N2", "src_alias": "Code VD NORMAT 2", "bronze_col": "code_vd_n2", "bronze_type": "text"},
+        {"src": "DESIGNATION_VD_N2", "src_alias": "Désignation VD NORMAT 2", "bronze_col": "designation_vd_n2", "bronze_type": "text"},
+        {"src": "DESIGNATION_VD_N1", "bronze_col": "designation_vd_n1", "bronze_type": "text"},
+        {"src": "CODE_CH", "src_alias": "Code fédéral", "bronze_col": "code_ch", "bronze_type": "smallint"},
+        {"src": "DESIGNATION_CH", "bronze_col": "designation_ch", "bronze_type": "text"},
+        {"src": "CODE_COM", "bronze_col": "code_com", "bronze_type": "text"},
+        {"src": "DESIGNATION_COM", "bronze_col": "designation_com", "bronze_type": "text"},
+        {"src": "ABREVIATION", "bronze_col": "abreviation", "bronze_type": "text"},
+        {"src": "STATUT_JURIDIQUE", "bronze_col": "statut_juridique", "bronze_type": "text"},
+        {"src": "DATE_EV", "src_alias": "Date entrée en vigueur", "bronze_col": "date_entree_vigueur", "bronze_type": "timestamptz"},
+        {"src": "DATE_FIN", "bronze_col": "date_fin", "bronze_type": "text"},
+        {"src": "FORCE_OBLIGATOIRE", "bronze_col": "force_obligatoire", "bronze_type": "text"},
+        {"src": "INDICE_UTILISATION_TYPE", "bronze_col": "ius_type", "bronze_type": "text"},
+        {"src": "INDICE_UTILISATION", "bronze_col": "ius_value", "bronze_type": "numeric"},
+        {"src": "IUS", "src_alias": "Indice d'utilisation du sol", "bronze_col": "ius", "bronze_type": "numeric"},
+        {"src": "COS", "src_alias": "Coefficient d'occupation du sol", "bronze_col": "cos", "bronze_type": "numeric"},
+        {"src": "SPB", "src_alias": "Surface plancher brute", "bronze_col": "spb", "bronze_type": "numeric"},
+        {"src": "CM", "src_alias": "Indice de masse", "bronze_col": "cm", "bronze_type": "numeric"},
+        {"src": "IGT", "src_alias": "Indice génération trafic", "bronze_col": "igt", "bronze_type": "numeric"},
+        {"src": "H_MAX", "src_alias": "Hauteur maximale", "bronze_col": "h_max", "bronze_type": "text"},
+        {"src": "NORMAT", "bronze_col": "normat", "bronze_type": "text"},
+        {"src": "SYMBOLE", "bronze_col": "symbole", "bronze_type": "text"},
+        {"src": "SOUS_THEME", "bronze_col": "sous_theme", "bronze_type": "text"},
+        {"src": "PERIMETRE", "bronze_col": "perimetre_m", "bronze_type": "numeric"},
+        {"src": "SURFACE", "bronze_col": "surface_m2", "bronze_type": "numeric"},
+        {"src": "OBJECTID", "bronze_col": "arcgis_objectid", "bronze_type": "bigint"},
+        {"src": "SHAPE", "bronze_col": "geometry", "bronze_type": "geometry(MultiPolygon,2056)"}
+      ],
+      "primary_key": ["source_layer", "arcgis_objectid"],
+      "silver_target": "silver_ch.cadastral_zones_vd"
+    },
+
+    {
+      "name": "bronze_ch.vd_limite_foret",
+      "concept": "pga_foret",
+      "source": "canton-vd",
+      "source_endpoint": "https://agsgc.map.vd.ch/agsgc/rest/services/OGC/wmsVD/MapServer/490/query",
+      "geometry_type": "MultiPolygon",
+      "fields_summary": "13 fields incl. type, statut, date, geometry. Full schema in discovery_vd.json under concepts[8].vd_schema.",
+      "primary_key": ["source_layer", "arcgis_objectid"],
+      "silver_target": "silver_ch.cadastral_zones_vd  (zone_type='foret')"
+    },
+
+    {
+      "name": "bronze_ch.vd_batiment_projete",
+      "concept": "projets",
+      "source": "canton-vd",
+      "source_endpoint": "https://agsgc.map.vd.ch/agsgc/rest/services/OGC/wmsVD/MapServer/274/query",
+      "geometry_type": "Polygon",
+      "fields_summary": "5 fields. Full schema in discovery_vd.json under concepts[3].vd_schema.",
+      "primary_key": ["source_layer", "arcgis_objectid"],
+      "silver_target": "silver_ch.cadastral_chantiers_vd"
+    },
+
+    {
+      "name": "bronze_ch.vd_degre_sensibilite_bruit",
+      "concept": "sensibilite_bruit",
+      "source": "canton-vd",
+      "source_endpoint": "https://agsgc.map.vd.ch/agsgc/rest/services/OGC/wmsVD/MapServer/461/query",
+      "geometry_type": "Polygon",
+      "fields_summary": "16 fields incl. DS_DEGRE (DS I–IV), source plan, geometry.",
+      "primary_key": ["source_layer", "arcgis_objectid"],
+      "silver_target": "silver_ch.cadastral_noise_sensitivity  (NATIONAL — canton_code='VD')"
+    },
+
+    {
+      "name": "bronze_ch.vd_classement",
+      "concept": "centre_histo + ensembles",
+      "source": "canton-vd",
+      "source_endpoints": [
+        {"source_layer": "vd.plan_classement", "url": "https://agsgc.map.vd.ch/agsgc/rest/services/OGC/wmsVD/MapServer/398/query"},
+        {"source_layer": "vd.arrete_decision_classement_perimetre", "url": "https://agsgc.map.vd.ch/agsgc/rest/services/OGC/wmsVD/MapServer/161/query"}
+      ],
+      "geometry_type": "Polygon",
+      "discriminator": "source_layer ∈ ('vd.plan_classement','vd.arrete_decision_classement_perimetre')",
+      "field_strategy": "UNION of both schemas; missing fields = NULL in opposite layer. Common: id_objet_recense, commune, description, geometry. plan_classement adds: fiche, url_recens. arrete adds: numero_arrete, date_arrete, type_protection.",
+      "primary_key": ["source_layer", "arcgis_objectid"],
+      "silver_target": "silver_ch.cadastral_patrimoine_classe_vd"
+    },
+
+    {
+      "name": "bronze_ch.vd_jardin_historique",
+      "concept": "jardins_histo",
+      "source": "canton-vd",
+      "source_endpoint": "https://agsgc.map.vd.ch/agsgc/rest/services/OGC/wmsVD/MapServer/403/query",
+      "geometry_type": "Polygon",
+      "fields_summary": "47 fields — store all; silver picks the ~10 useful ones (designation, valeur, date_classement, geometry, etc.)",
+      "primary_key": ["source_layer", "arcgis_objectid"],
+      "silver_target": "silver_ch.cadastral_patrimoine_inventaire_vd  (with valeur='jardin_historique')"
+    },
+
+    {
+      "name": "bronze_ch.vd_isos",
+      "concept": "isos",
+      "source": "canton-vd",
+      "source_endpoints": [
+        {"source_layer": "vd.site_fonde_sur_isos",      "url": "https://agsgc.map.vd.ch/agsgc/rest/services/OGC/wmsVD/MapServer/481/query"},
+        {"source_layer": "vd.perimetre_fonde_sur_isos", "url": "https://agsgc.map.vd.ch/agsgc/rest/services/OGC/wmsVD/MapServer/404/query"}
+      ],
+      "geometry_type": "mixed (Point for sites, Polygon for perimeters)",
+      "discriminator": "source_layer ∈ ('vd.site_fonde_sur_isos','vd.perimetre_fonde_sur_isos')",
+      "primary_key": ["source_layer", "arcgis_objectid"],
+      "silver_target": "silver_ch.cadastral_patrimoine_inventaire_vd  (with valeur='isos_site' OR 'isos_perimetre')"
+    },
+
+    {
+      "name": "bronze_ch.vd_region_archeologique",
+      "concept": "archeologie_regions",
+      "source": "canton-vd",
+      "source_endpoint": "https://agsgc.map.vd.ch/agsgc/rest/services/OGC/wmsVD/MapServer/320/query",
+      "geometry_type": "MultiPolygon",
+      "fields_summary": "3 fields: id, nom_region, geometry.",
+      "primary_key": ["source_layer", "arcgis_objectid"],
+      "silver_target": "silver_ch.cadastral_archaeology  (record_type='region', canton_code='VD')"
+    },
+
+    {
+      "name": "bronze_ch.vd_ddp_pts",
+      "concept": "ddp_centroids",
+      "source": "canton-vd",
+      "source_endpoint": "https://agsgc.map.vd.ch/agsgc/rest/services/OGC/wmsVD/MapServer/430/query",
+      "geometry_type": "MultiPoint",
+      "fields_summary": "5 fields: numero, egris_egrid, genre_txt, geometry. Centroid view; canton does not publish polygon DDPs.",
+      "primary_key": ["source_layer", "arcgis_objectid"],
+      "silver_target": "silver_ch.cadastral_ddp_vd  (centroid-only rows; polygon supplemented from Lausanne)"
+    },
+
+    {
+      "name": "bronze_ch.vd_lausanne_ddp",
+      "concept": "ddp_polygons",
+      "source": "lausanne",
+      "source_endpoint": "https://map.lausanne.ch/mapserv_proxy?ogcserver=source+for+image%2Fpng&SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=ms:bdcad_bf_parc_pol_ddp&OUTPUTFORMAT=geojson",
+      "geometry_type": "MultiPolygon",
+      "fields": [
+        {"src": "no_parc", "bronze_col": "no_parc", "bronze_type": "text"},
+        {"src": "type", "bronze_col": "type_txt", "bronze_type": "text"},
+        {"src": "numcom", "bronze_col": "no_commune", "bronze_type": "integer"},
+        {"src": "nom_com", "bronze_col": "commune_name", "bronze_type": "text"},
+        {"src": "proprio", "bronze_col": "proprietaire", "bronze_type": "text"},
+        {"src": "surface", "bronze_col": "surface_m2", "bronze_type": "numeric"},
+        {"src": "href_go", "bronze_col": "href_geomatik", "bronze_type": "text"},
+        {"src": "gml:id", "bronze_col": "source_pk", "bronze_type": "text", "is_pk": true}
+      ],
+      "primary_key": ["source_layer", "source_pk"],
+      "silver_target": "silver_ch.cadastral_ddp_vd  (polygon-bearing rows; UNION with vd_ddp_pts on egrid where possible)"
+    },
+
+    {
+      "name": "bronze_ch.vd_lausanne_dp",
+      "concept": "dp",
+      "source": "lausanne",
+      "source_endpoint": "https://map.lausanne.ch/mapserv_proxy?ogcserver=source+for+image%2Fpng&SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=ms:bdcad_bf_parc_pol_dp&OUTPUTFORMAT=geojson",
+      "geometry_type": "MultiPolygon",
+      "fields": "same shape as vd_lausanne_ddp (8 fields)",
+      "primary_key": ["source_layer", "source_pk"],
+      "silver_target": "silver_ch.cadastral_plots_vd  (DP-only; UPSERT alongside federal_cadastral_parcels-derived rows)"
+    },
+
+    {
+      "name": "bronze_ch.vd_lausanne_servitudes",
+      "concept": "servitudes (8 source layers)",
+      "source": "lausanne",
+      "source_endpoint_template": "https://map.lausanne.ch/mapserv_proxy?ogcserver=source+for+image%2Fpng&SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=ms:<source_layer>&OUTPUTFORMAT=geojson",
+      "source_layers": [
+        "bdcad_servitudes_passages_pub_line",
+        "bdcad_servitudes_passages_pub_point",
+        "bdcad_servitudes_passages_pub_surf",
+        "bdcad_servitudes_passages_canalisations_pub_line",
+        "bdcad_servitudes_passages_canalisations_pub_point",
+        "bdcad_servitudes_passages_canalisations_pub_surf",
+        "bdcad_servitudes_usage_pub_line",
+        "bdcad_servitudes_usage_pub_surf"
+      ],
+      "layer_count": 8,
+      "discriminator": "source_layer (one of 8 above) + geom_kind ∈ ('line','point','surf')",
+      "fields": [
+        {"src": "type", "bronze_col": "type_txt", "bronze_type": "text"},
+        {"src": "nom", "bronze_col": "nom", "bronze_type": "text"},
+        {"src": "id_rf", "bronze_col": "id_rf", "bronze_type": "text", "comment": "Register Number — join key"},
+        {"src": "lien_idgo", "bronze_col": "lien_idgo", "bronze_type": "text"},
+        {"src": "gml:id", "bronze_col": "source_pk", "bronze_type": "text", "is_pk": true},
+        {"src": "GEOMETRY", "bronze_col": "geometry", "bronze_type": "geometry(Geometry,2056)"}
+      ],
+      "primary_key": ["source_layer", "source_pk"],
+      "silver_target": "silver_ch.cadastral_servitudes_vd  (genre derived from source_layer prefix: 'passage_public' | 'canalisation_publique' | 'usage_public')",
+      "naming_note": "bronze named vd_lausanne_* because today Lausanne is the only VD city publishing servitudes; silver named cadastral_servitudes_vd (canton namespace) so future Yverdon/Morges/Nyon servitudes can union in without rename."
+    },
+
+    {
+      "name": "bronze_ch.vd_lausanne_pa_etude",
+      "concept": "pa_etude",
+      "source": "lausanne",
+      "source_endpoint": "https://map.lausanne.ch/mapserv_proxy?ogcserver=source+for+image%2Fpng&SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=ms:amenagement_pga_pa_etude&OUTPUTFORMAT=geojson",
+      "geometry_type": "MultiPolygon",
+      "fields": [
+        {"src": "nom_projet", "bronze_col": "nom_projet", "bronze_type": "text"},
+        {"src": "gml:id", "bronze_col": "source_pk", "bronze_type": "text", "is_pk": true}
+      ],
+      "primary_key": ["source_layer", "source_pk"],
+      "silver_target": "silver_ch.cadastral_densification_vd"
+    },
+
+    {
+      "name": "bronze_ch.vd_lausanne_parking_sectors",
+      "concept": "parking_sectors",
+      "source": "lausanne",
+      "source_endpoint": "https://map.lausanne.ch/mapserv_proxy?ogcserver=source+for+image%2Fpng&SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=ms:amenagement_pga_sect_stationnement&OUTPUTFORMAT=geojson",
+      "geometry_type": "MultiPolygon",
+      "fields": [
+        {"src": "secteur", "bronze_col": "secteur", "bronze_type": "text"},
+        {"src": "gml:id", "bronze_col": "source_pk", "bronze_type": "text", "is_pk": true}
+      ],
+      "primary_key": ["source_layer", "source_pk"],
+      "silver_target": "silver_ch.cadastral_zones_vd  (zone_type='stationnement_sector')"
+    },
+
+    {
+      "name": "bronze_ch.vd_lausanne_archeologie",
+      "concept": "archeologie_sites",
+      "source": "lausanne",
+      "source_endpoint_template": "https://map.lausanne.ch/mapserv_proxy?ogcserver=source+for+image%2Fpng&SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=ms:<source_layer>&OUTPUTFORMAT=geojson",
+      "source_layers": [
+        "amenagement_rec_arch_notes_point",
+        "amenagement_rec_arch_notes_site",
+        "amenagement_rec_arch_notes_surf",
+        "amenagement_rec_arch_mesures_pbc",
+        "amenagement_rec_arch_mesures_plan_class",
+        "amenagement_rec_arch_mesures_point",
+        "amenagement_rec_arch_mesures_site",
+        "amenagement_rec_arch_mesures_surf"
+      ],
+      "layer_count": 8,
+      "discriminator": "record_type ∈ ('site','region','mesure'),  record_subtype ∈ ('notes','mesures','pbc','plan_class'),  geom_kind ∈ ('point','site','surf')",
+      "fields": [
+        {"src": "descriptio", "bronze_col": "description", "bronze_type": "text", "notes": "_notes_* only"},
+        {"src": "mesure", "bronze_col": "mesure", "bronze_type": "text", "notes": "_notes_* only"},
+        {"src": "note_detai", "bronze_col": "note_detail", "bronze_type": "text", "notes": "_notes_point + _notes_surf"},
+        {"src": "note_carto", "bronze_col": "note_carto", "bronze_type": "text", "notes": "_notes_site"},
+        {"src": "url_fiche", "bronze_col": "url_fiche", "bronze_type": "text", "notes": "_notes_site + _notes_surf"},
+        {"src": "url_carte", "bronze_col": "url_carte", "bronze_type": "text", "notes": "_notes_site + _notes_surf"},
+        {"src": "gml:id", "bronze_col": "source_pk", "bronze_type": "text", "is_pk": true},
+        {"src": "GEOMETRY", "bronze_col": "geometry", "bronze_type": "geometry(Geometry,2056)"}
+      ],
+      "primary_key": ["source_layer", "source_pk"],
+      "silver_target": "silver_ch.cadastral_archaeology  (NATIONAL; record_type='site' or 'mesure', canton_code='VD')"
+    },
+
+    {
+      "name": "bronze_ch.vd_lausanne_energie_cad_bati",
+      "concept": "energie_bati",
+      "source": "lausanne",
+      "source_endpoint": "https://map.lausanne.ch/mapserv_proxy?ogcserver=source+for+image%2Fpng&SERVICE=WFS&VERSION=1.1.0&REQUEST=GetFeature&TYPENAME=ms:energie_cad_bati&OUTPUTFORMAT=geojson",
+      "geometry_type": "Point",
+      "fields": [
+        {"src": "egid", "bronze_col": "egid", "bronze_type": "text"},
+        {"src": "rue", "bronze_col": "rue", "bronze_type": "text"},
+        {"src": "no_rue", "bronze_col": "no_rue", "bronze_type": "text"},
+        {"src": "no_parcell", "bronze_col": "no_parcelle", "bronze_type": "text"},
+        {"src": "solution_h", "bronze_col": "solution_heat", "bronze_type": "text"},
+        {"src": "horizon_ht", "bronze_col": "horizon_heat", "bronze_type": "text"},
+        {"src": "besoins_kw", "bronze_col": "besoins_kwh", "bronze_type": "numeric"},
+        {"src": "vecteur_ac", "bronze_col": "vecteur_actuel", "bronze_type": "text"},
+        {"src": "det_sol_h", "bronze_col": "detail_solution_heat", "bronze_type": "text"},
+        {"src": "gml:id", "bronze_col": "source_pk", "bronze_type": "text", "is_pk": true}
+      ],
+      "primary_key": ["source_layer", "source_pk"],
+      "silver_target": "silver_ch.cadastral_energy_vd"
+    },
+
+    {
+      "name": "bronze_ch.federal_bav_transit",
+      "concept": "transit_oev",
+      "source": "federal",
+      "source_endpoint": "https://api3.geo.admin.ch/rest/services/api/MapServer/find?layer=ch.bav.haltestellen-oev&searchField=*&returnGeometry=true&geometryFormat=geojson",
+      "scope": "national (all of CH)",
+      "geometry_type": "Point",
+      "fields_summary": "didok number, name, mode (rail/bus/tram/funicular), gtfs_id, accessibility flag, validity dates, geometry.",
+      "primary_key": ["source_layer", "didok"],
+      "silver_target": "silver_ch.transit_stops  (national; canton_code populated via spatial join to bronze_ch.federal_communes)"
+    }
+  ],
+
+  "silver_matviews": [
+    {"name": "silver_ch.cadastral_buildings_vd",          "mirror_of": "cadastral_buildings_ge", "feeds_from": ["vd_batiment_rcb"], "delta_from_ge": "ADDS heating fields (chauf1/2/eau1/2 sys+nrg), SRE m2, surface, abri_pci — VD richer than RegBL-only GE source"},
+    {"name": "silver_ch.cadastral_zones_vd",              "mirror_of": "cadastral_zones",        "feeds_from": ["vd_zone_affectation","vd_limite_foret","vd_lausanne_parking_sectors"], "discriminator": "zone_type ∈ ('affectation','foret','stationnement_sector')"},
+    {"name": "silver_ch.cadastral_chantiers_vd",          "mirror_of": "cadastral_chantiers",    "feeds_from": ["vd_batiment_projete"]},
+    {"name": "silver_ch.cadastral_ddp_vd",                "mirror_of": "cadastral_ddp + cadastral_ddp_geo (unified)", "feeds_from": ["vd_ddp_pts","vd_lausanne_ddp"], "join_key": "egrid"},
+    {"name": "silver_ch.cadastral_plots_vd",              "mirror_of": "cadastral_plots VD subset", "feeds_from": ["vd_lausanne_dp"], "purpose": "DP-only complement to federal_cadastral_parcels"},
+    {"name": "silver_ch.cadastral_servitudes_vd",         "mirror_of": "cadastral_servitudes",   "feeds_from": ["vd_lausanne_servitudes"], "genre_derivation": "passage_public | canalisation_publique | usage_public from source_layer prefix"},
+    {"name": "silver_ch.cadastral_patrimoine_classe_vd",  "mirror_of": "cadastral_patrimoine_classe", "feeds_from": ["vd_classement"]},
+    {"name": "silver_ch.cadastral_patrimoine_inventaire_vd","mirror_of": "cadastral_patrimoine_inventaire", "feeds_from": ["vd_jardin_historique","vd_isos"]},
+    {"name": "silver_ch.cadastral_densification_vd",      "mirror_of": "cadastral_densification","feeds_from": ["vd_lausanne_pa_etude"]},
+    {"name": "silver_ch.cadastral_energy_vd",             "mirror_of": "cadastral_energy",       "feeds_from": ["vd_lausanne_energie_cad_bati","vd_batiment_rcb (heating cols)"]},
+
+    {"name": "silver_ch.cadastral_noise_sensitivity",     "national_new": true, "feeds_from": ["vd_degre_sensibilite_bruit (canton_code='VD')"]},
+    {"name": "silver_ch.cadastral_archaeology",           "national_new": true, "feeds_from": ["vd_region_archeologique","vd_lausanne_archeologie"]},
+    {"name": "silver_ch.transit_stops",                   "national_new": true, "feeds_from": ["federal_bav_transit"], "scope": "all-CH"}
+  ],
+
+  "gold": {
+    "name": "gold_ch.core_plots_ext_vd",
+    "mirror_of": "gold_ch.core_plots_ext_ge",
+    "v1_drops": [
+      {"col": "rdppf_zone_primary  + 8 other rdppf_* cols", "reason": "RDPPF deferred per scope lock"},
+      {"col": "indicative_land_price_m2",                  "reason": "cadastral_land_prices VD not in scope"},
+      {"col": "estimated_land_value",                       "reason": "depends on indicative_land_price_m2"},
+      {"col": "is_ppe, ppe_statuses",                       "reason": "cadastral_ppe VD not in scope (PPE concept GE-specific in current schema)"}
+    ],
+    "v1_adds_vd_only_columns": [
+      "noise_sensitivity_degree",
+      "noise_sensitivity_source",
+      "isos_count","isos_categories","isos_perimeter_count",
+      "classement_count","classement_descriptions","classement_fiche_urls",
+      "jardins_count","jardins_descriptions",
+      "archeology_region_count","archeology_site_count","archeology_record_types"
+    ],
+    "v_plots_full_patch": {
+      "join_added": "LEFT JOIN gold_ch.core_plots_ext_vd ext_vd ON ext_vd.egrid = cp.egrid",
+      "coalesce_columns": ["servitude_count","servitude_genres","servitude_classes","ddp_count","ddp_numbers","ddp_total_surface_m2","is_ddp","densification_types","densification_practice_urls","densification_sectors","mutation_count","last_mutation_date","historical_parcelles","construction_year","centroid_lon","centroid_lat"],
+      "vd_only_columns": ["noise_sensitivity_degree","noise_sensitivity_source","isos_count","isos_categories","isos_perimeter_count","classement_count","classement_descriptions","classement_fiche_urls","jardins_count","jardins_descriptions","archeology_region_count","archeology_site_count","archeology_record_types","energy_demand_kwh_vd"],
+      "building_destination_known_debt": "ext_ge sources from ge_cad_batiments.destination (typology enum). ext_vd sources from vd_batiment_rcb.categorie_txt (RCB categorie enum). Different vocabularies. v_plots_full surfaces raw values; normalization layer silver_ch.ref_building_categories deferred to its own session."
+    }
+  },
+
+  "type_compatibility_ext_ge_vs_ext_vd": {
+    "matching": {
+      "ddp_count": "integer == integer",
+      "ddp_numbers": "text[] == text[]",
+      "ddp_total_surface_m2": "numeric == numeric",
+      "servitude_count": "integer == integer",
+      "servitude_genres": "text[] == text[]",
+      "servitude_classes": "text[] == text[]",
+      "is_ddp": "boolean == boolean",
+      "densification_types": "text[] == text[]",
+      "densification_practice_urls": "text[] == text[]",
+      "densification_sectors": "text[] == text[]",
+      "mutation_count": "integer == integer",
+      "last_mutation_date": "date == date",
+      "historical_parcelles": "text[] == text[]",
+      "construction_year": "integer == integer",
+      "centroid_lon": "double precision == double precision",
+      "centroid_lat": "double precision == double precision"
+    },
+    "type_to_normalize": {
+      "building_destination": {
+        "ext_ge_type": "character varying",
+        "ext_vd_type_proposed": "text",
+        "fix": "CAST ext_vd.building_destination AS character varying in matview SELECT, OR cast both to text in v_plots_full COALESCE",
+        "decision": "Cast ext_vd column AS character varying to preserve ext_ge column type contract (lower risk to downstream consumers)."
+      }
+    },
+    "vd_only_no_conflict": [
+      "noise_sensitivity_degree (text)",
+      "noise_sensitivity_source (text)",
+      "isos_count (integer)",
+      "isos_categories (text[])",
+      "isos_perimeter_count (integer)",
+      "classement_count (integer)",
+      "classement_descriptions (text[])",
+      "classement_fiche_urls (text[])",
+      "jardins_count (integer)",
+      "jardins_descriptions (text[])",
+      "archeology_region_count (integer)",
+      "archeology_site_count (integer)",
+      "archeology_record_types (text[])",
+      "energy_demand_kwh_vd (numeric)"
+    ],
+    "skip_in_v1_no_vd_data": [
+      "rdppf_zone_primary","rdppf_zone_synthetic","rdppf_plq","rdppf_pnp",
+      "rdppf_zone_protected","rdppf_zone_restricted","rdppf_reglements_speciaux",
+      "rdppf_polluted_site","rdppf_forest_distance","rdppf_groundwater_protect","rdppf_pdf_url",
+      "indicative_land_price_m2","estimated_land_value",
+      "is_ppe","ppe_statuses",
+      "idc_avg","idc_bracket",
+      "type_propriete"
+    ]
+  },
+
+  "vps_assignment": {
+    "vps1_145.223.82.190_cadastre": {
+      "datasets": [
+        "vd_batiment_rcb","vd_batiment_projete","vd_ddp_pts",
+        "vd_lausanne_ddp","vd_lausanne_dp","vd_lausanne_servitudes"
+      ],
+      "cron": "0 4 1 * *  (monthly, 1st @ 04:00 UTC)"
+    },
+    "vps2_31.97.122.135_amenagement": {
+      "datasets": [
+        "vd_zone_affectation","vd_limite_foret","vd_classement",
+        "vd_jardin_historique","vd_isos","vd_region_archeologique",
+        "vd_degre_sensibilite_bruit",
+        "vd_lausanne_pa_etude","vd_lausanne_parking_sectors","vd_lausanne_archeologie"
+      ],
+      "cron": "30 4 1 * * (monthly, 1st @ 04:30 UTC)"
+    },
+    "vps3_46.202.153.114_federal_energy": {
+      "datasets": [
+        "vd_lausanne_energie_cad_bati",
+        "federal_bav_transit"
+      ],
+      "cron_monthly": "0 5 1 * *   (monthly, energie_cad_bati)",
+      "cron_quarterly": "30 5 1 1,4,7,10 *  (quarterly, BAV transit)"
+    }
+  }
+}
