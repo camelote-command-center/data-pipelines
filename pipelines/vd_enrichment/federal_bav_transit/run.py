@@ -10,9 +10,18 @@ Bronze : bronze_ch.federal_bav_transit
 Cadence: quarterly (Jan/Apr/Jul/Oct 1st @ 05:30 UTC on VPS3)
          Monthly run on same VPS is idempotent via UPSERT.
 
-canton_code resolution: lookup against bronze_ch.federal_communes via
-Commune_Numero (BFS commune number), MUCH faster than the prior ST_Contains
-approach. Cached in-memory per run.
+canton_code resolution: deliberately left NULL by the parser. BAV's
+Commune_Numero field is a BAV-internal commune ID, NOT the federal BFS number
+(confirmed 2026-05-22 dry-run: BAV says Nendaz Commune_Numero=6024 but federal
+BFS=12518). Post-backfill, run:
+
+    UPDATE bronze_ch.federal_bav_transit b
+       SET canton_code = c.canton_code
+      FROM bronze_ch.federal_communes c
+     WHERE b.canton_code IS NULL AND b.geometry IS NOT NULL
+       AND ST_Contains(c.geometry, b.geometry);
+
+ST_Contains against federal_communes GIST index handles 29K rows in seconds.
 """
 from __future__ import annotations
 import argparse, json, logging, os, socket, sys, time
@@ -51,18 +60,6 @@ def _parse_yyyymmdd(s: str | None) -> str | None:
     return f"{s[0:4]}-{s[4:6]}-{s[6:8]}"
 
 
-def _load_commune_canton_map(conn) -> dict[int, str]:
-    """Build {commune_bfs_number → canton_code} from bronze_ch.federal_communes."""
-    if not conn:
-        return {}
-    out: dict[int, str] = {}
-    with conn.cursor() as cur:
-        cur.execute("SELECT bfs_nr::int, canton_code FROM bronze_ch.federal_communes WHERE bfs_nr IS NOT NULL")
-        for bfs, canton in cur.fetchall():
-            if bfs is not None and canton:
-                out[int(bfs)] = canton
-    log.info(f"loaded {len(out)} commune→canton mappings")
-    return out
 
 
 def main():
@@ -79,8 +76,6 @@ def main():
     run_id = record_run_start(conn, DATASET_CODE, host) if conn and not args.dry_run else -1
     log.info(f"Run id={run_id} host={host} started_at={run_started_at.isoformat()} dry_run={args.dry_run} table={TABLE}")
 
-    commune_canton = _load_commune_canton_map(conn) if conn else {}
-
     cfg = FederalCSVConfig(
         stac_collection=SOURCE_LAYER,
         asset_glob="*_2056_fr.csv.zip",
@@ -91,7 +86,6 @@ def main():
     batch: list[tuple] = []
     result = UpsertResult()
     seen = 0
-    canton_counts: dict[str | None, int] = {}
     first_feature_logged = False
     t0 = time.time()
 
@@ -107,14 +101,7 @@ def main():
                 wkt = f"SRID=2056;POINT({e} {n})"
             except (TypeError, ValueError):
                 wkt = None
-            # canton via Commune_Numero lookup
-            commune_num = None
-            cn_raw = (row.get("Commune_Numero") or "").strip()
-            if cn_raw and cn_raw.isdigit():
-                commune_num = int(cn_raw)
-            canton = commune_canton.get(commune_num) if commune_num else None
-            canton_counts[canton] = canton_counts.get(canton, 0) + 1
-
+            # canton_code intentionally NULL — populated post-backfill via spatial join.
             tuple_row = (
                 didok,
                 (row.get("Nom") or "").strip() or None,
@@ -126,7 +113,7 @@ def main():
                 None,
                 json.dumps({k: v for k, v in row.items() if v}, ensure_ascii=False),
                 wkt,
-                canton,
+                None,                              # canton_code -> NULL (post-backfill UPDATE)
                 SOURCE_LAYER,
                 run_started_at,
             )
@@ -139,9 +126,9 @@ def main():
                     "source_layer": SOURCE_LAYER,
                     "raw_csv_keys": list(row.keys()),
                     "raw_csv_sample": {k: v for k, v in list(row.items())[:18]},
-                    "resolved_canton": canton,
                     "parsed_columns": list(COLUMNS),
                     "parsed_row_preview": [str(v)[:160] if v is not None else None for v in tuple_row][:13],
+                    "note_canton": "NULL by design — populated post-backfill via ST_Contains spatial join (see module docstring)",
                 }, default=str, ensure_ascii=False))
                 first_feature_logged = True
 
@@ -164,7 +151,6 @@ def main():
             )
 
         elapsed = time.time() - t0
-        log.info(f"CANTON_DISTRIBUTION {json.dumps(canton_counts)}")
         log.info(f"Done. features={seen} upserted={result.inserted} "
                  f"soft_deleted={result.soft_deleted} elapsed={elapsed:.1f}s")
         if conn and not args.dry_run:
