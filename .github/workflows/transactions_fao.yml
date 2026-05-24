@@ -1,12 +1,62 @@
 name: FAO Transactions
 
+# New cadence (Brief E.2, 2026-05-24):
+#   Friday  20:00 UTC — primary run (always executes)
+#   Monday  09:00 UTC — retry 1, GATED on freshness (skip if data within last 3d)
+#   Monday  15:00 UTC — retry 2, same gate
+# DST drift accepted: schedules are UTC, effective CEST/CET local shifts ±1h twice/yr.
+
 on:
   schedule:
-    - cron: '0 4 * * 6'  # Weekly Saturday at 04:00 UTC
+    - cron: '0 20 * * 5'   # Fri 20:00 UTC primary
+    - cron: '0 9 * * 1'    # Mon 09:00 UTC retry 1
+    - cron: '0 15 * * 1'   # Mon 15:00 UTC retry 2
   workflow_dispatch:
 
 jobs:
+  check-freshness:
+    runs-on: ubuntu-latest
+    outputs:
+      should-run: ${{ steps.gate.outputs.should-run }}
+    steps:
+      - name: Friday primary + workflow_dispatch always run
+        id: gate-friday
+        if: github.event.schedule == '0 20 * * 5' || github.event_name == 'workflow_dispatch'
+        run: echo "should-run=true" >> "$GITHUB_OUTPUT"
+
+      - name: Monday retry — check bronze_ch.fao_transactions freshness on re-LLM
+        id: gate-monday
+        if: github.event.schedule == '0 9 * * 1' || github.event.schedule == '0 15 * * 1'
+        env:
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          RESPONSE=$(curl -s "$SUPABASE_URL/rest/v1/rpc/check_fao_freshness" \
+            -H "apikey: $SUPABASE_KEY" \
+            -H "Authorization: Bearer $SUPABASE_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{"p_table_name":"fao_transactions","p_lookback_days":3}')
+          IS_FRESH=$(echo "$RESPONSE" | jq -r '.is_fresh')
+          ROW_COUNT=$(echo "$RESPONSE" | jq -r '.row_count')
+          echo "Freshness response: $RESPONSE (is_fresh=$IS_FRESH, row_count=$ROW_COUNT)"
+          if [ "$IS_FRESH" = "true" ]; then
+            echo "Data already fresh — skipping retry."
+            echo "should-run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Data NOT fresh — proceeding with retry."
+            echo "should-run=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Consolidate gate outputs
+        id: gate
+        run: |
+          OUT="${{ steps.gate-friday.outputs.should-run }}${{ steps.gate-monday.outputs.should-run }}"
+          if [ -z "$OUT" ]; then OUT=false; fi
+          echo "should-run=$OUT" >> "$GITHUB_OUTPUT"
+
   fetch:
+    needs: check-freshness
+    if: needs.check-freshness.outputs.should-run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 120
     steps:

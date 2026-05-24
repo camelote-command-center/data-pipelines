@@ -1,12 +1,55 @@
 name: FAO LDTR
 
+# New cadence (Brief E.2, 2026-05-24): Fri 20:00 UTC + Mon 09:00/15:00 UTC with freshness gate.
+
 on:
   schedule:
-    - cron: '30 4 * * 6'  # Weekly Saturday at 04:30 UTC
+    - cron: '0 20 * * 5'   # Fri 20:00 UTC primary
+    - cron: '0 9 * * 1'    # Mon 09:00 UTC retry 1
+    - cron: '0 15 * * 1'   # Mon 15:00 UTC retry 2
   workflow_dispatch:
 
 jobs:
+  check-freshness:
+    runs-on: ubuntu-latest
+    outputs:
+      should-run: ${{ steps.gate.outputs.should-run }}
+    steps:
+      - name: Friday primary + workflow_dispatch always run
+        id: gate-friday
+        if: github.event.schedule == '0 20 * * 5' || github.event_name == 'workflow_dispatch'
+        run: echo "should-run=true" >> "$GITHUB_OUTPUT"
+
+      - name: Monday retry — check bronze_ch.fao_ldtr freshness on re-LLM
+        id: gate-monday
+        if: github.event.schedule == '0 9 * * 1' || github.event.schedule == '0 15 * * 1'
+        env:
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          RESPONSE=$(curl -s "$SUPABASE_URL/rest/v1/rpc/check_fao_freshness" \
+            -H "apikey: $SUPABASE_KEY" \
+            -H "Authorization: Bearer $SUPABASE_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{"p_table_name":"fao_ldtr","p_lookback_days":3}')
+          IS_FRESH=$(echo "$RESPONSE" | jq -r '.is_fresh')
+          echo "Freshness response: $RESPONSE"
+          if [ "$IS_FRESH" = "true" ]; then
+            echo "should-run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "should-run=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Consolidate gate outputs
+        id: gate
+        run: |
+          OUT="${{ steps.gate-friday.outputs.should-run }}${{ steps.gate-monday.outputs.should-run }}"
+          if [ -z "$OUT" ]; then OUT=false; fi
+          echo "should-run=$OUT" >> "$GITHUB_OUTPUT"
+
   fetch:
+    needs: check-freshness
+    if: needs.check-freshness.outputs.should-run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:

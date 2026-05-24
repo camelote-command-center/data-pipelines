@@ -1,16 +1,17 @@
 name: FAO Multi — Frequent (weekly)
 
-# High-volume rubriques (≥1 publication/day on average): scrape weekly with a
-# 14-day lookback so we always overlap the previous run.
+# High-volume rubriques (≥1 publication/day on average): scrape with Fri-night +
+# Mon-AM/PM cadence (Brief E.2, 2026-05-24), 14-day lookback so we always
+# overlap the previous run.
 #
 # Bucket source: 14-day sample taken 2026-04-27 — 91/72/97 each averaged
 # 10+ rows/day. Sparse rubriques live in fao_multi_quarterly.yml.
-# Refine after fao_multi_backfill.yml completes if real frequencies differ.
 
 on:
   schedule:
-    # Weekly Saturday at 05:00 UTC (after FAO Transactions @04:00 + LDTR @04:30)
-    - cron: '0 5 * * 6'
+    - cron: '0 20 * * 5'   # Fri 20:00 UTC primary
+    - cron: '0 9 * * 1'    # Mon 09:00 UTC retry 1
+    - cron: '0 15 * * 1'   # Mon 15:00 UTC retry 2
   workflow_dispatch:
     inputs:
       rubrique:
@@ -24,8 +25,47 @@ on:
         type: string
 
 jobs:
+  check-freshness:
+    runs-on: ubuntu-latest
+    outputs:
+      should-run: ${{ steps.gate.outputs.should-run }}
+    steps:
+      - name: Friday primary + workflow_dispatch always run
+        id: gate-friday
+        if: github.event.schedule == '0 20 * * 5' || github.event_name == 'workflow_dispatch'
+        run: echo "should-run=true" >> "$GITHUB_OUTPUT"
+
+      - name: Monday retry — check bronze_ch.ge_fao_publications freshness on re-LLM
+        id: gate-monday
+        if: github.event.schedule == '0 9 * * 1' || github.event.schedule == '0 15 * * 1'
+        env:
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          RESPONSE=$(curl -s "$SUPABASE_URL/rest/v1/rpc/check_fao_freshness" \
+            -H "apikey: $SUPABASE_KEY" \
+            -H "Authorization: Bearer $SUPABASE_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{"p_table_name":"ge_fao_publications","p_lookback_days":3}')
+          IS_FRESH=$(echo "$RESPONSE" | jq -r '.is_fresh')
+          echo "Freshness response: $RESPONSE"
+          if [ "$IS_FRESH" = "true" ]; then
+            echo "should-run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "should-run=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Consolidate gate outputs
+        id: gate
+        run: |
+          OUT="${{ steps.gate-friday.outputs.should-run }}${{ steps.gate-monday.outputs.should-run }}"
+          if [ -z "$OUT" ]; then OUT=false; fi
+          echo "should-run=$OUT" >> "$GITHUB_OUTPUT"
+
   # When dispatched with a single rubrique we run a 1-element matrix; otherwise full list.
   resolve-matrix:
+    needs: check-freshness
+    if: needs.check-freshness.outputs.should-run == 'true'
     runs-on: ubuntu-latest
     outputs:
       rubriques: ${{ steps.set.outputs.rubriques }}
