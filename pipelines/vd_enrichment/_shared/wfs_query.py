@@ -198,8 +198,14 @@ def iter_features(cfg: WFSConfig) -> Iterator[dict]:
 
 def geojson_geom_to_ewkt(geom: dict | None, srid: int = 2056) -> str | None:
     """
-    Convert GeoJSON-shape geometry to PostGIS EWKT. Same API as the prior
-    GeoJSON path; the GML parser produces the same dict shape.
+    Convert GeoJSON-shape geometry to PostGIS EWKT.
+
+    Bronze geometry columns are typed (MultiPolygon, MultiLineString, Point, etc).
+    PostGIS strict mode rejects single Polygon into geometry(MultiPolygon) and
+    single LineString into geometry(MultiLineString). To match the schema, we
+    promote single Polygon → MULTIPOLYGON and single LineString → MULTILINESTRING
+    inline here. Point and MultiPoint left as-is (the relevant Lausanne bronze
+    tables either accept Geometry(any) or are explicitly Point columns).
     """
     if not geom:
         return None
@@ -212,13 +218,15 @@ def geojson_geom_to_ewkt(geom: dict | None, srid: int = 2056) -> str | None:
         return f"SRID={srid};MULTIPOINT({pts})"
     if t == "LineString":
         coords = ", ".join(f"{p[0]} {p[1]}" for p in c)
-        return f"SRID={srid};LINESTRING({coords})"
+        # Promote to MULTILINESTRING for type-strict bronze columns.
+        return f"SRID={srid};MULTILINESTRING(({coords}))"
     if t == "MultiLineString":
         lines = ", ".join("(" + ", ".join(f"{p[0]} {p[1]}" for p in line) + ")" for line in c)
         return f"SRID={srid};MULTILINESTRING({lines})"
     if t == "Polygon":
         rings = ", ".join("(" + ", ".join(f"{p[0]} {p[1]}" for p in ring) + ")" for ring in c)
-        return f"SRID={srid};POLYGON({rings})"
+        # Promote to MULTIPOLYGON for type-strict bronze columns.
+        return f"SRID={srid};MULTIPOLYGON(({rings}))"
     if t == "MultiPolygon":
         polys = []
         for poly in c:

@@ -1,91 +1,90 @@
 """
-Federal GeoAdmin iterator.
+Federal GeoAdmin bulk dataset iterator (STAC + CSV path).
 
-TODO (deferred to follow-up PR): replace /find endpoint with the correct bulk-extract path.
-  The /find endpoint requires `searchText` to be non-empty (returns HTTP 400 with empty text),
-  so it can't be used to bulk-extract all features in a layer. Correct paths to evaluate:
-    (a) Direct dataset download: https://data.geo.admin.ch/<layer>/<layer>/data.{csv,gpkg,geojson}
-    (b) MapServer/<layerId>/query?where=1=1&outFields=*&f=geojson   (REST query)
-    (c) Federal WFS at https://wms.geo.admin.ch/?service=WFS
-  Discovered via VPS3 dry-run 2026-05-22 (HTTP 400 from /find).
-  Until fixed, federal_bav_transit parser is non-functional. Not on this PR's critical path
-  (deferred to follow-up PR per scope adjustment).
+For ch.bav.haltestellen-oev (and similar federal datasets distributed via
+data.geo.admin.ch), the discovery path is:
 
-Used for: ch.bav.haltestellen-oev (currently broken — see TODO above).
+  1. STAC item:   https://data.geo.admin.ch/api/stac/v0.9/collections/<layer>/items
+  2. Pick an asset (we use <name>_2056_fr.csv.zip — CSV in EPSG:2056, French labels)
+  3. Download + unzip + iterate CSV rows
 
-Pattern: GeoAdmin /find endpoint with searchField=* (returns all features matching a
-bbox, paged via offset). For national coverage, we walk CH bbox grid because /find
-caps at 200 features per request.
+This replaces the broken /find-endpoint approach used in PR #15
+(/find requires non-empty searchText; cannot bulk-extract).
 
-Bbox (EPSG:2056 LV95): 2,485,000–2,834,000 E × 1,074,000–1,296,000 N.
-Grid cell: 50km × 50km gives ~7×5=35 cells, well within rate budget for quarterly cadence.
+Usage:
+  cfg = FederalCSVConfig(
+      stac_collection="ch.bav.haltestellen-oev",
+      asset_glob="*_2056_fr.csv.zip",
+      csv_filename="PointExploitation.csv",
+  )
+  for row in iter_csv_rows(cfg):
+      ...  # row is dict {column: value}
 """
 from __future__ import annotations
+import csv
+import fnmatch
+import io
 import json
+import logging
+import os
+import tempfile
 import time
 import urllib.parse
 import urllib.request
+import zipfile
 from dataclasses import dataclass
 from typing import Iterator
 
+log = logging.getLogger(__name__)
 
-GEOADMIN_FIND = "https://api3.geo.admin.ch/rest/services/api/MapServer/find"
-CH_BBOX_LV95 = (2_485_000, 1_074_000, 2_834_000, 1_296_000)  # (xmin, ymin, xmax, ymax)
-GRID_CELL_M = 50_000
+STAC_BASE = "https://data.geo.admin.ch/api/stac/v0.9/collections"
 
 
 @dataclass
-class FederalConfig:
-    layer: str                                # e.g., "ch.bav.haltestellen-oev"
-    search_field: str = "*"
-    geometry_format: str = "geojson"
+class FederalCSVConfig:
+    stac_collection: str             # e.g. "ch.bav.haltestellen-oev"
+    asset_glob: str                  # e.g. "*_2056_fr.csv.zip"
+    csv_filename: str                # name inside the zip, e.g. "PointExploitation.csv"
 
 
-def _http_get_json(url, timeout=45, max_retries=6):
+def _http_get_bytes(url: str, timeout: int = 120, max_retries: int = 6) -> bytes:
     last_err = None
     for attempt in range(max_retries):
         try:
             with urllib.request.urlopen(url, timeout=timeout) as r:
-                return json.loads(r.read())
+                return r.read()
         except Exception as e:
             last_err = e
             time.sleep(min(60, 2 ** attempt))
-    raise RuntimeError(f"GeoAdmin GET failed: {last_err}  url={url}")
+    raise RuntimeError(f"federal GET failed: {last_err}  url={url}")
 
 
-def iter_features(cfg: FederalConfig) -> Iterator[dict]:
+def resolve_asset_url(cfg: FederalCSVConfig) -> str:
+    """Walk STAC items → assets and find the first matching asset_glob."""
+    items_url = f"{STAC_BASE}/{cfg.stac_collection}/items"
+    items_resp = json.loads(_http_get_bytes(items_url))
+    for item in items_resp.get("features", []):
+        for name, asset in item.get("assets", {}).items():
+            if fnmatch.fnmatch(name, cfg.asset_glob):
+                return asset.get("href")
+    raise RuntimeError(f"No asset matches {cfg.asset_glob!r} in collection {cfg.stac_collection}")
+
+
+def iter_csv_rows(cfg: FederalCSVConfig) -> Iterator[dict]:
     """
-    Walk CH bbox grid and yield each feature exactly once.
-    Deduplication via a seen-set keyed on layer-specific PK (didok for BAV).
+    Resolve STAC asset, download zip, extract the target CSV, yield rows as dicts.
+    Yields nothing if csv_filename isn't in the zip.
     """
-    xmin, ymin, xmax, ymax = CH_BBOX_LV95
-    seen_ids: set[str] = set()
-    for x0 in range(xmin, xmax, GRID_CELL_M):
-        for y0 in range(ymin, ymax, GRID_CELL_M):
-            x1 = min(x0 + GRID_CELL_M, xmax)
-            y1 = min(y0 + GRID_CELL_M, ymax)
-            params = {
-                "layer": cfg.layer,
-                "searchField": cfg.search_field,
-                "searchText": "",                # empty = all features in bbox
-                "returnGeometry": "true",
-                "geometryFormat": cfg.geometry_format,
-                "geometry": f"{x0},{y0},{x1},{y1}",
-                "geometryType": "esriGeometryEnvelope",
-                "sr": "2056",
-                "imageDisplay": "1024,1024,96",
-                "mapExtent": f"{x0},{y0},{x1},{y1}",
-                "tolerance": "0",
-                "lang": "fr",
-            }
-            url = GEOADMIN_FIND + "?" + urllib.parse.urlencode(params)
-            resp = _http_get_json(url)
-            for f in resp.get("results", []) or []:
-                attrs = f.get("attributes", {}) or {}
-                pk = attrs.get("didok") or attrs.get("number") or f.get("featureId")
-                if pk and str(pk) in seen_ids:
-                    continue
-                if pk:
-                    seen_ids.add(str(pk))
-                yield f
-            time.sleep(0.2)   # courtesy rate limit
+    asset_url = resolve_asset_url(cfg)
+    log.info(f"federal_query: downloading {asset_url}")
+    zip_bytes = _http_get_bytes(asset_url, timeout=180)
+    with zipfile.ZipFile(io.BytesIO(zip_bytes)) as zf:
+        names = zf.namelist()
+        if cfg.csv_filename not in names:
+            raise RuntimeError(f"{cfg.csv_filename} not in zip; available: {names}")
+        with zf.open(cfg.csv_filename) as raw:
+            # CSV is UTF-8 with BOM (xtf_id header starts with ﻿)
+            text = io.TextIOWrapper(raw, encoding="utf-8-sig", newline="")
+            reader = csv.DictReader(text)
+            for row in reader:
+                yield row

@@ -55,7 +55,6 @@ def upsert_batch(
         return 0
 
     col_list = ", ".join(columns)
-    placeholders = "(" + ", ".join(["%s"] * len(columns)) + ")"
     excluded_set = ", ".join(
         f"{c} = EXCLUDED.{c}" for c in columns if c not in pk_cols
     )
@@ -70,7 +69,14 @@ def upsert_batch(
     """
     # extend each row tuple with (run_started_at, NULL)
     extended = [(*r, run_started_at, None) for r in rows]
-    template = "(" + ", ".join(["%s"] * (len(columns) + 2)) + ")"
+    # Build per-column placeholders. Wrap any column named 'geometry' with
+    # ST_MakeValid(...) so invalid source-side topology can't get into bronze
+    # (mitigation for canton-VD polygon-validity issues — see bug 81dee985 +
+    # migration 20260522000002). ST_MakeValid is shape-preserving for typical
+    # invalid topologies (self-intersections, ring orientation).
+    def _ph(col: str) -> str:
+        return "ST_MakeValid(%s::geometry)" if col == "geometry" else "%s"
+    template = "(" + ", ".join(_ph(c) for c in columns) + ", %s, %s)"
 
     with conn.cursor() as cur:
         psycopg2.extras.execute_values(cur, sql, extended, template=template, page_size=500)

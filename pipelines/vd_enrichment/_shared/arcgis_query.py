@@ -1,27 +1,35 @@
 """
 ArcGIS REST /query pageable iterator for canton-VD wmsVD MapServer.
 
-Endpoint pattern:
-  GET https://agsgc.map.vd.ch/agsgc/rest/services/OGC/wmsVD/MapServer/<layer_id>/query
-    ?where=1=1
-    &outFields=*
-    &returnGeometry=true
-    &outSR=2056
-    &f=json
-    &resultRecordCount=<page>
-    &resultOffset=<offset>
+Important: canton-VD ArcGIS has service-level maxRecordCount=1 — every /query
+response returns exactly ONE feature regardless of resultRecordCount. The
+service ignores our requested page size. For 240K-row layers this means 240K
+HTTP requests. Mitigations in this module:
+
+  - HTTP keep-alive via a module-level requests.Session (TLS handshake reused
+    across all requests; saves ~250ms per request).
+  - Each ArcGISConfig accepts a `where` clause so callers can chunk by
+    OBJECTID range/modulo and run multiple parser processes in parallel.
 
 Yields features as Python dicts: {'attributes': {...}, 'geometry': {...}}.
-Geometry comes back as ArcGIS JSON; convert to WKT via esri_to_wkt() below.
+Geometry comes back as ArcGIS JSON; convert to WKT via esri_to_wkt().
 """
 from __future__ import annotations
 import json
 import time
-import urllib.error
 import urllib.parse
-import urllib.request
 from dataclasses import dataclass
 from typing import Iterator
+
+try:
+    import requests
+    _USE_REQUESTS = True
+    _SESSION = requests.Session()
+    _SESSION.headers.update({"Accept-Encoding": "gzip"})
+except ImportError:
+    import urllib.request, urllib.error
+    _USE_REQUESTS = False
+    _SESSION = None
 
 
 ARCGIS_BASE = "https://agsgc.map.vd.ch/agsgc/rest/services/OGC/wmsVD/MapServer"
@@ -39,13 +47,19 @@ class ArcGISConfig:
 
 
 def _http_get_json(url: str, timeout: int = 30, max_retries: int = DEFAULT_MAX_RETRIES) -> dict:
-    """GET with exponential backoff. Returns parsed JSON."""
+    """GET with HTTP keep-alive when requests is available, fallback to urllib."""
     last_err = None
     for attempt in range(max_retries):
         try:
-            with urllib.request.urlopen(url, timeout=timeout) as r:
-                return json.loads(r.read())
-        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError) as e:
+            if _USE_REQUESTS:
+                r = _SESSION.get(url, timeout=timeout)
+                r.raise_for_status()
+                return r.json()
+            else:
+                import urllib.request
+                with urllib.request.urlopen(url, timeout=timeout) as r:
+                    return json.loads(r.read())
+        except Exception as e:
             last_err = e
             backoff = min(60, 2 ** attempt)
             time.sleep(backoff)
@@ -54,9 +68,9 @@ def _http_get_json(url: str, timeout: int = 30, max_retries: int = DEFAULT_MAX_R
 
 def iter_features(cfg: ArcGISConfig) -> Iterator[dict]:
     """
-    Iterate all features from the ArcGIS layer. Yields raw feature dicts.
-    Pagination uses resultOffset; stops when exceededTransferLimit is False
-    AND fewer-than-page-size features come back.
+    Iterate all features matching cfg.where. Pagination uses resultOffset.
+    Because the canton-VD service caps at 1 feature per response, each loop
+    iteration is one feature. exceededTransferLimit=True is the normal case.
     """
     offset = 0
     while True:
@@ -74,19 +88,19 @@ def iter_features(cfg: ArcGISConfig) -> Iterator[dict]:
         feats = resp.get("features", []) or []
         for f in feats:
             yield f
-        if not feats or len(feats) < cfg.page_size:
-            # Last page
-            if not resp.get("exceededTransferLimit"):
-                break
+        if not feats:
+            break
         offset += len(feats)
+        # Stop iterating when server signals end of dataset
+        if not resp.get("exceededTransferLimit", False) and len(feats) < cfg.page_size:
+            break
 
 
 def esri_to_wkt(geom: dict | None, geom_type_hint: str | None = None) -> str | None:
     """
-    Convert ArcGIS JSON geometry to PostGIS-ingestible EWKT (with SRID=2056).
-    Supports point / multipoint / polyline / polygon.
-
-    Returns 'SRID=2056;<wkt>' or None.
+    Convert ArcGIS JSON geometry to PostGIS-ingestible EWKT (SRID=2056).
+    Supports point / multipoint / polyline / polygon. Promotes single shapes
+    to MULTI* where bronze columns expect MULTI types.
     """
     if not geom:
         return None
@@ -102,10 +116,6 @@ def esri_to_wkt(geom: dict | None, geom_type_hint: str | None = None) -> str | N
             lines.append(f"({coords})")
         return f"SRID=2056;MULTILINESTRING({','.join(lines)})"
     if "rings" in geom:
-        # ArcGIS rings are ordered: outer + inner (holes). One polygon per outer.
-        # Simple approach: treat all rings as outer rings of separate polygons in a multipolygon.
-        # For correctness with holes, would need orientation check; this is acceptable for
-        # ingest+spatial-intersect usage (PostGIS will ST_MakeValid the result anyway).
         polys = []
         for ring in geom["rings"]:
             coords = ", ".join(f"{p[0]} {p[1]}" for p in ring)
