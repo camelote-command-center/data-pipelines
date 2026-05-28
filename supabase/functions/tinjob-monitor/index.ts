@@ -119,6 +119,12 @@ Deno.serve(async (req: Request) => {
       await patchDataset(datasetId, {
         record_count: count,
         last_acquired_at: lastAcquiredAt,
+        // For a data-table-watcher capability, last_db_update_at ≡ last_acquired_at:
+        // the target DB was last updated when the most recent row was ingested.
+        // The Lovable monitoring UI treats NULL last_db_update_at as overdue, so this
+        // must be set or #99/#100 will keep showing up in the overdue list even when
+        // health_status is on_track.
+        last_db_update_at: lastAcquiredAt,
         last_error: null,
         updated_at: new Date().toISOString(),
       });
