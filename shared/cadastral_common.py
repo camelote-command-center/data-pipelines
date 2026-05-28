@@ -649,7 +649,10 @@ def run_tier(cfg: TierConfig) -> int:
         overall_ok = overall_ok and ok
 
     # Update camelote freshness once per tier run with the tier's row total.
-    if not args.dry_run:
+    # Skipped when this process is one canton in a matrix — the workflow's
+    # aggregator job handles the tier-wide rollup so per-canton parallelism
+    # doesn't fight over the dataset row.
+    if not args.dry_run and not args.skip_freshness_update:
         try:
             total = count_canton_rows(re_url, re_key, cfg.cantons)
             update_camelote_freshness(cm_url, cm_key, cfg.dataset_code, total,
@@ -847,4 +850,7 @@ def _parse_cli() -> argparse.Namespace:
                    help="freshness window for --resume (default 168 = 7 days)")
     p.add_argument("--progress-every-sec", type=int, default=1800,
                    help="emit per-canton progress line every N seconds (default 1800 = 30 min)")
+    p.add_argument("--skip-freshness-update", action="store_true",
+                   help="do not PATCH camelote-data freshness — for matrix jobs where a "
+                        "separate aggregator job rolls up the tier-wide status")
     return p.parse_args()

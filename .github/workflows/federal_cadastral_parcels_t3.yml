@@ -1,22 +1,27 @@
 name: Federal Cadastral Parcels — T3 (Rest of CH, quarterly)
 
-# Walks AG/LU/SO/OW/NW/AI (build) and SG/GR/TG/SZ/SH/AR/GL/ZG/UR (refresh)
-# via GeoAdmin identify API, lands rows in bronze_ch.federal_cadastral_parcels.
+# Walks AG/LU/SG/GR/TG/SZ/SH/AR/GL/ZG/UR/OW/NW/AI/SO via GeoAdmin identify API,
+# lands rows in bronze_ch.federal_cadastral_parcels (re-LLM). Composite key
+# (canton_code, ident_dn, parcel_number). commune_bfs auto-derived
+# post-canton via spatial join against bronze_ch.swiss_communes_geo.
 #
-# Quarterly cadence: 15th of Jan/Apr/Jul/Oct at 04:00 UTC (offset from T2 by 14 days).
+# Quarterly cadence: 1st of Jan/Apr/Jul/Oct at 04:30 UTC.
+#
+# ARCHITECTURE: matrix-parallel, one job per canton (15 jobs).
+# Same reasoning as T2 — sequential canton walks can't fit in the 6h GH
+# Actions ceiling, and #175 was overdue from 2026-02-24 → 2026-05-28.
+# An aggregator job updates the camelote-data freshness once after all
+# cantons have reported.
 
 on:
   schedule:
-    - cron: '0 4 15 1,4,7,10 *'
+    - cron: '30 4 1 1,4,7,10 *'
   workflow_dispatch:
     inputs:
-      cantons:
-        description: 'Comma-sep canton override'
-        required: false
       resume:
         description: 'Resume from tile_progress (skip already-walked tiles)'
         required: false
-        default: 'false'
+        default: 'true'
         type: choice
         options: ['false','true']
       dry_run:
@@ -28,19 +33,23 @@ on:
 
 jobs:
   fetch:
+    name: fetch (${{ matrix.canton }})
     runs-on: ubuntu-latest
     timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      matrix:
+        canton: [AG, LU, SG, GR, TG, SZ, SH, AR, GL, ZG, UR, OW, NW, AI, SO]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - run: pip install -r requirements.txt
-      - name: Run T3 parser
+      - name: Run T3 parser — canton ${{ matrix.canton }}
         run: |
-          ARGS=""
-          [ -n "${{ inputs.cantons }}" ] && ARGS="$ARGS --cantons ${{ inputs.cantons }}"
-          [ "${{ inputs.resume }}" = "true" ] && ARGS="$ARGS --resume"
+          ARGS="--cantons ${{ matrix.canton }} --skip-freshness-update"
+          [ "${{ inputs.resume }}" = "false" ] || ARGS="$ARGS --resume"
           [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
           python pipelines/federal_cadastral_parcels_t3/import.py $ARGS
         env:
@@ -49,15 +58,46 @@ jobs:
           RE_LLM_DB_PASSWORD: ${{ secrets.RE_LLM_DB_PASSWORD }}
           CAMELOTE_SUPABASE_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
           CAMELOTE_SUPABASE_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
-      - name: Report failure to camelote_data
-        if: failure()
-        run: |
-          MSG="Workflow run ${{ github.run_id }} failed at $(date -u +%Y-%m-%dT%H:%M:%SZ). See https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          ESC=$(printf '%s' "$MSG" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
-          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.federal_cadastral_parcels_t3" \
-            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
-            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
-            -d "{\"last_error\":${ESC}}"
+
+  aggregate:
+    name: aggregate freshness
+    needs: fetch
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: PATCH camelote-data freshness
         env:
           CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
           CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+          RE_URL:  ${{ secrets.RE_LLM_SUPABASE_URL }}
+          RE_KEY:  ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          FETCH_RESULT: ${{ needs.fetch.result }}
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          CANTONS="AG,LU,SG,GR,TG,SZ,SH,AR,GL,ZG,UR,OW,NW,AI,SO"
+          CR=$(curl -sI -X GET \
+            "$RE_URL/rest/v1/federal_cadastral_parcels?canton_code=in.(${CANTONS})&select=canton_code" \
+            -H "apikey: $RE_KEY" -H "Authorization: Bearer $RE_KEY" \
+            -H "Accept-Profile: bronze_ch" \
+            -H "Prefer: count=exact" -H "Range: 0-0" | tr -d '\r' \
+            | awk -F'/' '/^content-range:/ {print $2}')
+          COUNT=${CR:-0}
+          echo "tier row count: $COUNT (fetch result: $FETCH_RESULT)"
+
+          if [ "$FETCH_RESULT" = "success" ]; then
+            PAYLOAD=$(printf '{"last_acquired_at":"%s","record_count":%s,"last_error":null}' \
+              "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$COUNT")
+          else
+            ERR="One or more canton matrix jobs failed (result=$FETCH_RESULT). See $RUN_URL"
+            ESC=$(printf '%s' "$ERR" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
+            PAYLOAD=$(printf '{"record_count":%s,"last_error":%s}' "$COUNT" "$ESC")
+          fi
+          echo "PATCH payload: $PAYLOAD"
+          curl -sS -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.federal_cadastral_parcels_t3" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+            -d "$PAYLOAD"
+
+          if [ "$FETCH_RESULT" != "success" ]; then exit 1; fi
