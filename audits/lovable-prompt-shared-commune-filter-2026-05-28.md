@@ -71,11 +71,11 @@ n     : number
 - **`/app/registre-proprietaires`** (`dataset='registre'`):
   - Owner **count** `get_filtered_owner_count(p_communes := [canonical_name], p_npas := [...])`
     — works at sub-quartier grain.
-  - ⚠️ Owner **list** `get_owners_national_v2(p_commune := text)` filters an
-    entity rollup that today only knows bare "Genève", so a sub-quartier name
-    returns nothing. **For a Geneva sub-quartier selection, key the owner list on
-    the bare parent "Genève"** (use `parent_bfs`→"Genève") while count + facets use
-    the sub-quartier. Leave a TODO at that call site (backend rollup fix pending).
+  - Owner **list** `get_owners_national_v2(p_commune := canonical_name)` — now
+    sub-quartier-aware (backend fixed 2026-05-29; `mv_entities.communes_list`
+    carries the four Geneva sub-quartiers). Pass the selected `canonical_name`
+    directly, same as count + facets. *(No more parent-"Genève" stopgap — the
+    earlier workaround is removed.)*
 - **`/app/transactions`** (`dataset='transactions'`) — **now enabled** (was fenced
   off): the commune list now shows the four Geneva sub-quartiers. Pass the selected
   `canonical_name` to the existing transactions result/list query. NOTE: until a
@@ -98,10 +98,10 @@ n     : number
 
 | Page | dataset | options | facets | result wiring | notes |
 |------|---------|---------|--------|---------------|-------|
-| registre-proprietaires | `registre` | ✅ 4 sub-quartiers, canton-scoped, alpha | ✅ npa+girec | count ✅ / **list ⚠️** | owner list still bare-Genève (task #12) |
+| registre-proprietaires | `registre` | ✅ 4 sub-quartiers, canton-scoped, alpha | ✅ npa+girec | count ✅ / list ✅ | owner list sub-quartier-aware (fixed 2026-05-29) |
 | sad | `sad` | ✅ | ✅ | ✅ canonical_name | fully correct |
-| transactions | `transactions` | ✅ derived (4575/7356/7301/5769) | ⚠️ name-mapped, partial pre-propagation | canonical_name | converges after Friday job-43 |
-| petites-annonces | `annonces` | ✅ clean canonical (parent grain) | npa only | canonical_name/bfs | completes after re-llm→lamap listings sync |
+| transactions | `transactions` | ✅ derived (4575/7356/7301/5769) | ⚠️ name-mapped, partial pre-propagation | canonical_name | converges after job-43 (pending; see 03_NEXT_STEPS) |
+| petites-annonces | `annonces` | ✅ clean canonical (parent grain) | npa only | canonical_name/bfs | backfilled 2026-05-29 → admin3 99.3% |
 
 Shared RPCs live on lamap_db: `get_cantons(text)`, `get_commune_options(text,text)`,
 `get_facets(text,int)`. Migrations: `2026-05-28b` (shared API), `2026-05-28c`
