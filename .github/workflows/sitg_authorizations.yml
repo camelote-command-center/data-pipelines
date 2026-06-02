@@ -20,10 +20,11 @@ jobs:
           RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
           RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
           RE_LLM_SCHEMA: bronze_ch
-          # Optional secondary target — Yooneet (kept unchanged).
-          YOONEET_SUPABASE_URL: ${{ secrets.YOONEET_SUPABASE_URL }}
-          YOONEET_SUPABASE_SERVICE_KEY: ${{ secrets.YOONEET_SUPABASE_SERVICE_KEY }}
-          YOONEET_SCHEMA: bronze
+          # Yooneet secondary target REMOVED 2026-06-02 — host obwadmkvpakjxoyidepl.supabase.co
+          # is dead (DNS unresolvable, project deleted/suspended). Was causing 1h workflow
+          # timeouts on every run because each batch retried 3x then failed,
+          # blocking re-LLM batches' completion + the camelote PATCH step. Re-add when
+          # Yooneet has a working endpoint.
       - name: PATCH last_acquired_at on success
         if: success()
         run: |
