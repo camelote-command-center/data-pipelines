@@ -37,11 +37,14 @@ const CAMELOTE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
 const RE_LLM_DB_URL = Deno.env.get("RE_LLM_DB_URL") || "";
 
 /**
- * Map a camelote dataset code (relm_sync_<freq>_<basename>) to candidate
+ * Map a camelote dataset code (relm_sync_<freq>_<target_table>) to candidate
  * re-LLM sync_log source_table names. Order matters — first match wins.
+ *
+ * The CANONICAL mapping comes from gold_ch.sync_registry (target_table →
+ * source_schema.source_table) and is looked up once per invocation. These
+ * name-based candidates are only a fallback for entries not in the registry.
  */
 function candidateSources(code: string): string[] {
-  // code = "relm_sync_daily_link_plot_sad" → basename = "link_plot_sad"
   const parts = code.split("_");
   if (parts.length < 4 || parts[0] !== "relm" || parts[1] !== "sync") return [];
   const basename = parts.slice(3).join("_");
@@ -88,6 +91,18 @@ Deno.serve(async (req: Request) => {
       syncRows.rows.map((r) => [r.source_table, (r.latest as Date).toISOString()]),
     );
 
+    // 1b. Canonical target_table → source_schema.source_table mapping from sync_registry.
+    // This is the authoritative pairing — name-based heuristics are only a fallback
+    // for codes whose suffix happens to match the source table name directly.
+    const registryRows = await client.queryObject<{ target_table: string; source: string }>(
+      `SELECT target_table, source_schema || '.' || source_table AS source
+       FROM gold_ch.sync_registry
+       WHERE enabled = true`,
+    );
+    const targetToSource = new Map<string, string>(
+      registryRows.rows.map((r) => [r.target_table, r.source]),
+    );
+
     // 2. Get all relm_sync_* datasets from camelote-data
     const dsResp = await fetch(
       `${CAMELOTE_URL}/rest/v1/datasets?code=like.relm_sync_*&select=id,display_id,code,last_acquired_at`,
@@ -102,8 +117,18 @@ Deno.serve(async (req: Request) => {
     let matched = 0, updated = 0, skipped = 0, unmatched = 0;
 
     for (const d of datasets) {
-      const candidates = candidateSources(d.code);
-      const match = candidates.find((c) => sourceLatest.has(c));
+      // First try the canonical sync_registry mapping (code suffix == target_table).
+      // Falls back to name-based candidates if not in the registry.
+      const parts = d.code.split("_");
+      const targetTable = parts.length >= 4 && parts[0] === "relm" && parts[1] === "sync"
+        ? parts.slice(3).join("_") : null;
+      let match: string | null = null;
+      if (targetTable && targetToSource.has(targetTable) && sourceLatest.has(targetToSource.get(targetTable)!)) {
+        match = targetToSource.get(targetTable)!;
+      } else {
+        const candidates = candidateSources(d.code);
+        match = candidates.find((c) => sourceLatest.has(c)) || null;
+      }
       if (!match) {
         unmatched++;
         results.push({ display_id: d.display_id, code: d.code, matched: null, before: d.last_acquired_at, after: null, updated: false });
