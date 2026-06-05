@@ -15,6 +15,10 @@ CONFIG-DRIVEN: Adding a new SITG table is just adding a dict to DATASETS.
 DATA SAFETY:
     - UPSERT only (INSERT ... ON CONFLICT DO UPDATE).
     - Never truncates or deletes existing data.
+    - Stamps last_seen_at = run timestamp on every harvested row each run; rows
+      that vanish from source stop advancing and fall off the live surface
+      downstream (gold_ch.v_chantiers_unified current-run filter) WITHOUT deletion.
+      Bronze is the full trace (first_seen_at default now(), preserved on update).
 
 Environment variables:
     RE_LLM_SUPABASE_URL          - re-llm Supabase project URL (required)
@@ -22,6 +26,7 @@ Environment variables:
     RE_LLM_SCHEMA                - target schema (default: bronze_ch)
 """
 
+import datetime
 import os
 import sys
 
@@ -30,6 +35,9 @@ import requests
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 from shared.supabase_client import batch_upsert
 from shared.sitg_arcgis import fetch_all_features
+
+# Single run timestamp stamped on every row this run (Brief1 Step3 last_seen_at)
+RUN_TS = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 # ──────────────────────────────────────────────────────────────
 # Dataset configs
@@ -153,6 +161,11 @@ def process_destination(dest_name, dest_url, dest_key, dest_schema, datasets_wit
         for r in work:
             for k in all_keys:
                 r.setdefault(k, None)
+
+        # Brief1 Step3: stamp last_seen_at so disappeared rows fall off the live
+        # surface (first_seen_at omitted -> DB DEFAULT now() on insert, preserved on update).
+        for r in work:
+            r["last_seen_at"] = RUN_TS
 
         rows_before = get_row_count(dest_url, dest_key, dest_schema, table)
         print(f"  Rows before: {rows_before if rows_before is not None else 'unknown'}")
