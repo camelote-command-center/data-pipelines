@@ -18,6 +18,11 @@ on:
       sample_size:
         description: 'rows to sample in validate mode'
         default: '80'
+      truth:
+        description: 'validate ground truth: live (calls Sonnet) | stored (DB labels)'
+        default: 'live'
+        type: choice
+        options: [live, stored]
 
 jobs:
   backfill:
@@ -47,4 +52,5 @@ jobs:
           CLASSIFY_MODE: ${{ github.event.inputs.mode || 'backfill' }}
           CLASSIFY_PROVIDER: ${{ github.event.inputs.provider || 'anthropic' }}
           VALIDATE_SAMPLE: ${{ github.event.inputs.sample_size || '80' }}
+          VALIDATE_TRUTH: ${{ github.event.inputs.truth || 'live' }}
         run: python classify_existing.py

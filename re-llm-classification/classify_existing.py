@@ -46,6 +46,9 @@ DEEPSEEK_CONCURRENCY   = int(os.getenv("DEEPSEEK_CONCURRENCY", "8"))
 # A/B: classify a sample with DeepSeek AND Sonnet, report agreement, write nothing.
 CLASSIFY_MODE          = (os.getenv("CLASSIFY_MODE") or "backfill").lower()
 VALIDATE_SAMPLE        = int(os.getenv("VALIDATE_SAMPLE", "80"))
+# Validation ground truth: 'live' calls Sonnet per row; 'stored' compares against
+# the production labels already in the DB (needed when the Anthropic key is capped).
+VALIDATE_TRUTH         = (os.getenv("VALIDATE_TRUTH") or "live").lower()
 
 # ---------------------------------------------------------------------------
 # Taxonomy is DOMAIN-SCOPED and loaded from knowledge_global at runtime so this
@@ -209,18 +212,35 @@ def build_openai_tool():
     }
 
 
-def classify_one_deepseek(item, tool, max_retries=4):
-    """Synchronous DeepSeek call for one item. Returns the parsed classification
-    dict (raw — write_back applies domain-scoped filtering), or None on failure."""
+# deepseek-v4-flash runs in thinking mode, which rejects forced tool_choice
+# ("Thinking mode does not support this tool_choice"). So instead of function-
+# calling we use response_format=json_object + this explicit output contract.
+# The enums themselves live in SYSTEM_PROMPT; this only fixes the output shape.
+DEEPSEEK_JSON_INSTRUCTION = (
+    "\n\n---\n"
+    "Respond with ONLY a single JSON object — no prose, no markdown fences — using "
+    "exactly these keys:\n"
+    '{"domain": "<one allowed domain key>", '
+    '"topics": ["<topic keys belonging to the chosen domain>"], '
+    '"asset_classes": ["<asset_class keys; [] unless domain is real_estate>"], '
+    '"chunk_type": "<one allowed chunk_type key>", '
+    '"tags": ["<0-5 lowercase_snake_case tags>"], '
+    '"confidence": <number 0-1>, '
+    '"reasoning": "<1-2 sentences>"}'
+)
+
+
+def classify_one_deepseek(item, max_retries=4):
+    """Synchronous DeepSeek call for one item via JSON mode. Returns the parsed
+    classification dict (raw — write_back applies domain-scoped filtering), or None."""
     payload = {
         "model": DEEPSEEK_MODEL,
         "max_tokens": 1024,
         "messages": [
             {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": render_user_message(item)},
+            {"role": "user", "content": render_user_message(item) + DEEPSEEK_JSON_INSTRUCTION},
         ],
-        "tools": [tool],
-        "tool_choice": {"type": "function", "function": {"name": "classify"}},
+        "response_format": {"type": "json_object"},
     }
     headers = {
         "Content-Type": "application/json",
@@ -230,7 +250,7 @@ def classify_one_deepseek(item, tool, max_retries=4):
     for attempt in range(max_retries):
         try:
             r = requests.post(DEEPSEEK_URL, headers=headers, json=payload, timeout=120)
-        except requests.RequestException as e:
+        except requests.RequestException:
             if attempt == max_retries - 1:
                 return None
             time.sleep(backoff); backoff *= 2; continue
@@ -243,10 +263,8 @@ def classify_one_deepseek(item, tool, max_retries=4):
             return None
         try:
             data = r.json()
-            tc = data["choices"][0]["message"]["tool_calls"][0]
-            if tc["function"]["name"] != "classify":
-                return None
-            parsed = json.loads(tc["function"]["arguments"])
+            content = data["choices"][0]["message"]["content"]
+            parsed = json.loads(content)
             parsed.setdefault("confidence", 0.0)
             parsed.setdefault("reasoning", "")
             return parsed
@@ -259,11 +277,10 @@ def classify_one_deepseek(item, tool, max_retries=4):
 def run_deepseek(sb, items, write=True):
     """Classify items via DeepSeek with bounded concurrency. When write=False,
     returns the classifications without persisting (used for the pre-run sample)."""
-    tool = build_openai_tool()
     results = []   # list of (item, classification|None)
 
     with ThreadPoolExecutor(max_workers=DEEPSEEK_CONCURRENCY) as ex:
-        futs = {ex.submit(classify_one_deepseek, it, tool): it for it in items}
+        futs = {ex.submit(classify_one_deepseek, it): it for it in items}
         done = 0
         for fut in as_completed(futs):
             it = futs[fut]
@@ -593,64 +610,110 @@ def classify_one_anthropic_sync(client, item, tool, max_retries=4):
     return None
 
 
+def fetch_classified_sample(sb, n):
+    """Sample already-classified rows (categorization_version=2) WITH their stored
+    axes, to A/B DeepSeek against production labels without calling Sonnet — used
+    when the live Anthropic key is unavailable. Returns items renderable by
+    render_user_message, each carrying its stored labels under '_stored'."""
+    half = max(1, n // 2)
+    out = []
+    docs = sb.schema('knowledge_ch').table('documents').select(
+        'id,title,description,document_type,language,country,legacy_category,'
+        'domain,topics,asset_classes,chunk_type'
+    ).eq('categorization_version', 2).in_(
+        'categorization_status', ['auto', 'needs_review']).limit(half).execute()
+    for row in docs.data:
+        fc = sb.schema('knowledge_ch').table('chunks').select('content').eq(
+            'document_id', row['id']).order('chunk_index').limit(1).execute()
+        row['first_chunk_excerpt'] = fc.data[0]['content'] if fc.data else ''
+        out.append({**row, 'kind': 'document', 'schema': 'knowledge_ch',
+                    '_stored': {k: row.get(k) for k in ('domain', 'topics', 'asset_classes', 'chunk_type')}})
+
+    chunks = sb.schema('knowledge_ch').table('chunks').select(
+        'id,document_id,section_title,content,domain,topics,asset_classes,chunk_type'
+    ).eq('categorization_version', 2).in_(
+        'categorization_status', ['auto', 'needs_review']).limit(n - len(out)).execute()
+    doc_ids = list({c['document_id'] for c in chunks.data if c.get('document_id')})
+    docs_map = {}
+    if doc_ids:
+        r = sb.schema('knowledge_ch').table('documents').select(
+            'id,title,language').in_('id', doc_ids).execute()
+        docs_map = {d['id']: d for d in r.data}
+    for row in chunks.data:
+        parent = docs_map.get(row.get('document_id'), {})
+        out.append({**row, 'kind': 'chunk', 'schema': 'knowledge_ch',
+                    'doc_title': parent.get('title'), 'language': parent.get('language'),
+                    '_stored': {k: row.get(k) for k in ('domain', 'topics', 'asset_classes', 'chunk_type')}})
+    return out
+
+
 def run_validation(sb, client):
-    """No-write A/B harness: classify the same pending sample with DeepSeek and
-    Sonnet, report per-axis agreement and full-row match. Writes nothing."""
-    items = fetch_pending_items(sb)
-    if not items:
-        print("No pending items available to validate. Exiting.")
+    """No-write A/B harness. Classifies a sample with DeepSeek and compares against
+    a Sonnet ground truth — either live (VALIDATE_TRUTH=live, one Sonnet call per
+    row) or the stored production labels (VALIDATE_TRUTH=stored, no Anthropic calls,
+    used when the Anthropic key is capped). Writes nothing."""
+    if VALIDATE_TRUTH == 'stored':
+        sample = fetch_classified_sample(sb, VALIDATE_SAMPLE)
+        truth_label = "STORED production labels"
+    else:
+        sample = fetch_pending_items(sb)[:VALIDATE_SAMPLE]
+        truth_label = f"live Sonnet={MODEL}"
+    if not sample:
+        print("No rows available to validate. Exiting.")
         return
-    sample = items[:VALIDATE_SAMPLE]
-    print(f"Validation: {len(sample)} pending rows | DeepSeek={DEEPSEEK_MODEL} "
-          f"vs Sonnet={MODEL} | NO writes\n")
+    print(f"Validation: {len(sample)} rows | DeepSeek={DEEPSEEK_MODEL} "
+          f"vs {truth_label} | NO writes\n")
 
-    # DeepSeek (concurrent, no write) and Sonnet (concurrent sync) over the same rows.
-    ds_pairs = run_deepseek(sb, sample, write=False)
-    ds_by_id = {it['id']: cls for it, cls in ds_pairs}
+    # DeepSeek over the sample (concurrent, no write).
+    ds_by_id = {it['id']: cls for it, cls in run_deepseek(sb, sample, write=False)}
 
-    an_tool = build_classify_tool()
-    an_by_id = {}
-    with ThreadPoolExecutor(max_workers=DEEPSEEK_CONCURRENCY) as ex:
-        futs = {ex.submit(classify_one_anthropic_sync, client, it, an_tool): it for it in sample}
-        done = 0
-        for fut in as_completed(futs):
-            it = futs[fut]
-            an_by_id[it['id']] = fut.result()
-            done += 1
-            if done % 25 == 0:
-                print(f"  sonnet {done}/{len(sample)}", flush=True)
+    # Ground truth: stored labels, or a live Sonnet call per row.
+    if VALIDATE_TRUTH == 'stored':
+        truth_by_id = {it['id']: it['_stored'] for it in sample}
+    else:
+        an_tool = build_classify_tool()
+        truth_by_id = {}
+        with ThreadPoolExecutor(max_workers=DEEPSEEK_CONCURRENCY) as ex:
+            futs = {ex.submit(classify_one_anthropic_sync, client, it, an_tool): it for it in sample}
+            done = 0
+            for fut in as_completed(futs):
+                truth_by_id[futs[fut]['id']] = fut.result()
+                done += 1
+                if done % 25 == 0:
+                    print(f"  sonnet {done}/{len(sample)}", flush=True)
 
     axes = ['domain', 'topics', 'asset_classes', 'chunk_type']
     tally = {a: 0 for a in axes}
-    full_match = comparable = ds_fail = an_fail = 0
+    full_match = comparable = ds_fail = truth_fail = 0
     disagreements = []
 
     for it in sample:
         ds = _scoped_axes(ds_by_id.get(it['id']))
-        an = _scoped_axes(an_by_id.get(it['id']))
+        tr = _scoped_axes(truth_by_id.get(it['id']))
         if ds is None:
             ds_fail += 1
-        if an is None:
-            an_fail += 1
-        if ds is None or an is None:
+        if tr is None:
+            truth_fail += 1
+        if ds is None or tr is None:
             continue
         comparable += 1
         row_ok = True
         diffs = {}
         for a in axes:
-            if ds[a] == an[a]:
+            if ds[a] == tr[a]:
                 tally[a] += 1
             else:
                 row_ok = False
-                diffs[a] = {'deepseek': ds[a], 'sonnet': an[a]}
+                diffs[a] = {'deepseek': ds[a], 'truth': tr[a]}
         if row_ok:
             full_match += 1
         else:
             disagreements.append({'id': it['id'], 'kind': it['kind'], 'diffs': diffs})
 
     print("\n=== Validation summary (no writes) ===")
-    print(f"Sample: {len(sample)} | comparable (both returned): {comparable} | "
-          f"DeepSeek failures: {ds_fail} | Sonnet failures: {an_fail}")
+    print(f"Ground truth: {truth_label}")
+    print(f"Sample: {len(sample)} | comparable (both present): {comparable} | "
+          f"DeepSeek failures: {ds_fail} | truth failures: {truth_fail}")
     if comparable:
         for a in axes:
             print(f"  {a:14s} agreement: {tally[a]}/{comparable} = {100*tally[a]/comparable:.1f}%")
@@ -659,7 +722,7 @@ def run_validation(sb, client):
         Path('./validation_disagreements.json').write_text(json.dumps(disagreements, indent=2))
         print(f"\n{len(disagreements)} disagreements written to ./validation_disagreements.json")
         for d in disagreements[:15]:
-            ax = ", ".join(f"{k}: ds={v['deepseek']} / sonnet={v['sonnet']}" for k, v in d['diffs'].items())
+            ax = ", ".join(f"{k}: ds={v['deepseek']} / truth={v['truth']}" for k, v in d['diffs'].items())
             print(f"  - {d['kind']} {d['id']}: {ax}")
 
 
@@ -675,9 +738,12 @@ def main():
     if CLASSIFY_MODE == 'validate':
         if not DEEPSEEK_API_KEY:
             sys.exit("CLASSIFY_MODE=validate requires DEEPSEEK_API_KEY.")
-        if not ANTHROPIC_KEY:
-            sys.exit("CLASSIFY_MODE=validate requires ANTHROPIC_API_KEY (Sonnet ground truth).")
-        run_validation(sb, anthropic.Anthropic(api_key=ANTHROPIC_KEY))
+        client = None
+        if VALIDATE_TRUTH == 'live':
+            if not ANTHROPIC_KEY:
+                sys.exit("VALIDATE_TRUTH=live requires ANTHROPIC_API_KEY.")
+            client = anthropic.Anthropic(api_key=ANTHROPIC_KEY)
+        run_validation(sb, client)
         return
 
     # ---- DeepSeek provider: synchronous OpenAI-compatible loop -------------
