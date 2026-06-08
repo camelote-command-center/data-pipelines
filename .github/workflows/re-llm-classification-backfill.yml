@@ -4,6 +4,20 @@ on:
   schedule:
     - cron: '30 4 * * *'   # daily 04:30 UTC, after re-LLM sync jobs (03:15 / 04:00)
   workflow_dispatch:
+    inputs:
+      mode:
+        description: 'backfill (writes) | validate (no-write DeepSeek-vs-Sonnet A/B)'
+        default: 'backfill'
+        type: choice
+        options: [backfill, validate]
+      provider:
+        description: 'backfill provider: anthropic (current cron) | deepseek (cutover)'
+        default: 'anthropic'
+        type: choice
+        options: [anthropic, deepseek]
+      sample_size:
+        description: 'rows to sample in validate mode'
+        default: '80'
 
 jobs:
   backfill:
@@ -24,6 +38,13 @@ jobs:
         working-directory: re-llm-classification
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           SUPABASE_RE_LLM_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
           SUPABASE_RE_LLM_SERVICE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          # Scheduled runs send no inputs → mode=backfill, provider=anthropic:
+          # the daily cron behaviour is unchanged. Cutover happens only when a
+          # manual dispatch (or a later PR) sets provider=deepseek.
+          CLASSIFY_MODE: ${{ github.event.inputs.mode || 'backfill' }}
+          CLASSIFY_PROVIDER: ${{ github.event.inputs.provider || 'anthropic' }}
+          VALIDATE_SAMPLE: ${{ github.event.inputs.sample_size || '80' }}
         run: python classify_existing.py

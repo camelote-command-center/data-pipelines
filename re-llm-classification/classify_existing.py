@@ -37,8 +37,15 @@ CLASSIFY_SOURCE        = os.getenv("CLASSIFY_SOURCE") or None
 PROVIDER               = (os.getenv("CLASSIFY_PROVIDER") or "anthropic").lower()
 DEEPSEEK_API_KEY       = os.getenv("DEEPSEEK_API_KEY")
 DEEPSEEK_URL           = "https://api.deepseek.com/chat/completions"
-DEEPSEEK_MODEL         = "deepseek-chat"
+# deepseek-v4-flash per the 2026-06 cutover. deepseek-chat / deepseek-reasoner
+# retire 2026-07-24 — do not pin them. Env-overridable for future bumps.
+DEEPSEEK_MODEL         = os.getenv("DEEPSEEK_MODEL", "deepseek-v4-flash")
 DEEPSEEK_CONCURRENCY   = int(os.getenv("DEEPSEEK_CONCURRENCY", "8"))
+
+# Run mode. 'backfill' (default) writes classifications. 'validate' is a no-write
+# A/B: classify a sample with DeepSeek AND Sonnet, report agreement, write nothing.
+CLASSIFY_MODE          = (os.getenv("CLASSIFY_MODE") or "backfill").lower()
+VALIDATE_SAMPLE        = int(os.getenv("VALIDATE_SAMPLE", "80"))
 
 # ---------------------------------------------------------------------------
 # Taxonomy is DOMAIN-SCOPED and loaded from knowledge_global at runtime so this
@@ -546,6 +553,116 @@ def load_state():
     return {}
 
 
+def _scoped_axes(cls):
+    """Normalise a raw classification to the axes that would actually be stored
+    (same domain-scoped topic/asset_class filtering as write_back), for A/B compare."""
+    if not cls:
+        return None
+    domain = cls.get('domain')
+    topics = sorted(t for t in (cls.get('topics') or []) if t in DOMAIN_TOPICS.get(domain, []))
+    acs    = sorted(a for a in (cls.get('asset_classes') or []) if a in DOMAIN_ACS.get(domain, []))
+    return {
+        'domain': domain,
+        'topics': topics,
+        'asset_classes': acs,
+        'chunk_type': cls.get('chunk_type'),
+        'confidence': cls.get('confidence'),
+    }
+
+
+def classify_one_anthropic_sync(client, item, tool, max_retries=4):
+    """Synchronous single-row Sonnet call (same model/prompt/tool as the batch
+    path) used only as the validation ground truth. Returns parsed dict or None."""
+    backoff = 2.0
+    for attempt in range(max_retries):
+        try:
+            msg = client.messages.create(
+                model=MODEL, max_tokens=1024, system=SYSTEM_PROMPT,
+                tools=[tool], tool_choice={"type": "tool", "name": "classify"},
+                messages=[{"role": "user", "content": render_user_message(item)}],
+            )
+        except Exception as e:
+            if attempt == max_retries - 1:
+                print(f"anthropic error: {str(e)[:200]}", file=sys.stderr)
+                return None
+            time.sleep(backoff); backoff *= 2; continue
+        for block in msg.content:
+            if block.type == 'tool_use' and block.name == 'classify':
+                return block.input
+        return None
+    return None
+
+
+def run_validation(sb, client):
+    """No-write A/B harness: classify the same pending sample with DeepSeek and
+    Sonnet, report per-axis agreement and full-row match. Writes nothing."""
+    items = fetch_pending_items(sb)
+    if not items:
+        print("No pending items available to validate. Exiting.")
+        return
+    sample = items[:VALIDATE_SAMPLE]
+    print(f"Validation: {len(sample)} pending rows | DeepSeek={DEEPSEEK_MODEL} "
+          f"vs Sonnet={MODEL} | NO writes\n")
+
+    # DeepSeek (concurrent, no write) and Sonnet (concurrent sync) over the same rows.
+    ds_pairs = run_deepseek(sb, sample, write=False)
+    ds_by_id = {it['id']: cls for it, cls in ds_pairs}
+
+    an_tool = build_classify_tool()
+    an_by_id = {}
+    with ThreadPoolExecutor(max_workers=DEEPSEEK_CONCURRENCY) as ex:
+        futs = {ex.submit(classify_one_anthropic_sync, client, it, an_tool): it for it in sample}
+        done = 0
+        for fut in as_completed(futs):
+            it = futs[fut]
+            an_by_id[it['id']] = fut.result()
+            done += 1
+            if done % 25 == 0:
+                print(f"  sonnet {done}/{len(sample)}", flush=True)
+
+    axes = ['domain', 'topics', 'asset_classes', 'chunk_type']
+    tally = {a: 0 for a in axes}
+    full_match = comparable = ds_fail = an_fail = 0
+    disagreements = []
+
+    for it in sample:
+        ds = _scoped_axes(ds_by_id.get(it['id']))
+        an = _scoped_axes(an_by_id.get(it['id']))
+        if ds is None:
+            ds_fail += 1
+        if an is None:
+            an_fail += 1
+        if ds is None or an is None:
+            continue
+        comparable += 1
+        row_ok = True
+        diffs = {}
+        for a in axes:
+            if ds[a] == an[a]:
+                tally[a] += 1
+            else:
+                row_ok = False
+                diffs[a] = {'deepseek': ds[a], 'sonnet': an[a]}
+        if row_ok:
+            full_match += 1
+        else:
+            disagreements.append({'id': it['id'], 'kind': it['kind'], 'diffs': diffs})
+
+    print("\n=== Validation summary (no writes) ===")
+    print(f"Sample: {len(sample)} | comparable (both returned): {comparable} | "
+          f"DeepSeek failures: {ds_fail} | Sonnet failures: {an_fail}")
+    if comparable:
+        for a in axes:
+            print(f"  {a:14s} agreement: {tally[a]}/{comparable} = {100*tally[a]/comparable:.1f}%")
+        print(f"  {'FULL ROW':14s} agreement: {full_match}/{comparable} = {100*full_match/comparable:.1f}%")
+    if disagreements:
+        Path('./validation_disagreements.json').write_text(json.dumps(disagreements, indent=2))
+        print(f"\n{len(disagreements)} disagreements written to ./validation_disagreements.json")
+        for d in disagreements[:15]:
+            ax = ", ".join(f"{k}: ds={v['deepseek']} / sonnet={v['sonnet']}" for k, v in d['diffs'].items())
+            print(f"  - {d['kind']} {d['id']}: {ax}")
+
+
 def main():
     sb = create_client(SUPABASE_URL, SUPABASE_KEY)
 
@@ -553,6 +670,15 @@ def main():
     global SYSTEM_PROMPT, CLASSIFY_TOOL
     load_taxonomy(sb)
     SYSTEM_PROMPT = build_system_prompt()
+
+    # ---- Validate mode: no-write DeepSeek-vs-Sonnet A/B (gated cutover check) ----
+    if CLASSIFY_MODE == 'validate':
+        if not DEEPSEEK_API_KEY:
+            sys.exit("CLASSIFY_MODE=validate requires DEEPSEEK_API_KEY.")
+        if not ANTHROPIC_KEY:
+            sys.exit("CLASSIFY_MODE=validate requires ANTHROPIC_API_KEY (Sonnet ground truth).")
+        run_validation(sb, anthropic.Anthropic(api_key=ANTHROPIC_KEY))
+        return
 
     # ---- DeepSeek provider: synchronous OpenAI-compatible loop -------------
     if PROVIDER == 'deepseek':
