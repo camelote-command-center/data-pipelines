@@ -617,9 +617,10 @@ def fetch_classified_sample(sb, n):
     render_user_message, each carrying its stored labels under '_stored'."""
     half = max(1, n // 2)
     out = []
+    # documents carry no chunk_type column (that axis is entries/chunks only).
     docs = sb.schema('knowledge_ch').table('documents').select(
         'id,title,description,document_type,language,country,legacy_category,'
-        'domain,topics,asset_classes,chunk_type'
+        'domain,topics,asset_classes'
     ).eq('categorization_version', 2).in_(
         'categorization_status', ['auto', 'needs_review']).limit(half).execute()
     for row in docs.data:
@@ -627,7 +628,7 @@ def fetch_classified_sample(sb, n):
             'document_id', row['id']).order('chunk_index').limit(1).execute()
         row['first_chunk_excerpt'] = fc.data[0]['content'] if fc.data else ''
         out.append({**row, 'kind': 'document', 'schema': 'knowledge_ch',
-                    '_stored': {k: row.get(k) for k in ('domain', 'topics', 'asset_classes', 'chunk_type')}})
+                    '_stored': {k: row.get(k) for k in ('domain', 'topics', 'asset_classes')}})
 
     chunks = sb.schema('knowledge_ch').table('chunks').select(
         'id,document_id,section_title,content,domain,topics,asset_classes,chunk_type'
@@ -683,7 +684,8 @@ def run_validation(sb, client):
                     print(f"  sonnet {done}/{len(sample)}", flush=True)
 
     axes = ['domain', 'topics', 'asset_classes', 'chunk_type']
-    tally = {a: 0 for a in axes}
+    matched = {a: 0 for a in axes}
+    denom = {a: 0 for a in axes}   # per-axis denominator (chunk_type skips documents)
     full_match = comparable = ds_fail = truth_fail = 0
     disagreements = []
 
@@ -697,11 +699,15 @@ def run_validation(sb, client):
         if ds is None or tr is None:
             continue
         comparable += 1
+        item_axes = ['domain', 'topics', 'asset_classes']
+        if it['kind'] != 'document':
+            item_axes.append('chunk_type')
         row_ok = True
         diffs = {}
-        for a in axes:
+        for a in item_axes:
+            denom[a] += 1
             if ds[a] == tr[a]:
-                tally[a] += 1
+                matched[a] += 1
             else:
                 row_ok = False
                 diffs[a] = {'deepseek': ds[a], 'truth': tr[a]}
@@ -716,7 +722,8 @@ def run_validation(sb, client):
           f"DeepSeek failures: {ds_fail} | truth failures: {truth_fail}")
     if comparable:
         for a in axes:
-            print(f"  {a:14s} agreement: {tally[a]}/{comparable} = {100*tally[a]/comparable:.1f}%")
+            if denom[a]:
+                print(f"  {a:14s} agreement: {matched[a]}/{denom[a]} = {100*matched[a]/denom[a]:.1f}%")
         print(f"  {'FULL ROW':14s} agreement: {full_match}/{comparable} = {100*full_match/comparable:.1f}%")
     if disagreements:
         Path('./validation_disagreements.json').write_text(json.dumps(disagreements, indent=2))
