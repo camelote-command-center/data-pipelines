@@ -1,0 +1,167 @@
+"""Cologny PDCom urbanisation — OCG layer re-extraction + scoped load.
+
+Root-cause fix (2026-06-05): extract category polygons by OCG layer (recursing
+into Form XObjects), georeference by building-pattern cross-correlation against
+ref.buildings_geo (locks 1:10000, north-up), map to canonical keys, dissolve,
+clip to commune, and SCOPED-replace Cologny's rows in
+gold_ch.pdcom_urbanisation_consolidated (re-LLM) + ref.pdcom_urbanisation_zones
+(lamap_db).
+
+SAFETY:
+  - Scoped to Cologny FEDERAL commune_bfs=11599 ONLY. Never global TRUNCATE.
+  - Transactional delete-Cologny + insert-OCG-rows. Never NULL over good data.
+  - Other 29 communes untouched.
+  - --execute required to write; default is dry-run.
+  - HOLD until claude.ai confirms "palette live" before running --execute
+    (lamap_db palette must carry the new keys or they render grey).
+
+Usage:
+  python scripts/cologny_ocg_load.py            # dry-run (prints rows)
+  python scripts/cologny_ocg_load.py --execute  # scoped load to both DBs
+"""
+import sys, json
+from pathlib import Path
+from collections import defaultdict
+
+import fitz, numpy as np, psycopg
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+from pdcom_parser import ocg_layers as O
+from shapely.geometry import Polygon, MultiPolygon
+from shapely.ops import unary_union
+from shapely import wkt as W
+from shapely.affinity import affine_transform
+
+PDF = "/Users/a/Desktop/Lamap Reshape/PDCom/Plans de Synthese/pdcom_cologny_2e_synthese.pdf"
+RELLM = "postgresql://postgres.znrvddgmczdqoucmykij:SUpolkmn098%24@aws-1-eu-west-1.pooler.supabase.com:5432/postgres"
+LAMAP = "postgresql://postgres.fckdwddgtdbvhzloejni:SUpolkmn098%24@aws-1-eu-central-2.pooler.supabase.com:5432/postgres"
+FEDERAL_BFS = 11599
+NAME = "Cologny"
+WINDOW = (2497000, 2507500, 1114500, 1123500)  # LV95 building-fetch window
+
+# Approved-10 canonical keys (geometry loaded for those present as fills).
+APPROVED = {
+    'POTENTIEL DENSIFICATION': ('potentiel_densification', 'Potentiel de densification'),
+    'EXTENSION / DENSIFICATION DU VILLAGE': ('extension_village', 'Extension / densification du village'),
+    'PERIMETRES PROTEGES': ('perimetre_protege', 'Périmètre protégé'),
+    'Sect. fort valeur patrim.': ('secteur_valeur_patrimoniale', 'Secteur de forte valeur patrimoniale'),
+    'Sect. fort valeur patrim. - copie': ('secteur_valeur_patrimoniale', 'Secteur de forte valeur patrimoniale'),
+    'Grands domaines': ('grands_domaines', 'Grands domaines'),
+    'CESURE NON BÂTIE': ('cesure_non_batie', 'Césure non bâtie'),
+    'Seuil urbain / agricole': ('seuil_urbain_agricole', 'Seuil urbain / agricole'),
+    'PERCEES VISUELLES': ('percee_visuelle', 'Percée visuelle'),
+    'PROTECTION RIVES LAC': ('protection_rives_lac', 'Protection des rives du lac'),
+    'PRLac': ('protection_rives_lac', 'Protection des rives du lac'),
+    'Projet aménagement plage': ('projet_amenagement', "Projet d'aménagement"),
+}
+
+
+def _rast(p, x0, y0, nx, ny, cell):
+    g = np.zeros((ny, nx), np.float32)
+    ix = ((p[:, 0]-x0)/cell).astype(int); iy = ((p[:, 1]-y0)/cell).astype(int)
+    m = (ix >= 0)&(ix < nx)&(iy >= 0)&(iy < ny)
+    np.add.at(g, (iy[m], ix[m]), 1.0); return g
+
+
+def georeference(page, doc):
+    """Building-pattern cross-correlation → affine (scale, translate), north-up."""
+    res = O.extract_layer_polys(page, doc, skip_geometry={"Pochage", "FOND NOIR ET BLANC"})
+    bati = res["BÂTI HORS SOL"]["polys"]
+    P = np.array([[sum(x for x, _ in poly)/len(poly), sum(y for _, y in poly)/len(poly)] for poly in bati])
+    with psycopg.connect(LAMAP) as c, c.cursor() as cur:
+        cur.execute("""SELECT ST_X(ST_Centroid(geometry)), ST_Y(ST_Centroid(geometry))
+                       FROM ref.buildings_geo
+                       WHERE ST_X(ST_Centroid(geometry)) BETWEEN %s AND %s
+                         AND ST_Y(ST_Centroid(geometry)) BETWEEN %s AND %s""", WINDOW)
+        Q = np.array(cur.fetchall(), float)
+    CELL = 20.0
+    qx0, qy0 = Q[:, 0].min()-500, Q[:, 1].min()-500
+    qx1, qy1 = Q[:, 0].max()+500, Q[:, 1].max()+500
+    NX = int((qx1-qx0)/CELL)+1; NY = int((qy1-qy0)/CELL)+1
+    Qf = np.fft.rfft2(_rast(Q, qx0, qy0, NX, NY, CELL))
+    best = None
+    for s in np.arange(3.40, 3.66, 0.01):
+        Pf = P.astype(float).copy(); Pf[:, 0] -= Pf[:, 0].min(); Pf[:, 1] -= Pf[:, 1].min()
+        Ps = Pf*s
+        if Ps[:, 0].max() > (qx1-qx0) or Ps[:, 1].max() > (qy1-qy0): continue
+        corr = np.fft.irfft2(Qf*np.conj(np.fft.rfft2(_rast(Ps, 0, 0, NX, NY, CELL))), s=(NY, NX))
+        pk = np.unravel_index(np.argmax(corr), corr.shape); v = corr[pk]
+        if best is None or v > best[0]: best = (v, s, pk)
+    v, s, (dy, dx) = best
+    minx, miny = P[:, 0].min(), P[:, 1].min()
+    params = [s, 0, 0, s, qx0+dx*CELL-s*minx, qy0+dy*CELL-s*miny]
+    # validate building match
+    T = np.column_stack([P[:, 0]*s+params[4], P[:, 1]*s+params[5]])
+    rs = set((int(x//25), int(y//25)) for x, y in Q)
+    hit = sum(any((int(x//25)+a, int(y//25)+b) in rs for a in (-1, 0, 1) for b in (-1, 0, 1)) for x, y in T)
+    return params, s, v, 100*hit/len(T)
+
+
+def build_rows():
+    doc = fitz.open(PDF); page = doc[0]
+    params, s, corr, match_pct = georeference(page, doc)
+    print(f"[georef] scale={s:.3f} m/pt corr={corr:.0f} building_match={match_pct:.1f}%")
+    assert s > 3.4 and s < 3.7 and match_pct > 90, "georef failed sanity gate"
+    res = O.extract_layer_polys(page, doc, skip_geometry={"Pochage", "FOND NOIR ET BLANC"})
+    with psycopg.connect(LAMAP) as c, c.cursor() as cur:
+        cur.execute("SELECT ST_AsText(ST_Transform(geometry,2056)) FROM ref.communes WHERE commune_name=%s", (NAME,))
+        commune = W.loads(cur.fetchone()[0])
+    geoms = defaultdict(list); labels = {}; colors = defaultdict(lambda: defaultdict(int))
+    for layer, d in res.items():
+        if layer not in APPROVED: continue
+        k, lab = APPROVED[layer]; labels[k] = lab
+        for poly in d["polys"]:
+            if len(poly) >= 3:
+                g = affine_transform(Polygon(poly), params).buffer(0)
+                if not g.is_empty: geoms[k].append(g)
+        for col, n in d["colors"].items(): colors[k][col] += n
+    rows = []
+    for k in sorted(geoms):
+        pre = unary_union(geoms[k])
+        clip = pre.intersection(commune).buffer(0)
+        if clip.is_empty or clip.area < 1: continue
+        if clip.geom_type == 'Polygon': clip = MultiPolygon([clip])
+        cnt = sum(1 for g in geoms[k] if g.intersects(commune))
+        src = max(colors[k], key=colors[k].get) if colors[k] else None
+        rows.append({"commune_bfs": FEDERAL_BFS, "commune_name": NAME, "category_key": k,
+                     "category_label": labels[k], "geom_type": "MultiPolygon",
+                     "feature_count": cnt, "total_area_m2": round(clip.area, 1),
+                     "source_color": src, "in_commune_pct": round(100*clip.area/max(pre.area, 1), 1),
+                     "wkt": clip.wkt})
+    return rows
+
+
+def scoped_load(conn_str, table, rows):
+    """Transactional delete-Cologny + insert. Asserts scope; never global."""
+    with psycopg.connect(conn_str) as conn:
+        with conn.cursor() as cur:
+            cur.execute(f"SELECT count(*) FROM {table} WHERE commune_bfs=%s", (FEDERAL_BFS,))
+            before = cur.fetchone()[0]
+            cur.execute(f"DELETE FROM {table} WHERE commune_bfs=%s", (FEDERAL_BFS,))
+            for r in rows:
+                cur.execute(f"""INSERT INTO {table}
+                  (id,commune_bfs,commune_name,category_key,category_label,geom_type,
+                   geometry,feature_count,total_area_m2,source_color,refreshed_at)
+                  VALUES (gen_random_uuid(),%s,%s,%s,%s,%s, ST_GeomFromText(%s,2056), %s,%s,%s, now())""",
+                  (r["commune_bfs"], r["commune_name"], r["category_key"], r["category_label"],
+                   r["geom_type"], r["wkt"], r["feature_count"], r["total_area_m2"], r["source_color"]))
+            cur.execute(f"SELECT count(*) FROM {table} WHERE commune_bfs<>%s", (FEDERAL_BFS,))
+            others = cur.fetchone()[0]
+        conn.commit()
+    print(f"  {table}: Cologny {before} -> {len(rows)} rows; other communes untouched ({others} rows)")
+
+
+if __name__ == "__main__":
+    execute = "--execute" in sys.argv
+    rows = build_rows()
+    print(f"\n{'category_key':<28}{'feats':>6}{'area_m2':>11}{'in%':>6}  color")
+    for r in rows:
+        print(f"  {r['category_key']:<26}{r['feature_count']:>6}{r['total_area_m2']:>11.0f}{r['in_commune_pct']:>5.0f}%  {r['source_color']}")
+    Path("/tmp/cologny_rows.json").write_text(json.dumps(rows))
+    print(f"\n{len(rows)} rows generated.")
+    if not execute:
+        print("DRY-RUN — nothing loaded. Re-run with --execute AFTER claude.ai confirms 'palette live'.")
+        sys.exit(0)
+    print("\n[EXECUTE] scoped load to re-LLM gold + lamap_db ref ...")
+    scoped_load(RELLM, "gold_ch.pdcom_urbanisation_consolidated", rows)
+    scoped_load(LAMAP, "ref.pdcom_urbanisation_zones", rows)
+    print("DONE.")

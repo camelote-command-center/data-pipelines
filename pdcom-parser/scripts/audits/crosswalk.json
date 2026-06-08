@@ -1,0 +1,4524 @@
+{
+ "crosswalk": [
+  {
+   "commune": "Presinge",
+   "label": "projet d’extension de la zone 4B protégée",
+   "color": "#bbbfae",
+   "fc": 146,
+   "category_key": "extension_village"
+  },
+  {
+   "commune": "Presinge",
+   "label": "projet d’extension de la zone 4B protégée",
+   "color": "#7a8365",
+   "fc": 253,
+   "category_key": "extension_village"
+  },
+  {
+   "commune": "Presinge",
+   "label": "(déclassement zone agricole)  21337 m2",
+   "color": "#7a8365",
+   "fc": 253,
+   "category_key": "modification_zone"
+  },
+  {
+   "commune": "Presinge",
+   "label": "(déclassement zone agricole)  21337 m2",
+   "color": "#d0cabc",
+   "fc": 1208,
+   "category_key": "modification_zone"
+  },
+  {
+   "commune": "Bernex",
+   "label": "centre-bourg des villages",
+   "color": "#3f4732",
+   "fc": 98,
+   "category_key": "centre_village"
+  },
+  {
+   "commune": "Bernex",
+   "label": "Valoriser les pénétrantes de verdure en garantissant les équilibres entre agriculture, nature et loisirs",
+   "color": "#ef92af",
+   "fc": 3,
+   "category_key": "penetrante_verte"
+  },
+  {
+   "commune": "Corsier",
+   "label": "Zone agricole / grandes cultures / vignes",
+   "color": "#ffffe6",
+   "fc": 202,
+   "category_key": "espace_agricole"
+  },
+  {
+   "commune": "Corsier",
+   "label": "Développement résidentiel horizon 2030 / post 2030",
+   "color": "#bfffa6",
+   "fc": 6526,
+   "category_key": "potentiel_densification"
+  },
+  {
+   "commune": "Corsier",
+   "label": "Zone de protection des rives du lac",
+   "color": "#bfffa6",
+   "fc": 6526,
+   "category_key": "protection_rives_lac"
+  },
+  {
+   "commune": "Corsier",
+   "label": "Front bâti (à titre indicatif)",
+   "color": "#bfffa6",
+   "fc": 6526,
+   "category_key": "front_actif"
+  },
+  {
+   "commune": "Genthod",
+   "label": "Ferme / activité agricole",
+   "color": "#7b6a58",
+   "fc": 131,
+   "category_key": "espace_agricole"
+  },
+  {
+   "commune": "Genthod",
+   "label": "Ferme / activité agricole",
+   "color": "#a3872c",
+   "fc": 6,
+   "category_key": "espace_agricole"
+  },
+  {
+   "commune": "Genthod",
+   "label": "Equipement public",
+   "color": "#c0c400",
+   "fc": 18,
+   "category_key": "equipement_public"
+  },
+  {
+   "commune": "Genthod",
+   "label": "Massifs, cordons boisés, bosquets urbains",
+   "color": "#d1e1eb",
+   "fc": 26,
+   "category_key": "bois_foret"
+  },
+  {
+   "commune": "Genthod",
+   "label": "Bois-d’Avault",
+   "color": "#307e38",
+   "fc": 3419,
+   "category_key": "bois_foret"
+  },
+  {
+   "commune": "Genthod",
+   "label": "Zone agricole",
+   "color": "#7b6a58",
+   "fc": 131,
+   "category_key": "espace_agricole"
+  },
+  {
+   "commune": "Genthod",
+   "label": "Zone agricole",
+   "color": "#a3872c",
+   "fc": 6,
+   "category_key": "espace_agricole"
+  },
+  {
+   "commune": "Genthod",
+   "label": "Massifs, cordons boisés, bosquets urbains",
+   "color": "#396cb3",
+   "fc": 125,
+   "category_key": "bois_foret"
+  },
+  {
+   "commune": "Genthod",
+   "label": "Village",
+   "color": "#88b39d",
+   "fc": 24664,
+   "category_key": "centre_village"
+  },
+  {
+   "commune": "Genthod",
+   "label": "Grande-Vigne",
+   "color": "#88b39d",
+   "fc": 24664,
+   "category_key": "espace_agricole"
+  },
+  {
+   "commune": "Genthod",
+   "label": "Image directrice ou planification localisée obligatoire",
+   "color": "#0000ff",
+   "fc": 1794,
+   "category_key": "image_directrice"
+  },
+  {
+   "commune": "Genthod",
+   "label": "Périmètres de densification accrue  (dérogation possible selon art. 59 al. 4 LCI)",
+   "color": "#0000ff",
+   "fc": 1794,
+   "category_key": "potentiel_densification"
+  },
+  {
+   "commune": "Genthod",
+   "label": "Grande-Vigne",
+   "color": "#ffb6b6",
+   "fc": 89,
+   "category_key": "espace_agricole"
+  },
+  {
+   "commune": "Genthod",
+   "label": "Fermette",
+   "color": "#57b982",
+   "fc": 1817,
+   "category_key": "espace_agricole"
+  },
+  {
+   "commune": "Genthod",
+   "label": "Fermette",
+   "color": "#88b39d",
+   "fc": 24664,
+   "category_key": "espace_agricole"
+  },
+  {
+   "commune": "Genthod",
+   "label": "Vue sur le grand paysage à préserver",
+   "color": "#0000ff",
+   "fc": 1794,
+   "category_key": "perimetre_protege"
+  },
+  {
+   "commune": "Genthod",
+   "label": "Traitement de franges contre la pénétrante de verdure et la zone agricole",
+   "color": "#ff0000",
+   "fc": 9,
+   "category_key": "penetrante_verte"
+  },
+  {
+   "commune": "Genthod",
+   "label": "Vue sur le grand paysage à préserver",
+   "color": "#ff7f00",
+   "fc": 249,
+   "category_key": "perimetre_protege"
+  },
+  {
+   "commune": "Genthod",
+   "label": "Secteur de densification accrue proche d’une halte/gare CFF",
+   "color": "#0000ff",
+   "fc": 1794,
+   "category_key": "potentiel_densification"
+  },
+  {
+   "commune": "Genthod",
+   "label": "Zone de bois et forêt",
+   "color": "#66a286",
+   "fc": 8,
+   "category_key": "bois_foret"
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Front actif",
+   "color": "#80ffff",
+   "fc": 118,
+   "category_key": "front_actif"
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Périmètre d’étude d’aménagement",
+   "color": "#e0baff",
+   "fc": 7,
+   "category_key": "perimetre_etude"
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Centralité",
+   "color": "#ccffff",
+   "fc": 7,
+   "category_key": "centre_village"
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Quartier des OI et ONG",
+   "color": "#ccff99",
+   "fc": 120,
+   "category_key": "quartier_oi_ong"
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Grands équipements d’intérêt régional/national",
+   "color": "#ffff00",
+   "fc": 114,
+   "category_key": "equipement_public"
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Extension / renouvellement à court-moyen terme",
+   "color": "#00b200",
+   "fc": 56,
+   "category_key": "extension_village"
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Rte de Pré-Bois",
+   "color": "#b4e0a8",
+   "fc": 6827,
+   "category_key": "bois_foret"
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. Riant-Bosquet",
+   "color": "#b4e0a8",
+   "fc": 6827,
+   "category_key": "bois_foret"
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. du Bois - Brûlé",
+   "color": "#b4e0a8",
+   "fc": 6827,
+   "category_key": "bois_foret"
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. du Bois",
+   "color": "#b4e0a8",
+   "fc": 6827,
+   "category_key": "bois_foret"
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Périmètre à développer par MZ",
+   "color": "#b08a54",
+   "fc": 272,
+   "category_key": "modification_zone"
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Zone agricole",
+   "color": "#00d9d9",
+   "fc": 69,
+   "category_key": "espace_agricole"
+  },
+  {
+   "commune": "Meinier",
+   "label": "ch. des Vignes-de-Fiez",
+   "color": "#464f5a",
+   "fc": 13733,
+   "category_key": "espace_agricole"
+  },
+  {
+   "commune": "Meinier",
+   "label": "Domaine de",
+   "color": "#464f5a",
+   "fc": 13733,
+   "category_key": "grands_domaines"
+  },
+  {
+   "commune": "Meinier",
+   "label": "ch. des Vignes-de-Fiez",
+   "color": "#8a9f9c",
+   "fc": 1464,
+   "category_key": "espace_agricole"
+  },
+  {
+   "commune": "Meinier",
+   "label": "Domaine de",
+   "color": "#8a9f9c",
+   "fc": 1464,
+   "category_key": "grands_domaines"
+  },
+  {
+   "commune": "Meinier",
+   "label": "ch. de la Vigne-à-Jean",
+   "color": "#333b43",
+   "fc": 20619,
+   "category_key": "espace_agricole"
+  },
+  {
+   "commune": "Meinier",
+   "label": "Domaine de",
+   "color": "#333b43",
+   "fc": 20619,
+   "category_key": "grands_domaines"
+  },
+  {
+   "commune": "Meinier",
+   "label": "Domaine de",
+   "color": "#5f6f6e",
+   "fc": 695,
+   "category_key": "grands_domaines"
+  },
+  {
+   "commune": "Plan-les-Ouates",
+   "label": "Terrains réservés à des équipements",
+   "color": "#98896b",
+   "fc": 681,
+   "category_key": "equipement_public"
+  },
+  {
+   "commune": "Puplinge",
+   "label": "Centre villageois",
+   "color": "#c0d3ad",
+   "fc": 47,
+   "category_key": "centre_village"
+  },
+  {
+   "commune": "Puplinge",
+   "label": "zone agricole non-productive / jardinée / boisée",
+   "color": "#5e5e99",
+   "fc": 35,
+   "category_key": "bois_foret"
+  },
+  {
+   "commune": "Satigny",
+   "label": "Patrimoine bâti (classé, à l’inventaire,",
+   "color": "#ffffe8",
+   "fc": 57,
+   "category_key": "secteur_valeur_patrimoniale"
+  },
+  {
+   "commune": "Satigny",
+   "label": "Bois, forêts et bosquets",
+   "color": "#ffffe8",
+   "fc": 57,
+   "category_key": "bois_foret"
+  },
+  {
+   "commune": "Troinex",
+   "label": "une valeur patrimoniale",
+   "color": "#829797",
+   "fc": 7070,
+   "category_key": "secteur_valeur_patrimoniale"
+  },
+  {
+   "commune": "Troinex",
+   "label": "Périmètres de densité limitée",
+   "color": "#829797",
+   "fc": 7070,
+   "category_key": "quartier_residentiel"
+  },
+  {
+   "commune": "Troinex",
+   "label": "D = Prolongement du centre villageois",
+   "color": "#829797",
+   "fc": 7070,
+   "category_key": "centre_village"
+  },
+  {
+   "commune": "Troinex",
+   "label": "Stratégie d’évolution de la Zone 5",
+   "color": "#829797",
+   "fc": 7070,
+   "category_key": "quartier_residentiel"
+  },
+  {
+   "commune": "Troinex",
+   "label": "Modification de zone à envisager",
+   "color": "#5bd276",
+   "fc": 4677,
+   "category_key": "modification_zone"
+  },
+  {
+   "commune": "Troinex",
+   "label": "Périmètres de densification accrue",
+   "color": "#d3c8b8",
+   "fc": 48,
+   "category_key": "potentiel_densification"
+  },
+  {
+   "commune": "Troinex",
+   "label": "Aménagement promenade de la Drize                               A2.7",
+   "color": "#829797",
+   "fc": 7070,
+   "category_key": "projet_amenagement"
+  },
+  {
+   "commune": "Troinex",
+   "label": "Bâtiments à valeur patrimoniale,                                       A4.1",
+   "color": "#829797",
+   "fc": 7070,
+   "category_key": "secteur_valeur_patrimoniale"
+  },
+  {
+   "commune": "Troinex",
+   "label": "(placette, potager collectif) recomandé",
+   "color": "#829797",
+   "fc": 7070,
+   "category_key": "jardins_familiaux"
+  },
+  {
+   "commune": "Troinex",
+   "label": "Bâtiments à valeur patrimoniale (RAC 1984)",
+   "color": "#829797",
+   "fc": 7070,
+   "category_key": "secteur_valeur_patrimoniale"
+  },
+  {
+   "commune": "Troinex",
+   "label": "Bois, forêt, cordon boisé (autres)",
+   "color": "#829797",
+   "fc": 7070,
+   "category_key": "bois_foret"
+  },
+  {
+   "commune": "Troinex",
+   "label": "Périmètres de densification accrue",
+   "color": "#829797",
+   "fc": 7070,
+   "category_key": "potentiel_densification"
+  },
+  {
+   "commune": "Troinex",
+   "label": "Aménagement d’intérêt public                                            B2.4",
+   "color": "#829797",
+   "fc": 7070,
+   "category_key": "equipement_public"
+  },
+  {
+   "commune": "Troinex",
+   "label": "Traitement de franges contre la pénétrante",
+   "color": "#6a1800",
+   "fc": 3,
+   "category_key": "penetrante_verte"
+  },
+  {
+   "commune": "Troinex",
+   "label": "Bois, forêt, cordon boisé (autres)",
+   "color": "#f7f617",
+   "fc": 537,
+   "category_key": "bois_foret"
+  },
+  {
+   "commune": "Troinex",
+   "label": "Surface Inconstructible  (L 2 05, LEaux)",
+   "color": "#e4ea0e",
+   "fc": 28,
+   "category_key": "inconstructible"
+  },
+  {
+   "commune": "Vandoeuvres",
+   "label": "Zone villa",
+   "color": "#59ff59",
+   "fc": 3,
+   "category_key": "quartier_residentiel"
+  },
+  {
+   "commune": "Vandoeuvres",
+   "label": "Bâtiment à valeur patrimoniale (classé, inscrit à",
+   "color": "#c7ebc7",
+   "fc": 7,
+   "category_key": "secteur_valeur_patrimoniale"
+  }
+ ],
+ "unmapped": [
+  {
+   "commune": "Laconnex",
+   "label": "Méandres",
+   "color": "#9cca80",
+   "fc": 12
+  },
+  {
+   "commune": "Laconnex",
+   "label": "La Vy-Neuve",
+   "color": "#e1cfa5",
+   "fc": 2
+  },
+  {
+   "commune": "Laconnex",
+   "label": "La Vy-Neuve",
+   "color": "#cdceb8",
+   "fc": 69
+  },
+  {
+   "commune": "Laconnex",
+   "label": "Méandres",
+   "color": "#6eb448",
+   "fc": 210
+  },
+  {
+   "commune": "Laconnex",
+   "label": "Rte des Rupettes",
+   "color": "#6eb448",
+   "fc": 210
+  },
+  {
+   "commune": "Laconnex",
+   "label": "Ch. des Reblets",
+   "color": "#6eb448",
+   "fc": 210
+  },
+  {
+   "commune": "Laconnex",
+   "label": "Ch. des Ecoliers",
+   "color": "#6eb448",
+   "fc": 210
+  },
+  {
+   "commune": "Laconnex",
+   "label": "Lavoir",
+   "color": "#6eb448",
+   "fc": 210
+  },
+  {
+   "commune": "Laconnex",
+   "label": "Banal",
+   "color": "#fe0700",
+   "fc": 247
+  },
+  {
+   "commune": "Laconnex",
+   "label": "Four-",
+   "color": "#fe0700",
+   "fc": 247
+  },
+  {
+   "commune": "Laconnex",
+   "label": "Pl. du",
+   "color": "#fe0700",
+   "fc": 247
+  },
+  {
+   "commune": "Laconnex",
+   "label": "Ch. des Reblets",
+   "color": "#fe0700",
+   "fc": 247
+  },
+  {
+   "commune": "Laconnex",
+   "label": "R. de la Maison-Forte",
+   "color": "#fe0700",
+   "fc": 247
+  },
+  {
+   "commune": "Laconnex",
+   "label": "Rte des Rupettes",
+   "color": "#fe0700",
+   "fc": 247
+  },
+  {
+   "commune": "Laconnex",
+   "label": "Ch. des Mouilleuses",
+   "color": "#4d0311",
+   "fc": 608
+  },
+  {
+   "commune": "Laconnex",
+   "label": "R. de la Maison-Forte",
+   "color": "#4d0311",
+   "fc": 608
+  },
+  {
+   "commune": "Laconnex",
+   "label": "Ch. des Reblets",
+   "color": "#4d0311",
+   "fc": 608
+  },
+  {
+   "commune": "Laconnex",
+   "label": "Banal",
+   "color": "#4d0311",
+   "fc": 608
+  },
+  {
+   "commune": "Laconnex",
+   "label": "Rte des Rupettes",
+   "color": "#4d0311",
+   "fc": 608
+  },
+  {
+   "commune": "Laconnex",
+   "label": "La Vy-Neuve",
+   "color": "#4d0311",
+   "fc": 608
+  },
+  {
+   "commune": "Laconnex",
+   "label": "Lavoir",
+   "color": "#4d0311",
+   "fc": 608
+  },
+  {
+   "commune": "Laconnex",
+   "label": "Rte du",
+   "color": "#4d0311",
+   "fc": 608
+  },
+  {
+   "commune": "Presinge",
+   "label": "services",
+   "color": "#beb8a0",
+   "fc": 197
+  },
+  {
+   "commune": "Presinge",
+   "label": "commerces/",
+   "color": "#beb8a0",
+   "fc": 197
+  },
+  {
+   "commune": "Presinge",
+   "label": "services",
+   "color": "#008fbc",
+   "fc": 30
+  },
+  {
+   "commune": "Presinge",
+   "label": "Contre-allée, accès au nouveau quartier",
+   "color": "#bbbfae",
+   "fc": 146
+  },
+  {
+   "commune": "Presinge",
+   "label": "Contre-allée, accès au nouveau quartier",
+   "color": "#7a8365",
+   "fc": 253
+  },
+  {
+   "commune": "Presinge",
+   "label": "Contre-allée, accès au nouveau quartier",
+   "color": "#c4c0a9",
+   "fc": 585
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin rural",
+   "color": "#d0cabc",
+   "fc": 1208
+  },
+  {
+   "commune": "Presinge",
+   "label": "piste cyclable, places de parking",
+   "color": "#d0cabc",
+   "fc": 1208
+  },
+  {
+   "commune": "Presinge",
+   "label": "Implantation parallèle aux courbes de niveaux",
+   "color": "#d0cabc",
+   "fc": 1208
+  },
+  {
+   "commune": "Presinge",
+   "label": "Implantation parking communal",
+   "color": "#d0cabc",
+   "fc": 1208
+  },
+  {
+   "commune": "Presinge",
+   "label": "Identification de la place",
+   "color": "#d0cabc",
+   "fc": 1208
+  },
+  {
+   "commune": "Presinge",
+   "label": "Implantation du bâti",
+   "color": "#d0cabc",
+   "fc": 1208
+  },
+  {
+   "commune": "Presinge",
+   "label": "Dédoublement de la route de Presinge (route de transit)",
+   "color": "#d0cabc",
+   "fc": 1208
+  },
+  {
+   "commune": "Presinge",
+   "label": "Bâtiments redéfinissant la place",
+   "color": "#d0cabc",
+   "fc": 1208
+  },
+  {
+   "commune": "Bernex",
+   "label": "mobilité douce connectant l’espace urbanisé à l’espace rural",
+   "color": "#3f4732",
+   "fc": 98
+  },
+  {
+   "commune": "Bernex",
+   "label": "habitants",
+   "color": "#3f4732",
+   "fc": 98
+  },
+  {
+   "commune": "Corsier",
+   "label": "Quai",
+   "color": "#ffffe6",
+   "fc": 202
+  },
+  {
+   "commune": "Corsier",
+   "label": "Rte de Thonon",
+   "color": "#ffffe6",
+   "fc": 202
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. de",
+   "color": "#ffbf33",
+   "fc": 104
+  },
+  {
+   "commune": "Corsier",
+   "label": "Rte du Lac",
+   "color": "#ffbf33",
+   "fc": 104
+  },
+  {
+   "commune": "Corsier",
+   "label": "Château",
+   "color": "#ffbf33",
+   "fc": 104
+  },
+  {
+   "commune": "Corsier",
+   "label": "Liaison de mobilité douce communale et intercommunale",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Quai",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. de Séchant",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Bâtiment hors sol existant / projeté",
+   "color": "#80ff8c",
+   "fc": 89
+  },
+  {
+   "commune": "Corsier",
+   "label": "Foncenex (France)",
+   "color": "#80ff8c",
+   "fc": 89
+  },
+  {
+   "commune": "Corsier",
+   "label": "Zone indicative de passage de la faune à sécuriser",
+   "color": "#80ff8c",
+   "fc": 89
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. du Port",
+   "color": "#80ff8c",
+   "fc": 89
+  },
+  {
+   "commune": "Corsier",
+   "label": "Pré-Puits",
+   "color": "#80ff8c",
+   "fc": 89
+  },
+  {
+   "commune": "Corsier",
+   "label": "Château",
+   "color": "#80ff8c",
+   "fc": 89
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. du Fournil",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. des Gravannes",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Champs-de-Vaux",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Meinier",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "de Corsier",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Zone sportive (manège, stade FC Cohéran)",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. des Anailles",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Port",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Réseau de mobilités douces",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. des Marais-de-Sanvouigle",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Anières",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Corsier",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Nant d'Aisy",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. de",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. du Nant-d'Aisy",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Nant de Cherre",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. du Port",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. A.-DUFAUX",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Venelle du Port",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Bâtiment hors sol existant / projeté",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Rte de Veigy",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Rte de Bellebouche",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. des Usses",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Emprise de tranchée couverte, route de Thonon",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. des Pilotis",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Servitude pour la tranchée couverte",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. du Cerisier",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Collonge-Bellerive",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Données de base",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Espaces publics / mobilité / paysage",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. du",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Vergers hautes tiges",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. des Foulis",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Lac / cours d’eau naturel ou semi-naturel /",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Chasselas",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. des Bûchilles",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Rte         de",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Terrain sports",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "FC Coheran",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Rte de l'Eglise",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. Neuf",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Château",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Pré-Puits",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. des Ambys",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Rte du Lac",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "la Vy-Verte",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Rte de Thonon",
+   "color": "#bfffa6",
+   "fc": 6526
+  },
+  {
+   "commune": "Corsier",
+   "label": "Rte de l'Eglise",
+   "color": "#62d900",
+   "fc": 2507
+  },
+  {
+   "commune": "Corsier",
+   "label": "la Vy-Verte",
+   "color": "#62d900",
+   "fc": 2507
+  },
+  {
+   "commune": "Corsier",
+   "label": "Anières",
+   "color": "#62d900",
+   "fc": 2507
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. des Ambys",
+   "color": "#62d900",
+   "fc": 2507
+  },
+  {
+   "commune": "Corsier",
+   "label": "Nant de Cherre",
+   "color": "#62d900",
+   "fc": 2507
+  },
+  {
+   "commune": "Corsier",
+   "label": "Collonge-Bellerive",
+   "color": "#62d900",
+   "fc": 2507
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. de Saint-Louis",
+   "color": "#62d900",
+   "fc": 2507
+  },
+  {
+   "commune": "Corsier",
+   "label": "Rte de la Côte-d'Or",
+   "color": "#62d900",
+   "fc": 2507
+  },
+  {
+   "commune": "Corsier",
+   "label": "Chasselas",
+   "color": "#62d900",
+   "fc": 2507
+  },
+  {
+   "commune": "Corsier",
+   "label": "Collonge-Bellerive",
+   "color": "#ff4d00",
+   "fc": 600
+  },
+  {
+   "commune": "Corsier",
+   "label": "Chasselas",
+   "color": "#ff4d00",
+   "fc": 600
+  },
+  {
+   "commune": "Corsier",
+   "label": "Nant de Cherre",
+   "color": "#ff4d00",
+   "fc": 600
+  },
+  {
+   "commune": "Corsier",
+   "label": "Ch. des Ambys",
+   "color": "#ff4d00",
+   "fc": 600
+  },
+  {
+   "commune": "Corsier",
+   "label": "Chasselas",
+   "color": "#ffbf33",
+   "fc": 104
+  },
+  {
+   "commune": "Genthod",
+   "label": "Pralay",
+   "color": "#b1c7bf",
+   "fc": 468
+  },
+  {
+   "commune": "Genthod",
+   "label": "Champ-Vovan",
+   "color": "#b1c7bf",
+   "fc": 468
+  },
+  {
+   "commune": "Genthod",
+   "label": "Rennex",
+   "color": "#307e38",
+   "fc": 3419
+  },
+  {
+   "commune": "Genthod",
+   "label": "Pralay",
+   "color": "#307e38",
+   "fc": 3419
+  },
+  {
+   "commune": "Genthod",
+   "label": "Moissons",
+   "color": "#307e38",
+   "fc": 3419
+  },
+  {
+   "commune": "Genthod",
+   "label": "Sautoir-d’Or",
+   "color": "#307e38",
+   "fc": 3419
+  },
+  {
+   "commune": "Genthod",
+   "label": "Creux-de-Genthod",
+   "color": "#307e38",
+   "fc": 3419
+  },
+  {
+   "commune": "Genthod",
+   "label": "Pré-Paul",
+   "color": "#307e38",
+   "fc": 3419
+  },
+  {
+   "commune": "Genthod",
+   "label": "Presbytère",
+   "color": "#307e38",
+   "fc": 3419
+  },
+  {
+   "commune": "Genthod",
+   "label": "Collex",
+   "color": "#307e38",
+   "fc": 3419
+  },
+  {
+   "commune": "Genthod",
+   "label": "Limites",
+   "color": "#307e38",
+   "fc": 3419
+  },
+  {
+   "commune": "Genthod",
+   "label": "Hutins-Goulus",
+   "color": "#307e38",
+   "fc": 3419
+  },
+  {
+   "commune": "Genthod",
+   "label": "Mairie",
+   "color": "#307e38",
+   "fc": 3419
+  },
+  {
+   "commune": "Genthod",
+   "label": "Voile",
+   "color": "#2ab4aa",
+   "fc": 3
+  },
+  {
+   "commune": "Genthod",
+   "label": "Pralay",
+   "color": "#396cb3",
+   "fc": 125
+  },
+  {
+   "commune": "Genthod",
+   "label": "Presbytère",
+   "color": "#396cb3",
+   "fc": 125
+  },
+  {
+   "commune": "Genthod",
+   "label": "Corridor biologique à pérenniser / à inscrire",
+   "color": "#396cb3",
+   "fc": 125
+  },
+  {
+   "commune": "Genthod",
+   "label": "Hutins-Goulus",
+   "color": "#b1c7bf",
+   "fc": 468
+  },
+  {
+   "commune": "Genthod",
+   "label": "Voile",
+   "color": "#b1c7bf",
+   "fc": 468
+  },
+  {
+   "commune": "Genthod",
+   "label": "Pré-Roset",
+   "color": "#307e38",
+   "fc": 3419
+  },
+  {
+   "commune": "Genthod",
+   "label": "Valavran",
+   "color": "#307e38",
+   "fc": 3419
+  },
+  {
+   "commune": "Genthod",
+   "label": "Champ-Vovan",
+   "color": "#307e38",
+   "fc": 3419
+  },
+  {
+   "commune": "Genthod",
+   "label": "Malagny",
+   "color": "#fbd342",
+   "fc": 12
+  },
+  {
+   "commune": "Genthod",
+   "label": "Hutins-Goulus",
+   "color": "#396cb3",
+   "fc": 125
+  },
+  {
+   "commune": "Genthod",
+   "label": "Champ-Vovan",
+   "color": "#396cb3",
+   "fc": 125
+  },
+  {
+   "commune": "Genthod",
+   "label": "Alignement d’arbres",
+   "color": "#d1e1eb",
+   "fc": 26
+  },
+  {
+   "commune": "Genthod",
+   "label": "Pré-Paul",
+   "color": "#b1c7bf",
+   "fc": 468
+  },
+  {
+   "commune": "Genthod",
+   "label": "Petite-Voie",
+   "color": "#b1c7bf",
+   "fc": 468
+  },
+  {
+   "commune": "Genthod",
+   "label": "Moissons",
+   "color": "#b1c7bf",
+   "fc": 468
+  },
+  {
+   "commune": "Genthod",
+   "label": "Mont-Rose",
+   "color": "#b1c7bf",
+   "fc": 468
+  },
+  {
+   "commune": "Genthod",
+   "label": "Rennex",
+   "color": "#b1c7bf",
+   "fc": 468
+  },
+  {
+   "commune": "Genthod",
+   "label": "Rennex",
+   "color": "#cbbba0",
+   "fc": 77
+  },
+  {
+   "commune": "Genthod",
+   "label": "Fauvette",
+   "color": "#307e38",
+   "fc": 3419
+  },
+  {
+   "commune": "Genthod",
+   "label": "ayards",
+   "color": "#307e38",
+   "fc": 3419
+  },
+  {
+   "commune": "Genthod",
+   "label": "Pièce",
+   "color": "#307e38",
+   "fc": 3419
+  },
+  {
+   "commune": "Genthod",
+   "label": "Moissons",
+   "color": "#396cb3",
+   "fc": 125
+  },
+  {
+   "commune": "Genthod",
+   "label": "Rennex",
+   "color": "#396cb3",
+   "fc": 125
+  },
+  {
+   "commune": "Genthod",
+   "label": "La - Fouine",
+   "color": "#57b982",
+   "fc": 1817
+  },
+  {
+   "commune": "Genthod",
+   "label": "Moissons",
+   "color": "#57b982",
+   "fc": 1817
+  },
+  {
+   "commune": "Genthod",
+   "label": "Lausanne",
+   "color": "#57b982",
+   "fc": 1817
+  },
+  {
+   "commune": "Genthod",
+   "label": "Mont-Rose",
+   "color": "#57b982",
+   "fc": 1817
+  },
+  {
+   "commune": "Genthod",
+   "label": "Fayards",
+   "color": "#57b982",
+   "fc": 1817
+  },
+  {
+   "commune": "Genthod",
+   "label": "Malagny",
+   "color": "#57b982",
+   "fc": 1817
+  },
+  {
+   "commune": "Genthod",
+   "label": "Rennex",
+   "color": "#57b982",
+   "fc": 1817
+  },
+  {
+   "commune": "Genthod",
+   "label": "P   r   é   -   d   e   s   -   F   o   u   r   n   e   a   u   x",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "route de Lausanne",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "o   j   o   n   n   e",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Petite-Voie",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Mairie",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Valavran",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "La - Fouine",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Moissons",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Limites",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Voile",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Chênes",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Rennex",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Pralay",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Malagny",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Sautoir-d’Or",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Fauvette",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Troiselles",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Hutins-Goulus",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Pré-Paul",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Vert",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Champ-Vovan",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Mont-Rose",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Machefer",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Boulangers",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "ingénieurs environnement",
+   "color": "#0000ff",
+   "fc": 1794
+  },
+  {
+   "commune": "Genthod",
+   "label": "ECOTEC Environnement SA",
+   "color": "#0000ff",
+   "fc": 1794
+  },
+  {
+   "commune": "Genthod",
+   "label": "a.ortis // s.robyr",
+   "color": "#0000ff",
+   "fc": 1794
+  },
+  {
+   "commune": "Genthod",
+   "label": "07 octobre 2024",
+   "color": "#0000ff",
+   "fc": 1794
+  },
+  {
+   "commune": "Genthod",
+   "label": "Patrimoine arboré",
+   "color": "#0000ff",
+   "fc": 1794
+  },
+  {
+   "commune": "Genthod",
+   "label": "Numéro de fiche des secteurs à enjeux",
+   "color": "#0000ff",
+   "fc": 1794
+  },
+  {
+   "commune": "Genthod",
+   "label": "Concept paysager d’ensemble obligatoire",
+   "color": "#0000ff",
+   "fc": 1794
+  },
+  {
+   "commune": "Genthod",
+   "label": "Périmètre des secteurs à enjeux",
+   "color": "#0000ff",
+   "fc": 1794
+  },
+  {
+   "commune": "Genthod",
+   "label": "Secteurs à enjeux",
+   "color": "#0000ff",
+   "fc": 1794
+  },
+  {
+   "commune": "Genthod",
+   "label": "Vert",
+   "color": "#0000ff",
+   "fc": 1794
+  },
+  {
+   "commune": "Genthod",
+   "label": "Malagny",
+   "color": "#0000ff",
+   "fc": 1794
+  },
+  {
+   "commune": "Genthod",
+   "label": "Creux-de-Genthod",
+   "color": "#0000ff",
+   "fc": 1794
+  },
+  {
+   "commune": "Genthod",
+   "label": "Limites",
+   "color": "#ff7f00",
+   "fc": 249
+  },
+  {
+   "commune": "Genthod",
+   "label": "Pralay",
+   "color": "#ff7f00",
+   "fc": 249
+  },
+  {
+   "commune": "Genthod",
+   "label": "Rennex",
+   "color": "#ff7f00",
+   "fc": 249
+  },
+  {
+   "commune": "Genthod",
+   "label": "Mairie",
+   "color": "#ff7f00",
+   "fc": 249
+  },
+  {
+   "commune": "Genthod",
+   "label": "Malagny",
+   "color": "#ff7f00",
+   "fc": 249
+  },
+  {
+   "commune": "Genthod",
+   "label": "route de Lausanne",
+   "color": "#ff7f00",
+   "fc": 249
+  },
+  {
+   "commune": "Genthod",
+   "label": "Pré-Paul",
+   "color": "#ffb6b6",
+   "fc": 89
+  },
+  {
+   "commune": "Genthod",
+   "label": "Mairie",
+   "color": "#ffff00",
+   "fc": 189
+  },
+  {
+   "commune": "Genthod",
+   "label": "Pralay",
+   "color": "#ffff00",
+   "fc": 189
+  },
+  {
+   "commune": "Genthod",
+   "label": "route de Lausanne",
+   "color": "#ffff00",
+   "fc": 189
+  },
+  {
+   "commune": "Genthod",
+   "label": "zone 4BP",
+   "color": "#9f195b",
+   "fc": 38
+  },
+  {
+   "commune": "Genthod",
+   "label": "Limites",
+   "color": "#57b982",
+   "fc": 1817
+  },
+  {
+   "commune": "Genthod",
+   "label": "Hutins-Goulus",
+   "color": "#57b982",
+   "fc": 1817
+  },
+  {
+   "commune": "Genthod",
+   "label": "Collex",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "s   -   B   o   n   n   e   t   s",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Pierre-Grise",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Rousses",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Fayards",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Lausanne",
+   "color": "#88b39d",
+   "fc": 24664
+  },
+  {
+   "commune": "Genthod",
+   "label": "Nouvelle plantation (localisation indicative sur plan)",
+   "color": "#0000ff",
+   "fc": 1794
+  },
+  {
+   "commune": "Genthod",
+   "label": "Arbres remarquables (SITG)",
+   "color": "#0000ff",
+   "fc": 1794
+  },
+  {
+   "commune": "Genthod",
+   "label": "Malagny-le-Lac",
+   "color": "#0000ff",
+   "fc": 1794
+  },
+  {
+   "commune": "Genthod",
+   "label": "Petite-Voie",
+   "color": "#0000ff",
+   "fc": 1794
+  },
+  {
+   "commune": "Genthod",
+   "label": "Troiselles",
+   "color": "#0000ff",
+   "fc": 1794
+  },
+  {
+   "commune": "Genthod",
+   "label": "r   é   e",
+   "color": "#0000ff",
+   "fc": 1794
+  },
+  {
+   "commune": "Genthod",
+   "label": "L   o   c   h   e   t   t   e",
+   "color": "#0000ff",
+   "fc": 1794
+  },
+  {
+   "commune": "Genthod",
+   "label": "Sautoir-d’Or",
+   "color": "#ff7f00",
+   "fc": 249
+  },
+  {
+   "commune": "Genthod",
+   "label": "Pralay",
+   "color": "#ffb6b6",
+   "fc": 89
+  },
+  {
+   "commune": "Genthod",
+   "label": "Mont-Rose",
+   "color": "#ffb6b6",
+   "fc": 89
+  },
+  {
+   "commune": "Genthod",
+   "label": "Creux-de-Genthod",
+   "color": "#ffff00",
+   "fc": 189
+  },
+  {
+   "commune": "Genthod",
+   "label": "Nouvelle plantation (localisation indicative sur plan)",
+   "color": "#ffff00",
+   "fc": 189
+  },
+  {
+   "commune": "Genthod",
+   "label": "Arbres remarquables (SITG)",
+   "color": "#ffb6b6",
+   "fc": 89
+  },
+  {
+   "commune": "Genthod",
+   "label": "Patrimoine arboré",
+   "color": "#57b982",
+   "fc": 1817
+  },
+  {
+   "commune": "Genthod",
+   "label": "RAC - Bâtiment non évalué",
+   "color": "#66a286",
+   "fc": 8
+  },
+  {
+   "commune": "Genthod",
+   "label": "Périmètre consultation OPAM (chemin de fer)",
+   "color": "#fff6a4",
+   "fc": 20
+  },
+  {
+   "commune": "Genthod",
+   "label": "Périmètre consultation OPAM (rte de transit)",
+   "color": "#fff6a4",
+   "fc": 20
+  },
+  {
+   "commune": "Genthod",
+   "label": "Périmètre de protection de la nature et du paysage",
+   "color": "#fff8d8",
+   "fc": 12
+  },
+  {
+   "commune": "Genthod",
+   "label": "en absence de la levée de la lisière)",
+   "color": "#fff8d8",
+   "fc": 12
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Culture",
+   "color": "#ff0000",
+   "fc": 43
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Plan de développement urbain",
+   "color": "#80ffff",
+   "fc": 118
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Parc existant / projeté, à aménager:",
+   "color": "#ccffff",
+   "fc": 7
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Connexions MD à améliorer et à renforcer",
+   "color": "#00b2ff",
+   "fc": 108
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Coordination intercommunale",
+   "color": "#ffff8c",
+   "fc": 3
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Gare souterraine (horizon 2040+)",
+   "color": "#ffbf59",
+   "fc": 36
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "préau d’école",
+   "color": "#cca6a6",
+   "fc": 9
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Commune du Grand-Saconnex",
+   "color": "#ffffe0",
+   "fc": 24
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Voie-des-Traz",
+   "color": "#ffffe0",
+   "fc": 24
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "(Rte de l’Aéroport)",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Rte F.-PEYROT",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Rte de l’Aéroport",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "pronostic   pour 2022",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. du Jonc",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Commune du Grand-Saconnex",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Rte Douanière",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. des Corbillettes",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. J.-ATTENVILLE",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. TERROUX",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Rte des Batailleux",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. des Préjins",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. de la",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. de",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Métairie",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Voie-",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Traz",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. du Pastel",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. du Pré-Carbeux",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Voie-des-Traz",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. H.-",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Rue A.-",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. E.-SARASIN",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Tunnel",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ferney",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. du Pavillon",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Chemin",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Imp. Colombelle",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "L’Ancienne-Route",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. Diauton",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Rte de Ferney",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "des potentiels de modiﬁcation de zones",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "et orientations pour les secteurs présentant",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. A.-BETEMS",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Rte de Colovrex",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "La Voie-de-Gex",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Place de",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. Torney",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. de Machéry",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Brûlé",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. A.-VILBERT",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "peau-de-Curé",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. des Crêts",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "VLI DSII pronostic pour 2022",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Sandedis",
+   "color": "#b4e0a8",
+   "fc": 6827
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Voie-des-Traz",
+   "color": "#80ff80",
+   "fc": 19
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ferney",
+   "color": "#80ff80",
+   "fc": 19
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "L’Ancienne-Route",
+   "color": "#80ff80",
+   "fc": 19
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. du Pavillon",
+   "color": "#80ff80",
+   "fc": 19
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Imp. Colombelle",
+   "color": "#80ff80",
+   "fc": 19
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. Diauton",
+   "color": "#80ff80",
+   "fc": 19
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Voie-des-Traz",
+   "color": "#b08a54",
+   "fc": 272
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Rte F.-PEYROT",
+   "color": "#b08a54",
+   "fc": 272
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Métairie",
+   "color": "#b08a54",
+   "fc": 272
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. de la",
+   "color": "#b08a54",
+   "fc": 272
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. des Préjins",
+   "color": "#b08a54",
+   "fc": 272
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Tunnel",
+   "color": "#b08a54",
+   "fc": 272
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ferney",
+   "color": "#b08a54",
+   "fc": 272
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "pronostic   pour 2022",
+   "color": "#b08a54",
+   "fc": 272
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Rte des Batailleux",
+   "color": "#b08a54",
+   "fc": 272
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "(Rte de l’Aéroport)",
+   "color": "#b08a54",
+   "fc": 272
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Traz",
+   "color": "#b08a54",
+   "fc": 272
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Voie-",
+   "color": "#b08a54",
+   "fc": 272
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Voie-des-Traz",
+   "color": "#d90000",
+   "fc": 16
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. du Jonc",
+   "color": "#00d9d9",
+   "fc": 69
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "L’Ancienne-Route",
+   "color": "#00d9d9",
+   "fc": 69
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Tunnel",
+   "color": "#00d9d9",
+   "fc": 69
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Rte de Colovrex",
+   "color": "#00d9d9",
+   "fc": 69
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ferney",
+   "color": "#00d9d9",
+   "fc": 69
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "La Voie-de-Gex",
+   "color": "#00d9d9",
+   "fc": 69
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Rte des Batailleux",
+   "color": "#00d9d9",
+   "fc": 69
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Rte F.-PEYROT",
+   "color": "#00d9d9",
+   "fc": 69
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Ch. de la",
+   "color": "#00d9d9",
+   "fc": 69
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Voie-des-Traz",
+   "color": "#00d9d9",
+   "fc": 69
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "pronostic   pour 2022",
+   "color": "#00d9d9",
+   "fc": 69
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Rte de l’Aéroport",
+   "color": "#00d9d9",
+   "fc": 69
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "à créer ou améliorer (à négocier selon opportunités)",
+   "color": "#ffffe0",
+   "fc": 24
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "de la Suisse (ICOMOS)",
+   "color": "#80ff80",
+   "fc": 19
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "pour 2022, VLI DSII",
+   "color": "#00d9d9",
+   "fc": 69
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "pour 2022, VLI DSII",
+   "color": "#e60000",
+   "fc": 6
+  },
+  {
+   "commune": "Le Grand-Saconnex",
+   "label": "Courbe enveloppante du projet de nouveau bruit",
+   "color": "#ccffff",
+   "fc": 3
+  },
+  {
+   "commune": "Meinier",
+   "label": "La Vy-la-Tour",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin de La Touvière",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de la Gara",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Jussy",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin des Landions",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin  des      Prés-de-l’Oie",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin du Canal",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin des Chutes",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin de la Motte",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin des Combes",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de la Capite",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin de la Caille",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin de Rouelbeau",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "Rouelbeau",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin     des  Champs-de-la-Grange",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "Château de",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin de la Gorge",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "Eglise",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "Restaurant",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin de Sionnet",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "Manège",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "route du Château-du-Crest",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "route du Château-du-Crest",
+   "color": "#2a323c",
+   "fc": 7221
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin des Plots",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Compois",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Meinier",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin des Evouettes",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Corsinge",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "route des Carres",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "La Touvière",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin des Landions",
+   "color": "#2a323c",
+   "fc": 7221
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin de la Caille",
+   "color": "#2a323c",
+   "fc": 7221
+  },
+  {
+   "commune": "Meinier",
+   "label": "Banque",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "Mairie",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin de Fiez",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Gy",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "Boulangerie",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "La Vy-la-Tour",
+   "color": "#2a323c",
+   "fc": 7221
+  },
+  {
+   "commune": "Meinier",
+   "label": "Poste",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin du Rucher",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Covéry",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Thonon",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin des Varlioudes",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "Lieu intergé-",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "nérationnel",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "Route de la Repentance",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Bellebouche",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin des Foulis",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin des Champs-Nouveaux",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin de Trémoulin",
+   "color": "#2a323c",
+   "fc": 7221
+  },
+  {
+   "commune": "Meinier",
+   "label": "Cimetière",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "Tea-room",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Gy",
+   "color": "#2a323c",
+   "fc": 7221
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin de la Dame-Blanche",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin des Pralys",
+   "color": "#464f5a",
+   "fc": 13733
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin des Plots",
+   "color": "#8a9f9c",
+   "fc": 1464
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin de Fiez",
+   "color": "#8a9f9c",
+   "fc": 1464
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Gy",
+   "color": "#8a9f9c",
+   "fc": 1464
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Bellebouche",
+   "color": "#8a9f9c",
+   "fc": 1464
+  },
+  {
+   "commune": "Meinier",
+   "label": "Boulangerie",
+   "color": "#8a9f9c",
+   "fc": 1464
+  },
+  {
+   "commune": "Meinier",
+   "label": "Eglise",
+   "color": "#8a9f9c",
+   "fc": 1464
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Lullier",
+   "color": "#8a9f9c",
+   "fc": 1464
+  },
+  {
+   "commune": "Meinier",
+   "label": "route des Carres",
+   "color": "#8a9f9c",
+   "fc": 1464
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin de la Motte",
+   "color": "#8a9f9c",
+   "fc": 1464
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Choulex",
+   "color": "#8a9f9c",
+   "fc": 1464
+  },
+  {
+   "commune": "Meinier",
+   "label": "La Vy-la-Tour",
+   "color": "#8a9f9c",
+   "fc": 1464
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin du Canal",
+   "color": "#8a9f9c",
+   "fc": 1464
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin du Rucher",
+   "color": "#8a9f9c",
+   "fc": 1464
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Thonon",
+   "color": "#8a9f9c",
+   "fc": 1464
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin des Combes",
+   "color": "#8a9f9c",
+   "fc": 1464
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Presinge",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin     des  Champs-de-la-Grange",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "Crêts-de-la-Capite",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de la Capite",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin de la Caille",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "route du Château-du-Crest",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Jussy",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "en minutes",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "ch. des Tattes-Magnin",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "Rouelbeau",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Choulex",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "Chapeaurouge",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "route des Carres",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Meinier",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin des Landions",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin de Saint-Louis",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin des Foulis",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "Réseaux",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "Merlinge",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Bellebouche",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin des",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Lullier",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin de Garmaise",
+   "color": "#333b43",
+   "fc": 20619
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Bellebouche",
+   "color": "#5f6f6e",
+   "fc": 695
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Lullier",
+   "color": "#5f6f6e",
+   "fc": 695
+  },
+  {
+   "commune": "Meinier",
+   "label": "route des Carres",
+   "color": "#5f6f6e",
+   "fc": 695
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Choulex",
+   "color": "#5f6f6e",
+   "fc": 695
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin des Evouettes",
+   "color": "#3c4b4c",
+   "fc": 205
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Choulex",
+   "color": "#fd4100",
+   "fc": 28
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin du Canal",
+   "color": "#29df09",
+   "fc": 120
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin  des      Prés-de-l’Oie",
+   "color": "#29df09",
+   "fc": 120
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin de Trémoulin",
+   "color": "#29df09",
+   "fc": 120
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin des Evouettes",
+   "color": "#29df09",
+   "fc": 120
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin de Sionnet",
+   "color": "#fe0106",
+   "fc": 116
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin   des Chutes",
+   "color": "#fe0106",
+   "fc": 116
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Compois",
+   "color": "#0041f8",
+   "fc": 155
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Meinier",
+   "color": "#0041f8",
+   "fc": 155
+  },
+  {
+   "commune": "Meinier",
+   "label": "Boulangerie",
+   "color": "#0041f8",
+   "fc": 155
+  },
+  {
+   "commune": "Meinier",
+   "label": "route de Gy",
+   "color": "#0041f8",
+   "fc": 155
+  },
+  {
+   "commune": "Meinier",
+   "label": "Merlinge",
+   "color": "#0041f8",
+   "fc": 155
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin de la Motte",
+   "color": "#0041f8",
+   "fc": 155
+  },
+  {
+   "commune": "Meinier",
+   "label": "Eglise",
+   "color": "#fd07f5",
+   "fc": 44
+  },
+  {
+   "commune": "Meinier",
+   "label": "chemin des Evouettes",
+   "color": "#fd07f5",
+   "fc": 44
+  },
+  {
+   "commune": "Plan-les-Ouates",
+   "label": "+403.0",
+   "color": "#d7e9cf",
+   "fc": 1029
+  },
+  {
+   "commune": "Plan-les-Ouates",
+   "label": "Logements",
+   "color": "#d7e9cf",
+   "fc": 1029
+  },
+  {
+   "commune": "Plan-les-Ouates",
+   "label": "+404.0",
+   "color": "#d7e9cf",
+   "fc": 1029
+  },
+  {
+   "commune": "Plan-les-Ouates",
+   "label": "Route de Base",
+   "color": "#98896b",
+   "fc": 681
+  },
+  {
+   "commune": "Plan-les-Ouates",
+   "label": "Mesure de protection OPB",
+   "color": "#98896b",
+   "fc": 681
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin du Courtil",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin du Courtil",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Jonction Barot",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Jonction Barot",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des Princes",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des Princes",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de l' Ancienne-Grange",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de l' Ancienne-Grange",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin du Barot",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin du Barot",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Chevrier",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Chevrier",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Graman",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Graman",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des Cocandes",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des Cocandes",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Fremis",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Fremis",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Pré-Marquis",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Pré-Marquis",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Choulex",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Choulex",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Marchepied",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Marchepied",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Martel",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Martel",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "(DP communal)",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "(DP communal)",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des Dardelles",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des Dardelles",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Déchetterie",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Déchetterie",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route des Eaux-Belles",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route des Eaux-Belles",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Pré-Rojoux",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Pré-Rojoux",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Basselat",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Basselat",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Jussy",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Jussy",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin du Pont-Bochet",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin du Pont-Bochet",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Pont  Bochet",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Pont  Bochet",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Pierre-à-Bochet",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Pierre-à-Bochet",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "douane de Mon Idée",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "douane de Mon Idée",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Promenade du Foron à développer",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Promenade du Foron à développer",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Promenade de la Seymaz",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "Promenade de la Seymaz",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "chemin sans nom",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "chemin sans nom",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "le Foron",
+   "color": "#747e84",
+   "fc": 1972
+  },
+  {
+   "commune": "Presinge",
+   "label": "le Foron",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Jussy",
+   "color": "#48c6f1",
+   "fc": 54
+  },
+  {
+   "commune": "Presinge",
+   "label": "(DP communal)",
+   "color": "#48c6f1",
+   "fc": 54
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Cornière",
+   "color": "#132229",
+   "fc": 2053
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Favra",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Champ-Dollon",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "la Seymaz",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Fremis",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Pré-Marquis",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "chemin sans nom",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Presinge",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des Dardelles",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Jonction Barot",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "chemin vicinal, voie historique (IVS-GE 347)",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Jussy",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Puplinge",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Patenailles",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Cornière",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de la Brenaz",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Grésy",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin du Courtil",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Douane de",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Déchetterie",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route des Brolliets",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "(DP communal)",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des Dardelles",
+   "color": "#79a284",
+   "fc": 693
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Fremis",
+   "color": "#79a284",
+   "fc": 693
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Plein-Champs",
+   "color": "#79a284",
+   "fc": 693
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des",
+   "color": "#79a284",
+   "fc": 693
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Presinge",
+   "color": "#79a284",
+   "fc": 693
+  },
+  {
+   "commune": "Presinge",
+   "label": "Secteur Bran",
+   "color": "#79a284",
+   "fc": 693
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin du Barot",
+   "color": "#aec7c8",
+   "fc": 9
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Pré-Rojoux",
+   "color": "#ef503e",
+   "fc": 19
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin du Barot",
+   "color": "#ea2d33",
+   "fc": 5
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin du Courtil",
+   "color": "#ea2d33",
+   "fc": 5
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Choulex",
+   "color": "#a80084",
+   "fc": 126
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des Princes",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "(PDCP 2008 - Thônex)",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de l' Ancienne-Grange",
+   "color": "#a80084",
+   "fc": 126
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de l' Ancienne-Grange",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Martel",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Graman",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des",
+   "color": "#a80084",
+   "fc": 126
+  },
+  {
+   "commune": "Presinge",
+   "label": "chemin sans nom",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des Fleurs",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "Jonction Barot",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "Jonction Barot",
+   "color": "#fcb833",
+   "fc": 168
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route des Eaux-Belles",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Fremis",
+   "color": "#a80084",
+   "fc": 126
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Fremis",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Pré-Rojoux",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "Pont  Bochet",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Favra",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "(DP communal)",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de la Brenaz",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de la Brenaz",
+   "color": "#a80084",
+   "fc": 126
+  },
+  {
+   "commune": "Presinge",
+   "label": "Brénaz vers",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Marchepied",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "la Seymaz",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Chevrier",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "(DP cantonal sur commune de Presinge)",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Fremis",
+   "color": "#fcb833",
+   "fc": 168
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route des Brolliets",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "Cornières",
+   "color": "#b7bcc7",
+   "fc": 1147
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Pré-Rojoux",
+   "color": "#a80084",
+   "fc": 126
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Graman",
+   "color": "#fcb833",
+   "fc": 168
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des",
+   "color": "#fcb833",
+   "fc": 168
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Bellecombe",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route des Jurets",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin du Chambet",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des Cocandes",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Presinge",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des Champs-d'Arrhes",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des Montagnys",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Pré-Rojoux",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des Etremblés",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des Princes",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Mon-Idée",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Chevrier",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "(PDCP 2008 - Thônex)",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Favra",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Jonction Barot",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin du Barot",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Déchetterie",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Pré-Marquis",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Marchepied",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Choulex",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de l' Ancienne-Grange",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "douane de Mon Idée",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Promenade du Foron à développer",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Pierre-à-Bochet",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Fremis",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Graman",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Bottéret",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route des Eaux-Belles",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "chemin sans nom",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "la Seymaz",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Puplinge",
+   "color": "#73b2ff",
+   "fc": 139
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des Fleurs",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Pont  Bochet",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Puplinge",
+   "color": "#607182",
+   "fc": 3885
+  },
+  {
+   "commune": "Presinge",
+   "label": "(PDCP 2008 - Thônex)",
+   "color": "#73b2ff",
+   "fc": 139
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Graman",
+   "color": "#73b2ff",
+   "fc": 139
+  },
+  {
+   "commune": "Presinge",
+   "label": "Pont  Bochet",
+   "color": "#73b2ff",
+   "fc": 139
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Fremis",
+   "color": "#fff005",
+   "fc": 38
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Fremis",
+   "color": "#2e3280",
+   "fc": 38
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des",
+   "color": "#fff005",
+   "fc": 38
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des",
+   "color": "#2e3280",
+   "fc": 38
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Graman",
+   "color": "#fff005",
+   "fc": 38
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Graman",
+   "color": "#2e3280",
+   "fc": 38
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Grésy",
+   "color": "#f58b48",
+   "fc": 288
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Champ-Dollon",
+   "color": "#f58b48",
+   "fc": 288
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Fremis",
+   "color": "#f58b48",
+   "fc": 288
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin du Courtil",
+   "color": "#f58b48",
+   "fc": 288
+  },
+  {
+   "commune": "Presinge",
+   "label": "Patenailles",
+   "color": "#f58b48",
+   "fc": 288
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des",
+   "color": "#f58b48",
+   "fc": 288
+  },
+  {
+   "commune": "Presinge",
+   "label": "Déchetterie",
+   "color": "#e92425",
+   "fc": 222
+  },
+  {
+   "commune": "Presinge",
+   "label": "(DP cantonal sur commune de Presinge)",
+   "color": "#e92425",
+   "fc": 222
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Cara",
+   "color": "#e92425",
+   "fc": 222
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Pré-Rojoux",
+   "color": "#e82388",
+   "fc": 83
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Graman",
+   "color": "#e82388",
+   "fc": 83
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route des Eaux-Belles",
+   "color": "#e82388",
+   "fc": 83
+  },
+  {
+   "commune": "Presinge",
+   "label": "chemin vicinal, voie historique (IVS-GE 347)",
+   "color": "#e82388",
+   "fc": 83
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Fremis",
+   "color": "#e82388",
+   "fc": 83
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin des",
+   "color": "#e82388",
+   "fc": 83
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Bottéret",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Brénaz vers",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Secteur Bran",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Route de Chevrier",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin de Martel",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Rue de Graman",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "(DP cantonal sur commune de Presinge)",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Presinge",
+   "label": "Chemin du Barot",
+   "color": "#b3cca7",
+   "fc": 2214
+  },
+  {
+   "commune": "Troinex",
+   "label": "Sites bâtis en limite des entités paysagères et/ou présentant",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "E = Limites avec le secteur de développement Grand - Pré",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "Commune de Troinex",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "05 décembre 2024",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "Traitement de la limite avec des projets                             B3.2",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "a.ortis // s.robyr",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "CSD ingénieurs SA",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "Liaison piétonne à créer",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "Chemin piéton existant sur DP, à améliorer",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "100m",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "de développement majeurs",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "ingénieurs mobilité",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "Dispositions et conditions qualitatives d’aménagement",
+   "color": "#5bd276",
+   "fc": 4677
+  },
+  {
+   "commune": "Troinex",
+   "label": "4   Bien intégré (volume seul)",
+   "color": "#d3c8b8",
+   "fc": 48
+  },
+  {
+   "commune": "Troinex",
+   "label": "Liaison piétonne à créer (négociation OCT)                       B3.1",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "(fiche de mesure No.4 PDCom )",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "2   Remarquable",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "classé ou Inscrit à l’inventaire",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "Nouvelle plantation",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "3   Intéressant",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "de verdure de Pinchat et le Chemin de Roday                   A2.5",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "Cadastre forestier (utilisé provisoirement pour fixer la distance",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "4+ Bien intégré (volume et substance)",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "Emprise hors ligne pour l’élargissement de                        B2.2",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "Traitement de la limite privé / public                                   B2.3",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "4   Bien intégré (volume seul)",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "ingénieurs environnement",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "la Route de Troinex (1-2m)",
+   "color": "#829797",
+   "fc": 7070
+  },
+  {
+   "commune": "Troinex",
+   "label": "2   Remarquable",
+   "color": "#f8f7d6",
+   "fc": 149
+  },
+  {
+   "commune": "Troinex",
+   "label": "Arbre remarquable (SIPV)",
+   "color": "#faf19e",
+   "fc": 411
+  },
+  {
+   "commune": "Troinex",
+   "label": "4   Bien intégré (volume seul)",
+   "color": "#6a1800",
+   "fc": 3
+  },
+  {
+   "commune": "Troinex",
+   "label": "Traitement de la limite avec des projets                             B3.2",
+   "color": "#239600",
+   "fc": 30
+  },
+  {
+   "commune": "Troinex",
+   "label": "Liaison piétonne à créer",
+   "color": "#60fa6d",
+   "fc": 460
+  },
+  {
+   "commune": "Troinex",
+   "label": "dérogation possible selon art. 59 al. 4 LCI",
+   "color": "#5bd276",
+   "fc": 4677
+  },
+  {
+   "commune": "Troinex",
+   "label": "Vues",
+   "color": "#d3c8b8",
+   "fc": 48
+  },
+  {
+   "commune": "Vandoeuvres",
+   "label": "Cession ou servitude à destination",
+   "color": "#ff0000",
+   "fc": 4
+  },
+  {
+   "commune": "Vandoeuvres",
+   "label": "Arbre remarquable (source SITG)",
+   "color": "#52a300",
+   "fc": 7
+  },
+  {
+   "commune": "Vandoeuvres",
+   "label": "Trame verte",
+   "color": "#80ff00",
+   "fc": 1
+  },
+  {
+   "commune": "Vandoeuvres",
+   "label": "Haie indigène ou mixte",
+   "color": "#bfff80",
+   "fc": 1
+  }
+ ]
+}

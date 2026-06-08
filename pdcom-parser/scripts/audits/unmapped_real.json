@@ -1,0 +1,194 @@
+[
+ {
+  "commune": "Presinge",
+  "label": "Contre-allée, accès au nouveau quartier",
+  "color": "#bbbfae",
+  "fc": 146
+ },
+ {
+  "commune": "Presinge",
+  "label": "Contre-allée, accès au nouveau quartier",
+  "color": "#7a8365",
+  "fc": 253
+ },
+ {
+  "commune": "Presinge",
+  "label": "Contre-allée, accès au nouveau quartier",
+  "color": "#c4c0a9",
+  "fc": 585
+ },
+ {
+  "commune": "Presinge",
+  "label": "piste cyclable, places de parking",
+  "color": "#d0cabc",
+  "fc": 1208
+ },
+ {
+  "commune": "Presinge",
+  "label": "Identification de la place",
+  "color": "#d0cabc",
+  "fc": 1208
+ },
+ {
+  "commune": "Presinge",
+  "label": "Bâtiments redéfinissant la place",
+  "color": "#d0cabc",
+  "fc": 1208
+ },
+ {
+  "commune": "Bernex",
+  "label": "mobilité douce connectant l’espace urbanisé à l’espace rural",
+  "color": "#3f4732",
+  "fc": 98
+ },
+ {
+  "commune": "Corsier",
+  "label": "Zone indicative de passage de la faune à sécuriser",
+  "color": "#80ff8c",
+  "fc": 89
+ },
+ {
+  "commune": "Corsier",
+  "label": "Zone sportive (manège, stade FC Cohéran)",
+  "color": "#bfffa6",
+  "fc": 6526
+ },
+ {
+  "commune": "Corsier",
+  "label": "Espaces publics / mobilité / paysage",
+  "color": "#bfffa6",
+  "fc": 6526
+ },
+ {
+  "commune": "Corsier",
+  "label": "Lac / cours d’eau naturel ou semi-naturel /",
+  "color": "#bfffa6",
+  "fc": 6526
+ },
+ {
+  "commune": "Genthod",
+  "label": "Alignement d’arbres",
+  "color": "#d1e1eb",
+  "fc": 26
+ },
+ {
+  "commune": "Genthod",
+  "label": "Patrimoine arboré",
+  "color": "#0000ff",
+  "fc": 1794
+ },
+ {
+  "commune": "Genthod",
+  "label": "Concept paysager d’ensemble obligatoire",
+  "color": "#0000ff",
+  "fc": 1794
+ },
+ {
+  "commune": "Genthod",
+  "label": "zone 4BP",
+  "color": "#9f195b",
+  "fc": 38
+ },
+ {
+  "commune": "Genthod",
+  "label": "Arbres remarquables (SITG)",
+  "color": "#0000ff",
+  "fc": 1794
+ },
+ {
+  "commune": "Genthod",
+  "label": "Malagny-le-Lac",
+  "color": "#0000ff",
+  "fc": 1794
+ },
+ {
+  "commune": "Genthod",
+  "label": "Arbres remarquables (SITG)",
+  "color": "#ffb6b6",
+  "fc": 89
+ },
+ {
+  "commune": "Genthod",
+  "label": "Patrimoine arboré",
+  "color": "#57b982",
+  "fc": 1817
+ },
+ {
+  "commune": "Genthod",
+  "label": "Périmètre de protection de la nature et du paysage",
+  "color": "#fff8d8",
+  "fc": 12
+ },
+ {
+  "commune": "Le Grand-Saconnex",
+  "label": "Plan de développement urbain",
+  "color": "#80ffff",
+  "fc": 118
+ },
+ {
+  "commune": "Le Grand-Saconnex",
+  "label": "Parc existant / projeté, à aménager:",
+  "color": "#ccffff",
+  "fc": 7
+ },
+ {
+  "commune": "Le Grand-Saconnex",
+  "label": "des potentiels de modiﬁcation de zones",
+  "color": "#b4e0a8",
+  "fc": 6827
+ },
+ {
+  "commune": "Troinex",
+  "label": "Sites bâtis en limite des entités paysagères et/ou présentant",
+  "color": "#829797",
+  "fc": 7070
+ },
+ {
+  "commune": "Troinex",
+  "label": "E = Limites avec le secteur de développement Grand - Pré",
+  "color": "#829797",
+  "fc": 7070
+ },
+ {
+  "commune": "Troinex",
+  "label": "de développement majeurs",
+  "color": "#829797",
+  "fc": 7070
+ },
+ {
+  "commune": "Troinex",
+  "label": "Dispositions et conditions qualitatives d’aménagement",
+  "color": "#5bd276",
+  "fc": 4677
+ },
+ {
+  "commune": "Troinex",
+  "label": "de verdure de Pinchat et le Chemin de Roday                   A2.5",
+  "color": "#829797",
+  "fc": 7070
+ },
+ {
+  "commune": "Troinex",
+  "label": "Arbre remarquable (SIPV)",
+  "color": "#faf19e",
+  "fc": 411
+ },
+ {
+  "commune": "Vandoeuvres",
+  "label": "Arbre remarquable (source SITG)",
+  "color": "#52a300",
+  "fc": 7
+ },
+ {
+  "commune": "Vandoeuvres",
+  "label": "Trame verte",
+  "color": "#80ff00",
+  "fc": 1
+ },
+ {
+  "commune": "Vandoeuvres",
+  "label": "Haie indigène ou mixte",
+  "color": "#bfff80",
+  "fc": 1
+ }
+]

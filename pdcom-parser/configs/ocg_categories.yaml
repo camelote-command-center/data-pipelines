@@ -1,0 +1,80 @@
+# PDCom OCG urbanisation — canonical category vocabulary (2026-06-05).
+# Used by the OCG layer-attribution extractor (ocg_layers.py). Applies to
+# Illustrator-urba synthesis PDFs (currently Cologny only — see camelote bug
+# a5895363 for the 68 non-OCG-commune audit workstream).
+#
+# Layer-name normalization: uppercase + strip accents + collapse punctuation
+# before lookup. Maintain synonyms here. Log unmapped layers per commune.
+
+# Planning categories — extracted as polygons, loaded to gold/ref.
+categories:
+  potentiel_densification:
+    label: "Potentiel de densification"
+    layers: ["POTENTIEL DENSIFICATION"]
+  extension_village:
+    label: "Extension / densification du village"
+    layers: ["EXTENSION / DENSIFICATION DU VILLAGE"]
+  perimetre_protege:
+    label: "Périmètre protégé"
+    layers: ["PERIMETRES PROTEGES"]
+  secteur_valeur_patrimoniale:
+    label: "Secteur de forte valeur patrimoniale"
+    layers: ["Sect. fort valeur patrim.", "Sect. fort valeur patrim. - copie"]
+  grands_domaines:
+    label: "Grands domaines"
+    layers: ["Grands domaines"]
+  centre_local:
+    label: "Centre local"
+    layers: ["CENTRE LOCAL"]
+  cesure_non_batie:
+    label: "Césure non bâtie"
+    layers: ["CESURE NON BÂTIE"]
+  seuil_urbain_agricole:
+    label: "Seuil urbain / agricole"
+    layers: ["Seuil urbain / agricole"]
+  percee_visuelle:
+    label: "Percée visuelle"
+    layers: ["PERCEES VISUELLES"]
+  protection_rives_lac:
+    label: "Protection des rives du lac"
+    layers: ["PROTECTION RIVES LAC", "PRLac"]
+  secteur_etude:
+    label: "Secteur d'étude"
+    layers: ["SECTEURS D'ETUDE"]
+  penetrante_verte:
+    label: "Pénétrante verte"
+    layers: ["PENETRANTE VERTE SEC", "Pénétrante Verdure trame"]   # NB: trame sub-layer is a texture fill — review
+  patrimoine:
+    label: "Patrimoine"
+    layers: ["Patrimoine"]   # NB: may be building markers, not areas — review
+  projet_amenagement:
+    label: "Projet d'aménagement"
+    layers: ["Projet aménagement plage"]
+
+# Reference-only — used for georeferencing / clipping, never loaded as categories.
+reference_layers:
+  - "CADASTRE"
+  - "LIMITES COMMUNALES"
+  - "Cadastre forestier"
+  - "BÂTI HORS SOL"   # building footprints → building-pattern xcorr georef anchor
+
+# Skip — basemap, legend, mobility lines, decor.
+skip_layers:
+  - "FOND NOIR ET BLANC"
+  - "Pochage"
+  - "EN TÊTE"
+  - "LEGENDE"
+  - "Repères"
+  - "COURS D'EAU"
+  - "Liaison MD"
+  - "LIAISONS PIETONNES"
+  - "VOIE VERTE"
+  - "Liaison cyclable 2"
+  - "Tracé navettes"
+  - "Réaménagement TC MD"
+  - "Noeuds de rencontre existant"
+  - "Plan site communes voisines"
+
+# Georeferencing: building-pattern cross-correlation of BÂTI HORS SOL footprints
+# against ref.buildings_geo (LV95). Cologny locks at 3.530 m/pt = 1:10000,
+# north-up, no flip; 99.7% building match. Map scale is fixed per sheet.
