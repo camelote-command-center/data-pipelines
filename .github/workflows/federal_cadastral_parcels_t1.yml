@@ -1,13 +1,22 @@
-name: Federal Cadastral Parcels — T1 (Suisse Romande, monthly)
+name: Federal Cadastral Parcels — T1 (Suisse Romande)
 
 # Walks VD/NE/JU/FR/VS via GeoAdmin identify API, lands rows in
 # bronze_ch.federal_cadastral_parcels (re-LLM). Composite key
 # (canton_code, ident_dn, parcel_number). commune_bfs auto-derived
 # post-canton via spatial join against bronze_ch.swiss_communes_geo.
+#
+# CADENCE: T1's cantons (VD + VS especially) are too large to walk fully
+# inside one GH Actions run (350-min cap). So scheduled runs use --resume
+# with a 600h (~25d) freshness window: each run skips tiles already walked
+# in the current cycle and chips away at the rest, so the tier completes
+# across a few back-to-back runs, then idles cheaply (every run skips all
+# fresh tiles) until the window lapses ~monthly and the next pass begins.
+# Resume runs do NOT soft-delete (engine guards this). A manual full sweep
+# with deletions = workflow_dispatch with resume=false.
 
 on:
   schedule:
-    - cron: '0 4 1 * *'   # Monthly 1st at 04:00 UTC
+    - cron: '0 */6 * * *'   # Every 6h; resume-driven, self-throttling (see CADENCE)
   workflow_dispatch:
     inputs:
       cantons:
@@ -26,6 +35,12 @@ on:
         type: choice
         options: ['false','true']
 
+# One T1 walk at a time — prevents the zombie-run pile-up where overlapping
+# non-resume dispatches each re-walked VD from scratch.
+concurrency:
+  group: federal-cadastral-t1
+  cancel-in-progress: false
+
 jobs:
   fetch:
     runs-on: ubuntu-latest
@@ -39,9 +54,14 @@ jobs:
       - name: Run T1 parser
         run: |
           ARGS=""
+          # Scheduled runs always resume (chip-away cadence). Manual dispatch
+          # honors the resume input (default false → full sweep with deletions).
+          RESUME="${{ inputs.resume }}"
+          [ "${{ github.event_name }}" = "schedule" ] && RESUME="true"
           [ -n "${{ inputs.cantons }}" ] && ARGS="$ARGS --cantons ${{ inputs.cantons }}"
-          [ "${{ inputs.resume }}" = "true" ] && ARGS="$ARGS --resume"
+          [ "$RESUME" = "true" ] && ARGS="$ARGS --resume --resume-within-hours 600"
           [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
+          echo "Resolved ARGS:$ARGS (event=${{ github.event_name }})"
           python pipelines/federal_cadastral_parcels_t1/import.py $ARGS
         env:
           RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
@@ -49,6 +69,10 @@ jobs:
           RE_LLM_DB_PASSWORD: ${{ secrets.RE_LLM_DB_PASSWORD }}
           CAMELOTE_SUPABASE_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
           CAMELOTE_SUPABASE_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+          # GeoAdmin identify API throughput. Default in code is a very
+          # conservative 20 rpm; 60 (1 req/s) cuts walk time ~3x and stays
+          # well within GeoAdmin fair-use (fetch_tile retries on 429/5xx).
+          GEOADMIN_RATE_LIMIT: '60'
       - name: Report failure to camelote_data
         if: failure()
         run: |
