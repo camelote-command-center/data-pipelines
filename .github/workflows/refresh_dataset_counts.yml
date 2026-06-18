@@ -1,0 +1,31 @@
+name: Refresh Dataset Record Counts
+
+# Keeps camelote_data.datasets.record_count showing the REAL live row count of every
+# active parser's target table (across all startup DBs). Without this, record_count is a
+# frozen snapshot that drifts the moment a table grows. Reads all DB creds from the
+# supabase-registry repo (single source of truth), cloned with BACKUP_GH_PAT.
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'   # Mondays 06:00 UTC (weekly is plenty for row counts)
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install psycopg2-binary
+      - name: Clone supabase-registry (all DB creds, single source of truth)
+        run: |
+          git clone https://x-access-token:${BACKUP_GH_PAT}@github.com/camelote-command-center/supabase-registry.git supabase-registry
+        env:
+          BACKUP_GH_PAT: ${{ secrets.BACKUP_GH_PAT }}
+      - name: Refresh record counts
+        run: python pipelines/dataset_count_refresh/refresh.py
+        env:
+          REGISTRY_JSON: ./supabase-registry/supabase-projects.json
