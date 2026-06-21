@@ -613,7 +613,21 @@ async function main() {
   }
 
   if (allRecords.length === 0) {
-    console.log('  No records to upsert. Exiting.');
+    // Silent-failure guard (2026-06-21): if the gazette scrape returned raw
+    // transactions but NONE parsed, this is a wholesale parse failure (e.g.
+    // retired model id → 404, or ANTHROPIC_API_KEY over its usage limit → 400),
+    // NOT a quiet no-op. Previously this returned 0 (success), so the 06-12 and
+    // 06-19 batches vanished while the GHA dashboard stayed green. Exit non-zero
+    // so the failure PATCH fires and the staleness is visible.
+    if (allRaw.length > 0) {
+      console.error(
+        `  VALIDATION FAILED: scraped ${allRaw.length} transaction(s) but parsed 0 ` +
+        `(parseErrors=${parseErrors}). Wholesale parse failure — check the Anthropic ` +
+        `model id and API usage limits. NOT exiting clean.`,
+      );
+      process.exit(1);
+    }
+    console.log('  No records to upsert (nothing scraped). Exiting.');
     return;
   }
 
