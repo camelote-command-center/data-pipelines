@@ -299,7 +299,7 @@ async function parseTransactionWithClaude(
       // price with the raw-text regex match, so this hallucination is caught
       // and corrected before insert. Optional follow-up: try Opus for better
       // digit fidelity once we confirm the right model string for this project.
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-sonnet-4-6',
       max_tokens: 4096,
       messages: [
         {
