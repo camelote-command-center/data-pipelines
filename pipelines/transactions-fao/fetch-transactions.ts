@@ -51,10 +51,11 @@ const RATE_LIMIT_MS = 1_000;
 // Narrowed 30→10 (2026-06-22): LLM cost is now decoupled from the window via
 // skip-before-extract, so a wide window only added scrape volume, not value.
 const MIN_LOOKBACK_DAYS = 10;
-// Building-ID validation re-asks the LLM on invalid IDs. Cut 3→1: re-asking on
-// identical input rarely helps (it's model nondeterminism), and the cost now
-// only applies to genuinely-new rows.
-const MAX_BUILDING_RETRIES = 1;
+// Building-ID validation re-asks the LLM on invalid IDs (model nondeterminism
+// means a re-ask can recover a row). Kept at 3: skip-before-extract means this
+// only ever fires on genuinely-new rows, and DeepSeek calls are cheap, so the
+// extra attempts cost almost nothing and protect against dropping good rows.
+const MAX_BUILDING_RETRIES = 3;
 // Skip-before-extract escape hatch: REPARSE_EXISTING=true forces re-parsing of
 // affaires already present in the DB (use for corrections / forced backfills).
 const REPARSE_EXISTING = /^(1|true|yes)$/i.test(process.env.REPARSE_EXISTING ?? '');
