@@ -19,6 +19,11 @@ ANTHROPIC_KEY = os.getenv('ANTHROPIC_API_KEY')  # required only for the anthropi
 
 MODEL                  = "claude-sonnet-4-6"
 CONFIDENCE_THRESHOLD   = 0.75
+# Sentinel domain for rows whose model-proposed domain is outside the active
+# vocab. It is active in the DB (so validate_taxonomy accepts it) but excluded
+# from the list offered to the model (so real docs are never labelled with it).
+# Such rows are parked as needs_review with the raw suggestion kept for triage.
+REVIEW_DOMAIN          = "unclassified"
 CATEGORIZATION_VERSION = 1
 CHUNK_CONTENT_MAX      = 4000
 DOC_CONTEXT_MAX        = 3000
@@ -81,7 +86,7 @@ def load_taxonomy(sb):
 
     doms = sb.schema('knowledge_global').table('domains').select(
         'key,label_en').eq('is_active', True).execute().data
-    DOMAINS = sorted(d['key'] for d in doms)
+    DOMAINS = sorted(d['key'] for d in doms if d['key'] != REVIEW_DOMAIN)
     DOMAIN_LABELS = {d['key']: (d.get('label_en') or d['key']) for d in doms}
 
     tops = sb.schema('knowledge_global').table('topics').select(
@@ -492,15 +497,32 @@ def write_back(sb, kind, schema, item_id, classification):
     valid_acs     = [a for a in (classification.get('asset_classes') or []) if a in DOMAIN_ACS.get(domain, [])]
     topics        = valid_topics or None
     asset_classes = valid_acs or None
-    chunk_type    = classification.get('chunk_type')
+    # Pre-filter chunk_type against the live vocab, exactly like topics/asset_classes.
+    # The enum in the tool schema is advisory (the API does not hard-enforce it), so a
+    # stray value would otherwise trip validate_vocab_scalar and leave the row stuck
+    # pending — re-classified (and re-billed) on every run. NULL is accepted by the trigger.
+    raw_chunk_type = classification.get('chunk_type')
+    chunk_type     = raw_chunk_type if raw_chunk_type in CHUNK_TYPES else None
     tags          = classification.get('tags') or None
     confidence    = classification['confidence']
     reasoning     = classification['reasoning']
 
-    status = 'auto' if confidence >= CONFIDENCE_THRESHOLD else 'needs_review'
+    # A domain outside the active vocab can never satisfy validate_taxonomy_*. Rather
+    # than throw and leave the row pending forever, park it in the review bucket
+    # (domain NULL, status needs_review) so it leaves the pending pool and a human can
+    # triage it. The raw suggestion is preserved in categorization_review.reasoning.
+    domain_ok = domain in DOMAINS
+    if not domain_ok:
+        status        = 'needs_review'
+        topics        = None
+        asset_classes = None
+        chunk_type    = None
+        reasoning     = f"[domain '{domain}' not in active vocab — parked for review] {reasoning or ''}".strip()
+    else:
+        status = 'auto' if confidence >= CONFIDENCE_THRESHOLD else 'needs_review'
 
     update_payload = {
-        'domain': domain,
+        'domain': domain if domain_ok else REVIEW_DOMAIN,
         'asset_classes': asset_classes,
         'topics': topics,
         'tags': tags,
