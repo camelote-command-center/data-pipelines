@@ -8,7 +8,6 @@
     "promote:fix": "FIX_EXISTING=1 tsx promote.ts"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0",
     "@supabase/supabase-js": "^2",
     "cheerio": "^1"
   },
