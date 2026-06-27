@@ -1,27 +1,46 @@
 /**
  * Shared FAO (fao.ge.ch) session helper.
  *
- * Handles CAPTCHA solving via Playwright + 2Captcha for rubrique 137 (transactions)
- * and rubrique 168 (LDTR). Returns session cookies for use with plain HTTP requests.
+ * fao.ge.ch protects search with Friendly Captcha (frc-captcha). This solves it
+ * via Playwright + 2Captcha and returns session cookies for use with plain HTTP
+ * requests.
+ *
+ * Flow:
+ *   1. Load the search URL -> server redirects to /captcha?baseURL=... which
+ *      hosts a Friendly Captcha widget (<div id="my-widget-mount" data-site-key>).
+ *   2. Block the widget script so it can't overwrite our injected token.
+ *   3. Solve the captcha with 2Captcha (FriendlyCaptchaTaskProxyless).
+ *   4. Inject the token as <input name="frc-captcha-solution"> into #captcha-form
+ *      and submit it -> server validates and redirects back to baseURL with a
+ *      session cookie.
  *
  * Env vars:
  *   TWO_CAPTCHA_API_KEY  - 2Captcha API key
  */
 
-import { chromium, type Browser } from 'playwright';
-import { solveCaptcha } from './captcha.js';
+import { chromium, type Browser, type BrowserContext } from 'playwright';
+import { solveFriendlyCaptcha } from './captcha.js';
 
 const MAX_CAPTCHA_RETRIES = 5;
 const GOTO_TIMEOUT_MS = 120_000;
 const BACKOFF_DELAYS_MS = [5_000, 15_000, 30_000, 60_000, 60_000];
 
+// Requests matching this are aborted so the Friendly Captcha widget never runs
+// (per 2Captcha guidance — a live widget overwrites the injected solution token).
+const WIDGET_BLOCK_RE = /friendl|frc[-_.]|\/build\/captcha/i;
+
 export interface FaoSessionResult {
   cookies: string;
 }
 
+async function cookieString(context: BrowserContext): Promise<string> {
+  const raw = await context.cookies();
+  return raw.map((c) => `${c.name}=${c.value}`).join('; ');
+}
+
 /**
- * Create an authenticated FAO session by solving the CAPTCHA.
- * Returns cookie string for use in subsequent HTTP requests.
+ * Create an authenticated FAO session by solving the Friendly Captcha.
+ * Returns a cookie string for use in subsequent HTTP requests.
  */
 export async function createFaoSession(
   rubrique: number,
@@ -46,85 +65,88 @@ export async function createFaoSession(
       await context.clearCookies();
       const page = await context.newPage();
 
-      // Intercept CAPTCHA image response
-      let captchaText: string | null = null;
-
-      page.on('response', async (response) => {
-        const respUrl = response.url();
-        if (respUrl.includes('captcha-handler?get=image')) {
-          try {
-            const buffer = await response.body();
-            const base64 = buffer.toString('base64');
-            captchaText = await solveCaptcha(base64);
-          } catch (err) {
-            console.error(`  CAPTCHA image intercept error: ${err}`);
-          }
+      // Block the Friendly Captcha widget JS / API so it cannot overwrite the
+      // token we inject. The document navigation (the POST) is never blocked.
+      await page.route('**/*', (route) => {
+        const req = route.request();
+        const type = req.resourceType();
+        if ((type === 'script' || type === 'xhr' || type === 'fetch') && WIDGET_BLOCK_RE.test(req.url())) {
+          return route.abort();
         }
+        return route.continue();
       });
 
       await page.goto(url, { waitUntil: 'domcontentloaded', timeout: GOTO_TIMEOUT_MS });
 
-      // Check if we got redirected to CAPTCHA
-      const currentUrl = page.url();
-      if (!currentUrl.includes('captcha')) {
-        // No CAPTCHA needed — extract cookies
-        const rawCookies = await context.cookies();
-        const cookieStr = rawCookies.map((c) => `${c.name}=${c.value}`).join('; ');
+      // No CAPTCHA challenge — we already have a usable session.
+      if (!page.url().includes('captcha')) {
+        const cookies = await cookieString(context);
         await browser.close();
-        return { cookies: cookieStr };
+        return { cookies };
       }
 
-      // Wait for CAPTCHA image selector
-      try {
-        await page.waitForSelector('#FAOCaptcha_CaptchaImage', {
-          state: 'visible',
-          timeout: 15_000,
-        });
-      } catch {
-        console.log('  CAPTCHA image not found, retrying...');
+      // Read the Friendly Captcha site key from the widget mount.
+      const mount = await page
+        .waitForSelector('#my-widget-mount[data-site-key]', { state: 'attached', timeout: 15_000 })
+        .catch(() => null);
+      if (!mount) {
+        console.log('  Captcha widget mount not found, retrying...');
         retries++;
         await browser.close();
         continue;
       }
 
-      // Wait for 2Captcha to solve it
-      const deadline = Date.now() + 60_000;
-      while (!captchaText && Date.now() < deadline) {
-        await new Promise((r) => setTimeout(r, 1_000));
-      }
-
-      if (!captchaText) {
-        console.log('  CAPTCHA not solved in time, retrying...');
+      const siteKey = await mount.getAttribute('data-site-key');
+      const pageUrl = page.url();
+      if (!siteKey) {
+        console.log('  No data-site-key on widget mount, retrying...');
         retries++;
         await browser.close();
         continue;
       }
 
-      // Type CAPTCHA solution character by character (as the dev does)
-      const inputSelector = 'input[name="fao_captcha[captchaCode]"]';
-      await page.fill(inputSelector, '');
-      await page.click(inputSelector);
-      await page.waitForTimeout(2_000);
+      console.log(`  Solving Friendly Captcha (sitekey ${siteKey})...`);
+      const token = await solveFriendlyCaptcha(pageUrl, siteKey);
 
-      for (const char of captchaText) {
-        await page.keyboard.press(char);
-        await page.waitForTimeout(200);
-      }
+      // Inject the solution as the hidden field the widget would normally create.
+      // fao.ge.ch configures the FC v2 widget with formFieldName "frc-captcha-response"
+      // (NOT the v1 default "frc-captcha-solution"), so the server reads that name.
+      const injected = await page.evaluate((tok) => {
+        const form = document.querySelector('#captcha-form');
+        if (!form) return false;
+        let input = form.querySelector('input[name="frc-captcha-response"]') as HTMLInputElement | null;
+        if (!input) {
+          input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = 'frc-captcha-response';
+          form.appendChild(input);
+        }
+        input.value = tok;
+        return true;
+      }, token);
 
-      await page.click('#fao_captcha_submit');
-      await page.waitForTimeout(2_000);
-
-      // Check if CAPTCHA was accepted
-      const afterUrl = page.url();
-      if (!afterUrl.includes('captcha')) {
-        const rawCookies = await context.cookies();
-        const cookieStr = rawCookies.map((c) => `${c.name}=${c.value}`).join('; ');
-        console.log('  FAO session established');
+      if (!injected) {
+        console.log('  #captcha-form not found, retrying...');
+        retries++;
         await browser.close();
-        return { cookies: cookieStr };
+        continue;
       }
 
-      console.log(`  CAPTCHA rejected (attempt ${retries + 1}/${MAX_CAPTCHA_RETRIES})`);
+      // Submit the form; the server validates the token and redirects to baseURL.
+      await Promise.all([
+        page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: GOTO_TIMEOUT_MS }).catch(() => {}),
+        page.evaluate(() => (document.querySelector('#captcha-form') as HTMLFormElement | null)?.submit()),
+      ]);
+      await page.waitForTimeout(2_000);
+
+      if (!page.url().includes('captcha')) {
+        const cookies = await cookieString(context);
+        console.log('  FAO session established (Friendly Captcha)');
+        await browser.close();
+        return { cookies };
+      }
+
+      console.log(`  Captcha rejected (attempt ${retries + 1}/${MAX_CAPTCHA_RETRIES})`);
       retries++;
       await browser.close();
     } catch (err) {
@@ -147,10 +169,7 @@ export async function createFaoSession(
  * Fetch a page from fao.ge.ch with session cookies.
  * If redirected to CAPTCHA, throws CAPTCHA_REDIRECT error.
  */
-export async function faoFetch(
-  url: string,
-  cookies: string,
-): Promise<string> {
+export async function faoFetch(url: string, cookies: string): Promise<string> {
   const response = await fetch(url, {
     headers: {
       Cookie: cookies,
@@ -161,8 +180,8 @@ export async function faoFetch(
 
   const text = await response.text();
 
-  // Check if we were redirected to CAPTCHA page
-  if (response.url.includes('captcha') || text.includes('FAOCaptcha_CaptchaImage')) {
+  // Check if we were redirected to the CAPTCHA page (new or old markup).
+  if (response.url.includes('captcha') || text.includes('my-widget-mount') || text.includes('FAOCaptcha_CaptchaImage')) {
     throw new Error('CAPTCHA_REDIRECT');
   }
 
