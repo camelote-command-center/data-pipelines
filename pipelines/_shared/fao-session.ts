@@ -109,14 +109,16 @@ export async function createFaoSession(
       const token = await solveFriendlyCaptcha(pageUrl, siteKey);
 
       // Inject the solution as the hidden field the widget would normally create.
+      // fao.ge.ch configures the FC v2 widget with formFieldName "frc-captcha-response"
+      // (NOT the v1 default "frc-captcha-solution"), so the server reads that name.
       const injected = await page.evaluate((tok) => {
         const form = document.querySelector('#captcha-form');
         if (!form) return false;
-        let input = form.querySelector('input[name="frc-captcha-solution"]') as HTMLInputElement | null;
+        let input = form.querySelector('input[name="frc-captcha-response"]') as HTMLInputElement | null;
         if (!input) {
           input = document.createElement('input');
           input.type = 'hidden';
-          input.name = 'frc-captcha-solution';
+          input.name = 'frc-captcha-response';
           form.appendChild(input);
         }
         input.value = tok;
