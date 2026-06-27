@@ -76,6 +76,7 @@ const FRC_MAX_WAIT_MS = 180_000; // proof-of-work can take longer than image sol
 export async function solveFriendlyCaptcha(
   websiteURL: string,
   websiteKey: string,
+  version: 'v1' | 'v2' = 'v2',
 ): Promise<string> {
   const apiKey = process.env.TWO_CAPTCHA_API_KEY;
   if (!apiKey) throw new Error('TWO_CAPTCHA_API_KEY is required');
@@ -89,6 +90,9 @@ export async function solveFriendlyCaptcha(
         type: 'FriendlyCaptchaTaskProxyless',
         websiteURL,
         websiteKey,
+        // fao.ge.ch uses Friendly Captcha v2 (data-api-endpoint + createWidget SDK).
+        // 2Captcha defaults to v1, whose token fails server verification.
+        version,
       },
     }),
   });
