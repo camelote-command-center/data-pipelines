@@ -66,6 +66,11 @@ jobs:
           node-version: '20'
       - run: cd pipelines/_shared && npm ci
       - run: cd pipelines/transactions-fao && npm ci
+      - name: Regression test — safe_cast DD.MM.YYYY date parsing (bug f3538ed1)
+        run: cd pipelines/transactions-fao && npx tsx date-parse.test.ts
+        env:
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
       - name: Install Playwright browsers
         run: cd pipelines/transactions-fao && npx playwright install chromium --with-deps
       - name: Fetch FAO Transactions
@@ -86,6 +91,22 @@ jobs:
           # parser transparently runs on Anthropic only (old behaviour).
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      - name: Canary — fail if transactions landed mis-dated (date-sanity)
+        if: success()
+        run: |
+          RESPONSE=$(curl -s "$SUPABASE_URL/rest/v1/rpc/check_fao_freshness" \
+            -H "apikey: $SUPABASE_KEY" -H "Authorization: Bearer $SUPABASE_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{"p_table_name":"fao_transactions","p_lookback_days":3}')
+          SUSP=$(echo "$RESPONSE" | jq -r '.suspicious_dates // 0')
+          echo "date-sanity canary: $RESPONSE"
+          if [ "$SUSP" != "0" ] && [ "$SUSP" != "null" ]; then
+            echo "::error::Date-sanity canary tripped: $SUSP transactions landed dated >30d in the past (possible mis-parse / new upstream format)."
+            exit 1
+          fi
+        env:
+          SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
       # Split into success/failure PATCH to avoid bug 07bf060b
       # (if: always() makes failed runs look successful on the dashboard).
       - name: PATCH last_acquired_at on success

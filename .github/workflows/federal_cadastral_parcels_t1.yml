@@ -1,13 +1,22 @@
-name: Federal Cadastral Parcels — T1 (Suisse Romande, monthly)
+name: Federal Cadastral Parcels — T1 (Suisse Romande)
 
 # Walks VD/NE/JU/FR/VS via GeoAdmin identify API, lands rows in
 # bronze_ch.federal_cadastral_parcels (re-LLM). Composite key
 # (canton_code, ident_dn, parcel_number). commune_bfs auto-derived
 # post-canton via spatial join against bronze_ch.swiss_communes_geo.
+#
+# CADENCE: T1's cantons (VD + VS especially) are too large to walk fully
+# inside one GH Actions run (350-min cap). So scheduled runs use --resume
+# with a 600h (~25d) freshness window: each run skips tiles already walked
+# in the current cycle and chips away at the rest, so the tier completes
+# across a few back-to-back runs, then idles cheaply (every run skips all
+# fresh tiles) until the window lapses ~monthly and the next pass begins.
+# Resume runs do NOT soft-delete (engine guards this). A manual full sweep
+# with deletions = workflow_dispatch with resume=false.
 
 on:
   schedule:
-    - cron: '0 4 1 * *'   # Monthly 1st at 04:00 UTC
+    - cron: '0 */6 * * *'   # Every 6h; resume-driven, self-throttling (see CADENCE)
   workflow_dispatch:
     inputs:
       cantons:
@@ -26,6 +35,12 @@ on:
         type: choice
         options: ['false','true']
 
+# One T1 walk at a time — prevents the zombie-run pile-up where overlapping
+# non-resume dispatches each re-walked VD from scratch.
+concurrency:
+  group: federal-cadastral-t1
+  cancel-in-progress: false
+
 jobs:
   fetch:
     runs-on: ubuntu-latest
@@ -37,11 +52,17 @@ jobs:
           python-version: '3.11'
       - run: pip install -r requirements.txt
       - name: Run T1 parser
+        id: parser
         run: |
           ARGS=""
+          # Scheduled runs always resume (chip-away cadence). Manual dispatch
+          # honors the resume input (default false → full sweep with deletions).
+          RESUME="${{ inputs.resume }}"
+          [ "${{ github.event_name }}" = "schedule" ] && RESUME="true"
           [ -n "${{ inputs.cantons }}" ] && ARGS="$ARGS --cantons ${{ inputs.cantons }}"
-          [ "${{ inputs.resume }}" = "true" ] && ARGS="$ARGS --resume"
+          [ "$RESUME" = "true" ] && ARGS="$ARGS --resume --resume-within-hours 600"
           [ "${{ inputs.dry_run }}" = "true" ] && ARGS="$ARGS --dry-run"
+          echo "Resolved ARGS:$ARGS (event=${{ github.event_name }})"
           python pipelines/federal_cadastral_parcels_t1/import.py $ARGS
         env:
           RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
@@ -49,15 +70,48 @@ jobs:
           RE_LLM_DB_PASSWORD: ${{ secrets.RE_LLM_DB_PASSWORD }}
           CAMELOTE_SUPABASE_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
           CAMELOTE_SUPABASE_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
-      - name: Report failure to camelote_data
-        if: failure()
-        run: |
-          MSG="Workflow run ${{ github.run_id }} failed at $(date -u +%Y-%m-%dT%H:%M:%SZ). See https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          ESC=$(printf '%s' "$MSG" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
-          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.federal_cadastral_parcels_t1" \
-            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
-            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
-            -d "{\"last_error\":${ESC}}"
+          # GeoAdmin identify API throughput. Default in code is a very
+          # conservative 20 rpm; 60 (1 req/s) cuts walk time ~3x and stays
+          # well within GeoAdmin fair-use (fetch_tile retries on 429/5xx).
+          GEOADMIN_RATE_LIMIT: '60'
+      # Tier-wide freshness PATCH to camelote-data — mirrors T2/T3's aggregate
+      # step. Runs on success AND failure: success advances last_acquired_at
+      # (+ record_count, clears last_error); failure records last_error. This
+      # is what was missing — T1 only reported failures, so successful resume
+      # runs never advanced freshness and the dashboard stayed overdue forever.
+      - name: PATCH camelote-data freshness
+        if: always()
         env:
           CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
           CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+          RE_URL:  ${{ secrets.RE_LLM_SUPABASE_URL }}
+          RE_KEY:  ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          PARSER_RESULT: ${{ steps.parser.outcome }}
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          CANTONS="VD,NE,JU,FR,VS"
+          # Tier row count from re-LLM bronze_ch.federal_cadastral_parcels.
+          CR=$(curl -sI -X GET \
+            "$RE_URL/rest/v1/federal_cadastral_parcels?canton_code=in.(${CANTONS})&select=canton_code" \
+            -H "apikey: $RE_KEY" -H "Authorization: Bearer $RE_KEY" \
+            -H "Accept-Profile: bronze_ch" \
+            -H "Prefer: count=exact" -H "Range: 0-0" | tr -d '\r' \
+            | awk -F'/' '/^content-range:/ {print $2}')
+          COUNT=${CR:-0}
+          echo "tier row count: $COUNT (parser result: $PARSER_RESULT)"
+          if [ "$PARSER_RESULT" = "success" ]; then
+            PAYLOAD=$(printf '{"last_acquired_at":"%s","record_count":%s,"last_error":null}' \
+              "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$COUNT")
+          else
+            ERR="T1 parser failed (result=$PARSER_RESULT). See $RUN_URL"
+            ESC=$(printf '%s' "$ERR" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
+            PAYLOAD=$(printf '{"record_count":%s,"last_error":%s}' "$COUNT" "$ESC")
+          fi
+          echo "PATCH payload: $PAYLOAD"
+          curl -sS -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.federal_cadastral_parcels_t1" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+            -d "$PAYLOAD"
+          # Bubble parser failure up to the workflow status.
+          if [ "$PARSER_RESULT" != "success" ]; then exit 1; fi

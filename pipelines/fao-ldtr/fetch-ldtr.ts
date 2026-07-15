@@ -114,7 +114,7 @@ async function fetchPage(pageNum: number, cookies: string, dateFrom: string, dat
       if (!res.ok) throw new Error(`HTTP ${res.status} for page ${pageNum}`);
       const text = await res.text();
 
-      if (text.includes('FAOCaptcha_CaptchaImage')) {
+      if (text.includes('my-widget-mount') || text.includes('FAOCaptcha_CaptchaImage')) {
         throw new Error('CAPTCHA_REDIRECT');
       }
 

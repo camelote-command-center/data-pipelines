@@ -345,7 +345,10 @@ async function parseViaDeepSeek(transactionText: string): Promise<any> {
 // overrides any LLM price with the raw-text match, so that is caught before insert.
 async function parseViaAnthropic(transactionText: string): Promise<any> {
   const response = await anthropic!.messages.create({
-    model: 'claude-sonnet-4-20250514',
+    // claude-sonnet-4-20250514 was retired and 404s (bug d323daca / PR #18).
+    // Kept in sync with main's fix — this is the DeepSeek fallback path, so a
+    // dead id here would only surface when DeepSeek is already failing.
+    model: 'claude-sonnet-4-6',
     max_tokens: 4096,
     system: EXTRACTION_PROMPT,
     messages: [
@@ -720,7 +723,23 @@ async function main() {
   }
 
   if (allRecords.length === 0) {
-    console.log('  No records to upsert. Exiting.');
+    // Silent-failure guard (ported from #18, 2026-06-21; re-scoped for
+    // skip-before-extract). Original keyed on allRaw.length, but since we now
+    // skip already-stored affaires before the LLM, allRecords=0 with allRaw>0
+    // is the NORMAL healthy case (everything already in the DB). Key on
+    // toParse instead: if we actually sent rows to the LLM and got nothing
+    // back, that IS a wholesale parse failure (bad model id, key over its
+    // usage limit, provider outage) — exit non-zero so the failure PATCH fires
+    // and the staleness is visible on the dashboard.
+    if (toParse.length > 0) {
+      console.error(
+        `  VALIDATION FAILED: sent ${toParse.length} transaction(s) to the LLM but parsed 0 ` +
+        `(parseErrors=${parseErrors}). Wholesale parse failure — check the DeepSeek model id, ` +
+        `API key and usage limits. NOT exiting clean.`,
+      );
+      process.exit(1);
+    }
+    console.log('  No records to upsert (all scraped affaires already in DB). Exiting.');
     return;
   }
 
