@@ -1,3 +1,24 @@
+-- ############################################################################
+-- ⚠️ SUPERSEDED 2026-07-15 — DO NOT RUN THE `CREATE TABLE` SECTION.
+--
+-- Claude built ref.plot_zoning_national / ref.rdppf_national independently, with
+-- TWO differences from the proposal below:
+--   1. they use column `canton` (matching sad_national/transactions_national),
+--      NOT `canton_code`;
+--   2. they have NO `parcel_number` column.
+-- Both tables key on egrid, as proposed here — that part held.
+--
+-- The load was subsequently PERFORMED by CC (boundary lifted for those 2 tables
+-- only) via a client-side streamed UPSERT, NOT via the dblink below:
+--   pipelines/vd_enrichment/_oneshot/load_national_to_lamapdb.py
+-- Rationale: dblink would embed the re-LLM password in SQL executed on lamap_db
+-- (visible in pg_stat_activity / server logs), and a staging table was not
+-- permitted. Result: 281,129 + 369,600 rows, 0 egrid orphans, 1m59s.
+--
+-- Kept for the reasoning + the expected-count assertions at the bottom, which
+-- all still hold. See change_log d86769d9.
+-- ############################################################################
+
 -- ============================================================================
 -- HANDOFF — NOT RUN BY CC. For Ilan / Claude-via-MCP to execute ON lamap_db.
 -- ============================================================================
