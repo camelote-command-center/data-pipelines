@@ -22,7 +22,7 @@
  *   SUPABASE_SERVICE_ROLE_KEY — xoxo service_role key     (required)
  *   CMD_SUPABASE_URL          — camelote_data URL         (required)
  *   CMD_SUPABASE_KEY          — camelote_data service key (required)
- *   ANTHROPIC_API_KEY         — Anthropic API key         (required)
+ *   DEEPSEEK_API_KEY          — DeepSeek API key          (required for service extraction)
  *   SEED_MODE                 — set to "1" for initial 80% seed scrape
  *   DATASET_ID                — dataset UUID in camelote_data (optional)
  *
@@ -31,7 +31,6 @@
  */
 
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
-import Anthropic from '@anthropic-ai/sdk';
 import * as cheerio from 'cheerio';
 import { normalizePhone } from './shared.js';
 
@@ -58,7 +57,7 @@ const XOXO_URL = process.env.SUPABASE_URL;
 const XOXO_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const CMD_URL = process.env.CMD_SUPABASE_URL;
 const CMD_KEY = process.env.CMD_SUPABASE_KEY;
-const ANTHROPIC_KEY = process.env.ANTHROPIC_API_KEY || null;
+const DEEPSEEK_KEY = process.env.DEEPSEEK_API_KEY || null;
 const SEED_MODE = process.env.SEED_MODE === '1';
 const DATASET_ID = process.env.DATASET_ID || null;
 
@@ -70,8 +69,8 @@ if (!CMD_URL || !CMD_KEY) {
   console.error('ERROR: CMD_SUPABASE_URL and CMD_SUPABASE_KEY are required');
   process.exit(1);
 }
-if (!ANTHROPIC_KEY) {
-  console.warn('WARNING: ANTHROPIC_API_KEY not set — service extraction will be skipped');
+if (!DEEPSEEK_KEY) {
+  console.warn('WARNING: DEEPSEEK_API_KEY not set — service extraction will be skipped');
 }
 
 // ---------------------------------------------------------------------------
@@ -80,7 +79,6 @@ if (!ANTHROPIC_KEY) {
 
 const xoxo: SupabaseClient = createClient(XOXO_URL, XOXO_KEY);
 const cmd: SupabaseClient = createClient(CMD_URL, CMD_KEY);
-const anthropic = ANTHROPIC_KEY ? new Anthropic({ apiKey: ANTHROPIC_KEY }) : null;
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -426,7 +424,9 @@ function parseAdPage(html: string, adUrl: AdUrl): ScrapedAd | null {
 }
 
 // ---------------------------------------------------------------------------
-// Step 3: Claude service extraction (batch for efficiency)
+// Step 3: DeepSeek service extraction
+// DeepSeek's API is OpenAI-compatible (chat/completions). Migrated off
+// Sonnet 4 (2026-06-22) for ~95% lower cost on this simple extraction task.
 // ---------------------------------------------------------------------------
 
 const SERVICE_PROMPT = `You are parsing classified ads from a Swiss escort/adult services website.
@@ -443,12 +443,12 @@ Rules:
 - Keep it concise — one service per array element
 - Return ONLY the JSON array, nothing else`;
 
-async function extractServicesWithClaude(
+async function extractServicesWithDeepSeek(
   description: string | null,
   servicesRaw: string | null,
 ): Promise<string[]> {
   if (!description && !servicesRaw) return [];
-  if (!anthropic) return []; // Claude not available
+  if (!DEEPSEEK_KEY) return []; // DeepSeek not available
 
   const text = [
     description ? `Description:\n${description.slice(0, 2000)}` : '',
@@ -456,20 +456,34 @@ async function extractServicesWithClaude(
   ].filter(Boolean).join('\n');
 
   try {
-    const response = await anthropic!.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 512,
-      messages: [
-        { role: 'user', content: `${SERVICE_PROMPT}\n\n${text}` },
-      ],
+    const response = await fetch('https://api.deepseek.com/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${DEEPSEEK_KEY}`,
+      },
+      body: JSON.stringify({
+        model: 'deepseek-chat',
+        max_tokens: 512,
+        temperature: 0,
+        messages: [
+          { role: 'user', content: `${SERVICE_PROMPT}\n\n${text}` },
+        ],
+      }),
     });
 
-    const resultText = response.content[0].type === 'text' ? response.content[0].text : '[]';
+    if (!response.ok) {
+      console.error(`  DeepSeek service extraction error: HTTP ${response.status} ${await response.text()}`);
+      return [];
+    }
+
+    const data = await response.json();
+    const resultText: string = data?.choices?.[0]?.message?.content ?? '[]';
     const cleaned = resultText.replace(/^```json?\n?/m, '').replace(/\n?```$/m, '').trim();
     const parsed = JSON.parse(cleaned);
     return Array.isArray(parsed) ? parsed : [];
   } catch (err) {
-    console.error(`  Claude service extraction error: ${err}`);
+    console.error(`  DeepSeek service extraction error: ${err}`);
     return [];
   }
 }
@@ -724,20 +738,20 @@ async function main() {
       return;
     }
 
-    // 4. Extract services with Claude (batch — only for ads that have description/services)
-    console.log('\n  Extracting services with Claude...');
-    let claudeCalls = 0;
+    // 4. Extract services with DeepSeek (only for ads that have description/services)
+    console.log('\n  Extracting services with DeepSeek...');
+    let llmCalls = 0;
     for (const ad of scraped) {
       if (ad.description || ad.services_raw) {
-        ad.services = await extractServicesWithClaude(ad.description, ad.services_raw);
-        claudeCalls++;
-        if (claudeCalls % 50 === 0) {
-          console.log(`  Claude: ${claudeCalls}/${scraped.length} processed`);
+        ad.services = await extractServicesWithDeepSeek(ad.description, ad.services_raw);
+        llmCalls++;
+        if (llmCalls % 50 === 0) {
+          console.log(`  DeepSeek: ${llmCalls}/${scraped.length} processed`);
         }
-        await sleep(200); // Rate limit for Anthropic
+        await sleep(200); // Rate limit for DeepSeek
       }
     }
-    console.log(`  Claude: ${claudeCalls} service extractions done`);
+    console.log(`  DeepSeek: ${llmCalls} service extractions done`);
 
     // 5. Upsert into bronze.lolla_ads
     console.log('\n  Upserting into bronze.lolla_ads...');

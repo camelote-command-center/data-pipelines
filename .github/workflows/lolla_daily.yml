@@ -32,7 +32,7 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.XOXO_SUPABASE_SERVICE_KEY }}
           CMD_SUPABASE_URL: ${{ secrets.CMD_SUPABASE_URL }}
           CMD_SUPABASE_KEY: ${{ secrets.CMD_SUPABASE_KEY }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           DATASET_ID: ${{ secrets.LOLLA_DATASET_ID }}
           SEED_MODE: ${{ github.event.inputs.seed_mode || '0' }}
       - name: PATCH last_acquired_at on success

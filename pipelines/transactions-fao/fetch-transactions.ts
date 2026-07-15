@@ -1,14 +1,19 @@
 /**
  * FAO Transactions — Fetcher
  *
- * Fetches property transactions from fao.ge.ch rubrique 137 (last 6 days),
- * parses them using Anthropic Claude Sonnet, and upserts into bronze.transactions.
+ * Fetches property transactions from fao.ge.ch rubrique 137 (rolling lookback),
+ * parses them with DeepSeek V3 (Anthropic Sonnet fallback), and upserts into
+ * bronze.transactions.
  *
  * Workflow:
  *   1. Solve CAPTCHA via Playwright + 2Captcha to get session cookies
  *   2. Fetch search result pages via HTTP with cookies
  *   3. Parse HTML to extract raw transaction text blocks
- *   4. Send each block to Claude Sonnet for structured JSON extraction
+ *   3b. SKIP-BEFORE-EXTRACT — drop affaire_numbers already in the DB so we never
+ *       pay the LLM to re-parse transactions we already have. The rolling
+ *       lookback window re-surfaces the same gazette entries every run; this is
+ *       the dominant cost lever. Set REPARSE_EXISTING=true to force re-parsing.
+ *   4. Send each NEW block to DeepSeek (Anthropic fallback) for JSON extraction
  *   5. Upsert on "affaire_number" column
  *
  * IMPORTANT: Do NOT supply type_clean_list — the BEFORE INSERT trigger
@@ -21,7 +26,10 @@
  *   SUPABASE_URL              - Supabase project URL  (required)
  *   SUPABASE_SERVICE_ROLE_KEY - service_role key      (required)
  *   TWO_CAPTCHA_API_KEY       - 2Captcha API key     (required)
- *   ANTHROPIC_API_KEY         - Anthropic API key    (required)
+ *   DEEPSEEK_API_KEY          - DeepSeek API key     (primary parser)
+ *   ANTHROPIC_API_KEY         - Anthropic API key    (fallback parser)
+ *                               At least one of DEEPSEEK_API_KEY / ANTHROPIC_API_KEY is required.
+ *   REPARSE_EXISTING          - "true" to re-parse affaires already in DB (default: skip them)
  */
 
 import Anthropic from '@anthropic-ai/sdk';
@@ -38,19 +46,33 @@ const RUBRIQUE = 137;
 const RESULTS_PER_PAGE = 50;
 const BATCH_SIZE = 50;
 const RATE_LIMIT_MS = 1_000;
-const MIN_LOOKBACK_DAYS = 30;
+// Floor lookback when DB is current. Gap recovery still extends back to the
+// latest DB publication date (see getDateRange), so this is safe to keep tight.
+// Narrowed 30→10 (2026-06-22): LLM cost is now decoupled from the window via
+// skip-before-extract, so a wide window only added scrape volume, not value.
+const MIN_LOOKBACK_DAYS = 10;
+// Building-ID validation re-asks the LLM on invalid IDs (model nondeterminism
+// means a re-ask can recover a row). Kept at 3: skip-before-extract means this
+// only ever fires on genuinely-new rows, and DeepSeek calls are cheap, so the
+// extra attempts cost almost nothing and protect against dropping good rows.
+const MAX_BUILDING_RETRIES = 3;
+// Skip-before-extract escape hatch: REPARSE_EXISTING=true forces re-parsing of
+// affaires already present in the DB (use for corrections / forced backfills).
+const REPARSE_EXISTING = /^(1|true|yes)$/i.test(process.env.REPARSE_EXISTING ?? '');
 
 // ---------------------------------------------------------------------------
-// Anthropic client
+// LLM clients — DeepSeek primary (OpenAI-compatible), Anthropic Sonnet fallback
 // ---------------------------------------------------------------------------
 
+const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
 const anthropicApiKey = process.env.ANTHROPIC_API_KEY;
-if (!anthropicApiKey) {
-  console.error('ERROR: ANTHROPIC_API_KEY is required');
+
+if (!DEEPSEEK_API_KEY && !anthropicApiKey) {
+  console.error('ERROR: at least one of DEEPSEEK_API_KEY / ANTHROPIC_API_KEY is required');
   process.exit(1);
 }
 
-const anthropic = new Anthropic({ apiKey: anthropicApiKey });
+const anthropic = anthropicApiKey ? new Anthropic({ apiKey: anthropicApiKey }) : null;
 
 // ---------------------------------------------------------------------------
 // Date helpers
@@ -287,44 +309,108 @@ function formatKeys(obj: any): any {
   return obj;
 }
 
-async function parseTransactionWithClaude(
-  transactionText: string,
-  retries = 0,
-): Promise<any> {
-  try {
-    const response = await anthropic.messages.create({
-      // Sonnet was shown to hallucinate a digit-group on a CHF 1.875M sale
-      // (Pittard, 2026-02-19), duplicating "'000" into "1'875'000'000". The
-      // downstream regex extraction in price.ts now overrides any LLM-supplied
-      // price with the raw-text regex match, so this hallucination is caught
-      // and corrected before insert. Optional follow-up: try Opus for better
-      // digit fidelity once we confirm the right model string for this project.
-      model: 'claude-sonnet-4-6',
+function stripJsonFence(text: string): string {
+  return text.replace(/^```json?\n?/m, '').replace(/\n?```$/m, '');
+}
+
+// DeepSeek V3 — OpenAI-compatible chat/completions. The static EXTRACTION_PROMPT
+// goes in the system role (stable prefix) so DeepSeek's automatic context cache
+// hits across calls; only the per-transaction text varies. JSON mode requires
+// the word "json" somewhere in the prompt — EXTRACTION_PROMPT satisfies that.
+async function parseViaDeepSeek(transactionText: string): Promise<any> {
+  const resp = await fetch('https://api.deepseek.com/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${DEEPSEEK_API_KEY!}`,
+    },
+    body: JSON.stringify({
+      model: 'deepseek-chat',
       max_tokens: 4096,
+      response_format: { type: 'json_object' },
       messages: [
-        {
-          role: 'user',
-          content: `Here is the transaction text:\n"${transactionText}"\n\n${EXTRACTION_PROMPT}`,
-        },
+        { role: 'system', content: EXTRACTION_PROMPT },
+        { role: 'user', content: `Transaction text:\n"${transactionText}"` },
       ],
-    });
+    }),
+  });
+  if (!resp.ok) throw new Error(`deepseek ${resp.status}: ${await resp.text()}`);
+  const json = await resp.json();
+  const content = json?.choices?.[0]?.message?.content ?? '';
+  return JSON.parse(stripJsonFence(content));
+}
 
-    const resultText =
-      response.content[0].type === 'text' ? response.content[0].text : '';
+// Anthropic Sonnet — fallback only. Sonnet was shown to hallucinate a digit-group
+// on a CHF 1.875M sale (Pittard, 2026-02-19); the downstream regex in price.ts
+// overrides any LLM price with the raw-text match, so that is caught before insert.
+async function parseViaAnthropic(transactionText: string): Promise<any> {
+  const response = await anthropic!.messages.create({
+    // claude-sonnet-4-20250514 was retired and 404s (bug d323daca / PR #18).
+    // Kept in sync with main's fix — this is the DeepSeek fallback path, so a
+    // dead id here would only surface when DeepSeek is already failing.
+    model: 'claude-sonnet-4-6',
+    max_tokens: 4096,
+    system: EXTRACTION_PROMPT,
+    messages: [
+      { role: 'user', content: `Transaction text:\n"${transactionText}"` },
+    ],
+  });
+  const resultText = response.content[0].type === 'text' ? response.content[0].text : '';
+  return JSON.parse(stripJsonFence(resultText));
+}
 
-    // Strip markdown code block if present
-    const cleaned = resultText.replace(/^```json?\n?/m, '').replace(/\n?```$/m, '');
-    return JSON.parse(cleaned);
+// Parse one transaction: DeepSeek primary, Anthropic fallback, with retry.
+async function parseTransaction(transactionText: string, attempt = 0): Promise<any> {
+  try {
+    if (DEEPSEEK_API_KEY) {
+      try {
+        return await parseViaDeepSeek(transactionText);
+      } catch (dsErr) {
+        if (!anthropic) throw dsErr;
+        console.warn(`  DeepSeek failed, falling back to Anthropic: ${dsErr}`);
+        return await parseViaAnthropic(transactionText);
+      }
+    }
+    if (anthropic) return await parseViaAnthropic(transactionText);
+    throw new Error('No LLM provider configured');
   } catch (err) {
-    console.error(`  Claude parse error (attempt ${retries + 1}): ${err}`);
-    if (retries >= 3) throw err;
+    console.error(`  Parse error (attempt ${attempt + 1}): ${err}`);
+    if (attempt >= 3) throw err;
     await sleep(2_000);
-    return parseTransactionWithClaude(transactionText, retries + 1);
+    return parseTransaction(transactionText, attempt + 1);
   }
 }
 
 // Building ID validation
 const isValidBuildingId = (id: string): boolean => /^\d+\/\d+(-\d+)?$/.test(id);
+
+// ---------------------------------------------------------------------------
+// Skip-before-extract — which affaire_numbers do we already have?
+// ---------------------------------------------------------------------------
+
+async function fetchExistingAffaires(affaires: string[]): Promise<Set<string>> {
+  const unique = [...new Set(affaires.filter(Boolean))];
+  const existing = new Set<string>();
+  const CHUNK = 200;
+  for (let i = 0; i < unique.length; i += CHUNK) {
+    const slice = unique.slice(i, i + CHUNK);
+    const { data, error } = await supabase
+      .schema(BRONZE_SCHEMA)
+      .from(resolveTable('transactions'))
+      .select('affaire_number')
+      .in('affaire_number', slice);
+    if (error) {
+      // Fail-open: if the lookup fails, re-extract (old behaviour) rather than
+      // risk skipping a genuinely new transaction.
+      console.warn(`  fetchExistingAffaires chunk failed (${error.message}); not skipping this chunk`);
+      continue;
+    }
+    for (const row of data ?? []) {
+      if (row.affaire_number) existing.add(row.affaire_number as string);
+    }
+  }
+  return existing;
+}
 
 // ---------------------------------------------------------------------------
 // Date parsing helpers (from dev code)
@@ -460,20 +546,39 @@ async function main() {
     return;
   }
 
-  // 4. Parse each transaction with Claude
-  console.log('\n  Parsing transactions with Claude Sonnet...');
+  // 3b. Skip-before-extract — drop affaires already in the DB so we never pay the
+  // LLM to re-parse a transaction we already have. This is the dominant cost
+  // lever: the rolling lookback window re-surfaces the same gazette entries on
+  // every run. REPARSE_EXISTING=true bypasses this (corrections / backfills).
+  let toParse = allRaw;
+  if (REPARSE_EXISTING) {
+    console.log('\n  REPARSE_EXISTING set — parsing all affaires (skip-before-extract disabled).');
+  } else {
+    const existing = await fetchExistingAffaires(allRaw.map((r) => r.affaireNumber));
+    toParse = allRaw.filter((r) => !existing.has(r.affaireNumber));
+    console.log(
+      `\n  Skip-before-extract: ${allRaw.length - toParse.length} already in DB, ${toParse.length} new to parse`,
+    );
+    if (toParse.length === 0) {
+      console.log('  Nothing new to parse — DB already current for this window. Exiting.');
+      return;
+    }
+  }
+
+  // 4. Parse each new transaction (DeepSeek primary, Anthropic fallback)
+  console.log('\n  Parsing transactions with DeepSeek (Anthropic fallback)...');
   const allRecords: Record<string, unknown>[] = [];
   const quarantined: Record<string, unknown>[] = [];
   let parseErrors = 0;
 
-  for (let i = 0; i < allRaw.length; i++) {
-    const raw = allRaw[i];
+  for (let i = 0; i < toParse.length; i++) {
+    const raw = toParse[i];
     if (i % 10 === 0) {
-      console.log(`  Processing ${i + 1}/${allRaw.length}...`);
+      console.log(`  Processing ${i + 1}/${toParse.length}...`);
     }
 
     try {
-      let parsedData = await parseTransactionWithClaude(raw.combined);
+      let parsedData = await parseTransaction(raw.combined);
 
       if (!Array.isArray(parsedData?.Buildings)) {
         console.error(`  No buildings for affaire ${raw.affaireNumber}, skipping`);
@@ -484,7 +589,7 @@ async function main() {
       // Validate building IDs with retries
       let allValid = true;
       let retries = 0;
-      while (retries < 3) {
+      while (retries < MAX_BUILDING_RETRIES) {
         allValid = true;
         for (const building of parsedData.Buildings) {
           if (!isValidBuildingId(building['Building ID'] || '')) {
@@ -494,9 +599,14 @@ async function main() {
         }
         if (allValid) break;
         retries++;
-        parsedData = await parseTransactionWithClaude(raw.combined);
+        parsedData = await parseTransaction(raw.combined);
         if (!Array.isArray(parsedData?.Buildings)) break;
       }
+      // Re-check validity after the retry loop (loop may exit with retries spent
+      // on a freshly re-parsed payload that was never validated at the top).
+      allValid =
+        Array.isArray(parsedData?.Buildings) &&
+        parsedData.Buildings.every((b: any) => isValidBuildingId(b['Building ID'] || ''));
 
       if (!allValid) {
         console.error(`  Invalid building IDs for ${raw.affaireNumber} after retries`);
@@ -613,21 +723,23 @@ async function main() {
   }
 
   if (allRecords.length === 0) {
-    // Silent-failure guard (2026-06-21): if the gazette scrape returned raw
-    // transactions but NONE parsed, this is a wholesale parse failure (e.g.
-    // retired model id → 404, or ANTHROPIC_API_KEY over its usage limit → 400),
-    // NOT a quiet no-op. Previously this returned 0 (success), so the 06-12 and
-    // 06-19 batches vanished while the GHA dashboard stayed green. Exit non-zero
-    // so the failure PATCH fires and the staleness is visible.
-    if (allRaw.length > 0) {
+    // Silent-failure guard (ported from #18, 2026-06-21; re-scoped for
+    // skip-before-extract). Original keyed on allRaw.length, but since we now
+    // skip already-stored affaires before the LLM, allRecords=0 with allRaw>0
+    // is the NORMAL healthy case (everything already in the DB). Key on
+    // toParse instead: if we actually sent rows to the LLM and got nothing
+    // back, that IS a wholesale parse failure (bad model id, key over its
+    // usage limit, provider outage) — exit non-zero so the failure PATCH fires
+    // and the staleness is visible on the dashboard.
+    if (toParse.length > 0) {
       console.error(
-        `  VALIDATION FAILED: scraped ${allRaw.length} transaction(s) but parsed 0 ` +
-        `(parseErrors=${parseErrors}). Wholesale parse failure — check the Anthropic ` +
-        `model id and API usage limits. NOT exiting clean.`,
+        `  VALIDATION FAILED: sent ${toParse.length} transaction(s) to the LLM but parsed 0 ` +
+        `(parseErrors=${parseErrors}). Wholesale parse failure — check the DeepSeek model id, ` +
+        `API key and usage limits. NOT exiting clean.`,
       );
       process.exit(1);
     }
-    console.log('  No records to upsert (nothing scraped). Exiting.');
+    console.log('  No records to upsert (all scraped affaires already in DB). Exiting.');
     return;
   }
 
@@ -692,6 +804,8 @@ async function main() {
   console.log(`  Date range scraped:              ${dateFrom} to ${dateTo}`);
   console.log(`  Gazette pages processed:         ${pages}`);
   console.log(`  Transactions extracted:          ${allRaw.length}`);
+  console.log(`  Skipped (already in DB):         ${allRaw.length - toParse.length}`);
+  console.log(`  New transactions sent to LLM:    ${toParse.length}`);
   console.log(`  Records parsed:                  ${allRecords.length}`);
   console.log(`  Parse errors:                    ${parseErrors}`);
   console.log(`  Rows quarantined:                ${quarantined.length}`);

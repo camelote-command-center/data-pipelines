@@ -86,6 +86,10 @@ jobs:
           SUPABASE_SCHEMA: bronze_ch
           SUPABASE_TABLE_TRANSACTIONS: fao_transactions
           TWO_CAPTCHA_API_KEY: ${{ secrets.TWO_CAPTCHA_API_KEY }}
+          # DeepSeek is the primary parser (≈50× cheaper than Sonnet); Anthropic
+          # is the fallback when DeepSeek errors. If DEEPSEEK_API_KEY is unset the
+          # parser transparently runs on Anthropic only (old behaviour).
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       - name: Canary — fail if transactions landed mis-dated (date-sanity)
         if: success()
