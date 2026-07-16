@@ -1,15 +1,21 @@
-# amtsblatt-be — Bern succession / ownerless-plot event stream
+# amtsblatt-be — Bern distressed-estate / succession event stream
 
 Distils Swiss gazette **succession notices for canton Bern** into an estate-grain
-event table used as an **early-warning / alerting signal** for estates heading
-toward vacancy or reversion to the state.
+event table used as an **early-warning / alerting signal**.
 
-## ⚠️ Scope — read this first
+## ⚠️ What this actually is (read first)
 
+- **It is a distressed-estate *liquidation* feed, not an ownerless-plot inventory.**
+  The volume is almost entirely **repudiated estates going to konkursamtliche
+  Liquidation** (all nearest heirs declined the inheritance, Art. 573 ZGB), plus a
+  thin cantonal layer of Erbenrufe / inventories.
+- **Genuine ownerless / escheat events are essentially nonexistent in BE**: the
+  cantonal "Erbschaft an ein Gemeinwesen" rubric has **1 notice in the entire
+  digital archive** (since 2020). Do not present this stream as a supply of
+  herrenlos parcels.
 - **This is an event/alerting stream, not a "claim a free plot" pipeline.** It
-  surfaces estates that *precede* a plot going ownerless (absent heirs, repudiated
-  estates in liquidation, estates falling to the community). It does **not** list
-  occupiable herrenlos parcels.
+  surfaces estates that *may precede* a plot changing hands under distress. It does
+  **not** list occupiable parcels.
 - **Event → parcel linking is a separate, manual/LBI step.** Notices name the
   deceased and the authority; they almost never name the immeuble. `linked_egrid`
   is **always NULL** here and is only ever set by a downstream positive match
@@ -46,9 +52,17 @@ The gazette metadata is **already ingested** by the sibling pipeline
 | Erbschaft an ein Gemeinwesen (estate → state) | `kabbe` | TE-BE90 | `escheat` |
 | **Ausgeschlagene Erbschaft in konkursamtl. Liquidation** | `shab` | KK01–06 (`addition=refusedLegacy`) | `ausschlagung` |
 
-The repudiation→liquidation signal — the brief's "all-heirs-repudiated estates" —
-lives in **federal SHAB filtered to canton BE**, not the cantonal Amtsblatt. It is
-the dominant volume (~16.5k publications vs ~370 cantonal).
+The repudiation→liquidation signal — the "all-heirs-repudiated estates" — lives in
+**federal SHAB filtered to canton BE**, not the cantonal Amtsblatt. It is the
+dominant volume (~16.5k publications vs ~370 cantonal).
+
+Each `ausschlagung` event carries `repudiation_scope`. A SHAB **Konkurs** notice for
+an *ausgeschlagene Erbschaft* (`addition=refusedLegacy`) is by construction an
+**all-heirs-repudiated → konkursamtliche Liquidation** case (Art. 573 ZGB): a merely
+*partial* ausschlagung does not trigger official liquidation and so never appears in
+this rubric. Values: `all_heirs_liquidation` (every KK notice here), `not_applicable`
+(non-ausschlagung categories), `unknown` (a KK notice missing the flag — none
+observed). Only `all_heirs_liquidation` feeds the actionable list.
 
 ## Parsing
 

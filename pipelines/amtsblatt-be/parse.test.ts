@@ -7,7 +7,7 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { parseNoticeXml, mapEventType, buildDedupeKey, norm } from './lib/parse.js';
+import { parseNoticeXml, mapEventType, buildDedupeKey, norm, repudiationScope } from './lib/parse.js';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const FX = join(HERE, 'fixtures');
@@ -106,9 +106,17 @@ function parse(file: string, tenant: string, canton: string) {
   eq(mapEventType('KK01', 'refusedLegacy'), 'ausschlagung', 'KK+refusedLegacy → ausschlagung');
   eq(mapEventType('KK01', null), 'liquidation', 'KK w/o refusedLegacy → liquidation');
   eq(norm('Dürst'), 'durst', 'norm strips umlaut diacritic');
-  const k1 = buildDedupeKey({ canton: 'BE', eventType: 'erbenruf', deceasedName: 'Henri Bernard Dürst', deceasedDob: '1938-01-28', authority: 'Commune de La Neuveville' });
-  const k2 = buildDedupeKey({ canton: 'be', eventType: 'erbenruf', deceasedName: 'henri bernard durst', deceasedDob: '1938-01-28', authority: 'COMMUNE DE LA NEUVEVILLE' });
-  eq(k1, k2, 'dedupe key is normalization-stable across the 3× republication casing');
+  // estate-identity key: name + dob + last_domicile; stable across casing/diacritics
+  const k1 = buildDedupeKey({ canton: 'BE', eventType: 'erbenruf', deceasedName: 'Henri Bernard Dürst', deceasedDob: '1938-01-28', deceasedLastDomicile: 'Home Hebron, Rue du Tilleul 3, 2608 Courtelary' });
+  const k2 = buildDedupeKey({ canton: 'be', eventType: 'erbenruf', deceasedName: 'henri bernard durst', deceasedDob: '1938-01-28', deceasedLastDomicile: 'HOME HEBRON, RUE DU TILLEUL 3, 2608 COURTELARY' });
+  eq(k1, k2, 'estate key is normalization-stable across the 3× republication casing');
+  // different deceased → different key (no cross-estate merge)
+  const k3 = buildDedupeKey({ canton: 'BE', eventType: 'erbenruf', deceasedName: 'Helene Murri', deceasedDob: '1940-01-01', deceasedLastDomicile: 'Langnau' });
+  eq(k1 === k3, false, 'distinct deceased do not collapse');
+  // repudiation scope
+  eq(repudiationScope('ausschlagung', true), 'all_heirs_liquidation', 'KK refusedLegacy → all_heirs_liquidation');
+  eq(repudiationScope('ausschlagung', false), 'unknown', 'ausschlagung w/o flag → unknown');
+  eq(repudiationScope('erbenruf', false), 'not_applicable', 'erbenruf → not_applicable');
 }
 
 console.log(`\n${fail === 0 ? '✓ ALL PASS' : '✗ FAILURES'} — ${pass} passed, ${fail} failed`);

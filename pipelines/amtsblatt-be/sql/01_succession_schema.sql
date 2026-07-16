@@ -32,7 +32,6 @@ CREATE SCHEMA IF NOT EXISTS bronze_ch;
 -- by a rewrite. event_type here is a PROVISIONAL label; the TS parser confirms
 -- ausschlagung vs liquidation from the content-level <addition> flag.
 -- -----------------------------------------------------------------------------
-DROP VIEW IF EXISTS bronze_ch.succession_notice_candidates;
 CREATE MATERIALIZED VIEW IF NOT EXISTS bronze_ch.succession_notice_candidates AS
 WITH base AS (
   SELECT
@@ -131,6 +130,7 @@ CREATE TABLE IF NOT EXISTS bronze_ch.succession_events (
   id                        UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   canton                    TEXT NOT NULL DEFAULT 'BE',
   event_type                TEXT NOT NULL,          -- erbenruf|ausschlagung|liquidation|dereliktion|escheat|testament|inventar|other
+  repudiation_scope         TEXT NOT NULL DEFAULT 'not_applicable', -- all_heirs_liquidation | partial | unknown | not_applicable
   deceased_name             TEXT,                   -- "prename surname"
   deceased_prename          TEXT,
   deceased_surname          TEXT,
@@ -162,6 +162,8 @@ CREATE INDEX IF NOT EXISTS idx_succ_evt_canton_type ON bronze_ch.succession_even
 CREATE INDEX IF NOT EXISTS idx_succ_evt_surname     ON bronze_ch.succession_events (lower(deceased_surname));
 CREATE INDEX IF NOT EXISTS idx_succ_evt_latest      ON bronze_ch.succession_events (latest_publication_date DESC);
 CREATE INDEX IF NOT EXISTS idx_succ_evt_deadline    ON bronze_ch.succession_events (deadline_date);
+-- idempotent for pre-existing installs (CREATE TABLE IF NOT EXISTS won't add columns)
+ALTER TABLE bronze_ch.succession_events ADD COLUMN IF NOT EXISTS repudiation_scope TEXT NOT NULL DEFAULT 'not_applicable';
 
 CREATE OR REPLACE FUNCTION bronze_ch._succession_touch()
 RETURNS TRIGGER AS $$ BEGIN NEW.updated_at = now(); RETURN NEW; END; $$ LANGUAGE plpgsql;

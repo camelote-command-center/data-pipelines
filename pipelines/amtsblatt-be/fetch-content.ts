@@ -29,6 +29,7 @@ const CANTON = (process.env.CANTON ?? 'BE').toUpperCase();
 const SINCE = process.env.SINCE || null;
 const MAX = parseInt(process.env.MAX ?? '0', 10) || 0;
 const REFETCH = process.env.REFETCH === '1';
+const CONCURRENCY = parseInt(process.env.CONCURRENCY ?? '4', 10) || 4; // polite bounded pool
 
 interface Candidate {
   id: string; tenant: string; canton: string;
@@ -137,33 +138,46 @@ async function main() {
   const todo = candidates.filter((c) => !fetched.has(c.id));
   console.log(`  candidates=${candidates.length}  already-fetched=${fetched.size}  to-fetch=${todo.length}`);
 
+  const work = MAX ? todo.slice(0, MAX) : todo;
   const batch: Record<string, unknown>[] = [];
-  let done = 0, ok = 0, noPerson = 0, errors = 0;
+  let idx = 0, done = 0, ok = 0, noPerson = 0, errors = 0, flushing = false;
   const t0 = Date.now();
 
-  for (const c of todo) {
-    if (MAX && done >= MAX) { console.log(`  reached MAX=${MAX}, stopping`); break; }
-    try {
-      const xml = await fetchXml(c.id);
-      const n = parseNoticeXml({ publicationId: c.id, tenant: c.tenant, canton: c.canton, xml });
-      const row = toRow(c, n, xml);
-      if (row.parse_status === 'ok') ok++; else noPerson++;
-      batch.push(row);
-    } catch (err) {
-      errors++;
-      console.error(`  ✗ ${c.id} (${c.sub_rubric}): ${(err as Error).message}`);
-    }
-    done++;
-    if (batch.length >= 100) {
-      await upsert(SCHEMA, RAW, batch.splice(0), 'publication_id', 100);
-    }
-    if (done % 250 === 0) {
-      const rate = (done / ((Date.now() - t0) / 1000)).toFixed(1);
-      console.log(`  … ${done}/${todo.length} (ok=${ok} noPerson=${noPerson} err=${errors}) ${rate}/s`);
-    }
-    await sleep(POLITENESS_MS);
+  async function flush(force = false) {
+    if (flushing || (!force && batch.length < 100)) return;
+    flushing = true;
+    const chunk = batch.splice(0, batch.length);
+    if (chunk.length) await upsert(SCHEMA, RAW, chunk, 'publication_id', 100);
+    flushing = false;
   }
-  if (batch.length) await upsert(SCHEMA, RAW, batch.splice(0), 'publication_id', 100);
+
+  async function worker() {
+    while (true) {
+      const i = idx++;
+      if (i >= work.length) return;
+      const c = work[i];
+      try {
+        const xml = await fetchXml(c.id);
+        const n = parseNoticeXml({ publicationId: c.id, tenant: c.tenant, canton: c.canton, xml });
+        const row = toRow(c, n, xml);
+        if (row.parse_status === 'ok') ok++; else noPerson++;
+        batch.push(row);
+      } catch (err) {
+        errors++;
+        console.error(`  ✗ ${c.id} (${c.sub_rubric}): ${(err as Error).message}`);
+      }
+      done++;
+      if (batch.length >= 100) await flush();
+      if (done % 250 === 0) {
+        const rate = (done / ((Date.now() - t0) / 1000)).toFixed(1);
+        console.log(`  … ${done}/${work.length} (ok=${ok} noPerson=${noPerson} err=${errors}) ${rate}/s`);
+      }
+      await sleep(POLITENESS_MS); // per-worker politeness → ~CONCURRENCY/POLITENESS req/s
+    }
+  }
+
+  await Promise.all(Array.from({ length: CONCURRENCY }, () => worker()));
+  await flush(true);
 
   const elapsed = ((Date.now() - t0) / 1000).toFixed(0);
   console.log('\n' + '='.repeat(64));

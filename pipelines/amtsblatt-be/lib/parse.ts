@@ -213,13 +213,33 @@ export function norm(v: string | null): string {
     .trim();
 }
 
-/** Dedupe key per brief §5: (canton, event_type, deceased_name, deceased_dob, authority). */
-export function buildDedupeKey(n: Pick<Notice, 'canton' | 'eventType' | 'deceasedName' | 'deceasedDob' | 'authority'>): string {
+/**
+ * Estate-identity dedupe key.
+ *
+ * Keys on the DECEASED, not the notice, so an estate's many publications collapse
+ * to one event: identity = name + dob + last_domicile. These three are ~100%
+ * present on every KK subrubric (verified), so the KK01→06 lifecycle collapses
+ * cleanly. `event_type` is included so a person's *distinct* legal proceedings
+ * (e.g. an Erbenaufruf vs a later liquidation) stay distinct — it never splits the
+ * within-category collapse because a category is constant across an estate's notices.
+ *
+ * heimatort is deliberately NOT a key component: it is present on only ~85% of
+ * notices and inconsistently across an estate's lifecycle, so including it would
+ * fragment estates. It is retained as a stored attribute.
+ */
+export function buildDedupeKey(n: Pick<Notice, 'canton' | 'eventType' | 'deceasedName' | 'deceasedDob' | 'deceasedLastDomicile'>): string {
   return [
     n.canton.toUpperCase(),
     n.eventType,
     norm(n.deceasedName),
     n.deceasedDob ?? '',
-    norm(n.authority),
+    norm(n.deceasedLastDomicile),
   ].join('|');
+}
+
+/** Repudiation scope for the actionable list (brief §2). */
+export function repudiationScope(eventType: EventType, refusedLegacy: boolean): 'all_heirs_liquidation' | 'not_applicable' | 'unknown' {
+  if (eventType === 'ausschlagung') return refusedLegacy ? 'all_heirs_liquidation' : 'unknown';
+  if (eventType === 'liquidation') return 'unknown';
+  return 'not_applicable';
 }
