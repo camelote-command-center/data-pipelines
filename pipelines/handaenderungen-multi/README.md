@@ -31,8 +31,35 @@ adapter.discover ─▶ parse (regex → Sonnet fallback) ─▶ ownerless flag 
   Natural key **UNIQUE(source_id, canton)**; `source_id` is a stable hash of
   `(canton, source_organ, parcel_number, buyer_names, publication_date)` ⇒ idempotent UPSERT.
 - `src/reconcile.ts` — best-effort `(canton, commune≈grundbuchkreis, parcel_number) → egrid`
-  via lamap_db `ref.plots`. **Join downstream on egrid, never no_commune_no_parcelle** (GE-only, `c655f036`).
-- `src/load.ts` — bronze UPSERT (re-LLM) + client-side streamed UPSERT to lamap_db (**never dblink**).
+  via lamap_db `ref.plots` (direct pg — `ref.*` isn't REST-exposed). Resolved egrid → `raw_data.egrid`
+  → the generated `ref.transactions_national.egrid` column. **Join downstream on egrid, never
+  no_commune_no_parcelle** (GE-only, `c655f036`).
+- `src/load.ts` + `src/lamap-pg.ts` — bronze UPSERT to re-LLM (supabase-js; `bronze_ch` REST-exposed) +
+  **client-side streamed UPSERT to lamap_db over a direct pg connection** (`ref.*` is NOT PostgREST-exposed,
+  so REST can't write it — this is the FR/VD "streamed UPSERT, never dblink" path; conn string in
+  `LAMAP_DB_URI`). Writes BOTH `ref.transactions_national` (canonical, raw_data + generated
+  `is_ownerless_event`/`egrid`) and `public.transactions_national_data` (serving twin `ask_lamap` reads,
+  lean projection: `source_file→source_system`, `reason→type_transaction`). UPSERT COALESCEs so NULL
+  never overwrites; keyed `(source_id, canton)`.
+
+### Load-path DDL (applied to lamap_db, `sql/`)
+The load path was **verified live against lamap_db** (`fckdwddgtdbvhzloejni`), not just dry-run:
+- `2026-07-16_transactions_national_load_key.sql` — adds `UNIQUE(source_id, canton)` to `ref.transactions_national`
+  and `public.transactions_national_data` (0 existing violations, 0 NULL source_id — the ON CONFLICT key did
+  not previously exist, so the first live write would have thrown); adds STORED generated columns
+  `is_ownerless_event boolean` + `egrid text` over `raw_data` (queryable). `NOTIFY pgrst`.
+- `2026-07-16b_transactions_national_id_default.sql` — both `id` columns had no default/identity
+  (`ref.id` nullable, `ref` has no PK — its real key is now `(source_id,canton)`; `public._data.id` NOT NULL
+  PK). Adds a shared `public.transactions_national_id_seq` default so the streamed UPSERT inserts without
+  managing ids. Additive. `NOTIFY pgrst`.
+
+**Grain (stated):** `source_id` is one-per-transaction-record — a stable hash of
+`(canton, source_organ, parcel_number, buyer_names, publication_date)`. Verified: existing FR/VD/VS rows are
+1 source_id per row; the composite key is `(source_id, canton)` because source_id strings collide across cantons.
+
+**Live verification** (`tests/load.live.test.ts`, run via `verify_load.sh`): insert 4 SZ fixture rows (incl. 1
+`is_ownerless_event=true`) → `WHERE is_ownerless_event=true`=1 and `egrid` queryable → re-run stays 4/4/4
+(idempotent) → purge to 0/0/0. Writes to a net-new canton and cleans up (isolated per-canton deletes, RESTRICT).
 - `src/adapters/{schwyz,lucerne}.ts` — per-source `discover()`. Fixture path works today;
   the **live fetch path is a stub that throws** until a compliant source is wired (see Access).
 
