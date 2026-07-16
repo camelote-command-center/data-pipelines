@@ -72,7 +72,9 @@ async function loadFetchedIds(): Promise<Set<string>> {
   return ids;
 }
 
-async function fetchXml(id: string): Promise<string> {
+interface FetchResult { status: number; xml?: string }
+
+async function fetchXml(id: string): Promise<FetchResult> {
   const url = sourceUrl(id);
   for (let attempt = 0; attempt < 4; attempt++) {
     try {
@@ -81,14 +83,28 @@ async function fetchXml(id: string): Promise<string> {
         await sleep((attempt + 1) * 4000);
         continue;
       }
+      // 401/403 = content access-restricted upstream (past public-retention window).
+      // Not retryable; the caller records a metadata-only stub so we don't re-hammer it.
+      if (res.status === 401 || res.status === 403 || res.status === 404) return { status: res.status };
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return await res.text();
+      return { status: 200, xml: await res.text() };
     } catch (err) {
       if (attempt === 3) throw err;
       await sleep((attempt + 1) * 4000);
     }
   }
   throw new Error('unreachable');
+}
+
+/** Metadata-only stub for a notice whose content is access-restricted (401/403/404). */
+function stubRow(c: Candidate, status: number) {
+  return {
+    publication_id: c.id, tenant: c.tenant, canton: c.canton,
+    rubric: c.rubric, sub_rubric: c.sub_rubric, event_type: c.event_type,
+    publication_date: c.publication_date, language: c.language, title: null,
+    source_url: sourceUrl(c.id), addition: null, content_json: null, raw_xml: null,
+    parse_status: `content_denied_${status}`,
+  };
 }
 
 function toRow(c: Candidate, n: Notice, xml: string) {
@@ -140,7 +156,7 @@ async function main() {
 
   const work = MAX ? todo.slice(0, MAX) : todo;
   const batch: Record<string, unknown>[] = [];
-  let idx = 0, done = 0, ok = 0, noPerson = 0, errors = 0, flushing = false;
+  let idx = 0, done = 0, ok = 0, noPerson = 0, errors = 0, denied = 0, flushing = false;
   const t0 = Date.now();
 
   async function flush(force = false) {
@@ -157,11 +173,16 @@ async function main() {
       if (i >= work.length) return;
       const c = work[i];
       try {
-        const xml = await fetchXml(c.id);
-        const n = parseNoticeXml({ publicationId: c.id, tenant: c.tenant, canton: c.canton, xml });
-        const row = toRow(c, n, xml);
-        if (row.parse_status === 'ok') ok++; else noPerson++;
-        batch.push(row);
+        const { status, xml } = await fetchXml(c.id);
+        if (!xml) {
+          denied++;
+          batch.push(stubRow(c, status)); // record the attempt; skipped next run + excluded from events
+        } else {
+          const n = parseNoticeXml({ publicationId: c.id, tenant: c.tenant, canton: c.canton, xml });
+          const row = toRow(c, n, xml);
+          if (row.parse_status === 'ok') ok++; else noPerson++;
+          batch.push(row);
+        }
       } catch (err) {
         errors++;
         console.error(`  ✗ ${c.id} (${c.sub_rubric}): ${(err as Error).message}`);
@@ -170,7 +191,7 @@ async function main() {
       if (batch.length >= 100) await flush();
       if (done % 250 === 0) {
         const rate = (done / ((Date.now() - t0) / 1000)).toFixed(1);
-        console.log(`  … ${done}/${work.length} (ok=${ok} noPerson=${noPerson} err=${errors}) ${rate}/s`);
+        console.log(`  … ${done}/${work.length} (ok=${ok} denied=${denied} noPerson=${noPerson} err=${errors}) ${rate}/s`);
       }
       await sleep(POLITENESS_MS); // per-worker politeness → ~CONCURRENCY/POLITENESS req/s
     }
@@ -181,7 +202,7 @@ async function main() {
 
   const elapsed = ((Date.now() - t0) / 1000).toFixed(0);
   console.log('\n' + '='.repeat(64));
-  console.log(`  FETCH DONE — processed=${done} ok=${ok} noPerson=${noPerson} err=${errors} in ${elapsed}s`);
+  console.log(`  FETCH DONE — processed=${done} ok=${ok} denied=${denied} noPerson=${noPerson} err=${errors} in ${elapsed}s`);
   console.log('='.repeat(64));
 }
 

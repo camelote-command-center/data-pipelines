@@ -30,7 +30,7 @@ async function loadRaw(): Promise<RawRow[]> {
   const out: RawRow[] = [];
   for (let from = 0; ; from += PAGE) {
     const { data, error } = await supabase.schema(SCHEMA).from(RAW)
-      .select('*').eq('canton', CANTON)
+      .select('*').eq('canton', CANTON).eq('parse_status', 'ok') // exclude content-denied / no-person stubs
       .order('publication_date', { ascending: true }).range(from, from + PAGE - 1);
     if (error) { console.error(`  raw load error: ${error.message}`); process.exit(1); }
     if (!data || data.length === 0) break;

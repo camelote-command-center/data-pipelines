@@ -165,6 +165,20 @@ CREATE INDEX IF NOT EXISTS idx_succ_evt_deadline    ON bronze_ch.succession_even
 -- idempotent for pre-existing installs (CREATE TABLE IF NOT EXISTS won't add columns)
 ALTER TABLE bronze_ch.succession_events ADD COLUMN IF NOT EXISTS repudiation_scope TEXT NOT NULL DEFAULT 'not_applicable';
 
+-- Actionable feed (brief §5): recent Erbenrufe + all-heirs-repudiated → liquidation,
+-- ordered by recency. linked_egrid is carried through NULL (parcel linking is a
+-- separate manual/LBI step).
+CREATE OR REPLACE VIEW bronze_ch.succession_actionable AS
+SELECT
+  deceased_name, deceased_dob, deceased_last_domicile, deceased_heimatort,
+  authority, event_type AS category, repudiation_scope,
+  deceased_dod, deadline_date, first_publication_date, latest_publication_date,
+  notice_count, sub_rubrics, linked_egrid, primary_source_url
+FROM bronze_ch.succession_events
+WHERE (event_type = 'erbenruf')
+   OR (event_type = 'ausschlagung' AND repudiation_scope = 'all_heirs_liquidation')
+ORDER BY latest_publication_date DESC NULLS LAST;
+
 CREATE OR REPLACE FUNCTION bronze_ch._succession_touch()
 RETURNS TRIGGER AS $$ BEGIN NEW.updated_at = now(); RETURN NEW; END; $$ LANGUAGE plpgsql;
 
