@@ -237,9 +237,32 @@ export function buildDedupeKey(n: Pick<Notice, 'canton' | 'eventType' | 'decease
   ].join('|');
 }
 
-/** Repudiation scope for the actionable list (brief §2). */
-export function repudiationScope(eventType: EventType, refusedLegacy: boolean): 'all_heirs_liquidation' | 'not_applicable' | 'unknown' {
-  if (eventType === 'ausschlagung') return refusedLegacy ? 'all_heirs_liquidation' : 'unknown';
+export type RepudiationScope = 'konkursamtliche_liquidation' | 'not_applicable' | 'unknown';
+
+/**
+ * What the SOURCE establishes about an estate's repudiation — nothing more.
+ *
+ * `konkursamtliche_liquidation` states two facts the notice actually carries:
+ * the estate was repudiated (title/body: "ausgeschlagene Erbschaft" / "succession
+ * répudiée", 100% of KK notices) and it is being liquidated by a Konkursamt
+ * (rubric KK, registrationOffice = Konkursamt / Office des faillites).
+ *
+ * ⚠️ It does NOT assert that ALL heirs repudiated. Art. 573 ZGB makes all-nearest-
+ * heirs repudiation the legal *precondition* for konkursamtliche Liquidation, so
+ * that is a reasonable entailment — but it is an INFERENCE, not a source fact:
+ * measured over the corpus, 0/15,928 KK notices cite Art. 573 and 0 contain any
+ * "sämtliche/alle Erben/tous les héritiers" statement. Do not present this value
+ * as a verified all-heirs classification.
+ *
+ * Note this flag is ~constant inside the KK set (refusedLegacy on 15,924/15,928),
+ * so it does no discriminating work there; its filtering value is between
+ * categories (it excludes testament/inventar/escheat/unknown), not within them.
+ * A merely *partial* ausschlagung does not trigger official liquidation and so is
+ * structurally absent from this corpus — 'partial' is unobservable here, which is
+ * why no event ever carries it.
+ */
+export function repudiationScope(eventType: EventType, refusedLegacy: boolean): RepudiationScope {
+  if (eventType === 'ausschlagung') return refusedLegacy ? 'konkursamtliche_liquidation' : 'unknown';
   if (eventType === 'liquidation') return 'unknown';
   return 'not_applicable';
 }

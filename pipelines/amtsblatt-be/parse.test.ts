@@ -114,7 +114,7 @@ function parse(file: string, tenant: string, canton: string) {
   const k3 = buildDedupeKey({ canton: 'BE', eventType: 'erbenruf', deceasedName: 'Helene Murri', deceasedDob: '1940-01-01', deceasedLastDomicile: 'Langnau' });
   eq(k1 === k3, false, 'distinct deceased do not collapse');
   // repudiation scope
-  eq(repudiationScope('ausschlagung', true), 'all_heirs_liquidation', 'KK refusedLegacy → all_heirs_liquidation');
+  eq(repudiationScope('ausschlagung', true), 'konkursamtliche_liquidation', 'KK refusedLegacy → konkursamtliche_liquidation (source-stated; NOT an all-heirs claim)');
   eq(repudiationScope('ausschlagung', false), 'unknown', 'ausschlagung w/o flag → unknown');
   eq(repudiationScope('erbenruf', false), 'not_applicable', 'erbenruf → not_applicable');
 }

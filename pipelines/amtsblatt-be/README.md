@@ -16,6 +16,23 @@ event table used as an **early-warning / alerting signal**.
 - **This is an event/alerting stream, not a "claim a free plot" pipeline.** It
   surfaces estates that *may precede* a plot changing hands under distress. It does
   **not** list occupiable parcels.
+
+### 🔚 Arc close — the original goal is resolved: BE is NOT an acquisition play
+
+This work began as a hunt for **biens sans maître** to acquire. That goal is **closed as
+not viable in BE**, on evidence:
+
+| blocker | evidence |
+|---|---|
+| Escheat effectively doesn't happen | `TE-BE90` = **1 notice** in the entire digital archive (since 2020) |
+| Events can't be linked to parcels | re-LLM has **472,671 BE plots** but **0 BE owners** — nothing to match an estate against |
+| The owner registry isn't sweepable | GRUDIS public is AGOV/BE-Login gated + serial-query-protected — single manual lookups only |
+| The legal route is narrowing | March 2026 reform gives communes a **pre-emption right** over derelict plots |
+
+**What actually exists** is a **distressed-estate alerting feed** keyed by *deceased name
++ last domicile*, triageable **by commune**. Its value is an **LBI outreach signal**, not
+ownerless-land acquisition. The **event→parcel link remains the real gate and stays
+deferred/manual** — `linked_egrid` is NULL on all 6,867 and is never fabricated.
 - **Event → parcel linking is a separate, manual/LBI step.** Notices name the
   deceased and the authority; they almost never name the immeuble. `linked_egrid`
   is **always NULL** here and is only ever set by a downstream positive match
@@ -56,13 +73,28 @@ The repudiation→liquidation signal — the "all-heirs-repudiated estates" — 
 **federal SHAB filtered to canton BE**, not the cantonal Amtsblatt. It is the
 dominant volume (~16.5k publications vs ~370 cantonal).
 
-Each `ausschlagung` event carries `repudiation_scope`. A SHAB **Konkurs** notice for
-an *ausgeschlagene Erbschaft* (`addition=refusedLegacy`) is by construction an
-**all-heirs-repudiated → konkursamtliche Liquidation** case (Art. 573 ZGB): a merely
-*partial* ausschlagung does not trigger official liquidation and so never appears in
-this rubric. Values: `all_heirs_liquidation` (every KK notice here), `not_applicable`
-(non-ausschlagung categories), `unknown` (a KK notice missing the flag — none
-observed). Only `all_heirs_liquidation` feeds the actionable list.
+### `repudiation_scope` — what the source states, and what it does not
+
+Values: `konkursamtliche_liquidation` (6,745) · `unknown` (4) · `not_applicable` (118).
+
+`konkursamtliche_liquidation` records **two facts the notice actually carries**: the
+estate was **repudiated** ("ausgeschlagene Erbschaft" / "succession répudiée" — 100% of
+KK notices) and it is in **official liquidation** (rubric KK, authority = Konkursamt /
+Office des faillites).
+
+⚠️ **It is NOT a verified "all heirs repudiated" classification.** Art. 573 ZGB makes
+all-nearest-heirs repudiation the legal *precondition* for konkursamtliche Liquidation,
+so that is a reasonable entailment — but it is an **inference, not a source fact**.
+Measured over the corpus: **0 of 15,928** KK notices cite Art. 573, and **0** contain any
+"sämtliche / alle Erben / tous les héritiers" statement. Do not present the feed as a
+confirmed all-heirs list.
+
+⚠️ **The flag does no discriminating work inside the KK set** (`refusedLegacy` on
+15,924/15,928 ≈ 99.97%). Its filtering value is **between categories** — it excludes
+testament/inventar/escheat/unknown — not within them. `partial` is **structurally
+unobservable** here: a partial ausschlagung never triggers official liquidation, so it is
+never published in the KK rubric. That is why no event carries it — not because we tested
+and found none.
 
 ## Parsing
 
