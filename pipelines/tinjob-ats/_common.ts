@@ -284,7 +284,7 @@ export async function upsertJobs(
   }));
   const { error } = await sb
     .from("tinjob_job_listings")
-    .upsert(payload, { onConflict: "source,external_id", ignoreDuplicates: false });
+    .upsert(payload, { onConflict: "id", ignoreDuplicates: false });
   if (error) {
     console.error(`  upsert error (${rows[0].source}): ${error.message}`);
     return 0;

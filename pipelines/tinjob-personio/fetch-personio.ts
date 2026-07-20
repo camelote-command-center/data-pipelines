@@ -311,7 +311,7 @@ async function upsertPositions(
 
   const { error } = await sb
     .from("tinjob_job_listings")
-    .upsert(rows, { onConflict: "source,external_id", ignoreDuplicates: false });
+    .upsert(rows, { onConflict: "id", ignoreDuplicates: false });
 
   if (error) {
     console.error(`  [${tenantSlug}] upsert error: ${error.message}`);
