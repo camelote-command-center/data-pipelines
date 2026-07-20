@@ -29,7 +29,10 @@ if (!SUPABASE_URL || !SUPABASE_KEY) {
   console.error("ERROR: SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY required");
   process.exit(1);
 }
-const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
+// Tinjob decommissioned 2026-07-20 → writes target RE-LLM bronze_ch.tinjob_*
+// (schema overridable via SUPABASE_DB_SCHEMA for rollback).
+const sb = createClient(SUPABASE_URL, SUPABASE_KEY)
+  .schema(process.env.SUPABASE_DB_SCHEMA || "bronze_ch");
 
 const MAX_TENANTS = process.env.MAX_TENANTS ? parseInt(process.env.MAX_TENANTS, 10) : 0;
 const CONCURRENCY = 20;
@@ -307,7 +310,7 @@ async function upsertPositions(
   });
 
   const { error } = await sb
-    .from("job_listings")
+    .from("tinjob_job_listings")
     .upsert(rows, { onConflict: "source,external_id", ignoreDuplicates: false });
 
   if (error) {
@@ -333,7 +336,7 @@ async function recordTenantResult(row: TenantRow, r: TenantResult) {
   if (newFails >= DEAD_AFTER_FAILS) status = "dead";
 
   await sb
-    .from("ats_tenants")
+    .from("tinjob_ats_tenants")
     .update({
       status,
       last_scraped_at: new Date().toISOString(),
@@ -361,7 +364,7 @@ async function main() {
   while (true) {
     const to = from + PAGE - 1;
     const { data, error } = await sb
-      .from("ats_tenants")
+      .from("tinjob_ats_tenants")
       .select("id, tenant, feed_url, consecutive_fails, company_name")
       .eq("ats_type", "personio")
       .in("status", ["active", "pending"])

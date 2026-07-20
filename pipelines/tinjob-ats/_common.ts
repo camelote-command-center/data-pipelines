@@ -18,7 +18,12 @@ export function getClient(): SupabaseClient {
     console.error("ERROR: SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY required");
     process.exit(1);
   }
-  return createClient(url, key);
+  // Tinjob was decommissioned as a standalone SaaS (2026-07-20); the ATS corpus
+  // now lives in RE-LLM's Swiss bronze layer. All writes target bronze_ch.tinjob_*.
+  // Schema overridable via SUPABASE_DB_SCHEMA for rollback; table names are
+  // tinjob_-prefixed below. Mirrors the ingest-jobs edge fn's .schema() pattern.
+  const schema = process.env.SUPABASE_DB_SCHEMA || "bronze_ch";
+  return createClient(url, key).schema(schema) as unknown as SupabaseClient;
 }
 
 // ---------------------------------------------------------------------------
@@ -150,7 +155,7 @@ export async function loadTenants(
   while (true) {
     const to = from + PAGE - 1;
     const { data, error } = await sb
-      .from("ats_tenants")
+      .from("tinjob_ats_tenants")
       .select("id, tenant, feed_url, consecutive_fails, company_name")
       .eq("ats_type", atsType)
       .in("status", ["active", "pending"])
@@ -194,7 +199,7 @@ export async function recordTenantResult(
   if (newFails >= DEAD_AFTER_FAILS) status = "dead";
 
   await sb
-    .from("ats_tenants")
+    .from("tinjob_ats_tenants")
     .update({
       status,
       last_scraped_at: new Date().toISOString(),
@@ -278,7 +283,7 @@ export async function upsertJobs(
     last_seen_at: now,
   }));
   const { error } = await sb
-    .from("job_listings")
+    .from("tinjob_job_listings")
     .upsert(payload, { onConflict: "source,external_id", ignoreDuplicates: false });
   if (error) {
     console.error(`  upsert error (${rows[0].source}): ${error.message}`);
