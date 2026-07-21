@@ -195,6 +195,20 @@ function extractCommuneSections(
   return sections;
 }
 
+// Fribourg FO publishes biweekly on Fridays and the gazette prose carries no
+// explicit transaction date, so we use the issue's publication date (ISO-week
+// Friday) as transaction_date — restoring the pre-2026-03 behaviour and matching
+// the bronze backfill (Postgres to_date(year||'-'||issue||'-5','IYYY-IW-ID')).
+function isoWeekFriday(year: number, week: number): string {
+  const jan4 = new Date(Date.UTC(year, 0, 4));           // Jan 4 is always in ISO week 1
+  const jan4Mon = (jan4.getUTCDay() + 6) % 7;            // 0=Mon..6=Sun
+  const week1Monday = new Date(jan4);
+  week1Monday.setUTCDate(jan4.getUTCDate() - jan4Mon);
+  const friday = new Date(week1Monday);
+  friday.setUTCDate(week1Monday.getUTCDate() + (week - 1) * 7 + 4);
+  return friday.toISOString().slice(0, 10);
+}
+
 // ---------------------------------------------------------------------------
 // Transaction record type
 // ---------------------------------------------------------------------------
@@ -307,7 +321,7 @@ async function processYear(year: number): Promise<TransactionRecord[]> {
             const record: TransactionRecord = {
               source_id: sourceId,
               source_url: nodeUrl,
-              transaction_date: null, // Not available in gazette text
+              transaction_date: isoWeekFriday(year, issue), // gazette issue publication date (ISO-week Friday)
               address: addressParts || '',
               reason: 'acquisition',
               property_type: tx.property_type,
