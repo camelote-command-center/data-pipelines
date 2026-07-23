@@ -1,0 +1,50 @@
+name: SITG BATI3D (3D buildings + per-EGID above-ground volumes)
+
+# BATI3D publication cadence is "irreguliere" (last publication 2025-06-12).
+# We check semi-annually rather than pretend a fixed schedule exists; the registry
+# declares 180d expected + 90d threshold purely so health is computable.
+on:
+  schedule:
+    - cron: '0 3 5 1,7 *'   # 5th of January and July, 03:00 UTC
+  workflow_dispatch:
+    inputs:
+      dataset:
+        description: 'Single dataset code to run (blank = all 6)'
+        required: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install GDAL + psql
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq gdal-bin postgresql-client
+          ogr2ogr --version
+
+      - name: Run BATI3D ingest
+        run: python3 pipelines/sitg_bati3d/import.py ${{ github.event.inputs.dataset }}
+        env:
+          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI }}
+          RE_LLM_SCHEMA: bronze_ch
+          # PATCH is done per-dataset-code inside import.py, NOT by workflow_file:
+          # a blanket workflow_file PATCH stamps every layer with one timestamp and
+          # would hide a single layer failing (the sitg_cadastral.yml trap).
+          CAMELOTE_DATA_SUPABASE_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CAMELOTE_DATA_SUPABASE_SERVICE_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+
+      - name: Report failure to pixxels_data
+        if: failure()
+        run: |
+          MSG="GitHub Actions run ${{ github.run_id }} failed at $(date -u +%Y-%m-%dT%H:%M:%SZ). See https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          ESC=$(printf '%s' "$MSG" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?workflow_file=eq.sitg_bati3d.yml" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+            -d "{\"last_error\":${ESC}}"
+        env:
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
