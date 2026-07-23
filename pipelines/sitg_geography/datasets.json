@@ -1,0 +1,35 @@
+{
+  "workflow": "sitg_geography.yml",
+  "datasets": [
+    {
+      "code": "ge_agr_surface",
+      "schema": "bronze",
+      "table": "AGR_SURFACE_AGRICOLE_RECENSEE"
+    },
+    {
+      "code": "ge_cad_commune",
+      "schema": "bronze",
+      "table": "CAD_COMMUNE"
+    },
+    {
+      "code": "ge_cad_piscine",
+      "schema": "bronze",
+      "table": "CAD_PISCINE"
+    },
+    {
+      "code": "ge_cad_veranda",
+      "schema": "bronze",
+      "table": "CAD_VERANDA"
+    },
+    {
+      "code": "ge_geo_adresse_agglo",
+      "schema": "bronze",
+      "table": "GEO_ADRESSE_AGGLO"
+    },
+    {
+      "code": "ge_gol_sites_pollues",
+      "schema": "bronze",
+      "table": "GOL_SITES_POLLUES"
+    }
+  ]
+}

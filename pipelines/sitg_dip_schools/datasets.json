@@ -1,0 +1,60 @@
+{
+  "workflow": "sitg_dip_schools.yml",
+  "datasets": [
+    {
+      "code": "ge_dip_bibliotheques_scolaires",
+      "schema": "bronze_ch",
+      "table": "ge_dip_bibliotheques_scolaires"
+    },
+    {
+      "code": "ge_dip_colleges",
+      "schema": "bronze_ch",
+      "table": "ge_dip_colleges"
+    },
+    {
+      "code": "ge_dip_cycles_orientation",
+      "schema": "bronze_ch",
+      "table": "ge_dip_cycles_orientation"
+    },
+    {
+      "code": "ge_dip_ecole_primaire_batiment",
+      "schema": "bronze_ch",
+      "table": "ge_dip_ecole_primaire_batiment"
+    },
+    {
+      "code": "ge_dip_ecoles_commerce",
+      "schema": "bronze_ch",
+      "table": "ge_dip_ecoles_commerce"
+    },
+    {
+      "code": "ge_dip_ecoles_culture_generale",
+      "schema": "bronze_ch",
+      "table": "ge_dip_ecoles_culture_generale"
+    },
+    {
+      "code": "ge_dip_ecoles_primaires",
+      "schema": "bronze_ch",
+      "table": "ge_dip_ecoles_primaires"
+    },
+    {
+      "code": "ge_dip_enseignement_specialise",
+      "schema": "bronze_ch",
+      "table": "ge_dip_enseignement_specialise"
+    },
+    {
+      "code": "ge_dip_formation_professionnelle",
+      "schema": "bronze_ch",
+      "table": "ge_dip_formation_professionnelle"
+    },
+    {
+      "code": "ge_dip_pole_medico_psychologique",
+      "schema": "bronze_ch",
+      "table": "ge_dip_pole_medico_psychologique"
+    },
+    {
+      "code": "ge_dip_universites",
+      "schema": "bronze_ch",
+      "table": "ge_dip_universites"
+    }
+  ]
+}

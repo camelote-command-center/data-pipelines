@@ -1,0 +1,62 @@
+[
+  {
+    "workflow": "fao_multi.yml",
+    "datasets": [
+      {
+        "code": "ge_fao_r72",
+        "schema": "bronze_ch",
+        "table": "ge_fao_publications"
+      },
+      {
+        "code": "ge_fao_r91",
+        "schema": "bronze_ch",
+        "table": "ge_fao_publications"
+      },
+      {
+        "code": "ge_fao_r97",
+        "schema": "bronze_ch",
+        "table": "ge_fao_publications"
+      }
+    ]
+  },
+  {
+    "workflow": "fao_multi_quarterly.yml",
+    "datasets": [
+      {
+        "code": "ge_fao_r135",
+        "schema": "bronze_ch",
+        "table": "ge_fao_publications"
+      },
+      {
+        "code": "ge_fao_r136",
+        "schema": "bronze_ch",
+        "table": "ge_fao_publications"
+      },
+      {
+        "code": "ge_fao_r213",
+        "schema": "bronze_ch",
+        "table": "ge_fao_publications"
+      },
+      {
+        "code": "ge_fao_r217",
+        "schema": "bronze_ch",
+        "table": "ge_fao_publications"
+      },
+      {
+        "code": "ge_fao_r322",
+        "schema": "bronze_ch",
+        "table": "ge_fao_publications"
+      },
+      {
+        "code": "ge_fao_r84",
+        "schema": "bronze_ch",
+        "table": "ge_fao_publications"
+      },
+      {
+        "code": "ge_fao_r90",
+        "schema": "bronze_ch",
+        "table": "ge_fao_publications"
+      }
+    ]
+  }
+]

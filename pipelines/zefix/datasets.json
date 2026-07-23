@@ -1,0 +1,15 @@
+{
+  "workflow": "zefix.yml",
+  "datasets": [
+    {
+      "code": "ch_zefix",
+      "schema": "bronze_ch",
+      "table": "zefix_companies"
+    },
+    {
+      "code": "ref_zefix_central",
+      "schema": "bronze_ch",
+      "table": "zefix_companies"
+    }
+  ]
+}

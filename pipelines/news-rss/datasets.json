@@ -1,0 +1,20 @@
+{
+  "workflow": "news_rss.yml",
+  "datasets": [
+    {
+      "code": "ch_news_gnews",
+      "schema": "knowledge_ch",
+      "table": "documents"
+    },
+    {
+      "code": "ch_news_newsdata",
+      "schema": "knowledge_ch",
+      "table": "documents"
+    },
+    {
+      "code": "ch_news_rss",
+      "schema": "knowledge_ch",
+      "table": "documents"
+    }
+  ]
+}

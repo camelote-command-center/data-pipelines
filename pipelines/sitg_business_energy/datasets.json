@@ -1,0 +1,20 @@
+{
+  "workflow": "sitg_business_energy.yml",
+  "datasets": [
+    {
+      "code": "ge_ocen_idc",
+      "schema": "bronze",
+      "table": "OCEN_ETAT_IDC_PUBLIC"
+    },
+    {
+      "code": "ge_reg_entreprise",
+      "schema": "bronze",
+      "table": "REG_ENTREPRISE_ETABLISSEMENT"
+    },
+    {
+      "code": "ge_scane_chaudiere",
+      "schema": "bronze",
+      "table": "SCANE_RELATION_BATI_CHAUDIERE"
+    }
+  ]
+}

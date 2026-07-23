@@ -1,0 +1,20 @@
+{
+  "workflow": "sitg_chantiers.yml",
+  "datasets": [
+    {
+      "code": "ge_infomob_chantier_point",
+      "schema": "bronze_ch",
+      "table": "ge_infomob_chantier_point"
+    },
+    {
+      "code": "ge_pcmob_chantier_consult",
+      "schema": "bronze_ch",
+      "table": "ge_pcmob_chantier_consult"
+    },
+    {
+      "code": "ge_sig_chantier_actuel",
+      "schema": "bronze_ch",
+      "table": "ge_sig_chantier_actuel"
+    }
+  ]
+}

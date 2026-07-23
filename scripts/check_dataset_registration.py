@@ -87,10 +87,14 @@ def load_manifests() -> dict[str, list[dict]]:
         except Exception as e:  # noqa: BLE001
             print(f"  WARNING: unreadable manifest {mf}: {e}")
             continue
-        wf = (data.get("workflow") or "").strip()
-        ds = data.get("datasets") or []
-        if wf and ds:
-            out.setdefault(wf, []).extend(ds)
+        # a file may declare ONE workflow (object) or SEVERAL (list) — several
+        # workflows can share a pipeline directory, e.g. fao_multi + fao_multi_quarterly.
+        blocks = data if isinstance(data, list) else [data]
+        for b in blocks:
+            wf = (b.get("workflow") or "").strip()
+            ds = b.get("datasets") or []
+            if wf and ds:
+                out.setdefault(wf, []).extend(ds)
     return out
 
 

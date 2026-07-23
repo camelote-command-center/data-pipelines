@@ -1,0 +1,25 @@
+{
+  "workflow": "sitg_urban_programs.yml",
+  "datasets": [
+    {
+      "code": "ge_ols_logement_control",
+      "schema": "bronze_ch",
+      "table": "ge_ols_logement_control"
+    },
+    {
+      "code": "ge_ols_logement_subv",
+      "schema": "bronze",
+      "table": "OLS_LOGEMENT_SUBV"
+    },
+    {
+      "code": "ge_sit_prog_dens",
+      "schema": "bronze",
+      "table": "SIT_PROG_DENS"
+    },
+    {
+      "code": "ge_sit_surelevation",
+      "schema": "bronze",
+      "table": "SIT_SURELEVATION_BATIMENT"
+    }
+  ]
+}

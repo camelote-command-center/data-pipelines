@@ -1,0 +1,50 @@
+{
+  "workflow": "lindas_multi.yml",
+  "datasets": [
+    {
+      "code": "ch_lindas_bfe_ogd115_gest_bilanz",
+      "schema": "bronze_ch",
+      "table": "lindas_observations"
+    },
+    {
+      "code": "ch_lindas_bfe_ogd18_anzahl_gesuche",
+      "schema": "bronze_ch",
+      "table": "lindas_observations"
+    },
+    {
+      "code": "ch_lindas_bfe_ogd18_auszahlungen",
+      "schema": "bronze_ch",
+      "table": "lindas_observations"
+    },
+    {
+      "code": "ch_lindas_bfe_ogd18_co2wirkung",
+      "schema": "bronze_ch",
+      "table": "lindas_observations"
+    },
+    {
+      "code": "ch_lindas_bfe_ogd18_energiewirkung",
+      "schema": "bronze_ch",
+      "table": "lindas_observations"
+    },
+    {
+      "code": "ch_lindas_curia",
+      "schema": "bronze_ch",
+      "table": "lindas_observations"
+    },
+    {
+      "code": "ch_lindas_opendataswiss-meta",
+      "schema": "bronze_ch",
+      "table": "lindas_observations"
+    },
+    {
+      "code": "ch_lindas_sfa_state_accounts_cat9",
+      "schema": "bronze_ch",
+      "table": "lindas_observations"
+    },
+    {
+      "code": "ch_lindas_termdat",
+      "schema": "bronze_ch",
+      "table": "lindas_observations"
+    }
+  ]
+}

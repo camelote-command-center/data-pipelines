@@ -1,0 +1,50 @@
+{
+  "workflow": "sitg_demographics.yml",
+  "datasets": [
+    {
+      "code": "ge_cad_parcelle_histo",
+      "schema": "bronze",
+      "table": "CAD_PARCELLE_MENSU_HISTO"
+    },
+    {
+      "code": "ge_ocs_emploi_commune",
+      "schema": "bronze",
+      "table": "OCS_EMPLOI_COMMUNE"
+    },
+    {
+      "code": "ge_ocs_emploi_secteur",
+      "schema": "bronze",
+      "table": "OCS_EMPLOI_VGE_SECTEUR"
+    },
+    {
+      "code": "ge_ocs_popbatlog_commune",
+      "schema": "bronze",
+      "table": "OCS_POPBATLOG_COMMUNE"
+    },
+    {
+      "code": "ge_ocs_popbatlog_secteur",
+      "schema": "bronze",
+      "table": "OCS_POPBATLOG_VGE_SECTEUR"
+    },
+    {
+      "code": "ge_ocs_population",
+      "schema": "bronze",
+      "table": "OCS_POPULATION_SSECTEUR"
+    },
+    {
+      "code": "ge_otc_2roues",
+      "schema": "bronze",
+      "table": "OTC_AMENAG_2ROUES"
+    },
+    {
+      "code": "ge_otc_macaron",
+      "schema": "bronze",
+      "table": "OTC_MACARON"
+    },
+    {
+      "code": "ge_otc_stationnement",
+      "schema": "bronze",
+      "table": "OTC_STATIONNEMENT_V_PUBLIQUE"
+    }
+  ]
+}

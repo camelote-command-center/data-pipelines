@@ -1,0 +1,30 @@
+{
+  "workflow": "tpg.yml",
+  "datasets": [
+    {
+      "code": "ge_tpg_arrets",
+      "schema": "bronze_ch",
+      "table": "ge_tpg_arrets"
+    },
+    {
+      "code": "ge_tpg_frequentation_mensuelle",
+      "schema": "bronze_ch",
+      "table": "ge_tpg_frequentation_mensuelle"
+    },
+    {
+      "code": "ge_tpg_lignes",
+      "schema": "bronze_ch",
+      "table": "ge_tpg_lignes"
+    },
+    {
+      "code": "tpg_arrets",
+      "schema": "bronze",
+      "table": "ge_tpg_arrets"
+    },
+    {
+      "code": "tpg_lignes",
+      "schema": "bronze",
+      "table": "ge_tpg_lignes"
+    }
+  ]
+}

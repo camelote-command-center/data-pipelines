@@ -1,0 +1,35 @@
+{
+  "workflow": "sitg_geo_layers.yml",
+  "datasets": [
+    {
+      "code": "ge_geo_girec",
+      "schema": "bronze_ch",
+      "table": "ge_sitg_girec_geo"
+    },
+    {
+      "code": "ge_geo_patrimoine_classe",
+      "schema": "bronze_ch",
+      "table": "ge_sitg_classement_geo"
+    },
+    {
+      "code": "ge_geo_zones",
+      "schema": "bronze_ch",
+      "table": "ge_sitg_zones_amenag_geo"
+    },
+    {
+      "code": "ge_ocen_solaire",
+      "schema": "bronze_ch",
+      "table": "ge_sitg_solaire_geo"
+    },
+    {
+      "code": "ge_rdppf_dsopb",
+      "schema": "bronze_ch",
+      "table": "ge_sitg_bruit_routier_geo"
+    },
+    {
+      "code": "ge_rdppf_zones_dev",
+      "schema": "bronze_ch",
+      "table": "ge_sitg_rdppf_zones_dev_geo"
+    }
+  ]
+}

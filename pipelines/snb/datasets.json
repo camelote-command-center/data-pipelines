@@ -1,0 +1,20 @@
+{
+  "workflow": "snb.yml",
+  "datasets": [
+    {
+      "code": "ofl_taux_reference",
+      "schema": "bronze_ch",
+      "table": "ofl_taux_reference"
+    },
+    {
+      "code": "snb_price_index",
+      "schema": "bronze_ch",
+      "table": "snb_price_index"
+    },
+    {
+      "code": "snb_taux_reference",
+      "schema": "bronze_ch",
+      "table": "snb_taux_reference"
+    }
+  ]
+}

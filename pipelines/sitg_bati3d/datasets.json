@@ -1,0 +1,35 @@
+{
+  "workflow": "sitg_bati3d.yml",
+  "datasets": [
+    {
+      "code": "ge_cad_bati3d_base",
+      "schema": "bronze_ch",
+      "table": "ge_cad_bati3d_base"
+    },
+    {
+      "code": "ge_cad_bati3d_couverts",
+      "schema": "bronze_ch",
+      "table": "ge_cad_bati3d_couverts"
+    },
+    {
+      "code": "ge_cad_bati3d_facade",
+      "schema": "bronze_ch",
+      "table": "ge_cad_bati3d_facade"
+    },
+    {
+      "code": "ge_cad_bati3d_sp_facade",
+      "schema": "bronze_ch",
+      "table": "ge_cad_bati3d_sp_facade"
+    },
+    {
+      "code": "ge_cad_bati3d_sp_toit",
+      "schema": "bronze_ch",
+      "table": "ge_cad_bati3d_sp_toit"
+    },
+    {
+      "code": "ge_cad_bati3d_toit",
+      "schema": "bronze_ch",
+      "table": "ge_cad_bati3d_toit"
+    }
+  ]
+}

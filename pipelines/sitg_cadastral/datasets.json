@@ -1,0 +1,45 @@
+{
+  "workflow": "sitg_cadastral.yml",
+  "datasets": [
+    {
+      "code": "ge_cad_adresse",
+      "schema": "bronze",
+      "table": "CAD_ADRESSE"
+    },
+    {
+      "code": "ge_cad_bati_projet",
+      "schema": "bronze_ch",
+      "table": "ge_cad_bati_projet"
+    },
+    {
+      "code": "ge_cad_batiment_horsol",
+      "schema": "bronze_ch",
+      "table": "ge_cad_batiments"
+    },
+    {
+      "code": "ge_cad_batiment_sousol",
+      "schema": "bronze_ch",
+      "table": "ge_cad_batiments_souterrains"
+    },
+    {
+      "code": "ge_cad_ddp",
+      "schema": "bronze",
+      "table": "CAD_DDP"
+    },
+    {
+      "code": "ge_cad_parcelle_mensu",
+      "schema": "bronze",
+      "table": "CAD_PARCELLE_MENSU"
+    },
+    {
+      "code": "ge_cad_ppe",
+      "schema": "bronze",
+      "table": "CAD_PPE"
+    },
+    {
+      "code": "ge_rdppf_synth",
+      "schema": "bronze",
+      "table": "RDPPF_SYNTH_DYN_EXTRACT"
+    }
+  ]
+}

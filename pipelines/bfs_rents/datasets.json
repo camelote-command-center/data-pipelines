@@ -1,0 +1,15 @@
+{
+  "workflow": "bfs_rents.yml",
+  "datasets": [
+    {
+      "code": "bfs_rents_by_owner_type",
+      "schema": "bronze_ch",
+      "table": "bfs_rents_by_owner_type"
+    },
+    {
+      "code": "ch_bfs_average_rents",
+      "schema": "bronze",
+      "table": "bfs_average_rents"
+    }
+  ]
+}

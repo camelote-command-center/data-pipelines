@@ -1,0 +1,15 @@
+{
+  "workflow": "sitg_authorizations.yml",
+  "datasets": [
+    {
+      "code": "ge_sit_autor_dossier",
+      "schema": "bronze",
+      "table": "SIT_AUTOR_DOSSIER"
+    },
+    {
+      "code": "ge_sit_autor_objet",
+      "schema": "bronze",
+      "table": "SIT_AUTOR_OBJET"
+    }
+  ]
+}
