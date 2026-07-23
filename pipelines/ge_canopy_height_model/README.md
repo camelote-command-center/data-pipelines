@@ -102,7 +102,13 @@ and echoed back to callers as `veg_threshold_m`.
 - **Download, don't `/vsicurl/`.** Measured 1.7× faster (10.2 s vs 17.3 s per
   pair) because we read 100% of both rasters — COG range-reads only pay off
   for windowed access.
-- **The R2 token has PUT but not DELETE.** `--force` overwrites in place.
+- **R2 objects are IMMUTABLE and the token has no DELETE.** `camelote-backups`
+  enforces an object-lock policy, so re-uploading an existing key returns
+  HTTP 409 `ObjectLockedByBucketPolicy`. `--force` alone therefore fails on
+  every tile that already shipped — recompute with a **new version prefix**:
+  `python chm_pipeline.py --force --version v2`. This makes each version an
+  immutable snapshot, which is a reasonable property for a derived artefact:
+  `v1` stays byte-for-byte what the published statistics were computed from.
 - **5 parcels have ring self-intersections** and need `ST_MakeValid`
   (`prepare_inputs.py` does it): `CH376385826546`, `CH476387946555`,
   `CH557265856370`, `CH608963736534`, `CH676385596513`. Areas are preserved.

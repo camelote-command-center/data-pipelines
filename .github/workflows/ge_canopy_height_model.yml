@@ -18,7 +18,12 @@ name: GE Canopy Height Model (swisstopo DSM-DTM → per-parcel stats)
 # part is only the FDW push, which lives in the DB as a cron.
 #
 # IDEMPOTENT: a tile whose COG is already on R2 is skipped unless force=true.
-# NOTE the R2 token has PUT but not DELETE, so force overwrites in place.
+#
+# R2 IS WRITE-ONCE. camelote-backups enforces an object-lock policy, so an
+# existing key cannot be overwritten (HTTP 409 ObjectLockedByBucketPolicy)
+# and the token has no DELETE. force=true ALONE WILL FAIL on already-shipped
+# tiles — bump `version` as well (v2, v3, ...). Each version is therefore an
+# immutable snapshot of what the published stats were computed from.
 
 on:
   workflow_dispatch:
@@ -29,6 +34,11 @@ on:
         default: 'false'
         type: choice
         options: ['false', 'true']
+      version:
+        description: 'R2 prefix version. Bump when recomputing — the bucket is write-once, so force alone cannot overwrite v1.'
+        required: false
+        default: 'v1'
+        type: string
       skip_upload:
         description: 'Compute stats only, do not push COGs to R2'
         required: false
@@ -94,7 +104,7 @@ jobs:
       - name: Process shard
         run: |
           mkdir -p partials logs
-          ARGS="--shard ${{ matrix.shard }} --nshards 8"
+          ARGS="--shard ${{ matrix.shard }} --nshards 8 --version ${{ inputs.version || 'v1' }}"
           [ "${{ inputs.force }}" = "true" ] && ARGS="$ARGS --force"
           [ "${{ inputs.skip_upload }}" = "true" ] && ARGS="$ARGS --skip-upload"
           python pipelines/ge_canopy_height_model/chm_pipeline.py $ARGS

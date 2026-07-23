@@ -28,7 +28,19 @@ cumulative distribution is exact to the bin width; a per-tile p95 averaged
 across tiles would be wrong for any parcel spanning a tile boundary.
 
 Idempotent: a tile whose COG already exists on R2 is skipped unless --force.
-NOTE: the R2 token has PUT but NOT DELETE, so --force overwrites in place.
+
+R2 IMMUTABILITY — READ THIS BEFORE RE-RUNNING.
+The camelote-backups bucket enforces an object-lock policy: a key that
+already exists CANNOT be overwritten (PutObject returns HTTP 409
+ObjectLockedByBucketPolicy), and the token has no DELETE either. So
+--force alone will fail on every tile that already shipped. To recompute,
+bump the version prefix as well:
+
+    python chm_pipeline.py --force --version v2
+
+Versions are therefore immutable snapshots by construction, which is a
+feature for a derived artefact — v1 stays exactly as the stats were built
+from. Update the consumer docs when you bump.
 """
 import argparse, json, os, subprocess, sys, time
 import numpy as np
@@ -44,7 +56,12 @@ CLAMP_MAX_M = 50.0
 NBINS = 500                  # 0.1 m bins over 0..50 m
 BIN_M = 0.1
 NODATA_OUT = 65535
-R2_PREFIX = "r2-camelote-backups:camelote-backups/lamap-2025/chm/v1"
+R2_BASE = "r2-camelote-backups:camelote-backups/lamap-2025/chm"
+R2_VERSION = "v1"          # overridden by --version; bucket is write-once, see module docstring
+
+
+def r2_prefix():
+    return f"{R2_BASE}/{R2_VERSION}"
 
 
 def log(msg):
@@ -52,7 +69,7 @@ def log(msg):
 
 
 def r2_exists(key):
-    r = subprocess.run(["rclone", "lsf", f"{R2_PREFIX}/{key}.tif"],
+    r = subprocess.run(["rclone", "lsf", f"{r2_prefix()}/{key}.tif"],
                        capture_output=True, text=True)
     return r.returncode == 0 and r.stdout.strip() != ""
 
@@ -164,10 +181,15 @@ def process_tile(t, work, parcels_gpkg, buildings_gpkg, force, skip_upload):
         # --- (6) upload ---
         if not skip_upload:
             up = subprocess.run(
-                ["rclone", "copyto", chm_p, f"{R2_PREFIX}/{key}.tif"],
+                ["rclone", "copyto", chm_p, f"{r2_prefix()}/{key}.tif"],
                 capture_output=True, text=True)
             if up.returncode != 0:
-                raise RuntimeError(f"rclone upload failed: {up.stderr.strip()[:200]}")
+                err = up.stderr.strip()[:300]
+                if "ObjectLocked" in err or "409" in err:
+                    raise RuntimeError(
+                        f"R2 object is immutable and already exists at {r2_prefix()}/{key}.tif — "
+                        f"--force cannot overwrite it. Re-run with a new --version (e.g. v2). Raw: {err}")
+                raise RuntimeError(f"rclone upload failed: {err}")
 
         # --- (7) zonal statistics ---
         rasterize(parcels_gpkg, "parcels", "pid", bounds, pid_p, dtype="Int32")
@@ -233,9 +255,15 @@ def main():
     ap.add_argument("--work", default="work")
     ap.add_argument("--shard", type=int, default=0)
     ap.add_argument("--nshards", type=int, default=1)
+    ap.add_argument("--version", default="v1",
+                    help="R2 prefix version. The bucket is write-once, so recomputing "
+                         "existing tiles requires a NEW version, not --force alone.")
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--skip-upload", action="store_true")
     a = ap.parse_args()
+
+    global R2_VERSION
+    R2_VERSION = a.version
 
     tiles = json.load(open(a.tiles))
     mine = [t for i, t in enumerate(tiles) if i % a.nshards == a.shard]
