@@ -1,0 +1,145 @@
+name: GE Canopy Height Model (swisstopo DSM-DTM → per-parcel stats)
+
+# Builds a 0.5 m canopy height model for canton Geneve from swisstopo
+# open data and reduces it to per-parcel canopy statistics.
+#
+#   CHM = swissSURFACE3D Raster (DSM) - swissALTI3D (DTM)
+#
+# Both rasters are LN02 metres, EPSG:2056, so the datum cancels and the
+# difference is a true height above ground. No geoid correction.
+#
+# ARCHITECTURE: matrix-parallel, 8 shards over 357 tiles (~45 each).
+# Measured ~7.4 s/tile including download, masking, COG write, R2 upload
+# and zonal reduction, so a shard is ~6 min. The 350-minute budget is the
+# house pattern (GH Actions hard cap is 360), not a real expectation.
+#
+# NOT a daily job. swissALTI3D refreshes roughly yearly and swissSURFACE3D
+# on its own offset cycle, so this is manual/annual by design — the daily
+# part is only the FDW push, which lives in the DB as a cron.
+#
+# IDEMPOTENT: a tile whose COG is already on R2 is skipped unless force=true.
+#
+# R2 IS WRITE-ONCE. camelote-backups enforces an object-lock policy, so an
+# existing key cannot be overwritten (HTTP 409 ObjectLockedByBucketPolicy)
+# and the token has no DELETE. force=true ALONE WILL FAIL on already-shipped
+# tiles — bump `version` as well (v2, v3, ...). Each version is therefore an
+# immutable snapshot of what the published stats were computed from.
+
+on:
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Recompute tiles whose COG already exists on R2'
+        required: false
+        default: 'false'
+        type: choice
+        options: ['false', 'true']
+      version:
+        description: 'R2 prefix version. Bump when recomputing — the bucket is write-once, so force alone cannot overwrite v1.'
+        required: false
+        default: 'v1'
+        type: string
+      skip_upload:
+        description: 'Compute stats only, do not push COGs to R2'
+        required: false
+        default: 'false'
+        type: choice
+        options: ['false', 'true']
+
+jobs:
+  prepare:
+    name: prepare inputs (STAC + parcels + buildings)
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install GDAL
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq gdal-bin python3-gdal postgresql-client
+          pip install numpy
+      - name: Build tiles.json + parcels.gpkg + buildings.gpkg
+        run: python pipelines/ge_canopy_height_model/prepare_inputs.py
+        env:
+          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI }}
+          CHM_WORK: work
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chm-inputs
+          path: work/
+          retention-days: 2
+
+  tiles:
+    name: tiles (shard ${{ matrix.shard }}/8)
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 350          # GH Actions hard cap is 360
+    strategy:
+      fail-fast: false            # one shard failing must not cancel the rest
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install GDAL + rclone
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq gdal-bin python3-gdal
+          pip install numpy
+          curl -fsSL https://rclone.org/install.sh | sudo bash
+      - uses: actions/download-artifact@v4
+        with:
+          name: chm-inputs
+          path: work/
+      - name: Configure rclone for R2
+        run: |
+          mkdir -p ~/.config/rclone
+          cat > ~/.config/rclone/rclone.conf <<EOF
+          [r2-camelote-backups]
+          type = s3
+          provider = Cloudflare
+          endpoint = ${{ secrets.R2_ENDPOINT }}
+          access_key_id = ${{ secrets.R2_ACCESS_KEY_ID }}
+          secret_access_key = ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          EOF
+      - name: Process shard
+        run: |
+          mkdir -p partials logs
+          ARGS="--shard ${{ matrix.shard }} --nshards 8 --version ${{ inputs.version || 'v1' }}"
+          [ "${{ inputs.force }}" = "true" ] && ARGS="$ARGS --force"
+          [ "${{ inputs.skip_upload }}" = "true" ] && ARGS="$ARGS --skip-upload"
+          python pipelines/ge_canopy_height_model/chm_pipeline.py $ARGS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chm-partials-${{ matrix.shard }}
+          path: |
+            partials/
+            logs/
+          retention-days: 2
+
+  reduce:
+    name: merge partials + load gold_ch + FDW push
+    needs: tiles
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install GDAL
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq gdal-bin python3-gdal postgresql-client
+          pip install numpy
+      - uses: actions/download-artifact@v4
+        with:
+          name: chm-inputs
+          path: work/
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: chm-partials-*
+          merge-multiple: true
+      - name: Merge per-tile partials into one row per parcel
+        run: python pipelines/ge_canopy_height_model/merge_stats.py
+      - name: Load gold_ch.plot_canopy_stats and push to ref on lamap_db
+        run: python pipelines/ge_canopy_height_model/load_stats.py work/canopy_stats.tsv
+        env:
+          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI }}
