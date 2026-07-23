@@ -37,6 +37,7 @@ ALLOWLIST: dict[str, str] = {
     "blog-calendar-orchestrator.yml":     "utility: orchestrates blog runs",
     "lint-workflows.yml":            "this linter itself",
     "refresh_dataset_counts.yml":    "utility: WRITES datasets.record_count for every other parser; it has no dataset of its own, so a PATCH would be self-referential",
+    "ge_canopy_height_model.yml":    "manual/annual rebuild, not a scheduled parser: swissALTI3D refreshes ~yearly and swissSURFACE3D on its own offset cycle, so a freshness PATCH would assert a cadence that does not exist. The daily part is the in-DB FDW push (gold_ch.sync_plot_canopy_stats), not this workflow.",
 }
 
 # Patterns that indicate a PATCH is present (workflow-level)
