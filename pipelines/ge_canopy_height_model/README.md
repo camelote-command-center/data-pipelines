@@ -33,7 +33,17 @@ python prepare_inputs.py                        # tiles.json + parcels.gpkg + bu
 python chm_pipeline.py --shard 0 --nshards 8    # ×8, in parallel
 python merge_stats.py                           # partials/*.npz → work/canopy_stats.tsv
 python load_stats.py work/canopy_stats.tsv      # → gold_ch, then FDW push to ref
+python sample_chm.py --file points.tsv          # ground-truth check: E<TAB>N<TAB>expected_m
 ```
+
+⚠️ **The FDW push is for INCREMENTS, not the initial load.** `gold_ch.sync_plot_canopy_stats()`
+runs row-by-row across postgres_fdw: the first 73k-row push exceeded its 900 s
+`statement_timeout`. In steady state it is fine (~40 s) because the UPDATE is gated on
+`computed_at`, so nothing changes between annual rebuilds. For a **first** load, or after a
+full recompute, COPY `canopy_stats.tsv` straight into `ref.plot_canopy_stats` on lamap_db with
+`INSERT … ON CONFLICT DO UPDATE` — same UPSERT semantics, executed locally, **2.7 s**. Then set
+`ref.computed_at` equal to gold's, or the daily gate will never match and every run will try to
+update all 73k rows across the wire.
 
 The GitHub Actions workflow `ge_canopy_height_model.yml` wires exactly
 this: `prepare` → 8-way `tiles` matrix → `reduce`.
