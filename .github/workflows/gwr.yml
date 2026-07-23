@@ -26,7 +26,7 @@ jobs:
       - name: PATCH last_acquired_at on success
         if: success()
         run: |
-          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?workflow_file=eq.gwr.yml" \
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.ch_bfs_housing_building" \
             -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
             -H "Content-Type: application/json" -H "Prefer: return=minimal" \
             -d "{\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"last_error\":null}"
@@ -39,7 +39,7 @@ jobs:
         run: |
           MSG="GitHub Actions run ${{ github.run_id }} failed at $(date -u +%Y-%m-%dT%H:%M:%SZ). See https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           ESC=$(printf '%s' "$MSG" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
-          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?workflow_file=eq.gwr.yml" \
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.ch_bfs_housing_building" \
             -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
             -H "Content-Type: application/json" -H "Prefer: return=minimal" \
             -d "{\"last_error\":${ESC}}"
