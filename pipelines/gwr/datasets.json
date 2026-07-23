@@ -1,0 +1,7 @@
+{
+  "workflow": "gwr.yml",
+  "datasets": [
+    { "code": "ch_bfs_housing_building", "schema": "bronze_ch", "table": "bfs_rebl_buildings" },
+    { "code": "ch_bfs_rebl_housing",     "schema": "bronze_ch", "table": "bfs_rebl_housing" }
+  ]
+}

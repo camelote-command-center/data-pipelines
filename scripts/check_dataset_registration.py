@@ -14,7 +14,27 @@ from run logs or from the GitHub Actions inventory. That has bitten us twice:
      registration were never revisited: ge_cad_batiment_sousol and five
      ge_cad_bati3d_* layers were live parsers hidden behind a dead status flag.
 
-This guard catches BOTH modes.
+  3. a workflow that writes N target tables but has fewer than N registered datasets.
+     gwr.yml hit exactly this: it passed on its building row while the dwelling file
+     (bronze_ch.bfs_rebl_housing, 5.3M rows) had no datasets row at all. Checking per
+     WORKFLOW cannot see that; the correct unit is per TARGET TABLE.
+
+This guard catches ALL THREE modes.
+
+HOW TARGETS ARE ENUMERATED — and why. Parsing `TABLE = "..."` constants out of pipeline
+modules is brittle: a parser that builds table names dynamically, or renames a constant,
+would silently produce a FALSE PASS, which is precisely the failure we are fixing. So
+targets are DECLARED, not inferred: a pipeline ships `pipelines/<dir>/datasets.json`
+
+    {"workflow": "gwr.yml",
+     "datasets": [{"code": "...", "schema": "bronze_ch", "table": "..."}, ...]}
+
+and every declared code must have a `datasets` row. A declaration the guard can read
+beats an inference it can get wrong.
+
+Pipelines without a manifest fall back to the per-workflow check (at least one row) and
+are COUNTED AND REPORTED as undeclared, so the migration is visible without failing 59
+workflows at once.
 
 Run:
   python scripts/check_dataset_registration.py            # exit 1 if any miss
@@ -55,6 +75,23 @@ ALLOWLIST: dict[str, str] = {
 }
 
 SCHEDULE_RE = re.compile(r"^\s*-\s*cron:", re.MULTILINE)
+PIPELINES = ROOT / "pipelines"
+
+
+def load_manifests() -> dict[str, list[dict]]:
+    """workflow filename -> declared datasets, from pipelines/*/datasets.json."""
+    out: dict[str, list[dict]] = {}
+    for mf in sorted(PIPELINES.glob("*/datasets.json")):
+        try:
+            data = json.loads(mf.read_text())
+        except Exception as e:  # noqa: BLE001
+            print(f"  WARNING: unreadable manifest {mf}: {e}")
+            continue
+        wf = (data.get("workflow") or "").strip()
+        ds = data.get("datasets") or []
+        if wf and ds:
+            out.setdefault(wf, []).extend(ds)
+    return out
 
 
 def scheduled_workflows() -> list[str]:
@@ -71,7 +108,7 @@ def fetch_registry() -> list[dict] | None:
     if not (url and key):
         return None
     req = urllib.request.Request(
-        f"{url}/rest/v1/datasets?select=code,workflow_file,status,target_schema,target_table&workflow_file=not.is.null",
+        f"{url}/rest/v1/datasets?select=code,workflow_file,status,target_schema,target_table&limit=5000",
         headers={"apikey": key, "Authorization": f"Bearer {key}"})
     with urllib.request.urlopen(req, timeout=60) as r:
         return json.load(r)
@@ -85,48 +122,77 @@ def main() -> int:
         return 0
 
     by_wf: dict[str, list[dict]] = {}
+    by_code: dict[str, dict] = {}
     for r in rows:
-        by_wf.setdefault((r.get("workflow_file") or "").strip(), []).append(r)
+        wf = (r.get("workflow_file") or "").strip()
+        if wf:
+            by_wf.setdefault(wf, []).append(r)
+        by_code[(r.get("code") or "").strip()] = r
 
-    unregistered: list[str] = []
-    hidden: list[str] = []
+    manifests = load_manifests()
+    unregistered: list[str] = []       # mode 1
+    hidden: list[str] = []             # mode 2
+    missing_targets: list[str] = []    # mode 3 (per-target)
+    undeclared: list[str] = []         # no manifest -> legacy per-workflow check only
 
+    def is_hidden(e: dict) -> bool:
+        return (e.get("status") == "deprecated"
+                and not (e.get("target_schema") and e.get("target_table")))
+
+    checked = 0
     for wf in scheduled_workflows():
         if wf in ALLOWLIST:
             continue
+        checked += 1
+        declared = manifests.get(wf)
+
+        if declared:
+            # PER-TARGET: every declared target table must have its own datasets row.
+            for d in declared:
+                code = (d.get("code") or "").strip()
+                tgt = f"{d.get('schema','?')}.{d.get('table','?')}"
+                row = by_code.get(code)
+                if not row:
+                    missing_targets.append(f"{wf} -> {tgt}: no datasets row for code '{code}'")
+                elif is_hidden(row):
+                    missing_targets.append(f"{wf} -> {tgt}: '{code}' is deprecated with an empty target")
+            continue
+
+        undeclared.append(wf)
         entries = by_wf.get(wf, [])
         if not entries:
             unregistered.append(wf)
             continue
-        # mode 2: every row for a live workflow is deprecated AND has no target
-        live = [e for e in entries
-                if not (e.get("status") == "deprecated"
-                        and not (e.get("target_schema") and e.get("target_table")))]
-        if not live:
+        if not [e for e in entries if not is_hidden(e)]:
             codes = ", ".join(e.get("code", "?") for e in entries)
             hidden.append(f"{wf}  (rows exist but all deprecated with empty targets: {codes})")
 
-    print(f"scheduled workflows checked: {len(scheduled_workflows()) - len(ALLOWLIST)}")
+    print(f"scheduled workflows checked: {checked}  "
+          f"(manifest-declared: {checked - len(undeclared)}, legacy per-workflow: {len(undeclared)})")
     print(f"UNREGISTERED (no datasets row): {len(unregistered)}")
     for w in unregistered:
         print(f"  - {w}")
     print(f"HIDDEN (deprecated + empty target while live): {len(hidden)}")
     for w in hidden:
         print(f"  - {w}")
+    print(f"MISSING TARGET REGISTRATION (declared target with no/hidden dataset): {len(missing_targets)}")
+    for w in missing_targets:
+        print(f"  - {w}")
 
-    if (unregistered or hidden) and not report_only:
+    if (unregistered or hidden or missing_targets) and not report_only:
         print()
-        print("FAIL: a scheduled parser that is not registered is invisible on the")
+        print("FAIL: a scheduled parser target that is not registered is invisible on the")
         print("monitoring page and is skipped by every health sweep.")
-        print("Fix: INSERT a public.datasets row (code, status=active, frequency,")
-        print("expected_days_between_updates, delay_threshold_days, target_schema,")
-        print("target_table, workflow_file, startup_id) + a dataset_destinations row.")
+        print("Fix: INSERT a public.datasets row per TARGET TABLE (code, status=active,")
+        print("frequency, expected_days_between_updates, delay_threshold_days,")
+        print("target_schema, target_table, startup_id) + a dataset_destinations row.")
         print("Derive the values from the real destination table — do not guess them.")
-        print("If the workflow is genuinely not an acquisition parser, add it to")
-        print("ALLOWLIST in this script with a justification.")
+        print("A workflow writing N tables needs N datasets rows; declare them in")
+        print("pipelines/<dir>/datasets.json so this guard can see all of them.")
+        print("If the workflow is genuinely not an acquisition parser, add it to ALLOWLIST.")
         return 1
 
-    print("\nPASS: every scheduled acquisition workflow is registered and visible.")
+    print("\nPASS: every scheduled acquisition target is registered and visible.")
     return 0
 
 
