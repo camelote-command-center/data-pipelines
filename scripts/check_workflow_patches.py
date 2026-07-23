@@ -36,6 +36,7 @@ ALLOWLIST: dict[str, str] = {
     "re-llm-classification-backfill.yml": "one-time classification backfill",
     "blog-calendar-orchestrator.yml":     "utility: orchestrates blog runs",
     "lint-workflows.yml":            "this linter itself",
+    "refresh_dataset_counts.yml":    "utility: WRITES datasets.record_count for every other parser; it has no dataset of its own, so a PATCH would be self-referential",
 }
 
 # Patterns that indicate a PATCH is present (workflow-level)

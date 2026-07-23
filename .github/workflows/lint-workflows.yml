@@ -3,6 +3,9 @@ name: Lint workflows
 # Guards against the silent-success bug class:
 #   - bug 66298402: workflows with no PATCH → dashboard stuck yellow
 #   - bug 07bf060b: workflows with `if: always()` PATCH → failures look successful
+#   - bug 4521551e: scheduled parsers with NO datasets row (or a row left
+#     deprecated+empty by the 2026-01-10 seeding) → invisible on the monitoring
+#     page and skipped by every health sweep
 #
 # Fails the PR if any parser workflow doesn't update camelote_data.datasets.
 # Allow-list utilities/backfills in scripts/check_workflow_patches.py.
@@ -12,11 +15,13 @@ on:
     paths:
       - '.github/workflows/**.yml'
       - 'scripts/check_workflow_patches.py'
+      - 'scripts/check_dataset_registration.py'
   push:
     branches: [main]
     paths:
       - '.github/workflows/**.yml'
       - 'scripts/check_workflow_patches.py'
+      - 'scripts/check_dataset_registration.py'
   workflow_dispatch:
 
 jobs:
@@ -30,3 +35,8 @@ jobs:
           python-version: '3.11'
       - name: Check every parser workflow has a metadata PATCH
         run: python scripts/check_workflow_patches.py
+      - name: Check every scheduled parser is registered on the monitoring page
+        run: python scripts/check_dataset_registration.py
+        env:
+          CAMELOTE_DATA_SUPABASE_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CAMELOTE_DATA_SUPABASE_SERVICE_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
