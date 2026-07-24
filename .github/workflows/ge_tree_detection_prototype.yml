@@ -35,7 +35,7 @@ jobs:
           sudo apt-get install -y -qq gdal-bin python3-gdal python3-numpy python3-scipy python3-skimage postgresql-client
           curl -fsSL https://rclone.org/install.sh | sudo bash
 
-      - name: Configure rclone for R2 (download only)
+      - name: Configure rclone for R2 (READ-ONLY pair — object read scoped to camelote-backups; write pair deliberately absent)
         run: |
           mkdir -p ~/.config/rclone
           cat > ~/.config/rclone/rclone.conf <<EOF
@@ -43,8 +43,8 @@ jobs:
           type = s3
           provider = Cloudflare
           endpoint = ${{ secrets.R2_ENDPOINT }}
-          access_key_id = ${{ secrets.R2_ACCESS_KEY_ID }}
-          secret_access_key = ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          access_key_id = ${{ secrets.R2_READ_ACCESS_KEY_ID }}
+          secret_access_key = ${{ secrets.R2_READ_SECRET_ACCESS_KEY }}
           no_check_bucket = true
           EOF
 
