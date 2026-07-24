@@ -45,6 +45,7 @@ jobs:
           endpoint = https://e992f7ddd2c250c546b8884bb185d66b.r2.cloudflarestorage.com
           access_key_id = ${{ secrets.R2_READ_ACCESS_KEY_ID }}
           secret_access_key = ${{ secrets.R2_READ_SECRET_ACCESS_KEY }}
+          region = auto
           no_check_bucket = true
           EOF
 
