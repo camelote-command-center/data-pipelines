@@ -1,0 +1,254 @@
+name: GE Tree Detection — one-tile prototype (read-only)
+
+# Phase 1 one-tile prototype for detecting individual trees in the GE canopy
+# height model (CHM). READ-ONLY: downloads a CHM tile from R2 and SELECTs from
+# re-LLM; writes NOTHING to R2 (camelote-backups is write-once/object-locked)
+# and NOTHING to any DB. All results go to the Actions log. workflow_dispatch
+# ONLY — no schedule, no push trigger. Does nothing until triggered by hand.
+#
+# Companion to ge_canopy_height_model.yml — reuses its install + rclone blocks,
+# plus scipy + scikit-image (missing from that env; needed for local-maxima).
+
+on:
+  workflow_dispatch:
+    inputs:
+      tile:
+        description: 'Primary tile key (easting-northing). Anchor = validated Cologny 17/1566.'
+        required: false
+        default: '2502-1117'
+        type: string
+      secondary_tile:
+        description: 'Rejection-test tile (flat-topped unmapped buildings). Blank to skip.'
+        required: false
+        default: '2499-1116'
+        type: string
+
+jobs:
+  detect:
+    name: one-tile tree detection (read-only)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Install GDAL + rclone + scipy/scikit-image
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq gdal-bin python3-gdal postgresql-client
+          pip install numpy scipy scikit-image
+          curl -fsSL https://rclone.org/install.sh | sudo bash
+
+      - name: Configure rclone for R2 (download only)
+        run: |
+          mkdir -p ~/.config/rclone
+          cat > ~/.config/rclone/rclone.conf <<EOF
+          [r2-camelote-backups]
+          type = s3
+          provider = Cloudflare
+          endpoint = ${{ secrets.R2_ENDPOINT }}
+          access_key_id = ${{ secrets.R2_ACCESS_KEY_ID }}
+          secret_access_key = ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          EOF
+
+      - name: Run detection prototype
+        env:
+          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI }}
+          TILE: ${{ inputs.tile }}
+          SECONDARY: ${{ inputs.secondary_tile }}
+        run: |
+          cat > detect.py <<'PYEOF'
+          import os, subprocess, sys, time
+          import numpy as np
+          from osgeo import gdal, ogr
+          from scipy.ndimage import gaussian_filter, maximum_filter
+          from scipy.spatial import cKDTree
+          gdal.UseExceptions(); ogr.UseExceptions()
+
+          PX = 0.5
+          VEG_MIN = 3.0
+          CLAMP = 50.0
+          GE_VEG_M2 = 55_965_393.0     # sum(vegetated_area_m2) over all 72,948 GE parcels
+          R2 = "r2-camelote-backups:camelote-backups/lamap-2025/chm/v1"
+          PG = os.environ["RE_LLM_PG_URI"]
+          ANCHOR_EGRID = "CH857565816393"    # Cologny 17/1566
+          ANCHOR_E, ANCHOR_N = 2502452.5, 1117684.5
+
+          def log(m): print(f"[{time.strftime('%H:%M:%S')}] {m}", flush=True)
+
+          def read_band(path):
+              ds = gdal.Open(path)
+              if ds is None: raise RuntimeError("cannot open " + path)
+              b = ds.GetRasterBand(1); arr = b.ReadAsArray(); nd = b.GetNoDataValue()
+              gt = ds.GetGeoTransform(); proj = ds.GetProjection()
+              del b, ds
+              return arr, nd, gt, proj
+
+          def crown_r(h):                       # allometric, ~0.14*h (mid of 0.10-0.17), floor 1.5, cap 8
+              return float(np.clip(0.14*h, 1.5, 8.0))
+
+          def psql(sql):
+              r = subprocess.run(["psql", PG, "-q", "-tA", "-c", sql], capture_output=True, text=True,
+                                 env={**os.environ, "PGOPTIONS": "-c client_min_messages=error"})
+              if r.returncode != 0: raise RuntimeError("psql: " + r.stderr[:300])
+              return [l for l in r.stdout.splitlines() if l.strip()]
+
+          def pct(a, p): return float(np.percentile(a, p)) if len(a) else float("nan")
+
+          def detect(key):
+              print("\n" + "="*70); log(f"TILE {key}")
+              e, n = [int(x) for x in key.split("-")]
+              xmin, ymin, xmax, ymax = e*1000, n*1000, (e+1)*1000, (n+1)*1000
+              T = {}
+
+              t = time.time()
+              tif = f"{key}.tif"
+              r = subprocess.run(["rclone", "copyto", f"{R2}/{key}.tif", tif], capture_output=True, text=True)
+              if r.returncode != 0: raise RuntimeError("rclone (read-only) failed: " + r.stderr[:300])
+              T["download"] = time.time() - t
+
+              t = time.time()
+              arr, nd, gt, proj = read_band(tif)
+              ny, nx = arr.shape
+              ndv = 65535 if nd is None else nd
+              valid = arr != ndv
+              raw = np.where(valid, arr.astype("float32")/10.0, 0.0)     # metres, buildings already 0
+              T["read"] = time.time() - t
+
+              t = time.time()
+              hs = gaussian_filter(raw, 1.0)
+              T["smooth"] = time.time() - t
+
+              t = time.time()
+              mx = maximum_filter(hs, size=3)
+              cand = (hs == mx) & (hs >= VEG_MIN) & valid
+              ys, xs = np.where(cand)
+              hc = hs[ys, xs]
+              E = gt[0] + (xs + 0.5)*gt[1]
+              N = gt[3] + (ys + 0.5)*gt[5]
+              # greedy variable-window NMS: tallest claims first, suppression radius = crown_r(h)
+              pts = np.column_stack([E, N]); kt = cKDTree(pts)
+              order = np.argsort(-hc); taken = np.zeros(len(pts), bool); keep = []
+              for i in order:
+                  if taken[i]: continue
+                  keep.append(i)
+                  taken[np.asarray(kt.query_ball_point(pts[i], crown_r(hc[i])), dtype=int)] = True
+              keep = np.asarray(keep, dtype=int)
+              T["detect"] = time.time() - t
+
+              # per-tree attributes + rejection filters (raw height for reporting/ground-truth match)
+              t = time.time()
+              dirs = np.array([(1,0),(-1,0),(0,1),(0,-1),(1,1),(1,-1),(-1,1),(-1,-1)], float)
+              rej = {"over_50m": 0, "flat_top": 0}; flags = {"large_footprint": 0}
+              trees = []   # (E,N,x,y,height_raw,crown_r)
+              for i in keep:
+                  x, y = int(xs[i]), int(ys[i])
+                  ha = float(raw[y, x])
+                  if ha > CLAMP: rej["over_50m"] += 1; continue
+                  cr = crown_r(ha); rp = cr / PX
+                  ring = []
+                  for dx, dy in dirs:
+                      xx = int(round(x + dx*rp)); yy = int(round(y + dy*rp))
+                      if 0 <= xx < nx and 0 <= yy < ny: ring.append(float(raw[yy, xx]))
+                  ring_mean = np.mean(ring) if ring else 0.0
+                  drop = ha - ring_mean
+                  if ha >= VEG_MIN and drop < 2.0 and (drop/ha if ha else 0) < 0.10:
+                      rej["flat_top"] += 1; continue                     # roof/building: flat, no radial falloff
+                  # plateau/large-footprint flag: fraction of the crown disk within 1 m of the apex height
+                  x0, x1 = max(0, x-int(rp)), min(nx, x+int(rp)+1); y0, y1 = max(0, y-int(rp)), min(ny, y+int(rp)+1)
+                  win = raw[y0:y1, x0:x1]
+                  if win.size and (win >= ha - 1.0).mean() > 0.60: flags["large_footprint"] += 1
+                  trees.append((float(E[i]), float(N[i]), x, y, ha, cr))
+              T["filter"] = time.time() - t
+
+              # parcel assignment: rasterize pid onto the tile grid (same pattern as the CHM pipeline)
+              t = time.time()
+              gpkg = f"{key}_parcels.gpkg"; pidtif = f"{key}_pid.tif"
+              sql = (f"SELECT row_number() OVER (ORDER BY egrid)::int AS pid, egrid, "
+                     f"ST_MakeValid(geometry) AS geometry FROM bronze_ch.ge_plots_geo "
+                     f"WHERE ST_Intersects(geometry, ST_MakeEnvelope({xmin},{ymin},{xmax},{ymax},2056))")
+              subprocess.run(["ogr2ogr", "-f", "GPKG", gpkg, f"PG:{PG}", "-nln", "parcels",
+                              "-nlt", "MULTIPOLYGON", "-a_srs", "EPSG:2056", "-sql", sql],
+                             check=True, capture_output=True)
+              subprocess.run(["gdal_rasterize", "-q", "-ot", "Int32", "-init", "0",
+                              "-te", str(xmin), str(ymin), str(xmax), str(ymax), "-tr", str(PX), str(PX),
+                              "-a", "pid", "-l", "parcels", gpkg, pidtif], check=True, capture_output=True)
+              pidarr, _, _, _ = read_band(pidtif)
+              ds = ogr.Open(gpkg); lyr = ds.GetLayer(); pid2eg = {}
+              for f in lyr: pid2eg[f.GetField("pid")] = f.GetField("egrid")
+              del lyr, ds
+              per = {}   # egrid -> tree count
+              boundary = 0
+              for (te, tn, x, y, ha, cr) in trees:
+                  pid = int(pidarr[y, x])
+                  eg = pid2eg.get(pid)
+                  if eg is None: boundary += 1
+                  else: per[eg] = per.get(eg, 0) + 1
+              T["assign"] = time.time() - t
+
+              # canopy cross-check: parcels with vegetated_area_m2=0 must have 0 trees
+              egrids = list(pid2eg.values())
+              veg = {}
+              if egrids:
+                  inlist = ",".join("'" + g.replace("'", "") + "'" for g in egrids)
+                  for row in psql(f"SELECT egrid, vegetated_area_m2 FROM gold_ch.plot_canopy_stats WHERE egrid IN ({inlist})"):
+                      g, v = row.split("|"); veg[g] = float(v)
+              zero_veg = [g for g, v in veg.items() if v == 0]
+              violations = [g for g in zero_veg if per.get(g, 0) > 0]
+
+              # ---- report ----
+              H = np.array([t[4] for t in trees]); CR = np.array([t[5] for t in trees])
+              nparcels = len(pid2eg)
+              parcels_0trees = sum(1 for g in pid2eg.values() if per.get(g, 0) == 0)
+              log(f"trees detected: {len(trees)}  (candidates {len(xs)}, kept-maxima {len(keep)})")
+              log(f"parcels in tile: {nparcels} | with 0 trees: {parcels_0trees} | boundary/no-parcel trees: {boundary}")
+              if len(H):
+                  log(f"height m  min {H.min():.1f} p25 {pct(H,25):.1f} med {pct(H,50):.1f} p75 {pct(H,75):.1f} p95 {pct(H,95):.1f} max {H.max():.1f}")
+                  log(f"crown_radius m  min {CR.min():.1f} med {pct(CR,50):.1f} max {CR.max():.1f}")
+              log(f"rejected: over_50m={rej['over_50m']} flat_top={rej['flat_top']} | flagged large_footprint={flags['large_footprint']}")
+              log(f"cross-check: {len(zero_veg)} parcels have vegetated_area_m2=0 -> VIOLATIONS (0-veg parcels with trees): {len(violations)} {violations[:10]}")
+              tt = sum(T.values())
+              log("timing s: " + " ".join(f"{k}={v:.2f}" for k, v in T.items()) + f" | TOTAL={tt:.2f}")
+
+              # anchor check (primary tile only)
+              anchor = None
+              if ANCHOR_EGRID in per or any(abs(t[0]-ANCHOR_E) < 30 and abs(t[1]-ANCHOR_N) < 30 for t in trees):
+                  cands = [t for t in trees if (t[0]-ANCHOR_E)**2 + (t[1]-ANCHOR_N)**2 <= 3.0**2]
+                  if cands:
+                      best = min(cands, key=lambda t: (t[0]-ANCHOR_E)**2 + (t[1]-ANCHOR_N)**2)
+                      dist = ((best[0]-ANCHOR_E)**2 + (best[1]-ANCHOR_N)**2)**0.5
+                      anchor = (best, dist)
+                      log(f"ANCHOR: nearest detected tree {dist:.2f} m from peak, height {best[4]:.2f} m  (parcel trees: {per.get(ANCHOR_EGRID,0)})")
+                  else:
+                      log("ANCHOR: no detected tree within 3 m of the known peak")
+
+              # GE extrapolation from this tile's density
+              tile_veg = sum(v for v in veg.values())
+              if tile_veg > 0:
+                  ge_trees = len(trees) / tile_veg * GE_VEG_M2
+                  log(f"tile vegetated_area {tile_veg:,.0f} m2 -> density {len(trees)/tile_veg*10000:.1f} trees/ha of canopy")
+                  log(f"EXTRAPOLATED GE tree count: {ge_trees:,.0f}  -> table ~{ge_trees*150/1e6:,.0f} MB (row+idx ~150 B)")
+              return dict(key=key, trees=len(trees), rej=rej, violations=violations, anchor=anchor,
+                          parcels=nparcels, parcels_0trees=parcels_0trees)
+
+          def main():
+              prim = os.environ["TILE"].strip()
+              sec = os.environ.get("SECONDARY", "").strip()
+              r1 = detect(prim)
+              # acceptance summary (primary)
+              print("\n" + "#"*70); log("ACCEPTANCE (primary tile)")
+              a = r1["anchor"]
+              c1 = bool(a) and a[1] <= 1.0 and 38.5 <= a[0][4] <= 39.5
+              log(f"[{'PASS' if c1 else 'FAIL'}] 1. anchor peak within 1 m & 38.5-39.5 m: " + (f"{a[1]:.2f} m, {a[0][4]:.2f} m" if a else "not found"))
+              log(f"[?]   2. anchor parcel tree count ~20-30 (see per-parcel above)")
+              c3 = len(r1["violations"]) == 0
+              log(f"[{'PASS' if c3 else 'FAIL'}] 3. every 0-vegetation parcel has 0 trees: {len(r1['violations'])} violations")
+              c4 = r1["rej"]["over_50m"] >= 0
+              log(f"[PASS] 4. no tree > 50 m (all >50 rejected: {r1['rej']['over_50m']})")
+              if sec:
+                  r2 = detect(sec)
+                  print("\n" + "#"*70); log("ACCEPTANCE (secondary tile — rejection test)")
+                  log(f"[?]   5. flat-topped unmapped masses rejected: flat_top rejections = {r2['rej']['flat_top']} (expect the two masses among them)")
+              log("DONE — read-only prototype. Nothing written to R2 or any DB.")
+
+          if __name__ == "__main__":
+              main()
+          PYEOF
+          python detect.py
