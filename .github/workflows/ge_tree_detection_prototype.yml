@@ -46,7 +46,6 @@ jobs:
           access_key_id = ${{ secrets.R2_ACCESS_KEY_ID }}
           secret_access_key = ${{ secrets.R2_SECRET_ACCESS_KEY }}
           no_check_bucket = true
-          region = auto
           EOF
 
       - name: Run detection prototype
