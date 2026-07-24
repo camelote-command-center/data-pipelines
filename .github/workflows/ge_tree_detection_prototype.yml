@@ -48,6 +48,16 @@ jobs:
           no_check_bucket = true
           EOF
 
+      - name: R2 read-token diagnostics (non-fatal)
+        run: |
+          set +e
+          echo "### lsd buckets:";      rclone lsd r2-camelote-backups: 2>&1 | head
+          echo "### ls prefix v1 head:"; rclone ls "r2-camelote-backups:camelote-backups/lamap-2025/chm/v1/" 2>&1 | head -5
+          echo "### size exact key:";    rclone size "r2-camelote-backups:camelote-backups/lamap-2025/chm/v1/2502-1117.tif" 2>&1
+          echo "### lsjson exact key:";  rclone lsjson "r2-camelote-backups:camelote-backups/lamap-2025/chm/v1/2502-1117.tif" 2>&1 | head -c 400; echo
+          echo "### cat 64 bytes:";      rclone cat "r2-camelote-backups:camelote-backups/lamap-2025/chm/v1/2502-1117.tif" 2>&1 | head -c 64 | od -c | head
+          echo "### end diagnostics"; true
+
       - name: Run detection prototype
         env:
           RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI }}
