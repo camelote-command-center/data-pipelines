@@ -5,24 +5,32 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
-      - name: install py3dtiles
+      - name: install py3dtiles + laspy
         run: |
           python3 -m venv .venv
           .venv/bin/pip install -q --upgrade pip
-          .venv/bin/pip install -q "py3dtiles==12.1.1"
-          echo "--- convert --help ---"
-          .venv/bin/py3dtiles convert --help || true
-      - name: download cached veg LAS from run 30106215345
+          .venv/bin/pip install -q "py3dtiles==12.1.1" laspy lazrs
+      - name: download cached veg .las from run 30107116916
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh run download 30106215345 --repo camelote-command-center/data-pipelines -n cologny-rgb-v2-tileset -D dl
-          echo "--- veg files ---"; ls -la dl/veg 2>/dev/null | head
-      - name: convert ONE tile, streamed (no capture, jobs=1)
+          gh run download 30107116916 --repo camelote-command-center/data-pipelines -n cologny-rgb-v2-tileset -D dl
+          ls -la dl/veg 2>/dev/null | head
+      - name: convert ONE .las tile, streamed
         run: |
           set -x
-          .venv/bin/py3dtiles convert dl/veg/2502-1119.laz --out /tmp/ts \
+          .venv/bin/py3dtiles convert dl/veg/2502-1119.las --out /tmp/ts \
             --srs_in 2056 --srs_out 4978 \
             --extra-fields HeightAboveGround --extra-fields classification \
-            --jobs 1 --overwrite ; echo "EXIT=$?"
-          echo "--- pnts produced ---"; find /tmp/ts -name '*.pnts' 2>/dev/null | head
+            --jobs 2 --overwrite ; echo "EXIT=$?"
+          find /tmp/ts -name '*.pnts' | head
+          echo "--- feature table of largest pnts (expect RGB) ---"
+          .venv/bin/python - <<'PY'
+          import glob,os,struct,json
+          pn=sorted(glob.glob('/tmp/ts/**/*.pnts',recursive=True),key=os.path.getsize)
+          print('pnts count',len(pn))
+          if pn:
+            b=open(pn[-1],'rb').read(); _v,_bl,ftj,ftb,btj,_bt=struct.unpack('<IIIIII',b[4:28])
+            print('feature-table keys:',sorted(json.loads(b[28:28+ftj]).keys()))
+            print('batch-table keys:',sorted(json.loads(b[28+ftj+ftb:28+ftj+ftb+btj]).keys()) if btj else [])
+          PY
