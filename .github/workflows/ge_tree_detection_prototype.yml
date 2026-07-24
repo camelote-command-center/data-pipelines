@@ -12,22 +12,28 @@ name: GE Tree Detection — one-tile prototype (read-only)
 on:
   workflow_dispatch:
     inputs:
+      mode:
+        description: 'prototype = 2 validation tiles + acceptance; ge_wide = all 357 GE tiles -> plot_trees.csv + clamp_findings.csv artifacts (still NO DB/R2 writes).'
+        required: false
+        default: 'prototype'
+        type: choice
+        options: [prototype, ge_wide]
       tile:
-        description: 'Primary tile key (easting-northing). Anchor = validated Cologny 17/1566.'
+        description: 'prototype mode only: primary tile key. Anchor = validated Cologny 17/1566.'
         required: false
         default: '2502-1117'
         type: string
       secondary_tile:
-        description: 'Rejection-test tile (flat-topped unmapped buildings). Blank to skip.'
+        description: 'prototype mode only: rejection-test tile. Blank to skip.'
         required: false
         default: '2499-1116'
         type: string
 
 jobs:
   detect:
-    name: one-tile tree detection (read-only)
+    name: tree detection (read-only)
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - name: Install GDAL + rclone + scipy/scikit-image (apt — ABI-consistent with python3-gdal; pip numpy 2.x breaks it)
         run: |
@@ -70,6 +76,7 @@ jobs:
         env:
           RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI }}
           RE_LLM_DB_URL: ${{ secrets.RE_LLM_DB_URL }}
+          MODE: ${{ inputs.mode }}
           TILE: ${{ inputs.tile }}
           SECONDARY: ${{ inputs.secondary_tile }}
         run: |
@@ -79,11 +86,15 @@ jobs:
           from osgeo import gdal, ogr
           from scipy.ndimage import gaussian_filter, maximum_filter
           from scipy.spatial import cKDTree
+          from skimage.measure import label as sklabel
           gdal.UseExceptions(); ogr.UseExceptions()
 
           PX = 0.5
           VEG_MIN = 3.0
           CLAMP = 50.0
+          CLAMP_REJECT = 49.5   # >= this is the CHM 50 m clamp: uninterpretable (tallest validated GE tree
+                                # 39.17 m). Reject as a tree; route as evidence for unmapped structures
+                                # (bug 1dcf7447). Matches ref.plot_canopy_stats height_max_m>=49.5 (20 parcels).
           GE_VEG_M2 = 55_965_393.0     # sum(vegetated_area_m2) over all 72,948 GE parcels
           R2 = "r2-camelote-backups:camelote-backups/lamap-2025/chm/v1"
           PG = os.environ.get("RE_LLM_PG_URI") or os.environ.get("RE_LLM_DB_URL") or ""
@@ -136,8 +147,9 @@ jobs:
               del lyr, ds
               log(f"parcels.gpkg ready: {len(PID2EG):,} GE parcels (build+load {time.time()-t:.1f}s)")
 
-          def detect(key):
-              print("\n" + "="*70); log(f"TILE {key}")
+          def detect(key, verbose=True):
+              if verbose:
+                  print("\n" + "="*70); log(f"TILE {key}")
               e, n = [int(x) for x in key.split("-")]
               xmin, ymin, xmax, ymax = e*1000, n*1000, (e+1)*1000, (n+1)*1000
               T = {}
@@ -152,7 +164,8 @@ jobs:
               if r.returncode != 0 or os.path.getsize(tif) == 0:
                   raise RuntimeError("rclone cat (read-only GET) failed: " + r.stderr.decode()[:400])
               T["download"] = time.time() - t
-              log(f"downloaded {key}.tif ({os.path.getsize(tif)/1e6:.1f} MB)")
+              if verbose:
+                  log(f"downloaded {key}.tif ({os.path.getsize(tif)/1e6:.1f} MB)")
 
               t = time.time()
               arr, nd, gt, proj = read_band(tif)
@@ -186,12 +199,14 @@ jobs:
               # per-tree attributes + rejection filters (raw height for reporting/ground-truth match)
               t = time.time()
               dirs = np.array([(1,0),(-1,0),(0,1),(0,-1),(1,1),(1,-1),(-1,1),(-1,-1)], float)
-              rej = {"over_50m": 0, "flat_top": 0}; flags = {"large_footprint": 0}
-              trees = []   # (E,N,x,y,height_raw,crown_r)
+              rej = {"clamp": 0, "flat_top": 0}; flags = {"large_footprint": 0}
+              trees = []        # (E,N,x,y,height_raw,crown_r)
+              clamp_hits = []   # (E,N,x,y) detections at/over the 50 m clamp -> unmapped-structure evidence
               for i in keep:
                   x, y = int(xs[i]), int(ys[i])
                   ha = float(raw[y, x])
-                  if ha > CLAMP: rej["over_50m"] += 1; continue
+                  if ha >= CLAMP_REJECT:
+                      rej["clamp"] += 1; clamp_hits.append((float(E[i]), float(N[i]), x, y)); continue
                   cr = crown_r(ha); rp = cr / PX
                   ring = []
                   for dx, dy in dirs:
@@ -208,13 +223,23 @@ jobs:
                   trees.append((float(E[i]), float(N[i]), x, y, ha, cr))
               T["filter"] = time.time() - t
 
+              # clamp footprint: area of the contiguous clamped (>=CLAMP_REJECT) blob each detection sits in
+              clamp_findings = []   # (E,N,x,y,footprint_m2)  -> egrid attached during parcel assignment
+              if clamp_hits:
+                  clab = sklabel(raw >= CLAMP_REJECT, connectivity=2)
+                  csizes = np.bincount(clab.ravel())
+                  for (ce, cn, cx, cy) in clamp_hits:
+                      lb = int(clab[cy, cx])
+                      foot = float(csizes[lb]) * PX * PX if lb > 0 else PX * PX
+                      clamp_findings.append((ce, cn, cx, cy, foot))
+
               # parcel assignment (HARDENED): clip the pre-built GE parcels.gpkg to the tile by -te and
               # rasterize its stable global pid. No per-tile PG:-sql result layer -> no OGR
               # 'zero-length delimited identifier' failure. pid -> egrid comes from the prebuilt PID2EG.
               t = time.time()
               pidtif = f"{key}_pid.tif"
               per = {}; boundary = 0; veg = {}; zero_veg = []; violations = []
-              tile_egrids = []; assign_ok = False
+              tile_egrids = []; trees_eg = []; assign_ok = False
               try:
                   subprocess.run(["gdal_rasterize", "-q", "-ot", "Int32", "-init", "0",
                                   "-te", str(xmin), str(ymin), str(xmax), str(ymax), "-tr", str(PX), str(PX),
@@ -225,6 +250,9 @@ jobs:
                       eg = PID2EG.get(pid)
                       if eg is None: boundary += 1
                       else: per[eg] = per.get(eg, 0) + 1
+                      trees_eg.append((te, tn, x, y, ha, cr, eg))
+                  clamp_findings = [(ce, cn, PID2EG.get(int(pidarr[cy, cx])), foot)
+                                    for (ce, cn, cx, cy, foot) in clamp_findings]
                   # parcels actually present in this tile (>=1 burned pixel); pid 0 = no-parcel background
                   tile_egrids = [PID2EG[p] for p in (int(v) for v in np.unique(pidarr)) if p != 0 and p in PID2EG]
                   # canopy cross-check: parcels with vegetated_area_m2=0 must have 0 trees
@@ -236,26 +264,17 @@ jobs:
                   violations = [g for g in zero_veg if per.get(g, 0) > 0]
                   assign_ok = True
               except Exception as _pex:
-                  log(f"parcel assignment failed (NON-FATAL, detection/rejection results stand): {_pex}")
+                  if verbose:
+                      log(f"parcel assignment failed (NON-FATAL, detection/rejection results stand): {_pex}")
               T["assign"] = time.time() - t
+              if not assign_ok:   # normalize outputs so downstream shape is stable (egrid unknown -> None)
+                  trees_eg = [(te, tn, x, y, ha, cr, None) for (te, tn, x, y, ha, cr) in trees]
+                  clamp_findings = [(ce, cn, None, foot) for (ce, cn, cx, cy, foot) in clamp_findings]
 
-              # ---- report ----
-              H = np.array([t[4] for t in trees]); CR = np.array([t[5] for t in trees])
+              # ---- per-tile derived values (always computed; logging gated by verbose) ----
+              tile_veg = sum(v for v in veg.values())
               nparcels = len(tile_egrids)
               parcels_0trees = sum(1 for g in tile_egrids if per.get(g, 0) == 0)
-              log(f"trees detected: {len(trees)}  (candidates {len(xs)}, kept-maxima {len(keep)})")
-              log(f"parcels in tile: {nparcels} | with 0 trees: {parcels_0trees} | boundary/no-parcel trees: {boundary}")
-              if len(H):
-                  log(f"height m  min {H.min():.1f} p25 {pct(H,25):.1f} med {pct(H,50):.1f} p75 {pct(H,75):.1f} p95 {pct(H,95):.1f} max {H.max():.1f}")
-                  log(f"crown_radius m  min {CR.min():.1f} med {pct(CR,50):.1f} max {CR.max():.1f}")
-                  if H.max() >= CLAMP - 0.05:
-                      log(f"NOTE: tile max height pinned at the {CLAMP:.1f} m clamp ({int((H >= CLAMP-0.05).sum())} tree(s)) -> boundary artefact; inspect for a flat mass grazing the cap")
-              log(f"rejected: over_50m={rej['over_50m']} flat_top={rej['flat_top']} | flagged large_footprint={flags['large_footprint']}")
-              log(f"cross-check: {len(zero_veg)} parcels have vegetated_area_m2=0 -> VIOLATIONS (0-veg parcels with trees): {len(violations)} {violations[:10]}")
-              tt = sum(T.values())
-              log("timing s: " + " ".join(f"{k}={v:.2f}" for k, v in T.items()) + f" | TOTAL={tt:.2f}")
-
-              # anchor check (primary tile only)
               anchor = None
               if ANCHOR_EGRID in per or any(abs(t[0]-ANCHOR_E) < 30 and abs(t[1]-ANCHOR_N) < 30 for t in trees):
                   cands = [t for t in trees if (t[0]-ANCHOR_E)**2 + (t[1]-ANCHOR_N)**2 <= 3.0**2]
@@ -263,26 +282,101 @@ jobs:
                       best = min(cands, key=lambda t: (t[0]-ANCHOR_E)**2 + (t[1]-ANCHOR_N)**2)
                       dist = ((best[0]-ANCHOR_E)**2 + (best[1]-ANCHOR_N)**2)**0.5
                       anchor = (best, dist)
-                      log(f"ANCHOR: nearest detected tree {dist:.2f} m from peak, height {best[4]:.2f} m  (parcel trees: {per.get(ANCHOR_EGRID,0)})")
-                  else:
-                      log("ANCHOR: no detected tree within 3 m of the known peak")
-
-              # GE extrapolation from this tile's density
-              tile_veg = sum(v for v in veg.values())
-              if tile_veg > 0:
-                  ge_trees = len(trees) / tile_veg * GE_VEG_M2
-                  log(f"tile vegetated_area {tile_veg:,.0f} m2 -> density {len(trees)/tile_veg*10000:.1f} trees/ha of canopy")
-                  log(f"EXTRAPOLATED GE tree count: {ge_trees:,.0f}  -> table ~{ge_trees*150/1e6:,.0f} MB (row+idx ~150 B)")
-              return dict(key=key, trees=len(trees), rej=rej, violations=violations, anchor=anchor,
+              if verbose:
+                  H = np.array([t[4] for t in trees]); CR = np.array([t[5] for t in trees])
+                  log(f"trees detected: {len(trees_eg)}  (candidates {len(xs)}, kept-maxima {len(keep)})")
+                  log(f"parcels in tile: {nparcels} | with 0 trees: {parcels_0trees} | boundary/no-parcel trees: {boundary}")
+                  if len(H):
+                      log(f"height m  min {H.min():.1f} p25 {pct(H,25):.1f} med {pct(H,50):.1f} p75 {pct(H,75):.1f} p95 {pct(H,95):.1f} max {H.max():.1f}")
+                      log(f"crown_radius m  min {CR.min():.1f} med {pct(CR,50):.1f} max {CR.max():.1f}")
+                  log(f"rejected: clamp>={CLAMP_REJECT}m={rej['clamp']} flat_top={rej['flat_top']} | flagged large_footprint={flags['large_footprint']} | clamp_findings={len(clamp_findings)}")
+                  log(f"cross-check: {len(zero_veg)} parcels have vegetated_area_m2=0 -> VIOLATIONS (0-veg parcels with trees): {len(violations)} {violations[:10]}")
+                  if anchor:
+                      log(f"ANCHOR: nearest detected tree {anchor[1]:.2f} m from peak, height {anchor[0][4]:.2f} m  (parcel trees: {per.get(ANCHOR_EGRID,0)})")
+                  log("timing s: " + " ".join(f"{k}={v:.2f}" for k, v in T.items()) + f" | TOTAL={sum(T.values()):.2f}")
+                  if tile_veg > 0:
+                      log(f"tile vegetated_area {tile_veg:,.0f} m2 -> density {len(trees_eg)/tile_veg*10000:.1f} trees/ha of canopy")
+              return dict(key=key, trees=len(trees_eg), trees_eg=trees_eg, clamp_findings=clamp_findings,
+                          rej=rej, flags=flags, violations=violations, anchor=anchor, tile_veg=tile_veg,
                           parcels=nparcels, parcels_0trees=parcels_0trees, assign_ok=assign_ok,
-                          zero_veg=len(zero_veg))
+                          zero_veg=len(zero_veg), candidates=len(xs), kept=len(keep))
+
+          def enumerate_tiles():
+              # 1 km CHM tile keys whose cell intersects the GE canton boundary. Matches the 357 shipped
+              # CHM tiles exactly, so no ListBucket is needed (read token is object-read only).
+              rows = psql(
+                  "WITH ge AS (SELECT ST_Union(geometry) g FROM silver_ch.ref_communes WHERE canton_code='GE'),"
+                  " ext AS (SELECT floor(ST_XMin(g)/1000)::int x0, ceil(ST_XMax(g)/1000)::int x1,"
+                  "                floor(ST_YMin(g)/1000)::int y0, ceil(ST_YMax(g)/1000)::int y1 FROM ge),"
+                  " cells AS (SELECT ex, ny FROM ext,"
+                  "   generate_series((SELECT x0 FROM ext),(SELECT x1 FROM ext)) ex,"
+                  "   generate_series((SELECT y0 FROM ext),(SELECT y1 FROM ext)) ny)"
+                  " SELECT ex || '-' || ny FROM cells, ge"
+                  " WHERE ST_Intersects(ge.g, ST_MakeEnvelope(ex*1000, ny*1000, (ex+1)*1000, (ny+1)*1000, 2056))"
+                  " ORDER BY 1")
+              return [r.strip() for r in rows if r.strip()]
+
+          def main_ge():
+              import csv
+              tiles = enumerate_tiles()
+              log(f"GE-wide detection: {len(tiles)} tiles")
+              tf = open("plot_trees.csv", "w", newline=""); tw = csv.writer(tf)
+              tw.writerow(["egrid", "e_lv95", "n_lv95", "height_m", "crown_radius_m", "tile"])
+              clamp_all = []; per = {}; hbuckets = np.zeros(60, dtype=np.int64)
+              ntrees = 0; ok = 0; fail = 0; failed_tiles = []; assign_fail = []
+              t0 = time.time()
+              for idx, key in enumerate(tiles):
+                  try:
+                      d = detect(key, verbose=False)
+                  except Exception as ex:
+                      fail += 1; failed_tiles.append(key); log(f"tile {key} FAILED: {str(ex)[:200]}"); continue
+                  ok += 1
+                  if not d["assign_ok"]: assign_fail.append(key)
+                  for (E, N, x, y, h, cr, eg) in d["trees_eg"]:
+                      tw.writerow([eg or "", f"{E:.2f}", f"{N:.2f}", f"{h:.2f}", f"{cr:.2f}", key])
+                      if eg: per[eg] = per.get(eg, 0) + 1
+                      hbuckets[min(59, int(h))] += 1; ntrees += 1
+                  for (E, N, eg, foot) in d["clamp_findings"]:
+                      clamp_all.append((key, E, N, eg, foot))
+                  if idx % 25 == 0 or idx == len(tiles) - 1:
+                      log(f"...{idx+1}/{len(tiles)} tiles | {ntrees:,} trees | {len(clamp_all)} clamp findings | {time.time()-t0:.0f}s")
+              tf.close()
+              cw = open("clamp_findings.csv", "w", newline=""); cwr = csv.writer(cw)
+              cwr.writerow(["tile", "e_lv95", "n_lv95", "egrid", "footprint_m2"])
+              for (key, E, N, eg, foot) in clamp_all:
+                  cwr.writerow([key, f"{E:.2f}", f"{N:.2f}", eg or "", f"{foot:.0f}"])
+              cw.close()
+
+              print("\n" + "#"*70); log("GE-WIDE DETECTION SUMMARY")
+              log(f"tiles: {ok} ok, {fail} failed {failed_tiles if failed_tiles else ''} | parcel-assign failures: {len(assign_fail)} {assign_fail if assign_fail else ''}")
+              log(f"TREES: {ntrees:,} kept -> plot_trees.csv ({os.path.getsize('plot_trees.csv')/1e6:.1f} MB)")
+              cum = np.cumsum(hbuckets); tot = int(cum[-1]) if len(cum) and cum[-1] else 1
+              hp = lambda p: int(np.searchsorted(cum, tot*p/100.0))
+              maxb = int(np.max(np.nonzero(hbuckets))) if hbuckets.any() else 0
+              log(f"height m (bucket): p25~{hp(25)} p50~{hp(50)} p75~{hp(75)} p95~{hp(95)} max~{maxb}  (all kept < {CLAMP_REJECT})")
+              tc = np.array(list(per.values())) if per else np.array([0])
+              log(f"parcels with >=1 tree: {len(per):,} | trees/parcel med {int(np.median(tc))} max {int(tc.max())}")
+
+              print("\n" + "#"*70); log("CLAMP FINDINGS  (rejected detections >= %.1f m -> evidence for bug 1dcf7447)" % CLAMP_REJECT)
+              foot_by_parcel = {}
+              for (key, E, N, eg, foot) in clamp_all:
+                  if eg: foot_by_parcel[eg] = max(foot_by_parcel.get(eg, 0.0), foot)
+              parcels_clamp = sorted(foot_by_parcel)
+              no_parcel = sum(1 for c in clamp_all if not c[3])
+              log(f"clamp detections: {len(clamp_all)} | distinct parcels: {len(parcels_clamp)} | detections with no parcel: {no_parcel}")
+              log(f"total clamped footprint (max blob per parcel): {sum(foot_by_parcel.values()):,.0f} m2")
+              log(f"bug 1dcf7447 records 20 parcels; this run finds {len(parcels_clamp)} parcels + detection-level extent")
+              log("parcels: " + ", ".join(parcels_clamp))
+              log("DONE — GE-wide detection. plot_trees.csv + clamp_findings.csv are artifacts. NOTHING written to lamap_db or R2.")
 
           def main():
+              build_parcels()          # build the GE-wide parcels.gpkg ONCE, then tiles only clip by -te
+              if os.environ.get("MODE", "prototype").strip() == "ge_wide":
+                  return main_ge()
+              # ---- prototype / validation mode ----
               prim = os.environ["TILE"].strip()
               sec = os.environ.get("SECONDARY", "").strip()
-              build_parcels()          # build the GE-wide parcels.gpkg ONCE, then tiles only clip by -te
               r1 = detect(prim)
-              # acceptance summary (primary)
               print("\n" + "#"*70); log("ACCEPTANCE (primary tile)")
               a = r1["anchor"]
               c1 = bool(a) and a[1] <= 1.0 and 38.5 <= a[0][4] <= 39.5
@@ -291,13 +385,12 @@ jobs:
               c3 = r1["assign_ok"] and len(r1["violations"]) == 0
               _c3 = "PASS" if c3 else ("FAIL" if r1["assign_ok"] else "N/A (assignment failed)")
               log(f"[{_c3}] 3. every 0-vegetation parcel has 0 trees: {len(r1['violations'])} violations ({r1['zero_veg']} zero-veg parcels)")
-              c4 = r1["rej"]["over_50m"] >= 0
-              log(f"[PASS] 4. no tree > 50 m (all >50 rejected: {r1['rej']['over_50m']})")
+              log(f"[PASS] 4. no clamped tree kept (>= {CLAMP_REJECT} m rejected as unmapped-structure evidence: {r1['rej']['clamp']}, findings={len(r1['clamp_findings'])})")
               if sec:
                   try:
                       r2 = detect(sec)
                       print("\n" + "#"*70); log("ACCEPTANCE (secondary tile — rejection test)")
-                      log(f"[?]   5. flat-topped unmapped masses rejected: flat_top rejections = {r2['rej']['flat_top']} (expect the two masses among them)")
+                      log(f"[?]   5. flat-topped masses rejected: flat_top={r2['rej']['flat_top']} clamp={r2['rej']['clamp']} (unmapped structures routed to findings)")
                   except Exception as ex:
                       print("\n" + "#"*70); log(f"[SKIP] 5. secondary tile {sec} did NOT complete (non-fatal, primary result stands): {ex}")
               log("DONE — read-only prototype. Nothing written to R2 or any DB.")
@@ -306,3 +399,14 @@ jobs:
               main()
           PYEOF
           python detect.py
+
+      - name: Upload detection outputs (ge_wide mode)
+        if: ${{ inputs.mode == 'ge_wide' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ge-tree-detection
+          path: |
+            plot_trees.csv
+            clamp_findings.csv
+          retention-days: 14
+          if-no-files-found: warn
