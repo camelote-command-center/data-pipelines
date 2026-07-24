@@ -1,0 +1,45 @@
+name: pc-upload-v2 (Cologny RGB -> lamap-3d-public)
+on: workflow_dispatch
+
+jobs:
+  up:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: rclone + config (lamap-3d-public R/W token)
+        run: |
+          curl -fsSL https://rclone.org/install.sh | sudo bash
+          mkdir -p ~/.config/rclone
+          cat > ~/.config/rclone/rclone.conf <<EOF
+          [r2-lamap-3d]
+          type = s3
+          provider = Cloudflare
+          endpoint = https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com
+          access_key_id = ${{ secrets.R2_PUBLIC_ACCESS_KEY_ID }}
+          secret_access_key = ${{ secrets.R2_PUBLIC_SECRET_ACCESS_KEY }}
+          region = auto
+          no_check_bucket = true
+          EOF
+
+      - name: Download the existing tileset artifact (run 30107666296)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh run download 30107666296 --repo camelote-command-center/data-pipelines -n cologny-rgb-v2-tileset -D dl
+          TSJSON=$(find dl -name tileset.json | head -1)
+          echo "tileset.json: $TSJSON"
+          test -n "$TSJSON" || { echo "no tileset.json in artifact"; exit 1; }
+          echo "TSDIR=$(dirname "$TSJSON")" >> "$GITHUB_ENV"
+          echo "pnts in artifact: $(find "$(dirname "$TSJSON")" -name '*.pnts' | wc -l)"
+
+      - name: Upload tileset only -> pointcloud/v2/rgb/cologny
+        run: |
+          set -eo pipefail
+          echo "uploading $TSDIR -> r2-lamap-3d:lamap-3d-public/pointcloud/v2/rgb/cologny"
+          rclone copy "$TSDIR" r2-lamap-3d:lamap-3d-public/pointcloud/v2/rgb/cologny \
+            --transfers 16 --checkers 16 --stats-one-line -v
+          echo "### remote size:"
+          rclone size r2-lamap-3d:lamap-3d-public/pointcloud/v2/rgb/cologny
+          echo "### top-level objects:"
+          rclone lsf r2-lamap-3d:lamap-3d-public/pointcloud/v2/rgb/cologny | head
+          echo "### public URL: https://pub-f3932e9291c1458cb0a2bf5b53a77f85.r2.dev/pointcloud/v2/rgb/cologny/tileset.json"
