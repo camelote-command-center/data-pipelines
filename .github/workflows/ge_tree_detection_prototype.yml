@@ -50,8 +50,13 @@ jobs:
           EOF
 
       - name: R2 read-token diagnostics (non-fatal)
+        env:
+          R2_READ_ACCESS_KEY_ID: ${{ secrets.R2_READ_ACCESS_KEY_ID }}
+          R2_READ_SECRET_ACCESS_KEY: ${{ secrets.R2_READ_SECRET_ACCESS_KEY }}
+          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI }}
         run: |
           set +e
+          echo "### secret byte-lengths (safe, no values): R2_READ_KEY=${#R2_READ_ACCESS_KEY_ID} R2_READ_SECRET=${#R2_READ_SECRET_ACCESS_KEY} RE_LLM_PG_URI=${#RE_LLM_PG_URI}"
           echo "### lsd buckets:";      rclone lsd r2-camelote-backups: 2>&1 | head
           echo "### ls prefix v1 head:"; rclone ls "r2-camelote-backups:camelote-backups/lamap-2025/chm/v1/" 2>&1 | head -5
           echo "### size exact key:";    rclone size "r2-camelote-backups:camelote-backups/lamap-2025/chm/v1/2502-1117.tif" 2>&1
