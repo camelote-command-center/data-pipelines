@@ -100,10 +100,15 @@ jobs:
 
               t = time.time()
               tif = f"{key}.tif"
-              r = subprocess.run(["rclone", "copyto", "--retries", "3", f"{R2}/{key}.tif", tif],
-                                 capture_output=True, text=True)
-              if r.returncode != 0: raise RuntimeError("rclone download (read-only) failed: " + r.stderr[:400])
+              # rclone cat = a single GetObject on the exact key; no directory listing (read token is
+              # object-read only, no ListBucket), no HeadObject fallback.
+              with open(tif, "wb") as fh:
+                  r = subprocess.run(["rclone", "cat", "--retries", "3", f"{R2}/{key}.tif"],
+                                     stdout=fh, stderr=subprocess.PIPE)
+              if r.returncode != 0 or os.path.getsize(tif) == 0:
+                  raise RuntimeError("rclone cat (read-only GET) failed: " + r.stderr.decode()[:400])
               T["download"] = time.time() - t
+              log(f"downloaded {key}.tif ({os.path.getsize(tif)/1e6:.1f} MB)")
 
               t = time.time()
               arr, nd, gt, proj = read_band(tif)
