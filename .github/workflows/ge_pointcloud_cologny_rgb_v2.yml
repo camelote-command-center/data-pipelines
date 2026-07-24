@@ -129,9 +129,10 @@ jobs:
           r = sh([".venv/bin/py3dtiles", "convert", *vegfiles, "--out", tset,
                   "--srs_in", "2056", "--srs_out", "4978",
                   "--extra-fields", "HeightAboveGround", "--extra-fields", "classification",
-                  "--jobs", "4", "--overwrite"])
+                  "--jobs", "2", "--overwrite"])
           convs = time.time() - t0
-          if r.returncode != 0: raise RuntimeError("py3dtiles failed: " + r.stderr[-600:])
+          if r.returncode != 0:
+              raise RuntimeError(f"py3dtiles failed rc={r.returncode}\nSTDOUT:\n{r.stdout[-2000:]}\nSTDERR:\n{r.stderr[-2000:]}")
           for line in r.stdout.splitlines():
               if "does not have the field" in line:
                   raise RuntimeError("py3dtiles dropped a field: " + line.strip())
@@ -169,7 +170,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cologny-rgb-v2-tileset
-          path: tilesets/cologny
+          path: |
+            tilesets/cologny
+            veg
           retention-days: 14
           if-no-files-found: warn
 
