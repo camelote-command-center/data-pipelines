@@ -40,8 +40,8 @@ jobs:
           type = s3
           provider = Cloudflare
           endpoint = https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com
-          access_key_id = ${{ secrets.R2_ACCESS_KEY_ID }}
-          secret_access_key = ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          access_key_id = ${{ secrets.R2_PUBLIC_ACCESS_KEY_ID }}
+          secret_access_key = ${{ secrets.R2_PUBLIC_SECRET_ACCESS_KEY }}
           region = auto
           no_check_bucket = true
           EOF
