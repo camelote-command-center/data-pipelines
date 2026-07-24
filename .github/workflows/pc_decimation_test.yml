@@ -1,0 +1,111 @@
+name: PointCloud v3 — decimation test (tile 2502-1117, steps 1/2/4)
+
+# B1 decimation test only: ONE tile, three decimation steps, height-ramp look (NO colourisation).
+# Reports point count + tileset size per step and uploads each to a v3 TEST prefix so the operator
+# can A/B against the live undecimated v2. Does NOT run the canton. Reads swisstopo OGD; writes only
+# to lamap-3d-public/pointcloud/v3/decimation-test/ (never v1, never v2, never camelote-backups, no DB).
+on:
+  workflow_dispatch:
+
+jobs:
+  decim:
+    name: decimation test 2502-1117
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Install PDAL (conda-forge) + py3dtiles + laspy + rclone
+        run: |
+          curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba
+          ./bin/micromamba create -y -p "$HOME/mamba" -c conda-forge pdal >/dev/null
+          echo "$HOME/mamba/bin" >> "$GITHUB_PATH"
+          sudo apt-get update -qq && sudo apt-get install -y -qq unzip
+          curl -fsSL https://rclone.org/install.sh | sudo bash
+          python3 -m venv .venv
+          .venv/bin/pip install -q --upgrade pip
+          .venv/bin/pip install -q "py3dtiles==12.1.1" laspy lazrs
+
+      - name: Configure rclone for R2 (lamap-3d-public R/W)
+        run: |
+          mkdir -p ~/.config/rclone
+          cat > ~/.config/rclone/rclone.conf <<EOF
+          [r2-lamap-3d]
+          type = s3
+          provider = Cloudflare
+          endpoint = https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com
+          access_key_id = ${{ secrets.R2_PUBLIC_ACCESS_KEY_ID }}
+          secret_access_key = ${{ secrets.R2_PUBLIC_SECRET_ACCESS_KEY }}
+          region = auto
+          no_check_bucket = true
+          EOF
+
+      - name: Build + convert + upload 3 decimation steps
+        run: |
+          cat > decim.py <<'PYEOF'
+          import json, os, subprocess, time, glob
+
+          KEY = "2502-1117"
+          LIDAR = f"https://data.geo.admin.ch/ch.swisstopo.swisssurface3d/swisssurface3d_2019_{KEY}/swisssurface3d_2019_{KEY}_2056_5728.las.zip"
+          DTM   = f"https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2019_{KEY}/swissalti3d_2019_{KEY}_0.5_2056_5728.tif"
+          DEST  = "pointcloud/v3/decimation-test/" + KEY
+          WORK, OUT = "work", "veg"
+          os.makedirs(WORK, exist_ok=True); os.makedirs(OUT, exist_ok=True)
+
+          def sh(cmd): return subprocess.run(cmd, capture_output=True, text=True)
+          def log(m): print(m, flush=True)
+          def fetch(url, dest):
+              r = sh(["curl", "-sS", "--fail", "--retry", "3", "-o", dest, url])
+              if r.returncode != 0 or os.path.getsize(dest) < 10000:
+                  raise RuntimeError(f"download failed {url}: {r.stderr[:200]}")
+
+          # download + unzip the tile ONCE, reuse for all steps
+          zf = f"{WORK}/{KEY}.las.zip"; fetch(LIDAR, zf)
+          if sh(["unzip", "-o", "-j", "-d", WORK, zf]).returncode != 0: raise RuntimeError("unzip failed")
+          las = glob.glob(f"{WORK}/*.las")[0]
+          dtm = f"{WORK}/{KEY}_dtm.tif"; fetch(DTM, dtm)
+
+          def npoints(p):
+              r = sh(["pdal", "info", "--summary", p]); return int(json.loads(r.stdout)["summary"]["num_points"])
+          def dirsize(d):
+              return sum(os.path.getsize(f) for f in glob.glob(f"{d}/**/*", recursive=True) if os.path.isfile(f)) / 1e6
+
+          rows = []
+          for step in (1, 2, 4):
+              t0 = time.time()
+              outf = f"{OUT}/{KEY}_s{step}.las"
+              stages = [
+                  {"type": "readers.las", "filename": las},
+                  {"type": "filters.hag_dem", "raster": dtm},
+                  {"type": "filters.range", "limits": "Classification[3:5]"},
+                  {"type": "filters.decimation", "step": step},
+                  {"type": "writers.las", "filename": outf,
+                   "extra_dims": "HeightAboveGround=float32", "minor_version": 4, "dataformat_id": 7},
+              ]
+              pj = f"{WORK}/s{step}.json"; json.dump(stages, open(pj, "w"))
+              r = sh(["pdal", "pipeline", pj])
+              if r.returncode != 0: raise RuntimeError(f"pdal step {step}: {r.stderr[:400]}")
+              npts = npoints(outf); las_mb = os.path.getsize(outf) / 1e6
+              tset = f"tilesets/s{step}"; os.makedirs("tilesets", exist_ok=True)
+              rc = sh([".venv/bin/py3dtiles", "convert", outf, "--out", tset,
+                       "--srs_in", "2056", "--srs_out", "4978",
+                       "--extra-fields", "HeightAboveGround", "--extra-fields", "classification",
+                       "--jobs", "4", "--overwrite"])
+              if rc.returncode != 0: raise RuntimeError(f"py3dtiles step {step}: {rc.stdout[-800:]} {rc.stderr[-400:]}")
+              pn = len(glob.glob(f"{tset}/**/*.pnts", recursive=True)); tmb = dirsize(tset)
+              dt = time.time() - t0
+              # upload to the v3 test prefix
+              up = sh(["rclone", "copy", tset, f"r2-lamap-3d:lamap-3d-public/{DEST}/step{step}",
+                       "--transfers", "16", "--checkers", "16", "-q"])
+              uploaded = up.returncode == 0
+              rows.append((step, npts, las_mb, pn, tmb, dt, uploaded))
+              log(f"[step {step}] points {npts:,} | veg las {las_mb:.1f} MB | pnts {pn} | tileset {tmb:.1f} MB | {dt:.1f}s | uploaded={uploaded}")
+              os.remove(outf)
+
+          log("")
+          log("#################### DECIMATION TEST — tile 2502-1117 (veg-only, height-ramp) ####################")
+          log(f"{'step':>4} {'points':>12} {'tileset_MB':>11} {'pnts':>6} {'las_MB':>8} {'sec':>6}  url")
+          base = "https://pub-f3932e9291c1458cb0a2bf5b53a77f85.r2.dev/" + DEST
+          for (step, npts, las_mb, pn, tmb, dt, up) in rows:
+              log(f"{step:>4} {npts:>12,} {tmb:>11.1f} {pn:>6} {las_mb:>8.1f} {dt:>6.1f}  {base}/step{step}/tileset.json  (uploaded={up})")
+          log("DONE — decimation test. v1/v2 untouched; canton NOT started.")
+          PYEOF
+          python3 decim.py
