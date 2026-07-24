@@ -1,0 +1,252 @@
+name: PointCloud v3 — Geneva canton (height-ramp, 4km blocks)
+
+# Canton-wide swissSURFACE3D -> 3D Tiles, vegetation-only, height-ramp look (NO colourisation, NO decimation).
+# 357 GE 1km tiles grouped into 4km blocks -> pointcloud/v3/ge/{block}/tileset.json + pointcloud/v3/ge/index.json.
+# Reads swisstopo OGD; one read of re-LLM (GE boundary, prepare only). Writes ONLY to lamap-3d-public/pointcloud/v3/ge/.
+# Leaves pointcloud/v1, v2, v3/decimation-test untouched. Never camelote-backups. No DB writes. workflow_dispatch only.
+
+on:
+  workflow_dispatch:
+
+env:
+  NSHARDS: "18"
+
+jobs:
+  prepare:
+    name: enumerate GE tiles + 4km blocks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: install psql + pyproj
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client
+          python3 -m venv .venv
+          .venv/bin/pip install -q --upgrade pip
+          .venv/bin/pip install -q pyproj
+      - name: build blocks.json
+        env:
+          RE_LLM_DB_URL: ${{ secrets.RE_LLM_DB_URL }}
+        run: |
+          cat > prepare.py <<'PYEOF'
+          import json, os, subprocess
+          from collections import defaultdict
+          PG = os.environ["RE_LLM_DB_URL"]
+          SQL = ("WITH ge AS (SELECT ST_Union(geometry) g FROM silver_ch.ref_communes WHERE canton_code='GE'),"
+                 " ext AS (SELECT floor(ST_XMin(g)/1000)::int x0, ceil(ST_XMax(g)/1000)::int x1,"
+                 "                floor(ST_YMin(g)/1000)::int y0, ceil(ST_YMax(g)/1000)::int y1 FROM ge),"
+                 " cells AS (SELECT ex,ny FROM ext, generate_series((SELECT x0 FROM ext),(SELECT x1 FROM ext)) ex,"
+                 "   generate_series((SELECT y0 FROM ext),(SELECT y1 FROM ext)) ny)"
+                 " SELECT ex||'-'||ny FROM cells, ge"
+                 " WHERE ST_Intersects(ge.g, ST_MakeEnvelope(ex*1000,ny*1000,(ex+1)*1000,(ny+1)*1000,2056)) ORDER BY 1")
+          r = subprocess.run(["psql", PG, "-tAc", SQL], capture_output=True, text=True)
+          if r.returncode != 0: raise SystemExit("psql failed: " + r.stderr[:300])
+          keys = [l.strip() for l in r.stdout.splitlines() if l.strip()]
+          blocks = defaultdict(list)
+          for k in keys:
+              e, n = [int(x) for x in k.split("-")]
+              blocks[f"{(e//4)*4}-{(n//4)*4}"].append(k)
+          from pyproj import Transformer
+          T = Transformer.from_crs(2056, 4326, always_xy=True)
+          out = []
+          for bk in sorted(blocks):
+              bx, by = [int(x) for x in bk.split("-")]
+              xmin, ymin, xmax, ymax = bx*1000, by*1000, (bx+4)*1000, (by+4)*1000
+              lons, lats = zip(*[T.transform(x, y) for x, y in [(xmin,ymin),(xmin,ymax),(xmax,ymin),(xmax,ymax)]])
+              out.append({"block": bk, "tiles": sorted(blocks[bk]),
+                          "bbox_wgs84": [round(min(lons),6), round(min(lats),6), round(max(lons),6), round(max(lats),6)]})
+          json.dump(out, open("blocks.json", "w"))
+          print(f"blocks {len(out)} | tiles {len(keys)}")
+          PYEOF
+          .venv/bin/python prepare.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: blocks-manifest
+          path: blocks.json
+          retention-days: 3
+
+  build:
+    name: build blocks (shard ${{ matrix.shard }})
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]
+    steps:
+      - name: Install PDAL + py3dtiles + laspy + rclone
+        run: |
+          curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba
+          ./bin/micromamba create -y -p "$HOME/mamba" -c conda-forge pdal >/dev/null
+          echo "$HOME/mamba/bin" >> "$GITHUB_PATH"
+          sudo apt-get update -qq && sudo apt-get install -y -qq unzip
+          curl -fsSL https://rclone.org/install.sh | sudo bash
+          python3 -m venv .venv
+          .venv/bin/pip install -q --upgrade pip
+          .venv/bin/pip install -q "py3dtiles==12.1.1" laspy lazrs
+      - name: Configure rclone for R2 (lamap-3d-public R/W)
+        run: |
+          mkdir -p ~/.config/rclone
+          cat > ~/.config/rclone/rclone.conf <<EOF
+          [r2-lamap-3d]
+          type = s3
+          provider = Cloudflare
+          endpoint = https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com
+          access_key_id = ${{ secrets.R2_PUBLIC_ACCESS_KEY_ID }}
+          secret_access_key = ${{ secrets.R2_PUBLIC_SECRET_ACCESS_KEY }}
+          region = auto
+          no_check_bucket = true
+          EOF
+      - uses: actions/download-artifact@v4
+        with:
+          name: blocks-manifest
+      - name: Build + upload this shard's blocks
+        env:
+          SHARD: ${{ matrix.shard }}
+        run: |
+          cat > build_shard.py <<'PYEOF'
+          import json, os, subprocess, time, glob
+          SHARD = int(os.environ["SHARD"]); NS = int(os.environ["NSHARDS"])
+          blocks = json.load(open("blocks.json"))
+          mine = blocks[SHARD::NS]
+          LIDAR = "https://data.geo.admin.ch/ch.swisstopo.swisssurface3d/swisssurface3d_2019_{k}/swisssurface3d_2019_{k}_2056_5728.las.zip"
+          DTM   = "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2019_{k}/swissalti3d_2019_{k}_0.5_2056_5728.tif"
+          WORK, OUT = "work", "veg"
+          os.makedirs(WORK, exist_ok=True); os.makedirs(OUT, exist_ok=True)
+          def sh(c): return subprocess.run(c, capture_output=True, text=True)
+          def log(m): print(m, flush=True)
+          def fetch(url, dest):
+              r = sh(["curl", "-sS", "--fail", "--retry", "3", "-o", dest, url])
+              return r.returncode == 0 and os.path.exists(dest) and os.path.getsize(dest) > 10000
+          def npoints(p):
+              r = sh(["pdal", "info", "--summary", p])
+              try: return int(json.loads(r.stdout)["summary"]["num_points"])
+              except Exception: return 0
+          def dirsize(d):
+              return sum(os.path.getsize(f) for f in glob.glob(f"{d}/**/*", recursive=True) if os.path.isfile(f)) / 1e6
+
+          results = []
+          for blk in mine:
+              bk = blk["block"]; t0 = time.time(); vegs = []; ndata = 0
+              for k in blk["tiles"]:
+                  zf = f"{WORK}/{k}.zip"
+                  if not fetch(LIDAR.format(k=k), zf):      # lake tile / no LiDAR
+                      continue
+                  for f in glob.glob(f"{WORK}/*.las"): os.remove(f)
+                  if sh(["unzip", "-o", "-j", "-d", WORK, zf]).returncode != 0:
+                      os.path.exists(zf) and os.remove(zf); continue
+                  ls = glob.glob(f"{WORK}/*.las")
+                  if not ls: os.remove(zf); continue
+                  las = ls[0]; dtm = f"{WORK}/{k}_dtm.tif"
+                  if not fetch(DTM.format(k=k), dtm):
+                      os.remove(zf); os.remove(las); continue
+                  outf = f"{OUT}/{k}.las"
+                  stages = [{"type": "readers.las", "filename": las},
+                            {"type": "filters.hag_dem", "raster": dtm},
+                            {"type": "filters.range", "limits": "Classification[3:5]"},
+                            {"type": "writers.las", "filename": outf, "extra_dims": "HeightAboveGround=float32",
+                             "minor_version": 4, "dataformat_id": 7}]
+                  pj = f"{WORK}/{k}.json"; json.dump(stages, open(pj, "w"))
+                  r = sh(["pdal", "pipeline", pj])
+                  for f in (zf, las, dtm):
+                      if os.path.exists(f): os.remove(f)
+                  if r.returncode != 0 or not os.path.exists(outf):
+                      log(f"  {bk}: pdal failed {k}: {r.stderr[:160]}"); continue
+                  vegs.append(outf); ndata += 1
+              if not vegs:
+                  results.append({"block": bk, "ok": False, "reason": "no data tiles (lake)", "bbox_wgs84": blk["bbox_wgs84"]})
+                  log(f"[{bk}] no data tiles (all lake) — skip"); continue
+              try:
+                  npts = sum(npoints(v) for v in vegs)
+                  tset = f"tilesets/{bk}"; os.makedirs("tilesets", exist_ok=True)
+                  rc = sh([".venv/bin/py3dtiles", "convert", *vegs, "--out", tset,
+                           "--srs_in", "2056", "--srs_out", "4978",
+                           "--extra-fields", "HeightAboveGround", "--extra-fields", "classification",
+                           "--jobs", "4", "--overwrite"])
+                  if rc.returncode != 0:
+                      raise RuntimeError("py3dtiles: " + (rc.stdout[-300:] + rc.stderr[-300:]))
+                  pn = len(glob.glob(f"{tset}/**/*.pnts", recursive=True)); tmb = dirsize(tset)
+                  up = sh(["rclone", "copy", tset, f"r2-lamap-3d:lamap-3d-public/pointcloud/v3/ge/{bk}",
+                           "--transfers", "16", "--checkers", "16", "-q"])
+                  if up.returncode != 0:
+                      raise RuntimeError("rclone: " + up.stderr[-300:])
+                  dt = time.time() - t0
+                  results.append({"block": bk, "url": f"pointcloud/v3/ge/{bk}/tileset.json", "bbox_wgs84": blk["bbox_wgs84"],
+                                  "points": npts, "tileset_mb": round(tmb, 1), "ntiles": ndata, "pnts": pn, "sec": round(dt, 1), "ok": True})
+                  log(f"[{bk}] {ndata} tiles | {npts:,} pts | {pn} pnts | {tmb:.1f} MB | {dt:.1f}s | uploaded")
+              except Exception as ex:
+                  results.append({"block": bk, "ok": False, "reason": str(ex)[:200], "bbox_wgs84": blk["bbox_wgs84"]})
+                  log(f"[{bk}] FAILED: {str(ex)[:200]}")
+              finally:
+                  for v in vegs:
+                      if os.path.exists(v): os.remove(v)
+                  sh(["rm", "-rf", f"tilesets/{bk}"])
+          json.dump(results, open(f"results-{SHARD}.json", "w"))
+          log(f"shard {SHARD}: {sum(1 for r in results if r.get('ok'))}/{len(mine)} blocks ok")
+          PYEOF
+          python3 build_shard.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: results-${{ matrix.shard }}
+          path: results-${{ matrix.shard }}.json
+          retention-days: 3
+
+  reduce:
+    name: assemble index.json + report
+    needs: build
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: rclone + config
+        run: |
+          curl -fsSL https://rclone.org/install.sh | sudo bash
+          mkdir -p ~/.config/rclone
+          cat > ~/.config/rclone/rclone.conf <<EOF
+          [r2-lamap-3d]
+          type = s3
+          provider = Cloudflare
+          endpoint = https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com
+          access_key_id = ${{ secrets.R2_PUBLIC_ACCESS_KEY_ID }}
+          secret_access_key = ${{ secrets.R2_PUBLIC_SECRET_ACCESS_KEY }}
+          region = auto
+          no_check_bucket = true
+          EOF
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: results-*
+          path: res
+      - name: assemble + upload index.json + report
+        run: |
+          cat > reduce.py <<'PYEOF'
+          import json, glob, subprocess
+          allres = []
+          for f in glob.glob("res/**/results-*.json", recursive=True):
+              allres += json.load(open(f))
+          ok = sorted([r for r in allres if r.get("ok")], key=lambda r: r["block"])
+          index = [{"block": r["block"], "url": r["url"], "bbox_wgs84": r["bbox_wgs84"]} for r in ok]
+          json.dump(index, open("index.json", "w"), indent=1)
+          up = subprocess.run(["rclone", "copyto", "index.json",
+                               "r2-lamap-3d:lamap-3d-public/pointcloud/v3/ge/index.json", "-q"], capture_output=True, text=True)
+          tot_pts = sum(r["points"] for r in ok); tot_mb = sum(r["tileset_mb"] for r in ok); tot_tiles = sum(r["ntiles"] for r in ok)
+          secs = sorted(r["sec"] for r in ok)
+          lake = [r for r in allres if not r.get("ok") and "lake" in r.get("reason","")]
+          fail = [r for r in allres if not r.get("ok") and "lake" not in r.get("reason","")]
+          print("#################### V3 GENEVA CANTON — REPORT ####################")
+          print(f"blocks published: {len(ok)} | lake/empty blocks skipped: {len(lake)} | FAILED blocks: {len(fail)}")
+          print(f"data tiles: {tot_tiles} | total points: {tot_pts:,} | total size: {tot_mb/1000:.2f} GB | index.json upload rc={up.returncode}")
+          if secs:
+              per_tile = sum(r["sec"] for r in ok) / max(1, tot_tiles)
+              print(f"per-block runtime s: min {secs[0]:.0f} med {secs[len(secs)//2]:.0f} max {secs[-1]:.0f} | avg per data-tile ~{per_tile:.1f}s")
+          if fail:
+              print("FAILED blocks:", [(r["block"], r.get("reason")) for r in fail])
+          print("index.json: https://pub-f3932e9291c1458cb0a2bf5b53a77f85.r2.dev/pointcloud/v3/ge/index.json")
+          print("---- full index.json ----")
+          print(json.dumps(index, indent=1))
+          PYEOF
+          python3 reduce.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v3-index
+          path: index.json
+          retention-days: 14
