@@ -127,8 +127,7 @@ jobs:
                                   "-nln", "parcels", "-nlt", "MULTIPOLYGON", "-a_srs", "EPSG:2056",
                                   "-lco", "SPATIAL_INDEX=YES", "-sql",
                                   "SELECT row_number() OVER (ORDER BY egrid)::int AS pid, egrid,"
-                                  " no_commune, no_parcelle, ST_MakeValid(geometry) AS geometry,"
-                                  " ST_Area(ST_MakeValid(geometry)) AS poly_area_m2"
+                                  " ST_MakeValid(geometry) AS geometry"
                                   " FROM bronze_ch.ge_plots_geo"], capture_output=True, text=True)
                   if _r.returncode != 0:
                       raise RuntimeError("build parcels.gpkg failed: " + (_r.stderr or "").strip()[:500])
