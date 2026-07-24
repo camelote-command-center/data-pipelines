@@ -28,7 +28,7 @@ jobs:
           curl -fsSL https://rclone.org/install.sh | sudo bash
           python3 -m venv .venv
           .venv/bin/pip install -q --upgrade pip
-          .venv/bin/pip install -q "py3dtiles==12.1.1"
+          .venv/bin/pip install -q "py3dtiles==12.1.1" laspy lazrs
           echo "pdal: $("$HOME/mamba/bin/pdal" --version 2>&1 | head -1)"
           echo "py3dtiles: $(.venv/bin/py3dtiles --version 2>&1 | head -1)"
 
