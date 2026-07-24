@@ -187,44 +187,46 @@ jobs:
               # parcel assignment: rasterize pid onto the tile grid (same pattern as the CHM pipeline)
               t = time.time()
               gpkg = f"{key}_parcels.gpkg"; pidtif = f"{key}_pid.tif"
-              sql = (f"SELECT row_number() OVER (ORDER BY egrid)::int AS pid, egrid, "
-                     f"ST_MakeValid(geometry) AS geometry FROM bronze_ch.ge_plots_geo "
-                     f"WHERE ST_Intersects(geometry, ST_MakeEnvelope({xmin},{ymin},{xmax},{ymax},2056))")
-              for _att in range(3):
-                  _r = subprocess.run(["ogr2ogr", "-f", "GPKG", gpkg, f"PG:{PG}", "-nln", "parcels",
-                                  "-nlt", "MULTIPOLYGON", "-a_srs", "EPSG:2056", "-sql", sql],
-                                 capture_output=True, text=True)
-                  if _r.returncode == 0:
-                      break
-                  log(f"ogr2ogr parcels attempt {_att+1}/3 failed rc={_r.returncode}: {(_r.stderr or '').strip()[:300]}")
-                  if _att == 2:
-                      raise RuntimeError("ogr2ogr parcels failed after 3 attempts")
-                  time.sleep(3)
-              subprocess.run(["gdal_rasterize", "-q", "-ot", "Int32", "-init", "0",
-                              "-te", str(xmin), str(ymin), str(xmax), str(ymax), "-tr", str(PX), str(PX),
-                              "-a", "pid", "-l", "parcels", gpkg, pidtif], check=True, capture_output=True)
-              pidarr, _, _, _ = read_band(pidtif)
-              ds = ogr.Open(gpkg); lyr = ds.GetLayer(); pid2eg = {}
-              for f in lyr: pid2eg[f.GetField("pid")] = f.GetField("egrid")
-              del lyr, ds
-              per = {}   # egrid -> tree count
-              boundary = 0
-              for (te, tn, x, y, ha, cr) in trees:
-                  pid = int(pidarr[y, x])
-                  eg = pid2eg.get(pid)
-                  if eg is None: boundary += 1
-                  else: per[eg] = per.get(eg, 0) + 1
+              per = {}; pid2eg = {}; boundary = 0; veg = {}; zero_veg = []; violations = []
+              assign_ok = False
+              try:
+                  sql = (f"SELECT row_number() OVER (ORDER BY egrid)::int AS pid, egrid, "
+                         f"ST_MakeValid(geometry) AS geometry FROM bronze_ch.ge_plots_geo "
+                         f"WHERE ST_Intersects(geometry, ST_MakeEnvelope({xmin},{ymin},{xmax},{ymax},2056))")
+                  for _att in range(3):
+                      _r = subprocess.run(["ogr2ogr", "-f", "GPKG", gpkg, f"PG:{PG}", "-nln", "parcels",
+                                      "-nlt", "MULTIPOLYGON", "-a_srs", "EPSG:2056", "-sql", sql],
+                                     capture_output=True, text=True)
+                      if _r.returncode == 0:
+                          break
+                      log(f"ogr2ogr parcels attempt {_att+1}/3 failed rc={_r.returncode}: {(_r.stderr or '').strip()[:400]}")
+                      if _att == 2:
+                          raise RuntimeError("ogr2ogr parcels failed after 3 attempts")
+                      time.sleep(3)
+                  subprocess.run(["gdal_rasterize", "-q", "-ot", "Int32", "-init", "0",
+                                  "-te", str(xmin), str(ymin), str(xmax), str(ymax), "-tr", str(PX), str(PX),
+                                  "-a", "pid", "-l", "parcels", gpkg, pidtif], check=True, capture_output=True)
+                  pidarr, _, _, _ = read_band(pidtif)
+                  ds = ogr.Open(gpkg); lyr = ds.GetLayer()
+                  for f in lyr: pid2eg[f.GetField("pid")] = f.GetField("egrid")
+                  del lyr, ds
+                  for (te, tn, x, y, ha, cr) in trees:
+                      pid = int(pidarr[y, x])
+                      eg = pid2eg.get(pid)
+                      if eg is None: boundary += 1
+                      else: per[eg] = per.get(eg, 0) + 1
+                  # canopy cross-check: parcels with vegetated_area_m2=0 must have 0 trees
+                  egrids = list(pid2eg.values())
+                  if egrids:
+                      inlist = ",".join("'" + g.replace("'", "") + "'" for g in egrids)
+                      for row in psql(f"SELECT egrid, vegetated_area_m2 FROM gold_ch.plot_canopy_stats WHERE egrid IN ({inlist})"):
+                          g, v = row.split("|"); veg[g] = float(v)
+                  zero_veg = [g for g, v in veg.items() if v == 0]
+                  violations = [g for g in zero_veg if per.get(g, 0) > 0]
+                  assign_ok = True
+              except Exception as _pex:
+                  log(f"parcel assignment failed (NON-FATAL, detection/rejection results stand): {_pex}")
               T["assign"] = time.time() - t
-
-              # canopy cross-check: parcels with vegetated_area_m2=0 must have 0 trees
-              egrids = list(pid2eg.values())
-              veg = {}
-              if egrids:
-                  inlist = ",".join("'" + g.replace("'", "") + "'" for g in egrids)
-                  for row in psql(f"SELECT egrid, vegetated_area_m2 FROM gold_ch.plot_canopy_stats WHERE egrid IN ({inlist})"):
-                      g, v = row.split("|"); veg[g] = float(v)
-              zero_veg = [g for g, v in veg.items() if v == 0]
-              violations = [g for g in zero_veg if per.get(g, 0) > 0]
 
               # ---- report ----
               H = np.array([t[4] for t in trees]); CR = np.array([t[5] for t in trees])
@@ -259,7 +261,8 @@ jobs:
                   log(f"tile vegetated_area {tile_veg:,.0f} m2 -> density {len(trees)/tile_veg*10000:.1f} trees/ha of canopy")
                   log(f"EXTRAPOLATED GE tree count: {ge_trees:,.0f}  -> table ~{ge_trees*150/1e6:,.0f} MB (row+idx ~150 B)")
               return dict(key=key, trees=len(trees), rej=rej, violations=violations, anchor=anchor,
-                          parcels=nparcels, parcels_0trees=parcels_0trees)
+                          parcels=nparcels, parcels_0trees=parcels_0trees, assign_ok=assign_ok,
+                          zero_veg=len(zero_veg))
 
           def main():
               prim = os.environ["TILE"].strip()
@@ -271,8 +274,9 @@ jobs:
               c1 = bool(a) and a[1] <= 1.0 and 38.5 <= a[0][4] <= 39.5
               log(f"[{'PASS' if c1 else 'FAIL'}] 1. anchor peak within 1 m & 38.5-39.5 m: " + (f"{a[1]:.2f} m, {a[0][4]:.2f} m" if a else "not found"))
               log(f"[?]   2. anchor parcel tree count ~20-30 (see per-parcel above)")
-              c3 = len(r1["violations"]) == 0
-              log(f"[{'PASS' if c3 else 'FAIL'}] 3. every 0-vegetation parcel has 0 trees: {len(r1['violations'])} violations")
+              c3 = r1["assign_ok"] and len(r1["violations"]) == 0
+              _c3 = "PASS" if c3 else ("FAIL" if r1["assign_ok"] else "N/A (assignment failed)")
+              log(f"[{_c3}] 3. every 0-vegetation parcel has 0 trees: {len(r1['violations'])} violations ({r1['zero_veg']} zero-veg parcels)")
               c4 = r1["rej"]["over_50m"] >= 0
               log(f"[PASS] 4. no tree > 50 m (all >50 rejected: {r1['rej']['over_50m']})")
               if sec:
