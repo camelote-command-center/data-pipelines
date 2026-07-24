@@ -29,11 +29,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - name: Install GDAL + rclone + scipy/scikit-image
+      - name: Install GDAL + rclone + scipy/scikit-image (apt — ABI-consistent with python3-gdal; pip numpy 2.x breaks it)
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq gdal-bin python3-gdal postgresql-client
-          pip install numpy scipy scikit-image
+          sudo apt-get install -y -qq gdal-bin python3-gdal python3-numpy python3-scipy python3-skimage postgresql-client
           curl -fsSL https://rclone.org/install.sh | sudo bash
 
       - name: Configure rclone for R2 (download only)
@@ -46,6 +45,8 @@ jobs:
           endpoint = ${{ secrets.R2_ENDPOINT }}
           access_key_id = ${{ secrets.R2_ACCESS_KEY_ID }}
           secret_access_key = ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          no_check_bucket = true
+          region = auto
           EOF
 
       - name: Run detection prototype
@@ -100,8 +101,11 @@ jobs:
 
               t = time.time()
               tif = f"{key}.tif"
-              r = subprocess.run(["rclone", "copyto", f"{R2}/{key}.tif", tif], capture_output=True, text=True)
-              if r.returncode != 0: raise RuntimeError("rclone (read-only) failed: " + r.stderr[:300])
+              ls = subprocess.run(["rclone", "lsf", f"{R2}/{key}.tif"], capture_output=True, text=True)
+              log(f"rclone lsf rc={ls.returncode} out={ls.stdout.strip()!r} err={ls.stderr.strip()[:200]!r}")
+              r = subprocess.run(["rclone", "copyto", "--s3-no-head", "--retries", "2", f"{R2}/{key}.tif", tif],
+                                 capture_output=True, text=True)
+              if r.returncode != 0: raise RuntimeError("rclone download (read-only) failed: " + r.stderr[:400])
               T["download"] = time.time() - t
 
               t = time.time()
