@@ -88,14 +88,14 @@ jobs:
               if not las: raise RuntimeError("no .las after unzip " + k)
               las = las[0]
               dtm = f"{WORK}/{k}_dtm.tif"; fetch(DTM.format(k=k), dtm)
-              outf = f"{OUT}/{k}.laz"
+              outf = f"{OUT}/{k}.las"
               stages = [
                   {"type": "readers.las", "filename": las},
                   {"type": "filters.hag_dem", "raster": dtm},
                   {"type": "filters.colorization", "raster": ORTHO.format(k=k),
                    "dimensions": "Red:1:256, Green:2:256, Blue:3:256"},   # scale 256 = 8-bit ortho -> 16-bit RGB (v1 used 1.0 -> black)
                   {"type": "filters.range", "limits": "Classification[3:5]"},   # vegetation only, at conversion
-                  {"type": "writers.las", "filename": outf, "compression": "laszip",
+                  {"type": "writers.las", "filename": outf,
                    "extra_dims": "HeightAboveGround=float32", "minor_version": 4, "dataformat_id": 7},
               ]
               pj = f"{WORK}/{k}.json"; json.dump(stages, open(pj, "w"))
@@ -123,13 +123,13 @@ jobs:
               raise SystemExit(f"RGB SANITY FAILED — values clustered near 0 (max {maxall:.0f}, min-mean {minavg:.0f}). Colour scaling wrong; NOT converting/uploading.")
 
           # ---- py3dtiles convert (1.0 / pnts; carries HAG + classification + RGB) ----
-          vegfiles = sorted(f"{OUT}/{k}.laz" for k in TILES if os.path.exists(f"{OUT}/{k}.laz"))
+          vegfiles = sorted(f"{OUT}/{k}.las" for k in TILES if os.path.exists(f"{OUT}/{k}.las"))
           tset = "tilesets/cologny"; os.makedirs("tilesets", exist_ok=True)
           t0 = time.time()
           r = sh([".venv/bin/py3dtiles", "convert", *vegfiles, "--out", tset,
                   "--srs_in", "2056", "--srs_out", "4978",
                   "--extra-fields", "HeightAboveGround", "--extra-fields", "classification",
-                  "--jobs", "2", "--overwrite"])
+                  "--jobs", "4", "--overwrite"])
           convs = time.time() - t0
           if r.returncode != 0:
               raise RuntimeError(f"py3dtiles failed rc={r.returncode}\nSTDOUT:\n{r.stdout[-2000:]}\nSTDERR:\n{r.stderr[-2000:]}")
