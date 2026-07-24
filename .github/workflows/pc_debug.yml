@@ -1,0 +1,28 @@
+name: pc-debug-convert
+on: workflow_dispatch
+jobs:
+  dbg:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: install py3dtiles
+        run: |
+          python3 -m venv .venv
+          .venv/bin/pip install -q --upgrade pip
+          .venv/bin/pip install -q "py3dtiles==12.1.1"
+          echo "--- convert --help ---"
+          .venv/bin/py3dtiles convert --help || true
+      - name: download cached veg LAS from run 30106215345
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh run download 30106215345 --repo camelote-command-center/data-pipelines -n cologny-rgb-v2-tileset -D dl
+          echo "--- veg files ---"; ls -la dl/veg 2>/dev/null | head
+      - name: convert ONE tile, streamed (no capture, jobs=1)
+        run: |
+          set -x
+          .venv/bin/py3dtiles convert dl/veg/2502-1119.laz --out /tmp/ts \
+            --srs_in 2056 --srs_out 4978 \
+            --extra-fields HeightAboveGround --extra-fields classification \
+            --jobs 1 --overwrite ; echo "EXIT=$?"
+          echo "--- pnts produced ---"; find /tmp/ts -name '*.pnts' 2>/dev/null | head
