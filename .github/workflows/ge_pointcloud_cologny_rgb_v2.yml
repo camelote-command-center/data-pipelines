@@ -18,15 +18,18 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
-      - name: Install PDAL + py3dtiles + rclone
+      - name: Install PDAL (conda-forge) + py3dtiles + rclone
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq pdal gdal-bin unzip
+          # apt has no 'pdal' on ubuntu-latest; use micromamba/conda-forge (PDAL built with GDAL + /vsicurl)
+          curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba
+          ./bin/micromamba create -y -p "$HOME/mamba" -c conda-forge pdal >/dev/null
+          echo "$HOME/mamba/bin" >> "$GITHUB_PATH"
+          sudo apt-get update -qq && sudo apt-get install -y -qq unzip
           curl -fsSL https://rclone.org/install.sh | sudo bash
           python3 -m venv .venv
           .venv/bin/pip install -q --upgrade pip
           .venv/bin/pip install -q "py3dtiles==12.1.1"
-          echo "pdal: $(pdal --version 2>&1 | head -1)"
+          echo "pdal: $("$HOME/mamba/bin/pdal" --version 2>&1 | head -1)"
           echo "py3dtiles: $(.venv/bin/py3dtiles --version 2>&1 | head -1)"
 
       - name: Configure rclone for R2 (lamap-3d-public write pair)
