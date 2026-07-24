@@ -54,9 +54,10 @@ jobs:
           R2_READ_ACCESS_KEY_ID: ${{ secrets.R2_READ_ACCESS_KEY_ID }}
           R2_READ_SECRET_ACCESS_KEY: ${{ secrets.R2_READ_SECRET_ACCESS_KEY }}
           RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI }}
+          RE_LLM_DB_URL: ${{ secrets.RE_LLM_DB_URL }}
         run: |
           set +e
-          echo "### secret byte-lengths (safe, no values): R2_READ_KEY=${#R2_READ_ACCESS_KEY_ID} R2_READ_SECRET=${#R2_READ_SECRET_ACCESS_KEY} RE_LLM_PG_URI=${#RE_LLM_PG_URI}"
+          echo "### secret byte-lengths (safe): R2_READ_KEY=${#R2_READ_ACCESS_KEY_ID} R2_READ_SECRET=${#R2_READ_SECRET_ACCESS_KEY} RE_LLM_PG_URI=${#RE_LLM_PG_URI} RE_LLM_DB_URL=${#RE_LLM_DB_URL}"
           echo "### lsd buckets:";      rclone lsd r2-camelote-backups: 2>&1 | head
           echo "### ls prefix v1 head:"; rclone ls "r2-camelote-backups:camelote-backups/lamap-2025/chm/v1/" 2>&1 | head -5
           echo "### size exact key:";    rclone size "r2-camelote-backups:camelote-backups/lamap-2025/chm/v1/2502-1117.tif" 2>&1
@@ -68,6 +69,7 @@ jobs:
       - name: Run detection prototype
         env:
           RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI }}
+          RE_LLM_DB_URL: ${{ secrets.RE_LLM_DB_URL }}
           TILE: ${{ inputs.tile }}
           SECONDARY: ${{ inputs.secondary_tile }}
         run: |
@@ -84,7 +86,8 @@ jobs:
           CLAMP = 50.0
           GE_VEG_M2 = 55_965_393.0     # sum(vegetated_area_m2) over all 72,948 GE parcels
           R2 = "r2-camelote-backups:camelote-backups/lamap-2025/chm/v1"
-          PG = os.environ["RE_LLM_PG_URI"]
+          PG = os.environ.get("RE_LLM_PG_URI") or os.environ.get("RE_LLM_DB_URL") or ""
+          if not PG: raise SystemExit("no re-LLM PG connection (RE_LLM_PG_URI and RE_LLM_DB_URL both empty)")
           ANCHOR_EGRID = "CH857565816393"    # Cologny 17/1566
           ANCHOR_E, ANCHOR_N = 2502452.5, 1117684.5
 
