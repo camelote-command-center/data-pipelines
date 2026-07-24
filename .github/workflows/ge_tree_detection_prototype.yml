@@ -100,9 +100,7 @@ jobs:
 
               t = time.time()
               tif = f"{key}.tif"
-              ls = subprocess.run(["rclone", "lsf", f"{R2}/{key}.tif"], capture_output=True, text=True)
-              log(f"rclone lsf rc={ls.returncode} out={ls.stdout.strip()!r} err={ls.stderr.strip()[:200]!r}")
-              r = subprocess.run(["rclone", "copyto", "--s3-no-head", "--retries", "2", f"{R2}/{key}.tif", tif],
+              r = subprocess.run(["rclone", "copyto", "--retries", "3", f"{R2}/{key}.tif", tif],
                                  capture_output=True, text=True)
               if r.returncode != 0: raise RuntimeError("rclone download (read-only) failed: " + r.stderr[:400])
               T["download"] = time.time() - t
