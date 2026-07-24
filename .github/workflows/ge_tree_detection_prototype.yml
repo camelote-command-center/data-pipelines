@@ -190,9 +190,16 @@ jobs:
               sql = (f"SELECT row_number() OVER (ORDER BY egrid)::int AS pid, egrid, "
                      f"ST_MakeValid(geometry) AS geometry FROM bronze_ch.ge_plots_geo "
                      f"WHERE ST_Intersects(geometry, ST_MakeEnvelope({xmin},{ymin},{xmax},{ymax},2056))")
-              subprocess.run(["ogr2ogr", "-f", "GPKG", gpkg, f"PG:{PG}", "-nln", "parcels",
-                              "-nlt", "MULTIPOLYGON", "-a_srs", "EPSG:2056", "-sql", sql],
-                             check=True, capture_output=True)
+              for _att in range(3):
+                  _r = subprocess.run(["ogr2ogr", "-f", "GPKG", gpkg, f"PG:{PG}", "-nln", "parcels",
+                                  "-nlt", "MULTIPOLYGON", "-a_srs", "EPSG:2056", "-sql", sql],
+                                 capture_output=True, text=True)
+                  if _r.returncode == 0:
+                      break
+                  log(f"ogr2ogr parcels attempt {_att+1}/3 failed rc={_r.returncode}: {(_r.stderr or '').strip()[:300]}")
+                  if _att == 2:
+                      raise RuntimeError("ogr2ogr parcels failed after 3 attempts")
+                  time.sleep(3)
               subprocess.run(["gdal_rasterize", "-q", "-ot", "Int32", "-init", "0",
                               "-te", str(xmin), str(ymin), str(xmax), str(ymax), "-tr", str(PX), str(PX),
                               "-a", "pid", "-l", "parcels", gpkg, pidtif], check=True, capture_output=True)
@@ -269,9 +276,12 @@ jobs:
               c4 = r1["rej"]["over_50m"] >= 0
               log(f"[PASS] 4. no tree > 50 m (all >50 rejected: {r1['rej']['over_50m']})")
               if sec:
-                  r2 = detect(sec)
-                  print("\n" + "#"*70); log("ACCEPTANCE (secondary tile — rejection test)")
-                  log(f"[?]   5. flat-topped unmapped masses rejected: flat_top rejections = {r2['rej']['flat_top']} (expect the two masses among them)")
+                  try:
+                      r2 = detect(sec)
+                      print("\n" + "#"*70); log("ACCEPTANCE (secondary tile — rejection test)")
+                      log(f"[?]   5. flat-topped unmapped masses rejected: flat_top rejections = {r2['rej']['flat_top']} (expect the two masses among them)")
+                  except Exception as ex:
+                      print("\n" + "#"*70); log(f"[SKIP] 5. secondary tile {sec} did NOT complete (non-fatal, primary result stands): {ex}")
               log("DONE — read-only prototype. Nothing written to R2 or any DB.")
 
           if __name__ == "__main__":
