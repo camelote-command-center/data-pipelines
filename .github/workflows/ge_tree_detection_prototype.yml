@@ -42,7 +42,7 @@ jobs:
           [r2-camelote-backups]
           type = s3
           provider = Cloudflare
-          endpoint = ${{ secrets.R2_ENDPOINT }}
+          endpoint = https://e992f7ddd2c250c546b8884bb185d66b.r2.cloudflarestorage.com
           access_key_id = ${{ secrets.R2_READ_ACCESS_KEY_ID }}
           secret_access_key = ${{ secrets.R2_READ_SECRET_ACCESS_KEY }}
           no_check_bucket = true
@@ -56,6 +56,7 @@ jobs:
           echo "### size exact key:";    rclone size "r2-camelote-backups:camelote-backups/lamap-2025/chm/v1/2502-1117.tif" 2>&1
           echo "### lsjson exact key:";  rclone lsjson "r2-camelote-backups:camelote-backups/lamap-2025/chm/v1/2502-1117.tif" 2>&1 | head -c 400; echo
           echo "### cat 64 bytes:";      rclone cat "r2-camelote-backups:camelote-backups/lamap-2025/chm/v1/2502-1117.tif" 2>&1 | head -c 64 | od -c | head
+          echo "### verbose cat (HTTP):"; rclone cat -vv --dump headers "r2-camelote-backups:camelote-backups/lamap-2025/chm/v1/2502-1117.tif" > /dev/null 2>diag.txt; grep -iE "GET |Host:|HTTP/|x-amz|error|forbidden|denied|not found|<Error>|<Code>" diag.txt | head -25
           echo "### end diagnostics"; true
 
       - name: Run detection prototype
