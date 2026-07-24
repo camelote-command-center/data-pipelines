@@ -1,0 +1,190 @@
+name: PointCloud RGB v2 — Cologny eval (read-only inputs; writes only to lamap-3d-public v2)
+
+# Go/no-go evaluation: colourise the Cologny point cloud from the SWISSIMAGE ortho
+# instead of a height ramp. Reads swisstopo OGD (swissSURFACE3D 2019 LiDAR .las.zip,
+# swissALTI3D DTM, SWISSIMAGE dop10 2023). Writes ONLY to lamap-3d-public/pointcloud/v2/
+# (never pointcloud/v1/, never camelote-backups, never any DB). workflow_dispatch only.
+#
+# v1-black root cause (pipelines/ge_pointcloud_3dtiles/pilot.py, branch cc/ge-pointcloud-3dtiles):
+# filters.colorization used scale 1.0, writing 8-bit ortho values into the 16-bit LAS RGB
+# field -> near-black. This v2 uses scale 256.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  rgb-v2:
+    name: Cologny RGB v2 (PDAL colorization + py3dtiles)
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Install PDAL + py3dtiles + rclone
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq pdal gdal-bin unzip
+          curl -fsSL https://rclone.org/install.sh | sudo bash
+          python3 -m venv .venv
+          .venv/bin/pip install -q --upgrade pip
+          .venv/bin/pip install -q "py3dtiles==12.1.1"
+          echo "pdal: $(pdal --version 2>&1 | head -1)"
+          echo "py3dtiles: $(.venv/bin/py3dtiles --version 2>&1 | head -1)"
+
+      - name: Configure rclone for R2 (lamap-3d-public write pair)
+        run: |
+          mkdir -p ~/.config/rclone
+          cat > ~/.config/rclone/rclone.conf <<EOF
+          [r2-lamap-3d]
+          type = s3
+          provider = Cloudflare
+          endpoint = https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com
+          access_key_id = ${{ secrets.R2_ACCESS_KEY_ID }}
+          secret_access_key = ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          region = auto
+          no_check_bucket = true
+          EOF
+
+      - name: Build coloured veg LAS + convert to 3D Tiles + verify RGB
+        run: |
+          cat > build_pc.py <<'PYEOF'
+          import json, os, subprocess, sys, time, glob, struct
+
+          TILES = ["2502-1117", "2502-1118", "2502-1119", "2503-1118", "2503-1119", "2503-1120"]
+          LIDAR = "https://data.geo.admin.ch/ch.swisstopo.swisssurface3d/swisssurface3d_2019_{k}/swisssurface3d_2019_{k}_2056_5728.las.zip"
+          DTM   = "https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2019_{k}/swissalti3d_2019_{k}_0.5_2056_5728.tif"
+          ORTHO = "/vsicurl/https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2023_{k}/swissimage-dop10_2023_{k}_0.1_2056.tif"
+          WORK, OUT = "work", "veg"
+          os.makedirs(WORK, exist_ok=True); os.makedirs(OUT, exist_ok=True)
+
+          def sh(cmd): return subprocess.run(cmd, capture_output=True, text=True)
+          def log(m): print(m, flush=True)
+
+          def fetch(url, dest):
+              r = sh(["curl", "-sS", "--fail", "--retry", "3", "-o", dest, url])
+              if r.returncode != 0 or not os.path.exists(dest) or os.path.getsize(dest) < 10000:
+                  raise RuntimeError(f"download failed {url}: {r.stderr[:200]}")
+
+          def pdal_stats(las):
+              r = sh(["pdal", "info", "--all", las])
+              if r.returncode != 0: raise RuntimeError("pdal info failed: " + r.stderr[:300])
+              d = json.loads(r.stdout)
+              npts = d.get("summary", {}).get("num_points")
+              st = {s["name"]: s for s in d.get("stats", {}).get("statistic", [])}
+              if npts is None and "Red" in st: npts = st["Red"].get("count")
+              def g(dim):
+                  s = st.get(dim, {}); return (s.get("minimum", 0.0), s.get("average", 0.0), s.get("maximum", 0.0))
+              return int(npts or 0), g("Red"), g("Green"), g("Blue")
+
+          results = []
+          for k in TILES:
+              t0 = time.time()
+              zf = f"{WORK}/{k}.las.zip"; fetch(LIDAR.format(k=k), zf)
+              for f in glob.glob(f"{WORK}/*.las"): os.remove(f)
+              if sh(["unzip", "-o", "-j", "-d", WORK, zf]).returncode != 0:
+                  raise RuntimeError("unzip failed " + k)
+              las = glob.glob(f"{WORK}/*.las")
+              if not las: raise RuntimeError("no .las after unzip " + k)
+              las = las[0]
+              dtm = f"{WORK}/{k}_dtm.tif"; fetch(DTM.format(k=k), dtm)
+              outf = f"{OUT}/{k}.laz"
+              stages = [
+                  {"type": "readers.las", "filename": las},
+                  {"type": "filters.hag_dem", "raster": dtm},
+                  {"type": "filters.colorization", "raster": ORTHO.format(k=k),
+                   "dimensions": "Red:1:256, Green:2:256, Blue:3:256"},   # scale 256 = 8-bit ortho -> 16-bit RGB (v1 used 1.0 -> black)
+                  {"type": "filters.range", "limits": "Classification[3:5]"},   # vegetation only, at conversion
+                  {"type": "writers.las", "filename": outf, "compression": "laszip",
+                   "extra_dims": "HeightAboveGround=float32", "minor_version": 4, "dataformat_id": 7},
+              ]
+              pj = f"{WORK}/{k}.json"; json.dump(stages, open(pj, "w"))
+              r = sh(["pdal", "pipeline", pj])
+              if r.returncode != 0: raise RuntimeError(f"pdal pipeline failed {k}: {r.stderr[:400]}")
+              if not os.path.exists(outf) or os.path.getsize(outf) < 20000:
+                  raise RuntimeError(f"{k}: output tiny/absent — corrupt input or no veg points")
+              dt = time.time() - t0
+              npts, R, G, B = pdal_stats(outf)
+              sz = os.path.getsize(outf) / 1e6
+              results.append((k, npts, sz, dt, R, G, B))
+              log(f"[{k}] veg pts {npts:,} | {sz:.1f} MB | {dt:.1f}s | R avg {R[1]:.0f}/max {R[2]:.0f} | G avg {G[1]:.0f}/max {G[2]:.0f} | B avg {B[1]:.0f}/max {B[2]:.0f}")
+              os.remove(zf); os.remove(las); os.remove(dtm)
+
+          # ---- RGB sanity gate (the single check that stops shipping this twice) ----
+          avgR = sum(r[4][1] for r in results) / len(results)
+          avgG = sum(r[5][1] for r in results) / len(results)
+          avgB = sum(r[6][1] for r in results) / len(results)
+          maxall = max(max(r[4][2], r[5][2], r[6][2]) for r in results)
+          minavg = min(avgR, avgG, avgB)
+          log("")
+          log(f"RGB SANITY (16-bit field): mean R/G/B = {avgR:.0f}/{avgG:.0f}/{avgB:.0f} | overall channel max {maxall:.0f}")
+          log("  (near-0 means the v1 scale bug; a healthy 8-bit->x256 image spans thousands to ~65000)")
+          if maxall < 5000 or minavg < 500:
+              raise SystemExit(f"RGB SANITY FAILED — values clustered near 0 (max {maxall:.0f}, min-mean {minavg:.0f}). Colour scaling wrong; NOT converting/uploading.")
+
+          # ---- py3dtiles convert (1.0 / pnts; carries HAG + classification + RGB) ----
+          vegfiles = sorted(f"{OUT}/{k}.laz" for k in TILES if os.path.exists(f"{OUT}/{k}.laz"))
+          tset = "tilesets/cologny"; os.makedirs("tilesets", exist_ok=True)
+          t0 = time.time()
+          r = sh([".venv/bin/py3dtiles", "convert", *vegfiles, "--out", tset,
+                  "--srs_in", "2056", "--srs_out", "4978",
+                  "--extra-fields", "HeightAboveGround", "--extra-fields", "classification",
+                  "--jobs", "4", "--overwrite"])
+          convs = time.time() - t0
+          if r.returncode != 0: raise RuntimeError("py3dtiles failed: " + r.stderr[-600:])
+          for line in r.stdout.splitlines():
+              if "does not have the field" in line:
+                  raise RuntimeError("py3dtiles dropped a field: " + line.strip())
+
+          def pnts_tables(p):
+              b = open(p, "rb").read()
+              _ver, _blen, ftj, ftb, btj, _btb = struct.unpack("<IIIIII", b[4:28])
+              ft = json.loads(b[28:28 + ftj]) if ftj else {}
+              bt = json.loads(b[28 + ftj + ftb: 28 + ftj + ftb + btj]) if btj else {}
+              return set(ft.keys()), set(bt.keys())
+
+          pn = glob.glob(f"{tset}/**/*.pnts", recursive=True)
+          if not pn: raise RuntimeError("no pnts produced")
+          ftk, btk = pnts_tables(sorted(pn, key=os.path.getsize)[-1])
+          has_rgb = ("RGB" in ftk) or ("COLOR_0" in ftk)
+          tset_mb = sum(os.path.getsize(f) for f in glob.glob(f"{tset}/**/*", recursive=True) if os.path.isfile(f)) / 1e6
+
+          tot_pts = sum(r[1] for r in results); tot_sz = sum(r[2] for r in results); tot_dt = sum(r[3] for r in results)
+          log("")
+          log("#################### V2 RGB EVAL — COLOGNY ####################")
+          log(f"tiles: 6 | veg points total {tot_pts:,} | veg laz total {tot_sz:.1f} MB | pdal build total {tot_dt:.1f}s ({tot_dt/60:.1f} min)")
+          log(f"tileset: {len(pn)} pnts files | {tset_mb:.1f} MB | py3dtiles {convs:.1f}s | srs 2056->4978")
+          log(f"feature-table keys (largest pnts): {sorted(ftk)} -> RGB present: {has_rgb}")
+          log(f"batch-table keys: {sorted(btk)}")
+          log(f"RGB distribution (mean of per-tile means, 16-bit): R {avgR:.0f} G {avgG:.0f} B {avgB:.0f} | max {maxall:.0f}")
+          if not has_rgb:
+              raise SystemExit("pnts feature table has NO RGB/COLOR_0 — py3dtiles did not pick up colour; NOT uploading.")
+          log("BUILD+VERIFY OK.")
+          PYEOF
+          .venv/bin/python -c "import sys" 2>/dev/null || true
+          python3 build_pc.py
+
+      - name: Upload tileset as CI artifact (always)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cologny-rgb-v2-tileset
+          path: tilesets/cologny
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: Publish to lamap-3d-public/pointcloud/v2/rgb/cologny (non-fatal)
+        continue-on-error: true
+        run: |
+          set +e
+          echo "### write-probe to lamap-3d-public (does CI have write creds?)"
+          echo "probe $(date -u)" > _probe.txt
+          rclone copyto _probe.txt r2-lamap-3d:lamap-3d-public/pointcloud/v2/rgb/cologny/_probe.txt 2>&1 | tail -3
+          PROBE=$?
+          if [ $PROBE -ne 0 ]; then
+            echo "### R2 WRITE FAILED (exit $PROBE) — CI lacks lamap-3d-public write creds. Tileset is in the CI artifact; upload it from the local r2-lamap-3d remote."
+            exit 0
+          fi
+          rclone delete r2-lamap-3d:lamap-3d-public/pointcloud/v2/rgb/cologny/_probe.txt 2>&1 | tail -1
+          echo "### uploading tileset ..."
+          rclone copy tilesets/cologny r2-lamap-3d:lamap-3d-public/pointcloud/v2/rgb/cologny --transfers 8 --checkers 8 -q 2>&1 | tail -5
+          echo "### uploaded. public URL:"
+          echo "https://pub-f3932e9291c1458cb0a2bf5b53a77f85.r2.dev/pointcloud/v2/rgb/cologny/tileset.json"
+          rclone size r2-lamap-3d:lamap-3d-public/pointcloud/v2/rgb/cologny 2>&1 | tail -2
