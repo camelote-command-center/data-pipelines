@@ -112,6 +112,31 @@ jobs:
 
           def pct(a, p): return float(np.percentile(a, p)) if len(a) else float("nan")
 
+          PARCELS_GPKG = "parcels.gpkg"
+          PID2EG = {}
+
+          def build_parcels():
+              # Build the GE-wide parcels layer ONCE with the proven whole-table query (verbatim from
+              # prepare_inputs.py). The per-tile "PG:{PG} -sql ... WHERE ST_Intersects(ST_MakeEnvelope)"
+              # result-layer path made OGR emit a malformed 'zero-length delimited identifier' query on
+              # some tiles; this whole-table export is the shipped, proven path. Per tile we then only
+              # clip this GPKG by -te with gdal_rasterize -- no PG at tile time.
+              t = time.time()
+              if not os.path.exists(PARCELS_GPKG):
+                  _r = subprocess.run(["ogr2ogr", "-f", "GPKG", PARCELS_GPKG, f"PG:{PG}",
+                                  "-nln", "parcels", "-nlt", "MULTIPOLYGON", "-a_srs", "EPSG:2056",
+                                  "-lco", "SPATIAL_INDEX=YES", "-sql",
+                                  "SELECT row_number() OVER (ORDER BY egrid)::int AS pid, egrid,"
+                                  " no_commune, no_parcelle, ST_MakeValid(geometry) AS geometry,"
+                                  " ST_Area(ST_MakeValid(geometry)) AS poly_area_m2"
+                                  " FROM bronze_ch.ge_plots_geo"], capture_output=True, text=True)
+                  if _r.returncode != 0:
+                      raise RuntimeError("build parcels.gpkg failed: " + (_r.stderr or "").strip()[:500])
+              ds = ogr.Open(PARCELS_GPKG); lyr = ds.GetLayer()
+              for f in lyr: PID2EG[int(f.GetField("pid"))] = f.GetField("egrid")
+              del lyr, ds
+              log(f"parcels.gpkg ready: {len(PID2EG):,} GE parcels (build+load {time.time()-t:.1f}s)")
+
           def detect(key):
               print("\n" + "="*70); log(f"TILE {key}")
               e, n = [int(x) for x in key.split("-")]
@@ -184,41 +209,28 @@ jobs:
                   trees.append((float(E[i]), float(N[i]), x, y, ha, cr))
               T["filter"] = time.time() - t
 
-              # parcel assignment: rasterize pid onto the tile grid (same pattern as the CHM pipeline)
+              # parcel assignment (HARDENED): clip the pre-built GE parcels.gpkg to the tile by -te and
+              # rasterize its stable global pid. No per-tile PG:-sql result layer -> no OGR
+              # 'zero-length delimited identifier' failure. pid -> egrid comes from the prebuilt PID2EG.
               t = time.time()
-              gpkg = f"{key}_parcels.gpkg"; pidtif = f"{key}_pid.tif"
-              per = {}; pid2eg = {}; boundary = 0; veg = {}; zero_veg = []; violations = []
-              assign_ok = False
+              pidtif = f"{key}_pid.tif"
+              per = {}; boundary = 0; veg = {}; zero_veg = []; violations = []
+              tile_egrids = []; assign_ok = False
               try:
-                  sql = (f"SELECT row_number() OVER (ORDER BY egrid)::int AS pid, egrid, "
-                         f"ST_MakeValid(geometry) AS geometry FROM bronze_ch.ge_plots_geo "
-                         f"WHERE ST_Intersects(geometry, ST_MakeEnvelope({xmin},{ymin},{xmax},{ymax},2056))")
-                  for _att in range(3):
-                      _r = subprocess.run(["ogr2ogr", "-f", "GPKG", gpkg, f"PG:{PG}", "-nln", "parcels",
-                                      "-nlt", "MULTIPOLYGON", "-a_srs", "EPSG:2056", "-sql", sql],
-                                     capture_output=True, text=True)
-                      if _r.returncode == 0:
-                          break
-                      log(f"ogr2ogr parcels attempt {_att+1}/3 failed rc={_r.returncode}: {(_r.stderr or '').strip()[:400]}")
-                      if _att == 2:
-                          raise RuntimeError("ogr2ogr parcels failed after 3 attempts")
-                      time.sleep(3)
                   subprocess.run(["gdal_rasterize", "-q", "-ot", "Int32", "-init", "0",
                                   "-te", str(xmin), str(ymin), str(xmax), str(ymax), "-tr", str(PX), str(PX),
-                                  "-a", "pid", "-l", "parcels", gpkg, pidtif], check=True, capture_output=True)
+                                  "-a", "pid", "-l", "parcels", PARCELS_GPKG, pidtif], check=True, capture_output=True)
                   pidarr, _, _, _ = read_band(pidtif)
-                  ds = ogr.Open(gpkg); lyr = ds.GetLayer()
-                  for f in lyr: pid2eg[f.GetField("pid")] = f.GetField("egrid")
-                  del lyr, ds
                   for (te, tn, x, y, ha, cr) in trees:
                       pid = int(pidarr[y, x])
-                      eg = pid2eg.get(pid)
+                      eg = PID2EG.get(pid)
                       if eg is None: boundary += 1
                       else: per[eg] = per.get(eg, 0) + 1
+                  # parcels actually present in this tile (>=1 burned pixel); pid 0 = no-parcel background
+                  tile_egrids = [PID2EG[p] for p in (int(v) for v in np.unique(pidarr)) if p != 0 and p in PID2EG]
                   # canopy cross-check: parcels with vegetated_area_m2=0 must have 0 trees
-                  egrids = list(pid2eg.values())
-                  if egrids:
-                      inlist = ",".join("'" + g.replace("'", "") + "'" for g in egrids)
+                  if tile_egrids:
+                      inlist = ",".join("'" + g.replace("'", "") + "'" for g in tile_egrids)
                       for row in psql(f"SELECT egrid, vegetated_area_m2 FROM gold_ch.plot_canopy_stats WHERE egrid IN ({inlist})"):
                           g, v = row.split("|"); veg[g] = float(v)
                   zero_veg = [g for g, v in veg.items() if v == 0]
@@ -230,13 +242,15 @@ jobs:
 
               # ---- report ----
               H = np.array([t[4] for t in trees]); CR = np.array([t[5] for t in trees])
-              nparcels = len(pid2eg)
-              parcels_0trees = sum(1 for g in pid2eg.values() if per.get(g, 0) == 0)
+              nparcels = len(tile_egrids)
+              parcels_0trees = sum(1 for g in tile_egrids if per.get(g, 0) == 0)
               log(f"trees detected: {len(trees)}  (candidates {len(xs)}, kept-maxima {len(keep)})")
               log(f"parcels in tile: {nparcels} | with 0 trees: {parcels_0trees} | boundary/no-parcel trees: {boundary}")
               if len(H):
                   log(f"height m  min {H.min():.1f} p25 {pct(H,25):.1f} med {pct(H,50):.1f} p75 {pct(H,75):.1f} p95 {pct(H,95):.1f} max {H.max():.1f}")
                   log(f"crown_radius m  min {CR.min():.1f} med {pct(CR,50):.1f} max {CR.max():.1f}")
+                  if H.max() >= CLAMP - 0.05:
+                      log(f"NOTE: tile max height pinned at the {CLAMP:.1f} m clamp ({int((H >= CLAMP-0.05).sum())} tree(s)) -> boundary artefact; inspect for a flat mass grazing the cap")
               log(f"rejected: over_50m={rej['over_50m']} flat_top={rej['flat_top']} | flagged large_footprint={flags['large_footprint']}")
               log(f"cross-check: {len(zero_veg)} parcels have vegetated_area_m2=0 -> VIOLATIONS (0-veg parcels with trees): {len(violations)} {violations[:10]}")
               tt = sum(T.values())
@@ -267,6 +281,7 @@ jobs:
           def main():
               prim = os.environ["TILE"].strip()
               sec = os.environ.get("SECONDARY", "").strip()
+              build_parcels()          # build the GE-wide parcels.gpkg ONCE, then tiles only clip by -te
               r1 = detect(prim)
               # acceptance summary (primary)
               print("\n" + "#"*70); log("ACCEPTANCE (primary tile)")
