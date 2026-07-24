@@ -199,12 +199,15 @@ jobs:
               # per-tree attributes + rejection filters (raw height for reporting/ground-truth match)
               t = time.time()
               dirs = np.array([(1,0),(-1,0),(0,1),(0,-1),(1,1),(1,-1),(-1,1),(-1,-1)], float)
-              rej = {"clamp": 0, "flat_top": 0}; flags = {"large_footprint": 0}
+              rej = {"below_min": 0, "clamp": 0, "flat_top": 0}; flags = {"large_footprint": 0}
               trees = []        # (E,N,x,y,height_raw,crown_r)
               clamp_hits = []   # (E,N,x,y) detections at/over the 50 m clamp -> unmapped-structure evidence
               for i in keep:
                   x, y = int(xs[i]), int(ys[i])
-                  ha = float(raw[y, x])
+                  ha = float(raw[y, x])       # peak found on the SMOOTHED field; re-read the RAW CHM here
+                  if ha < VEG_MIN:
+                      rej["below_min"] += 1; continue     # raw height under the 3 m vegetation floor: smoothing
+                                                          # lifted a masked/low pixel into a spurious peak. Not a tree.
                   if ha >= CLAMP_REJECT:
                       rej["clamp"] += 1; clamp_hits.append((float(E[i]), float(N[i]), x, y)); continue
                   cr = crown_r(ha); rp = cr / PX
@@ -289,7 +292,7 @@ jobs:
                   if len(H):
                       log(f"height m  min {H.min():.1f} p25 {pct(H,25):.1f} med {pct(H,50):.1f} p75 {pct(H,75):.1f} p95 {pct(H,95):.1f} max {H.max():.1f}")
                       log(f"crown_radius m  min {CR.min():.1f} med {pct(CR,50):.1f} max {CR.max():.1f}")
-                  log(f"rejected: clamp>={CLAMP_REJECT}m={rej['clamp']} flat_top={rej['flat_top']} | flagged large_footprint={flags['large_footprint']} | clamp_findings={len(clamp_findings)}")
+                  log(f"rejected: below_min<{VEG_MIN}m={rej['below_min']} clamp>={CLAMP_REJECT}m={rej['clamp']} flat_top={rej['flat_top']} | flagged large_footprint={flags['large_footprint']} | clamp_findings={len(clamp_findings)}")
                   log(f"cross-check: {len(zero_veg)} parcels have vegetated_area_m2=0 -> VIOLATIONS (0-veg parcels with trees): {len(violations)} {violations[:10]}")
                   if anchor:
                       log(f"ANCHOR: nearest detected tree {anchor[1]:.2f} m from peak, height {anchor[0][4]:.2f} m  (parcel trees: {per.get(ANCHOR_EGRID,0)})")
