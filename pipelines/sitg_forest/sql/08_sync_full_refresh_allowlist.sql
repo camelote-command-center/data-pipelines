@@ -47,7 +47,16 @@ DECLARE
     ARRAY['gold_ch','v_forest_lisieres_full','cadastral_forest_lisieres','lamap_db'],
     ARRAY['gold_ch','v_forest_lisieres_parcelles_full','cadastral_forest_lisieres_parcelles','lamap_db'],
     ARRAY['gold_ch','v_forest_fonction_full','cadastral_forest_fonction','lamap_db'],
-    ARRAY['gold_ch','v_plot_forest_constraints_full','plot_forest_constraints','lamap_db']
+    ARRAY['gold_ch','v_plot_forest_constraints_full','plot_forest_constraints','lamap_db'],
+    -- 2026-08-06: the three heavy bespoke syncs migrated off cross-FDW
+    -- UPDATE ... FROM. Their predicate could not be pushed down, so each run
+    -- fetched the whole remote table and then issued one remote UPDATE per
+    -- changed row. At 74k and 83k rows that never finished, which under-repairs
+    -- SILENTLY: the same defect class this allowlist exists to remove.
+    ARRAY['bronze_ch','ge_rdppf_synthese','ge_rdppf_synthese','lamap_db'],
+    ARRAY['bronze_ch','ge_cad_batiments','ge_cad_batiments','lamap_db'],
+    ARRAY['bronze_ch','ge_cad_batiments_souterrains','ge_cad_batiments_souterrains','lamap_db']
+
   ];
   -- 2026-05-19 Phase 7d incident: COALESCE-protect seeded cols (Amendment-1 §2 manifest, 27 cols).
   -- TEXT cols: NULLIF(EXCLUDED.col,'') treats empty-string as missing.

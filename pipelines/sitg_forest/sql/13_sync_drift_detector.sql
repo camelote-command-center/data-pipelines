@@ -47,11 +47,17 @@ CREATE INDEX IF NOT EXISTS sync_drift_log_bad_idx
 -- identifiers, so including them makes the check fire on every SITG release
 -- regardless of whether any real value moved. They are still SYNCED, they are
 -- just not evidence of a defect.
+-- LOGS ONLY. It does not raise, and it must not: a RAISE aborts the transaction
+-- and discards the very sync_drift_log rows the run just wrote, leaving the log
+-- empty exactly on the runs that found something. An in-procedure COMMIT cannot
+-- rescue that either, because the per-target exception handler puts the
+-- procedure in a context where COMMIT is refused.
+-- The alarm is therefore a SECOND cron job calling gold_ch.sync_drift_alarm(),
+-- which reads the committed log and raises. Two jobs, two transactions: the log
+-- survives and the failure still reaches Telegram via cron_failed_24h.
 CREATE OR REPLACE PROCEDURE gold_ch.assert_no_sync_drift(p_raise boolean DEFAULT true)
 LANGUAGE plpgsql
 SECURITY DEFINER
-SET search_path TO 'gold_ch', 'public', 'pg_catalog'
-SET statement_timeout TO '3600s'
 AS $$
 DECLARE
   t   RECORD;
@@ -61,9 +67,16 @@ DECLARE
 BEGIN
   FOR t IN SELECT * FROM gold_ch.sync_drift_targets WHERE enabled ORDER BY source_rel LOOP
     BEGIN
+      -- Exclusions are the list justified in the platform audit: SITG
+      -- regenerates globalid and objectid on every republication, and id /
+      -- created_at / business_key / content_hash are local bookkeeping. Leaving
+      -- globalid and objectid in is what made the first rdppf hash report
+      -- 74'251 drifted rows instead of the real 106.
       SELECT * INTO d
       FROM gold_ch.sync_drift_check(t.source_rel, t.foreign_rel, t.key_column,
-                                    ARRAY['globalid', 'objectid']);
+                                    ARRAY['globalid','objectid','id','created_at',
+                                          'business_key','content_hash']
+                                    || t.exclude_columns);
 
       INSERT INTO gold_ch.sync_drift_log
         (source_rel, foreign_rel, common_cols, source_rows, target_rows,
@@ -71,7 +84,8 @@ BEGIN
       VALUES (t.source_rel, t.foreign_rel, d.common_cols, d.source_rows, d.target_rows,
               d.missing_in_target, d.extra_in_target, d.drifted);
 
-      IF d.drifted > 0 OR d.missing_in_target > 0 OR d.extra_in_target > 0 THEN
+      IF d.drifted > 0 OR d.missing_in_target > 0
+         OR d.extra_in_target > t.accepted_extra THEN
         bad := bad + 1;
         msg := msg || format('%s: %s drifted, %s missing, %s extra. ',
                              t.source_rel, d.drifted, d.missing_in_target, d.extra_in_target);
@@ -117,16 +131,55 @@ ORDER BY source_rel, checked_at DESC;
 SELECT cron.unschedule('sync-drift-check-daily')
 WHERE EXISTS (SELECT 1 FROM cron.job WHERE jobname = 'sync-drift-check-daily');
 
--- Scheduled with p_raise := FALSE for now, deliberately. The audit that
--- created this detector found real, unrepaired drift on five targets, two of
--- them keyed on a misaligned surrogate. Scheduling a raising check today would
--- fail the job every night for a defect that is already logged and understood,
--- which is how a real alert becomes background noise. The log and
--- gold_ch.v_sync_drift_latest give full visibility in the meantime.
--- FLIP TO true THE MOMENT THE REPAIR LANDS: that is the one-line change
---   CALL gold_ch.assert_no_sync_drift(true);
+-- RAISING. The drift this detector exists to catch is repaired: all ten targets
+-- report zero drifted rows, and the only remaining differences are destination
+-- rows with no source row, recorded per target in accepted_extra. A failed
+-- pg_cron job is picked up by cron_failed_24h and reaches Telegram through the
+-- existing tier, auto-logging a bug.
 SELECT cron.schedule(
   'sync-drift-check-daily',
   '30 6 * * *',
   $cron$CALL gold_ch.assert_no_sync_drift(false);$cron$
+);
+
+-- ---------------------------------------------------------------------------
+-- The alarm: a separate job, so the log written above is already committed.
+-- ---------------------------------------------------------------------------
+CREATE OR REPLACE FUNCTION gold_ch.sync_drift_alarm()
+RETURNS void
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path TO 'gold_ch', 'public', 'pg_catalog'
+AS $fn$
+DECLARE
+  v_bad int;
+  v_msg text;
+BEGIN
+  SELECT count(*), coalesce(string_agg(
+           format('%s: %s drifted, %s missing, %s extra%s',
+                  source_rel, drifted, missing_in_target, extra_in_target,
+                  coalesce(' ('||error||')','')), '; '), '')
+    INTO v_bad, v_msg
+  FROM gold_ch.v_sync_drift_latest
+  WHERE NOT clean
+    AND checked_at > now() - interval '2 days';   -- a stale log is itself a failure
+
+  IF (SELECT max(checked_at) FROM gold_ch.sync_drift_log) < now() - interval '2 days' THEN
+    RAISE EXCEPTION 'sync drift check has not run in over 2 days';
+  END IF;
+
+  IF v_bad > 0 THEN
+    RAISE EXCEPTION 'sync drift on % target(s): %', v_bad, v_msg;
+  END IF;
+END $fn$;
+
+REVOKE ALL ON FUNCTION gold_ch.sync_drift_alarm() FROM PUBLIC, anon, authenticated;
+
+SELECT cron.unschedule('sync-drift-alarm-daily')
+WHERE EXISTS (SELECT 1 FROM cron.job WHERE jobname = 'sync-drift-alarm-daily');
+
+SELECT cron.schedule(
+  'sync-drift-alarm-daily',
+  '45 6 * * *',
+  $cron$SELECT gold_ch.sync_drift_alarm();$cron$
 );

@@ -1,4 +1,4 @@
--- ---- ref.ge_rdppf_synthese : 54 columns hashed ----
+-- ---- ref.ge_rdppf_synthese : 51 columns hashed ----
 ALTER TABLE ref.ge_rdppf_synthese ADD COLUMN IF NOT EXISTS content_hash text;
 
 CREATE OR REPLACE FUNCTION ref.ge_rdppf_synthese_content_hash() RETURNS trigger
@@ -7,12 +7,10 @@ IMMUTABLE
 AS $fn$
 BEGIN
   NEW.content_hash := md5(concat_ws('|',
-           coalesce(to_char(NEW."created_at" AT TIME ZONE 'UTC', 'YYYY-MM-DD HH24:MI:SS.US'), '\x00NULL'),
            coalesce(NEW."egrid"::text, '\x00NULL'),
            coalesce(NEW."extrait_rdppf_pdf"::text, '\x00NULL'),
            coalesce(NEW."genre"::text, '\x00NULL'),
            coalesce(NEW."geometry"::text, '\x00NULL'),
-           coalesce(NEW."globalid"::text, '\x00NULL'),
            coalesce(NEW."id103_ch_zr_instal_aero"::text, '\x00NULL'),
            coalesce(NEW."id104_ch_align_instal_aero"::text, '\x00NULL'),
            coalesce(NEW."id108_ch_plan_zone_securite"::text, '\x00NULL'),
@@ -57,7 +55,6 @@ BEGIN
            coalesce(NEW."iteration"::text, '\x00NULL'),
            coalesce(NEW."lien_www"::text, '\x00NULL'),
            coalesce(NEW."numero"::text, '\x00NULL'),
-           coalesce(NEW."objectid"::text, '\x00NULL'),
            coalesce(NEW."shape__area"::text, '\x00NULL'),
            coalesce(NEW."shape__length"::text, '\x00NULL'),
            coalesce(NEW."surface"::text, '\x00NULL')));
