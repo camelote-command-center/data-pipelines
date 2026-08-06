@@ -7,18 +7,26 @@ updated SIREN, fetch its establishments via the API and UPSERT into bronze_fr.et
 
 Idempotent — re-running the same window produces 0 net changes (same conflict keys).
 
-We deliberately do NOT pre-filter by NAF on the API call: a company can change its
-activitePrincipale INTO real estate over time, and we want to capture that. We do
-post-filter the rows we upsert into bronze_fr.companies (only RE-sector NAFs make it
-in, matching bulk-load semantics). For etablissements, we only fetch ones whose SIREN
-is already in our companies table.
+NAF filtering is done SERVER-SIDE (changed 2026-08-06). It used to be a local
+post-filter, on the reasoning that a company can change its activitePrincipale INTO
+real estate and we want to catch that. That reasoning still holds, and the server-side
+clause preserves it: `periode(...)` matches if ANY historised period carries the code,
+so a company that moved into (or out of) the whitelist is still returned. What changed
+is that we no longer download every changed unite legale in France to find them — a
+one-day window is ~16k records against a 10k offset ceiling, so the job could never
+finish. With the clause it is ~2.6k.
+
+The local is_real_estate() check is kept, but only as a cheap assertion against drift
+between the query clause and the whitelist — it is no longer doing the filtering work.
+
+For etablissements, we only fetch ones whose SIREN is already in our companies table.
 
 Environment variables:
     RE_LLM_SUPABASE_URL
     RE_LLM_SUPABASE_SERVICE_ROLE_KEY
     RE_LLM_SCHEMA (default: bronze_fr)
-    INSEE_CLIENT_ID
-    INSEE_CLIENT_SECRET
+    RE_LLM_DATABASE_URL    direct DSN, used to read the INSEE API key from the vault
+    SIRENE_LOOKBACK_DAYS   optional, default 1
 """
 
 from __future__ import annotations
@@ -33,9 +41,9 @@ import requests
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 from shared.supabase_client import batch_upsert  # noqa: E402
 
-from .api_client import CredentialsMissing, SireneClient  # noqa: E402
+from .api_client import MAX_OFFSET, CredentialsMissing, SireneClient  # noqa: E402
 from .column_mapping import map_api_etablissement, map_api_unite_legale  # noqa: E402
-from .naf_filter import is_real_estate  # noqa: E402
+from .naf_filter import is_real_estate, solr_clause  # noqa: E402
 
 DEFAULT_BATCH_SIZE = 500
 LOOKBACK_DAYS_DEFAULT = 1   # cron runs daily; pull last 24h (+1 day buffer)
@@ -133,7 +141,22 @@ def main():
 
     # ── Companies ────────────────────────────────────────────
     print("\n[1/2] Pulling updated UniteLegale records …")
-    q = f"dateDernierTraitementUniteLegale:[{start_iso} TO *]"
+    # Filter NAF SERVER-SIDE. Fetching every changed unite legale and filtering
+    # locally overruns the API's 10k offset ceiling: a one-day window is ~16k
+    # changed records (2d ~34k, 7d ~217k), so the job could never complete.
+    # With this clause the same window is ~2.6k. See naf_filter.solr_clause.
+    q = f"dateDernierTraitementUniteLegale:[{start_iso} TO *] AND ({solr_clause()})"
+    total_matched = client.count_unites_legales(q)
+    print(f"  server-side match count: {total_matched:,} (offset ceiling {MAX_OFFSET:,})")
+    if total_matched >= MAX_OFFSET:
+        # Do not import a capped result set silently — a truncated import looks
+        # like a clean run while quietly dropping records.
+        print(f"  ERROR: {total_matched:,} matches at or above the {MAX_OFFSET:,} ceiling; "
+              "the window would be truncated.")
+        print("  Narrow SIRENE_LOOKBACK_DAYS or split the date range, then re-run.")
+        _update_registry(url, key, "insee_sirene_companies", 0, "error")
+        sys.exit(3)
+
     company_rows: list[dict] = []
     re_sirens: set[str] = set()
     scanned = 0
@@ -144,7 +167,10 @@ def main():
             rec = map_api_unite_legale({"uniteLegale": ul})
             if not rec or not rec.get("siren"):
                 continue
-            # Post-filter: only keep real-estate sector
+            # Kept as a cheap assertion. The server-side clause already restricts
+            # to the whitelist; this catches a drift between the clause and the
+            # whitelist (e.g. a code added to one and not the other) rather than
+            # doing the real filtering work.
             if not is_real_estate(rec.get("activite_principale")):
                 continue
             company_rows.append(rec)

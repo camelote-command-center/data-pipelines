@@ -1,9 +1,18 @@
 """
 INSEE Sirene API v3.11 client.
 
-OAuth2 client_credentials flow — token endpoint at auth.insee.fr.
-We fetch a fresh token on every parser run (token TTL is 7 days, simpler than
-caching). All requests carry `Authorization: Bearer <token>`.
+API-key auth (changed 2026-08-06). Sirene 3.11 does NOT use OAuth2: it takes a
+single opaque API key in the `X-INSEE-Api-Key-Integration` header, issued by a
+portal application created in "simple" mode and subscribed to API Sirene.
+
+The previous OAuth2 client_credentials flow is gone. It could not work: its token
+host `auth.insee.fr` no longer resolves at all, and a client_id/secret pair comes
+from the "backend to backend" application mode, which INSEE documents as never
+working for this API. Do not reintroduce a token exchange here.
+
+The key is read at runtime from the Supabase vault (`insee_sirene_api_key` on
+re-LLM) via RE_LLM_DATABASE_URL — deliberately not from an env var, so the value
+lives in exactly one place. It is never logged.
 
 Pagination: SIRENE caps `nombre` at 1000 results per call and `debut` (offset)
 at 10000. For larger result sets, callers must page in date windows or partition
@@ -15,8 +24,8 @@ Rate limit: 30 req/min (default tier). The client sleeps 2.1s between calls
 as a defensive guard. If you hit a 429, the client backs off exponentially.
 
 Environment variables:
-    INSEE_CLIENT_ID
-    INSEE_CLIENT_SECRET
+    RE_LLM_DATABASE_URL   direct Postgres DSN to re-LLM, used to read the vault key
+    INSEE_SIRENE_API_KEY  optional override, for local testing only
 """
 
 from __future__ import annotations
@@ -27,8 +36,9 @@ from typing import Iterable
 
 import requests
 
-TOKEN_URL = "https://auth.insee.fr/auth/realms/apim-gravitee/protocol/openid-connect/token"
 API_BASE = "https://api.insee.fr/api-sirene/3.11"
+API_KEY_HEADER = "X-INSEE-Api-Key-Integration"
+VAULT_SECRET_NAME = "insee_sirene_api_key"
 
 DEFAULT_PAGE_SIZE = 1000
 MAX_OFFSET = 10000
@@ -37,45 +47,45 @@ MAX_RETRIES = 5
 
 
 class CredentialsMissing(RuntimeError):
-    """Raised when INSEE_CLIENT_ID or INSEE_CLIENT_SECRET is unset."""
+    """Raised when the INSEE Sirene API key cannot be resolved."""
+
+
+def _api_key_from_vault() -> str:
+    """Read the API key from the re-LLM Supabase vault. Never logs the value."""
+    dsn = os.environ.get("RE_LLM_DATABASE_URL", "")
+    if not dsn:
+        raise CredentialsMissing(
+            "RE_LLM_DATABASE_URL is required to read the INSEE API key from the vault "
+            "(or set INSEE_SIRENE_API_KEY for local testing)"
+        )
+    import psycopg2
+
+    with psycopg2.connect(dsn, connect_timeout=20) as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                "SELECT decrypted_secret FROM vault.decrypted_secrets WHERE name = %s",
+                (VAULT_SECRET_NAME,),
+            )
+            row = cur.fetchone()
+    if not row or not row[0]:
+        raise CredentialsMissing(
+            f"vault secret {VAULT_SECRET_NAME!r} not found on re-LLM"
+        )
+    return row[0].strip()
 
 
 class SireneClient:
     def __init__(
         self,
-        client_id: str | None = None,
-        client_secret: str | None = None,
+        api_key: str | None = None,
         timeout: float = 30.0,
     ) -> None:
-        self.client_id = client_id or os.environ.get("INSEE_CLIENT_ID", "")
-        self.client_secret = client_secret or os.environ.get("INSEE_CLIENT_SECRET", "")
-        if not self.client_id or not self.client_secret:
-            raise CredentialsMissing(
-                "INSEE_CLIENT_ID and INSEE_CLIENT_SECRET environment variables are required"
-            )
+        # Precedence: explicit arg > env override (local testing) > vault.
+        self.api_key = api_key or os.environ.get("INSEE_SIRENE_API_KEY", "").strip()
+        if not self.api_key:
+            self.api_key = _api_key_from_vault()
         self.timeout = timeout
-        self._token: str | None = None
         self._last_call_at: float = 0.0
-
-    # ────────────────────────── auth ──────────────────────────
-
-    def _fetch_token(self) -> str:
-        r = requests.post(
-            TOKEN_URL,
-            data={
-                "grant_type": "client_credentials",
-                "client_id": self.client_id,
-                "client_secret": self.client_secret,
-            },
-            headers={"Content-Type": "application/x-www-form-urlencoded"},
-            timeout=self.timeout,
-        )
-        r.raise_for_status()
-        return r.json()["access_token"]
-
-    def _ensure_token(self) -> None:
-        if self._token is None:
-            self._token = self._fetch_token()
 
     # ────────────────────────── HTTP ──────────────────────────
 
@@ -86,7 +96,6 @@ class SireneClient:
         self._last_call_at = time.monotonic()
 
     def get(self, path: str, params: dict | None = None) -> dict:
-        self._ensure_token()
         url = f"{API_BASE}{path}"
         last_err: Exception | None = None
         for attempt in range(MAX_RETRIES):
@@ -94,15 +103,19 @@ class SireneClient:
             r = requests.get(
                 url,
                 params=params or {},
-                headers={"Authorization": f"Bearer {self._token}"},
+                headers={API_KEY_HEADER: self.api_key},
                 timeout=self.timeout,
             )
             if r.status_code == 200:
                 return r.json()
             if r.status_code == 401:
-                # token expired; re-auth and retry once
-                self._token = self._fetch_token()
-                continue
+                # Static API key: a 401 means the key is wrong, revoked, or the
+                # subscription lapsed. There is nothing to refresh, so fail loudly
+                # rather than burning retries on a credential that cannot recover.
+                raise CredentialsMissing(
+                    "INSEE rejected the API key (401). Check that the vault secret "
+                    f"{VAULT_SECRET_NAME!r} matches a live subscription to API Sirene 3.11."
+                )
             if r.status_code == 404:
                 # Empty result set on /siren?q=... yields 404 with a body
                 # like {"header": {"statut": 404, ...}}. Treat as empty page.
@@ -129,6 +142,18 @@ class SireneClient:
         raise last_err or RuntimeError(f"max retries exhausted on {url}")
 
     # ────────────────────── high-level calls ─────────────────
+
+    def count_unites_legales(self, q: str) -> int:
+        """Return the total match count for `q` without pulling any pages.
+
+        Used to detect, before importing anything, that a window would exceed the
+        offset ceiling — a truncated import is worse than a failed one.
+        """
+        page = self.get("/siren", params={"q": q, "nombre": 1, "debut": 0})
+        header = page.get("header") or {}
+        if header.get("statut") == 404:
+            return 0
+        return int(header.get("total") or 0)
 
     def iter_unites_legales(
         self,

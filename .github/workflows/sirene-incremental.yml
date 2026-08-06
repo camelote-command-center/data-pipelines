@@ -1,17 +1,31 @@
 name: SIRENE Incremental Sync
 
-# Cron is INTENTIONALLY DISABLED until INSEE_CLIENT_ID and INSEE_CLIENT_SECRET
-# secrets are provisioned. Tracking bug: cbb09d8c-56ab-4374-9846-edcf8418432b.
+# AUTH IS FIXED (2026-08-06, bug cbb09d8c): an INSEE API key read from the re-LLM
+# vault (insee_sirene_api_key) and sent as X-INSEE-Api-Key-Integration. There is no
+# OAuth2 token exchange any more - do not reintroduce one. NAF filtering is now
+# server-side, which brings a one-day window from ~16k to ~2.6k records, inside the
+# API's 10k offset ceiling.
 #
-# Once creds are in place, uncomment the schedule block and verify the parser
-# exits cleanly with a 0-row sync (idempotency check) before letting natural
-# cron run unattended.
+# CRON STILL DISABLED - two blockers remain, both verified 2026-08-06:
+#   1. BACKLOG. bronze_ch._registry.last_sync_at is 2026-05-09 (the bulk load), so the
+#      first incremental window is ~90 days = 230'131 matches, 23x the 10k ceiling. The
+#      truncation guard correctly refuses it. Catching up needs the date window walked
+#      forward in chunks, which is parser work, not config.
+#   2. THROUGHPUT. The establishment phase issues one /siret call per SIREN at the 2.1s
+#      rate cap, so a normal ~2'600-company day costs ~92 min against this 30-minute
+#      timeout. Verified fix: batch the query as siren:(A OR B OR ...) - tested live and
+#      it returns combined results - which collapses ~2'600 calls into ~50.
+#
+# Enabling the cron before those land would just fail every night. Run by hand with
+# workflow_dispatch to test.
 
 on:
   workflow_dispatch:
   # schedule:
-  #   - cron: '0 5 5 * *'   # MONTHLY, 5th at 05:00 UTC. Daily INSEE deltas are more
-  #                         # than needed (operator decision 2026-07-23).
+  #   - cron: '0 5 * * *'   # DAILY 05:00 UTC once the two blockers above are cleared.
+  #                         # Daily is the right cadence: ~2.6k NAF-filtered records a
+  #                         # day sits well inside the 10k ceiling, where a month would
+  #                         # be ~30x over and would abort rather than truncate.
 
 jobs:
   sync:
@@ -28,8 +42,8 @@ jobs:
           RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
           RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
           RE_LLM_SCHEMA: bronze_fr
-          INSEE_CLIENT_ID: ${{ secrets.INSEE_CLIENT_ID }}
-          INSEE_CLIENT_SECRET: ${{ secrets.INSEE_CLIENT_SECRET }}
+          # API key is read from the re-LLM vault at runtime, not passed as a secret.
+          RE_LLM_DATABASE_URL: ${{ secrets.RE_LLM_DB_URL }}
         run: python pipelines/sirene/import.py --mode incremental
 
       - name: PATCH last_acquired_at on success

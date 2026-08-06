@@ -71,3 +71,20 @@ def labels_for(code: str | None) -> dict[str, str | None]:
     else:
         sector = "other"
     return {"sector": sector, "naf_normalised": norm}
+
+
+def solr_clause(field: str = "activitePrincipaleUniteLegale") -> str:
+    """Return a Sirene query clause matching any whitelisted NAF code.
+
+    Syntax notes (verified live 2026-08-06 — all three details are required):
+      * `activitePrincipale*` is a HISTORISED field, so it must be wrapped in
+        `periode(...)`. Unwrapped returns HTTP 400 "Erreur de syntaxe".
+      * The code must be DOTTED ("68.31Z"). The undotted form stored in our
+        tables ("6831Z") returns HTTP 404 / zero results.
+      * The value must be QUOTED.
+
+    Filtering server-side matters: a one-day window is ~16k changed unites
+    legales against a 10k offset ceiling, but ~2.6k once this clause is applied.
+    """
+    dotted = sorted(f"{c[:2]}.{c[2:]}" for c in NAF_WHITELIST)
+    return " OR ".join(f'periode({field}:"{d}")' for d in dotted)
