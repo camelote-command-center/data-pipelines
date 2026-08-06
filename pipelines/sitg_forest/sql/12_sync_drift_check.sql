@@ -22,7 +22,7 @@
 CREATE OR REPLACE FUNCTION gold_ch.sync_drift_check(
   p_source_rel  text,
   p_foreign_rel text,
-  p_key         text,
+  p_key         text,   -- column name OR any SQL expression yielding a unique key
   p_exclude     text[] DEFAULT '{}'
 )
 RETURNS TABLE (
@@ -67,9 +67,12 @@ BEGIN
     INTO v_hash
   FROM unnest(v_cols) c;
 
+  -- p_key is used as an EXPRESSION, not an identifier, so a composite business
+  -- key can be passed as (no_comm || '/' || no_batiment). Re-keying the two
+  -- batiments syncs onto their business key made that necessary.
   v_sql := format($q$
-    WITH s AS (SELECT %1$I AS k, %2$s AS h FROM %3$s),
-         t AS (SELECT %1$I AS k, %2$s AS h FROM %4$s)
+    WITH s AS (SELECT %1$s AS k, %2$s AS h FROM %3$s),
+         t AS (SELECT %1$s AS k, %2$s AS h FROM %4$s)
     SELECT %5$s::int,
            (SELECT count(*) FROM s),
            (SELECT count(*) FROM t),
