@@ -1,31 +1,26 @@
 name: SIRENE Incremental Sync
 
-# AUTH IS FIXED (2026-08-06, bug cbb09d8c): an INSEE API key read from the re-LLM
-# vault (insee_sirene_api_key) and sent as X-INSEE-Api-Key-Integration. There is no
-# OAuth2 token exchange any more - do not reintroduce one. NAF filtering is now
-# server-side, which brings a one-day window from ~16k to ~2.6k records, inside the
-# API's 10k offset ceiling.
+# ENABLED 2026-08-06 (bug cbb09d8c).
 #
-# CRON STILL DISABLED - two blockers remain, both verified 2026-08-06:
-#   1. BACKLOG. bronze_ch._registry.last_sync_at is 2026-05-09 (the bulk load), so the
-#      first incremental window is ~90 days = 230'131 matches, 23x the 10k ceiling. The
-#      truncation guard correctly refuses it. Catching up needs the date window walked
-#      forward in chunks, which is parser work, not config.
-#   2. THROUGHPUT. The establishment phase issues one /siret call per SIREN at the 2.1s
-#      rate cap, so a normal ~2'600-company day costs ~92 min against this 30-minute
-#      timeout. Verified fix: batch the query as siren:(A OR B OR ...) - tested live and
-#      it returns combined results - which collapses ~2'600 calls into ~50.
+# Auth: INSEE API key read from the re-LLM vault (insee_sirene_api_key), sent as
+# X-INSEE-Api-Key-Integration. No OAuth2 token exchange - do not reintroduce one.
 #
-# Enabling the cron before those land would just fail every night. Run by hand with
-# workflow_dispatch to test.
+# The job walks the window forward in closed date chunks and advances the watermark
+# after EACH successful chunk, so an interrupted run resumes instead of restarting,
+# and a failed run never advances it (which would silently skip data).
+#
+# Measured 2026-08-06: one day-chunk = ~86s (813 matched, 798 companies, 1164
+# establishments). SIRENE_MAX_CHUNKS=15 therefore caps a run at ~21 min, inside the
+# 30-minute timeout, while letting a backlog catch up ~15 days per run. Once caught
+# up, a normal day is a single ~90s chunk.
 
 on:
   workflow_dispatch:
-  # schedule:
-  #   - cron: '0 5 * * *'   # DAILY 05:00 UTC once the two blockers above are cleared.
-  #                         # Daily is the right cadence: ~2.6k NAF-filtered records a
-  #                         # day sits well inside the 10k ceiling, where a month would
-  #                         # be ~30x over and would abort rather than truncate.
+  schedule:
+    - cron: '0 5 * * *'   # DAILY 05:00 UTC. Daily is the right cadence: ~2.6k
+                          # NAF-filtered records a day sits well inside the 10k
+                          # ceiling, where a month would be ~30x over and would
+                          # abort rather than truncate.
 
 jobs:
   sync:
@@ -44,6 +39,8 @@ jobs:
           RE_LLM_SCHEMA: bronze_fr
           # API key is read from the re-LLM vault at runtime, not passed as a secret.
           RE_LLM_DATABASE_URL: ${{ secrets.RE_LLM_DB_URL }}
+          SIRENE_CHUNK_DAYS: "1"
+          SIRENE_MAX_CHUNKS: "15"   # ~21 min worst case, inside the 30 min timeout
         run: python pipelines/sirene/import.py --mode incremental
 
       - name: PATCH last_acquired_at on success
