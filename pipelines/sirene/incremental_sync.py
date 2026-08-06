@@ -94,10 +94,17 @@ def _update_registry(
         "Prefer": "return=minimal",
     }
     body = {
-        "last_sync_at": datetime.now(timezone.utc).isoformat(),
         "last_sync_status": status,
         "last_sync_rows": rows,
     }
+    # Advance the watermark ONLY on success. Stamping it on failure silently
+    # discards every change since the last good run: the next run starts from the
+    # failure time, the skipped window is never re-requested, and nothing alerts
+    # because the job looks like it "ran". Observed 2026-08-06 — a guarded failure
+    # moved this marker from 2026-05-09 to that day, which would have dropped ~90
+    # days of changes.
+    if status == "success":
+        body["last_sync_at"] = datetime.now(timezone.utc).isoformat()
     r = requests.patch(
         endpoint,
         params={"dataset_code": f"eq.{dataset_code}"},
