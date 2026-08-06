@@ -1,0 +1,30 @@
+{
+  "workflow": "sitg_forest.yml",
+  "datasets": [
+    {
+      "code": "ge_ffp_cadastre_foret",
+      "schema": "bronze_ch",
+      "table": "ge_ffp_cadastre_foret"
+    },
+    {
+      "code": "ge_rdppf_distances_foret_s",
+      "schema": "bronze_ch",
+      "table": "ge_rdppf_distances_foret_s"
+    },
+    {
+      "code": "ge_rdppf_distances_foret_l",
+      "schema": "bronze_ch",
+      "table": "ge_rdppf_distances_foret_l"
+    },
+    {
+      "code": "ge_ffp_lisieres_forestieres",
+      "schema": "bronze_ch",
+      "table": "ge_ffp_lisieres_forestieres"
+    },
+    {
+      "code": "ge_ffp_fonction_pdf",
+      "schema": "bronze_ch",
+      "table": "ge_ffp_fonction_pdf"
+    }
+  ]
+}
