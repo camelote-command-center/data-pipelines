@@ -1,0 +1,106 @@
+name: SITG Geneva Forest Layers
+
+# CADENCE: QUARTERLY. 1 January, 1 April, 1 July, 1 October at 03:00 UTC.
+#
+# Why quarterly and not monthly, even though SITG republishes FFP_CADASTRE_FORET
+# monthly: that layer only changes when a "constat de nature forestiere"
+# completes its procedure, which is a slow legal process. The other three layers
+# are published "irreguliere". Quarterly matches the real rate of change and
+# keeps the cost of the full geometry reload plus the Phase 2 recompute down to
+# four runs a year.
+#
+# 03:00 UTC keeps it clear of the daily listings jobs and the Saturday FAO jobs.
+#
+# The Phase 2 per-plot enrichment is chained INSIDE this run (see
+# sql/09_promote.sql), never scheduled independently. Order per run is: parse
+# every layer, assert counts, promote to silver, distribute, then recompute.
+# The enrichment must never see a half-loaded forest layer.
+#
+# workflow_dispatch is provided so a run can be forced out of band when a
+# significant constat lands, without waiting for the next quarter.
+
+on:
+  schedule:
+    - cron: '0 3 1 1,4,7,10 *'
+  workflow_dispatch:
+    inputs:
+      force_delta:
+        description: 'Bypass the 20 percent row-count delta gate (use only after reviewing the source)'
+        type: boolean
+        default: false
+      skip_optional:
+        description: 'Skip FFP_FONCTION_PDF'
+        type: boolean
+        default: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install -r requirements.txt
+
+      - name: Install psql client
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends postgresql-client
+
+      # ── 1. Land bronze ────────────────────────────────────────────────
+      # import.py asserts the paginated total against returnCountOnly and aborts
+      # the layer rather than landing partial data. It also aborts BEFORE any
+      # write if a layer's source count has moved more than 20 percent against
+      # the previous run: on a quarterly cadence a silent regression would
+      # otherwise sit undetected for three months.
+      - name: Ingest forest layers into bronze_ch
+        run: |
+          python3 pipelines/sitg_forest/import.py \
+            ${{ inputs.force_delta && '--force-delta' || '' }} \
+            ${{ inputs.skip_optional && '--skip-optional' || '' }}
+        env:
+          RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
+          RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+          RE_LLM_SCHEMA: bronze_ch
+          # PATCH is done per dataset code inside import.py, NOT by workflow_file:
+          # a blanket workflow_file PATCH stamps every layer with one timestamp
+          # and would hide a single layer failing (the sitg_cadastral.yml trap).
+          CAMELOTE_SUPABASE_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CAMELOTE_SUPABASE_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+
+      # ── 2. Promote and distribute ─────────────────────────────────────
+      # Refreshes silver, asserts bronze -> silver and gold -> ref conservation
+      # and geometry validity, then distributes to lamap_db ref.* through
+      # gold_ch.sync_full_refresh Branch A (staging + upsert, never TRUNCATE on
+      # a live ref table). Any assertion failure aborts the run.
+      - name: Promote to silver, gold and lamap_db ref
+        run: psql "$RE_LLM_PG_URI" -v ON_ERROR_STOP=1 -f pipelines/sitg_forest/sql/09_promote.sql
+        env:
+          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI }}
+
+      # ── 3. Freshness bookkeeping ──────────────────────────────────────
+      - name: PATCH last_error on failure
+        if: failure()
+        run: |
+          MSG="GitHub Actions run ${{ github.run_id }} failed at $(date -u +%Y-%m-%dT%H:%M:%SZ). See https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          ESC=$(printf '%s' "$MSG" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?workflow_file=eq.sitg_forest.yml" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+            -d "{\"last_error\":${ESC}}"
+        env:
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+
+      - name: Clear last_error on success
+        if: success()
+        run: |
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?workflow_file=eq.sitg_forest.yml" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+            -d '{"last_error":null}'
+        env:
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
