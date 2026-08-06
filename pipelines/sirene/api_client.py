@@ -188,6 +188,66 @@ class SireneClient:
             f"q={q!r}"
         )
 
+    def iter_etablissements_by_sirens(
+        self,
+        sirens: list[str],
+        page_size: int = DEFAULT_PAGE_SIZE,
+    ) -> Iterable[dict]:
+        """Yield Etablissement items for a BATCH of SIRENs in one query.
+
+        `q=siren:(A OR B OR C)` returns the union, so one call replaces N. The
+        establishment phase used to issue one request per SIREN, which at the 2.1s
+        rate cap cost ~92 min for a normal ~2.6k-company day against a 30 min budget.
+
+        Batch size is bounded by the 10k offset ceiling, not by URL length: measured
+        over 4.88M companies the distribution is avg 1.4 establishments, p99 = 5,
+        p99.9 = 8, max 1478, and only 5 companies anywhere exceed 500. A 50-SIREN
+        batch is therefore ~70 rows typically and a few thousand in the worst
+        realistic case. The count is still checked below so a pathological batch is
+        split rather than silently truncated.
+        """
+        if not sirens:
+            return
+        q = "siren:(" + " OR ".join(sirens) + ")"
+        total = self.count_etablissements(q)
+        if total >= MAX_OFFSET:
+            # Too big to page safely: split and recurse rather than truncate.
+            if len(sirens) == 1:
+                raise RuntimeError(
+                    f"SIREN {sirens[0]} alone has {total} establishments, at or above "
+                    f"the {MAX_OFFSET} offset ceiling; it cannot be paged."
+                )
+            mid = len(sirens) // 2
+            yield from self.iter_etablissements_by_sirens(sirens[:mid], page_size)
+            yield from self.iter_etablissements_by_sirens(sirens[mid:], page_size)
+            return
+        debut = 0
+        while debut < MAX_OFFSET:
+            page = self.get(
+                "/siret",
+                params={"q": q, "nombre": page_size, "debut": debut},
+            )
+            header = page.get("header") or {}
+            if header.get("statut") == 404:
+                return
+            items = page.get("etablissements") or []
+            if not items:
+                return
+            for it in items:
+                yield it
+            tot = header.get("total", 0)
+            debut += page_size
+            if debut >= tot:
+                return
+
+    def count_etablissements(self, q: str) -> int:
+        """Total match count for an /siret query, without pulling pages."""
+        page = self.get("/siret", params={"q": q, "nombre": 1, "debut": 0})
+        header = page.get("header") or {}
+        if header.get("statut") == 404:
+            return 0
+        return int(header.get("total") or 0)
+
     def iter_etablissements_by_siren(
         self,
         siren: str,

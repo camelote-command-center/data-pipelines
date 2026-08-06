@@ -47,6 +47,12 @@ from .naf_filter import is_real_estate, solr_clause  # noqa: E402
 
 DEFAULT_BATCH_SIZE = 500
 LOOKBACK_DAYS_DEFAULT = 1   # cron runs daily; pull last 24h (+1 day buffer)
+# SIRENs per /siret query. Bounded by the 10k offset ceiling, not URL length:
+# measured over 4.88M companies the distribution is avg 1.4 establishments,
+# p99 = 5, p99.9 = 8, max 1478, only 5 companies anywhere above 500. 50 SIRENs
+# is ~70 rows typically, a few thousand worst case, and turns ~2.6k calls into
+# ~53. Batches that would still overflow are split by the client.
+SIREN_BATCH_SIZE = int(os.environ.get("SIRENE_SIREN_BATCH_SIZE", "50"))
 
 
 def _required(name: str) -> str:
@@ -84,6 +90,7 @@ def _update_registry(
     dataset_code: str,
     rows: int,
     status: str,
+    sync_at: str | None = None,
 ) -> None:
     endpoint = f"{url.rstrip('/')}/rest/v1/_registry"
     headers = {
@@ -104,7 +111,9 @@ def _update_registry(
     # moved this marker from 2026-05-09 to that day, which would have dropped ~90
     # days of changes.
     if status == "success":
-        body["last_sync_at"] = datetime.now(timezone.utc).isoformat()
+        # Explicit sync_at = the END of the window just completed, so an interrupted
+        # backfill resumes exactly where it stopped instead of skipping the remainder.
+        body["last_sync_at"] = sync_at or datetime.now(timezone.utc).isoformat()
     r = requests.patch(
         endpoint,
         params={"dataset_code": f"eq.{dataset_code}"},
@@ -114,6 +123,104 @@ def _update_registry(
     )
     if r.status_code not in (200, 204):
         print(f"  WARN: registry update failed {r.status_code}: {r.text[:200]}")
+
+
+class WindowTooLarge(RuntimeError):
+    """A date window would exceed the API offset ceiling; split it, do not truncate."""
+
+
+def _sync_window(client, url, key, schema, start_iso: str, end_iso: str):
+    """Sync one closed date window. Returns (companies, establishments, matched)."""
+    # ── Companies ────────────────────────────────────────────
+    print("\n[1/2] Pulling updated UniteLegale records …")
+    # Filter NAF SERVER-SIDE. Fetching every changed unite legale and filtering
+    # locally overruns the API's 10k offset ceiling: a one-day window is ~16k
+    # changed records (2d ~34k, 7d ~217k), so the job could never complete.
+    # With this clause the same window is ~2.6k. See naf_filter.solr_clause.
+    q = f"dateDernierTraitementUniteLegale:[{start_iso} TO {end_iso}] AND ({solr_clause()})"
+    total_matched = client.count_unites_legales(q)
+    print(f"  server-side match count: {total_matched:,} (offset ceiling {MAX_OFFSET:,})")
+    if total_matched >= MAX_OFFSET:
+        # Do not import a capped result set silently — a truncated import looks
+        # like a clean run while quietly dropping records.
+        print(f"  ERROR: {total_matched:,} matches at or above the {MAX_OFFSET:,} ceiling; "
+              "the window would be truncated.")
+        print("  Narrow SIRENE_LOOKBACK_DAYS or split the date range, then re-run.")
+        raise WindowTooLarge(
+            f"{total_matched} matches in [{start_iso} TO {end_iso}] at or above the "
+            f"{MAX_OFFSET} ceiling"
+        )
+
+    company_rows: list[dict] = []
+    re_sirens: set[str] = set()
+    scanned = 0
+    t0 = time.time()
+    try:
+        for ul in client.iter_unites_legales(q):
+            scanned += 1
+            rec = map_api_unite_legale({"uniteLegale": ul})
+            if not rec or not rec.get("siren"):
+                continue
+            # Kept as a cheap assertion. The server-side clause already restricts
+            # to the whitelist; this catches a drift between the clause and the
+            # whitelist (e.g. a code added to one and not the other) rather than
+            # doing the real filtering work.
+            if not is_real_estate(rec.get("activite_principale")):
+                continue
+            company_rows.append(rec)
+            re_sirens.add(rec["siren"])
+            if scanned % 1000 == 0:
+                print(f"    scanned {scanned:,}, kept {len(company_rows):,} RE-sector")
+    except RuntimeError as e:
+        # Hit MAX_OFFSET — too many updates in one window. Caller should narrow lookback.
+        print(f"  ERROR: {e}")
+        raise WindowTooLarge(str(e))
+
+    print(f"  scanned {scanned:,}, kept {len(company_rows):,} RE-sector ({time.time() - t0:.0f}s)")
+
+    if company_rows:
+        n_c = batch_upsert(
+            url=url, key=key, table="companies",
+            records=company_rows, conflict_column="siren",
+            schema=schema, batch_size=DEFAULT_BATCH_SIZE,
+        )
+        print(f"  upserted {n_c:,} into {schema}.companies")
+    else:
+        n_c = 0
+        print("  no RE-sector updates in this window")
+
+    # ── Establishments for the SIRENs we just touched ────────
+    # Batched: one /siret call per SIREN_BATCH_SIZE SIRENs instead of one per SIREN.
+    # At the 2.1s rate cap that is the difference between ~92 min and ~2 min for a
+    # normal day. iter_etablissements_by_sirens splits a batch that would exceed the
+    # offset ceiling, so batching cannot cause a silent truncation.
+    sirens_sorted = sorted(re_sirens)
+    n_batches = (len(sirens_sorted) + SIREN_BATCH_SIZE - 1) // SIREN_BATCH_SIZE
+    print(f"\n[2/2] Fetching establishments for {len(sirens_sorted):,} SIRENs "
+          f"in {n_batches:,} batch(es) of {SIREN_BATCH_SIZE} …")
+    et_rows: list[dict] = []
+    t1 = time.time()
+    for bi in range(n_batches):
+        batch = sirens_sorted[bi * SIREN_BATCH_SIZE:(bi + 1) * SIREN_BATCH_SIZE]
+        for et in client.iter_etablissements_by_sirens(batch):
+            rec = map_api_etablissement({"etablissement": et})
+            if rec and rec.get("siret"):
+                et_rows.append(rec)
+        if (bi + 1) % 10 == 0 or bi + 1 == n_batches:
+            print(f"    batch {bi + 1:,}/{n_batches:,}, "
+                  f"{len(et_rows):,} establishments collected ({time.time() - t1:.0f}s)")
+
+    if et_rows:
+        n_e = batch_upsert(
+            url=url, key=key, table="etablissements",
+            records=et_rows, conflict_column="siret",
+            schema=schema, batch_size=DEFAULT_BATCH_SIZE,
+        )
+        print(f"  upserted {n_e:,} into {schema}.etablissements")
+    else:
+        n_e = 0
+
+    return n_c, n_e, total_matched
 
 
 def main():
@@ -146,90 +253,51 @@ def main():
     start_iso = start_dt.date().isoformat()
     print(f"  fetching dateDernierTraitementUniteLegale:[{start_iso} TO *]")
 
-    # ── Companies ────────────────────────────────────────────
-    print("\n[1/2] Pulling updated UniteLegale records …")
-    # Filter NAF SERVER-SIDE. Fetching every changed unite legale and filtering
-    # locally overruns the API's 10k offset ceiling: a one-day window is ~16k
-    # changed records (2d ~34k, 7d ~217k), so the job could never complete.
-    # With this clause the same window is ~2.6k. See naf_filter.solr_clause.
-    q = f"dateDernierTraitementUniteLegale:[{start_iso} TO *] AND ({solr_clause()})"
-    total_matched = client.count_unites_legales(q)
-    print(f"  server-side match count: {total_matched:,} (offset ceiling {MAX_OFFSET:,})")
-    if total_matched >= MAX_OFFSET:
-        # Do not import a capped result set silently — a truncated import looks
-        # like a clean run while quietly dropping records.
-        print(f"  ERROR: {total_matched:,} matches at or above the {MAX_OFFSET:,} ceiling; "
-              "the window would be truncated.")
-        print("  Narrow SIRENE_LOOKBACK_DAYS or split the date range, then re-run.")
-        _update_registry(url, key, "insee_sirene_companies", 0, "error")
-        sys.exit(3)
+    # ── Walk the window forward in chunks ────────────────────
+    # Each chunk must fit the 10k ceiling AND the workflow time budget. A day is
+    # ~2.6k NAF-filtered companies, comfortably inside both. The watermark advances
+    # after EACH successful chunk, so an interrupted backfill resumes rather than
+    # restarting — and a bounded number of chunks per invocation lets a daily cron
+    # chip away at a backlog without ever exceeding its timeout.
+    chunk_days = int(os.environ.get("SIRENE_CHUNK_DAYS", "1"))
+    max_chunks = int(os.environ.get("SIRENE_MAX_CHUNKS", "25"))
+    now = datetime.now(timezone.utc)
+    cursor = start_dt
+    tot_c = tot_e = tot_m = 0
+    chunks_done = 0
+    t_all = time.time()
 
-    company_rows: list[dict] = []
-    re_sirens: set[str] = set()
-    scanned = 0
-    t0 = time.time()
-    try:
-        for ul in client.iter_unites_legales(q):
-            scanned += 1
-            rec = map_api_unite_legale({"uniteLegale": ul})
-            if not rec or not rec.get("siren"):
-                continue
-            # Kept as a cheap assertion. The server-side clause already restricts
-            # to the whitelist; this catches a drift between the clause and the
-            # whitelist (e.g. a code added to one and not the other) rather than
-            # doing the real filtering work.
-            if not is_real_estate(rec.get("activite_principale")):
-                continue
-            company_rows.append(rec)
-            re_sirens.add(rec["siren"])
-            if scanned % 1000 == 0:
-                print(f"    scanned {scanned:,}, kept {len(company_rows):,} RE-sector")
-    except RuntimeError as e:
-        # Hit MAX_OFFSET — too many updates in one window. Caller should narrow lookback.
-        print(f"  ERROR: {e}")
-        print("  Try reducing SIRENE_LOOKBACK_DAYS=0 or splitting the date window.")
-        _update_registry(url, key, "insee_sirene_companies", 0, "error")
-        sys.exit(3)
+    while cursor.date() <= now.date() and chunks_done < max_chunks:
+        chunk_end = min(cursor + timedelta(days=chunk_days), now)
+        s_iso, e_iso = cursor.date().isoformat(), chunk_end.date().isoformat()
+        print(f"\n{'=' * 60}\n  CHUNK {chunks_done + 1}: [{s_iso} TO {e_iso}]\n{'=' * 60}")
+        try:
+            n_c, n_e, matched = _sync_window(client, url, key, schema, s_iso, e_iso)
+        except WindowTooLarge as e:
+            print(f"  ERROR: {e}")
+            print("  Reduce SIRENE_CHUNK_DAYS and re-run; the watermark is unchanged "
+                  "so nothing is skipped.")
+            _update_registry(url, key, "insee_sirene_companies", 0, "error")
+            sys.exit(3)
 
-    print(f"  scanned {scanned:,}, kept {len(company_rows):,} RE-sector ({time.time() - t0:.0f}s)")
+        tot_c += n_c; tot_e += n_e; tot_m += matched
+        chunks_done += 1
+        # Advance the watermark to the END of the chunk just completed.
+        _update_registry(url, key, "insee_sirene_companies", n_c, "success",
+                         sync_at=chunk_end.isoformat())
+        _update_registry(url, key, "insee_sirene_etablissements", n_e, "success",
+                         sync_at=chunk_end.isoformat())
+        cursor = chunk_end
+        if chunk_end >= now:
+            break
 
-    if company_rows:
-        n_c = batch_upsert(
-            url=url, key=key, table="companies",
-            records=company_rows, conflict_column="siren",
-            schema=schema, batch_size=DEFAULT_BATCH_SIZE,
-        )
-        print(f"  upserted {n_c:,} into {schema}.companies")
-    else:
-        n_c = 0
-        print("  no RE-sector updates in this window")
-
-    # ── Establishments for the SIRENs we just touched ────────
-    print(f"\n[2/2] Fetching establishments for {len(re_sirens):,} SIRENs …")
-    et_rows: list[dict] = []
-    for i, siren in enumerate(sorted(re_sirens), start=1):
-        for et in client.iter_etablissements_by_siren(siren):
-            rec = map_api_etablissement({"etablissement": et})
-            if rec and rec.get("siret"):
-                et_rows.append(rec)
-        if i % 50 == 0:
-            print(f"    {i:,}/{len(re_sirens):,} SIRENs processed, {len(et_rows):,} establishments collected")
-
-    if et_rows:
-        n_e = batch_upsert(
-            url=url, key=key, table="etablissements",
-            records=et_rows, conflict_column="siret",
-            schema=schema, batch_size=DEFAULT_BATCH_SIZE,
-        )
-        print(f"  upserted {n_e:,} into {schema}.etablissements")
-    else:
-        n_e = 0
-
-    _update_registry(url, key, "insee_sirene_companies", n_c, "success")
-    _update_registry(url, key, "insee_sirene_etablissements", n_e, "success")
-
-    print("\n" + "=" * 60)
-    print(f"  SYNC COMPLETE — {n_c:,} companies, {n_e:,} establishments")
+    caught_up = cursor >= now or cursor.date() >= now.date()
+    print(f"\n{'=' * 60}")
+    print(f"  chunks: {chunks_done}  matched: {tot_m:,}  "
+          f"companies: {tot_c:,}  establishments: {tot_e:,}")
+    print(f"  duration: {time.time() - t_all:.0f}s   caught up: {caught_up}")
+    if not caught_up:
+        print(f"  watermark now {cursor.date().isoformat()}; re-run to continue the backfill.")
     print("=" * 60)
 
 
