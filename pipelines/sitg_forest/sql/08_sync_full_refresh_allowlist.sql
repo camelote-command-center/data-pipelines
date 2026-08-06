@@ -46,7 +46,8 @@ DECLARE
     ARRAY['gold_ch','v_forest_distance_l_full','cadastral_forest_distance_l','lamap_db'],
     ARRAY['gold_ch','v_forest_lisieres_full','cadastral_forest_lisieres','lamap_db'],
     ARRAY['gold_ch','v_forest_lisieres_parcelles_full','cadastral_forest_lisieres_parcelles','lamap_db'],
-    ARRAY['gold_ch','v_forest_fonction_full','cadastral_forest_fonction','lamap_db']
+    ARRAY['gold_ch','v_forest_fonction_full','cadastral_forest_fonction','lamap_db'],
+    ARRAY['gold_ch','v_plot_forest_constraints_full','plot_forest_constraints','lamap_db']
   ];
   -- 2026-05-19 Phase 7d incident: COALESCE-protect seeded cols (Amendment-1 §2 manifest, 27 cols).
   -- TEXT cols: NULLIF(EXCLUDED.col,'') treats empty-string as missing.

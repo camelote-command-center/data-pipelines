@@ -136,6 +136,28 @@ END $$;
 -- ---------------------------------------------------------------------------
 -- Chained here deliberately, NOT scheduled independently: the recompute must
 -- never run against a half-loaded forest layer, and every assertion above has
--- to pass first. Phase 2 is not built yet; when it lands, its refresh call goes
--- here and nowhere else.
---   CALL gold_ch.refresh_plot_forest_constraints();
+-- to pass first.
+CALL gold_ch.refresh_plot_forest_constraints();
+
+DO $$
+DECLARE v int := 0; v_plots int; v_rows int;
+BEGIN
+  SELECT count(*) INTO v_plots FROM silver_ch.cadastral_plots WHERE canton_code = 'GE';
+  SELECT count(*) INTO v_rows  FROM gold_ch.plot_forest_constraints;
+  IF v_rows <> v_plots THEN
+    RAISE EXCEPTION 'plot_forest_constraints has % rows for % GE plots', v_rows, v_plots;
+  END IF;
+
+  -- forest_constraint_source must never collapse to fewer than the categories
+  -- the data actually contains. A sudden drop to one value means the source
+  -- layers loaded empty.
+  IF (SELECT count(DISTINCT forest_constraint_source) FROM gold_ch.plot_forest_constraints) < 3 THEN
+    RAISE EXCEPTION 'forest_constraint_source collapsed to % distinct values, expected 4',
+      (SELECT count(DISTINCT forest_constraint_source) FROM gold_ch.plot_forest_constraints);
+  END IF;
+
+  CALL gold_ch.sync_full_refresh('gold_ch', 'v_plot_forest_constraints_full',
+                                 'plot_forest_constraints', 'lamap_db_server',
+                                 'lamap_db_foreign', 'lamap_db', NULL, v);
+  RAISE NOTICE 'synced plot_forest_constraints -> ref (% rows, % plots)', v, v_plots;
+END $$;
