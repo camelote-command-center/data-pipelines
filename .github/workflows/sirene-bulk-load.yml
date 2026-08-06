@@ -1,11 +1,13 @@
 name: SIRENE Bulk Load
 
-# Two ways this fires:
-#   - Monthly cron (5th of each month at 06:00 UTC) — INSEE publishes the new
-#     parquet stock files on the 1st of each month; we wait 4 days for the
-#     data.gouv.fr CDN to mirror reliably and to avoid colliding with other
-#     1st-of-month parsers (zefix, sitg, …).
-#   - Manual workflow_dispatch — for re-runs, smoke tests, or partial reloads.
+# SCHEDULE DISABLED 2026-08-06. This is a ONE-TIME stock loader, not a recurring job.
+# It was left on a monthly cron and hit the 4 h cap on every run (2026-06-05, 07-05,
+# 08-05 all cancelled at 4h00m), burning four runner-hours a month and never completing.
+# Ongoing refresh belongs to sirene-incremental.yml. Re-run this one by hand
+# (workflow_dispatch) only for a deliberate full reload.
+#
+# How this fires now:
+#   - Manual workflow_dispatch only — for re-runs, smoke tests, or partial reloads.
 #
 # Runtime: ~2 h on a GHA Ubuntu runner against Supabase Frankfurt (matches
 # the 31.97.122.135 VPS one-off run on 2026-05-09 — 1h 58m for 6.76 M
@@ -15,8 +17,8 @@ name: SIRENE Bulk Load
 # for unchanged rows; only changed rows get UPDATEd.
 
 on:
-  schedule:
-    - cron: '0 6 5 * *'
+  # schedule:                 # DISABLED 2026-08-06 — one-time loader, see header
+  #   - cron: '0 6 5 * *'
   workflow_dispatch:
     inputs:
       mode:
