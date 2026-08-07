@@ -39,8 +39,9 @@ jobs:
           RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
           RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
           RE_LLM_SCHEMA: bronze_fr
-          # API key is read from the re-LLM vault at runtime, not passed as a secret.
-          RE_LLM_DATABASE_URL: ${{ secrets.RE_LLM_DB_URL }}
+          # API key is read from the re-LLM vault at runtime over HTTPS (service-role
+          # RPC insee_sirene_key), not passed as a secret. RE_LLM_DB_URL is deliberately
+          # NOT provided: the psycopg2 path it enabled failed on every hosted runner.
           SIRENE_CHUNK_DAYS: "1"
           SIRENE_MAX_CHUNKS: "15"        # upper bound; the time budget usually binds first
           SIRENE_TIME_BUDGET_S: "1200"   # 20 min of chunks, inside the 30 min timeout

@@ -11,8 +11,9 @@ from the "backend to backend" application mode, which INSEE documents as never
 working for this API. Do not reintroduce a token exchange here.
 
 The key is read at runtime from the Supabase vault (`insee_sirene_api_key` on
-re-LLM) via RE_LLM_DATABASE_URL — deliberately not from an env var, so the value
-lives in exactly one place. It is never logged.
+re-LLM) over HTTPS, via the service-role-only RPC public.insee_sirene_key() —
+deliberately not from an env var, so the value lives in exactly one place. It is
+never logged.
 
 Pagination: SIRENE caps `nombre` at 1000 results per call and `debut` (offset)
 at 10000. For larger result sets, callers must page in date windows or partition
@@ -24,8 +25,9 @@ Rate limit: 30 req/min (default tier). The client sleeps 2.1s between calls
 as a defensive guard. If you hit a 429, the client backs off exponentially.
 
 Environment variables:
-    RE_LLM_DATABASE_URL   direct Postgres DSN to re-LLM, used to read the vault key
-    INSEE_SIRENE_API_KEY  optional override, for local testing only
+    RE_LLM_SUPABASE_URL              re-LLM project URL, used to read the vault key
+    RE_LLM_SUPABASE_SERVICE_ROLE_KEY service role, used to call insee_sirene_key()
+    INSEE_SIRENE_API_KEY             optional override, for local testing only
 """
 
 from __future__ import annotations
@@ -51,27 +53,45 @@ class CredentialsMissing(RuntimeError):
 
 
 def _api_key_from_vault() -> str:
-    """Read the API key from the re-LLM Supabase vault. Never logs the value."""
-    dsn = os.environ.get("RE_LLM_DATABASE_URL", "")
-    if not dsn:
+    """Read the API key from the re-LLM vault over HTTPS. Never logs the value.
+
+    Uses the same PostgREST + service-role path the pipeline already uses for every
+    other call, via public.insee_sirene_key() (SECURITY DEFINER, EXECUTE granted to
+    service_role only — the existing public.nocodb_secret() convention).
+
+    This used to open a psycopg2 connection to RE_LLM_DATABASE_URL. That worked from a
+    workstation and failed on every GitHub-hosted run with
+    `OperationalError: server didn't return client encoding` raised by psycopg2.connect
+    itself — i.e. the startup handshake never completed from the runner's network, not
+    a query-level rejection. Requiring a raw Postgres path just to read one secret gave
+    the job a second, weaker dependency than the one it already needs (HTTPS), so the
+    dependency is removed rather than repaired.
+    """
+    url = os.environ.get("RE_LLM_SUPABASE_URL", "").rstrip("/")
+    key = os.environ.get("RE_LLM_SUPABASE_SERVICE_ROLE_KEY", "")
+    if not url or not key:
         raise CredentialsMissing(
-            "RE_LLM_DATABASE_URL is required to read the INSEE API key from the vault "
+            "RE_LLM_SUPABASE_URL and RE_LLM_SUPABASE_SERVICE_ROLE_KEY are required to read "
+            f"{VAULT_SECRET_NAME!r} from the vault "
             "(or set INSEE_SIRENE_API_KEY for local testing)"
         )
-    import psycopg2
-
-    with psycopg2.connect(dsn, connect_timeout=20) as conn:
-        with conn.cursor() as cur:
-            cur.execute(
-                "SELECT decrypted_secret FROM vault.decrypted_secrets WHERE name = %s",
-                (VAULT_SECRET_NAME,),
-            )
-            row = cur.fetchone()
-    if not row or not row[0]:
+    r = requests.post(
+        f"{url}/rest/v1/rpc/insee_sirene_key",
+        headers={"apikey": key, "Authorization": f"Bearer {key}",
+                 "Content-Type": "application/json"},
+        json={}, timeout=30,
+    )
+    if r.status_code != 200:
+        # Deliberately does not echo the body: it would contain the secret on success
+        # and is not needed to diagnose a failure.
         raise CredentialsMissing(
-            f"vault secret {VAULT_SECRET_NAME!r} not found on re-LLM"
+            f"vault RPC insee_sirene_key returned HTTP {r.status_code} "
+            f"(expected 200); check the service-role grant on re-LLM"
         )
-    return row[0].strip()
+    secret = (r.json() or "")
+    if not isinstance(secret, str) or not secret.strip():
+        raise CredentialsMissing(f"vault secret {VAULT_SECRET_NAME!r} is empty on re-LLM")
+    return secret.strip()
 
 
 class SireneClient:
