@@ -150,6 +150,13 @@ function mapListing(node: any): Record<string, unknown> {
   return {
     id: node.id,
     original_id: node.originalId || null,
+    // RealAdvisor's own slug: '{npa}-{city}-{CODE}', e.g. '1875-morgins-YNAD-QZ5R'.
+    // Captured at crawl time because the {CODE} segment is NOT derivable from node.id.
+    // Stored raw rather than as a URL: the /{lang}/{offer}/{type}/{slug} form was tested
+    // and redirects to a locality SEARCH page for live and dead listings alike (always 200),
+    // so it is not a deep link and gives no liveness signal. Derive a URL later if the
+    // canonical format is ever established.
+    realadvisor_slug: node.slug || null,
     original_portal: detectPortal(node.originalId),
     offer_type: node.offerType || null,
     property_type: node.propertyType || null,
