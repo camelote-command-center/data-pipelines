@@ -8,6 +8,7 @@ DECLARE
   v_cols        TEXT;
   v_cols_qual   TEXT;
   v_in_allowlist     boolean := false;
+  v_legacy_ok        boolean := false;
   v_pk_column        text;
   v_registry_cols    text[];
   v_registry_pk_seen text;
@@ -58,7 +59,6 @@ DECLARE
     ARRAY['bronze_ch','ge_cad_batiments_souterrains','ge_cad_batiments_souterrains','lamap_db']
 
 ,
-    ARRAY['gold_ch','v_ge_cad_adresses_restore','ge_cad_adresses','lamap_db'],
     ARRAY['gold_ch','v_ge_cad_adresses_full','ge_cad_adresses','lamap_db']  ];
   -- 2026-05-19 Phase 7d incident: COALESCE-protect seeded cols (Amendment-1 §2 manifest, 27 cols).
   -- TEXT cols: NULLIF(EXCLUDED.col,'') treats empty-string as missing.
@@ -175,17 +175,27 @@ BEGIN
   END LOOP;
 
   IF NOT v_in_allowlist THEN
-    SELECT r.pk_column INTO v_registry_pk_seen
+    -- FAIL CLOSED. Branch B TRUNCATEs the LIVE target table. Reaching it by
+    -- accident truncated ref.ge_cad_adresses on 2026-08-07: the procedure
+    -- emitted a NOTICE and proceeded. A NOTICE is not a guard, so the legacy
+    -- path now requires an EXPLICIT opt-in per target.
+    SELECT r.pk_column, coalesce(r.allow_legacy_truncate, false)
+      INTO v_registry_pk_seen, v_legacy_ok
     FROM gold_ch.sync_registry r
     WHERE r.source_schema = p_source_schema
       AND r.source_table  = p_source_table
       AND r.target_table  = p_target_table
     LIMIT 1;
-    IF v_registry_pk_seen IS NOT NULL THEN
-      RAISE NOTICE
-        'sync_full_refresh: %->% has pk=% but tuple is not allowlisted; still on legacy TRUNCATE path until per-target cutover',
-        v_full_source, p_target_db, v_registry_pk_seen;
+
+    IF NOT coalesce(v_legacy_ok, false) THEN
+      RAISE EXCEPTION
+        'sync_full_refresh REFUSED: %->%.% is not in c_allowlist and its sync_registry row does not set allow_legacy_truncate. Branch B would TRUNCATE the live target. Add the tuple to c_allowlist (correct fix), or set allow_legacy_truncate=true only if this target genuinely still needs the legacy path.',
+        v_full_source, p_target_db, p_target_table;
     END IF;
+
+    RAISE WARNING
+      'sync_full_refresh: %->% is on the legacy TRUNCATE path by explicit opt-in (pk=%). Cut it over to Branch A.',
+      v_full_source, p_target_db, coalesce(v_registry_pk_seen, 'unknown');
   END IF;
 
   IF v_in_allowlist THEN
