@@ -116,16 +116,85 @@ BEGIN
   ANALYZE _rd;
 
   -- ── GE plots in LV95 ──────────────────────────────────────────────
+  -- Identity is resolved in three tiers because silver's no_commune_no_parcelle
+  -- is sparse for GE: 211 of 73'000 plots carried NULL. silver_ch.cadastral_plots
+  -- builds that column in a CTE driven by bronze_ch.ge_plots_geo LEFT JOINed to
+  -- ge_cad_parcelles, so a plot loses its identity two distinct ways:
+  --   * absent from the driving table ge_plots_geo, so the CTE emits no row at
+  --     all, even though ge_cad_parcelles does hold its identity  -> 106 plots
+  --   * present in ge_plots_geo but unmatched in ge_cad_parcelles -> 105 plots
+  -- Tier 2 addresses the first, tier 3 the second.
+  --
+  -- Tiers 2 and 3 are strictly additive: COALESCE only fills a NULL and never
+  -- overwrites what silver produced. Checked before landing this that tier 2
+  -- and tier 1 never disagree on the 72'789 rows where both are present, so
+  -- the fallback cannot silently rewrite an identity that already resolved.
+  --
+  -- This does NOT reach zero, by design. 19 plots remain NULL: all sit under
+  -- BFS 6621 (Genève), which fans out to four cadastral sub-communes, and they
+  -- are absent from ge_cad_parcelles so there is nothing to disambiguate
+  -- against. Those 19 are the forest-touching subset of 211 GE plots that carry
+  -- a NULL identity in public.mv_plots on lamap_db itself. Resolving them here
+  -- was deliberately rejected: it would make this derived table more complete
+  -- than the table it derives from, leaving two disagreeing sources for the
+  -- same identity. That defect is tracked upstream as bug ab70452b, scoped to
+  -- all 211. Do not "finish the job" here.
   DROP TABLE IF EXISTS _p;
   CREATE TEMP TABLE _p ON COMMIT DROP AS
-    SELECT egrid,
-           no_commune_no_parcelle,
-           no_commune,
-           no_parcelle,
-           surface_m2,
-           ST_Transform(geometry, 2056) AS g
-    FROM silver_ch.cadastral_plots
-    WHERE canton_code = 'GE';
+  WITH roster_1to1 AS (
+    -- Only communes whose federal BFS maps to exactly one cadastral commune.
+    -- BFS 6621 (Genève) fans out to four cadastral sub-communes and the federal
+    -- source does not say which one a plot sits in. Those plots keep a NULL
+    -- rather than take a guess that would read as fact downstream.
+    SELECT no_com_federal::int AS bfs, min(no_comm)::text AS no_comm
+    FROM bronze_ch.ge_cad_communes
+    WHERE no_com_federal IS NOT NULL AND no_comm IS NOT NULL
+    GROUP BY 1
+    HAVING count(DISTINCT no_comm) = 1
+  ), resolved AS (
+    SELECT s.egrid,
+           s.surface_m2,
+           s.geometry,
+           COALESCE(s.no_commune_no_parcelle,
+                    nullif(trim(c.no_comm), '') || '/' || nullif(trim(c.no_parcelle), ''),
+                    r.no_comm || '/' || nullif(trim(f.parcel_number), ''))  AS no_commune_no_parcelle,
+           COALESCE(s.no_commune,  nullif(trim(c.no_comm), ''),
+                    r.no_comm)                                             AS no_commune,
+           COALESCE(s.no_parcelle, nullif(trim(c.no_parcelle), ''),
+                    nullif(trim(f.parcel_number), ''))                     AS no_parcelle
+    FROM silver_ch.cadastral_plots s
+    -- LATERAL ... LIMIT 1 rather than a plain join: ge_cad_parcelles holds
+    -- 73'085 rows against 73'000 plots, so a plain join would multiply rows and
+    -- break the one-row-per-plot contract the row-count assertion below relies on.
+    LEFT JOIN LATERAL (
+      SELECT p2.no_comm, p2.no_parcelle
+      FROM bronze_ch.ge_cad_parcelles p2
+      WHERE p2.egrid::text = s.egrid
+      ORDER BY p2.no_comm, p2.no_parcelle
+      LIMIT 1
+    ) c ON true
+    LEFT JOIN LATERAL (
+      SELECT f2.commune_bfs, f2.parcel_number
+      FROM bronze_ch.federal_cadastral_parcels f2
+      WHERE f2.egrid = s.egrid
+      ORDER BY f2.commune_bfs, f2.parcel_number
+      LIMIT 1
+    ) f ON true
+    -- commune_bfs is already integer on this table, so no cast or digit guard.
+    LEFT JOIN roster_1to1 r ON r.bfs = f.commune_bfs
+    WHERE s.canton_code = 'GE'
+  )
+  SELECT egrid,
+         no_commune_no_parcelle,
+         -- The components feed the lisières join below, which casts them to
+         -- int. Accept digit-only fallbacks only: a lettered parcel number
+         -- arriving from the federal source would otherwise abort the entire
+         -- refresh at index creation, three statements from here.
+         CASE WHEN no_commune  ~ '^[0-9]+$' THEN no_commune  END AS no_commune,
+         CASE WHEN no_parcelle ~ '^[0-9]+$' THEN no_parcelle END AS no_parcelle,
+         surface_m2,
+         ST_Transform(geometry, 2056) AS g
+  FROM resolved;
   CREATE INDEX ON _p USING GIST (g);
   CREATE INDEX ON _p ((no_commune::int), (no_parcelle::int));
   ANALYZE _p;
