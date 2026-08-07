@@ -102,6 +102,40 @@ def get_record_count(base_url: str) -> int:
     return count
 
 
+def get_object_id_field(base_url: str) -> str:
+    """
+    Read the layer's own object-id field from its service metadata.
+
+    This must NOT be guessed. Across the ten pipelines sharing this module,
+    four different spellings are live: `objectid` on 51 layers, `fid` on 3,
+    `OBJECTID` on 2 and `shape_fid` on 1 (BRUIT_ROUTIER_MESURE_AUX_FACADES,
+    which is 26 pages). Hardcoding `objectid` would have sorted 6 layers by a
+    field that does not exist, which ArcGIS may answer by ignoring the sort
+    rather than erroring, leaving pagination exactly as unstable as before.
+
+    Raises if the field cannot be determined. A layer whose object-id field is
+    unknown must abort, never fall back to an arbitrary order: an unstable sort
+    is the defect this exists to remove, and a silent default would reintroduce
+    it in the one place nobody would look.
+    """
+    data = _get_json(f"{base_url}?f=pjson")
+    if "error" in data:
+        err = data["error"]
+        raise RuntimeError(
+            f"cannot read layer metadata for {base_url}: "
+            f"{err.get('code')} {err.get('message')}"
+        )
+    oid = data.get("objectIdField")
+    if not oid:
+        raise RuntimeError(
+            f"layer {base_url} does not declare objectIdField. Refusing to "
+            f"paginate without a stable sort key: resultOffset paging is not "
+            f"deterministic without an explicit orderByFields, and guessing a "
+            f"default is what this check exists to prevent."
+        )
+    return oid
+
+
 def fetch_all_features(
     base_url: str,
     include_geometry: bool = True,
@@ -127,7 +161,13 @@ def fetch_all_features(
         print("  WARNING: ArcGIS API returned 0 records")
         return []
 
-    print(f"  Total records in API: {count:,}")
+    # Stable sort key, read from the layer itself. Without an explicit
+    # orderByFields, ArcGIS gives no ordering guarantee between requests, so
+    # resultOffset paging can return a row twice and miss another. The row
+    # COUNT still looks plausible, which is why this went unnoticed.
+    order_field = get_object_id_field(base_url)
+
+    print(f"  Total records in API: {count:,}  (ordering by {order_field})")
 
     all_records: list[dict] = []
     offsets = list(range(0, count, page_size))
@@ -138,6 +178,7 @@ def fetch_all_features(
         url = (
             f"{base_url}/query?where=1%3D1&outFields=*"
             f"&returnGeometry={geom_flag}&outSR={out_sr}"
+            f"&orderByFields={order_field}"
             f"&resultOffset={offset}&resultRecordCount={page_size}&f=json"
         )
 
@@ -176,5 +217,17 @@ def fetch_all_features(
         # Small delay between pages to be respectful
         time.sleep(0.1)
 
-    print(f"  Fetch complete: {len(all_records):,} records")
+    # Count assertion. This is what makes the ordering fix verifiable rather
+    # than merely plausible: if paging still skipped or duplicated a row, the
+    # paginated total will not equal the count the service declared up front.
+    # Abort rather than land a partial layer, exactly as the forest parser does.
+    if len(all_records) != count:
+        raise RuntimeError(
+            f"{base_url}: paginated total {len(all_records):,} does not match the "
+            f"declared count {count:,} (difference {len(all_records) - count:+,}). "
+            f"Aborting rather than landing a partial or duplicated layer. "
+            f"Ordered by {order_field}, page size {page_size}."
+        )
+
+    print(f"  Fetch complete: {len(all_records):,} records, count assertion OK")
     return all_records
