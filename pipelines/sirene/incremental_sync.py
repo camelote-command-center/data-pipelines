@@ -125,6 +125,24 @@ def _update_registry(
         print(f"  WARN: registry update failed {r.status_code}: {r.text[:200]}")
 
 
+def _dedupe(records: list[dict], key: str) -> list[dict]:
+    """Last-wins dedupe on the upsert conflict column.
+
+    PostgREST sends a batch as one INSERT ... ON CONFLICT DO UPDATE, and Postgres
+    rejects the whole statement with 21000 "cannot affect row a second time" if the
+    same conflict key appears twice in it. The Sirene query ORs 13 periode() clauses,
+    so a company matching more than one period can come back more than once in the
+    same window — which failed 4 batches (~2000 rows) of the 2026-08-06 backfill.
+    Dedupe here rather than in shared/supabase_client.py, which ~40 other parsers use.
+    """
+    out: dict[str, dict] = {}
+    for r in records:
+        k = r.get(key)
+        if k is not None:
+            out[str(k)] = r
+    return list(out.values())
+
+
 class WindowTooLarge(RuntimeError):
     """A date window would exceed the API offset ceiling; split it, do not truncate."""
 
@@ -179,6 +197,7 @@ def _sync_window(client, url, key, schema, start_iso: str, end_iso: str):
     print(f"  scanned {scanned:,}, kept {len(company_rows):,} RE-sector ({time.time() - t0:.0f}s)")
 
     if company_rows:
+        company_rows = _dedupe(company_rows, "siren")
         n_c = batch_upsert(
             url=url, key=key, table="companies",
             records=company_rows, conflict_column="siren",
@@ -211,6 +230,7 @@ def _sync_window(client, url, key, schema, start_iso: str, end_iso: str):
                   f"{len(et_rows):,} establishments collected ({time.time() - t1:.0f}s)")
 
     if et_rows:
+        et_rows = _dedupe(et_rows, "siret")
         n_e = batch_upsert(
             url=url, key=key, table="etablissements",
             records=et_rows, conflict_column="siret",
