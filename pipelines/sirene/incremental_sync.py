@@ -281,6 +281,13 @@ def main():
     # chip away at a backlog without ever exceeding its timeout.
     chunk_days = int(os.environ.get("SIRENE_CHUNK_DAYS", "1"))
     max_chunks = int(os.environ.get("SIRENE_MAX_CHUNKS", "25"))
+    # Wall-clock budget. A chunk count alone CANNOT bound the runtime: measured
+    # 2026-08-07, one day-chunk ranged from 86s (798 companies) to 712s (7387
+    # companies) - an 8x spread, because daily INSEE volume is lumpy. Sizing the cron
+    # on the fast sample gave ~22 min; the slow one would have been ~178 min against a
+    # 30-minute timeout. Stop STARTING chunks once the budget is spent; the watermark
+    # has already advanced per completed chunk, so the next run resumes cleanly.
+    time_budget_s = int(os.environ.get("SIRENE_TIME_BUDGET_S", "1200"))
     now = datetime.now(timezone.utc)
     cursor = start_dt
     tot_c = tot_e = tot_m = 0
@@ -288,6 +295,10 @@ def main():
     t_all = time.time()
 
     while cursor.date() <= now.date() and chunks_done < max_chunks:
+        if chunks_done and time.time() - t_all > time_budget_s:
+            print(f"\n  time budget reached ({time_budget_s}s) after {chunks_done} chunk(s); "
+                  "stopping cleanly. Watermark is current to the last completed chunk.")
+            break
         chunk_end = min(cursor + timedelta(days=chunk_days), now)
         s_iso, e_iso = cursor.date().isoformat(), chunk_end.date().isoformat()
         print(f"\n{'=' * 60}\n  CHUNK {chunks_done + 1}: [{s_iso} TO {e_iso}]\n{'=' * 60}")

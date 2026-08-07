@@ -9,10 +9,12 @@ name: SIRENE Incremental Sync
 # after EACH successful chunk, so an interrupted run resumes instead of restarting,
 # and a failed run never advances it (which would silently skip data).
 #
-# Measured 2026-08-06: one day-chunk = ~86s (813 matched, 798 companies, 1164
-# establishments). SIRENE_MAX_CHUNKS=15 therefore caps a run at ~21 min, inside the
-# 30-minute timeout, while letting a backlog catch up ~15 days per run. Once caught
-# up, a normal day is a single ~90s chunk.
+# Runtime is bounded by SIRENE_TIME_BUDGET_S (wall clock), not by chunk count.
+# Measured 2026-08-07: a day-chunk ranges 86s (798 companies) to 712s (7387) - an 8x
+# spread, because daily INSEE volume is lumpy. A fixed chunk count is therefore not a
+# bound: 15 chunks is ~22 min on the fast sample but ~178 min on the slow one, against
+# a 30-minute timeout. The job now stops STARTING chunks once the budget is spent and
+# resumes next run, since the watermark advances per completed chunk.
 
 on:
   workflow_dispatch:
@@ -40,7 +42,8 @@ jobs:
           # API key is read from the re-LLM vault at runtime, not passed as a secret.
           RE_LLM_DATABASE_URL: ${{ secrets.RE_LLM_DB_URL }}
           SIRENE_CHUNK_DAYS: "1"
-          SIRENE_MAX_CHUNKS: "15"   # ~21 min worst case, inside the 30 min timeout
+          SIRENE_MAX_CHUNKS: "15"        # upper bound; the time budget usually binds first
+          SIRENE_TIME_BUDGET_S: "1200"   # 20 min of chunks, inside the 30 min timeout
         run: python pipelines/sirene/import.py --mode incremental
 
       - name: PATCH last_acquired_at on success
