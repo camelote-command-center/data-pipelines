@@ -1,0 +1,15 @@
+{
+  "workflow": "sitg_trees.yml",
+  "datasets": [
+    {
+      "code": "ge_sipv_arbre_isole",
+      "schema": "bronze_ch",
+      "table": "ge_sipv_arbre_isole"
+    },
+    {
+      "code": "ge_ffp_arbres_remarquables",
+      "schema": "bronze_ch",
+      "table": "ge_ffp_arbres_remarquables"
+    }
+  ]
+}
