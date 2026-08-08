@@ -9,6 +9,13 @@ on:
   # schedule:
     # - cron: '30 5 * * *'  # Daily at 05:30 UTC
   workflow_dispatch:
+    inputs:
+      force_fail:
+        description: 'TEMPORARY (a32a8e5b verification): fail the parser step on purpose'
+        required: false
+        default: 'false'
+        type: choice
+        options: ['false','true']
 
 jobs:
   fetch:
@@ -25,6 +32,16 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+
+      - name: TEMPORARY force failure (a32a8e5b verification)
+
+        if: inputs.force_fail == 'true'
+
+        run: |
+
+          echo 'Deliberate failure to prove last_acquired_at is not stamped on a failed run.'
+
+          exit 1
 
       - name: Update dataset metadata on Camelote
         if: always()
