@@ -1,8 +1,13 @@
+# DECOMMISSIONED 2026-08-08 — Tinjob no longer exists as a startup.
+# The schedule is commented out, NOT deleted: workflow_dispatch still works and the run
+# history is intact. Re-enable deliberately by uncommenting, and re-activate the matching
+# `datasets` row at the same time — a live cron against a paused row is what produced
+# Tinjob's false overdue alerts twice before.
 name: tinjob Personio
 
 on:
-  schedule:
-    - cron: '0 4 * * *'  # Daily at 04:00 UTC
+  # schedule:
+    # - cron: '0 4 * * *'  # Daily at 04:00 UTC
   workflow_dispatch:
 
 jobs:
