@@ -22,9 +22,11 @@ columns (produced by the legacy JS parsers).  If include_geometry=True, a
 in WGS84 (EPSG:4326).
 """
 
+import hashlib
 import re
 import json
 import time
+from decimal import Decimal, ROUND_HALF_UP
 
 import requests
 
@@ -231,3 +233,72 @@ def fetch_all_features(
 
     print(f"  Fetch complete: {len(all_records):,} records, count assertion OK")
     return all_records
+
+
+# ──────────────────────────────────────────────────────────────
+# Content keys for layers that publish no durable identifier
+# ──────────────────────────────────────────────────────────────
+
+GEOM_KEY_DECIMALS = 7
+_Q = Decimal(1).scaleb(-GEOM_KEY_DECIMALS)
+
+
+def _coord(v) -> str:
+    """
+    One coordinate, rounded to GEOM_KEY_DECIMALS and rendered as fixed-scale
+    text.
+
+    ROUND_HALF_UP and Decimal(str(v)) are not stylistic. The twin of this
+    function in SQL (public.sitg_arcgis_geom_key) does
+    `round(<text>::numeric, 7)::text`, and Postgres numeric rounds half away
+    from zero and keeps the full scale. Python's own round() is half-to-even
+    and drops trailing zeros, so `round(6.1, 7)` would render "6.1" against
+    Postgres's "6.1000000" and every key would differ. Decimal(str(v)) sees
+    exactly the digits Postgres sees, because the geometry crosses the wire as
+    the repr of this same float.
+    """
+    return str(Decimal(str(v)).quantize(_Q, rounding=ROUND_HALF_UP))
+
+
+def arcgis_geom_key(geometry: str | None) -> str:
+    """
+    Canonical text form of an ArcGIS JSON geometry, for use inside a content
+    key. Must stay byte-identical to public.sitg_arcgis_geom_key() on re-LLM.
+
+    7 decimal degrees is ~1.1 cm north-south and ~0.8 cm east-west at 46°N,
+    far below the positional accuracy of any SITG layer, so rounding cannot
+    merge two features the source can tell apart. Coordinates are rounded and
+    written out as text rather than hashed as binary so that a key remains
+    inspectable when one has to be debugged.
+
+    Unrecognised geometry types fall back to the raw text rather than to an
+    empty string: '' would silently collapse every such feature onto one row,
+    which is the exact failure mode this exists to remove (bug ab259069).
+    """
+    if not geometry or not geometry.strip():
+        return "nogeom"
+    g = json.loads(geometry)
+    if "x" in g:
+        return f"pt:{_coord(g['x'])},{_coord(g['y'])}"
+    parts = g.get("paths") or g.get("rings")
+    if parts is None:
+        return "raw:" + hashlib.md5(geometry.encode()).hexdigest()
+    return "|".join(
+        ";".join(f"{_coord(p[0])},{_coord(p[1])}" for p in ring) for ring in parts
+    )
+
+
+def content_key(record: dict, attr_fields: list[str], include_geometry: bool = True) -> str:
+    """
+    Deterministic identity for one feature: md5 over the named attributes in
+    the given order, then the canonical geometry.
+
+    `attr_fields` must list only fields the parser itself writes. An enrichment
+    column filled in later, or a legacy column the source no longer publishes,
+    would make the key of an existing row differ from the key the next fetch
+    computes — orphaning the row instead of updating it.
+    """
+    parts = [(record.get(f) or "") for f in attr_fields]
+    if include_geometry:
+        parts.append(arcgis_geom_key(record.get("geometry")))
+    return hashlib.md5("|".join(parts).encode()).hexdigest()

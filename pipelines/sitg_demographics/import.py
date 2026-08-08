@@ -23,6 +23,31 @@ DATA SAFETY:
     - Never truncates or deletes existing data.
     - Row count should only go UP or stay the same.
 
+CONFLICT KEYS (bug ab259069, fixed 2026-08-08)
+    Every dataset here used to upsert ON CONFLICT (objectid). SITG's metadata
+    says OBJECTID is not a permanent identifier, and on OTC_AMENAG_2ROUES the
+    column called `objectid` is not even the layer's object-id field — that is
+    `fid` — and holds 10 duplicate values, so the upsert quietly collapsed 6
+    rows on every single run (6769 fetched, 6763 stored, no error).
+
+    Six layers turned out to have a genuine attribute business key, unique
+    across the whole live snapshot; those use it, because a hash would rotate
+    whenever a published value is corrected and orphan the row it tracks.
+
+    Three layers have no attribute identity at all — best attribute-only
+    cardinality is 6976/12380, 2387/6769 and 19280/19306 — so they carry a
+    deterministic content hash over the source attributes plus geometry
+    rounded to 7 decimal degrees (~1 cm at 46°N).
+
+    The hash is computed HERE rather than by a generated column in Postgres,
+    because shared.supabase_client._dedupe_on_conflict_key has to be able to
+    read the conflict key: the source really does publish duplicate features,
+    and a key the client cannot see means those pairs reach Postgres as error
+    21000 and take a whole 500-row batch down with them.
+
+    See sql/01_rekey_conflict_columns.sql for the measurements, the nineteen
+    inspected collisions, and the twin of the key function in SQL.
+
 Environment variables:
     RE_LLM_SUPABASE_URL              - re-LLM Supabase project URL (required)
     RE_LLM_SUPABASE_SERVICE_ROLE_KEY - service_role key (required)
@@ -37,7 +62,7 @@ import requests
 # Add repo root to path so we can import shared/
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 from shared.supabase_client import batch_upsert
-from shared.sitg_arcgis import fetch_all_features
+from shared.sitg_arcgis import content_key, fetch_all_features
 
 # ──────────────────────────────────────────────────────────────
 # Dataset configs
@@ -50,7 +75,7 @@ DATASETS = [
         "table": "ge_ocs_popbatlog_commune",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/ocs_popbatlog_commune/FeatureServer/0",
-        "conflict_column": "objectid",
+        "conflict_column": "no_commune",  # 45/45 unique; commune number is durable
         "field_renames": {
             "shape__length": "shape_len",
             "shape__area": "shape_area",
@@ -62,7 +87,7 @@ DATASETS = [
         "table": "ge_ocs_population_ssecteur",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/ocs_population_ssecteur/FeatureServer/0",
-        "conflict_column": "objectid",
+        "conflict_column": "ssecteur_7",  # 485/485 unique
         "field_renames": {
             "shape__length": "shape_len",
             "shape__area": "shape_area",
@@ -74,7 +99,7 @@ DATASETS = [
         "table": "ge_ocs_popbatlog_vge_secteur",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/ocs_popbatlog_vge_secteur/FeatureServer/0",
-        "conflict_column": "objectid",
+        "conflict_column": "secteur",  # 16/16 unique
         "field_renames": {
             "shape__length": "shape_len",
             "shape__area": "shape_area",
@@ -87,7 +112,7 @@ DATASETS = [
         "table": "ge_ocs_emploi_commune",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/ocs_emploi_commune/FeatureServer/0",
-        "conflict_column": "objectid",
+        "conflict_column": "no_commune",  # 45/45 unique
         "field_renames": {
             "shape__length": "shape_len",
             "shape__area": "shape_area",
@@ -99,7 +124,7 @@ DATASETS = [
         "table": "ge_ocs_emploi_vge_secteur",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/ocs_emploi_vge_secteur/FeatureServer/0",
-        "conflict_column": "objectid",
+        "conflict_column": "secteur",  # 16/16 unique
         "field_renames": {
             "shape__length": "shape_len",
             "shape__area": "shape_area",
@@ -112,8 +137,11 @@ DATASETS = [
         "table": "ge_otc_macaron",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/otc_macaron/FeatureServer/0",
-        # ArcGIS has no 'objectid' field for this layer — uses 'fid' instead
-        "conflict_column": "objectid",
+        # objectIdField is `fid`; the rename below keeps the historical column
+        # name. zone_macaron is the real identity: 53/53 unique. Its unique
+        # index is NULLS NOT DISTINCT because fid 52 is a polygon with every
+        # attribute NULL, and NULLS DISTINCT would re-insert it every run.
+        "conflict_column": "zone_macaron",
         "field_renames": {
             "fid": "objectid",
             "shape__length": "shape_len",
@@ -126,7 +154,12 @@ DATASETS = [
         "table": "ge_otc_stationnement",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/otc_stationnement_v_publique/FeatureServer/0",
-        "conflict_column": "objectid",
+        "conflict_column": "content_key",
+        "content_key_fields": [
+            "nom_rues",
+            "type_stationnement",
+            "nombre_places",
+        ],
         "field_renames": {
             "shape__length": "shape_len",
         },
@@ -137,7 +170,17 @@ DATASETS = [
         "table": "ge_otc_amenag_2roues",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/otc_amenag_2roues/FeatureServer/0",
-        "conflict_column": "objectid",
+        "conflict_column": "content_key",
+        "content_key_fields": [
+            "code_voie",
+            "nom_voie",
+            "type_amenagement",
+            "realisation",
+            "circul2r",
+            "circvoit",
+            "affectation",
+            "tourngauche",
+        ],
         "field_renames": {
             "fid": "sitg_adm_otc_amenag_2roues_fid",
             "shape__length": "shape_len",
@@ -149,7 +192,19 @@ DATASETS = [
         "table": "ge_cad_parcelles_histo",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/cad_parcelle_mensu_histo/FeatureServer/0",
-        "conflict_column": "objectid",
+        "conflict_column": "content_key",
+        "content_key_fields": [
+            "commune",
+            "no_comm",
+            "no_parcelle",
+            "surface",
+            "mutmai",
+            "daterad",
+            "provenance",
+            "validite",
+            "ideddp",
+            "type_propri",
+        ],
         "field_renames": {
             "shape__length": "shape_len",
             "shape__area": "shape_area",
@@ -288,6 +343,28 @@ def process_destination(
         for r in work_records:
             for f in EXCLUDE_FIELDS:
                 r.pop(f, None)
+
+        # Content key, for the layers that publish no durable identifier.
+        # Computed BEFORE the column filter so it survives it, and from the
+        # renamed record — none of the key fields are renamed, so the two
+        # orders agree, but computing it here keeps that true by construction.
+        key_fields = ds.get("content_key_fields")
+        if key_fields:
+            missing = sorted(set(key_fields) - set(work_records[0].keys()))
+            if missing:
+                # A key field the source stopped publishing would silently
+                # change every key and orphan every existing row. Refuse.
+                print(f"    ERROR: content key fields absent from the source: "
+                      f"{', '.join(missing)}. The key would change for every "
+                      f"row and orphan the whole table. Skipping this dataset.")
+                all_ok = False
+                continue
+            for r in work_records:
+                r["content_key"] = content_key(r, key_fields)
+            n_keys = len({r["content_key"] for r in work_records})
+            print(f"  Content keys: {n_keys:,} distinct over {len(work_records):,} "
+                  f"records ({len(work_records) - n_keys} duplicate feature(s) "
+                  f"in the source)")
 
         # Discover table columns and filter out unknown ones
         known_cols = get_table_columns(dest_url, dest_key, dest_schema, table)
