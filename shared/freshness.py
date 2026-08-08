@@ -118,7 +118,41 @@ def update_dataset_meta(
     """
     Update dataset metadata after a pipeline run.
     Always sets last_acquired_at = now(). Optionally updates record_count and status.
-    Returns True on success.
+
+    Returns True on success. RAISES RuntimeError if the dataset_code matched no
+    row -- see below.
+
+    WHY THIS RAISES INSTEAD OF RETURNING FALSE (bug 61bcc798, fixed 2026-08-07)
+        This used to send `Prefer: return=minimal` and treat HTTP 204 as
+        success. PostgREST returns 204 for a PATCH that matched ZERO rows: 204
+        means "request understood", not "a row changed". So a parser passing a
+        dataset_code that does not exist PATCHed nothing, got 204, and printed
+        "Updated dataset metadata" while the freshness board silently never
+        updated. The run log said success. A dataset could go stale for months
+        with nothing surfacing it -- in the worst place possible, since the
+        board IS the staleness alarm.
+
+        Found when the sitg_trees parser reported two successful metadata
+        updates for dataset rows that did not exist. The sweep that followed
+        found four codes in pipelines/sitg_geo_layers with no datasets row at
+        all: ge_gmo_mobilite_douce, ge_otc_parking, ge_otc_station_taxi and
+        ge_rdppf_dsopb_planning, covering 6039 live rows the board had never
+        seen.
+
+        `return=representation` makes PostgREST send back the rows it actually
+        changed, so "matched nothing" becomes an empty array and is
+        distinguishable from "updated one row".
+
+    DELIBERATELY NOT UPSERTING. Creating the row when the code is absent would
+    turn a wrong code into a silently-created junk dataset, which is the same
+    bug wearing a different hat. No parser in this repo is expected to create
+    its own dataset row -- they are registered deliberately -- so an unmatched
+    code is always an error worth stopping for.
+
+    SCOPE NOTE: a transport failure or a 4xx/5xx still returns False with a
+    warning rather than raising. That path is a genuinely transient board
+    outage, distinct from "this code does not exist", and making it fatal would
+    let a Supabase blip fail an otherwise good ingest.
     """
     if not url or not key:
         return False
@@ -131,7 +165,9 @@ def update_dataset_meta(
         "apikey": key,
         "Authorization": f"Bearer {key}",
         "Content-Type": "application/json",
-        "Prefer": "return=minimal",
+        # Not return=minimal: we must be able to tell "updated one row" from
+        # "matched nothing", and 204 cannot express that difference.
+        "Prefer": "return=representation",
     }
 
     payload: dict = {
@@ -147,11 +183,30 @@ def update_dataset_meta(
 
     try:
         r = requests.patch(endpoint, headers=headers, json=payload, timeout=15)
-        if r.status_code in (200, 204):
-            print(f"  Updated dataset metadata for '{dataset_code}'")
-            return True
-        else:
-            print(f"  Warning: could not update dataset metadata: {r.status_code} {r.text[:200]}")
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001 — transient transport failure, see docstring
         print(f"  Warning: could not update dataset metadata: {e}")
-    return False
+        return False
+
+    if r.status_code not in (200, 204):
+        print(f"  Warning: could not update dataset metadata: {r.status_code} {r.text[:200]}")
+        return False
+
+    try:
+        body = r.json()
+    except Exception:  # noqa: BLE001
+        body = None
+
+    # An empty array means the WHERE matched no row. That is the whole point of
+    # this check: it is indistinguishable from success without it.
+    if not isinstance(body, list) or not body:
+        raise RuntimeError(
+            f"freshness update matched 0 rows for dataset_code={dataset_code!r} "
+            f"— code missing from the datasets table on pixxels_data. The ingest "
+            f"itself may well have succeeded; what failed is the freshness board, "
+            f"which would otherwise show this dataset as never updated while "
+            f"reporting the run as clean. Register the dataset row, or correct the "
+            f"code the parser passes."
+        )
+
+    print(f"  Updated dataset metadata for '{dataset_code}' ({len(body)} row)")
+    return True
