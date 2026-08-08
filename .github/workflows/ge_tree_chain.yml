@@ -1,0 +1,153 @@
+name: GE Tree Chain (swisstopo → CHM → detection → gold → ref)
+
+# CADENCE: QUARTERLY, 1st of Jan/Apr/Jul/Oct at 05:00 UTC — staggered after the
+# 04:00 SITG tree-cadastre run so the two tree datasets share a rhythm without
+# contending for the same window.
+#
+# THE CADENCE IS QUARTERLY; THE WORK IS CONDITIONAL.
+# swissSURFACE3D and swissALTI3D refresh roughly yearly on offset cycles, so a
+# quarterly rebuild would recompute identical inputs three times out of four —
+# and because the R2 bucket is write-once, each no-change rebuild would still
+# need its own version prefix and write another full copy of 357 COG tiles.
+#
+# So stage 0 asks swisstopo whether anything actually moved (a cheap STAC query
+# against the same endpoint prepare_inputs.py already uses) and the expensive
+# stages run ONLY if it did. Every quarter the board shows either "source moved,
+# rebuilt" or "checked, no change" — which is a quarterly cadence that tracks
+# the source, rather than a schedule that merely looks busy. Option (b) of the
+# brief; (a) was rejected because a schedule that always runs is not evidence of
+# fresh data.
+#
+# force_rebuild bypasses the gate for a deliberate recompute.
+#
+# WHY A VERSION PER RUN. R2 is object-locked and the token has no DELETE, so a
+# fixed prefix either no-ops (COGs already exist) or fails with 409. The gate
+# emits a date-derived version (chm-YYYY-qN) so each rebuild computes into a
+# fresh prefix. Storage grows one tile generation per ACTUAL source change,
+# which given the yearly swisstopo cycle is about one per year, not four.
+#
+# ORDERING IS THE WHOLE POINT (bug 2acfe744). gold_ch.sync_plot_trees() used to
+# have no caller at all, so a regeneration would have advanced gold while
+# ref.plot_trees kept serving the previous vintage. Here the sync runs inside
+# the load step, immediately after the vintage lands and before the job exits,
+# and the load asserts ref matches gold. An independent cron could not
+# guarantee it ran after the regeneration rather than before it.
+
+on:
+  schedule:
+    - cron: '0 5 1 1,4,7,10 *'
+  workflow_dispatch:
+    inputs:
+      force_rebuild:
+        description: 'Rebuild even if swisstopo has not published anything new'
+        type: boolean
+        default: false
+
+concurrency:
+  # A quarterly rebuild takes hours. Never let two overlap: the second would
+  # load a vintage while the first was still writing tiles for it.
+  group: ge-tree-chain
+  cancel-in-progress: false
+
+jobs:
+  # ── Stage 0: has the source actually moved? ──────────────────────────
+  gate:
+    name: check swisstopo for a new release
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    outputs:
+      changed: ${{ steps.stac.outputs.changed }}
+      version: ${{ steps.stac.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client
+      - id: stac
+        name: STAC fingerprint vs last run
+        run: python3 -u pipelines/ge_canopy_height_model/stac_fingerprint.py
+        env:
+          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI }}
+          FORCE: ${{ inputs.force_rebuild }}
+      - name: Report
+        run: |
+          if [ "${{ steps.stac.outputs.changed }}" = "true" ]; then
+            echo "::notice::swisstopo source changed — rebuilding as ${{ steps.stac.outputs.version }}"
+          else
+            echo "::notice::checked, no change — skipping the rebuild. gold_ch.plot_trees stays on its current vintage."
+          fi
+
+  # ── Stage 1: regenerate the canopy height model ──────────────────────
+  chm:
+    name: CHM regeneration
+    needs: gate
+    if: needs.gate.outputs.changed == 'true'
+    uses: ./.github/workflows/ge_canopy_height_model.yml
+    secrets: inherit
+    with:
+      force: 'true'                              # new prefix, so nothing to collide with
+      version: ${{ needs.gate.outputs.version }}
+      skip_upload: 'false'
+
+  # ── Stage 2: detect individual trees against the fresh CHM ───────────
+  detect:
+    name: tree detection (GE-wide)
+    needs: [gate, chm]
+    uses: ./.github/workflows/ge_tree_detection_prototype.yml
+    secrets: inherit
+    with:
+      mode: ge_wide
+
+  # ── Stage 3: load the vintage into gold, push to ref, assert ─────────
+  load:
+    name: load gold_ch.plot_trees + sync ref
+    needs: [gate, detect]
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client
+      - name: Fetch detection output
+        uses: actions/download-artifact@v4
+        with:
+          name: ge-tree-detection
+          path: work
+      # load_trees.py stages through a TEMP table, asserts the 3 m vegetation
+      # floor and a plausible row count BEFORE promoting, upserts on
+      # (source, content_key), snapshots and removes the superseded vintage,
+      # then CALLs gold_ch.sync_plot_trees() and asserts ref matches gold.
+      - name: Load vintage and distribute
+        run: |
+          python3 -u pipelines/ge_canopy_height_model/load_trees.py \
+            work/plot_trees.csv --vintage ${{ needs.gate.outputs.version }}
+        env:
+          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI }}
+
+  # ── Freshness bookkeeping: record the check even when nothing changed ──
+  stamp:
+    name: stamp the board
+    needs: [gate, load]
+    if: always() && needs.gate.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Record outcome
+        run: |
+          if [ "${{ needs.gate.outputs.changed }}" != "true" ]; then
+            NOTE="checked $(date -u +%Y-%m-%dT%H:%M:%SZ), swisstopo unchanged, no rebuild"
+          elif [ "${{ needs.load.result }}" = "success" ]; then
+            NOTE="rebuilt ${{ needs.gate.outputs.version }} $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          else
+            NOTE="REBUILD FAILED for ${{ needs.gate.outputs.version }} — see run ${{ github.run_id }}"
+          fi
+          echo "::notice::$NOTE"
+          ESC=$(printf '%s' "$NOTE" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.ge_plot_trees" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=representation" \
+            -d "{\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"notes\":${ESC}}" \
+            | head -c 200
+        env:
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}

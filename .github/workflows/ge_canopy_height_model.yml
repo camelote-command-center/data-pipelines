@@ -26,6 +26,15 @@ name: GE Canopy Height Model (swisstopo DSM-DTM → per-parcel stats)
 # immutable snapshot of what the published stats were computed from.
 
 on:
+  # workflow_call so ge_tree_chain.yml can invoke this as stage 1 of the
+  # quarterly chain. Inputs mirror workflow_dispatch exactly; dispatch
+  # behaviour is unchanged.
+  workflow_call:
+    inputs:
+      force:    { type: string, required: false, default: 'false' }
+      version:  { type: string, required: false, default: 'v1' }
+      skip_upload: { type: string, required: false, default: 'false' }
+    secrets: inherit
   workflow_dispatch:
     inputs:
       force:

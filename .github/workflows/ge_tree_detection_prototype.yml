@@ -10,6 +10,12 @@ name: GE Tree Detection — one-tile prototype (read-only)
 # plus scipy + scikit-image (missing from that env; needed for local-maxima).
 
 on:
+  # workflow_call so ge_tree_chain.yml can invoke this as stage 2. The chain
+  # always passes mode=ge_wide. Dispatch behaviour is unchanged.
+  workflow_call:
+    inputs:
+      mode: { type: string, required: false, default: 'ge_wide' }
+    secrets: inherit
   workflow_dispatch:
     inputs:
       mode:
