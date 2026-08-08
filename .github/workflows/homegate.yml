@@ -31,10 +31,15 @@ jobs:
             -H "Accept-Profile: bronze_ch" -H "Prefer: count=estimated" \
             --head "$URL/rest/v1/homegate?select=*" \
             | grep -i content-range | sed 's|.*/||' | tr -d '\r')
+          if [ "${{ job.status }}" = "success" ]; then
+            PAYLOAD="{\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"record_count\":${COUNT:-0},\"last_error\":null}"
+          else
+            PAYLOAD="{\"record_count\":${COUNT:-0},\"last_error\":\"Workflow failed at $(date -u +%Y-%m-%dT%H:%M:%SZ) - check Actions log\"}"
+          fi
           curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.ext_homegate" \
             -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
             -H "Content-Type: application/json" -H "Prefer: return=minimal" \
-            -d "{\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"record_count\":${COUNT:-0},\"last_error\":null}"
+            -d "$PAYLOAD"
         env:
           URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
           KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}

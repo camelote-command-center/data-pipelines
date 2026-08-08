@@ -37,7 +37,7 @@ jobs:
           if [ "${{ job.status }}" = "success" ]; then
             PAYLOAD="{\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"record_count\":${COUNT:-0},\"last_error\":null,\"status\":\"active\"}"
           else
-            PAYLOAD="{\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"record_count\":${COUNT:-0},\"last_error\":\"Workflow failed at $(date -u +%Y-%m-%dT%H:%M:%SZ) — check Actions log\",\"status\":\"error\"}"
+            PAYLOAD="{\"record_count\":${COUNT:-0},\"last_error\":\"Workflow failed at $(date -u +%Y-%m-%dT%H:%M:%SZ) — check Actions log\",\"status\":\"error\"}"
           fi
           curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.tj_personio" \
             -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \

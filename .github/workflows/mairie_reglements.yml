@@ -46,9 +46,9 @@ jobs:
             -H "Prefer: count=exact" \
             --head "$URL/rest/v1/mairie_reglements_ge?select=*" \
             | grep -i content-range | sed 's|.*/||' | tr -d '\r')
-          STATUS_PAYLOAD="{\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"record_count\":${COUNT:-0}"
+          STATUS_PAYLOAD="{\"record_count\":${COUNT:-0}"
           if [ "${{ job.status }}" = "success" ]; then
-            STATUS_PAYLOAD="${STATUS_PAYLOAD},\"last_error\":null,\"status\":\"active\"}"
+            STATUS_PAYLOAD="${STATUS_PAYLOAD},\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"last_error\":null,\"status\":\"active\"}"
           else
             STATUS_PAYLOAD="${STATUS_PAYLOAD},\"last_error\":\"Workflow failed at $(date -u +%Y-%m-%dT%H:%M:%SZ) — check Actions log\",\"status\":\"error\"}"
           fi
