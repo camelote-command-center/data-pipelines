@@ -97,7 +97,11 @@ jobs:
           [r2-camelote-backups]
           type = s3
           provider = Cloudflare
-          endpoint = ${{ secrets.R2_ENDPOINT }}
+          # R2_ENDPOINT is not a repo secret and never was, so this expanded to an
+          # empty string and rclone fell back to s3.<region>.amazonaws.com -> 400 on
+          # upload. Reconstructed from R2_ACCOUNT_ID, which does exist, matching the
+          # four other workflows in this repo. Bug f7bef63e.
+          endpoint = https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com
           access_key_id = ${{ secrets.R2_ACCESS_KEY_ID }}
           secret_access_key = ${{ secrets.R2_SECRET_ACCESS_KEY }}
           EOF
