@@ -28,7 +28,7 @@ jobs:
       - name: Run BATI3D ingest
         run: python3 pipelines/sitg_bati3d/import.py ${{ github.event.inputs.dataset }}
         env:
-          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI }}
+          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI || secrets.RE_LLM_DB_URL }}
           RE_LLM_SCHEMA: bronze_ch
           # PATCH is done per-dataset-code inside import.py, NOT by workflow_file:
           # a blanket workflow_file PATCH stamps every layer with one timestamp and

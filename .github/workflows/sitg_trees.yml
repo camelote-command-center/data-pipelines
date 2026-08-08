@@ -69,9 +69,14 @@ jobs:
       # stays tri-state), then distributes to lamap_db ref through
       # gold_ch.sync_full_refresh Branch A. Any assertion aborts the run.
       - name: Promote to gold and distribute to lamap_db ref
-        run: psql "$RE_LLM_PG_URI" -v ON_ERROR_STOP=1 -f pipelines/sitg_trees/sql/08_promote.sql
+        run: |
+          # Fail closed: an unset secret expands to "" and psql would then
+          # silently try a local socket. RE_LLM_PG_URI is NOT a repo secret;
+          # RE_LLM_DB_URL is, hence the fallback in env below.
+          test -n "$RE_LLM_PG_URI" || { echo "::error::RE_LLM_PG_URI and RE_LLM_DB_URL are both empty"; exit 1; }
+          psql "$RE_LLM_PG_URI" -v ON_ERROR_STOP=1 -f pipelines/sitg_trees/sql/08_promote.sql
         env:
-          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI }}
+          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI || secrets.RE_LLM_DB_URL }}
 
       # ── 3. Freshness bookkeeping ──────────────────────────────────────
       - name: PATCH last_error on failure

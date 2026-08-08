@@ -70,7 +70,7 @@ jobs:
       - name: Build tiles.json + parcels.gpkg + buildings.gpkg
         run: python pipelines/ge_canopy_height_model/prepare_inputs.py
         env:
-          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI }}
+          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI || secrets.RE_LLM_DB_URL }}
           CHM_WORK: work
       - uses: actions/upload-artifact@v4
         with:
@@ -155,4 +155,4 @@ jobs:
       - name: Load gold_ch.plot_canopy_stats and push to ref on lamap_db
         run: python pipelines/ge_canopy_height_model/load_stats.py work/canopy_stats.tsv
         env:
-          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI }}
+          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI || secrets.RE_LLM_DB_URL }}

@@ -67,7 +67,7 @@ jobs:
         name: STAC fingerprint vs last run
         run: python3 -u pipelines/ge_canopy_height_model/stac_fingerprint.py
         env:
-          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI }}
+          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI || secrets.RE_LLM_DB_URL }}
           FORCE: ${{ inputs.force_rebuild }}
       - name: Report
         run: |
@@ -123,7 +123,7 @@ jobs:
           python3 -u pipelines/ge_canopy_height_model/load_trees.py \
             work/plot_trees.csv --vintage ${{ needs.gate.outputs.version }}
         env:
-          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI }}
+          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI || secrets.RE_LLM_DB_URL }}
 
   # ── Freshness bookkeeping: record the check even when nothing changed ──
   stamp:
