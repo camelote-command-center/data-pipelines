@@ -35,9 +35,14 @@ SAFETY
     - A row-count move over 20 percent against the previous run aborts the
       layer BEFORE the upsert. On a quarterly cadence a silent regression would
       otherwise sit undetected for three months. Override with --force-delta.
-    - Conflict key is globalid, NEVER id_arbre. On the remarquables layer 262 of
-      594 rows carry id_arbre = 0 as a null sentinel; keying on it would collapse
-      them into one row every run (the shape of bug ab259069).
+    - Conflict key is a deterministic CONTENT HASH (position at 1 cm + species +
+      size), computed server-side. Not id_arbre: 0 on 262 of 594 remarquables
+      rows and genuinely duplicated on isole. Not globalid or objectid either --
+      SITG regenerates both on wholesale republish (bug f69a9dcb, measured ZERO
+      globalid overlap across two publications of the remarquables layer), and
+      the SITG metadata says OBJECTID is not a permanent identifier.
+    - Rows absent from a run are found by last_run_id, not by shipping every key
+      seen back to the server.
     - UPSERT only via SECURITY DEFINER RPCs. Never TRUNCATE, never DELETE. Rows
       absent from a run are soft-deleted and un-delete if they reappear.
 
@@ -53,6 +58,7 @@ import json
 import os
 import sys
 import time
+import uuid
 
 import requests
 
@@ -201,7 +207,7 @@ def bronze_count(url: str, key: str, table: str) -> int | None:
 # One layer
 # ──────────────────────────────────────────────────────────────
 
-def process_layer(cfg, re_url, re_key, cc_url, cc_key, force_delta) -> dict:
+def process_layer(cfg, run_id, re_url, re_key, cc_url, cc_key, force_delta) -> dict:
     service = cfg["service"]
     print(f"\n{'━' * 68}\n  {cfg['name']}  ({service})\n{'━' * 68}")
 
@@ -243,7 +249,8 @@ def process_layer(cfg, re_url, re_key, cc_url, cc_key, force_delta) -> dict:
     received = upserted = collapsed = 0
     bs = cfg["batch_size"]
     for i in range(0, len(rows), bs):
-        res = call_rpc(re_url, re_key, cfg["rpc"], {"p_rows": rows[i:i + bs]})
+        res = call_rpc(re_url, re_key, cfg["rpc"],
+                       {"p_rows": rows[i:i + bs], "p_run_id": run_id})
         row = res[0] if isinstance(res, list) and res else (res or {})
         received += row.get("received", 0)
         upserted += row.get("upserted", 0)
@@ -251,10 +258,9 @@ def process_layer(cfg, re_url, re_key, cc_url, cc_key, force_delta) -> dict:
         if (i // bs) % 20 == 0 or i + bs >= len(rows):
             print(f"    upserted {min(i + bs, len(rows)):>7,}/{len(rows):,}")
 
-    # ── Soft-delete anything not seen this run ────────────────
-    seen = [r["attrs"].get("globalid") for r in rows if r["attrs"].get("globalid")]
+    # ── Soft-delete anything not stamped by this run ──────────
     dele = call_rpc(re_url, re_key, "mark_ge_trees_absent",
-                    {"p_table": cfg["table"], "p_seen": seen})
+                    {"p_table": cfg["table"], "p_run_id": run_id})
     dele = (dele[0] if isinstance(dele, list) and dele else dele) or {}
     soft_deleted = dele.get("soft_deleted", 0)
 
@@ -262,15 +268,17 @@ def process_layer(cfg, re_url, re_key, cc_url, cc_key, force_delta) -> dict:
 
     print(f"\n    received:      {received:,}")
     print(f"    upserted:      {upserted:,}")
-    print(f"    collapsed:     {collapsed:,}   (duplicate globalid within a batch)")
+    print(f"    collapsed:     {collapsed:,}   (collapsed onto an existing content key)")
     print(f"    soft-deleted:  {soft_deleted:,}")
     print(f"    rows before:   {before if before is not None else 'unknown'}")
     print(f"    rows after:    {after if after is not None else 'unknown'}")
 
     if collapsed:
-        print(f"    NOTE: {collapsed:,} rows shared a globalid inside one batch. "
-              f"globalid is supposed to be unique at source; investigate before "
-              f"trusting these counts.")
+        print(f"    NOTE: {collapsed:,} rows collapsed onto an existing content key "
+              f"inside one batch. Expected and correct for the known duplicate "
+              f"records (10 pairs on isole, 5 on remarquables at 2026-08-08): the "
+              f"source publishes the same tree twice. A CHANGE in this number means "
+              f"a new duplicate or a real key collision -- investigate.")
 
     if after is not None:
         update_dataset_meta(cc_url, cc_key, cfg["code"], record_count=after, status="active")
@@ -294,17 +302,19 @@ def main() -> int:
         print("ERROR: RE_LLM_SUPABASE_URL and RE_LLM_SUPABASE_SERVICE_ROLE_KEY are required")
         return 1
 
+    run_id = str(uuid.uuid4())
     selected = [c for c in LAYERS if not args.layer or c["service"] in args.layer]
 
     print("=" * 68)
     print("  SITG tree cadastre -> re-LLM bronze_ch")
     print(f"  layers: {len(selected)}")
+    print(f"  run_id: {run_id}")
     print("=" * 68)
 
     results, failures = [], []
     for cfg in selected:
         try:
-            results.append(process_layer(cfg, re_url, re_key, cc_url, cc_key, args.force_delta))
+            results.append(process_layer(cfg, run_id, re_url, re_key, cc_url, cc_key, args.force_delta))
         except Exception as e:  # noqa: BLE001
             print(f"\n    FAILED: {e}")
             failures.append((cfg["service"], str(e)))

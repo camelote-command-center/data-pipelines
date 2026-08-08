@@ -22,7 +22,7 @@
       "table": "ge_sitg_solaire_geo"
     },
     {
-      "code": "ge_rdppf_dsopb",
+      "code": "ge_bruit_routier",
       "schema": "bronze_ch",
       "table": "ge_sitg_bruit_routier_geo"
     },

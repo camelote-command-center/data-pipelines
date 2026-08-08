@@ -13,7 +13,13 @@
 -- ST_SetSRID. Do NOT ST_Transform: the coordinates are already LV95 and
 -- transforming would move every tree across the canton.
 --
--- Batches are de-duplicated on globalid with DISTINCT ON before the INSERT,
+-- CONFLICT TARGET IS content_key, NOT globalid (bug f69a9dcb). SITG regenerates
+-- globalid on wholesale republish -- measured ZERO overlap across two
+-- consecutive publications of the remarquables layer -- and its own metadata
+-- says OBJECTID is not a permanent identifier either. The key is computed
+-- server-side by public.ge_trees_content_key(geom, species, measure).
+--
+-- Batches are de-duplicated on content_key with DISTINCT ON before the INSERT,
 -- because ON CONFLICT DO UPDATE cannot touch the same row twice in one
 -- statement. The number collapsed is RETURNED, not swallowed, so a real key
 -- collision shows up in the run log instead of silently shrinking the layer.
@@ -37,7 +43,7 @@ COMMENT ON FUNCTION public.ge_trees_epoch_ms_to_ts(double precision) IS
 -- ---------------------------------------------------------------------------
 -- SIPV_ICA_ARBRE_ISOLE
 -- ---------------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION public.upsert_ge_sipv_arbre_isole_batch(p_rows jsonb)
+CREATE OR REPLACE FUNCTION public.upsert_ge_sipv_arbre_isole_batch(p_rows jsonb, p_run_id uuid)
 RETURNS jsonb
 LANGUAGE plpgsql
 SECURITY DEFINER
@@ -53,13 +59,23 @@ BEGIN
     SELECT e->'attrs' AS a, e->'geom' AS g
     FROM jsonb_array_elements(p_rows) e
     WHERE nullif(e->'attrs'->>'globalid','') IS NOT NULL
-  ), dedup AS (
-    SELECT DISTINCT ON (a->>'globalid') a, g
+  ), keyed AS (
+    SELECT a, g,
+           public.ge_trees_content_key(
+             CASE WHEN g IS NULL OR g = 'null'::jsonb THEN NULL
+                  ELSE ST_SetSRID(ST_GeomFromGeoJSON(g::text), 2056) END,
+             a->>'nom_complet',
+             nullif(a->>'circonference_1m','')::numeric) AS ck
     FROM src
-    ORDER BY (a->>'globalid'), (a->>'objectid')::bigint DESC NULLS LAST
+  ), dedup AS (
+    -- Lowest objectid wins, matching the migration: for the double-published
+    -- pairs the lower id is the original.
+    SELECT DISTINCT ON (ck) a, g, ck
+    FROM keyed
+    ORDER BY ck, (a->>'objectid')::bigint ASC NULLS LAST
   ), ins AS (
     INSERT INTO bronze_ch.ge_sipv_arbre_isole AS t (
-      globalid, objectid, id_arbre, no_inventaire, nom_complet, classe,
+      content_key, last_run_id, globalid, objectid, id_arbre, no_inventaire, nom_complet, classe,
       remarquable, situation, type_plantation, nombre_troncs,
       circonference_1m, diametre_1m, hauteur_tronc, hauteur_totale,
       diametre_couronne, rayon_couronne, forme, stade_developpement, vitalite,
@@ -67,6 +83,8 @@ BEGIN
       id_acteur, date_plantation, date_plantation_estimee, date_observation,
       geom, updated_at, deleted_at)
     SELECT
+      ck,
+      p_run_id,
       a->>'globalid',
       nullif(a->>'objectid','')::bigint,
       nullif(a->>'id_arbre','')::numeric::bigint,
@@ -101,7 +119,9 @@ BEGIN
       now(),
       NULL                                   -- reappearing rows un-delete
     FROM dedup
-    ON CONFLICT (globalid) DO UPDATE SET
+    ON CONFLICT (content_key) DO UPDATE SET
+      last_run_id             = EXCLUDED.last_run_id,
+      globalid                = EXCLUDED.globalid,
       objectid                = EXCLUDED.objectid,
       id_arbre                = EXCLUDED.id_arbre,
       no_inventaire           = EXCLUDED.no_inventaire,
@@ -143,14 +163,14 @@ BEGIN
 END;
 $$;
 
-REVOKE ALL ON FUNCTION public.upsert_ge_sipv_arbre_isole_batch(jsonb) FROM PUBLIC, anon, authenticated;
-GRANT EXECUTE ON FUNCTION public.upsert_ge_sipv_arbre_isole_batch(jsonb) TO service_role;
+REVOKE ALL ON FUNCTION public.upsert_ge_sipv_arbre_isole_batch(jsonb, uuid) FROM PUBLIC, anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.upsert_ge_sipv_arbre_isole_batch(jsonb, uuid) TO service_role;
 
 
 -- ---------------------------------------------------------------------------
 -- FFP_ARBRES_REMARQUABLES
 -- ---------------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION public.upsert_ge_ffp_arbres_remarquables_batch(p_rows jsonb)
+CREATE OR REPLACE FUNCTION public.upsert_ge_ffp_arbres_remarquables_batch(p_rows jsonb, p_run_id uuid)
 RETURNS jsonb
 LANGUAGE plpgsql
 SECURITY DEFINER
@@ -166,16 +186,26 @@ BEGIN
     SELECT e->'attrs' AS a, e->'geom' AS g
     FROM jsonb_array_elements(p_rows) e
     WHERE nullif(e->'attrs'->>'globalid','') IS NOT NULL
-  ), dedup AS (
-    SELECT DISTINCT ON (a->>'globalid') a, g
+  ), keyed AS (
+    SELECT a, g,
+           public.ge_trees_content_key(
+             CASE WHEN g IS NULL OR g = 'null'::jsonb THEN NULL
+                  ELSE ST_SetSRID(ST_GeomFromGeoJSON(g::text), 2056) END,
+             a->>'espece',
+             nullif(a->>'diametre_tronc','')::numeric) AS ck
     FROM src
-    ORDER BY (a->>'globalid'), (a->>'objectid')::bigint DESC NULLS LAST
+  ), dedup AS (
+    SELECT DISTINCT ON (ck) a, g, ck
+    FROM keyed
+    ORDER BY ck, (a->>'objectid')::bigint ASC NULLS LAST
   ), ins AS (
     INSERT INTO bronze_ch.ge_ffp_arbres_remarquables AS t (
-      globalid, objectid, id_arbre, espece, diametre_tronc,
+      content_key, last_run_id, globalid, objectid, id_arbre, espece, diametre_tronc,
       interet_1, interet_2, interet_3, etat, remarque, geom,
       updated_at, deleted_at)
     SELECT
+      ck,
+      p_run_id,
       a->>'globalid',
       nullif(a->>'objectid','')::bigint,
       nullif(a->>'id_arbre','')::bigint,
@@ -191,7 +221,9 @@ BEGIN
       now(),
       NULL
     FROM dedup
-    ON CONFLICT (globalid) DO UPDATE SET
+    ON CONFLICT (content_key) DO UPDATE SET
+      last_run_id    = EXCLUDED.last_run_id,
+      globalid       = EXCLUDED.globalid,
       objectid       = EXCLUDED.objectid,
       id_arbre       = EXCLUDED.id_arbre,
       espece         = EXCLUDED.espece,
@@ -214,16 +246,25 @@ BEGIN
 END;
 $$;
 
-REVOKE ALL ON FUNCTION public.upsert_ge_ffp_arbres_remarquables_batch(jsonb) FROM PUBLIC, anon, authenticated;
-GRANT EXECUTE ON FUNCTION public.upsert_ge_ffp_arbres_remarquables_batch(jsonb) TO service_role;
+REVOKE ALL ON FUNCTION public.upsert_ge_ffp_arbres_remarquables_batch(jsonb, uuid) FROM PUBLIC, anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.upsert_ge_ffp_arbres_remarquables_batch(jsonb, uuid) TO service_role;
 
 
 -- ---------------------------------------------------------------------------
--- Soft delete: rows present in bronze but absent from the run just completed.
--- Never a hard DELETE. Called once per layer after all batches land, with the
--- set of globalids seen in this run.
+-- Soft delete: rows not stamped by the run that just completed.
+--
+-- Driven by last_run_id, not by a list of keys. The previous version shipped
+-- every identifier seen in the run as one JSON array -- 239167 elements in a
+-- single request for the isole layer -- which was both fragile and unnecessary
+-- once each row records the run that last touched it. Same pattern as
+-- pipelines/sitg_forest.
+--
+-- Never a hard DELETE. Rows that reappear at source un-delete on the next run
+-- because the upsert resets deleted_at.
 -- ---------------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION public.mark_ge_trees_absent(p_table text, p_seen jsonb)
+DROP FUNCTION IF EXISTS public.mark_ge_trees_absent(text, jsonb);
+
+CREATE OR REPLACE FUNCTION public.mark_ge_trees_absent(p_table text, p_run_id uuid)
 RETURNS jsonb
 LANGUAGE plpgsql
 SECURITY DEFINER
@@ -235,19 +276,24 @@ BEGIN
   IF p_table NOT IN ('ge_sipv_arbre_isole','ge_ffp_arbres_remarquables') THEN
     RAISE EXCEPTION 'mark_ge_trees_absent: unexpected table %', p_table;
   END IF;
+  IF p_run_id IS NULL THEN
+    RAISE EXCEPTION 'mark_ge_trees_absent: p_run_id is required; a NULL run id '
+                    'would soft-delete the entire table';
+  END IF;
 
   EXECUTE format(
-    'UPDATE bronze_ch.%I t
-        SET deleted_at = now()
-      WHERE t.deleted_at IS NULL
-        AND NOT EXISTS (SELECT 1 FROM jsonb_array_elements_text($1) s(g)
-                        WHERE s.g = t.globalid)', p_table)
-  USING p_seen;
+    'UPDATE bronze_ch.%I SET deleted_at = now()
+      WHERE deleted_at IS NULL AND last_run_id IS DISTINCT FROM $1', p_table)
+  USING p_run_id;
   GET DIAGNOSTICS v_marked = ROW_COUNT;
 
   RETURN jsonb_build_object('soft_deleted', v_marked);
 END;
 $$;
 
-REVOKE ALL ON FUNCTION public.mark_ge_trees_absent(text, jsonb) FROM PUBLIC, anon, authenticated;
-GRANT EXECUTE ON FUNCTION public.mark_ge_trees_absent(text, jsonb) TO service_role;
+REVOKE ALL ON FUNCTION public.mark_ge_trees_absent(text, uuid) FROM PUBLIC, anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.mark_ge_trees_absent(text, uuid) TO service_role;
+
+-- PostgREST caches function signatures. This file changes them (p_run_id was
+-- added), so the cache must be told or every call 404s with PGRST202.
+NOTIFY pgrst, 'reload schema';

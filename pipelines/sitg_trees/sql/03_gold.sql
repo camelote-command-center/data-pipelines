@@ -52,18 +52,28 @@
 -- matches the ~206 OCAN publishes.
 -- ═══════════════════════════════════════════════════════════════════════════
 
--- ── WHY tree_id IS globalid AND NOT ID_ARBRE ─────────────────────────────
--- ID_ARBRE is the obvious key and is not unique. Measured on the live layer
--- 2026-08-07: 239'167 rows carry 239'166 distinct id_arbre. id_arbre 393253 is
--- held by two genuinely different trees -- Quercus castaneifolia at
--- (2498451.57, 1119665.34) and Zelkova sicula at (2500294.00, 1120297.18),
--- 2 km apart, one with no NO_INVENTAIRE. A primary key on it would have failed
--- the load, or worse, silently dropped one of the two. On the remarquables
--- layer id_arbre is worse still: 0 on 262 of 594 rows.
+-- ── WHY tree_id IS A CONTENT HASH ────────────────────────────────────────
+-- Three candidate identifiers were tried and all three failed.
 --
--- tree_id is therefore derived from globalid, an ArcGIS-guaranteed unique GUID.
--- The raw ID_ARBRE is kept in source_tree_id so the SITG-side identifier is not
--- lost and the two layers can still be cross-referenced on it.
+-- ID_ARBRE is not unique: 239'167 isole rows carry 239'166 distinct values, and
+-- id_arbre 393253 is held by two genuinely different trees 2 km apart. On the
+-- remarquables layer it is 0 on 262 of 594 rows, a null sentinel.
+--
+-- GLOBALID is unique within a publication but NOT stable between them. SITG
+-- regenerates it on wholesale republish: measured overlap across two
+-- consecutive publications of FFP_ARBRES_REMARQUABLES was ZERO of 594, against
+-- 594 of 594 objectids and identical geometry (bug f69a9dcb). Keying on it made
+-- the table double on the first re-run.
+--
+-- OBJECTID survived that republish, but the SITG metadata states explicitly
+-- that it must not be relied on as a permanent identifier, so it carries the
+-- same latent risk and was rejected on the documentation rather than waiting
+-- for it to bite.
+--
+-- tree_id is therefore 'ica:'/'rmq:' + a deterministic content hash over
+-- position (1 cm), species and size -- the pattern pipelines/sitg_forest
+-- already uses for SITG layers with no durable identifier. The raw ID_ARBRE is
+-- kept in source_tree_id so the SITG-side identifier is not lost.
 
 CREATE SCHEMA IF NOT EXISTS gold_ch;
 
@@ -180,7 +190,7 @@ BEGIN
   CREATE TEMP TABLE _u ON COMMIT DROP AS
   -- ── ICA: the inventory proper ────────────────────────────────────────
   SELECT
-    'ica:' || i.globalid                                   AS tree_id,
+    'ica:' || i.content_key                                AS tree_id,
     i.id_arbre                                             AS source_tree_id,
     'ica_isole'                                            AS source,
     i.geom,
@@ -213,7 +223,7 @@ BEGIN
 
   -- ── FFP: the remarkability register ──────────────────────────────────
   SELECT
-    'rmq:' || r.globalid,
+    'rmq:' || r.content_key,
     nullif(r.id_arbre, 0),
     'remarquable',
     r.geom,
@@ -232,11 +242,11 @@ BEGIN
     10::numeric,                                           -- SITG states 10 m for this layer
     NULL::boolean,
     NULL::text, NULL::text, NULL::text,
-    (SELECT 'ica:' || x.globalid
+    (SELECT 'ica:' || x.content_key
        FROM bronze_ch.ge_sipv_arbre_isole x
       WHERE r.id_arbre IS NOT NULL AND r.id_arbre <> 0
         AND x.id_arbre = r.id_arbre AND x.deleted_at IS NULL
-      ORDER BY x.globalid
+      ORDER BY x.content_key
       LIMIT 1),
     NULL::timestamptz
   FROM bronze_ch.ge_ffp_arbres_remarquables r

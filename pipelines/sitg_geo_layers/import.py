@@ -65,7 +65,7 @@ DATASETS = [
     },
     {
         "name": "Bruit routier",
-        "code": "ge_rdppf_dsopb",
+        "code": "ge_bruit_routier",
         "table": "ge_sitg_bruit_routier_geo",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/BRUIT_ROUTIER_MESURE_AUX_FACADES_DES_BATIMENTS/FeatureServer/0",
         "conflict_column": "objectid",
@@ -534,22 +534,42 @@ def main():
     )
 
     # ── Update dataset metadata ──
+    # Failures are COLLECTED, not raised inline. update_dataset_meta raises when
+    # a dataset_code matches no row (bug 61bcc798), and this loop used to be
+    # unguarded: one unregistered code would abort it and silently skip the
+    # freshness update of every layer after it -- swapping one silent failure
+    # for another. Collect, keep going, then fail once with the full list.
+    freshness_failures: list[tuple[str, str]] = []
     for ds, records in datasets_with_records:
         if records:
             rows_after = get_row_count(rellm_url, rellm_key, rellm_schema, ds["table"])
-            update_dataset_meta(
-                camelote_url, camelote_key, ds["code"],
-                record_count=rows_after,
-                status="active",
-            )
+            try:
+                update_dataset_meta(
+                    camelote_url, camelote_key, ds["code"],
+                    record_count=rows_after,
+                    status="active",
+                )
+            except Exception as e:  # noqa: BLE001
+                print(f"  FRESHNESS FAILED for {ds['code']}: {e}")
+                freshness_failures.append((ds["code"], str(e)))
 
     # ── Final status ──
     print("\n" + "=" * 60)
     print("  IMPORT COMPLETE")
     print("=" * 60)
 
+    if freshness_failures:
+        print(f"\n  FRESHNESS UPDATE FAILED for {len(freshness_failures)} dataset(s):")
+        for code, err in freshness_failures:
+            print(f"    - {code}: {err[:160]}")
+        print("  The ingest itself succeeded and the data is landed; what failed is the")
+        print("  freshness board. Register the missing dataset row(s) on pixxels_data.")
+
     if not rellm_ok:
         print("  FAILED: re-llm had errors")
+        sys.exit(1)
+
+    if freshness_failures:
         sys.exit(1)
 
 
