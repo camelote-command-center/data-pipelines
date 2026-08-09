@@ -43,7 +43,7 @@ from shared.supabase_client import batch_upsert  # noqa: E402
 
 from .api_client import MAX_OFFSET, CredentialsMissing, SireneClient  # noqa: E402
 from .column_mapping import map_api_etablissement, map_api_unite_legale  # noqa: E402
-from .naf_filter import is_real_estate, solr_clause  # noqa: E402
+from .naf_filter import NAF_WHITELIST, is_real_estate, solr_clause, solr_clause_for  # noqa: E402
 
 DEFAULT_BATCH_SIZE = 500
 LOOKBACK_DAYS_DEFAULT = 1   # cron runs daily; pull last 24h (+1 day buffer)
@@ -129,7 +129,70 @@ class WindowTooLarge(RuntimeError):
     """A date window would exceed the API offset ceiling; split it, do not truncate."""
 
 
-def _sync_window(client, url, key, schema, start_iso: str, end_iso: str):
+# Smallest window we will subdivide to. SIRENE's dateDernierTraitement* fields accept
+# second-granularity datetime bounds (verified 2026-08-10 against the live API), so the
+# floor is a practical one, not an API limit: below ~15 min the per-window count call
+# costs more than the rows it returns.
+MIN_WINDOW = timedelta(minutes=15)
+
+
+def _range_expr(a: datetime, b: datetime) -> str:
+    """Solr range for [a, b]. BOTH BOUNDS ARE INCLUSIVE — this is the off-by-one that
+    made every 'one day' chunk actually span two days: [D TO D+1] returns D and D+1.
+    Verified 2026-08-10: [2026-06-16 TO 2026-06-16] = 3,085 while
+    [2026-06-16 TO 2026-06-17] = 33,666, because the 17th alone is 30,581."""
+    return f"[{a.strftime('%Y-%m-%dT%H:%M:%S')} TO {b.strftime('%Y-%m-%dT%H:%M:%S')}]"
+
+
+def _safe_windows(client, lo: datetime, hi: datetime, depth: int = 0, naf: str | None = None):
+    """Yield (lo, hi, naf, count) slices each strictly under the offset ceiling.
+
+    TWO subdivision axes, in order:
+      1. TIME — halve the window. Cheap and keeps queries broad.
+      2. NAF  — when time hits MIN_WINDOW and the window is STILL over the ceiling,
+         split the 13 whitelisted NAF codes into separate queries. This axis is not
+         optional: INSEE ships bulk updates that land thousands of records on one
+         timestamp (verified 2026-06-17 — 12,421 records inside 11 minutes), and no
+         amount of time-halving separates records that share a timestamp.
+
+    A capped import is never acceptable — it looks like a clean run while silently
+    dropping records — so if neither axis gets a slice under the ceiling this raises
+    WindowTooLarge with the count rather than importing anything.
+    """
+    clause = solr_clause_for(naf) if naf else solr_clause()
+    q = f"dateDernierTraitementUniteLegale:{_range_expr(lo, hi)} AND ({clause})"
+    total = client.count_unites_legales(q)
+    pad = "  " + "  " * depth
+    tag = f" naf={naf}" if naf else ""
+    if total < MAX_OFFSET:
+        print(f"{pad}window {_range_expr(lo, hi)}{tag} -> {total:,} (under {MAX_OFFSET:,})")
+        yield lo, hi, naf, total
+        return
+
+    if hi - lo > MIN_WINDOW:
+        mid = lo + (hi - lo) / 2
+        print(f"{pad}SUBDIVIDE(time) {_range_expr(lo, hi)}{tag}: {total:,} >= {MAX_OFFSET:,} "
+              f"-> splitting at {mid.strftime('%Y-%m-%dT%H:%M:%S')}")
+        yield from _safe_windows(client, lo, mid, depth + 1, naf)
+        # +1s so the halves do not both contain `mid` (the bounds are inclusive)
+        yield from _safe_windows(client, mid + timedelta(seconds=1), hi, depth + 1, naf)
+        return
+
+    if naf is None:
+        print(f"{pad}SUBDIVIDE(naf) {_range_expr(lo, hi)}: {total:,} >= {MAX_OFFSET:,} at the "
+              f"{MIN_WINDOW} floor -> splitting across {len(NAF_WHITELIST)} NAF codes")
+        for code in sorted(NAF_WHITELIST):
+            yield from _safe_windows(client, lo, hi, depth + 1, code)
+        return
+
+    raise WindowTooLarge(
+        f"{total:,} matches in {_range_expr(lo, hi)} for NAF {naf} at or above the "
+        f"{MAX_OFFSET:,} ceiling, with the window already at {hi - lo} and no axis left to "
+        f"split on. Nothing imported — the watermark is unchanged."
+    )
+
+
+def _sync_window(client, url, key, schema, start_iso: str, end_iso: str, *, range_expr: str | None = None, naf: str | None = None):
     """Sync one closed date window. Returns (companies, establishments, matched)."""
     # ── Companies ────────────────────────────────────────────
     print("\n[1/2] Pulling updated UniteLegale records …")
@@ -137,7 +200,9 @@ def _sync_window(client, url, key, schema, start_iso: str, end_iso: str):
     # locally overruns the API's 10k offset ceiling: a one-day window is ~16k
     # changed records (2d ~34k, 7d ~217k), so the job could never complete.
     # With this clause the same window is ~2.6k. See naf_filter.solr_clause.
-    q = f"dateDernierTraitementUniteLegale:[{start_iso} TO {end_iso}] AND ({solr_clause()})"
+    rng = range_expr or f"[{start_iso} TO {end_iso}]"
+    clause = solr_clause_for(naf) if naf else solr_clause()
+    q = f"dateDernierTraitementUniteLegale:{rng} AND ({clause})"
     total_matched = client.count_unites_legales(q)
     print(f"  server-side match count: {total_matched:,} (offset ceiling {MAX_OFFSET:,})")
     if total_matched >= MAX_OFFSET:
@@ -283,15 +348,31 @@ def main():
             print(f"\n  time budget reached ({time_budget_s}s) after {chunks_done} chunk(s); "
                   "stopping cleanly. Watermark is current to the last completed chunk.")
             break
-        chunk_end = min(cursor + timedelta(days=chunk_days), now)
-        s_iso, e_iso = cursor.date().isoformat(), chunk_end.date().isoformat()
-        print(f"\n{'=' * 60}\n  CHUNK {chunks_done + 1}: [{s_iso} TO {e_iso}]\n{'=' * 60}")
+        # Cover [cursor 00:00:00, chunk_end 23:59:59] EXCLUSIVE of the next chunk's first
+        # day. The old code sent [cursor TO cursor+chunk_days] with inclusive bounds, so a
+        # "1 day" chunk actually spanned two days and re-fetched the boundary day on the
+        # next chunk.
+        chunk_end = min(cursor + timedelta(days=chunk_days) - timedelta(days=1), now)
+        lo = cursor.replace(hour=0, minute=0, second=0, microsecond=0)
+        hi = chunk_end.replace(hour=23, minute=59, second=59, microsecond=0)
+        print(f"\n{'=' * 60}\n  CHUNK {chunks_done + 1}: {_range_expr(lo, hi)}\n{'=' * 60}")
+        n_c = n_e = matched = 0
+        subdivisions = 0
         try:
-            n_c, n_e, matched = _sync_window(client, url, key, schema, s_iso, e_iso)
+            windows = list(_safe_windows(client, lo, hi))
+            subdivisions = len(windows) - 1
+            if subdivisions:
+                print(f"  -> {len(windows)} sub-window(s) after {subdivisions} subdivision(s)")
+            for w_lo, w_hi, w_naf, _cnt in windows:
+                c2, e2, m2 = _sync_window(client, url, key, schema,
+                                          w_lo.date().isoformat(), w_hi.date().isoformat(),
+                                          range_expr=_range_expr(w_lo, w_hi), naf=w_naf)
+                n_c += c2; n_e += e2; matched += m2
         except WindowTooLarge as e:
+            # Only reachable when a window is already at MIN_WINDOW and still over the
+            # ceiling. Fail loudly with the count; never import a capped set.
             print(f"  ERROR: {e}")
-            print("  Reduce SIRENE_CHUNK_DAYS and re-run; the watermark is unchanged "
-                  "so nothing is skipped.")
+            print("  The watermark is unchanged, so nothing is skipped or duplicated.")
             _update_registry(url, key, "insee_sirene_companies", 0, "error")
             sys.exit(3)
 
@@ -302,7 +383,7 @@ def main():
                          sync_at=chunk_end.isoformat())
         _update_registry(url, key, "insee_sirene_etablissements", n_e, "success",
                          sync_at=chunk_end.isoformat())
-        cursor = chunk_end
+        cursor = chunk_end + timedelta(days=1)
         if chunk_end >= now:
             break
 

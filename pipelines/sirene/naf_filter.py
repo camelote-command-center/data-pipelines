@@ -88,3 +88,16 @@ def solr_clause(field: str = "activitePrincipaleUniteLegale") -> str:
     """
     dotted = sorted(f"{c[:2]}.{c[2:]}" for c in NAF_WHITELIST)
     return " OR ".join(f'periode({field}:"{d}")' for d in dotted)
+
+
+def solr_clause_for(code: str, field: str = "activitePrincipaleUniteLegale") -> str:
+    """Same clause as solr_clause() but for a SINGLE NAF code.
+
+    Used as the second subdivision axis in incremental_sync: when a time window cannot be
+    split below the API's offset ceiling because thousands of records share one timestamp
+    (INSEE bulk updates do exactly this — 12,421 records inside 11 minutes on 2026-06-17),
+    splitting by NAF is the only remaining axis. Keeps the three syntax rules documented on
+    solr_clause: periode(...) wrapper, dotted code, quoted value.
+    """
+    c = normalise(code)
+    return f'periode({field}:"{c[:2]}.{c[2:]}")'
