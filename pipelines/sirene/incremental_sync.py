@@ -564,13 +564,24 @@ def main():
         if chunk_end >= now:
             break
 
-    caught_up = cursor >= now or cursor.date() >= now.date()
+    # A partial checkpoint on today's date is not caught up: cursor still points at
+    # that day even though some of its slices remain. Keep the final log explicit
+    # about durable progress versus the canonical whole-day watermark.
+    caught_up = progress is None and (cursor >= now or cursor.date() >= now.date())
     print(f"\n{'=' * 60}")
     print(f"  chunks: {chunks_done}  matched: {tot_m:,}  "
           f"companies: {tot_c:,}  establishments: {tot_e:,}")
     print(f"  duration: {time.time() - t_all:.0f}s   caught up: {caught_up}")
-    if not caught_up:
-        print(f"  watermark now {cursor.date().isoformat()}; re-run to continue the backfill.")
+    if progress:
+        watermark_text = committed_watermark.isoformat() if committed_watermark else "not set"
+        print(f"  checkpoint: {progress.next_index}/{len(progress.windows)} slices complete; "
+              f"companies: {progress.companies:,}  establishments: {progress.establishments:,}")
+        print(f"  canonical watermark: {watermark_text}; "
+              f"pending day: {progress.lo.date().isoformat()}. Re-run to continue the backfill.")
+    elif not caught_up:
+        watermark_text = committed_watermark.isoformat() if committed_watermark else "not set"
+        print(f"  canonical watermark: {watermark_text}; "
+              f"next pending day: {cursor.date().isoformat()}. Re-run to continue the backfill.")
     print("=" * 60)
 
 
