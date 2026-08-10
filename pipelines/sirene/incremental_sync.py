@@ -443,6 +443,7 @@ def main():
     # normal one-day lookback: restarting from last_sync_at would replay all earlier
     # slices and recreate the timeout loop this checkpoint exists to break.
     last = _last_sync_at(url, key)
+    committed_watermark = datetime.fromisoformat(last.replace("Z", "+00:00")) if last else None
     progress = _load_progress(url, key)
     if progress:
         start_dt = progress.lo
@@ -548,10 +549,15 @@ def main():
         tot_c += n_c; tot_e += n_e; tot_m += matched
         chunks_done += 1
         # Advance the watermark to the END of the chunk just completed.
-        _update_registry(url, key, "insee_sirene_companies", n_c, "success",
-                         sync_at=hi.isoformat())
-        _update_registry(url, key, "insee_sirene_etablissements", n_e, "success",
-                         sync_at=hi.isoformat())
+        if committed_watermark is None or hi > committed_watermark:
+            _update_registry(url, key, "insee_sirene_companies", n_c, "success",
+                             sync_at=hi.isoformat())
+            _update_registry(url, key, "insee_sirene_etablissements", n_e, "success",
+                             sync_at=hi.isoformat())
+            committed_watermark = hi
+        else:
+            print(f"  replayed lookback through {hi.isoformat()}; canonical watermark "
+                  f"remains {committed_watermark.isoformat()}")
         _write_progress(url, key, None)
         progress = None
         cursor = chunk_end + timedelta(days=1)
