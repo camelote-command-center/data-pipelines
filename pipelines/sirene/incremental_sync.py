@@ -25,8 +25,10 @@ Environment variables:
     RE_LLM_SUPABASE_URL
     RE_LLM_SUPABASE_SERVICE_ROLE_KEY
     RE_LLM_SCHEMA (default: bronze_fr)
-    RE_LLM_DATABASE_URL    direct DSN, used to read the INSEE API key from the vault
     SIRENE_LOOKBACK_DAYS   optional, default 1
+    SIRENE_CHUNK_DAYS      optional, default 1
+    SIRENE_MAX_CHUNKS      optional, default 25
+    SIRENE_TIME_BUDGET_S   optional, default 1200
 """
 
 from __future__ import annotations
@@ -34,6 +36,7 @@ from __future__ import annotations
 import os
 import sys
 import time
+from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 
 import requests
@@ -53,6 +56,19 @@ LOOKBACK_DAYS_DEFAULT = 1   # cron runs daily; pull last 24h (+1 day buffer)
 # is ~70 rows typically, a few thousand worst case, and turns ~2.6k calls into
 # ~53. Batches that would still overflow are split by the client.
 SIREN_BATCH_SIZE = int(os.environ.get("SIRENE_SIREN_BATCH_SIZE", "50"))
+PROGRESS_KEY = "sirene_incremental_progress"
+PROGRESS_VERSION = 1
+
+
+@dataclass
+class ChunkProgress:
+    lo: datetime
+    hi: datetime
+    windows: list[tuple[datetime, datetime, str | None, int]]
+    next_index: int = 0
+    companies: int = 0
+    establishments: int = 0
+    matched: int = 0
 
 
 def _required(name: str) -> str:
@@ -84,6 +100,113 @@ def _last_sync_at(url: str, key: str) -> str | None:
     return None
 
 
+def _registry_api_params(url: str, key: str) -> dict:
+    """Read api_params without exposing or replacing unrelated registry state."""
+    endpoint = f"{url.rstrip('/')}/rest/v1/_registry"
+    headers = {
+        "apikey": key,
+        "Authorization": f"Bearer {key}",
+        "Accept-Profile": "bronze_ch",
+    }
+    r = requests.get(
+        endpoint,
+        params={"select": "api_params", "dataset_code": "eq.insee_sirene_companies"},
+        headers=headers,
+        timeout=30,
+    )
+    r.raise_for_status()
+    rows = r.json()
+    if len(rows) != 1:
+        raise RuntimeError(
+            "Expected exactly one insee_sirene_companies registry row while reading progress; "
+            f"got {len(rows)}"
+        )
+    return dict(rows[0].get("api_params") or {})
+
+
+def _encode_progress(progress: ChunkProgress) -> dict:
+    return {
+        "version": PROGRESS_VERSION,
+        "lo": progress.lo.isoformat(),
+        "hi": progress.hi.isoformat(),
+        "windows": [
+            {"lo": lo.isoformat(), "hi": hi.isoformat(), "naf": naf, "count": count}
+            for lo, hi, naf, count in progress.windows
+        ],
+        "next_index": progress.next_index,
+        "companies": progress.companies,
+        "establishments": progress.establishments,
+        "matched": progress.matched,
+    }
+
+
+def _decode_progress(raw: dict) -> ChunkProgress:
+    if raw.get("version") != PROGRESS_VERSION:
+        raise RuntimeError(
+            f"Unsupported SIRENE progress version {raw.get('version')!r}; inspect before clearing it"
+        )
+    windows = [
+        (
+            datetime.fromisoformat(item["lo"]),
+            datetime.fromisoformat(item["hi"]),
+            item.get("naf"),
+            int(item["count"]),
+        )
+        for item in raw["windows"]
+    ]
+    progress = ChunkProgress(
+        lo=datetime.fromisoformat(raw["lo"]),
+        hi=datetime.fromisoformat(raw["hi"]),
+        windows=windows,
+        next_index=int(raw.get("next_index", 0)),
+        companies=int(raw.get("companies", 0)),
+        establishments=int(raw.get("establishments", 0)),
+        matched=int(raw.get("matched", 0)),
+    )
+    if not 0 <= progress.next_index <= len(progress.windows):
+        raise RuntimeError(
+            f"Invalid SIRENE progress index {progress.next_index}/{len(progress.windows)}"
+        )
+    return progress
+
+
+def _load_progress(url: str, key: str) -> ChunkProgress | None:
+    raw = _registry_api_params(url, key).get(PROGRESS_KEY)
+    return _decode_progress(raw) if raw else None
+
+
+def _write_progress(url: str, key: str, progress: ChunkProgress | None) -> None:
+    """Update only the state this parser owns; preserve every other api_params key."""
+    endpoint = f"{url.rstrip('/')}/rest/v1/_registry"
+    params = _registry_api_params(url, key)
+    if progress is None:
+        params.pop(PROGRESS_KEY, None)
+    else:
+        params[PROGRESS_KEY] = _encode_progress(progress)
+    headers = {
+        "apikey": key,
+        "Authorization": f"Bearer {key}",
+        "Content-Profile": "bronze_ch",
+        "Accept-Profile": "bronze_ch",
+        "Content-Type": "application/json",
+        "Prefer": "return=representation",
+    }
+    r = requests.patch(
+        endpoint,
+        params={"dataset_code": "eq.insee_sirene_companies"},
+        headers=headers,
+        json={"api_params": params},
+        timeout=30,
+    )
+    r.raise_for_status()
+    rows = r.json()
+    if len(rows) != 1:
+        raise RuntimeError(
+            "Expected exactly one insee_sirene_companies registry row while writing progress; "
+            f"changed {len(rows)}"
+        )
+
+
 def _update_registry(
     url: str,
     key: str,
@@ -98,7 +221,8 @@ def _update_registry(
         "Authorization": f"Bearer {key}",
         "Content-Profile": "bronze_ch",
         "Content-Type": "application/json",
-        "Prefer": "return=minimal",
+        "Accept-Profile": "bronze_ch",
+        "Prefer": "return=representation",
     }
     body = {
         "last_sync_status": status,
@@ -121,8 +245,12 @@ def _update_registry(
         json=body,
         timeout=30,
     )
-    if r.status_code not in (200, 204):
-        print(f"  WARN: registry update failed {r.status_code}: {r.text[:200]}")
+    r.raise_for_status()
+    changed = r.json()
+    if len(changed) != 1:
+        raise RuntimeError(
+            f"Registry update for {dataset_code} changed {len(changed)} rows; expected exactly one"
+        )
 
 
 class WindowTooLarge(RuntimeError):
@@ -311,9 +439,16 @@ def main():
         print("[blocked] Filed P2 bug; this workflow stays disabled until creds arrive.")
         sys.exit(2)
 
-    # Resolve start date
+    # Resolve start date. An unfinished subdivided day takes precedence over the
+    # normal one-day lookback: restarting from last_sync_at would replay all earlier
+    # slices and recreate the timeout loop this checkpoint exists to break.
     last = _last_sync_at(url, key)
-    if last:
+    progress = _load_progress(url, key)
+    if progress:
+        start_dt = progress.lo
+        print(f"\n  resuming chunk {_range_expr(progress.lo, progress.hi)} at slice "
+              f"{progress.next_index + 1}/{len(progress.windows)}")
+    elif last:
         start_dt = datetime.fromisoformat(last.replace("Z", "+00:00")) - timedelta(days=1)
         print(f"\n  last_sync_at:  {last}")
     else:
@@ -359,15 +494,46 @@ def main():
         n_c = n_e = matched = 0
         subdivisions = 0
         try:
-            windows = list(_safe_windows(client, lo, hi))
-            subdivisions = len(windows) - 1
-            if subdivisions:
-                print(f"  -> {len(windows)} sub-window(s) after {subdivisions} subdivision(s)")
-            for w_lo, w_hi, w_naf, _cnt in windows:
+            if progress:
+                if progress.lo != lo or progress.hi != hi:
+                    raise RuntimeError(
+                        "Stored SIRENE progress does not match the chunk selected for resume: "
+                        f"stored={_range_expr(progress.lo, progress.hi)} "
+                        f"selected={_range_expr(lo, hi)}"
+                    )
+                windows = progress.windows
+                n_c = progress.companies
+                n_e = progress.establishments
+                matched = progress.matched
+                print(f"  -> loaded {len(windows)} cached sub-window(s); "
+                      f"{progress.next_index} already complete")
+            else:
+                windows = list(_safe_windows(client, lo, hi))
+                subdivisions = len(windows) - 1
+                progress = ChunkProgress(lo=lo, hi=hi, windows=windows)
+                _write_progress(url, key, progress)
+                if subdivisions:
+                    print(f"  -> {len(windows)} sub-window(s) after {subdivisions} subdivision(s); "
+                          "plan checkpointed")
+
+            budget_reached = False
+            for index in range(progress.next_index, len(windows)):
+                if time.time() - t_all > time_budget_s:
+                    print(f"\n  time budget reached ({time_budget_s}s) before slice "
+                          f"{index + 1}/{len(windows)}; stopping cleanly. "
+                          "Completed slices are checkpointed.")
+                    budget_reached = True
+                    break
+                w_lo, w_hi, w_naf, _cnt = windows[index]
                 c2, e2, m2 = _sync_window(client, url, key, schema,
                                           w_lo.date().isoformat(), w_hi.date().isoformat(),
                                           range_expr=_range_expr(w_lo, w_hi), naf=w_naf)
                 n_c += c2; n_e += e2; matched += m2
+                progress.next_index = index + 1
+                progress.companies = n_c
+                progress.establishments = n_e
+                progress.matched = matched
+                _write_progress(url, key, progress)
         except WindowTooLarge as e:
             # Only reachable when a window is already at MIN_WINDOW and still over the
             # ceiling. Fail loudly with the count; never import a capped set.
@@ -376,13 +542,18 @@ def main():
             _update_registry(url, key, "insee_sirene_companies", 0, "error")
             sys.exit(3)
 
+        if budget_reached:
+            break
+
         tot_c += n_c; tot_e += n_e; tot_m += matched
         chunks_done += 1
         # Advance the watermark to the END of the chunk just completed.
         _update_registry(url, key, "insee_sirene_companies", n_c, "success",
-                         sync_at=chunk_end.isoformat())
+                         sync_at=hi.isoformat())
         _update_registry(url, key, "insee_sirene_etablissements", n_e, "success",
-                         sync_at=chunk_end.isoformat())
+                         sync_at=hi.isoformat())
+        _write_progress(url, key, None)
+        progress = None
         cursor = chunk_end + timedelta(days=1)
         if chunk_end >= now:
             break

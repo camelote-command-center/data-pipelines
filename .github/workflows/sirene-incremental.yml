@@ -14,7 +14,9 @@ name: SIRENE Incremental Sync
 # spread, because daily INSEE volume is lumpy. A fixed chunk count is therefore not a
 # bound: 15 chunks is ~22 min on the fast sample but ~178 min on the slow one, against
 # a 30-minute timeout. The job now stops STARTING chunks once the budget is spent and
-# resumes next run, since the watermark advances per completed chunk.
+# resumes next run. Subdivided days checkpoint their deterministic plan and every
+# completed slice in bronze_ch._registry.api_params, so a large day cannot restart
+# from slice 1 forever. The daily watermark still advances only after the whole day.
 
 on:
   workflow_dispatch:
@@ -58,8 +60,8 @@ jobs:
           CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
           CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
 
-      - name: PATCH last_error on failure
-        if: failure()
+      - name: PATCH last_error on failure or cancellation
+        if: failure() || cancelled()
         run: |
           MSG="GitHub Actions run ${{ github.run_id }} failed at $(date -u +%Y-%m-%dT%H:%M:%SZ). See https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           ESC=$(printf '%s' "$MSG" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
