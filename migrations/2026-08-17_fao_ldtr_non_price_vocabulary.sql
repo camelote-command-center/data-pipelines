@@ -81,3 +81,31 @@ WHERE p.affaire = l.affaire AND l.prix IS NOT NULL;
 -- bronze_ch.fao_ldtr_price_absent. The three 'lot n° X.XX : NNNNNNN' rows were
 -- deliberately LEFT quarantined — extracting a price from a lot label is domain
 -- parsing that belongs in the ingest, tracked as separate work.
+
+-- ---------------------------------------------------------------------------
+-- 2026-08-17 (later the same day) — lot-labelled prices, bug 49867e8c
+--
+-- The remaining 3 quarantined rows were lot labels carrying a single price:
+--   VA 15997 'lot n° 5.01 : 1090000'
+--   VA 15998 'lot n° 2.01 : 1100000'
+--   VA 15999 'lot n° 2.02 : 629000'
+-- One lot and one figure each — NOT multi-lot — so the correct value is simply
+-- the number after the colon. The lot number is already carried by lot_key and
+-- by the full notice in `transaction`, so dropping the label loses nothing.
+--
+-- Extraction lives in pipelines/fao-ldtr/price-classifier.ts (extractLotPrice),
+-- anchored, and kept separate from classifyNonPrice() so widening one rule
+-- cannot silently swallow the other case. The classifier was NOT widened to
+-- "contains no digits" — an unrecognised non-numeric shape must still reach
+-- safe_cast.quarantine.
+-- ---------------------------------------------------------------------------
+
+UPDATE bronze_ch.fao_ldtr
+SET prix = (regexp_match(regexp_replace(prix, '\s+', ' ', 'g'),
+                         '^lot\s*n[°º]?\s*\d+(\.\d+)*\s*:\s*(\d+([.,]\d+)?)$', 'i'))[2],
+    updated_at = now()
+WHERE regexp_replace(prix, '\s+', ' ', 'g') ~* '^lot\s*n[°º]?\s*\d+(\.\d+)*\s*:\s*(\d+([.,]\d+)?)$';
+
+-- The 144 stale lot quarantine rows were then removed: the values are repaired
+-- and the parser is fixed, so they described a state that no longer exists.
+-- History is preserved in bugs 177ad2b3 and 49867e8c.

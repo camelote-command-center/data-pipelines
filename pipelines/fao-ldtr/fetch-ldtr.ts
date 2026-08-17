@@ -22,7 +22,7 @@
 import * as cheerio from 'cheerio';
 import { upsertBronze, sleep, verifyBronzeAccess } from '../_shared/supabase.js';
 import { createFaoSession } from '../_shared/fao-session.js';
-import { classifyNonPrice } from './price-classifier.js';
+import { classifyNonPrice, extractLotPrice } from './price-classifier.js';
 
 // ---------------------------------------------------------------------------
 // Config
@@ -248,8 +248,12 @@ function parsePage(html: string): Record<string, unknown>[] {
           res.prix = null;
           res._no_price = { raw_value: prixValue, reason };
         } else {
+          // A lot-labelled price ("lot n° 2.01 : 1100000") carries one lot and
+          // one figure; keep the figure. Anything else passes through untouched
+          // so unknown shapes still reach the quarantine.
+          const lotPrice = extractLotPrice(prixValue);
           // DB column prix is varchar, store as string
-          res.prix = prixValue || '0';
+          res.prix = lotPrice ?? (prixValue || '0');
         }
       }
     }

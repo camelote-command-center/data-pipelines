@@ -51,3 +51,35 @@ export function classifyNonPrice(raw: string): string | null {
   }
   return null;
 }
+
+// ---------------------------------------------------------------------------
+// Lot-labelled prices
+//
+// When a requête covers several lots, the notice prices ONE of them and labels
+// the figure with its lot number:
+//     "lot n° 2.01 : 1100000"
+// This is NOT a multi-lot string — each bronze row carries exactly one lot and
+// one price (verified: 0 rows in bronze_ch.fao_ldtr match a multi-lot pattern),
+// so there is no sum/max decision. The correct value is simply the figure after
+// the colon. The lot number itself is already carried by lot_key and by the
+// full notice text in `transaction`, so nothing is lost by dropping the label.
+//
+// The regex is ANCHORED on purpose. It must match this shape and nothing else:
+// an unrecognised non-numeric value has to keep reaching safe_cast.quarantine,
+// or the next new format arrives invisibly. In particular this must never
+// swallow the non-price transfer types handled by classifyNonPrice() — the
+// test suite asserts both directions.
+// ---------------------------------------------------------------------------
+
+const LOT_PRICE_RE = /^lot\s*n[°º]?\s*\d+(?:\.\d+)*\s*:\s*(\d+(?:[.,]\d+)?)$/i;
+
+/**
+ * Returns the price as a plain string when `raw` is a lot-labelled price,
+ * or null when it is anything else (including a bare number, which needs no
+ * extraction, and a non-price transfer type, which classifyNonPrice handles).
+ */
+export function extractLotPrice(raw: string): string | null {
+  const n = raw.replace(/\s+/g, ' ').trim();
+  const m = LOT_PRICE_RE.exec(n);
+  return m ? m[1].replace(',', '.') : null;
+}
