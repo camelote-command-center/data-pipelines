@@ -438,15 +438,50 @@ const FRENCH_MONTHS: Record<string, string> = {
   'déc': '12', 'dec': '12', 'décembre': '12',
 };
 
-function parseFrenchDate(dateStr: string): string | null {
+/**
+ * Sentinel written when a publication date cannot be parsed.
+ * NEVER write NULL and NEVER drop the row: a NULL date is invisible, whereas a
+ * date in 1900 is obviously wrong on any screen or chart and gets reported.
+ * Bug: 2026-08-14 shipped 73 rows as the raw string '14 août 2026' because
+ * parseFrenchDate returned null and the caller fell back to the raw value.
+ */
+const UNPARSEABLE_DATE_SENTINEL = '1900-01-01';
+
+/**
+ * Normalise a FAO publication date to ISO (YYYY-MM-DD).
+ * Handles every shape seen in bronze_ch.fao_transactions + safe_cast.quarantine:
+ *   ISO date            2026-08-14
+ *   ISO timestamp       2026-03-20T00:00:00.000+00:00
+ *   dd.mm.yyyy          29.05.2026
+ *   French long form    14 août 2026  /  1er septembre 2026  /  3 déc. 2026
+ * Returns null ONLY if none matched — the caller must then use the sentinel.
+ */
+function normaliseFaoDate(dateStr: string): string | null {
   if (!dateStr) return null;
-  // Try patterns: "DD MMM YYYY" or "DD MMM. YYYY"
-  const match = dateStr.match(/(\d{1,2})\s+(\w+)\.?\s+(\d{4})/);
-  if (!match) return null;
-  const dd = match[1].padStart(2, '0');
-  const mm = FRENCH_MONTHS[match[2].toLowerCase().replace('.', '')];
-  if (!mm) return null;
-  return `${match[3]}-${mm}-${dd}`;
+  const s = String(dateStr).trim();
+
+  // ISO date, optionally with a time component
+  const iso = s.match(/^(\d{4})-(\d{2})-(\d{2})(?:[T\s]|$)/);
+  if (iso) return `${iso[1]}-${iso[2]}-${iso[3]}`;
+
+  // dd.mm.yyyy — kept parseable here as well as in safe_cast (bug f3538ed1)
+  const dmy = s.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/);
+  if (dmy) return `${dmy[3]}-${dmy[2].padStart(2, '0')}-${dmy[1].padStart(2, '0')}`;
+
+  // French long form. \p{L} with the u flag — \w is [A-Za-z0-9_] and does NOT
+  // match accented letters, which is exactly why 'août' failed.
+  // NFC-normalise so a decomposed 'u\u0302' matches the composed key 'û'.
+  const fr = s.normalize('NFC').match(/(\d{1,2})(?:er)?\s+(\p{L}+)\.?\s+(\d{4})/u);
+  if (fr) {
+    const mm = FRENCH_MONTHS[fr[2].toLowerCase().replace('.', '')];
+    if (mm) return `${fr[3]}-${mm}-${fr[1].padStart(2, '0')}`;
+  }
+  return null;
+}
+
+/** Back-compat alias; normaliseFaoDate supersedes it. */
+function parseFrenchDate(dateStr: string): string | null {
+  return normaliseFaoDate(dateStr);
 }
 
 // ---------------------------------------------------------------------------
@@ -569,6 +604,8 @@ async function main() {
   console.log('\n  Parsing transactions with DeepSeek (Anthropic fallback)...');
   const allRecords: Record<string, unknown>[] = [];
   const quarantined: Record<string, unknown>[] = [];
+  // Dates that could not be normalised. Non-empty => the run must exit non-zero.
+  const unparseableDates: { affaire: string; raw: string }[] = [];
   let parseErrors = 0;
 
   for (let i = 0; i < toParse.length; i++) {
@@ -627,11 +664,28 @@ async function main() {
       // Format keys to snake_case
       const formatted = formatKeys(parsedData);
 
+      // Best-effort affaire id, needed for the quarantine record if the date fails.
+      const affaireNumberEarly =
+        (formatted.affaire_number as string) ||
+        raw.affaireNumber ||
+        (raw.details.match(/Affaire\s+(\d{4}\/\d+\/\d+)/)?.[1] ?? null);
+
       // Parse dates
       const dateOfTransaction =
         parseDateDDMMYYYY(formatted.date_of_transaction) || formatted.date_of_transaction || null;
-      const faoPublicationDate =
-        parseFrenchDate(formatted.fao_publication_date) || formatted.fao_publication_date || null;
+      // FAIL LOUD, NEVER SILENTLY: the row ALWAYS writes. An unparseable date
+      // becomes a visibly-wrong sentinel rather than NULL or the raw string, is
+      // recorded in the quarantine with its affaire number so it is findable,
+      // and makes the whole run exit non-zero so the workflow goes red.
+      const rawFaoDate = formatted.fao_publication_date;
+      const normalisedFaoDate = normaliseFaoDate(rawFaoDate as string);
+      const faoPublicationDate = normalisedFaoDate ?? UNPARSEABLE_DATE_SENTINEL;
+      if (rawFaoDate && !normalisedFaoDate) {
+        unparseableDates.push({ affaire: String(affaireNumberEarly ?? 'unknown'), raw: String(rawFaoDate) });
+        console.error(
+          `  ✗ UNPARSEABLE fao_publication_date "${rawFaoDate}" — writing sentinel ${UNPARSEABLE_DATE_SENTINEL}`,
+        );
+      }
 
       // Regex fallback for affaire number (belt-and-suspenders)
       const affaireRegex = raw.details.match(/Affaire\s+(\d{4}\/\d+\/\d+)/);
@@ -809,6 +863,7 @@ async function main() {
   console.log(`  Records parsed:                  ${allRecords.length}`);
   console.log(`  Parse errors:                    ${parseErrors}`);
   console.log(`  Rows quarantined:                ${quarantined.length}`);
+  console.log(`  Unparseable publication dates:   ${unparseableDates.length}`);
   console.log(`  Rows upserted to DB:             ${totalUpserted}`);
   console.log(`  Rows with null affaire:          ${nullAffaireCount}`);
   console.log(`  Latest fao_publication_date in DB: ${latestDate}`);
@@ -831,6 +886,23 @@ async function main() {
 
   if (nullAffaireCount > 0) {
     console.error(`  VALIDATION FAILED: ${nullAffaireCount} newly inserted row(s) have null affaire despite text containing "Affaire"!`);
+    failed = true;
+  }
+
+  // A date we could not parse must turn the workflow RED. Before 2026-08-17 the
+  // parser wrote the raw string and exited 0, so 2026-08-07 and 2026-08-14 both
+  // shipped broken and nobody was told. Never let this be a silent success.
+  if (unparseableDates.length > 0) {
+    console.error(
+      `  VALIDATION FAILED: ${unparseableDates.length} row(s) had an unparseable fao_publication_date ` +
+        `and were written with the ${UNPARSEABLE_DATE_SENTINEL} sentinel:`,
+    );
+    for (const u of unparseableDates.slice(0, 25)) {
+      console.error(`    affaire ${u.affaire}: "${u.raw}"`);
+    }
+    if (unparseableDates.length > 25) {
+      console.error(`    ... and ${unparseableDates.length - 25} more`);
+    }
     failed = true;
   }
 
