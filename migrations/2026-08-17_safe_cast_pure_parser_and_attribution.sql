@@ -32,8 +32,72 @@
 -- caller keeps working and attribution stays OPTIONAL: a caller that omits it
 -- still quarantines, just without a label. Losing the label beats losing the row.
 
--- See scratchpad parse_date.sql / to_date_delegating.sql for the full bodies as
--- applied; reproduced here for replay.
+-- Pure date parser. NO side effects: no quarantine insert, no writes at all.
+-- Raises on an unparseable value; safe_cast.to_date() catches that and is the
+-- only place that quarantines. Keeping ALL parsing here means to_date holds no
+-- parsing logic of its own, so a CI probe against parse_date is an equivalent
+-- regression guard — and cannot write to production.
+CREATE OR REPLACE FUNCTION safe_cast.parse_date(raw text)
+ RETURNS date
+ LANGUAGE plpgsql
+ IMMUTABLE
+AS $function$
+DECLARE
+  t text;
+  ascii_t text;
+  mon int;
+  mname text;
+BEGIN
+  IF raw IS NULL OR btrim(raw) = '' THEN RETURN NULL; END IF;
+  t := btrim(raw);
+  IF t ~ '^\d{1,2}\.\d{1,2}\.\d{4}$' THEN
+    RETURN to_date(t, 'DD.MM.YYYY');   -- European dotted date, parsed day-first
+  END IF;
+  -- French long-form date, e.g. '07 aout 2026', '14 août 2026', '1er mai 2026'.
+  -- Accents are folded to ASCII so 'août'/'aout' and 'décembre'/'decembre' match.
+  ascii_t := translate(lower(t), 'àáâäãéèêëíìîïóòôöõúùûüç', 'aaaaaeeeeiiiiooooouuuuc');
+  IF ascii_t ~ '^\d{1,2}(er)?\s+[a-z]+\s+\d{4}$' THEN
+    mname := (regexp_match(ascii_t, '^\d{1,2}(?:er)?\s+([a-z]+)\s+\d{4}$'))[1];
+    mon := CASE mname
+             WHEN 'janvier' THEN 1  WHEN 'fevrier'  THEN 2  WHEN 'mars'      THEN 3
+             WHEN 'avril'   THEN 4  WHEN 'mai'      THEN 5  WHEN 'juin'      THEN 6
+             WHEN 'juillet' THEN 7  WHEN 'aout'     THEN 8  WHEN 'septembre' THEN 9
+             WHEN 'octobre' THEN 10 WHEN 'novembre' THEN 11 WHEN 'decembre'  THEN 12
+           END;
+    IF mon IS NULL THEN
+      RAISE EXCEPTION 'unrecognised french month %', mname;
+    END IF;
+    RETURN to_date(regexp_replace(ascii_t, '^(\d{1,2})(?:er)?\s+[a-z]+\s+(\d{4})$',
+                                  '\1 ' || mon::text || ' \2'), 'DD MM YYYY');
+  END IF;
+  RETURN t::date;                      -- ISO and everything else
+END $function$;
+
+-- Quarantining wrapper. Holds NO parsing logic — that all lives in
+-- safe_cast.parse_date(), which is pure. This function's only jobs are the
+-- range clamp and the quarantine bookkeeping.
+CREATE OR REPLACE FUNCTION safe_cast.to_date(raw text, src_table text DEFAULT NULL::text, src_pk text DEFAULT NULL::text, col text DEFAULT NULL::text)
+ RETURNS date
+ LANGUAGE plpgsql
+AS $function$
+DECLARE d date;
+BEGIN
+  IF raw IS NULL OR btrim(raw)='' THEN RETURN NULL; END IF;
+  BEGIN
+    d := safe_cast.parse_date(raw);
+    -- clamp absurd future/past sentinels (e.g. 2070-06-06) to NULL + quarantine
+    IF d > (now()::date + interval '2 years') OR d < date '1800-01-01' THEN
+      INSERT INTO safe_cast.quarantine(source_table,source_pk,column_name,expected_type,raw_value)
+      VALUES (COALESCE(src_table,'?'),src_pk,COALESCE(col,'?'),'date(out-of-range)',raw);
+      RETURN NULL;
+    END IF;
+    RETURN d;
+  EXCEPTION WHEN OTHERS THEN
+    INSERT INTO safe_cast.quarantine(source_table,source_pk,column_name,expected_type,raw_value)
+    VALUES (COALESCE(src_table,'?'),src_pk,COALESCE(col,'?'),'date',raw);
+    RETURN NULL;
+  END;
+END $function$;
 
 CREATE OR REPLACE FUNCTION public.probe_safe_cast_to_date(raw text)
  RETURNS date LANGUAGE sql IMMUTABLE SECURITY INVOKER
