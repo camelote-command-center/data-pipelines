@@ -22,6 +22,7 @@
 import * as cheerio from 'cheerio';
 import { upsertBronze, sleep, verifyBronzeAccess } from '../_shared/supabase.js';
 import { createFaoSession } from '../_shared/fao-session.js';
+import { classifyNonPrice } from './price-classifier.js';
 
 // ---------------------------------------------------------------------------
 // Config
@@ -239,8 +240,17 @@ function parsePage(html: string): Record<string, unknown>[] {
           .replace(/Frs /gm, '')
           .replace(/'/gm, '')
           .trim();
-        // DB column prix is varchar, store as string
-        res.prix = prixValue || '0';
+        const reason = classifyNonPrice(prixValue);
+        if (reason) {
+          // Legal transfer, no price. prix stays NULL so the downstream
+          // safe_cast.to_numeric never sees it; the reason is recorded in
+          // bronze_ch.fao_ldtr_price_absent.
+          res.prix = null;
+          res._no_price = { raw_value: prixValue, reason };
+        } else {
+          // DB column prix is varchar, store as string
+          res.prix = prixValue || '0';
+        }
       }
     }
 
@@ -342,14 +352,38 @@ async function main() {
   }
 
   // 4. Upsert
+  // Split out the non-price classifications first. The marker is internal and
+  // must not reach the FAO_LDTR upsert, which would reject an unknown column.
+  const noPriceRecords = allRecords
+    .filter((r) => r._no_price)
+    .map((r) => {
+      const { raw_value, reason } = r._no_price as { raw_value: string; reason: string };
+      return { affaire: r.affaire as string, raw_value, reason };
+    });
+  for (const r of allRecords) delete r._no_price;
+
   console.log(`\n  Upserting ${allRecords.length} records (batch size: ${BATCH_SIZE})...`);
   const totalUpserted = await upsertBronze('FAO_LDTR', allRecords, 'affaire', BATCH_SIZE);
+
+  // Lowercase logical name on purpose: resolveTable() upper-cases it to look up
+  // SUPABASE_TABLE_FAO_LDTR_PRICE_ABSENT, which is not set, so it falls through
+  // to this literal — which is already the physical table name. No workflow
+  // env change needed.
+  let noPriceUpserted = 0;
+  if (noPriceRecords.length > 0) {
+    console.log(
+      `\n  ${noPriceRecords.length} notice(s) carry a transfer type instead of a price ` +
+        `(prix left NULL, reason recorded)...`,
+    );
+    noPriceUpserted = await upsertBronze('fao_ldtr_price_absent', noPriceRecords, 'affaire', BATCH_SIZE);
+  }
 
   const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
   console.log(`\n${'='.repeat(60)}`);
   console.log('  IMPORT COMPLETE');
   console.log(`  Records parsed:    ${allRecords.length}`);
   console.log(`  Records upserted:  ${totalUpserted}`);
+  console.log(`  Non-price notices: ${noPriceUpserted}`);
   console.log(`  Duration:          ${elapsed}s`);
   console.log('='.repeat(60));
 
