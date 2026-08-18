@@ -1,0 +1,17 @@
+{
+  "name": "handaenderungen-multi",
+  "private": true,
+  "scripts": {
+    "test": "tsx tests/parse.test.ts",
+    "ingest": "tsx run.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.111.0",
+    "@supabase/supabase-js": "^2.110.7",
+    "@types/pg": "^8.20.0",
+    "pg": "^8.22.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.1"
+  }
+}
