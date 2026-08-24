@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TE-BE70:publication xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TE-BE70="https://shab.ch/kabbe/TE-BE70-export" xsi:schemaLocation="https://shab.ch/kabbe/TE-BE70-export https://amtsblattportal.ch/api/v1/schemas/kabbe/1.26/TE-BE70-export.xsd">
+<meta>
+  <id>cb636217-715a-4b83-951b-4b5d97d86b11</id>
+  <rubric>TE-BE</rubric>
+  <subRubric>TE-BE70</subRubric>
+  <language>de</language>
+  <registrationOffice>
+    <id>487e653d-a99b-11eb-a1fe-0050569d3c43</id>
+    <displayName>Christoph Kaiser - Notariat Jaccottet Kaiser AG</displayName>
+    <street>Marktplatz</street>
+    <streetNumber>9a</streetNumber>
+    <swissZipCode>3250</swissZipCode>
+    <town>Lyss</town>
+    <containsPostOfficeBox>false</containsPostOfficeBox>
+  </registrationOffice>
+  <publicationNumber>TE-BE70-0000000027</publicationNumber>
+  <publicationState>PUBLISHED</publicationState>
+  <publicationDate>2026-06-03</publicationDate>
+  <primaryTenantCode>kabbe</primaryTenantCode>
+  <legalRemedy>Das öffentliche Inventar im Nachlass der betroffenen verstorbenen Person liegt den Beteiligten bei der Meldestelle innert der erwähnten Auflagefrist zur Einsicht auf. &lt;br />Publikation nach Art. 584 Abs. 1 ZGB.</legalRemedy>
+  <cantons>BE</cantons>
+  <title>
+    <de>Auflage des öffentlichen Inventars, Nachlass Simon Martin Rüegger</de>
+    <en>Auflage des öffentlichen Inventars, Nachlass Simon Martin Rüegger</en>
+    <it>Auflage des öffentlichen Inventars, Nachlass Simon Martin Rüegger</it>
+    <fr>Charge de l'inventaire public, succession Simon Martin Rüegger</fr>
+  </title>
+</meta>
+<content>
+  <testator>
+    <prename>Simon Martin</prename>
+    <name>Rüegger</name>
+    <countryOfOrigin>
+      <name>
+        <de>Schweiz</de>
+        <fr>Suisse</fr>
+        <it>Svizzera</it>
+        <en>Switzerland</en>
+      </name>
+      <isoCode>CH</isoCode>
+    </countryOfOrigin>
+    <placeOfOrigin>Rothrist AG</placeOfOrigin>
+    <dateOfBirth>1982-09-06</dateOfBirth>
+    <bornIn>Bern BE</bornIn>
+    <informationAboutDeath>
+      <selectType>locationDateOfDeceased</selectType>
+    </informationAboutDeath>
+    <dateOfDetection>2025-09-17</dateOfDetection>
+    <residence>
+      <selectType>switzerland</selectType>
+    </residence>
+    <addressSwitzerland>
+      <street>Sandacher</street>
+      <houseNumber>2</houseNumber>
+      <swissZipCode>3257</swissZipCode>
+      <town>Ammerzwil</town>
+    </addressSwitzerland>
+  </testator>
+  <monthsAfterPublication>1</monthsAfterPublication>
+  <entryDeadline>2026-07-03</entryDeadline>
+  <registrationOffice>Christoph Kaiser - Notariat Jaccottet Kaiser AG
+Marktplatz 9a 
+3250 Lyss</registrationOffice>
+</content>
+</TE-BE70:publication>

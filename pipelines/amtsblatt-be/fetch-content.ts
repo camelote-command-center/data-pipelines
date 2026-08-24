@@ -1,0 +1,209 @@
+/**
+ * Stage 1 — fetch per-publication content XML for succession candidates and
+ * distil into bronze_ch.succession_notice_raw.
+ *
+ * Candidates come from the DB view bronze_ch.succession_notice_candidates
+ * (already-ingested metadata; no re-ingest). The list API omits the notice body,
+ * so we fetch /api/v1/publications/{id}/xml per candidate. Idempotent: publications
+ * already in succession_notice_raw are skipped.
+ *
+ * Env:
+ *   RE_LLM_SUPABASE_URL, RE_LLM_SUPABASE_SERVICE_ROLE_KEY  (required)
+ *   CANTON    default 'BE'
+ *   SINCE     optional YYYY-MM-DD — only candidates on/after this pub date
+ *   MAX       optional cap on notices fetched this run (0 = no cap)
+ *   REFETCH   '1' to re-fetch even if already in raw
+ */
+import { supabase, verifyAccess, upsert, sleep } from '../_shared/re-llm.js';
+import { parseNoticeXml, type Notice } from './lib/parse.js';
+
+const SCHEMA = 'bronze_ch';
+const RAW = 'succession_notice_raw';
+const VIEW = 'succession_notice_candidates';
+const API = 'https://amtsblattportal.ch/api/v1/publications';
+const UA = 'camelote-data-pipelines/amtsblatt-be (real-estate intelligence; contact via camelote-command-center)';
+const POLITENESS_MS = 300;
+const PAGE = 1000;
+
+const CANTON = (process.env.CANTON ?? 'BE').toUpperCase();
+const SINCE = process.env.SINCE || null;
+const MAX = parseInt(process.env.MAX ?? '0', 10) || 0;
+const REFETCH = process.env.REFETCH === '1';
+const CONCURRENCY = parseInt(process.env.CONCURRENCY ?? '4', 10) || 4; // polite bounded pool
+
+interface Candidate {
+  id: string; tenant: string; canton: string;
+  rubric: string | null; sub_rubric: string | null;
+  publication_date: string; language: string | null; event_type: string;
+}
+
+function sourceUrl(id: string): string {
+  return `https://amtsblattportal.ch/api/v1/publications/${id}/xml`;
+}
+
+async function loadCandidates(): Promise<Candidate[]> {
+  const out: Candidate[] = [];
+  for (let from = 0; ; from += PAGE) {
+    let q = supabase.schema(SCHEMA).from(VIEW).select('*')
+      .eq('canton', CANTON)
+      .order('publication_date', { ascending: false })
+      .range(from, from + PAGE - 1);
+    if (SINCE) q = q.gte('publication_date', SINCE);
+    const { data, error } = await q;
+    if (error) { console.error(`  candidate load error: ${error.message}`); process.exit(1); }
+    if (!data || data.length === 0) break;
+    out.push(...(data as Candidate[]));
+    if (data.length < PAGE) break;
+  }
+  return out;
+}
+
+async function loadFetchedIds(): Promise<Set<string>> {
+  const ids = new Set<string>();
+  if (REFETCH) return ids;
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await supabase.schema(SCHEMA).from(RAW)
+      .select('publication_id').eq('canton', CANTON).range(from, from + PAGE - 1);
+    if (error) { console.error(`  raw id load error: ${error.message}`); break; }
+    if (!data || data.length === 0) break;
+    for (const r of data) ids.add((r as { publication_id: string }).publication_id);
+    if (data.length < PAGE) break;
+  }
+  return ids;
+}
+
+interface FetchResult { status: number; xml?: string }
+
+async function fetchXml(id: string): Promise<FetchResult> {
+  const url = sourceUrl(id);
+  for (let attempt = 0; attempt < 4; attempt++) {
+    try {
+      const res = await fetch(url, { headers: { Accept: 'application/xml', 'User-Agent': UA } });
+      if (res.status === 429 || res.status >= 500) {
+        await sleep((attempt + 1) * 4000);
+        continue;
+      }
+      // 401/403 = content access-restricted upstream (past public-retention window).
+      // Not retryable; the caller records a metadata-only stub so we don't re-hammer it.
+      if (res.status === 401 || res.status === 403 || res.status === 404) return { status: res.status };
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return { status: 200, xml: await res.text() };
+    } catch (err) {
+      if (attempt === 3) throw err;
+      await sleep((attempt + 1) * 4000);
+    }
+  }
+  throw new Error('unreachable');
+}
+
+/** Metadata-only stub for a notice whose content is access-restricted (401/403/404). */
+function stubRow(c: Candidate, status: number) {
+  return {
+    publication_id: c.id, tenant: c.tenant, canton: c.canton,
+    rubric: c.rubric, sub_rubric: c.sub_rubric, event_type: c.event_type,
+    publication_date: c.publication_date, language: c.language, title: null,
+    source_url: sourceUrl(c.id), addition: null, content_json: null, raw_xml: null,
+    parse_status: `content_denied_${status}`,
+  };
+}
+
+function toRow(c: Candidate, n: Notice, xml: string) {
+  return {
+    publication_id: c.id,
+    tenant: c.tenant,
+    canton: c.canton,
+    rubric: n.rubric ?? c.rubric,
+    sub_rubric: n.subRubric ?? c.sub_rubric,
+    event_type: n.eventType,
+    publication_date: n.publicationDate ?? c.publication_date,
+    language: n.language ?? c.language,
+    title: n.title,
+    source_url: sourceUrl(c.id),
+    addition: n.addition,
+    content_json: {
+      deceased_prename: n.deceasedPrename,
+      deceased_surname: n.deceasedSurname,
+      deceased_name: n.deceasedName,
+      deceased_dob: n.deceasedDob,
+      deceased_dod: n.deceasedDod,
+      deceased_heimatort: n.deceasedHeimatort,
+      deceased_last_domicile: n.deceasedLastDomicile,
+      authority: n.authority,
+      authority_municipality_id: n.authorityMunicipalityId,
+      deadline_date: n.deadlineDate,
+      body_text: n.bodyText,
+    },
+    raw_xml: xml,
+    parse_status: n.deceasedSurname ? 'ok' : 'no_person',
+  };
+}
+
+async function main() {
+  console.log('='.repeat(64));
+  console.log(`  amtsblatt-be — succession content fetch (canton=${CANTON})`);
+  console.log(`  since=${SINCE ?? 'ALL'} max=${MAX || '∞'} refetch=${REFETCH}`);
+  console.log('='.repeat(64));
+  await verifyAccess(SCHEMA, RAW);
+
+  // Refresh the candidate matview so notices ingested since last run are visible.
+  // Non-fatal: on failure we proceed against the existing (possibly stale) matview.
+  const { error: refreshErr } = await supabase.rpc('refresh_succession_candidates');
+  console.log(refreshErr ? `  ⚠ candidate refresh skipped: ${refreshErr.message}` : '  ✓ candidate matview refreshed');
+
+  const [candidates, fetched] = await Promise.all([loadCandidates(), loadFetchedIds()]);
+  const todo = candidates.filter((c) => !fetched.has(c.id));
+  console.log(`  candidates=${candidates.length}  already-fetched=${fetched.size}  to-fetch=${todo.length}`);
+
+  const work = MAX ? todo.slice(0, MAX) : todo;
+  const batch: Record<string, unknown>[] = [];
+  let idx = 0, done = 0, ok = 0, noPerson = 0, errors = 0, denied = 0, flushing = false;
+  const t0 = Date.now();
+
+  async function flush(force = false) {
+    if (flushing || (!force && batch.length < 100)) return;
+    flushing = true;
+    const chunk = batch.splice(0, batch.length);
+    if (chunk.length) await upsert(SCHEMA, RAW, chunk, 'publication_id', 100);
+    flushing = false;
+  }
+
+  async function worker() {
+    while (true) {
+      const i = idx++;
+      if (i >= work.length) return;
+      const c = work[i];
+      try {
+        const { status, xml } = await fetchXml(c.id);
+        if (!xml) {
+          denied++;
+          batch.push(stubRow(c, status)); // record the attempt; skipped next run + excluded from events
+        } else {
+          const n = parseNoticeXml({ publicationId: c.id, tenant: c.tenant, canton: c.canton, xml });
+          const row = toRow(c, n, xml);
+          if (row.parse_status === 'ok') ok++; else noPerson++;
+          batch.push(row);
+        }
+      } catch (err) {
+        errors++;
+        console.error(`  ✗ ${c.id} (${c.sub_rubric}): ${(err as Error).message}`);
+      }
+      done++;
+      if (batch.length >= 100) await flush();
+      if (done % 250 === 0) {
+        const rate = (done / ((Date.now() - t0) / 1000)).toFixed(1);
+        console.log(`  … ${done}/${work.length} (ok=${ok} denied=${denied} noPerson=${noPerson} err=${errors}) ${rate}/s`);
+      }
+      await sleep(POLITENESS_MS); // per-worker politeness → ~CONCURRENCY/POLITENESS req/s
+    }
+  }
+
+  await Promise.all(Array.from({ length: CONCURRENCY }, () => worker()));
+  await flush(true);
+
+  const elapsed = ((Date.now() - t0) / 1000).toFixed(0);
+  console.log('\n' + '='.repeat(64));
+  console.log(`  FETCH DONE — processed=${done} ok=${ok} denied=${denied} noPerson=${noPerson} err=${errors} in ${elapsed}s`);
+  console.log('='.repeat(64));
+}
+
+main().catch((err) => { console.error('Fatal:', err); process.exit(1); });
