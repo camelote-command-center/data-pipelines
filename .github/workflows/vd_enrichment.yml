@@ -23,7 +23,7 @@ on:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 120
     strategy:
       fail-fast: false        # one canton layer failing must not cancel the other 17
       max-parallel: 4         # be polite to map.lausanne.ch / canton VD ArcGIS
@@ -72,8 +72,8 @@ jobs:
           CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
           CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
 
-      - name: PATCH last_error on failure
-        if: failure()
+      - name: PATCH last_error on failure or timeout
+        if: ${{ failure() || cancelled() }}
         run: |
           MSG="GitHub Actions run ${{ github.run_id }} failed at $(date -u +%Y-%m-%dT%H:%M:%SZ). See https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           ESC=$(printf '%s' "$MSG" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
