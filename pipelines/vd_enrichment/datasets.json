@@ -1,0 +1,95 @@
+{
+  "workflow": "vd_enrichment.yml",
+  "datasets": [
+    {
+      "code": "federal_bav_transit",
+      "schema": "bronze_ch",
+      "table": "federal_bav_transit"
+    },
+    {
+      "code": "vd_batiment_projete",
+      "schema": "bronze_ch",
+      "table": "vd_batiment_projete"
+    },
+    {
+      "code": "vd_batiment_rcb",
+      "schema": "bronze_ch",
+      "table": "vd_batiment_rcb"
+    },
+    {
+      "code": "vd_classement",
+      "schema": "bronze_ch",
+      "table": "vd_classement"
+    },
+    {
+      "code": "vd_ddp_pts",
+      "schema": "bronze_ch",
+      "table": "vd_ddp_pts"
+    },
+    {
+      "code": "vd_degre_sensibilite_bruit",
+      "schema": "bronze_ch",
+      "table": "vd_degre_sensibilite_bruit"
+    },
+    {
+      "code": "vd_isos",
+      "schema": "bronze_ch",
+      "table": "vd_isos"
+    },
+    {
+      "code": "vd_jardin_historique",
+      "schema": "bronze_ch",
+      "table": "vd_jardin_historique"
+    },
+    {
+      "code": "vd_lausanne_archeologie",
+      "schema": "bronze_ch",
+      "table": "vd_lausanne_archeologie"
+    },
+    {
+      "code": "vd_lausanne_ddp",
+      "schema": "bronze_ch",
+      "table": "vd_lausanne_ddp"
+    },
+    {
+      "code": "vd_lausanne_dp",
+      "schema": "bronze_ch",
+      "table": "vd_lausanne_dp"
+    },
+    {
+      "code": "vd_lausanne_energie_cad_bati",
+      "schema": "bronze_ch",
+      "table": "vd_lausanne_energie_cad_bati"
+    },
+    {
+      "code": "vd_lausanne_pa_etude",
+      "schema": "bronze_ch",
+      "table": "vd_lausanne_pa_etude"
+    },
+    {
+      "code": "vd_lausanne_parking_sectors",
+      "schema": "bronze_ch",
+      "table": "vd_lausanne_parking_sectors"
+    },
+    {
+      "code": "vd_lausanne_servitudes",
+      "schema": "bronze_ch",
+      "table": "vd_lausanne_servitudes"
+    },
+    {
+      "code": "vd_limite_foret",
+      "schema": "bronze_ch",
+      "table": "vd_limite_foret"
+    },
+    {
+      "code": "vd_region_archeologique",
+      "schema": "bronze_ch",
+      "table": "vd_region_archeologique"
+    },
+    {
+      "code": "vd_zone_affectation",
+      "schema": "bronze_ch",
+      "table": "vd_zone_affectation"
+    }
+  ]
+}
