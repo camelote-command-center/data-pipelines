@@ -1,0 +1,31 @@
+name: handaenderungen-multi CI
+
+# Runs the deterministic parser regression tests on every change to the module.
+# The live scheduled ingest (LU weekly Sat, SZ weekly) stays DISABLED until a
+# compliant data source is wired into the adapter live paths — see README §Access.
+# (Cantonal gazettes disallow generic scraping; access needs a subscription/PDF-Abo
+# or a permitted API. Do NOT enable a scheduled scrape against a robots Disallow.)
+
+on:
+  push:
+    paths:
+      - 'pipelines/handaenderungen-multi/**'
+      - 'pipelines/_shared/**'
+  pull_request:
+    paths:
+      - 'pipelines/handaenderungen-multi/**'
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: pipelines/handaenderungen-multi
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install
+      - run: npm test
