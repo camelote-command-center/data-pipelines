@@ -41,6 +41,16 @@ class SourceContracts(unittest.TestCase):
         self.assertEqual(''.join(t for _,t in chunks),text+'b')
     def test_pdf_text_sanitizes_postgres_incompatible_characters(self):
         self.assertEqual(parser.clean_text('abc\x00déf'), 'abcdéf')
+    def test_dashboard_dispatch_log_is_adopted(self):
+        monitor=object.__new__(parser.Monitor)
+        monitor.dataset={'id':'dataset','startup_id':'owner'}
+        calls=[]
+        def call(method,table,**kwargs):
+            calls.append((method,kwargs));return [{'id':'dispatch-log'}]
+        monitor.call=call
+        monitor.begin('new-run','https://github.com/test/actions/runs/1')
+        self.assertEqual(monitor.log_id,'dispatch-log')
+        self.assertEqual([x[0] for x in calls],['GET','PATCH'])
     def test_failure_restores_last_verified_success(self):
         monitor=object.__new__(parser.Monitor)
         monitor.code=parser.CODE

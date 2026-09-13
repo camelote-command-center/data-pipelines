@@ -256,8 +256,18 @@ class Monitor:
         if not r.ok:raise RuntimeError('command_center_http_'+str(r.status_code))
         return r.json() if r.content else None
     def begin(self,run_id,run_url):
-        self.call('POST','acquisition_logs',json={'id':run_id,'dataset_id':self.dataset['id'],'status':'running','triggered_by':'github_actions','notes':run_url})
+        cutoff=(dt.datetime.now(dt.timezone.utc)-dt.timedelta(minutes=30)).isoformat()
+        dispatched=self.call('GET','acquisition_logs',params={'dataset_id':'eq.'+self.dataset['id'],
+            'status':'eq.running','triggered_by':'eq.dashboard','started_at':'gte.'+cutoff,
+            'notes':'eq.[github_action] dispatched ch_planning_documents.yml','order':'started_at.desc','limit':'1','select':'id'})
+        self.log_id=dispatched[0]['id'] if dispatched else run_id
+        if dispatched:
+            rows=self.call('PATCH','acquisition_logs',params={'id':'eq.'+self.log_id,'status':'eq.running'},json={'notes':run_url})
+            if len(rows)!=1:raise ValueError('dispatch_log_claim_failed')
+        else:
+            self.call('POST','acquisition_logs',json={'id':self.log_id,'dataset_id':self.dataset['id'],'status':'running','triggered_by':'github_actions','notes':run_url})
     def finish(self,run_id,report,complete):
+        run_id=getattr(self,'log_id',run_id)
         status='success' if complete else 'failed'
         error=None if complete else 'Incomplete acquisition: see run report for source failures and coverage gaps'
         self.call('PATCH','acquisition_logs',params={'id':'eq.'+run_id},json={'status':status,'completed_at':now(),'records_fetched':report.get('catalogued',0),'records_new':report.get('versions_new',0),'error_message':error,'error_details':report})
@@ -336,7 +346,7 @@ def main():
                     if i%50==0:
                         for mon in monitors:
                             if mon.code!='ch_planning_document_text':continue
-                            mon.call('PATCH','acquisition_logs',params={'id':'eq.'+uid(run_id+':'+mon.code)},json={'records_fetched':i,'notes':run_url+'; '+str(i)+'/'+str(len(selected))+' URLs processed; '+str(report['errors'])+' errors'})
+                            mon.call('PATCH','acquisition_logs',params={'id':'eq.'+mon.log_id},json={'records_fetched':i,'notes':run_url+'; '+str(i)+'/'+str(len(selected))+' URLs processed; '+str(report['errors'])+' errors'})
         complete=(not args.catalog_only and not args.max_documents and set(cantons)==set(CANTONS)
                   and not any(v['status']=='error' for v in coverage.values()) and report['errors']==0)
         return 0 if complete else 2
