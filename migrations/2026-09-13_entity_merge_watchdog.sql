@@ -131,6 +131,54 @@ BEGIN
     END;
   END IF;
 
+  -- 5b. CRITICAL — a consumer's ENTITY-LINK layer does not carry the merge on a touched transaction.
+  -- Seller names alone are not enough: on 2026-09-13 lamap-lbi showed the right names while its
+  -- ref.link_entity_transactions was frozen, so its entity views still split the company.
+  IF array_length(v_touched, 1) > 0 THEN
+    BEGIN
+      SELECT count(*), (array_agg(DISTINCT nm))[1:5] INTO v_n, v_samples FROM (
+        SELECT 'lamap_db: ' || l.party_name || ' -> ' || coalesce(l.entity_id::text,'NULL') AS nm
+        FROM lamap_db_foreign.link_entity_transactions l
+        JOIN silver_ch.entity_merge_decisions d ON d.status='active'
+         AND (d.alias_key = lower(public.unaccent(btrim(l.party_name)))
+              OR (lower(public.unaccent(btrim(d.canonical_name))) = lower(public.unaccent(btrim(l.party_name)))
+                  AND l.entity_id IS DISTINCT FROM d.canonical_entity_id))
+        WHERE l.transaction_id = ANY (v_touched)
+        UNION ALL
+        SELECT 'lamap-lbi: ' || l.party_name || ' -> ' || coalesce(l.entity_id::text,'NULL')
+        FROM lbi_foreign.link_entity_transactions l
+        JOIN silver_ch.entity_merge_decisions d ON d.status='active'
+         AND (d.alias_key = lower(public.unaccent(btrim(l.party_name)))
+              OR (lower(public.unaccent(btrim(d.canonical_name))) = lower(public.unaccent(btrim(l.party_name)))
+                  AND l.entity_id IS DISTINCT FROM d.canonical_entity_id))
+        WHERE l.transaction_id = ANY (v_touched)
+      ) z;
+      IF v_n > 0 THEN v_findings := v_findings || jsonb_build_object('check','not_honoured_consumer_entity_links','severity','critical','n',v_n,'samples',v_samples,
+        'title', format('%s entity link(s) in a consumer still carry a merged alias or the wrong entity', v_n)); END IF;
+    EXCEPTION WHEN OTHERS THEN
+      v_findings := v_findings || jsonb_build_object('check','consumer_unreachable','severity','critical','n',1,
+        'samples', ARRAY[SQLERRM], 'title','Entity merge watchdog could not read a consumer entity-link table: ' || left(SQLERRM,120));
+    END;
+  END IF;
+
+  -- 5c. CRITICAL — a consumer's entity-link table has stopped receiving data. A refused sync is
+  -- logged to gold_ch.sync_failure_log while the cron job still reports success; that is how
+  -- lamap-lbi sat frozen from 2026-08-06 to 2026-09-13 unnoticed. Merges cannot reach a frozen table.
+  BEGIN
+    SELECT count(*), (array_agg(nm))[1:5] INTO v_n, v_samples FROM (
+      SELECT 'lamap_db newest link ' || coalesce(max(updated_at)::text,'none') AS nm, max(updated_at) AS m
+      FROM lamap_db_foreign.link_entity_transactions
+      UNION ALL
+      SELECT 'lamap-lbi newest link ' || coalesce(max(updated_at)::text,'none'), max(updated_at)
+      FROM lbi_foreign.link_entity_transactions
+    ) z WHERE z.m IS NULL OR z.m < now() - interval '48 hours';
+    IF v_n > 0 THEN v_findings := v_findings || jsonb_build_object('check','consumer_entity_links_stale','severity','critical','n',v_n,'samples',v_samples,
+      'title', format('%s consumer entity-link table(s) received no update in 48h — entity fixes cannot reach them', v_n)); END IF;
+  EXCEPTION WHEN OTHERS THEN
+    v_findings := v_findings || jsonb_build_object('check','consumer_unreachable','severity','critical','n',1,
+      'samples', ARRAY[SQLERRM], 'title','Entity merge watchdog could not check consumer entity-link freshness: ' || left(SQLERRM,120));
+  END;
+
   -- 6. WARN — the FAO parser produced NEW fragmented party names (glued domicile / bare locality)
   SELECT count(*), (array_agg(DISTINCT nm))[1:5] INTO v_n, v_samples FROM (
     SELECT e->>'name' AS nm
