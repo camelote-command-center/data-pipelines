@@ -1,0 +1,61 @@
+name: Swiss planning documents (Pixxels)
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 2 15 9 *'
+permissions:
+  contents: read
+concurrency:
+  group: ch-planning-documents
+  cancel-in-progress: false
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: pipelines/ch-planning-documents/requirements.txt
+      - name: Install dependencies
+        run: pip install -r pipelines/ch-planning-documents/requirements.txt
+      - name: Install local OCR
+        run: sudo apt-get update -qq && sudo apt-get install -y poppler-utils tesseract-ocr tesseract-ocr-deu tesseract-ocr-fra tesseract-ocr-ita
+      - name: Verify parser contracts
+        run: python -m unittest discover -s pipelines/ch-planning-documents/tests -v
+      - name: Acquire official planning documents
+        env:
+          PLANNING_OCR: '1'
+          RE_LLM_DB_URL: ${{ secrets.RE_LLM_DB_URL }}
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+        run: python pipelines/ch-planning-documents/parser.py
+      - name: Report workflow failure without changing successful freshness
+        if: failure()
+        env:
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+        run: |
+          python - <<'PY'
+          import os, json, urllib.request, pathlib
+          report_path=pathlib.Path('planning-report.json')
+          report=json.loads(report_path.read_text()) if report_path.exists() else {}
+          codes=['ch_planning_documents','ch_planning_document_text']
+          if report.get('catalog_persisted') and len(set(report.get('scope',[])))==26 and not any(v['status']=='error' for v in report.get('coverage',{}).values()):
+              codes.remove('ch_planning_documents')
+          for code in codes:
+              payload=json.dumps({'status':'error','last_error':'Planning acquisition workflow failed; inspect Actions run '+os.environ['GITHUB_RUN_ID']}).encode()
+              req=urllib.request.Request(os.environ['CMD_URL']+'/rest/v1/datasets?code=eq.'+code,data=payload,method='PATCH',headers={'apikey':os.environ['CMD_KEY'],'Authorization':'Bearer '+os.environ['CMD_KEY'],'Content-Type':'application/json','Prefer':'return=representation'})
+              with urllib.request.urlopen(req,timeout=45) as response:
+                  assert len(json.load(response))==1, 'Dataset registration missing'
+          PY
+      - name: Save acquisition and coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ch-planning-report-${{ github.run_id }}
+          path: planning-report.json
+          if-no-files-found: warn
+          retention-days: 90
