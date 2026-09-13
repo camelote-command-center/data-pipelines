@@ -1,18 +1,27 @@
 /**
  * Swiss price-extraction helpers for the FAO transactions parser.
  *
- * Two bugs in production drove the redesign:
+ * Bugs in production drove the design:
  *   1. The previous cleaner stripped ALL non-digits including '.', so
  *      "40'032'944.47" became "4003294447" (×100 of the real value).
  *   2. Claude Sonnet sometimes duplicates a digit-group while transcribing
  *      gazette text, e.g. "1'875'000" → "1'875'000'000" (×1000 hallucination).
+ *   3. (2026-09-13) The regex only knew "Prix total de l'affaire". The gazette also
+ *      publishes multi-lot entries as "Prix: X.-; … Prix: Y.-", which it never
+ *      matched — when the LLM also missed them the price was written NULL with
+ *      exit 0. Eight such rows since 2026-05-13 (incl. a CHF 28.9M sale), plus 84
+ *      "Prix total" rows parsed before this module existed and never reparsed.
  *
  * Defence in depth:
- *   - cleanSwissPrice(): correct Swiss-format → numeric string conversion.
- *   - extractPriceFromRaw(): regex-based extraction from untouched gazette text;
- *     ALWAYS prefer this over any LLM-supplied price.
- *   - validateParsedPrice(): post-parse guard that rejects rows where the
- *     LLM disagrees with the raw text or returns an implausible figure.
+ *   - extractPrice(): deterministic extraction from untouched gazette text.
+ *     ALWAYS preferred over any LLM-supplied price.
+ *   - isValidSwissAmount(): strict grouping. A malformed amount in the SOURCE
+ *     ("100'00.-") is never guessed at — neither by us nor by the LLM.
+ *   - hasPriceMarker(): deliberately BROADER than the extractor. If the text
+ *     visibly carries a price and extraction produced nothing, that is a loud
+ *     failure, not a NULL. Unknown shapes fail loud instead of being guessed.
+ *   - priceGate(): the end-of-run decision the parser uses to go red. Exported so
+ *     the CI self-test exercises the exact same function, not a copy.
  */
 
 const PRICE_MISMATCH_TOLERANCE = 0.5;     // CHF — rounding tolerance only
@@ -38,7 +47,7 @@ export function cleanSwissPrice(raw: string | number | null | undefined): string
   if (!s) return null;
 
   // Strip currency markers
-  s = s.replace(/^(CHF|Fr\.?)\s*/i, '');
+  s = s.replace(/^(CHF|Frs?\.?)\s*/i, '');
   // Strip the placeholder ".-" / ".--" / ".---" trailing format (no cents)
   s = s.replace(/\.-+\s*$/, '');
   // Strip Swiss apostrophes (ASCII ' and Unicode ' U+2019) used as thousand sep
@@ -50,29 +59,124 @@ export function cleanSwissPrice(raw: string | number | null | undefined): string
   return s;
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Strict amount validation
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Groups of exactly three after the first group ("1'080'840"), mixed ' / ’ allowed.
+const SWISS_GROUPED_RE = /^\d{1,3}(?:['’]\d{3})+(?:\.\d{1,2})?$/;
+// An unseparated amount. At most TWO decimals: "1.250" is ambiguous between
+// CHF 1.25 and a dot-thousands 1'250, so it must not validate.
+const PLAIN_AMOUNT_RE = /^\d+(?:\.\d{1,2})?$/;
+
+/** Strip the gazette's trailing ".-", ".--" or bare sentence-final ".". */
+function stripAmountTail(raw: string): string {
+  return raw.trim().replace(/\.-*\s*$/, '').trim();
+}
+
 /**
- * Extract the "Prix total de l'affaire" price from the raw gazette text via regex.
- * This bypasses the LLM entirely — it's the authoritative source of the price.
+ * True only for an amount whose digit grouping is unambiguous.
+ * Verified against the corpus (2026-09-13): of 54,055 "Prix total" amounts only
+ * 2 fail, and both are malformed in the source ("1'500''000.00", "820'00").
  */
-const PRICE_RE = new RegExp(
-  // "Prix total de l'affaire"  (ASCII apostrophe or curly U+2019)
+export function isValidSwissAmount(raw: string | null | undefined): boolean {
+  if (raw === null || raw === undefined) return false;
+  const s = stripAmountTail(String(raw));
+  return SWISS_GROUPED_RE.test(s) || PLAIN_AMOUNT_RE.test(s);
+}
+
+/** Exact decimal sum in integer cents — no float drift ("106130.15" + …). */
+function sumAmounts(cleaned: string[]): string {
+  let cents = 0n;
+  for (const c of cleaned) {
+    const [whole, frac = ''] = c.split('.');
+    cents += BigInt(whole) * 100n + BigInt((frac + '00').slice(0, 2));
+  }
+  const whole = cents / 100n;
+  const rem = cents % 100n;
+  return rem === 0n ? whole.toString() : `${whole}.${rem.toString().padStart(2, '0')}`;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Extraction
+// ─────────────────────────────────────────────────────────────────────────────
+
+/** "Prix total de l'affaire: 1'080'840.-" — an explicit total always wins. */
+const TOTAL_RE = new RegExp(
   "Prix\\s+total\\s+de\\s+l['’]affaire" +
   "\\s*:?\\s*" +
-  // Optional currency prefix
   "(?:CHF|Fr\\.?)?\\s*" +
-  // The number — digits with apostrophes (ASCII or U+2019) + optional .NN
-  "(?<price>[\\d'’]+(?:\\.\\d+)?)" +
-  // Optional trailing .- / .--
-  "\\s*\\.?-{0,3}",
+  "(?<price>[\\d'’]+(?:\\.\\d+)?)",
   'i',
 );
 
-export function extractPriceFromRaw(rawText: string | null | undefined): string | null {
-  if (!rawText) return null;
-  const m = rawText.match(PRICE_RE);
-  if (!m || !m.groups?.price) return null;
-  return cleanSwissPrice(m.groups.price);
+/** "Prix: 950'000.-" — one per lot in a multi-lot entry. */
+const SHORT_PART_RE = /\bprix\s*:\s*(?:chf|frs?\.?)?\s*([0-9][0-9'’.]*)/gi;
+
+/**
+ * Broad on purpose: any wording that visibly states a price with digits.
+ * If this fires and extraction produced nothing, the run must go red.
+ */
+const PRICE_MARKER_RE =
+  /\bprix(?:\s+(?:total|global|de\s+vente))?(?:\s+de\s+l['’]affaire)?\s*:?\s*(?:chf|frs?\.?)?\s*\d/i;
+
+export function hasPriceMarker(rawText: string | null | undefined): boolean {
+  return !!rawText && PRICE_MARKER_RE.test(rawText);
 }
+
+export type PriceExtraction =
+  | { kind: 'total'; price: string }
+  | { kind: 'parts'; price: string; parts: string[] }
+  | { kind: 'malformed'; fragment: string }
+  | { kind: 'none' };
+
+/**
+ * Deterministic price from the raw gazette text.
+ *
+ *   1. "Prix total de l'affaire: X"  → X.
+ *   2. otherwise every "Prix: X" part → their SUM. This is the established
+ *      semantics, not a new choice: of 435 already-priced multi-lot rows, 381
+ *      (88%) store the sum (swaps: 7 of 10).
+ *   3. any amount with ambiguous grouping → 'malformed'. Never guessed.
+ */
+export function extractPrice(rawText: string | null | undefined): PriceExtraction {
+  if (!rawText) return { kind: 'none' };
+
+  const total = rawText.match(TOTAL_RE);
+  if (total?.groups?.price) {
+    const raw = total.groups.price;
+    if (!isValidSwissAmount(raw)) return { kind: 'malformed', fragment: raw };
+    const cleaned = cleanSwissPrice(raw);
+    return cleaned === null ? { kind: 'malformed', fragment: raw } : { kind: 'total', price: cleaned };
+  }
+
+  const raws = [...rawText.matchAll(SHORT_PART_RE)].map((m) => m[1]);
+  if (raws.length === 0) return { kind: 'none' };
+
+  const cleaned: string[] = [];
+  for (const r of raws) {
+    const c = isValidSwissAmount(r) ? cleanSwissPrice(stripAmountTail(r)) : null;
+    if (c === null) return { kind: 'malformed', fragment: r };
+    cleaned.push(c);
+  }
+  return {
+    kind: 'parts',
+    price: cleaned.length === 1 ? cleaned[0] : sumAmounts(cleaned),
+    parts: cleaned,
+  };
+}
+
+/** Backward-compatible: the deterministic price, or null. */
+export function extractPriceFromRaw(rawText: string | null | undefined): string | null {
+  const e = extractPrice(rawText);
+  return e.kind === 'total' || e.kind === 'parts' ? e.price : null;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Validation
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type UnextractedReason = 'price_in_text_not_extracted' | 'price_malformed_in_source';
 
 export type ValidationFailure =
   | { ok: false; reason: 'implausible_price'; parsedPrice: string };
@@ -82,37 +186,44 @@ export type ValidationOk = {
   price: string | null;
   source: 'regex' | 'llm_fallback' | 'none';
   warning?: string;  // non-fatal — e.g. LLM disagreed wildly with regex
+  /**
+   * Set when the text visibly carries a price we could not trustworthily
+   * extract. The row is still written (price NULL), quarantined, and the run
+   * must go red — see priceGate().
+   */
+  unextracted?: { reason: UnextractedReason; fragment: string };
 };
 
 /**
- * Final guard before insert. Regex over the raw gazette text is always
- * authoritative — the LLM is a fallback only when the regex misses.
- *
- * Strategy:
- *   1. If the regex finds a price in raw text → USE IT, ignore the LLM entirely.
- *      (This is the whole point of Bug 1's fix: the LLM reliably mangles prices.)
- *   2. If regex finds nothing → fall back to the LLM-cleaned price (log a warning).
- *   3. Refuse rows with > 2B CHF (implausible — almost certainly a parser/LLM bug).
- *   4. If regex disagrees with LLM by > 0.5 CHF → record a non-fatal warning so we
- *      can audit how often the LLM is wrong. Row still inserts with the regex value.
+ * Final guard before insert. Deterministic extraction over the raw gazette text
+ * is always authoritative — the LLM is a fallback only when the text carries no
+ * recognisable price shape at all.
  */
 export function validateParsedPrice(
   rawText: string | null | undefined,
   llmPrice: string | null,
 ): ValidationOk | ValidationFailure {
-  const regexPrice = extractPriceFromRaw(rawText);
+  const ext = extractPrice(rawText);
+
+  // A malformed amount in the source is never resolved by the LLM's guess.
+  if (ext.kind === 'malformed') {
+    return {
+      ok: true, price: null, source: 'none',
+      unextracted: { reason: 'price_malformed_in_source', fragment: ext.fragment },
+    };
+  }
 
   let source: 'regex' | 'llm_fallback' | 'none';
   let finalPrice: string | null;
   let warning: string | undefined;
 
-  if (regexPrice !== null) {
-    finalPrice = regexPrice;
+  if (ext.kind === 'total' || ext.kind === 'parts') {
+    finalPrice = ext.price;
     source = 'regex';
-    if (llmPrice && llmPrice !== regexPrice) {
-      const diff = Math.abs(parseFloat(regexPrice) - parseFloat(llmPrice));
+    if (llmPrice && llmPrice !== finalPrice) {
+      const diff = Math.abs(parseFloat(finalPrice) - parseFloat(llmPrice));
       if (diff > PRICE_MISMATCH_TOLERANCE) {
-        warning = `LLM disagreed with regex (LLM=${llmPrice}, regex=${regexPrice}). Took regex.`;
+        warning = `LLM disagreed with regex (LLM=${llmPrice}, regex=${finalPrice}). Took regex.`;
       }
     }
   } else if (llmPrice !== null) {
@@ -120,6 +231,14 @@ export function validateParsedPrice(
     source = 'llm_fallback';
     warning = 'Regex missed; using LLM price as fallback. Audit periodically.';
   } else {
+    // No price extracted. Silent only if the text does not visibly carry one.
+    if (hasPriceMarker(rawText)) {
+      const frag = rawText!.match(PRICE_MARKER_RE)?.[0] ?? '';
+      return {
+        ok: true, price: null, source: 'none',
+        unextracted: { reason: 'price_in_text_not_extracted', fragment: frag },
+      };
+    }
     return { ok: true, price: null, source: 'none' };
   }
 
@@ -132,4 +251,26 @@ export function validateParsedPrice(
   return warning
     ? { ok: true, price: finalPrice, source, warning }
     : { ok: true, price: finalPrice, source };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Run gate
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type UnextractedPrice = { affaire: string; reason: UnextractedReason; fragment: string };
+
+/**
+ * The end-of-run decision. A price visible in the source but absent from the
+ * column must turn the workflow RED — the same contract as unparseable dates.
+ * fetch-transactions.ts and price-gate.selftest.ts both call this.
+ */
+export function priceGate(unextracted: UnextractedPrice[]): { failed: boolean; lines: string[] } {
+  if (unextracted.length === 0) return { failed: false, lines: [] };
+  const lines = [
+    `  VALIDATION FAILED: ${unextracted.length} row(s) carry a price in the FAO text that was not ` +
+      `extracted. Written with price NULL and quarantined to fao_transactions_parse_errors:`,
+    ...unextracted.slice(0, 25).map((u) => `    affaire ${u.affaire}: ${u.reason} — "${u.fragment}"`),
+  ];
+  if (unextracted.length > 25) lines.push(`    ... and ${unextracted.length - 25} more`);
+  return { failed: true, lines };
 }

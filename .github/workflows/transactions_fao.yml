@@ -71,6 +71,23 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
+      - name: Regression test — price extraction + fail-loud contract
+        # Pure: no DB, no network. Covers the ×100/×1000 bugs and the 2026-09-13
+        # "price in the text, NULL in the column" defect (multi-lot "Prix:" parts,
+        # ambiguous grouping, unrecognised shapes).
+        run: cd pipelines/transactions-fao && npx tsx price.test.ts
+      - name: Negative control — a malformed price MUST turn the run red
+        # Runs the parser's own validateParsedPrice() + priceGate() on malformed
+        # fixtures. It must exit non-zero; if it ever exits 0 the gate is broken.
+        # Deliberately NOT written as `! npx tsx …`: bash `set -e` ignores the
+        # failure of a `!`-inverted command, so that form would pass silently.
+        run: |
+          cd pipelines/transactions-fao
+          if npx tsx price-gate.selftest.ts; then
+            echo "::error::price gate did NOT go red on a malformed price — fail-loud contract broken"
+            exit 1
+          fi
+          npx tsx price-gate.selftest.ts --clean
       - name: Install Playwright browsers
         run: cd pipelines/transactions-fao && npx playwright install chromium --with-deps
       - name: Fetch FAO Transactions

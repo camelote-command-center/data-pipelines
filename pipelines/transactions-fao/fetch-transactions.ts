@@ -36,7 +36,7 @@ import Anthropic from '@anthropic-ai/sdk';
 import * as cheerio from 'cheerio';
 import { supabase, upsertBronze, sleep, verifyBronzeAccess, BRONZE_SCHEMA, resolveTable } from '../_shared/supabase.js';
 import { createFaoSession } from '../_shared/fao-session.js';
-import { cleanSwissPrice, validateParsedPrice } from './price.js';
+import { cleanSwissPrice, validateParsedPrice, priceGate, type UnextractedPrice } from './price.js';
 
 // ---------------------------------------------------------------------------
 // Config
@@ -606,6 +606,8 @@ async function main() {
   const quarantined: Record<string, unknown>[] = [];
   // Dates that could not be normalised. Non-empty => the run must exit non-zero.
   const unparseableDates: { affaire: string; raw: string }[] = [];
+  // Prices visible in the FAO text that were not extracted. Non-empty => exit non-zero.
+  const unextractedPrices: UnextractedPrice[] = [];
   let parseErrors = 0;
 
   for (let i = 0; i < toParse.length; i++) {
@@ -724,6 +726,26 @@ async function main() {
 
       if (validation.warning) {
         console.warn(`  ⚠ ${affaireNumber}: ${validation.warning}`);
+      }
+
+      // A price visible in the source but not extracted is never silent. Same
+      // contract as dates: the row is still written (price NULL, never a guessed
+      // figure), a quarantine record carries the affaire and the offending
+      // fragment, and the run exits non-zero. Before 2026-09-13 these wrote NULL
+      // with exit 0 — e.g. 2026/7033/0, a CHF 28.9M sale, shipped with no price.
+      if (validation.unextracted) {
+        const { reason, fragment } = validation.unextracted;
+        unextractedPrices.push({ affaire: String(affaireNumber), reason, fragment });
+        console.error(`  ✗ PRICE NOT EXTRACTED ${affaireNumber}: ${reason} — "${fragment}"`);
+        quarantined.push({
+          affaire_number: affaireNumber,
+          reason,
+          parsed_price: null,
+          raw_regex_price: fragment,
+          llm_payload: parsedData,
+          raw_text: raw.details,
+          warnings: null,
+        });
       }
 
       // Build record — DO NOT supply type_clean_list (trigger handles it)
@@ -864,6 +886,7 @@ async function main() {
   console.log(`  Parse errors:                    ${parseErrors}`);
   console.log(`  Rows quarantined:                ${quarantined.length}`);
   console.log(`  Unparseable publication dates:   ${unparseableDates.length}`);
+  console.log(`  Prices in text not extracted:    ${unextractedPrices.length}`);
   console.log(`  Rows upserted to DB:             ${totalUpserted}`);
   console.log(`  Rows with null affaire:          ${nullAffaireCount}`);
   console.log(`  Latest fao_publication_date in DB: ${latestDate}`);
@@ -903,6 +926,13 @@ async function main() {
     if (unparseableDates.length > 25) {
       console.error(`    ... and ${unparseableDates.length - 25} more`);
     }
+    failed = true;
+  }
+
+  // Same contract for prices: present in the source, absent from the column => RED.
+  const gate = priceGate(unextractedPrices);
+  if (gate.failed) {
+    for (const line of gate.lines) console.error(line);
     failed = true;
   }
 
