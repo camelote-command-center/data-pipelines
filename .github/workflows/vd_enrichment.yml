@@ -28,13 +28,12 @@ jobs:
       fail-fast: false        # one canton layer failing must not cancel the other 17
       max-parallel: 4         # be polite to map.lausanne.ch / canton VD ArcGIS
       matrix:
+        # vd_batiment_rcb, vd_degre_sensibilite_bruit, vd_zone_affectation run in the sharded jobs below.
         parser:
           - federal_bav_transit
           - vd_batiment_projete
-          - vd_batiment_rcb
           - vd_classement
           - vd_ddp_pts
-          - vd_degre_sensibilite_bruit
           - vd_isos
           - vd_jardin_historique
           - vd_lausanne_archeologie
@@ -46,7 +45,6 @@ jobs:
           - vd_lausanne_servitudes
           - vd_limite_foret
           - vd_region_archeologique
-          - vd_zone_affectation
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -81,6 +79,168 @@ jobs:
             -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
             -H "Content-Type: application/json" -H "Prefer: return=minimal" \
             -d "{\"last_error\":${ESC}}"
+        env:
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+
+  # canton-VD ArcGIS serves ONE feature per request (maxRecordCount=1). A single process could not
+  # finish vd_batiment_rcb inside a job (2026-09-06: killed at 30 min, ~3,500 of 240,517 rows).
+  # The VPS ran it as 10 MOD(OBJECTID) shards; here 20 shards, each well inside the 300-min limit.
+  # Sharded runs do not soft-delete (each shard only sees its slice) — same as the VPS runs.
+  rcb_shards:
+    if: github.event.inputs.parser == '' || github.event.inputs.parser == 'vd_batiment_rcb' || github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - name: Run vd_batiment_rcb shard ${{ matrix.shard }}/20
+        env:
+          SUPABASE_DB_URI: ${{ secrets.RE_LLM_DB_URL }}
+          PARSER_HOST: github-actions
+        run: PYTHONPATH=. python -m pipelines.vd_enrichment.vd_batiment_rcb.run --where "MOD(OBJECTID,20)=${{ matrix.shard }}" --shard-tag "${{ matrix.shard }}/20"
+
+  rcb_shards_stamp:
+    needs: rcb_shards
+    if: ${{ always() && needs.rcb_shards.result != 'skipped' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Stamp vd_batiment_rcb (every shard succeeded)
+        if: needs.rcb_shards.result == 'success'
+        run: |
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.vd_batiment_rcb" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+            -d "{\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"last_error\":null}"
+        env:
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+      - name: Record failure (vd_batiment_rcb)
+        if: needs.rcb_shards.result != 'success'
+        run: |
+          MSG="GitHub Actions run ${{ github.run_id }}: one or more vd_batiment_rcb shards failed or were cancelled at $(date -u +%Y-%m-%dT%H:%M:%SZ). See https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          ESC=$(printf '%s' "$MSG" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.vd_batiment_rcb" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+            -d "{\"last_error\":${ESC}}"
+          exit 1
+        env:
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+
+  # canton-VD ArcGIS serves ONE feature per request (maxRecordCount=1). A single process could not
+  # finish vd_zone_affectation inside a job (2026-09-06: killed at 30 min, ~8,500 of 92,171 rows).
+  # The VPS ran it as 10 MOD(OBJECTID) shards; here 10 shards, each well inside the 300-min limit.
+  # Sharded runs do not soft-delete (each shard only sees its slice) — same as the VPS runs.
+  zone_affectation_shards:
+    if: github.event.inputs.parser == '' || github.event.inputs.parser == 'vd_zone_affectation' || github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - name: Run vd_zone_affectation shard ${{ matrix.shard }}/10
+        env:
+          SUPABASE_DB_URI: ${{ secrets.RE_LLM_DB_URL }}
+          PARSER_HOST: github-actions
+        run: PYTHONPATH=. python -m pipelines.vd_enrichment.vd_zone_affectation.run --where "MOD(OBJECTID,10)=${{ matrix.shard }}" --shard-tag "${{ matrix.shard }}/10"
+
+  zone_affectation_shards_stamp:
+    needs: zone_affectation_shards
+    if: ${{ always() && needs.zone_affectation_shards.result != 'skipped' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Stamp vd_zone_affectation (every shard succeeded)
+        if: needs.zone_affectation_shards.result == 'success'
+        run: |
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.vd_zone_affectation" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+            -d "{\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"last_error\":null}"
+        env:
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+      - name: Record failure (vd_zone_affectation)
+        if: needs.zone_affectation_shards.result != 'success'
+        run: |
+          MSG="GitHub Actions run ${{ github.run_id }}: one or more vd_zone_affectation shards failed or were cancelled at $(date -u +%Y-%m-%dT%H:%M:%SZ). See https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          ESC=$(printf '%s' "$MSG" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.vd_zone_affectation" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+            -d "{\"last_error\":${ESC}}"
+          exit 1
+        env:
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+
+  # canton-VD ArcGIS serves ONE feature per request (maxRecordCount=1). A single process could not
+  # finish vd_degre_sensibilite_bruit inside a job (2026-09-06: killed at 30 min, ~11,500 of 90,596 rows).
+  # The VPS ran it as 10 MOD(OBJECTID) shards; here 10 shards, each well inside the 300-min limit.
+  # Sharded runs do not soft-delete (each shard only sees its slice) — same as the VPS runs.
+  bruit_shards:
+    if: github.event.inputs.parser == '' || github.event.inputs.parser == 'vd_degre_sensibilite_bruit' || github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - name: Run vd_degre_sensibilite_bruit shard ${{ matrix.shard }}/10
+        env:
+          SUPABASE_DB_URI: ${{ secrets.RE_LLM_DB_URL }}
+          PARSER_HOST: github-actions
+        run: PYTHONPATH=. python -m pipelines.vd_enrichment.vd_degre_sensibilite_bruit.run --where "MOD(OBJECTID,10)=${{ matrix.shard }}" --shard-tag "${{ matrix.shard }}/10"
+
+  bruit_shards_stamp:
+    needs: bruit_shards
+    if: ${{ always() && needs.bruit_shards.result != 'skipped' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Stamp vd_degre_sensibilite_bruit (every shard succeeded)
+        if: needs.bruit_shards.result == 'success'
+        run: |
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.vd_degre_sensibilite_bruit" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+            -d "{\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"last_error\":null}"
+        env:
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+      - name: Record failure (vd_degre_sensibilite_bruit)
+        if: needs.bruit_shards.result != 'success'
+        run: |
+          MSG="GitHub Actions run ${{ github.run_id }}: one or more vd_degre_sensibilite_bruit shards failed or were cancelled at $(date -u +%Y-%m-%dT%H:%M:%SZ). See https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          ESC=$(printf '%s' "$MSG" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.vd_degre_sensibilite_bruit" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+            -d "{\"last_error\":${ESC}}"
+          exit 1
         env:
           CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
           CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
