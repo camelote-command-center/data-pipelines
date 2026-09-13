@@ -37,6 +37,36 @@ import * as cheerio from 'cheerio';
 import { supabase, upsertBronze, sleep, verifyBronzeAccess, BRONZE_SCHEMA, resolveTable } from '../_shared/supabase.js';
 import { createFaoSession } from '../_shared/fao-session.js';
 import { cleanSwissPrice, validateParsedPrice, priceGate, type UnextractedPrice } from './price.js';
+import { normalizeOwners, makeLocalityMatcher, type OwnerFlag } from './owners.js';
+
+/**
+ * Swiss locality names (silver_ch.ref_communes canonical + aliases, already accent-stripped
+ * and lower-cased in the DB). Paginated: PostgREST caps a response at 1,000 rows and there
+ * are ~2,100 communes. Returns null on failure — the caller then goes red rather than
+ * silently skipping owner normalization.
+ */
+async function loadLocalityNames(): Promise<string[] | null> {
+  const names: string[] = [];
+  const PAGE = 1000;
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await supabase
+      .schema('silver_ch')
+      .from('ref_communes')
+      .select('canonical_name_norm, aliases_norm')
+      .order('canonical_bfs')
+      .range(from, from + PAGE - 1);
+    if (error) {
+      console.error(`  Could not load locality names from silver_ch.ref_communes: ${error.message}`);
+      return null;
+    }
+    for (const r of data ?? []) {
+      if (r.canonical_name_norm) names.push(r.canonical_name_norm);
+      for (const a of r.aliases_norm ?? []) if (a) names.push(a);
+    }
+    if (!data || data.length < PAGE) break;
+  }
+  return names.length > 0 ? names : null;
+}
 
 // ---------------------------------------------------------------------------
 // Config
@@ -608,6 +638,12 @@ async function main() {
   const unparseableDates: { affaire: string; raw: string }[] = [];
   // Prices visible in the FAO text that were not extracted. Non-empty => exit non-zero.
   const unextractedPrices: UnextractedPrice[] = [];
+  // Owners whose whole name is a locality (phantom / swap / truncated public body). Non-empty => red.
+  const flaggedOwners: (OwnerFlag & { affaire: string })[] = [];
+  let ownerSplits = 0;
+  const localityNames = await loadLocalityNames();
+  const isLocality = makeLocalityMatcher(localityNames ?? []);
+  if (localityNames) console.log(`  Loaded ${localityNames.length} locality names for owner normalization`);
   let parseErrors = 0;
 
   for (let i = 0; i < toParse.length; i++) {
@@ -665,6 +701,16 @@ async function main() {
 
       // Format keys to snake_case
       const formatted = formatKeys(parsedData);
+
+      // Owner names: the domicile must never land in the name (2026-09-13). Deterministic
+      // split of "NAME, LOCALITY"; a party that is only a locality is flagged, never dropped.
+      // See owners.ts. Mirrors silver_ch.apply_entity_merge_decisions() on re-LLM.
+      const oldOwners = normalizeOwners(formatted.old_owner_s, 'old_owner_s', isLocality);
+      const newOwners = normalizeOwners(formatted.new_owner_s, 'new_owner_s', isLocality);
+      formatted.old_owner_s = oldOwners.owners;
+      formatted.new_owner_s = newOwners.owners;
+      ownerSplits += oldOwners.splits + newOwners.splits;
+      const ownerFlags = [...oldOwners.flags, ...newOwners.flags];
 
       // Best-effort affaire id, needed for the quarantine record if the date fails.
       const affaireNumberEarly =
@@ -745,6 +791,23 @@ async function main() {
           llm_payload: parsedData,
           raw_text: raw.details,
           warnings: null,
+        });
+      }
+
+      // A party whose whole name is a locality is never silent either: the row is written
+      // unchanged (a human decides whether it is a phantom, a swap or a truncated public
+      // body), a quarantine record names the affaire and the owner, and the run goes red.
+      for (const fl of ownerFlags) {
+        flaggedOwners.push({ ...fl, affaire: String(affaireNumber) });
+        console.error(`  ✗ OWNER IS ONLY A LOCALITY ${affaireNumber} ${fl.side}[${fl.index}]: "${fl.name}" (city: ${fl.city ?? '—'})`);
+        quarantined.push({
+          affaire_number: affaireNumber,
+          reason: fl.reason,
+          parsed_price: null,
+          raw_regex_price: null,
+          llm_payload: parsedData,
+          raw_text: raw.details,
+          warnings: [`${fl.side}[${fl.index}]`, `name=${fl.name}`, `city=${fl.city ?? ''}`],
         });
       }
 
@@ -887,6 +950,8 @@ async function main() {
   console.log(`  Rows quarantined:                ${quarantined.length}`);
   console.log(`  Unparseable publication dates:   ${unparseableDates.length}`);
   console.log(`  Prices in text not extracted:    ${unextractedPrices.length}`);
+  console.log(`  Owner domiciles split off name:  ${ownerSplits}`);
+  console.log(`  Owners that are only a locality: ${flaggedOwners.length}`);
   console.log(`  Rows upserted to DB:             ${totalUpserted}`);
   console.log(`  Rows with null affaire:          ${nullAffaireCount}`);
   console.log(`  Latest fao_publication_date in DB: ${latestDate}`);
@@ -933,6 +998,24 @@ async function main() {
   const gate = priceGate(unextractedPrices);
   if (gate.failed) {
     for (const line of gate.lines) console.error(line);
+    failed = true;
+  }
+
+  // Owner normalization must not silently degrade: without the locality list no domicile
+  // can be split off and no phantom caught, so the run goes red (rows are still written).
+  if (!localityNames) {
+    console.error('  VALIDATION FAILED: locality names could not be loaded — owner names were NOT normalized this run.');
+    failed = true;
+  }
+
+  if (flaggedOwners.length > 0) {
+    console.error(
+      `  VALIDATION FAILED: ${flaggedOwners.length} owner(s) are only a locality (phantom party, ` +
+        `name/city swap or truncated public body). Written unchanged and quarantined:`,
+    );
+    for (const f of flaggedOwners.slice(0, 25)) {
+      console.error(`    affaire ${f.affaire} ${f.side}[${f.index}]: "${f.name}" (city: ${f.city ?? '—'})`);
+    }
     failed = true;
   }
 

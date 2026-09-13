@@ -1,0 +1,36 @@
+-- ============================================================================
+-- 2026-09-13 — Restore warehouse -> lamap-lbi ref.link_entity_transactions
+-- ============================================================================
+-- LBI's entity links were FROZEN at 2026-08-06: every run of
+-- silver_ch.event_transaction_parties -> lamap-lbi.link_entity_transactions was
+-- REFUSED by gold_ch.sync_full_refresh's fail-closed guard (not in c_allowlist /
+-- c_swaplist, allow_legacy_truncate=false). The job still reported success.
+-- Consequence: LBI entity x-ray / portfolios / entity graph got no entity-link
+-- update for five weeks (357,512 stale rows vs 359,470 at source), so no entity
+-- fix — including the merge authority — could reach LBI.
+--
+-- Not a deliberate exclusion: the allowlists were built for lamap_db only, and the
+-- LBI entities pipe was fixed the same way on 2026-07-06 (S2 Phase 1). This mirrors
+-- lamap_db's working setup exactly: Branch C atomic staging-swap (keyless junction
+-- table; TRUNCATE+INSERT inside one remote transaction, rolled back on any error, so
+-- live data is never left empty).
+--
+-- Steps: (1) staging table on lamap-lbi, (2) its foreign table on re-LLM,
+-- (3) one tuple added to c_swaplist in gold_ch.sync_full_refresh (full new definition
+-- applied from the script; previous md5 0737d9a73ead6517db780b8c9f63b06f backed up in
+-- backup.fn_defs_20260913).
+--
+-- ROLLBACK: restore the backed-up sync_full_refresh definition (the pipe returns to
+-- REFUSED; LBI keeps whatever it last received). The staging table and foreign table
+-- are inert on their own.
+-- ============================================================================
+
+-- (1) on lamap-lbi — mirror of lamap_db ref._staging_link_entity_transactions (LOGGED, same 9 columns)
+-- CREATE TABLE IF NOT EXISTS ref._staging_link_entity_transactions (LIKE ref.link_entity_transactions INCLUDING DEFAULTS);
+
+-- (2) on re-LLM
+-- IMPORT FOREIGN SCHEMA ref LIMIT TO (_staging_link_entity_transactions) FROM SERVER lamap_lbi_server INTO lbi_foreign;
+
+-- (3) on re-LLM — CREATE OR REPLACE PROCEDURE gold_ch.sync_full_refresh(...) with the tuple
+--     ARRAY['silver_ch','event_transaction_parties','link_entity_transactions','lamap-lbi']
+--     appended to c_swaplist after the identical lamap_db tuple. Only change.
