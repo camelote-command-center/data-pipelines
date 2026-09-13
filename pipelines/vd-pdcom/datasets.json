@@ -1,0 +1,6 @@
+{
+  "workflow": "vd_pdcom.yml",
+  "datasets": [
+    {"code": "vd_pdcom_coverage", "schema": "bronze_ch", "table": "vd_pdcom_communes"}
+  ]
+}
