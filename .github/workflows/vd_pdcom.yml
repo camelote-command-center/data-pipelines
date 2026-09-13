@@ -1,0 +1,49 @@
+name: Vaud PDCom coverage and pilot acquisition (Pixxels)
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '40 3 16 9 *'
+permissions:
+  contents: read
+concurrency:
+  group: vd-pdcom
+  cancel-in-progress: false
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install -r pipelines/vd-pdcom/requirements.txt
+      - name: Verify coverage contracts
+        run: python -m unittest discover -s pipelines/vd-pdcom/tests -v
+      - name: Refresh every commune and acquire pilot maps
+        env:
+          RE_LLM_DB_URL: ${{ secrets.RE_LLM_DB_URL }}
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+        run: python pipelines/vd-pdcom/parser.py --persist --monitor
+      - name: Report failure to Pixxels without advancing freshness
+        if: failure()
+        env:
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+        run: |
+          python - <<'PY'
+          import os, json, urllib.request
+          headers={'apikey':os.environ['CMD_KEY'],'Authorization':'Bearer '+os.environ['CMD_KEY'],'Content-Type':'application/json','Prefer':'return=representation'}
+          body=json.dumps({'status':'error','last_error':'VD PDCom workflow failed: '+os.environ['GITHUB_RUN_ID']}).encode()
+          req=urllib.request.Request(os.environ['CMD_URL']+'/rest/v1/datasets?code=eq.vd_pdcom_coverage',data=body,method='PATCH',headers=headers)
+          with urllib.request.urlopen(req,timeout=45) as r:
+              assert len(json.load(r))==1, 'Missing VD dataset registration'
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: vd-pdcom-${{ github.run_id }}
+          path: vd-pdcom-output/
+          retention-days: 90
