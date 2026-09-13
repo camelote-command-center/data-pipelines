@@ -88,6 +88,12 @@ jobs:
             exit 1
           fi
           npx tsx price-gate.selftest.ts --clean
+      - name: Regression test — owner names never carry the domicile
+        # Pure: no DB, no network. "NAME, LOCALITY" is split deterministically; a party
+        # that is only a locality (phantom / swap / truncated public body) is flagged,
+        # never dropped; street words that are also communes ("Rue", "Port") are never
+        # a domicile. Mirrors silver_ch.apply_entity_merge_decisions() on re-LLM.
+        run: cd pipelines/transactions-fao && npx tsx owners.test.ts
       - name: Install Playwright browsers
         run: cd pipelines/transactions-fao && npx playwright install chromium --with-deps
       - name: Fetch FAO Transactions
