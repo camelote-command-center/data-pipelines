@@ -75,7 +75,11 @@ DEFAULT_LOOKBACK_DAYS = 30
 # date fields fall within the last RESCAN_LOOKBACK_DAYS and UPSERTs them
 # (idempotent). Anchored to now() — NOT to last_acquired_at — so the window can
 # never ratchet past the data and silently freeze the feed (see main()).
-RESCAN_LOOKBACK_DAYS = 45
+RESCAN_LOOKBACK_DAYS = int(os.environ.get("SAD_RESCAN_LOOKBACK_DAYS") or 45)
+
+# Fail loud if a full scan reads materially fewer dossiers than the API says exist
+# (paging broken, commune list incomplete, silent API change).
+MIN_SCAN_COVERAGE = 0.98
 
 # Historical event-date fields that must never legitimately be in the future.
 # SITG occasionally emits sentinel/garbage future dates (observed
@@ -400,11 +404,21 @@ def fetch_incremental(
     """
     Fetch all SAD dossiers modified since cutoff_date.
 
-    Strategy: For each commune, page through results sorted by
-    dateDernierDepot DESC. Stop when we hit records whose latest
-    date fields (dateStatut, dateDepot) are ALL older than cutoff.
+    Strategy: read EVERY page of every commune and keep the dossiers whose most
+    recent date field (dateStatut, dateDepot, dateAcceptation) is >= cutoff.
+
+    ROOT FIX (2026-09-13): this used to page "sorted by dateDernierDepot DESC" and stop
+    at the first page with nothing recent. Since ~2026-04 the API no longer returns
+    dateDernierDepot and ignores sortBy/sortDesc entirely (every key returns the same
+    fixed order, 1995 dossiers first), so every commune stopped after page 1 and new
+    dossiers were silently skipped: in Genève-Plainpalais alone 142 of 202 dossiers
+    changed in the last 45 days were missing from bronze and 57 of the other 60 had
+    a stale status, while runs reported success. No ordering is assumed any more.
+
+    Returns (records, scanned) — scanned = dossiers read, for the coverage check.
     """
     all_records = []
+    scanned = 0
     cutoff_str = cutoff_date.strftime("%Y-%m-%d")
 
     print(f"\n  Cutoff date: {cutoff_str}")
@@ -412,58 +426,41 @@ def fetch_incremental(
 
     for ci, commune in enumerate(communes):
         page = 1
+        commune_scanned = 0
         commune_records = 0
-        stop_commune = False
 
-        while not stop_commune:
+        while True:
             items = fetch_page(session, xsrf, commune, page)
 
             if not items:
                 break
 
-            page_has_recent = False
-
             for item in items:
-                # Check if this record is recent enough
-                # Use dateStatut as the best proxy for "last modified"
+                commune_scanned += 1
                 date_statut = parse_sad_date(item.get("dateStatut"))
                 date_depot = parse_sad_date(item.get("dateDepot"))
                 date_acceptation = parse_sad_date(item.get("dateAcceptation"))
-
-                # Take the most recent date as "last modified"
                 dates = [d for d in [date_statut, date_depot, date_acceptation] if d]
                 most_recent = max(dates) if dates else None
 
                 if most_recent and most_recent >= cutoff_date:
-                    page_has_recent = True
+                    all_records.append(transform_record(item))
+                    commune_records += 1
 
-                # Transform and collect record regardless of date
-                # (the sort is approximate, so we collect everything
-                # on pages that have at least one recent record)
-                record = transform_record(item)
-                all_records.append(record)
-                commune_records += 1
-
-            # If NO records on this page were recent, stop this commune
-            if not page_has_recent:
-                break
-
-            # If we got fewer results than page size, we've exhausted this commune
+            # Fewer results than page size: this commune is exhausted
             if len(items) < PAGE_SIZE:
                 break
 
             page += 1
+            time.sleep(0.2)
 
-            # Small delay between pages
-            time.sleep(0.5)
+        scanned += commune_scanned
+        print(f"  [{ci+1}/{len(communes)}] {commune}: {commune_records} changed of "
+              f"{commune_scanned} scanned ({page} pages)")
 
-        if commune_records > 0:
-            print(f"  [{ci+1}/{len(communes)}] {commune}: {commune_records} records ({page} pages)")
-
-        # Small delay between communes
         time.sleep(0.3)
 
-    return all_records
+    return all_records, scanned
 
 
 # ------------------------------------------------------------------
@@ -547,10 +544,18 @@ def main():
     print("  Fetching modified dossiers...")
     print(f"{'━' * 60}")
 
-    all_records = fetch_incremental(session, xsrf, cutoff_date, communes)
+    all_records, scanned = fetch_incremental(session, xsrf, cutoff_date, communes)
 
     fetch_elapsed = time.time() - start_time
-    print(f"\n  Fetch complete: {len(all_records):,} records in {fetch_elapsed:.0f}s")
+    print(f"\n  Fetch complete: {len(all_records):,} changed records "
+          f"({scanned:,} scanned) in {fetch_elapsed:.0f}s")
+
+    # Fail loud: a scan that reads far fewer dossiers than the API holds is a broken
+    # scan (paging, commune list, API change), never "nothing new".
+    if total_in_api and scanned < MIN_SCAN_COVERAGE * total_in_api:
+        print(f"  FAILED: scanned {scanned:,} of {total_in_api:,} dossiers "
+              f"({scanned / total_in_api:.1%} < {MIN_SCAN_COVERAGE:.0%}). Nothing written.")
+        sys.exit(1)
 
     if not all_records:
         print("  No modified dossiers found since cutoff date.")
