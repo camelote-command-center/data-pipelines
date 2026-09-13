@@ -1,0 +1,11 @@
+{
+  "source": "silver_ch.cadastral_plots",
+  "commune_bfs": 5725,
+  "source_parcels": 1012,
+  "sector_parcel_intersections": 541,
+  "unique_parcels": 527,
+  "parcels_flagged_with_10m_boundary_heuristic": 382,
+  "release_status": "review_required",
+  "geometry_surface": "bronze_ch.vd_pdcom_sectors",
+  "parcel_surface": "bronze_ch.vd_pdcom_parcel_candidates"
+}

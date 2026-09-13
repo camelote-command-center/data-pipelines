@@ -33,7 +33,10 @@ until a separate validated release is implemented. No false 300/300 completion.
 
 Reviewed official source manifest: Lausanne, Morges, Prangins synthesis maps.
 Download checksummed PDFs, inspect text and vector paths, and preserve provenance.
-This first stage does not yet publish geographic sectors or parcel assignments.
+This first stage does not publish consumer parcel assignments. A Prangins
+geographic pilot is stored separately as review_required:15 sectors and541
+sector/parcel intersections (527 distinct parcels). See reports/prangins/README.md
+for complete alignment evidence, including seven outliers and untrimmed RMSE.
 
 For spatial release: prefer native GIS/GeoPDF coordinates; otherwise independent
 control points, measured residuals, and visual overlay validation. Do NOT reuse
@@ -42,8 +45,10 @@ Do not apply Geneva zone-5 eligibility logic to Vaud. Schematic map precision an
 alignment error must accompany parcel intersections; no automatic whole-parcel
 classification from a small overlap. A new PDF hash requires renewed validation.
 
-`vd_pdcom_sectors` provides a real WGS84 geom and GIST index for future validated
-output. PDF page-space paths belong to inspection artifacts, never geom.
+`vd_pdcom_sectors` provides real WGS84 geom and GIST index; review_status
+separates pilot candidates from validated output. source_precision_m remains
+NULL when unknown. `vd_pdcom_parcel_candidates` contains review-required
+geographic overlaps. PDF page-space paths belong to inspection artifacts, never geom.
 Delivery status becomes verified only after field/geometry readback at the
 registered receiver. Existing GE datasets and syncs are not modified.
 

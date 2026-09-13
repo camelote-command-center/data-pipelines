@@ -19,6 +19,7 @@ import psycopg2
 from psycopg2.extras import Json
 import requests
 from candidates import extract as extract_candidates
+from spatial_pilot import persist as persist_spatial_pilot
 
 ROOT = Path(__file__).resolve().parent
 CODE = 'vd_pdcom_coverage'
@@ -189,6 +190,8 @@ def run(args):
                          Json([{'url':source['landing_url'],'document_id':doc_id}]),
                          'Independent alignment and spatial QA pending; selected categories only' if candidates['paths'] else 'Source changed: template review required',
                          source['commune_bfs']))
+                    if source['commune_bfs']==5725:
+                        report['spatial_pilot']=persist_spatial_pilot(conn,doc_id,sha)
             except Exception as e:
                 report['errors'].append({'commune_bfs':source['commune_bfs'],'error_type':type(e).__name__})
                 if conn:
