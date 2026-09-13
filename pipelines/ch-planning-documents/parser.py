@@ -278,7 +278,7 @@ def main():
     if args.max_documents<0:raise ValueError('negative_document_limit')
     run_id=str(uuid.uuid4());run_url='https://github.com/'+os.getenv('GITHUB_REPOSITORY','camelote-command-center/data-pipelines')+'/actions/runs/'+os.getenv('GITHUB_RUN_ID','local')
     report={'run_id':run_id,'scope':cantons,'started_at':now(),'versions_new':0,'extracted':0,'errors':0}
-    monitors=[];conn=None;complete=False
+    monitors=[];finished_monitors=set();conn=None;complete=False
     try:
         if not args.dry_run:
             monitors=[] if args.no_monitor else [Monitor(CODE),Monitor('ch_planning_document_text')]
@@ -293,6 +293,12 @@ def main():
         if args.dry_run:return 0
         store_catalog(conn,run_id,rows)
         report['catalog_persisted']=True
+        catalog_ok=(set(cantons)==set(CANTONS) and not any(v['status']=='error' for v in coverage.values()))
+        Path(args.report).write_text(json.dumps(report,ensure_ascii=False,indent=2))
+        for mon in monitors:
+            if mon.code==CODE:
+                mon.finish(uid(run_id+':'+mon.code),report,catalog_ok)
+                finished_monitors.add(mon.code)
         if not args.catalog_only:
             with conn.cursor() as c:
                 c.execute("""select id::text,title,document_url,canton_code,commune_bfs,language,legal_status,source_metadata
@@ -324,7 +330,13 @@ def main():
                             report['versions_new']+=int(new)
                         report['extracted']+=int(publish)
                         key=payload['extraction_status'];report.setdefault('extraction_outcomes',{});report['extraction_outcomes'][key]=report['extraction_outcomes'].get(key,0)+1
-                    if i%10==0:print(json.dumps({'processed':i,'selected':len(selected),'errors':report['errors']}),flush=True)
+                    if i%10==0:
+                        print(json.dumps({'processed':i,'selected':len(selected),'errors':report['errors']}),flush=True)
+                        Path(args.report).write_text(json.dumps(report,ensure_ascii=False,indent=2))
+                    if i%50==0:
+                        for mon in monitors:
+                            if mon.code!='ch_planning_document_text':continue
+                            mon.call('PATCH','acquisition_logs',params={'id':'eq.'+uid(run_id+':'+mon.code)},json={'records_fetched':i,'notes':run_url+'; '+str(i)+'/'+str(len(selected))+' URLs processed; '+str(report['errors'])+' errors'})
         complete=(not args.catalog_only and not args.max_documents and set(cantons)==set(CANTONS)
                   and not any(v['status']=='error' for v in coverage.values()) and report['errors']==0)
         return 0 if complete else 2
@@ -340,6 +352,7 @@ def main():
                     c.execute('update bronze_ch.planning_document_runs set completed_at=now(),status=%s,report=%s where id=%s',('success' if complete else 'incomplete',Json(report),run_id))
             conn.close()
         for mon in monitors:
+            if mon.code in finished_monitors:continue
             catalog_ok=(report.get('catalog_persisted',False) and set(cantons)==set(CANTONS) and not any(v['status']=='error' for v in report.get('coverage',{}).values()))
             mon.finish(uid(run_id+':'+mon.code),report,catalog_ok if mon.code==CODE else complete)
         Path(args.report).write_text(json.dumps(report,ensure_ascii=False,indent=2))
