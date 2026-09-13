@@ -1,0 +1,26 @@
+{
+  "source": "Prangins PDF BATI layer",
+  "reference": "bronze_ch.vd_batiment_rcb building centroids",
+  "parameters": [
+    4.850027457383596e-05,
+    1.7609100290721924,
+    2.0202631424081994,
+    -2.262025486679356
+  ],
+  "pdf_origin": [
+    865.1280717948728,
+    787.1526153846146
+  ],
+  "reference_origin": [
+    2508517.609329446,
+    1139043.3862973761
+  ],
+  "pdf_points": 975,
+  "reference_points": 1372,
+  "holdout_points": 195,
+  "holdout_under10m": 188,
+  "holdout_median_m": 0.5340878704584018,
+  "holdout_p90_m": 2.067493569363149,
+  "holdout_rmse_m": 35.99820690474887,
+  "status": "diagnostic_only_not_validated"
+}
