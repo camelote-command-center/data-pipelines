@@ -1,0 +1,7 @@
+{
+  "workflow": "ch_planning_documents.yml",
+  "datasets": [
+    {"code": "ch_planning_documents", "schema": "bronze_ch", "table": "planning_document_sources"},
+    {"code": "ch_planning_document_text", "schema": "bronze_ch", "table": "planning_document_versions"}
+  ]
+}
