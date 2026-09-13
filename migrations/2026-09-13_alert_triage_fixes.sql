@@ -41,8 +41,11 @@ ALTER FUNCTION public.create_trial_subscription()        SET search_path = publi
 -- authenticated full write. No reader anywhere.
 ALTER TABLE public._tg ENABLE ROW LEVEL SECURITY;
 REVOKE ALL ON public._tg FROM anon, authenticated;
--- OBSOLETE: dataset 204 NocoDB nightly sync (stopped by founder decision; replaced by rousseau_5 crons 111/112).
-UPDATE datasets SET status = 'deprecated', next_acquisition_at = NULL WHERE code = 'relm_nocodb_sync_nightly';
+-- CORRECTED the same day: dataset 204 was first deprecated as "NocoDB stopped", which was wrong — the feed was
+-- MOVED to Gary's rousseau_5 (re-LLM crons 111 transactions / 112 listings, houses+apartments from immobilier).
+-- Row kept active, renamed, and cron 112 now stamps it via rpc/update_dataset_last_acquired when 111 also succeeded.
+UPDATE datasets SET status = 'active', name = 'Gary feed to rousseau_5 (transactions + listings; ex-NocoDB nightly sync)'
+ WHERE code = 'relm_nocodb_sync_nightly';
 -- REAL: Pixxels Communities collector timed out (cc_collect_metrics measured 8-13 s vs timeout 5 s;
 -- cron.job_run_details 85k rows / 227 MB, no index, owned by supabase_admin). Timeout raised; log
 -- retention NOT applied (would delete cron history — needs founder approval).
