@@ -4,11 +4,17 @@ on:
   schedule:
     - cron: '30 5 * * *'  # Daily at 05:30 UTC
   workflow_dispatch:
+    inputs:
+      lookback_days:
+        description: 'Re-scan window in days (default 45; larger = backfill)'
+        required: false
+        default: ''
 
 jobs:
   import:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    # full scan of every commune every run (~1,700 pages): the API ignores sorting since 2026-04
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -21,6 +27,7 @@ jobs:
           RE_LLM_SUPABASE_URL: ${{ secrets.RE_LLM_SUPABASE_URL }}
           RE_LLM_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.RE_LLM_SUPABASE_SERVICE_ROLE_KEY }}
           RE_LLM_SCHEMA: bronze_ch
+          SAD_RESCAN_LOOKBACK_DAYS: ${{ github.event.inputs.lookback_days }}
           # Command-center metadata (freshness watermark).
           CAMELOTE_SUPABASE_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
           CAMELOTE_SUPABASE_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
