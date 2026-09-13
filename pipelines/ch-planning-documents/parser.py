@@ -169,6 +169,19 @@ def store_catalog(conn,run_id,rows):
                 source_metadata=excluded.source_metadata,catalog_hash=excluded.catalog_hash,
                 last_seen_run=excluded.last_seen_run,last_seen_at=now()""",values,page_size=500)
 
+def bounded_map(pool, fn, items, concurrency=3):
+    iterator=iter(items)
+    pending=set()
+    for _ in range(concurrency):
+        item=next(iterator,None)
+        if item is not None:pending.add(pool.submit(fn,item))
+    while pending:
+        done,pending=concurrent.futures.wait(pending,return_when=concurrent.futures.FIRST_COMPLETED)
+        for future in done:
+            yield future.result()
+            item=next(iterator,None)
+            if item is not None:pending.add(pool.submit(fn,item))
+
 def chunk_pages(pages):
     result=[]
     for p in pages:
@@ -187,8 +200,10 @@ def store_extraction(conn,row,payload):
     publish=payload['extraction_status']=='extracted'
     with conn:
         with conn.cursor() as c:
-            c.execute("select 1 from bronze_ch.planning_document_versions where id=%s",(version_id,))
-            exists=c.fetchone() is not None
+            c.execute("select id::text from bronze_ch.planning_document_versions where id=%s or (source_id=%s and content_hash=%s) order by id limit 1",(version_id,source_id,payload["content_hash"]))
+            existing=c.fetchone()
+            exists=existing is not None
+            if existing:version_id=existing[0]
             if not exists:
                 c.execute("""insert into bronze_ch.planning_document_versions
                 (id,source_id,content_hash,final_url,content_type,byte_count,pages,extraction_status,knowledge_document_id)
@@ -297,7 +312,7 @@ def main():
                 try:return group,extract(group[0][2]),None
                 except Exception as e:return group,None,failure_code(e)
             with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
-                for i,(group,payload,error) in enumerate(pool.map(worker,selected),1):
+                for i,(group,payload,error) in enumerate(bounded_map(pool,worker,selected),1):
                     if error:
                         report['errors']+=1
                         with conn:
