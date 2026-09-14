@@ -52,7 +52,18 @@
       {
         "page_number": 19,
         "theme": "Urbanisation et densités",
-        "limitations": "Indicative density I–IV symbols and multiple filled/hatched categories; legend on PDF18. Separate Fontanney inset must not inherit main-map transform."
+        "limitations": "Indicative density I–IV symbols and multiple filled/hatched categories; legend on PDF18. Separate Fontanney inset must not inherit main-map transform.",
+        "candidate_extraction": {
+          "visible_source_polygons": 11,
+          "categories": {
+            "Densifier": 9,
+            "Préparer la densification": 2
+          },
+          "fully_clipped_out_paths": 11,
+          "coordinate_system": "PDF points only; not georeferenced",
+          "artifact": "pipelines/vd-pdcom/reports/aigle/source-paths.json",
+          "validation": "Source outlines visually reviewed; geographic calibration pending. Multiply blend and opacity preserved as evidence, no numeric density inferred."
+        }
       }
     ],
     "scope_limit": "Exact PDF version A.2 dated19April2021 on PDF3. PDF5 has blank municipal/council/cantonal approval dates and signatures; consultation interval28September–31October2020 is printed. No final approval established."
