@@ -1,0 +1,75 @@
+{
+  "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?geometry=2566082.377468784%2C1121831.761063571%2C2566839.726429756%2C1122735.594524577&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=1%3D1&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CGENRE_TXT&outSR=2056&f=geojson",
+  "count_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?geometry=2566082.377468784%2C1121831.761063571%2C2566839.726429756%2C1122735.594524577&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=1%3D1&returnCountOnly=true&f=json",
+  "feature_count": 416,
+  "response_sha256": "384b1154b1c85266f8dd4cd899fe3284f0c1496623d2d878d3d2a25fa2fa4844",
+  "bounds_lv95": [
+    2566082.377468784,
+    1121831.761063571,
+    2566839.726429756,
+    1122735.594524577
+  ],
+  "outliers": [
+    {
+      "source_component_index": 5,
+      "rcb_distance_m": 5.26152875002559,
+      "nearest_footprint_distance_m": 0.0,
+      "nearest_footprint_id": {
+        "OBJECTID": 46494327,
+        "EGID": 280081272,
+        "NO_COM_FED": 5402,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "lv95": [
+        2566346.931544784,
+        1122644.2741393724
+      ]
+    },
+    {
+      "source_component_index": 95,
+      "rcb_distance_m": 6.19191055278659,
+      "nearest_footprint_distance_m": 1.1603531130758884,
+      "nearest_footprint_id": {
+        "OBJECTID": 46357362,
+        "EGID": 849238,
+        "NO_COM_FED": 5402,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "lv95": [
+        2566397.8081002804,
+        1122275.011582553
+      ]
+    },
+    {
+      "source_component_index": 100,
+      "rcb_distance_m": 5.660324126874951,
+      "nearest_footprint_distance_m": 0.0,
+      "nearest_footprint_id": {
+        "OBJECTID": 46387166,
+        "EGID": 849242,
+        "NO_COM_FED": 5402,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "lv95": [
+        2566341.8150274768,
+        1122240.3426990192
+      ]
+    },
+    {
+      "source_component_index": 220,
+      "rcb_distance_m": 5.273975270007434,
+      "nearest_footprint_distance_m": 0.0,
+      "nearest_footprint_id": {
+        "OBJECTID": 46449114,
+        "EGID": 3161345,
+        "NO_COM_FED": 5402,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "lv95": [
+        2566570.739320108,
+        1121902.3742488807
+      ]
+    }
+  ],
+  "interpretation": "Footprints independently fetched from official layer22, but not independent of all cadastral/RCB provenance. Point containment alone does not prove full building-shape match or surveyed accuracy."
+}
