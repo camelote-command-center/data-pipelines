@@ -1,0 +1,92 @@
+[
+  {
+    "candidate_id": "fcd3b81e-7aef-4777-b9f9-7ee701ea79fb",
+    "commune_bfs": 5613,
+    "commune_name": "Bourg-en-Lavaux",
+    "pdf_url": "https://www.b-e-l.ch/media/documents/PDCom_consultation_publique_low.pdf",
+    "landing_url": "https://www.b-e-l.ch/fr/officiel/projets/plan-directeur-communal-pdcom",
+    "title": "Plan directeur communal",
+    "plan_status": "consultation",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "5972ff47-929d-41c1-82a9-1095d7846c77",
+    "commune_bfs": 5584,
+    "commune_name": "Epalinges",
+    "pdf_url": "https://www.epalinges.ch/wp-content/uploads/2025/04/2024_PDCom_Epalinges_cahier_I_signe_Chancelier.pdf",
+    "landing_url": "https://www.epalinges.ch/administration/urbanisme-et-architecture/urbanisme-et-police-des-constructions/pdcom/",
+    "title": "Cahier I: diagnostic",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "2ff3f2cf-9516-4db6-9c7b-2cbcd1b1b617",
+    "commune_bfs": 5584,
+    "commune_name": "Epalinges",
+    "pdf_url": "https://www.epalinges.ch/wp-content/uploads/2025/04/2024_PDCom_Epalinges_cahier_II_signe_Chancelier.pdf",
+    "landing_url": "https://www.epalinges.ch/administration/urbanisme-et-architecture/urbanisme-et-police-des-constructions/pdcom/",
+    "title": "Cahier II: programme d’action",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "e58997cd-97b2-456f-bdec-5c932327a770",
+    "commune_bfs": 5561,
+    "commune_name": "Grandson",
+    "pdf_url": "https://www.grandson.ch/wp-content/uploads/2019/02/PDCOM_DOCUMENT_Approbation.pdf",
+    "landing_url": "https://www.grandson.ch/officiel/reglements-et-directives/reglements-et-plans/",
+    "title": ">Document",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "d469f62e-3236-4279-aaa4-6997b7f92d85",
+    "commune_bfs": 5498,
+    "commune_name": "La Sarraz",
+    "pdf_url": "https://www.lasarraz.ch/images/R%C3%A8glements_scann%C3%A9s/PDCom_La_Sarraz.pdf",
+    "landing_url": "https://www.lasarraz.ch/officiel/services-communaux/st/amenagement-du-territoire.html",
+    "title": "PDCom",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "e39236a1-8a72-4f1b-a903-2877e682dd3f",
+    "commune_bfs": 5590,
+    "commune_name": "Pully",
+    "pdf_url": "https://www.pully.ch/media/mzbds3fv/plan-directeur-communal.pdf",
+    "landing_url": "https://www.pully.ch/pully-pratique/urbanisme-environnement/amenagement-du-territoire/",
+    "title": "Plan directeur communal",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "81c34b6e-f11f-4465-b2ed-b9827b73e7f9",
+    "commune_bfs": 5890,
+    "commune_name": "Vevey",
+    "pdf_url": "https://demain.vevey.ch/wp-content/uploads/2024-08-22-pdcom-v6-def-signe.pdf",
+    "landing_url": "https://www.vevey.ch/administration/reglements-communaux",
+    "title": "Plan directeur communal (PDCom)",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "b47875e1-eb3f-4b92-aa59-eaaba2b90661",
+    "commune_bfs": 5890,
+    "commune_name": "Vevey",
+    "pdf_url": "https://www.vevey.ch/sites/default/files/2020-08/Ourb_Plan_Directeur_Communal.pdf",
+    "landing_url": "https://www.vevey.ch/prestations/telecharger-ou-commander-le-plan-directeur-communal-pdcom",
+    "title": "Plan directeur communal 1997 (PDCOM)",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "afa8180f-f314-4e7e-b0e8-004a369e493b",
+    "commune_bfs": 5891,
+    "commune_name": "Veytaux",
+    "pdf_url": "https://veytaux.ch/uploads/26c3b5aecb7be4adf973b0b883013a99/documents/PDCom%20du%2027_1600259156.pdf",
+    "landing_url": "https://veytaux.ch/reglements-communaux",
+    "title": "Plan directeur communal du 27 avril 1994",
+    "plan_status": "unverified",
+    "scope": "communal"
+  }
+]

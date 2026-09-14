@@ -84,3 +84,13 @@ resumable without losing earlier results. Existing document, extraction and
 receiver validation states are preserved. Pixxels acquisition details include
 queue counts and candidate totals; an acquisition success does not mean coverage
 or receiver delivery is complete. Evidence artifacts are retained for 90 days.
+
+### Additional official sources
+
+`reviewed_sources.json` supplies official PDF links reviewed for acquisition.
+`acquire_sources.py --persist` hashes each PDF, inventories every page's text and
+vector-path count, saves document/commune provenance and retains original files
+in workflow artifacts. Full manual and annual runs acquire these documents.
+A reviewed link does not establish plan approval, currency or spatial coverage:
+`plan_status` remains unverified/consultation pending document-specific review.
+Existing validated/candidate extraction states and delivery states are preserved.
