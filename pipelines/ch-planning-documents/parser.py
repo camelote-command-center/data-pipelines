@@ -107,9 +107,33 @@ def discover(cantons,cache):
 def clean_text(text):
     return text.replace('\x00','').encode('utf-8',errors='replace').decode('utf-8')
 
-def extract(url):
+DOCUMENT_TIME_LIMIT_S=30*60   # one oversized scan must not consume a whole bounded run
+RETRY_AFTER='7 days'          # error / needs_ocr references are retried at most weekly
+
+class Budget:
+    """Wall-clock budget for one run (monotonic). 0 minutes = unbounded (development runs).
+
+    New documents stop being started at `minutes`; documents already in flight must finish
+    before `minutes + grace` or are abandoned untouched, so the run always reaches its own
+    reporting before the GitHub job limit instead of being killed mid-OCR."""
+    def __init__(self,minutes=0,grace_minutes=20,clock=time.monotonic):
+        self.clock=clock;self.start=clock();self.minutes=minutes
+        self.stop_new_at=self.start+minutes*60 if minutes else None
+        self.hard_at=self.start+(minutes+grace_minutes)*60 if minutes else None
+    def accepting(self):
+        return self.stop_new_at is None or self.clock()<self.stop_new_at
+    def document_deadline(self):
+        own=self.clock()+DOCUMENT_TIME_LIMIT_S
+        return own if self.hard_at is None else min(own,self.hard_at)
+    def hard_expired(self):
+        return self.hard_at is not None and self.clock()>=self.hard_at
+
+def extract(url,deadline=None):
     data,final,ctype=fetch(url)
     digest=hashlib.sha256(data).hexdigest()
+    def check_deadline():
+        if deadline is not None and time.monotonic()>deadline:raise ValueError('document_time_limit')
+    check_deadline()
     pages=[]
     if data.startswith(b'%PDF-'):
         reader=PdfReader(io.BytesIO(data))
@@ -119,6 +143,7 @@ def extract(url):
         with tempfile.TemporaryDirectory() as temp:
             pdf_path=Path(temp)/'source.pdf';pdf_path.write_bytes(data)
             for index,page in enumerate(reader.pages,1):
+                check_deadline()
                 try:
                     text=(page.extract_text(extraction_mode='layout',layout_mode_strip_rotated=False) or '').strip() if '/Contents' in page else ''
                 except Exception:
@@ -169,18 +194,23 @@ def store_catalog(conn,run_id,rows):
                 source_metadata=excluded.source_metadata,catalog_hash=excluded.catalog_hash,
                 last_seen_run=excluded.last_seen_run,last_seen_at=now()""",values,page_size=500)
 
-def bounded_map(pool, fn, items, concurrency=3):
+def bounded_map(pool, fn, items, concurrency=3, accepting=lambda:True, submitted=None):
+    """Yield fn(item) results with at most `concurrency` in flight. Stops submitting new items
+    once accepting() is False; `submitted` (a list) receives the count of items started."""
     iterator=iter(items)
-    pending=set()
-    for _ in range(concurrency):
+    pending=set();started=0
+    def submit_next():
+        nonlocal started
+        if not accepting():return
         item=next(iterator,None)
-        if item is not None:pending.add(pool.submit(fn,item))
+        if item is not None:pending.add(pool.submit(fn,item));started+=1
+    for _ in range(concurrency):submit_next()
     while pending:
         done,pending=concurrent.futures.wait(pending,return_when=concurrent.futures.FIRST_COMPLETED)
         for future in done:
             yield future.result()
-            item=next(iterator,None)
-            if item is not None:pending.add(pool.submit(fn,item))
+            submit_next()
+    if submitted is not None:submitted.append(started)
 
 def chunk_pages(pages):
     result=[]
@@ -241,6 +271,24 @@ def store_extraction(conn,row,payload):
                 (version_id,payload['extraction_status'],source_id))
     return not exists,publish
 
+def due_targets(conn,catalog_run,cantons):
+    """References owed text extraction in one catalog run. Never-attempted first; references that
+    errored or still need OCR are retried at most every RETRY_AFTER so a long tail of dead links
+    or unreadable scans cannot consume every bounded run."""
+    with conn.cursor() as c:
+        c.execute(f"""select id::text,title,document_url,canton_code,commune_bfs,language,legal_status,source_metadata
+          from bronze_ch.planning_document_sources where last_seen_run=%s and canton_code=any(%s) and document_url is not null
+          and (
+            (last_success_at is null and (extraction_status<>'error' or last_attempt_at is null or last_attempt_at < now()-interval '{RETRY_AFTER}'))
+            or last_success_at < now()-interval '365 days'
+            or (extraction_status='needs_ocr' and (last_attempt_at is null or last_attempt_at < now()-interval '{RETRY_AFTER}'))
+          )
+          order by (last_attempt_at is not null),
+                   case when title ~* '(reglement|règlement|bauordnung|bau.?und.?zonenordnung|RCU)' then 0 else 1 end,canton_code,id""",(catalog_run,cantons))
+        rows=c.fetchall()
+    conn.commit()
+    return rows
+
 class Monitor:
     def __init__(self,code=CODE):
         self.code=code
@@ -266,12 +314,16 @@ class Monitor:
             if len(rows)!=1:raise ValueError('dispatch_log_claim_failed')
         else:
             self.call('POST','acquisition_logs',json={'id':self.log_id,'dataset_id':self.dataset['id'],'status':'running','triggered_by':'github_actions','notes':run_url})
-    def finish(self,run_id,report,complete):
+    def finish(self,run_id,report,complete,partial=False):
+        """partial=True: a bounded run stopped by its time budget after real progress, with work
+        remaining. Logged as 'partial' (never 'success'), no error state, and freshness is not
+        advanced — the next scheduled continuation carries on."""
         run_id=getattr(self,'log_id',run_id)
-        status='success' if complete else 'failed'
-        error=None if complete else 'Incomplete acquisition: see run report for source failures and coverage gaps'
+        partial=partial and not complete
+        status='success' if complete else ('partial' if partial else 'failed')
+        error=None if (complete or partial) else 'Incomplete acquisition: see run report for source failures and coverage gaps'
         self.call('PATCH','acquisition_logs',params={'id':'eq.'+run_id},json={'status':status,'completed_at':now(),'records_fetched':report.get('catalogued',0),'records_new':report.get('versions_new',0),'error_message':error,'error_details':report})
-        patch={'status':'active' if complete else 'error','last_error':error,'record_count':report.get('catalogued',0) if self.code==CODE else report.get('stored_versions',0)}
+        patch={'status':'active' if (complete or partial) else 'error','last_error':error,'record_count':report.get('catalogued',0) if self.code==CODE else report.get('stored_versions',0)}
         if complete:patch.update(last_acquired_at=now(),last_db_update_at=now())
         if not complete:
             patch['last_acquired_at']=self.last_success
@@ -283,39 +335,62 @@ class Monitor:
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--cantons',default=','.join(CANTONS));ap.add_argument('--max-documents',type=int,default=0)
     ap.add_argument('--catalog-only',action='store_true');ap.add_argument('--dry-run',action='store_true');ap.add_argument('--cache-dir');ap.add_argument('--report',default='planning-report.json');ap.add_argument('--no-monitor',action='store_true')
+    ap.add_argument('--time-budget-minutes',type=int,default=0,help='stop starting documents after N minutes (0 = unbounded)')
+    ap.add_argument('--resume',action='store_true',help='extract against the latest stored catalog; no re-discovery, text dataset only')
     args=ap.parse_args();cantons=args.cantons.split(',')
     if not set(cantons)<=set(CANTONS):raise ValueError('unknown_canton')
     if args.max_documents<0:raise ValueError('negative_document_limit')
+    if args.time_budget_minutes<0:raise ValueError('negative_time_budget')
+    if args.resume and (args.catalog_only or args.dry_run or args.cache_dir):raise ValueError('resume_is_extraction_only')
+    budget=Budget(args.time_budget_minutes)
     run_id=str(uuid.uuid4());run_url='https://github.com/'+os.getenv('GITHUB_REPOSITORY','camelote-command-center/data-pipelines')+'/actions/runs/'+os.getenv('GITHUB_RUN_ID','local')
-    report={'run_id':run_id,'scope':cantons,'started_at':now(),'versions_new':0,'extracted':0,'errors':0}
-    monitors=[];finished_monitors=set();conn=None;complete=False
+    report={'run_id':run_id,'mode':'resume' if args.resume else 'full','scope':cantons,'started_at':now(),
+            'time_budget_minutes':args.time_budget_minutes,'versions_new':0,'extracted':0,'errors':0}
+    monitors=[];finished_monitors=set();conn=None;complete=False;partial=False
     try:
         if not args.dry_run:
-            monitors=[] if args.no_monitor else [Monitor(CODE),Monitor('ch_planning_document_text')]
-            for mon in monitors:mon.begin(uid(run_id+':'+mon.code),run_url)
             conn=db_connect()
+            if args.resume:
+                # Continuation of the most recently persisted catalog. A scheduled continuation with
+                # nothing due is a silent no-op: no run row, no monitor log, exit 0.
+                with conn.cursor() as c:
+                    c.execute("select last_seen_run::text from bronze_ch.planning_document_sources where last_seen_run is not null order by last_seen_at desc nulls last limit 1")
+                    found=c.fetchone()
+                conn.commit()
+                if not found:raise ValueError('resume_without_catalog')
+                catalog_run=found[0]
+                if os.getenv('GITHUB_EVENT_NAME')=='schedule' and not due_targets(conn,catalog_run,cantons):
+                    report.update(catalog_run_id=catalog_run,due_documents=0,noop=True,complete=False)
+                    print(json.dumps(report,ensure_ascii=False),flush=True)
+                    return 0
+            else:
+                catalog_run=run_id
+            monitors=[] if args.no_monitor else ([Monitor('ch_planning_document_text')] if args.resume else [Monitor(CODE),Monitor('ch_planning_document_text')])
+            for mon in monitors:mon.begin(uid(run_id+':'+mon.code),run_url)
             with conn:
                 with conn.cursor() as c:c.execute('insert into bronze_ch.planning_document_runs(id,scope,workflow_url) values(%s,%s,%s)',(run_id,Json(vars(args)),run_url))
-        with tempfile.TemporaryDirectory() as temp:
-            cache=Path(args.cache_dir or temp);cache.mkdir(parents=True,exist_ok=True)
-            rows,coverage=discover(cantons,cache)
-        report.update(catalogued=len(rows),coverage=coverage,with_url=sum(bool(r['document_url']) for r in rows),explicit_communes=len({(r['canton_code'],r['commune_bfs']) for r in rows if r['commune_bfs']}))
-        if args.dry_run:return 0
-        store_catalog(conn,run_id,rows)
-        report['catalog_persisted']=True
-        catalog_ok=(set(cantons)==set(CANTONS) and not any(v['status']=='error' for v in coverage.values()))
-        Path(args.report).write_text(json.dumps(report,ensure_ascii=False,indent=2))
-        for mon in monitors:
-            if mon.code==CODE:
-                mon.finish(uid(run_id+':'+mon.code),report,catalog_ok)
-                finished_monitors.add(mon.code)
-        if not args.catalog_only:
+        if args.resume:
+            report['catalog_run_id']=catalog_run
             with conn.cursor() as c:
-                c.execute("""select id::text,title,document_url,canton_code,commune_bfs,language,legal_status,source_metadata
-                  from bronze_ch.planning_document_sources where last_seen_run=%s and document_url is not null
-                  and (last_success_at is null or last_success_at < now()-interval '365 days' or extraction_status='needs_ocr')
-                  order by case when title ~* '(reglement|règlement|bauordnung|bau.?und.?zonenordnung|RCU)' then 0 else 1 end,canton_code,id""",(run_id,));targets=c.fetchall()
-            conn.commit()
+                c.execute("select count(*),count(*) filter (where document_url is not null) from bronze_ch.planning_document_sources where last_seen_run=%s",(catalog_run,))
+                report['catalogued'],report['with_url']=c.fetchone()
+            conn.commit();coverage={}
+        else:
+            with tempfile.TemporaryDirectory() as temp:
+                cache=Path(args.cache_dir or temp);cache.mkdir(parents=True,exist_ok=True)
+                rows,coverage=discover(cantons,cache)
+            report.update(catalogued=len(rows),coverage=coverage,with_url=sum(bool(r['document_url']) for r in rows),explicit_communes=len({(r['canton_code'],r['commune_bfs']) for r in rows if r['commune_bfs']}))
+            if args.dry_run:return 0
+            store_catalog(conn,run_id,rows)
+            report['catalog_persisted']=True
+            catalog_ok=(set(cantons)==set(CANTONS) and not any(v['status']=='error' for v in coverage.values()))
+            Path(args.report).write_text(json.dumps(report,ensure_ascii=False,indent=2))
+            for mon in monitors:
+                if mon.code==CODE:
+                    mon.finish(uid(run_id+':'+mon.code),report,catalog_ok)
+                    finished_monitors.add(mon.code)
+        if not args.catalog_only:
+            targets=due_targets(conn,catalog_run,cantons)
             groups={}
             for row in targets:groups.setdefault(row[2],[]).append(row)
             report['due_references']=len(targets)
@@ -323,13 +398,22 @@ def main():
             report['due_documents']=len(targets)
             selected=targets[:args.max_documents] if args.max_documents else targets
             report['deferred_documents']=len(targets)-len(selected)
+            report['abandoned_at_budget']=0
             # Download/extract concurrently; serialize short database transactions.
             def worker(group):
-                try:return group,extract(group[0][2]),None
+                try:return group,extract(group[0][2],deadline=budget.document_deadline()),None
                 except Exception as e:return group,None,failure_code(e)
+            submitted=[]
             with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
-                for i,(group,payload,error) in enumerate(bounded_map(pool,worker,selected),1):
-                    if error:
+                for i,(group,payload,error) in enumerate(bounded_map(pool,worker,selected,accepting=budget.accepting,submitted=submitted),1):
+                    if error=='document_time_limit' and budget.hard_expired():
+                        # Cut off by the run budget, not by its own size: not an error. Stamp the
+                        # attempt so never-attempted documents go first next run.
+                        report['abandoned_at_budget']+=1
+                        with conn:
+                            with conn.cursor() as c:
+                                c.execute("update bronze_ch.planning_document_sources set last_attempt_at=now() where id=any(%s::uuid[])",([r[0] for r in group],))
+                    elif error:
                         report['errors']+=1
                         with conn:
                             with conn.cursor() as c:
@@ -347,24 +431,43 @@ def main():
                         for mon in monitors:
                             if mon.code!='ch_planning_document_text':continue
                             mon.call('PATCH','acquisition_logs',params={'id':'eq.'+mon.log_id},json={'records_fetched':i,'notes':run_url+'; '+str(i)+'/'+str(len(selected))+' URLs processed; '+str(report['errors'])+' errors'})
+            started=submitted[0] if submitted else 0
+            report['processed']=started
+            report['deferred_documents']+=len(selected)-started
+            report['stopped_by_budget']=(len(selected)-started>0) or report['abandoned_at_budget']>0
+            with conn.cursor() as c:
+                # Everything still owed by the catalog, ignoring the weekly retry throttle: completion
+                # keeps its original meaning (no reference left unextracted or failing).
+                c.execute("""select count(*) from bronze_ch.planning_document_sources where last_seen_run=%s
+                  and canton_code=any(%s) and document_url is not null
+                  and (last_success_at is null or last_success_at < now()-interval '365 days' or extraction_status in ('needs_ocr','error'))""",(catalog_run,cantons))
+                report['outstanding_references']=c.fetchone()[0]
+            conn.commit()
+        remaining=report.get('deferred_documents',0)+report.get('abandoned_at_budget',0)
         complete=(not args.catalog_only and not args.max_documents and set(cantons)==set(CANTONS)
-                  and not any(v['status']=='error' for v in coverage.values()) and report['errors']==0)
-        return 0 if complete else 2
+                  and not any(v['status']=='error' for v in coverage.values()) and report['errors']==0
+                  and remaining==0 and report.get('outstanding_references',0)==0)
+        # A budget-bounded run that made progress and still has work is healthy partial progress; a run
+        # that could not start a single document is a real failure and stays red.
+        partial=(not complete and not args.catalog_only and not args.max_documents
+                 and report.get('stopped_by_budget',False) and report.get('processed',0)>0)
+        return 0 if (complete or partial) else 2
     except Exception as e:
         report['fatal_error']=failure_code(e);raise
     finally:
-        report['complete']=complete;report['completed_at']=now();Path(args.report).write_text(json.dumps(report,ensure_ascii=False,indent=2))
+        report['complete']=complete;report['partial']=partial;report['completed_at']=now();Path(args.report).write_text(json.dumps(report,ensure_ascii=False,indent=2))
         if conn:
             conn.rollback()
             with conn:
                 with conn.cursor() as c:
                     c.execute('select count(*) from bronze_ch.planning_document_versions');report['stored_versions']=c.fetchone()[0]
-                    c.execute('update bronze_ch.planning_document_runs set completed_at=now(),status=%s,report=%s where id=%s',('success' if complete else 'incomplete',Json(report),run_id))
+                    c.execute('update bronze_ch.planning_document_runs set completed_at=now(),status=%s,report=%s where id=%s',('success' if complete else ('partial' if partial else 'incomplete'),Json(report),run_id))
             conn.close()
         for mon in monitors:
             if mon.code in finished_monitors:continue
             catalog_ok=(report.get('catalog_persisted',False) and set(cantons)==set(CANTONS) and not any(v['status']=='error' for v in report.get('coverage',{}).values()))
-            mon.finish(uid(run_id+':'+mon.code),report,catalog_ok if mon.code==CODE else complete)
+            if mon.code==CODE:mon.finish(uid(run_id+':'+mon.code),report,catalog_ok)
+            else:mon.finish(uid(run_id+':'+mon.code),report,complete,partial=partial)
         Path(args.report).write_text(json.dumps(report,ensure_ascii=False,indent=2))
         print(json.dumps(report,ensure_ascii=False),flush=True)
 
