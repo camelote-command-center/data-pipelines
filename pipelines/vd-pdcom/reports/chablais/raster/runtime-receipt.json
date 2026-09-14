@@ -1,0 +1,36 @@
+{
+  "operation_id": "6537117d-f6f3-4690-9333-8f5bbd4f81ce",
+  "document_id": "f261e7e2-067b-5801-909a-9224b8490c3f",
+  "evidence": {
+    "operation_id": "6537117d-f6f3-4690-9333-8f5bbd4f81ce",
+    "stage": "unassigned_source_pixel_masks",
+    "coordinate_system": "source_image_pixels_top_left_NOT_geographic",
+    "source_sha256": "d2be996343614077c860bc47587ebabd927cf6603edfb4f592c4cee3469dc7ff",
+    "image_sha256": "e35d9bfac2af5fc172e14b99403d6a85dacb6d74c7c0f5ebf4508479be118169",
+    "source_pdf_page": 29,
+    "artifact_path": "pipelines/vd-pdcom/reports/chablais/raster",
+    "threshold_results": {
+      "20": {
+        "matched_pixels": 12713,
+        "retained_components": 32
+      },
+      "35": {
+        "matched_pixels": 14798,
+        "retained_components": 29
+      },
+      "50": {
+        "matched_pixels": 15672,
+        "retained_components": 30
+      }
+    },
+    "verification": "Repeated pixel masks and component inventories identical; changed source rejected; whole-map overlay visually reviewed.",
+    "limitations": [
+      "Red dashed future-development borders may also match.",
+      "Labels, roads and base-map pixels can split or obscure a sector.",
+      "Components are pigment fragments, not a count of planning sectors.",
+      "Vaud/Valais assignment and geographic alignment are pending.",
+      "Printed boundaries are approximate; source version approval unverified."
+    ],
+    "next_step": "Separate dashed future-development boundaries from solid fills, establish geographic control and withheld QA. No sector/parcel/public output."
+  }
+}
