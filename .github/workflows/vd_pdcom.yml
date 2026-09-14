@@ -35,6 +35,11 @@ jobs:
           CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
           CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
         run: python pipelines/vd-pdcom/parser.py --persist --monitor
+      - name: Acquire reviewed official PDCom source documents
+        if: github.event.schedule == '40 3 16 9 *' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'full')
+        env:
+          RE_LLM_DB_URL: ${{ secrets.RE_LLM_DB_URL }}
+        run: python pipelines/vd-pdcom/acquire_sources.py --persist
       - name: Resume municipal source discovery (30 due communes)
         env:
           RE_LLM_DB_URL: ${{ secrets.RE_LLM_DB_URL }}
