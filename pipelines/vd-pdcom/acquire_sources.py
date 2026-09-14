@@ -9,6 +9,7 @@ import json
 import os
 from pathlib import Path
 import re
+import time
 from urllib.parse import urljoin, urlsplit
 import uuid
 
@@ -22,6 +23,19 @@ ROOT=Path(__file__).resolve().parent
 
 
 def download(url,max_bytes=100_000_000):
+    """Retry bounded transient GET failures, preserving redirect and size guards."""
+    for attempt in range(3):
+        try:
+            return _download_once(url,max_bytes)
+        except (requests.Timeout,requests.ConnectionError,requests.HTTPError) as exc:
+            response=getattr(exc,'response',None)
+            status=response.status_code if response is not None else None
+            retryable=isinstance(exc,(requests.Timeout,requests.ConnectionError)) or status in (429,500,502,503,504)
+            if not retryable or attempt==2:raise
+            time.sleep(2**(attempt+1))
+
+
+def _download_once(url,max_bytes=100_000_000):
     host=urlsplit(url).hostname
     for _ in range(5):
         public_url(url)
@@ -105,7 +119,11 @@ def run(args):
                 report['documents'].append(result);print(json.dumps(result),flush=True)
             except Exception as exc:
                 if conn:conn.rollback()
-                report['errors'].append({'commune_bfs':source['commune_bfs'],'source_url':source['pdf_url'],'error_type':type(exc).__name__})
+                error={'commune_bfs':source['commune_bfs'],'source_url':source['pdf_url'],'error_type':type(exc).__name__}
+                response=getattr(exc,'response',None)
+                if response is not None:error['http_status']=response.status_code
+                report['errors'].append(error)
+                print(json.dumps({'source_error':error}),flush=True)
             (args.output/'source-acquisition-report.json').write_text(json.dumps(report,indent=2))
         return report
     finally:

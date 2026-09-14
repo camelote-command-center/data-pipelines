@@ -1,0 +1,10 @@
+{
+  "source_url": "https://demain.vevey.ch/wp-content/uploads/2024-08-22-pdcom-v6-def-signe.pdf",
+  "download_bytes": 119784096,
+  "sha256": "196c5b690494ce19ade545af7519fa9dc8b413666bbcb90b69cca769c92054f3",
+  "existing_document_id": "9d0a37f4-0265-59b3-a2f6-b21b57ae5414",
+  "status": "complete_download_matches_stored_version",
+  "failed_run": 34882226886,
+  "original_error": "HTTPError; status code was not logged",
+  "current_http_status": 200
+}
