@@ -154,9 +154,16 @@ def extract(url,deadline=None):
                 if len(text)<40 and '/Contents' in page:
                     if os.getenv('PLANNING_OCR')=='1' and shutil.which('tesseract') and shutil.which('pdftoppm'):
                         prefix=str(Path(temp)/'page')
-                        subprocess.run(['pdftoppm','-f',str(index),'-l',str(index),'-singlefile','-scale-to','2400','-png',str(pdf_path),prefix],check=True,timeout=90,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
-                        ocr=subprocess.run(['tesseract',prefix+'.png','stdout','-l',os.getenv('OCR_LANGUAGES','deu+fra+ita+eng')],check=True,timeout=120,capture_output=True)
-                        text=clean_text(ocr.stdout.decode('utf-8').strip());method='tesseract-v1'
+                        try:
+                            subprocess.run(['pdftoppm','-f',str(index),'-l',str(index),'-singlefile','-scale-to','2400','-png',str(pdf_path),prefix],check=True,timeout=90,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+                            ocr=subprocess.run(['tesseract',prefix+'.png','stdout','-l',os.getenv('OCR_LANGUAGES','deu+fra+ita+eng')],check=True,timeout=120,capture_output=True)
+                            text=clean_text(ocr.stdout.decode('utf-8').strip());method='tesseract-v1'
+                        except subprocess.TimeoutExpired:
+                            # 2026-09-14: one slow page (large-format plan) used to abort the whole document
+                            # as error=TimeoutExpired (231 of 243 failing URLs), discarding every page
+                            # already read. The page stays unresolved instead -> the document is kept as
+                            # needs_ocr (never published as text, retried weekly), like any unreadable scan.
+                            method='tesseract-timeout-v1'
                     if len(text)<40:unresolved=True
                 pages.append({'page_number':index,'text':text,'method':method})
         status='extracted' if sum(len(p['text']) for p in pages)>=300 and not unresolved else 'needs_ocr'

@@ -120,6 +120,22 @@ class BoundedRuns(unittest.TestCase):
         self.assertIsNone(calls[1][1]['json']['last_error'])
         self.assertIsNone(calls[1][1]['json']['last_acquired_at'])
         self.assertNotIn('last_db_update_at',calls[1][1]['json'])
+    def test_ocr_page_timeout_keeps_document_as_needs_ocr(self):
+        import subprocess
+        from pypdf import PdfWriter
+        w=PdfWriter();w.add_blank_page(width=100,height=100);w.add_blank_page(width=100,height=100)
+        for p in w.pages:
+            from pypdf.generic import NameObject, DecodedStreamObject
+            s=DecodedStreamObject();s.set_data(b'q Q');p[NameObject('/Contents')]=w._add_object(s)
+        stream=io.BytesIO();w.write(stream)
+        def slow(*a,**k):raise subprocess.TimeoutExpired(cmd=a[0],timeout=k.get('timeout'))
+        with patch.object(parser,'fetch',return_value=(stream.getvalue(),'https://example.org/a','application/pdf')), \
+             patch.dict('os.environ',{'PLANNING_OCR':'1'}), patch.object(parser.shutil,'which',return_value='/usr/bin/x'), \
+             patch.object(parser.subprocess,'run',side_effect=slow):
+            r=parser.extract('https://example.org/a')
+        self.assertEqual(r['extraction_status'],'needs_ocr')
+        self.assertEqual(len(r['pages']),2)
+        self.assertEqual({p['method'] for p in r['pages']},{'tesseract-timeout-v1'})
     def test_partial_never_overrides_complete(self):
         monitor=object.__new__(parser.Monitor)
         monitor.code='ch_planning_document_text';monitor.dataset={'id':'d','startup_id':'o'};monitor.last_success=None
