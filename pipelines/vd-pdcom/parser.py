@@ -96,6 +96,8 @@ def fetch(url,max_bytes=100_000_000):
 
 
 class Monitor:
+    def __init__(self,code=CODE):
+        self.code=code
     def call(self,method,table,**kwargs):
         r=requests.request(method,os.environ['CMD_URL'].rstrip('/')+'/rest/v1/'+table,
             headers={'apikey':os.environ['CMD_KEY'],'Authorization':'Bearer '+os.environ['CMD_KEY'],
@@ -103,7 +105,7 @@ class Monitor:
         if not r.ok:raise RuntimeError('pixxels_http_'+str(r.status_code))
         return r.json() if r.content else None
     def begin(self,run_id):
-        rows=self.call('GET','datasets',params={'code':'eq.'+CODE,'select':'id,startup_id'})
+        rows=self.call('GET','datasets',params={'code':'eq.'+self.code,'select':'id,startup_id'})
         if len(rows)!=1:raise ValueError('registration_missing_or_ambiguous')
         self.dataset=rows[0]
         logs=self.call('GET','acquisition_logs',params={'dataset_id':'eq.'+self.dataset['id'],
@@ -111,17 +113,18 @@ class Monitor:
             'started_at':'gte.'+(dt.datetime.now(dt.timezone.utc)-dt.timedelta(minutes=30)).isoformat(),
             'notes':'eq.[github_action] dispatched '+WORKFLOW,'order':'started_at.desc','limit':'1'})
         self.log_id=logs[0]['id'] if logs else str(run_id)
-        note='VD PDCom coverage census; '+os.environ.get('GITHUB_RUN_ID','local')
+        note='VD PDCom '+self.code+'; '+os.environ.get('GITHUB_RUN_ID','local')
         if logs:self.call('PATCH','acquisition_logs',params={'id':'eq.'+self.log_id},json={'notes':note})
         else:self.call('POST','acquisition_logs',json={'id':self.log_id,'dataset_id':self.dataset['id'],
             'status':'running','triggered_by':'github_actions','notes':note})
     def finish(self,report,success):
         now=dt.datetime.now(dt.timezone.utc).isoformat()
+        count=report.get('record_count',report.get('current_communes',0))
         self.call('PATCH','acquisition_logs',params={'id':'eq.'+self.log_id},json={
             'status':'success' if success else 'failed','completed_at':now,
-            'records_fetched':report.get('current_communes',0),'error_details':report,
+            'records_fetched':count,'error_details':report,
             'error_message':None if success else 'VD PDCom acquisition failed; inspect report'})
-        patch={'status':'active' if success else 'error','record_count':report.get('current_communes',0),
+        patch={'status':'active' if success else 'error','record_count':count,
                'last_error':None if success else 'VD PDCom acquisition failed; inspect report'}
         if success:patch.update(last_acquired_at=now,last_db_update_at=now)
         self.call('PATCH','datasets',params={'id':'eq.'+self.dataset['id'],
