@@ -19,3 +19,8 @@ CREATE INDEX IF NOT EXISTS vd_pdcom_review_parcels_geom_idx ON ref.vd_pdcom_revi
 ALTER TABLE ref.vd_pdcom_review_sectors ENABLE ROW LEVEL SECURITY;
 ALTER TABLE ref.vd_pdcom_review_parcels ENABLE ROW LEVEL SECURITY;
 REVOKE ALL ON ref.vd_pdcom_review_sectors,ref.vd_pdcom_review_parcels FROM PUBLIC,anon,authenticated;
+-- Additive cadastral object typing for existing and newly installed receivers.
+ALTER TABLE ref.vd_pdcom_review_parcels
+ ADD COLUMN IF NOT EXISTS cadastral_object_kind text NOT NULL DEFAULT 'unknown'
+ CHECK(cadastral_object_kind IN ('unknown','bien_fonds','ddp_superficie','ddp_source')),
+ ADD COLUMN IF NOT EXISTS cadastral_type_evidence jsonb NOT NULL DEFAULT '{}'::jsonb;

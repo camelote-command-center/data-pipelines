@@ -8,3 +8,6 @@ DO $$ BEGIN
  END IF;
 END $$;
 REVOKE ALL ON lamap_db_foreign.vd_pdcom_review_sectors,lamap_db_foreign.vd_pdcom_review_parcels FROM PUBLIC,anon,authenticated;
+ALTER FOREIGN TABLE lamap_db_foreign.vd_pdcom_review_parcels
+ ADD COLUMN IF NOT EXISTS cadastral_object_kind text,
+ ADD COLUMN IF NOT EXISTS cadastral_type_evidence jsonb;

@@ -30,5 +30,21 @@
     ]
   ],
   "release_status": "review_required",
-  "limits": "Footprint containment is not source shape correspondence or surveyed accuracy. Six outlier locations differ; causes unresolved. Distinct EGRIDs overlap in current federal cadastral source and type/validity fields are null. Do not deduplicate or interpret as mutually exclusive land areas without authoritative evidence."
+  "limits": "Footprint containment is not source shape correspondence or surveyed accuracy. Six outlier locations differ; causes unresolved. Cadastral overlap is explained by land parcels and distinct DDP superficie objects; preserve both and use explicit object-kind scope for area totals.",
+  "cadastral_overlap_resolution": {
+    "checked_at": "2026-09-14",
+    "official_service": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21",
+    "finding": "Both overlapping pairs consist of a bien-fonds (parcelle privée) and a DDP superficie. Distinct cadastral objects, not duplicate EGRIDs.",
+    "pairs": [
+      {
+        "land_egrid": "CH314581837868",
+        "surface_right_egrid": "CH400745598377"
+      },
+      {
+        "land_egrid": "CH598378414564",
+        "surface_right_egrid": "CH807945578340"
+      }
+    ],
+    "handling": "Keep both cadastral objects. Aggregate land area only with explicit object-kind scope or geometric union; never sum land and rights as mutually exclusive parcels. Source geometry vintages remain distinct from current type lookup."
+  }
 }
