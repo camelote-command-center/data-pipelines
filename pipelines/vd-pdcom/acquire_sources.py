@@ -51,21 +51,32 @@ def inspect(data):
     return pages
 
 
+def coverage_members(source):
+    members=source.get('commune_bfs_list',[source['commune_bfs']])
+    if not members or len(members)!=len(set(members)) or source['commune_bfs'] not in members:
+        raise ValueError('invalid_commune_coverage')
+    if len(members)>1 and source['scope']!='intercommunal':
+        raise ValueError('multi_commune_source_requires_intercommunal_scope')
+    return members
+
+
 def persist(conn,source,sha,pages):
     doc_id=str(uuid.uuid5(uuid.NAMESPACE_URL,source['pdf_url']+'#'+sha))
     with conn,conn.cursor() as c:
-        c.execute('''SELECT is_current FROM bronze_ch.vd_pdcom_communes WHERE commune_bfs=%s''',(source['commune_bfs'],))
-        if c.fetchone()!=(True,):raise ValueError('source_commune_not_current')
+        members=coverage_members(source)
+        c.execute('SELECT count(*) FROM bronze_ch.vd_pdcom_communes WHERE commune_bfs=ANY(%s) AND is_current',(members,))
+        if c.fetchone()[0]!=len(members):raise ValueError('source_commune_not_current')
         c.execute('''INSERT INTO bronze_ch.vd_pdcom_documents
         (id,source_url,landing_url,sha256,title,plan_status,scope,status_evidence_url,page_count,inspection)
         VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) ON CONFLICT(source_url,sha256) DO NOTHING''',
         (doc_id,source['pdf_url'],source['landing_url'],sha,source['title'],source['plan_status'],source['scope'],source['landing_url'],len(pages),Json(pages)))
-        c.execute('''INSERT INTO bronze_ch.vd_pdcom_document_communes(document_id,commune_bfs,evidence_url)
-        VALUES(%s,%s,%s) ON CONFLICT DO NOTHING''',(doc_id,source['commune_bfs'],source['landing_url']))
-        c.execute('''UPDATE bronze_ch.vd_pdcom_communes SET discovery_status='sources_found',
-        extraction_status=CASE WHEN extraction_status='pending' THEN %s ELSE extraction_status END,
-        last_checked_at=now(),evidence=CASE WHEN evidence @> %s THEN evidence ELSE evidence || %s END
-        WHERE commune_bfs=%s''',('needs_ocr' if sum(len(p['text'].strip()) for p in pages)<50 else 'downloaded',Json([{'document_id':doc_id}]),Json([{'document_id':doc_id,'url':source['landing_url'],'version_review':'pending'}]),source['commune_bfs']))
+        for bfs in members:
+            c.execute('''INSERT INTO bronze_ch.vd_pdcom_document_communes(document_id,commune_bfs,evidence_url)
+            VALUES(%s,%s,%s) ON CONFLICT DO NOTHING''',(doc_id,bfs,source['landing_url']))
+            c.execute('''UPDATE bronze_ch.vd_pdcom_communes SET discovery_status='sources_found',
+            extraction_status=CASE WHEN extraction_status='pending' THEN %s ELSE extraction_status END,
+            last_checked_at=now(),evidence=CASE WHEN evidence @> %s THEN evidence ELSE evidence || %s END
+            WHERE commune_bfs=%s''',('needs_ocr' if sum(len(p['text'].strip()) for p in pages)<50 else 'downloaded',Json([{'document_id':doc_id}]),Json([{'document_id':doc_id,'url':source['landing_url'],'version_review':'pending'}]),bfs))
     from reviews import apply_review
     apply_review(conn,doc_id,sha)
     return doc_id
@@ -85,7 +96,7 @@ def run(args):
                 (args.output/(name+'.pdf')).write_bytes(data)
                 (args.output/(name+'-inspection.json')).write_text(json.dumps(pages,ensure_ascii=False))
                 doc_id=persist(conn,source,sha,pages) if conn else None
-                result={'commune_bfs':source['commune_bfs'],'document_id':doc_id,'sha256':sha,'pages':len(pages),
+                result={'commune_bfs':source['commune_bfs'],'covered_commune_bfs':coverage_members(source),'document_id':doc_id,'sha256':sha,'pages':len(pages),
                         'vector_pages':sum(p['vector_paths']>0 for p in pages),'plan_status':source['plan_status']}
                 report['documents'].append(result);print(json.dumps(result),flush=True)
             except Exception as exc:
