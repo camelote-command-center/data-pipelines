@@ -1,0 +1,2794 @@
+{
+  "source_sha256": "d2be996343614077c860bc47587ebabd927cf6603edfb4f592c4cee3469dc7ff",
+  "source_pdf_page": 29,
+  "coordinate_system": "source_image_pixels_top_left_NOT_geographic",
+  "mask_file_sha256": "b20a8319ad1e6539a13ed3d61bea5fb4ac312e7521f5399a29dedc8b1cc526fb",
+  "method": "Euclidean interior distance in source pixels; retain original connected component when its maximum distance is at least the threshold. No boundary filling.",
+  "interpretation": "Interior depth distinguishes substantial colour interiors from thin strokes. It does not identify a complete planning sector or prove a semantic category.",
+  "tolerances": {
+    "t20": {
+      "components": [
+        {
+          "id": 1,
+          "matched_pixels": 4,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            909,
+            269,
+            912,
+            271
+          ]
+        },
+        {
+          "id": 2,
+          "matched_pixels": 1,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            919,
+            271,
+            920,
+            272
+          ]
+        },
+        {
+          "id": 3,
+          "matched_pixels": 314,
+          "max_interior_depth_pixels": 5.0,
+          "bbox": [
+            894,
+            272,
+            917,
+            308
+          ]
+        },
+        {
+          "id": 4,
+          "matched_pixels": 5,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            935,
+            288,
+            937,
+            291
+          ]
+        },
+        {
+          "id": 5,
+          "matched_pixels": 8,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            939,
+            303,
+            944,
+            306
+          ]
+        },
+        {
+          "id": 6,
+          "matched_pixels": 82,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            899,
+            313,
+            919,
+            326
+          ]
+        },
+        {
+          "id": 7,
+          "matched_pixels": 1,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            917,
+            315,
+            918,
+            316
+          ]
+        },
+        {
+          "id": 8,
+          "matched_pixels": 3,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            909,
+            317,
+            911,
+            319
+          ]
+        },
+        {
+          "id": 9,
+          "matched_pixels": 1,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            921,
+            319,
+            922,
+            320
+          ]
+        },
+        {
+          "id": 10,
+          "matched_pixels": 5,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            951,
+            321,
+            953,
+            324
+          ]
+        },
+        {
+          "id": 11,
+          "matched_pixels": 1,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            936,
+            323,
+            937,
+            324
+          ]
+        },
+        {
+          "id": 12,
+          "matched_pixels": 1,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            945,
+            324,
+            946,
+            325
+          ]
+        },
+        {
+          "id": 13,
+          "matched_pixels": 1,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            922,
+            325,
+            923,
+            326
+          ]
+        },
+        {
+          "id": 14,
+          "matched_pixels": 1,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            943,
+            325,
+            944,
+            326
+          ]
+        },
+        {
+          "id": 15,
+          "matched_pixels": 1,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            952,
+            325,
+            953,
+            326
+          ]
+        },
+        {
+          "id": 16,
+          "matched_pixels": 333,
+          "max_interior_depth_pixels": 7.0710678118654755,
+          "bbox": [
+            915,
+            366,
+            941,
+            391
+          ]
+        },
+        {
+          "id": 17,
+          "matched_pixels": 10,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            922,
+            388,
+            928,
+            391
+          ]
+        },
+        {
+          "id": 18,
+          "matched_pixels": 229,
+          "max_interior_depth_pixels": 4.47213595499958,
+          "bbox": [
+            924,
+            397,
+            947,
+            414
+          ]
+        },
+        {
+          "id": 19,
+          "matched_pixels": 1,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            945,
+            400,
+            946,
+            401
+          ]
+        },
+        {
+          "id": 20,
+          "matched_pixels": 3,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            968,
+            404,
+            970,
+            406
+          ]
+        },
+        {
+          "id": 21,
+          "matched_pixels": 6,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            960,
+            406,
+            964,
+            409
+          ]
+        },
+        {
+          "id": 22,
+          "matched_pixels": 4,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            972,
+            412,
+            974,
+            415
+          ]
+        },
+        {
+          "id": 23,
+          "matched_pixels": 4,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            976,
+            421,
+            977,
+            425
+          ]
+        },
+        {
+          "id": 24,
+          "matched_pixels": 4,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            979,
+            430,
+            981,
+            432
+          ]
+        },
+        {
+          "id": 25,
+          "matched_pixels": 4,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            984,
+            437,
+            986,
+            440
+          ]
+        },
+        {
+          "id": 26,
+          "matched_pixels": 4,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            992,
+            454,
+            993,
+            458
+          ]
+        },
+        {
+          "id": 27,
+          "matched_pixels": 2,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            991,
+            493,
+            992,
+            495
+          ]
+        },
+        {
+          "id": 28,
+          "matched_pixels": 4,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            976,
+            494,
+            978,
+            496
+          ]
+        },
+        {
+          "id": 29,
+          "matched_pixels": 1,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            982,
+            495,
+            983,
+            496
+          ]
+        },
+        {
+          "id": 30,
+          "matched_pixels": 5,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            994,
+            496,
+            996,
+            500
+          ]
+        },
+        {
+          "id": 31,
+          "matched_pixels": 3,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            992,
+            505,
+            993,
+            508
+          ]
+        },
+        {
+          "id": 32,
+          "matched_pixels": 2,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            991,
+            515,
+            992,
+            517
+          ]
+        },
+        {
+          "id": 33,
+          "matched_pixels": 3,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            998,
+            560,
+            1000,
+            562
+          ]
+        },
+        {
+          "id": 34,
+          "matched_pixels": 3,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            999,
+            569,
+            1000,
+            572
+          ]
+        },
+        {
+          "id": 35,
+          "matched_pixels": 4,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            998,
+            577,
+            1000,
+            580
+          ]
+        },
+        {
+          "id": 36,
+          "matched_pixels": 208,
+          "max_interior_depth_pixels": 5.0,
+          "bbox": [
+            1353,
+            779,
+            1374,
+            802
+          ]
+        },
+        {
+          "id": 37,
+          "matched_pixels": 139,
+          "max_interior_depth_pixels": 3.1622776601683795,
+          "bbox": [
+            1385,
+            800,
+            1401,
+            816
+          ]
+        },
+        {
+          "id": 38,
+          "matched_pixels": 486,
+          "max_interior_depth_pixels": 7.211102550927978,
+          "bbox": [
+            611,
+            1178,
+            642,
+            1211
+          ]
+        },
+        {
+          "id": 39,
+          "matched_pixels": 746,
+          "max_interior_depth_pixels": 9.848857801796104,
+          "bbox": [
+            672,
+            1319,
+            713,
+            1348
+          ]
+        },
+        {
+          "id": 40,
+          "matched_pixels": 155,
+          "max_interior_depth_pixels": 5.385164807134504,
+          "bbox": [
+            705,
+            1408,
+            719,
+            1426
+          ]
+        },
+        {
+          "id": 41,
+          "matched_pixels": 28,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            706,
+            1428,
+            719,
+            1431
+          ]
+        },
+        {
+          "id": 42,
+          "matched_pixels": 716,
+          "max_interior_depth_pixels": 11.0,
+          "bbox": [
+            687,
+            1438,
+            721,
+            1465
+          ]
+        },
+        {
+          "id": 43,
+          "matched_pixels": 11,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            736,
+            1440,
+            742,
+            1442
+          ]
+        },
+        {
+          "id": 44,
+          "matched_pixels": 9,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            746,
+            1440,
+            751,
+            1442
+          ]
+        },
+        {
+          "id": 45,
+          "matched_pixels": 9,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            755,
+            1440,
+            760,
+            1443
+          ]
+        },
+        {
+          "id": 46,
+          "matched_pixels": 7,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            765,
+            1440,
+            767,
+            1445
+          ]
+        },
+        {
+          "id": 47,
+          "matched_pixels": 1,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            767,
+            1451,
+            768,
+            1452
+          ]
+        },
+        {
+          "id": 48,
+          "matched_pixels": 6,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            769,
+            1458,
+            771,
+            1462
+          ]
+        },
+        {
+          "id": 49,
+          "matched_pixels": 6,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            771,
+            1468,
+            774,
+            1471
+          ]
+        },
+        {
+          "id": 50,
+          "matched_pixels": 3,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            774,
+            1476,
+            775,
+            1479
+          ]
+        },
+        {
+          "id": 51,
+          "matched_pixels": 677,
+          "max_interior_depth_pixels": 9.055385138137417,
+          "bbox": [
+            700,
+            1487,
+            728,
+            1538
+          ]
+        },
+        {
+          "id": 52,
+          "matched_pixels": 847,
+          "max_interior_depth_pixels": 7.615773105863909,
+          "bbox": [
+            736,
+            1494,
+            769,
+            1558
+          ]
+        },
+        {
+          "id": 53,
+          "matched_pixels": 50,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            680,
+            1508,
+            697,
+            1513
+          ]
+        },
+        {
+          "id": 54,
+          "matched_pixels": 18,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            672,
+            1511,
+            679,
+            1515
+          ]
+        },
+        {
+          "id": 55,
+          "matched_pixels": 304,
+          "max_interior_depth_pixels": 6.0,
+          "bbox": [
+            672,
+            1520,
+            701,
+            1534
+          ]
+        },
+        {
+          "id": 56,
+          "matched_pixels": 21,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            712,
+            1536,
+            719,
+            1545
+          ]
+        },
+        {
+          "id": 57,
+          "matched_pixels": 685,
+          "max_interior_depth_pixels": 7.211102550927978,
+          "bbox": [
+            752,
+            1616,
+            791,
+            1661
+          ]
+        },
+        {
+          "id": 58,
+          "matched_pixels": 2,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            791,
+            1653,
+            792,
+            1655
+          ]
+        },
+        {
+          "id": 59,
+          "matched_pixels": 119,
+          "max_interior_depth_pixels": 3.0,
+          "bbox": [
+            781,
+            1659,
+            796,
+            1674
+          ]
+        },
+        {
+          "id": 60,
+          "matched_pixels": 238,
+          "max_interior_depth_pixels": 5.0,
+          "bbox": [
+            724,
+            1671,
+            748,
+            1689
+          ]
+        },
+        {
+          "id": 61,
+          "matched_pixels": 1,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            744,
+            1682,
+            745,
+            1683
+          ]
+        },
+        {
+          "id": 62,
+          "matched_pixels": 2,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            739,
+            1684,
+            741,
+            1685
+          ]
+        },
+        {
+          "id": 63,
+          "matched_pixels": 79,
+          "max_interior_depth_pixels": 2.23606797749979,
+          "bbox": [
+            736,
+            1689,
+            752,
+            1701
+          ]
+        },
+        {
+          "id": 64,
+          "matched_pixels": 31,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            1542,
+            1723,
+            1559,
+            1732
+          ]
+        },
+        {
+          "id": 65,
+          "matched_pixels": 226,
+          "max_interior_depth_pixels": 4.47213595499958,
+          "bbox": [
+            783,
+            1725,
+            804,
+            1757
+          ]
+        },
+        {
+          "id": 66,
+          "matched_pixels": 43,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            1522,
+            1731,
+            1542,
+            1741
+          ]
+        },
+        {
+          "id": 67,
+          "matched_pixels": 1591,
+          "max_interior_depth_pixels": 9.055385138137417,
+          "bbox": [
+            1504,
+            1731,
+            1577,
+            1792
+          ]
+        },
+        {
+          "id": 68,
+          "matched_pixels": 23,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            1484,
+            1741,
+            1493,
+            1747
+          ]
+        },
+        {
+          "id": 69,
+          "matched_pixels": 30,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            1503,
+            1741,
+            1521,
+            1749
+          ]
+        },
+        {
+          "id": 70,
+          "matched_pixels": 47,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            788,
+            1748,
+            795,
+            1758
+          ]
+        },
+        {
+          "id": 71,
+          "matched_pixels": 206,
+          "max_interior_depth_pixels": 3.1622776601683795,
+          "bbox": [
+            1491,
+            1760,
+            1507,
+            1797
+          ]
+        },
+        {
+          "id": 72,
+          "matched_pixels": 1026,
+          "max_interior_depth_pixels": 8.54400374531753,
+          "bbox": [
+            725,
+            1776,
+            805,
+            1798
+          ]
+        },
+        {
+          "id": 73,
+          "matched_pixels": 1,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            735,
+            1785,
+            736,
+            1786
+          ]
+        },
+        {
+          "id": 74,
+          "matched_pixels": 650,
+          "max_interior_depth_pixels": 5.0990195135927845,
+          "bbox": [
+            877,
+            1794,
+            927,
+            1829
+          ]
+        },
+        {
+          "id": 75,
+          "matched_pixels": 1,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            798,
+            1797,
+            799,
+            1798
+          ]
+        },
+        {
+          "id": 76,
+          "matched_pixels": 2016,
+          "max_interior_depth_pixels": 12.529964086141668,
+          "bbox": [
+            802,
+            1829,
+            864,
+            1893
+          ]
+        },
+        {
+          "id": 77,
+          "matched_pixels": 191,
+          "max_interior_depth_pixels": 4.0,
+          "bbox": [
+            1248,
+            1925,
+            1274,
+            1944
+          ]
+        }
+      ],
+      "depth_sensitivity": {
+        "2": {
+          "retained_components": 28,
+          "retained_pixels": 12406,
+          "thin_or_small_pixels": 307,
+          "component_ids": [
+            3,
+            6,
+            16,
+            18,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            51,
+            52,
+            53,
+            54,
+            55,
+            57,
+            59,
+            60,
+            63,
+            65,
+            67,
+            70,
+            71,
+            72,
+            74,
+            76,
+            77
+          ]
+        },
+        "3": {
+          "retained_components": 22,
+          "retained_pixels": 12102,
+          "thin_or_small_pixels": 611,
+          "component_ids": [
+            3,
+            16,
+            18,
+            36,
+            37,
+            38,
+            39,
+            40,
+            42,
+            51,
+            52,
+            55,
+            57,
+            59,
+            60,
+            65,
+            67,
+            71,
+            72,
+            74,
+            76,
+            77
+          ]
+        },
+        "4": {
+          "retained_components": 19,
+          "retained_pixels": 11638,
+          "thin_or_small_pixels": 1075,
+          "component_ids": [
+            3,
+            16,
+            18,
+            36,
+            38,
+            39,
+            40,
+            42,
+            51,
+            52,
+            55,
+            57,
+            60,
+            65,
+            67,
+            72,
+            74,
+            76,
+            77
+          ]
+        }
+      }
+    },
+    "t35": {
+      "components": [
+        {
+          "id": 1,
+          "matched_pixels": 8,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            908,
+            269,
+            912,
+            272
+          ]
+        },
+        {
+          "id": 2,
+          "matched_pixels": 4,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            917,
+            271,
+            921,
+            272
+          ]
+        },
+        {
+          "id": 3,
+          "matched_pixels": 386,
+          "max_interior_depth_pixels": 6.324555320336759,
+          "bbox": [
+            893,
+            272,
+            917,
+            308
+          ]
+        },
+        {
+          "id": 4,
+          "matched_pixels": 8,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            935,
+            288,
+            938,
+            291
+          ]
+        },
+        {
+          "id": 5,
+          "matched_pixels": 1,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            940,
+            298,
+            941,
+            299
+          ]
+        },
+        {
+          "id": 6,
+          "matched_pixels": 11,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            939,
+            302,
+            944,
+            306
+          ]
+        },
+        {
+          "id": 7,
+          "matched_pixels": 4,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            948,
+            305,
+            950,
+            307
+          ]
+        },
+        {
+          "id": 8,
+          "matched_pixels": 1,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            911,
+            309,
+            912,
+            310
+          ]
+        },
+        {
+          "id": 9,
+          "matched_pixels": 134,
+          "max_interior_depth_pixels": 3.1622776601683795,
+          "bbox": [
+            899,
+            313,
+            923,
+            326
+          ]
+        },
+        {
+          "id": 10,
+          "matched_pixels": 3,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            917,
+            314,
+            918,
+            317
+          ]
+        },
+        {
+          "id": 11,
+          "matched_pixels": 12,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            951,
+            321,
+            954,
+            327
+          ]
+        },
+        {
+          "id": 12,
+          "matched_pixels": 8,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            934,
+            322,
+            938,
+            325
+          ]
+        },
+        {
+          "id": 13,
+          "matched_pixels": 5,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            922,
+            324,
+            925,
+            327
+          ]
+        },
+        {
+          "id": 14,
+          "matched_pixels": 11,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            942,
+            324,
+            947,
+            327
+          ]
+        },
+        {
+          "id": 15,
+          "matched_pixels": 380,
+          "max_interior_depth_pixels": 8.06225774829855,
+          "bbox": [
+            915,
+            366,
+            942,
+            391
+          ]
+        },
+        {
+          "id": 16,
+          "matched_pixels": 15,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            922,
+            388,
+            928,
+            391
+          ]
+        },
+        {
+          "id": 17,
+          "matched_pixels": 274,
+          "max_interior_depth_pixels": 6.082762530298219,
+          "bbox": [
+            923,
+            397,
+            947,
+            414
+          ]
+        },
+        {
+          "id": 18,
+          "matched_pixels": 3,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            926,
+            398,
+            929,
+            399
+          ]
+        },
+        {
+          "id": 19,
+          "matched_pixels": 7,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            967,
+            404,
+            971,
+            407
+          ]
+        },
+        {
+          "id": 20,
+          "matched_pixels": 8,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            960,
+            406,
+            964,
+            409
+          ]
+        },
+        {
+          "id": 21,
+          "matched_pixels": 8,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            972,
+            411,
+            975,
+            416
+          ]
+        },
+        {
+          "id": 22,
+          "matched_pixels": 8,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            976,
+            420,
+            978,
+            425
+          ]
+        },
+        {
+          "id": 23,
+          "matched_pixels": 9,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            978,
+            429,
+            982,
+            433
+          ]
+        },
+        {
+          "id": 24,
+          "matched_pixels": 8,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            983,
+            437,
+            986,
+            441
+          ]
+        },
+        {
+          "id": 25,
+          "matched_pixels": 6,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            992,
+            454,
+            994,
+            458
+          ]
+        },
+        {
+          "id": 26,
+          "matched_pixels": 5,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            991,
+            491,
+            993,
+            495
+          ]
+        },
+        {
+          "id": 27,
+          "matched_pixels": 4,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            976,
+            494,
+            978,
+            496
+          ]
+        },
+        {
+          "id": 28,
+          "matched_pixels": 2,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            982,
+            494,
+            983,
+            496
+          ]
+        },
+        {
+          "id": 29,
+          "matched_pixels": 9,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            993,
+            496,
+            996,
+            500
+          ]
+        },
+        {
+          "id": 30,
+          "matched_pixels": 10,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            992,
+            504,
+            994,
+            510
+          ]
+        },
+        {
+          "id": 31,
+          "matched_pixels": 5,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            990,
+            514,
+            992,
+            518
+          ]
+        },
+        {
+          "id": 32,
+          "matched_pixels": 6,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            998,
+            559,
+            1000,
+            563
+          ]
+        },
+        {
+          "id": 33,
+          "matched_pixels": 6,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            999,
+            568,
+            1001,
+            572
+          ]
+        },
+        {
+          "id": 34,
+          "matched_pixels": 11,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            998,
+            576,
+            1001,
+            581
+          ]
+        },
+        {
+          "id": 35,
+          "matched_pixels": 266,
+          "max_interior_depth_pixels": 6.708203932499369,
+          "bbox": [
+            1353,
+            779,
+            1375,
+            802
+          ]
+        },
+        {
+          "id": 36,
+          "matched_pixels": 162,
+          "max_interior_depth_pixels": 5.656854249492381,
+          "bbox": [
+            1384,
+            799,
+            1401,
+            816
+          ]
+        },
+        {
+          "id": 37,
+          "matched_pixels": 560,
+          "max_interior_depth_pixels": 9.848857801796104,
+          "bbox": [
+            611,
+            1177,
+            642,
+            1212
+          ]
+        },
+        {
+          "id": 38,
+          "matched_pixels": 808,
+          "max_interior_depth_pixels": 12.36931687685298,
+          "bbox": [
+            672,
+            1319,
+            713,
+            1348
+          ]
+        },
+        {
+          "id": 39,
+          "matched_pixels": 186,
+          "max_interior_depth_pixels": 6.082762530298219,
+          "bbox": [
+            705,
+            1408,
+            719,
+            1426
+          ]
+        },
+        {
+          "id": 40,
+          "matched_pixels": 46,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            706,
+            1428,
+            719,
+            1432
+          ]
+        },
+        {
+          "id": 41,
+          "matched_pixels": 767,
+          "max_interior_depth_pixels": 12.083045973594572,
+          "bbox": [
+            687,
+            1437,
+            721,
+            1466
+          ]
+        },
+        {
+          "id": 42,
+          "matched_pixels": 2,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            731,
+            1440,
+            732,
+            1442
+          ]
+        },
+        {
+          "id": 43,
+          "matched_pixels": 11,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            736,
+            1440,
+            742,
+            1442
+          ]
+        },
+        {
+          "id": 44,
+          "matched_pixels": 10,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            746,
+            1440,
+            751,
+            1442
+          ]
+        },
+        {
+          "id": 45,
+          "matched_pixels": 16,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            755,
+            1440,
+            761,
+            1443
+          ]
+        },
+        {
+          "id": 46,
+          "matched_pixels": 14,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            764,
+            1440,
+            768,
+            1445
+          ]
+        },
+        {
+          "id": 47,
+          "matched_pixels": 8,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            767,
+            1449,
+            769,
+            1454
+          ]
+        },
+        {
+          "id": 48,
+          "matched_pixels": 12,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            769,
+            1458,
+            772,
+            1463
+          ]
+        },
+        {
+          "id": 49,
+          "matched_pixels": 12,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            771,
+            1467,
+            774,
+            1472
+          ]
+        },
+        {
+          "id": 50,
+          "matched_pixels": 7,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            773,
+            1476,
+            776,
+            1480
+          ]
+        },
+        {
+          "id": 51,
+          "matched_pixels": 7,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            769,
+            1482,
+            773,
+            1485
+          ]
+        },
+        {
+          "id": 52,
+          "matched_pixels": 762,
+          "max_interior_depth_pixels": 10.04987562112089,
+          "bbox": [
+            699,
+            1486,
+            728,
+            1539
+          ]
+        },
+        {
+          "id": 53,
+          "matched_pixels": 3,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            761,
+            1486,
+            763,
+            1488
+          ]
+        },
+        {
+          "id": 54,
+          "matched_pixels": 936,
+          "max_interior_depth_pixels": 12.041594578792296,
+          "bbox": [
+            736,
+            1494,
+            770,
+            1558
+          ]
+        },
+        {
+          "id": 55,
+          "matched_pixels": 102,
+          "max_interior_depth_pixels": 3.0,
+          "bbox": [
+            672,
+            1507,
+            698,
+            1516
+          ]
+        },
+        {
+          "id": 56,
+          "matched_pixels": 336,
+          "max_interior_depth_pixels": 6.708203932499369,
+          "bbox": [
+            672,
+            1520,
+            702,
+            1535
+          ]
+        },
+        {
+          "id": 57,
+          "matched_pixels": 42,
+          "max_interior_depth_pixels": 2.8284271247461903,
+          "bbox": [
+            712,
+            1534,
+            720,
+            1546
+          ]
+        },
+        {
+          "id": 58,
+          "matched_pixels": 975,
+          "max_interior_depth_pixels": 9.848857801796104,
+          "bbox": [
+            752,
+            1616,
+            797,
+            1674
+          ]
+        },
+        {
+          "id": 59,
+          "matched_pixels": 306,
+          "max_interior_depth_pixels": 7.0,
+          "bbox": [
+            724,
+            1671,
+            748,
+            1690
+          ]
+        },
+        {
+          "id": 60,
+          "matched_pixels": 107,
+          "max_interior_depth_pixels": 3.605551275463989,
+          "bbox": [
+            736,
+            1688,
+            752,
+            1702
+          ]
+        },
+        {
+          "id": 61,
+          "matched_pixels": 171,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            1502,
+            1723,
+            1560,
+            1750
+          ]
+        },
+        {
+          "id": 62,
+          "matched_pixels": 303,
+          "max_interior_depth_pixels": 6.4031242374328485,
+          "bbox": [
+            782,
+            1724,
+            804,
+            1757
+          ]
+        },
+        {
+          "id": 63,
+          "matched_pixels": 1764,
+          "max_interior_depth_pixels": 11.661903789690601,
+          "bbox": [
+            1504,
+            1730,
+            1578,
+            1793
+          ]
+        },
+        {
+          "id": 64,
+          "matched_pixels": 2,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            1574,
+            1734,
+            1576,
+            1735
+          ]
+        },
+        {
+          "id": 65,
+          "matched_pixels": 44,
+          "max_interior_depth_pixels": 2.8284271247461903,
+          "bbox": [
+            1484,
+            1740,
+            1493,
+            1747
+          ]
+        },
+        {
+          "id": 66,
+          "matched_pixels": 70,
+          "max_interior_depth_pixels": 4.0,
+          "bbox": [
+            788,
+            1747,
+            795,
+            1758
+          ]
+        },
+        {
+          "id": 67,
+          "matched_pixels": 256,
+          "max_interior_depth_pixels": 4.123105625617661,
+          "bbox": [
+            1491,
+            1759,
+            1507,
+            1798
+          ]
+        },
+        {
+          "id": 68,
+          "matched_pixels": 1145,
+          "max_interior_depth_pixels": 10.770329614269007,
+          "bbox": [
+            725,
+            1776,
+            805,
+            1801
+          ]
+        },
+        {
+          "id": 69,
+          "matched_pixels": 761,
+          "max_interior_depth_pixels": 8.94427190999916,
+          "bbox": [
+            877,
+            1794,
+            928,
+            1829
+          ]
+        },
+        {
+          "id": 70,
+          "matched_pixels": 2,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            787,
+            1798,
+            788,
+            1800
+          ]
+        },
+        {
+          "id": 71,
+          "matched_pixels": 2183,
+          "max_interior_depth_pixels": 15.264337522473747,
+          "bbox": [
+            801,
+            1829,
+            864,
+            1894
+          ]
+        },
+        {
+          "id": 72,
+          "matched_pixels": 254,
+          "max_interior_depth_pixels": 6.0,
+          "bbox": [
+            1246,
+            1925,
+            1275,
+            1944
+          ]
+        }
+      ],
+      "depth_sensitivity": {
+        "2": {
+          "retained_components": 33,
+          "retained_pixels": 14543,
+          "thin_or_small_pixels": 255,
+          "component_ids": [
+            3,
+            9,
+            15,
+            16,
+            17,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            45,
+            46,
+            48,
+            52,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            65,
+            66,
+            67,
+            68,
+            69,
+            71,
+            72
+          ]
+        },
+        "3": {
+          "retained_components": 25,
+          "retained_pixels": 14183,
+          "thin_or_small_pixels": 615,
+          "component_ids": [
+            3,
+            9,
+            15,
+            17,
+            35,
+            36,
+            37,
+            38,
+            39,
+            41,
+            52,
+            54,
+            55,
+            56,
+            58,
+            59,
+            60,
+            62,
+            63,
+            66,
+            67,
+            68,
+            69,
+            71,
+            72
+          ]
+        },
+        "4": {
+          "retained_components": 22,
+          "retained_pixels": 13840,
+          "thin_or_small_pixels": 958,
+          "component_ids": [
+            3,
+            15,
+            17,
+            35,
+            36,
+            37,
+            38,
+            39,
+            41,
+            52,
+            54,
+            56,
+            58,
+            59,
+            62,
+            63,
+            66,
+            67,
+            68,
+            69,
+            71,
+            72
+          ]
+        }
+      }
+    },
+    "t50": {
+      "components": [
+        {
+          "id": 1,
+          "matched_pixels": 12,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            908,
+            269,
+            913,
+            272
+          ]
+        },
+        {
+          "id": 2,
+          "matched_pixels": 10,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            917,
+            270,
+            922,
+            273
+          ]
+        },
+        {
+          "id": 3,
+          "matched_pixels": 420,
+          "max_interior_depth_pixels": 7.211102550927978,
+          "bbox": [
+            893,
+            272,
+            917,
+            310
+          ]
+        },
+        {
+          "id": 4,
+          "matched_pixels": 4,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            932,
+            283,
+            935,
+            285
+          ]
+        },
+        {
+          "id": 5,
+          "matched_pixels": 11,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            934,
+            288,
+            938,
+            292
+          ]
+        },
+        {
+          "id": 6,
+          "matched_pixels": 2,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            940,
+            298,
+            942,
+            299
+          ]
+        },
+        {
+          "id": 7,
+          "matched_pixels": 13,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            939,
+            302,
+            944,
+            306
+          ]
+        },
+        {
+          "id": 8,
+          "matched_pixels": 7,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            947,
+            305,
+            951,
+            308
+          ]
+        },
+        {
+          "id": 9,
+          "matched_pixels": 165,
+          "max_interior_depth_pixels": 4.0,
+          "bbox": [
+            898,
+            312,
+            925,
+            327
+          ]
+        },
+        {
+          "id": 10,
+          "matched_pixels": 5,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            916,
+            314,
+            919,
+            317
+          ]
+        },
+        {
+          "id": 11,
+          "matched_pixels": 3,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            951,
+            314,
+            952,
+            317
+          ]
+        },
+        {
+          "id": 12,
+          "matched_pixels": 16,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            951,
+            321,
+            954,
+            327
+          ]
+        },
+        {
+          "id": 13,
+          "matched_pixels": 11,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            934,
+            322,
+            939,
+            325
+          ]
+        },
+        {
+          "id": 14,
+          "matched_pixels": 15,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            942,
+            324,
+            947,
+            327
+          ]
+        },
+        {
+          "id": 15,
+          "matched_pixels": 402,
+          "max_interior_depth_pixels": 8.06225774829855,
+          "bbox": [
+            915,
+            366,
+            942,
+            392
+          ]
+        },
+        {
+          "id": 16,
+          "matched_pixels": 17,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            922,
+            388,
+            928,
+            391
+          ]
+        },
+        {
+          "id": 17,
+          "matched_pixels": 296,
+          "max_interior_depth_pixels": 7.0,
+          "bbox": [
+            923,
+            396,
+            948,
+            414
+          ]
+        },
+        {
+          "id": 18,
+          "matched_pixels": 6,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            925,
+            397,
+            930,
+            399
+          ]
+        },
+        {
+          "id": 19,
+          "matched_pixels": 9,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            967,
+            404,
+            971,
+            408
+          ]
+        },
+        {
+          "id": 20,
+          "matched_pixels": 11,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            960,
+            405,
+            964,
+            409
+          ]
+        },
+        {
+          "id": 21,
+          "matched_pixels": 12,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            972,
+            411,
+            975,
+            417
+          ]
+        },
+        {
+          "id": 22,
+          "matched_pixels": 14,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            975,
+            419,
+            979,
+            425
+          ]
+        },
+        {
+          "id": 23,
+          "matched_pixels": 11,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            978,
+            428,
+            982,
+            433
+          ]
+        },
+        {
+          "id": 24,
+          "matched_pixels": 9,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            983,
+            436,
+            986,
+            441
+          ]
+        },
+        {
+          "id": 25,
+          "matched_pixels": 12,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            991,
+            453,
+            994,
+            458
+          ]
+        },
+        {
+          "id": 26,
+          "matched_pixels": 22,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            990,
+            490,
+            996,
+            501
+          ]
+        },
+        {
+          "id": 27,
+          "matched_pixels": 6,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            976,
+            494,
+            979,
+            496
+          ]
+        },
+        {
+          "id": 28,
+          "matched_pixels": 4,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            982,
+            494,
+            984,
+            496
+          ]
+        },
+        {
+          "id": 29,
+          "matched_pixels": 3,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            977,
+            503,
+            979,
+            505
+          ]
+        },
+        {
+          "id": 30,
+          "matched_pixels": 12,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            992,
+            504,
+            994,
+            510
+          ]
+        },
+        {
+          "id": 31,
+          "matched_pixels": 9,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            990,
+            513,
+            992,
+            518
+          ]
+        },
+        {
+          "id": 32,
+          "matched_pixels": 12,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            998,
+            558,
+            1001,
+            563
+          ]
+        },
+        {
+          "id": 33,
+          "matched_pixels": 10,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            999,
+            567,
+            1001,
+            573
+          ]
+        },
+        {
+          "id": 34,
+          "matched_pixels": 14,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            997,
+            576,
+            1001,
+            581
+          ]
+        },
+        {
+          "id": 35,
+          "matched_pixels": 3,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            996,
+            586,
+            998,
+            588
+          ]
+        },
+        {
+          "id": 36,
+          "matched_pixels": 1,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            991,
+            595,
+            992,
+            596
+          ]
+        },
+        {
+          "id": 37,
+          "matched_pixels": 284,
+          "max_interior_depth_pixels": 7.0,
+          "bbox": [
+            1352,
+            778,
+            1375,
+            803
+          ]
+        },
+        {
+          "id": 38,
+          "matched_pixels": 177,
+          "max_interior_depth_pixels": 6.0,
+          "bbox": [
+            1384,
+            798,
+            1402,
+            816
+          ]
+        },
+        {
+          "id": 39,
+          "matched_pixels": 584,
+          "max_interior_depth_pixels": 9.899494936611665,
+          "bbox": [
+            610,
+            1177,
+            643,
+            1212
+          ]
+        },
+        {
+          "id": 40,
+          "matched_pixels": 835,
+          "max_interior_depth_pixels": 12.649110640673518,
+          "bbox": [
+            672,
+            1318,
+            713,
+            1349
+          ]
+        },
+        {
+          "id": 41,
+          "matched_pixels": 1,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            686,
+            1352,
+            687,
+            1353
+          ]
+        },
+        {
+          "id": 42,
+          "matched_pixels": 201,
+          "max_interior_depth_pixels": 7.0,
+          "bbox": [
+            705,
+            1408,
+            719,
+            1426
+          ]
+        },
+        {
+          "id": 43,
+          "matched_pixels": 51,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            706,
+            1428,
+            719,
+            1432
+          ]
+        },
+        {
+          "id": 44,
+          "matched_pixels": 782,
+          "max_interior_depth_pixels": 12.083045973594572,
+          "bbox": [
+            687,
+            1437,
+            721,
+            1466
+          ]
+        },
+        {
+          "id": 45,
+          "matched_pixels": 5,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            730,
+            1440,
+            733,
+            1442
+          ]
+        },
+        {
+          "id": 46,
+          "matched_pixels": 12,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            736,
+            1440,
+            742,
+            1442
+          ]
+        },
+        {
+          "id": 47,
+          "matched_pixels": 13,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            746,
+            1440,
+            751,
+            1443
+          ]
+        },
+        {
+          "id": 48,
+          "matched_pixels": 17,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            754,
+            1440,
+            761,
+            1443
+          ]
+        },
+        {
+          "id": 49,
+          "matched_pixels": 14,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            764,
+            1440,
+            768,
+            1445
+          ]
+        },
+        {
+          "id": 50,
+          "matched_pixels": 12,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            767,
+            1449,
+            770,
+            1454
+          ]
+        },
+        {
+          "id": 51,
+          "matched_pixels": 14,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            769,
+            1457,
+            772,
+            1463
+          ]
+        },
+        {
+          "id": 52,
+          "matched_pixels": 13,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            771,
+            1466,
+            774,
+            1472
+          ]
+        },
+        {
+          "id": 53,
+          "matched_pixels": 12,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            773,
+            1475,
+            776,
+            1481
+          ]
+        },
+        {
+          "id": 54,
+          "matched_pixels": 12,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            768,
+            1482,
+            774,
+            1486
+          ]
+        },
+        {
+          "id": 55,
+          "matched_pixels": 790,
+          "max_interior_depth_pixels": 10.44030650891055,
+          "bbox": [
+            699,
+            1486,
+            729,
+            1540
+          ]
+        },
+        {
+          "id": 56,
+          "matched_pixels": 8,
+          "max_interior_depth_pixels": 1.4142135623730951,
+          "bbox": [
+            761,
+            1486,
+            764,
+            1490
+          ]
+        },
+        {
+          "id": 57,
+          "matched_pixels": 969,
+          "max_interior_depth_pixels": 12.041594578792296,
+          "bbox": [
+            736,
+            1492,
+            770,
+            1559
+          ]
+        },
+        {
+          "id": 58,
+          "matched_pixels": 117,
+          "max_interior_depth_pixels": 3.0,
+          "bbox": [
+            672,
+            1507,
+            698,
+            1516
+          ]
+        },
+        {
+          "id": 59,
+          "matched_pixels": 353,
+          "max_interior_depth_pixels": 7.0,
+          "bbox": [
+            672,
+            1519,
+            702,
+            1535
+          ]
+        },
+        {
+          "id": 60,
+          "matched_pixels": 48,
+          "max_interior_depth_pixels": 2.8284271247461903,
+          "bbox": [
+            711,
+            1533,
+            720,
+            1546
+          ]
+        },
+        {
+          "id": 61,
+          "matched_pixels": 1034,
+          "max_interior_depth_pixels": 9.899494936611665,
+          "bbox": [
+            752,
+            1616,
+            797,
+            1675
+          ]
+        },
+        {
+          "id": 62,
+          "matched_pixels": 326,
+          "max_interior_depth_pixels": 7.211102550927978,
+          "bbox": [
+            724,
+            1671,
+            749,
+            1690
+          ]
+        },
+        {
+          "id": 63,
+          "matched_pixels": 120,
+          "max_interior_depth_pixels": 3.605551275463989,
+          "bbox": [
+            736,
+            1688,
+            754,
+            1702
+          ]
+        },
+        {
+          "id": 64,
+          "matched_pixels": 323,
+          "max_interior_depth_pixels": 7.0710678118654755,
+          "bbox": [
+            782,
+            1723,
+            804,
+            1758
+          ]
+        },
+        {
+          "id": 65,
+          "matched_pixels": 192,
+          "max_interior_depth_pixels": 2.0,
+          "bbox": [
+            1502,
+            1723,
+            1561,
+            1750
+          ]
+        },
+        {
+          "id": 66,
+          "matched_pixels": 1834,
+          "max_interior_depth_pixels": 11.704699910719626,
+          "bbox": [
+            1504,
+            1730,
+            1578,
+            1793
+          ]
+        },
+        {
+          "id": 67,
+          "matched_pixels": 53,
+          "max_interior_depth_pixels": 3.0,
+          "bbox": [
+            1484,
+            1740,
+            1494,
+            1748
+          ]
+        },
+        {
+          "id": 68,
+          "matched_pixels": 72,
+          "max_interior_depth_pixels": 4.0,
+          "bbox": [
+            788,
+            1747,
+            795,
+            1758
+          ]
+        },
+        {
+          "id": 69,
+          "matched_pixels": 2,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            1493,
+            1752,
+            1495,
+            1753
+          ]
+        },
+        {
+          "id": 70,
+          "matched_pixels": 1,
+          "max_interior_depth_pixels": 1.0,
+          "bbox": [
+            1491,
+            1753,
+            1492,
+            1754
+          ]
+        },
+        {
+          "id": 71,
+          "matched_pixels": 279,
+          "max_interior_depth_pixels": 4.47213595499958,
+          "bbox": [
+            1490,
+            1759,
+            1507,
+            1798
+          ]
+        },
+        {
+          "id": 72,
+          "matched_pixels": 1207,
+          "max_interior_depth_pixels": 11.0,
+          "bbox": [
+            724,
+            1776,
+            806,
+            1801
+          ]
+        },
+        {
+          "id": 73,
+          "matched_pixels": 799,
+          "max_interior_depth_pixels": 8.94427190999916,
+          "bbox": [
+            876,
+            1793,
+            928,
+            1830
+          ]
+        },
+        {
+          "id": 74,
+          "matched_pixels": 2236,
+          "max_interior_depth_pixels": 15.264337522473747,
+          "bbox": [
+            801,
+            1829,
+            864,
+            1894
+          ]
+        },
+        {
+          "id": 75,
+          "matched_pixels": 281,
+          "max_interior_depth_pixels": 6.708203932499369,
+          "bbox": [
+            1246,
+            1924,
+            1276,
+            1945
+          ]
+        }
+      ],
+      "depth_sensitivity": {
+        "2": {
+          "retained_components": 41,
+          "retained_pixels": 15405,
+          "thin_or_small_pixels": 267,
+          "component_ids": [
+            1,
+            3,
+            5,
+            9,
+            12,
+            14,
+            15,
+            16,
+            17,
+            26,
+            32,
+            37,
+            38,
+            39,
+            40,
+            42,
+            43,
+            44,
+            47,
+            48,
+            49,
+            50,
+            51,
+            55,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            71,
+            72,
+            73,
+            74,
+            75
+          ]
+        },
+        "3": {
+          "retained_components": 26,
+          "retained_pixels": 14939,
+          "thin_or_small_pixels": 733,
+          "component_ids": [
+            3,
+            9,
+            15,
+            17,
+            37,
+            38,
+            39,
+            40,
+            42,
+            44,
+            55,
+            57,
+            58,
+            59,
+            61,
+            62,
+            63,
+            64,
+            66,
+            67,
+            68,
+            71,
+            72,
+            73,
+            74,
+            75
+          ]
+        },
+        "4": {
+          "retained_components": 23,
+          "retained_pixels": 14649,
+          "thin_or_small_pixels": 1023,
+          "component_ids": [
+            3,
+            9,
+            15,
+            17,
+            37,
+            38,
+            39,
+            40,
+            42,
+            44,
+            55,
+            57,
+            59,
+            61,
+            62,
+            64,
+            66,
+            68,
+            71,
+            72,
+            73,
+            74,
+            75
+          ]
+        }
+      }
+    }
+  }
+}
