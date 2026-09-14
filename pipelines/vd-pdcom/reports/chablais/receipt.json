@@ -1,0 +1,90 @@
+{
+  "operation_id": "7c0f0ce4-8e30-47ba-88b1-185de55b537b",
+  "document_count": 42,
+  "communes_with_documents": 25,
+  "queue_counts": {
+    "manual_search_required": 243,
+    "candidates_found": 39,
+    "blocked": 18
+  },
+  "sources": [
+    {
+      "candidate_id": "af61eb67-2108-4db8-910d-817309ef83c4",
+      "commune_bfs": 5401,
+      "commune_bfs_list": [
+        5401,
+        5402,
+        5409,
+        5406
+      ],
+      "commune_name": "Chablais Agglo (Vaud)",
+      "pdf_url": "https://admin.chablaisagglo.ch/assets/54dd5ed1-e921-4253-87ee-b42d5562b304.pdf",
+      "landing_url": "https://chablais-agglo.ch/projets",
+      "title": "Chablais Agglo PA5-PDi — Préface",
+      "plan_status": "unverified",
+      "scope": "intercommunal",
+      "sha": "e3ba6e5b7829f73607ac9d4e09807d0aa1cf7e6bb5fbe78d8b9d710b1940e1b8",
+      "generation": 5,
+      "document_id": "f8112076-439d-5ef1-bf79-6763e3984d24",
+      "page_count": 9
+    },
+    {
+      "candidate_id": "086a55c9-12a1-49c8-b6bc-b12cd7d1a4b6",
+      "commune_bfs": 5401,
+      "commune_bfs_list": [
+        5401,
+        5402,
+        5409,
+        5406
+      ],
+      "commune_name": "Chablais Agglo (Vaud)",
+      "pdf_url": "https://admin.chablaisagglo.ch/assets/e8a5ec12-2bcd-4683-9f06-840115e340d7.pdf",
+      "landing_url": "https://chablais-agglo.ch/projets",
+      "title": "Chablais Agglo PA5-PDi — Volet stratégique",
+      "plan_status": "unverified",
+      "scope": "intercommunal",
+      "sha": "34038263fe95217ea7da8339369ef4128239da8c65cb068fc0a88d9990f258b3",
+      "generation": 5,
+      "document_id": "082382f6-2f85-5570-91cf-a03842c33cd6",
+      "page_count": 130
+    },
+    {
+      "candidate_id": "0142e646-2e83-456d-b20b-ccbe15abd9cb",
+      "commune_bfs": 5401,
+      "commune_bfs_list": [
+        5401,
+        5402,
+        5409
+      ],
+      "commune_name": "Chablais Agglo (Vaud)",
+      "pdf_url": "https://admin.chablaisagglo.ch/assets/0581fcbb-3295-4398-aff1-13e21d5b1941.pdf",
+      "landing_url": "https://chablais-agglo.ch/projets",
+      "title": "Chablais Agglo PA4-PDi — Préface",
+      "plan_status": "unverified",
+      "scope": "intercommunal",
+      "sha": "93758289249fe942cb5f7441c108c257b2e522f9be176fee7aadb42600506c10",
+      "generation": 4,
+      "document_id": "b59a7edf-d39f-5a3e-bbf9-998133edf2a0",
+      "page_count": 15
+    },
+    {
+      "candidate_id": "3449cc72-64e6-4700-989b-61757c4f4118",
+      "commune_bfs": 5401,
+      "commune_bfs_list": [
+        5401,
+        5402,
+        5409
+      ],
+      "commune_name": "Chablais Agglo (Vaud)",
+      "pdf_url": "https://admin.chablaisagglo.ch/assets/e867b27b-308b-4743-9259-266c8f8daffb.pdf",
+      "landing_url": "https://chablais-agglo.ch/projets",
+      "title": "Chablais Agglo PA4-PDi — Volet stratégique",
+      "plan_status": "unverified",
+      "scope": "intercommunal",
+      "sha": "d2be996343614077c860bc47587ebabd927cf6603edfb4f592c4cee3469dc7ff",
+      "generation": 4,
+      "document_id": "f261e7e2-067b-5801-909a-9224b8490c3f",
+      "page_count": 92
+    }
+  ]
+}

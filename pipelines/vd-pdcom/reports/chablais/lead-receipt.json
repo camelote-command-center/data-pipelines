@@ -1,0 +1,62 @@
+{
+  "operation_id": "49548be7-2c53-4559-a385-3be5614964e1",
+  "records": [
+    {
+      "commune_bfs": 5518,
+      "landing_url": "https://www.echallens.ch/ma-commune/politique/municipalite/preavis-municipaux.html",
+      "evidence": {
+        "method": "official_council_link_download_check",
+        "downloads": [
+          {
+            "url": "https://www.echallens.ch/files/230/Extranet/452/PM2026-05PDCOM-.PM2026-05_PDCOM-1",
+            "redirects": [
+              {
+                "status": 303,
+                "url": "https://www.echallens.ch/files/230/Extranet/452/PM2026-05PDCOM-.PM2026-05_PDCOM-1",
+                "location": "https://www.echallens.ch/index.php?format=&option=com_dropfiles&task=frontfile.download&catid=230&id=452&Itemid=1000000000000"
+              },
+              {
+                "status": 303,
+                "url": "https://www.echallens.ch/index.php?format=&option=com_dropfiles&task=frontfile.download&catid=230&id=452&Itemid=1000000000000",
+                "location": "https://www.echallens.ch/index.php"
+              }
+            ],
+            "final_url": "https://www.echallens.ch/index.php",
+            "http_status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "parser_error": "response_not_pdf"
+          },
+          {
+            "url": "https://www.echallens.ch/files/230/Extranet/449/Rapport-PM-202605finalsi.Rapport%20PM%202026_05_final_sig",
+            "redirects": [
+              {
+                "status": 303,
+                "url": "https://www.echallens.ch/files/230/Extranet/449/Rapport-PM-202605finalsi.Rapport%20PM%202026_05_final_sig",
+                "location": "https://www.echallens.ch/index.php?format=&option=com_dropfiles&task=frontfile.download&catid=230&id=449&Itemid=1000000000000"
+              },
+              {
+                "status": 303,
+                "url": "https://www.echallens.ch/index.php?format=&option=com_dropfiles&task=frontfile.download&catid=230&id=449&Itemid=1000000000000",
+                "location": "https://www.echallens.ch/index.php"
+              }
+            ],
+            "final_url": "https://www.echallens.ch/index.php",
+            "http_status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "parser_error": "response_not_pdf"
+          }
+        ],
+        "finding": "Publicly linked council downloads redirect to homepage HTML. Site route failure; no proof of global authorization failure. Complete adopted plan remains missing; do not infer no plan."
+      }
+    },
+    {
+      "commune_bfs": 5890,
+      "landing_url": "https://agglorivelac.ch/projet/plan-directeur-intercommunal-pdi-projet-dagglomeration-de-cinquieme-generation-pa5/",
+      "evidence": {
+        "method": "official_project_status_review",
+        "finding": "Official page separates PA5 and PDI validation. Published PA5 not treated as adopted PDI. PDI requires separate consultation and commune validation following preliminary examination. Track the future PDI source; no document or additional commune coverage claimed.",
+        "related_pdf": "https://agglorivelac.ch/wp-content/uploads/PA5_Rivelac_Rapport-principal.pdf"
+      }
+    }
+  ]
+}
