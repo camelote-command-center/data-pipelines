@@ -1,0 +1,32 @@
+{
+  "operation_id": "19eb276d-af5c-4071-939c-1465862d645c",
+  "queue_counts": {
+    "manual_search_required": 246,
+    "candidates_found": 36,
+    "blocked": 18
+  },
+  "reviews": [
+    {
+      "candidate_id": "3afb5b79-3255-420b-a144-09a362bcd232",
+      "commune_bfs": 5422,
+      "source_url": "https://www.aubonne.ch/fileadmin/documents/aubonne.ch/pdf/Services_techniques/20240709_BrochurePDC-Aubonne_WEB-07Planches.pdf",
+      "sha256": "fe7978e0d0f5b6671b05ae680d0bcd398825e23f40faf8e636fe7c307964c565",
+      "page_count": 7,
+      "first_page_text": "Guide des autorisations de construire\nTypes de procédures\n",
+      "decision": "reject_pdcom_candidate",
+      "reason": "Building-permit procedure guide, not a communal director plan. PDC filename abbreviation caused legacy false positive.",
+      "queue_status": "manual_search_required"
+    },
+    {
+      "candidate_id": "355cf4b6-b814-4256-8e9e-8a4f2fd18495",
+      "commune_bfs": 5518,
+      "source_url": "https://www.echallens.ch/images/PDC-_Echallens_2021-A3.pdf",
+      "sha256": "5574a3105f74219404b95fd4ef3e21947be2aff514e989727d8642eda1035ee7",
+      "page_count": 7,
+      "first_page_text": "Commune d’Echallens \nAutorisations de construire\nTypes de procédures\n",
+      "decision": "reject_pdcom_candidate",
+      "reason": "Building-permit procedure guide, not a communal director plan. PDC filename abbreviation caused legacy false positive.",
+      "queue_status": "candidates_found"
+    }
+  ]
+}
