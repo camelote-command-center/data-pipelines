@@ -40,6 +40,11 @@ jobs:
         env:
           RE_LLM_DB_URL: ${{ secrets.RE_LLM_DB_URL }}
         run: python pipelines/vd-pdcom/acquire_sources.py --persist
+      - name: Refresh official cadastral object kinds
+        if: github.event.schedule == '40 3 16 9 *' || (github.event_name == 'workflow_dispatch' && inputs.mode == 'full')
+        env:
+          RE_LLM_DB_URL: ${{ secrets.RE_LLM_DB_URL }}
+        run: python pipelines/vd-pdcom/cadastral_types.py
       - name: Resume municipal source discovery (30 due communes)
         env:
           RE_LLM_DB_URL: ${{ secrets.RE_LLM_DB_URL }}
