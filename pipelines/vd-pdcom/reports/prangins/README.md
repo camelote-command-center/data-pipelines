@@ -61,3 +61,26 @@ interpret remaining Prangins categories;complete Lausanne/Morges georeferencing
 and hatching interpretation;verify applicable versions;register and validate
 receiver delivery. Commune states remain candidate_vectors/not_ready;zero
 communes are resolved. The other297 current VD communes remain not_searched.
+
+
+### Outlier review, 2026-09-14
+
+The reference is RCB **building location points**, not footprint centroids (the
+registered geometry column is POINT, EPSG:2056). Earlier centroid terminology
+was incorrect. Consequently the centroid-to-nearest-location-point diagnostic
+is not a surveyed map alignment error. The original untrimmed metric remains
+unchanged rather than silently removing adverse observations.
+
+All seven held-out outliers now have individual PDF overlays: magenta circles
+are current RCB locations; the blue circle is the held-out PDF polygon centroid.
+Holdout 0 lies in Nyon, outside the Prangins-only reference subset. Its nearest
+unrestricted RCB point (EGID9029479) is7.108m away; the old500.140m result was a
+reference-coverage mismatch. The other six remain in Prangins. The overlays show
+location-point/shape differences, but do not independently establish whether
+these reflect changed buildings, cartographic generalisation, or extraction
+subparts. The release remains review_required.
+
+`holdout-outliers.json` records point coordinates, commune membership, nearest
+RCB point distances and building metadata. `holdout-{index}.png` preserves each
+visual check. Official Prangins PDCom page rechecked14September2026 and still
+states entry into force2013. No full-commune or parcel-eligibility claim made.
