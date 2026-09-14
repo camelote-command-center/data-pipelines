@@ -79,6 +79,8 @@ def persist(conn,source,sha,pages):
             WHERE commune_bfs=%s''',('needs_ocr' if sum(len(p['text'].strip()) for p in pages)<50 else 'downloaded',Json([{'document_id':doc_id}]),Json([{'document_id':doc_id,'url':source['landing_url'],'version_review':'pending'}]),bfs))
     from reviews import apply_review
     apply_review(conn,doc_id,sha)
+    from epalinges_pilot import persist as persist_epalinges
+    persist_epalinges(conn,doc_id,sha)
     return doc_id
 
 

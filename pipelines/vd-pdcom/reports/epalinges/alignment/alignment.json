@@ -1,0 +1,29 @@
+{
+  "document_sha256": "bd095d80d2284073a93ef7e108f89b083d32fb361c97b689809522b7b8f64c86",
+  "commune_bfs": 5584,
+  "page_number": 99,
+  "drawing_index": 2,
+  "parameters": [
+    5.256174927809519e-06,
+    4.303429867476141,
+    -0.10323634043544519,
+    -0.1011788734810656
+  ],
+  "pdf_origin_y_flipped": [
+    456.07539386632254,
+    395.77628179113066
+  ],
+  "lv95_origin": [
+    2540936.409826026,
+    1155781.99743861
+  ],
+  "calibration_reference": "bronze_ch.swiss_communes_geo BFS5584, EPSG2056",
+  "fit_points": 600,
+  "withheld_boundary_points": 600,
+  "withheld_boundary_median_m": 0.31273856968940117,
+  "withheld_boundary_p95_m": 2.3010180402765004,
+  "withheld_boundary_rmse_m": 1.6848010412456185,
+  "withheld_boundary_max_m": 15.939497629778453,
+  "status": "diagnostic_only",
+  "limitation": "Boundary fit/withheld samples share one reference boundary. Metrics are not independent surveyed point accuracy. Building-point overlays need separate visual review; no spatial release."
+}
