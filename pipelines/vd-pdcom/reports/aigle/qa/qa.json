@@ -1,0 +1,34 @@
+{
+  "reviewed_at": "2026-09-14",
+  "source_document_id": "dd172ee9-e928-5c2f-99d6-3a24eb28cd68",
+  "source_sha256": "bbd1d3d0474d5f491ac4cc17b05d7bf1c7912861d9f93f9347c719bf7522fedc",
+  "holdout_points_checked": 14,
+  "holdout_points_inside_current_footprints": 8,
+  "remaining_point_to_footprint_distances_m": [
+    0.3888969564212831,
+    17.285770654969443,
+    15.820156285478113,
+    9.214585144960587,
+    9.691924131128593,
+    9.620774662111833
+  ],
+  "parcel_keys_reconciled": 178,
+  "small_intersections_under_1m2": 2,
+  "intersections_under_1pct": 17,
+  "illustrative_10m_eroded_pairs": 139,
+  "illustrative_10m_expanded_pairs": 269,
+  "overlapping_egrid_pairs_over_1m2": [
+    [
+      "CH314581837868",
+      "CH400745598377",
+      6006.65652036052
+    ],
+    [
+      "CH598378414564",
+      "CH807945578340",
+      33.7550001083571
+    ]
+  ],
+  "release_status": "review_required",
+  "limits": "Footprint containment is not source shape correspondence or surveyed accuracy. Six outlier locations differ; causes unresolved. Distinct EGRIDs overlap in current federal cadastral source and type/validity fields are null. Do not deduplicate or interpret as mutually exclusive land areas without authoritative evidence."
+}

@@ -1,0 +1,225 @@
+{
+  "holdout_index": 0,
+  "pdf_point_y_flipped": [
+    0.526,
+    26.967
+  ],
+  "world_point": [
+    2562175.1084114504,
+    1127869.0499623483
+  ],
+  "old_point_residual_m": 21.100582032842606,
+  "reference_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?f=geojson&where=1%3D1&geometry=2562095.1084114504%2C1127789.0499623483%2C2562255.1084114504%2C1127949.0499623483&geometryType=esriGeometryEnvelope&inSR=2056&outSR=2056&spatialRel=esriSpatialRelIntersects&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CGENRE_TXT&returnGeometry=true",
+  "response_sha256": "710d98ac4b608639847843b1182dffdfc95c964aa9d23a3ebd82ca81bd155636",
+  "fetched_at": "2026-09-14T18:18:17.658047+00:00",
+  "coordinate_system": "EPSG:2056",
+  "count_verified": 5,
+  "features": [
+    {
+      "type": "Feature",
+      "id": 46487393,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2562131.903,
+              1127887.903
+            ],
+            [
+              2562163.548,
+              1127855.094
+            ],
+            [
+              2562178.256,
+              1127869.288
+            ],
+            [
+              2562146.598,
+              1127902.0929999999
+            ],
+            [
+              2562131.903,
+              1127887.903
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 46487393,
+        "EGID": 101538644,
+        "NO_COM_FED": 5401,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "distance_to_footprint_m": 0.0
+    },
+    {
+      "type": "Feature",
+      "id": 46487665,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2562173.051,
+              1127789.893
+            ],
+            [
+              2562148.462,
+              1127815.304
+            ],
+            [
+              2562133.641,
+              1127800.954
+            ],
+            [
+              2562158.231,
+              1127775.543
+            ],
+            [
+              2562173.051,
+              1127789.893
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 46487665,
+        "EGID": 190098210,
+        "NO_COM_FED": 5401,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "distance_to_footprint_m": 59.9888298930607
+    },
+    {
+      "type": "Feature",
+      "id": 46372938,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2562114.652,
+              1127843.264
+            ],
+            [
+              2562114.4359999998,
+              1127843.487
+            ],
+            [
+              2562117.65,
+              1127846.594
+            ],
+            [
+              2562115.697,
+              1127848.6570000001
+            ],
+            [
+              2562112.462,
+              1127845.528
+            ],
+            [
+              2562086.643,
+              1127872.225
+            ],
+            [
+              2562075.312,
+              1127861.255
+            ],
+            [
+              2562103.332,
+              1127832.314
+            ],
+            [
+              2562114.652,
+              1127843.264
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 46372938,
+        "EGID": 280001853,
+        "NO_COM_FED": 5401,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "distance_to_footprint_m": 61.69067426606176
+    },
+    {
+      "type": "Feature",
+      "id": 46288828,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2562101.984,
+              1127866.367
+            ],
+            [
+              2562100.359,
+              1127868.084
+            ],
+            [
+              2562096.68,
+              1127864.584
+            ],
+            [
+              2562098.31,
+              1127862.87
+            ],
+            [
+              2562101.984,
+              1127866.367
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 46288828,
+        "EGID": 280138718,
+        "NO_COM_FED": 5401,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "distance_to_footprint_m": 73.17361434906009
+    },
+    {
+      "type": "Feature",
+      "id": 46445070,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2562096.435,
+              1127837.958
+            ],
+            [
+              2562093.999,
+              1127835.605
+            ],
+            [
+              2562097.629,
+              1127831.834
+            ],
+            [
+              2562100.071,
+              1127834.189
+            ],
+            [
+              2562096.435,
+              1127837.958
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 46445070,
+        "EGID": 280138717,
+        "NO_COM_FED": 5401,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "distance_to_footprint_m": 82.73995294310295
+    }
+  ]
+}
