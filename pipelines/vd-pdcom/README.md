@@ -104,3 +104,14 @@ cantonal reservations and indicative map limits, and do not advance commune
 extraction/delivery validation. Épalinges cahier II page3 records approval on
 5July2023 with a reservation concerning chapter2.2/pages21–22; map pages99–102
 are indexed for the next spatial-extraction step. Page numbers are PDF indices.
+
+### Shared plans and second-pass sources
+
+The reviewed manifest includes Gland's two published PDCom documents, Montreux's
+18 published PDCom chapters, and the PDi-OL version identified by SDOL as adopted
+25August2021. Its cover independently names the same eight current communes as
+the official OFS district roster. `commune_bfs_list` links that single versioned
+document to all eight communes. The parser verifies current roster membership,
+rejects duplicate identities and requires intercommunal scope for shared sources.
+Source possession does not establish complete extraction or receiver delivery.
+Official landing pages remain in the manifest for source/version review.

@@ -89,5 +89,204 @@
     "title": "Plan directeur communal du 27 avril 1994",
     "plan_status": "unverified",
     "scope": "communal"
+  },
+  {
+    "commune_name": "Gland",
+    "landing_url": "https://www.gland.ch/ma-ville/administration-communale/service-des-batiments-et-de-lurbanisme/amenagement-du-territoire/plan-directeur-communal-et-intercommunal",
+    "pdf_url": "https://www.gland.ch/fileadmin/documents/pdf/Plans_directeurs/302.1-PDCom1998-bilan-objectifs-principes.pdf",
+    "title": "Plan Directeur Communal - bilan, objectifs, principes",
+    "commune_bfs": 5721,
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_name": "Gland",
+    "landing_url": "https://www.gland.ch/ma-ville/administration-communale/service-des-batiments-et-de-lurbanisme/amenagement-du-territoire/plan-directeur-communal-et-intercommunal",
+    "pdf_url": "https://www.gland.ch/fileadmin/documents/pdf/Plans_directeurs/302.1-PDCom1998-mesures-d-amenagement.pdf",
+    "title": "Plan Directeur Communal - Mesures d'aménagement",
+    "commune_bfs": 5721,
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_name": "Montreux",
+    "landing_url": "https://www.montreux.ch/travaux-et-urbanisme/urbanisme/plans-et-reglements",
+    "pdf_url": "https://www.montreux.ch/fileadmin/documents/commune-de-montreux.ch/pdf/Urbanisme/PDcom_preambule.pdf",
+    "title": "Préambule",
+    "commune_bfs": 5886,
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_name": "Montreux",
+    "landing_url": "https://www.montreux.ch/travaux-et-urbanisme/urbanisme/plans-et-reglements",
+    "pdf_url": "https://www.montreux.ch/fileadmin/documents/commune-de-montreux.ch/pdf/Urbanisme/PDcom_introduction.pdf",
+    "title": "Introduction",
+    "commune_bfs": 5886,
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_name": "Montreux",
+    "landing_url": "https://www.montreux.ch/travaux-et-urbanisme/urbanisme/plans-et-reglements",
+    "pdf_url": "https://www.montreux.ch/fileadmin/documents/commune-de-montreux.ch/pdf/Urbanisme/PDcom_2_contexte_regional.pdf",
+    "title": "Contexte régional",
+    "commune_bfs": 5886,
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_name": "Montreux",
+    "landing_url": "https://www.montreux.ch/travaux-et-urbanisme/urbanisme/plans-et-reglements",
+    "pdf_url": "https://www.montreux.ch/fileadmin/documents/commune-de-montreux.ch/pdf/Urbanisme/PDcom_3_heritage_a_redecouvrir.pdf",
+    "title": "Un héritage à redécouvrir",
+    "commune_bfs": 5886,
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_name": "Montreux",
+    "landing_url": "https://www.montreux.ch/travaux-et-urbanisme/urbanisme/plans-et-reglements",
+    "pdf_url": "https://www.montreux.ch/fileadmin/documents/commune-de-montreux.ch/pdf/Urbanisme/PDcom_4_structure_urbain.pdf",
+    "title": "Structure urbaine et vocation du territoire",
+    "commune_bfs": 5886,
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_name": "Montreux",
+    "landing_url": "https://www.montreux.ch/travaux-et-urbanisme/urbanisme/plans-et-reglements",
+    "pdf_url": "https://www.montreux.ch/fileadmin/documents/commune-de-montreux.ch/pdf/Urbanisme/PDCom_5_territoire_rural.pdf",
+    "title": "Le territoire rural",
+    "commune_bfs": 5886,
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_name": "Montreux",
+    "landing_url": "https://www.montreux.ch/travaux-et-urbanisme/urbanisme/plans-et-reglements",
+    "pdf_url": "https://www.montreux.ch/fileadmin/documents/commune-de-montreux.ch/pdf/Urbanisme/PDcom_6_cadre_de_vie.pdf",
+    "title": "Le cadre de vie et l'image de marque",
+    "commune_bfs": 5886,
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_name": "Montreux",
+    "landing_url": "https://www.montreux.ch/travaux-et-urbanisme/urbanisme/plans-et-reglements",
+    "pdf_url": "https://www.montreux.ch/fileadmin/documents/commune-de-montreux.ch/pdf/Urbanisme/PDcom_7_espaces_publics.pdf",
+    "title": "Les espaces publics",
+    "commune_bfs": 5886,
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_name": "Montreux",
+    "landing_url": "https://www.montreux.ch/travaux-et-urbanisme/urbanisme/plans-et-reglements",
+    "pdf_url": "https://www.montreux.ch/fileadmin/documents/commune-de-montreux.ch/pdf/Urbanisme/PDcom_8_transports.pdf",
+    "title": "Les transports",
+    "commune_bfs": 5886,
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_name": "Montreux",
+    "landing_url": "https://www.montreux.ch/travaux-et-urbanisme/urbanisme/plans-et-reglements",
+    "pdf_url": "https://www.montreux.ch/fileadmin/documents/commune-de-montreux.ch/pdf/Urbanisme/PDcom_9_economie_tourisme.pdf",
+    "title": "Economie - tourisme",
+    "commune_bfs": 5886,
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_name": "Montreux",
+    "landing_url": "https://www.montreux.ch/travaux-et-urbanisme/urbanisme/plans-et-reglements",
+    "pdf_url": "https://www.montreux.ch/fileadmin/documents/commune-de-montreux.ch/pdf/Urbanisme/PDcom_10_energie_environnement.pdf",
+    "title": "Energie et environnement",
+    "commune_bfs": 5886,
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_name": "Montreux",
+    "landing_url": "https://www.montreux.ch/travaux-et-urbanisme/urbanisme/plans-et-reglements",
+    "pdf_url": "https://www.montreux.ch/fileadmin/documents/commune-de-montreux.ch/pdf/Urbanisme/PDcom_11_habitat_construction.pdf",
+    "title": "Habitat et construction",
+    "commune_bfs": 5886,
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_name": "Montreux",
+    "landing_url": "https://www.montreux.ch/travaux-et-urbanisme/urbanisme/plans-et-reglements",
+    "pdf_url": "https://www.montreux.ch/fileadmin/documents/commune-de-montreux.ch/pdf/Urbanisme/PDcom_12_schema_dir_sect_clarens.pdf",
+    "title": "Schéma directeur sectoriel Clarens",
+    "commune_bfs": 5886,
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_name": "Montreux",
+    "landing_url": "https://www.montreux.ch/travaux-et-urbanisme/urbanisme/plans-et-reglements",
+    "pdf_url": "https://www.montreux.ch/fileadmin/documents/commune-de-montreux.ch/pdf/Urbanisme/PDcom_13_schema_dir_sect_brent.pdf",
+    "title": "Schéma directeur sectoriel Brent - Fontanivent - Chernex",
+    "commune_bfs": 5886,
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_name": "Montreux",
+    "landing_url": "https://www.montreux.ch/travaux-et-urbanisme/urbanisme/plans-et-reglements",
+    "pdf_url": "https://www.montreux.ch/fileadmin/documents/commune-de-montreux.ch/pdf/Urbanisme/PDcom_14_schema_dir_sect_vernex.pdf",
+    "title": "Schéma directeur sectoriel Vernex - Rouvenaz",
+    "commune_bfs": 5886,
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_name": "Montreux",
+    "landing_url": "https://www.montreux.ch/travaux-et-urbanisme/urbanisme/plans-et-reglements",
+    "pdf_url": "https://www.montreux.ch/fileadmin/documents/commune-de-montreux.ch/pdf/Urbanisme/PDcom_15_schema_dir_sect_pertit.pdf",
+    "title": "Schéma directeur sectoriel Pertit - Vuarennes - Vernex",
+    "commune_bfs": 5886,
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_name": "Montreux",
+    "landing_url": "https://www.montreux.ch/travaux-et-urbanisme/urbanisme/plans-et-reglements",
+    "pdf_url": "https://www.montreux.ch/fileadmin/documents/commune-de-montreux.ch/pdf/Urbanisme/PDcom_16_schema_dir_sect_montreux.pdf",
+    "title": "Schéma directeur sectoriel Montreux - Centre",
+    "commune_bfs": 5886,
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_name": "Montreux",
+    "landing_url": "https://www.montreux.ch/travaux-et-urbanisme/urbanisme/plans-et-reglements",
+    "pdf_url": "https://www.montreux.ch/fileadmin/documents/commune-de-montreux.ch/pdf/Urbanisme/PDcom_17_schema_dir_sect_territet.pdf",
+    "title": "Schéma directeur sectoriel Territet - Collonge",
+    "commune_bfs": 5886,
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_bfs": 5624,
+    "commune_bfs_list": [
+      5583,
+      5589,
+      5591,
+      5624,
+      5627,
+      5635,
+      5648,
+      5651
+    ],
+    "commune_name": "Ouest lausannois (8 communes)",
+    "pdf_url": "https://ouest-lausannois.ch/wp-content/uploads/a4-pdi-ol-web-interactif-avril-2022.pdf",
+    "landing_url": "https://ouest-lausannois.ch/strategie/pdi/",
+    "title": "PDi-OL — version adoptée par le Conseil d'Etat le 25 août 2021",
+    "plan_status": "unverified",
+    "scope": "intercommunal"
   }
 ]
