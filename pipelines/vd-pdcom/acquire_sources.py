@@ -81,6 +81,8 @@ def persist(conn,source,sha,pages):
     apply_review(conn,doc_id,sha)
     from epalinges_pilot import persist as persist_epalinges
     persist_epalinges(conn,doc_id,sha)
+    from aigle_pilot import persist as persist_aigle
+    persist_aigle(conn,doc_id,sha)
     return doc_id
 
 

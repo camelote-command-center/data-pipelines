@@ -1,0 +1,30 @@
+{
+  "document_sha256": "bbd1d3d0474d5f491ac4cc17b05d7bf1c7912861d9f93f9347c719bf7522fedc",
+  "parameters": [
+    3.536737112357017e-05,
+    3.458668456715476,
+    104.09685442577216,
+    114.12787764885424
+  ],
+  "pdf_origin_y_flipped": [
+    398.76649167927377,
+    510.0872511346443
+  ],
+  "reference_origin_lv95": [
+    2563448.334285714,
+    1129425.9235714285
+  ],
+  "pdf_points": 1983,
+  "reference_points": 2800,
+  "holdout_count": 397,
+  "holdout_under10m": 383,
+  "holdout_median_m": 0.5212548961606391,
+  "holdout_p90_m": 2.605407786678405,
+  "holdout_rmse_m": 5.0452336393087105,
+  "rejected_paths": {
+    "invalid_source_polygon": 10,
+    "unreviewed_path_operator": 26,
+    "A linearring requires at least 4 coordinates.": 18
+  },
+  "interpretation": "Building centroid to nearest registered location-point diagnostics only; not surveyed accuracy. Fixed prefit every-fifth holdout. Main-map only; inset excluded. Review required."
+}
