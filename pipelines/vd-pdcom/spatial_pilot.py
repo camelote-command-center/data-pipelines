@@ -15,7 +15,7 @@ def persist(conn,document_id,sha):
     root=Path(__file__).parent/'reports'/'prangins'
     alignment=json.loads((root/'alignment.json').read_text())
     alignment.update(release_status='review_required',calibration_date='2026-09-13',
-                     source_precision='unknown',visual_review='Three building overlays inspected by Codex; seven held-out nearest-building outliers remain unresolved')
+                     source_precision='unknown',visual_review='Three area overlays plus seven individual holdout overlays reviewed; largest outlier explained by Nyon/reference coverage, six location-point/shape differences remain unresolved')
     features=json.loads((root/'sectors-lv95.geojson').read_text())['features']
     with conn,conn.cursor() as c:
         c.execute("SET LOCAL statement_timeout='60s'")

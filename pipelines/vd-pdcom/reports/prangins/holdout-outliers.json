@@ -1,0 +1,306 @@
+[
+  {
+    "test_index": 0,
+    "pdf_point": [
+      156.56,
+      939.29
+    ],
+    "world_point": [
+      2507271.8919769167,
+      1139308.9640029536
+    ],
+    "nearest_m": 500.139824139129,
+    "commune_membership": [
+      [
+        5724,
+        "Nyon",
+        true
+      ],
+      [
+        5715,
+        "Duillier",
+        false
+      ]
+    ],
+    "nearby_buildings": [
+      [
+        "9029479",
+        7.10811423234875,
+        "B\u00e2timent sans usage d'habitation",
+        "Existant",
+        null
+      ],
+      [
+        "9029485",
+        35.5139988527153,
+        "B\u00e2timent sans usage d'habitation",
+        "Existant",
+        null
+      ],
+      [
+        "280009277",
+        47.5380668343044,
+        "B\u00e2timent sans usage d'habitation",
+        "Existant",
+        null
+      ]
+    ]
+  },
+  {
+    "test_index": 3,
+    "pdf_point": [
+      446.22,
+      573.05
+    ],
+    "world_point": [
+      2507781.988453926,
+      1138664.073052967
+    ],
+    "nearest_m": 19.95797726377608,
+    "commune_membership": [
+      [
+        5725,
+        "Prangins",
+        true
+      ],
+      [
+        5724,
+        "Nyon",
+        false
+      ]
+    ],
+    "nearby_buildings": [
+      [
+        "280001730",
+        19.9579772637761,
+        "B\u00e2timent sans usage d'habitation",
+        "Existant",
+        1975
+      ],
+      [
+        "280007198",
+        56.6114782312803,
+        "B\u00e2timent sans usage d'habitation",
+        "Existant",
+        null
+      ],
+      [
+        "813909",
+        63.0868767825944,
+        "B\u00e2timent sans usage d'habitation",
+        "Existant",
+        1956
+      ]
+    ]
+  },
+  {
+    "test_index": 15,
+    "pdf_point": [
+      591.71,
+      899.83
+    ],
+    "world_point": [
+      2508038.1553452327,
+      1139239.5156571085
+    ],
+    "nearest_m": 13.542024544016723,
+    "commune_membership": [
+      [
+        5725,
+        "Prangins",
+        true
+      ]
+    ],
+    "nearby_buildings": [
+      [
+        "280079390",
+        13.5420245440167,
+        "B\u00e2timent exclusivement \u00e0 usage d'habitation",
+        "Existant",
+        2011
+      ],
+      [
+        "280079391",
+        26.3893970055314,
+        "B\u00e2timent exclusivement \u00e0 usage d'habitation",
+        "Existant",
+        2012
+      ],
+      [
+        "3175022",
+        31.9259501341645,
+        "B\u00e2timent exclusivement \u00e0 usage d'habitation",
+        "Existant",
+        1998
+      ]
+    ]
+  },
+  {
+    "test_index": 22,
+    "pdf_point": [
+      626.96,
+      921.8
+    ],
+    "world_point": [
+      2508100.225547345,
+      1139278.2058609144
+    ],
+    "nearest_m": 13.122872515968938,
+    "commune_membership": [
+      [
+        5725,
+        "Prangins",
+        true
+      ]
+    ],
+    "nearby_buildings": [
+      [
+        "280061795",
+        13.1228725159689,
+        "B\u00e2timent exclusivement \u00e0 usage d'habitation",
+        "Existant",
+        2010
+      ],
+      [
+        "280077419",
+        14.9606020021771,
+        "B\u00e2timent exclusivement \u00e0 usage d'habitation",
+        "Existant",
+        2010
+      ],
+      [
+        "280061796",
+        16.2521350681196,
+        "B\u00e2timent exclusivement \u00e0 usage d'habitation",
+        "Existant",
+        2010
+      ]
+    ]
+  },
+  {
+    "test_index": 72,
+    "pdf_point": [
+      764.86,
+      1134.37
+    ],
+    "world_point": [
+      2508343.0368856085,
+      1139652.5342826513
+    ],
+    "nearest_m": 11.461559980267134,
+    "commune_membership": [
+      [
+        5725,
+        "Prangins",
+        true
+      ]
+    ],
+    "nearby_buildings": [
+      [
+        "280055310",
+        11.4615599802671,
+        "B\u00e2timent d'habitation \u00e0 usage annexe",
+        "Existant",
+        2006
+      ],
+      [
+        "190096542",
+        18.4657541885381,
+        "B\u00e2timent exclusivement \u00e0 usage d'habitation",
+        "Existant",
+        2006
+      ],
+      [
+        "280055306",
+        23.1684669449841,
+        "B\u00e2timent exclusivement \u00e0 usage d'habitation",
+        "Existant",
+        2006
+      ]
+    ]
+  },
+  {
+    "test_index": 88,
+    "pdf_point": [
+      808.82,
+      764.39
+    ],
+    "world_point": [
+      2508420.4780883966,
+      1139001.0365452485
+    ],
+    "nearest_m": 32.42949108657314,
+    "commune_membership": [
+      [
+        5725,
+        "Prangins",
+        true
+      ]
+    ],
+    "nearby_buildings": [
+      [
+        "280000667",
+        32.4294910865731,
+        "B\u00e2timent sans usage d'habitation",
+        "Existant",
+        2000
+      ],
+      [
+        "280092702",
+        74.5196890756031,
+        "B\u00e2timent sans usage d'habitation",
+        "Existant",
+        2015
+      ],
+      [
+        "280063026",
+        82.0382054169027,
+        "B\u00e2timent exclusivement \u00e0 usage d'habitation",
+        "Existant",
+        1998
+      ]
+    ]
+  },
+  {
+    "test_index": 169,
+    "pdf_point": [
+      1075.25,
+      929.14
+    ],
+    "world_point": [
+      2508889.623276479,
+      1139291.1692265498
+    ],
+    "nearest_m": 12.956006728160743,
+    "commune_membership": [
+      [
+        5725,
+        "Prangins",
+        true
+      ]
+    ],
+    "nearby_buildings": [
+      [
+        "280018360",
+        12.9560067281607,
+        "B\u00e2timent sans usage d'habitation",
+        "Existant",
+        1971
+      ],
+      [
+        "280025502",
+        12.9952436010427,
+        "B\u00e2timent sans usage d'habitation",
+        "Existant",
+        1989
+      ],
+      [
+        "814054",
+        65.9977252716683,
+        "B\u00e2timent exclusivement \u00e0 usage d'habitation",
+        "Existant",
+        1900
+      ]
+    ]
+  }
+]

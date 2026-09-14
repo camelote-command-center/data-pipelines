@@ -1,6 +1,6 @@
 {
   "source": "Prangins PDF BATI layer",
-  "reference": "bronze_ch.vd_batiment_rcb building centroids",
+  "reference": "bronze_ch.vd_batiment_rcb registered building location points (POINT geometry; not footprint centroids)",
   "parameters": [
     4.850027457383596e-05,
     1.7609100290721924,
@@ -22,5 +22,21 @@
   "holdout_median_m": 0.5340878704584018,
   "holdout_p90_m": 2.067493569363149,
   "holdout_rmse_m": 35.99820690474887,
-  "status": "diagnostic_only_not_validated"
+  "status": "diagnostic_only_not_validated",
+  "metric_limitation": "Nearest location point distance from PDF polygon centroid mixes map alignment, footprint/location-point differences and unmatched buildings. It is not a surveyed control-point RMSE.",
+  "outlier_review_2026_09_14": {
+    "outside_reference_commune": [
+      0
+    ],
+    "outside_reference_evidence": "Holdout 0 lies in Nyon BFS5724; nearest unrestricted RCB building EGID9029479 is 7.108m away, vs500.140m in Prangins-only reference.",
+    "remaining_indices": [
+      3,
+      15,
+      22,
+      72,
+      88,
+      169
+    ],
+    "remaining_status": "Visual overlays show location-point/shape differences; temporal or cartographic causes not independently established. Do not discard or relabel surveyed accuracy."
+  }
 }

@@ -23,7 +23,7 @@ from psycopg2.extras import Json, RealDictCursor
 import requests
 
 DIRECTORY = 'https://www.ucv.ch/annuaire/recherche-par-localite'
-PLAN = re.compile(r'pdcom|plan[s]?[-_ /]+directeur[s]?[-_ /]+communal|pdc[-_ /]', re.I)
+PLAN = re.compile(r'pdcom|plan[s]?[-_ /]+directeur[s]?[-_ /]+communal', re.I)
 NAV = re.compile(r'urbanis|amenagement|planific|plan[-_ ]directeur|pdcom|territoire|reglement|documents|construction', re.I)
 
 
@@ -113,14 +113,17 @@ def discover(row, page_limit=12):
                     result['errors'].append({'url': url, 'error': type(exc).__name__})
                     continue
             result['pages'].append({'url': url, 'sha256': page_sha})
+            base = page.find('base',href=True)
+            base_url = urljoin(url,base['href']) if base else url
             for link in page.select('a[href]'):
-                target = urljoin(url, link['href']).split('#')[0]
+                target = urljoin(base_url, link['href']).split('#')[0]
                 parsed = urlsplit(target)
                 if parsed.scheme not in ('http', 'https') or parsed.username or parsed.password:
                     continue
                 label = link.get_text(' ', strip=True)[:500]
                 text = unicodedata.normalize('NFKD', unquote(label+' '+parsed.path)).encode('ascii', 'ignore').decode()
-                if PLAN.search(text):
+                page_is_plan = bool(PLAN.search(unquote(url)))
+                if PLAN.search(text) or (page_is_plan and parsed.path.lower().endswith('.pdf')):
                     candidates[target] = {'source_url': target, 'evidence_url': url, 'link_text': label,
                                           'kind': 'pdf' if parsed.path.lower().endswith('.pdf') else 'landing',
                                           'review_status': 'pending'}

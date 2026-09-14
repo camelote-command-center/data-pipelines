@@ -13,6 +13,7 @@ class DiscoveryContracts(unittest.TestCase):
     def test_regulations_are_not_pdcom(self):
         self.assertFalse(discovery.PLAN.search('reglement communal des constructions.pdf'))
         self.assertTrue(discovery.PLAN.search('Plan directeur communal'))
+        self.assertFalse(discovery.PLAN.search('PDC-Travaux-soumis-enquete-publique.pdf'))
     def test_private_addresses_rejected(self):
         with patch('discovery.socket.getaddrinfo',return_value=[(2,1,6,'',('127.0.0.1',443))]):
             with self.assertRaisesRegex(ValueError,'non_public_address'):
@@ -32,3 +33,10 @@ class DiscoveryContracts(unittest.TestCase):
             result=discovery.discover({'commune_bfs':5725,'directory_url':'https://www.ucv.ch/a'})
         self.assertEqual(result['candidates'][0]['evidence_url'],'https://www.example.ch')
         self.assertEqual(result['candidates'][0]['review_status'],'pending')
+
+    def test_html_base_resolves_relative_document(self):
+        detail=BeautifulSoup('<a href="https://www.example.ch">www.example.ch</a>','html.parser')
+        home=BeautifulSoup('<base href="https://www.example.ch/"><a href="uploads/plan.pdf">Plan directeur communal</a>','html.parser')
+        with patch('discovery.fetch_html',side_effect=[('https://www.ucv.ch/a',detail,'a'),('https://www.example.ch/nested/page/',home,'b')]):
+            result=discovery.discover({'commune_bfs':5725,'directory_url':'https://www.ucv.ch/a'})
+        self.assertEqual(result['candidates'][0]['source_url'],'https://www.example.ch/uploads/plan.pdf')
