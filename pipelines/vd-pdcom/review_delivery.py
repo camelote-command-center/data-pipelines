@@ -29,7 +29,14 @@ def deliver(conn):
             condition=sql.SQL(' AND ').join(sql.SQL('t.{}=s.{}').format(sql.Identifier(k),sql.Identifier(k)) for k in keys)
             cols=sql.SQL(',').join(map(sql.Identifier,columns))
             updates=sql.SQL(',').join(sql.SQL('{}=s.{}').format(sql.Identifier(col),sql.Identifier(col)) for col in columns if col not in keys)
-            c.execute(sql.SQL('UPDATE {} t SET {} FROM {} s WHERE {} AND to_jsonb(t) IS DISTINCT FROM to_jsonb(s)').format(dst,updates,src,condition))
+            def comparable(alias):
+                return sql.SQL(',').join(
+                    sql.SQL('ST_AsEWKB({}.{})').format(sql.Identifier(alias),sql.Identifier(col)) if col=='geom'
+                    else sql.SQL('{}.{}').format(sql.Identifier(alias),sql.Identifier(col)) for col in columns)
+            # Explicit row fields avoid postgres_fdw's UPDATE whole-row record type
+            # mismatch; EWKB compares coordinates rather than a geometry envelope.
+            c.execute(sql.SQL('UPDATE {} t SET {} FROM {} s WHERE {} AND ROW({}) IS DISTINCT FROM ROW({})').format(
+                dst,updates,src,condition,comparable('t'),comparable('s')))
             c.execute(sql.SQL('INSERT INTO {} ({}) SELECT {} FROM {} s WHERE NOT EXISTS(SELECT 1 FROM {} t WHERE {})').format(
                 dst,cols,sql.SQL(',').join(sql.SQL('s.{}').format(sql.Identifier(col)) for col in columns),src,dst,condition))
             # Full matching-key comparison, not rows_affected. Extra rows fail verification.
