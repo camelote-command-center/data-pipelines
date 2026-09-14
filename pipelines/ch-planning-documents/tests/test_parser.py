@@ -78,4 +78,53 @@ class SourceContracts(unittest.TestCase):
         with patch.object(parser,'fetch',return_value=(b'<main>'+b'a'*400+b'</main>','https://example.org','text/html')):
             self.assertEqual(parser.extract('https://example.org')['extraction_status'],'html_unverified')
 
+class BoundedRuns(unittest.TestCase):
+    def test_budget_stops_new_work_then_hard_limit(self):
+        t=[0.0];b=parser.Budget(10,grace_minutes=5,clock=lambda:t[0])
+        self.assertTrue(b.accepting());self.assertFalse(b.hard_expired())
+        t[0]=10*60;self.assertFalse(b.accepting());self.assertFalse(b.hard_expired())
+        t[0]=15*60;self.assertTrue(b.hard_expired())
+        self.assertLessEqual(parser.Budget(10,grace_minutes=5,clock=lambda:0.0).document_deadline(),15*60)
+    def test_unbounded_budget_never_stops(self):
+        b=parser.Budget(0);self.assertTrue(b.accepting());self.assertFalse(b.hard_expired())
+    def test_bounded_map_stops_submitting_when_budget_closes(self):
+        import concurrent.futures
+        state={'open':True};seen=[]
+        def fn(x):
+            seen.append(x)
+            if len(seen)>=2:state['open']=False
+            return x
+        submitted=[]
+        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
+            out=list(parser.bounded_map(pool,fn,range(10),concurrency=1,accepting=lambda:state['open'],submitted=submitted))
+        self.assertEqual(out,[0,1]);self.assertEqual(submitted,[2])
+    def test_document_deadline_is_enforced(self):
+        from pypdf import PdfWriter
+        w=PdfWriter();w.add_blank_page(width=100,height=100);stream=io.BytesIO();w.write(stream)
+        with patch.object(parser,'fetch',return_value=(stream.getvalue(),'https://example.org/a','application/pdf')):
+            with self.assertRaises(ValueError) as ctx:parser.extract('https://example.org/a',deadline=0)
+        self.assertEqual(str(ctx.exception),'document_time_limit')
+    def test_partial_run_is_neither_success_nor_error(self):
+        monitor=object.__new__(parser.Monitor)
+        monitor.code='ch_planning_document_text'
+        monitor.dataset={'id':'dataset','startup_id':'owner'}
+        monitor.last_success=None
+        calls=[]
+        def call(method,table,**kwargs):
+            calls.append((table,kwargs));return [{'id':'dataset'}]
+        monitor.call=call
+        monitor.finish('run',{'catalogued':12},False,partial=True)
+        self.assertEqual(calls[0][1]['json']['status'],'partial')
+        self.assertIsNone(calls[0][1]['json']['error_message'])
+        self.assertEqual(calls[1][1]['json']['status'],'active')
+        self.assertIsNone(calls[1][1]['json']['last_error'])
+        self.assertIsNone(calls[1][1]['json']['last_acquired_at'])
+        self.assertNotIn('last_db_update_at',calls[1][1]['json'])
+    def test_partial_never_overrides_complete(self):
+        monitor=object.__new__(parser.Monitor)
+        monitor.code='ch_planning_document_text';monitor.dataset={'id':'d','startup_id':'o'};monitor.last_success=None
+        calls=[];monitor.call=lambda m,t,**k:(calls.append((t,k)) or [{'id':'d'}])
+        monitor.finish('run',{},True,partial=True)
+        self.assertEqual(calls[0][1]['json']['status'],'success')
+
 if __name__=='__main__':unittest.main()

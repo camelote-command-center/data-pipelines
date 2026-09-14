@@ -13,6 +13,15 @@ building rules, legal completeness, or new PDCom polygon coverage.
   plus Zürich's official ÖREB register, **Nutzungsplanung allgemein**.
 - Code: this folder; workflow `.github/workflows/ch_planning_documents.yml`.
 - Schedule: yearly, 15 September 02:20 UTC; registry expectation 365 days + 30 grace.
+- Bounded runs (2026-09-14): national text/OCR does not fit one GitHub job (the 2026-09-13 run was
+  killed at the 350-min limit after ~500 URLs of ~28k). Every run has a time budget (default 290 min):
+  no new document starts after it, in-flight documents get 20 more minutes, one document may take at most
+  30 min (`document_time_limit`, retried weekly). A continuation (`--resume`, every 6 h at :50) extracts
+  against the latest stored catalog without re-discovery and is a silent no-op when nothing is due.
+  Never-attempted references go first; `error` / `needs_ocr` references are retried at most weekly.
+  A run stopped by its budget after real progress is logged `partial` (dataset stays active, freshness is
+  not advanced); a run that starts nothing while work is due fails. `complete` still requires zero
+  outstanding references in the catalog.
   Command Center Run Now dispatches the workflow without required inputs.
 - Acquisition outcomes: `acquisition_logs`, exact dataset metadata PATCH, and a
   GitHub run report. Empty/changed source contracts fail loudly. Failed or bounded text

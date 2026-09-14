@@ -1,8 +1,18 @@
 name: Swiss planning documents (Pixxels)
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: 'full = refresh national catalog then extract; resume = continue text extraction on the stored catalog'
+        required: false
+        default: 'full'
+      time_budget_minutes:
+        description: 'Stop starting new documents after N minutes (the job limit is 350)'
+        required: false
+        default: '290'
   schedule:
-    - cron: '20 2 15 9 *'
+    - cron: '20 2 15 9 *'    # yearly full run: catalog refresh + extraction
+    - cron: '50 */6 * * *'   # continuation: bounded text extraction until the catalog is fully processed (silent no-op when nothing is due)
 permissions:
   contents: read
 concurrency:
@@ -26,12 +36,26 @@ jobs:
       - name: Verify parser contracts
         run: python -m unittest discover -s pipelines/ch-planning-documents/tests -v
       - name: Acquire official planning documents
+        # Bounded and resumable (2026-09-13 run 34765654072 was killed at the 350-min job limit mid-OCR,
+        # after 278 of ~28k documents, leaving its logs "running"). The parser stops starting documents
+        # at the budget, finishes or abandons in-flight ones 20 min later, and reports a partial run.
         env:
           PLANNING_OCR: '1'
           RE_LLM_DB_URL: ${{ secrets.RE_LLM_DB_URL }}
           CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
           CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
-        run: python pipelines/ch-planning-documents/parser.py
+          EVENT_SCHEDULE: ${{ github.event.schedule }}
+          INPUT_MODE: ${{ github.event.inputs.mode }}
+          INPUT_BUDGET: ${{ github.event.inputs.time_budget_minutes }}
+        run: |
+          MODE=full
+          if [ "$GITHUB_EVENT_NAME" = "schedule" ] && [ "$EVENT_SCHEDULE" != "20 2 15 9 *" ]; then MODE=resume; fi
+          if [ "$INPUT_MODE" = "resume" ]; then MODE=resume; fi
+          BUDGET="${INPUT_BUDGET:-290}"
+          ARGS="--time-budget-minutes $BUDGET"
+          if [ "$MODE" = "resume" ]; then ARGS="$ARGS --resume"; fi
+          echo "mode=$MODE budget=${BUDGET}min"
+          python pipelines/ch-planning-documents/parser.py $ARGS
       - name: Report workflow failure without changing successful freshness
         if: failure()
         env:
@@ -43,7 +67,9 @@ jobs:
           report_path=pathlib.Path('planning-report.json')
           report=json.loads(report_path.read_text()) if report_path.exists() else {}
           codes=['ch_planning_documents','ch_planning_document_text']
-          if report.get('catalog_persisted') and len(set(report.get('scope',[])))==26 and not any(v['status']=='error' for v in report.get('coverage',{}).values()):
+          if report.get('mode')=='resume':
+              codes.remove('ch_planning_documents')   # a continuation never touches the catalog dataset
+          elif report.get('catalog_persisted') and len(set(report.get('scope',[])))==26 and not any(v['status']=='error' for v in report.get('coverage',{}).values()):
               codes.remove('ch_planning_documents')
           for code in codes:
               payload=json.dumps({'status':'error','last_error':'Planning acquisition workflow failed; inspect Actions run '+os.environ['GITHUB_RUN_ID']}).encode()
