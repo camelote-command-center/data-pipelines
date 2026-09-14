@@ -115,3 +115,23 @@ document to all eight communes. The parser verifies current roster membership,
 rejects duplicate identities and requires intercommunal scope for shared sources.
 Source possession does not establish complete extraction or receiver delivery.
 Official landing pages remain in the manifest for source/version review.
+
+## Private Lamap review delivery
+
+Pixxels `vd_pdcom_review_delivery` tracks a private review copy, separately from
+coverage/acquisition. `review_delivery.py` uses the existing registered
+`lamap_db_server` FDW route to upsert only `ref.vd_pdcom_review_sectors` and
+`ref.vd_pdcom_review_parcels`. It preserves source hashes, plan status, reservations,
+validation evidence and boundary-review flags. Every row is explicitly
+`internal_review_only`. Anonymous/authenticated SELECT is revoked and RLS enabled.
+It does not write released PDCom layers or advance commune delivery completion.
+
+Deployment order: apply `sql/lamap_review_receiver.sql` on registered Lamap;
+apply the additive review-view migration on RE-LLM; apply
+`sql/rellm_review_foreign.sql` there. Register both source and Lamap destination in
+Pixxels. Existing server/user mappings remain unchanged. Hourly/full workflow runs
+copy and compare every source/receiver row; any missing/extra/different row or
+invalid/non-4326 geometry fails the delivery. Empty sources fail closed. No
+DELETE/TRUNCATE or global sync-registry changes. Repeated delivery is idempotent.
+This provides receiver-side review data; it is not a substitute for final QA and
+publication approval criteria in the master task.
