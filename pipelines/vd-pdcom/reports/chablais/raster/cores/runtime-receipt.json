@@ -1,0 +1,70 @@
+{
+  "operation_id": "95999f7e-6383-4e6e-a4e6-ef0cb2de91e4",
+  "documents": 43,
+  "document_id": "e9288af6-8ecb-5be2-a07e-0581b0a3b068",
+  "source": {
+    "commune_bfs": 5401,
+    "commune_bfs_list": [
+      5401,
+      5402,
+      5409
+    ],
+    "commune_name": "Chablais Agglo (Vaud)",
+    "pdf_url": "https://admin.chablaisagglo.ch/assets/690ed1b8-ca6a-45d7-8d35-a8bc2f5d00a9.pdf",
+    "landing_url": "https://chablais-agglo.ch/projets",
+    "title": "Chablais Agglo PA4-PDi \u2014 Programme de mesures",
+    "plan_status": "unverified",
+    "scope": "intercommunal",
+    "candidate_id": "13e5edc3-b7a2-4df4-93a0-cf285c808178"
+  },
+  "source_sha256": "7d2fa9b86cb8bb49757eb935bd0735ff3a1476aebc8de39aed4cd39d905f42d5",
+  "page_count": 423,
+  "evidence": {
+    "operation_id": "95999f7e-6383-4e6e-a4e6-ef0cb2de91e4",
+    "stage": "interior_depth_and_detailed_source_review",
+    "coordinate_system": "source_image_pixels_top_left_NOT_geographic",
+    "artifact_path": "pipelines/vd-pdcom/reports/chablais/raster/cores",
+    "t35_depth3": {
+      "retained_components": 25,
+      "retained_pixels": 14183,
+      "thin_or_small_pixels": 615,
+      "component_ids": [
+        3,
+        9,
+        15,
+        17,
+        35,
+        36,
+        37,
+        38,
+        39,
+        41,
+        52,
+        54,
+        55,
+        56,
+        58,
+        59,
+        60,
+        62,
+        63,
+        66,
+        67,
+        68,
+        69,
+        71,
+        72
+      ]
+    },
+    "finding": "Four visual crops reviewed. Most visible dashes separated, but Bex thin railway-side feature and small interrupted fills also classified thin. Neither class is automatically accepted/rejected.",
+    "detail_source": {
+      "document_id": "e9288af6-8ecb-5be2-a07e-0581b0a3b068",
+      "sha256": "7d2fa9b86cb8bb49757eb935bd0735ff3a1476aebc8de39aed4cd39d905f42d5",
+      "url": "https://admin.chablaisagglo.ch/assets/690ed1b8-ca6a-45d7-8d35-a8bc2f5d00a9.pdf",
+      "page": 76,
+      "measure": "PUM.7 Bex-Gare",
+      "finding": "Detailed raster inset with visible building context; explicit statement that perimeter still must be refined through SRGZA and ongoing planning. Not a precise legal/cadastral boundary."
+    },
+    "next_step": "Use detailed measure inset for control-point calibration; preserve approximate/planning status. No geographic or receiver writes."
+  }
+}
