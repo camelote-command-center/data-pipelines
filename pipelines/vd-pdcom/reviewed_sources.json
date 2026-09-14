@@ -67,7 +67,8 @@
     "landing_url": "https://www.vevey.ch/administration/reglements-communaux",
     "title": "Plan directeur communal (PDCom)",
     "plan_status": "unverified",
-    "scope": "communal"
+    "scope": "communal",
+    "max_bytes": 150000000
   },
   {
     "candidate_id": "b47875e1-eb3f-4b92-aa59-eaaba2b90661",

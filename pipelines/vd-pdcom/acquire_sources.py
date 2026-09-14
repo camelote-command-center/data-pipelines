@@ -21,7 +21,7 @@ from discovery import public_url
 ROOT=Path(__file__).resolve().parent
 
 
-def download(url):
+def download(url,max_bytes=100_000_000):
     host=urlsplit(url).hostname
     for _ in range(5):
         public_url(url)
@@ -33,7 +33,7 @@ def download(url):
             r.raise_for_status();data=bytearray()
             for chunk in r.iter_content(131072):
                 data.extend(chunk)
-                if len(data)>100_000_000:raise ValueError('pdf_size_limit')
+                if len(data)>max_bytes:raise ValueError('pdf_size_limit')
             if not data.startswith(b'%PDF'):raise ValueError('response_not_pdf')
             return bytes(data)
     raise ValueError('redirect_limit')
@@ -77,7 +77,7 @@ def run(args):
     try:
         for source in sources:
             try:
-                data=download(source['pdf_url']);sha=hashlib.sha256(data).hexdigest()
+                data=download(source['pdf_url'],source.get('max_bytes',100_000_000));sha=hashlib.sha256(data).hexdigest()
                 pages=inspect(data)
                 name=f"{source['commune_bfs']}-{sha[:12]}"
                 (args.output/(name+'.pdf')).write_bytes(data)
