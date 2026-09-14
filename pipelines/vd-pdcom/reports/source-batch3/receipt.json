@@ -1,0 +1,72 @@
+{
+  "operation_id": "bb72aa0e-2d3d-482a-bdac-8aea942a7475",
+  "document_count": 38,
+  "communes_with_documents": 22,
+  "new_documents": [
+    {
+      "commune_bfs": 5401,
+      "commune_name": "Aigle",
+      "pdf_url": "https://www.aigle.ch/N9601/plan-directeur-communal.html",
+      "landing_url": "https://www.aigle.ch/plandirecteur",
+      "title": "PDCom publié pour consultation",
+      "plan_status": "consultation",
+      "scope": "communal",
+      "candidate_id": "6123e5de-6b83-44a2-b3d0-b9507ebb5164",
+      "sha": "bbd1d3d0474d5f491ac4cc17b05d7bf1c7912861d9f93f9347c719bf7522fedc",
+      "document_id": "dd172ee9-e928-5c2f-99d6-3a24eb28cd68",
+      "pages": 68
+    },
+    {
+      "commune_bfs": 5938,
+      "commune_name": "Yverdon-les-Bains",
+      "pdf_url": "https://www.yverdon-les-bains.ch/fileadmin/documents/ylb/Urbanisme/pdf/pdcom/PDCom_AdoptionCC_Planches_Low.pdf",
+      "landing_url": "https://www.yverdon-les-bains.ch/projets-urbains-etarchitecturaux/planifications-communales/plan-directeur-communal-pdcom",
+      "title": "PDCom octobre 2025 — projet transmis au Conseil communal",
+      "plan_status": "unverified",
+      "scope": "communal",
+      "candidate_id": "7dd98374-efd6-474d-a5aa-b8e1ec7ed0bb",
+      "sha": "12c67e6a70da31e6d7f336a224fcd5098b0b3b851fa6655471360a9462b4b773",
+      "document_id": "3d453b47-ac98-5efc-a2e4-074effbb1972",
+      "pages": 57
+    },
+    {
+      "commune_bfs": 5938,
+      "commune_name": "Yverdon-les-Bains",
+      "pdf_url": "https://www.yverdon-les-bains.ch/fileadmin/documents/ylb/Urbanisme/pdf/pdcom/PDCom_RapportExplicatif_Compr.pdf",
+      "landing_url": "https://www.yverdon-les-bains.ch/projets-urbains-etarchitecturaux/planifications-communales/plan-directeur-communal-pdcom",
+      "title": "PDCom — rapport explicatif",
+      "plan_status": "unverified",
+      "scope": "communal",
+      "candidate_id": "f2290ff9-ae94-42db-94f8-fb6c024f161a",
+      "sha": "c0d98d282881a7af690382f0276edd934b24a18ce9588370d1a04a2c3df71adb",
+      "document_id": "1d8b4ac6-3dff-511a-ab5c-a8a1a6be2b8d",
+      "pages": 167
+    },
+    {
+      "commune_bfs": 5938,
+      "commune_name": "Yverdon-les-Bains",
+      "pdf_url": "https://www.yverdon-les-bains.ch/fileadmin/documents/ylb/Urbanisme/pdf/pdcom/PDCom_RapportExplicatif_Annexes_low.pdf",
+      "landing_url": "https://www.yverdon-les-bains.ch/projets-urbains-etarchitecturaux/planifications-communales/plan-directeur-communal-pdcom",
+      "title": "PDCom — annexes du rapport explicatif",
+      "plan_status": "unverified",
+      "scope": "communal",
+      "candidate_id": "8a10cfcb-f513-481a-8df2-2367f634e1d4",
+      "sha": "e7afcf3bdd7aa7267e6303689ebf501322caf27c0a69443d052a3d08083925d8",
+      "document_id": "3deaaa56-3a81-5e4d-bb6c-4994f39b5352",
+      "pages": 223
+    },
+    {
+      "commune_bfs": 5938,
+      "commune_name": "Yverdon-les-Bains",
+      "pdf_url": "https://www.yverdon-les-bains.ch/fileadmin/documents/ylb/Urbanisme/pdf/Plan_directeur.pdf",
+      "landing_url": "https://www.yverdon-les-bains.ch/constructions-/-travaux/reglements-et-plans-communaux",
+      "title": "Dossier directeur du 28 mai 1997",
+      "plan_status": "unverified",
+      "scope": "communal",
+      "candidate_id": "fd6f88f9-8ff3-57a4-9eb8-91562fd42578",
+      "sha": "c158ade8eb784c572209cc48a9765fc8737f8a0a3ac1d49023bb1cefe47cf3d9",
+      "document_id": "b4cb6c89-963b-5d91-b14f-f145ccef2e2a",
+      "pages": 31
+    }
+  ]
+}
