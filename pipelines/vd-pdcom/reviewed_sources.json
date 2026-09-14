@@ -338,5 +338,67 @@
     "plan_status": "unverified",
     "scope": "communal",
     "candidate_id": "fd6f88f9-8ff3-57a4-9eb8-91562fd42578"
+  },
+  {
+    "candidate_id": "af61eb67-2108-4db8-910d-817309ef83c4",
+    "commune_bfs": 5401,
+    "commune_bfs_list": [
+      5401,
+      5402,
+      5409,
+      5406
+    ],
+    "commune_name": "Chablais Agglo (Vaud)",
+    "pdf_url": "https://admin.chablaisagglo.ch/assets/54dd5ed1-e921-4253-87ee-b42d5562b304.pdf",
+    "landing_url": "https://chablais-agglo.ch/projets",
+    "title": "Chablais Agglo PA5-PDi — Préface",
+    "plan_status": "unverified",
+    "scope": "intercommunal"
+  },
+  {
+    "candidate_id": "086a55c9-12a1-49c8-b6bc-b12cd7d1a4b6",
+    "commune_bfs": 5401,
+    "commune_bfs_list": [
+      5401,
+      5402,
+      5409,
+      5406
+    ],
+    "commune_name": "Chablais Agglo (Vaud)",
+    "pdf_url": "https://admin.chablaisagglo.ch/assets/e8a5ec12-2bcd-4683-9f06-840115e340d7.pdf",
+    "landing_url": "https://chablais-agglo.ch/projets",
+    "title": "Chablais Agglo PA5-PDi — Volet stratégique",
+    "plan_status": "unverified",
+    "scope": "intercommunal"
+  },
+  {
+    "candidate_id": "0142e646-2e83-456d-b20b-ccbe15abd9cb",
+    "commune_bfs": 5401,
+    "commune_bfs_list": [
+      5401,
+      5402,
+      5409
+    ],
+    "commune_name": "Chablais Agglo (Vaud)",
+    "pdf_url": "https://admin.chablaisagglo.ch/assets/0581fcbb-3295-4398-aff1-13e21d5b1941.pdf",
+    "landing_url": "https://chablais-agglo.ch/projets",
+    "title": "Chablais Agglo PA4-PDi — Préface",
+    "plan_status": "unverified",
+    "scope": "intercommunal"
+  },
+  {
+    "candidate_id": "3449cc72-64e6-4700-989b-61757c4f4118",
+    "commune_bfs": 5401,
+    "commune_bfs_list": [
+      5401,
+      5402,
+      5409
+    ],
+    "commune_name": "Chablais Agglo (Vaud)",
+    "pdf_url": "https://admin.chablaisagglo.ch/assets/e867b27b-308b-4743-9259-266c8f8daffb.pdf",
+    "landing_url": "https://chablais-agglo.ch/projets",
+    "title": "Chablais Agglo PA4-PDi — Volet stratégique",
+    "plan_status": "unverified",
+    "scope": "intercommunal"
   }
 ]
