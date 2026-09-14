@@ -1,0 +1,254 @@
+[
+  {
+    "holdout_index": 0,
+    "pdf_point_y_flipped": [
+      0.526,
+      26.967
+    ],
+    "world_point": [
+      2562175.1084114504,
+      1127869.0499623483
+    ],
+    "old_point_residual_m": 21.100582032842606,
+    "reference_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?f=geojson&where=1%3D1&geometry=2562095.1084114504%2C1127789.0499623483%2C2562255.1084114504%2C1127949.0499623483&geometryType=esriGeometryEnvelope&inSR=2056&outSR=2056&spatialRel=esriSpatialRelIntersects&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CGENRE_TXT&returnGeometry=true",
+    "response_sha256": "710d98ac4b608639847843b1182dffdfc95c964aa9d23a3ebd82ca81bd155636",
+    "fetched_at": "2026-09-14T18:18:17.658047+00:00",
+    "coordinate_system": "EPSG:2056",
+    "count_verified": 5,
+    "nearest_footprint_m": 0.0
+  },
+  {
+    "holdout_index": 57,
+    "pdf_point_y_flipped": [
+      246.063,
+      532.205
+    ],
+    "world_point": [
+      2563024.2776850373,
+      1129616.53073006
+    ],
+    "old_point_residual_m": 46.62479465042801,
+    "reference_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?f=geojson&where=1%3D1&geometry=2562944.2776850373%2C1129536.53073006%2C2563104.2776850373%2C1129696.53073006&geometryType=esriGeometryEnvelope&inSR=2056&outSR=2056&spatialRel=esriSpatialRelIntersects&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CGENRE_TXT&returnGeometry=true",
+    "response_sha256": "b0e0cd72492318c9512d0d3cd91c349c751a583f75cc25f5b9446051b92f1d17",
+    "fetched_at": "2026-09-14T18:18:17.652104+00:00",
+    "coordinate_system": "EPSG:2056",
+    "count_verified": 29,
+    "nearest_footprint_m": 0.0
+  },
+  {
+    "holdout_index": 62,
+    "pdf_point_y_flipped": [
+      256.511,
+      537.757
+    ],
+    "world_point": [
+      2563060.4131739074,
+      1129635.7345353612
+    ],
+    "old_point_residual_m": 13.645630949929872,
+    "reference_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?f=geojson&where=1%3D1&geometry=2562980.4131739074%2C1129555.7345353612%2C2563140.4131739074%2C1129715.7345353612&geometryType=esriGeometryEnvelope&inSR=2056&outSR=2056&spatialRel=esriSpatialRelIntersects&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CGENRE_TXT&returnGeometry=true",
+    "response_sha256": "a4846c47fa36d51949143a1a82c9900c33b4078b15b5eeaa599501738bb5115f",
+    "fetched_at": "2026-09-14T18:18:17.661547+00:00",
+    "coordinate_system": "EPSG:2056",
+    "count_verified": 35,
+    "nearest_footprint_m": 0.3888969564212831
+  },
+  {
+    "holdout_index": 74,
+    "pdf_point_y_flipped": [
+      273.766,
+      565.081
+    ],
+    "world_point": [
+      2563120.0891557094,
+      1129730.2413029142
+    ],
+    "old_point_residual_m": 10.95965941813843,
+    "reference_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?f=geojson&where=1%3D1&geometry=2563040.0891557094%2C1129650.2413029142%2C2563200.0891557094%2C1129810.2413029142&geometryType=esriGeometryEnvelope&inSR=2056&outSR=2056&spatialRel=esriSpatialRelIntersects&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CGENRE_TXT&returnGeometry=true",
+    "response_sha256": "f9999faf75bbfe7b0a8cc6a65857ab35a3e73c241947725da13b2571d0759aaf",
+    "fetched_at": "2026-09-14T18:18:18.091711+00:00",
+    "coordinate_system": "EPSG:2056",
+    "count_verified": 38,
+    "nearest_footprint_m": 0.0
+  },
+  {
+    "holdout_index": 107,
+    "pdf_point_y_flipped": [
+      308.786,
+      764.403
+    ],
+    "world_point": [
+      2563241.1873431215,
+      1130419.6343003993
+    ],
+    "old_point_residual_m": 30.708194425955643,
+    "reference_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?f=geojson&where=1%3D1&geometry=2563161.1873431215%2C1130339.6343003993%2C2563321.1873431215%2C1130499.6343003993&geometryType=esriGeometryEnvelope&inSR=2056&outSR=2056&spatialRel=esriSpatialRelIntersects&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CGENRE_TXT&returnGeometry=true",
+    "response_sha256": "486fa22667de37f5aacafb714919d266f08011376c1dd7a67a5cb75f4a52ad3b",
+    "fetched_at": "2026-09-14T18:18:18.089083+00:00",
+    "coordinate_system": "EPSG:2056",
+    "count_verified": 17,
+    "nearest_footprint_m": 17.285770654969443
+  },
+  {
+    "holdout_index": 116,
+    "pdf_point_y_flipped": [
+      317.574,
+      674.671
+    ],
+    "world_point": [
+      2563271.593097878,
+      1130109.2821376189
+    ],
+    "old_point_residual_m": 15.107033300348585,
+    "reference_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?f=geojson&where=1%3D1&geometry=2563191.593097878%2C1130029.2821376189%2C2563351.593097878%2C1130189.2821376189&geometryType=esriGeometryEnvelope&inSR=2056&outSR=2056&spatialRel=esriSpatialRelIntersects&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CGENRE_TXT&returnGeometry=true",
+    "response_sha256": "d43a68545c2241b0524ec18261fe9323879a6c09aa47bbf8a474328ff74e3249",
+    "fetched_at": "2026-09-14T18:18:18.128173+00:00",
+    "coordinate_system": "EPSG:2056",
+    "count_verified": 24,
+    "nearest_footprint_m": 0.0
+  },
+  {
+    "holdout_index": 125,
+    "pdf_point_y_flipped": [
+      327.207,
+      617.202
+    ],
+    "world_point": [
+      2563304.9174809395,
+      1129910.5170985514
+    ],
+    "old_point_residual_m": 38.04805103555018,
+    "reference_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?f=geojson&where=1%3D1&geometry=2563224.9174809395%2C1129830.5170985514%2C2563384.9174809395%2C1129990.5170985514&geometryType=esriGeometryEnvelope&inSR=2056&outSR=2056&spatialRel=esriSpatialRelIntersects&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CGENRE_TXT&returnGeometry=true",
+    "response_sha256": "e2875db34b6a04dada61391f328f810419c84f936186d1bbf90e6e35972fdabd",
+    "fetched_at": "2026-09-14T18:18:18.525396+00:00",
+    "coordinate_system": "EPSG:2056",
+    "count_verified": 16,
+    "nearest_footprint_m": 15.820156285478113
+  },
+  {
+    "holdout_index": 154,
+    "pdf_point_y_flipped": [
+      359.265,
+      763.518
+    ],
+    "world_point": [
+      2563415.7775762957,
+      1130416.5795536106
+    ],
+    "old_point_residual_m": 28.800144111090702,
+    "reference_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?f=geojson&where=1%3D1&geometry=2563335.7775762957%2C1130336.5795536106%2C2563495.7775762957%2C1130496.5795536106&geometryType=esriGeometryEnvelope&inSR=2056&outSR=2056&spatialRel=esriSpatialRelIntersects&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CGENRE_TXT&returnGeometry=true",
+    "response_sha256": "166e95027cd68e2dc039af0f0aab03bc65338e6c2217c72b0b674c8dea0b59bb",
+    "fetched_at": "2026-09-14T18:18:18.526330+00:00",
+    "coordinate_system": "EPSG:2056",
+    "count_verified": 19,
+    "nearest_footprint_m": 9.214585144960587
+  },
+  {
+    "holdout_index": 161,
+    "pdf_point_y_flipped": [
+      366.448,
+      540.867
+    ],
+    "world_point": [
+      2563440.648427368,
+      1129646.5044421896
+    ],
+    "old_point_residual_m": 11.285614559225403,
+    "reference_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?f=geojson&where=1%3D1&geometry=2563360.648427368%2C1129566.5044421896%2C2563520.648427368%2C1129726.5044421896&geometryType=esriGeometryEnvelope&inSR=2056&outSR=2056&spatialRel=esriSpatialRelIntersects&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CGENRE_TXT&returnGeometry=true",
+    "response_sha256": "3bc7cd9f1160202554ae1b24e249bcd09f8b25d27ebc6ac91a181903a9719c52",
+    "fetched_at": "2026-09-14T18:18:18.531405+00:00",
+    "coordinate_system": "EPSG:2056",
+    "count_verified": 35,
+    "nearest_footprint_m": 0.0
+  },
+  {
+    "holdout_index": 299,
+    "pdf_point_y_flipped": [
+      487.319,
+      512.79
+    ],
+    "world_point": [
+      2563858.7045766297,
+      1129549.4101934165
+    ],
+    "old_point_residual_m": 22.457564373315392,
+    "reference_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?f=geojson&where=1%3D1&geometry=2563778.7045766297%2C1129469.4101934165%2C2563938.7045766297%2C1129629.4101934165&geometryType=esriGeometryEnvelope&inSR=2056&outSR=2056&spatialRel=esriSpatialRelIntersects&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CGENRE_TXT&returnGeometry=true",
+    "response_sha256": "152dca363aba7e5ada4740558a0c349bde0bbf1dc2c0688a228610b42c931bb1",
+    "fetched_at": "2026-09-14T18:18:18.969001+00:00",
+    "coordinate_system": "EPSG:2056",
+    "count_verified": 35,
+    "nearest_footprint_m": 0.0
+  },
+  {
+    "holdout_index": 366,
+    "pdf_point_y_flipped": [
+      592.217,
+      546.589
+    ],
+    "world_point": [
+      2564221.507845746,
+      1129666.322560056
+    ],
+    "old_point_residual_m": 13.556820848517104,
+    "reference_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?f=geojson&where=1%3D1&geometry=2564141.507845746%2C1129586.322560056%2C2564301.507845746%2C1129746.322560056&geometryType=esriGeometryEnvelope&inSR=2056&outSR=2056&spatialRel=esriSpatialRelIntersects&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CGENRE_TXT&returnGeometry=true",
+    "response_sha256": "a0e29cb2fa793f8d2535c66a40fac29b12eccd156447e32872f8e0507c8f60f2",
+    "fetched_at": "2026-09-14T18:18:18.963425+00:00",
+    "coordinate_system": "EPSG:2056",
+    "count_verified": 19,
+    "nearest_footprint_m": 0.0
+  },
+  {
+    "holdout_index": 367,
+    "pdf_point_y_flipped": [
+      592.586,
+      538.521
+    ],
+    "world_point": [
+      2564222.785081316,
+      1129638.4180681023
+    ],
+    "old_point_residual_m": 26.893416290600857,
+    "reference_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?f=geojson&where=1%3D1&geometry=2564142.785081316%2C1129558.4180681023%2C2564302.785081316%2C1129718.4180681023&geometryType=esriGeometryEnvelope&inSR=2056&outSR=2056&spatialRel=esriSpatialRelIntersects&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CGENRE_TXT&returnGeometry=true",
+    "response_sha256": "92e2fd83900ee4ef8f95fa3afaf8e5638652f5ef7d313375ed79a1d3b13c4c71",
+    "fetched_at": "2026-09-14T18:18:18.962291+00:00",
+    "coordinate_system": "EPSG:2056",
+    "count_verified": 18,
+    "nearest_footprint_m": 0.0
+  },
+  {
+    "holdout_index": 371,
+    "pdf_point_y_flipped": [
+      600.684,
+      485.95
+    ],
+    "world_point": [
+      2564250.7998091565,
+      1129456.593399358
+    ],
+    "old_point_residual_m": 18.21416916029079,
+    "reference_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?f=geojson&where=1%3D1&geometry=2564170.7998091565%2C1129376.593399358%2C2564330.7998091565%2C1129536.593399358&geometryType=esriGeometryEnvelope&inSR=2056&outSR=2056&spatialRel=esriSpatialRelIntersects&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CGENRE_TXT&returnGeometry=true",
+    "response_sha256": "c213bbd39f8bd306c213a587b0ca1740f74da440158e930b1b24d4422b6a7e09",
+    "fetched_at": "2026-09-14T18:18:19.380025+00:00",
+    "coordinate_system": "EPSG:2056",
+    "count_verified": 43,
+    "nearest_footprint_m": 9.691924131128593
+  },
+  {
+    "holdout_index": 390,
+    "pdf_point_y_flipped": [
+      780.024,
+      520.827
+    ],
+    "world_point": [
+      2564871.0731435013,
+      1129577.2433166355
+    ],
+    "old_point_residual_m": 22.124209259385076,
+    "reference_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?f=geojson&where=1%3D1&geometry=2564791.0731435013%2C1129497.2433166355%2C2564951.0731435013%2C1129657.2433166355&geometryType=esriGeometryEnvelope&inSR=2056&outSR=2056&spatialRel=esriSpatialRelIntersects&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CGENRE_TXT&returnGeometry=true",
+    "response_sha256": "5f0c731b3578fef7fc95fe6b55251a7876a065dc17cb2309e7390e118f3ed682",
+    "fetched_at": "2026-09-14T18:18:19.373410+00:00",
+    "coordinate_system": "EPSG:2056",
+    "count_verified": 4,
+    "nearest_footprint_m": 9.620774662111833
+  }
+]

@@ -15,6 +15,7 @@ def persist(conn,document_id,sha):
               'semantic_limit':'Nine Densifier and two Préparer la densification source polygons. Indicative actions, not numeric density assignments or parcel rights. Other categories and inset excluded.',
               'approval_limit':'Source final council/canton approval fields blank; consultation version only.',
               'source_precision':'unknown','boundary_buffer':'10m review heuristic, not proven error bound'}
+    evidence['followup_qa']=json.loads((root.parent/'qa'/'qa.json').read_text())
     with conn,conn.cursor() as c:
         c.execute("SET LOCAL statement_timeout='60s'")
         for f in features:
