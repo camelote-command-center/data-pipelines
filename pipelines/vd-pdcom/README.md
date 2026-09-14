@@ -60,3 +60,27 @@ Remaining scope: canton-wide source search, pilot vector extraction and measured
 alignment, review of legal versions, parcel linkage and receiver delivery,
 then progressively resolve the 300 commune backlog. Neither three pilot sources
 nor successful downloads close that backlog.
+
+## Resumable canton-wide discovery (2026-09-14)
+
+`discovery.py --limit 30 --workers 4 --monitor` matches the current OFS roster
+against UCV's full municipality directory, resolves its official website field,
+and crawls up to 12 planning-related HTML pages per commune. It records candidate
+PDCom links with their referring page and page hashes. A candidate is **not** an
+accepted/current plan; regulations alone are not treated as PDCom evidence.
+
+The workflow resumes 30 due communes hourly, sharing its existing concurrency
+group. The annual September run still refreshes the census and reviewed pilot
+PDFs. Manual `mode=discovery` resumes discovery without downloading the pilot
+again; `mode=full` runs both. Successful searches become due for refresh after
+365 days; blocked websites retry after seven days. Empty/limited searches enter
+`manual_search_required` and require a second research pass; they never become
+`confirmed_no_plan`. The initial backlog has priority over retries.
+
+Runtime records live in `bronze_ch.vd_pdcom_discovery_queue`,
+`vd_pdcom_discovery_attempts`, and `vd_pdcom_source_candidates`. One queue row per
+current commune, an advisory lock, and per-commune commits make interruptions
+resumable without losing earlier results. Existing document, extraction and
+receiver validation states are preserved. Pixxels acquisition details include
+queue counts and candidate totals; an acquisition success does not mean coverage
+or receiver delivery is complete. Evidence artifacts are retained for 90 days.
