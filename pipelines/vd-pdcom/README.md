@@ -94,3 +94,13 @@ in workflow artifacts. Full manual and annual runs acquire these documents.
 A reviewed link does not establish plan approval, currency or spatial coverage:
 `plan_status` remains unverified/consultation pending document-specific review.
 Existing validated/candidate extraction states and delivery states are preserved.
+
+### Source review gates
+
+`document_reviews.json` binds approval evidence and reviewed map-page references
+to an exact document ID and SHA. `reviews.py` applies this metadata after source
+persistence; changed bytes cannot inherit an earlier approval. Reviews preserve
+cantonal reservations and indicative map limits, and do not advance commune
+extraction/delivery validation. Épalinges cahier II page3 records approval on
+5July2023 with a reservation concerning chapter2.2/pages21–22; map pages99–102
+are indexed for the next spatial-extraction step. Page numbers are PDF indices.

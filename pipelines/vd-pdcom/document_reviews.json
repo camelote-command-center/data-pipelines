@@ -1,0 +1,23 @@
+[
+  {
+    "document_id": "8f42da46-9b59-5b72-aa5b-13522e418682",
+    "sha256": "bd095d80d2284073a93ef7e108f89b083d32fb361c97b689809522b7b8f64c86",
+    "commune_bfs": 5584,
+    "reviewed_at": "2026-09-14",
+    "reviewed_by": "Codex / 01a09b0a-7538-7983-8871-5eb6a6541d10",
+    "plan_status": "approved_with_reservation",
+    "approval_evidence_page": 3,
+    "approval_date": "2023-07-05",
+    "municipal_council_adoption_date": "2022-09-20",
+    "reservation": "Le Conseil d'Etat émet une réserve sur les principes communaux de redimensionnement de la zone d'habitation et mixte, énoncés au chapitre 2.2 (pages 21 et 22).",
+    "scope_limit": "Approval evidence is specific to these PDF bytes. Currency and any later amendments remain to be checked. Do not interpret indicative mapped densities or proposed resizing as parcel development rights.",
+    "map_pages": [
+      {"page_number": 99, "theme": "Urbanisation", "scale_denominator": 12500, "limitations": "Legend marks land-use/density boundaries and proposed resizing as indicative. Preserve cantonal reservation. PDF fill colors alone cannot distinguish group transparency and patterned overlays."},
+      {"page_number": 100, "theme": "Mobilité", "scale_denominator": 12500},
+      {"page_number": 101, "theme": "Paysage, espaces publics et mobilité douce", "scale_denominator": 12500},
+      {"page_number": 102, "theme": "Nature, environnement et climat", "scale_denominator": 12500}
+    ],
+    "geographic_validation": "pending",
+    "receiver_release": "not_ready"
+  }
+]

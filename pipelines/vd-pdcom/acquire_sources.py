@@ -66,6 +66,8 @@ def persist(conn,source,sha,pages):
         extraction_status=CASE WHEN extraction_status='pending' THEN %s ELSE extraction_status END,
         last_checked_at=now(),evidence=CASE WHEN evidence @> %s THEN evidence ELSE evidence || %s END
         WHERE commune_bfs=%s''',('needs_ocr' if sum(len(p['text'].strip()) for p in pages)<50 else 'downloaded',Json([{'document_id':doc_id}]),Json([{'document_id':doc_id,'url':source['landing_url'],'version_review':'pending'}]),source['commune_bfs']))
+    from reviews import apply_review
+    apply_review(conn,doc_id,sha)
     return doc_id
 
 
