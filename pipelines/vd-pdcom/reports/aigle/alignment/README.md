@@ -1,0 +1,7 @@
+# Aigle candidate calibration — 14 September 2026
+
+Main-map building-centroid alignment to registered RCB location points.1,983 unique PDF centroids;2,800 reference points in Aigle plus300m boundary buffer. Every fifth PDF point held out before fitting (397);383nearest-point distances under10m, median0.521m,p902.605m,untrimmedRMSE5.045m. Fourteen outliers remain unresolved. These are nearest-location-point diagnostics, not surveyed positional accuracy;10m parcel-boundary flag is a heuristic. Input buildings excluded54invalid/unsupported paths; PDF inset rectangle excluded. Scale3.45867m/PDFpoint; north-up initial search±2degrees and scales3.4–3.6 followed by robust ICP. Reference points are not footprint centroids.
+
+North/centre/south overlays visually reviewed: red circles are reference points. Frozen11polygons total260,659.5m² in EPSG2056. They retain indicative action semantics and blank final source approval. They are review candidates, not parcel eligibility or a complete commune/category release.
+
+fit.py reproduces calibration using frozen pdf-points.json/reference-points.json; geography.py --pdf SOURCE reproduces transformed polygons and overlays with SHA gate. Source centroid extraction followed the same clipped-path polygon parser as the source extraction script, grey fill(.744,.792,.821), area1–2000PDFpoint², rounded3decimals; excludes inset x625–807/y705–900. Both reference and source snapshots are dated14September2026. No automatic new validation date on refresh.
