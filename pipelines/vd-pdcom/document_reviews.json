@@ -145,7 +145,32 @@
     "plan_status": "approved",
     "approval_evidence_page": 1,
     "approval_date": "2006-02-16",
-    "map_pages": [],
+    "map_pages": [
+      {
+        "page_number": 12,
+        "theme": "Concept urbanistique",
+        "limitations": "Raster concept map with23-symbol legend on PDF13; historical categories, no georeferenced boundaries.",
+        "research_artifact": "pipelines/vd-pdcom/reports/nyon/sdan-maps/semantic-review.json"
+      },
+      {
+        "page_number": 20,
+        "theme": "Eysins and Prangins key-sector concepts",
+        "limitations": "Four raster panels; local hatching means different things in Eysins and Prangins. Figures belong to described sector groups, not each colored patch.",
+        "research_artifact": "pipelines/vd-pdcom/reports/nyon/sdan-maps/semantic-review.json"
+      },
+      {
+        "page_number": 22,
+        "theme": "Nyon long-term and La Vuarpillière–Mondre–L’Asse concepts",
+        "limitations": "Four raster panels; conditional historical concepts, attribution/alignment/category mapping pending.",
+        "research_artifact": "pipelines/vd-pdcom/reports/nyon/sdan-maps/semantic-review.json"
+      },
+      {
+        "page_number": 30,
+        "theme": "Implementation workstream perimeters",
+        "limitations": "Broad workstream outlines, not individual development-sector boundaries.",
+        "research_artifact": "pipelines/vd-pdcom/reports/nyon/sdan-maps/semantic-review.json"
+      }
+    ],
     "geographic_validation": "pending",
     "receiver_release": "not_ready",
     "scope_limit": "Cover explicitly states approval by municipalities, regional council and Canton16February2006; visually checked. PDF5 states an orientation document with contractual commitment on chapters6–8 and formal COPIL approval. This is an intercommunal SDAN, not eight adopted PDComs or current parcel rules. PDF1/6identify eight members; Crans-près-Céligny maps to current Crans(VD)5713. Later currency and geographic coverage remain unverified."
