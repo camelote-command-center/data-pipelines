@@ -1,0 +1,52 @@
+{
+  "operation_id": "ea832f97-4db0-46ae-b885-4d614e5bd931",
+  "commune_bfs": 5757,
+  "stage": "official_source_acquisition_and_map_review",
+  "checked_at": "2026-09-15",
+  "documents": [
+    {
+      "candidate_id": "b8191d18-cf44-4ebf-8936-ba1b6056c491",
+      "url": "https://www.orbe.ch/images/documents/urbanisme_construction/Plans_directeur_et_g%C3%A9n%C3%A9ral/PDcom_rapport.pdf",
+      "landing": "https://www.orbe.ch/officiel/services-communaux/constructions-patrimoine-urbanisme/urbanisme.html",
+      "sha256": "40dfd8fb585cdaa71218693fdd3121c16daf84d17d0901dc949377b4da2c625d",
+      "pages": 83,
+      "document_id": "63c46c66-6074-5323-97f0-76732c4e4216"
+    },
+    {
+      "candidate_id": "bca9ec4e-ec76-417b-affe-6ffb1c107f63",
+      "url": "https://www.orbe.ch/images/documents/urbanisme_construction/Plans_directeur_et_g%C3%A9n%C3%A9ral/PDcom_cartes.pdf",
+      "landing": "https://www.orbe.ch/officiel/services-communaux/constructions-patrimoine-urbanisme/urbanisme.html",
+      "sha256": "8b78d42eb83210b6b63404dd8b4270fedd15d1b7e3d65d2a403d6edcee654a3c",
+      "pages": 5,
+      "document_id": "464c3687-bdd2-55b4-9e35-f8ece05099cb"
+    }
+  ],
+  "landing_evidence": "Official urbanism table labels PDCom2022 with Conseil d’Etat approval date21.09.2022 and links these files.",
+  "exact_version_limit": "Downloaded report and maps dated2September2021; signatures/dates blank (reportPDF3 and mapPDF1 visibly checked). Landing approval date is not proof that exact downloaded bytes are the approved version.",
+  "map_review": {
+    "pdf_page": 1,
+    "topic": "Urbanisation",
+    "main_scale": "1:10000",
+    "separate_inset_scale": "1:5000",
+    "vector_paths": 25930,
+    "embedded_georef": false,
+    "semantics": [
+      "territoires à densifier prioritairement",
+      "secteurs à réhabiliter et à développer: moyen terme habitat, moyen terme mixte, long terme habitat with ISOS considerations"
+    ],
+    "limit": "Main map and inset must be separated before extraction to avoid duplicates and wrong scale; alignment and exact category extraction pending."
+  },
+  "status": "source_acquired_not_completed_coverage",
+  "other_leads": [
+    {
+      "commune_bfs": 5518,
+      "url": "https://www.echallens.ch/ma-commune/annuaire-telephonique/révision-du-plan-directeur-communal-pdcom.html",
+      "result": "HTTP200; only consultation report linked, adopted plan still missing; not evidence of no plan"
+    },
+    {
+      "commune_bfs": 5805,
+      "url": "https://www.oron.ch/data/dataimages/Upload/PDCom-Consultation-publique-du-15.09.2025-au-14.10.2025-Rapport.pdf",
+      "result": "requests HTTP403 Forbidden; public web index describes consultation versionAugust2025. Not downloaded. Access failure at remote HTTP layer; no authentication or permission bypass attempted."
+    }
+  ]
+}

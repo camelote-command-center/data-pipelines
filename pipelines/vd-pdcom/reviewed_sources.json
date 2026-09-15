@@ -430,5 +430,25 @@
     "title": "Chablais Agglo PA5-PDi — Programme de mesures",
     "plan_status": "unverified",
     "scope": "intercommunal"
+  },
+  {
+    "candidate_id": "b8191d18-cf44-4ebf-8936-ba1b6056c491",
+    "commune_bfs": 5757,
+    "commune_name": "Orbe",
+    "pdf_url": "https://www.orbe.ch/images/documents/urbanisme_construction/Plans_directeur_et_g%C3%A9n%C3%A9ral/PDcom_rapport.pdf",
+    "landing_url": "https://www.orbe.ch/officiel/services-communaux/constructions-patrimoine-urbanisme/urbanisme.html",
+    "title": "Orbe PDCom — Rapport du 2 septembre 2021",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "bca9ec4e-ec76-417b-affe-6ffb1c107f63",
+    "commune_bfs": 5757,
+    "commune_name": "Orbe",
+    "pdf_url": "https://www.orbe.ch/images/documents/urbanisme_construction/Plans_directeur_et_g%C3%A9n%C3%A9ral/PDcom_cartes.pdf",
+    "landing_url": "https://www.orbe.ch/officiel/services-communaux/constructions-patrimoine-urbanisme/urbanisme.html",
+    "title": "Orbe PDCom — Cartes du 2 septembre 2021",
+    "plan_status": "unverified",
+    "scope": "communal"
   }
 ]
