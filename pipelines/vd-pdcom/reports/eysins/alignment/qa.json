@@ -158,5 +158,6 @@
     "Current footprints and 2006 illustration may differ; no cause assigned without evidence.",
     "No accepted CRS transform, sector geometry, parcel intersections or delivery writes."
   ],
-  "next_step": "Manually confirm multiple spatially distributed building corners/landmarks with exact official footprint identity; reserve separate controls before fitting. If correspondence is not defensible, seek higher-resolution/georeferenced official maps. Do not repeat nearest-point searches as evidence of success."
+  "next_step": "Manually confirm multiple spatially distributed building corners/landmarks with exact official footprint identity; reserve separate controls before fitting. If correspondence is not defensible, seek higher-resolution/georeferenced official maps. Do not repeat nearest-point searches as evidence of success.",
+  "source_pdf_sha256": "35b62cc028b93a649c7b752c14c2e549bee6ac5d207f1c3033ecf55445b5a729"
 }
