@@ -130,7 +130,8 @@
           "artifact": "pipelines/vd-pdcom/reports/morges/medium-density/extraction.json",
           "status": "research_only_not_growth_sectors",
           "hatch_review": "pipelines/vd-pdcom/reports/morges/hatching/semantic-review.json",
-          "alignment_review": "pipelines/vd-pdcom/reports/morges/alignment/runtime-receipt.json"
+          "alignment_review": "pipelines/vd-pdcom/reports/morges/alignment/runtime-receipt.json",
+          "parcel_qa": "pipelines/vd-pdcom/reports/morges/parcel-qa/runtime-receipt.json"
         }
       }
     ]

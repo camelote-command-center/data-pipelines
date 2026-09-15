@@ -1,0 +1,239 @@
+{
+  "operation_id": "dde0ce65-6785-4af2-90b0-801c56773363",
+  "checkpoint_id": "2768bde1-3efa-4ef0-a3d9-bd07b370db49",
+  "document_id": "b4deac7f-9349-5463-b2f5-0afdd2bf78e6",
+  "source_sha256": "9ac3058bc9f837696f69886815f54e65dab848bd67e62df90deb476cebd85300",
+  "pdf_page": 1,
+  "commune_bfs": 5642,
+  "status": "research_parcel_qa_not_delivered",
+  "reference_count": 399,
+  "bounds_lv95": [
+    2526321.398352695,
+    1151011.4706194329,
+    2527499.7352999267,
+    1151844.8300936818
+  ],
+  "reference_response_pages": [
+    {
+      "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2526321.398352695%2C1151011.4706194329%2C2527499.7352999267%2C1151844.8300936818&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5642&outFields=OBJECTID%2CEGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson&orderByFields=OBJECTID&resultOffset=0&resultRecordCount=1000",
+      "response_sha256": "4f6cddf039f79fec4f64d2fb00699452925af5ce869da1bd732ad8c9a5cd7851",
+      "rows": 399
+    }
+  ],
+  "base_pairs": 62,
+  "base_unique_egrids": 61,
+  "base_unique_kinds": {
+    "parcelle priv\u00e9e": 55,
+    "DP communal": 5,
+    "DDP superficie": 1
+  },
+  "per_path": {
+    "5558": {
+      "-10": 14,
+      "-5": 16,
+      "0": 18,
+      "5": 20,
+      "10": 27
+    },
+    "5761": {
+      "-10": 14,
+      "-5": 14,
+      "0": 17,
+      "5": 22,
+      "10": 28
+    },
+    "7935": {
+      "-10": 2,
+      "-5": 2,
+      "0": 2,
+      "5": 2,
+      "10": 3
+    },
+    "8039": {
+      "-10": 1,
+      "-5": 1,
+      "0": 1,
+      "5": 4,
+      "10": 5
+    },
+    "8192": {
+      "-10": 3,
+      "-5": 3,
+      "0": 4,
+      "5": 5,
+      "10": 6
+    },
+    "8238": {
+      "-10": 19,
+      "-5": 19,
+      "0": 20,
+      "5": 21,
+      "10": 21
+    }
+  },
+  "sensitivity": {
+    "-10": {
+      "pairs": 53,
+      "unique_egrids": 52
+    },
+    "-5": {
+      "pairs": 55,
+      "unique_egrids": 54
+    },
+    "0": {
+      "pairs": 62,
+      "unique_egrids": 61
+    },
+    "5": {
+      "pairs": 74,
+      "unique_egrids": 72
+    },
+    "10": {
+      "pairs": 90,
+      "unique_egrids": 84
+    }
+  },
+  "small_fraction_pairs": [
+    {
+      "egrid": "CH538388458322",
+      "numero": "DP 1063",
+      "kind": "DP communal",
+      "overlap_m2": 9.511653175839442,
+      "parcel_area_m2": 1275.608780017667,
+      "overlap_fraction": 0.007456559820564818,
+      "boundary_within10m": true,
+      "drawing_index": 5558
+    },
+    {
+      "egrid": "CH468983451159",
+      "numero": "741",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 2.56797641176139,
+      "parcel_area_m2": 2993.4830399976167,
+      "overlap_fraction": 0.000857855674292858,
+      "boundary_within10m": true,
+      "drawing_index": 5761
+    },
+    {
+      "egrid": "CH768883453557",
+      "numero": "1495",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 3.7555447376392714,
+      "parcel_area_m2": 6622.272394012308,
+      "overlap_fraction": 0.0005671081638132162,
+      "boundary_within10m": true,
+      "drawing_index": 8192
+    },
+    {
+      "egrid": "CH328821834578",
+      "numero": "DP 26",
+      "kind": "DP communal",
+      "overlap_m2": 1.1205718870435668,
+      "parcel_area_m2": 1553.606780863116,
+      "overlap_fraction": 0.0007212712385440453,
+      "boundary_within10m": true,
+      "drawing_index": 8238
+    }
+  ],
+  "shared_egrid_pairs": [
+    {
+      "egrid": "CH798388424597",
+      "numero": "3085",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 5615.651320611551,
+      "parcel_area_m2": 64348.79518652109,
+      "overlap_fraction": 0.08726894271033439,
+      "boundary_within10m": true,
+      "drawing_index": 7935
+    },
+    {
+      "egrid": "CH798388424597",
+      "numero": "3085",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 25911.770945609984,
+      "parcel_area_m2": 64348.79518652109,
+      "overlap_fraction": 0.4026768624105899,
+      "boundary_within10m": true,
+      "drawing_index": 8039
+    }
+  ],
+  "ddp_pairs": [
+    {
+      "egrid": "CH900945208367",
+      "numero": "4193",
+      "kind": "DDP superficie",
+      "overlap_m2": 807.3567365111979,
+      "parcel_area_m2": 807.3567365111978,
+      "overlap_fraction": 1.0000000000000002,
+      "boundary_within10m": true,
+      "drawing_index": 8238
+    }
+  ],
+  "mirror_review": {
+    "5558": {
+      "official_pairs": 18,
+      "matched_identities": 18,
+      "wrong_commune": [],
+      "missing_egrids": [],
+      "mirror_intersections": 18,
+      "official_only_intersections": [],
+      "mirror_only_intersections": []
+    },
+    "5761": {
+      "official_pairs": 17,
+      "matched_identities": 17,
+      "wrong_commune": [],
+      "missing_egrids": [],
+      "mirror_intersections": 17,
+      "official_only_intersections": [],
+      "mirror_only_intersections": []
+    },
+    "7935": {
+      "official_pairs": 2,
+      "matched_identities": 2,
+      "wrong_commune": [],
+      "missing_egrids": [],
+      "mirror_intersections": 2,
+      "official_only_intersections": [],
+      "mirror_only_intersections": []
+    },
+    "8039": {
+      "official_pairs": 1,
+      "matched_identities": 1,
+      "wrong_commune": [],
+      "missing_egrids": [],
+      "mirror_intersections": 1,
+      "official_only_intersections": [],
+      "mirror_only_intersections": []
+    },
+    "8192": {
+      "official_pairs": 4,
+      "matched_identities": 4,
+      "wrong_commune": [],
+      "missing_egrids": [],
+      "mirror_intersections": 4,
+      "official_only_intersections": [],
+      "mirror_only_intersections": []
+    },
+    "8238": {
+      "official_pairs": 20,
+      "matched_identities": 20,
+      "wrong_commune": [],
+      "missing_egrids": [],
+      "mirror_intersections": 20,
+      "official_only_intersections": [],
+      "mirror_only_intersections": []
+    }
+  },
+  "verification": "All30 frozen intersection sets and areas replayed;399unique official identities/count/valid geometries checked; six parcel overlays visually reviewed. All61identities have correct5642mirror attribution and identical six intersection keysets, not a geometry-equality claim.",
+  "limitations": [
+    "No intersections below1m2; four below1%parcel area remain explicitly flagged.",
+    "60land objects(55private+5communal public-domain),1DDPsuperficie; do not sum rights as exclusive land area.",
+    "Same land EGRID CH798388424597 intersects paths7935and8039; distinct source shapes, not duplicate source row.",
+    "Buffers5/10m are illustrative sensitivity, not accuracy bounds.",
+    "Path8192overprints and0.0834m2outside commune remain; source currentness and partial paths unresolved.",
+    "Private candidate ingestion not run; no runtime sector/parcel/receiver changes."
+  ],
+  "artifact": "pipelines/vd-pdcom/reports/morges/parcel-qa",
+  "next_step": "Implement private pilot with scoped official reference provenance, source/overprint limits and per-pair boundary flags; keep partial paths withheld and verify full-row receiver parity."
+}

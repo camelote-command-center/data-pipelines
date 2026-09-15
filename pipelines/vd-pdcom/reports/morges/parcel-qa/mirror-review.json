@@ -1,0 +1,56 @@
+{
+  "5558": {
+    "official_pairs": 18,
+    "matched_identities": 18,
+    "wrong_commune": [],
+    "missing_egrids": [],
+    "mirror_intersections": 18,
+    "official_only_intersections": [],
+    "mirror_only_intersections": []
+  },
+  "5761": {
+    "official_pairs": 17,
+    "matched_identities": 17,
+    "wrong_commune": [],
+    "missing_egrids": [],
+    "mirror_intersections": 17,
+    "official_only_intersections": [],
+    "mirror_only_intersections": []
+  },
+  "7935": {
+    "official_pairs": 2,
+    "matched_identities": 2,
+    "wrong_commune": [],
+    "missing_egrids": [],
+    "mirror_intersections": 2,
+    "official_only_intersections": [],
+    "mirror_only_intersections": []
+  },
+  "8039": {
+    "official_pairs": 1,
+    "matched_identities": 1,
+    "wrong_commune": [],
+    "missing_egrids": [],
+    "mirror_intersections": 1,
+    "official_only_intersections": [],
+    "mirror_only_intersections": []
+  },
+  "8192": {
+    "official_pairs": 4,
+    "matched_identities": 4,
+    "wrong_commune": [],
+    "missing_egrids": [],
+    "mirror_intersections": 4,
+    "official_only_intersections": [],
+    "mirror_only_intersections": []
+  },
+  "8238": {
+    "official_pairs": 20,
+    "matched_identities": 20,
+    "wrong_commune": [],
+    "missing_egrids": [],
+    "mirror_intersections": 20,
+    "official_only_intersections": [],
+    "mirror_only_intersections": []
+  }
+}
