@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "radius1_buffer0": {
+      "pairs": 0,
+      "egrids": 0,
+      "under1m2": 0,
+      "under1percent": 0,
+      "egrid_ids": null,
+      "area_m2": 111365.253770057,
+      "inside_bex_fraction": 0.999999999999999
+    },
+    "radius2_buffer0": {
+      "pairs": 0,
+      "egrids": 0,
+      "under1m2": 0,
+      "under1percent": 0,
+      "egrid_ids": null,
+      "area_m2": 111389.021039319,
+      "inside_bex_fraction": 0.999999999999999
+    },
+    "radius2_buffer-10": {
+      "pairs": 0,
+      "egrids": 0,
+      "under1m2": 0,
+      "under1percent": 0,
+      "egrid_ids": null
+    },
+    "radius2_buffer-5": {
+      "pairs": 0,
+      "egrids": 0,
+      "under1m2": 0,
+      "under1percent": 0,
+      "egrid_ids": null
+    },
+    "radius2_buffer5": {
+      "pairs": 0,
+      "egrids": 0,
+      "under1m2": 0,
+      "under1percent": 0,
+      "egrid_ids": null
+    },
+    "radius2_buffer10": {
+      "pairs": 0,
+      "egrids": 0,
+      "under1m2": 0,
+      "under1percent": 0,
+      "egrid_ids": null
+    },
+    "radius3_buffer0": {
+      "pairs": 0,
+      "egrids": 0,
+      "under1m2": 0,
+      "under1percent": 0,
+      "egrid_ids": null,
+      "area_m2": 111410.560127084,
+      "inside_bex_fraction": 1.0
+    }
+  },
+  "source_stated_area_m2": 110371,
+  "source_area_difference_reason": "unresolved; do not force calibration to match stated area",
+  "buffers": "5m/10m illustrative sensitivity, not demonstrated error bounds",
+  "selected": "radius2_buffer0",
+  "selected_area_difference_m2": 1018.0210393190064
+}
