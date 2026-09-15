@@ -88,5 +88,22 @@
     ],
     "scope_limit": "PDF55 (printed109) states municipal executive approval26March2025 and consultation8May–9June2025; communal council adoption and cantonal approval fields are blank. Municipal approval is not final cantonal approval. Official page describes a proposal transmitted to council. Do not replace the1997plan as current solely from this PDF.",
     "municipal_executive_approval_date": "2025-03-26"
+  },
+  {
+    "document_id": "7e056f98-9415-5bf9-84cf-3a6108c003b0",
+    "sha256": "129c5a3245eb2251af5f0a268934bf2294fa093796e621cf4dd71b588abe6456",
+    "commune_bfs": 5642,
+    "reviewed_at": "2026-09-15",
+    "reviewed_by": "Codex / 01a09b0a-7538-7983-8871-5eb6a6541d10",
+    "plan_status": "approved",
+    "approval_evidence_page": 104,
+    "approval_date": "2023-05-17",
+    "municipal_council_adoption_date": "2022-09-07",
+    "adoption_note": "Signature page says amended and adopted; preserve the approved amended document.",
+    "scope_limit": "Sectoral mobility plan only; replaces chapter5 Réseaux de déplacement et mobilité of2012 PDCom, not the whole land-use plan. Signature page visually verified; geographic validation still pending.",
+    "corroboration_url": "https://www.vd.ch/actualites/decisions-du-conseil-detat/seance-du-conseil-detat/decision/id/4f81ae0e-fa7c-4d7c-9d10-0bcf727336b2",
+    "map_pages": [],
+    "geographic_validation": "pending",
+    "receiver_release": "not_ready"
   }
 ]

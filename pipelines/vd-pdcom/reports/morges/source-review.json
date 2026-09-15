@@ -1,0 +1,76 @@
+{
+  "operation_id": "3ed1db94-d1fd-4ae4-a398-1030b4ed922d",
+  "commune_bfs": 5642,
+  "stage": "morges_plan_context_and_version_review",
+  "checked_at": "2026-09-15",
+  "documents": [
+    {
+      "candidate_id": "f2b05e77-c54d-491c-beb4-719c56592dd5",
+      "url": "https://www.morges.ch/media/document/0/8300-0659B-Rapport_PDcom_050712.pdf",
+      "landing": "https://www.morges.ch/vivre-a-morges/planification-communale/plan-directeur-communal-201540",
+      "title": "Rapport PDCom",
+      "sha256": "b4ce4a9dbdd6a0ae867e5f53f36b92c127901cd1d33f8f5476882130689f7308",
+      "pages": 103,
+      "document_id": "457713c4-4231-5257-a509-4a579fc58c0b",
+      "part": "report"
+    },
+    {
+      "url": "https://www.morges.ch/media/document/0/8301-0659B-Rapport_mesures_050712.pdf",
+      "landing": "https://www.morges.ch/vivre-a-morges/planification-communale/plan-directeur-communal-201540",
+      "title": "Rapport de mesures",
+      "sha256": "ed87215697b99752661e6437c39b1a3e767500c16a34adf1c3926a925e41a76b",
+      "pages": 57,
+      "document_id": "077081bb-4a19-5c87-8d64-53dbbaeb254c",
+      "part": "measures"
+    },
+    {
+      "url": "https://www.morges.ch/media/document/0/8302-0659B-Annexes.pdf",
+      "landing": "https://www.morges.ch/vivre-a-morges/planification-communale/plan-directeur-communal-201540",
+      "title": "Annexes",
+      "sha256": "b53e7ca2a5bf41a18f2657bafeaa7068387d089b23b05ad330bae4ecfec83621",
+      "pages": 57,
+      "document_id": "118c86c3-15ed-531e-aeb1-ca151e5284ee",
+      "part": "annexes"
+    },
+    {
+      "candidate_id": "003956f9-c655-449b-8672-588b828144a2",
+      "url": "https://www.morges.ch/media/document/3/pdcom-mobilites-rapport-v18-annexes-signe.pdf",
+      "landing": "https://www.morges.ch/vivre-a-morges/planification-communale/plan-directeur-communal-201540",
+      "title": "PDCom Mobilité avec Annexes 2023",
+      "sha256": "129c5a3245eb2251af5f0a268934bf2294fa093796e621cf4dd71b588abe6456",
+      "pages": 144,
+      "document_id": "7e056f98-9415-5bf9-84cf-3a6108c003b0",
+      "part": "mobility"
+    }
+  ],
+  "mobility_approval": {
+    "document_id": "7e056f98-9415-5bf9-84cf-3a6108c003b0",
+    "sha256": "129c5a3245eb2251af5f0a268934bf2294fa093796e621cf4dd71b588abe6456",
+    "commune_bfs": 5642,
+    "reviewed_at": "2026-09-15",
+    "reviewed_by": "Codex / 01a09b0a-7538-7983-8871-5eb6a6541d10",
+    "plan_status": "approved",
+    "approval_evidence_page": 104,
+    "approval_date": "2023-05-17",
+    "municipal_council_adoption_date": "2022-09-07",
+    "adoption_note": "Signature page says amended and adopted; preserve the approved amended document.",
+    "scope_limit": "Sectoral mobility plan only; replaces chapter5 Réseaux de déplacement et mobilité of2012 PDCom, not the whole land-use plan. Signature page visually verified; geographic validation still pending.",
+    "corroboration_url": "https://www.vd.ch/actualites/decisions-du-conseil-detat/seance-du-conseil-detat/decision/id/4f81ae0e-fa7c-4d7c-9d10-0bcf727336b2",
+    "map_pages": [],
+    "geographic_validation": "pending",
+    "receiver_release": "not_ready"
+  },
+  "plan_relationship": {
+    "2012_plan_approval": "2012-10-10, stated in mobilityPDF5; municipal index confirms October2012",
+    "2012_council_adoption": "2012-03-07, mobilityPDF5",
+    "replaced_scope": "Chapter5 Réseaux de déplacement et mobilité of2012 PDCom",
+    "replacement": "7e056f98-9415-5bf9-84cf-3a6108c003b0",
+    "evidence_pages": [
+      5,
+      104
+    ],
+    "scope_limit": "Do not mark entire2012 PDCom superseded or interpret2023 mobility approval as new land-use/density approval."
+  },
+  "legend_location": "2012 annexesPDF5–10 contains detailed main-map legend; measures document groups actions by geographic sector.",
+  "limits": "No geographic sectors extracted or commune completion. Exact-version signatures for2012 documents not reviewed; newer chapter relation retained."
+}

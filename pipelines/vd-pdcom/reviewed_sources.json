@@ -450,5 +450,43 @@
     "title": "Orbe PDCom — Cartes du 2 septembre 2021",
     "plan_status": "unverified",
     "scope": "communal"
+  },
+  {
+    "commune_bfs": 5642,
+    "commune_name": "Morges",
+    "pdf_url": "https://www.morges.ch/media/document/0/8300-0659B-Rapport_PDcom_050712.pdf",
+    "landing_url": "https://www.morges.ch/vivre-a-morges/planification-communale/plan-directeur-communal-201540",
+    "title": "Morges — Rapport PDCom",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "candidate_id": "f2b05e77-c54d-491c-beb4-719c56592dd5"
+  },
+  {
+    "commune_bfs": 5642,
+    "commune_name": "Morges",
+    "pdf_url": "https://www.morges.ch/media/document/0/8301-0659B-Rapport_mesures_050712.pdf",
+    "landing_url": "https://www.morges.ch/vivre-a-morges/planification-communale/plan-directeur-communal-201540",
+    "title": "Morges — Rapport de mesures",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_bfs": 5642,
+    "commune_name": "Morges",
+    "pdf_url": "https://www.morges.ch/media/document/0/8302-0659B-Annexes.pdf",
+    "landing_url": "https://www.morges.ch/vivre-a-morges/planification-communale/plan-directeur-communal-201540",
+    "title": "Morges — Annexes",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "commune_bfs": 5642,
+    "commune_name": "Morges",
+    "pdf_url": "https://www.morges.ch/media/document/3/pdcom-mobilites-rapport-v18-annexes-signe.pdf",
+    "landing_url": "https://www.morges.ch/vivre-a-morges/planification-communale/plan-directeur-communal-201540",
+    "title": "Morges — PDCom Mobilité avec Annexes 2023",
+    "plan_status": "approved",
+    "scope": "communal",
+    "candidate_id": "003956f9-c655-449b-8672-588b828144a2"
   }
 ]
