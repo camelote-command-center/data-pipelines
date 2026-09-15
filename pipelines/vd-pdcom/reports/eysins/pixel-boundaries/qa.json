@@ -1,0 +1,199 @@
+{
+  "source_image_sha256": "716b0b482014eea872c6338bcca06b857d008aec73766bb2c665d377f07ea42e",
+  "digitization_sha256": "0ace55263df56258bb06ac2ae95e8700852e782e66aa66dc211d3de010dfb135",
+  "features": [
+    {
+      "id": "E1",
+      "valid": true,
+      "area_pixels_squared": 12191.5,
+      "buffer_sensitivity": [
+        {
+          "buffer_pixels": -2,
+          "area_pixels_squared": 11053.113011115944
+        },
+        {
+          "buffer_pixels": -1,
+          "area_pixels_squared": 11617.364060214162
+        },
+        {
+          "buffer_pixels": 0,
+          "area_pixels_squared": 12191.5
+        },
+        {
+          "buffer_pixels": 1,
+          "area_pixels_squared": 12773.459235312414
+        },
+        {
+          "buffer_pixels": 2,
+          "area_pixels_squared": 13361.180170990372
+        }
+      ]
+    },
+    {
+      "id": "E2",
+      "valid": true,
+      "area_pixels_squared": 886.5,
+      "buffer_sensitivity": [
+        {
+          "buffer_pixels": -2,
+          "area_pixels_squared": 557.2257479276368
+        },
+        {
+          "buffer_pixels": -1,
+          "area_pixels_squared": 717.4889998453024
+        },
+        {
+          "buffer_pixels": 0,
+          "area_pixels_squared": 886.5
+        },
+        {
+          "buffer_pixels": 1,
+          "area_pixels_squared": 1063.021111234117
+        },
+        {
+          "buffer_pixels": 2,
+          "area_pixels_squared": 1245.8146963900415
+        }
+      ]
+    },
+    {
+      "id": "E3",
+      "valid": true,
+      "area_pixels_squared": 205.0,
+      "buffer_sensitivity": [
+        {
+          "buffer_pixels": -2,
+          "area_pixels_squared": 60.72530560772785
+        },
+        {
+          "buffer_pixels": -1,
+          "area_pixels_squared": 128.7530884111761
+        },
+        {
+          "buffer_pixels": 0,
+          "area_pixels_squared": 205.0
+        },
+        {
+          "buffer_pixels": 1,
+          "area_pixels_squared": 288.49286128336865
+        },
+        {
+          "buffer_pixels": 2,
+          "area_pixels_squared": 378.25849317045055
+        }
+      ]
+    },
+    {
+      "id": "E4",
+      "valid": true,
+      "area_pixels_squared": 622.0,
+      "buffer_sensitivity": [
+        {
+          "buffer_pixels": -2,
+          "area_pixels_squared": 434.06039247232843
+        },
+        {
+          "buffer_pixels": -1,
+          "area_pixels_squared": 523.9788778605841
+        },
+        {
+          "buffer_pixels": 0,
+          "area_pixels_squared": 622.0
+        },
+        {
+          "buffer_pixels": 1,
+          "area_pixels_squared": 727.209132206018
+        },
+        {
+          "buffer_pixels": 2,
+          "area_pixels_squared": 838.6916477940783
+        }
+      ]
+    },
+    {
+      "id": "E5",
+      "valid": true,
+      "area_pixels_squared": 337.5,
+      "buffer_sensitivity": [
+        {
+          "buffer_pixels": -2,
+          "area_pixels_squared": 201.45981027527088
+        },
+        {
+          "buffer_pixels": -1,
+          "area_pixels_squared": 265.2722783474671
+        },
+        {
+          "buffer_pixels": 0,
+          "area_pixels_squared": 337.5
+        },
+        {
+          "buffer_pixels": 1,
+          "area_pixels_squared": 417.0720424989898
+        },
+        {
+          "buffer_pixels": 2,
+          "area_pixels_squared": 502.9174731105582
+        }
+      ]
+    },
+    {
+      "id": "E6",
+      "valid": true,
+      "area_pixels_squared": 4528.0,
+      "buffer_sensitivity": [
+        {
+          "buffer_pixels": -2,
+          "area_pixels_squared": 3885.484587585689
+        },
+        {
+          "buffer_pixels": -1,
+          "area_pixels_squared": 4202.97013212275
+        },
+        {
+          "buffer_pixels": 0,
+          "area_pixels_squared": 4528.0
+        },
+        {
+          "buffer_pixels": 1,
+          "area_pixels_squared": 4859.938512565792
+        },
+        {
+          "buffer_pixels": 2,
+          "area_pixels_squared": 5198.149991168463
+        }
+      ]
+    },
+    {
+      "id": "E7",
+      "valid": true,
+      "area_pixels_squared": 5243.5,
+      "buffer_sensitivity": [
+        {
+          "buffer_pixels": -2,
+          "area_pixels_squared": 4707.214493303436
+        },
+        {
+          "buffer_pixels": -1,
+          "area_pixels_squared": 4971.946052831372
+        },
+        {
+          "buffer_pixels": 0,
+          "area_pixels_squared": 5243.5
+        },
+        {
+          "buffer_pixels": 1,
+          "area_pixels_squared": 5521.601813615224
+        },
+        {
+          "buffer_pixels": 2,
+          "area_pixels_squared": 5805.976972482946
+        }
+      ]
+    }
+  ],
+  "positive_area_overlap_pairs": 0,
+  "buffer_note": "Illustrative pixel sensitivity, not measured positional error or geographic metres.",
+  "geographic_validation": "pending",
+  "new_deliverable_sectors": 0
+}
