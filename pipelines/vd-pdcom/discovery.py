@@ -188,14 +188,19 @@ def run(args):
     operation = str(uuid.uuid4())
     output = args.output
     output.mkdir(parents=True, exist_ok=True)
-    with conn, conn.cursor() as cur:
-        # One pipeline-wide lock; HTTP work commits per commune and survives reruns.
-        cur.execute('SELECT pg_try_advisory_lock(572500300)')
-        if not cur.fetchone()[0]:
-            cur.execute('SELECT count(*) FROM bronze_ch.vd_pdcom_communes WHERE is_current')
-            count = cur.fetchone()[0]
-            return {'operation_id':operation,'processed':0,'queue_counts':{'current_communes':count},'skipped':'discovery_already_running','coverage_complete':False}
+    lock_conn = None
     try:
+        # A dedicated transaction holds the pipeline lock across per-commune
+        # commits. Session locks can survive pooled-client disconnects.
+        lock_conn = psycopg2.connect(os.environ['RE_LLM_DB_URL'], connect_timeout=15)
+        with lock_conn.cursor() as lock_cur:
+            lock_cur.execute('SELECT pg_try_advisory_xact_lock(572500300)')
+            acquired = lock_cur.fetchone()[0]
+        if not acquired:
+            with conn.cursor() as cur:
+                cur.execute('SELECT count(*) FROM bronze_ch.vd_pdcom_communes WHERE is_current')
+                count = cur.fetchone()[0]
+            return {'operation_id':operation,'processed':0,'queue_counts':{'current_communes':count},'skipped':'discovery_already_running','coverage_complete':False}
         _, directory, directory_sha = fetch_html(DIRECTORY)
         seeds = directory_seeds(directory)
         with conn, conn.cursor() as cur:
@@ -239,7 +244,14 @@ def run(args):
         print(json.dumps(report),flush=True)
         return report
     finally:
-        conn.close()
+        try:
+            if lock_conn is not None:
+                try:
+                    lock_conn.rollback()
+                finally:
+                    lock_conn.close()
+        finally:
+            conn.close()
 
 
 if __name__ == '__main__':
