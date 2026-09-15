@@ -97,6 +97,8 @@ def persist(conn,source,sha,pages):
     persist_epalinges(conn,doc_id,sha)
     from aigle_pilot import persist as persist_aigle
     persist_aigle(conn,doc_id,sha)
+    from bex_pilot import persist as persist_bex
+    persist_bex(conn,doc_id,sha)
     return doc_id
 
 

@@ -1,0 +1,55 @@
+{
+  "checkpoint_ids": {
+    "checkpoint": "d0bdb18d-a1b7-47d2-a9e1-d33b10ecea7b",
+    "receiver_checkpoint": "e0952a9d-0135-46b2-876f-d8c8040d1ae0",
+    "delivery_log": "e95572e3-2580-47d7-84e4-4b1dc3fdf434"
+  },
+  "sector_id": "16a7a85b-7ecd-5385-bbc4-9fcb4e556262",
+  "first": {
+    "sectors": 1,
+    "parcel_pairs": 65,
+    "status": "review_required",
+    "reference_snapshot_id": "5ec7e4b7-e3d0-59cc-a8dd-6bce6edfd70f"
+  },
+  "repeat": {
+    "sectors": 1,
+    "parcel_pairs": 65,
+    "status": "review_required",
+    "reference_snapshot_id": "5ec7e4b7-e3d0-59cc-a8dd-6bce6edfd70f"
+  },
+  "types": {
+    "checked_egrids": 1086,
+    "counts": [
+      {
+        "kind": "bien_fonds",
+        "pairs": 1080,
+        "egrids": 1059
+      },
+      {
+        "kind": "ddp_superficie",
+        "pairs": 27,
+        "egrids": 27
+      }
+    ],
+    "release_status": "internal_review_only",
+    "aggregation_rule": "Keep rights and land EGRIDs distinct; do not sum them as exclusive land area."
+  },
+  "delivery": {
+    "publication_status": "internal_review_only",
+    "receiver": "lamap_db",
+    "tables": {
+      "vd_pdcom_review_sectors": {
+        "rows": 33,
+        "mismatches": 0,
+        "valid_4326": true
+      },
+      "vd_pdcom_review_parcels": {
+        "rows": 1107,
+        "mismatches": 0,
+        "valid_4326": true
+      }
+    }
+  },
+  "completed_communes": 0,
+  "independent_receiver_verified": true
+}
