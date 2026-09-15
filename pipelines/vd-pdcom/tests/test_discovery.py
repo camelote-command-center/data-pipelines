@@ -79,3 +79,33 @@ class DiscoveryContracts(unittest.TestCase):
         self.assertEqual(result['errors'][0]['reason'],'embedded_row_limit')
         page.table['data-entities']='x'*500001
         self.assertEqual(self.crawl_home(page)['errors'][0]['reason'],'embedded_data_size_limit')
+
+    def test_contended_transaction_lock_is_released_and_connections_closed(self):
+        from unittest.mock import MagicMock
+        from types import SimpleNamespace
+        import tempfile
+        main,lock=MagicMock(),MagicMock()
+        lock.cursor.return_value.__enter__.return_value.fetchone.return_value=(False,)
+        main.cursor.return_value.__enter__.return_value.fetchone.return_value=(300,)
+        with tempfile.TemporaryDirectory() as tmp, patch.dict('os.environ',{'RE_LLM_DB_URL':'test-only'}), patch('discovery.psycopg2.connect',side_effect=[main,lock]):
+            result=discovery.run(SimpleNamespace(output=Path(tmp)))
+        self.assertEqual(result['skipped'],'discovery_already_running')
+        lock.cursor.return_value.__enter__.return_value.execute.assert_called_once_with('SELECT pg_try_advisory_xact_lock(572500300)')
+        lock.commit.assert_not_called()
+        lock.rollback.assert_called_once()
+        lock.close.assert_called_once()
+        main.close.assert_called_once()
+
+    def test_acquired_lock_released_when_discovery_fails(self):
+        from unittest.mock import MagicMock
+        from types import SimpleNamespace
+        import tempfile
+        main,lock=MagicMock(),MagicMock()
+        lock.cursor.return_value.__enter__.return_value.fetchone.return_value=(True,)
+        with tempfile.TemporaryDirectory() as tmp, patch.dict('os.environ',{'RE_LLM_DB_URL':'test-only'}), patch('discovery.psycopg2.connect',side_effect=[main,lock]), patch('discovery.fetch_html',side_effect=RuntimeError('source unavailable')):
+            with self.assertRaisesRegex(RuntimeError,'source unavailable'):
+                discovery.run(SimpleNamespace(output=Path(tmp)))
+        lock.commit.assert_not_called()
+        lock.rollback.assert_called_once()
+        lock.close.assert_called_once()
+        main.close.assert_called_once()
