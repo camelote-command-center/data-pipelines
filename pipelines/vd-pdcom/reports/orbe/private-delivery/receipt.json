@@ -1,0 +1,82 @@
+{
+  "operation_id": "1d966231-5a57-44bc-9dda-86a3d6f87915",
+  "orbe": {
+    "sector_id": "6818ebde-eea4-5377-b25f-218f1307e658",
+    "sectors": 1,
+    "parcel_pairs": 1098,
+    "reference_snapshots": [
+      {
+        "snapshot_id": "079afdcd-af5b-5b31-bf1b-385881a4f8be",
+        "count": 859,
+        "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2530102.7511454616%2C1174250.7493889034%2C2531397.5739660426%2C1175330.0229582535&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5757&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+        "response_sha256": "c98e5bd17f02396086b76a5d095e2b0dd50f2f19bffc14c9f5996890f52a79ce"
+      },
+      {
+        "snapshot_id": "ce52ad48-d13c-5d39-9721-5e4eeb61c444",
+        "count": 505,
+        "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2530102.7511454616%2C1175330.0229582535%2C2531397.5739660426%2C1176409.2965276036&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5757&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+        "response_sha256": "f7d150c37b82d21d3932fa774328b22e0b251e0f60c7f08026063ff611bca138"
+      }
+    ],
+    "status": "review_required"
+  },
+  "typing": {
+    "checked_egrids": 2184,
+    "counts": [
+      {
+        "kind": "bien_fonds",
+        "pairs": 2150,
+        "egrids": 2129
+      },
+      {
+        "kind": "ddp_superficie",
+        "pairs": 55,
+        "egrids": 55
+      }
+    ],
+    "release_status": "internal_review_only",
+    "aggregation_rule": "Keep rights and land EGRIDs distinct; do not sum them as exclusive land area."
+  },
+  "delivery": {
+    "publication_status": "internal_review_only",
+    "receiver": "lamap_db",
+    "tables": {
+      "vd_pdcom_review_sectors": {
+        "rows": 34,
+        "mismatches": 0,
+        "valid_4326": true
+      },
+      "vd_pdcom_review_parcels": {
+        "rows": 2205,
+        "mismatches": 0,
+        "valid_4326": true
+      }
+    }
+  },
+  "total_pairs": 2205,
+  "distinct_egrids": 2184,
+  "total_sectors": 34,
+  "receiver_independent_checks": {
+    "orbe_attribution": [
+      5757
+    ],
+    "orbe_kinds": {
+      "bien_fonds": 1070,
+      "ddp_superficie": 28
+    },
+    "private_access": [
+      [
+        "vd_pdcom_review_parcels",
+        true,
+        false,
+        false
+      ],
+      [
+        "vd_pdcom_review_sectors",
+        true,
+        false,
+        false
+      ]
+    ]
+  }
+}

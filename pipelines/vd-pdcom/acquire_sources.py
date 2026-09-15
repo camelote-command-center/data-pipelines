@@ -99,6 +99,8 @@ def persist(conn,source,sha,pages):
     persist_aigle(conn,doc_id,sha)
     from bex_pilot import persist as persist_bex
     persist_bex(conn,doc_id,sha)
+    from orbe_pilot import persist as persist_orbe
+    persist_orbe(conn,doc_id,sha)
     return doc_id
 
 
