@@ -1,0 +1,24 @@
+{
+  "sha256": "8b78d42eb83210b6b63404dd8b4270fedd15d1b7e3d65d2a403d6edcee654a3c",
+  "pdf_page": 1,
+  "main_map_roi_pdf": [
+    750,
+    400,
+    1500,
+    1150
+  ],
+  "rgb": [
+    0.498039,
+    0.498039,
+    0.498039
+  ],
+  "area_range_pdf_points_squared": [
+    2,
+    2000
+  ],
+  "selected": 1528,
+  "skipped": {
+    "invalid_or_area_excluded": 411
+  },
+  "limit": "Selected building-like filled source polygons, not identified surveyed controls; main-map ROI excludes inset."
+}
