@@ -1,0 +1,24 @@
+{
+  "operation_id": "e1cb1ecc-71ca-451e-8b1b-1749b030ade4",
+  "stage": "pa5_bex_raster_comparison",
+  "source_document_id": "7ee80885-6bce-5be1-be2a-a6edf16eaa98",
+  "source_sha256": "b71c426bd9ea2e3aff936f52d2bf5e8dc84144468093803dfd98d921bae47c73",
+  "source_pdf_page": 70,
+  "status": "research_only_alignment_rejected",
+  "source_points": 150,
+  "train_count": 120,
+  "holdout_count": 30,
+  "holdout_under5m": 5,
+  "holdout_median_m": 12.886757260644002,
+  "holdout_rmse_m": 19.754840590258876,
+  "artifact_path": "pipelines/vd-pdcom/reports/chablais/bex-pa5-comparison",
+  "limitations": "No PA5 geographic geometry or parcel intersections accepted. Approximate visual seed also failed. Rejected fit is not an accuracy estimate; PA4/PA5 boundary equivalence remains unresolved.",
+  "next_step": "Identify explicit building correspondences or obtain georeferenced PA5 cartography; validate against separate controls before comparing boundaries.",
+  "outline_areas_pixels": [
+    79746.0,
+    83335.0,
+    83493.0
+  ],
+  "outline_limit": "1px cleanup leaves transport-line gaps; 2/3px bridge them. This sensitivity prevents treating any result as an exact perimeter.",
+  "verification": "Fit and all pixel outlines reproduced exactly; raster overlay visually reviewed."
+}
