@@ -1,0 +1,38 @@
+{
+  "checked_at": "2026-09-15",
+  "decision_url": "https://www.vd.ch/actualites/decisions-du-conseil-detat/seance-du-conseil-detat/decision/id/b1e35448-8062-4029-92b9-abb00fbce4b1",
+  "decision_date": "2026-02-11",
+  "approved_plan": "Chablais PDI with content identical to PA5 submitted 2025-06-24",
+  "declared_vaud_members": [
+    5401,
+    5402,
+    5409,
+    5406
+  ],
+  "approved_geographic_scope": "Parts below 550m altitude, not whole communes",
+  "exact_downloaded_version_approval": "not yet established by checksum or signed approval attachment",
+  "pa5_measures": {
+    "url": "https://admin.chablaisagglo.ch/assets/bb4cb2f9-ce39-406b-8692-1ca679e81273.pdf",
+    "sha256": "b71c426bd9ea2e3aff936f52d2bf5e8dc84144468093803dfd98d921bae47c73",
+    "document_id": "7ee80885-6bce-5be1-be2a-a6edf16eaa98",
+    "pages": 354,
+    "bex_pdf_page": 70,
+    "bex_printed_page": 74,
+    "bex_measure": "PUM 7 / ARE 6153.4.045",
+    "stated_area_m2": 110000,
+    "boundary_legend": "périmètre indicatif",
+    "priority": "A5/A4 – tâche permanente"
+  },
+  "existing_candidate": {
+    "sector_id": "16a7a85b-7ecd-5385-bbc4-9fcb4e556262",
+    "generation": "PA4",
+    "stated_area_m2": 110371,
+    "currency": "earlier generation; PA5 boundary comparison pending",
+    "release": "internal_review_only"
+  },
+  "limitations": [
+    "No assertion of identical PA4/PA5 geometry.",
+    "No cadastral or surveyed precision established.",
+    "Approval of the plan does not validate extracted geometry or confer parcel development entitlements."
+  ]
+}
