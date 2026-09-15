@@ -1,0 +1,118 @@
+{
+  "source_pdf": "../source-update/5650969.pdf",
+  "source_sha256": "5deba0b930b047b3e6cf2762c9cf960f933548d2a1113c028a26535f16e89af3",
+  "pdf_page": 1,
+  "image_xref": 4,
+  "native_image_size": [
+    7016,
+    4961
+  ],
+  "review_image_transform": "rotate native image90degrees clockwise, then resize to1000x1414",
+  "review_image_size": [
+    1000,
+    1414
+  ],
+  "map_printed_date": "1997-11-02",
+  "publication_label_year": 1999,
+  "grid_crs": "EPSG:21781 (Swiss LV03), identified from printed Swiss grid values and municipal location",
+  "controls_method": "Manually identified endpoints of straight printed grid lines; two lines per coordinate axis fit an affine coordinate function. Third labelled line per axis withheld as grid self-consistency check.",
+  "grid_lines": [
+    {
+      "axis": "E",
+      "value": 505200,
+      "split": "train",
+      "points": [
+        [
+          209,
+          1097
+        ],
+        [
+          894,
+          42
+        ]
+      ]
+    },
+    {
+      "axis": "E",
+      "value": 505800,
+      "split": "train",
+      "points": [
+        [
+          550,
+          1097
+        ],
+        [
+          982,
+          432
+        ]
+      ]
+    },
+    {
+      "axis": "E",
+      "value": 506400,
+      "split": "check",
+      "points": [
+        [
+          892,
+          1097
+        ],
+        [
+          982,
+          958
+        ]
+      ]
+    },
+    {
+      "axis": "N",
+      "value": 137400,
+      "split": "train",
+      "points": [
+        [
+          24,
+          279
+        ],
+        [
+          982,
+          903
+        ]
+      ]
+    },
+    {
+      "axis": "N",
+      "value": 136800,
+      "split": "train",
+      "points": [
+        [
+          24,
+          620
+        ],
+        [
+          755,
+          1097
+        ]
+      ]
+    },
+    {
+      "axis": "N",
+      "value": 136200,
+      "split": "check",
+      "points": [
+        [
+          24,
+          960
+        ],
+        [
+          233,
+          1097
+        ]
+      ]
+    }
+  ],
+  "limits": [
+    "Manual endpoint locations use the1000x1414review image, not subpixel surveying.",
+    "Grid check residuals test internal printed-grid consistency, not independent geographic accuracy.",
+    "Historical zoning map is an adjacent reference; this calibration does not align the SDAN image or authorize parcel matching.",
+    "Current footprints may differ from1997buildings; cause of individual mismatch is unresolved.",
+    "No PDCom sector, parcel or receiver mutation."
+  ]
+}

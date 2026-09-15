@@ -1,0 +1,143 @@
+{
+  "status": "adjacent_PGA_grid_calibration_only",
+  "affine_pixel_to_lv03": [
+    [
+      1.7588602505936413,
+      1.142176331829455,
+      503579.519196592
+    ],
+    [
+      1.1452350598374266,
+      -1.7570640128952848,
+      137862.37099794357
+    ]
+  ],
+  "determinant": -4.3984904297576675,
+  "residuals": [
+    {
+      "axis": "E",
+      "split": "train",
+      "point": [
+        209,
+        1097
+      ],
+      "grid_value": 505200,
+      "axis_residual_m": 0.08842498296871781
+    },
+    {
+      "axis": "E",
+      "split": "train",
+      "point": [
+        894,
+        42
+      ],
+      "grid_value": 505200,
+      "axis_residual_m": -0.08833344047889113
+    },
+    {
+      "axis": "E",
+      "split": "train",
+      "point": [
+        550,
+        1097
+      ],
+      "grid_value": 505800,
+      "axis_residual_m": -0.14022956462576985
+    },
+    {
+      "axis": "E",
+      "split": "train",
+      "point": [
+        982,
+        432
+      ],
+      "grid_value": 505800,
+      "axis_residual_m": 0.14013802527915686
+    },
+    {
+      "axis": "E",
+      "split": "check",
+      "point": [
+        892,
+        1097
+      ],
+      "grid_value": 506400,
+      "axis_residual_m": 1.3899761384236626
+    },
+    {
+      "axis": "E",
+      "split": "check",
+      "point": [
+        982,
+        958
+      ],
+      "grid_value": 506400,
+      "axis_residual_m": 0.924888567533344
+    },
+    {
+      "axis": "N",
+      "split": "train",
+      "point": [
+        24,
+        279
+      ],
+      "grid_value": 137400,
+      "axis_residual_m": -0.36422021812177263
+    },
+    {
+      "axis": "N",
+      "split": "train",
+      "point": [
+        982,
+        903
+      ],
+      "grid_value": 137400,
+      "axis_residual_m": 0.3630230594717432
+    },
+    {
+      "axis": "N",
+      "split": "train",
+      "point": [
+        24,
+        620
+      ],
+      "grid_value": 136800,
+      "axis_residual_m": 0.47695138459675945
+    },
+    {
+      "axis": "N",
+      "split": "train",
+      "point": [
+        755,
+        1097
+      ],
+      "grid_value": 136800,
+      "axis_residual_m": -0.47575402530492283
+    },
+    {
+      "axis": "N",
+      "split": "check",
+      "point": [
+        24,
+        960
+      ],
+      "grid_value": 136200,
+      "axis_residual_m": 3.075187000184087
+    },
+    {
+      "axis": "N",
+      "split": "check",
+      "point": [
+        233,
+        1097
+      ],
+      "grid_value": 136200,
+      "axis_residual_m": 1.711544739548117
+    }
+  ],
+  "check_axis_rmse_m": 1.94766610391239,
+  "check_axis_max_abs_m": 3.075187000184087,
+  "independent_geographic_accuracy_verified": false,
+  "SDAN_alignment_verified": false,
+  "receiver_release": "not_ready"
+}
