@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TE-BE90:publication xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TE-BE90="https://shab.ch/kabbe/TE-BE90-export" xsi:schemaLocation="https://shab.ch/kabbe/TE-BE90-export https://amtsblattportal.ch/api/v1/schemas/kabbe/1.26/TE-BE90-export.xsd">
+<meta>
+  <id>6e1770ab-3847-4543-bbda-087a148df510</id>
+  <rubric>TE-BE</rubric>
+  <subRubric>TE-BE90</subRubric>
+  <language>de</language>
+  <registrationOffice>
+    <id>6ff92446-2b66-11ec-a7ec-04505600902d</id>
+    <displayName>Olivier Geringer - das.notariats.büro</displayName>
+    <street>Bahnhofstrasse</street>
+    <streetNumber>5</streetNumber>
+    <swissZipCode>3800</swissZipCode>
+    <town>Interlaken</town>
+    <containsPostOfficeBox>false</containsPostOfficeBox>
+  </registrationOffice>
+  <publicationNumber>TE-BE90-0000000005</publicationNumber>
+  <publicationState>PUBLISHED</publicationState>
+  <publicationDate>2026-01-28</publicationDate>
+  <expirationDate>2027-01-28</expirationDate>
+  <primaryTenantCode>kabbe</primaryTenantCode>
+  <legalRemedy>Die Gläubiger (einschliesslich Bürgschaftsgläubiger) als auch Schuldner der verstorbenen Person werden aufgerufen, ihre Forderungen und Schulden (Wert Todestag) innert der Eingabefrist schriftlich bei der Kontaktstelle anzumelden. &lt;br />Die Gläubiger werden auf Art. 592 ZGB aufmerksam gemacht, wonach im Falle des Erwerbes einer Erbschaft durch das Gemeinwesen, dieses für Schulden der Erbschaft nur im Umfange der Vermögenswerte, die es aus der Erbschaft erworben hat, haftet. Wer Sachen des Erblassers als Pfandgläubiger oder aus anderen Gründen besitzt, hat diese der unterzeichnenden Stelle innert der erwähnten Frist anzugeben. &lt;br />Die Schuldner und die im Besitz von Faustpfändern befindlichen Gläubiger, die unterlassen, eine Eingabe zu machen, können mit einer Ordnungsbusse bestraft werden. &lt;br />Publikation nach Art. 592 ZGB.</legalRemedy>
+  <cantons>BE</cantons>
+  <title>
+    <de>Rechnungsruf infolge Erbschaft an Gemeinwesen Karl Roger Christen, Ringgenberg (BE)</de>
+    <en>Rechnungsruf infolge Erbschaft an Gemeinwesen Karl Roger Christen, Ringgenberg (BE)</en>
+    <it>Rechnungsruf infolge Erbschaft an Gemeinwesen Karl Roger Christen, Ringgenberg (BE)</it>
+    <fr>Sommation à la suite d'une succession dévolue à une collectivité publique Karl Roger Christen, Ringgenberg (BE)</fr>
+  </title>
+</meta>
+<content>
+  <localization>
+    <municipalityId>
+      <key>590</key>
+      <term>
+        <de>Ringgenberg (BE)</de>
+        <fr>Ringgenberg (BE)</fr>
+      </term>
+    </municipalityId>
+  </localization>
+  <testator>
+    <prename>Karl Roger</prename>
+    <name>Christen</name>
+    <countryOfOrigin>
+      <name>
+        <de>Schweiz</de>
+        <fr>Suisse</fr>
+        <it>Svizzera</it>
+        <en>Switzerland</en>
+      </name>
+      <isoCode>CH</isoCode>
+    </countryOfOrigin>
+    <placeOfOrigin>Belm</placeOfOrigin>
+    <dateOfBirth>1937-12-16</dateOfBirth>
+    <bornIn>Unterseen</bornIn>
+    <informationAboutDeath>
+      <selectType>dateOfDeath</selectType>
+    </informationAboutDeath>
+    <dateOfDeath>2023-03-18</dateOfDeath>
+    <residence>
+      <selectType>switzerland</selectType>
+    </residence>
+    <addressSwitzerland>
+      <swissZipCode>3852</swissZipCode>
+      <town>Ringgenberg</town>
+    </addressSwitzerland>
+  </testator>
+  <arrangement>Über den Nachlass des aufgeführten Erblassers wurde ein Rechnungsruf angeordnet.</arrangement>
+  <authorityOffice>Olivier Geringer, Notar
+Bahnhofstasse 5
+3800 Interlaken</authorityOffice>
+  <monthsAfterPublication>1</monthsAfterPublication>
+  <registrationOffice>Olivier Geringer - das.notariats.büro
+Bahnhofstrasse 5 
+3800 Interlaken</registrationOffice>
+</content>
+</TE-BE90:publication>
