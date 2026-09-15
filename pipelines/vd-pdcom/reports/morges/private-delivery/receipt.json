@@ -1,0 +1,114 @@
+{
+  "operation_id": "33862ee3-f4d6-495c-9768-f894ee874c24",
+  "morges": {
+    "sectors": 6,
+    "parcel_pairs": 62,
+    "candidates": [
+      {
+        "sector_id": "c50885a6-1fa8-5ab3-a3da-5a10ae053fd7",
+        "drawing_index": 5558,
+        "parcel_pairs": 18
+      },
+      {
+        "sector_id": "8ef9c311-b86b-51a4-8e72-362406249067",
+        "drawing_index": 5761,
+        "parcel_pairs": 17
+      },
+      {
+        "sector_id": "cb0979ec-f5dc-577f-9459-c046de275169",
+        "drawing_index": 7935,
+        "parcel_pairs": 2
+      },
+      {
+        "sector_id": "dc3d523f-05bf-5820-98ec-202966457c2b",
+        "drawing_index": 8039,
+        "parcel_pairs": 1
+      },
+      {
+        "sector_id": "92298c99-7bb8-554b-ba51-c7621f08c66a",
+        "drawing_index": 8192,
+        "parcel_pairs": 4
+      },
+      {
+        "sector_id": "2320df1d-5c6b-5522-83f9-7b198cd3da9b",
+        "drawing_index": 8238,
+        "parcel_pairs": 20
+      }
+    ],
+    "reference_snapshots": [
+      {
+        "snapshot_id": "f66da718-76db-5bdc-8038-1435a08aa2b1",
+        "count": 399,
+        "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2526321.398352695%2C1151011.4706194329%2C2527499.7352999267%2C1151844.8300936818&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5642&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+        "response_sha256": "ca75e45b20f2f185c885629eaacecd74f273a54260e0fe460ebda5e8b0a0e2f7"
+      }
+    ],
+    "status": "review_required"
+  },
+  "typing": {
+    "checked_egrids": 2245,
+    "counts": [
+      {
+        "kind": "bien_fonds",
+        "pairs": 2211,
+        "egrids": 2189
+      },
+      {
+        "kind": "ddp_superficie",
+        "pairs": 56,
+        "egrids": 56
+      }
+    ],
+    "release_status": "internal_review_only",
+    "aggregation_rule": "Keep rights and land EGRIDs distinct; do not sum them as exclusive land area."
+  },
+  "delivery": {
+    "publication_status": "internal_review_only",
+    "receiver": "lamap_db",
+    "tables": {
+      "vd_pdcom_review_sectors": {
+        "rows": 40,
+        "mismatches": 0,
+        "valid_4326": true
+      },
+      "vd_pdcom_review_parcels": {
+        "rows": 2267,
+        "mismatches": 0,
+        "valid_4326": true
+      }
+    }
+  },
+  "total_pairs": 2267,
+  "distinct_egrids": 2245,
+  "total_sectors": 40,
+  "independent_receiver_check": {
+    "sector_count": 6,
+    "valid_private_attribution": true,
+    "types": [
+      {
+        "kind": "bien_fonds",
+        "pairs": 61,
+        "egrids": 60
+      },
+      {
+        "kind": "ddp_superficie",
+        "pairs": 1,
+        "egrids": 1
+      }
+    ],
+    "access": [
+      {
+        "table": "vd_pdcom_review_parcels",
+        "rls": true,
+        "anon_select": false,
+        "authenticated_select": false
+      },
+      {
+        "table": "vd_pdcom_review_sectors",
+        "rls": true,
+        "anon_select": false,
+        "authenticated_select": false
+      }
+    ]
+  }
+}
