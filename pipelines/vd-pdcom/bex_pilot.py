@@ -18,7 +18,8 @@ def persist(conn,document_id,sha):
     reference=refresh(conn,DOC,5402,bounds)
     evidence={'alignment':a,'source_outline':{k:v[k] for k in ('source_sha256','selection','limitations')},'source_stated_area_m2':110371,'candidate_area_m2':f['properties']['area_m2'],
       'source_precision':'unknown','source_area_discrepancy':'unresolved; no calibration adjustment to force stated area',
-      'approval_limit':'Exact-version approval unverified; PUM.7 perimeter explicitly requires refinement.',
+      'approval_limit':'Exact-version approval unverified; PA4 candidate needs comparison with newer PA5. PUM.7 perimeter requires refinement.',
+      'source_currency':json.loads((root/'pa5-currency/evidence.json').read_text()),
       'parcel_reference':reference,'parcel_qa':json.loads((root/'bex-outline/official-parcel-qa.json').read_text())['variants'],
       'buffer_limit':'10m review heuristic, not demonstrated positional bound','validation_status':'review_required'}
     with conn,conn.cursor() as c:
@@ -54,5 +55,5 @@ def persist(conn,document_id,sha):
             SELECT %s,egrid,ST_Area(overlap),area,LEAST(1,ST_Area(overlap)/area),edge,10,ST_Transform(overlap,4326),%s,%s FROM bex_current_pairs WHERE egrid=%s
             ON CONFLICT(sector_id,egrid) DO NOTHING''',(SID,KINDS.get(properties.get('GENRE_TXT'),'unknown'),Json(proof),egrid))
             c.execute('''INSERT INTO bronze_ch.vd_pdcom_candidate_parcel_references(sector_id,egrid,snapshot_id) VALUES(%s,%s,%s) ON CONFLICT(sector_id,egrid) DO UPDATE SET snapshot_id=EXCLUDED.snapshot_id''',(SID,egrid,reference['snapshot_id']))
-        c.execute("UPDATE bronze_ch.vd_pdcom_communes SET extraction_status='candidate_vectors',blocker='Bex PUM.7 approximate private candidate; source area discrepancy, approval and parcel boundary review remain pending' WHERE commune_bfs=5402")
+        c.execute("UPDATE bronze_ch.vd_pdcom_communes SET extraction_status='candidate_vectors',blocker='Bex PA4 PUM.7 private candidate; newer PA5 comparison, exact-version approval, area discrepancy and parcel boundary review pending' WHERE commune_bfs=5402")
     return {'sectors':1,'parcel_pairs':count,'status':'review_required','reference_snapshot_id':reference['snapshot_id']}
