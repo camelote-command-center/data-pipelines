@@ -1,0 +1,13 @@
+# Eysins exploratory alignment — rejected
+
+No geographic transform is accepted. The source remains seven indicative pixel outlines. This bounded attempt preserves its negative result so subsequent work does not mistake a nearest-building match for georeferencing.
+
+Reference evidence: 617 current, nondeleted RCB points from a 1,900×1,900m LV95 envelope, plus 690 official cadastral building footprints retrieved with matching count/feature responses. Only geometry, identifiers, commune and building number are requested; no owners. API URL, timestamp and response hash are retained. The RCB snapshot query was `deleted_at is null AND ST_Intersects(geometry, ST_MakeEnvelope(2504200,1136500,2506100,1138400,2056))`, ordered by EGID, selecting EGID/coordinates/construction year.
+
+From the 524×469 Eysins urban raster, thresholded connected components produce 65 candidates. Visual selection retains 25 building-like components; 18 train the fit and every fourth is a seven-point check set. These are not verified identities: symbols can resemble buildings, one building may produce several components, and RCB points need not equal footprint centroids.
+
+Three starts with a tentative −65° to −15° angular range and three with 0° to 90° give inconsistent placements. A separate pair-hypothesis search allows all angles and uses two well-separated training components (27/63) as unverified anchors. Its best training objective still yields only 1/7 check points within5m (2/7 within10m), with18.47m check RMSE. The saved five best pair candidates and all six initial candidates fail validation. Check points were reused across exploratory corrections, so these are diagnostics, not an independent surveyed-accuracy estimate.
+
+`components.py` reproduces candidate extraction; `explore.py` runs the broader-angle search; `pair_search.py` generates pair hypotheses and local refinements. `fit_common.py` preserves inputs/objective. `initial-rejected.json` records the earlier narrow-angle attempt. Run `verify.py` for frozen hashes and exact residual/reference-identity recomputation without spending time on another stochastic search. `fetch_footprints.py` refreshes official evidence only when deliberately invoked; do not overwrite frozen QA casually.
+
+Next manually confirm multiple distributed building corners or landmarks against exact official footprint identities, then fit with separate unused controls. Seek a better official map if such correspondences cannot be established. Do not rerun nearest-point fitting and call a low training objective success. No sector, parcel or receiver mutations; acquisition/private totals remain51PDFs/33communes and40sectors/2267pairs.

@@ -1,0 +1,6 @@
+{
+  "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?f=json&where=1%3D1&geometry=2504200%2C1136500%2C2506100%2C1138400&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&outSR=2056&returnGeometry=true&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CNUMERO&orderByFields=OBJECTID&resultRecordCount=2000",
+  "retrieved_at": "2026-09-15T20:37:50.096117+00:00",
+  "count": 690,
+  "sha256": "def0e80423f58ec0af525a99667809144083a3553be085f604dfaf6870e1aa01"
+}

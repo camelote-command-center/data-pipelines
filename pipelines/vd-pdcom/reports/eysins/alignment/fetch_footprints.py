@@ -1,0 +1,5 @@
+import requests,json,pathlib,hashlib,datetime
+p=pathlib.Path(__file__).resolve().parent;u='https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query';params={'f':'json','where':'1=1','geometry':'2504200,1136500,2506100,1138400','geometryType':'esriGeometryEnvelope','inSR':2056,'spatialRel':'esriSpatialRelIntersects','outSR':2056,'returnGeometry':'true','outFields':'OBJECTID,EGID,NO_COM_FED,NUMERO','orderByFields':'OBJECTID','resultRecordCount':2000}
+r=requests.get(u,params={**params,'returnCountOnly':'true'},timeout=45);r.raise_for_status();count=r.json()['count'];assert count<=2000
+r=requests.get(u,params=params,timeout=45);r.raise_for_status();data=r.json();assert 'error' not in data and not data.get('exceededTransferLimit');assert len(data['features'])==count
+p.joinpath('official-footprints.json').write_bytes(r.content);p.joinpath('official-footprints-source.json').write_text(json.dumps({'url':r.url,'retrieved_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'count':count,'sha256':hashlib.sha256(r.content).hexdigest()},indent=2)+'\n');print(count)
