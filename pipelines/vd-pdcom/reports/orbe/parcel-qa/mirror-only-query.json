@@ -1,0 +1,46 @@
+{
+  "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?where=EGRID+IN+%28%27CH474509288365%27%2C%27CH574509848357%27%2C%27CH814597838340%27%29&outFields=OBJECTID%2CEGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT&outSR=2056&f=geojson",
+  "requested_egrids": [
+    "CH474509288365",
+    "CH574509848357",
+    "CH814597838340"
+  ],
+  "returned_features": 1,
+  "review": [
+    {
+      "egrid": "CH474509288365",
+      "official_current_query_returned": false,
+      "mirror_overlap_m2": {
+        "inner": 59.10000007944181,
+        "outer": 59.10000007944181,
+        "band": 0.0
+      },
+      "official_overlap_m2": null
+    },
+    {
+      "egrid": "CH574509848357",
+      "official_current_query_returned": false,
+      "mirror_overlap_m2": {
+        "inner": 59.455000090254465,
+        "outer": 59.455000090254465,
+        "band": 0.0
+      },
+      "official_overlap_m2": null
+    },
+    {
+      "egrid": "CH814597838340",
+      "official_current_query_returned": true,
+      "mirror_overlap_m2": {
+        "inner": 0.0,
+        "outer": 0.035424842844804516,
+        "band": 0.035424842844804516
+      },
+      "official_overlap_m2": {
+        "inner": 0.0,
+        "outer": 0.0,
+        "band": 0.0
+      }
+    }
+  ],
+  "limit": "No-feature query result does not establish deletion or legal absence. Two warehouse-only identities require current-reference/history review; do not add them as current official matches."
+}
