@@ -24,3 +24,7 @@ assert sum(f['category']=='possible_long_term_housing_option' for f in d['featur
 qa={'source_image_sha256':d['source_image_sha256'],'digitization_sha256':hashlib.sha256((P/'digitization.json').read_bytes()).hexdigest(),'features':rows,'positive_area_overlap_pairs':0,'buffer_note':'Illustrative pixel sensitivity, not measured positional error or geographic metres.','geographic_validation':'pending','new_deliverable_sectors':0}
 (P/'qa.json').write_text(json.dumps(qa,indent=2)+'\n');im.resize((w*3,h*3)).save(P/'overlay.png')
 print('7 valid, disjoint, image-bounded indicative contours; 35 pixel sensitivity scenarios.')
+if (P/'frozen-hashes.json').exists():
+    for name,digest in json.loads((P/'frozen-hashes.json').read_text()).items():
+        assert hashlib.sha256((P/name).read_bytes()).hexdigest()==digest, name
+    print('Frozen reviewed artifact hashes match.')
