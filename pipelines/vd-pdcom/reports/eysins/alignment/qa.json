@@ -1,0 +1,163 @@
+{
+  "status": "rejected_no_geographic_release",
+  "document_id": "bd31519f-f1a2-5579-9ee0-e852f082d1dc",
+  "source_pdf_page": 20,
+  "source_image_xref": 115,
+  "reference_rcb_count": 617,
+  "official_footprint_count": 690,
+  "bounds_lv95": [
+    2504200,
+    1136500,
+    2506100,
+    1138400
+  ],
+  "components_detected": 65,
+  "components_selected": 25,
+  "training_components": 18,
+  "holdout_components": 7,
+  "candidate_checks": [
+    {
+      "artifact": "initial-rejected.json",
+      "candidate_index": 0,
+      "train_count": 18,
+      "holdout_count": 7,
+      "training_objective_capped_m2": 78.85174831767094,
+      "train_within_5m": 4,
+      "holdout_within_5m": 1,
+      "holdout_within_10m": 3,
+      "holdout_rmse_m": 14.89352166246139,
+      "holdout_max_m": 26.44620712621321
+    },
+    {
+      "artifact": "initial-rejected.json",
+      "candidate_index": 1,
+      "train_count": 18,
+      "holdout_count": 7,
+      "training_objective_capped_m2": 84.89204961369278,
+      "train_within_5m": 5,
+      "holdout_within_5m": 2,
+      "holdout_within_10m": 3,
+      "holdout_rmse_m": 11.322776453003058,
+      "holdout_max_m": 17.28481935579396
+    },
+    {
+      "artifact": "initial-rejected.json",
+      "candidate_index": 2,
+      "train_count": 18,
+      "holdout_count": 7,
+      "training_objective_capped_m2": 78.56677043576425,
+      "train_within_5m": 5,
+      "holdout_within_5m": 1,
+      "holdout_within_10m": 2,
+      "holdout_rmse_m": 15.860326292610795,
+      "holdout_max_m": 24.062546227103137
+    },
+    {
+      "artifact": "exploratory-fit.json",
+      "candidate_index": 0,
+      "train_count": 18,
+      "holdout_count": 7,
+      "training_objective_capped_m2": 75.64746607467686,
+      "train_within_5m": 5,
+      "holdout_within_5m": 0,
+      "holdout_within_10m": 2,
+      "holdout_rmse_m": 20.927513027244952,
+      "holdout_max_m": 41.99088876758934
+    },
+    {
+      "artifact": "exploratory-fit.json",
+      "candidate_index": 1,
+      "train_count": 18,
+      "holdout_count": 7,
+      "training_objective_capped_m2": 88.63460278749304,
+      "train_within_5m": 5,
+      "holdout_within_5m": 1,
+      "holdout_within_10m": 3,
+      "holdout_rmse_m": 17.895997714411155,
+      "holdout_max_m": 29.211257579547944
+    },
+    {
+      "artifact": "exploratory-fit.json",
+      "candidate_index": 2,
+      "train_count": 18,
+      "holdout_count": 7,
+      "training_objective_capped_m2": 88.24479674373984,
+      "train_within_5m": 1,
+      "holdout_within_5m": 3,
+      "holdout_within_10m": 3,
+      "holdout_rmse_m": 10.184221243161648,
+      "holdout_max_m": 18.765974556764238
+    },
+    {
+      "artifact": "pair-fit.json",
+      "candidate_index": 0,
+      "train_count": 18,
+      "holdout_count": 7,
+      "training_objective_capped_m2": 60.101648272802386,
+      "train_within_5m": 7,
+      "holdout_within_5m": 1,
+      "holdout_within_10m": 2,
+      "holdout_rmse_m": 18.47069197153093,
+      "holdout_max_m": 28.90213512352847
+    },
+    {
+      "artifact": "pair-fit.json",
+      "candidate_index": 1,
+      "train_count": 18,
+      "holdout_count": 7,
+      "training_objective_capped_m2": 63.01989209135175,
+      "train_within_5m": 3,
+      "holdout_within_5m": 0,
+      "holdout_within_10m": 1,
+      "holdout_rmse_m": 20.87622289831954,
+      "holdout_max_m": 29.804129629703958
+    },
+    {
+      "artifact": "pair-fit.json",
+      "candidate_index": 2,
+      "train_count": 18,
+      "holdout_count": 7,
+      "training_objective_capped_m2": 68.22301172925964,
+      "train_within_5m": 5,
+      "holdout_within_5m": 0,
+      "holdout_within_10m": 0,
+      "holdout_rmse_m": 18.366883068932122,
+      "holdout_max_m": 30.055296940783993
+    },
+    {
+      "artifact": "pair-fit.json",
+      "candidate_index": 3,
+      "train_count": 18,
+      "holdout_count": 7,
+      "training_objective_capped_m2": 68.74860474562838,
+      "train_within_5m": 9,
+      "holdout_within_5m": 0,
+      "holdout_within_10m": 2,
+      "holdout_rmse_m": 14.29372068657639,
+      "holdout_max_m": 21.85818002730096
+    },
+    {
+      "artifact": "pair-fit.json",
+      "candidate_index": 4,
+      "train_count": 18,
+      "holdout_count": 7,
+      "training_objective_capped_m2": 70.2882528276968,
+      "train_within_5m": 3,
+      "holdout_within_5m": 0,
+      "holdout_within_10m": 2,
+      "holdout_rmse_m": 18.884915240281547,
+      "holdout_max_m": 33.18774772152484
+    }
+  ],
+  "limits": [
+    "Black connected components are visual candidates, not verified building identities; some buildings can split into several components or graphics resemble buildings.",
+    "Initial angular search -65 to -15 degrees was a tentative compass interpretation. Broader 0 to90 degree searches and unconstrained pair angles also fail validation.",
+    "Nearest-reference matches are hypotheses, not explicit building correspondences; RCB points need not be footprint centroids.",
+    "Holdouts were reused across exploratory search corrections; this is not preregistered accuracy validation.",
+    "Pair search uses two training components27/63 to generate hypotheses; their actual reference identity is unverified.",
+    "Current footprints and 2006 illustration may differ; no cause assigned without evidence.",
+    "No accepted CRS transform, sector geometry, parcel intersections or delivery writes."
+  ],
+  "next_step": "Manually confirm multiple spatially distributed building corners/landmarks with exact official footprint identity; reserve separate controls before fitting. If correspondence is not defensible, seek higher-resolution/georeferenced official maps. Do not repeat nearest-point searches as evidence of success.",
+  "source_pdf_sha256": "35b62cc028b93a649c7b752c14c2e549bee6ac5d207f1c3033ecf55445b5a729"
+}

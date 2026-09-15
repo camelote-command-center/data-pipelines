@@ -1,0 +1,10 @@
+{
+  "reference-points.json": "8d93b567e06c63415418ee268571877dd25f72eca22b83cbcc9e2b6f92a46519",
+  "official-footprints.json": "def0e80423f58ec0af525a99667809144083a3553be085f604dfaf6870e1aa01",
+  "official-footprints-source.json": "3b4aec470855aaf527bc7dbfbf3f9951cc5ade4c57101a359b6cdf2a4fe10ac5",
+  "black-components.json": "54ca168417d35e65115c46f80fd61b6703869319c0688a40bb8ff49d79244305",
+  "initial-rejected.json": "7cffe3413f5898f48b9d2f0b67ed156a31f9e3fb4eaf83ea2c5d38268f77fcb6",
+  "exploratory-fit.json": "779272b178684d0a8cb88b38f66d1f3fadfd8ddf4b79085b873bac941633ff04",
+  "pair-fit.json": "78719b4ade2903f368597efbd67725dba9298de8dba41b43da39c6d6ea8c5188",
+  "qa.json": "1dd1623018627af6bc04b7fb9fedb7f1cd8dad41db75c242d6ffd6be671b74d9"
+}
