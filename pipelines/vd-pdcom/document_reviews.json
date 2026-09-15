@@ -123,12 +123,13 @@
       {
         "page_number": 1,
         "theme": "Plan directeur communal",
-        "limitations": "Medium-density base fill shared by existing and proposed legend columns; project hatching, overprints and clipping unresolved. No geographic alignment or parcel entitlement inferred.",
+        "limitations": "Six full-base and two partial-base project-hatch paths identified;32without matching project hatch. Partial boundaries, overprints/grouping, geographic alignment and later currentness remain pending. No parcel entitlement inferred.",
         "candidate_extraction": {
           "base_paths": 40,
           "coordinate_system": "PDF_points_top_left_NOT_geographic",
           "artifact": "pipelines/vd-pdcom/reports/morges/medium-density/extraction.json",
-          "status": "research_only_not_growth_sectors"
+          "status": "research_only_not_growth_sectors",
+          "hatch_review": "pipelines/vd-pdcom/reports/morges/hatching/semantic-review.json"
         }
       }
     ]

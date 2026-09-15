@@ -1,0 +1,751 @@
+{
+  "source_sha256": "9ac3058bc9f837696f69886815f54e65dab848bd67e62df90deb476cebd85300",
+  "pdf_page": 1,
+  "coordinate_system": "PDF_points_top_left_NOT_geographic",
+  "clipping_tolerance_pdf_points": 0.1,
+  "base_boundary_exclusion_pdf_points": 0.5,
+  "orange_vertical_strokes": 614,
+  "orange_thin_fills": 443,
+  "pattern_domains": [
+    {
+      "extended_index": 11425,
+      "clip_index": 11423,
+      "domain": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1106.9765625,
+              819.58935546875
+            ],
+            [
+              1106.8852469921112,
+              821.6377584934235
+            ],
+            [
+              1106.9566707611084,
+              824.4010639190674
+            ],
+            [
+              1107.5044403076172,
+              831.1624908447266
+            ],
+            [
+              1108.4532794952393,
+              838.0538539886475
+            ],
+            [
+              1109.026040315628,
+              840.9795796871185
+            ],
+            [
+              1109.6365966796875,
+              843.25537109375
+            ],
+            [
+              1110.9376678466797,
+              846.0340175628662
+            ],
+            [
+              1113.3515625,
+              850.2970428466797
+            ],
+            [
+              1120.0965576171875,
+              861.3387451171875
+            ],
+            [
+              1127.029052734375,
+              872.5055084228516
+            ],
+            [
+              1129.6773223876953,
+              876.9248600006104
+            ],
+            [
+              1131.3065185546875,
+              879.92236328125
+            ],
+            [
+              1133.2090377807617,
+              884.4171447753906
+            ],
+            [
+              1134.7665405273438,
+              889.13037109375
+            ],
+            [
+              1135.7615432739258,
+              893.6560974121094
+            ],
+            [
+              1135.980143547058,
+              895.7217903137207
+            ],
+            [
+              1135.9765625,
+              897.58837890625
+            ],
+            [
+              1134.6365966796875,
+              921.58837890625
+            ],
+            [
+              1134.6355781555176,
+              923.0052738189697
+            ],
+            [
+              1134.8723449707031,
+              924.0471343994141
+            ],
+            [
+              1135.335292816162,
+              924.7764568328857
+            ],
+            [
+              1136.0128173828125,
+              925.2557373046875
+            ],
+            [
+              1136.8933143615723,
+              925.5474720001221
+            ],
+            [
+              1137.9651794433594,
+              925.7141571044922
+            ],
+            [
+              1140.6365966796875,
+              925.92236328125
+            ],
+            [
+              1153.215654373169,
+              926.2191009521484
+            ],
+            [
+              1177.2640838623047,
+              926.5472412109375
+            ],
+            [
+              1213.6365966796875,
+              926.92236328125
+            ],
+            [
+              1214.9038202762604,
+              926.8540172576904
+            ],
+            [
+              1215.9557819366455,
+              926.6255340576172
+            ],
+            [
+              1216.7965800762177,
+              926.2017459869385
+            ],
+            [
+              1217.4303131103516,
+              925.5474853515625
+            ],
+            [
+              1217.861079454422,
+              924.6275844573975
+            ],
+            [
+              1218.0929775238037,
+              923.4068756103516
+            ],
+            [
+              1218.1301057338715,
+              921.850191116333
+            ],
+            [
+              1217.9765625,
+              919.92236328125
+            ],
+            [
+              1215.4728088378906,
+              894.2137451171875
+            ],
+            [
+              1213.942039489746,
+              877.2189178466797
+            ],
+            [
+              1212.9765625,
+              865.25537109375
+            ],
+            [
+              1212.4742050170898,
+              854.3335418701172
+            ],
+            [
+              1211.9728088378906,
+              839.6304931640625
+            ],
+            [
+              1211.473289489746,
+              825.7398834228516
+            ],
+            [
+              1210.9765625,
+              817.25537109375
+            ],
+            [
+              1210.6160793304443,
+              815.3135147094727
+            ],
+            [
+              1210.0371627807617,
+              813.71923828125
+            ],
+            [
+              1209.2398128509521,
+              812.4452133178711
+            ],
+            [
+              1208.2240295410156,
+              811.464111328125
+            ],
+            [
+              1206.9898128509521,
+              810.7486038208008
+            ],
+            [
+              1205.5371627807617,
+              810.2713623046875
+            ],
+            [
+              1203.8660793304443,
+              810.0050582885742
+            ],
+            [
+              1201.9765625,
+              809.92236328125
+            ],
+            [
+              1186.879539489746,
+              810.4535675048828
+            ],
+            [
+              1158.4728088378906,
+              811.6722412109375
+            ],
+            [
+              1130.0679550170898,
+              813.0159759521484
+            ],
+            [
+              1114.9765625,
+              813.92236328125
+            ],
+            [
+              1113.1131916046143,
+              814.2343196868896
+            ],
+            [
+              1111.520164489746,
+              814.6673431396484
+            ],
+            [
+              1110.1856479644775,
+              815.2175312042236
+            ],
+            [
+              1109.0978088378906,
+              815.8809814453125
+            ],
+            [
+              1108.2448139190674,
+              816.6537914276123
+            ],
+            [
+              1107.6148300170898,
+              817.5320587158203
+            ],
+            [
+              1107.19602394104,
+              818.5118808746338
+            ],
+            [
+              1106.9765625,
+              819.58935546875
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "extended_index": 75059,
+      "clip_index": 75057,
+      "domain": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              197.34300231933594,
+              1073.700927734375
+            ],
+            [
+              197.34300231933594,
+              1086.200927734375
+            ],
+            [
+              169.34300231933594,
+              1086.200927734375
+            ],
+            [
+              169.34300231933594,
+              1073.700927734375
+            ],
+            [
+              197.34300231933594,
+              1073.700927734375
+            ]
+          ]
+        ]
+      }
+    }
+  ],
+  "paths": [
+    {
+      "drawing_index": 5556,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 5558,
+      "clipped_line_count": 77,
+      "clipped_line_length_pdf_points": 834.3447045759553,
+      "thin_fill_count": 111,
+      "thin_fill_area_pdf_points_squared": 674.584291124683,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 1.002575492120305,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 5757,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 5759,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 5761,
+      "clipped_line_count": 42,
+      "clipped_line_length_pdf_points": 336.7854337798285,
+      "thin_fill_count": 94,
+      "thin_fill_area_pdf_points_squared": 570.9149320477404,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 1.005469527510401,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 5913,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 5915,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 6568,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 6570,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 6573,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 7935,
+      "clipped_line_count": 71,
+      "clipped_line_length_pdf_points": 703.4395411708008,
+      "thin_fill_count": 28,
+      "thin_fill_area_pdf_points_squared": 141.35750361712377,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.9960329037077579,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8039,
+      "clipped_line_count": 242,
+      "clipped_line_length_pdf_points": 2730.615502161431,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 1.0051242865881291,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8192,
+      "clipped_line_count": 132,
+      "clipped_line_length_pdf_points": 1469.0334102714728,
+      "thin_fill_count": 81,
+      "thin_fill_area_pdf_points_squared": 505.6642713968797,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 1.0011760337211164,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8218,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8220,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8222,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8224,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8226,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8228,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8234,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8238,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 1,
+      "pattern_domain_fraction": 0.9997616992734757,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8241,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8251,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8253,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8255,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8257,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8259,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8261,
+      "clipped_line_count": 36,
+      "clipped_line_length_pdf_points": 329.1353811025235,
+      "thin_fill_count": 82,
+      "thin_fill_area_pdf_points_squared": 471.498454890024,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.4269132449022814,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8639,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8641,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 46,
+      "thin_fill_area_pdf_points_squared": 211.21907357633768,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.30109941252544686,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8702,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8704,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8706,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8708,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 8710,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 10639,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 10641,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 11329,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 11563,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    },
+    {
+      "drawing_index": 11565,
+      "clipped_line_count": 0,
+      "clipped_line_length_pdf_points": 0,
+      "thin_fill_count": 0,
+      "thin_fill_area_pdf_points_squared": 0,
+      "pattern_domain_count": 0,
+      "pattern_domain_fraction": 0.0,
+      "illustrative_hatch_support_ratio": 0.0,
+      "limitations": "Support ratio is a diagnostic only, not exact project area; later overprints and fragment grouping still require review."
+    }
+  ]
+}
