@@ -1,0 +1,118 @@
+{
+  "operation_id": "0faa7bf1-6319-4523-bb37-359450c9313c",
+  "checkpoint_id": "bcfd7185-781b-448f-a975-861f9b7aedd1",
+  "sdan": {
+    "url": "https://www.nyon.ch/media/document/0/rapport-synthese-sdan-document-urb-nyon-071220.pdf",
+    "sha256": "35b62cc028b93a649c7b752c14c2e549bee6ac5d207f1c3033ecf55445b5a729",
+    "document_id": "bd31519f-f1a2-5579-9ee0-e852f082d1dc",
+    "page_count": 43,
+    "members": [
+      [
+        5713,
+        "Crans (VD)"
+      ],
+      [
+        5715,
+        "Duillier"
+      ],
+      [
+        5716,
+        "Eysins"
+      ],
+      [
+        5722,
+        "Grens"
+      ],
+      [
+        5724,
+        "Nyon"
+      ],
+      [
+        5725,
+        "Prangins"
+      ],
+      [
+        5728,
+        "Signy-Avenex"
+      ],
+      [
+        5730,
+        "Tr\u00e9lex"
+      ]
+    ],
+    "source": {
+      "commune_bfs": 5724,
+      "commune_name": "Nyon",
+      "commune_bfs_list": [
+        5713,
+        5715,
+        5716,
+        5722,
+        5724,
+        5725,
+        5728,
+        5730
+      ],
+      "pdf_url": "https://www.nyon.ch/media/document/0/rapport-synthese-sdan-document-urb-nyon-071220.pdf",
+      "landing_url": "https://www.nyon.ch/nyon-officiel/politiques-thematiques/amenagement-du-territoire/planification-territoriale-946",
+      "title": "Sch\u00e9ma directeur de l\u2019agglom\u00e9ration nyonnaise \u2014 rapport de synth\u00e8se2006",
+      "plan_status": "approved",
+      "scope": "intercommunal"
+    },
+    "review": {
+      "document_id": "bd31519f-f1a2-5579-9ee0-e852f082d1dc",
+      "sha256": "35b62cc028b93a649c7b752c14c2e549bee6ac5d207f1c3033ecf55445b5a729",
+      "commune_bfs": 5724,
+      "reviewed_at": "2026-09-15",
+      "reviewed_by": "Codex / 01a09b0a-7538-7983-8871-5eb6a6541d10",
+      "plan_status": "approved",
+      "approval_evidence_page": 1,
+      "approval_date": "2006-02-16",
+      "map_pages": [],
+      "geographic_validation": "pending",
+      "receiver_release": "not_ready",
+      "scope_limit": "Cover explicitly states approval by municipalities, regional council and Canton16February2006; visually checked. PDF5 states an orientation document with contractual commitment on chapters6\u20138 and formal COPIL approval. This is an intercommunal SDAN, not eight adopted PDComs or current parcel rules. PDF1/6identify eight members; Crans-pr\u00e8s-C\u00e9ligny maps to current Crans(VD)5713. Later currency and geographic coverage remain unverified."
+    }
+  },
+  "nyon_legacy": {
+    "root": "https://www.nyon.ch/plan-directeur/",
+    "modern_reference": "https://www.nyon.ch/nyon-officiel/politiques-thematiques/amenagement-du-territoire/planification-territoriale-946",
+    "revision_reference": "https://www.nyon.ch/nyon-officiel/grands-projets/nyon-2040--elaboration-du-plan-directeur-communal-1663/",
+    "published_chapters": 231,
+    "downloaded_html": 230,
+    "failures": [
+      {
+        "path": "documents/lieux/doc-carte.html",
+        "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-carte.html",
+        "status": 404
+      }
+    ],
+    "snapshot_sha256": "b9802194e0acc6b8052b393ed1bc31473c5bf9147b1979617133a21d401facd3",
+    "dwf": {
+      "viewer_url": "https://www.nyon.ch/plan-directeur/documents/lieux/plans_dwf/java_955.html",
+      "observed_obsolete_url": "http://www.nyon.ch/plan_directeur/documents/lieux/plans_dwf/955.dwf",
+      "observed_url_result": "404 after HTTPS redirect; underscore root obsolete",
+      "recovered_url": "https://www.nyon.ch/plan-directeur/documents/lieux/plans_dwf/955.dwf",
+      "recovery_basis": "Same named public resource under the active hyphenated root linked by municipality;200andDWF V00.36signature verified",
+      "sha256": "78b77506dfc7cb09c65c6bac2edd84a5f4e9fd5552e7e7b040e32b8119b594a8",
+      "bytes": 737021,
+      "figure": "55 Route de St-Cergue",
+      "geometry_extracted": false
+    },
+    "version_limit": "Modern municipal page describes2004plan as in force and Nyon2050under revision; legacy pages label themselves2000. Exact2004approved-byte equivalence unresolved. Do not treat future calendar as actual approval.",
+    "status": "source_found_legacy_format_review_pending"
+  },
+  "rolle": {
+    "commune_bfs": 5861,
+    "evidence_url": "https://www.rolle.ch/N443/urbanisme.html",
+    "status": "manual_search_required",
+    "finding": "Official urbanism page links PGA/PQ plans; no PDCom file recovered in this bounded search. Historical municipal report references2001PDCom; modern reports discuss revision. Not absence of plan.",
+    "historical_reference": "https://www.rolle.ch/N1133/rapport-de-gestion-2008.html"
+  },
+  "limits": [
+    "No new sector/parcel/receiver changes.",
+    "51PDFs/33communes expected after this one shared document;230HTMLpages counted separately, not as PDFs.",
+    "Intercommunal membership and acquired documents are not complete commune coverage."
+  ],
+  "artifact": "pipelines/vd-pdcom/reports/nyon/source-review"
+}

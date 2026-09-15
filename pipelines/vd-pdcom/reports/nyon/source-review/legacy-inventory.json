@@ -1,0 +1,2948 @@
+{
+  "checked_at": "2026-09-15T16:36:03.825498+00:00",
+  "source_root": "https://www.nyon.ch/plan-directeur/",
+  "index": {
+    "path": "frames/fonctions_js.html",
+    "url": "https://www.nyon.ch/plan-directeur/frames/fonctions_js.html",
+    "status": 200,
+    "sha256": "7dc6c90ef3b0b76b3b05a5312bb398b52d074421dc9d90bb24ac915215b61b7d",
+    "bytes": 33596,
+    "title": "Ville de Nyon - Plan directeur communal 2000",
+    "text_chars": 44,
+    "image_urls": []
+  },
+  "chapter_count": 231,
+  "html_success": 230,
+  "failures": [
+    {
+      "path": "documents/lieux/doc-carte.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-carte.html",
+      "status": 404
+    }
+  ],
+  "chapters": [
+    {
+      "path": "documents/all/table_matiere_general.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/all/table_matiere_general.html",
+      "status": 200,
+      "sha256": "f5548e8e91272bffc2719aabf76396f806dc8c0dff0b0b079571abdd04f36526",
+      "bytes": 3052,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1371,
+      "image_urls": []
+    },
+    {
+      "path": "documents/all/doc-10pts.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/all/doc-10pts.html",
+      "status": 200,
+      "sha256": "acdb8ec159a9d9b4a45d24a8ed886799501f4ec333e37d247666ac36e5d1bd91",
+      "bytes": 3440,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2604,
+      "image_urls": []
+    },
+    {
+      "path": "documents/all/doc-help.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/all/doc-help.html",
+      "status": 200,
+      "sha256": "596641189fed28e378c7843c9343e7c169bc9be3bdb02a1f574a4be639cfb261",
+      "bytes": 12850,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1621,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/biblio.gif",
+        "https://www.nyon.ch/plan-directeur/images/choixchap.gif",
+        "https://www.nyon.ch/plan-directeur/images/contact.gif",
+        "https://www.nyon.ch/plan-directeur/images/copyright.gif",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif",
+        "https://www.nyon.ch/plan-directeur/images/ecran_precedent.gif",
+        "https://www.nyon.ch/plan-directeur/images/ecran_suivant.gif",
+        "https://www.nyon.ch/plan-directeur/images/help.gif",
+        "https://www.nyon.ch/plan-directeur/images/home.gif",
+        "https://www.nyon.ch/plan-directeur/images/menu.gif",
+        "https://www.nyon.ch/plan-directeur/images/page_precedente.gif",
+        "https://www.nyon.ch/plan-directeur/images/page_suivante.gif",
+        "https://www.nyon.ch/plan-directeur/images/print.gif",
+        "https://www.nyon.ch/plan-directeur/images/vuoto.gif"
+      ]
+    },
+    {
+      "path": "documents/all/tables.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/all/tables.html",
+      "status": 200,
+      "sha256": "e44e14a862a5d31f4b34657bae1ff0433bf67d43c9d8acb018a4df0ba8bcc4dd",
+      "bytes": 1219,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 171,
+      "image_urls": []
+    },
+    {
+      "path": "documents/synthese/toc.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/synthese/toc.html",
+      "status": 200,
+      "sha256": "7d32bf9b9c9a611b3dd4787a6e124cffc953436b2d2811396af1877dc6514459",
+      "bytes": 4830,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 749,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/vuoto.gif"
+      ]
+    },
+    {
+      "path": "documents/synthese/doc-1.1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/synthese/doc-1.1.html",
+      "status": 200,
+      "sha256": "e862a257ee51bc3d747259eca0a6f075f5c19b66ba729a2283f59a51bacdcbfd",
+      "bytes": 2902,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1830,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/synthese/doc-1.2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/synthese/doc-1.2.html",
+      "status": 200,
+      "sha256": "a473a5a11f0239b0f3f01987a9321323eee6974d1e66ef2d028c51038a5e8db3",
+      "bytes": 965,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 207,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/synthese/doc-1.2.1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/synthese/doc-1.2.1.html",
+      "status": 200,
+      "sha256": "c6a39a5b24202fd58426864fa2d6d3915c868f25f36b1945c0c5f765d1505840",
+      "bytes": 1568,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 817,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/synthese/doc-1.2.2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/synthese/doc-1.2.2.html",
+      "status": 200,
+      "sha256": "7235598b3db7b5e28737a41ba939a316a35c9410cf1dd42aca5dc1adfdbbf7ff",
+      "bytes": 5702,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3572,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/synthese/doc-1.3.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/synthese/doc-1.3.html",
+      "status": 200,
+      "sha256": "8b145405924d73b5a034d4da359ccae4886563d044df6f0a29df1291ff69415f",
+      "bytes": 1495,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 480,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/synthese/doc-1.3.1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/synthese/doc-1.3.1.html",
+      "status": 200,
+      "sha256": "83db5ca1f5a2279b6c022b32b5a6924d8334e1090717fcb6f6cae31b9f28f81b",
+      "bytes": 1008,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 239,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/synthese/doc-1.3.1.a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/synthese/doc-1.3.1.a.html",
+      "status": 200,
+      "sha256": "ff12aa08a8e64a757801b5e1efd463bb0d3a12347c3db2f22d16e486f80dae40",
+      "bytes": 3663,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2276,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/synthese/doc-1.3.1.b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/synthese/doc-1.3.1.b.html",
+      "status": 200,
+      "sha256": "9f28b936499e9ce8a32ccc77625e3e95796f1bcfbdc54b4607a3fc5cbc5c85be",
+      "bytes": 2653,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1453,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/synthese/doc-1.3.2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/synthese/doc-1.3.2.html",
+      "status": 200,
+      "sha256": "e0183f7ac7f6a4a214271f9e9fdcfa42a13dd72487e715b0ce6a87226c77ef64",
+      "bytes": 1078,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 216,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/synthese/doc-1.3.2.a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/synthese/doc-1.3.2.a.html",
+      "status": 200,
+      "sha256": "aa4ca9c3be275de8a7f5b922a12d29d2bdf422127e94118acf3017c57fda755e",
+      "bytes": 3450,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2056,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/synthese/doc-1.3.2.b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/synthese/doc-1.3.2.b.html",
+      "status": 200,
+      "sha256": "40690f3165eeafa84b718c132734a3e79dd1e843d8af6da84157f5f444238f72",
+      "bytes": 5072,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3352,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/synthese/doc-1.3.2.c.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/synthese/doc-1.3.2.c.html",
+      "status": 200,
+      "sha256": "fb6566a08d5aaa397e331df3fb206fae247038894e6d32bd386ffdf5f8e6d839",
+      "bytes": 5066,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3300,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/synthese/doc-1.3.3.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/synthese/doc-1.3.3.html",
+      "status": 200,
+      "sha256": "3a07dadce9c03294f8d21ca8b3f47cc67eac24b5ac1f33b2c04caa7d21ccb36d",
+      "bytes": 6490,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 4110,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/synthese/doc-1.3.4.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/synthese/doc-1.3.4.html",
+      "status": 200,
+      "sha256": "83a8ed948adf12ea51253f53dec0fbd38e83c228f3390380517359a5025debc7",
+      "bytes": 1390,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 345,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/synthese/doc-1.3.4.a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/synthese/doc-1.3.4.a.html",
+      "status": 200,
+      "sha256": "7c322be3e5d76cfd13b8b0d693f8475078c6dc9c5675ed3af09dcdba2e2a272f",
+      "bytes": 4004,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3335,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/synthese/doc-1.3.4.b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/synthese/doc-1.3.4.b.html",
+      "status": 200,
+      "sha256": "73bc42b2b038eb83d093d0535b4e2c2cd018e9e4234457cab0c41ce5dbd69ea3",
+      "bytes": 1856,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1184,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/synthese/doc-1.3.4.c.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/synthese/doc-1.3.4.c.html",
+      "status": 200,
+      "sha256": "aa66fcd5b9f176f4d82594df843e61d224b3a8d0e6f5e6deaef4d5883e3c413e",
+      "bytes": 1661,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 993,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/synthese/doc-1.3.4.d.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/synthese/doc-1.3.4.d.html",
+      "status": 200,
+      "sha256": "8643603396596f9cb20d88fbcc4a06d0f2f40381aa43cee0bf2281648278e50a",
+      "bytes": 2209,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1551,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/synthese/doc-1.3.4.e.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/synthese/doc-1.3.4.e.html",
+      "status": 200,
+      "sha256": "2493f099776b271db8142be008f1c806645c85ff7ced6475fae8503591a24bcc",
+      "bytes": 3289,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2504,
+      "image_urls": []
+    },
+    {
+      "path": "documents/introduction/toc.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/introduction/toc.html",
+      "status": 200,
+      "sha256": "ec9c0b42cfe7116ebf03148796b2e7d72eb66ea153054358732db941522b976c",
+      "bytes": 4027,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 676,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/vuoto.gif"
+      ]
+    },
+    {
+      "path": "documents/introduction/doc-2.1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/introduction/doc-2.1.html",
+      "status": 200,
+      "sha256": "a5ea45f01ee08991885722b8286cf49c704d98cd4d55f63a3b14c68c3fd08643",
+      "bytes": 2399,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1686,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/introduction/doc-2.2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/introduction/doc-2.2.html",
+      "status": 200,
+      "sha256": "cc6ce3ffc9e9a76246bc253aaa533efa80eb7289e05464da12137040c16fa115",
+      "bytes": 1826,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 935,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/introduction/doc-2.2.a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/introduction/doc-2.2.a.html",
+      "status": 200,
+      "sha256": "04536dc0a95252e007a903e25f9446373e3b5c5a32404f54216f1dba46a31877",
+      "bytes": 2182,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1300,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/introduction/doc-2.2.b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/introduction/doc-2.2.b.html",
+      "status": 200,
+      "sha256": "9ef2cd372e13d54e25cf54d63d3ce6642a7fd4965d467b800e659b618ed99d77",
+      "bytes": 1431,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 692,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/introduction/doc-2.2.c.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/introduction/doc-2.2.c.html",
+      "status": 200,
+      "sha256": "d7bc0f57c4e0fde1a7255bf9130823e282f9fb9602bc680a48d30943d7b62206",
+      "bytes": 6239,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2370,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/introduction/doc-2.3.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/introduction/doc-2.3.html",
+      "status": 200,
+      "sha256": "c8501190b9ea7f3e79b3c8ef18324a51e4ffda00b088193089837cc9f7d5d74a",
+      "bytes": 867,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 108,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/introduction/doc-2.3.a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/introduction/doc-2.3.a.html",
+      "status": 200,
+      "sha256": "d486164dc776cfe40cec53171f7c171bb11ebb277a7af6a68e70327622c63496",
+      "bytes": 1594,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 979,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/introduction/doc-2.3.b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/introduction/doc-2.3.b.html",
+      "status": 200,
+      "sha256": "a4df7a865066298d7421e16f5686865011e2a413ba831e42051fe955aa08b611",
+      "bytes": 2068,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1422,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/introduction/doc-2.4.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/introduction/doc-2.4.html",
+      "status": 200,
+      "sha256": "2e6adfd3bf29afde4be59e94c82e20dd91c789930e64618b1ba8fe6c628db680",
+      "bytes": 2082,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1356,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/introduction/doc-2.4.1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/introduction/doc-2.4.1.html",
+      "status": 200,
+      "sha256": "8ede7054bc1c86adf20957ebafc9e440d50be9860af2b9366f954a48f2bf1dd0",
+      "bytes": 3102,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2141,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/introduction/doc-2.4.2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/introduction/doc-2.4.2.html",
+      "status": 200,
+      "sha256": "7b520430f8a1c2419ad13173e13618f61d2af81105d47c445c513a941caf1d79",
+      "bytes": 1029,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 239,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/introduction/doc-2.4.2.a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/introduction/doc-2.4.2.a.html",
+      "status": 200,
+      "sha256": "21132103d6b1f795d0e6e7009aa0e44cc3cd37acf607f9f9cda0cc55d6cc51a5",
+      "bytes": 3719,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1856,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/introduction/doc-2.4.2.b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/introduction/doc-2.4.2.b.html",
+      "status": 200,
+      "sha256": "de698bc769a6501b4b707080f7088693726c6c541692eba09efd3a5195d9549f",
+      "bytes": 2471,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1569,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/introduction/doc-2.4.3.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/introduction/doc-2.4.3.html",
+      "status": 200,
+      "sha256": "282c39fc8687d736e6a05848f7e0b171577cc050f53503245f79db92cdf4f0cb",
+      "bytes": 3528,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1475,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/introduction/doc-2.4.4.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/introduction/doc-2.4.4.html",
+      "status": 200,
+      "sha256": "2325d8652f94595a512b679f3e607db01dfa8a61b0ec8b49c0de60a79dd9df74",
+      "bytes": 4165,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2663,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/introduction/doc-2.4.5.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/introduction/doc-2.4.5.html",
+      "status": 200,
+      "sha256": "964faa511dae3f5e48c2d77868315880c2f28d19f59afb5c9c7475d555887b82",
+      "bytes": 3239,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2383,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/introduction/doc-2.4.6.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/introduction/doc-2.4.6.html",
+      "status": 200,
+      "sha256": "e7c235b336aa7028e90df7fd437fe0b6ab1b33d2ede076349bcd2e78d398d3b2",
+      "bytes": 2528,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1757,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/introduction/doc-2.4.7.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/introduction/doc-2.4.7.html",
+      "status": 200,
+      "sha256": "3bb8b69e0026b5c0c30bd3516b05d9ff0f0b7346013cbc191ac2eaedda7af998",
+      "bytes": 3860,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2447,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/introduction/doc-2.4.7.a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/introduction/doc-2.4.7.a.html",
+      "status": 200,
+      "sha256": "17f197178242ad172b58c19a6602ceae2ebbed0cee660f9efba0b3fc7fd0ef65",
+      "bytes": 72887,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3381,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/introduction/doc-2.4.7.b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/introduction/doc-2.4.7.b.html",
+      "status": 200,
+      "sha256": "0539efaf49eb6ffda24a8bc3f61633d3acd0ec6a2d2699d6b57a9df3a1c013b3",
+      "bytes": 59651,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2746,
+      "image_urls": []
+    },
+    {
+      "path": "documents/principes/toc.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/toc.html",
+      "status": 200,
+      "sha256": "20db0b8c30d621d535419927de421e8215f369c30e833ab3ffd91ef3ce831c16",
+      "bytes": 8340,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1264,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/vuoto.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.html",
+      "status": 200,
+      "sha256": "0c17441afaf68cb8bcb01a7d439753c213af942fe88c78e7ffca980d7ab5e8b9",
+      "bytes": 1007,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 427,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.1.html",
+      "status": 200,
+      "sha256": "b0fa98efda6c1bbb5d96ef8f7a138d2cc31cb8cdd4d00c20f6479c60bc702bc6",
+      "bytes": 1322,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 348,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.1.a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.1.a.html",
+      "status": 200,
+      "sha256": "47d79ddc6e623efc05611eed20f598631ef160d06a68f47202f49bdd8ad2a598",
+      "bytes": 1035,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 242,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.1.a.1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.1.a.1.html",
+      "status": 200,
+      "sha256": "403311983e8ceb29a049c33024f5868a31e1fe81d81fd82a44ba3c9f83232f92",
+      "bytes": 3181,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2360,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.1.a.2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.1.a.2.html",
+      "status": 200,
+      "sha256": "83ccbca99837d210c4712077de4013fa1c4de63f3c0af68e283c50e68706eec3",
+      "bytes": 6239,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 5363,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.1.b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.1.b.html",
+      "status": 200,
+      "sha256": "6817123e05764d99138a10661170813960481768933f38a568753f291b797d87",
+      "bytes": 1054,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 265,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.1.b.1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.1.b.1.html",
+      "status": 200,
+      "sha256": "9fdb3c61bf4750377ae1342a541a7f2dd8ef7aa6a87a8a28a7839bdc1dff30b6",
+      "bytes": 1894,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1176,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.1.b.2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.1.b.2.html",
+      "status": 200,
+      "sha256": "2cfd929ec0a0579196e766998032424a5e97f2e51c83711bcf6c9e2a896fed5a",
+      "bytes": 6262,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 5220,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.2.html",
+      "status": 200,
+      "sha256": "19565e0aa59e3ac7fa6a00a9bd298d72ab9c60e1f3b0343ca6a228e63063c385",
+      "bytes": 1565,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 578,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.2.a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.2.a.html",
+      "status": 200,
+      "sha256": "104ffd656ec7fb4f5b1c53f6758dbe13246d120e0724db4ca6f588c8249f31e0",
+      "bytes": 1032,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 224,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.2.a.1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.2.a.1.html",
+      "status": 200,
+      "sha256": "c1d0ea7108e97cda3e42a1fba6a426dd443e8eb14d029235e6cb2379021241b5",
+      "bytes": 4319,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3528,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.2.a.2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.2.a.2.html",
+      "status": 200,
+      "sha256": "c1ec474bd58de64cfacab0d0db115b0ea1dc7be3738f9293bc53becbe06eeec2",
+      "bytes": 4658,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3773,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.2.b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.2.b.html",
+      "status": 200,
+      "sha256": "3522c1247fc0842d0640678d6c7d4ca8ea56a3ed78166dec89e42252aa50b153",
+      "bytes": 1390,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 572,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.2.b.1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.2.b.1.html",
+      "status": 200,
+      "sha256": "68ef54dd738d4c74abc9a77180d70a633d06280a9985b133b5d871cd299f0050",
+      "bytes": 2264,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1522,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.2.b.2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.2.b.2.html",
+      "status": 200,
+      "sha256": "5dcb05849dbf8ce3a907bddd40a3aa6c6e621b9afa48088f3c8cbd396cd06cf7",
+      "bytes": 2598,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1747,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.3.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.3.html",
+      "status": 200,
+      "sha256": "61c6a17f68870579a181d085cb617be0e747aeadbab1d12f081a803908782a5c",
+      "bytes": 1866,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 593,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.3.a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.3.a.html",
+      "status": 200,
+      "sha256": "bf9ccff34344a654d5b174507816e73ea20f1bc2d49dfdc3cde0cd4d70cd8b15",
+      "bytes": 3329,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2563,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.3.b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.3.b.html",
+      "status": 200,
+      "sha256": "72099b626e2b0b98dc4e25674176322ddbda067a5ee9d6a42fa0d0afe65885ac",
+      "bytes": 1016,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 220,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.3.b.1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.3.b.1.html",
+      "status": 200,
+      "sha256": "8efcceed631288966e98bfee2f86bea48e40c2ab5fe321931fb5673f2ccf0b19",
+      "bytes": 10687,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1322,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.3.b.2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.3.b.2.html",
+      "status": 200,
+      "sha256": "a4138e0251f616c6f3dd9542c7ce73c06023b1c6cfe775cd14eb305359fb4a05",
+      "bytes": 18510,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 4230,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.3.c.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.3.c.html",
+      "status": 200,
+      "sha256": "02a0e0580312b1846efbe95cb99547a5534ea4ec847cba05257c478f9d3e57f2",
+      "bytes": 1019,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 220,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.3.c.1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.3.c.1.html",
+      "status": 200,
+      "sha256": "712d96c74c6797588d47b32ce010e64434411dab12bb187b1455d3e76da912ae",
+      "bytes": 14488,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1592,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.3.c.2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.3.c.2.html",
+      "status": 200,
+      "sha256": "82a150b35bcac59cda60aa2287a7a1a1e986f733513f7ea863d493336e1831ba",
+      "bytes": 17343,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3429,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.3.d.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.3.d.html",
+      "status": 200,
+      "sha256": "9e25fdbe94ab1281ec8be2aaddf5a23d8fadf72ce52204e78606ff5603b3fd10",
+      "bytes": 1864,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 998,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.3.d.1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.3.d.1.html",
+      "status": 200,
+      "sha256": "6b95189dd98c623468da60d72c82eab990eb83767a69d9e493a442b9f8de799a",
+      "bytes": 1301,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 663,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.3.d.2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.3.d.2.html",
+      "status": 200,
+      "sha256": "0e3c20fba47ea10aa076b689b02e013e234ea352775475394dd1d4314ae49d93",
+      "bytes": 3438,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2715,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.4.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.4.html",
+      "status": 200,
+      "sha256": "48cc80b2b7dbda9701fd0e7ec09e6ad615bd97acd26e02e3c217db11ab22940f",
+      "bytes": 999,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 228,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.4.a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.4.a.html",
+      "status": 200,
+      "sha256": "d4592e0b4fe142202dce9c13dd110c27d66b793e05181186486739801301163d",
+      "bytes": 8415,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 5859,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/915.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/915_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/916.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/916_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/917.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/918.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/918_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/918_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/918_3.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/918_4.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/919_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/919_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/919_3.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/920.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/920_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/921.gif",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.1.4.b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.1.4.b.html",
+      "status": 200,
+      "sha256": "41134858b508198330ab9d407a22ebf8719280a5f1f056741a96eb5617c829a1",
+      "bytes": 4284,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2697,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/922.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/922_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/923_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/923_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/924.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/925.gif",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.html",
+      "status": 200,
+      "sha256": "41103edbfcab7a473126bc524ba8e75fc0800494c6340ac29254689f82ca6101",
+      "bytes": 1187,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 607,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.1.html",
+      "status": 200,
+      "sha256": "aa0c8356464ab00399c672f8af55c2dfbbe6953daef2e4d6c518501d229e7d67",
+      "bytes": 1213,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 261,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.1.a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.1.a.html",
+      "status": 200,
+      "sha256": "e375c717911ce073339450e75f71b98d57a8b32dc8a10d1170af520033371070",
+      "bytes": 1958,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1305,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.1.b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.1.b.html",
+      "status": 200,
+      "sha256": "0be181e5790d7efe7791eb02a71290150f204067f04b66138dcfb73ce1a2a091",
+      "bytes": 1812,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1167,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.1.c.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.1.c.html",
+      "status": 200,
+      "sha256": "1f7c83840a677014ecb4701b8cb9ea50fe2dd1dbfcb1d280bc205873ab4eee52",
+      "bytes": 1924,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1287,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.1.d.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.1.d.html",
+      "status": 200,
+      "sha256": "61b797c004c7c6dac42abf898f100b84348fb2b7b5ba1d7ba2eca025c7882fad",
+      "bytes": 1612,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 930,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.2.html",
+      "status": 200,
+      "sha256": "af9b67d743bbd6aab9a0695a12c39f3aeeea55d8bc60199df615497d4b0f3ca7",
+      "bytes": 5580,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 4454,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.3.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.3.html",
+      "status": 200,
+      "sha256": "cefb2f2aa356fc4e3c6138a013fe123b5a47d3aa3c1f4ca513314bcef241545d",
+      "bytes": 1005,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 241,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.3.a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.3.a.html",
+      "status": 200,
+      "sha256": "4d760675e320fc424f363d9ec2f8e8cc2945c22658d2e28b0c11fb82b531ca7f",
+      "bytes": 7945,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 6936,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.3.b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.3.b.html",
+      "status": 200,
+      "sha256": "af9602825da0c13cc346c04154df1a05e8e6d3d213dfe3c48801ab8715071519",
+      "bytes": 3668,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2934,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.4.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.4.html",
+      "status": 200,
+      "sha256": "1b8e0143c441db0a1288141da61caf18ecd02abb53ffcd962f3cadd928da172d",
+      "bytes": 4148,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3153,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.4.a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.4.a.html",
+      "status": 200,
+      "sha256": "72c340fa4a3a919ce1a6c27edc0a08e58f5c8f92a0b65f378f2c5d83bdb29f51",
+      "bytes": 2557,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1927,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.4.b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.4.b.html",
+      "status": 200,
+      "sha256": "6570ebe7b282a576cb15134a1aa6e2ab3fe2d3b3ca58f8f6ce5eb7646f7a8336",
+      "bytes": 3000,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2223,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.4.c.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.4.c.html",
+      "status": 200,
+      "sha256": "06ea04d6f40d4a4d4174113b27a75dc13ae44b50d951754263ae55d5de7d137e",
+      "bytes": 2979,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2339,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.5.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.5.html",
+      "status": 200,
+      "sha256": "da64360f6c3fa2e54bcdedefba6ff69ba3e6743a47a66a9df54d231fc8eff910",
+      "bytes": 4646,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3459,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.5.a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.5.a.html",
+      "status": 200,
+      "sha256": "13d2644036e110a9d7b3545b59db34decb917791dce35444be0288e5db22205c",
+      "bytes": 2964,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2238,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.5.b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.5.b.html",
+      "status": 200,
+      "sha256": "2fae6b312cca65229028fa36c527857d132080a3cf31703ec183424dca0ba34a",
+      "bytes": 3880,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3101,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.5.c.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.5.c.html",
+      "status": 200,
+      "sha256": "dacac851688c0a594cb22a7fba85871154d5c5f96c11c19a7a08c938fdf974e7",
+      "bytes": 1612,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 985,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.5.d.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.5.d.html",
+      "status": 200,
+      "sha256": "33f14354c386fa9d758c35607055c16bcba3e40483b5948ff9101fd422db5e1c",
+      "bytes": 4355,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3621,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.5.e.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.5.e.html",
+      "status": 200,
+      "sha256": "cd71eb43930624d613566a84af30522df3e11d16ea9dafe1e07afc9123091662",
+      "bytes": 1909,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1272,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.6.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.6.html",
+      "status": 200,
+      "sha256": "bf1bf791b5fad36fbc1bf738ea345e2293d96f31976856f9ead560ec8765e404",
+      "bytes": 1155,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 292,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.6.a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.6.a.html",
+      "status": 200,
+      "sha256": "5b20df6d47b0fee96bfb6ca5d79e859ed0ce151c959b242cc80356ee0e5073b3",
+      "bytes": 10083,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 7134,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/930_b1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/930_b2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/930_b3.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/930_b4.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/930_b5.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/928.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/928_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/929.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/930a.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/930c_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/930c_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/930c_3.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/930c_4.gif",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.6.b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.6.b.html",
+      "status": 200,
+      "sha256": "db63f7325728d69c9432be64be541384ff47abfd67f1e1e9192d6c8ca541c01f",
+      "bytes": 14082,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 10625,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/930c_4.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/931a_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/931b_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/931b_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/931c.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/931d_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/931d_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/931e.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/932.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/932_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/933_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/933_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/934.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/935.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/936.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/936a.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/936a_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/936b_1.gif",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.2.6.c.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.2.6.c.html",
+      "status": 200,
+      "sha256": "bae33ad1f4ffe8a724d1ceb56ac7e79cdb6099e97b9404830e5dc64359bc8e67",
+      "bytes": 4677,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2579,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/937.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/938_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/938_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/938_3.gif",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/principes/doc-3.3.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/principes/doc-3.3.html",
+      "status": 200,
+      "sha256": "e25ae79a12b6ea667fcf0211dc612c77b50ae5fca20452267c418be7a19f70c3",
+      "bytes": 18514,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 6387,
+      "image_urls": []
+    },
+    {
+      "path": "documents/mesures/toc.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/toc.html",
+      "status": 200,
+      "sha256": "eecadb56355b746b6917f5d0157915fe2bb9ea66393320ac95993c813f219ada",
+      "bytes": 5445,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 943,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/vuoto.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.1.html",
+      "status": 200,
+      "sha256": "4c2264535ded24a9a14420c0eb33c5e0707832102760fdc2f408091f09cab412",
+      "bytes": 4694,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3643,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.html",
+      "status": 200,
+      "sha256": "8a01a2c9bfcf6cb64442ebdfa9bfe0da10e538c2464dfcd010b38e3695eb9e2a",
+      "bytes": 3157,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 942,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.1.html",
+      "status": 200,
+      "sha256": "5090f54887deee0eea7b6f459f69ad0a6cc2178c5f1e2d61e8d1fcd023dd299f",
+      "bytes": 1297,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 343,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.1.a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.1.a.html",
+      "status": 200,
+      "sha256": "edc849ec091f2855c607c9255961785fa9753776369f11765220f575eece5950",
+      "bytes": 4203,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3286,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.1.b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.1.b.html",
+      "status": 200,
+      "sha256": "abbef7fb6d97be5a4cc977c154f75916c9b72a2a4780137b55c3163793b0aed2",
+      "bytes": 2405,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1592,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.1.c.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.1.c.html",
+      "status": 200,
+      "sha256": "90330017514cd0e2bdf8ffaf7ebe6e8c97833793d2d63d0b266fe71ffd9eab60",
+      "bytes": 10497,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 6391,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.1.d.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.1.d.html",
+      "status": 200,
+      "sha256": "34d4783e5d3ed659de59763cac08b27620bf3a5e1a897fefe6d13d7e37baaa4f",
+      "bytes": 3271,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2352,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.2.html",
+      "status": 200,
+      "sha256": "968cb15e1d4230f42cfc2f506c8d50b89e02afb1ec5346262bdcf4821d9f2ad4",
+      "bytes": 1563,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 338,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.2.a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.2.a.html",
+      "status": 200,
+      "sha256": "4164a3bddbbe43470648355f6c05474bff7f52164167aa0eaec25064a1d056d3",
+      "bytes": 7953,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 6395,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig45.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig46.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig47.gif",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.2.b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.2.b.html",
+      "status": 200,
+      "sha256": "be1182cc8a8ea8224a09b2357b2298397e75ebebb0c2a9b6f139f4e64007cd17",
+      "bytes": 6413,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 5019,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig49.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig50.gif",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.2.c.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.2.c.html",
+      "status": 200,
+      "sha256": "3951e1485b2cdbf563d94252bd014762b91384e1b184cf56fa226be055725ca7",
+      "bytes": 7164,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 5548,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig52.jpg",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig53.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig54.gif",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.2.d.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.2.d.html",
+      "status": 200,
+      "sha256": "371b37563793561570af47fc63911b29e01cb70b94196906b12a869ab60827c1",
+      "bytes": 7599,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 6298,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig56.gif",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.2.e.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.2.e.html",
+      "status": 200,
+      "sha256": "b2f707e57137263e4faa2f813e925bd568e7bfb3c4bb4e743b2ff704b40a07b7",
+      "bytes": 5869,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 4560,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig58.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig59.jpg",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.2.f.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.2.f.html",
+      "status": 200,
+      "sha256": "9dd523edde96715177cd9e4047e589f4d93b4dd1367aeaef8804b7f08b0cac46",
+      "bytes": 4740,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3449,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig61.jpg",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig62.gif",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.2.g.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.2.g.html",
+      "status": 200,
+      "sha256": "6deb8cab77ed6c2f9e6cc37fd238b6529eaf9cb708b292813be81e3311d117c3",
+      "bytes": 4697,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3471,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig64.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig65a.jpg",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig65b.jpg",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.3.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.3.html",
+      "status": 200,
+      "sha256": "fe60a979b81aceda4f01cd381be8b792f6001677419e36cd1ec45c76c50b3439",
+      "bytes": 1544,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 397,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.3.a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.3.a.html",
+      "status": 200,
+      "sha256": "f79d3336aa3930c63c798626d2fb300eacd407b968bdfba1735ac2412b6bfeb7",
+      "bytes": 4355,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3271,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/9401.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig67.jpg",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.3.b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.3.b.html",
+      "status": 200,
+      "sha256": "e3f1ef45ba2afcf57752f4cd3abe934f8418a1e6f462021563c9818aff3df252",
+      "bytes": 4632,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3478,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/9402.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig68.jpg",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.3.c.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.3.c.html",
+      "status": 200,
+      "sha256": "58a3a3916cee960a5eb5cdc758ebf0cb90008bc5aaeced8cded3640d96575937",
+      "bytes": 5015,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3680,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/9403.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig69.jpg",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig70a.jpg",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig70b.jpg",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.3.d.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.3.d.html",
+      "status": 200,
+      "sha256": "ea9227a22222a6f7fe9ac6272f3a2d0aac5f341c97743fe7a6d67296dbd460cc",
+      "bytes": 4828,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3788,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/9404.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig71.jpg",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.3.e.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.3.e.html",
+      "status": 200,
+      "sha256": "7e470fce9c9885eb7f681c39b263efa4dfe95305f7451c4d2df65bfeb2820c6e",
+      "bytes": 3725,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2834,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/9405.gif",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.3.f.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.3.f.html",
+      "status": 200,
+      "sha256": "4c3d7c759e3a63960c7fc446e86b27e3d59eb07b3f52d2ff5c10b7730c04c988",
+      "bytes": 2890,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1786,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/9406.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig73a.jpg",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig73b.jpg",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.4.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.4.html",
+      "status": 200,
+      "sha256": "4fbfca9ec7e8d3f8f122fbdde19d1fccc3e9c545f9239526775584370b7e94ec",
+      "bytes": 3321,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2403,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/9407.gif",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/mesures/doc-4.2.5.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/mesures/doc-4.2.5.html",
+      "status": 200,
+      "sha256": "d848a4ddb625ba0c322cede9af183654fcbb8dab9c7ecef368ae2406a68c3dba",
+      "bytes": 2390,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1751,
+      "image_urls": []
+    },
+    {
+      "path": "documents/conclusion/toc.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/conclusion/toc.html",
+      "status": 200,
+      "sha256": "7e2779bda591054983e47095d3e812f8d72be1b1fa99c3ecdd4ae37de5e2141c",
+      "bytes": 1477,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 277,
+      "image_urls": []
+    },
+    {
+      "path": "documents/conclusion/doc-5.5.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/conclusion/doc-5.5.html",
+      "status": 200,
+      "sha256": "05f2718c76bf822081ca00e4d401674955481c60940d487dfab587e25b3323d6",
+      "bytes": 22336,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3762,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/vuoto.gif"
+      ]
+    },
+    {
+      "path": "documents/conclusion/doc-5.1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/conclusion/doc-5.1.html",
+      "status": 200,
+      "sha256": "9c03cd7998f0ae14340aedac71f592a9d53e9558f0cb7cde0142e22fad118484",
+      "bytes": 2962,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2112,
+      "image_urls": []
+    },
+    {
+      "path": "documents/conclusion/doc-5.4.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/conclusion/doc-5.4.html",
+      "status": 200,
+      "sha256": "a661b28edb65f08d3d710e9b96cd45b8e7a4b5a841fd0d8fd62c3aade455678b",
+      "bytes": 11841,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 5310,
+      "image_urls": []
+    },
+    {
+      "path": "documents/conclusion/doc-5.3.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/conclusion/doc-5.3.html",
+      "status": 200,
+      "sha256": "fc8e0668c5ff77e8e6b15d00fe23fee3c2076bf69d36c12c38e8a757cd19b92d",
+      "bytes": 2230,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1114,
+      "image_urls": []
+    },
+    {
+      "path": "documents/conclusion/doc-5.2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/conclusion/doc-5.2.html",
+      "status": 200,
+      "sha256": "5190c98c1301ffb5e00ced1589f7cbd1d085eefcc0bc87ea9f9a6ec01769e300",
+      "bytes": 996,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 295,
+      "image_urls": []
+    },
+    {
+      "path": "documents/conclusion/doc-5.2.2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/conclusion/doc-5.2.2.html",
+      "status": 200,
+      "sha256": "18a440d3f5f9a5e53b2b626e17914de46b66adbf42ffcc4f4e6dc567876c1eb1",
+      "bytes": 5255,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 354,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/vuoto.gif"
+      ]
+    },
+    {
+      "path": "documents/conclusion/doc-5.2.3.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/conclusion/doc-5.2.3.html",
+      "status": 200,
+      "sha256": "46195e91466965325430cfcd2fc97df7c1ba29edf0d892fd8367665575444572",
+      "bytes": 5380,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 411,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/vuoto.gif"
+      ]
+    },
+    {
+      "path": "documents/conclusion/doc-5.2.success.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/conclusion/doc-5.2.success.html",
+      "status": 200,
+      "sha256": "f9820d0714516a161961995e12de88719ba79fa10b3a1630ac146c013a17ccc0",
+      "bytes": 733,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 190,
+      "image_urls": []
+    },
+    {
+      "path": "documents/conclusion/doc-5.2.error.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/conclusion/doc-5.2.error.html",
+      "status": 200,
+      "sha256": "80eb5c548b28b6a9aefeb3d856bd46757872f03a4e7c3370ae5b69c5160787d9",
+      "bytes": 951,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 316,
+      "image_urls": []
+    },
+    {
+      "path": "documents/themes/doc-cn.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cn.html",
+      "status": 200,
+      "sha256": "3085f9d80c3318458d130603865f5bf85d324ed93565a4cd2b98780f5c83339b",
+      "bytes": 1974,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 313,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif",
+        "https://www.nyon.ch/plan-directeur/images/vuoto.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cn_1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cn_1.html",
+      "status": 200,
+      "sha256": "edff86bfae9dcf5e800e6434b6cbecf3d845ea86f2108d6bb0362b296af01d1a",
+      "bytes": 1030,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 198,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cn_11.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cn_11.html",
+      "status": 200,
+      "sha256": "cdc0f0ce6bc2c9890b715b208050f21a47efed45397bab101c95c58c917ce034",
+      "bytes": 3616,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2264,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cn_12.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cn_12.html",
+      "status": 200,
+      "sha256": "9a258d934e17aeb31948f7dd2ed689c0dfd57a6eb8f0f77327e5e52cd237c3ae",
+      "bytes": 7309,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 6256,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cn_13.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cn_13.html",
+      "status": 200,
+      "sha256": "ddcaf5b4f0b9cd3157aeb0d446fc6786219429c2d543cebd9d29fa4f1dad4bb7",
+      "bytes": 7023,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 6045,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cn_2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cn_2.html",
+      "status": 200,
+      "sha256": "64ea127080ec4a25eda4e6021317ee0528c4a8c89128d98aba6deaa4a9e6e42a",
+      "bytes": 1052,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 220,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cn_21.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cn_21.html",
+      "status": 200,
+      "sha256": "ee1ca130203ffec94b029997014dee165db0c22b6de91ee41c11d41424e44bfa",
+      "bytes": 2646,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1473,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cn_22.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cn_22.html",
+      "status": 200,
+      "sha256": "14cd10f387a1e93125569539809c987b750dd6070c61c44b1223e7c9372274b9",
+      "bytes": 3599,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2738,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cn_23.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cn_23.html",
+      "status": 200,
+      "sha256": "47b7aa25d8617b823a28d0a6ba1d32090ab8b9da4cf7b2e48c78f84e5237f9b9",
+      "bytes": 3102,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2388,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-tu.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-tu.html",
+      "status": 200,
+      "sha256": "43c63d1e425149dd32a1b2c3bcbc6120074fe2704a651aa79cea1221c0e35255",
+      "bytes": 2524,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 409,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-tu_1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-tu_1.html",
+      "status": 200,
+      "sha256": "eca15891119cf08d97934baa038dda54645b30baf0aca1135e4fc07e21f2d1d2",
+      "bytes": 1315,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 226,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-tu_11.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-tu_11.html",
+      "status": 200,
+      "sha256": "dc8ce60a6c333247bf5a77c2bde38179e9388e81fcbc2ae692412019ffd2f2c0",
+      "bytes": 4958,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3326,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-tu_12.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-tu_12.html",
+      "status": 200,
+      "sha256": "8a40a26c38445679953b7d620cf184ba643df94abe3a3f0e76f5c45ceb9171b4",
+      "bytes": 1494,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 431,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-tu_12a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-tu_12a.html",
+      "status": 200,
+      "sha256": "57312626cb15370bec866c8e2f82c9173dc436981109c1017ff2d6f7adabc191",
+      "bytes": 3288,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2479,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-tu_12b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-tu_12b.html",
+      "status": 200,
+      "sha256": "acd816320dd70e816ab2a919345665eb2b9e9cf35a342ac228a5eb59030a9f1d",
+      "bytes": 28178,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 5300,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-tu_12c.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-tu_12c.html",
+      "status": 200,
+      "sha256": "6bf9ab7630429d3bd784c6ae11b45bd36af4de72b6b4ec9780e74173720db110",
+      "bytes": 30767,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 4766,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-tu_12d.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-tu_12d.html",
+      "status": 200,
+      "sha256": "8f79a1b0e5438898baaf26f99bf5ec9289b154a51a66f6cd1e0ae3f29cffbe30",
+      "bytes": 3086,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2324,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-tu_2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-tu_2.html",
+      "status": 200,
+      "sha256": "dd6905eaaadda8b2abc8d3a792b09c7d2bbd6adc85cc04c1649c66ef6208c15d",
+      "bytes": 1311,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 228,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-tu_21.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-tu_21.html",
+      "status": 200,
+      "sha256": "6e05e29a1cff9e19df67b2c3956ad2df16b880bc4af60815750547e9fc568f83",
+      "bytes": 7707,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 5200,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-tu_22.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-tu_22.html",
+      "status": 200,
+      "sha256": "aba796a9d4430ba40ca83e9fdf6394bf96c1c62c1c01a36f201d02ecf65e69d4",
+      "bytes": 7984,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 6915,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-tu_23.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-tu_23.html",
+      "status": 200,
+      "sha256": "01309ecb725bd9b16e2653c5196646550c6798c6bba2243160cebb28e16dad31",
+      "bytes": 1649,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 701,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-tu_23a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-tu_23a.html",
+      "status": 200,
+      "sha256": "4f45dba4c01e845793a2259f707b23653e42c36f7a4a6419e1c9736dea301baa",
+      "bytes": 2551,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1878,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-tu_23b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-tu_23b.html",
+      "status": 200,
+      "sha256": "9c0441e0f7fa08da28944840a6ef472999d48cc34a3436f0f187957be4ae2665",
+      "bytes": 2994,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2174,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-tu_23c.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-tu_23c.html",
+      "status": 200,
+      "sha256": "af3370cc383fa68558abcd46fa401e5b85ee8e6a22dda9dd0f23189f51c86095",
+      "bytes": 2906,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2249,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-ep.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-ep.html",
+      "status": 200,
+      "sha256": "2ac4786f88d92f234396786663221e9d2b9bf57cf650ba09345bbe11a724a8a0",
+      "bytes": 1614,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 262,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-ep_1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-ep_1.html",
+      "status": 200,
+      "sha256": "21065c36b6623775cbe9d8d2554bd404d09eafd407d94d2eb5b37c4a5259b5d8",
+      "bytes": 6344,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 4080,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-ep_2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-ep_2.html",
+      "status": 200,
+      "sha256": "c85c097e66d3b42bb72f75f8fba30bd23b7a42d6418c5562f7afa88384946d01",
+      "bytes": 4336,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3343,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-ep_3.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-ep_3.html",
+      "status": 200,
+      "sha256": "63b17ccfa90fbdcdd232d797438594f27381506a14528e4498845e5a01fd1c3b",
+      "bytes": 3910,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2777,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-ep_3a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-ep_3a.html",
+      "status": 200,
+      "sha256": "728e15881783bdd38e23a76cb3a443a593babbf9f250d21a268e9a8727a1936e",
+      "bytes": 2889,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2172,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-ep_3b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-ep_3b.html",
+      "status": 200,
+      "sha256": "2885191cd64d8afbc7aee25005b86a8592f0e92c7391ceb6efbc9d301ac7b081",
+      "bytes": 3805,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3035,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-ep_3c.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-ep_3c.html",
+      "status": 200,
+      "sha256": "c9490036f9eb6ff2dbb0a2341cd026d6fb0765e40e6040d81d87c9820889c02d",
+      "bytes": 1537,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 919,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-ep_3d.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-ep_3d.html",
+      "status": 200,
+      "sha256": "c8360340fb9325c21cc829688204f9ba1afa092090d5081afad69003a8d7c898",
+      "bytes": 4280,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3555,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-ep_3e.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-ep_3e.html",
+      "status": 200,
+      "sha256": "d8b08b2c09d150f38dd15c96eb2cef4f035d910db1c463ae339171379626c635",
+      "bytes": 1816,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1189,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cs.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cs.html",
+      "status": 200,
+      "sha256": "e3f6b79209a2fad64f8684e957425a06e1f593d4fb955b03ff9991f2e13c231e",
+      "bytes": 2374,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 526,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cs_1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cs_1.html",
+      "status": 200,
+      "sha256": "163bb9b95d006e1931985a331a10d0c2972def454c9cd496820238447a9c1b21",
+      "bytes": 1340,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 303,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cs_1a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cs_1a.html",
+      "status": 200,
+      "sha256": "f9b5b004881873683ae685df1f84a4de5f9b48ef949cb0f3087bf57ec08b4789",
+      "bytes": 3954,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3293,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cs_1b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cs_1b.html",
+      "status": 200,
+      "sha256": "f7ef43da6ff2e2116181affd3cf6a5c85ff4053500ee41be029973ccba4b7dd6",
+      "bytes": 1806,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1142,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cs_1c.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cs_1c.html",
+      "status": 200,
+      "sha256": "6d7ef69107c766f01b149aad5548393223e7bd26106c5404dc74c31378cc2d43",
+      "bytes": 1611,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 951,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cs_1d.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cs_1d.html",
+      "status": 200,
+      "sha256": "65c7255b5167e61a455a9408a8307c5ddeadcc5e3ee8c1de74690203c65dbb2d",
+      "bytes": 2159,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1509,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cs_1e.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cs_1e.html",
+      "status": 200,
+      "sha256": "dfbeac00c1897fb511d4eb4c8c02929402d8b4d97f66afa6453c755512b2a7a3",
+      "bytes": 3323,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2493,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cs_2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cs_2.html",
+      "status": 200,
+      "sha256": "1d3083da4566d1b6a619380a4e963445460737d1c6967f06769fedc9f741ee31",
+      "bytes": 949,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 186,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cs_2a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cs_2a.html",
+      "status": 200,
+      "sha256": "d4592e0b4fe142202dce9c13dd110c27d66b793e05181186486739801301163d",
+      "bytes": 8415,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 5859,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/915.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/915_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/916.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/916_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/917.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/918.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/918_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/918_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/918_3.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/918_4.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/919_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/919_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/919_3.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/920.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/920_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/921.gif",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cs_2b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cs_2b.html",
+      "status": 200,
+      "sha256": "41134858b508198330ab9d407a22ebf8719280a5f1f056741a96eb5617c829a1",
+      "bytes": 4284,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2697,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/922.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/922_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/923_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/923_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/924.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/925.gif",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cs_3.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cs_3.html",
+      "status": 200,
+      "sha256": "c206a5cdf4cfbc9930dbb59e977c640aefbc25117415ba4cfe269d878597ee88",
+      "bytes": 1106,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 251,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cs_3a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cs_3a.html",
+      "status": 200,
+      "sha256": "5fb7878613223f617912d4ea7b9a96ef9e60dfbe9f6e4492540788d328ed3746",
+      "bytes": 10000,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 7093,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/930_b1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/930_b2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/930_b3.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/930_b4.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/930_b5.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/928.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/928_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/929.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/930a.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/930c_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/930c_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/930c_3.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/930c_4.gif",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cs_3b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cs_3b.html",
+      "status": 200,
+      "sha256": "db63f7325728d69c9432be64be541384ff47abfd67f1e1e9192d6c8ca541c01f",
+      "bytes": 14082,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 10625,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/930c_4.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/931a_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/931b_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/931b_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/931c.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/931d_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/931d_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/931e.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/932.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/932_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/933_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/933_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/934.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/935.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/936.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/936a.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/936a_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/936b_1.gif",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-cs_3c.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-cs_3c.html",
+      "status": 200,
+      "sha256": "bae33ad1f4ffe8a724d1ceb56ac7e79cdb6099e97b9404830e5dc64359bc8e67",
+      "bytes": 4677,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2579,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/937.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/938_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/938_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/938_3.gif",
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-resume.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-resume.html",
+      "status": 200,
+      "sha256": "99756e743d2fdedb6a0c0d00c8f74191b0cfbba6ca80a20fa76ffbe54050bac1",
+      "bytes": 914,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 149,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-resume1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-resume1.html",
+      "status": 200,
+      "sha256": "06c4dbbab7d7f68d93509463245448f38ca942f28402a6e173f1d7eacdd47748",
+      "bytes": 5139,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 4230,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-resume2.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-resume2.html",
+      "status": 200,
+      "sha256": "6ec1698e5be9e908bcaf5f2bf3111e942d8269dc22067feb3515b20bfd09bf17",
+      "bytes": 18556,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 6391,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/themes/doc-termino.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/doc-termino.html",
+      "status": 200,
+      "sha256": "a17dabd761c1b74de4090ae5aedb2bffa52f6063ba7bf8354d4164e35d3c92c8",
+      "bytes": 5283,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 4361,
+      "image_urls": []
+    },
+    {
+      "path": "documents/themes/toc.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/themes/toc.html",
+      "status": 200,
+      "sha256": "360e2fb5ff6851190e386d32d6f075b0cd5d8adef335a79fd7bd07355aae44e7",
+      "bytes": 1415,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 237,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-seca.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-seca.html",
+      "status": 200,
+      "sha256": "2eca932e820542c0f13f91974be67c157079b8dd071f0986365d4169c6f2a2de",
+      "bytes": 7419,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 702,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-secb.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secb.html",
+      "status": 200,
+      "sha256": "4b65041a7a7f42515ee64ec40b2c4eb5b154cc8116cab638cf45707ef6fd55ff",
+      "bytes": 7435,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 709,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-secc.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secc.html",
+      "status": 200,
+      "sha256": "c8d4add05ae84a418103f00bf9ef38c975aa0c53cbcfed5cbb5dadd4069ccacb",
+      "bytes": 7561,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 746,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-secd.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secd.html",
+      "status": 200,
+      "sha256": "43eef81babd3414d99103979a17e05097e0425104a9958ca2052dbbe26088cf3",
+      "bytes": 7434,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 710,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-sece.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-sece.html",
+      "status": 200,
+      "sha256": "5f769aef2aecc1eceaf3267d236c548a6c5ac0bd724eabc26c5e9fbc75e3249e",
+      "bytes": 7432,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 708,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-secf.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secf.html",
+      "status": 200,
+      "sha256": "40b8a5221765e9b80145f6dc8f8dc1ba2d28229b0cc4773f421720eaab3e10ee",
+      "bytes": 7607,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 719,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-secg.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secg.html",
+      "status": 200,
+      "sha256": "2dba6fae8dbdb000e8798daf65a4373ef902216d12683caa0ffefa4fddb9ebe4",
+      "bytes": 7426,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 718,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-sech.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-sech.html",
+      "status": 200,
+      "sha256": "a72d86d3cdc298d154c57e7b1372e3b545cf088f70f0432a466a8f961c2d0d90",
+      "bytes": 7646,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 758,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-seci.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-seci.html",
+      "status": 200,
+      "sha256": "2cbdc7d2d030c668950f39bbe136e5ff393092c375509d830b90c2aab44b96c1",
+      "bytes": 7640,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 752,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-secj.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secj.html",
+      "status": 200,
+      "sha256": "90485b46096bfe6b3170e3e11c4340d6baeb9a05dee935178ffa79366763824a",
+      "bytes": 7674,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 786,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-seck.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-seck.html",
+      "status": 200,
+      "sha256": "1a9c912b6221e3f3842a7c7bc91a1041158b5b43ff56cd3e16095a2495e7d246",
+      "bytes": 7660,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 724,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-secl.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secl.html",
+      "status": 200,
+      "sha256": "5056a39834f45a55b43389daf2be66ad41947276d2fdc4e58c599b7824e91725",
+      "bytes": 7536,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 726,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-secm.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secm.html",
+      "status": 200,
+      "sha256": "30ed515a89245ca1d91ce539bc4a25ff7e7a075e27438b421ab9b7425db8aef9",
+      "bytes": 7426,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 707,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-secn.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secn.html",
+      "status": 200,
+      "sha256": "db46d18455901672614f1c062750b04e98329d1cc5b34fa6be877a38914631ec",
+      "bytes": 7657,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 738,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-seco.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-seco.html",
+      "status": 200,
+      "sha256": "afad38925f3b319ac9fd6d8bf9d26e59abd6e579691a14999ffff2b0c7676328",
+      "bytes": 7634,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 727,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/images/doc_suivant.gif"
+      ]
+    },
+    {
+      "path": "documents/secteurs/doc-secp.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secp.html",
+      "status": 200,
+      "sha256": "e9ebd0988d2d72e8e95f26b4aa8849523e7a29b84a9c0ba86fd70a4d32d3cd08",
+      "bytes": 7518,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 707,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-secq.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secq.html",
+      "status": 200,
+      "sha256": "1e40a403300ad47247b3e47df4df8bd110a69cf24494200aca120cdfd68d7784",
+      "bytes": 7425,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 703,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-secr.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secr.html",
+      "status": 200,
+      "sha256": "9ec4604167505ffe7f150df6320e20d532875f6f224ca114f43b6bc7d4a81b3d",
+      "bytes": 7458,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 704,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-secanalyse.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secanalyse.html",
+      "status": 200,
+      "sha256": "840fc108029a9be9c203e7f0e641a8ba0effc02151df8d5b5649fbf6d5ee2e75",
+      "bytes": 2997,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2443,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-sechabitat.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-sechabitat.html",
+      "status": 200,
+      "sha256": "d764070f676c99e688d0ccb4ebac3916020285468f3de9cb3c4dedb867627897",
+      "bytes": 28308,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 5246,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-secemploi.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secemploi.html",
+      "status": 200,
+      "sha256": "634b552764fa532323922557b52f769876d94c0d0afa75dcacb7118073ed7f1f",
+      "bytes": 30713,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 4690,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-popsect.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-popsect.html",
+      "status": 200,
+      "sha256": "a178d439e6b96a316d23790650a0c8049e6e23e078fae86cd1f73c53019958be",
+      "bytes": 17803,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 865,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-empsect.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-empsect.html",
+      "status": 200,
+      "sha256": "be0055404adc446c5a12d5f6cea7c74ddd145db301dc8610912a42315869a577",
+      "bytes": 15991,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 936,
+      "image_urls": []
+    },
+    {
+      "path": "documents/secteurs/doc-secall.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secall.html",
+      "status": 200,
+      "sha256": "4550659cd3b00bc1b0ea3aa30fb4cb711710305d244bc18fe95e904429c4c360",
+      "bytes": 5666,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 270,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/secteurs.gif"
+      ]
+    },
+    {
+      "path": "documents/lieux/doc-a1a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-a1a.html",
+      "status": 200,
+      "sha256": "fe1847803fb58374e05d60cf6063534bee066281ea6d8e607a0556cdecfc5aa8",
+      "bytes": 3941,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3195,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/941.gif"
+      ]
+    },
+    {
+      "path": "documents/lieux/doc-a1b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-a1b.html",
+      "status": 200,
+      "sha256": "3aa32bab3819e583dc8d010fa58164a1ac7370a2dc48f59c0a660b95214fcb46",
+      "bytes": 2132,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1457,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/942.gif"
+      ]
+    },
+    {
+      "path": "documents/lieux/doc-a1c.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-a1c.html",
+      "status": 200,
+      "sha256": "3e0944bc10dee551baaaf42ee3767eaf632cd2c0dc5d8b4cedbbeedf9251bcf9",
+      "bytes": 10518,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 6279,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/943.gif"
+      ]
+    },
+    {
+      "path": "documents/lieux/doc-a1d.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-a1d.html",
+      "status": 200,
+      "sha256": "67b15449b0cde8133e793abe9741dd6f725a9a46b159f8b86c896bfb7cbeea29",
+      "bytes": 3078,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2248,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/944.gif"
+      ]
+    },
+    {
+      "path": "documents/lieux/doc-a2a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-a2a.html",
+      "status": 200,
+      "sha256": "1099b66e66942cec06b546f7b9511f9e7ce7398a4cfee41c9a5c326106b8b5a0",
+      "bytes": 8731,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 6614,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/948_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/948_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/948_3.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/948_4.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/948_5.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/948.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig45.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig46.gif"
+      ]
+    },
+    {
+      "path": "documents/lieux/doc-a2b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-a2b.html",
+      "status": 200,
+      "sha256": "36478d750cebf26674a3f097181dfabd7e8e7df1c11ba73a1a7219496264d657",
+      "bytes": 7012,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 5107,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/951_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/951_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/951_3.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/951_4.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/951_5.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/951.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig49.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig50.gif"
+      ]
+    },
+    {
+      "path": "documents/lieux/doc-a2c.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-a2c.html",
+      "status": 200,
+      "sha256": "3e70778efb29ab96a0eaedfea76f350cf78c42c0c9feae820ed47e72700b21c8",
+      "bytes": 7726,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 5638,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/955_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/955_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/955_3.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/955_4.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/955_5.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/955.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig52.jpg",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig53.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig54.gif"
+      ]
+    },
+    {
+      "path": "documents/lieux/doc-a2d.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-a2d.html",
+      "status": 200,
+      "sha256": "fcebcbfaf3542468e7195a20325021c0e35329b06a8dc68f67af3589a5171ebf",
+      "bytes": 8213,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 6389,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/957_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/957_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/957_3.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/957_4.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/957_5.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/957.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig56.gif"
+      ]
+    },
+    {
+      "path": "documents/lieux/doc-a2e.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-a2e.html",
+      "status": 200,
+      "sha256": "bc5850ae79cc048035de95f79eb82a404a5ba00832246b6b03ceb257202c5f1f",
+      "bytes": 6360,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 4646,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/960_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/960_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/960_3.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/960_4.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/960_5.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/960.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig59.jpg"
+      ]
+    },
+    {
+      "path": "documents/lieux/doc-a2f.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-a2f.html",
+      "status": 200,
+      "sha256": "7ff4fafd66f13bfea42b7dcbe6f839db0ec2ef5594e2ccb4249c872039040253",
+      "bytes": 5371,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3556,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/963_1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/963_2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/963_3.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/963_4.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/963_5.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/963.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig61.jpg",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig62.gif"
+      ]
+    },
+    {
+      "path": "documents/lieux/doc-a2g.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-a2g.html",
+      "status": 200,
+      "sha256": "767b938cd684d080de4bbd99e39e1addf0e3e4254f81f6a02e5e85b3e6e414a5",
+      "bytes": 4467,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3337,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/966.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig64.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig65a.jpg",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig65b.jpg"
+      ]
+    },
+    {
+      "path": "documents/lieux/doc-a3a.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-a3a.html",
+      "status": 200,
+      "sha256": "f520a934d9732f7c1bbf750fdc294aebb1e380d20cb30059dfc9c9d72fa5512b",
+      "bytes": 4836,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3338,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/940_a1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/940_a2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/940_a3.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/940_a4.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/940_a5.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/9401.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig67.jpg"
+      ]
+    },
+    {
+      "path": "documents/lieux/doc-a3b.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-a3b.html",
+      "status": 200,
+      "sha256": "737b623b6c72c56267ccca450d76b2c2ccc83aab685fa88e7865250a49ea74a0",
+      "bytes": 5112,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3544,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/940_b1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/940_b2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/940_b3.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/940_b4.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/940_b5.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/9402.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig68.jpg"
+      ]
+    },
+    {
+      "path": "documents/lieux/doc-a3c.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-a3c.html",
+      "status": 200,
+      "sha256": "acc10110d37a490cd0986cd62532d73516d7f8fc158a7434ba2d26b91284ee5a",
+      "bytes": 5472,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3736,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/940_c1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/940_c2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/940_c3.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/940_c4.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/940_c5.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/9403.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig69.jpg",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig70a.jpg",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig70b.jpg"
+      ]
+    },
+    {
+      "path": "documents/lieux/doc-a3d.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-a3d.html",
+      "status": 200,
+      "sha256": "9a97807462781b45bf9344edf2829a3995de89f06149865d6d35395f2feb2481",
+      "bytes": 5332,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3858,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/940_d1.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/940_d2.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/940_d3.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/940_d4.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/circulation/940_d5.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/9404.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig71.jpg"
+      ]
+    },
+    {
+      "path": "documents/lieux/doc-a3e.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-a3e.html",
+      "status": 200,
+      "sha256": "23076d44e98de93eaf46bda6edf8955ead3b436dd9908cf0316678dc037f5196",
+      "bytes": 3482,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2718,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/9405.gif"
+      ]
+    },
+    {
+      "path": "documents/lieux/doc-a3f.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-a3f.html",
+      "status": 200,
+      "sha256": "310b2516080518ea5e2b4c84ab0d510b646894972c246ab75158850d8805cd89",
+      "bytes": 2520,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 1610,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/9406.gif",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig73a.jpg",
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/fig73b.jpg"
+      ]
+    },
+    {
+      "path": "documents/lieux/doc-a4.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-a4.html",
+      "status": 200,
+      "sha256": "7847477a969c37ee44ee5a5d737ff28b403067742dae20b1ab24a494caaf9672",
+      "bytes": 3037,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 2224,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/9407.gif"
+      ]
+    },
+    {
+      "path": "documents/lieux/doc-carte.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-carte.html",
+      "status": 404
+    },
+    {
+      "path": "documents/lieux/doc-a1.html",
+      "url": "https://www.nyon.ch/plan-directeur/documents/lieux/doc-a1.html",
+      "status": 200,
+      "sha256": "4bf69cec1977e1f09eb9b59f7944bf7806122db8cd8443ce215499c62a787c2c",
+      "bytes": 9656,
+      "title": "Ville de Nyon - Plan directeur communal 2000",
+      "text_chars": 3575,
+      "image_urls": [
+        "https://www.nyon.ch/plan-directeur/documents/lieux/plans/940.gif"
+      ]
+    }
+  ],
+  "snapshot_sha256": "b9802194e0acc6b8052b393ed1bc31473c5bf9147b1979617133a21d401facd3",
+  "status": "legacy_source_inventory_not_pdf_or_geographic_coverage",
+  "limit": "Literal published HTML index only; no JavaScript execution, obsolete viewer installation or claimed2004byte-version equivalence."
+}
