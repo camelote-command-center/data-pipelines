@@ -1,0 +1,351 @@
+{
+  "count_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?geometry=2529756.9633444506%2C1174043.5295034887%2C2532366.489838514%2C1176736.0371855586&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=1%3D1&returnCountOnly=true&f=json",
+  "bounds_lv95": [
+    2529756.9633444506,
+    1174043.5295034887,
+    2532366.489838514,
+    1176736.0371855586
+  ],
+  "count": 2167,
+  "pages": [
+    {
+      "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?geometry=2529756.9633444506%2C1174043.5295034887%2C2532366.489838514%2C1176736.0371855586&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=1%3D1&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CGENRE_TXT&outSR=2056&f=geojson&orderByFields=OBJECTID&resultOffset=0&resultRecordCount=1000",
+      "sha256": "bc3f183762bbacd8c7ebd0c3730e35c0f3b8dbe983b75415acf8758669cbadeb",
+      "rows": 1000
+    },
+    {
+      "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?geometry=2529756.9633444506%2C1174043.5295034887%2C2532366.489838514%2C1176736.0371855586&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=1%3D1&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CGENRE_TXT&outSR=2056&f=geojson&orderByFields=OBJECTID&resultOffset=1000&resultRecordCount=1000",
+      "sha256": "972d370c47c5854fcf01095105ca61f11ac17878f2d5e6d3f5feb7dbb15acb6a",
+      "rows": 1000
+    },
+    {
+      "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?geometry=2529756.9633444506%2C1174043.5295034887%2C2532366.489838514%2C1176736.0371855586&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=1%3D1&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CGENRE_TXT&outSR=2056&f=geojson&orderByFields=OBJECTID&resultOffset=2000&resultRecordCount=1000",
+      "sha256": "39d7745d7beea05eb3f8ab01304b4e039d4a8baa70eea40c75120dfe5d71cc2b",
+      "rows": 167
+    }
+  ],
+  "outliers": [
+    {
+      "source_index": 370,
+      "rcb_distance_m": 8.272421394456256,
+      "nearest_footprint_distance_m": 0.0,
+      "nearest_footprint_properties": {
+        "OBJECTID": 46482811,
+        "EGID": 818507,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "best_overlap_footprint_properties": {
+        "OBJECTID": 46482811,
+        "EGID": 818507,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "source_area_m2": 227.97646578173328,
+      "overlap_area_m2": 211.71896757304756,
+      "intersection_over_union": 0.8736656634162496,
+      "lv95": [
+        2530740.2087130793,
+        1175184.024687908
+      ]
+    },
+    {
+      "source_index": 440,
+      "rcb_distance_m": 16.25022947965482,
+      "nearest_footprint_distance_m": 0.0,
+      "nearest_footprint_properties": {
+        "OBJECTID": 46292303,
+        "EGID": 280138000,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "best_overlap_footprint_properties": {
+        "OBJECTID": 46537617,
+        "EGID": null,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent s-sol"
+      },
+      "source_area_m2": 140.87040623108746,
+      "overlap_area_m2": 71.66642898550921,
+      "intersection_over_union": 0.24386631302019485,
+      "lv95": [
+        2530820.7970819813,
+        1176071.1892049364
+      ]
+    },
+    {
+      "source_index": 470,
+      "rcb_distance_m": 12.086714241097653,
+      "nearest_footprint_distance_m": 0.0,
+      "nearest_footprint_properties": {
+        "OBJECTID": 46368442,
+        "EGID": null,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "best_overlap_footprint_properties": {
+        "OBJECTID": 46368442,
+        "EGID": null,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "source_area_m2": 115.06397198661091,
+      "overlap_area_m2": 105.05424672268937,
+      "intersection_over_union": 0.8556299948958622,
+      "lv95": [
+        2530841.680082066,
+        1176311.9693769845
+      ]
+    },
+    {
+      "source_index": 575,
+      "rcb_distance_m": 13.332426627985036,
+      "nearest_footprint_distance_m": 2.268459838681371,
+      "nearest_footprint_properties": {
+        "OBJECTID": 46316598,
+        "EGID": 280134849,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "best_overlap_footprint_properties": {
+        "OBJECTID": 46316598,
+        "EGID": 280134849,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "source_area_m2": 104.67047849346173,
+      "overlap_area_m2": 32.83382615025998,
+      "intersection_over_union": 0.053362803068617515,
+      "lv95": [
+        2530976.9197684256,
+        1175943.193486612
+      ]
+    },
+    {
+      "source_index": 615,
+      "rcb_distance_m": 10.892866551692894,
+      "nearest_footprint_distance_m": 0.0,
+      "nearest_footprint_properties": {
+        "OBJECTID": 46481290,
+        "EGID": null,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "best_overlap_footprint_properties": {
+        "OBJECTID": 46481290,
+        "EGID": null,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "source_area_m2": 93.55894437169493,
+      "overlap_area_m2": 82.5600921912679,
+      "intersection_over_union": 0.5158387586069069,
+      "lv95": [
+        2531079.6513463734,
+        1175349.489280589
+      ]
+    },
+    {
+      "source_index": 650,
+      "rcb_distance_m": 25.169476353966452,
+      "nearest_footprint_distance_m": 20.77105694060845,
+      "nearest_footprint_properties": {
+        "OBJECTID": 46496900,
+        "EGID": 280022028,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "best_overlap_footprint_properties": null,
+      "source_area_m2": 524.4242116241198,
+      "overlap_area_m2": 0.0,
+      "intersection_over_union": 0.0,
+      "lv95": [
+        2531274.1188806533,
+        1175370.0491258036
+      ]
+    },
+    {
+      "source_index": 670,
+      "rcb_distance_m": 23.465769352055855,
+      "nearest_footprint_distance_m": 7.109971987675701,
+      "nearest_footprint_properties": {
+        "OBJECTID": 46285787,
+        "EGID": 280000981,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "best_overlap_footprint_properties": null,
+      "source_area_m2": 57.35372931469549,
+      "overlap_area_m2": 0.0,
+      "intersection_over_union": 0.0,
+      "lv95": [
+        2531323.864676494,
+        1175158.5192871233
+      ]
+    },
+    {
+      "source_index": 680,
+      "rcb_distance_m": 24.821720510952456,
+      "nearest_footprint_distance_m": 0.0,
+      "nearest_footprint_properties": {
+        "OBJECTID": 46323526,
+        "EGID": 280000168,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "best_overlap_footprint_properties": {
+        "OBJECTID": 46323526,
+        "EGID": 280000168,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "source_area_m2": 14106.361188528123,
+      "overlap_area_m2": 13925.133673599907,
+      "intersection_over_union": 0.9794928462899343,
+      "lv95": [
+        2531475.8514165916,
+        1175200.5974772128
+      ]
+    },
+    {
+      "source_index": 695,
+      "rcb_distance_m": 12.663303325539157,
+      "nearest_footprint_distance_m": 5.638489835790502,
+      "nearest_footprint_properties": {
+        "OBJECTID": 46393478,
+        "EGID": 280007576,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "best_overlap_footprint_properties": null,
+      "source_area_m2": 93.20133701829282,
+      "overlap_area_m2": 0.0,
+      "intersection_over_union": 0.0,
+      "lv95": [
+        2531518.757406821,
+        1175114.23699913
+      ]
+    },
+    {
+      "source_index": 845,
+      "rcb_distance_m": 13.274859692955223,
+      "nearest_footprint_distance_m": 0.0,
+      "nearest_footprint_properties": {
+        "OBJECTID": 46538136,
+        "EGID": null,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent s-sol"
+      },
+      "best_overlap_footprint_properties": {
+        "OBJECTID": 46538136,
+        "EGID": null,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent s-sol"
+      },
+      "source_area_m2": 286.407939711103,
+      "overlap_area_m2": 286.40793971110287,
+      "intersection_over_union": 0.15648195952832988,
+      "lv95": [
+        2530411.675035583,
+        1176321.8312431998
+      ]
+    },
+    {
+      "source_index": 1145,
+      "rcb_distance_m": 5.496162668313173,
+      "nearest_footprint_distance_m": 0.0,
+      "nearest_footprint_properties": {
+        "OBJECTID": 46386863,
+        "EGID": 818295,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "best_overlap_footprint_properties": {
+        "OBJECTID": 46386863,
+        "EGID": 818295,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "source_area_m2": 246.25837835142323,
+      "overlap_area_m2": 229.12570568110397,
+      "intersection_over_union": 0.8798764767778394,
+      "lv95": [
+        2530735.6373806424,
+        1175613.2042083298
+      ]
+    },
+    {
+      "source_index": 1345,
+      "rcb_distance_m": 5.213189594947555,
+      "nearest_footprint_distance_m": 0.0,
+      "nearest_footprint_properties": {
+        "OBJECTID": 46361234,
+        "EGID": 280080205,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "best_overlap_footprint_properties": {
+        "OBJECTID": 46361234,
+        "EGID": 280080205,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "source_area_m2": 293.9341022841022,
+      "overlap_area_m2": 280.5321456589707,
+      "intersection_over_union": 0.912435960442381,
+      "lv95": [
+        2530983.6386093125,
+        1174926.2666545801
+      ]
+    },
+    {
+      "source_index": 1480,
+      "rcb_distance_m": 23.366155464191934,
+      "nearest_footprint_distance_m": 0.0,
+      "nearest_footprint_properties": {
+        "OBJECTID": 46511501,
+        "EGID": 280062765,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "best_overlap_footprint_properties": {
+        "OBJECTID": 46511501,
+        "EGID": 280062765,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "source_area_m2": 30.112854739892985,
+      "overlap_area_m2": 30.112854739892985,
+      "intersection_over_union": 0.0031865179936895844,
+      "lv95": [
+        2531537.990250717,
+        1174934.1772124118
+      ]
+    },
+    {
+      "source_index": 1490,
+      "rcb_distance_m": 6.045838403484705,
+      "nearest_footprint_distance_m": 0.0,
+      "nearest_footprint_properties": {
+        "OBJECTID": 46315119,
+        "EGID": 9082192,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "best_overlap_footprint_properties": {
+        "OBJECTID": 46315119,
+        "EGID": 9082192,
+        "NO_COM_FED": 5757,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "source_area_m2": 14231.096875789262,
+      "overlap_area_m2": 14091.423058773977,
+      "intersection_over_union": 0.9777149198282233,
+      "lv95": [
+        2531762.485200534,
+        1174505.9736626013
+      ]
+    }
+  ],
+  "limit": "Current official footprints help explain centroid offsets; not surveyed control or proof of source currentness. Shared cadastral provenance may remain."
+}

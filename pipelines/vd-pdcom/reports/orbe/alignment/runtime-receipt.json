@@ -1,0 +1,27 @@
+{
+  "operation_id": "bfa8b074-8600-45d7-99c7-4ea8cf62fb5d",
+  "stage": "orbe_main_map_alignment",
+  "document_id": "464c3687-bdd2-55b4-9e35-f8ece05099cb",
+  "source_sha256": "8b78d42eb83210b6b63404dd8b4270fedd15d1b7e3d65d2a403d6edcee654a3c",
+  "source_pdf_page": 1,
+  "source_building_components": 1528,
+  "reference_points": 2173,
+  "holdout_count": 306,
+  "holdout_under5m": 292,
+  "holdout_median_m": 0.5532824526877126,
+  "holdout_p90_m": 2.200160267364761,
+  "holdout_rmse_m": 3.5693651967261175,
+  "official_footprints": 2167,
+  "holdout_outliers": 14,
+  "outlier_centroids_inside_footprints": 10,
+  "priority_boundary_areas_m2": {
+    "inner": 1273452.470213232,
+    "outer": 1324822.3416821836,
+    "band": 51369.87146895076
+  },
+  "priority_boundaries_wholly_inside_orbe": true,
+  "status": "research_alignment_not_validated_sector",
+  "artifact_path": "pipelines/vd-pdcom/reports/orbe/alignment",
+  "verification": "Full fit reproduced exactly; all14 outlier footprint overlays visually reviewed; page-count/unique-OBJECTID checks for2167 official footprints; both research boundary variants inside official commune.",
+  "limits": "Four centroid outliers outside footprints; other shape overlaps range from near-identical to partial or tiny. Causes unresolved. Point fit/footprint containment are not surveyed accuracy or full version equivalence. No parcel candidates created. Exact plan-version approval and category grouping remain pending."
+}

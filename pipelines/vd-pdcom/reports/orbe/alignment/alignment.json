@@ -1,0 +1,107 @@
+{
+  "parameters": [
+    2.210359024714013e-06,
+    3.527948598260548,
+    -705.4164370570855,
+    -171.94230117688508
+  ],
+  "source_origin_y_flipped": [
+    1062.1324103968336,
+    -787.7518559649518
+  ],
+  "reference_origin_lv95": [
+    2531500.0,
+    1175500.0
+  ],
+  "source_count": 1528,
+  "reference_count": 2173,
+  "train_count": 1222,
+  "holdout_count": 306,
+  "holdout_under5m": 292,
+  "holdout_median_m": 0.5532824526877126,
+  "holdout_p90_m": 2.200160267364761,
+  "holdout_rmse_m": 3.5693651967261175,
+  "solutions": [
+    {
+      "training_under5m": 1162,
+      "training_median_m": 0.5969924617461957,
+      "parameters": [
+        2.210359024714013e-06,
+        3.527948598260548,
+        -705.4164370570855,
+        -171.94230117688508
+      ]
+    },
+    {
+      "training_under5m": 1162,
+      "training_median_m": 0.596992461963437,
+      "parameters": [
+        2.2103591358808903e-06,
+        3.5279485982604153,
+        -705.4164370572221,
+        -171.94230117628518
+      ]
+    },
+    {
+      "training_under5m": 1162,
+      "training_median_m": 0.5969924623196987,
+      "parameters": [
+        2.210359500610523e-06,
+        3.527948598260221,
+        -705.4164370571962,
+        -171.94230117650653
+      ]
+    },
+    {
+      "training_under5m": 1162,
+      "training_median_m": 0.596992462321273,
+      "parameters": [
+        2.2103595613277414e-06,
+        3.527948598260973,
+        -705.4164370572059,
+        -171.94230117695716
+      ]
+    },
+    {
+      "training_under5m": 1162,
+      "training_median_m": 0.5969924624022204,
+      "parameters": [
+        2.210359609670824e-06,
+        3.52794859826006,
+        -705.4164370572224,
+        -171.94230117670358
+      ]
+    },
+    {
+      "training_under5m": 1162,
+      "training_median_m": 0.596992462627835,
+      "parameters": [
+        2.210359732846983e-06,
+        3.5279485982601275,
+        -705.4164370572445,
+        -171.94230117616027
+      ]
+    },
+    {
+      "training_under5m": 224,
+      "training_median_m": 11.93733802926792,
+      "parameters": [
+        0.01359033283640276,
+        3.364114587189052,
+        -712.2085979863253,
+        -184.3470056738685
+      ]
+    },
+    {
+      "training_under5m": 206,
+      "training_median_m": 12.764661881112495,
+      "parameters": [
+        -0.0001315322927413704,
+        3.308931362258491,
+        -707.3798089393484,
+        -190.92236573002606
+      ]
+    }
+  ],
+  "interpretation": "Exploratory nearest RCB point fit; fixed prefit every fifth source holdout. Not surveyed accuracy, identified point correspondence or validated geographic sectors."
+}
