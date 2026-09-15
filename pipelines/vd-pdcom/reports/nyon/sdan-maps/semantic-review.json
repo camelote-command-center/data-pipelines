@@ -1,0 +1,137 @@
+{
+  "document_id": "bd31519f-f1a2-5579-9ee0-e852f082d1dc",
+  "source_sha256": "35b62cc028b93a649c7b752c14c2e549bee6ac5d207f1c3033ecf55445b5a729",
+  "reviewed_at": "2026-09-15",
+  "reviewed_pages": [
+    12,
+    13,
+    20,
+    21,
+    22,
+    23,
+    30
+  ],
+  "classification": "historical intercommunal strategic concepts; not present-day parcel rights",
+  "scope": {
+    "approval_date": "2006-02-16",
+    "approval_evidence_pdf_page": 1,
+    "orientation_scope_pdf_page": 5,
+    "currentness": "unverified",
+    "note": "Formal approval and contractual commitment described for this orientation report do not turn its concept sketches into cadastral boundaries. Detailed planning remains required (PDF13). PDF19 says internal densification potential was not estimated."
+  },
+  "key_sector_groups": [
+    {
+      "key": "eysins",
+      "label": "Secteur-clé d’Eysins",
+      "named_commune_bfs": 5716,
+      "text_pdf_page": 21,
+      "map_pdf_page": 20,
+      "map_names": [
+        "eysins-landscape",
+        "eysins-urban"
+      ],
+      "historical_additional_population_approx": 1000,
+      "historical_additional_jobs_approx": 400,
+      "quantitative_scope": "All described development sectors on both sides of Route de Crassier together; not solely the Chise shape or each colored component.",
+      "map_local_legend": {
+        "blue": "activities and shops",
+        "orange": "medium-density housing",
+        "hatching": "possible long-term housing option"
+      },
+      "conditions": [
+        "North sector at Chise is quantitatively decisive.",
+        "For very long term the source explores village densification or a new area south; municipality initially favors densification."
+      ],
+      "geographic_attribution_verified": false
+    },
+    {
+      "key": "prangins",
+      "label": "Secteur-clé de Prangins",
+      "named_commune_bfs": 5725,
+      "text_pdf_page": 21,
+      "map_pdf_page": 20,
+      "map_names": [
+        "prangins-landscape-urban",
+        "prangins-uses"
+      ],
+      "historical_additional_population_approx": 3000,
+      "historical_additional_jobs_approx": 2000,
+      "quantitative_scope": "All potential north of Route de l’Etraz, not each polygon. The separate approximate 40% refers to all development sectors north AND south.",
+      "map_local_legend": {
+        "blue": "activities",
+        "orange": "medium-density housing",
+        "hatching": "mixed housing and activities",
+        "gray": "public facility",
+        "red": "shops"
+      },
+      "conditions": [
+        "Strong public transport service and public facilities required.",
+        "Do not overwrite the later Prangins communal pilot with this historical regional concept."
+      ],
+      "geographic_attribution_verified": false
+    },
+    {
+      "key": "nyon-long-term",
+      "label": "Secteur-clé de Nyon (long terme)",
+      "named_commune_bfs": 5724,
+      "text_pdf_page": 23,
+      "map_pdf_page": 22,
+      "map_names": [
+        "nyon-long-term-landscape",
+        "nyon-long-term-urban"
+      ],
+      "historical_additional_population_approx_range": [
+        2000,
+        3000
+      ],
+      "historical_area_ha": 24,
+      "historical_additional_jobs_approx": null,
+      "quantitative_scope": "Long-term reserve north of the RDU; jobs and shops mentioned without a numerical jobs estimate. Do not conflate the separate citywide 40% to horizon 2020 with this reserve.",
+      "map_local_legend": null,
+      "conditions": [
+        "Use all densification possibilities to reach Nyon 25,000 inhabitants before considering development north of the RDU.",
+        "Hatch/fill categories need explicit source mapping; do not borrow the Eysins or Prangins legend by color alone."
+      ],
+      "geographic_attribution_verified": false
+    },
+    {
+      "key": "vuarpilliere-mondre-asse",
+      "label": "Secteur-clé de La Vuarpillière – Mondre – L’Asse",
+      "named_commune_bfs": null,
+      "text_pdf_page": 23,
+      "map_pdf_page": 22,
+      "map_names": [
+        "vuarpilliere-mondre-asse-landscape-urban",
+        "vuarpilliere-mondre-asse-urban"
+      ],
+      "historical_additional_population_approx": null,
+      "historical_additional_jobs_approx": 1400,
+      "quantitative_scope": "Site-wide indicative jobs, explicitly variable with enterprise type; no split among map patches.",
+      "map_local_legend": null,
+      "conditions": [
+        "L’Asse described for technical/public infrastructure and a possible regional P+R.",
+        "Fléchères Nord discussed separately for car-dependent activities and low employment density.",
+        "Current commune attribution must be computed from independently aligned boundaries, not inferred from the report title."
+      ],
+      "geographic_attribution_verified": false
+    }
+  ],
+  "geography": {
+    "status": "not_georeferenced",
+    "new_sectors_delivered": 0,
+    "pixel_shapes_extracted": false,
+    "source_map_count": 10,
+    "urban_legend_symbol_count": 23,
+    "limitations": [
+      "Map pages12/20/22/30 contain raster thematic content; the two vector paths per page are header/footer rules.",
+      "Individual detailed panels range from 521 to 838 pixels per dimension; source resolution limits eventual boundary accuracy.",
+      "PDF30 colored outlines identify workstreams, not interchangeable development-sector polygons.",
+      "The overall map legend distinguishes existing-zone potential, densification, outside-zone potential, long-term outside-zone potential and peripheral zones without densification; preserve all distinctions."
+    ]
+  },
+  "next_steps": [
+    "Prioritize Eysins urban panel: distinguish solid housing/activity areas from hatched long-term option before extracting pixel outlines.",
+    "Seek better official map resolution or explicit reference correspondences before geographic alignment.",
+    "Use separate validation controls and current commune attribution before parcel intersection; retain 2006 vintage and historical conditions."
+  ]
+}
