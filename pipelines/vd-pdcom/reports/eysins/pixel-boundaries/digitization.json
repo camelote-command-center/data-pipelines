@@ -1,0 +1,338 @@
+{
+  "document_id": "bd31519f-f1a2-5579-9ee0-e852f082d1dc",
+  "source_pdf_sha256": "35b62cc028b93a649c7b752c14c2e549bee6ac5d207f1c3033ecf55445b5a729",
+  "pdf_page": 20,
+  "printed_page": 16,
+  "image_xref": 115,
+  "source_image": "../../nyon/sdan-maps/images/eysins-urban.jpeg",
+  "source_image_sha256": "716b0b482014eea872c6338bcca06b857d008aec73766bb2c665d377f07ea42e",
+  "image_size": [
+    524,
+    469
+  ],
+  "coordinates": "original_image_pixels_top_left_y_down",
+  "crs": null,
+  "method": "manual visual digitization of indicative colored envelopes; source-specific research, not automated boundary detection",
+  "geographic_validation": "pending",
+  "receiver_release": "not_ready",
+  "features": [
+    {
+      "id": "E1",
+      "category": "medium_density_housing",
+      "ring_pixels": [
+        [
+          95,
+          186
+        ],
+        [
+          139,
+          40
+        ],
+        [
+          165,
+          56
+        ],
+        [
+          182,
+          79
+        ],
+        [
+          201,
+          115
+        ],
+        [
+          217,
+          143
+        ],
+        [
+          234,
+          175
+        ],
+        [
+          211,
+          184
+        ],
+        [
+          200,
+          165
+        ],
+        [
+          187,
+          156
+        ],
+        [
+          177,
+          148
+        ],
+        [
+          169,
+          150
+        ],
+        [
+          165,
+          169
+        ],
+        [
+          170,
+          184
+        ],
+        [
+          181,
+          201
+        ],
+        [
+          152,
+          212
+        ],
+        [
+          117,
+          220
+        ],
+        [
+          117,
+          190
+        ],
+        [
+          95,
+          186
+        ]
+      ],
+      "limitation": "Large north housing illustration, with the conspicuous southeast white indentation excluded. Internal base-map lines/buildings remain; not net developable land."
+    },
+    {
+      "id": "E2",
+      "category": "medium_density_housing",
+      "ring_pixels": [
+        [
+          111,
+          235
+        ],
+        [
+          139,
+          229
+        ],
+        [
+          180,
+          214
+        ],
+        [
+          178,
+          220
+        ],
+        [
+          149,
+          238
+        ],
+        [
+          128,
+          248
+        ],
+        [
+          110,
+          253
+        ],
+        [
+          108,
+          247
+        ],
+        [
+          111,
+          235
+        ]
+      ],
+      "limitation": "Narrow housing patch south of the central road; endpoint and road-edge precision limited."
+    },
+    {
+      "id": "E3",
+      "category": "medium_density_housing",
+      "ring_pixels": [
+        [
+          213,
+          199
+        ],
+        [
+          243,
+          185
+        ],
+        [
+          247,
+          189
+        ],
+        [
+          216,
+          205
+        ],
+        [
+          213,
+          199
+        ]
+      ],
+      "limitation": "Narrow housing strip southeast of main patch; only a few pixels wide."
+    },
+    {
+      "id": "E4",
+      "category": "medium_density_housing",
+      "ring_pixels": [
+        [
+          302,
+          180
+        ],
+        [
+          336,
+          183
+        ],
+        [
+          335,
+          203
+        ],
+        [
+          313,
+          202
+        ],
+        [
+          307,
+          198
+        ],
+        [
+          302,
+          180
+        ]
+      ],
+      "limitation": "Small northeast housing patch; surrounding pale/yellow transition uncertain."
+    },
+    {
+      "id": "E5",
+      "category": "medium_density_housing",
+      "ring_pixels": [
+        [
+          300,
+          214
+        ],
+        [
+          311,
+          210
+        ],
+        [
+          311,
+          231
+        ],
+        [
+          292,
+          236
+        ],
+        [
+          293,
+          225
+        ],
+        [
+          300,
+          214
+        ]
+      ],
+      "limitation": "Small southeast housing patch; black building symbols obscure part of paint."
+    },
+    {
+      "id": "E6",
+      "category": "activities_and_shops",
+      "ring_pixels": [
+        [
+          347,
+          143
+        ],
+        [
+          401,
+          118
+        ],
+        [
+          470,
+          84
+        ],
+        [
+          475,
+          96
+        ],
+        [
+          450,
+          127
+        ],
+        [
+          422,
+          150
+        ],
+        [
+          385,
+          170
+        ],
+        [
+          362,
+          177
+        ],
+        [
+          353,
+          159
+        ],
+        [
+          347,
+          143
+        ]
+      ],
+      "limitation": "Blue activity/shop envelope; internal uncolored separators are retained inside gross envelope."
+    },
+    {
+      "id": "E7",
+      "category": "possible_long_term_housing_option",
+      "ring_pixels": [
+        [
+          245,
+          274
+        ],
+        [
+          250,
+          270
+        ],
+        [
+          306,
+          305
+        ],
+        [
+          311,
+          317
+        ],
+        [
+          267,
+          367
+        ],
+        [
+          246,
+          360
+        ],
+        [
+          231,
+          348
+        ],
+        [
+          222,
+          329
+        ],
+        [
+          231,
+          294
+        ],
+        [
+          245,
+          274
+        ]
+      ],
+      "limitation": "Hatched possible long-term housing option only; follows visible colored envelope, not the dashed road/line extending farther south."
+    }
+  ],
+  "limits": [
+    "Seven illustrated color envelopes, not seven legally defined sectors or parcels.",
+    "2006 strategic plan; current unused capacity is not established.",
+    "Historical 1000 residents / 400 jobs applies across described Eysins development sectors, never assigned per shape.",
+    "Gross source envelopes; internal building/road symbols and pale transitions do not define net buildable area.",
+    "Source hatching reviewed from the Eysins local legend; Prangins hatch semantics must not be reused.",
+    "No geographic coordinates, parcel intersections or delivery changes.",
+    "No assertion of complete Eysins planning coverage."
+  ]
+}
