@@ -1,0 +1,133 @@
+{
+  "github_run_id": 35029823718,
+  "head_sha": "9d41a7563a159a2c507dfa4e017a47b64c9305d8",
+  "conclusion": "success",
+  "discovery_operation_id": "3b94807a-7329-4323-bbf3-f0d365dfc1ee",
+  "processed": 30,
+  "new_candidates": 0,
+  "unresolved_due_remaining_at_check": 213,
+  "discovery_lock_holders_at_check": 0,
+  "verified_attempts": [
+    {
+      "commune_bfs": 5404,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5405,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5407,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5408,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5410,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5411,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5412,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5413,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5414,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5415,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5423,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5425,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5426,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5427,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5428,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5429,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5430,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5431,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5434,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5435,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5436,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5437,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5451,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5456,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5458,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5464,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5471,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5472,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5473,
+      "outcome": "manual_search_required"
+    },
+    {
+      "commune_bfs": 5474,
+      "outcome": "manual_search_required"
+    }
+  ],
+  "full_acquisition_verified": false
+}
