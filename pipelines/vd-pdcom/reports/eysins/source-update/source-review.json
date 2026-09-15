@@ -1,0 +1,653 @@
+{
+  "commune_bfs": 5716,
+  "discovery_fix": "Read inert i-web data-entities table rows and preserve referring-page/row-label context; generic numeric downloads on PDCom-heading pages retained as unverified landing candidates.",
+  "page_evidence": [
+    {
+      "url": "https://www.eysins.ch/police-constructions",
+      "retrieved_date": "2026-09-15",
+      "html_sha256": "72cd12dbe1bc815f6aa4684e3bdeb81e8482ed1a23323f9422924f04328f8a5c",
+      "table_fixture": "police-constructions-tables.html",
+      "embedded_links": [
+        {
+          "href": "/_rte/publikation/552676",
+          "label": "Règlement général sur les constructions et l'aménagement du territoire 2017 (Règlement communal)",
+          "row_context": "Règlement général sur les constructions et l'aménagement du territoire 2017 (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/552691",
+          "label": "Règlement sur la protection des arbres 2019 (Règlement communal)",
+          "row_context": "Règlement sur la protection des arbres 2019 (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/552697",
+          "label": "Règlement du fonds communal pour les économies d'énergie et les énergies renouvelables 2020 (Règlement communal) Téléchargement",
+          "row_context": "Règlement du fonds communal pour les économies d'énergie et les énergies renouvelables 2020 (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/552700",
+          "label": "Règlement concernant les émoluments administratifs en matière d'aménagement du territoire et des constructions 2009  (Règlement communal) Téléchargement",
+          "row_context": "Règlement concernant les émoluments administratifs en matière d'aménagement du territoire et des constructions 2009  (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/553327",
+          "label": "Plan de zones 1999 (Règlement communal)",
+          "row_context": "Plan de zones 1999 (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/553339",
+          "label": "Règlement sur l'évacuation et l'épuration des eaux 1994 (Règlement communal) Téléchargement",
+          "row_context": "Règlement sur l'évacuation et l'épuration des eaux 1994 (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/553345",
+          "label": "Règlement sur les procédés de réclame 2003 (Règlement communal)",
+          "row_context": "Règlement sur les procédés de réclame 2003 (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/553366",
+          "label": "Formulaires de demande",
+          "row_context": "Formulaires de demande"
+        }
+      ],
+      "ordinary_links_inside_tables_before": 0,
+      "recovered_link_count": 8
+    },
+    {
+      "url": "https://www.eysins.ch/reglements-communaux",
+      "retrieved_date": "2026-09-15",
+      "html_sha256": "2834d4759516c560028e663e5cde031382787f0333282495e102e9e774888f56",
+      "table_fixture": "reglements-communaux-tables.html",
+      "embedded_links": [
+        {
+          "href": "/_rte/publikation/552664",
+          "label": "Règlement de la taxe de séjour et taxe sur les résidences secondaires 2024 (Règlement communal) Téléchargement",
+          "row_context": "Règlement de la taxe de séjour et taxe sur les résidences secondaires 2024 (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/552667",
+          "label": "Règlement du Conseil communal 2014 (Règlement communal) Téléchargement",
+          "row_context": "Règlement du Conseil communal 2014 (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/552676",
+          "label": "Règlement général sur les constructions et l'aménagement du territoire 2017 (Règlement communal)",
+          "row_context": "Règlement général sur les constructions et l'aménagement du territoire 2017 (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/552679",
+          "label": "Directives sur la gestion des déchets urbains 2023 (Règlement communal) Téléchargement",
+          "row_context": "Directives sur la gestion des déchets urbains 2023 (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/552682",
+          "label": "Plan partiel d'affectation (PPA) Terre Bonne - Le Nipy 2009  (Règlement communal) Téléchargement",
+          "row_context": "Plan partiel d'affectation (PPA) Terre Bonne - Le Nipy 2009  (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/552688",
+          "label": "Règlement sur la gestion des déchets 2012 (Règlement communal) Téléchargement",
+          "row_context": "Règlement sur la gestion des déchets 2012 (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/552691",
+          "label": "Règlement sur la protection des arbres 2019 (Règlement communal)",
+          "row_context": "Règlement sur la protection des arbres 2019 (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/552697",
+          "label": "Règlement du fonds communal pour les économies d'énergie et les énergies renouvelables 2020 (Règlement communal) Téléchargement",
+          "row_context": "Règlement du fonds communal pour les économies d'énergie et les énergies renouvelables 2020 (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/552700",
+          "label": "Règlement concernant les émoluments administratifs en matière d'aménagement du territoire et des constructions 2009  (Règlement communal) Téléchargement",
+          "row_context": "Règlement concernant les émoluments administratifs en matière d'aménagement du territoire et des constructions 2009  (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/553327",
+          "label": "Plan de zones 1999 (Règlement communal)",
+          "row_context": "Plan de zones 1999 (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/553333",
+          "label": "Règlement et tarif des émoluments du contrôle des habitants 2022 (Règlement communal) Téléchargement",
+          "row_context": "Règlement et tarif des émoluments du contrôle des habitants 2022 (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/553339",
+          "label": "Règlement sur l'évacuation et l'épuration des eaux 1994 (Règlement communal) Téléchargement",
+          "row_context": "Règlement sur l'évacuation et l'épuration des eaux 1994 (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/553342",
+          "label": "Règlement général de Police 2017 (Règlement communal) Téléchargement",
+          "row_context": "Règlement général de Police 2017 (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/553345",
+          "label": "Règlement sur les procédés de réclame 2003 (Règlement communal)",
+          "row_context": "Règlement sur les procédés de réclame 2003 (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/553351",
+          "label": "Règlement communal sur le subventionnement des études musicales 2016 (Règlement communal)",
+          "row_context": "Règlement communal sur le subventionnement des études musicales 2016 (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/553357",
+          "label": "Directives de subventionnement pour l'achat de vélos 2024 (Règlement communal)",
+          "row_context": "Directives de subventionnement pour l'achat de vélos 2024 (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/553372",
+          "label": "Directives d'affichage public (Règlement communal) Téléchargement",
+          "row_context": "Directives d'affichage public (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/580492",
+          "label": "Règlement du personnel (Règlement communal) Téléchargement",
+          "row_context": "Règlement du personnel (Règlement communal)"
+        },
+        {
+          "href": "/_rte/publikation/593981",
+          "label": "Règlement communal des sépultures et du cimetière d'Eysins (Règlement communal)",
+          "row_context": "Règlement communal des sépultures et du cimetière d'Eysins (Règlement communal)"
+        }
+      ],
+      "ordinary_links_inside_tables_before": 0,
+      "recovered_link_count": 19
+    }
+  ],
+  "documents": [
+    {
+      "url": "https://www.eysins.ch/_doc/5650969",
+      "final_url": "https://www.eysins.ch/_docn/5650969/Plan_g%C3%A9n%C3%A9ral_d%27affectation.pdf",
+      "sha256": "5deba0b930b047b3e6cf2762c9cf960f933548d2a1113c028a26535f16e89af3",
+      "bytes": 2427158,
+      "pages": 1,
+      "page_details": [
+        {
+          "page": 1,
+          "size": [
+            0.0,
+            0.0,
+            595.3200073242188,
+            841.9199829101562
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": ""
+        }
+      ],
+      "file": "5650969.pdf",
+      "role": "adjacent_zoning_reference_not_PDCom",
+      "currentness": "not_verified",
+      "geographic_validation": "pending",
+      "visual_review": "One raster PGA map, printed02.11.1997; official publication labels1999. Visible coordinate grid and north arrow may support reference alignment; do not infer approval date from publication title."
+    },
+    {
+      "url": "https://www.eysins.ch/_doc/7156678",
+      "final_url": "https://www.eysins.ch/_docn/7156678/Plan_de_zones_1999.pdf",
+      "sha256": "1ca7308c483c61d80bf1b10c229a87d06982d916bd666bdde5c5bfcea86ff32b",
+      "bytes": 947614,
+      "pages": 20,
+      "page_details": [
+        {
+          "page": 1,
+          "size": [
+            0.0,
+            0.0,
+            595.4400024414062,
+            842.0399780273438
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": ""
+        },
+        {
+          "page": 2,
+          "size": [
+            0.0,
+            0.0,
+            595.4400024414062,
+            842.0399780273438
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": ""
+        },
+        {
+          "page": 3,
+          "size": [
+            0.0,
+            0.0,
+            595.4400024414062,
+            842.0399780273438
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": ""
+        },
+        {
+          "page": 4,
+          "size": [
+            0.0,
+            0.0,
+            595.4400024414062,
+            842.0399780273438
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": ""
+        },
+        {
+          "page": 5,
+          "size": [
+            0.0,
+            0.0,
+            595.4400024414062,
+            842.0399780273438
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": ""
+        },
+        {
+          "page": 6,
+          "size": [
+            0.0,
+            0.0,
+            595.4400024414062,
+            842.0399780273438
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": ""
+        },
+        {
+          "page": 7,
+          "size": [
+            0.0,
+            0.0,
+            595.4400024414062,
+            842.0399780273438
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": ""
+        },
+        {
+          "page": 8,
+          "size": [
+            0.0,
+            0.0,
+            595.4400024414062,
+            842.0399780273438
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": ""
+        },
+        {
+          "page": 9,
+          "size": [
+            0.0,
+            0.0,
+            595.4400024414062,
+            842.0399780273438
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": ""
+        },
+        {
+          "page": 10,
+          "size": [
+            0.0,
+            0.0,
+            595.4400024414062,
+            842.0399780273438
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": ""
+        },
+        {
+          "page": 11,
+          "size": [
+            0.0,
+            0.0,
+            595.4400024414062,
+            842.0399780273438
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": ""
+        },
+        {
+          "page": 12,
+          "size": [
+            0.0,
+            0.0,
+            595.4400024414062,
+            842.0399780273438
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": ""
+        },
+        {
+          "page": 13,
+          "size": [
+            0.0,
+            0.0,
+            595.4400024414062,
+            842.0399780273438
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": ""
+        },
+        {
+          "page": 14,
+          "size": [
+            0.0,
+            0.0,
+            595.4400024414062,
+            842.0399780273438
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": ""
+        },
+        {
+          "page": 15,
+          "size": [
+            0.0,
+            0.0,
+            595.4400024414062,
+            842.0399780273438
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": ""
+        },
+        {
+          "page": 16,
+          "size": [
+            0.0,
+            0.0,
+            595.4400024414062,
+            842.0399780273438
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": ""
+        },
+        {
+          "page": 17,
+          "size": [
+            0.0,
+            0.0,
+            595.4400024414062,
+            842.0399780273438
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": ""
+        },
+        {
+          "page": 18,
+          "size": [
+            0.0,
+            0.0,
+            595.4400024414062,
+            842.0399780273438
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": ""
+        },
+        {
+          "page": 19,
+          "size": [
+            0.0,
+            0.0,
+            595.4400024414062,
+            842.0399780273438
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": ""
+        },
+        {
+          "page": 20,
+          "size": [
+            0.0,
+            0.0,
+            595.4400024414062,
+            842.0399780273438
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": ""
+        }
+      ],
+      "file": "7156678.pdf",
+      "role": "adjacent_zoning_reference_not_PDCom",
+      "currentness": "not_verified",
+      "geographic_validation": "pending",
+      "visual_review": "20page scanned Plan des zones bundle; cover visually checked. Content/page/approval review still pending."
+    },
+    {
+      "url": "https://www.eysins.ch/_doc/5641897",
+      "final_url": "https://www.eysins.ch/_docn/5641897/1945_RPGA_v07_en_vigueur.pdf",
+      "sha256": "29c040f76f7610879e20d0ccb5c4597e340a39650a132c49cfef7b902e1526cd",
+      "bytes": 1293894,
+      "pages": 16,
+      "page_details": [
+        {
+          "page": 1,
+          "size": [
+            0.0,
+            0.0,
+            595.3800048828125,
+            841.97998046875
+          ],
+          "paths": 0,
+          "images": 1,
+          "text": "COMMUNE  D’EYSINS \n \n \n \nAMENAGEMENT  LOCAL \n \n \n \n \n \n \n \n \n \n \n"
+        },
+        {
+          "page": 2,
+          "size": [
+            0.0,
+            0.0,
+            595.3800048828125,
+            841.97998046875
+          ],
+          "paths": 0,
+          "images": 0,
+          "text": " \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n"
+        },
+        {
+          "page": 3,
+          "size": [
+            0.0,
+            0.0,
+            595.3800048828125,
+            841.97998046875
+          ],
+          "paths": 5,
+          "images": 0,
+          "text": "SOMMAIRE \n \n \n \n1. \nDISPOSITIONS  GENERALES \n1.1 \nContenu \n1.2 \nChamp d'application \n1.3 \nPortée juridique \n1.4 \nPlans spéciaux \n1.5 \nConsultations \n \n \n2. \nAFFECTATION  DES  ZONES \n2.1 \nZone village et hameau \n2.2 \nZone moyenne densité \n2.3 \nZone faible densité \n2.4 \nZone villas \n2.5 \nZone industrielle et commerciale (abrogé) \n2.6 \nZone utilité publique \n2.7 \nZone agricole \n2.8 \nZone agricole protégée \n2.9 \nZone intermédiaire (abrogé) \n2.10 \nAire forestière \n \n \n3. \nCAPACITE  CONSTRUCTIVE \n3.1 \nMesure d’utilisation du sol \n3.2 \nCoefficient de masse (abrogé) \n3.3 \nSuperficie du terrain \n3.4 \nModification de limite \n \n \n4. \nIMPLANTATION \n4.1 \nPrincipes \n4.2 \nImplantation des constructions \n4.3 \nHabitations mitoyennes \n4.4 \nDistance aux limites \n4.5 \nDistance entre bâtiments \n4.6 \nConstructions enterrées \n4.7 \nDépendances \n4.8 \nEmpiétements \n4.9 \nModification de limite \n \n \n5. \nHAUTEURS \n5.1 \nHauteurs au faîte et à la corniche \n5.2 \nHauteur inférieure ou supérieure \n5.3 \nCombles \n \n \n6.  \nARCHITECTURE \n6.1 \nPrincipes \n6.2 \nToitures \n6.3 \nAjourement des combles \n6.4 \nMatériaux, couleurs \n6.5 \nSuperstructures \n 7. \nAMENAGEMENTS  EXTERIEURS \n7.1 \nPrincipes \n7.2 \nMouvements de terre \n7.3 \nPlantations \n7.4 \nDépôts \n7.5 \nClôtures \n \n \n 8. \nEQUIPEMENTS \n8.1 \nPrincipes \n8.2 \nConditions de réalisation \n8.3 \nCirculation \n8.4 \nStationnement des véhicules \n8.5 \nEvacuation des eaux \n8.6 \nPlace de jeux \n8.7 \nInstallations techniques \n8.8 \nEquipements publics \n8.9 \nObligations communales \n8.10 \nDomaine public \n \n \n 9. \nSITES  ET  PAYSAGE \n9.1 \nPrincipes \n9.2 \nConstructions anciennes \n9.3 \nRégions archéologiques \n9.4 \nSilos \n9.5 \nCaravanes \n \n \n 10. \nENVIRONNEMENT \n10.1 \nPrincipes \n10.2 \nBiotopes \n10.3 \nDegré de sensibilité au bruit \n10.4 \nElevage industriel \n \n \n 11. \nAUTORISATIONS \n11.1 \nAutorisation préalable (abrogé) \n11.2 \nPièces complémentaires  \n11.3 \nTaxes \n11.4 \nDérogations \n \n \n 12. \nDISPOSITIONS  FINALES \n12.1 \nConstructions non conformes \n12.2 \nRéférences \n12.3 \nAbrogation, mise en vigueur \n \n \n \n \n \n \n \n"
+        },
+        {
+          "page": 4,
+          "size": [
+            0.0,
+            0.0,
+            595.3800048828125,
+            841.97998046875
+          ],
+          "paths": 1,
+          "images": 0,
+          "text": "ABREVIATIONS \n \n \n \nARCHE \nSection archéologie cantonale \nBIODIV \nSection biodiversité et paysage \nCUS \nCoefficient d’utilisation du sol \nDFIRE \nDépartement des finances et des relations extérieures \nDGE \nDirection générale de l’environnement \nDS \nDegré de sensibilité au bruit \nDTE \nDépartement du territoire et de l’environnement \nEAU \nSection ressources en eau et économie hydraulique \nFORET \nSection inspection cantonale des forêts \nISB \nIndice de surface bâtie \nIUS \nIndice d’utilisation du sol \nLAT \nLoi (fédérale) sur l'aménagement du territoire \nLATC \nLoi (cantonale) sur l'aménagement du territoire et les constructions \nLPN \nLoi (fédérale) sur la protection de la nature \nLPNMS \nLoi (cantonale) sur la protection de la nature, des monuments et des sites \nMS \nSection monuments et sites \nSDT \nService du développement territorial \nSIA \nSociété suisse des ingénieurs et des architectes \nSIPAL \nService des immeubles, du patrimoine et de la logistique \nSN \nNormes suisses \nVSA \nAssociation suisse des professionnels de la protection des eaux \nVSS \nUnion des professionnels suisses de la route, USPR \n \n \n"
+        },
+        {
+          "page": 5,
+          "size": [
+            0.0,
+            0.0,
+            595.3800048828125,
+            841.97998046875
+          ],
+          "paths": 5,
+          "images": 0,
+          "text": " \n \n \n1. \n \nDISPOSITIONS  GENERALES \n \nCONTENU \n \n1.1 \n \n1 \n \nLe présent document contient les règles applicables aux constructions et à l'aménagement \ndu territoire d'Eysins. \n \n \n \n \n2 \nAvec le plan général d'affectation auquel il est attaché, il tend en particulier à : \n- \nmaintenir l'agriculture respectivement la viticulture et l'horticulture sur la plus grande \npartie du territoire communal \n- \nsauvegarder et mettre en valeur les parties anciennes du village et du hameau du Petit-\nEysins tant en ce qui concerne les caractéristiques du domaine bâti que pour ce qui a \ntrait à la destination des constructions \n- \n protéger les sites et le paysage en général notamment les grands espaces agricoles, les \nmassifs boisés et le cours du Boiron. \n \n \nCHAMP   \nD'APPLICATION \n1.2 \n1 \nA défaut de règles spéciales résultant de plans de quartier ou de plans partiels d'affectation, \nles dispositions ci-après s'appliquent à l'ensemble du territoire communal. Celui-ci est \nsubdivisé en zones ou aires d'affectation dont les périmètres figurent sur les plans originaux \nconservés par l'autorité municipale. \n \n \n \n \n2 \nToutes les zones, hormis la zone agricole, la zone agricole protégée et l'aire forestière, sont \nréputées des zones à bâtir au sens de la législation cantonale. \n  \n \nPORTEE  \nJURIDIQUE \n1.3 \n1 \nLes dispositions du présent règlement ont une valeur contraignante pour les propriétaires de \nbiens-fonds et pour les autorités. \n \n \nPLANS  SPECIAUX \n1.4 \n1 \nSur l'ensemble du territoire, la municipalité peut prendre en tout temps l'initiative d'établir un \nplan de quartier ou un plan partiel d'affectation notamment lorsqu'il s'agit de traiter des cas \nparticuliers, d'appliquer des mesures d'aménagement plus précises ou de promouvoir des \nréalisations mieux adaptées aux exigences de l'aménagement du territoire et/ou de la \nprotection de l'environnement. \n \n \n \n2 \nL'aménagement des surfaces occupées par plan spécial délimitées sur le plan général \nd'affectation est réglé par plan de quartier ou plan partiel d'affectation. \n \n \nCONSULTATIONS \n1.5 \n1 \nLa municipalité a la faculté de soumettre tout projet d'urbanisme ou de construction au \npréavis d'un expert ou d'une commission qui agit à titre consultatif. Les membres de la \ncommission sont nommés par la municipalité pour la durée d'une législature. Leur mandat \npeut être reconduit. \n \n \n \n \n"
+        },
+        {
+          "page": 6,
+          "size": [
+            0.0,
+            0.0,
+            595.3800048828125,
+            841.97998046875
+          ],
+          "paths": 9,
+          "images": 0,
+          "text": " \n \n \n2. \n \nAFFECTATION  DES  ZONES \n \nZONE  VILLAGE  \nET  HAMEAU \n \n2.1 \n \n1 \n \nLa zone village et hameau s'étend aux parties anciennes d'Eysins et du Petit-Eysins. Elle est \naffectée aux constructions, installations et aménagements qui sont en relation avec \nl'habitation, l'agriculture et les activités ou usages traditionnellement admis dans une localité \ntels que, par exemple : les équipements publics ou collectifs, le commerce, les services et \nl'artisanat. La compatibilité des affectations mentionnées ci-dessus doit être assurée même \nau prix de certaines concessions consenties par les propriétaires et les utilisateurs des \nbiens-fonds. \n \n \n \n2 \nLe long des voies publiques ouvertes au trafic automobile, la partie du rez-de-chaussée des \nbâtiments qui est en relation directe avec la chaussée est, de préférence, destinée à un \nautre usage que l'habitation, par exemple : activité professionnelle, locaux de service, \néquipements. \n \n \nZONE  MOYENNE  \nDENSITE \n2.2 \n1 \nLa zone moyenne densité est affectée à l'habitation, aux activités du secteur tertiaire et à \nl'artisanat compatibles avec l'habitation. \n \n \nZONE  FAIBLE  \nDENSITE \n2.3 \n1 \nLa zone faible densité est affectée à l'habitation et aux activités ou fonctions compatibles \navec l'habitation. \n \nZONE  VILLAS \n2.4 \n1 \nLa zone villas est affectée à l'habitation et aux activités ou fonctions compatibles avec \nl'habitation dans la mesure où celles-ci s'exercent à titre subsidiaire dans un bâtiment destiné \nen partie à l'habitation. \n \n \n \n2 \nChaque bâtiment peut comprendre au plus 4 logements qui peuvent être superposés ou \njuxtaposés et appartenir à des propriétaires différents. \n \n \nZONE  \nINDUSTRIELLE  ET  \nCOMMERCIALE \n \n2.5 \n \nABROGE  \nZONE  UTILITE  \nPUBLIQUE \n2.6 \n1 \nLa zone utilité publique est affectée aux constructions, installations et aménagements \nd'intérêt collectif non habitables réalisés par une collectivité publique ou un service public. \n \n \n \n2 \nLa zone utilité publique est constituée de 6 surfaces distinctes. Chaque surface est destinée \nau maintien et au développement des constructions, installations et aménagements \nexistants. Sur la rive droite du Boiron, seules les réalisations compatibles avec le milieu et \nnotamment le respect du biotope peuvent être autorisées. \n \n \nZONE  AGRICOLE \n \n2.7 \n1 \nLa zone agricole est régie et définie par les dispositions de la législation agricole fédérale et \ncantonale (LAT et LATC). \n \n \n \n2 \nL'octroi d'un permis de construire dans cette zone est subordonné à l'autorisation préalable \ndu projet par le Département compétent (DTE-SDT). \n \n \nZONE  AGRICOLE  \nPROTEGEE \n2.8 \n1 \nLa zone agricole protégée correspond à une partie du territoire agricole à fonction \npaysagère. Elle est régie et définie par les dispositions de la législation agricole fédérale et \ncantonale (LAT et LATC). \n \n \n \n2 \nL'octroi d'un permis de construire dans cette zone est subordonné à l'autorisation préalable \ndu projet par le Département compétent (DTE-SDT). \n \n \n"
+        },
+        {
+          "page": 7,
+          "size": [
+            0.0,
+            0.0,
+            595.3800048828125,
+            841.97998046875
+          ],
+          "paths": 13,
+          "images": 0,
+          "text": " \nZONE  \nINTERMEDIAIRE \n \n2.9 \n1 \nABROGE  \nAIRE  \nFORESTIERE \n2.10 \n1 \nL'aire forestière est régie et définie par les dispositions de la législation forestière fédérale et \ncantonale. \n \n \n \n2 \nSans autorisation préalable du Département compétent (DTE-DGE-FORET), il n'est \nnotamment pas admis : \n- \nde bâtir en forêt et à moins de 10.00 m des lisières \n- \nd'abattre des arbres \n- \nde faire des dépôts \n- \nd'installer des clôtures. \n \n \n \n3 \nDans les zones à bâtir et dans la bande des 10.00 m confinant celles-ci, la délimitation de \nl'aire forestière figure sur les plans de situation annexés au plan général d'affectation. Ces \nplans de situation constituent le document formel de constatation de nature forestière au \nsens de la législation fédérale. \n \n \n \n4 \nAilleurs, cette surface est reportée sur le plan général d'affectation à titre indicatif. L'aire \nforestière est déterminée par l'état des lieux et son statut prédomine celui qui découle de \ntous plans d'affectation. \n \n \n \n \n \n \n \n3. \n \nCAPACITE  CONSTRUCTIVE \n \nMESURE  \nD’UTILISATION  \nDU  SOL \n \n \n3.1 \n \n1 \n \nDans les zones mentionnées ci-après, la capacité constructive d'un bien-fonds est limitée \nproportionnellement à la superficie du terrain. \n- \nzone village et hameau \n ISB = 0,30 \n- \nzone moyenne densité \nCUS = 0,45 \n- \nzone faible densité \nCUS = 0,35 \n- \nzone villas \nCUS = 0,25 \n \n \n \n \n2 \nL’ISB et le CUS (ou IUS) se calculent conformément à la norme suisse applicable (SIA 421 : \n2006 / SN 504.421). \n \n \n \n3 \nDans la zone village et hameau, des couverts pour véhicules et des petits pavillons de \njardins non habitables peuvent être réalisés en plus de la surface bâtie autorisée. \n \n \n \n4 \nDans les zones moyenne densité, faible densité et villas, des vérandas non chauffées \nreprésentant au plus 10% de la surface du niveau auquel elles sont attachées peuvent être \nréalisées en plus de la capacité constructive du bien-fonds. \n \n \nCOEFFICIENT  DE  \nMASSE \n \n3.2 \n1 \nABROGE  \n \n \n"
+        },
+        {
+          "page": 8,
+          "size": [
+            0.0,
+            0.0,
+            595.3800048828125,
+            841.97998046875
+          ],
+          "paths": 5,
+          "images": 0,
+          "text": " \nSUPERFICIE  DU  \nTERRAIN  \n3.3 \n1 \nLa superficie du terrain prise en compte pour calculer la capacité constructive d'un bien-\nfonds correspond aux surfaces classées en zone à bâtir. \n \n \n \n2 \nA titre exceptionnel, la municipalité peut admettre que soit pris en compte tout ou partie des \nsurfaces cédées à une collectivité publique pour une réalisation d'intérêt général. \n \n \nMODIFICATION  \nDE  LIMITE \n3.4 \n1 \nUne capacité constructive ne peut pas être obtenue par une modification de limite de bien-\nfonds ayant pour effet de rendre un bâtiment existant non conforme aux dispositions \napplicables ou d'aggraver son statut de non-conformité. \n \n \n \n \n \n \n \n4. \n \nIMPLANTATION \n \nPRINCIPES \n \n4.1 \n \n1 \n \nLa situation et l'orientation d'une construction nouvelle sont choisies en tenant compte des \ncaractéristiques du lieu, de la configuration du terrain et de l'implantation des bâtiments \nexistant à proximité. \n \n \n \n2 \nPour des raisons d'unité ou d'harmonie ou pour tenir compte d'un état futur projeté, la \nsituation d'un ouvrage tant en ce qui concerne son implantation que les altitudes à respecter \nen périphérie peut être imposée au propriétaire d'une construction projetée. \n \n \nIMPLANTATION \nDES  \nCONSTRUCTIONS \n \n4.2 \n1 \nDans la zone village et hameau, les bâtiments peuvent être contigus ou non contigus. La \ncontiguïté n'est toutefois admise que dans les cas suivants : \n- \nlorsqu'elle est existante \n- \nlorsque le propriétaire voisin a déjà construit sur la limite commune \n- \nlorsque les propriétaires des biens-fonds où s'exerce la contiguïté sont d'accord avec ce \nmode d'implantation. \n \n \n \n2 \nDans les autres zones, la non contiguïté est de règle. \n \n \nHABITATIONS  \nMITOYENNES \n4.3 \n1 \nDans les zones moyenne densité, faible densité et villas, les logements juxtaposés peuvent \nprendre la forme de bâtiments accolés séparés par une limite de propriété aux conditions \nsuivantes : \n- \nles bâtiments forment un ensemble architectural homogène édifié, pour l'essentiel, dans \nle cadre d'une seule opération \n- \nl'ensemble des bâtiments est constitué d'entités fonctionnelles indépendantes sous \nréserve de locaux ou d'équipements de service qui peuvent être organisés en commun \n- \nl'ensemble des bâtiments est considéré comme une seule construction pour la \ndétermination du nombre de logements autorisés et de la capacité constructive du terrain \naussi bien lors de la construction que lors de modifications ultérieures. \n \n \nDISTANCE  AUX  \nLIMITES \n4.4 \n1 \nA défaut de dispositions ou de plans fixant la limite des constructions, les bâtiments ou \nparties de bâtiments non mitoyens sont implantés au moins à la distance \"d\" des limites de \npropriété. Cette distance se mesure perpendiculairement à la limite jusqu'à la partie du \nbâtiment la plus proche de la limite. \n- \nzone village et hameau \nd   =   3.00 m \n- \nautres zones \nd   =   5.00 m \n \n \n"
+        },
+        {
+          "page": 9,
+          "size": [
+            0.0,
+            0.0,
+            595.3800048828125,
+            841.97998046875
+          ],
+          "paths": 0,
+          "images": 0,
+          "text": " \nDISTANCE  \nENTRE  \nBATIMENTS \n4.5 \n1 \nLes bâtiments ou parties de bâtiments non mitoyens situés sur un même bien-fonds sont \nimplantés au moins à la distance \"D\" les uns des autres. Cette distance se mesure entre les \nparties les plus rapprochées des bâtiments. \n- \nzone village et hameau \nD   =    6.00 m \n- \nautres zones \nD   =  10.00 m \n \n \n \n2 \nLorsque les prescriptions de protection incendie sont respectées, la distance \"D\" peut être \nréduite jusqu'à 3.00 m : \n- \nentre un bâtiment principal et ses dépendances lorsque ces constructions forment \nensemble une entité fonctionnelle indissociable \n- \nentre façades aveugles ou entre parties aveugles de façades. \n \n \nCONSTRUCTIONS  \nENTERREES \n4.6 \n1 \nDans les espaces de non bâtir, le long d'une limite de bien-fonds ou entre 2 bâtiments, les \nconstructions enterrées ou en grande partie enterrées peuvent être autorisées aux conditions \nsuivantes : \n- \nla forme de l'ouvrage est adaptée à la configuration générale du terrain \n- \nune face au plus de la construction est dégagée \n- \nla toiture est pourvue d'un revêtement végétal ou aménagée en terrasse accessible \n- \nla construction ne sert ni à l'habitation ni à l'exercice d'une activité professionnelle. \n \n \n \n2 \nLes dispositions de la loi cantonale sur les routes et la législation forestière sont réservées. \n \n \nDEPENDANCES \n4.7 \n1 \nDans les espaces de non bâtir, le long d'une limite de bien-fonds ou entre 2 bâtiments, la \nmunicipalité peut autoriser la construction de petits bâtiments de service aux conditions \nsuivantes : \n- \nla superficie de la construction est limitée à 40 m2 \n- \nla hauteur à la corniche du bâtiment est limitée à 3.00 m \n- \nla construction ne sert ni à l'habitation ni à l'exercice d'une activité professionnelle. \n \n \n \n2 \nLes dispositions de la loi cantonale sur les routes et la législation forestière sont réservées. \n \n \nEMPIETEMENTS \n4.8 \n1 \nLes parties de bâtiments non fermées, par exemple : avant-toits, balcons, loggias, terrasses \net les constructions assimilées à des aménagements extérieurs peuvent empiéter sur les \nespaces de non bâtir d'un bien-fonds. \n \n \n \n2 \nSous réserve de conventions, les parties saillantes d'une construction, par exemple : avant-\ntoits, corniches, seuils, peuvent empiéter sur le domaine public communal pour autant que \nl'usage de cette surface n'en soit pas réduit. \n \n \n \n3 \nLes dispositions de la loi cantonale sur les routes et la législation forestière sont réservées. \n \n \nMODIFICATION  \nDE  LIMITE \n4.9 \n1 \nUne distance minimum ne peut pas être obtenue par une modification de limite de bien-fonds \nayant pour effet de rendre un bâtiment existant non conforme aux dispositions applicables ou \nd'aggraver son statut de non-conformité. \n \n \n \n \n \n \n \n"
+        },
+        {
+          "page": 10,
+          "size": [
+            0.0,
+            0.0,
+            595.3800048828125,
+            841.97998046875
+          ],
+          "paths": 10,
+          "images": 0,
+          "text": " \n \n \n5. \n \nHAUTEURS \n \nHAUTEURS AU \nFAITE ET A LA \nCORNICHE \n \n5.1 \n \n1 \n \nLa hauteur des bâtiments est limitée par les cotes \"h\" et \"H\" fixées ci-dessous. Ces cotes se \nmesurent à l'aplomb de l'arête supérieure de la corniche ou du chéneau (h) et du faîte (H) \njusqu'au terrain naturel aux emplacements où la différence d'altitude entre ces parties de la \nconstruction et le sol est la plus importante. \n- \nzone village et hameau \nh = 7 m \n \n \nH = 12,5 m \n- \nzone moyenne densité \nh = 8,5 m \n \n \nH = 12,5 m \n- \nzone faible densité \nh = 6 m \n \n \nH = 10 m \n- \nzone villas \nh = 6 m \n \n \nH = 10 m \n- \nzone utilité publique \nh = 7 m \n \n \nH = 12,5 m \n \n \nHAUTEUR  \nINFERIEURE  OU  \nSUPERIEURE \n5.2 \n1 \nUne hauteur maximum inférieure à celle de la réglementation peut être imposée au \npropriétaire d'une construction nouvelle lorsqu'il s'agit de sauvegarder l'unité ou l'harmonie \nd'un quartier ou d'un groupe de bâtiments. \n \n \n \n2 \nUne hauteur maximum supérieure à celle de la réglementation peut exceptionnellement être \nadmise lorsqu'il s'agit : \n- \nde tenir compte d'un état existant ou de la configuration des lieux \n- \n d'adapter à sa destination les caractéristiques d'un bâtiment d'utilité publique. \n \n \nCOMBLES \n \n5.3 \n1 \nLorsque les combles sont habitables ou utilisables, ils peuvent être aménagés dans la totalité \ndu volume exploitable dans la toiture. Lorsque le volume utilisable est important, un étage \nsur-combles dépendant de l'étage inférieur peut être réalisé à la condition suivante : \n- il n'est éclairé et aéré que par des percements pratiqués sur les façades pignons et/ou par \ndes baies rampantes de petites dimensions (maximum : 55 cm x 78 cm). \n \n \n \n \n \n \n \n6. \n \nARCHITECTURE \n \nPRINCIPES \n \n6.1 \n \n1 \n \nD'une façon générale, la municipalité s'applique à promouvoir une architecture réputée de \nbonne qualité. \n \n \n \n2 \nLors d'une construction nouvelle ou lors de transformations, la forme du bâtiment ou la \nnature de l'ouvrage est conçue de manière à inscrire de façon harmonieuse la réalisation \ndans le quartier ou le paysage dans lesquels elle s'insère. \n \n \n \n3 \nLes constructions ou parties de constructions qui, par leur forme, leur volume, leurs \nproportions, les matériaux utilisés ou, d'une façon générale, leur architecture compromettent \nl'harmonie des lieux ne sont pas admises. \n \n \n \n"
+        },
+        {
+          "page": 11,
+          "size": [
+            0.0,
+            0.0,
+            595.3800048828125,
+            841.97998046875
+          ],
+          "paths": 0,
+          "images": 0,
+          "text": " \nTOITURES \n6.2 \n1 \nLa forme des toitures est adaptée à l'architecture du bâtiment. \n \n \n \n \n2 \nDans les zones village et hameau, utilité publique, moyenne densité, faible densité et villas, \nles toitures sont pour l'essentiel à pans, dans la règle à 2 pans, de pentes identiques \ncomprises entre 50 et 80%. Dans ces zones, certaines toitures ou parties de toitures \npeuvent occasionnellement être exécutées sous une autre forme notamment : \n- \npour les constructions basses ayant un statut d'annexe ou de dépendance \n- \npour les constructions enterrées \n- \npour les parties de toitures aménagées en terrasse accessible et situées dans le \nprolongement des niveaux habitables \n- \npour les réalisations situées à l’intérieur de la zone utilité publique. \n \n \n \n3 \nDans toutes les zones, pour des raisons d'unité ou d'harmonie, la forme et l'orientation d'une \ntoiture peuvent être imposées au propriétaire d'une construction projetée. \n \n \nAJOUREMENT   \nDES  COMBLES \n \n6.3 \n1 \nDans les zones à bâtir, les locaux aménagés dans les combles prennent jour, en priorité, sur \ndes façades pignons ou sur des parties de façades situées entre pans de toiture. A défaut de \npignons exploitables, les types de percements suivants peuvent être réalisés en toiture : \n- \ndes fenêtres de toit ou baies rampantes de type « Velux » \n- \ndes balcons encastrés dans la toiture \n- \ndes lucarnes à un pan et à deux pans \n- \ndes pignons secondaires, à raison d’un seul par bâtiment ou corps de bâtiment. \n \n \n \n2 \nLa largeur additionnée de tous les percements en toiture (y compris les pignons secondaires) \ndoit être inférieure ou égale aux 35% de la longueur de la corniche correspondante. La \nproportion de vitrage en toiture, mesurée au-dessus de la corniche, ne doit pas dépasser 8% \nde la superficie du pan de toit (vitrages des pignons secondaires compris). \n \n \n \n3 \nLes lucarnes doivent être séparées les unes des autres et placées en retrait ou à l’aplomb de \nla façade. Les avant-toits et les corniches ne doivent pas être interrompus au droit des \nlucarnes. \n \n \nMATERIAUX,  \nCOULEURS \n6.4 \n1 \nLa nature et la couleur des matériaux apparents en façades et en toiture sont choisies en \naccord avec la municipalité. \n \n \n \n2 \nDans la zone village et hameau, la couverture des toitures à pans est exécutée au moyen de \npetites tuiles plates de terre cuite d'un modèle et d'un ton correspondant aux toitures \ntraditionnelles de la région. \n \n \n \n3 \nDans les zones faible et moyenne densité, la couverture des toitures est exécutée au moyen \nde tuiles en terre cuite. \n \n \nSUPERSTRUCTUR\nES \n6.5 \n1 \nLes superstructures qui émergent d'une toiture sont réduites au minimum nécessaire. Ces \ninstallations sont conçues et disposées de façon à sauvegarder le bon aspect des lieux et la \nqualité architecturale de la construction. \n \n \n"
+        },
+        {
+          "page": 12,
+          "size": [
+            0.0,
+            0.0,
+            595.3800048828125,
+            841.97998046875
+          ],
+          "paths": 10,
+          "images": 0,
+          "text": " \n \n \n7. \n \nAMENAGEMENTS  EXTERIEURS \n \nPRINCIPES \n \n7.1 \n \n1 \n \nLes aménagements extérieurs et d'une façon générale le traitement des surfaces libres de \nconstruction sont réalisés sur la base d'un projet tenant compte : \n- \ndes caractéristiques du lieu \n- \nde la destination et de l'architecture de la construction à laquelle ils sont attachés \n- \nde la fonction des espaces publics ou collectifs dans le prolongement desquels ils \ns'inscrivent. \n \n \n \n2 \nLes réalisations projetées, par exemple : mouvements de terre, plates-formes, places, cours, \nterrasses, voies d'accès, cheminements, clôtures, doivent être au bénéfice d'une \nautorisation. \n \n \nMOUVEMENTS  \nDE  TERRE \n7.2 \n1 \nLa réalisation de plates-formes et les mouvements de terre effectués à proximité des \nconstructions sont conçus de façon à respecter la configuration générale du terrain naturel. \n \n \n \n2 \nSous réserve des nécessités liées à la construction des rampes d'accès véhicules, la hauteur \ndes mouvements de terre est limitée à 1 m. Cette hauteur représente la différence entre le \nniveau du terrain naturel et le niveau du terrain aménagé en remblais ou en déblais. \n \n \nPLANTATIONS \n7.3 \n1 \nLes plantations effectuées dans le prolongement des constructions sont choisies en priorité \nparmi les essences indigènes ou traditionnelles de la région. \n \n \n \n2 \nPour des raisons d'intérêt paysager, la réalisation de plantations peut être imposée au \npropriétaire d'un bien-fonds lors de l'octroi d'un permis de construire. \n \n \nDEPOTS \n7.4 \n1 \nLes dépôts extérieurs permanents et les exploitations à ciel ouvert doivent être au bénéfice \nd'une autorisation dont l'octroi peut être subordonné à l'application de mesures propres à \ngarantir le bon aspect des lieux, les intérêts du voisinage et la sécurité des personnes et du \ntrafic. \n \n \nCLOTURES \n7.5 \n1 \nLes clôtures permanentes installées le long des voies publiques communales sont, dans la \nrègle, implantées à une distance minimum de 1 m du bord d'une chaussée ouverte au trafic \nautomobile. \n \n \n \n \n \n \n \n8. \n \nEQUIPEMENTS \n \nPRINCIPES \n \n8.1 \n \n1 \n \nLes équipements attachés à une construction sont fonction de son importance et de sa \ndestination. Les équipements privés nécessaires sont définis lors d'une construction \nnouvelle, de la transformation d'un ouvrage existant ou du changement de destination d'un \nbâtiment. L'octroi d'un permis de construire, d'habiter ou d'utiliser peut être subordonné à la \nréalisation d'équipements obligatoires. \n \n \n \n2 \nLe propriétaire d'un bien-fonds réalise, à ses frais et sous sa responsabilité, les équipements \nattachés à la construction jusqu'à leur raccordement éventuel aux équipements publics. \n \n \n \n3 \nL'usage des équipements qui ne sont pas situés sur le même bien-fonds que la construction \nest garanti par servitudes inscrites au Registre foncier. \n \n \n"
+        },
+        {
+          "page": 13,
+          "size": [
+            0.0,
+            0.0,
+            595.3800048828125,
+            841.97998046875
+          ],
+          "paths": 1,
+          "images": 0,
+          "text": " \nCONDITIONS  DE  \nREALISATION \n8.2 \n1 \nLes équipements privés sont réalisés de façon à répondre aux exigences applicables aux \nouvrages publics de même nature notamment en ce qui concerne leur implantation, leurs \ndimensions, leur mise en œuvre et leur niveau de qualité. \n \n \n \n2 \nLes conditions de raccordement des équipements privés aux équipements publics sont \nfixées, dans chaque cas, par l'autorité compétente ou le service public concerné. \n \n \nCIRCULATION \n8.3 \n1 \nLes voies de circulation, les garages, les places de stationnement pour véhicules et les \npostes de distribution de carburant sont conçus de façon à respecter la sécurité des \npersonnes et du trafic. \n \n \n \n2 \nLes voies de circulation, sans issue, ouvertes au trafic collectif sont pourvues à leur \nextrémité d'une place de retournement pour véhicules. \n \n \nSTATIONNEMENT  \nDES  VEHICULES \n8.4 \n1 \nToute construction générant du trafic automobile doit être pourvue de places de \nstationnement pour véhicules réservées à ses usagers. Le nombre de cases nécessaires est \ncalculé sur la base des normes de l'Union des professionnels suisses de la route soit pour \nles bâtiments d'habitation : \n- \n2 cases par logement pour les habitants \n- \n1 case pour 3 logements pour les visiteurs, mais au moins 2 cases par bâtiment. \n \n \n \n2 \nDans la règle, les 50% au moins des cases nécessaires aux réalisations privées sont situés \ndans des garages ou sous abris. \n \n \n \n3 \nSous réserve de conventions, une partie des cases nécessaires peut exceptionnellement \nêtre implantée en empiétement sur la limite des constructions fixée le long du domaine public \ncommunal. \n \n \n \n4 \nDans la zone village et hameau, le propriétaire d'une construction peut être dispensé de \nréaliser tout ou partie de cet équipement lorsque la surface du bien-fonds est exiguë ou \nlorsque le respect de l'intégrité d'un bâtiment ancien doit être assuré. Dans ce cas, le \npropriétaire paie à la commune un montant de Fr 10'000,- par case manquante à titre de \ncontribution à l'utilisation des équipements collectifs. Ce montant est indexable à l'indice \ngénéral des prix à la consommation (1997 : Fr 103.9). \n \n \nEVACUATION  \nDES  EAUX \n8.5 \n1 \nLes eaux usées et les eaux météoriques sont évacuées séparément. \n \n \n \n2 \nLes eaux usées sont raccordées au réseau public d'évacuation. \n \n \n \n3 \nLes eaux météoriques sont, soit évacuées par infiltration, soit raccordées au réseau public ou \nà un autre exutoire. Dans ce cas le Département compétente (DTE-DGE-EAU) peut exiger la \nmise en place d'installations ou d'ouvrages de retenue servant à laminer les débits évacués. \nLes eaux météoriques qui ne sont pas récoltées pour utilisation sont évacuées \nconformément aux directives applicables de la VSA. \n \n \nPLACE  DE  JEUX \n \n8.6 \n1 \nLes bâtiments ou groupes de bâtiments d'habitation comprenant plus de 8 logements sont \npourvus d'une place de jeux et de détente réservée aux habitants. La superficie de cet \néquipement peut être imposée au propriétaire d'une con"
+        },
+        {
+          "page": 14,
+          "size": [
+            0.0,
+            0.0,
+            595.3800048828125,
+            841.97998046875
+          ],
+          "paths": 5,
+          "images": 0,
+          "text": " \nINSTALLATIONS  \nTECHNIQUES \n8.7 \n1 \nLes installations techniques apparentes notamment celles qui sont en relation avec le \ncaptage de l'énergie solaire ou les télécommunications sont mises en place de manière à \ns'inscrire de façon correcte dans le cadre à l'intérieur duquel elles s'insèrent. Ces installations \ndoivent être au bénéfice d'une autorisation. \n \n \n \n2 \nDans la zone village et hameau, l'opportunité de ces installations doit être contrôlée. Leurs \navantages doivent être confrontés avec d'autres intérêts en présence, notamment la \nsauvegarde de l'intégrité d'un bâtiment ou le respect des parties anciennes de la localité. \n \n \nEQUIPEMENTS  \nPUBLICS \n8.8 \n1 \nLes bâtiments, ouvrages et installations d'intérêt public ou nécessaires à un service public \npeuvent être autorisés dans toutes les zones lorsque ces réalisations sont d'une importance \nlimitée. \n \n \n \n2 \nEn dehors des zones à bâtir, l'octroi d'un permis de construire pour un tel équipement est \nsubordonné à l'autorisation préalable du projet par le Département compétent (DTE-SDT). \n \n \nOBLIGATIONS  \nCOMMUNALES \n8.9 \n1 \nEn dehors des zones à bâtir, la commune n'est pas tenue d'entreprendre l'extension des \nréseaux de circulation, d'alimentation et d'évacuation. \n \n \nDOMAINE  \nPUBLIC \n8.10 \n1 \nAucun travail ou dépôt ne peut s'effectuer sur le domaine public sans autorisation. L'autorité \ncompétente fixe dans chaque cas les conditions de réalisation, par exemple : le mode \nd'exécution des travaux, les taxes et les délais. \n \n \n \n \n \n \n \n9. \n \nSITES  ET  PAYSAGE \n \nPRINCIPES \n \n9.1 \n \n1 \n \nDans les limites de ses prérogatives, la municipalité prend toutes mesures pour \nsauvegarder les sites et éviter l'altération du paysage. Ainsi, les constructions, les \ninstallations et les aménagements qui, par leur destination ou leur apparence, sont de \nnature à porter atteinte à la qualité d'un ouvrage digne de protection, à l'aspect d'un site ou \nau paysage en général, ne sont pas admis. \n \n \n \n2 \nSur un bien-fonds, l'octroi d'un permis de construire pour une réalisation nouvelle ou la \ntransformation d'un ouvrage peut être subordonné à l'exécution de travaux ayant pour effet \nde remédier à un état existant qui n'est pas satisfaisant. \n \n \nCONSTRUCTIONS \nANCIENNES \n \n9.2 \n1 \nLes constructions, ouvrages et vestiges classés monuments historiques ou portés à \nl'inventaire cantonal (notes 1 et 2 au recensement architectural cantonal) ne peuvent être \nmodifiés qu'en accord avec le Département compétent (DFIRE-SIPAL-MS). \n \n \n \n2 \nLes constructions ou parties de constructions remarquables ou intéressantes du point de \nvue architectural ou historique (note 3 au recensement architectural cantonal) doivent être \nconservées dans leur intégralité. Des transformations, de modestes agrandissements, un \nchangement d'affectation sont toutefois possibles si ces modifications sont compatibles avec \nla conservation et la mise en valeur de l'ouvrage.  \n \n \n \n3 \nLes constructions qui, sans valeur particulière, son"
+        },
+        {
+          "page": 15,
+          "size": [
+            0.0,
+            0.0,
+            595.3800048828125,
+            841.97998046875
+          ],
+          "paths": 5,
+          "images": 0,
+          "text": " \nREGIONS \nARCHEOLOGIQUES \n \n9.3 \n1 \nLes régions archéologiques identifiées sur le territoire communal figurent à titre indicatif sur \nle plan général d'affectation : \n- \n301 \naqueduc romain qui alimentait en eau la ville de Nyon depuis Divonne \n- \n303 \nchapelle En Saint Georges. \n \n \n \n2 \nAucun travail ne peut être effectué à proximité de ces sites sans l'autorisation préalable du \nDépartement compétent (DFIRE-SIPAL-ARCHE) qui peut faire exécuter des fouilles de \nreconnaissance et, le cas échéant, imposer les mesures de sauvegarde nécessaires. \n \n \nSILOS \n9.4 \n1 \nLes silos ou tours à fourrage sont conçus et disposés de façon à s'insérer de manière \ncorrecte dans le cadre où ils sont implantés. Ces réalisations sont de couleur neutre, sans \ninscription voyante. En dehors de la zone agricole, leur hauteur ne peut excéder celle du \nfaîte des bâtiments adjacents. \n \n \nCARAVANES \n9.5 \n1 \nLe stationnement prolongé à ciel ouvert de conteneurs, caravanes, roulottes ou autres \nlogements mobiles n'est pas admis sans autorisation de l'autorité communale qui peut \nréserver des emplacements à cet effet. \n \n \n \n \n \n \n \n10. \n \nENVIRONNEMENT \n \nPRINCIPES \n \n10.1 \n \n1 \n \nDans les limites de ses prérogatives, la municipalité prend toutes mesures pour éviter les \natteintes portées à l'environnement. Ainsi, les constructions, les installations et les \naménagements qui, par leur caractère, leur fonctionnement ou leur destination, sont de \nnature à avoir un effet négatif sur le milieu ne sont pas admis. \n \n \nBIOTOPES \n10.2 \n1 \nLes surfaces boisées non soumises au régime forestier, par exemple : allées, haies vives, \nbosquets, arbre isolé et autres biotopes, sont protégées par les législations fédérale et \ncantonale (LPN - LPNMS - loi sur la faune) et par le plan communal de classement des \narbres. \n \n \n \n2 \nToute intervention susceptible de porter atteinte à ces surfaces doit faire l'objet d'une \nautorisation préalable de la municipalité et du Département compétent (DTE-DGE-BIODIV). \n \n \nDEGRE  DE  \nSENSIBILITE  AU  \nBRUIT \n \n10.3 \n1 \nConformément aux dispositions de la législation sur la protection de l'environnement, un \ndegré de sensibilité au bruit \"DS\" est attribué à chaque zone. \n- \nzone village et hameau \nDS \nIII \n- \nzone moyenne densité \nDS \nIII \n- \nzone faible densité \nDS \nII \n- \nzone villas \nDS \nII  \n- \nzone utilité publique \nDS \nIII \n- \nzone agricole \nDS \nIII \n- \nzone agricole protégée \nDS \nIII \n- \nplan partiel d'affectation Terre Bonne - Le Nipy \nDS \nII et III \n- \nplan de quartier Le Perron \nDS \nIII \n- \nplan partiel d’affectation La Bégoude \nDS \nIII \n \n \n"
+        },
+        {
+          "page": 16,
+          "size": [
+            0.0,
+            0.0,
+            595.3800048828125,
+            841.97998046875
+          ],
+          "paths": 13,
+          "images": 0,
+          "text": " \nELEVAGE  \nINDUSTRIEL \n10.4 \n1 \nLes établissements de production ou d'élevage d'animaux de rente nécessitant une étude \nd'impact sur l'environnement ne sont admis que dans la zone agricole sous réserve, le cas \néchéant, de l'adoption préalable d'un plan de quartier ou d'un plan partiel d'affectation. \n \n \n \n \n \n \n \n11. \n \nAUTORISATIONS \n \nAUTORISATION  \nPREALABLE \n \n \n \n11.1 \n \n1 \n \nABROGE  \n \nPIECES  \nCOMPLEMENTAIRES \n11.2 \n1 \nLa municipalité peut demander que tout dossier accompagnant une demande de permis de \nconstruire soit complété par tous documents ou informations nécessaires à la \ncompréhension du projet, par exemple : maquette, photomontages, cotes d'altitude, \ndessins ou vues des bâtiments voisins. \n \n \n \n2 \nLa municipalité peut aussi exiger, aux frais du requérant, la pose de gabarits correspondant \nau profilement de la construction projetée. \n \n \nTAXES \n \n11.3 \n1 \nLes taxes perçues pour toutes demandes de permis de construire, d'habiter ou d'utiliser \nfont l'objet de tarifs adoptés par le Conseil communal et approuvés par le Département \ncompétent (DTE-SDT). \n \n \nDEROGATIONS \n \n11.4 \n1 \nA titre exceptionnel et dans les limites de la législation cantonale (LATC, article 85), la \nmunicipalité peut déroger aux dispositions du présent document. \n \n \n \n \n \n \n \n12. \n \nDISPOSITIONS  FINALES \n \nCONSTRUCTIONS  \nNON  \nCONFORMES \n \n \n12.1 \n \n1 \n \nLes constructions existantes qui ne sont pas conformes aux présentes dispositions peuvent \nêtre maintenues, entretenues ou réparées. Elles peuvent être transformées, agrandies, \nreconstruites et changer de destination dans les limites de la législation cantonale (LATC, \narticles 80 et 81). \n \n \n \n2 \nEn dehors des zones à bâtir, tous travaux et tous changements de destination d'un bâtiment \nsont subordonnés à l'autorisation préalable du projet par le Département compétent (DTE-\nSDT). \n \n \nREFERENCES \n12.2 \n1 \nPour ce qui ne figure pas dans le présent document, la législation cantonale est applicable, \nnotamment la loi sur l'aménagement du territoire et les constructions. \n \n \nABROGATION,  \nMISE  EN  \nVIGUEUR \n12.3 \n1 \nLe présent document entre en vigueur dès son approbation par le Département compétent \ndu canton de Vaud. Il modifie le règlement communal sur les constructions et l'aménagement \ndu territoire du 14.12.1999. \n \n"
+        }
+      ],
+      "file": "5641897.pdf",
+      "role": "adjacent_zoning_reference_not_PDCom",
+      "currentness": "not_verified",
+      "geographic_validation": "pending",
+      "visual_review": "Cover signed council adoption28June2017, preliminary cantonal approval24August2017, entry into force3November2017; modifications2016/version4July2017. Numeric rules not normalized; current overrides unresolved."
+    }
+  ],
+  "new_pdcom_found": false,
+  "no_plan_established": false,
+  "pdcom_corpus_count_unchanged": true,
+  "next": "Use newly recovered historical PGA coordinate grid and identifiable buildings for an explicit reference bridge to the SDAN image; maintain separate plan/vintage/status semantics."
+}

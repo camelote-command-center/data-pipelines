@@ -40,3 +40,42 @@ class DiscoveryContracts(unittest.TestCase):
         with patch('discovery.fetch_html',side_effect=[('https://www.ucv.ch/a',detail,'a'),('https://www.example.ch/nested/page/',home,'b')]):
             result=discovery.discover({'commune_bfs':5725,'directory_url':'https://www.ucv.ch/a'})
         self.assertEqual(result['candidates'][0]['source_url'],'https://www.example.ch/uploads/plan.pdf')
+
+    def crawl_home(self, home, following=()):
+        detail=BeautifulSoup('<a href="https://www.example.ch">www.example.ch</a>','html.parser')
+        with patch('discovery.fetch_html',side_effect=[('https://www.ucv.ch/a',detail,'a'),('https://www.example.ch',home,'b'),*following]):
+            return discovery.discover({'commune_bfs':5716,'directory_url':'https://www.ucv.ch/a'})
+
+    def test_embedded_table_plan_link_and_numeric_download(self):
+        import json
+        home=BeautifulSoup('<table></table>','html.parser')
+        home.table['data-entities']=json.dumps({'data':[{'name':'Plan directeur communal','_downloadBtn':'<a href="/_rte/publikation/123">Téléchargement</a>'}]})
+        page=BeautifulSoup('<h1>Plan directeur communal</h1><a href="/_doc/456">Téléchargement</a>','html.parser')
+        result=self.crawl_home(home,[('https://www.example.ch/formulaires/123',page,'c')])
+        by_url={c['source_url']:c for c in result['candidates']}
+        self.assertIn('https://www.example.ch/_rte/publikation/123',by_url)
+        self.assertEqual(by_url['https://www.example.ch/_doc/456']['evidence_url'],'https://www.example.ch/formulaires/123')
+        self.assertEqual(by_url['https://www.example.ch/_doc/456']['kind'],'landing')
+        self.assertEqual(result['errors'],[])
+
+    def test_embedded_regulation_is_not_pdcom(self):
+        import json
+        page=BeautifulSoup('<table></table>','html.parser')
+        page.table['data-entities']=json.dumps({'data':[{'name':'Plan de zones 1999','_downloadBtn':'<a href="/_doc/123">Téléchargement</a>'}]})
+        self.assertEqual(self.crawl_home(page)['candidates'],[])
+
+    def test_bad_embedded_data_does_not_hide_normal_links(self):
+        page=BeautifulSoup('<a href="/pdcom.pdf">PDCom</a><table data-entities="broken"></table>','html.parser')
+        result=self.crawl_home(page)
+        self.assertEqual(len(result['candidates']),1)
+        self.assertEqual(result['errors'][0]['reason'],'invalid_embedded_json')
+
+    def test_embedded_limits_and_unsafe_urls(self):
+        import json
+        page=BeautifulSoup('<table></table>','html.parser')
+        page.table['data-entities']=json.dumps({'data':[{'name':'PDCom','_downloadBtn':'<a href="javascript:alert(1)">Plan</a>'}]*1001})
+        result=self.crawl_home(page)
+        self.assertEqual(result['candidates'],[])
+        self.assertEqual(result['errors'][0]['reason'],'embedded_row_limit')
+        page.table['data-entities']='x'*500001
+        self.assertEqual(self.crawl_home(page)['errors'][0]['reason'],'embedded_data_size_limit')
