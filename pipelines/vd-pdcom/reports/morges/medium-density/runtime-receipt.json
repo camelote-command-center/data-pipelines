@@ -1,0 +1,70 @@
+{
+  "operation_id": "f0b66d16-fc53-47a7-92dd-dcfd6bfa3fe5",
+  "checkpoint_id": "6d553b1f-742a-40a2-89cd-891df9b9a594",
+  "document_id": "b4deac7f-9349-5463-b2f5-0afdd2bf78e6",
+  "source_sha256": "9ac3058bc9f837696f69886815f54e65dab848bd67e62df90deb476cebd85300",
+  "pdf_page": 1,
+  "base_paths": 40,
+  "status": "research_only_not_growth_sectors",
+  "approval_review": {
+    "document_id": "b4deac7f-9349-5463-b2f5-0afdd2bf78e6",
+    "sha256": "9ac3058bc9f837696f69886815f54e65dab848bd67e62df90deb476cebd85300",
+    "commune_bfs": 5642,
+    "reviewed_at": "2026-09-15",
+    "reviewed_by": "Codex / 01a09b0a-7538-7983-8871-5eb6a6541d10",
+    "plan_status": "approved",
+    "approval_evidence_page": 1,
+    "approval_date": "2012-10-10",
+    "municipal_council_adoption_date": "2012-03-07",
+    "geographic_validation": "pending",
+    "receiver_release": "not_ready",
+    "scope_limit": "Signed approval fields visually verified on the exact map bytes. Printed December2009 is not approval date. Historical approved map; 2023 mobility plan replaces chapter5 only. Later land-use currentness not established.",
+    "map_pages": [
+      {
+        "page_number": 1,
+        "theme": "Plan directeur communal",
+        "limitations": "Medium-density base fill shared by existing and proposed legend columns; project hatching, overprints and clipping unresolved. No geographic alignment or parcel entitlement inferred.",
+        "candidate_extraction": {
+          "base_paths": 40,
+          "coordinate_system": "PDF_points_top_left_NOT_geographic",
+          "artifact": "pipelines/vd-pdcom/reports/morges/medium-density/extraction.json",
+          "status": "research_only_not_growth_sectors"
+        }
+      }
+    ]
+  },
+  "qa": {
+    "pairwise_overlap_pdf_points_squared": [
+      [
+        2,
+        1,
+        0.027679217009350054
+      ],
+      [
+        4,
+        3,
+        0.006347625951403772
+      ],
+      [
+        32,
+        31,
+        0.012583640674543739
+      ],
+      [
+        36,
+        35,
+        0.02354440916779922
+      ]
+    ],
+    "max_area_difference_01_vs_05_pdf_points_squared": 26.943500072473398,
+    "exact_repeat": true
+  },
+  "all_40_valid_at_tolerances_pdf_points": [
+    0.1,
+    0.25,
+    0.5
+  ],
+  "visual_review": "Blue base-path outlines inspected against rendered map; approval crop inspected. Hatching/category status and overprint visibility remain unresolved.",
+  "artifact": "pipelines/vd-pdcom/reports/morges/medium-density",
+  "next_step": "Resolve existing/proposed hatching and clipping before alignment and private parcel delivery."
+}
