@@ -34,17 +34,33 @@ def classify(response, expected, evidence):
     return result
 
 
+def resolve_identities(rows):
+    expected={};references={}
+    for egrid,mirror_bfs,reference_bfs,snapshot in rows:
+        if not re.fullmatch(r'CH\d{12}',egrid):raise ValueError('unresolved_candidate_identity')
+        if snapshot is not None and reference_bfs is None:raise ValueError('unresolved_official_reference_identity')
+        if mirror_bfs is not None and reference_bfs is not None and mirror_bfs!=reference_bfs:raise ValueError('conflicting_candidate_identity_sources')
+        bfs=reference_bfs if reference_bfs is not None else mirror_bfs
+        if bfs is None:raise ValueError('unresolved_candidate_identity')
+        if egrid in expected and expected[egrid]!=bfs:raise ValueError('ambiguous_candidate_commune')
+        expected[egrid]=bfs
+        if snapshot is not None:references.setdefault(egrid,set()).add(str(snapshot))
+    return expected,{e:sorted(v) for e,v in references.items()}
+
+
 def refresh(conn, output):
     with conn,conn.cursor() as c:
         c.execute("SET LOCAL statement_timeout='30s'")
-        c.execute('''SELECT DISTINCT p.egrid,c.commune_bfs FROM bronze_ch.vd_pdcom_parcel_candidates p
-                     LEFT JOIN silver_ch.cadastral_plots c ON c.egrid=p.egrid ORDER BY p.egrid''')
+        c.execute('''SELECT DISTINCT p.egrid,c.commune_bfs,
+                     CASE WHEN rc.is_current THEN r.commune_bfs END,link.snapshot_id
+                     FROM bronze_ch.vd_pdcom_parcel_candidates p
+                     LEFT JOIN silver_ch.cadastral_plots c ON c.egrid=p.egrid
+                     LEFT JOIN bronze_ch.vd_pdcom_candidate_parcel_references link ON link.sector_id=p.sector_id AND link.egrid=p.egrid
+                     LEFT JOIN bronze_ch.vd_pdcom_parcel_references r ON r.snapshot_id=link.snapshot_id AND r.egrid=p.egrid
+                     LEFT JOIN bronze_ch.vd_pdcom_communes rc ON rc.commune_bfs=r.commune_bfs
+                     ORDER BY p.egrid''')
         rows=c.fetchall()
-    expected={}
-    for egrid,bfs in rows:
-        if not re.fullmatch(r'CH\d{12}',egrid) or bfs is None:raise ValueError('unresolved_candidate_identity')
-        if egrid in expected and expected[egrid]!=bfs:raise ValueError('ambiguous_candidate_commune')
-        expected[egrid]=bfs
+    expected,references=resolve_identities(rows)
     updates={};items=list(expected)
     for start in range(0,len(items),100):
         batch=items[start:start+100]
@@ -57,7 +73,10 @@ def refresh(conn, output):
         if count!=len(response.get('features',[])):raise ValueError('cadastral_type_count_mismatch')
         evidence={'source_url':r.url,'response_sha256':hashlib.sha256(r.content).hexdigest(),
                   'checked_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'count_verified':count}
-        updates.update(classify(response,{e:expected[e] for e in batch},evidence))
+        matched=classify(response,{e:expected[e] for e in batch},evidence)
+        for e,(_,proof) in matched.items():
+            if e in references:proof['reference_snapshot_ids']=references[e]
+        updates.update(matched)
     # No network calls inside the write transaction. Any failed batch leaves old values intact.
     with conn,conn.cursor() as c:
         c.execute("SET LOCAL statement_timeout='30s'")
