@@ -1,0 +1,26 @@
+{
+  "sha256": "9ac3058bc9f837696f69886815f54e65dab848bd67e62df90deb476cebd85300",
+  "pdf_page": 1,
+  "main_map_roi_pdf": [
+    700,
+    250,
+    2400,
+    1500
+  ],
+  "rgb": [
+    0.8273746967315674,
+    0.739284336566925,
+    0.5452964305877686
+  ],
+  "area_range_pdf_points_squared": [
+    4,
+    2000
+  ],
+  "selected": 590,
+  "skipped": {
+    "multiple_rings": 307,
+    "invalid_or_area_excluded": 229,
+    "unsupported_path": 1
+  },
+  "limit": "Beige building-like filled source components, not identified surveyed controls; overprinted/clipped components and changed buildings may occur."
+}

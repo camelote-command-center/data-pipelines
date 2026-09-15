@@ -1,0 +1,11 @@
+# Morges exploratory map alignment
+
+590 single-ring beige building-like components selected;307multiple-ring,229invalid/area and1unsupported component excluded. Fixed every-fifth source holdout:472training/118holdout,2158current nondeleted RCB points. Source components may be partial/overprinted, not identified surveyed controls.
+
+The first search failed (initial-rejected.json): its ±30degree search excluded the northeast north arrow and its lake-centered grid excluded reference points (count in runtime-receipt.json). Corrected RCB-centered grid asserts no reference truncation; north-arrow evidence supports30–60degrees. Three starts converge to rotation39.9983degrees and1.76386387metres/PDF point, consistent with printed1:5000.440/472training points within5m; next distinct solution57. Holdouts111/118within5m, median0.493103m,p90 2.057263m,RMSE3.932716m. Exact repeat matches. These are exploratory nearest-point diagnostics, not surveyed accuracy; reused holdouts across search correction are not a preregistered independent validation.
+
+2540current official footprints fetched over3count-checked pages with uniqueOBJECTID and URL/hash receipts. Seven holdout outliers visually reviewed: four centroids inside a current footprint, three outside. Source50/155 have zero current footprint overlap; other IoU0.21–0.29 reflects partial/different outlines. Causes remain unresolved, and RCB/footprints may share cadastral provenance. No claim of current source buildings or legal plan currentness.
+
+Six full-base hatch outlines transformed to EPSG2056 research geometry. Areas:20,858.34;14,150.05;9,638.95;25,911.77;23,832.76;32,437.10m². These are cartographic base areas, not development entitlements. Path8192 extends0.0834166m² beyond current Morges and has transport/other overprints. Two partly hatched paths remain excluded. No runtime sector or parcel delivery.
+
+Reproduce: prepare.py --pdf EXACT_MAP; fit.py; check_footprints.py (network refresh); overlay.py; geography.py; verify.py (offline). Frozen source/reference geometry, configuration, rejected attempt, plots and receipts remain here. Next official parcel QA/sensitivity, overprint and partial-boundary review before private delivery.

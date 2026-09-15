@@ -123,13 +123,14 @@
       {
         "page_number": 1,
         "theme": "Plan directeur communal",
-        "limitations": "Six full-base and two partial-base project-hatch paths identified;32without matching project hatch. Partial boundaries, overprints/grouping, geographic alignment and later currentness remain pending. No parcel entitlement inferred.",
+        "limitations": "Six full-base and two partial-base project-hatch paths identified;32without matching hatch. Six full-base outlines have exploratory RCB alignment111/118holdouts<5m;7footprint outliers reviewed with differences unresolved. Partial boundaries, overprints/grouping, independent accuracy and later currentness remain pending. No parcel entitlement inferred.",
         "candidate_extraction": {
           "base_paths": 40,
           "coordinate_system": "PDF_points_top_left_NOT_geographic",
           "artifact": "pipelines/vd-pdcom/reports/morges/medium-density/extraction.json",
           "status": "research_only_not_growth_sectors",
-          "hatch_review": "pipelines/vd-pdcom/reports/morges/hatching/semantic-review.json"
+          "hatch_review": "pipelines/vd-pdcom/reports/morges/hatching/semantic-review.json",
+          "alignment_review": "pipelines/vd-pdcom/reports/morges/alignment/runtime-receipt.json"
         }
       }
     ]

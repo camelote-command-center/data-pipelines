@@ -1,0 +1,344 @@
+{
+  "operation_id": "88cc8a3f-3bac-439a-a2ea-c4b31187417a",
+  "checkpoint_id": "90af6751-fdaf-47fb-9ef8-68f5e8e1dc0b",
+  "document_id": "b4deac7f-9349-5463-b2f5-0afdd2bf78e6",
+  "source_sha256": "9ac3058bc9f837696f69886815f54e65dab848bd67e62df90deb476cebd85300",
+  "pdf_page": 1,
+  "status": "exploratory_geographic_alignment_review_required",
+  "alignment": {
+    "parameters": [
+      0.6981014687158782,
+      1.7638638704931673,
+      -161.76671654005384,
+      191.23980293936708
+    ],
+    "source_origin_y_flipped": [
+      1598.8790340163657,
+      -989.9814146440498
+    ],
+    "reference_origin_lv95": [
+      2527640.5083410568,
+      1151840.2766450418
+    ],
+    "source_count": 590,
+    "reference_count": 2158,
+    "train_count": 472,
+    "holdout_count": 118,
+    "holdout_under5m": 111,
+    "holdout_median_m": 0.4931030595089545,
+    "holdout_p90_m": 2.057263054005785,
+    "holdout_rmse_m": 3.932715846380658,
+    "solutions": [
+      {
+        "training_under5m": 440,
+        "training_median_m": 0.47243278551983126,
+        "parameters": [
+          0.6981014687158782,
+          1.7638638704931673,
+          -161.76671654005384,
+          191.23980293936708
+        ]
+      },
+      {
+        "training_under5m": 440,
+        "training_median_m": 0.47243278596159627,
+        "parameters": [
+          0.6981014687159678,
+          1.7638638704929288,
+          -161.76671653996283,
+          191.23980293990965
+        ]
+      },
+      {
+        "training_under5m": 440,
+        "training_median_m": 0.47243278632417385,
+        "parameters": [
+          0.6981014687158121,
+          1.7638638704930643,
+          -161.76671654016562,
+          191.23980294017727
+        ]
+      },
+      {
+        "training_under5m": 57,
+        "training_median_m": 13.450752221509344,
+        "parameters": [
+          0.775548227556053,
+          1.7561875402992875,
+          -159.95798260644182,
+          216.62580210150404
+        ]
+      },
+      {
+        "training_under5m": 54,
+        "training_median_m": 13.1694490649414,
+        "parameters": [
+          0.773013282209597,
+          1.7261523930106046,
+          -155.7820189642355,
+          174.376118364188
+        ]
+      },
+      {
+        "training_under5m": 50,
+        "training_median_m": 16.64781304708879,
+        "parameters": [
+          0.8620974214460548,
+          1.7265046849178352,
+          45.44977505664949,
+          189.8044552010834
+        ]
+      },
+      {
+        "training_under5m": 49,
+        "training_median_m": 14.469096234980764,
+        "parameters": [
+          0.6108344127558041,
+          1.7968543266179091,
+          -79.99301783452339,
+          174.84422840119697
+        ]
+      },
+      {
+        "training_under5m": 46,
+        "training_median_m": 13.65405812009033,
+        "parameters": [
+          0.6092567156292003,
+          1.724409736306925,
+          -191.17072641468997,
+          253.43282897826367
+        ]
+      }
+    ],
+    "interpretation": "Exploratory nearest RCB point fit; fixed prefit every fifth source holdout. Not surveyed accuracy, identified point correspondence or validated geographic sectors."
+  },
+  "footprint_count": 2540,
+  "footprint_outliers": [
+    {
+      "source_index": 50,
+      "rcb_distance_m": 13.81317862733612,
+      "nearest_footprint_distance_m": 14.399254942053414,
+      "nearest_footprint_properties": {
+        "OBJECTID": 46291579,
+        "EGID": 280104343,
+        "NO_COM_FED": 5642,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "best_overlap_footprint_properties": null,
+      "source_area_m2": 86.69762397221227,
+      "overlap_area_m2": 0.0,
+      "intersection_over_union": 0.0,
+      "lv95": [
+        2527305.3884062152,
+        1151736.6348563423
+      ]
+    },
+    {
+      "source_index": 155,
+      "rcb_distance_m": 14.048447823568921,
+      "nearest_footprint_distance_m": 19.712114942143867,
+      "nearest_footprint_properties": {
+        "OBJECTID": 46285095,
+        "EGID": 799128,
+        "NO_COM_FED": 5642,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "best_overlap_footprint_properties": null,
+      "source_area_m2": 172.43589351270285,
+      "overlap_area_m2": 0.0,
+      "intersection_over_union": 0.0,
+      "lv95": [
+        2527525.9164005974,
+        1152049.2833256957
+      ]
+    },
+    {
+      "source_index": 230,
+      "rcb_distance_m": 7.5799752977193595,
+      "nearest_footprint_distance_m": 0.0,
+      "nearest_footprint_properties": {
+        "OBJECTID": 46313637,
+        "EGID": 280102395,
+        "NO_COM_FED": 5642,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "best_overlap_footprint_properties": {
+        "OBJECTID": 46313637,
+        "EGID": 280102395,
+        "NO_COM_FED": 5642,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "source_area_m2": 152.29160122564045,
+      "overlap_area_m2": 60.00529573410518,
+      "intersection_over_union": 0.23416369244850826,
+      "lv95": [
+        2527142.2458074256,
+        1151748.774174251
+      ]
+    },
+    {
+      "source_index": 280,
+      "rcb_distance_m": 10.44336837746065,
+      "nearest_footprint_distance_m": 1.273209864248542,
+      "nearest_footprint_properties": {
+        "OBJECTID": 46535329,
+        "EGID": null,
+        "NO_COM_FED": 5642,
+        "GENRE_TXT": "b\u00e2timent s-sol"
+      },
+      "best_overlap_footprint_properties": {
+        "OBJECTID": 46535329,
+        "EGID": null,
+        "NO_COM_FED": 5642,
+        "GENRE_TXT": "b\u00e2timent s-sol"
+      },
+      "source_area_m2": 130.45245988323694,
+      "overlap_area_m2": 73.28524767429253,
+      "intersection_over_union": 0.2105135567902452,
+      "lv95": [
+        2527747.1336207907,
+        1151983.576769893
+      ]
+    },
+    {
+      "source_index": 530,
+      "rcb_distance_m": 5.645586076986431,
+      "nearest_footprint_distance_m": 0.0,
+      "nearest_footprint_properties": {
+        "OBJECTID": 46487771,
+        "EGID": 280102918,
+        "NO_COM_FED": 5642,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "best_overlap_footprint_properties": {
+        "OBJECTID": 46487771,
+        "EGID": 280102918,
+        "NO_COM_FED": 5642,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "source_area_m2": 74.89755126169842,
+      "overlap_area_m2": 50.08942425538328,
+      "intersection_over_union": 0.24961771524150603,
+      "lv95": [
+        2528281.161092825,
+        1152531.8154879971
+      ]
+    },
+    {
+      "source_index": 575,
+      "rcb_distance_m": 6.420773461682825,
+      "nearest_footprint_distance_m": 0.0,
+      "nearest_footprint_properties": {
+        "OBJECTID": 46411662,
+        "EGID": 799202,
+        "NO_COM_FED": 5642,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "best_overlap_footprint_properties": {
+        "OBJECTID": 46411662,
+        "EGID": 799202,
+        "NO_COM_FED": 5642,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "source_area_m2": 23.724500736109384,
+      "overlap_area_m2": 22.340870215760336,
+      "intersection_over_union": 0.2296053592774024,
+      "lv95": [
+        2527366.761748709,
+        1152097.8334755448
+      ]
+    },
+    {
+      "source_index": 585,
+      "rcb_distance_m": 33.12934682599944,
+      "nearest_footprint_distance_m": 0.0,
+      "nearest_footprint_properties": {
+        "OBJECTID": 46374823,
+        "EGID": 190029965,
+        "NO_COM_FED": 5642,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "best_overlap_footprint_properties": {
+        "OBJECTID": 46374823,
+        "EGID": 190029965,
+        "NO_COM_FED": 5642,
+        "GENRE_TXT": "b\u00e2timent"
+      },
+      "source_area_m2": 627.594036719912,
+      "overlap_area_m2": 627.4323547196484,
+      "intersection_over_union": 0.2943524335840699,
+      "lv95": [
+        2527533.27710789,
+        1151155.3684790812
+      ]
+    }
+  ],
+  "geometry_metrics": [
+    {
+      "drawing_index": 5558,
+      "area_m2": 20858.342509515365,
+      "outside_morges_m2": 0.0,
+      "status": "research_only_alignment_not_surveyed",
+      "overprints": "pending; base hatch outline only",
+      "source_approval": "2012-10-10; later currentness unresolved"
+    },
+    {
+      "drawing_index": 5761,
+      "area_m2": 14150.054693271475,
+      "outside_morges_m2": 0.0,
+      "status": "research_only_alignment_not_surveyed",
+      "overprints": "pending; base hatch outline only",
+      "source_approval": "2012-10-10; later currentness unresolved"
+    },
+    {
+      "drawing_index": 7935,
+      "area_m2": 9638.946508041126,
+      "outside_morges_m2": 0.0,
+      "status": "research_only_alignment_not_surveyed",
+      "overprints": "pending; base hatch outline only",
+      "source_approval": "2012-10-10; later currentness unresolved"
+    },
+    {
+      "drawing_index": 8039,
+      "area_m2": 25911.770945609984,
+      "outside_morges_m2": 0.0,
+      "status": "research_only_alignment_not_surveyed",
+      "overprints": "pending; base hatch outline only",
+      "source_approval": "2012-10-10; later currentness unresolved"
+    },
+    {
+      "drawing_index": 8192,
+      "area_m2": 23832.763886618864,
+      "outside_morges_m2": 0.0834165537218879,
+      "status": "research_only_alignment_not_surveyed",
+      "overprints": "pending; base hatch outline only",
+      "source_approval": "2012-10-10; later currentness unresolved"
+    },
+    {
+      "drawing_index": 8238,
+      "area_m2": 32437.096637382478,
+      "outside_morges_m2": 0.0,
+      "status": "research_only_alignment_not_surveyed",
+      "overprints": "pending; base hatch outline only",
+      "source_approval": "2012-10-10; later currentness unresolved"
+    }
+  ],
+  "initial_rejection": {
+    "artifact": "initial-rejected.json",
+    "reason": "Initial search angle +/-30deg excluded the observed northeast north-arrow orientation, and centroid over lake clipped reference search grid.",
+    "reference_points_outside_initial_grid": 746,
+    "correction": "Use RCB mean origin, assert all reference points in grid, search30\u201360deg based on visually inspected north arrow. Final rotation39.9983deg.",
+    "no_geography_used": true
+  },
+  "verification": "Exact fit repeat, frozen holdout/footprint/geometry checks,7outlier overlays and coverage overlay visually reviewed.",
+  "limitations": [
+    "Source every-fifth holdouts excluded from optimization, but exploratory diagnostics reused across corrected search; not a preregistered independent accuracy study.",
+    "Nearest RCB points and official footprints may share cadastral provenance. No surveyed control accuracy established.",
+    "Two source outlines have no overlap with current queried footprints; others partial or changed; causes unresolved.",
+    "Path8192 has0.0834166m2 outside current commune and transport/other overprints. Do not snap away this discrepancy.",
+    "Six full-base project hatch outlines only; two partial paths withheld. No sector/parcel/receiver writes.",
+    "Historic2012approval; later currentness unresolved."
+  ],
+  "artifact": "pipelines/vd-pdcom/reports/morges/alignment",
+  "next_step": "Official parcel QA and sensitivity; resolve overprints/grouping and partial boundaries before private candidate delivery."
+}
