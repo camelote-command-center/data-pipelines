@@ -1,0 +1,93 @@
+
+
+
+function doMinSize() {}
+
+function showDocumentRight() {
+	self.parent.frames.framefonctions.showDocumentRight();
+}
+
+function showDocument (XY) {
+	self.parent.frames.framefonctions.showDocumentFromDocu(XY);
+}
+
+function showDocumentOtherChap (XY, YZ) {
+	self.parent.frames.framefonctions.showDocumentOtherChap(XY, YZ);
+}
+
+function showDocumentMap(XX) {
+	self.parent.frames.framefonctions.showDocumentMap(XX);
+}
+
+function showInfo(txt) {
+	self.parent.frames.framefonctions.showInfo(txt);
+}
+
+function showIllustrations(pict, wantBoussole) {
+	self.parent.frames.framefonctions.showIllustrations(pict, wantBoussole);
+}
+
+function Illustration(docu) {
+	no=self.parent.frames.framefonctions.history[self.parent.frames.framefonctions.historyCurrent];
+	self.parent.frames.framefonctions.historyCurrent++;
+	self.parent.frames.framefonctions.historyLast=self.parent.frames.framefonctions.historyCurrent;
+	self.parent.frames.framefonctions.history[self.parent.frames.framefonctions.historyCurrent]=no;
+	
+	self.parent.frames.framefonctions.isLittlePicEmpty=false;
+	self.parent.frames.framepictures.window.location.href="../conclusion/sub_5.4.html";
+	self.parent.frames.framedocument.window.location.href="../lieux/plans/"+docu;
+	self.parent.frames.framefonctions.canPrint=true;
+}
+
+// Choix des cartes.
+
+function loadDoc(docu) {
+	self.parent.frames.framefonctions.canPrint=true;
+	self.parent.frames.framedocument.window.location.href=docu;
+}
+
+
+
+function loadDocPic(docu) {
+	self.parent.frames.framefonctions.canPrint=true;
+	self.parent.frames.framedocument.window.location.href="../lieux/plans/"+docu+".gif";
+}
+
+function loadDocDwf(docu) {
+	whipWin=null;
+//	self.parent.frames.framefonctions.canPrint=false;
+//	self.parent.frames.framedocument.window.location.href="../lieux/plans_dwf/"+docu+".dwf";
+//	self.parent.frames.framefonctions.openDWF(docu);
+	url="../lieux/plans_dwf/"+self.parent.frames.framefonctions.whipChoix+docu+".html";
+	//alert(url);
+//	if (screen.width>800) {
+//		whipWin=window.open(url,'newWhipWin','toolbar=no,statusbar=no,width=800,height=500,directories=no,resizable=yes,scrollbars=no,location=no,menubar=no');
+//	}
+//	else {
+		whipWin=window.open(url,'newWhipWin','toolbar=no,statusbar=no,width='+screen.width*0.95+',height='+screen.height*0.85+',directories=no,resizable=yes,scrollbars=yes,location=no,menubar=no');
+//	}
+//		setTimeout("whipWin.focus();", 100);
+		setTimeout("whipWin.focus();", 300);
+
+}
+
+function setDoc(docu) {
+	self.parent.frames.framefonctions.isLittlePicEmpty=false;
+	setTimeout('self.parent.frames.framepictures.window.location.href="short-'+docu+'.html";', 200);
+}
+
+
+function openDWFcircul() {
+	url="../lieux/plans_dwf/test.html";
+//	alert(url);
+	if (screen.width>800) {
+		DWFtest=window.open(url,'newWhipWin','toolbar=no,statusbar=no,width=800,height=500,directories=no,resizable=yes,scrollbars=no,location=no,menubar=no');
+	}
+	else {
+		DWFtest=window.open(url,'newWhipWin','toolbar=no,statusbar=no,width='+screen.width*0.99+',height='+screen.height*0.9+',directories=no,resizable=yes,scrollbars=yes,location=no,menubar=no');
+	}
+		setTimeout("DWFtest.focus();", 100);
+		setTimeout("DWFtest.focus();", 300);
+
+
+}
