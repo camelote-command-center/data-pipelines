@@ -61,6 +61,43 @@ def fetch_html(url):
     raise ValueError('redirect_limit')
 
 
+def page_links(page, diagnostics):
+    """Read published i-web table JSON as inert data, with bounded expansion."""
+    for link in page.select('a[href]'):
+        yield link, ''
+    rows_left = 1000
+    bytes_left = 1_000_000
+    for table in page.select('table[data-entities]'):
+        raw = table['data-entities']
+        if len(raw.encode('utf-8')) > min(500_000, bytes_left):
+            diagnostics.append({'stage': 'embedded_links', 'reason': 'embedded_data_size_limit'})
+            continue
+        bytes_left -= len(raw.encode('utf-8'))
+        try:
+            payload = json.loads(raw)
+        except (ValueError, RecursionError):
+            diagnostics.append({'stage': 'embedded_links', 'reason': 'invalid_embedded_json'})
+            continue
+        rows = payload.get('data') if isinstance(payload, dict) else None
+        if not isinstance(rows, list):
+            continue
+        if len(rows) > rows_left:
+            diagnostics.append({'stage': 'embedded_links', 'reason': 'embedded_row_limit'})
+        selected = rows[:rows_left]
+        rows_left -= len(selected)
+        for row in selected:
+            if not isinstance(row, dict):
+                continue
+            name = row.get('name', '')
+            context = BeautifulSoup(name, 'html.parser').get_text(' ', strip=True)[:500] if isinstance(name, str) else ''
+            for key in ('name', '_downloadBtn'):
+                fragment = row.get(key)
+                if not isinstance(fragment, str):
+                    continue
+                for link in BeautifulSoup(fragment, 'html.parser').select('a[href]'):
+                    yield link, context
+
+
 def directory_seeds(soup):
     result = {}
     for link in soup.select('a[href]'):
@@ -115,20 +152,28 @@ def discover(row, page_limit=12):
             result['pages'].append({'url': url, 'sha256': page_sha})
             base = page.find('base',href=True)
             base_url = urljoin(url,base['href']) if base else url
-            for link in page.select('a[href]'):
+            embedded_diagnostics = []
+            heading = page.find('h1')
+            heading_text = heading.get_text(' ', strip=True) if heading else ''
+            page_is_plan = bool(PLAN.search(unquote(url)) or PLAN.search(heading_text))
+            for link, context in page_links(page, embedded_diagnostics):
                 target = urljoin(base_url, link['href']).split('#')[0]
                 parsed = urlsplit(target)
                 if parsed.scheme not in ('http', 'https') or parsed.username or parsed.password:
                     continue
-                label = link.get_text(' ', strip=True)[:500]
+                label = link.get_text(' ', strip=True)
+                if context and context not in label:
+                    label = context + ' ' + label
+                label = label[:500]
                 text = unicodedata.normalize('NFKD', unquote(label+' '+parsed.path)).encode('ascii', 'ignore').decode()
-                page_is_plan = bool(PLAN.search(unquote(url)))
-                if PLAN.search(text) or (page_is_plan and parsed.path.lower().endswith('.pdf')):
+                is_download = parsed.path.lower().endswith('.pdf') or bool(re.fullmatch(r'/_doc/\d+', parsed.path))
+                if PLAN.search(text) or (page_is_plan and is_download):
                     candidates[target] = {'source_url': target, 'evidence_url': url, 'link_text': label,
                                           'kind': 'pdf' if parsed.path.lower().endswith('.pdf') else 'landing',
                                           'review_status': 'pending'}
-                if parsed.hostname == host and not re.search(r'\.(pdf|zip|docx?|xlsx?|jpg|png)$', parsed.path, re.I) and NAV.search(text) and target not in seen and all(item[0] != target for item in queue):
+                if parsed.hostname == host and not is_download and not re.search(r'\.(pdf|zip|docx?|xlsx?|jpg|png)$', parsed.path, re.I) and NAV.search(text) and target not in seen and all(item[0] != target for item in queue):
                     queue.append((target, None, None))
+            result['errors'].extend({'url': url, **item} for item in embedded_diagnostics)
             queue.sort(key=lambda item: not bool(PLAN.search(unquote(item[0]))))
         result['candidates'] = list(candidates.values())
         result['crawl_limit_reached'] = bool(queue)
