@@ -488,5 +488,24 @@
     "plan_status": "approved",
     "scope": "communal",
     "candidate_id": "003956f9-c655-449b-8672-588b828144a2"
+  },
+  {
+    "commune_bfs": 5724,
+    "commune_name": "Nyon",
+    "commune_bfs_list": [
+      5713,
+      5715,
+      5716,
+      5722,
+      5724,
+      5725,
+      5728,
+      5730
+    ],
+    "pdf_url": "https://www.nyon.ch/media/document/0/rapport-synthese-sdan-document-urb-nyon-071220.pdf",
+    "landing_url": "https://www.nyon.ch/nyon-officiel/politiques-thematiques/amenagement-du-territoire/planification-territoriale-946",
+    "title": "Schéma directeur de l’agglomération nyonnaise — rapport de synthèse2006",
+    "plan_status": "approved",
+    "scope": "intercommunal"
   }
 ]

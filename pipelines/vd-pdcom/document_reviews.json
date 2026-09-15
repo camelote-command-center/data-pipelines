@@ -135,5 +135,19 @@
         }
       }
     ]
+  },
+  {
+    "document_id": "bd31519f-f1a2-5579-9ee0-e852f082d1dc",
+    "sha256": "35b62cc028b93a649c7b752c14c2e549bee6ac5d207f1c3033ecf55445b5a729",
+    "commune_bfs": 5724,
+    "reviewed_at": "2026-09-15",
+    "reviewed_by": "Codex / 01a09b0a-7538-7983-8871-5eb6a6541d10",
+    "plan_status": "approved",
+    "approval_evidence_page": 1,
+    "approval_date": "2006-02-16",
+    "map_pages": [],
+    "geographic_validation": "pending",
+    "receiver_release": "not_ready",
+    "scope_limit": "Cover explicitly states approval by municipalities, regional council and Canton16February2006; visually checked. PDF5 states an orientation document with contractual commitment on chapters6–8 and formal COPIL approval. This is an intercommunal SDAN, not eight adopted PDComs or current parcel rules. PDF1/6identify eight members; Crans-près-Céligny maps to current Crans(VD)5713. Later currency and geographic coverage remain unverified."
   }
 ]
