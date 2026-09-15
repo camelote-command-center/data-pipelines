@@ -1,0 +1,34 @@
+{
+  "operation_id": "435966dd-809e-49d5-91d6-f845054d7a37",
+  "stage": "orbe_official_parcel_sensitivity",
+  "document_id": "464c3687-bdd2-55b4-9e35-f8ece05099cb",
+  "source_sha256": "8b78d42eb83210b6b63404dd8b4270fedd15d1b7e3d65d2a403d6edcee654a3c",
+  "source_pdf_page": 1,
+  "status": "research_only_no_candidate_delivery",
+  "reference_count": 1325,
+  "inner_intersections": 1064,
+  "outer_intersections": 1098,
+  "outer_only_intersections": 34,
+  "ddp_surface_rights_in_each_variant": 28,
+  "all_official_intersection_identities_present_in_mirror": true,
+  "mirror_only_inner": 2,
+  "mirror_only_outer": 3,
+  "mirror_review": "Two EGRIDs not returned by current official query; cause unresolved, not evidence of deletion. Third has only0.0354m\u00b2 outer overlap in mirror and zero with current official geometry.",
+  "sensitivity_counts": {
+    "inner": 1064,
+    "outer": 1098,
+    "band": 261,
+    "inner_minus5m": 1062,
+    "outer_plus5m": 1131,
+    "inner_minus10m": 1055,
+    "outer_plus10m": 1155
+  },
+  "reference_envelope_size_m": [
+    1294.82282058103,
+    2158.5471387002617
+  ],
+  "artifact_path": "pipelines/vd-pdcom/reports/orbe/parcel-qa",
+  "verification": "1325count/unique-EGRID/commune/geometry verified; all seven offline intersection sets and areas reproduced; mirror identities and extra-intersection current-reference queries checked.",
+  "limits": "Research intersections only. Band edges and 5/10m buffers are sensitivity scenarios, not surveyed error bounds. Land and DDP rights may overlap; do not sum as exclusive land area. Source version/currentness and other categories remain unresolved.",
+  "next": "Use official geometry with existing bounded reference snapshots (split envelope to respect2km-per-axis limit); preserve inner/outer membership evidence and28DDP distinctions. Do not silently import two unresolved mirror-only identities."
+}

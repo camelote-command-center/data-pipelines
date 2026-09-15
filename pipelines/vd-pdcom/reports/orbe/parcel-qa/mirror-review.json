@@ -1,0 +1,27 @@
+{
+  "inner": {
+    "official_pairs": 1064,
+    "matched_identities": 1064,
+    "wrong_commune": [],
+    "missing_egrids": [],
+    "mirror_intersections": 1066,
+    "official_only_intersections": [],
+    "mirror_only_intersections": [
+      "CH474509288365",
+      "CH574509848357"
+    ]
+  },
+  "outer": {
+    "official_pairs": 1098,
+    "matched_identities": 1098,
+    "wrong_commune": [],
+    "missing_egrids": [],
+    "mirror_intersections": 1101,
+    "official_only_intersections": [],
+    "mirror_only_intersections": [
+      "CH474509288365",
+      "CH574509848357",
+      "CH814597838340"
+    ]
+  }
+}
