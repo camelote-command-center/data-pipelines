@@ -1,0 +1,3349 @@
+{
+  "commune_bfs": 5724,
+  "classification": "historical quantitative analysis; research only",
+  "baseline_year": null,
+  "baseline_year_status": "not established; page title 2000 is not a verified statistical reference year",
+  "approved_version_equivalence": "unresolved",
+  "georeferenced": false,
+  "receiver_eligible": false,
+  "zip_sha256": "b9802194e0acc6b8052b393ed1bc31473c5bf9147b1979617133a21d401facd3",
+  "image": {
+    "url": "https://www.nyon.ch/plan-directeur/documents/lieux/plans/secteurs.gif",
+    "sha256": "88d41a0d10ff08d9bb52b97bbb8218c73a515735fa7f7e41152c3a98ac1d1cee",
+    "size_pixels": [
+      519,
+      365
+    ]
+  },
+  "groups": [
+    {
+      "target": 1,
+      "letter": "A",
+      "title": "Secteur 1 - L'Asse",
+      "historical_sector_ids": [
+        1
+      ],
+      "source_url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-seca.html",
+      "source_sha256": "2eca932e820542c0f13f91974be67c157079b8dd071f0986365d4169c6f2a2de",
+      "population": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "POPULATION ACTUELLE habitants",
+          "POTENTIEL POPULATION habitants",
+          "POPULATION POTENTIELLE TOTALE habitants",
+          "DENSITE POTENTIELLE habitants par hectare"
+        ],
+        "raw_sector_row": [
+          "1",
+          "28",
+          "26",
+          "0",
+          "26",
+          "0.93"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "4.1%",
+          "0.2%",
+          "0.0%",
+          "0.1%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "15085",
+          "6715",
+          "21800",
+          "32.06"
+        ],
+        "values": {
+          "area_ha": 28.0,
+          "historical_current": 26.0,
+          "historical_additional_potential": 0.0,
+          "historical_total_potential": 26.0,
+          "potential_density_per_ha": 0.93
+        }
+      },
+      "employment": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "EMPLOIS ACTUELS emplois",
+          "POTENTIEL EMPLOIS emplois",
+          "POTENTIEL EMPLOIS TOTAUX emplois",
+          "DENSITE POTENTIELLE emplois par hectare"
+        ],
+        "raw_sector_row": [
+          "1",
+          "28",
+          "121",
+          "0",
+          "121",
+          "4.32"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "4.1%",
+          "1.4%",
+          "0.0%",
+          "1.0%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "8425",
+          "4017",
+          "12442",
+          "18.30"
+        ],
+        "values": {
+          "area_ha": 28.0,
+          "historical_current": 121.0,
+          "historical_additional_potential": 0.0,
+          "historical_total_potential": 121.0,
+          "potential_density_per_ha": 4.32
+        }
+      },
+      "navigation_polygon": {
+        "raw_coords": "418,88,418,87,450,110,459,97,485,83,473,56,460,60,448,21,432,21,431,71,417,87",
+        "points_pixels": [
+          [
+            418,
+            88
+          ],
+          [
+            418,
+            87
+          ],
+          [
+            450,
+            110
+          ],
+          [
+            459,
+            97
+          ],
+          [
+            485,
+            83
+          ],
+          [
+            473,
+            56
+          ],
+          [
+            460,
+            60
+          ],
+          [
+            448,
+            21
+          ],
+          [
+            432,
+            21
+          ],
+          [
+            431,
+            71
+          ],
+          [
+            417,
+            87
+          ]
+        ],
+        "valid": true,
+        "validity": "Valid Geometry",
+        "area_pixels_squared": 2949.0,
+        "crs": null,
+        "semantics": "HTML image-map interaction region; not verified planning boundary"
+      }
+    },
+    {
+      "target": 2,
+      "letter": "B",
+      "title": "Secteur 3 - La Biolatte",
+      "historical_sector_ids": [
+        3
+      ],
+      "source_url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secb.html",
+      "source_sha256": "4b65041a7a7f42515ee64ec40b2c4eb5b154cc8116cab638cf45707ef6fd55ff",
+      "population": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "POPULATION ACTUELLE habitants",
+          "POTENTIEL POPULATION habitants",
+          "POPULATION POTENTIELLE TOTALE habitants",
+          "DENSITE POTENTIELLE habitants par hectare"
+        ],
+        "raw_sector_row": [
+          "3",
+          "15.1",
+          "8",
+          "0",
+          "8",
+          "0.53"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "2.2%",
+          "0.05%",
+          "0.0%",
+          "0.04%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "15085",
+          "6715",
+          "21800",
+          "32.06"
+        ],
+        "values": {
+          "area_ha": 15.1,
+          "historical_current": 8.0,
+          "historical_additional_potential": 0.0,
+          "historical_total_potential": 8.0,
+          "potential_density_per_ha": 0.53
+        }
+      },
+      "employment": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "EMPLOIS ACTUELS emplois",
+          "POTENTIEL EMPLOIS emplois",
+          "POTENTIEL EMPLOIS TOTAUX emplois",
+          "DENSITE POTENTIELLE emplois par hectare"
+        ],
+        "raw_sector_row": [
+          "3",
+          "15.1",
+          "1",
+          "0",
+          "1",
+          "0.07"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "2.2%",
+          "0.01%",
+          "0.0%",
+          "0.01%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "8425",
+          "4017",
+          "12442",
+          "18.30"
+        ],
+        "values": {
+          "area_ha": 15.1,
+          "historical_current": 1.0,
+          "historical_additional_potential": 0.0,
+          "historical_total_potential": 1.0,
+          "potential_density_per_ha": 0.07
+        }
+      },
+      "navigation_polygon": {
+        "raw_coords": "250,104,267,82,309,112,292,136,262,115,251,104",
+        "points_pixels": [
+          [
+            250,
+            104
+          ],
+          [
+            267,
+            82
+          ],
+          [
+            309,
+            112
+          ],
+          [
+            292,
+            136
+          ],
+          [
+            262,
+            115
+          ],
+          [
+            251,
+            104
+          ]
+        ],
+        "valid": true,
+        "validity": "Valid Geometry",
+        "area_pixels_squared": 1526.5,
+        "crs": null,
+        "semantics": "HTML image-map interaction region; not verified planning boundary"
+      }
+    },
+    {
+      "target": 3,
+      "letter": "C",
+      "title": "Secteurs 2 et 4 - La Vuarpillière, Le Viez",
+      "historical_sector_ids": [
+        2,
+        4
+      ],
+      "source_url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secc.html",
+      "source_sha256": "c8d4add05ae84a418103f00bf9ef38c975aa0c53cbcfed5cbb5dadd4069ccacb",
+      "population": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "POPULATION ACTUELLE habitants",
+          "POTENTIEL POPULATION habitants",
+          "POPULATION POTENTIELLE TOTALE habitants",
+          "DENSITE POTENTIELLE habitants par hectare"
+        ],
+        "raw_sector_row": [
+          "2 et 4",
+          "107.5",
+          "5",
+          "0",
+          "5",
+          "0.05"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "15.7%",
+          "0.03%",
+          "0.0%",
+          "0.02%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "15085",
+          "6715",
+          "21800",
+          "32.06"
+        ],
+        "values": {
+          "area_ha": 107.5,
+          "historical_current": 5.0,
+          "historical_additional_potential": 0.0,
+          "historical_total_potential": 5.0,
+          "potential_density_per_ha": 0.05
+        }
+      },
+      "employment": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "EMPLOIS ACTUELS emplois",
+          "POTENTIEL EMPLOIS emplois",
+          "POTENTIEL EMPLOIS TOTAUX emplois",
+          "DENSITE POTENTIELLE emplois par hectare"
+        ],
+        "raw_sector_row": [
+          "2 et 4",
+          "107.5",
+          "550",
+          "238",
+          "788",
+          "7.33"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "15.7%",
+          "6.5%",
+          "5.9%",
+          "6.3%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "8425",
+          "4017",
+          "12442",
+          "18.30"
+        ],
+        "values": {
+          "area_ha": 107.5,
+          "historical_current": 550.0,
+          "historical_additional_potential": 238.0,
+          "historical_total_potential": 788.0,
+          "potential_density_per_ha": 7.33
+        }
+      },
+      "navigation_polygon": {
+        "raw_coords": "295,138,297,135,309,111,324,80,345,63,352,54,355,58,381,67,416,89,435,102,427,127,424,144,417,154,417,158,410,160,408,162,397,159,380,170,383,173,369,198,361,187",
+        "points_pixels": [
+          [
+            295,
+            138
+          ],
+          [
+            297,
+            135
+          ],
+          [
+            309,
+            111
+          ],
+          [
+            324,
+            80
+          ],
+          [
+            345,
+            63
+          ],
+          [
+            352,
+            54
+          ],
+          [
+            355,
+            58
+          ],
+          [
+            381,
+            67
+          ],
+          [
+            416,
+            89
+          ],
+          [
+            435,
+            102
+          ],
+          [
+            427,
+            127
+          ],
+          [
+            424,
+            144
+          ],
+          [
+            417,
+            154
+          ],
+          [
+            417,
+            158
+          ],
+          [
+            410,
+            160
+          ],
+          [
+            408,
+            162
+          ],
+          [
+            397,
+            159
+          ],
+          [
+            380,
+            170
+          ],
+          [
+            383,
+            173
+          ],
+          [
+            369,
+            198
+          ],
+          [
+            361,
+            187
+          ]
+        ],
+        "valid": true,
+        "validity": "Valid Geometry",
+        "area_pixels_squared": 11280.0,
+        "crs": null,
+        "semantics": "HTML image-map interaction region; not verified planning boundary"
+      }
+    },
+    {
+      "target": 4,
+      "letter": "D",
+      "title": "Secteur 5 - Changins",
+      "historical_sector_ids": [
+        5
+      ],
+      "source_url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secd.html",
+      "source_sha256": "43eef81babd3414d99103979a17e05097e0425104a9958ca2052dbbe26088cf3",
+      "population": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "POPULATION ACTUELLE habitants",
+          "POTENTIEL POPULATION habitants",
+          "POPULATION POTENTIELLE TOTALE habitants",
+          "DENSITE POTENTIELLE habitants par hectare"
+        ],
+        "raw_sector_row": [
+          "5",
+          "27.6",
+          "14",
+          "0",
+          "14",
+          "0.51"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "4.1%",
+          "0.09%",
+          "0.0%",
+          "0.06%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "15085",
+          "6715",
+          "21800",
+          "32.06"
+        ],
+        "values": {
+          "area_ha": 27.6,
+          "historical_current": 14.0,
+          "historical_additional_potential": 0.0,
+          "historical_total_potential": 14.0,
+          "potential_density_per_ha": 0.51
+        }
+      },
+      "employment": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "EMPLOIS ACTUELS emplois",
+          "POTENTIEL EMPLOIS emplois",
+          "POTENTIEL EMPLOIS TOTAUX emplois",
+          "DENSITE POTENTIELLE emplois par hectare"
+        ],
+        "raw_sector_row": [
+          "5",
+          "27.6",
+          "260",
+          "0",
+          "260",
+          "9.42"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "4.1%",
+          "3.1%",
+          "0.0%",
+          "2.1%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "8425",
+          "4017",
+          "12442",
+          "18.30"
+        ],
+        "values": {
+          "area_ha": 27.6,
+          "historical_current": 260.0,
+          "historical_additional_potential": 0.0,
+          "historical_total_potential": 260.0,
+          "potential_density_per_ha": 9.42
+        }
+      },
+      "navigation_polygon": {
+        "raw_coords": "369,263,369,262,371,244,368,226,372,208,370,197,374,189,382,173,379,170,399,162,407,161,418,158,418,152,425,144,430,159,398,183,390,200,415,217,417,219,372,264",
+        "points_pixels": [
+          [
+            369,
+            263
+          ],
+          [
+            369,
+            262
+          ],
+          [
+            371,
+            244
+          ],
+          [
+            368,
+            226
+          ],
+          [
+            372,
+            208
+          ],
+          [
+            370,
+            197
+          ],
+          [
+            374,
+            189
+          ],
+          [
+            382,
+            173
+          ],
+          [
+            379,
+            170
+          ],
+          [
+            399,
+            162
+          ],
+          [
+            407,
+            161
+          ],
+          [
+            418,
+            158
+          ],
+          [
+            418,
+            152
+          ],
+          [
+            425,
+            144
+          ],
+          [
+            430,
+            159
+          ],
+          [
+            398,
+            183
+          ],
+          [
+            390,
+            200
+          ],
+          [
+            415,
+            217
+          ],
+          [
+            417,
+            219
+          ],
+          [
+            372,
+            264
+          ]
+        ],
+        "valid": true,
+        "validity": "Valid Geometry",
+        "area_pixels_squared": 2884.0,
+        "crs": null,
+        "semantics": "HTML image-map interaction region; not verified planning boundary"
+      }
+    },
+    {
+      "target": 5,
+      "letter": "E",
+      "title": "Secteur 12 - Bois-Bougy",
+      "historical_sector_ids": [
+        12
+      ],
+      "source_url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-sece.html",
+      "source_sha256": "5f769aef2aecc1eceaf3267d236c548a6c5ac0bd724eabc26c5e9fbc75e3249e",
+      "population": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "POPULATION ACTUELLE habitants",
+          "POTENTIEL POPULATION habitants",
+          "POPULATION POTENTIELLE TOTALE habitants",
+          "DENSITE POTENTIELLE habitants par hectare"
+        ],
+        "raw_sector_row": [
+          "12",
+          "69.3",
+          "5",
+          "0",
+          "5",
+          "0.07"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "10.2%",
+          "0.03%",
+          "0.0%",
+          "0.02%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "15085",
+          "6715",
+          "21800",
+          "32.06"
+        ],
+        "values": {
+          "area_ha": 69.3,
+          "historical_current": 5.0,
+          "historical_additional_potential": 0.0,
+          "historical_total_potential": 5.0,
+          "potential_density_per_ha": 0.07
+        }
+      },
+      "employment": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "EMPLOIS ACTUELS emplois",
+          "POTENTIEL EMPLOIS emplois",
+          "POTENTIEL EMPLOIS TOTAUX emplois",
+          "DENSITE POTENTIELLE emplois par hectare"
+        ],
+        "raw_sector_row": [
+          "12",
+          "69.3",
+          "0",
+          "0",
+          "0",
+          "-"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "10.2%",
+          "0.0%",
+          "0.0%",
+          "0.0%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "8425",
+          "4017",
+          "12442",
+          "18.30"
+        ],
+        "values": {
+          "area_ha": 69.3,
+          "historical_current": 0.0,
+          "historical_additional_potential": 0.0,
+          "historical_total_potential": 0.0,
+          "potential_density_per_ha": null
+        }
+      },
+      "navigation_polygon": {
+        "raw_coords": "73,143,75,140,92,110,102,83,119,84,122,92,151,80,156,94,173,121,173,142,169,149,178,153,176,157,179,164,178,168,171,178,168,187,165,193,166,199,164,202,142,181,105,158,84,147",
+        "points_pixels": [
+          [
+            73,
+            143
+          ],
+          [
+            75,
+            140
+          ],
+          [
+            92,
+            110
+          ],
+          [
+            102,
+            83
+          ],
+          [
+            119,
+            84
+          ],
+          [
+            122,
+            92
+          ],
+          [
+            151,
+            80
+          ],
+          [
+            156,
+            94
+          ],
+          [
+            173,
+            121
+          ],
+          [
+            173,
+            142
+          ],
+          [
+            169,
+            149
+          ],
+          [
+            178,
+            153
+          ],
+          [
+            176,
+            157
+          ],
+          [
+            179,
+            164
+          ],
+          [
+            178,
+            168
+          ],
+          [
+            171,
+            178
+          ],
+          [
+            168,
+            187
+          ],
+          [
+            165,
+            193
+          ],
+          [
+            166,
+            199
+          ],
+          [
+            164,
+            202
+          ],
+          [
+            142,
+            181
+          ],
+          [
+            105,
+            158
+          ],
+          [
+            84,
+            147
+          ]
+        ],
+        "valid": true,
+        "validity": "Valid Geometry",
+        "area_pixels_squared": 7220.0,
+        "crs": null,
+        "semantics": "HTML image-map interaction region; not verified planning boundary"
+      }
+    },
+    {
+      "target": 6,
+      "letter": "F",
+      "title": "Secteur 6 - Les Tines",
+      "historical_sector_ids": [
+        6
+      ],
+      "source_url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secf.html",
+      "source_sha256": "40b8a5221765e9b80145f6dc8f8dc1ba2d28229b0cc4773f421720eaab3e10ee",
+      "population": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "POPULATION ACTUELLE habitants",
+          "POTENTIEL POPULATION habitants",
+          "POPULATION POTENTIELLE TOTALE habitants",
+          "DENSITE POTENTIELLE habitants par hectare"
+        ],
+        "raw_sector_row": [
+          "6",
+          "36.8",
+          "1043",
+          "700",
+          "1743",
+          "47.36"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "5.4%",
+          "6.9%",
+          "10.4%",
+          "8.0%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "15085",
+          "6715",
+          "21800",
+          "32.06"
+        ],
+        "values": {
+          "area_ha": 36.8,
+          "historical_current": 1043.0,
+          "historical_additional_potential": 700.0,
+          "historical_total_potential": 1743.0,
+          "potential_density_per_ha": 47.36
+        }
+      },
+      "employment": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "EMPLOIS ACTUELS emplois",
+          "POTENTIEL EMPLOIS emplois",
+          "POTENTIEL EMPLOIS TOTAUX emplois",
+          "DENSITE POTENTIELLE emplois par hectare"
+        ],
+        "raw_sector_row": [
+          "6",
+          "36.8",
+          "124",
+          "200",
+          "324",
+          "8.80"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "5.4%",
+          "1.5%",
+          "5.0%",
+          "2.6%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "8425",
+          "4017",
+          "12442",
+          "18.30"
+        ],
+        "values": {
+          "area_ha": 36.8,
+          "historical_current": 124.0,
+          "historical_additional_potential": 200.0,
+          "historical_total_potential": 324.0,
+          "potential_density_per_ha": 8.8
+        }
+      },
+      "navigation_polygon": {
+        "raw_coords": "165,202,165,201,165,197,163,191,169,185,170,178,178,167,177,161,174,157,179,150,178,140,181,128,180,125,180,120,176,112,178,106,170,88,168,88,164,86,172,74,182,73,185,74,194,72,198,76,208,76,213,80,199,124,197,147,201,171,200,184,202,197,189,220",
+        "points_pixels": [
+          [
+            165,
+            202
+          ],
+          [
+            165,
+            201
+          ],
+          [
+            165,
+            197
+          ],
+          [
+            163,
+            191
+          ],
+          [
+            169,
+            185
+          ],
+          [
+            170,
+            178
+          ],
+          [
+            178,
+            167
+          ],
+          [
+            177,
+            161
+          ],
+          [
+            174,
+            157
+          ],
+          [
+            179,
+            150
+          ],
+          [
+            178,
+            140
+          ],
+          [
+            181,
+            128
+          ],
+          [
+            180,
+            125
+          ],
+          [
+            180,
+            120
+          ],
+          [
+            176,
+            112
+          ],
+          [
+            178,
+            106
+          ],
+          [
+            170,
+            88
+          ],
+          [
+            168,
+            88
+          ],
+          [
+            164,
+            86
+          ],
+          [
+            172,
+            74
+          ],
+          [
+            182,
+            73
+          ],
+          [
+            185,
+            74
+          ],
+          [
+            194,
+            72
+          ],
+          [
+            198,
+            76
+          ],
+          [
+            208,
+            76
+          ],
+          [
+            213,
+            80
+          ],
+          [
+            199,
+            124
+          ],
+          [
+            197,
+            147
+          ],
+          [
+            201,
+            171
+          ],
+          [
+            200,
+            184
+          ],
+          [
+            202,
+            197
+          ],
+          [
+            189,
+            220
+          ]
+        ],
+        "valid": true,
+        "validity": "Valid Geometry",
+        "area_pixels_squared": 3923.0,
+        "crs": null,
+        "semantics": "HTML image-map interaction region; not verified planning boundary"
+      }
+    },
+    {
+      "target": 7,
+      "letter": "G",
+      "title": "Secteur 7 - Champ-Colin",
+      "historical_sector_ids": [
+        7
+      ],
+      "source_url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secg.html",
+      "source_sha256": "2dba6fae8dbdb000e8798daf65a4373ef902216d12683caa0ffefa4fddb9ebe4",
+      "population": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "POPULATION ACTUELLE habitants",
+          "POTENTIEL POPULATION habitants",
+          "POPULATION POTENTIELLE TOTALE habitants",
+          "DENSITE POTENTIELLE habitants par hectare"
+        ],
+        "raw_sector_row": [
+          "7",
+          "27.8",
+          "311",
+          "0",
+          "311",
+          "11.19"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "4.1%",
+          "2.1%",
+          "0.0%",
+          "1.4%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "15085",
+          "6715",
+          "21800",
+          "32.06"
+        ],
+        "values": {
+          "area_ha": 27.8,
+          "historical_current": 311.0,
+          "historical_additional_potential": 0.0,
+          "historical_total_potential": 311.0,
+          "potential_density_per_ha": 11.19
+        }
+      },
+      "employment": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "EMPLOIS ACTUELS emplois",
+          "POTENTIEL EMPLOIS emplois",
+          "POTENTIEL EMPLOIS TOTAUX emplois",
+          "DENSITE POTENTIELLE emplois par hectare"
+        ],
+        "raw_sector_row": [
+          "7",
+          "27.8",
+          "1160",
+          "0",
+          "1160",
+          "41.73"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "4.1%",
+          "13.8%",
+          "0.0%",
+          "9.3%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "8425",
+          "4017",
+          "12442",
+          "18.30"
+        ],
+        "values": {
+          "area_ha": 27.8,
+          "historical_current": 1160.0,
+          "historical_additional_potential": 0.0,
+          "historical_total_potential": 1160.0,
+          "potential_density_per_ha": 41.73
+        }
+      },
+      "navigation_polygon": {
+        "raw_coords": "200,201,199,179,202,164,197,152,199,143,198,134,203,118,202,107,212,83,217,79,219,81,229,87,242,100,246,110,217,172",
+        "points_pixels": [
+          [
+            200,
+            201
+          ],
+          [
+            199,
+            179
+          ],
+          [
+            202,
+            164
+          ],
+          [
+            197,
+            152
+          ],
+          [
+            199,
+            143
+          ],
+          [
+            198,
+            134
+          ],
+          [
+            203,
+            118
+          ],
+          [
+            202,
+            107
+          ],
+          [
+            212,
+            83
+          ],
+          [
+            217,
+            79
+          ],
+          [
+            219,
+            81
+          ],
+          [
+            229,
+            87
+          ],
+          [
+            242,
+            100
+          ],
+          [
+            246,
+            110
+          ],
+          [
+            217,
+            172
+          ]
+        ],
+        "valid": true,
+        "validity": "Valid Geometry",
+        "area_pixels_squared": 3060.5,
+        "crs": null,
+        "semantics": "HTML image-map interaction region; not verified planning boundary"
+      }
+    },
+    {
+      "target": 8,
+      "letter": "H",
+      "title": "Secteurs 8 et 13 - En Oie, Marans",
+      "historical_sector_ids": [
+        8,
+        13
+      ],
+      "source_url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-sech.html",
+      "source_sha256": "a72d86d3cdc298d154c57e7b1372e3b545cf088f70f0432a466a8f961c2d0d90",
+      "population": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "POPULATION ACTUELLE habitants",
+          "POTENTIEL POPULATION habitants",
+          "POPULATION POTENTIELLE TOTALE habitants",
+          "DENSITE POTENTIELLE habitants par hectare"
+        ],
+        "raw_sector_row": [
+          "8 et 13",
+          "60.3",
+          "3282",
+          "1387.5",
+          "4669.5",
+          "77.44"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "8.9%",
+          "21.8%",
+          "20.7%",
+          "21.4%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "15085",
+          "6715",
+          "21800",
+          "32.06"
+        ],
+        "values": {
+          "area_ha": 60.3,
+          "historical_current": 3282.0,
+          "historical_additional_potential": 1387.5,
+          "historical_total_potential": 4669.5,
+          "potential_density_per_ha": 77.44
+        }
+      },
+      "employment": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "EMPLOIS ACTUELS emplois",
+          "POTENTIEL EMPLOIS emplois",
+          "POTENTIEL EMPLOIS TOTAUX emplois",
+          "DENSITE POTENTIELLE emplois par hectare"
+        ],
+        "raw_sector_row": [
+          "8 et 13",
+          "60.3",
+          "736",
+          "697.5",
+          "1433.5",
+          "23.77"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "8.9%",
+          "8.7%",
+          "17.4%",
+          "11.5%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "8425",
+          "4017",
+          "12442",
+          "18.30"
+        ],
+        "values": {
+          "area_ha": 60.3,
+          "historical_current": 736.0,
+          "historical_additional_potential": 697.5,
+          "historical_total_potential": 1433.5,
+          "potential_density_per_ha": 23.77
+        }
+      },
+      "navigation_polygon": {
+        "raw_coords": "246,110,254,107,260,113,295,139,254,206,236,219,224,236,217,246,189,222,208,185",
+        "points_pixels": [
+          [
+            246,
+            110
+          ],
+          [
+            254,
+            107
+          ],
+          [
+            260,
+            113
+          ],
+          [
+            295,
+            139
+          ],
+          [
+            254,
+            206
+          ],
+          [
+            236,
+            219
+          ],
+          [
+            224,
+            236
+          ],
+          [
+            217,
+            246
+          ],
+          [
+            189,
+            222
+          ],
+          [
+            208,
+            185
+          ]
+        ],
+        "valid": true,
+        "validity": "Valid Geometry",
+        "area_pixels_squared": 6457.0,
+        "crs": null,
+        "semantics": "HTML image-map interaction region; not verified planning boundary"
+      }
+    },
+    {
+      "target": 9,
+      "letter": "I",
+      "title": "Secteurs 9 et 14 - Le Reposoir, Cossy",
+      "historical_sector_ids": [
+        9,
+        14
+      ],
+      "source_url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-seci.html",
+      "source_sha256": "2cbdc7d2d030c668950f39bbe136e5ff393092c375509d830b90c2aab44b96c1",
+      "population": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "POPULATION ACTUELLE habitants",
+          "POTENTIEL POPULATION habitants",
+          "POPULATION POTENTIELLE TOTALE habitants",
+          "DENSITE POTENTIELLE habitants par hectare"
+        ],
+        "raw_sector_row": [
+          "9 et 14",
+          "63.5",
+          "3365",
+          "1334",
+          "4699",
+          "74.00"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "9.3%",
+          "22.3%",
+          "19.9%",
+          "21.6%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "15085",
+          "6715",
+          "21800",
+          "32.06"
+        ],
+        "values": {
+          "area_ha": 63.5,
+          "historical_current": 3365.0,
+          "historical_additional_potential": 1334.0,
+          "historical_total_potential": 4699.0,
+          "potential_density_per_ha": 74.0
+        }
+      },
+      "employment": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "EMPLOIS ACTUELS emplois",
+          "POTENTIEL EMPLOIS emplois",
+          "POTENTIEL EMPLOIS TOTAUX emplois",
+          "DENSITE POTENTIELLE emplois par hectare"
+        ],
+        "raw_sector_row": [
+          "9 et 14",
+          "63.5",
+          "309",
+          "500",
+          "809",
+          "12.74"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "9.3%",
+          "3.7%",
+          "12.4%",
+          "6.5%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "8425",
+          "4017",
+          "12442",
+          "18.30"
+        ],
+        "values": {
+          "area_ha": 63.5,
+          "historical_current": 309.0,
+          "historical_additional_potential": 500.0,
+          "historical_total_potential": 809.0,
+          "potential_density_per_ha": 12.74
+        }
+      },
+      "navigation_polygon": {
+        "raw_coords": "221,239,235,218,258,202,296,137,361,187,337,215,303,222,271,233,246,246,236,250,225,243",
+        "points_pixels": [
+          [
+            221,
+            239
+          ],
+          [
+            235,
+            218
+          ],
+          [
+            258,
+            202
+          ],
+          [
+            296,
+            137
+          ],
+          [
+            361,
+            187
+          ],
+          [
+            337,
+            215
+          ],
+          [
+            303,
+            222
+          ],
+          [
+            271,
+            233
+          ],
+          [
+            246,
+            246
+          ],
+          [
+            236,
+            250
+          ],
+          [
+            225,
+            243
+          ]
+        ],
+        "valid": true,
+        "validity": "Valid Geometry",
+        "area_pixels_squared": 6676.0,
+        "crs": null,
+        "semantics": "HTML image-map interaction region; not verified planning boundary"
+      }
+    },
+    {
+      "target": 10,
+      "letter": "J",
+      "title": "Secteurs 10, 15 et 16 - Plantaz, Prélaz, Martinet & Môrache",
+      "historical_sector_ids": [
+        10,
+        15,
+        16
+      ],
+      "source_url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secj.html",
+      "source_sha256": "90485b46096bfe6b3170e3e11c4340d6baeb9a05dee935178ffa79366763824a",
+      "population": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "POPULATION ACTUELLE habitants",
+          "POTENTIEL POPULATION habitants",
+          "POPULATION POTENTIELLE TOTALE habitants",
+          "DENSITE POTENTIELLE habitants par hectare"
+        ],
+        "raw_sector_row": [
+          "10, 15 et 16",
+          "40.8",
+          "2194",
+          "1160",
+          "3354",
+          "82.21"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "6.0%",
+          "14.5%",
+          "17.3%",
+          "15.4%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "15085",
+          "6715",
+          "21800",
+          "32.06"
+        ],
+        "values": {
+          "area_ha": 40.8,
+          "historical_current": 2194.0,
+          "historical_additional_potential": 1160.0,
+          "historical_total_potential": 3354.0,
+          "potential_density_per_ha": 82.21
+        }
+      },
+      "employment": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "EMPLOIS ACTUELS emplois",
+          "POTENTIEL EMPLOIS emplois",
+          "POTENTIEL EMPLOIS TOTAUX emplois",
+          "DENSITE POTENTIELLE emplois par hectare"
+        ],
+        "raw_sector_row": [
+          "10, 15 et 16",
+          "40.8",
+          "401",
+          "900",
+          "1301",
+          "31.89"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "6.0%",
+          "4.6%",
+          "22.4%",
+          "10.5%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "8425",
+          "4017",
+          "12442",
+          "18.30"
+        ],
+        "values": {
+          "area_ha": 40.8,
+          "historical_current": 401.0,
+          "historical_additional_potential": 900.0,
+          "historical_total_potential": 1301.0,
+          "potential_density_per_ha": 31.89
+        }
+      },
+      "navigation_polygon": {
+        "raw_coords": "221,240,218,246,233,258,247,272,263,282,281,268,300,266,327,255,341,237,352,220,357,208,370,200,366,192,361,187,337,217,322,221,302,224,277,231,251,245,236,249,233,250,220,241",
+        "points_pixels": [
+          [
+            221,
+            240
+          ],
+          [
+            218,
+            246
+          ],
+          [
+            233,
+            258
+          ],
+          [
+            247,
+            272
+          ],
+          [
+            263,
+            282
+          ],
+          [
+            281,
+            268
+          ],
+          [
+            300,
+            266
+          ],
+          [
+            327,
+            255
+          ],
+          [
+            341,
+            237
+          ],
+          [
+            352,
+            220
+          ],
+          [
+            357,
+            208
+          ],
+          [
+            370,
+            200
+          ],
+          [
+            366,
+            192
+          ],
+          [
+            361,
+            187
+          ],
+          [
+            337,
+            217
+          ],
+          [
+            322,
+            221
+          ],
+          [
+            302,
+            224
+          ],
+          [
+            277,
+            231
+          ],
+          [
+            251,
+            245
+          ],
+          [
+            236,
+            249
+          ],
+          [
+            233,
+            250
+          ],
+          [
+            220,
+            241
+          ]
+        ],
+        "valid": false,
+        "validity": "Self-intersection[220.371428571429 241.257142857143]",
+        "area_pixels_squared": 4334.5,
+        "crs": null,
+        "semantics": "HTML image-map interaction region; not verified planning boundary"
+      }
+    },
+    {
+      "target": 11,
+      "letter": "K",
+      "title": "Secteur 11 - Chantemerle",
+      "historical_sector_ids": [
+        11
+      ],
+      "source_url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-seck.html",
+      "source_sha256": "1a9c912b6221e3f3842a7c7bc91a1041158b5b43ff56cd3e16095a2495e7d246",
+      "population": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "POPULATION ACTUELLE habitants",
+          "POTENTIEL POPULATION habitants",
+          "POPULATION POTENTIELLE TOTALE habitants",
+          "DENSITE POTENTIELLE habitants par hectare"
+        ],
+        "raw_sector_row": [
+          "11",
+          "31.6",
+          "1437",
+          "250",
+          "1687",
+          "53.39"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "4.6%",
+          "9.5%",
+          "3.7%",
+          "7.7%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "15085",
+          "6715",
+          "21800",
+          "32.06"
+        ],
+        "values": {
+          "area_ha": 31.6,
+          "historical_current": 1437.0,
+          "historical_additional_potential": 250.0,
+          "historical_total_potential": 1687.0,
+          "potential_density_per_ha": 53.39
+        }
+      },
+      "employment": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "EMPLOIS ACTUELS emplois",
+          "POTENTIEL EMPLOIS emplois",
+          "POTENTIEL EMPLOIS TOTAUX emplois",
+          "DENSITE POTENTIELLE emplois par hectare"
+        ],
+        "raw_sector_row": [
+          "11",
+          "31.6",
+          "632",
+          "250",
+          "882",
+          "27.91"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "4.6%",
+          "7.5%",
+          "6.2%",
+          "7.1%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "8425",
+          "4017",
+          "12442",
+          "18.30"
+        ],
+        "values": {
+          "area_ha": 31.6,
+          "historical_current": 632.0,
+          "historical_additional_potential": 250.0,
+          "historical_total_potential": 882.0,
+          "potential_density_per_ha": 27.91
+        }
+      },
+      "navigation_polygon": {
+        "raw_coords": "303,299,283,293,270,287,263,282,281,269,301,266,324,256,342,237,352,220,357,209,370,198,370,213,367,218,365,224,369,224,370,246,368,263,348,268,338,273,335,280,335,283,330,281,317,277,309,297,303,297,303,300",
+        "points_pixels": [
+          [
+            303,
+            299
+          ],
+          [
+            283,
+            293
+          ],
+          [
+            270,
+            287
+          ],
+          [
+            263,
+            282
+          ],
+          [
+            281,
+            269
+          ],
+          [
+            301,
+            266
+          ],
+          [
+            324,
+            256
+          ],
+          [
+            342,
+            237
+          ],
+          [
+            352,
+            220
+          ],
+          [
+            357,
+            209
+          ],
+          [
+            370,
+            198
+          ],
+          [
+            370,
+            213
+          ],
+          [
+            367,
+            218
+          ],
+          [
+            365,
+            224
+          ],
+          [
+            369,
+            224
+          ],
+          [
+            370,
+            246
+          ],
+          [
+            368,
+            263
+          ],
+          [
+            348,
+            268
+          ],
+          [
+            338,
+            273
+          ],
+          [
+            335,
+            280
+          ],
+          [
+            335,
+            283
+          ],
+          [
+            330,
+            281
+          ],
+          [
+            317,
+            277
+          ],
+          [
+            309,
+            297
+          ],
+          [
+            303,
+            297
+          ],
+          [
+            303,
+            300
+          ]
+        ],
+        "valid": false,
+        "validity": "Self-intersection[303 300]",
+        "area_pixels_squared": 3355.5,
+        "crs": null,
+        "semantics": "HTML image-map interaction region; not verified planning boundary"
+      }
+    },
+    {
+      "target": 12,
+      "letter": "L",
+      "title": "Secteur 17 - Colovray-Métairie",
+      "historical_sector_ids": [
+        17
+      ],
+      "source_url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secl.html",
+      "source_sha256": "5056a39834f45a55b43389daf2be66ad41947276d2fdc4e58c599b7824e91725",
+      "population": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "POPULATION ACTUELLE habitants",
+          "POTENTIEL POPULATION habitants",
+          "POPULATION POTENTIELLE TOTALE habitants",
+          "DENSITE POTENTIELLE habitants par hectare"
+        ],
+        "raw_sector_row": [
+          "L",
+          "48.6",
+          "31",
+          "0",
+          "31",
+          "0.64"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "7.1%",
+          "0.02%",
+          "0.0%",
+          "0.01%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "15085",
+          "6715",
+          "21800",
+          "32.06"
+        ],
+        "values": {
+          "area_ha": 48.6,
+          "historical_current": 31.0,
+          "historical_additional_potential": 0.0,
+          "historical_total_potential": 31.0,
+          "potential_density_per_ha": 0.64
+        }
+      },
+      "employment": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "EMPLOIS ACTUELS emplois",
+          "POTENTIEL EMPLOIS emplois",
+          "POTENTIEL EMPLOIS TOTAUX emplois",
+          "DENSITE POTENTIELLE emplois par hectare"
+        ],
+        "raw_sector_row": [
+          "L",
+          "48.6",
+          "144",
+          "24.5",
+          "168.5",
+          "3.47"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "7.1%",
+          "1.7%",
+          "0.06%",
+          "1.4%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "8425",
+          "4017",
+          "12442",
+          "18.30"
+        ],
+        "values": {
+          "area_ha": 48.6,
+          "historical_current": 144.0,
+          "historical_additional_potential": 24.5,
+          "historical_total_potential": 168.5,
+          "potential_density_per_ha": 3.47
+        }
+      },
+      "navigation_polygon": {
+        "raw_coords": "47,164,48,162,70,142,74,145,74,142,107,159,134,178,144,185,165,202,162,207,153,204,153,211,148,217,139,218,133,216,129,221,129,228,123,227,120,227,114,223,109,231,80,207,47,165",
+        "points_pixels": [
+          [
+            47,
+            164
+          ],
+          [
+            48,
+            162
+          ],
+          [
+            70,
+            142
+          ],
+          [
+            74,
+            145
+          ],
+          [
+            74,
+            142
+          ],
+          [
+            107,
+            159
+          ],
+          [
+            134,
+            178
+          ],
+          [
+            144,
+            185
+          ],
+          [
+            165,
+            202
+          ],
+          [
+            162,
+            207
+          ],
+          [
+            153,
+            204
+          ],
+          [
+            153,
+            211
+          ],
+          [
+            148,
+            217
+          ],
+          [
+            139,
+            218
+          ],
+          [
+            133,
+            216
+          ],
+          [
+            129,
+            221
+          ],
+          [
+            129,
+            228
+          ],
+          [
+            123,
+            227
+          ],
+          [
+            120,
+            227
+          ],
+          [
+            114,
+            223
+          ],
+          [
+            109,
+            231
+          ],
+          [
+            80,
+            207
+          ],
+          [
+            47,
+            165
+          ]
+        ],
+        "valid": true,
+        "validity": "Valid Geometry",
+        "area_pixels_squared": 5211.0,
+        "crs": null,
+        "semantics": "HTML image-map interaction region; not verified planning boundary"
+      }
+    },
+    {
+      "target": 13,
+      "letter": "M",
+      "title": "Secteur 18 - Clémenty",
+      "historical_sector_ids": [
+        18
+      ],
+      "source_url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secm.html",
+      "source_sha256": "30ed515a89245ca1d91ce539bc4a25ff7e7a075e27438b421ab9b7425db8aef9",
+      "population": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "POPULATION ACTUELLE habitants",
+          "POTENTIEL POPULATION habitants",
+          "POPULATION POTENTIELLE TOTALE habitants",
+          "DENSITE POTENTIELLE habitants par hectare"
+        ],
+        "raw_sector_row": [
+          "M",
+          "20.5",
+          "82",
+          "0",
+          "82",
+          "4.00"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "3.0%",
+          "0.5%",
+          "0.0%",
+          "0.4%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "15085",
+          "6715",
+          "21800",
+          "32.06"
+        ],
+        "values": {
+          "area_ha": 20.5,
+          "historical_current": 82.0,
+          "historical_additional_potential": 0.0,
+          "historical_total_potential": 82.0,
+          "potential_density_per_ha": 4.0
+        }
+      },
+      "employment": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "EMPLOIS ACTUELS emplois",
+          "POTENTIEL EMPLOIS emplois",
+          "POTENTIEL EMPLOIS TOTAUX emplois",
+          "DENSITE POTENTIELLE emplois par hectare"
+        ],
+        "raw_sector_row": [
+          "M",
+          "20.5",
+          "22",
+          "0",
+          "22",
+          "1.07"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "3.0%",
+          "0.3%",
+          "0.0%",
+          "0.2%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "8425",
+          "4017",
+          "12442",
+          "18.30"
+        ],
+        "values": {
+          "area_ha": 20.5,
+          "historical_current": 22.0,
+          "historical_additional_potential": 0.0,
+          "historical_total_potential": 22.0,
+          "potential_density_per_ha": 1.07
+        }
+      },
+      "navigation_polygon": {
+        "raw_coords": "110,232,111,225,115,223,121,228,125,226,130,229,131,220,133,216,140,219,150,217,155,209,153,203,164,207,165,202,189,222,183,231,174,239,166,253,153,263,149,251,135,244,119,236",
+        "points_pixels": [
+          [
+            110,
+            232
+          ],
+          [
+            111,
+            225
+          ],
+          [
+            115,
+            223
+          ],
+          [
+            121,
+            228
+          ],
+          [
+            125,
+            226
+          ],
+          [
+            130,
+            229
+          ],
+          [
+            131,
+            220
+          ],
+          [
+            133,
+            216
+          ],
+          [
+            140,
+            219
+          ],
+          [
+            150,
+            217
+          ],
+          [
+            155,
+            209
+          ],
+          [
+            153,
+            203
+          ],
+          [
+            164,
+            207
+          ],
+          [
+            165,
+            202
+          ],
+          [
+            189,
+            222
+          ],
+          [
+            183,
+            231
+          ],
+          [
+            174,
+            239
+          ],
+          [
+            166,
+            253
+          ],
+          [
+            153,
+            263
+          ],
+          [
+            149,
+            251
+          ],
+          [
+            135,
+            244
+          ],
+          [
+            119,
+            236
+          ]
+        ],
+        "valid": true,
+        "validity": "Valid Geometry",
+        "area_pixels_squared": 2148.5,
+        "crs": null,
+        "semantics": "HTML image-map interaction region; not verified planning boundary"
+      }
+    },
+    {
+      "target": 14,
+      "letter": "N",
+      "title": "Secteur 19 - Vieux-Bourg",
+      "historical_sector_ids": [
+        19
+      ],
+      "source_url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secn.html",
+      "source_sha256": "db46d18455901672614f1c062750b04e98329d1cc5b34fa6be877a38914631ec",
+      "population": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "POPULATION ACTUELLE habitants",
+          "POTENTIEL POPULATION habitants",
+          "POPULATION POTENTIELLE TOTALE habitants",
+          "DENSITE POTENTIELLE habitants par hectare"
+        ],
+        "raw_sector_row": [
+          "N",
+          "56.6",
+          "2537",
+          "1883.5",
+          "4421",
+          "78.10"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "8.3%",
+          "16.8%",
+          "28.0%",
+          "20.3%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "15085",
+          "6715",
+          "21800",
+          "32.06"
+        ],
+        "values": {
+          "area_ha": 56.6,
+          "historical_current": 2537.0,
+          "historical_additional_potential": 1883.5,
+          "historical_total_potential": 4421.0,
+          "potential_density_per_ha": 78.1
+        }
+      },
+      "employment": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "EMPLOIS ACTUELS emplois",
+          "POTENTIEL EMPLOIS emplois",
+          "POTENTIEL EMPLOIS TOTAUX emplois",
+          "DENSITE POTENTIELLE emplois par hectare"
+        ],
+        "raw_sector_row": [
+          "N",
+          "56.6",
+          "3710",
+          "1056.5",
+          "4766.5",
+          "84.21"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "8.3%",
+          "44.0%",
+          "26.3%",
+          "38.3%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "8425",
+          "4017",
+          "12442",
+          "18.30"
+        ],
+        "values": {
+          "area_ha": 56.6,
+          "historical_current": 3710.0,
+          "historical_additional_potential": 1056.5,
+          "historical_total_potential": 4766.5,
+          "potential_density_per_ha": 84.21
+        }
+      },
+      "navigation_polygon": {
+        "raw_coords": "154,265,167,255,170,241,181,236,188,223,216,246,235,262,251,275,263,283,250,292,257,301,246,313,240,324,232,336,227,328,212,318,184,297,175,290,162,275,153,265",
+        "points_pixels": [
+          [
+            154,
+            265
+          ],
+          [
+            167,
+            255
+          ],
+          [
+            170,
+            241
+          ],
+          [
+            181,
+            236
+          ],
+          [
+            188,
+            223
+          ],
+          [
+            216,
+            246
+          ],
+          [
+            235,
+            262
+          ],
+          [
+            251,
+            275
+          ],
+          [
+            263,
+            283
+          ],
+          [
+            250,
+            292
+          ],
+          [
+            257,
+            301
+          ],
+          [
+            246,
+            313
+          ],
+          [
+            240,
+            324
+          ],
+          [
+            232,
+            336
+          ],
+          [
+            227,
+            328
+          ],
+          [
+            212,
+            318
+          ],
+          [
+            184,
+            297
+          ],
+          [
+            175,
+            290
+          ],
+          [
+            162,
+            275
+          ],
+          [
+            153,
+            265
+          ]
+        ],
+        "valid": true,
+        "validity": "Valid Geometry",
+        "area_pixels_squared": 5794.0,
+        "crs": null,
+        "semantics": "HTML image-map interaction region; not verified planning boundary"
+      }
+    },
+    {
+      "target": 15,
+      "letter": "O",
+      "title": "Secteur 20 - La Banderole",
+      "historical_sector_ids": [
+        20
+      ],
+      "source_url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-seco.html",
+      "source_sha256": "afad38925f3b319ac9fd6d8bf9d26e59abd6e579691a14999ffff2b0c7676328",
+      "population": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "POPULATION ACTUELLE habitants",
+          "POTENTIEL POPULATION habitants",
+          "POPULATION POTENTIELLE TOTALE habitants",
+          "DENSITE POTENTIELLE habitants par hectare"
+        ],
+        "raw_sector_row": [
+          "O",
+          "18.3",
+          "107",
+          "0",
+          "107",
+          "5.85"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "2.7%",
+          "0.7%",
+          "0.0%",
+          "0.5%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "15085",
+          "6715",
+          "21800",
+          "32.06"
+        ],
+        "values": {
+          "area_ha": 18.3,
+          "historical_current": 107.0,
+          "historical_additional_potential": 0.0,
+          "historical_total_potential": 107.0,
+          "potential_density_per_ha": 5.85
+        }
+      },
+      "employment": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "EMPLOIS ACTUELS emplois",
+          "POTENTIEL EMPLOIS emplois",
+          "POTENTIEL EMPLOIS TOTAUX emplois",
+          "DENSITE POTENTIELLE emplois par hectare"
+        ],
+        "raw_sector_row": [
+          "O",
+          "18.3",
+          "25",
+          "0",
+          "25",
+          "1.37"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "2.7%",
+          "0.3%",
+          "0.0%",
+          "0.2%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "8425",
+          "4017",
+          "12442",
+          "18.30"
+        ],
+        "values": {
+          "area_ha": 18.3,
+          "historical_current": 25.0,
+          "historical_additional_potential": 0.0,
+          "historical_total_potential": 25.0,
+          "potential_density_per_ha": 1.37
+        }
+      },
+      "navigation_polygon": {
+        "raw_coords": "234,334,239,326,245,312,258,299,251,291,263,283,278,291,294,296,297,299,290,301,282,311,284,315,275,326,275,330,261,347,258,343,244,339,235,335",
+        "points_pixels": [
+          [
+            234,
+            334
+          ],
+          [
+            239,
+            326
+          ],
+          [
+            245,
+            312
+          ],
+          [
+            258,
+            299
+          ],
+          [
+            251,
+            291
+          ],
+          [
+            263,
+            283
+          ],
+          [
+            278,
+            291
+          ],
+          [
+            294,
+            296
+          ],
+          [
+            297,
+            299
+          ],
+          [
+            290,
+            301
+          ],
+          [
+            282,
+            311
+          ],
+          [
+            284,
+            315
+          ],
+          [
+            275,
+            326
+          ],
+          [
+            275,
+            330
+          ],
+          [
+            261,
+            347
+          ],
+          [
+            258,
+            343
+          ],
+          [
+            244,
+            339
+          ],
+          [
+            235,
+            335
+          ]
+        ],
+        "valid": true,
+        "validity": "Valid Geometry",
+        "area_pixels_squared": 1914.0,
+        "crs": null,
+        "semantics": "HTML image-map interaction region; not verified planning boundary"
+      }
+    },
+    {
+      "target": 16,
+      "letter": "P",
+      "title": "Secteur 21 - La Piscine",
+      "historical_sector_ids": [
+        21
+      ],
+      "source_url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secp.html",
+      "source_sha256": "e9ebd0988d2d72e8e95f26b4aa8849523e7a29b84a9c0ba86fd70a4d32d3cd08",
+      "population": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "POPULATION ACTUELLE habitants",
+          "POTENTIEL POPULATION habitants",
+          "POPULATION POTENTIELLE TOTALE habitants",
+          "DENSITE POTENTIELLE habitants par hectare"
+        ],
+        "raw_sector_row": [
+          "P",
+          "18",
+          "28",
+          "0",
+          "28",
+          "1.56"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "2.6%",
+          "0.2%",
+          "0.0%",
+          "0.1%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "15085",
+          "6715",
+          "21800",
+          "32.06"
+        ],
+        "values": {
+          "area_ha": 18.0,
+          "historical_current": 28.0,
+          "historical_additional_potential": 0.0,
+          "historical_total_potential": 28.0,
+          "potential_density_per_ha": 1.56
+        }
+      },
+      "employment": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "EMPLOIS ACTUELS emplois",
+          "POTENTIEL EMPLOIS emplois",
+          "POTENTIEL EMPLOIS TOTAUX emplois",
+          "DENSITE POTENTIELLE emplois par hectare"
+        ],
+        "raw_sector_row": [
+          "P",
+          "18",
+          "7",
+          "150",
+          "157",
+          "8.72"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "2.6%",
+          "0.1%",
+          "3.7%",
+          "1.3%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "8425",
+          "4017",
+          "12442",
+          "18.30"
+        ],
+        "values": {
+          "area_ha": 18.0,
+          "historical_current": 7.0,
+          "historical_additional_potential": 150.0,
+          "historical_total_potential": 157.0,
+          "potential_density_per_ha": 8.72
+        }
+      },
+      "navigation_polygon": {
+        "raw_coords": "27,181,46,164,60,180,82,208,98,224,109,231,104,243,99,242,93,240,93,237,52,208,41,196,42,192,27,182",
+        "points_pixels": [
+          [
+            27,
+            181
+          ],
+          [
+            46,
+            164
+          ],
+          [
+            60,
+            180
+          ],
+          [
+            82,
+            208
+          ],
+          [
+            98,
+            224
+          ],
+          [
+            109,
+            231
+          ],
+          [
+            104,
+            243
+          ],
+          [
+            99,
+            242
+          ],
+          [
+            93,
+            240
+          ],
+          [
+            93,
+            237
+          ],
+          [
+            52,
+            208
+          ],
+          [
+            41,
+            196
+          ],
+          [
+            42,
+            192
+          ],
+          [
+            27,
+            182
+          ]
+        ],
+        "valid": true,
+        "validity": "Valid Geometry",
+        "area_pixels_squared": 1887.0,
+        "crs": null,
+        "semantics": "HTML image-map interaction region; not verified planning boundary"
+      }
+    },
+    {
+      "target": 17,
+      "letter": "Q",
+      "title": "Secteur 22 - Rive",
+      "historical_sector_ids": [
+        22
+      ],
+      "source_url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secq.html",
+      "source_sha256": "1e40a403300ad47247b3e47df4df8bd110a69cf24494200aca120cdfd68d7784",
+      "population": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "POPULATION ACTUELLE habitants",
+          "POTENTIEL POPULATION habitants",
+          "POPULATION POTENTIELLE TOTALE habitants",
+          "DENSITE POTENTIELLE habitants par hectare"
+        ],
+        "raw_sector_row": [
+          "Q",
+          "8",
+          "192",
+          "0",
+          "192",
+          "24.00"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "1.2%",
+          "1.3%",
+          "0.0%",
+          "0.9%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "15085",
+          "6715",
+          "21800",
+          "32.06"
+        ],
+        "values": {
+          "area_ha": 8.0,
+          "historical_current": 192.0,
+          "historical_additional_potential": 0.0,
+          "historical_total_potential": 192.0,
+          "potential_density_per_ha": 24.0
+        }
+      },
+      "employment": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "EMPLOIS ACTUELS emplois",
+          "POTENTIEL EMPLOIS emplois",
+          "POTENTIEL EMPLOIS TOTAUX emplois",
+          "DENSITE POTENTIELLE emplois par hectare"
+        ],
+        "raw_sector_row": [
+          "Q",
+          "8",
+          "198",
+          "0",
+          "198",
+          "24.75"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "1.2%",
+          "2.4%",
+          "0.0%",
+          "1.6%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "8425",
+          "4017",
+          "12442",
+          "18.30"
+        ],
+        "values": {
+          "area_ha": 8.0,
+          "historical_current": 198.0,
+          "historical_additional_potential": 0.0,
+          "historical_total_potential": 198.0,
+          "potential_density_per_ha": 24.75
+        }
+      },
+      "navigation_polygon": {
+        "raw_coords": "107,244,107,241,111,231,132,241,150,251,151,258,159,271,181,295,213,319,227,329,233,336,224,344,213,341,220,335,217,327,179,302,179,297,171,292,171,288,153,276,144,257,133,249,119,245,105,243",
+        "points_pixels": [
+          [
+            107,
+            244
+          ],
+          [
+            107,
+            241
+          ],
+          [
+            111,
+            231
+          ],
+          [
+            132,
+            241
+          ],
+          [
+            150,
+            251
+          ],
+          [
+            151,
+            258
+          ],
+          [
+            159,
+            271
+          ],
+          [
+            181,
+            295
+          ],
+          [
+            213,
+            319
+          ],
+          [
+            227,
+            329
+          ],
+          [
+            233,
+            336
+          ],
+          [
+            224,
+            344
+          ],
+          [
+            213,
+            341
+          ],
+          [
+            220,
+            335
+          ],
+          [
+            217,
+            327
+          ],
+          [
+            179,
+            302
+          ],
+          [
+            179,
+            297
+          ],
+          [
+            171,
+            292
+          ],
+          [
+            171,
+            288
+          ],
+          [
+            153,
+            276
+          ],
+          [
+            144,
+            257
+          ],
+          [
+            133,
+            249
+          ],
+          [
+            119,
+            245
+          ],
+          [
+            105,
+            243
+          ]
+        ],
+        "valid": false,
+        "validity": "Self-intersection[107 243.285714285714]",
+        "area_pixels_squared": 1126.5,
+        "crs": null,
+        "semantics": "HTML image-map interaction region; not verified planning boundary"
+      }
+    },
+    {
+      "target": 18,
+      "letter": "R",
+      "title": "Secteur 23 - Sadex",
+      "historical_sector_ids": [
+        23
+      ],
+      "source_url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secr.html",
+      "source_sha256": "9ec4604167505ffe7f150df6320e20d532875f6f224ca114f43b6bc7d4a81b3d",
+      "population": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "POPULATION ACTUELLE habitants",
+          "POTENTIEL POPULATION habitants",
+          "POPULATION POTENTIELLE TOTALE habitants",
+          "DENSITE POTENTIELLE habitants par hectare"
+        ],
+        "raw_sector_row": [
+          "R",
+          "1.7",
+          "45",
+          "0",
+          "45",
+          "26.47"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "0.3%",
+          "0.3%",
+          "0.0%",
+          "0.2%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "15085",
+          "6715",
+          "21800",
+          "32.06"
+        ],
+        "values": {
+          "area_ha": 1.7,
+          "historical_current": 45.0,
+          "historical_additional_potential": 0.0,
+          "historical_total_potential": 45.0,
+          "potential_density_per_ha": 26.47
+        }
+      },
+      "employment": {
+        "headers": [
+          "SECTEUR",
+          "SURFACE hectares",
+          "EMPLOIS ACTUELS emplois",
+          "POTENTIEL EMPLOIS emplois",
+          "POTENTIEL EMPLOIS TOTAUX emplois",
+          "DENSITE POTENTIELLE emplois par hectare"
+        ],
+        "raw_sector_row": [
+          "R",
+          "1.7",
+          "25",
+          "0",
+          "25",
+          "14.71"
+        ],
+        "raw_percent_row": [
+          "Pourcentage par rapport à la ville",
+          "0.3%",
+          "0.3%",
+          "0.0%",
+          "0.2%",
+          ""
+        ],
+        "raw_city_total_row": [
+          "Total ville",
+          "680",
+          "8425",
+          "4017",
+          "12442",
+          "18.30"
+        ],
+        "values": {
+          "area_ha": 1.7,
+          "historical_current": 25.0,
+          "historical_additional_potential": 0.0,
+          "historical_total_potential": 25.0,
+          "potential_density_per_ha": 14.71
+        }
+      },
+      "navigation_polygon": {
+        "raw_coords": "226,344,228,342,233,337,244,341,255,343,260,350,258,350,252,345,239,342,230,344",
+        "points_pixels": [
+          [
+            226,
+            344
+          ],
+          [
+            228,
+            342
+          ],
+          [
+            233,
+            337
+          ],
+          [
+            244,
+            341
+          ],
+          [
+            255,
+            343
+          ],
+          [
+            260,
+            350
+          ],
+          [
+            258,
+            350
+          ],
+          [
+            252,
+            345
+          ],
+          [
+            239,
+            342
+          ],
+          [
+            230,
+            344
+          ]
+        ],
+        "valid": true,
+        "validity": "Valid Geometry",
+        "area_pixels_squared": 106.5,
+        "crs": null,
+        "semantics": "HTML image-map interaction region; not verified planning boundary"
+      }
+    }
+  ],
+  "totals": {
+    "population": {
+      "group_sums": {
+        "area_ha": 680.0,
+        "historical_current": 14712.0,
+        "historical_additional_potential": 6715.0,
+        "historical_total_potential": 21427.5
+      },
+      "source_city_total_row": [
+        "Total ville",
+        "680",
+        "15085",
+        "6715",
+        "21800",
+        "32.06"
+      ]
+    },
+    "employment": {
+      "group_sums": {
+        "area_ha": 680.0,
+        "historical_current": 8425.0,
+        "historical_additional_potential": 4016.5,
+        "historical_total_potential": 12441.5
+      },
+      "source_city_total_row": [
+        "Total ville",
+        "680",
+        "8425",
+        "4017",
+        "12442",
+        "18.30"
+      ]
+    }
+  },
+  "qa": {
+    "href_mismatches": [
+      {
+        "target": 18,
+        "href": "javascript:// Q",
+        "resolved_letter": "R"
+      }
+    ],
+    "invalid_targets": [
+      10,
+      11,
+      17
+    ],
+    "overlaps_between_valid_polygons": [
+      {
+        "targets": [
+          14,
+          15
+        ],
+        "area_pixels_squared": 28.50160928143714
+      },
+      {
+        "targets": [
+          13,
+          14
+        ],
+        "area_pixels_squared": 14.338683246577965
+      },
+      {
+        "targets": [
+          12,
+          16
+        ],
+        "area_pixels_squared": 43.55000000000007
+      },
+      {
+        "targets": [
+          12,
+          13
+        ],
+        "area_pixels_squared": 16.913472272614083
+      },
+      {
+        "targets": [
+          8,
+          9
+        ],
+        "area_pixels_squared": 54.97450058359278
+      },
+      {
+        "targets": [
+          7,
+          8
+        ],
+        "area_pixels_squared": 112.18791208791208
+      },
+      {
+        "targets": [
+          6,
+          8
+        ],
+        "area_pixels_squared": 0.27400169923534773
+      },
+      {
+        "targets": [
+          6,
+          7
+        ],
+        "area_pixels_squared": 74.76366099777607
+      },
+      {
+        "targets": [
+          5,
+          12
+        ],
+        "area_pixels_squared": 9.224648012821905
+      },
+      {
+        "targets": [
+          5,
+          6
+        ],
+        "area_pixels_squared": 49.131024096385545
+      },
+      {
+        "targets": [
+          3,
+          9
+        ],
+        "area_pixels_squared": 57.24764304291193
+      },
+      {
+        "targets": [
+          3,
+          4
+        ],
+        "area_pixels_squared": 15.20714285714297
+      },
+      {
+        "targets": [
+          2,
+          8
+        ],
+        "area_pixels_squared": 3.5999999999999943
+      },
+      {
+        "targets": [
+          2,
+          3
+        ],
+        "area_pixels_squared": 0.6657894736841828
+      }
+    ],
+    "invalid_geometry_repaired": false
+  },
+  "methodology_evidence": {
+    "doc-secanalyse": {
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secanalyse.html",
+      "sha256": "840fc108029a9be9c203e7f0e641a8ba0effc02151df8d5b5649fbf6d5ee2e75",
+      "body_text": "Méthode d'analyse La démarche adoptée pour l'analyse des données quantitatives actuelles concernant l'habitat et le travail distingue deux états, la situation actuelle et la situation future découlant du potentiel restant des plans spéciaux. Elle comprend notamment : a) Situation actuelle Une subdivision du territoire communal en 23 secteurs délimités par des éléments marquants du paysage urbain, tels que les routes et les cours d'eau par exemple. Le calcul de la densité de la population en habitants et de la densité d'emplois par hectare pour chacun des secteurs, selon les statistiques établies par rues et fournies par le Service de l'urbanisme de la ville de Nyon. Le report graphique des densités, par tranches de même ordre de grandeur, sur le plan de la ville, d'une part pour la population et d'autre part pour les emplois. La superposition des deux analyses quantitatives, relatives aux habitants et aux emplois, avec le recensement des services publics et privés, à l'échelle de la ville et à l'échelle des quartiers, pour mettre en évidence les éventuels sous-équipement ou suréquipement de certains secteurs. b) Situation future Le calcul du potentiel d'habitants et d'emplois découlant des plans spéciaux, prévus, à l'étude, légalisés ou réalisés, selon le degré de réalisation restant encore disponible actuellement. L'addition de ce potentiel à la situation actuelle et la confrontation avec l'horizon \"25'000 habitants et 13'000 emplois\" dans l'hypothèse d'une réalisation complète de l'ensemble des plans spéciaux. La confrontation des résultats numériques avec la densité actuelle, avec la densité et la répartition des équipements publics existants, qui permettent la définition des priorités. c) Avantages de la méthode La méthode choisie permet un traitement informatique des données numériques sous la forme d'une base de données pouvant être mise à jour en fonction de l'évolution des différents paramètres au cours du temps. Elle offre ainsi la possibilité de définir un profil spécifique pour chacune des entités ainsi formées, bien définies et représentatives d'une unité de lieu se référant à l'échelle du quartier, qui constitue un cadre de référence utile pour l'étude, la vérification ou la simulation des interventions localisées susceptibles d'être envisagées après l'établissement du plan directeur lui-même."
+    },
+    "doc-sechabitat": {
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-sechabitat.html",
+      "sha256": "d764070f676c99e688d0ccb4ebac3916020285468f3de9cb3c4dedb867627897",
+      "body_text": "Habitat Analyse critique Situation actuelle : Les données quantitatives actuelles relatives à la population de la ville de Nyon sont les suivantes : SECTEUR SURFACE hectares POPULATION habitants DENSITE habitants par hectare 1 28 26 0.93 3 15.1 8 0.53 2 et 4 107.5 5 0.05 5 27.6 14 0.51 6 36.8 1043 28.34 7 27.8 311 11.19 8 et 13 60.3 3282 54.43 9 et 14 63.5 3365 52.99 10, 15 et 16 40.8 2194 53.77 11 31.6 1437 45.47 12 69.3 5 0.07 Total sur-gare 508.3 11690 23.00 17 48.6 31 0.64 18 20.5 82 4.00 19 56.6 2537 44.82 20 18.3 107 5.85 21 18 28 1.56 22 8 192 24.00 23 1.7 45 26.47 Total sous-gare 171.7 3022 17.60 POPULATION NON LOCALISEE 373 Total ville 680 15085 22.18 Commentaires : L'examen des données numériques révèle que la densité d'habitants la plus élevée se rencontre au-dessus de la voie CFF. Cette perception entre en contradiction avec l'image d'ensemble qui se dégage de l'analyse du tissu urbain et constitue une forme de paradoxe. En effet, alors qu'au niveau du tissu la ville historique apparaît comme plus dense que les quartiers récents de la ville moderne, elle abrite dans les faits moins d'habitants que ceux-ci. Définition des objectifs Situation future : Les données quantitatives futures relatives à la population de la ville de Nyon compte tenu des divers plans spéciaux prévus, à l'étude, légalisés ou réalisés, sont les suivantes: SECTEUR SURFACE hectares POPULATION ACTUELLE habitants POTENTIEL POPULATION habitants POPULATION POTENTIELLE TOTALE habitants DENSITE POTENTIELLE habitants par hectare 1 28 26 0 26 0.93 3 15.1 8 0 8 0.53 2 et 4 107.5 5 0 5 0.05 5 27.6 14 0 14 0.51 6 36.8 1043 700 1743 47.36 7 27.8 311 0 311 11.19 8 et 13 60.3 3282 1387.5 4669.5 77.44 9 et 14 63.5 3365 1334 4699 74.00 10, 15 et 16 40.8 2194 1160 3354 82.21 11 31.6 1437 250 1687 53.39 12 69.3 5 0 5 0.07 Total sur-gare 508.3 11690 4832 16522 32.50 17 48.6 31 0 31 0.64 18 20.5 82 0 82 4.00 19 56.6 2537 1883.5 4421 78.10 20 18.3 107 0 107 5.85 21 18 28 0 28 1.56 22 8 192 0 192 24.00 23 1.7 45 0 45 26.47 Total sous-gare 171.7 3022 1884 4906 28.57 POPULATION NON LOCALISEE 373 0 373 Total ville 680 15085 6715 21800 32.06 Les lignes bleutées du tableau indiquent les secteurs pour lesquels une augmentation est à prévoir en fonction des plans spéciaux. Commentaires : Les projections numériques relatives au nombre futur d'habitants en cas de réalisation complète du potentiel restant des plans spéciaux amènent les constatations suivantes : L'essentiel de l'augmentation de la population se situe dans les secteurs au-dessus de la gare, qui abritent déjà la majorité de la population. La seule réalisation de l'entier du potentiel restant permet d'atteindre déjà 85 % du niveau de population de l'horizon \"25'000 habitants\", sans tenir compte de l'évolution dans les autres parties du tissu, situées dans les zones dont le règlement autorise encore une densification Les projets élaborés dans cadre des plans spéciaux n'influencent pas encore la structure de la ville actuelle, mais selon l'état d'avancement des études, peuvent à plus ou moins long terme avoir des conséquences importantes sur celle-ci. Confrontées à l'analyse critique de la situation actuelle, ces perspectives doivent permettre de définir un ordre de priorité et d'orienter certains choix, relatifs notamment à la nécessité d'encourager localement la prépondérance d'un type particulier d'affectation. La situation maximale de 25'000 habitants, qui constitue le plafond pris en compte par cette étude, doit donc être considérée comme une réalité en devenir, soumise cependant des paramètres conjoncturels et économiques indépendants du potentiel proprement dit, qu'il s'agit d'atteindre dans les meilleures conditions possibles, préoccupation s'appliquant non seulement à la ville moderne, mais également à la ville historique, dont le poids relatif en population ne cesse proportionnellement de diminuer. La densité déjà élevée dans les quartiers récents au-dessus de la ligne CFF, renforcée de surcroît à terme par la réalisation complète du potentiel de construction de logements prévu par les plans spéciaux, implique que des mesures appropriées soient prises pour offrir une qualité de vie intéressante aux actuels et futurs habitants, en veillant notamment au traitement de l'espace public urbain, à l'offre en matière d'emplois dans ces quartiers eux-mêmes et à la présence d'équipements publics adaptés. Le déséquilibre de population risquant de s'accentuer encore en faveur de la ville moderne, il est nécessaire de favoriser le logement et la mixité des affectations dans la ville historique pour assurer son animation et éviter qu'elle ne se transforme en un centre administratif et commercial, finalement déserté par l'habitat. D'une manière générale, pour être profitable à la ville de Nyon et contenir le taux de pendulaires, tout accroissement de population doit être accompagné, sinon précédé, par la création d'emplois, l'amélioration qualitative du cadre de vie et l'adaptation des équipements publics dans les quartiers récents de la ville moderne , processus pouvant être favorisé par la mise en place d'une politique incitative ciblée sur cette partie de la ville."
+    },
+    "doc-secemploi": {
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-secemploi.html",
+      "sha256": "634b552764fa532323922557b52f769876d94c0d0afa75dcacb7118073ed7f1f",
+      "body_text": "Emploi Analyse critique Situation actuelle : Les données quantitatives actuelles relatives au nombre d'emplois de la ville de Nyon sont les suivantes : SECTEUR SURFACE hectares EMPLOIS SECONDAIRE emplois EMPLOIS TERTIAIRE emplois EMPLOIS TOTAUX emplois DENSITE emplois par hectare 1 28 46 75 121 4.32 3 15.1 1 0 1 0.07 2 et 4 107.5 357 193 550 5.12 5 27.6 2 258 260 9.42 6 36.8 34 90 124 3.37 7 27.8 440 720 1160 41.73 8 et 13 60.3 9 727 736 12.21 9 et 14 63.5 30 279 309 4.87 10, 15 et 16 40.8 57 344 401 9.83 11 31.6 172 460 632 20.00 12 69.3 0 0 0 - Total sur-gare 508.3 1148 3146 4294 8.45 17 48.6 0 144 144 2.96 18 20.5 0 22 22 1.07 19 56.6 317 3393 3710 65.55 20 18.3 0 25 25 1.37 21 18 0 7 7 0.39 22 8 10 188 198 24.75 23 1.7 0 25 25 14.71 Total sous-gare 171.7 327 3804 4131 24.06 Total ville 680 1475 6950 8425 12.39 Commentaires : Le nombre actuel de places de travail dans la ville historique étant pratiquement le même que dans la ville moderne pour une surface trois fois plus faible, celle-ci abrite donc une densité en emplois nettement plus importante. Les secteurs 7 et 11, en partie affectés à l'industrie par le plan des zones de 1980, présentent une densité élevée relativement aux autres secteurs de la ville moderne, alors que les secteurs 8, 9, 10, 14, 15 et 16 n'offrent que très peu de places de travail, bien qu'ils abritent la densité d'habitants la plus élevée de la commune. Définition des objectifs Situation future : Les données quantitatives futures relatives au nombre d'emplois de la ville de Nyon compte tenu des divers plans spéciaux prévus, à l'étude, légalisés ou réalisés, sont les suivantes: SECTEUR SURFACE hectares EMPLOIS TOTAUX emplois POTENTIEL EMPLOIS emplois POTENTIEL EMPLOIS TOTAUX emplois DENSITE POTENTIELLE emplois par hectare 1 28 121 0 121 4.32 3 15.1 1 0 1 0.07 2 et 4 107.5 550 238 788 7.33 5 27.6 260 0 260 9.42 6 36.8 124 200 324 8.80 7 27.8 1160 0 1160 41.73 8 et 13 60.3 736 697.5 1433.5 23.77 9 et 14 63.5 309 500 809 12.74 10, 15 et 16 40.8 401 900 1301 31.89 11 31.6 632 250 882 27.91 12 69.3 0 0 0 - Total sur-gare 508.3 4294 2786 7080 13.93 17 48.6 144 24.5 168.5 3.47 18 20.5 22 0 22 1.07 19 56.6 3710 1056.5 4766.5 84.21 20 18.3 25 0 25 1.37 21 18 7 150 157 8.72 22 8 198 0 198 24.75 23 1.7 25 0 25 14.71 Total sous-gare 171.7 4131 1231 5362 31.23 Total ville 680 8425 4017 12442 18.30 Les lignes bleutées du tableau indiquent les secteurs pour lesquels une augmentation est à prévoir en fonction des plans spéciaux. Commentaires : Les projections numériques relatives au nombre futur d'emplois en cas de réalisation complète du potentiel restant des plans spéciaux amènent les constatations suivantes : La proportion de l'augmentation du nombre de places de travail est plus importante dans la ville moderne (+ 64.9 %) que dans la ville moderne (+29.8 %). Une augmentation notable est ainsi attendue dans les secteurs 8, 10, 13, 15 et 16, laquelle apparaît très positive compte tenu de la densité de population qu'ils abritent. La seule réalisation de l'entier du potentiel restant permet d'atteindre déjà 95 % du nombre d'emplois de l'horizon \"13'000 emplois\", sans tenir compte de l'évolution dans les autres parties du tissu, situées dans les zones dont le règlement autorise encore une densification. Confrontées à l'analyse critique de la situation actuelle, ces projections révèlent que la situation maximale de 13'000 emplois, qui constitue le plafond pris en compte par cette étude, peut être potentiellement atteinte avant l'horizon concernant la population. Cette perspective constitue une dynamique très favorable, dans la mesure où elle accompagne et si possible précède l'accroissement de la population et à la condition que cette évolution soit prioritairement orientée et encouragée dans les quartiers récents de la ville moderne plutôt que dans la ville historique. Le type d'activité des services à l'échelle de la ville et des services de proximité, dont le développement doit être favorisé au-dessus des voies CFF, doit être défini par rapport aux lacunes qui ont été mises en évidence aux cours des analyses. L'augmentation du nombre d'emplois doit parallèlement être suivie d'une adaptation des équipements nécessaires, tels que logements, écoles et services publics, afin de promouvoir et faciliter l'intégration de ces travailleurs en tant que nouveaux résidents de la commune. Une politique active d'incitation favorisant la création de nouvelles places de travail dans la ville moderne constitue donc un préalable nécessaire et prioritaire à la suite du développement préconisé et souhaité dans cette partie de la ville."
+    },
+    "doc-popsect": {
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-popsect.html",
+      "sha256": "a178d439e6b96a316d23790650a0c8049e6e23e078fae86cd1f73c53019958be",
+      "body_text": "Tableau de la population par secteurs SECTEUR SURFACE hectares POPULATION ACTUELLE habitants POTENTIEL POPULATION habitants POPULATION POTENTIELLE TOTALE habitants DENSITE POTENTIELLE habitants par hectare 1 28 26 0 26 0.93 3 15.1 8 0 8 0.53 2 et 4 107.5 5 0 5 0.05 5 27.6 14 0 14 0.51 12 69.3 5 0 5 0.07 6 36.8 1043 700 1743 47.36 7 27.8 311 0 311 11.19 8 et 13 60.3 3282 1387.5 4669.5 77.44 9 et 14 63.5 3365 1334 4699 74.00 10, 15 et 16 40.8 2194 1160 3354 82.21 11 31.6 1437 250 1687 53.39 Total sur-gare 508.3 11690 4832 16522 32.50 17 48.6 31 0 31 0.64 18 20.5 82 0 82 4.00 19 56.6 2537 1883.5 4421 78.10 20 18.3 107 0 107 5.85 21 18 28 0 28 1.56 22 8 192 0 192 24.00 23 1.7 45 0 45 26.47 Total sous-gare 171.7 3022 1884 4906 28.57 POPULATION NON LOCALISEE 373 0 373 Total ville 680 15085 6715 21800 32.06"
+    },
+    "doc-empsect": {
+      "url": "https://www.nyon.ch/plan-directeur/documents/secteurs/doc-empsect.html",
+      "sha256": "be0055404adc446c5a12d5f6cea7c74ddd145db301dc8610912a42315869a577",
+      "body_text": "Tableau des emplois par secteurs SECTEUR SURFACE hectares EMPLOIS TOTAUX emplois POTENTIEL EMPLOIS emplois POTENTIEL EMPLOIS TOTAUX emplois DENSITE POTENTIELLE emplois par hectare 1 28 121 0 121 4.32 3 15.1 1 0 1 0.07 2 et 4 107.5 550 238 788 7.33 5 27.6 260 0 260 9.42 12 69.3 0 0 0 - 6 36.8 124 200 324 8.80 7 27.8 1160 0 1160 41.73 8 et 13 60.3 736 697.5 1433.5 23.77 9 et 14 63.5 309 500 809 12.74 10, 15 et 16 40.8 401 900 1301 31.89 11 31.6 632 250 882 27.91 Total sur-gare 508.3 4294 2786 7080 13.93 17 48.6 144 24.5 168.5 3.47 18 20.5 22 0 22 1.07 19 56.6 3710 1056.5 4766.5 84.21 20 18.3 25 0 25 1.37 21 18 7 150 157 8.72 22 8 198 0 198 24.75 23 1.7 25 0 25 14.71 Total sous-gare 171.7 4131 1231 5362 31.23 Total ville 680 8425 4017 12442 18.30 Les lignes bleutées du tableau indiquent les secteurs pour lesquels une augmentation est à prévoir en fonction des plans spéciaux."
+    }
+  }
+}
