@@ -14,11 +14,19 @@ TABLES=(('v_vd_pdcom_review_sectors','vd_pdcom_review_sectors',('id',)),
         ('v_vd_pdcom_review_parcels','vd_pdcom_review_parcels',('sector_id','egrid')))
 
 
+def validate_attribution(cursor):
+    # No empty geographic attribution may reach a receiver. Document membership
+    # remains in bronze_ch.vd_pdcom_document_communes as separate source scope.
+    cursor.execute("SELECT count(*) FROM gold_ch.v_vd_pdcom_review_sectors WHERE COALESCE(cardinality(commune_bfs),0)=0")
+    if cursor.fetchone()[0]:raise ValueError('review_sector_commune_unresolved')
+
+
 def deliver(conn):
     result={'publication_status':'internal_review_only','receiver':'lamap_db','tables':{}}
     with conn,conn.cursor() as c:
         c.execute("SET LOCAL statement_timeout='90s'")
         c.execute('SELECT pg_advisory_xact_lock(572500301)')
+        validate_attribution(c)
         for source,target,keys in TABLES:
             c.execute('''SELECT column_name FROM information_schema.columns WHERE table_schema='gold_ch' AND table_name=%s ORDER BY ordinal_position''',(source,))
             columns=[r[0] for r in c.fetchall()]

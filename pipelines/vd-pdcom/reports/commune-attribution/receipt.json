@@ -1,0 +1,53 @@
+{
+  "operation_id": "fb5fc081-2e9c-499a-967e-ba933797c681",
+  "private_delivery": {
+    "publication_status": "internal_review_only",
+    "receiver": "lamap_db",
+    "tables": {
+      "vd_pdcom_review_sectors": {
+        "rows": 32,
+        "mismatches": 0,
+        "valid_4326": true
+      },
+      "vd_pdcom_review_parcels": {
+        "rows": 1042,
+        "mismatches": 0,
+        "valid_4326": true
+      }
+    }
+  },
+  "existing_sector_rows_unchanged": true,
+  "sector_row_hash": "30385bec48a9b40cd3362a89a758fbb4",
+  "integration_tests": [
+    {
+      "case": "bex_only",
+      "actual": [
+        5402
+      ]
+    },
+    {
+      "case": "ollon_only",
+      "actual": [
+        5409
+      ]
+    },
+    {
+      "case": "shared_bex_ollon",
+      "actual": [
+        5402,
+        5409
+      ]
+    },
+    {
+      "case": "aigle_touching_neighbors",
+      "actual": [
+        5401
+      ]
+    },
+    {
+      "case": "outside_document_scope",
+      "actual": []
+    }
+  ],
+  "migration": "20260915002258_vd_pdcom_sector_commune_attribution.sql"
+}
