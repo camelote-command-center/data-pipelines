@@ -1,0 +1,575 @@
+{
+  "status": "exploratory_historical_map_correspondence",
+  "source_to_pga_review_affine": [
+    [
+      0.9967716569153597,
+      -0.6613242680093302,
+      512.1609003805222
+    ],
+    [
+      0.6613242680093302,
+      0.9967716569153597,
+      228.1821007933799
+    ]
+  ],
+  "source_to_lv03_affine": [
+    [
+      2.508530972851485,
+      -0.02468797298739323,
+      504740.96284105285
+    ],
+    [
+      -0.020451224021797648,
+      -2.5087633450855917,
+      138047.98505964637
+    ]
+  ],
+  "fit_inlier_count": 10,
+  "fit_inlier_rmse_m": 2.515465258265029,
+  "fit_inlier_max_m": 4.257483009182416,
+  "reference_edge_checks": [
+    {
+      "component_id": 24,
+      "point_lv03": [
+        505170.2698229406,
+        137590.39591870597
+      ],
+      "nearest_current_footprint_edge_m": 2.9005977116447554
+    },
+    {
+      "component_id": 27,
+      "point_lv03": [
+        505226.36357912526,
+        137558.3875799272
+      ],
+      "nearest_current_footprint_edge_m": 4.057749707774504
+    },
+    {
+      "component_id": 28,
+      "point_lv03": [
+        505175.9775658659,
+        137536.09157473868
+      ],
+      "nearest_current_footprint_edge_m": 4.456725860391782
+    },
+    {
+      "component_id": 30,
+      "point_lv03": [
+        505176.6315546058,
+        137496.56369008584
+      ],
+      "nearest_current_footprint_edge_m": 28.27760579188131
+    },
+    {
+      "component_id": 33,
+      "point_lv03": [
+        505345.54022918013,
+        137485.3772594222
+      ],
+      "nearest_current_footprint_edge_m": 1.845129198024425
+    },
+    {
+      "component_id": 34,
+      "point_lv03": [
+        505234.9052254747,
+        137483.50732457856
+      ],
+      "nearest_current_footprint_edge_m": 4.004145696477437
+    },
+    {
+      "component_id": 38,
+      "point_lv03": [
+        505418.1914067396,
+        137450.01276603722
+      ],
+      "nearest_current_footprint_edge_m": 4.521728960611231
+    },
+    {
+      "component_id": 41,
+      "point_lv03": [
+        505025.9881532799,
+        137451.3868160959
+      ],
+      "nearest_current_footprint_edge_m": 32.803648884486876
+    },
+    {
+      "component_id": 43,
+      "point_lv03": [
+        505218.731881648,
+        137417.21470272858
+      ],
+      "nearest_current_footprint_edge_m": 0.9875544288438457
+    },
+    {
+      "component_id": 45,
+      "point_lv03": [
+        505428.6442721389,
+        137406.8200761502
+      ],
+      "nearest_current_footprint_edge_m": 3.330644183121668
+    },
+    {
+      "component_id": 47,
+      "point_lv03": [
+        505407.1633281903,
+        137382.8890499875
+      ],
+      "nearest_current_footprint_edge_m": 4.72961625954471
+    },
+    {
+      "component_id": 48,
+      "point_lv03": [
+        505193.0080748782,
+        137383.77785202413
+      ],
+      "nearest_current_footprint_edge_m": 8.566836849709997
+    },
+    {
+      "component_id": 50,
+      "point_lv03": [
+        505159.57022240583,
+        137352.4965400602
+      ],
+      "nearest_current_footprint_edge_m": 0.43641691317495734
+    },
+    {
+      "component_id": 51,
+      "point_lv03": [
+        505190.4201380383,
+        137341.45226628857
+      ],
+      "nearest_current_footprint_edge_m": 4.629582095301266
+    },
+    {
+      "component_id": 52,
+      "point_lv03": [
+        505175.18095019035,
+        137315.4667317002
+      ],
+      "nearest_current_footprint_edge_m": 0.8033955444798614
+    },
+    {
+      "component_id": 53,
+      "point_lv03": [
+        505133.1324073665,
+        137304.5237939664
+      ],
+      "nearest_current_footprint_edge_m": 3.5949340997183032
+    },
+    {
+      "component_id": 54,
+      "point_lv03": [
+        505094.3698739802,
+        137270.986155229
+      ],
+      "nearest_current_footprint_edge_m": 4.484750771146996
+    },
+    {
+      "component_id": 55,
+      "point_lv03": [
+        505154.0134269959,
+        137291.8585158681
+      ],
+      "nearest_current_footprint_edge_m": 1.9006305981744198
+    },
+    {
+      "component_id": 56,
+      "point_lv03": [
+        505056.8858801969,
+        137196.88657030227
+      ],
+      "nearest_current_footprint_edge_m": 0.7796325261230047
+    },
+    {
+      "component_id": 58,
+      "point_lv03": [
+        505026.91799434583,
+        137135.6836569016
+      ],
+      "nearest_current_footprint_edge_m": 1.2816155986827147
+    },
+    {
+      "component_id": 59,
+      "point_lv03": [
+        505056.2241418477,
+        137110.66147056545
+      ],
+      "nearest_current_footprint_edge_m": 5.335535652840275
+    },
+    {
+      "component_id": 60,
+      "point_lv03": [
+        505005.0698815797,
+        137124.52720802094
+      ],
+      "nearest_current_footprint_edge_m": 1.0975327738141707
+    },
+    {
+      "component_id": 61,
+      "point_lv03": [
+        504966.13026189606,
+        137103.31334509645
+      ],
+      "nearest_current_footprint_edge_m": 1.798791416308905
+    },
+    {
+      "component_id": 63,
+      "point_lv03": [
+        504945.0078696108,
+        137077.8028574087
+      ],
+      "nearest_current_footprint_edge_m": 8.47054133257134
+    },
+    {
+      "component_id": 64,
+      "point_lv03": [
+        505024.33418767806,
+        137042.66797135034
+      ],
+      "nearest_current_footprint_edge_m": 2.067914171287341
+    }
+  ],
+  "features": [
+    {
+      "id": "E1",
+      "category": "medium_density_housing",
+      "ring_lv03": [
+        [
+          504974.6813204981,
+          137579.41221117837
+        ],
+        [
+          505088.6611273597,
+          137944.79180570392
+        ],
+        [
+          505153.48792508605,
+          137904.11986035798
+        ],
+        [
+          505195.5651282458,
+          137846.07063261262
+        ],
+        [
+          505242.3384497024,
+          137755.36657893314
+        ],
+        [
+          505281.78368202446,
+          137684.7939856864
+        ],
+        [
+          505323.6386934273,
+          137604.1658878353
+        ],
+        [
+          505265.72028929484,
+          137582.05739588203
+        ],
+        [
+          505238.59552008024,
+          137629.94886290288
+        ],
+        [
+          505206.20680919004,
+          137652.79359892095
+        ],
+        [
+          505181.31900324544,
+          137673.06821792183
+        ],
+        [
+          505161.2013795166,
+          137668.21430102384
+        ],
+        [
+          505150.69818413845,
+          137620.6296023633
+        ],
+        [
+          505162.8705194079,
+          137582.8958960669
+        ],
+        [
+          505190.0446645685,
+          137540.0219557362
+        ],
+        [
+          505117.02569865296,
+          137513.0186444369
+        ],
+        [
+          505029.02961081924,
+          137493.66433051697
+        ],
+        [
+          505029.77025000885,
+          137568.92723086957
+        ],
+        [
+          504974.6813204981,
+          137579.41221117837
+        ]
+      ],
+      "gross_illustrated_area_m2": 76731.05110704193,
+      "fraction_outside_inlier_hull": 0.9549782635366396,
+      "max_displacement_across_gray_ratio_fits_m": 6.054229652662472,
+      "limitation": "Large north housing illustration, with the conspicuous southeast white indentation excluded. Internal base-map lines/buildings remain; not net developable land."
+    },
+    {
+      "id": "E2",
+      "category": "medium_density_housing",
+      "ring_lv03": [
+        [
+          505013.6081053873,
+          137456.15558768483
+        ],
+        [
+          505083.9951004651,
+          137470.63553348274
+        ],
+        [
+          505187.2151899468,
+          137507.42848347413
+        ],
+        [
+          505182.0500001632,
+          137492.41680585165
+        ],
+        [
+          505108.8582184367,
+          137447.85215113676
+        ],
+        [
+          505055.93218827696,
+          137423.19399339036
+        ],
+        [
+          505010.6551909007,
+          137411.0182986973
+        ],
+        [
+          505005.78625679296,
+          137426.11178121588
+        ],
+        [
+          505013.6081053873,
+          137456.15558768483
+        ]
+      ],
+      "gross_illustrated_area_m2": 5579.467399941684,
+      "fraction_outside_inlier_hull": 0.9772319168861654,
+      "max_displacement_across_gray_ratio_fits_m": 2.7917821987000355,
+      "limitation": "Narrow housing patch south of the central road; endpoint and road-edge precision limited."
+    },
+    {
+      "id": "E3",
+      "category": "medium_density_housing",
+      "ring_lv03": [
+        [
+          505270.3670316457,
+          137544.3850432577
+        ],
+        [
+          505345.9685924531,
+          137578.89419336824
+        ],
+        [
+          505355.90396445256,
+          137568.7773350918
+        ],
+        [
+          505277.7444967264,
+          137529.2711095151
+        ],
+        [
+          505270.3670316457,
+          137544.3850432577
+        ]
+      ],
+      "gross_illustrated_area_m2": 1290.2321680642203,
+      "fraction_outside_inlier_hull": 0.04574353015642374,
+      "max_displacement_across_gray_ratio_fits_m": 3.661290753721205,
+      "limitation": "Narrow housing strip southeast of main patch; only a few pixels wide."
+    },
+    {
+      "id": "E4",
+      "category": "medium_density_housing",
+      "ring_lv03": [
+        [
+          505494.0953597163,
+          137590.23138787638
+        ],
+        [
+          505579.31134887424,
+          137582.00975622438
+        ],
+        [
+          505576.30905844166,
+          137531.85494054668
+        ],
+        [
+          505521.1460650119,
+          137534.81363082025
+        ],
+        [
+          505506.19363106677,
+          137544.97139154474
+        ],
+        [
+          505494.0953597163,
+          137590.23138787638
+        ]
+      ],
+      "gross_illustrated_area_m2": 3914.7532123675574,
+      "fraction_outside_inlier_hull": 1.0,
+      "max_displacement_across_gray_ratio_fits_m": 4.708100643078362,
+      "limitation": "Small northeast housing patch; surrounding pale/yellow transition uncertain."
+    },
+    {
+      "id": "E5",
+      "category": "medium_density_housing",
+      "ring_lv03": [
+        [
+          505488.238906689,
+          137504.97433659152
+        ],
+        [
+          505515.9314992823,
+          137514.7844265076
+        ],
+        [
+          505515.4130518496,
+          137462.10039626082
+        ],
+        [
+          505467.6275235005,
+          137449.9451527918
+        ],
+        [
+          505470.40762217616,
+          137477.5210983637
+        ],
+        [
+          505488.238906689,
+          137504.97433659152
+        ]
+      ],
+      "gross_illustrated_area_m2": 2124.1627157142593,
+      "fraction_outside_inlier_hull": 1.0,
+      "max_displacement_across_gray_ratio_fits_m": 4.0160148329472465,
+      "limitation": "Small southeast housing patch; black building symbols obscure part of paint."
+    },
+    {
+      "id": "E6",
+      "category": "activities_and_shops",
+      "ring_lv03": [
+        [
+          505607.89270849514,
+          137682.13532656356
+        ],
+        [
+          505743.9705803538,
+          137743.75004409353
+        ],
+        [
+          505917.8986085621,
+          137827.63686336894
+        ],
+        [
+          505930.14500775054,
+          137797.4294471078
+        ],
+        [
+          505866.6664062666,
+          137720.1690640107
+        ],
+        [
+          505795.85971564805,
+          137663.04014134634
+        ],
+        [
+          505702.5503101928,
+          137613.62156973343
+        ],
+        [
+          505644.6812820063,
+          137596.53060447032
+        ],
+        [
+          505622.54888676445,
+          137641.87240569806
+        ],
+        [
+          505607.89270849514,
+          137682.13532656356
+        ]
+      ],
+      "gross_illustrated_area_m2": 28498.39637556181,
+      "fraction_outside_inlier_hull": 1.0,
+      "max_displacement_across_gray_ratio_fits_m": 7.820103507151763,
+      "limitation": "Blue activity/shop envelope; internal uncolored separators are retained inside gross envelope."
+    },
+    {
+      "id": "E7",
+      "category": "possible_long_term_housing_option",
+      "ring_lv03": [
+        [
+          505348.78842480294,
+          137355.57335320758
+        ],
+        [
+          505361.42983155913,
+          137365.50615046782
+        ],
+        [
+          505501.0434869843,
+          137276.5541648446
+        ],
+        [
+          505513.2898861727,
+          137246.34674858346
+        ],
+        [
+          505401.6801247178,
+          137121.80843518613
+        ],
+        [
+          505349.17379009887,
+          137139.79925430618
+        ],
+        [
+          505311.84208118194,
+          137170.21118280754
+        ],
+        [
+          505289.73437391303,
+          137218.06174738036
+        ],
+        [
+          505313.17523172323,
+          137305.68440344217
+        ],
+        [
+          505348.78842480294,
+          137355.57335320758
+        ]
+      ],
+      "gross_illustrated_area_m2": 33001.62133288569,
+      "fraction_outside_inlier_hull": 0.9998103989907512,
+      "max_displacement_across_gray_ratio_fits_m": 2.9540983391881044,
+      "limitation": "Hatched possible long-term housing option only; follows visible colored envelope, not the dashed road/line extending farther south."
+    }
+  ],
+  "independent_accuracy_verified": false,
+  "parcel_matching_ready": false,
+  "receiver_release": "not_ready",
+  "limits": [
+    "SIFT fit residuals are in-sample image agreement, not geographic accuracy.",
+    "Ratio variants reuse descriptors and are sensitivity checks, not independent validation.",
+    "Current footprint edge distances have no confirmed building identity and are not point accuracy.",
+    "PGA printed-grid calibration uncertainty remains additional.",
+    "Northern and eastern outlines extrapolate beyond the fitted landmark hull.",
+    "Seven historical illustrated envelopes are not legal sectors or current developable land."
+  ]
+}
