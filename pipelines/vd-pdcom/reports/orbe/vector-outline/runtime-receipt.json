@@ -1,0 +1,16 @@
+{
+  "operation_id": "5cc17136-0ffd-4c8d-b059-f0c635c48b0d",
+  "stage": "source_vector_outline",
+  "document_id": "464c3687-bdd2-55b4-9e35-f8ece05099cb",
+  "source_sha256": "8b78d42eb83210b6b63404dd8b4270fedd15d1b7e3d65d2a403d6edcee654a3c",
+  "source_pdf_page": 1,
+  "status": "research_only_no_geographic_geometry",
+  "territories": 1,
+  "priority_boundary_rings": 2,
+  "mixed_source_parts": 8,
+  "valid_mixed_source_polygons": 6,
+  "degenerate_mixed_parts_retained": 2,
+  "artifact_path": "pipelines/vd-pdcom/reports/orbe/vector-outline",
+  "verification": "Exact repeat JSON verified; main-map overlay visually inspected. Even-odd fill with matching extent confirms two nested rings are a cartographic band.",
+  "limitations": "No alignment, parcel joins, completion or public release. Other categories and visibility/fragment grouping remain pending. Exact-version approval unverified."
+}
