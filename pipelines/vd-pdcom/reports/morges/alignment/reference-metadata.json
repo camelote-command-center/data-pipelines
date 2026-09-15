@@ -1,0 +1,7 @@
+{
+  "table": "bronze_ch.vd_batiment_rcb",
+  "scope": "nondeleted RCB points intersecting current commune5642, orderedEGID",
+  "count": 2158,
+  "sha256": "4df9414608021347f1eccac310c47a3a0d7b7d3d660e7970368edfc613e3279c",
+  "retrieved_at": "2026-09-15T13:31:34.160409+00:00"
+}
