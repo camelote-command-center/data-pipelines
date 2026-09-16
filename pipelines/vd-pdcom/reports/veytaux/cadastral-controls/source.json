@@ -1,0 +1,12 @@
+{
+  "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query",
+  "params": {
+    "f": "json",
+    "where": "NO_COM_FED=5891 AND NUMERO IN ('127','232','551','311')",
+    "outFields": "OBJECTID,NO_COM_FED,NUMERO,EGRID,GENRE_TXT,SUPERFICIE_MO,SUPERFICIE_RF",
+    "returnGeometry": "true",
+    "outSR": "2056"
+  },
+  "retrieved_at": "2026-09-16T07:42:28.558689+00:00",
+  "purpose": "Current counterpart lookup for historical parcel numbers in PDComPDF16/18; identity continuity not assumed"
+}
