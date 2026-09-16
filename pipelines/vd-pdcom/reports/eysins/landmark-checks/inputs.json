@@ -1,0 +1,8 @@
+{
+  "../map-correspondence/correspondence.json": "e0a92fb8426cabe6d8aa1928658df1a8fac55cb61a37238d3ba045fd79f6e305",
+  "../alignment/black-components.json": "54ca168417d35e65115c46f80fd61b6703869319c0688a40bb8ff49d79244305",
+  "../alignment/official-footprints.json": "def0e80423f58ec0af525a99667809144083a3553be085f604dfaf6870e1aa01",
+  "../../nyon/sdan-maps/images/eysins-urban.jpeg": "716b0b482014eea872c6338bcca06b857d008aec73766bb2c665d377f07ea42e",
+  "../source-update/5650969.pdf": "5deba0b930b047b3e6cf2762c9cf960f933548d2a1113c028a26535f16e89af3",
+  "reference-polygons-lv03.json": "496506c994b0237cf27b1af66fbf2ebc9d78f5c8ab78ceb6bf1c414069b67b50"
+}
