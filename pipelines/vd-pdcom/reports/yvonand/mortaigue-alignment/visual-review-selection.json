@@ -1,0 +1,12 @@
+{
+  "drawing_indices": [
+    371,
+    267,
+    153,
+    493,
+    379
+  ],
+  "selection": "spatial extremes and lowest IoU; not used in fit",
+  "reference_outline": "magenta",
+  "centroid_hull": "blue; not an accuracy envelope"
+}
