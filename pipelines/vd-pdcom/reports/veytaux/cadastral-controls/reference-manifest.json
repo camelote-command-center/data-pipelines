@@ -1,0 +1,61 @@
+[
+  {
+    "file": "named-parcels.json",
+    "sha256": "63c50c2b2e07fcdf67e51763200e6ac07fff6b47e7228fad3e2de9950770e88f",
+    "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query",
+    "query_params": {
+      "where": "NO_COM_FED=5891 AND NUMERO IN ('127','232','551','311')",
+      "f": "json",
+      "outFields": "OBJECTID,NO_COM_FED,NUMERO,EGRID,GENRE_TXT,SUPERFICIE_MO,SUPERFICIE_RF",
+      "outSR": 2056,
+      "returnGeometry": "true"
+    },
+    "count_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?where=NO_COM_FED%3D5891+AND+NUMERO+IN+%28%27127%27%2C%27232%27%2C%27551%27%2C%27311%27%29&f=json&returnCountOnly=true",
+    "count": 4,
+    "count_rechecked_at": "2026-09-16T07:45:27.594113+00:00",
+    "crs": "EPSG:2056",
+    "identity_continuity": "unverified"
+  },
+  {
+    "file": "villa-neighbor-parcels.json",
+    "sha256": "b76d386c66ed6c59875d6a4ed408aaeaf7dbf3abb433ef0ec603b0ba114a8303",
+    "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query",
+    "query_params": {
+      "where": "1=1",
+      "geometry": "2560880,1139920,2561170,1140310",
+      "geometryType": "esriGeometryEnvelope",
+      "inSR": 2056,
+      "spatialRel": "esriSpatialRelIntersects",
+      "f": "json",
+      "outFields": "OBJECTID,NO_COM_FED,NUMERO,EGRID,GENRE_TXT",
+      "outSR": 2056,
+      "returnGeometry": "true"
+    },
+    "count_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?where=1%3D1&geometry=2560880%2C1139920%2C2561170%2C1140310&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&f=json&returnCountOnly=true",
+    "count": 34,
+    "count_rechecked_at": "2026-09-16T07:45:27.829109+00:00",
+    "crs": "EPSG:2056",
+    "identity_continuity": "unverified"
+  },
+  {
+    "file": "villa-footprints.json",
+    "sha256": "64bdb7ade3dc9f426736c9db7815d9b83bfdc24cb4e03886a9abc595304c46bb",
+    "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query",
+    "query_params": {
+      "where": "1=1",
+      "geometry": "2560880,1139920,2561170,1140310",
+      "geometryType": "esriGeometryEnvelope",
+      "inSR": 2056,
+      "spatialRel": "esriSpatialRelIntersects",
+      "f": "json",
+      "outFields": "OBJECTID,EGID",
+      "outSR": 2056,
+      "returnGeometry": "true"
+    },
+    "count_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?where=1%3D1&geometry=2560880%2C1139920%2C2561170%2C1140310&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&f=json&returnCountOnly=true",
+    "count": 13,
+    "count_rechecked_at": "2026-09-16T07:45:28.048393+00:00",
+    "crs": "EPSG:2056",
+    "identity_continuity": "unverified"
+  }
+]

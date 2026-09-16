@@ -1,0 +1,46 @@
+{
+  "source_document_id": "43add308-b945-5a8f-bd9e-fc2217fe9bc5",
+  "source_sha256": "15978db34e86ca523f27f518b126db915bf52052dc15e087da6e172439c2e348",
+  "historical_pdf_pages": [
+    16,
+    18
+  ],
+  "comparison": [
+    {
+      "parcel_number": "127",
+      "historical_area_m2": 15563,
+      "current_official_area_m2": 12691,
+      "note": "Historical text includes3619m2forest outside intermediate zone. Current total is not a verified surviving copy of historical boundary."
+    },
+    {
+      "parcel_number": "232",
+      "historical_area_m2": 2354,
+      "current_official_area_m2": 2155
+    },
+    {
+      "parcel_number": "551",
+      "historical_sector_portion_m2": 1500,
+      "current_whole_parcel_m2": 21679,
+      "note": "Partial historical sector area must not be compared as whole parcel area."
+    },
+    {
+      "parcel_number": "311",
+      "historical_area_m2": 4145,
+      "current_official_area_m2": 566,
+      "note": "Current geometry is north of Villa Louise whereas historical311 belongs to Clos de Chillon; number alone not a valid identity/control."
+    }
+  ],
+  "historical_numeric_consistency": {
+    "stated_villa_sector_m2": 12900,
+    "sum_of_listed_components_m2": 15798,
+    "difference_m2": 2898,
+    "note": "Historical document itself notes forest extent increased since calculation. Do not reconcile by inventing a geometry or current capacity."
+  },
+  "candidate_building": {
+    "egid": 841451,
+    "objectid": 46315544,
+    "status": "visual outline correspondence candidate with Villa Louise; no georeferencing fitted or independently validated"
+  },
+  "geographic_validation": "pending",
+  "receiver_release": false
+}
