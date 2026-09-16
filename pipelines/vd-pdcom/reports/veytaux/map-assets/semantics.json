@@ -1,0 +1,145 @@
+{
+  "pdf_page": 11,
+  "legend_review": "manual visual transcription at original3508x2480 resolution; accents normalized",
+  "entries": [
+    {
+      "id": 1,
+      "label": "Centre de Veytaux",
+      "symbol": "brown solid",
+      "limit": "existing centre, not unused capacity"
+    },
+    {
+      "id": 2,
+      "label": "Extension du centre",
+      "symbol": "brown separated strips",
+      "limit": "strategy category, not evidence of present available land"
+    },
+    {
+      "id": 3,
+      "label": "Secteur d’habitat faible densité",
+      "symbol": "red dotted area",
+      "limit": "no numeric density inferred"
+    },
+    {
+      "id": 4,
+      "label": "Secteur d’habitat moyenne densité",
+      "symbol": "orange outline",
+      "limit": "no numeric density inferred"
+    },
+    {
+      "id": 5,
+      "label": "Secteur à caractère mixte (habitat / artisanat)",
+      "symbol": "magenta/red diagonal stripes",
+      "limit": "amended case texts qualify mixed-use proposals"
+    },
+    {
+      "id": 6,
+      "label": "Secteur à restructurer (carrefour et environs)",
+      "symbol": "black dotted ring",
+      "limit": "point/area symbol, not a parcel boundary"
+    },
+    {
+      "id": 7,
+      "label": "Secteur devant faire l’objet de mesures particulières — cf. cas particuliers — dans le cadre d’étude sectorielle",
+      "symbol": "red dashed outline",
+      "limit": "study perimeter, not unconditional buildability"
+    },
+    {
+      "id": 8,
+      "label": "Equipements publics",
+      "symbol": "cyan diagonal strokes",
+      "limit": "do not confuse with wooded surfaces"
+    },
+    {
+      "id": 9,
+      "label": "Equipements publics de détente",
+      "symbol": "sparse cyan strokes",
+      "limit": "public leisure facilities, not residential capacity"
+    },
+    {
+      "id": 10,
+      "label": "Mise en valeur des rives du lac et des rives de la Veraye",
+      "symbol": "yellow repeated blocks",
+      "limit": "shoreline strategy"
+    },
+    {
+      "id": 11,
+      "label": "Secteur à caractère viticole",
+      "symbol": "yellow/green narrow vertical hatch",
+      "limit": "viticultural category"
+    },
+    {
+      "id": 12,
+      "label": "Espace de dégagement / espace non constructible",
+      "symbol": "yellow solid; two-line label",
+      "limit": "one symbol with two-line label; non-buildable open space"
+    },
+    {
+      "id": 13,
+      "label": "Surface boisée",
+      "symbol": "teal broad diagonal hatch",
+      "limit": "woodland, not development"
+    },
+    {
+      "id": 14,
+      "label": "Améliorer les croisements RC / routes collectrices",
+      "symbol": "black vertically striped circle",
+      "limit": "junction action"
+    },
+    {
+      "id": 15,
+      "label": "Améliorer de manière mesurée et compte tenu des besoins le réseau situé en amont du centre de Veytaux",
+      "symbol": "purple dashed line",
+      "limit": "road-network action"
+    },
+    {
+      "id": 16,
+      "label": "Renforcer le réseau de liaison piétonne lac–Veytaux centre",
+      "symbol": "black dotted line",
+      "limit": "pedestrian-network action"
+    }
+  ],
+  "map_printed_date": "June1992",
+  "north": "North symbol points left on the displayed synthesis; do not assume north-up",
+  "scale_bar": "0,50,100,150 metres; scale alone does not establish georeferencing",
+  "coordinate_labels": "No usable labelled national-grid coordinates established in this review",
+  "source_geometry_release": false,
+  "case_locator": {
+    "pdf_page": 15,
+    "on_map_cases": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "off_map_case": 11,
+    "note": "Sonchaux is a directional arrow off this locator, not an eleventh mapped polygon."
+  },
+  "rotation": {
+    "pdf_pages_with_180_degree_rotation": [
+      16,
+      18,
+      28
+    ],
+    "note": "Original extracted raster bytes are upside down on these three pages. PDF placement plus page rotation must be composed. Asset-pixel coordinates are not displayed-page coordinates."
+  },
+  "amendment_incorporation": {
+    "visually_checked_pdf_pages": [
+      17,
+      19,
+      29
+    ],
+    "corresponding_amendments": [
+      3,
+      4,
+      10
+    ],
+    "finding": "These case narrative pages already incorporate the relevant adopted amendment wording. PDF29 explicitly includes return of a large part to alpine zone and the small-hamlet objective. Do not describe its narrative as an unamended earlier version; retain both narrative and amendment evidence. Map chronology/currentness remains unverified."
+  }
+}

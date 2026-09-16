@@ -1,0 +1,7 @@
+import pathlib,pymupdf,json,hashlib
+p=pathlib.Path(__file__).resolve().parent.parent;out=p/'map-assets';out.mkdir(exist_ok=True);source=p/'source-review/source.pdf';sha=hashlib.sha256(source.read_bytes()).hexdigest();assert sha=='15978db34e86ca523f27f518b126db915bf52052dc15e087da6e172439c2e348';d=pymupdf.open(source);rows=[]
+for n in [11,15,16,17,18,19,28,29]:
+ page=d[n-1];images=page.get_images(full=True);assert len(images)==1
+ xref=images[0][0];im=d.extract_image(xref);f=f'page-{n}-xref-{xref}.{im["ext"]}';(out/f).write_bytes(im['image']);placements=page.get_image_rects(xref,transform=True)
+ rows.append({'pdf_page':n,'xref':xref,'file':f,'width':im['width'],'height':im['height'],'sha256':hashlib.sha256(im['image']).hexdigest(),'pdf_rect':list(page.rect),'rotation':page.rotation,'pixel_to_display_pdf_matrix':list(pymupdf.Matrix(1/im['width'],0,0,1/im['height'],0,0)*placements[0][1]*page.rotation_matrix),'placements':[{'bbox':list(box),'transform':list(matrix)} for box,matrix in placements],'embedded_viewport':d.xref_get_key(page.xref,'VP'),'native_text_chars':len(page.get_text()),'vector_paths':len(page.get_drawings())})
+(out/'manifest.json').write_text(json.dumps({'document_id':'43add308-b945-5a8f-bd9e-fc2217fe9bc5','source_sha256':sha,'source_file':'../source-review/source.pdf','coordinate_system':'source image pixels only; no georeferencing','assets':rows},indent=2)+'\n');print([(r['pdf_page'],r['file'],r['width'],r['height']) for r in rows])

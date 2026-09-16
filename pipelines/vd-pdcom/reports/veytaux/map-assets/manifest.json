@@ -1,0 +1,384 @@
+{
+  "document_id": "43add308-b945-5a8f-bd9e-fc2217fe9bc5",
+  "source_sha256": "15978db34e86ca523f27f518b126db915bf52052dc15e087da6e172439c2e348",
+  "source_file": "../source-review/source.pdf",
+  "coordinate_system": "source image pixels only; no georeferencing",
+  "assets": [
+    {
+      "pdf_page": 11,
+      "xref": 54,
+      "file": "page-11-xref-54.jpeg",
+      "width": 3508,
+      "height": 2480,
+      "sha256": "d938f44b50d0286c47f93932ae4ef428a0e4bca2edc6c893ad0b47d36ec53af7",
+      "pdf_rect": [
+        0.0,
+        0.0,
+        841.9199829101562,
+        595.2000122070312
+      ],
+      "rotation": 0,
+      "pixel_to_display_pdf_matrix": [
+        0.23999999463558197,
+        0.0,
+        0.0,
+        0.23999999463558197,
+        0.0,
+        0.0
+      ],
+      "placements": [
+        {
+          "bbox": [
+            0.0,
+            0.0,
+            841.9199829101562,
+            595.2000122070312
+          ],
+          "transform": [
+            841.9199829101562,
+            0.0,
+            -0.0,
+            595.2000122070312,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "embedded_viewport": [
+        "null",
+        "null"
+      ],
+      "native_text_chars": 0,
+      "vector_paths": 0
+    },
+    {
+      "pdf_page": 15,
+      "xref": 74,
+      "file": "page-15-xref-74.png",
+      "width": 3512,
+      "height": 2480,
+      "sha256": "fe59bdd543246a7c919944e0f63a3705e789aa5a2827bc548ca3397681ab55fd",
+      "pdf_rect": [
+        0.0,
+        0.0,
+        841.9199829101562,
+        595.2000122070312
+      ],
+      "rotation": 0,
+      "pixel_to_display_pdf_matrix": [
+        0.24000000953674316,
+        0.0,
+        0.0,
+        0.23999999463558197,
+        0.0,
+        0.0
+      ],
+      "placements": [
+        {
+          "bbox": [
+            0.0,
+            0.0,
+            842.8800048828125,
+            595.2000122070312
+          ],
+          "transform": [
+            842.8800048828125,
+            0.0,
+            -0.0,
+            595.2000122070312,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "embedded_viewport": [
+        "null",
+        "null"
+      ],
+      "native_text_chars": 0,
+      "vector_paths": 0
+    },
+    {
+      "pdf_page": 16,
+      "xref": 79,
+      "file": "page-16-xref-79.png",
+      "width": 3512,
+      "height": 2480,
+      "sha256": "52aea2bdce40f5408c842a8b696ff937a3da83c3c82ef7bb6d00c249f23cf61f",
+      "pdf_rect": [
+        0.0,
+        0.0,
+        841.9199829101562,
+        595.2000122070312
+      ],
+      "rotation": 180,
+      "pixel_to_display_pdf_matrix": [
+        -0.24000000953674316,
+        0.0,
+        0.0,
+        -0.23999999463558197,
+        841.9199829101562,
+        595.2000122070312
+      ],
+      "placements": [
+        {
+          "bbox": [
+            0.0,
+            0.0,
+            842.8800048828125,
+            595.2000122070312
+          ],
+          "transform": [
+            842.8800048828125,
+            0.0,
+            -0.0,
+            595.2000122070312,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "embedded_viewport": [
+        "null",
+        "null"
+      ],
+      "native_text_chars": 0,
+      "vector_paths": 0
+    },
+    {
+      "pdf_page": 17,
+      "xref": 84,
+      "file": "page-17-xref-84.png",
+      "width": 3512,
+      "height": 2480,
+      "sha256": "8eefdf50130dc57f69986840e3bcd6f218c997303b033b64777a391653d9ef19",
+      "pdf_rect": [
+        0.0,
+        0.0,
+        841.9199829101562,
+        595.2000122070312
+      ],
+      "rotation": 0,
+      "pixel_to_display_pdf_matrix": [
+        0.24000000953674316,
+        0.0,
+        0.0,
+        0.23999999463558197,
+        0.0,
+        0.0
+      ],
+      "placements": [
+        {
+          "bbox": [
+            0.0,
+            0.0,
+            842.8800048828125,
+            595.2000122070312
+          ],
+          "transform": [
+            842.8800048828125,
+            0.0,
+            -0.0,
+            595.2000122070312,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "embedded_viewport": [
+        "null",
+        "null"
+      ],
+      "native_text_chars": 0,
+      "vector_paths": 0
+    },
+    {
+      "pdf_page": 18,
+      "xref": 89,
+      "file": "page-18-xref-89.png",
+      "width": 3512,
+      "height": 2480,
+      "sha256": "19e2cdfe20b21f9cb813cacbe1c556367af351db29b56d64f636c254afd39ab9",
+      "pdf_rect": [
+        0.0,
+        0.0,
+        841.9199829101562,
+        595.2000122070312
+      ],
+      "rotation": 180,
+      "pixel_to_display_pdf_matrix": [
+        -0.24000000953674316,
+        0.0,
+        0.0,
+        -0.23999999463558197,
+        841.9199829101562,
+        595.2000122070312
+      ],
+      "placements": [
+        {
+          "bbox": [
+            0.0,
+            0.0,
+            842.8800048828125,
+            595.2000122070312
+          ],
+          "transform": [
+            842.8800048828125,
+            0.0,
+            -0.0,
+            595.2000122070312,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "embedded_viewport": [
+        "null",
+        "null"
+      ],
+      "native_text_chars": 0,
+      "vector_paths": 0
+    },
+    {
+      "pdf_page": 19,
+      "xref": 94,
+      "file": "page-19-xref-94.png",
+      "width": 3512,
+      "height": 2480,
+      "sha256": "ab26ed6b6d423c4d5d7b1febb0ea8f2a258886d2b4399775d74189645d2d98db",
+      "pdf_rect": [
+        0.0,
+        0.0,
+        841.9199829101562,
+        595.2000122070312
+      ],
+      "rotation": 0,
+      "pixel_to_display_pdf_matrix": [
+        0.24000000953674316,
+        0.0,
+        0.0,
+        0.23999999463558197,
+        0.0,
+        0.0
+      ],
+      "placements": [
+        {
+          "bbox": [
+            0.0,
+            0.0,
+            842.8800048828125,
+            595.2000122070312
+          ],
+          "transform": [
+            842.8800048828125,
+            0.0,
+            -0.0,
+            595.2000122070312,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "embedded_viewport": [
+        "null",
+        "null"
+      ],
+      "native_text_chars": 0,
+      "vector_paths": 0
+    },
+    {
+      "pdf_page": 28,
+      "xref": 139,
+      "file": "page-28-xref-139.png",
+      "width": 3512,
+      "height": 2480,
+      "sha256": "a41443cb69fd5dbdc0554efcb50cdf70a92312273f3520d914dd0aa2229e411d",
+      "pdf_rect": [
+        0.0,
+        0.0,
+        841.9199829101562,
+        595.2000122070312
+      ],
+      "rotation": 180,
+      "pixel_to_display_pdf_matrix": [
+        -0.24000000953674316,
+        0.0,
+        0.0,
+        -0.23999999463558197,
+        841.9199829101562,
+        595.2000122070312
+      ],
+      "placements": [
+        {
+          "bbox": [
+            0.0,
+            0.0,
+            842.8800048828125,
+            595.2000122070312
+          ],
+          "transform": [
+            842.8800048828125,
+            0.0,
+            -0.0,
+            595.2000122070312,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "embedded_viewport": [
+        "null",
+        "null"
+      ],
+      "native_text_chars": 0,
+      "vector_paths": 0
+    },
+    {
+      "pdf_page": 29,
+      "xref": 144,
+      "file": "page-29-xref-144.png",
+      "width": 3512,
+      "height": 2480,
+      "sha256": "7e5781c46013929d2ea8099f2df5728c9e0e5464d88a511e4153461d1e444fa5",
+      "pdf_rect": [
+        0.0,
+        0.0,
+        841.9199829101562,
+        595.2000122070312
+      ],
+      "rotation": 0,
+      "pixel_to_display_pdf_matrix": [
+        0.24000000953674316,
+        0.0,
+        0.0,
+        0.23999999463558197,
+        0.0,
+        0.0
+      ],
+      "placements": [
+        {
+          "bbox": [
+            0.0,
+            0.0,
+            842.8800048828125,
+            595.2000122070312
+          ],
+          "transform": [
+            842.8800048828125,
+            0.0,
+            -0.0,
+            595.2000122070312,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "embedded_viewport": [
+        "null",
+        "null"
+      ],
+      "native_text_chars": 0,
+      "vector_paths": 0
+    }
+  ]
+}

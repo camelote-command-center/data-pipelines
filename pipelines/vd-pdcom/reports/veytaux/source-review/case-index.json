@@ -114,5 +114,18 @@
   ],
   "amendments_count": 10,
   "adopted": "1993-12-06",
-  "limits": "Case names and page links are source inventory, not eleven development polygons. Amendments1/2 concern general urbanization/equipment sections. Illustrations are indicative; later legal currency unverified. Sonchaux amendment10 changes objectives and returns a large part to alpine zone; no precise boundary inferred."
+  "limits": "Case names and page links are source inventory, not eleven development polygons. Amendments1/2 concern general urbanization/equipment sections. Illustrations are indicative; later legal currency unverified. Sonchaux amendment10 changes objectives and returns a large part to alpine zone; no precise boundary inferred.",
+  "amendment_incorporation": {
+    "pdf_pages": [
+      17,
+      19,
+      29
+    ],
+    "amendments": [
+      3,
+      4,
+      10
+    ],
+    "status": "visually verified incorporated in corresponding case narrative; see ../map-assets/semantics.json"
+  }
 }
