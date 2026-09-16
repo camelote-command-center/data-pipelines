@@ -1,0 +1,16 @@
+{
+  "publication_status": "internal_review_only",
+  "receiver": "lamap_db",
+  "tables": {
+    "vd_pdcom_review_sectors": {
+      "rows": 40,
+      "mismatches": 0,
+      "valid_4326": true
+    },
+    "vd_pdcom_review_parcels": {
+      "rows": 2267,
+      "mismatches": 0,
+      "valid_4326": true
+    }
+  }
+}

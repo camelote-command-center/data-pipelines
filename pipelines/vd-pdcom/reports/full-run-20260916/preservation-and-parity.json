@@ -1,0 +1,26 @@
+{
+  "old_documents": 54,
+  "lost_inspection_documents": [],
+  "lost_commune_evidence": [],
+  "documents": 54,
+  "source_communes": 34,
+  "sectors": 40,
+  "parcel_pairs": 2267,
+  "egrids": 2245,
+  "vd_pdcom_review_sectors_mismatches": 0,
+  "vd_pdcom_review_parcels_mismatches": 0,
+  "receiver_privacy": [
+    [
+      "vd_pdcom_review_sectors",
+      true,
+      false,
+      false
+    ],
+    [
+      "vd_pdcom_review_parcels",
+      true,
+      false,
+      false
+    ]
+  ]
+}

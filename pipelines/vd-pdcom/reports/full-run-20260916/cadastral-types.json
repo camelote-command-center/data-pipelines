@@ -1,0 +1,17 @@
+{
+  "checked_egrids": 2245,
+  "counts": [
+    {
+      "kind": "bien_fonds",
+      "pairs": 2211,
+      "egrids": 2189
+    },
+    {
+      "kind": "ddp_superficie",
+      "pairs": 56,
+      "egrids": 56
+    }
+  ],
+  "release_status": "internal_review_only",
+  "aggregation_rule": "Keep rights and land EGRIDs distinct; do not sum them as exclusive land area."
+}
