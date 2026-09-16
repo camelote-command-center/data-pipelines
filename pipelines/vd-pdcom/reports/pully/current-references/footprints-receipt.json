@@ -1,0 +1,14 @@
+{
+  "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?where=1%3D1&geometry=2540679.528%2C1151853.809%2C2540918.787%2C1152050.1026685305&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&f=geojson&outFields=OBJECTID%2CEGID&outSR=2056&returnGeometry=true",
+  "count_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?where=1%3D1&geometry=2540679.528%2C1151853.809%2C2540918.787%2C1152050.1026685305&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&f=json&returnCountOnly=true",
+  "checked_at": "2026-09-16T14:51:23.612386+00:00",
+  "count": 57,
+  "bbox_lv95": [
+    2540679.528,
+    1151853.809,
+    2540918.787,
+    1152050.1026685305
+  ],
+  "response_sha256": "fdb326d95aa5e51920e78f2500b29d7a37a4656cc975fccee85f1510baafed8b",
+  "crs": "EPSG:2056"
+}

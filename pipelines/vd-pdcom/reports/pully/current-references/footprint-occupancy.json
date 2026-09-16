@@ -1,0 +1,179 @@
+[
+  {
+    "parcel_number": "1738",
+    "egrid": "CH580183457640",
+    "official_area_mo": 512,
+    "official_area_rf": 512,
+    "footprints_over_1m2": [
+      {
+        "objectid": 46313156,
+        "egid": 3101998,
+        "overlap_m2": 102.8067540012657
+      }
+    ],
+    "limits": "Current number-matched parcel footprint occupancy only; no historical identity proof, capacity estimate or PDCom-sector intersection."
+  },
+  {
+    "parcel_number": "1743",
+    "egrid": "CH182883457629",
+    "official_area_mo": 325,
+    "official_area_rf": 328,
+    "footprints_over_1m2": [
+      {
+        "objectid": 46515804,
+        "egid": null,
+        "overlap_m2": 34.70740499958434
+      }
+    ],
+    "limits": "Current number-matched parcel footprint occupancy only; no historical identity proof, capacity estimate or PDCom-sector intersection."
+  },
+  {
+    "parcel_number": "1744",
+    "egrid": "CH507645088379",
+    "official_area_mo": 2061,
+    "official_area_rf": 2073,
+    "footprints_over_1m2": [
+      {
+        "objectid": 46328526,
+        "egid": 280129639,
+        "overlap_m2": 144.34435300091607
+      },
+      {
+        "objectid": 46536985,
+        "egid": null,
+        "overlap_m2": 717.9946204994733
+      },
+      {
+        "objectid": 46344369,
+        "egid": 280129641,
+        "overlap_m2": 144.1823624979335
+      },
+      {
+        "objectid": 46445965,
+        "egid": 280125033,
+        "overlap_m2": 144.08945550089683
+      }
+    ],
+    "limits": "Current number-matched parcel footprint occupancy only; no historical identity proof, capacity estimate or PDCom-sector intersection."
+  },
+  {
+    "parcel_number": "1755",
+    "egrid": "CH167683452315",
+    "official_area_mo": 4943,
+    "official_area_rf": 4941,
+    "footprints_over_1m2": [
+      {
+        "objectid": 46365053,
+        "egid": 280003684,
+        "overlap_m2": 387.0264450025752
+      },
+      {
+        "objectid": 46369228,
+        "egid": 785946,
+        "overlap_m2": 225.81359499794448
+      }
+    ],
+    "limits": "Current number-matched parcel footprint occupancy only; no historical identity proof, capacity estimate or PDCom-sector intersection."
+  },
+  {
+    "parcel_number": "1756",
+    "egrid": "CH567683452571",
+    "official_area_mo": 454,
+    "official_area_rf": 449,
+    "footprints_over_1m2": [
+      {
+        "objectid": 46318854,
+        "egid": 785953,
+        "overlap_m2": 89.27709999726815
+      }
+    ],
+    "limits": "Current number-matched parcel footprint occupancy only; no historical identity proof, capacity estimate or PDCom-sector intersection."
+  },
+  {
+    "parcel_number": "2034",
+    "egrid": "CH758283754506",
+    "official_area_mo": 14256,
+    "official_area_rf": 14256,
+    "footprints_over_1m2": [
+      {
+        "objectid": 46283909,
+        "egid": 280131676,
+        "overlap_m2": 7.692579500691725
+      },
+      {
+        "objectid": 46476027,
+        "egid": 280098070,
+        "overlap_m2": 820.3127939919591
+      },
+      {
+        "objectid": 46538725,
+        "egid": null,
+        "overlap_m2": 648.6461300016578
+      },
+      {
+        "objectid": 46480862,
+        "egid": 280098072,
+        "overlap_m2": 622.8341320017937
+      },
+      {
+        "objectid": 46538727,
+        "egid": null,
+        "overlap_m2": 365.98140999946776
+      },
+      {
+        "objectid": 46317206,
+        "egid": 280098071,
+        "overlap_m2": 597.0473254961939
+      },
+      {
+        "objectid": 46328064,
+        "egid": 280098067,
+        "overlap_m2": 479.0031940014366
+      },
+      {
+        "objectid": 46538726,
+        "egid": null,
+        "overlap_m2": 742.7846085063552
+      },
+      {
+        "objectid": 46499039,
+        "egid": 280098069,
+        "overlap_m2": 595.7199559989667
+      },
+      {
+        "objectid": 46476450,
+        "egid": 280098068,
+        "overlap_m2": 633.3824895060169
+      }
+    ],
+    "limits": "Current number-matched parcel footprint occupancy only; no historical identity proof, capacity estimate or PDCom-sector intersection."
+  },
+  {
+    "parcel_number": "3420",
+    "egrid": "CH138376452335",
+    "official_area_mo": 828,
+    "official_area_rf": 824,
+    "footprints_over_1m2": [
+      {
+        "objectid": 46340891,
+        "egid": 785949,
+        "overlap_m2": 83.65404499821545
+      }
+    ],
+    "limits": "Current number-matched parcel footprint occupancy only; no historical identity proof, capacity estimate or PDCom-sector intersection."
+  },
+  {
+    "parcel_number": "3421",
+    "egrid": "CH527625834507",
+    "official_area_mo": 962,
+    "official_area_rf": 958,
+    "footprints_over_1m2": [
+      {
+        "objectid": 46318045,
+        "egid": 785951,
+        "overlap_m2": 83.88070499940177
+      }
+    ],
+    "limits": "Current number-matched parcel footprint occupancy only; no historical identity proof, capacity estimate or PDCom-sector intersection."
+  }
+]

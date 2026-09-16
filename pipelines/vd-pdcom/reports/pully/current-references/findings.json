@@ -1,0 +1,265 @@
+{
+  "source_document_id": "98ffb71a-e9e2-5643-9baf-93c42967cb30",
+  "source_sha256": "02a96fd6036e51c77e45ab188168e1c451d40cef8b71204e1271151431173d6d",
+  "historical_scope_source": "../map-semantics/boverattes-context.json: regulation PDF5/article4",
+  "named_parcels": 8,
+  "queried_footprint_features": 57,
+  "footprint_parcel_pairs_over_1m2": 21,
+  "unique_intersecting_footprint_features": 21,
+  "distinct_non_null_egids": 16,
+  "intersecting_features_without_egid": 5,
+  "official_mo_area_sum_m2": 24341,
+  "official_rf_area_sum_m2": 24341,
+  "reference_receipts": [
+    {
+      "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?where=NO_COM_FED%3D5590+AND+NUMERO+IN+%28%271738%27%2C%271743%27%2C%271744%27%2C%271755%27%2C%271756%27%2C%272034%27%2C%273420%27%2C%273421%27%29&f=geojson&outFields=OBJECTID%2CNUMERO%2CEGRID%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&returnGeometry=true",
+      "checked_at": "2026-09-16T14:50:30.794078+00:00",
+      "count_check": {
+        "count": 8
+      },
+      "response_sha256": "7300521062326e9ed05b6d6d068f3a6081cb6048dfa981ac7b647e7e0f11aeb5",
+      "crs": "EPSG:2056",
+      "limits": "Number match only; cadastral lineage and historical-to-current geometry equivalence unverified."
+    },
+    {
+      "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?where=1%3D1&geometry=2540679.528%2C1151853.809%2C2540918.787%2C1152050.1026685305&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&f=geojson&outFields=OBJECTID%2CEGID&outSR=2056&returnGeometry=true",
+      "count_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?where=1%3D1&geometry=2540679.528%2C1151853.809%2C2540918.787%2C1152050.1026685305&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&f=json&returnCountOnly=true",
+      "checked_at": "2026-09-16T14:51:23.612386+00:00",
+      "count": 57,
+      "bbox_lv95": [
+        2540679.528,
+        1151853.809,
+        2540918.787,
+        1152050.1026685305
+      ],
+      "response_sha256": "fdb326d95aa5e51920e78f2500b29d7a37a4656cc975fccee85f1510baafed8b",
+      "crs": "EPSG:2056"
+    }
+  ],
+  "parcel_matches": [
+    {
+      "parcel_number": "1738",
+      "egrid": "CH580183457640",
+      "official_area_mo": 512,
+      "official_area_rf": 512,
+      "footprints_over_1m2": [
+        {
+          "objectid": 46313156,
+          "egid": 3101998,
+          "overlap_m2": 102.8067540012657
+        }
+      ],
+      "limits": "Current number-matched parcel footprint occupancy only; no historical identity proof, capacity estimate or PDCom-sector intersection."
+    },
+    {
+      "parcel_number": "1743",
+      "egrid": "CH182883457629",
+      "official_area_mo": 325,
+      "official_area_rf": 328,
+      "footprints_over_1m2": [
+        {
+          "objectid": 46515804,
+          "egid": null,
+          "overlap_m2": 34.70740499958434
+        }
+      ],
+      "limits": "Current number-matched parcel footprint occupancy only; no historical identity proof, capacity estimate or PDCom-sector intersection."
+    },
+    {
+      "parcel_number": "1744",
+      "egrid": "CH507645088379",
+      "official_area_mo": 2061,
+      "official_area_rf": 2073,
+      "footprints_over_1m2": [
+        {
+          "objectid": 46328526,
+          "egid": 280129639,
+          "overlap_m2": 144.34435300091607
+        },
+        {
+          "objectid": 46536985,
+          "egid": null,
+          "overlap_m2": 717.9946204994733
+        },
+        {
+          "objectid": 46344369,
+          "egid": 280129641,
+          "overlap_m2": 144.1823624979335
+        },
+        {
+          "objectid": 46445965,
+          "egid": 280125033,
+          "overlap_m2": 144.08945550089683
+        }
+      ],
+      "limits": "Current number-matched parcel footprint occupancy only; no historical identity proof, capacity estimate or PDCom-sector intersection."
+    },
+    {
+      "parcel_number": "1755",
+      "egrid": "CH167683452315",
+      "official_area_mo": 4943,
+      "official_area_rf": 4941,
+      "footprints_over_1m2": [
+        {
+          "objectid": 46365053,
+          "egid": 280003684,
+          "overlap_m2": 387.0264450025752
+        },
+        {
+          "objectid": 46369228,
+          "egid": 785946,
+          "overlap_m2": 225.81359499794448
+        }
+      ],
+      "limits": "Current number-matched parcel footprint occupancy only; no historical identity proof, capacity estimate or PDCom-sector intersection."
+    },
+    {
+      "parcel_number": "1756",
+      "egrid": "CH567683452571",
+      "official_area_mo": 454,
+      "official_area_rf": 449,
+      "footprints_over_1m2": [
+        {
+          "objectid": 46318854,
+          "egid": 785953,
+          "overlap_m2": 89.27709999726815
+        }
+      ],
+      "limits": "Current number-matched parcel footprint occupancy only; no historical identity proof, capacity estimate or PDCom-sector intersection."
+    },
+    {
+      "parcel_number": "2034",
+      "egrid": "CH758283754506",
+      "official_area_mo": 14256,
+      "official_area_rf": 14256,
+      "footprints_over_1m2": [
+        {
+          "objectid": 46283909,
+          "egid": 280131676,
+          "overlap_m2": 7.692579500691725
+        },
+        {
+          "objectid": 46476027,
+          "egid": 280098070,
+          "overlap_m2": 820.3127939919591
+        },
+        {
+          "objectid": 46538725,
+          "egid": null,
+          "overlap_m2": 648.6461300016578
+        },
+        {
+          "objectid": 46480862,
+          "egid": 280098072,
+          "overlap_m2": 622.8341320017937
+        },
+        {
+          "objectid": 46538727,
+          "egid": null,
+          "overlap_m2": 365.98140999946776
+        },
+        {
+          "objectid": 46317206,
+          "egid": 280098071,
+          "overlap_m2": 597.0473254961939
+        },
+        {
+          "objectid": 46328064,
+          "egid": 280098067,
+          "overlap_m2": 479.0031940014366
+        },
+        {
+          "objectid": 46538726,
+          "egid": null,
+          "overlap_m2": 742.7846085063552
+        },
+        {
+          "objectid": 46499039,
+          "egid": 280098069,
+          "overlap_m2": 595.7199559989667
+        },
+        {
+          "objectid": 46476450,
+          "egid": 280098068,
+          "overlap_m2": 633.3824895060169
+        }
+      ],
+      "limits": "Current number-matched parcel footprint occupancy only; no historical identity proof, capacity estimate or PDCom-sector intersection."
+    },
+    {
+      "parcel_number": "3420",
+      "egrid": "CH138376452335",
+      "official_area_mo": 828,
+      "official_area_rf": 824,
+      "footprints_over_1m2": [
+        {
+          "objectid": 46340891,
+          "egid": 785949,
+          "overlap_m2": 83.65404499821545
+        }
+      ],
+      "limits": "Current number-matched parcel footprint occupancy only; no historical identity proof, capacity estimate or PDCom-sector intersection."
+    },
+    {
+      "parcel_number": "3421",
+      "egrid": "CH527625834507",
+      "official_area_mo": 962,
+      "official_area_rf": 958,
+      "footprints_over_1m2": [
+        {
+          "objectid": 46318045,
+          "egid": 785951,
+          "overlap_m2": 83.88070499940177
+        }
+      ],
+      "limits": "Current number-matched parcel footprint occupancy only; no historical identity proof, capacity estimate or PDCom-sector intersection."
+    }
+  ],
+  "source_recovery": {
+    "attempts": [
+      {
+        "name": "minutes-2007",
+        "url": "https://www.pully.ch/media/91716/proc%C3%A8s-verbal.pdf",
+        "checked_at": "2026-09-16T14:51:23.631826+00:00",
+        "status": "http_error",
+        "http_status": 404
+      },
+      {
+        "name": "minutes-2009",
+        "url": "https://www.pully.ch/media/90053/proc%C3%A8s-verbal.pdf",
+        "checked_at": "2026-09-16T14:51:23.840725+00:00",
+        "status": "http_error",
+        "http_status": 404
+      }
+    ],
+    "current_archive_url": "https://www.pully.ch/pully-officiel/conseil-communal",
+    "current_archive_file": "council-page.html",
+    "current_archive_sha256": "c14c02050d5c4f09e0b3dc937d770cddd3f01e0a0a417628edc9251defca7daa",
+    "listed_years": [
+      2025,
+      2024,
+      2023,
+      2022,
+      2021,
+      2020,
+      2019,
+      2018
+    ],
+    "pre2018_instruction": "The municipal page directs earlier-period requests to Archives communales. No external contact sent.",
+    "pdl_status": "Exact adopted PDL still not acquired."
+  },
+  "limits": [
+    "Current parcel-number matches identify current EGRIDs but do not prove historical parcel lineage or unchanged boundaries.",
+    "All eight queried parcels intersect a mapped footprint; this is not evidence that the entire PPA is built out.",
+    "The 21 footprint records are not a dwelling count; five have no EGID.",
+    "The 1m² threshold only filters tiny geometric intersections; it is not a validated occupancy threshold.",
+    "No historical-image georeferencing, PDCom-sector intersection, residual capacity estimate or receiver release.",
+    "Only eight number-matched land parcels were queried; this is not a complete property-rights inventory.",
+    "Initial unquoted NUMERO values returned ArcGIS400; corrected string-valued query and count check succeeded."
+  ],
+  "next": [
+    "Obtain the exact adopted PDL and option-choice publication through a public source or authorized archive request.",
+    "Treat Boverattes as a historical lead with demonstrated implementation and unresolved residual capacity.",
+    "Continue other source/category work while the archive gap remains explicit."
+  ]
+}

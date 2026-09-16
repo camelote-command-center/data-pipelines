@@ -1,0 +1,48 @@
+{
+  "files": [
+    {
+      "file": "council-archive-links.json",
+      "sha256": "51774745d8ca41fed7f465d9b75352620e1b60753ac74a8db618393582ec399b"
+    },
+    {
+      "file": "council-page.html",
+      "sha256": "c14c02050d5c4f09e0b3dc937d770cddd3f01e0a0a417628edc9251defca7daa"
+    },
+    {
+      "file": "current-footprints.geojson",
+      "sha256": "fdb326d95aa5e51920e78f2500b29d7a37a4656cc975fccee85f1510baafed8b"
+    },
+    {
+      "file": "current-named-parcels.geojson",
+      "sha256": "7300521062326e9ed05b6d6d068f3a6081cb6048dfa981ac7b647e7e0f11aeb5"
+    },
+    {
+      "file": "current-reference.png",
+      "sha256": "f5e680bb6efe3a51d0a8b6093c3468f83ab0dce39f6d7f4cdbcf8ec306b30d5e"
+    },
+    {
+      "file": "findings.json",
+      "sha256": "93806ad191d1deeac3275ef9b98a4d2860d60d001077f650c6d4a643f6615887"
+    },
+    {
+      "file": "footprint-occupancy.json",
+      "sha256": "f9ed883ac80f56840fa64c68f411fb95c34fc2a39b7dfcf6548e098d1234fa02"
+    },
+    {
+      "file": "footprints-receipt.json",
+      "sha256": "cb80187e423db8fa4aa4ac45b602062ae36f9718f6a6277f8b79d62e7b30b00b"
+    },
+    {
+      "file": "pdl-source-attempts.json",
+      "sha256": "b917b186becba15269d11678b9cce6ca479151c19946c6fcf502aaac652dd0e0"
+    },
+    {
+      "file": "plot.py",
+      "sha256": "4d0db9ac48a4979d2ea5f43f34c3a07d3b0d94f2a97a587130ad5f0f8537562d"
+    },
+    {
+      "file": "reference-receipt.json",
+      "sha256": "a92f465a2f4afbc8b023e7058e56e98faa1a8fc67b6b26ad941b15aee2235e59"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "name": "minutes-2007",
+    "url": "https://www.pully.ch/media/91716/proc%C3%A8s-verbal.pdf",
+    "checked_at": "2026-09-16T14:51:23.631826+00:00",
+    "status": "http_error",
+    "http_status": 404
+  },
+  {
+    "name": "minutes-2009",
+    "url": "https://www.pully.ch/media/90053/proc%C3%A8s-verbal.pdf",
+    "checked_at": "2026-09-16T14:51:23.840725+00:00",
+    "status": "http_error",
+    "http_status": 404
+  }
+]
