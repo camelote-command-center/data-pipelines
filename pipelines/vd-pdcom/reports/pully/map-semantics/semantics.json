@@ -1,0 +1,610 @@
+{
+  "document_id": "98ffb71a-e9e2-5643-9baf-93c42967cb30",
+  "source_sha256": "02a96fd6036e51c77e45ab188168e1c451d40cef8b71204e1271151431173d6d",
+  "reviewed_at": "2026-09-16",
+  "legends": [
+    {
+      "pdf_page": 37,
+      "printed_page": 35,
+      "map_source": "../source-review/map-37.png",
+      "legend_crop": "legend-37.png",
+      "crop_box_in_3x_display_pixels": [
+        90,
+        510,
+        625,
+        1330
+      ],
+      "reading_method": "Manual visual transcription from full layered composite; labels normalized for punctuation/spacing. Categories are research interpretation, not source zoning codes.",
+      "entries": [
+        {
+          "id": "p37_01",
+          "label": "Limite communale",
+          "research_category": "boundary",
+          "geometry_kind": "point_or_line",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_02",
+          "label": "Aire forestière, cordon boisé",
+          "research_category": "natural_context",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_03",
+          "label": "Lac, cours d’eau",
+          "research_category": "natural_context",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_04",
+          "label": "Vigne",
+          "research_category": "agriculture",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_05",
+          "label": "Jardins familiaux",
+          "research_category": "gardens",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_06",
+          "label": "Parc public, cimetière",
+          "research_category": "public_open_space",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_07",
+          "label": "Espace vert à préserver",
+          "research_category": "preservation",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_08",
+          "label": "Emprise sur le lac (par comblement ou réaménagement)",
+          "research_category": "historical_lake_intervention",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_09",
+          "label": "Point de vue",
+          "research_category": "viewpoint",
+          "geometry_kind": "point_or_line",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_10",
+          "label": "Village et Hameau du Port",
+          "research_category": "settlement_context",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_11",
+          "label": "Espace-centre",
+          "research_category": "centre_context",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_12",
+          "label": "Pôle de quartier, pôle périphérique",
+          "research_category": "centre_context",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_13",
+          "label": "Zone d’habitation à faible, moyenne et forte densité",
+          "research_category": "broad_existing_housing_context",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_14",
+          "label": "Espace dont la vocation est à reconsidérer",
+          "research_category": "future_use_review",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_15",
+          "label": "Espace stratégique à développer par plan spécial",
+          "research_category": "special_plan_required",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_16",
+          "label": "Secteur à vocation tertiaire prépondérante",
+          "research_category": "tertiary_orientation",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_17",
+          "label": "Secteur à vocation artisanale prépondérante",
+          "research_category": "craft_orientation",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_18",
+          "label": "Secteur d’équipements publics",
+          "research_category": "public_facilities",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_19",
+          "label": "Secteur à vocation sportive, de détente et de loisirs",
+          "research_category": "recreation",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_20",
+          "label": "Voie ferrée",
+          "research_category": "transport_line",
+          "geometry_kind": "point_or_line",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_21",
+          "label": "Route principale A, B et collectrice",
+          "research_category": "transport_line",
+          "geometry_kind": "point_or_line",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_22",
+          "label": "Route de desserte",
+          "research_category": "transport_line",
+          "geometry_kind": "point_or_line",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_23",
+          "label": "Carrefour giratoire existant / à créer",
+          "research_category": "transport_point",
+          "geometry_kind": "point_or_line",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_24",
+          "label": "Carrefour existant à réaménager",
+          "research_category": "transport_point",
+          "geometry_kind": "point_or_line",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_25",
+          "label": "Porte d’entrée de ville à mettre en valeur",
+          "research_category": "place_enhancement",
+          "geometry_kind": "point_or_line",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p37_26",
+          "label": "Pôle d’intérêt touristique à mettre en valeur / à créer",
+          "research_category": "tourism_point",
+          "geometry_kind": "point_or_line",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        }
+      ]
+    },
+    {
+      "pdf_page": 53,
+      "printed_page": 51,
+      "map_source": "../source-review/map-53.png",
+      "legend_crop": "legend-53.png",
+      "crop_box_in_3x_display_pixels": [
+        90,
+        510,
+        625,
+        1330
+      ],
+      "reading_method": "Manual visual transcription from full layered composite; labels normalized for punctuation/spacing. Categories are research interpretation, not source zoning codes.",
+      "entries": [
+        {
+          "id": "p53_01",
+          "label": "Limite communale",
+          "research_category": "boundary",
+          "geometry_kind": "point_or_line",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p53_02",
+          "label": "Aire forestière, cordon boisé",
+          "research_category": "natural_context",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p53_03",
+          "label": "Cours d’eau",
+          "research_category": "natural_context",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p53_04",
+          "label": "Point de vue",
+          "research_category": "viewpoint",
+          "geometry_kind": "point_or_line",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p53_05",
+          "label": "Hameau des Trois-Chasseurs",
+          "research_category": "settlement_context",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p53_06",
+          "label": "Zone de développement du hameau",
+          "research_category": "hamlet_development",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p53_07",
+          "label": "Zone de transition",
+          "research_category": "transition",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p53_08",
+          "label": "Zone agricole extensive",
+          "research_category": "agriculture",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p53_09",
+          "label": "Zone agricole intensive",
+          "research_category": "agriculture",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p53_10",
+          "label": "Secteur d’activités mixtes (sports, loisirs, détente)",
+          "research_category": "recreation",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p53_11",
+          "label": "Zone réservée à une jonction autoroutière",
+          "research_category": "transport_reservation",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p53_12",
+          "label": "Terres peu productives",
+          "research_category": "agricultural_quality",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p53_13",
+          "label": "Constructions foraines",
+          "research_category": "existing_distributed_buildings",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p53_14",
+          "label": "Secteur d’équipements publics",
+          "research_category": "public_facilities",
+          "geometry_kind": "area_or_symbol",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p53_15",
+          "label": "Autoroute",
+          "research_category": "transport_line",
+          "geometry_kind": "point_or_line",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p53_16",
+          "label": "Route principale",
+          "research_category": "transport_line",
+          "geometry_kind": "point_or_line",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p53_17",
+          "label": "Correction du tracé de la route principale",
+          "research_category": "transport_change",
+          "geometry_kind": "point_or_line",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        },
+        {
+          "id": "p53_18",
+          "label": "Route de desserte et chemin vicinal",
+          "research_category": "transport_line",
+          "geometry_kind": "point_or_line",
+          "approval_scope": "white_illustrative_page",
+          "current_parcel_rights_verified": false
+        }
+      ]
+    }
+  ],
+  "approved_grey_text_context": [
+    {
+      "pdf_page": 24,
+      "section": "4.23",
+      "refs": [
+        "O6"
+      ],
+      "summary": "Manage residential development and compatible local activity; does not assign a numerical capacity to the broad yellow housing fill."
+    },
+    {
+      "pdf_page": 24,
+      "section": "4.23",
+      "refs": [
+        "O7",
+        "O8"
+      ],
+      "summary": "Maintain agricultural use of Monts-de-Pully and existing vineyards."
+    },
+    {
+      "pdf_page": 24,
+      "section": "4.23",
+      "refs": [
+        "O9"
+      ],
+      "summary": "Create transition areas along avenues de Lavaux, C.-F. Ramuz and Général Guisan with a predominantly tertiary vocation."
+    },
+    {
+      "pdf_page": 25,
+      "section": "4.24",
+      "refs": [
+        "M7",
+        "M10"
+      ],
+      "summary": "Revise zoning instruments and adapt implementation instruments for tertiary or mixed buildings between avenues and residential areas."
+    },
+    {
+      "pdf_page": 34,
+      "section": "4.53",
+      "refs": [
+        "O21",
+        "O22",
+        "O23"
+      ],
+      "summary": "Affirm strategic roles for long-term collective needs, keep unbuilt public properties as reserves for public needs, and agree implementation with owners."
+    },
+    {
+      "pdf_page": 35,
+      "section": "4.54",
+      "refs": [
+        "M27",
+        "M28",
+        "M29"
+      ],
+      "summary": "Define each strategic vocation, prepare local plans and assess compatibility/partnerships; this is not a parcel-ready development approval."
+    },
+    {
+      "pdf_page": 50,
+      "section": "5.33",
+      "refs": [
+        "O3",
+        "O4"
+      ],
+      "summary": "Reserve good cultivable land for agriculture while favouring complementary recreation uses elsewhere and development of the hamlet for its social/economic role."
+    },
+    {
+      "pdf_page": 50,
+      "section": "5.33",
+      "refs": [
+        "O5"
+      ],
+      "summary": "Maintain scattered existing buildings, allowing new functions or enlargement conditional on respect for the site."
+    },
+    {
+      "pdf_page": 51,
+      "section": "5.34",
+      "refs": [
+        "M2",
+        "M3",
+        "M5"
+      ],
+      "summary": "Study the hamlet development concept, delimit agriculture/building/new-activity areas, and prepare sector planning with implementation instruments."
+    }
+  ],
+  "crosswalks": [
+    {
+      "legend_ids": [
+        "p37_13"
+      ],
+      "text_refs": [
+        [
+          24,
+          "4.23/O6"
+        ]
+      ],
+      "interpretation": "Yellow includes low/medium/high density together. It is not a single density threshold, vacant-land inventory or quantified capacity."
+    },
+    {
+      "legend_ids": [
+        "p37_14",
+        "p37_15"
+      ],
+      "text_refs": [
+        [
+          34,
+          "4.53/O21–O23"
+        ],
+        [
+          35,
+          "4.54/M27–M29"
+        ]
+      ],
+      "interpretation": "Historical future-use/special-plan leads. Preserve them separately; spatial equivalence to named areas and later implementation must be established."
+    },
+    {
+      "legend_ids": [
+        "p37_16"
+      ],
+      "text_refs": [
+        [
+          24,
+          "4.23/O9"
+        ],
+        [
+          25,
+          "4.24/M10"
+        ]
+      ],
+      "interpretation": "Predominantly tertiary transition function, not a generic housing growth zone."
+    },
+    {
+      "legend_ids": [
+        "p37_18",
+        "p37_19",
+        "p53_10",
+        "p53_14"
+      ],
+      "text_refs": [
+        [
+          34,
+          "4.53/O22"
+        ],
+        [
+          50,
+          "5.33/O3"
+        ]
+      ],
+      "interpretation": "Public-facility or recreation purpose; do not convert matching stripes into residential development."
+    },
+    {
+      "legend_ids": [
+        "p53_06"
+      ],
+      "text_refs": [
+        [
+          50,
+          "5.33/O4"
+        ],
+        [
+          51,
+          "5.34/M2/M3/M5"
+        ]
+      ],
+      "interpretation": "Hamlet-development lead conditioned on planning studies and delimitation; no approved georeferenced perimeter inferred."
+    },
+    {
+      "legend_ids": [
+        "p53_08",
+        "p53_09",
+        "p53_12"
+      ],
+      "text_refs": [
+        [
+          24,
+          "4.23/O7"
+        ],
+        [
+          50,
+          "5.33/O3"
+        ],
+        [
+          51,
+          "5.34/M3"
+        ]
+      ],
+      "interpretation": "Extensive/intensive agriculture and low-productivity land are distinct labels; poor productivity does not establish buildability."
+    },
+    {
+      "legend_ids": [
+        "p53_11"
+      ],
+      "text_refs": [
+        [
+          27,
+          "4.33 cantonal qualification"
+        ]
+      ],
+      "interpretation": "Historical motorway-junction reservation; do not equate with a current general construction reserve."
+    },
+    {
+      "legend_ids": [
+        "p53_13"
+      ],
+      "text_refs": [
+        [
+          50,
+          "5.33/O5"
+        ],
+        [
+          51,
+          "5.34/M1"
+        ]
+      ],
+      "interpretation": "Existing scattered buildings and conditional adaptation, not empty development polygons."
+    }
+  ],
+  "limits": [
+    "Only numbered grey pages are within the approval statement on PDF71. White map location/contours are illustrative.",
+    "Crosswalks are thematic analyst interpretation; no exact polygon-to-objective equivalence established.",
+    "No geographic calibration, parcel intersection, current capacity or receiver release.",
+    "Two legends reviewed; the other ten map pages still require their own legend/context assessment."
+  ]
+}
