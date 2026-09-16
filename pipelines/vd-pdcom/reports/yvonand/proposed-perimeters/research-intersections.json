@@ -1,0 +1,392 @@
+{
+  "limits": "Research overlap of historical cadastral contours carrying proposed hatching; NOT net developable land or complete PDCom sectors. >1m2 threshold; all slivers retained above threshold.",
+  "pairs": [
+    {
+      "source_contour": "4502/4",
+      "egrid": "CH988783459783",
+      "numero": "DP 1034",
+      "kind": "DP communal",
+      "overlap_m2": 2.7204857303643206,
+      "current_parcel_area_m2": 2769.2665769514997,
+      "fraction_current_parcel": 0.000982384922060888
+    },
+    {
+      "source_contour": "4502/4",
+      "egrid": "CH214583839864",
+      "numero": "DP 1050",
+      "kind": "DP communal",
+      "overlap_m2": 3.164819341972583,
+      "current_parcel_area_m2": 843.8172180081725,
+      "fraction_current_parcel": 0.0037505982035340875
+    },
+    {
+      "source_contour": "4502/4",
+      "egrid": "CH559183084532",
+      "numero": "DP 1386",
+      "kind": "DP communal",
+      "overlap_m2": 22.375945831686522,
+      "current_parcel_area_m2": 1094.9518335026676,
+      "fraction_current_parcel": 0.0204355526398888
+    },
+    {
+      "source_contour": "4502/4",
+      "egrid": "CH651283964524",
+      "numero": "2653",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 6.54636224694076,
+      "current_parcel_area_m2": 221.56525053058292,
+      "fraction_current_parcel": 0.029545979034456746
+    },
+    {
+      "source_contour": "4502/4",
+      "egrid": "CH974597878390",
+      "numero": "326",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 42834.98370975108,
+      "current_parcel_area_m2": 42856.34501348503,
+      "fraction_current_parcel": 0.9995015603004124
+    },
+    {
+      "source_contour": "4502/4",
+      "egrid": "CH238397457650",
+      "numero": "DP 1051",
+      "kind": "DP cantonal",
+      "overlap_m2": 69.64803354385307,
+      "current_parcel_area_m2": 4720.535599512876,
+      "fraction_current_parcel": 0.014754265077683184
+    },
+    {
+      "source_contour": "4502/4",
+      "egrid": "CH144583988715",
+      "numero": "294",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 44.84773501610049,
+      "current_parcel_area_m2": 18635.23498849039,
+      "fraction_current_parcel": 0.002406609578242487
+    },
+    {
+      "source_contour": "4502/4",
+      "egrid": "CH938397453646",
+      "numero": "327",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 229.814376405566,
+      "current_parcel_area_m2": 3890.6399644812773,
+      "fraction_current_parcel": 0.05906852818652065
+    },
+    {
+      "source_contour": "4536/4",
+      "egrid": "CH309545008346",
+      "numero": "2655",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 744.5369764028015,
+      "current_parcel_area_m2": 749.4623469973735,
+      "fraction_current_parcel": 0.9934281280249704
+    },
+    {
+      "source_contour": "4536/4",
+      "egrid": "CH398395004505",
+      "numero": "2654",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 1179.4578202306948,
+      "current_parcel_area_m2": 2330.7587970123345,
+      "fraction_current_parcel": 0.5060402739839805
+    },
+    {
+      "source_contour": "4536/4",
+      "egrid": "CH656583864578",
+      "numero": "130",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 2.191139152080336,
+      "current_parcel_area_m2": 1985.7000499992437,
+      "fraction_current_parcel": 0.0011034592823227106
+    },
+    {
+      "source_contour": "4536/4",
+      "egrid": "CH883783459712",
+      "numero": "122",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 2.9341300694703696,
+      "current_parcel_area_m2": 6321.941250993663,
+      "fraction_current_parcel": 0.0004641185283095113
+    },
+    {
+      "source_contour": "4536/4",
+      "egrid": "CH214566838635",
+      "numero": "125",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 4641.056682405638,
+      "current_parcel_area_m2": 4653.3818549743955,
+      "fraction_current_parcel": 0.9973513515647587
+    },
+    {
+      "source_contour": "4552/2",
+      "egrid": "CH287683459835",
+      "numero": "1837",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 1.9502375205879456,
+      "current_parcel_area_m2": 2561.9264954982,
+      "fraction_current_parcel": 0.0007612386709825164
+    },
+    {
+      "source_contour": "4552/2",
+      "egrid": "CH898386654512",
+      "numero": "150",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 7666.916061878378,
+      "current_parcel_area_m2": 7702.2361410020385,
+      "fraction_current_parcel": 0.9954143084583401
+    },
+    {
+      "source_contour": "4552/2",
+      "egrid": "CH674597528306",
+      "numero": "1355",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 1.2155599543042055,
+      "current_parcel_area_m2": 12207.811232993365,
+      "fraction_current_parcel": 9.9572309163741e-05
+    },
+    {
+      "source_contour": "4552/2",
+      "egrid": "CH808645658321",
+      "numero": "147",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 2.916093027395869,
+      "current_parcel_area_m2": 8457.73256150081,
+      "fraction_current_parcel": 0.00034478425585005886
+    },
+    {
+      "source_contour": "4569/2",
+      "egrid": "CH409745378341",
+      "numero": "244",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 3.818568342584237,
+      "current_parcel_area_m2": 941.4641810010095,
+      "fraction_current_parcel": 0.004055988979340832
+    },
+    {
+      "source_contour": "4569/2",
+      "egrid": "CH814564838643",
+      "numero": "DP 1026",
+      "kind": "DP communal",
+      "overlap_m2": 5.946191387573416,
+      "current_parcel_area_m2": 1195.721729010575,
+      "fraction_current_parcel": 0.004972888961793574
+    },
+    {
+      "source_contour": "4569/2",
+      "egrid": "CH883783459712",
+      "numero": "122",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 6314.0179709824715,
+      "current_parcel_area_m2": 6321.941250993663,
+      "fraction_current_parcel": 0.9987467014170772
+    },
+    {
+      "source_contour": "4569/2",
+      "egrid": "CH844583866529",
+      "numero": "123",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 1.036135749761874,
+      "current_parcel_area_m2": 2472.3645489981227,
+      "fraction_current_parcel": 0.0004190869627950893
+    },
+    {
+      "source_contour": "4576/1",
+      "egrid": "CH828664834560",
+      "numero": "DP 1179",
+      "kind": "DP communal",
+      "overlap_m2": 3.0492612152578547,
+      "current_parcel_area_m2": 3996.0835725058037,
+      "fraction_current_parcel": 0.0007630624234782383
+    },
+    {
+      "source_contour": "4576/1",
+      "egrid": "CH414580839823",
+      "numero": "1472",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 7302.825319244614,
+      "current_parcel_area_m2": 7325.333828497481,
+      "fraction_current_parcel": 0.9969273060068193
+    },
+    {
+      "source_contour": "4576/1",
+      "egrid": "CH208645668328",
+      "numero": "1470",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 10.906965878786949,
+      "current_parcel_area_m2": 21352.018319985393,
+      "fraction_current_parcel": 0.0005108166223601484
+    },
+    {
+      "source_contour": "4576/2",
+      "egrid": "CH828664834560",
+      "numero": "DP 1179",
+      "kind": "DP communal",
+      "overlap_m2": 7.230497054780585,
+      "current_parcel_area_m2": 3996.0835725058037,
+      "fraction_current_parcel": 0.0018093958556143494
+    },
+    {
+      "source_contour": "4576/2",
+      "egrid": "CH208645668328",
+      "numero": "1470",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 21296.45169844229,
+      "current_parcel_area_m2": 21352.018319985393,
+      "fraction_current_parcel": 0.9973975939552707
+    },
+    {
+      "source_contour": "4576/2",
+      "egrid": "CH656983864567",
+      "numero": "DP 1177",
+      "kind": "DP communal",
+      "overlap_m2": 1.6272259976506611,
+      "current_parcel_area_m2": 6098.564108495173,
+      "fraction_current_parcel": 0.00026682116785227677
+    },
+    {
+      "source_contour": "4576/2",
+      "egrid": "CH714565838668",
+      "numero": "1475",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 3.4475253576737273,
+      "current_parcel_area_m2": 912.098786002832,
+      "fraction_current_parcel": 0.003779771895961084
+    },
+    {
+      "source_contour": "4576/2",
+      "egrid": "CH814564838643",
+      "numero": "DP 1026",
+      "kind": "DP communal",
+      "overlap_m2": 2.5885164188075254,
+      "current_parcel_area_m2": 1195.721729010575,
+      "fraction_current_parcel": 0.0021648150702667647
+    },
+    {
+      "source_contour": "4586/0",
+      "egrid": "CH698397894506",
+      "numero": "1752",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 18178.975664036232,
+      "current_parcel_area_m2": 18206.121224534552,
+      "fraction_current_parcel": 0.9985089871607721
+    },
+    {
+      "source_contour": "4586/0",
+      "egrid": "CH159583984581",
+      "numero": "DP 1025",
+      "kind": "DP communal",
+      "overlap_m2": 5.797254636777834,
+      "current_parcel_area_m2": 2602.3233137874645,
+      "fraction_current_parcel": 0.002227722668456754
+    },
+    {
+      "source_contour": "4586/0",
+      "egrid": "CH698397974579",
+      "numero": "112",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 1.4921810845137315,
+      "current_parcel_area_m2": 6078.2472514884,
+      "fraction_current_parcel": 0.0002454952921088125
+    },
+    {
+      "source_contour": "4586/0",
+      "egrid": "CH644583974287",
+      "numero": "1753",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 3.3914328612666087,
+      "current_parcel_area_m2": 1001.62188499646,
+      "fraction_current_parcel": 0.0033859412539479355
+    },
+    {
+      "source_contour": "4586/0",
+      "egrid": "CH786083458618",
+      "numero": "1718",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 5.502958357511955,
+      "current_parcel_area_m2": 779.9872450001861,
+      "fraction_current_parcel": 0.0070551901877711366
+    },
+    {
+      "source_contour": "4586/0",
+      "egrid": "CH750183084566",
+      "numero": "2691",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 3.151644831699247,
+      "current_parcel_area_m2": 802.206750997246,
+      "fraction_current_parcel": 0.003928718909160697
+    },
+    {
+      "source_contour": "4586/0",
+      "egrid": "CH669783458688",
+      "numero": "120",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 4.961616122370401,
+      "current_parcel_area_m2": 1419.5031345078223,
+      "fraction_current_parcel": 0.003495318891346245
+    },
+    {
+      "source_contour": "4586/0",
+      "egrid": "CH414587839758",
+      "numero": "113",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 2.8845496388078606,
+      "current_parcel_area_m2": 1603.2161824971108,
+      "fraction_current_parcel": 0.0017992268730190784
+    },
+    {
+      "source_contour": "4586/0",
+      "egrid": "CH774586608347",
+      "numero": "1739",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 2.596348705588506,
+      "current_parcel_area_m2": 1299.4686899978028,
+      "fraction_current_parcel": 0.0019980078978223755
+    },
+    {
+      "source_contour": "4588/5",
+      "egrid": "CH798397804596",
+      "numero": "166",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 6592.520849638772,
+      "current_parcel_area_m2": 6616.75129849141,
+      "fraction_current_parcel": 0.9963380142671885
+    },
+    {
+      "source_contour": "4588/5",
+      "egrid": "CH709745898374",
+      "numero": "2412",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 5.771622330849894,
+      "current_parcel_area_m2": 1053.7961640048718,
+      "fraction_current_parcel": 0.005476981723785446
+    },
+    {
+      "source_contour": "4588/5",
+      "egrid": "CH159583984581",
+      "numero": "DP 1025",
+      "kind": "DP communal",
+      "overlap_m2": 1.2345134458970934,
+      "current_parcel_area_m2": 2602.3233137874645,
+      "fraction_current_parcel": 0.0004743889582652826
+    },
+    {
+      "source_contour": "4588/5",
+      "egrid": "CH644583978940",
+      "numero": "167",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 8.860208147766786,
+      "current_parcel_area_m2": 3205.640720996661,
+      "fraction_current_parcel": 0.0027639429739375384
+    },
+    {
+      "source_contour": "4588/5",
+      "egrid": "CH588083459720",
+      "numero": "2540",
+      "kind": "parcelle priv\u00e9e",
+      "overlap_m2": 2.7763161656321804,
+      "current_parcel_area_m2": 6944.878963987265,
+      "fraction_current_parcel": 0.000399764514259902
+    }
+  ]
+}
