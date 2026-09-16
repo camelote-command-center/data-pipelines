@@ -534,5 +534,75 @@
     "title": "Lutry — Dossier directeur, partie 3/3",
     "plan_status": "approved",
     "scope": "communal"
+  },
+  {
+    "candidate_id": "5ccbfa70-ceb1-54be-87e7-b90917bc666f",
+    "commune_bfs": 5939,
+    "commune_name": "Yvonand",
+    "pdf_url": "https://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-1.-Rapport-de-synthèse.pdf",
+    "landing_url": "https://yvonand.ch/vie-politique/reglements-et-tarifs/police-des-constructions/",
+    "title": "PDEC 2008 – 1. Rapport de synthèse",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "44c85775-5b99-5e39-b0e5-c3200735597a",
+    "commune_bfs": 5939,
+    "commune_name": "Yvonand",
+    "pdf_url": "https://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-2.-Objectifs_mesures_actions.pdf",
+    "landing_url": "https://yvonand.ch/vie-politique/reglements-et-tarifs/police-des-constructions/",
+    "title": "PDEC 2008 – 2. Objectifs_mesures_actions",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "f15a81ee-cf27-5b7a-b0b8-ea42fecde62c",
+    "commune_bfs": 5939,
+    "commune_name": "Yvonand",
+    "pdf_url": "https://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-3.-Equipements-et-déplacements-Localité.pdf",
+    "landing_url": "https://yvonand.ch/vie-politique/reglements-et-tarifs/police-des-constructions/",
+    "title": "PDEC 2008 – 3. Equipements et déplacements – Localité",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "41f00a99-c336-5ed7-8b65-4f4842b247b3",
+    "commune_bfs": 5939,
+    "commune_name": "Yvonand",
+    "pdf_url": "https://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-4.-Equipements-et-déplacements-Commune.pdf",
+    "landing_url": "https://yvonand.ch/vie-politique/reglements-et-tarifs/police-des-constructions/",
+    "title": "PDEC 2008 – 4. Equipements et déplacements – Commune",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "0b30e1c7-72f5-50a3-a93f-4a086dae3256",
+    "commune_bfs": 5939,
+    "commune_name": "Yvonand",
+    "pdf_url": "https://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-5.-Sites-et-contraintes-Commune.pdf",
+    "landing_url": "https://yvonand.ch/vie-politique/reglements-et-tarifs/police-des-constructions/",
+    "title": "PDEC 2008 – 5. Sites et contraintes – Commune",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "c0047fcb-6555-5768-bb3b-91313a50422c",
+    "commune_bfs": 5939,
+    "commune_name": "Yvonand",
+    "pdf_url": "https://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-6.-Urbanisation-et-affectation-Commune.pdf",
+    "landing_url": "https://yvonand.ch/vie-politique/reglements-et-tarifs/police-des-constructions/",
+    "title": "PDEC 2008 – 6. Urbanisation et affectation – Commune",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "03949e5c-334b-5616-a586-e9db21e4a4fe",
+    "commune_bfs": 5939,
+    "commune_name": "Yvonand",
+    "pdf_url": "https://www.yvonand.ch/wp-content/uploads/2019/10/PDEC_2008-7.-Urbanisation-et-affectation-Localité.pdf",
+    "landing_url": "https://yvonand.ch/vie-politique/reglements-et-tarifs/police-des-constructions/",
+    "title": "PDEC_2008 – 7. Urbanisation et affectation – Localité",
+    "plan_status": "unverified",
+    "scope": "communal"
   }
 ]

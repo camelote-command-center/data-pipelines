@@ -1,0 +1,9 @@
+# Yvonand official PDCom source review — 16 September 2026
+
+Seven official files, 73 pages: synthesis (53), objectives/measures/actions (15), five single-page vector maps. Sources and exact SHA256/document IDs in sources.json; original HTTP links retained, downloads use HTTPS on the same host. PDFs and full previews remain local; hashes allow reacquisition. Parser manifest registers all seven; only five maps receive byte-specific approval reviews.
+
+Each map page 1 prints municipal approval 23 April 2007, council adoption 12 November 2007 and cantonal approval 2 April 2008. Approval crop sheet confirms printed date; no handwritten signature established. Municipal notice 2024/11 (snapshot revision-notice.html) instead reports entry into force 2 August 2008, describes the plan as outdated and funds revision. These dates refer to different described events but their relationship is unresolved; do not silently normalize them or infer a newly adopted replacement.
+
+Maps are indicative, explicitly not zoning and do not establish building rights. Historical cadastre, motorway survey not in force. Inventory boundaries require original inventory plans. Existing/projected categories must remain separate; long-term development arrows cannot be converted into parcel boundaries. Source 3 localite mobility sheet actually prints 1:10000; source 7 urbanisation localite prints 1:5000. Other maps print 1:10000.
+
+Report TOC mentions a detailed constraints collection not identified among these seven links; dossier completeness remains open. Reports have April 2007 covers, without independently established approval pages. Commune not complete; geographic alignment, semantic extraction, contemporary constraints and parcel intersections pending. No geography or public release added in this milestone.

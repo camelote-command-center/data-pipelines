@@ -1,0 +1,43 @@
+{
+  "landing_url": "https://yvonand.ch/vie-politique/reglements-et-tarifs/police-des-constructions/",
+  "recorded_at": "2026-09-16T15:52:34.910428+00:00",
+  "landing_sha256": "cab2043c2f8278f49bbadc07031ff91e3916f2477bfa5e63e6ef062b17e59067",
+  "links": [
+    {
+      "title": "PDEC 2008 – 1. Rapport de synthèse",
+      "linked_url": "http://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-1.-Rapport-de-synthèse.pdf",
+      "url": "https://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-1.-Rapport-de-synthèse.pdf"
+    },
+    {
+      "title": "PDEC 2008 – 2. Objectifs_mesures_actions",
+      "linked_url": "http://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-2.-Objectifs_mesures_actions.pdf",
+      "url": "https://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-2.-Objectifs_mesures_actions.pdf"
+    },
+    {
+      "title": "PDEC 2008 – 3. Equipements et déplacements – Localité",
+      "linked_url": "http://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-3.-Equipements-et-déplacements-Localité.pdf",
+      "url": "https://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-3.-Equipements-et-déplacements-Localité.pdf"
+    },
+    {
+      "title": "PDEC 2008 – 4. Equipements et déplacements – Commune",
+      "linked_url": "http://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-4.-Equipements-et-déplacements-Commune.pdf",
+      "url": "https://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-4.-Equipements-et-déplacements-Commune.pdf"
+    },
+    {
+      "title": "PDEC 2008 – 5. Sites et contraintes – Commune",
+      "linked_url": "http://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-5.-Sites-et-contraintes-Commune.pdf",
+      "url": "https://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-5.-Sites-et-contraintes-Commune.pdf"
+    },
+    {
+      "title": "PDEC 2008 – 6. Urbanisation et affectation – Commune",
+      "linked_url": "http://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-6.-Urbanisation-et-affectation-Commune.pdf",
+      "url": "https://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-6.-Urbanisation-et-affectation-Commune.pdf"
+    },
+    {
+      "title": "PDEC_2008 – 7. Urbanisation et affectation – Localité",
+      "linked_url": "http://www.yvonand.ch/wp-content/uploads/2019/10/PDEC_2008-7.-Urbanisation-et-affectation-Localité.pdf",
+      "url": "https://www.yvonand.ch/wp-content/uploads/2019/10/PDEC_2008-7.-Urbanisation-et-affectation-Localité.pdf"
+    }
+  ],
+  "url_normalization": "Upgrade explicit same-host HTTP PDF links to HTTPS; verify downloads without disabling TLS."
+}
