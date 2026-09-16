@@ -22,30 +22,38 @@ from discovery import public_url
 ROOT=Path(__file__).resolve().parent
 
 
-def download(url,max_bytes=100_000_000):
+def download(url,max_bytes=100_000_000,max_seconds=180):
     """Retry bounded transient GET failures, preserving redirect and size guards."""
+    deadline=time.monotonic()+max_seconds
     for attempt in range(3):
+        if time.monotonic()>=deadline:raise requests.Timeout("pdf_download_deadline")
         try:
-            return _download_once(url,max_bytes)
-        except (requests.Timeout,requests.ConnectionError,requests.HTTPError) as exc:
+            return _download_once(url,max_bytes,deadline)
+        except (requests.Timeout,requests.ConnectionError,requests.HTTPError,requests.exceptions.ChunkedEncodingError) as exc:
             response=getattr(exc,'response',None)
             status=response.status_code if response is not None else None
-            retryable=isinstance(exc,(requests.Timeout,requests.ConnectionError)) or status in (429,500,502,503,504)
+            retryable=isinstance(exc,(requests.Timeout,requests.ConnectionError,requests.exceptions.ChunkedEncodingError)) or status in (429,500,502,503,504)
             if not retryable or attempt==2:raise
-            time.sleep(2**(attempt+1))
+            delay=2**(attempt+1)
+            if time.monotonic()+delay>=deadline:raise requests.Timeout("pdf_download_deadline") from exc
+            time.sleep(delay)
 
 
-def _download_once(url,max_bytes=100_000_000):
+def _download_once(url,max_bytes=100_000_000,deadline=None):
+    if deadline is None:deadline=time.monotonic()+180
     host=urlsplit(url).hostname
     for _ in range(5):
         public_url(url)
         if urlsplit(url).hostname not in (host,host.removeprefix('www.'),'www.'+host.removeprefix('www.')):
             raise ValueError('unreviewed_redirect_host')
-        with requests.get(url,stream=True,timeout=(15,60),allow_redirects=False) as r:
+        remaining=deadline-time.monotonic()
+        if remaining<=0:raise requests.Timeout("pdf_download_deadline")
+        with requests.get(url,stream=True,timeout=(min(15,remaining),min(30,remaining)),allow_redirects=False) as r:
             if r.is_redirect:
                 url=urljoin(url,r.headers['Location']);continue
             r.raise_for_status();data=bytearray()
             for chunk in r.iter_content(131072):
+                if time.monotonic()>=deadline:raise requests.Timeout("pdf_download_deadline")
                 data.extend(chunk)
                 if len(data)>max_bytes:raise ValueError('pdf_size_limit')
             if not data.startswith(b'%PDF'):raise ValueError('response_not_pdf')
