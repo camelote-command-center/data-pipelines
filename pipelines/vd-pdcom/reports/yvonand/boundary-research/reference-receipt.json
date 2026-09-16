@@ -1,0 +1,19 @@
+{
+  "acquired_at": "2026-09-16T17:53:23.716819+00:00",
+  "count": 1655,
+  "bounds": [
+    2543764.359,
+    1180124.53,
+    2549479.481,
+    1186539.976
+  ],
+  "commune": "Yvonand bounding envelope, includes neighbours",
+  "pages": [
+    {
+      "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?where=1%3D1&geometry=2543764.359%2C1180124.53%2C2549479.481%2C1186539.976&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&f=geojson&outFields=OBJECTID%2CEGID&outSR=2056&returnGeometry=true&orderByFields=OBJECTID&resultRecordCount=2000&resultOffset=0",
+      "sha256": "8bb1fa64d8ae98688b5504f4f0de502a247f372a89dd1cb5f8bbdd97d4e8df43",
+      "count": 1655
+    }
+  ],
+  "file_sha256": "aeb08511742850421b375f9feeff9f1617e4f9ae71c952b39c205a2d244c23ee"
+}
