@@ -1,0 +1,16 @@
+[
+  {
+    "url": "https://www.pully.ch/pully-pratique/urbanisme-environnement/amenagement-du-territoire/",
+    "final_url": "https://www.pully.ch/pully-pratique/urbanisme-environnement/amenagement-du-territoire/",
+    "checked_at": "2026-09-16T12:50:36.074122+00:00",
+    "file": "municipal-landing.html",
+    "sha256": "43cb676f08d3d87bb0b979a6eefa14a3fb51843e8c999751e2428ba21b3f6d00"
+  },
+  {
+    "url": "https://www.pully.ch/pully-officiel/projets-municipaux/pully-2040",
+    "final_url": "https://www.pully.ch/pully-officiel/projets-municipaux/pully-2040",
+    "checked_at": "2026-09-16T12:50:36.524942+00:00",
+    "file": "pully-2040.html",
+    "sha256": "8d630e3a6ef118864b414e9bbbc4246c03387f34865430b755ddac76548f300c"
+  }
+]

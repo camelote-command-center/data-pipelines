@@ -1,0 +1,87 @@
+{
+  "source_document_id": "98ffb71a-e9e2-5643-9baf-93c42967cb30",
+  "source_sha256": "02a96fd6036e51c77e45ab188168e1c451d40cef8b71204e1271151431173d6d",
+  "index_page": 42,
+  "strategic_spaces": [
+    {
+      "name": "Espace Centre",
+      "context_pages": [
+        43
+      ],
+      "approved_objective_measure_pages": [
+        44,
+        45,
+        46
+      ],
+      "map_pages": [
+        48
+      ]
+    },
+    {
+      "name": "Espace Monts-de-Pully",
+      "context_pages": [
+        49
+      ],
+      "approved_objective_measure_pages": [
+        50,
+        51
+      ],
+      "map_pages": [
+        53,
+        54
+      ]
+    },
+    {
+      "name": "Espace Rives du Lac",
+      "context_pages": [
+        55,
+        56
+      ],
+      "approved_objective_measure_pages": [
+        57,
+        58,
+        59
+      ],
+      "map_pages": [
+        61,
+        62,
+        63
+      ]
+    },
+    {
+      "name": "Espace Vallon de la Paudèze",
+      "context_pages": [
+        64,
+        67,
+        68
+      ],
+      "approved_objective_measure_pages": [
+        65,
+        66
+      ],
+      "map_pages": [
+        70
+      ],
+      "limit": "PDF66 asks for an intercommunal master plan; the illustrative sketch is not proof that an intercommunal plan was adopted."
+    }
+  ],
+  "other_attention_areas": [
+    {
+      "name": "Rochettaz / Anciens-Moulins",
+      "general_objective": "équipements publics, artisanat, habitat"
+    },
+    {
+      "name": "domaine des Boverattes",
+      "general_objective": "habitat groupé de faible densité"
+    },
+    {
+      "name": "quartier des Alpes",
+      "general_objective": "équipements publics, habitat collectif"
+    },
+    {
+      "name": "quartier de Chantemerle",
+      "general_objective": "équipements publics, habitat collectif"
+    }
+  ],
+  "limits": "PDF42 white explanatory page, not grey approved page. Four broad strategic spaces plus four separately named attention areas, not eight parcel polygons. Detailed plans/current implementation unverified."
+}
