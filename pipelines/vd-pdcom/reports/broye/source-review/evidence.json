@@ -1,0 +1,38 @@
+{
+  "operation_id": "206b5a67-6701-4bc6-af7a-4427e319fa5a",
+  "sources": [
+    {
+      "url": "https://coreb.ch/plan-directeur-regional-2025/",
+      "http_status": 200,
+      "file": "regional-status.html",
+      "sha256": "97fcdd7254687978d9959cc50f664f121ed2cac56ec6751962df2d52bbf658f1",
+      "retrieved_at": "2026-09-16T04:47:50.863520+00:00"
+    },
+    {
+      "url": "https://coreb.ch/consultation-publique-pdr-broye-vully/",
+      "http_status": 200,
+      "file": "consultation-2026.html",
+      "sha256": "790cdd022a9647e44c5131459819fec92d1d453a8be1e0557a3adf532d32d6e3",
+      "retrieved_at": "2026-09-16T04:47:51.149135+00:00"
+    },
+    {
+      "url": "https://www.coreb.ch/consultation-publique-pdr-vd/",
+      "http_status": 404,
+      "file": "broken-dossier.html",
+      "sha256": "2f6534cfd42e65aec5067a8117860781b33323a0cc38118d4e29a33edd3267f6",
+      "retrieved_at": "2026-09-16T04:47:51.434083+00:00"
+    }
+  ],
+  "scope": "regional, not 31 completed municipal PDComs",
+  "commune_explicitly_reviewed": {
+    "name": "Payerne",
+    "bfs": 5822
+  },
+  "reported_district_communes": 31,
+  "exact_membership_validated": false,
+  "approval_status": "Pending adoption/approval according to current COREB landing page; no approved Vaud dossier acquired",
+  "consultation": "2026-06-02 through 2026-07-02, exclusively Payerne SRGZA modifications",
+  "missing": "Adapted Vaud dossier and verified maps; linked consultation download page HTTP404",
+  "other_route": "Publicly linked strategic PAR shared-folder host extranet.coreb.ch connect timeout25s; no authentication denial inferred",
+  "release": false
+}
