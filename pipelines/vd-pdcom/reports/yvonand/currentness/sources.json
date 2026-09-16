@@ -1,0 +1,30 @@
+[
+  {
+    "name": "presentation-2026",
+    "url": "https://yvonand.ch/wp-content/sabai/File/files/f6ff8d9d2ab8f42603b33dbb98113491.pdf",
+    "sha256": "5f3a3a8bb99e5a4721a63326fda87fbd6bd9a550d9dfaa928cab39f22304ae03",
+    "page_count": 61,
+    "checked_at": "2026-09-16T19:55:38.979551+00:00"
+  },
+  {
+    "name": "mordagne-regulation",
+    "url": "https://www.yvonand.ch/wp-content/uploads/2019/10/001-Plan-de-quartier-Marais-de-Mordagne.pdf",
+    "sha256": "daf0e47e7a8f7bb8ca69904bb4ad39a55cfa08b0963d19631da4edf1f3b50acf",
+    "page_count": 4,
+    "checked_at": "2026-09-16T19:55:39.116418+00:00"
+  },
+  {
+    "name": "pacom-report",
+    "url": "https://yvonand.ch/wp-content/sabai/File/files/592cf67a8f46927fcaa85b043c50a054.pdf",
+    "sha256": "ad57d0f693ba51acef1cfc5522a7c2a92538ff41f573a9ab831d0f4a7e675694",
+    "page_count": 106,
+    "checked_at": "2026-09-16T19:55:39.702584+00:00"
+  },
+  {
+    "name": "council-2025-11-10",
+    "url": "https://yvonand.ch/wp-content/uploads/2025/12/CC_10.11.2025_PV-34.pdf",
+    "sha256": "352a3d934f36bb034e190379729b1d201389be08ea77ebd6ff21922233051bc7",
+    "page_count": 11,
+    "checked_at": "2026-09-16T19:55:39.894239+00:00"
+  }
+]

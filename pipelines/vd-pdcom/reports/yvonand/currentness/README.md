@@ -1,0 +1,13 @@
+# Yvonand later planning and historical-current distinction
+
+Four official adjacent sources,182pages total, acquired/hash-checked on16September2026; URLs/SHA/page counts in sources.json. These are NOT additional PDCom source coverage. Local PDFs remain available for exact replay; selected14page texts and two visual review sheets are versioned.
+
+- The2March2026 PACom report(PDF5) says a revised PDCom underwent preliminary examination in August2022, with adaptations requested17January2023. PACom was prioritised after20January2023 coordination. This revised PDCom itself has not been acquired or approval-verified.
+- The report and18March2026 presentation establish public inquiry4March–2April2026. ReportPDF105 remains an inquiry-stage conclusion; presentationPDF60 shows council/department decisions as subsequent steps. Targeted official-site searches did not establish subsequent adoption/approval. This is a verification gap, not proof none occurred.
+- The four-page Mordagne PQ regulation prints cantonal approval10December1993 onPDF4, with municipal stamp. ReportPDF29 lists it among existing detailed plans. Its map is missing from this linked file; construction areasA–E cannot be spatially assigned from regulations alone. It predates the2008PDCom.
+- PACom reportPDF53 modification33 proposes activities zoneB on32,499m² of parcel326. PDF102 says part of326 remains free of construction pending validation of separate PA Mortaigue. Council minutes10November2025 PDF3–4 approve study funding for269/270/618/619 and326(partial), not the zoning plan itself. The historical source contour (~43,214m²) cannot be equated with current buildable area or that32,499m² proposal.
+- ReportPDF53 describes Goilles modification30 as a nomenclature change for existing vacation-home zones; modification31 proposes4,120m² on314/315 as green zoneA. Historical projected expansion is not a current vacant-land inventory.
+
+ReportPDF5,53,102 and regulationPDF4 were visually reviewed. Full source hashes checked. Primary official landing pages: https://yvonand.ch/yvonand-au-quotidien/pilier-public/pilierpublic/listing/yvonand-presentation-publique-du-plan-daffectation-communal-pacom and https://yvonand.ch/vie-politique/reglements-et-tarifs/plan-partiel-daffection-et-plan-de-quartier/ . Individual primary PDF URLs are retained in sources.json.
+
+Next acquire full PACom and PA Mortaigue maps, revised PDCom and any subsequent decisions; distinguish applicable zoning, historical PDCom intentions and pending proposals. Do not substitute a proposal's numerical rules for the2008map. No runtime sector, parcel, receiver or public-release change.
