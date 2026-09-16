@@ -1,0 +1,18 @@
+{
+  "count": 745,
+  "checked_at": "2026-09-16T18:56:47.702992+00:00",
+  "bbox": [
+    2545706.775704669,
+    1182774.3370112225,
+    2547862.7065552277,
+    1183710.3271447201
+  ],
+  "pages": [
+    {
+      "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?where=NO_COM_FED%3D5939&geometry=2545706.775704669%2C1182774.3370112225%2C2547862.7065552277%2C1183710.3271447201&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&f=geojson&outFields=OBJECTID%2CNUMERO%2CEGRID%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&returnGeometry=true&orderByFields=OBJECTID&resultRecordCount=2000&resultOffset=0",
+      "sha256": "a8264bcef07de06619625b6cc8466b74fb4df9332488847ac8fd44db9e759691",
+      "count": 745
+    }
+  ],
+  "file_sha256": "99f8115dbaf7cf69c72983eb57b1a14572fba2008fe2a04b0373e23791eb510d"
+}

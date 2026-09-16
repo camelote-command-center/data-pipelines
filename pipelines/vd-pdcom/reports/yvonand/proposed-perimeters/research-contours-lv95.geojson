@@ -1,0 +1,2455 @@
+{
+  "type": "FeatureCollection",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "EPSG:2056"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "drawing_index": 4502,
+        "subpath": 4,
+        "area": 13889.385703347623,
+        "local_reserved_checks_300m": [
+          {
+            "source_drawing_index": 1890,
+            "reference_OBJECTID": 46318049,
+            "reference_EGID": 846529,
+            "distance_m": 0.05355077370542673,
+            "source_area_m2": 112.79068997631245,
+            "target_area_m2": 110.1258000008455,
+            "role": "reserved",
+            "iou": 0.9624732473628685,
+            "hausdorff_m": 0.3051856831362265
+          },
+          {
+            "source_drawing_index": 1895,
+            "reference_OBJECTID": 46432648,
+            "reference_EGID": 9031383,
+            "distance_m": 0.09646379599907462,
+            "source_area_m2": 220.048257063983,
+            "target_area_m2": 224.5093837456109,
+            "role": "reserved",
+            "iou": 0.9668729524214126,
+            "hausdorff_m": 0.33784594205876284
+          },
+          {
+            "source_drawing_index": 1905,
+            "reference_OBJECTID": 46306529,
+            "reference_EGID": 846455,
+            "distance_m": 0.16864859737763155,
+            "source_area_m2": 98.6554188286432,
+            "target_area_m2": 98.4352249981181,
+            "role": "reserved",
+            "iou": 0.9510989952136871,
+            "hausdorff_m": 0.30912791270543816
+          },
+          {
+            "source_drawing_index": 1955,
+            "reference_OBJECTID": 46512710,
+            "reference_EGID": 846599,
+            "distance_m": 0.1156692855497433,
+            "source_area_m2": 78.44901078950217,
+            "target_area_m2": 78.26147499836851,
+            "role": "reserved",
+            "iou": 0.9730006183085692,
+            "hausdorff_m": 0.22781590726093598
+          },
+          {
+            "source_drawing_index": 2015,
+            "reference_OBJECTID": 46493119,
+            "reference_EGID": 846567,
+            "distance_m": 0.05891209742356089,
+            "source_area_m2": 77.12292463308269,
+            "target_area_m2": 77.80664999820446,
+            "role": "reserved",
+            "iou": 0.9715910799492743,
+            "hausdorff_m": 0.16204203899270758
+          },
+          {
+            "source_drawing_index": 2155,
+            "reference_OBJECTID": 46453177,
+            "reference_EGID": 846575,
+            "distance_m": 0.09838186510899997,
+            "source_area_m2": 79.78270786633229,
+            "target_area_m2": 79.73883249775018,
+            "role": "reserved",
+            "iou": 0.9433083613138362,
+            "hausdorff_m": 0.914495203594526
+          },
+          {
+            "source_drawing_index": 2160,
+            "reference_OBJECTID": 46299579,
+            "reference_EGID": 846569,
+            "distance_m": 0.0735182649087687,
+            "source_area_m2": 128.34366227545414,
+            "target_area_m2": 128.5201500008501,
+            "role": "reserved",
+            "iou": 0.9746031200594663,
+            "hausdorff_m": 0.18243543730375705
+          },
+          {
+            "source_drawing_index": 2165,
+            "reference_OBJECTID": 46400117,
+            "reference_EGID": 846570,
+            "distance_m": 0.11778948592251515,
+            "source_area_m2": 88.15013068445087,
+            "target_area_m2": 86.94425000014064,
+            "role": "reserved",
+            "iou": 0.9647085284631823,
+            "hausdorff_m": 0.21679183339086766
+          },
+          {
+            "source_drawing_index": 2205,
+            "reference_OBJECTID": 46330082,
+            "reference_EGID": 280014116,
+            "distance_m": 0.08317724539920505,
+            "source_area_m2": 87.67883968157162,
+            "target_area_m2": 88.78500000110361,
+            "role": "reserved",
+            "iou": 0.9632233161881514,
+            "hausdorff_m": 0.22963343625876273
+          },
+          {
+            "source_drawing_index": 2240,
+            "reference_OBJECTID": 46444792,
+            "reference_EGID": 846538,
+            "distance_m": 0.01699611902430478,
+            "source_area_m2": 88.87210650222927,
+            "target_area_m2": 90.8233000013263,
+            "role": "reserved",
+            "iou": 0.9506522318460067,
+            "hausdorff_m": 0.2877550301622868
+          },
+          {
+            "source_drawing_index": 2245,
+            "reference_OBJECTID": 46327762,
+            "reference_EGID": 846539,
+            "distance_m": 0.09544096409100142,
+            "source_area_m2": 103.85330307823288,
+            "target_area_m2": 109.18789999930809,
+            "role": "reserved",
+            "iou": 0.9446546542834845,
+            "hausdorff_m": 0.2530895384783153
+          },
+          {
+            "source_drawing_index": 2270,
+            "reference_OBJECTID": 46464474,
+            "reference_EGID": 846542,
+            "distance_m": 0.1702557152006562,
+            "source_area_m2": 125.80633604418439,
+            "target_area_m2": 124.45755000043081,
+            "role": "reserved",
+            "iou": 0.9468594506480814,
+            "hausdorff_m": 0.3228563544093639
+          },
+          {
+            "source_drawing_index": 2285,
+            "reference_OBJECTID": 46505608,
+            "reference_EGID": 846553,
+            "distance_m": 0.10701429151992925,
+            "source_area_m2": 329.32269090390764,
+            "target_area_m2": 326.3476750000308,
+            "role": "reserved",
+            "iou": 0.9759835349025983,
+            "hausdorff_m": 0.3492109584074257
+          },
+          {
+            "source_drawing_index": 2305,
+            "reference_OBJECTID": 46330374,
+            "reference_EGID": 846544,
+            "distance_m": 0.11797636402647643,
+            "source_area_m2": 100.59869510486554,
+            "target_area_m2": 100.79184000093241,
+            "role": "reserved",
+            "iou": 0.9366042157566733,
+            "hausdorff_m": 0.2732082781789595
+          },
+          {
+            "source_drawing_index": 2320,
+            "reference_OBJECTID": 46309476,
+            "reference_EGID": 280012724,
+            "distance_m": 0.07488928904698136,
+            "source_area_m2": 104.35735027825913,
+            "target_area_m2": 103.61140000284081,
+            "role": "reserved",
+            "iou": 0.9730927260364831,
+            "hausdorff_m": 0.22260473924698812
+          },
+          {
+            "source_drawing_index": 2705,
+            "reference_OBJECTID": 46440872,
+            "reference_EGID": 280065658,
+            "distance_m": 0.14321598625277424,
+            "source_area_m2": 114.23688621857177,
+            "target_area_m2": 115.2669250006873,
+            "role": "reserved",
+            "iou": 0.9531350071165925,
+            "hausdorff_m": 0.22147778458456574
+          },
+          {
+            "source_drawing_index": 2745,
+            "reference_OBJECTID": 46421191,
+            "reference_EGID": 190028512,
+            "distance_m": 0.12227374071922262,
+            "source_area_m2": 149.01876919828626,
+            "target_area_m2": 148.0238449972635,
+            "role": "reserved",
+            "iou": 0.9601640133865044,
+            "hausdorff_m": 0.2911340618570629
+          }
+        ],
+        "outside_reserved_hull_m2": 0.0,
+        "area_m2": 43214.10146787388
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2546336.8016327424,
+              1183683.8688113866
+            ],
+            [
+              2546315.740902762,
+              1183623.8612769358
+            ],
+            [
+              2546296.2675005267,
+              1183567.346315693
+            ],
+            [
+              2546295.209210257,
+              1183564.9121404137
+            ],
+            [
+              2546288.22406384,
+              1183565.3354565215
+            ],
+            [
+              2546264.3058424727,
+              1183568.8279220706
+            ],
+            [
+              2546154.2391327424,
+              1183598.355404845
+            ],
+            [
+              2546071.265730507,
+              1183620.8979565215
+            ],
+            [
+              2546003.2149746884,
+              1183639.312960828
+            ],
+            [
+              2545963.7391327424,
+              1183647.8854349896
+            ],
+            [
+              2545923.2050005267,
+              1183651.3779005387
+            ],
+            [
+              2545858.7524316246,
+              1183655.8229349896
+            ],
+            [
+              2545808.2699402375,
+              1183657.4104780534
+            ],
+            [
+              2545728.7892188695,
+              1183662.384657639
+            ],
+            [
+              2545709.210095267,
+              1183664.8187252593
+            ],
+            [
+              2545707.304957463,
+              1183665.3479780534
+            ],
+            [
+              2545706.775704669,
+              1183681.8579522152
+            ],
+            [
+              2545789.21985411,
+              1183685.3504177642
+            ],
+            [
+              2545856.2125349776,
+              1183688.8429909726
+            ],
+            [
+              2545949.7690552277,
+              1183693.3937467912
+            ],
+            [
+              2546043.749106904,
+              1183697.4154651342
+            ],
+            [
+              2546131.273264958,
+              1183701.8604995853
+            ],
+            [
+              2546218.797423012,
+              1183705.882110269
+            ],
+            [
+              2546306.7448971737,
+              1183710.3271447201
+            ],
+            [
+              2546311.7191844187,
+              1183705.3529651342
+            ],
+            [
+              2546323.7841241295,
+              1183695.4046059628
+            ],
+            [
+              2546336.8016327424,
+              1183683.8688113866
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "drawing_index": 4536,
+        "subpath": 4,
+        "area": 2111.7167431637645,
+        "local_reserved_checks_300m": [
+          {
+            "source_drawing_index": 2890,
+            "reference_OBJECTID": 46408342,
+            "reference_EGID": 846893,
+            "distance_m": 0.08412349335782884,
+            "source_area_m2": 114.90815252648417,
+            "target_area_m2": 114.94009999964861,
+            "role": "reserved",
+            "iou": 0.9759185140155434,
+            "hausdorff_m": 0.23678212042783595
+          },
+          {
+            "source_drawing_index": 2910,
+            "reference_OBJECTID": 46497248,
+            "reference_EGID": 190058063,
+            "distance_m": 0.2557753554304136,
+            "source_area_m2": 134.3688492423069,
+            "target_area_m2": 130.20649249973965,
+            "role": "reserved",
+            "iou": 0.945502842836274,
+            "hausdorff_m": 0.3764044525197418
+          },
+          {
+            "source_drawing_index": 2925,
+            "reference_OBJECTID": 46429865,
+            "reference_EGID": 846869,
+            "distance_m": 0.06266214861674337,
+            "source_area_m2": 132.40431848468825,
+            "target_area_m2": 133.6192999991803,
+            "role": "reserved",
+            "iou": 0.9723335601475721,
+            "hausdorff_m": 0.28126766548193805
+          },
+          {
+            "source_drawing_index": 2930,
+            "reference_OBJECTID": 46506842,
+            "reference_EGID": 846946,
+            "distance_m": 0.031162737769639876,
+            "source_area_m2": 114.22523067356374,
+            "target_area_m2": 114.4735000002312,
+            "role": "reserved",
+            "iou": 0.9657375330662726,
+            "hausdorff_m": 0.21044857341246298
+          },
+          {
+            "source_drawing_index": 3005,
+            "reference_OBJECTID": 46399847,
+            "reference_EGID": 3164688,
+            "distance_m": 0.04552921361051456,
+            "source_area_m2": 99.65262108687655,
+            "target_area_m2": 98.80069999891747,
+            "role": "reserved",
+            "iou": 0.9566810931091604,
+            "hausdorff_m": 0.3329105891466985
+          },
+          {
+            "source_drawing_index": 3065,
+            "reference_OBJECTID": 46313764,
+            "reference_EGID": 846952,
+            "distance_m": 1.0164050477602455,
+            "source_area_m2": 170.877247763526,
+            "target_area_m2": 188.36138849995427,
+            "role": "reserved",
+            "iou": 0.8256202375288655,
+            "hausdorff_m": 2.6840218212284226
+          },
+          {
+            "source_drawing_index": 3105,
+            "reference_OBJECTID": 46460156,
+            "reference_EGID": 846870,
+            "distance_m": 1.2647832064992994,
+            "source_area_m2": 336.5357157136141,
+            "target_area_m2": 346.156054997363,
+            "role": "reserved",
+            "iou": 0.8492533523999205,
+            "hausdorff_m": 4.267882874073098
+          },
+          {
+            "source_drawing_index": 3140,
+            "reference_OBJECTID": 46315600,
+            "reference_EGID": 3164752,
+            "distance_m": 0.14197981927010192,
+            "source_area_m2": 92.69692067263226,
+            "target_area_m2": 94.53949499952013,
+            "role": "reserved",
+            "iou": 0.9547914942112868,
+            "hausdorff_m": 0.3317153000977545
+          },
+          {
+            "source_drawing_index": 3250,
+            "reference_OBJECTID": 46288051,
+            "reference_EGID": 3164736,
+            "distance_m": 0.09729465389122675,
+            "source_area_m2": 230.53908984202826,
+            "target_area_m2": 230.640845001305,
+            "role": "reserved",
+            "iou": 0.9773721046245979,
+            "hausdorff_m": 0.3899889572855505
+          },
+          {
+            "source_drawing_index": 3410,
+            "reference_OBJECTID": 46481120,
+            "reference_EGID": 846862,
+            "distance_m": 0.0705241157288764,
+            "source_area_m2": 84.51495227514066,
+            "target_area_m2": 86.8102999996583,
+            "role": "reserved",
+            "iou": 0.9481703134938735,
+            "hausdorff_m": 0.316094335844716
+          },
+          {
+            "source_drawing_index": 3495,
+            "reference_OBJECTID": 46371282,
+            "reference_EGID": 846836,
+            "distance_m": 0.05368614199860124,
+            "source_area_m2": 790.7526268898263,
+            "target_area_m2": 790.1497205006931,
+            "role": "reserved",
+            "iou": 0.9859683562996915,
+            "hausdorff_m": 0.25785465409450475
+          },
+          {
+            "source_drawing_index": 3540,
+            "reference_OBJECTID": 46331060,
+            "reference_EGID": 280065318,
+            "distance_m": 0.07441644598130777,
+            "source_area_m2": 127.32351923822482,
+            "target_area_m2": 127.9829299992029,
+            "role": "reserved",
+            "iou": 0.968207652401903,
+            "hausdorff_m": 0.20538338919681418
+          },
+          {
+            "source_drawing_index": 3570,
+            "reference_OBJECTID": 46373077,
+            "reference_EGID": 280016372,
+            "distance_m": 0.08401657942860356,
+            "source_area_m2": 70.8839960856795,
+            "target_area_m2": 72.86285499849961,
+            "role": "reserved",
+            "iou": 0.9544886676733092,
+            "hausdorff_m": 0.28620342302664525
+          },
+          {
+            "source_drawing_index": 3695,
+            "reference_OBJECTID": 46318873,
+            "reference_EGID": 846759,
+            "distance_m": 0.05086982056632185,
+            "source_area_m2": 105.18481252151562,
+            "target_area_m2": 106.51299999827333,
+            "role": "reserved",
+            "iou": 0.9701502051795275,
+            "hausdorff_m": 0.2855766795966467
+          },
+          {
+            "source_drawing_index": 3710,
+            "reference_OBJECTID": 46471885,
+            "reference_EGID": 846755,
+            "distance_m": 0.05568072677601274,
+            "source_area_m2": 84.03824937887012,
+            "target_area_m2": 89.1816500002351,
+            "role": "reserved",
+            "iou": 0.942326693673268,
+            "hausdorff_m": 0.2806149995086819
+          },
+          {
+            "source_drawing_index": 3725,
+            "reference_OBJECTID": 46399697,
+            "reference_EGID": 846763,
+            "distance_m": 0.6582321274003237,
+            "source_area_m2": 210.41547811154797,
+            "target_area_m2": 194.92568450159405,
+            "role": "reserved",
+            "iou": 0.9050639200854741,
+            "hausdorff_m": 1.9448759239641242
+          }
+        ],
+        "outside_reserved_hull_m2": 0.0,
+        "area_m2": 6570.19277595528
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2547430.271710257,
+              1183027.384657639
+            ],
+            [
+              2547488.2683855365,
+              1182969.3879823596
+            ],
+            [
+              2547424.7683855365,
+              1182907.8988415312
+            ],
+            [
+              2547411.2216241295,
+              1182922.3979565215
+            ],
+            [
+              2547397.2517619333,
+              1182936.897179171
+            ],
+            [
+              2547381.2708252473,
+              1182953.4071533328
+            ],
+            [
+              2547403.2841241295,
+              1182974.8913070804
+            ],
+            [
+              2547390.266615517,
+              1182987.908815693
+            ],
+            [
+              2547430.271710257,
+              1183027.384657639
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "drawing_index": 4552,
+        "subpath": 2,
+        "area": 2466.215239163488,
+        "local_reserved_checks_300m": [
+          {
+            "source_drawing_index": 1740,
+            "reference_OBJECTID": 46444657,
+            "reference_EGID": 3164725,
+            "distance_m": 0.021148843215116224,
+            "source_area_m2": 76.38271920219707,
+            "target_area_m2": 79.14014999846476,
+            "role": "reserved",
+            "iou": 0.9541085405083939,
+            "hausdorff_m": 0.30963187610407006
+          },
+          {
+            "source_drawing_index": 1770,
+            "reference_OBJECTID": 46406797,
+            "reference_EGID": 846702,
+            "distance_m": 0.10038072032163325,
+            "source_area_m2": 304.40160721291954,
+            "target_area_m2": 301.2357600017289,
+            "role": "reserved",
+            "iou": 0.982317488806957,
+            "hausdorff_m": 0.32939303979630347
+          },
+          {
+            "source_drawing_index": 1790,
+            "reference_OBJECTID": 46454515,
+            "reference_EGID": 846775,
+            "distance_m": 0.07684764536049611,
+            "source_area_m2": 110.92549884865738,
+            "target_area_m2": 108.57170000394616,
+            "role": "reserved",
+            "iou": 0.962200036550474,
+            "hausdorff_m": 0.24205522798001766
+          },
+          {
+            "source_drawing_index": 2910,
+            "reference_OBJECTID": 46497248,
+            "reference_EGID": 190058063,
+            "distance_m": 0.2557753554304136,
+            "source_area_m2": 134.3688492423069,
+            "target_area_m2": 130.20649249973965,
+            "role": "reserved",
+            "iou": 0.945502842836274,
+            "hausdorff_m": 0.3764044525197418
+          },
+          {
+            "source_drawing_index": 2925,
+            "reference_OBJECTID": 46429865,
+            "reference_EGID": 846869,
+            "distance_m": 0.06266214861674337,
+            "source_area_m2": 132.40431848468825,
+            "target_area_m2": 133.6192999991803,
+            "role": "reserved",
+            "iou": 0.9723335601475721,
+            "hausdorff_m": 0.28126766548193805
+          },
+          {
+            "source_drawing_index": 3005,
+            "reference_OBJECTID": 46399847,
+            "reference_EGID": 3164688,
+            "distance_m": 0.04552921361051456,
+            "source_area_m2": 99.65262108687655,
+            "target_area_m2": 98.80069999891747,
+            "role": "reserved",
+            "iou": 0.9566810931091604,
+            "hausdorff_m": 0.3329105891466985
+          },
+          {
+            "source_drawing_index": 3065,
+            "reference_OBJECTID": 46313764,
+            "reference_EGID": 846952,
+            "distance_m": 1.0164050477602455,
+            "source_area_m2": 170.877247763526,
+            "target_area_m2": 188.36138849995427,
+            "role": "reserved",
+            "iou": 0.8256202375288655,
+            "hausdorff_m": 2.6840218212284226
+          },
+          {
+            "source_drawing_index": 3105,
+            "reference_OBJECTID": 46460156,
+            "reference_EGID": 846870,
+            "distance_m": 1.2647832064992994,
+            "source_area_m2": 336.5357157136141,
+            "target_area_m2": 346.156054997363,
+            "role": "reserved",
+            "iou": 0.8492533523999205,
+            "hausdorff_m": 4.267882874073098
+          },
+          {
+            "source_drawing_index": 3250,
+            "reference_OBJECTID": 46288051,
+            "reference_EGID": 3164736,
+            "distance_m": 0.09729465389122675,
+            "source_area_m2": 230.53908984202826,
+            "target_area_m2": 230.640845001305,
+            "role": "reserved",
+            "iou": 0.9773721046245979,
+            "hausdorff_m": 0.3899889572855505
+          },
+          {
+            "source_drawing_index": 3410,
+            "reference_OBJECTID": 46481120,
+            "reference_EGID": 846862,
+            "distance_m": 0.0705241157288764,
+            "source_area_m2": 84.51495227514066,
+            "target_area_m2": 86.8102999996583,
+            "role": "reserved",
+            "iou": 0.9481703134938735,
+            "hausdorff_m": 0.316094335844716
+          },
+          {
+            "source_drawing_index": 3725,
+            "reference_OBJECTID": 46399697,
+            "reference_EGID": 846763,
+            "distance_m": 0.6582321274003237,
+            "source_area_m2": 210.41547811154797,
+            "target_area_m2": 194.92568450159405,
+            "role": "reserved",
+            "iou": 0.9050639200854741,
+            "hausdorff_m": 1.9448759239641242
+          }
+        ],
+        "outside_reserved_hull_m2": 0.0,
+        "area_m2": 7673.145368933269
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2547138.2774746884,
+              1182873.8203876195
+            ],
+            [
+              2547139.2300435905,
+              1182879.32371234
+            ],
+            [
+              2547141.7699402375,
+              1182885.8853273303
+            ],
+            [
+              2547166.7466671932,
+              1182866.4121404137
+            ],
+            [
+              2547178.7058855365,
+              1182879.32371234
+            ],
+            [
+              2547195.7451124922,
+              1182923.3504177642
+            ],
+            [
+              2547216.8058424727,
+              1182903.8771231882
+            ],
+            [
+              2547237.7608510857,
+              1182884.8270370609
+            ],
+            [
+              2547258.2925435905,
+              1182865.353850144
+            ],
+            [
+              2547285.2801297177,
+              1182841.3296920902
+            ],
+            [
+              2547236.702560816,
+              1182801.3245973499
+            ],
+            [
+              2547265.8067274825,
+              1182774.3370112225
+            ],
+            [
+              2547138.2774746884,
+              1182873.8203876195
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "drawing_index": 4569,
+        "subpath": 2,
+        "area": 2033.4404909908772,
+        "local_reserved_checks_300m": [
+          {
+            "source_drawing_index": 2910,
+            "reference_OBJECTID": 46497248,
+            "reference_EGID": 190058063,
+            "distance_m": 0.2557753554304136,
+            "source_area_m2": 134.3688492423069,
+            "target_area_m2": 130.20649249973965,
+            "role": "reserved",
+            "iou": 0.945502842836274,
+            "hausdorff_m": 0.3764044525197418
+          },
+          {
+            "source_drawing_index": 2925,
+            "reference_OBJECTID": 46429865,
+            "reference_EGID": 846869,
+            "distance_m": 0.06266214861674337,
+            "source_area_m2": 132.40431848468825,
+            "target_area_m2": 133.6192999991803,
+            "role": "reserved",
+            "iou": 0.9723335601475721,
+            "hausdorff_m": 0.28126766548193805
+          },
+          {
+            "source_drawing_index": 2930,
+            "reference_OBJECTID": 46506842,
+            "reference_EGID": 846946,
+            "distance_m": 0.031162737769639876,
+            "source_area_m2": 114.22523067356374,
+            "target_area_m2": 114.4735000002312,
+            "role": "reserved",
+            "iou": 0.9657375330662726,
+            "hausdorff_m": 0.21044857341246298
+          },
+          {
+            "source_drawing_index": 3005,
+            "reference_OBJECTID": 46399847,
+            "reference_EGID": 3164688,
+            "distance_m": 0.04552921361051456,
+            "source_area_m2": 99.65262108687655,
+            "target_area_m2": 98.80069999891747,
+            "role": "reserved",
+            "iou": 0.9566810931091604,
+            "hausdorff_m": 0.3329105891466985
+          },
+          {
+            "source_drawing_index": 3065,
+            "reference_OBJECTID": 46313764,
+            "reference_EGID": 846952,
+            "distance_m": 1.0164050477602455,
+            "source_area_m2": 170.877247763526,
+            "target_area_m2": 188.36138849995427,
+            "role": "reserved",
+            "iou": 0.8256202375288655,
+            "hausdorff_m": 2.6840218212284226
+          },
+          {
+            "source_drawing_index": 3105,
+            "reference_OBJECTID": 46460156,
+            "reference_EGID": 846870,
+            "distance_m": 1.2647832064992994,
+            "source_area_m2": 336.5357157136141,
+            "target_area_m2": 346.156054997363,
+            "role": "reserved",
+            "iou": 0.8492533523999205,
+            "hausdorff_m": 4.267882874073098
+          },
+          {
+            "source_drawing_index": 3140,
+            "reference_OBJECTID": 46315600,
+            "reference_EGID": 3164752,
+            "distance_m": 0.14197981927010192,
+            "source_area_m2": 92.69692067263226,
+            "target_area_m2": 94.53949499952013,
+            "role": "reserved",
+            "iou": 0.9547914942112868,
+            "hausdorff_m": 0.3317153000977545
+          },
+          {
+            "source_drawing_index": 3250,
+            "reference_OBJECTID": 46288051,
+            "reference_EGID": 3164736,
+            "distance_m": 0.09729465389122675,
+            "source_area_m2": 230.53908984202826,
+            "target_area_m2": 230.640845001305,
+            "role": "reserved",
+            "iou": 0.9773721046245979,
+            "hausdorff_m": 0.3899889572855505
+          },
+          {
+            "source_drawing_index": 3410,
+            "reference_OBJECTID": 46481120,
+            "reference_EGID": 846862,
+            "distance_m": 0.0705241157288764,
+            "source_area_m2": 84.51495227514066,
+            "target_area_m2": 86.8102999996583,
+            "role": "reserved",
+            "iou": 0.9481703134938735,
+            "hausdorff_m": 0.316094335844716
+          },
+          {
+            "source_drawing_index": 3495,
+            "reference_OBJECTID": 46371282,
+            "reference_EGID": 846836,
+            "distance_m": 0.05368614199860124,
+            "source_area_m2": 790.7526268898263,
+            "target_area_m2": 790.1497205006931,
+            "role": "reserved",
+            "iou": 0.9859683562996915,
+            "hausdorff_m": 0.25785465409450475
+          },
+          {
+            "source_drawing_index": 3540,
+            "reference_OBJECTID": 46331060,
+            "reference_EGID": 280065318,
+            "distance_m": 0.07441644598130777,
+            "source_area_m2": 127.32351923822482,
+            "target_area_m2": 127.9829299992029,
+            "role": "reserved",
+            "iou": 0.968207652401903,
+            "hausdorff_m": 0.20538338919681418
+          },
+          {
+            "source_drawing_index": 3570,
+            "reference_OBJECTID": 46373077,
+            "reference_EGID": 280016372,
+            "distance_m": 0.08401657942860356,
+            "source_area_m2": 70.8839960856795,
+            "target_area_m2": 72.86285499849961,
+            "role": "reserved",
+            "iou": 0.9544886676733092,
+            "hausdorff_m": 0.28620342302664525
+          },
+          {
+            "source_drawing_index": 3695,
+            "reference_OBJECTID": 46318873,
+            "reference_EGID": 846759,
+            "distance_m": 0.05086982056632185,
+            "source_area_m2": 105.18481252151562,
+            "target_area_m2": 106.51299999827333,
+            "role": "reserved",
+            "iou": 0.9701502051795275,
+            "hausdorff_m": 0.2855766795966467
+          },
+          {
+            "source_drawing_index": 3710,
+            "reference_OBJECTID": 46471885,
+            "reference_EGID": 846755,
+            "distance_m": 0.05568072677601274,
+            "source_area_m2": 84.03824937887012,
+            "target_area_m2": 89.1816500002351,
+            "role": "reserved",
+            "iou": 0.942326693673268,
+            "hausdorff_m": 0.2806149995086819
+          },
+          {
+            "source_drawing_index": 3725,
+            "reference_OBJECTID": 46399697,
+            "reference_EGID": 846763,
+            "distance_m": 0.6582321274003237,
+            "source_area_m2": 210.41547811154797,
+            "target_area_m2": 194.92568450159405,
+            "role": "reserved",
+            "iou": 0.9050639200854741,
+            "hausdorff_m": 1.9448759239641242
+          },
+          {
+            "source_drawing_index": 3760,
+            "reference_OBJECTID": 46313903,
+            "reference_EGID": 846790,
+            "distance_m": 0.16624803003758226,
+            "source_area_m2": 78.72964911755314,
+            "target_area_m2": 80.69020999970003,
+            "role": "reserved",
+            "iou": 0.9462066170024745,
+            "hausdorff_m": 0.3177216989632713
+          },
+          {
+            "source_drawing_index": 3765,
+            "reference_OBJECTID": 46287367,
+            "reference_EGID": 846792,
+            "distance_m": 0.10569346363718728,
+            "source_area_m2": 213.9102946313128,
+            "target_area_m2": 212.75333000069168,
+            "role": "reserved",
+            "iou": 0.9553126322870721,
+            "hausdorff_m": 0.3175703231136503
+          },
+          {
+            "source_drawing_index": 3820,
+            "reference_OBJECTID": 46340857,
+            "reference_EGID": 846786,
+            "distance_m": 0.13480018315353093,
+            "source_area_m2": 142.9428641677706,
+            "target_area_m2": 143.90714549926878,
+            "role": "reserved",
+            "iou": 0.966547926529295,
+            "hausdorff_m": 0.2384031477530043
+          },
+          {
+            "source_drawing_index": 3885,
+            "reference_OBJECTID": 46403713,
+            "reference_EGID": 846830,
+            "distance_m": 0.12336211389360724,
+            "source_area_m2": 181.36195937267584,
+            "target_area_m2": 182.9768499997322,
+            "role": "reserved",
+            "iou": 0.9657141516011153,
+            "hausdorff_m": 0.327491748844328
+          }
+        ],
+        "outside_reserved_hull_m2": 0.0,
+        "area_m2": 6326.65155848707
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2547311.209210257,
+              1183070.3529651342
+            ],
+            [
+              2547345.28744885,
+              1183103.9021662518
+            ],
+            [
+              2547353.7539863256,
+              1183103.9021662518
+            ],
+            [
+              2547393.2300435905,
+              1183064.8496404137
+            ],
+            [
+              2547430.271710257,
+              1183027.384657639
+            ],
+            [
+              2547390.266615517,
+              1182987.908815693
+            ],
+            [
+              2547378.201675806,
+              1182999.8679263769
+            ],
+            [
+              2547359.78656384,
+              1183018.3887597104
+            ],
+            [
+              2547335.7624057867,
+              1183044.3179479088
+            ],
+            [
+              2547311.209210257,
+              1183070.3529651342
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "drawing_index": 4576,
+        "subpath": 1,
+        "area": 2351.6900595016778,
+        "local_reserved_checks_300m": [
+          {
+            "source_drawing_index": 2870,
+            "reference_OBJECTID": 46404598,
+            "reference_EGID": 846915,
+            "distance_m": 0.03619357805763237,
+            "source_area_m2": 134.9622184055301,
+            "target_area_m2": 135.55014999668197,
+            "role": "reserved",
+            "iou": 0.967527863670633,
+            "hausdorff_m": 0.3338981756749884
+          },
+          {
+            "source_drawing_index": 2890,
+            "reference_OBJECTID": 46408342,
+            "reference_EGID": 846893,
+            "distance_m": 0.08412349335782884,
+            "source_area_m2": 114.90815252648417,
+            "target_area_m2": 114.94009999964861,
+            "role": "reserved",
+            "iou": 0.9759185140155434,
+            "hausdorff_m": 0.23678212042783595
+          },
+          {
+            "source_drawing_index": 3140,
+            "reference_OBJECTID": 46315600,
+            "reference_EGID": 3164752,
+            "distance_m": 0.14197981927010192,
+            "source_area_m2": 92.69692067263226,
+            "target_area_m2": 94.53949499952013,
+            "role": "reserved",
+            "iou": 0.9547914942112868,
+            "hausdorff_m": 0.3317153000977545
+          },
+          {
+            "source_drawing_index": 3205,
+            "reference_OBJECTID": 46476825,
+            "reference_EGID": 846899,
+            "distance_m": 0.0708016385052164,
+            "source_area_m2": 112.72336024790067,
+            "target_area_m2": 110.24580500155437,
+            "role": "reserved",
+            "iou": 0.9560686023839564,
+            "hausdorff_m": 0.300166950106576
+          },
+          {
+            "source_drawing_index": 3230,
+            "reference_OBJECTID": 46479073,
+            "reference_EGID": 846905,
+            "distance_m": 0.04546757233211311,
+            "source_area_m2": 123.99716376694835,
+            "target_area_m2": 123.22545000265814,
+            "role": "reserved",
+            "iou": 0.9660558205445551,
+            "hausdorff_m": 0.24035722105745239
+          },
+          {
+            "source_drawing_index": 3235,
+            "reference_OBJECTID": 46408178,
+            "reference_EGID": 846907,
+            "distance_m": 0.1130378196676579,
+            "source_area_m2": 137.95848791517014,
+            "target_area_m2": 142.9267499989106,
+            "role": "reserved",
+            "iou": 0.9586635915928344,
+            "hausdorff_m": 0.29213439061704455
+          },
+          {
+            "source_drawing_index": 3250,
+            "reference_OBJECTID": 46288051,
+            "reference_EGID": 3164736,
+            "distance_m": 0.09729465389122675,
+            "source_area_m2": 230.53908984202826,
+            "target_area_m2": 230.640845001305,
+            "role": "reserved",
+            "iou": 0.9773721046245979,
+            "hausdorff_m": 0.3899889572855505
+          },
+          {
+            "source_drawing_index": 3270,
+            "reference_OBJECTID": 46485564,
+            "reference_EGID": 846908,
+            "distance_m": 0.03156508059017838,
+            "source_area_m2": 102.43633114373817,
+            "target_area_m2": 101.298159998472,
+            "role": "reserved",
+            "iou": 0.9658142507587754,
+            "hausdorff_m": 0.2644333251742401
+          },
+          {
+            "source_drawing_index": 3275,
+            "reference_OBJECTID": 46379124,
+            "reference_EGID": 846910,
+            "distance_m": 0.12063776097736342,
+            "source_area_m2": 102.01584934360469,
+            "target_area_m2": 99.16484999906723,
+            "role": "reserved",
+            "iou": 0.9491633081354194,
+            "hausdorff_m": 0.26886638146186237
+          },
+          {
+            "source_drawing_index": 3280,
+            "reference_OBJECTID": 46501403,
+            "reference_EGID": 846923,
+            "distance_m": 0.07097738547577244,
+            "source_area_m2": 106.17695609557931,
+            "target_area_m2": 105.19479999912885,
+            "role": "reserved",
+            "iou": 0.9730993513297433,
+            "hausdorff_m": 0.2369242210213657
+          },
+          {
+            "source_drawing_index": 3295,
+            "reference_OBJECTID": 46421263,
+            "reference_EGID": 846891,
+            "distance_m": 0.1957623092261925,
+            "source_area_m2": 111.35740830697371,
+            "target_area_m2": 108.64500000176952,
+            "role": "reserved",
+            "iou": 0.9496284944470825,
+            "hausdorff_m": 0.29151413118439007
+          },
+          {
+            "source_drawing_index": 3325,
+            "reference_OBJECTID": 46337578,
+            "reference_EGID": 846900,
+            "distance_m": 0.09636500940509198,
+            "source_area_m2": 101.60112980061373,
+            "target_area_m2": 99.14403000113789,
+            "role": "reserved",
+            "iou": 0.9622089510582273,
+            "hausdorff_m": 0.2195256854641094
+          },
+          {
+            "source_drawing_index": 3410,
+            "reference_OBJECTID": 46481120,
+            "reference_EGID": 846862,
+            "distance_m": 0.0705241157288764,
+            "source_area_m2": 84.51495227514066,
+            "target_area_m2": 86.8102999996583,
+            "role": "reserved",
+            "iou": 0.9481703134938735,
+            "hausdorff_m": 0.316094335844716
+          },
+          {
+            "source_drawing_index": 3485,
+            "reference_OBJECTID": 46324837,
+            "reference_EGID": 9031405,
+            "distance_m": 0.13642376393778635,
+            "source_area_m2": 490.1257367655385,
+            "target_area_m2": 486.5236705006807,
+            "role": "reserved",
+            "iou": 0.9769966609796238,
+            "hausdorff_m": 0.25105382347176697
+          },
+          {
+            "source_drawing_index": 3495,
+            "reference_OBJECTID": 46371282,
+            "reference_EGID": 846836,
+            "distance_m": 0.05368614199860124,
+            "source_area_m2": 790.7526268898263,
+            "target_area_m2": 790.1497205006931,
+            "role": "reserved",
+            "iou": 0.9859683562996915,
+            "hausdorff_m": 0.25785465409450475
+          },
+          {
+            "source_drawing_index": 3540,
+            "reference_OBJECTID": 46331060,
+            "reference_EGID": 280065318,
+            "distance_m": 0.07441644598130777,
+            "source_area_m2": 127.32351923822482,
+            "target_area_m2": 127.9829299992029,
+            "role": "reserved",
+            "iou": 0.968207652401903,
+            "hausdorff_m": 0.20538338919681418
+          },
+          {
+            "source_drawing_index": 3580,
+            "reference_OBJECTID": 46432917,
+            "reference_EGID": 280010381,
+            "distance_m": 0.05811356586472205,
+            "source_area_m2": 132.47582671678833,
+            "target_area_m2": 132.73718549848942,
+            "role": "reserved",
+            "iou": 0.9789979983046597,
+            "hausdorff_m": 0.23660912866665762
+          },
+          {
+            "source_drawing_index": 3585,
+            "reference_OBJECTID": 46301096,
+            "reference_EGID": 9031390,
+            "distance_m": 0.14661108942155954,
+            "source_area_m2": 491.7006308130264,
+            "target_area_m2": 492.5611900032295,
+            "role": "reserved",
+            "iou": 0.9808709905581189,
+            "hausdorff_m": 0.28010130968618746
+          },
+          {
+            "source_drawing_index": 3710,
+            "reference_OBJECTID": 46471885,
+            "reference_EGID": 846755,
+            "distance_m": 0.05568072677601274,
+            "source_area_m2": 84.03824937887012,
+            "target_area_m2": 89.1816500002351,
+            "role": "reserved",
+            "iou": 0.942326693673268,
+            "hausdorff_m": 0.2806149995086819
+          },
+          {
+            "source_drawing_index": 4145,
+            "reference_OBJECTID": 46347202,
+            "reference_EGID": 846927,
+            "distance_m": 0.07186679251682611,
+            "source_area_m2": 251.8133751804004,
+            "target_area_m2": 256.7216850014204,
+            "role": "reserved",
+            "iou": 0.9743895610806019,
+            "hausdorff_m": 0.3315272869729971
+          },
+          {
+            "source_drawing_index": 4170,
+            "reference_OBJECTID": 46451830,
+            "reference_EGID": 846925,
+            "distance_m": 0.07847893973759892,
+            "source_area_m2": 160.03558158382458,
+            "target_area_m2": 162.71846499676454,
+            "role": "reserved",
+            "iou": 0.9677077695912579,
+            "hausdorff_m": 0.2410457283099173
+          }
+        ],
+        "outside_reserved_hull_m2": 0.0,
+        "area_m2": 7316.8227179287305
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2547680.249991914,
+              1183136.3929694407
+            ],
+            [
+              2547716.7624057867,
+              1183137.8745758182
+            ],
+            [
+              2547753.274819659,
+              1183140.4145801244
+            ],
+            [
+              2547786.7180840904,
+              1183145.3887597104
+            ],
+            [
+              2547821.749106904,
+              1183153.8555125042
+            ],
+            [
+              2547845.244012164,
+              1183161.3695887371
+            ],
+            [
+              2547853.287233532,
+              1183163.3804479088
+            ],
+            [
+              2547862.7065552277,
+              1183146.870473747
+            ],
+            [
+              2547805.768170218,
+              1183107.8179479088
+            ],
+            [
+              2547786.7180840904,
+              1183097.3404436023
+            ],
+            [
+              2547768.7265035515,
+              1183089.4029436023
+            ],
+            [
+              2547739.728273571,
+              1183080.4071533328
+            ],
+            [
+              2547728.298308022,
+              1183073.3162855485
+            ],
+            [
+              2547696.230713282,
+              1183115.332131801
+            ],
+            [
+              2547680.249991914,
+              1183136.3929694407
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "drawing_index": 4576,
+        "subpath": 2,
+        "area": 6849.655983403325,
+        "local_reserved_checks_300m": [
+          {
+            "source_drawing_index": 2870,
+            "reference_OBJECTID": 46404598,
+            "reference_EGID": 846915,
+            "distance_m": 0.03619357805763237,
+            "source_area_m2": 134.9622184055301,
+            "target_area_m2": 135.55014999668197,
+            "role": "reserved",
+            "iou": 0.967527863670633,
+            "hausdorff_m": 0.3338981756749884
+          },
+          {
+            "source_drawing_index": 2890,
+            "reference_OBJECTID": 46408342,
+            "reference_EGID": 846893,
+            "distance_m": 0.08412349335782884,
+            "source_area_m2": 114.90815252648417,
+            "target_area_m2": 114.94009999964861,
+            "role": "reserved",
+            "iou": 0.9759185140155434,
+            "hausdorff_m": 0.23678212042783595
+          },
+          {
+            "source_drawing_index": 2925,
+            "reference_OBJECTID": 46429865,
+            "reference_EGID": 846869,
+            "distance_m": 0.06266214861674337,
+            "source_area_m2": 132.40431848468825,
+            "target_area_m2": 133.6192999991803,
+            "role": "reserved",
+            "iou": 0.9723335601475721,
+            "hausdorff_m": 0.28126766548193805
+          },
+          {
+            "source_drawing_index": 2930,
+            "reference_OBJECTID": 46506842,
+            "reference_EGID": 846946,
+            "distance_m": 0.031162737769639876,
+            "source_area_m2": 114.22523067356374,
+            "target_area_m2": 114.4735000002312,
+            "role": "reserved",
+            "iou": 0.9657375330662726,
+            "hausdorff_m": 0.21044857341246298
+          },
+          {
+            "source_drawing_index": 3005,
+            "reference_OBJECTID": 46399847,
+            "reference_EGID": 3164688,
+            "distance_m": 0.04552921361051456,
+            "source_area_m2": 99.65262108687655,
+            "target_area_m2": 98.80069999891747,
+            "role": "reserved",
+            "iou": 0.9566810931091604,
+            "hausdorff_m": 0.3329105891466985
+          },
+          {
+            "source_drawing_index": 3105,
+            "reference_OBJECTID": 46460156,
+            "reference_EGID": 846870,
+            "distance_m": 1.2647832064992994,
+            "source_area_m2": 336.5357157136141,
+            "target_area_m2": 346.156054997363,
+            "role": "reserved",
+            "iou": 0.8492533523999205,
+            "hausdorff_m": 4.267882874073098
+          },
+          {
+            "source_drawing_index": 3140,
+            "reference_OBJECTID": 46315600,
+            "reference_EGID": 3164752,
+            "distance_m": 0.14197981927010192,
+            "source_area_m2": 92.69692067263226,
+            "target_area_m2": 94.53949499952013,
+            "role": "reserved",
+            "iou": 0.9547914942112868,
+            "hausdorff_m": 0.3317153000977545
+          },
+          {
+            "source_drawing_index": 3205,
+            "reference_OBJECTID": 46476825,
+            "reference_EGID": 846899,
+            "distance_m": 0.0708016385052164,
+            "source_area_m2": 112.72336024790067,
+            "target_area_m2": 110.24580500155437,
+            "role": "reserved",
+            "iou": 0.9560686023839564,
+            "hausdorff_m": 0.300166950106576
+          },
+          {
+            "source_drawing_index": 3230,
+            "reference_OBJECTID": 46479073,
+            "reference_EGID": 846905,
+            "distance_m": 0.04546757233211311,
+            "source_area_m2": 123.99716376694835,
+            "target_area_m2": 123.22545000265814,
+            "role": "reserved",
+            "iou": 0.9660558205445551,
+            "hausdorff_m": 0.24035722105745239
+          },
+          {
+            "source_drawing_index": 3235,
+            "reference_OBJECTID": 46408178,
+            "reference_EGID": 846907,
+            "distance_m": 0.1130378196676579,
+            "source_area_m2": 137.95848791517014,
+            "target_area_m2": 142.9267499989106,
+            "role": "reserved",
+            "iou": 0.9586635915928344,
+            "hausdorff_m": 0.29213439061704455
+          },
+          {
+            "source_drawing_index": 3250,
+            "reference_OBJECTID": 46288051,
+            "reference_EGID": 3164736,
+            "distance_m": 0.09729465389122675,
+            "source_area_m2": 230.53908984202826,
+            "target_area_m2": 230.640845001305,
+            "role": "reserved",
+            "iou": 0.9773721046245979,
+            "hausdorff_m": 0.3899889572855505
+          },
+          {
+            "source_drawing_index": 3270,
+            "reference_OBJECTID": 46485564,
+            "reference_EGID": 846908,
+            "distance_m": 0.03156508059017838,
+            "source_area_m2": 102.43633114373817,
+            "target_area_m2": 101.298159998472,
+            "role": "reserved",
+            "iou": 0.9658142507587754,
+            "hausdorff_m": 0.2644333251742401
+          },
+          {
+            "source_drawing_index": 3275,
+            "reference_OBJECTID": 46379124,
+            "reference_EGID": 846910,
+            "distance_m": 0.12063776097736342,
+            "source_area_m2": 102.01584934360469,
+            "target_area_m2": 99.16484999906723,
+            "role": "reserved",
+            "iou": 0.9491633081354194,
+            "hausdorff_m": 0.26886638146186237
+          },
+          {
+            "source_drawing_index": 3280,
+            "reference_OBJECTID": 46501403,
+            "reference_EGID": 846923,
+            "distance_m": 0.07097738547577244,
+            "source_area_m2": 106.17695609557931,
+            "target_area_m2": 105.19479999912885,
+            "role": "reserved",
+            "iou": 0.9730993513297433,
+            "hausdorff_m": 0.2369242210213657
+          },
+          {
+            "source_drawing_index": 3295,
+            "reference_OBJECTID": 46421263,
+            "reference_EGID": 846891,
+            "distance_m": 0.1957623092261925,
+            "source_area_m2": 111.35740830697371,
+            "target_area_m2": 108.64500000176952,
+            "role": "reserved",
+            "iou": 0.9496284944470825,
+            "hausdorff_m": 0.29151413118439007
+          },
+          {
+            "source_drawing_index": 3325,
+            "reference_OBJECTID": 46337578,
+            "reference_EGID": 846900,
+            "distance_m": 0.09636500940509198,
+            "source_area_m2": 101.60112980061373,
+            "target_area_m2": 99.14403000113789,
+            "role": "reserved",
+            "iou": 0.9622089510582273,
+            "hausdorff_m": 0.2195256854641094
+          },
+          {
+            "source_drawing_index": 3410,
+            "reference_OBJECTID": 46481120,
+            "reference_EGID": 846862,
+            "distance_m": 0.0705241157288764,
+            "source_area_m2": 84.51495227514066,
+            "target_area_m2": 86.8102999996583,
+            "role": "reserved",
+            "iou": 0.9481703134938735,
+            "hausdorff_m": 0.316094335844716
+          },
+          {
+            "source_drawing_index": 3485,
+            "reference_OBJECTID": 46324837,
+            "reference_EGID": 9031405,
+            "distance_m": 0.13642376393778635,
+            "source_area_m2": 490.1257367655385,
+            "target_area_m2": 486.5236705006807,
+            "role": "reserved",
+            "iou": 0.9769966609796238,
+            "hausdorff_m": 0.25105382347176697
+          },
+          {
+            "source_drawing_index": 3495,
+            "reference_OBJECTID": 46371282,
+            "reference_EGID": 846836,
+            "distance_m": 0.05368614199860124,
+            "source_area_m2": 790.7526268898263,
+            "target_area_m2": 790.1497205006931,
+            "role": "reserved",
+            "iou": 0.9859683562996915,
+            "hausdorff_m": 0.25785465409450475
+          },
+          {
+            "source_drawing_index": 3540,
+            "reference_OBJECTID": 46331060,
+            "reference_EGID": 280065318,
+            "distance_m": 0.07441644598130777,
+            "source_area_m2": 127.32351923822482,
+            "target_area_m2": 127.9829299992029,
+            "role": "reserved",
+            "iou": 0.968207652401903,
+            "hausdorff_m": 0.20538338919681418
+          },
+          {
+            "source_drawing_index": 3570,
+            "reference_OBJECTID": 46373077,
+            "reference_EGID": 280016372,
+            "distance_m": 0.08401657942860356,
+            "source_area_m2": 70.8839960856795,
+            "target_area_m2": 72.86285499849961,
+            "role": "reserved",
+            "iou": 0.9544886676733092,
+            "hausdorff_m": 0.28620342302664525
+          },
+          {
+            "source_drawing_index": 3585,
+            "reference_OBJECTID": 46301096,
+            "reference_EGID": 9031390,
+            "distance_m": 0.14661108942155954,
+            "source_area_m2": 491.7006308130264,
+            "target_area_m2": 492.5611900032295,
+            "role": "reserved",
+            "iou": 0.9808709905581189,
+            "hausdorff_m": 0.28010130968618746
+          },
+          {
+            "source_drawing_index": 3695,
+            "reference_OBJECTID": 46318873,
+            "reference_EGID": 846759,
+            "distance_m": 0.05086982056632185,
+            "source_area_m2": 105.18481252151562,
+            "target_area_m2": 106.51299999827333,
+            "role": "reserved",
+            "iou": 0.9701502051795275,
+            "hausdorff_m": 0.2855766795966467
+          },
+          {
+            "source_drawing_index": 3710,
+            "reference_OBJECTID": 46471885,
+            "reference_EGID": 846755,
+            "distance_m": 0.05568072677601274,
+            "source_area_m2": 84.03824937887012,
+            "target_area_m2": 89.1816500002351,
+            "role": "reserved",
+            "iou": 0.942326693673268,
+            "hausdorff_m": 0.2806149995086819
+          },
+          {
+            "source_drawing_index": 3725,
+            "reference_OBJECTID": 46399697,
+            "reference_EGID": 846763,
+            "distance_m": 0.6582321274003237,
+            "source_area_m2": 210.41547811154797,
+            "target_area_m2": 194.92568450159405,
+            "role": "reserved",
+            "iou": 0.9050639200854741,
+            "hausdorff_m": 1.9448759239641242
+          }
+        ],
+        "outside_reserved_hull_m2": 0.0,
+        "area_m2": 21311.362144370756
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2547641.3031874434,
+              1183131.312960828
+            ],
+            [
+              2547648.7114346493,
+              1183138.8271447201
+            ],
+            [
+              2547680.249991914,
+              1183136.3929694407
+            ],
+            [
+              2547696.230713282,
+              1183115.332131801
+            ],
+            [
+              2547728.298308022,
+              1183073.3162855485
+            ],
+            [
+              2547715.7039001985,
+              1183066.3312467912
+            ],
+            [
+              2547681.2023454974,
+              1183042.8363415312
+            ],
+            [
+              2547661.729158581,
+              1183026.855404845
+            ],
+            [
+              2547636.7524316246,
+              1183006.3238199994
+            ],
+            [
+              2547629.2382477326,
+              1182997.8571748645
+            ],
+            [
+              2547555.7898885612,
+              1182914.3546274945
+            ],
+            [
+              2547548.804957463,
+              1182914.3546274945
+            ],
+            [
+              2547503.2965380023,
+              1182960.392084431
+            ],
+            [
+              2547529.2256185417,
+              1182985.8979565215
+            ],
+            [
+              2547511.7632907964,
+              1183003.3604995853
+            ],
+            [
+              2547571.7708252473,
+              1183062.838781242
+            ],
+            [
+              2547641.3031874434,
+              1183131.312960828
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "drawing_index": 4586,
+        "subpath": 0,
+        "area": 5852.675891529769,
+        "local_reserved_checks_300m": [
+          {
+            "source_drawing_index": 1740,
+            "reference_OBJECTID": 46444657,
+            "reference_EGID": 3164725,
+            "distance_m": 0.021148843215116224,
+            "source_area_m2": 76.38271920219707,
+            "target_area_m2": 79.14014999846476,
+            "role": "reserved",
+            "iou": 0.9541085405083939,
+            "hausdorff_m": 0.30963187610407006
+          },
+          {
+            "source_drawing_index": 1790,
+            "reference_OBJECTID": 46454515,
+            "reference_EGID": 846775,
+            "distance_m": 0.07684764536049611,
+            "source_area_m2": 110.92549884865738,
+            "target_area_m2": 108.57170000394616,
+            "role": "reserved",
+            "iou": 0.962200036550474,
+            "hausdorff_m": 0.24205522798001766
+          },
+          {
+            "source_drawing_index": 1830,
+            "reference_OBJECTID": 46325585,
+            "reference_EGID": 846706,
+            "distance_m": 0.24046013093700125,
+            "source_area_m2": 128.02976640851313,
+            "target_area_m2": 127.75930000246507,
+            "role": "reserved",
+            "iou": 0.9560021591127805,
+            "hausdorff_m": 0.3006855140459405
+          },
+          {
+            "source_drawing_index": 2005,
+            "reference_OBJECTID": 46336805,
+            "reference_EGID": 3164739,
+            "distance_m": 0.03861788281232668,
+            "source_area_m2": 125.9573906897894,
+            "target_area_m2": 124.06715000195977,
+            "role": "reserved",
+            "iou": 0.9713045644987692,
+            "hausdorff_m": 0.23754405684515184
+          },
+          {
+            "source_drawing_index": 2370,
+            "reference_OBJECTID": 46298173,
+            "reference_EGID": 846739,
+            "distance_m": 0.018370293250932243,
+            "source_area_m2": 242.82497825804109,
+            "target_area_m2": 244.10659999998205,
+            "role": "reserved",
+            "iou": 0.9808582414935246,
+            "hausdorff_m": 0.2570427158587539
+          },
+          {
+            "source_drawing_index": 2470,
+            "reference_OBJECTID": 46438616,
+            "reference_EGID": 846718,
+            "distance_m": 0.41085179918761583,
+            "source_area_m2": 678.8761548563108,
+            "target_area_m2": 718.9354840050754,
+            "role": "reserved",
+            "iou": 0.939526983004885,
+            "hausdorff_m": 3.0080887095709152
+          },
+          {
+            "source_drawing_index": 2480,
+            "reference_OBJECTID": 46340925,
+            "reference_EGID": 280096988,
+            "distance_m": 3.236172515106932,
+            "source_area_m2": 258.7923653074127,
+            "target_area_m2": 240.25245149736764,
+            "role": "reserved",
+            "iou": 0.6243754512483619,
+            "hausdorff_m": 4.945752972300293
+          },
+          {
+            "source_drawing_index": 2910,
+            "reference_OBJECTID": 46497248,
+            "reference_EGID": 190058063,
+            "distance_m": 0.2557753554304136,
+            "source_area_m2": 134.3688492423069,
+            "target_area_m2": 130.20649249973965,
+            "role": "reserved",
+            "iou": 0.945502842836274,
+            "hausdorff_m": 0.3764044525197418
+          },
+          {
+            "source_drawing_index": 3065,
+            "reference_OBJECTID": 46313764,
+            "reference_EGID": 846952,
+            "distance_m": 1.0164050477602455,
+            "source_area_m2": 170.877247763526,
+            "target_area_m2": 188.36138849995427,
+            "role": "reserved",
+            "iou": 0.8256202375288655,
+            "hausdorff_m": 2.6840218212284226
+          },
+          {
+            "source_drawing_index": 3155,
+            "reference_OBJECTID": 46344150,
+            "reference_EGID": 846726,
+            "distance_m": 0.16516482341297822,
+            "source_area_m2": 109.8006840539675,
+            "target_area_m2": 110.95705000147298,
+            "role": "reserved",
+            "iou": 0.9633158529097642,
+            "hausdorff_m": 0.3146817488546542
+          },
+          {
+            "source_drawing_index": 3250,
+            "reference_OBJECTID": 46288051,
+            "reference_EGID": 3164736,
+            "distance_m": 0.09729465389122675,
+            "source_area_m2": 230.53908984202826,
+            "target_area_m2": 230.640845001305,
+            "role": "reserved",
+            "iou": 0.9773721046245979,
+            "hausdorff_m": 0.3899889572855505
+          },
+          {
+            "source_drawing_index": 3410,
+            "reference_OBJECTID": 46481120,
+            "reference_EGID": 846862,
+            "distance_m": 0.0705241157288764,
+            "source_area_m2": 84.51495227514066,
+            "target_area_m2": 86.8102999996583,
+            "role": "reserved",
+            "iou": 0.9481703134938735,
+            "hausdorff_m": 0.316094335844716
+          },
+          {
+            "source_drawing_index": 3495,
+            "reference_OBJECTID": 46371282,
+            "reference_EGID": 846836,
+            "distance_m": 0.05368614199860124,
+            "source_area_m2": 790.7526268898263,
+            "target_area_m2": 790.1497205006931,
+            "role": "reserved",
+            "iou": 0.9859683562996915,
+            "hausdorff_m": 0.25785465409450475
+          },
+          {
+            "source_drawing_index": 3540,
+            "reference_OBJECTID": 46331060,
+            "reference_EGID": 280065318,
+            "distance_m": 0.07441644598130777,
+            "source_area_m2": 127.32351923822482,
+            "target_area_m2": 127.9829299992029,
+            "role": "reserved",
+            "iou": 0.968207652401903,
+            "hausdorff_m": 0.20538338919681418
+          },
+          {
+            "source_drawing_index": 3570,
+            "reference_OBJECTID": 46373077,
+            "reference_EGID": 280016372,
+            "distance_m": 0.08401657942860356,
+            "source_area_m2": 70.8839960856795,
+            "target_area_m2": 72.86285499849961,
+            "role": "reserved",
+            "iou": 0.9544886676733092,
+            "hausdorff_m": 0.28620342302664525
+          },
+          {
+            "source_drawing_index": 3585,
+            "reference_OBJECTID": 46301096,
+            "reference_EGID": 9031390,
+            "distance_m": 0.14661108942155954,
+            "source_area_m2": 491.7006308130264,
+            "target_area_m2": 492.5611900032295,
+            "role": "reserved",
+            "iou": 0.9808709905581189,
+            "hausdorff_m": 0.28010130968618746
+          },
+          {
+            "source_drawing_index": 3590,
+            "reference_OBJECTID": 46500257,
+            "reference_EGID": 9031392,
+            "distance_m": 3.359919031350346,
+            "source_area_m2": 954.0938221929507,
+            "target_area_m2": 1077.3940750065572,
+            "role": "reserved",
+            "iou": 0.7883944285323587,
+            "hausdorff_m": 7.198675593388528
+          },
+          {
+            "source_drawing_index": 3605,
+            "reference_OBJECTID": 46382674,
+            "reference_EGID": 846749,
+            "distance_m": 0.07665126415613072,
+            "source_area_m2": 241.83542110063428,
+            "target_area_m2": 241.8622500014081,
+            "role": "reserved",
+            "iou": 0.9747990323661098,
+            "hausdorff_m": 0.2449677608282332
+          },
+          {
+            "source_drawing_index": 3620,
+            "reference_OBJECTID": 46495064,
+            "reference_EGID": 846746,
+            "distance_m": 0.21885818724570988,
+            "source_area_m2": 141.29702019728546,
+            "target_area_m2": 139.41979999871205,
+            "role": "reserved",
+            "iou": 0.9591446490634545,
+            "hausdorff_m": 0.27260184469816456
+          },
+          {
+            "source_drawing_index": 3630,
+            "reference_OBJECTID": 46303581,
+            "reference_EGID": 9031398,
+            "distance_m": 0.23407807853435442,
+            "source_area_m2": 116.2801743569898,
+            "target_area_m2": 118.69357500033402,
+            "role": "reserved",
+            "iou": 0.945034579170573,
+            "hausdorff_m": 0.3476789183475259
+          },
+          {
+            "source_drawing_index": 3695,
+            "reference_OBJECTID": 46318873,
+            "reference_EGID": 846759,
+            "distance_m": 0.05086982056632185,
+            "source_area_m2": 105.18481252151562,
+            "target_area_m2": 106.51299999827333,
+            "role": "reserved",
+            "iou": 0.9701502051795275,
+            "hausdorff_m": 0.2855766795966467
+          },
+          {
+            "source_drawing_index": 3710,
+            "reference_OBJECTID": 46471885,
+            "reference_EGID": 846755,
+            "distance_m": 0.05568072677601274,
+            "source_area_m2": 84.03824937887012,
+            "target_area_m2": 89.1816500002351,
+            "role": "reserved",
+            "iou": 0.942326693673268,
+            "hausdorff_m": 0.2806149995086819
+          },
+          {
+            "source_drawing_index": 3725,
+            "reference_OBJECTID": 46399697,
+            "reference_EGID": 846763,
+            "distance_m": 0.6582321274003237,
+            "source_area_m2": 210.41547811154797,
+            "target_area_m2": 194.92568450159405,
+            "role": "reserved",
+            "iou": 0.9050639200854741,
+            "hausdorff_m": 1.9448759239641242
+          },
+          {
+            "source_drawing_index": 3760,
+            "reference_OBJECTID": 46313903,
+            "reference_EGID": 846790,
+            "distance_m": 0.16624803003758226,
+            "source_area_m2": 78.72964911755314,
+            "target_area_m2": 80.69020999970003,
+            "role": "reserved",
+            "iou": 0.9462066170024745,
+            "hausdorff_m": 0.3177216989632713
+          },
+          {
+            "source_drawing_index": 3765,
+            "reference_OBJECTID": 46287367,
+            "reference_EGID": 846792,
+            "distance_m": 0.10569346363718728,
+            "source_area_m2": 213.9102946313128,
+            "target_area_m2": 212.75333000069168,
+            "role": "reserved",
+            "iou": 0.9553126322870721,
+            "hausdorff_m": 0.3175703231136503
+          },
+          {
+            "source_drawing_index": 3820,
+            "reference_OBJECTID": 46340857,
+            "reference_EGID": 846786,
+            "distance_m": 0.13480018315353093,
+            "source_area_m2": 142.9428641677706,
+            "target_area_m2": 143.90714549926878,
+            "role": "reserved",
+            "iou": 0.966547926529295,
+            "hausdorff_m": 0.2384031477530043
+          },
+          {
+            "source_drawing_index": 3885,
+            "reference_OBJECTID": 46403713,
+            "reference_EGID": 846830,
+            "distance_m": 0.12336211389360724,
+            "source_area_m2": 181.36195937267584,
+            "target_area_m2": 182.9768499997322,
+            "role": "reserved",
+            "iou": 0.9657141516011153,
+            "hausdorff_m": 0.327491748844328
+          },
+          {
+            "source_drawing_index": 3940,
+            "reference_OBJECTID": 46511175,
+            "reference_EGID": 846823,
+            "distance_m": 0.12533326340055165,
+            "source_area_m2": 98.5884878891362,
+            "target_area_m2": 100.20205000130511,
+            "role": "reserved",
+            "iou": 0.9616932706047564,
+            "hausdorff_m": 0.2497284122613827
+          },
+          {
+            "source_drawing_index": 3945,
+            "reference_OBJECTID": 46346161,
+            "reference_EGID": 846821,
+            "distance_m": 0.13564200234623355,
+            "source_area_m2": 97.21058416423706,
+            "target_area_m2": 98.04504499906503,
+            "role": "reserved",
+            "iou": 0.9538626897680266,
+            "hausdorff_m": 0.29312761300365536
+          },
+          {
+            "source_drawing_index": 3950,
+            "reference_OBJECTID": 46396763,
+            "reference_EGID": 846798,
+            "distance_m": 0.07900305304172268,
+            "source_area_m2": 315.46110800843405,
+            "target_area_m2": 315.42014999655555,
+            "role": "reserved",
+            "iou": 0.9716719220689599,
+            "hausdorff_m": 0.2826691099926027
+          },
+          {
+            "source_drawing_index": 4045,
+            "reference_OBJECTID": 46294367,
+            "reference_EGID": 280008104,
+            "distance_m": 0.0783269342159432,
+            "source_area_m2": 188.02583021522975,
+            "target_area_m2": 182.7885799977474,
+            "role": "reserved",
+            "iou": 0.9699511111021882,
+            "hausdorff_m": 0.3246324373516348
+          }
+        ],
+        "outside_reserved_hull_m2": 0.0,
+        "area_m2": 18209.453984284944
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2547121.7675005267,
+              1183136.8162855485
+            ],
+            [
+              2547186.749106904,
+              1183197.882110269
+            ],
+            [
+              2547240.300963051,
+              1183248.8937467912
+            ],
+            [
+              2547257.2340380023,
+              1183235.3470930436
+            ],
+            [
+              2547286.761520777,
+              1183224.8695887371
+            ],
+            [
+              2547308.2457821835,
+              1183216.8262597104
+            ],
+            [
+              2547343.2765896786,
+              1183204.8671490264
+            ],
+            [
+              2547364.23181361,
+              1183197.3529651342
+            ],
+            [
+              2547347.298308022,
+              1183180.8429909726
+            ],
+            [
+              2547332.2699402375,
+              1183165.8146231882
+            ],
+            [
+              2547319.252646943,
+              1183153.3262597104
+            ],
+            [
+              2547295.7575263646,
+              1183129.8312467912
+            ],
+            [
+              2547274.2734802766,
+              1183108.8762381785
+            ],
+            [
+              2547235.2207391197,
+              1183148.8813329185
+            ],
+            [
+              2547232.7867791587,
+              1183146.870473747
+            ],
+            [
+              2547202.7300435905,
+              1183118.401281242
+            ],
+            [
+              2547168.7575263646,
+              1183086.3337941612
+            ],
+            [
+              2547123.249106904,
+              1183134.911255404
+            ],
+            [
+              2547121.7675005267,
+              1183136.8162855485
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "drawing_index": 4588,
+        "subpath": 5,
+        "area": 2124.9193278066814,
+        "local_reserved_checks_300m": [
+          {
+            "source_drawing_index": 1715,
+            "reference_OBJECTID": 46488038,
+            "reference_EGID": 190028626,
+            "distance_m": 0.06501732705160597,
+            "source_area_m2": 115.24349940931539,
+            "target_area_m2": 113.85714650013684,
+            "role": "reserved",
+            "iou": 0.9652442342365315,
+            "hausdorff_m": 0.2714654240308114
+          },
+          {
+            "source_drawing_index": 1725,
+            "reference_OBJECTID": 46360542,
+            "reference_EGID": 3164726,
+            "distance_m": 0.016839731258327453,
+            "source_area_m2": 98.25185064634452,
+            "target_area_m2": 99.09089999877582,
+            "role": "reserved",
+            "iou": 0.965546229759421,
+            "hausdorff_m": 0.3063084152322922
+          },
+          {
+            "source_drawing_index": 1730,
+            "reference_OBJECTID": 46363910,
+            "reference_EGID": 3164727,
+            "distance_m": 0.13766113403180397,
+            "source_area_m2": 89.7341365742193,
+            "target_area_m2": 89.0606100021419,
+            "role": "reserved",
+            "iou": 0.9618826771443755,
+            "hausdorff_m": 0.29533859551811564
+          },
+          {
+            "source_drawing_index": 1740,
+            "reference_OBJECTID": 46444657,
+            "reference_EGID": 3164725,
+            "distance_m": 0.021148843215116224,
+            "source_area_m2": 76.38271920219707,
+            "target_area_m2": 79.14014999846476,
+            "role": "reserved",
+            "iou": 0.9541085405083939,
+            "hausdorff_m": 0.30963187610407006
+          },
+          {
+            "source_drawing_index": 1770,
+            "reference_OBJECTID": 46406797,
+            "reference_EGID": 846702,
+            "distance_m": 0.10038072032163325,
+            "source_area_m2": 304.40160721291954,
+            "target_area_m2": 301.2357600017289,
+            "role": "reserved",
+            "iou": 0.982317488806957,
+            "hausdorff_m": 0.32939303979630347
+          },
+          {
+            "source_drawing_index": 1790,
+            "reference_OBJECTID": 46454515,
+            "reference_EGID": 846775,
+            "distance_m": 0.07684764536049611,
+            "source_area_m2": 110.92549884865738,
+            "target_area_m2": 108.57170000394616,
+            "role": "reserved",
+            "iou": 0.962200036550474,
+            "hausdorff_m": 0.24205522798001766
+          },
+          {
+            "source_drawing_index": 1825,
+            "reference_OBJECTID": 46364752,
+            "reference_EGID": 280001997,
+            "distance_m": 1.7239910008337684,
+            "source_area_m2": 644.8419227965339,
+            "target_area_m2": 713.8695615041983,
+            "role": "reserved",
+            "iou": 0.886984720532266,
+            "hausdorff_m": 7.486009280874796
+          },
+          {
+            "source_drawing_index": 1830,
+            "reference_OBJECTID": 46325585,
+            "reference_EGID": 846706,
+            "distance_m": 0.24046013093700125,
+            "source_area_m2": 128.02976640851313,
+            "target_area_m2": 127.75930000246507,
+            "role": "reserved",
+            "iou": 0.9560021591127805,
+            "hausdorff_m": 0.3006855140459405
+          },
+          {
+            "source_drawing_index": 2005,
+            "reference_OBJECTID": 46336805,
+            "reference_EGID": 3164739,
+            "distance_m": 0.03861788281232668,
+            "source_area_m2": 125.9573906897894,
+            "target_area_m2": 124.06715000195977,
+            "role": "reserved",
+            "iou": 0.9713045644987692,
+            "hausdorff_m": 0.23754405684515184
+          },
+          {
+            "source_drawing_index": 2470,
+            "reference_OBJECTID": 46438616,
+            "reference_EGID": 846718,
+            "distance_m": 0.41085179918761583,
+            "source_area_m2": 678.8761548563108,
+            "target_area_m2": 718.9354840050754,
+            "role": "reserved",
+            "iou": 0.939526983004885,
+            "hausdorff_m": 3.0080887095709152
+          },
+          {
+            "source_drawing_index": 2480,
+            "reference_OBJECTID": 46340925,
+            "reference_EGID": 280096988,
+            "distance_m": 3.236172515106932,
+            "source_area_m2": 258.7923653074127,
+            "target_area_m2": 240.25245149736764,
+            "role": "reserved",
+            "iou": 0.6243754512483619,
+            "hausdorff_m": 4.945752972300293
+          },
+          {
+            "source_drawing_index": 2910,
+            "reference_OBJECTID": 46497248,
+            "reference_EGID": 190058063,
+            "distance_m": 0.2557753554304136,
+            "source_area_m2": 134.3688492423069,
+            "target_area_m2": 130.20649249973965,
+            "role": "reserved",
+            "iou": 0.945502842836274,
+            "hausdorff_m": 0.3764044525197418
+          },
+          {
+            "source_drawing_index": 3065,
+            "reference_OBJECTID": 46313764,
+            "reference_EGID": 846952,
+            "distance_m": 1.0164050477602455,
+            "source_area_m2": 170.877247763526,
+            "target_area_m2": 188.36138849995427,
+            "role": "reserved",
+            "iou": 0.8256202375288655,
+            "hausdorff_m": 2.6840218212284226
+          },
+          {
+            "source_drawing_index": 3410,
+            "reference_OBJECTID": 46481120,
+            "reference_EGID": 846862,
+            "distance_m": 0.0705241157288764,
+            "source_area_m2": 84.51495227514066,
+            "target_area_m2": 86.8102999996583,
+            "role": "reserved",
+            "iou": 0.9481703134938735,
+            "hausdorff_m": 0.316094335844716
+          },
+          {
+            "source_drawing_index": 3605,
+            "reference_OBJECTID": 46382674,
+            "reference_EGID": 846749,
+            "distance_m": 0.07665126415613072,
+            "source_area_m2": 241.83542110063428,
+            "target_area_m2": 241.8622500014081,
+            "role": "reserved",
+            "iou": 0.9747990323661098,
+            "hausdorff_m": 0.2449677608282332
+          },
+          {
+            "source_drawing_index": 3620,
+            "reference_OBJECTID": 46495064,
+            "reference_EGID": 846746,
+            "distance_m": 0.21885818724570988,
+            "source_area_m2": 141.29702019728546,
+            "target_area_m2": 139.41979999871205,
+            "role": "reserved",
+            "iou": 0.9591446490634545,
+            "hausdorff_m": 0.27260184469816456
+          },
+          {
+            "source_drawing_index": 3630,
+            "reference_OBJECTID": 46303581,
+            "reference_EGID": 9031398,
+            "distance_m": 0.23407807853435442,
+            "source_area_m2": 116.2801743569898,
+            "target_area_m2": 118.69357500033402,
+            "role": "reserved",
+            "iou": 0.945034579170573,
+            "hausdorff_m": 0.3476789183475259
+          },
+          {
+            "source_drawing_index": 3695,
+            "reference_OBJECTID": 46318873,
+            "reference_EGID": 846759,
+            "distance_m": 0.05086982056632185,
+            "source_area_m2": 105.18481252151562,
+            "target_area_m2": 106.51299999827333,
+            "role": "reserved",
+            "iou": 0.9701502051795275,
+            "hausdorff_m": 0.2855766795966467
+          },
+          {
+            "source_drawing_index": 3710,
+            "reference_OBJECTID": 46471885,
+            "reference_EGID": 846755,
+            "distance_m": 0.05568072677601274,
+            "source_area_m2": 84.03824937887012,
+            "target_area_m2": 89.1816500002351,
+            "role": "reserved",
+            "iou": 0.942326693673268,
+            "hausdorff_m": 0.2806149995086819
+          },
+          {
+            "source_drawing_index": 3725,
+            "reference_OBJECTID": 46399697,
+            "reference_EGID": 846763,
+            "distance_m": 0.6582321274003237,
+            "source_area_m2": 210.41547811154797,
+            "target_area_m2": 194.92568450159405,
+            "role": "reserved",
+            "iou": 0.9050639200854741,
+            "hausdorff_m": 1.9448759239641242
+          },
+          {
+            "source_drawing_index": 3760,
+            "reference_OBJECTID": 46313903,
+            "reference_EGID": 846790,
+            "distance_m": 0.16624803003758226,
+            "source_area_m2": 78.72964911755314,
+            "target_area_m2": 80.69020999970003,
+            "role": "reserved",
+            "iou": 0.9462066170024745,
+            "hausdorff_m": 0.3177216989632713
+          },
+          {
+            "source_drawing_index": 3765,
+            "reference_OBJECTID": 46287367,
+            "reference_EGID": 846792,
+            "distance_m": 0.10569346363718728,
+            "source_area_m2": 213.9102946313128,
+            "target_area_m2": 212.75333000069168,
+            "role": "reserved",
+            "iou": 0.9553126322870721,
+            "hausdorff_m": 0.3175703231136503
+          },
+          {
+            "source_drawing_index": 3820,
+            "reference_OBJECTID": 46340857,
+            "reference_EGID": 846786,
+            "distance_m": 0.13480018315353093,
+            "source_area_m2": 142.9428641677706,
+            "target_area_m2": 143.90714549926878,
+            "role": "reserved",
+            "iou": 0.966547926529295,
+            "hausdorff_m": 0.2384031477530043
+          },
+          {
+            "source_drawing_index": 3950,
+            "reference_OBJECTID": 46396763,
+            "reference_EGID": 846798,
+            "distance_m": 0.07900305304172268,
+            "source_area_m2": 315.46110800843405,
+            "target_area_m2": 315.42014999655555,
+            "role": "reserved",
+            "iou": 0.9716719220689599,
+            "hausdorff_m": 0.2826691099926027
+          }
+        ],
+        "outside_reserved_hull_m2": 0.0,
+        "area_m2": 6611.27003052667
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2547112.242457463,
+              1183132.3712510974
+            ],
+            [
+              2547116.2639604877,
+              1183128.3496404137
+            ],
+            [
+              2547152.2473368845,
+              1183089.8262597104
+            ],
+            [
+              2547121.238032414,
+              1183058.817062899
+            ],
+            [
+              2547118.804072453,
+              1183061.8863199994
+            ],
+            [
+              2547055.7273885612,
+              1182999.338781242
+            ],
+            [
+              2547024.7180840904,
+              1183028.3371188818
+            ],
+            [
+              2547028.7398024336,
+              1183032.3587295657
+            ],
+            [
+              2547057.2089949385,
+              1183065.9079306833
+            ],
+            [
+              2547063.7708252473,
+              1183073.3162855485
+            ],
+            [
+              2547110.231382973,
+              1183130.360391926
+            ],
+            [
+              2547112.242457463,
+              1183132.3712510974
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
