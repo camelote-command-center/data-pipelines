@@ -1,0 +1,10 @@
+{
+  "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?where=NO_COM_FED%3D5590+AND+NUMERO+IN+%28%271738%27%2C%271743%27%2C%271744%27%2C%271755%27%2C%271756%27%2C%272034%27%2C%273420%27%2C%273421%27%29&f=geojson&outFields=OBJECTID%2CNUMERO%2CEGRID%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&returnGeometry=true",
+  "checked_at": "2026-09-16T14:50:30.794078+00:00",
+  "count_check": {
+    "count": 8
+  },
+  "response_sha256": "7300521062326e9ed05b6d6d068f3a6081cb6048dfa981ac7b647e7e0f11aeb5",
+  "crs": "EPSG:2056",
+  "limits": "Number match only; cadastral lineage and historical-to-current geometry equivalence unverified."
+}
