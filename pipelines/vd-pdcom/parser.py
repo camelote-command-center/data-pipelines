@@ -131,6 +131,26 @@ class Monitor:
             'startup_id':'eq.'+self.dataset['startup_id']},json=patch)
 
 
+def persist_pilot_source(c, source, doc_id, sha, inspection, candidates):
+    """Refresh one version without replacing accumulated review evidence."""
+    c.execute('''INSERT INTO bronze_ch.vd_pdcom_documents
+    (id,source_url,landing_url,sha256,title,plan_status,scope,status_evidence_url,page_count,inspection)
+    VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) ON CONFLICT(source_url,sha256) DO NOTHING''',
+    (doc_id,source['pdf_url'],source['landing_url'],sha,source['title'],source['plan_status'],source['scope'],source['status_evidence_url'],len(inspection),Json(inspection)))
+    c.execute('''INSERT INTO bronze_ch.vd_pdcom_document_communes(document_id,commune_bfs,evidence_url)
+    VALUES(%s,%s,%s) ON CONFLICT DO NOTHING''',(doc_id,source['commune_bfs'],source['landing_url']))
+    c.execute('''UPDATE bronze_ch.vd_pdcom_communes SET discovery_status='sources_found',
+    extraction_status=CASE WHEN COALESCE(evidence,'[]'::jsonb) @> %s THEN extraction_status ELSE %s END,
+    delivery_status=CASE WHEN COALESCE(evidence,'[]'::jsonb) @> %s THEN delivery_status ELSE 'not_ready' END,
+    last_checked_at=now(),
+    evidence=CASE WHEN COALESCE(evidence,'[]'::jsonb) @> %s THEN evidence ELSE COALESCE(evidence,'[]'::jsonb) || %s END,
+    blocker=CASE WHEN COALESCE(evidence,'[]'::jsonb) @> %s THEN blocker ELSE %s END WHERE commune_bfs=%s''',
+    (Json([{'document_id':doc_id}]),'candidate_vectors' if candidates['paths'] else 'downloaded',Json([{'document_id':doc_id}]),
+     Json([{'document_id':doc_id}]),Json([{'url':source['landing_url'],'document_id':doc_id}]),Json([{'document_id':doc_id}]),
+     'Independent alignment and spatial QA pending; selected categories only' if candidates['paths'] else 'Source changed: template review required',
+     source['commune_bfs']))
+
+
 def run(args):
     date=dt.date.fromisoformat(args.date) if args.date else dt.datetime.now(dt.timezone.utc).date()
     run_id=uuid.uuid4();url=roster_url(date)
@@ -179,20 +199,7 @@ def run(args):
                 (args.output/(str(source['commune_bfs'])+'-inspection.json')).write_text(json.dumps(inspection,ensure_ascii=False,indent=2))
                 if conn:
                     with conn,conn.cursor() as c:
-                        c.execute('''INSERT INTO bronze_ch.vd_pdcom_documents
-                        (id,source_url,landing_url,sha256,title,plan_status,scope,status_evidence_url,page_count,inspection)
-                        VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) ON CONFLICT(source_url,sha256) DO UPDATE SET inspection=excluded.inspection''',
-                        (doc_id,source['pdf_url'],source['landing_url'],sha,source['title'],source['plan_status'],source['scope'],source['status_evidence_url'],len(inspection),Json(inspection)))
-                        c.execute('''INSERT INTO bronze_ch.vd_pdcom_document_communes(document_id,commune_bfs,evidence_url)
-                        VALUES(%s,%s,%s) ON CONFLICT DO NOTHING''',(doc_id,source['commune_bfs'],source['landing_url']))
-                        c.execute('''UPDATE bronze_ch.vd_pdcom_communes SET discovery_status='sources_found',
-                        extraction_status=CASE WHEN evidence @> %s AND extraction_status='validated' THEN extraction_status ELSE %s END,
-                        delivery_status=CASE WHEN evidence @> %s AND extraction_status='validated' THEN delivery_status ELSE 'not_ready' END,
-                        last_checked_at=now(),evidence=%s,blocker=%s WHERE commune_bfs=%s''',
-                        (Json([{'document_id':doc_id}]),'candidate_vectors' if candidates['paths'] else 'downloaded',Json([{'document_id':doc_id}]),
-                         Json([{'url':source['landing_url'],'document_id':doc_id}]),
-                         'Independent alignment and spatial QA pending; selected categories only' if candidates['paths'] else 'Source changed: template review required',
-                         source['commune_bfs']))
+                        persist_pilot_source(c,source,doc_id,sha,inspection,candidates)
                     if source['commune_bfs']==5725:
                         report['spatial_pilot']=persist_spatial_pilot(conn,doc_id,sha)
             except Exception as e:
