@@ -1,0 +1,247 @@
+{
+  "document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+  "sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+  "map_pdf_page": 8,
+  "legend_pdf_page": 11,
+  "legend_printed_page": 51,
+  "destinations": [
+    {
+      "id": "bourg",
+      "label": "territoire du Bourg de Lutry",
+      "symbol_xref": 99,
+      "symbol_bbox_native_pixels": [
+        0,
+        2,
+        88,
+        36
+      ]
+    },
+    {
+      "id": "villages_hameaux",
+      "label": "territoire des villages et des hameaux",
+      "symbol_xref": 99,
+      "symbol_bbox_native_pixels": [
+        0,
+        41,
+        88,
+        74
+      ]
+    },
+    {
+      "id": "habitat_faible_moyenne",
+      "label": "territoire de l’habitat individuel, semi-individuel et semi-collectif, à faible et moyenne densité",
+      "symbol_xref": 99,
+      "symbol_bbox_native_pixels": [
+        0,
+        80,
+        88,
+        113
+      ]
+    },
+    {
+      "id": "habitat_collectif_forte",
+      "label": "territoire de l’habitat collectif, à forte densité",
+      "symbol_xref": 99,
+      "symbol_bbox_native_pixels": [
+        0,
+        160,
+        88,
+        192
+      ]
+    },
+    {
+      "id": "activites",
+      "label": "territoire d’activités",
+      "symbol_xref": 99,
+      "symbol_bbox_native_pixels": [
+        0,
+        221,
+        88,
+        253
+      ]
+    },
+    {
+      "id": "reserve_strategique",
+      "label": "territoire stratégique de réserve",
+      "symbol_xref": 99,
+      "symbol_bbox_native_pixels": [
+        0,
+        255,
+        88,
+        288
+      ]
+    },
+    {
+      "id": "viticole",
+      "label": "territoire viticole",
+      "symbol_xref": 99,
+      "symbol_bbox_native_pixels": [
+        0,
+        297,
+        88,
+        328
+      ]
+    },
+    {
+      "id": "vert_agricole",
+      "label": "territoire vert et/ou agricole",
+      "symbol_xref": 100,
+      "symbol_bbox_native_pixels": [
+        0,
+        0,
+        88,
+        27
+      ]
+    },
+    {
+      "id": "para_agricole",
+      "label": "territoire para-agricole",
+      "symbol_xref": 100,
+      "symbol_bbox_native_pixels": [
+        0,
+        31,
+        88,
+        64
+      ]
+    },
+    {
+      "id": "forestier",
+      "label": "territoire forestier",
+      "symbol_xref": 100,
+      "symbol_bbox_native_pixels": [
+        0,
+        69,
+        88,
+        101
+      ]
+    },
+    {
+      "id": "lacustre",
+      "label": "aire lacustre",
+      "symbol_xref": 100,
+      "symbol_bbox_native_pixels": [
+        0,
+        105,
+        88,
+        138
+      ]
+    },
+    {
+      "id": "equipements_collectifs",
+      "label": "territoire d’équipements collectifs",
+      "symbol_xref": 100,
+      "symbol_bbox_native_pixels": [
+        0,
+        145,
+        88,
+        178
+      ]
+    },
+    {
+      "id": "sport_loisirs",
+      "label": "territoire de sport et loisirs",
+      "symbol_xref": 100,
+      "symbol_bbox_native_pixels": [
+        0,
+        182,
+        88,
+        214
+      ]
+    },
+    {
+      "id": "sans_destination",
+      "label": "territoire sans destination définie",
+      "symbol_xref": 100,
+      "symbol_bbox_native_pixels": [
+        0,
+        220,
+        88,
+        253
+      ]
+    },
+    {
+      "id": "equipements_techniques",
+      "label": "territoire d’équipements techniques",
+      "symbol_xref": 100,
+      "symbol_bbox_native_pixels": [
+        0,
+        256,
+        88,
+        288
+      ]
+    }
+  ],
+  "broad_areas": [
+    {
+      "letter": "A",
+      "label": "Aire de l’urbanisation du Bourg"
+    },
+    {
+      "letter": "B",
+      "label": "Aire lacustre"
+    },
+    {
+      "letter": "C",
+      "label": "Aire de l’urbanisation de ville"
+    },
+    {
+      "letter": "D",
+      "label": "Aire viticole dans le territoire urbanisé"
+    },
+    {
+      "letter": "E",
+      "label": "Aire de l’urbanisation viticole"
+    },
+    {
+      "letter": "F",
+      "label": "Aire viticole"
+    },
+    {
+      "letter": "G",
+      "label": "Aire d’extension récente de l’urbanisation"
+    },
+    {
+      "letter": "H",
+      "label": "Aire de l’urbanisation de village"
+    },
+    {
+      "letter": "I",
+      "label": "Aire d’une urbanisation ville - campagne"
+    },
+    {
+      "letter": "J",
+      "label": "Aire agricole"
+    },
+    {
+      "letter": "K",
+      "label": "Aire de l’urbanisation para-agricole"
+    },
+    {
+      "letter": "L",
+      "label": "Aire de détente et de loisirs"
+    },
+    {
+      "letter": "M",
+      "label": "Aire forestière"
+    },
+    {
+      "letter": "N",
+      "label": "Liaison périphérique"
+    },
+    {
+      "letter": "O",
+      "label": "Les aires d’activités"
+    }
+  ],
+  "limits": [
+    "Fifteen broad-area letters and fifteen destination symbols are distinct classification systems, not one-to-one equivalents.",
+    "Strategic reserve is a distinct hatched category, not all pink housing or all blank map areas.",
+    "Sports/leisure red striping must not be confused with strategic-reserve black striping.",
+    "Similar magenta colors occur in housing, activity and equipment categories; color-only segmentation is insufficient.",
+    "Area G describes an existing recent urbanization fringe in the historical text, not current unbuilt capacity.",
+    "Undefined destination is not an assertion of developability.",
+    "No category polygons, parcel links or current capacity values extracted."
+  ],
+  "geographic_validation": "printed_grid_research_only",
+  "receiver_release": "not_ready"
+}

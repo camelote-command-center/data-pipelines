@@ -1,0 +1,91 @@
+{
+  "source_pdf": "../source-review/part-2.pdf",
+  "source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+  "pdf_page": 8,
+  "render_scale": 4,
+  "render_size": [
+    2380,
+    3368
+  ],
+  "coordinates": "composited_PDF_render_pixels_top_left_y_down",
+  "target_crs": "EPSG:21781",
+  "crs_basis": "LV03 inferred from labelled Swiss grid values and Lutry location; no embedded CRS metadata",
+  "selection": "Manually read grid intersections; train/check roles frozen before affine fit. Checkpoints were not used to choose the fitted transform. No surveyed ground accuracy claim.",
+  "reading_precision_pixels": "approximately 1-3 pixels, varying with base-map overprint; not a statistical uncertainty model",
+  "points": [
+    {
+      "id": "T1",
+      "split": "train",
+      "pixel": [
+        1095,
+        486
+      ],
+      "lv03": [
+        543000,
+        154000
+      ]
+    },
+    {
+      "id": "T2",
+      "split": "train",
+      "pixel": [
+        1737,
+        487
+      ],
+      "lv03": [
+        544000,
+        154000
+      ]
+    },
+    {
+      "id": "T3",
+      "split": "train",
+      "pixel": [
+        480,
+        3075
+      ],
+      "lv03": [
+        542000,
+        150000
+      ]
+    },
+    {
+      "id": "T4",
+      "split": "train",
+      "pixel": [
+        1118,
+        3073
+      ],
+      "lv03": [
+        543000,
+        150000
+      ]
+    },
+    {
+      "id": "C1",
+      "split": "check",
+      "pixel": [
+        1100,
+        1136
+      ],
+      "lv03": [
+        543000,
+        153000
+      ]
+    },
+    {
+      "id": "C2",
+      "split": "check",
+      "pixel": [
+        1749,
+        1776
+      ],
+      "lv03": [
+        544000,
+        152000
+      ]
+    }
+  ],
+  "geographic_validation": "research_grid_only",
+  "receiver_release": "not_ready"
+}
