@@ -1,0 +1,365 @@
+{
+  "status": "printed_grid_research_calibration",
+  "affine_pixel_to_lv03": [
+    [
+      1.5624712727155683,
+      -0.013896435332633784,
+      541294.302194469
+    ],
+    [
+      -0.001194585526597217,
+      -1.5461780528423534,
+      154753.90648204344
+    ]
+  ],
+  "residuals": [
+    {
+      "id": "T1",
+      "split": "train",
+      "pixel": [
+        1095,
+        486
+      ],
+      "lv03": [
+        543000,
+        154000
+      ],
+      "calculated_lv03": [
+        542998.4545705209,
+        154001.15587721043
+      ],
+      "delta_m": [
+        -1.5454294790979475,
+        1.1558772104326636
+      ],
+      "distance_m": 1.929871602066456
+    },
+    {
+      "id": "T2",
+      "split": "train",
+      "pixel": [
+        1737,
+        487
+      ],
+      "lv03": [
+        544000,
+        154000
+      ],
+      "calculated_lv03": [
+        544001.547231169,
+        153998.8427752495
+      ],
+      "delta_m": [
+        1.5472311689518392,
+        -1.1572247504955158
+      ],
+      "distance_m": 1.9321214799632769
+    },
+    {
+      "id": "T3",
+      "split": "train",
+      "pixel": [
+        480,
+        3075
+      ],
+      "lv03": [
+        542000,
+        150000
+      ],
+      "calculated_lv03": [
+        542001.5568667246,
+        149998.83556850045
+      ],
+      "delta_m": [
+        1.5568667246261612,
+        -1.164431499550119
+      ],
+      "distance_m": 1.9441539844859845
+    },
+    {
+      "id": "T4",
+      "split": "train",
+      "pixel": [
+        1118,
+        3073
+      ],
+      "lv03": [
+        543000,
+        150000
+      ],
+      "calculated_lv03": [
+        542998.4413315878,
+        150001.16577904017
+      ],
+      "delta_m": [
+        -1.5586684121517465,
+        1.165779040165944
+      ],
+      "distance_m": 1.9464038608495093
+    },
+    {
+      "id": "C1",
+      "split": "check",
+      "pixel": [
+        1100,
+        1136
+      ],
+      "lv03": [
+        543000,
+        153000
+      ],
+      "calculated_lv03": [
+        542997.2342439183,
+        152996.13416993528
+      ],
+      "delta_m": [
+        -2.7657560816733167,
+        -3.865830064722104
+      ],
+      "distance_m": 4.753319765450485
+    },
+    {
+      "id": "C2",
+      "split": "check",
+      "pixel": [
+        1749,
+        1776
+      ],
+      "lv03": [
+        544000,
+        152000
+      ],
+      "calculated_lv03": [
+        544002.3843812977,
+        152005.8049301094
+      ],
+      "delta_m": [
+        2.384381297742948,
+        5.804930109414272
+      ],
+      "distance_m": 6.27554680870207
+    }
+  ],
+  "check_rmse_m": 5.566710722717366,
+  "check_max_m": 6.27554680870207,
+  "independent_ground_accuracy_verified": false,
+  "receiver_release": "not_ready",
+  "raster_layers": [
+    {
+      "xref": 47,
+      "width": 416,
+      "height": 80,
+      "filter": "DCTDecode",
+      "placements_pdf_points": [
+        [
+          313.8611145019531,
+          171.83221435546875,
+          525.3690795898438,
+          213.41854858398438
+        ]
+      ]
+    },
+    {
+      "xref": 48,
+      "width": 584,
+      "height": 24,
+      "filter": "DCTDecode",
+      "placements_pdf_points": [
+        [
+          42.94520568847656,
+          800.5442504882812,
+          339.66888427734375,
+          814.065185546875
+        ]
+      ]
+    },
+    {
+      "xref": 49,
+      "width": 456,
+      "height": 64,
+      "filter": "DCTDecode",
+      "placements_pdf_points": [
+        [
+          339.6142272949219,
+          781.5535888671875,
+          571.4055786132812,
+          815.10302734375
+        ]
+      ]
+    },
+    {
+      "xref": 50,
+      "width": 1096,
+      "height": 704,
+      "filter": "DCTDecode",
+      "placements_pdf_points": [
+        [
+          18.707107543945312,
+          422.48681640625,
+          577.07177734375,
+          782.6095581054688
+        ]
+      ]
+    },
+    {
+      "xref": 51,
+      "width": 2224,
+      "height": 3184,
+      "filter": "CCITTFaxDecode",
+      "placements_pdf_points": [
+        [
+          14.461074829101562,
+          12.00872802734375,
+          582.9745483398438,
+          823.2673950195312
+        ]
+      ]
+    },
+    {
+      "xref": 52,
+      "width": 72,
+      "height": 264,
+      "filter": "DCTDecode",
+      "placements_pdf_points": [
+        [
+          17.173873901367188,
+          81.09600830078125,
+          54.35032653808594,
+          215.3705291748047
+        ]
+      ]
+    },
+    {
+      "xref": 53,
+      "width": 224,
+      "height": 56,
+      "filter": "DCTDecode",
+      "placements_pdf_points": [
+        [
+          221.1183319091797,
+          21.046981811523438,
+          335.03662109375,
+          50.00447082519531
+        ]
+      ]
+    },
+    {
+      "xref": 54,
+      "width": 400,
+      "height": 40,
+      "filter": "DCTDecode",
+      "placements_pdf_points": [
+        [
+          30.021194458007812,
+          48.638946533203125,
+          233.31019592285156,
+          69.86907958984375
+        ]
+      ]
+    },
+    {
+      "xref": 55,
+      "width": 88,
+      "height": 32,
+      "filter": "DCTDecode",
+      "placements_pdf_points": [
+        [
+          481.138916015625,
+          50.65992736816406,
+          525.915283203125,
+          67.11604309082031
+        ]
+      ]
+    },
+    {
+      "xref": 56,
+      "width": 112,
+      "height": 120,
+      "filter": "DCTDecode",
+      "placements_pdf_points": [
+        [
+          517.36865234375,
+          83.33546447753906,
+          574.5371704101562,
+          144.5497589111328
+        ]
+      ]
+    },
+    {
+      "xref": 57,
+      "width": 392,
+      "height": 56,
+      "filter": "DCTDecode",
+      "placements_pdf_points": [
+        [
+          54.22288513183594,
+          81.25987243652344,
+          253.4843292236328,
+          110.59971618652344
+        ]
+      ]
+    },
+    {
+      "xref": 58,
+      "width": 1080,
+      "height": 408,
+      "filter": "DCTDecode",
+      "placements_pdf_points": [
+        [
+          20.309295654296875,
+          215.22488403320312,
+          569.8723754882812,
+          424.9447021484375
+        ]
+      ]
+    },
+    {
+      "xref": 59,
+      "width": 104,
+      "height": 48,
+      "filter": "DCTDecode",
+      "placements_pdf_points": [
+        [
+          294.16033935546875,
+          49.822418212890625,
+          347.10107421875,
+          74.44287109375
+        ]
+      ]
+    },
+    {
+      "xref": 60,
+      "width": 440,
+      "height": 8,
+      "filter": "DCTDecode",
+      "placements_pdf_points": [
+        [
+          305.7149963378906,
+          212.43536376953125,
+          529.2509765625,
+          217.50070190429688
+        ]
+      ]
+    },
+    {
+      "xref": 61,
+      "width": 472,
+      "height": 176,
+      "filter": "DCTDecode",
+      "placements_pdf_points": [
+        [
+          253.08380126953125,
+          82.15203857421875,
+          493.2579345703125,
+          172.6333465576172
+        ]
+      ]
+    }
+  ],
+  "limits": [
+    "Six manually read grid intersections; only four fitted, two withheld.",
+    "Printed-grid consistency does not establish real-world accuracy or current parcel rights.",
+    "Scan deformation and manual line reading remain unresolved.",
+    "Page consists of composited image tiles; no single embedded color tile is the complete map."
+  ]
+}
