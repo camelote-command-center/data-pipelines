@@ -1,0 +1,86 @@
+{
+  "source_sha256": "4de692dfdbfa3e3ba280d97950d0d770ec744756ca33b853346f47b745cf3f1a",
+  "page": 1,
+  "drawing_index": 98,
+  "seqno": 99,
+  "coordinate_space": "unrotated PDF page points, origin top-left; not geographic",
+  "page_size_points": [
+    0.0,
+    0.0,
+    1403.0,
+    1757.0
+  ],
+  "page_rotation": 0,
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          717.837646484375,
+          55.638038635253906
+        ],
+        [
+          886.5625,
+          47.78839111328125
+        ],
+        [
+          889.57666015625,
+          80.49638366699219
+        ],
+        [
+          886.0787353515625,
+          79.53814697265625
+        ],
+        [
+          863.6279296875,
+          74.86150360107422
+        ],
+        [
+          840.6669921875,
+          72.70711517333984
+        ],
+        [
+          831.9080200195312,
+          72.10708618164062
+        ],
+        [
+          804.2452392578125,
+          70.21207427978516
+        ],
+        [
+          775.5653076171875,
+          69.42366027832031
+        ],
+        [
+          730.312255859375,
+          66.52619934082031
+        ],
+        [
+          719.4417114257812,
+          65.27357482910156
+        ],
+        [
+          718.3251342773438,
+          64.88758850097656
+        ],
+        [
+          717.837646484375,
+          55.638038635253906
+        ]
+      ]
+    ]
+  },
+  "area_square_points": 3288.1503868035506,
+  "map_panel": "Plan d’ensemble",
+  "printed_scale": "1:5000",
+  "separate_detail_scale": "1:1000; does not contain this Mordagne contour",
+  "meaning": "proposed zone agricole protégée 16 LAT (AGP), western parcel 326",
+  "source_table_partial_parcel_area_m2": 10411,
+  "limitations": [
+    "source table area is not a derived geographic measurement",
+    "no ground transform or independent alignment validation",
+    "inquiry version; later final approval not established",
+    "not a development opportunity or effective parcel entitlement"
+  ],
+  "runtime_release": "withheld"
+}
