@@ -1,0 +1,49 @@
+{
+  "source_document_id": "b8fc92d6-c4a6-5a3c-8fee-dfa2b11de848",
+  "source_sha256": "d4fecb86752e2f2cb2c3359e835e9555694979b88288bb50795080ec349a1a2b",
+  "adjacent_sources": 4,
+  "adjacent_pdf_pages": 83,
+  "new_pdcom_documents": 0,
+  "municipal_proposal": {
+    "number": "2026/13",
+    "date": "2026-09-14",
+    "landing_status": "Déposé",
+    "council_adoption": "not established",
+    "department_approval": "expressly reserved by proposal",
+    "remaining_objections_as_stated": 6
+  },
+  "inquiry_period_as_stated": [
+    "2025-11-12",
+    "2025-12-11"
+  ],
+  "map": {
+    "phase": "Enquête publique",
+    "drawn": "2025-10-14",
+    "printed": "2025-11-05",
+    "approval_fields": "blank",
+    "panels": [
+      {
+        "name": "Plan d’ensemble",
+        "scale": 5000,
+        "contains_mordagne_326": true
+      },
+      {
+        "name": "Plan de détail",
+        "scale": 1000,
+        "contains_mordagne_326": false
+      }
+    ],
+    "western_326": "proposed protected agricultural zone (AGP) for ecological compensation",
+    "partial_326_area_from_table_m2": 10411,
+    "total_plan_area_from_table_m2": 60479,
+    "geometry_artifact": "agp-contour.json",
+    "geometry_status": "PDF-space only; not georeferenced"
+  },
+  "remaining_gaps": [
+    "Final council/department/effective-date decisions",
+    "21 report annexes are listed but not included in the 51-page main report",
+    "Revised PDCom source and original Mordagne map",
+    "Independent geography and cross-version boundary reconciliation"
+  ],
+  "runtime_release": "not_ready"
+}
