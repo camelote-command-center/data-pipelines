@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<KK02:publication xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:KK02="https://shab.ch/shab/KK02-export" xsi:schemaLocation="https://shab.ch/shab/KK02-export https://amtsblattportal.ch/api/v1/schemas/shab/1.26/KK02-export.xsd">
+<meta>
+  <id>001b85c2-0772-424f-bbfd-5a3b779a31f3</id>
+  <rubric>KK</rubric>
+  <subRubric>KK02</subRubric>
+  <language>de</language>
+  <registrationOffice>
+    <id>b0eb4f1a-a6b6-11e8-b271-0050569d3c43</id>
+    <displayName>Konkursamt Bern-Mittelland - Dienststelle Mittelland</displayName>
+    <street>Poststrasse</street>
+    <streetNumber>25</streetNumber>
+    <swissZipCode>3072</swissZipCode>
+    <town>Ostermundigen</town>
+    <containsPostOfficeBox>false</containsPostOfficeBox>
+  </registrationOffice>
+  <publicationNumber>KK02-0000059409</publicationNumber>
+  <publicationState>PUBLISHED</publicationState>
+  <publicationDate>2026-07-15</publicationDate>
+  <expirationDate>2031-07-15</expirationDate>
+  <primaryTenantCode>shab</primaryTenantCode>
+  <legalRemedy>Die Gläubiger des Schuldners und alle, die Ansprüche auf die in seinem Besitz befindlichen Vermögensstücke haben, werden aufgefordert, ihre Forderungen oder Ansprüche samt Beweismitteln (Schuldscheine, Buchauszüge usw.) innert der genannten Frist bei der Kontaktstelle einzugeben. Schuldner des Konkursiten haben sich innert der gleichen Frist bei der Kontaktstelle zu melden; Straffolge bei Unterlassung nach Art. 324 Ziff. 2 StGB. Personen, die Sachen des Schuldners als Pfandgläubiger oder aus anderen Gründen besitzen, werden aufgefordert, diese innert der gleichen Frist der Kontaktstelle zur Verfügung zu stellen; Straffolge bei Unterlassung (Art. 324 Ziff. 3 StGB). Das Vorzugsrecht erlischt, wenn die Meldung ungerechtfertigt unterbleibt. Die angegebene Kontaktstelle gilt auch für Beteiligte, die im Ausland wohnen. &lt;br />Publikation nach Art. 231 und 232 SchKG sowie Art. 29 und 123 der Vo des Bundesgerichtes über die Zwangsverwertung von Grundstücken (VZG). Des Weiteren gilt die angegebene Kontaktstelle für ausländische Gläubiger als Zustellungsort, sofern kein anderer Zustellungsort in der Schweiz bezeichnet wird.</legalRemedy>
+  <cantons>BE</cantons>
+  <secondaryTenants>
+    <tenantCode>kabbe</tenantCode>
+    <publicationDate>2026-07-15</publicationDate>
+  </secondaryTenants>
+  <title>
+    <de>Konkurspublikation/Schuldenruf René Jakob, ausgeschlagene Erbschaft</de>
+    <en>Bankruptcy publication/call to creditors René Jakob, refused estate</en>
+    <it>Pubblicazione di fallimento/diffida ai creditori René Jakob, eredità rifiutata</it>
+    <fr>Publication de faillite/appel aux créanciers René Jakob, succession répudiée</fr>
+  </title>
+</meta>
+<content>
+  <proceeding>
+    <selectType>summary</selectType>
+  </proceeding>
+  <debtor>
+    <selectType>person</selectType>
+    <person>
+      <prename>René</prename>
+      <name>Jakob</name>
+      <countryOfOrigin>
+        <name>
+          <de>Schweiz</de>
+          <fr>Suisse</fr>
+          <it>Svizzera</it>
+          <en>Switzerland</en>
+        </name>
+        <isoCode>CH</isoCode>
+      </countryOfOrigin>
+      <placeOfOrigin>Trub BE</placeOfOrigin>
+      <dateOfBirth>1953-01-02</dateOfBirth>
+      <dateOfDeath>2026-05-05</dateOfDeath>
+      <residence>
+        <selectType>switzerland</selectType>
+      </residence>
+      <addressSwitzerland>
+        <street>Kappelenring</street>
+        <houseNumber>54c</houseNumber>
+        <swissZipCode>3032</swissZipCode>
+        <town>Hinterkappelen</town>
+      </addressSwitzerland>
+    </person>
+  </debtor>
+  <resolutionDate>2026-06-23</resolutionDate>
+  <addition>refusedLegacy</addition>
+  <monthsAfterPublication>1</monthsAfterPublication>
+  <entryDeadline>2026-08-15</entryDeadline>
+  <registrationOffice>Konkursamt Bern-Mittelland - Dienststelle Mittelland, Poststrasse 25, 3072 Ostermundigen</registrationOffice>
+</content>
+</KK02:publication>

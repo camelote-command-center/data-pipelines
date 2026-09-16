@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TE-BE20:publication xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TE-BE20="https://shab.ch/kabbe/TE-BE20-export" xsi:schemaLocation="https://shab.ch/kabbe/TE-BE20-export https://amtsblattportal.ch/api/v1/schemas/kabbe/1.25/TE-BE20-export.xsd">
+<meta>
+  <id>6d0b9bf7-a571-4031-9291-f8f098ef4eac</id>
+  <rubric>TE-BE</rubric>
+  <subRubric>TE-BE20</subRubric>
+  <language>de</language>
+  <registrationOffice>
+    <id>c8038aec-b71d-11e8-b117-0050569d3c43</id>
+    <displayName>Roger Messerli</displayName>
+    <street>Dorfstrasse</street>
+    <streetNumber>19</streetNumber>
+    <swissZipCode>3534</swissZipCode>
+    <town>Signau</town>
+    <containsPostOfficeBox>false</containsPostOfficeBox>
+  </registrationOffice>
+  <publicationNumber>TE-BE20-0000000120</publicationNumber>
+  <publicationState>PUBLISHED</publicationState>
+  <publicationDate>2025-12-24</publicationDate>
+  <expirationDate>2026-12-24</expirationDate>
+  <primaryTenantCode>kabbe</primaryTenantCode>
+  <legalRemedy>Die aufgerufenen Personen werden aufgefordert, sich innert der angegebenen Frist bei der Kontaktstelle zu melden. Dabei haben sie geeignete Dokumente vorzulegen, die ihre Erbenqualität ausweisen; andernfalls fallen sie beim Erbgang ausser Betracht. &lt;br />Publikation nach ZGB Art. 555 und 558 Abs. 2.</legalRemedy>
+  <cantons>BE</cantons>
+  <repeatedPublications>
+    <publicationDate>2025-12-10</publicationDate>
+    <publicationNumber>TE-BE20-0000000118</publicationNumber>
+  </repeatedPublications>
+  <repeatedPublications>
+    <publicationDate>2025-12-17</publicationDate>
+    <publicationNumber>TE-BE20-0000000119</publicationNumber>
+  </repeatedPublications>
+  <title>
+    <de>Erbenaufruf Helene Minna Christel Murri, Langnau im Emmental</de>
+    <en>Erbenaufruf Helene Minna Christel Murri, Langnau im Emmental</en>
+    <it>Erbenaufruf Helene Minna Christel Murri, Langnau im Emmental</it>
+    <fr>Appel aux héritiers Helene Minna Christel Murri, Langnau im Emmental</fr>
+  </title>
+</meta>
+<content>
+  <localization>
+    <municipalityId>
+      <key>902</key>
+      <term>
+        <de>Langnau im Emmental</de>
+        <fr>Langnau im Emmental</fr>
+      </term>
+    </municipalityId>
+  </localization>
+  <testator>
+    <prename>Helene Minna Christel</prename>
+    <name>Murri</name>
+    <countryOfOrigin>
+      <name>
+        <de>Schweiz</de>
+        <fr>Suisse</fr>
+        <it>Svizzera</it>
+        <en>Switzerland</en>
+      </name>
+      <isoCode>CH</isoCode>
+    </countryOfOrigin>
+    <placeOfOrigin>Köniz</placeOfOrigin>
+    <dateOfBirth>1936-11-30</dateOfBirth>
+    <bornIn>Deutschland, Naugard, Daber</bornIn>
+    <informationAboutDeath>
+      <selectType>dateOfDeath</selectType>
+    </informationAboutDeath>
+    <dateOfDeath>2025-01-25</dateOfDeath>
+    <residence>
+      <selectType>switzerland</selectType>
+    </residence>
+    <addressSwitzerland>
+      <swissZipCode>3550</swissZipCode>
+      <town>Langnau im Emmental</town>
+    </addressSwitzerland>
+  </testator>
+  <callInheritance>&lt;p>An die unbekannten Erben der Verstorbenen ergeht ein Erbenruf gemäss Artikel 555 ZGB. Gesucht werden insbesondere allfällige unbekannte Nachkommen der Erblasserin und die Eltern der Erblasserin, Frau Minna Berta Auguste Krüger und Herr Hermann Friedrich Karl Krüger, und deren Nachkommen.&lt;/p></callInheritance>
+  <additionalLegalRemedy>Sachdienliche Hinweise Dritter sind ebenfalls an Notar Roger Messerli zu richten.</additionalLegalRemedy>
+  <monthsAfterPublication>12</monthsAfterPublication>
+  <entryDeadline>2026-12-10</entryDeadline>
+  <registrationOffice>Notar Roger Messerli
+Dorfstrasse 19 
+3534 Signau</registrationOffice>
+</content>
+</TE-BE20:publication>
