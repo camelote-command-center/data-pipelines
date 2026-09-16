@@ -1,0 +1,27 @@
+[
+  {
+    "name": "boverattes-plan",
+    "url": "https://www.pully.ch/media/bsopnird/44_ppa_boverattes_plan2.pdf",
+    "sha256": "a12f4189a86bb2703e7e9ef8c6f9b04c7523b3ba91d0346a15011ac993e29a97",
+    "bytes": 34972609,
+    "pages": 1,
+    "classification": "adjacent_detailed_plan_not_PDCom",
+    "checked_at": "2026-09-16T13:50:00.513880+00:00"
+  },
+  {
+    "name": "boverattes-reglement",
+    "url": "https://www.pully.ch/media/3vinyna5/44_ppa_boverattes_règlement.pdf",
+    "sha256": "931ab660f1ed5fdc7dff042eeb646298f9f57097280efcceaad1e2f8a8f9bf18",
+    "bytes": 265467,
+    "pages": 11,
+    "classification": "adjacent_detailed_plan_not_PDCom",
+    "checked_at": "2026-09-16T13:50:01.094929+00:00"
+  },
+  {
+    "name": "logements-communaux",
+    "url": "https://www.pully.ch/pully-pratique/affaires-sociales/logements-communaux",
+    "final_url": "https://www.pully.ch/pully-pratique/affaires-sociales/logements-communaux",
+    "sha256": "f0b921b1390d612d02cd3638ed00bdf6ffdacf6fd15afed8aa4abe7269de0bac",
+    "checked_at": "2026-09-16T13:50:01.589236+00:00"
+  }
+]

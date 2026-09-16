@@ -1,0 +1,149 @@
+{
+  "files": [
+    {
+      "file": "adjacent-sources.json",
+      "sha256": "b092e5a9c23bad8e3a38750b55e5ac28c8c8ea10a18152e7a7b002a140d30ef2",
+      "bytes": 1073
+    },
+    {
+      "file": "boverattes-approval.png",
+      "sha256": "ef98fa3723d8463f09a08d5c192c30cce360594744e40a57dbc999e73c9f4c6b",
+      "bytes": 1338165
+    },
+    {
+      "file": "boverattes-context.json",
+      "sha256": "7dd4676d424c1c4b4913f834afacbf5eeb88f779ca47dc867f91491a68e5a8d1",
+      "bytes": 4406
+    },
+    {
+      "file": "boverattes-plan-1.png",
+      "sha256": "ec3e61915527915fefd848ca9b2fe754ffe70189022ffaad9d35ef41e31ec71d",
+      "bytes": 2253639
+    },
+    {
+      "file": "boverattes-plan-text.txt",
+      "sha256": "098f4ed6923c9407758a292efbf81eb2d71e60b307a4173df143eb24f53575e6",
+      "bytes": 11
+    },
+    {
+      "file": "boverattes-plan.pdf",
+      "sha256": "a12f4189a86bb2703e7e9ef8c6f9b04c7523b3ba91d0346a15011ac993e29a97",
+      "bytes": 34972609
+    },
+    {
+      "file": "boverattes-reglement-1.png",
+      "sha256": "df4a500709c8666ba261b27bb935e28696b82b8b3b0ace0891f69caf4104be67",
+      "bytes": 517414
+    },
+    {
+      "file": "boverattes-reglement-10.png",
+      "sha256": "afeac068b22969171df5283b5fdc0cae2b1042b20f4324f27726084363cfd627",
+      "bytes": 387470
+    },
+    {
+      "file": "boverattes-reglement-11.png",
+      "sha256": "c1608d93ce59cbf72525f99ad816beff73b13c9dc46aa122d72ffe34dd345a4f",
+      "bytes": 259726
+    },
+    {
+      "file": "boverattes-reglement-5.png",
+      "sha256": "d18d7d9b5433b43108326659e0dda60e73dd7b0b58ed4a5f8d134b252a6a7d07",
+      "bytes": 368328
+    },
+    {
+      "file": "boverattes-reglement-contact.png",
+      "sha256": "f98c6ebd77fba9cb3ec621738d1ac66e17f180bd356582d6de10f18a9744f2b2",
+      "bytes": 502065
+    },
+    {
+      "file": "boverattes-reglement-text.txt",
+      "sha256": "c57f4da810079b32cec67422e790d86a3527da24e642ce867c0c6bb7b3ce29a5",
+      "bytes": 143
+    },
+    {
+      "file": "boverattes-reglement.pdf",
+      "sha256": "931ab660f1ed5fdc7dff042eeb646298f9f57097280efcceaad1e2f8a8f9bf18",
+      "bytes": 265467
+    },
+    {
+      "file": "legend-37.png",
+      "sha256": "bfbb0bebe5bd8bb98fa4c9282ce62b9fb75ea51b65dac17b2828e2342d042720",
+      "bytes": 199292
+    },
+    {
+      "file": "legend-53.png",
+      "sha256": "98f2559ae24576760e4cc8a5895d23fe73d8d1a493e8a7b064289696f1cabd1f",
+      "bytes": 146821
+    },
+    {
+      "file": "logements-communaux.html",
+      "sha256": "f0b921b1390d612d02cd3638ed00bdf6ffdacf6fd15afed8aa4abe7269de0bac",
+      "bytes": 427771
+    },
+    {
+      "file": "logements-communaux.txt",
+      "sha256": "98aec189438b2a099b0999f4ff61d904ab0b51722cd1b1f5cb7bffbbdf6eab46",
+      "bytes": 3839
+    },
+    {
+      "file": "page-24.png",
+      "sha256": "77212a375fb6f897430430806129ef1f32a43f74317974b9f185d7d30db9c6d2",
+      "bytes": 683830
+    },
+    {
+      "file": "page-25.png",
+      "sha256": "6c227e0d6f736b44375ebd999b26f35e6a0b6c628d83d93dd343d7c6f168ec04",
+      "bytes": 584493
+    },
+    {
+      "file": "page-34.png",
+      "sha256": "cb76727dd1abfc091ddbff8bfd737364aed2a8d75772e034494609a79b000290",
+      "bytes": 509830
+    },
+    {
+      "file": "page-35.png",
+      "sha256": "974fd63daef2008de1d3f17d5eeef16ab3b4a468eef6e6a5b91519258a8b3f73",
+      "bytes": 450491
+    },
+    {
+      "file": "page-44.png",
+      "sha256": "06e11fdb38cc591acc890a6736322f12af9adc0dae43e2839f0da3c271e79cd9",
+      "bytes": 738980
+    },
+    {
+      "file": "page-45.png",
+      "sha256": "0d5ac981f565c1fc6c6436313420955d67d161a227c2aef1972e0ca7a543f2d4",
+      "bytes": 717729
+    },
+    {
+      "file": "page-50.png",
+      "sha256": "dcfb82a276797acd66258f0ce1d2aa7cc36e791512d8d426ec2707163d4f15e9",
+      "bytes": 800075
+    },
+    {
+      "file": "page-51.png",
+      "sha256": "b2f22abcbc0b240bc68d14798b75a55461e440672acbb766c537ce59c617bf8c",
+      "bytes": 723858
+    },
+    {
+      "file": "semantics.json",
+      "sha256": "f33972519097e1df75633f1f3b1ef5943cd3d761404b2a16a8ad63b94781854a",
+      "bytes": 20017
+    },
+    {
+      "file": "special-plans-receipt.json",
+      "sha256": "d4ef1b410c6d68294676170ab72abb2c831d08ffe2453f6df34479f7ca17cdd1",
+      "bytes": 338
+    },
+    {
+      "file": "special-plans.html",
+      "sha256": "44d55c55110a49f6f8c7936bb6165302cec910ec273916853b36bab029dfe262",
+      "bytes": 633290
+    },
+    {
+      "file": "special-plans.txt",
+      "sha256": "3104cae5a410f352808dd78bfde41c663aeb47486ccd6758304424a7ac7c42ca",
+      "bytes": 4681
+    }
+  ]
+}

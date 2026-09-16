@@ -1,0 +1,100 @@
+{
+  "reviewed_at": "2026-09-16",
+  "relationship": "Later detailed planning and implementation context for the historical Boverattes attention area on PDCom PDF42. The spatial equivalence of complete perimeters has not been established.",
+  "source_files": [
+    {
+      "name": "boverattes-plan",
+      "url": "https://www.pully.ch/media/bsopnird/44_ppa_boverattes_plan2.pdf",
+      "sha256": "a12f4189a86bb2703e7e9ef8c6f9b04c7523b3ba91d0346a15011ac993e29a97",
+      "bytes": 34972609,
+      "pages": 1,
+      "classification": "adjacent_detailed_plan_not_PDCom",
+      "checked_at": "2026-09-16T13:50:00.513880+00:00"
+    },
+    {
+      "name": "boverattes-reglement",
+      "url": "https://www.pully.ch/media/3vinyna5/44_ppa_boverattes_règlement.pdf",
+      "sha256": "931ab660f1ed5fdc7dff042eeb646298f9f57097280efcceaad1e2f8a8f9bf18",
+      "bytes": 265467,
+      "pages": 11,
+      "classification": "adjacent_detailed_plan_not_PDCom",
+      "checked_at": "2026-09-16T13:50:01.094929+00:00"
+    },
+    {
+      "name": "logements-communaux",
+      "url": "https://www.pully.ch/pully-pratique/affaires-sociales/logements-communaux",
+      "final_url": "https://www.pully.ch/pully-pratique/affaires-sociales/logements-communaux",
+      "sha256": "f0b921b1390d612d02cd3638ed00bdf6ffdacf6fd15afed8aa4abe7269de0bac",
+      "checked_at": "2026-09-16T13:50:01.589236+00:00"
+    }
+  ],
+  "ppa_approval": {
+    "map_pdf_page": 1,
+    "map_crop": "boverattes-approval.png",
+    "council_adoption_date": "2007-11-14",
+    "department_preliminary_approval_date": "2009-10-19",
+    "entry_into_force_date": "2010-12-14",
+    "evidence": "Dates visually read from the signed/stamped certified-conformity plan copy; the 2005/2006 preparation dates are not the entry-into-force date."
+  },
+  "historical_parcel_scope": {
+    "reglement_pdf_page": 5,
+    "article": 4,
+    "numbers": [
+      1738,
+      1743,
+      1744,
+      1755,
+      1756,
+      2034,
+      3420,
+      3421
+    ],
+    "current_identity_verified": false,
+    "egrids_resolved": false
+  },
+  "unresolved_director_plan": {
+    "reglement_pdf_page": 5,
+    "article": 2,
+    "name": "Plan directeur localisé Boverattes",
+    "status": "Referenced by PPA; exact adopted document not acquired. The PPA map is not a replacement for that PDL."
+  },
+  "alternative_use_gate": {
+    "reglement_pdf_page": 10,
+    "article": 37,
+    "options": [
+      "public_utility",
+      "housing_and_compatible_activities"
+    ],
+    "summary": "Areas 1 and 2 allow different use choices illustrated in separate diagrams. The source requires municipal choice to be published in the cantonal official notices and communicated to owners. The applicable choice/publication is not verified. Do not add capacities or footprints from the alternative diagrams together."
+  },
+  "open_space_gate": {
+    "reglement_pdf_page": 10,
+    "articles": [
+      33,
+      36
+    ],
+    "summary": "The source describes access and setback/open-space areas as non-buildable with specified ancillary uses. The entire PPA perimeter is not a net development footprint."
+  },
+  "implementation_evidence": {
+    "url": "https://www.pully.ch/pully-pratique/affaires-sociales/logements-communaux",
+    "local_file": "logements-communaux.html",
+    "summary": "Current municipal housing page reports 35 adapted dwellings in the Boverattes neighbourhood that opened in November2020. This establishes material implementation after1996, not that every original PPA parcel/option is fully built or that no residual potential exists.",
+    "date_of_reported_event": "2020-11",
+    "parcel_assignment_verified": false
+  },
+  "failed_source_attempts": [
+    {
+      "url": "https://www.pully.ch/media/91616/pr%C3%A9avis-17-2007.pdf",
+      "http_status": 404,
+      "checked_at": "2026-09-16T13:54:05.203565+00:00",
+      "context": "Search-index lead to historical municipal proposal; direct approved downloader returned404. No adopted PDL bytes acquired from this route."
+    }
+  ],
+  "classification": "adjacent_research_only_not_new_PDCom_coverage",
+  "receiver_release": "not_ready",
+  "next": [
+    "Acquire the exact adopted PDL referenced by the PPA.",
+    "Verify later changes, option-selection publication and current cadastral/building situation before computing residual capacity.",
+    "Do not map the historical eight parcel numbers to current EGRIDs without identity checks."
+  ]
+}
