@@ -1,0 +1,42 @@
+[
+  {
+    "name": "pga-zones",
+    "title": "Plan de zones PGA Yvonand_déf",
+    "url": "https://yvonand.ch/wp-content/uploads/2026/05/Plan-de-zones-PGA-Yvonand_def.pdf",
+    "landing_url": "https://yvonand.ch/vie-politique/reglements-et-tarifs/police-des-constructions/",
+    "sha256": "d475e9bac9898244822fa7fd3cd1694e9b670c960a1f40adf4aca65aba3bc828",
+    "page_count": 1,
+    "native_chars": 0,
+    "acquired_at": "2026-09-16T20:58:34.331680+00:00"
+  },
+  {
+    "name": "pacom-regulation",
+    "title": "YVONAND_PACom_Règlement_ENQ",
+    "url": "https://yvonand.ch/wp-content/uploads/2026/04/YVONAND_PACom_Règlement_ENQ.pdf",
+    "landing_url": "https://yvonand.ch/vie-politique/reglements-et-tarifs/police-des-constructions/",
+    "sha256": "77e39fc9865c9f02a43a1810fad1a7c86c89ab8f3bae2a91bb87d39218f59bd9",
+    "page_count": 59,
+    "native_chars": 109874,
+    "acquired_at": "2026-09-16T20:58:35.173236+00:00"
+  },
+  {
+    "name": "pacom-5000",
+    "title": "YVONAND_PACom_5000_ENQ_light",
+    "url": "https://yvonand.ch/wp-content/uploads/2026/04/YVONAND_PACom_5000_ENQ_light.pdf",
+    "landing_url": "https://yvonand.ch/vie-politique/reglements-et-tarifs/police-des-constructions/",
+    "sha256": "fdd457782cda86c0dc07b83e3bccc7972d7ca017061f79ff3b449aa509e0501a",
+    "page_count": 1,
+    "native_chars": 0,
+    "acquired_at": "2026-09-16T20:58:35.422303+00:00"
+  },
+  {
+    "name": "pacom-2000",
+    "title": "YVONAND_PACom_2000_ENQ_light",
+    "url": "https://yvonand.ch/wp-content/uploads/2026/04/YVONAND_PACom_2000_ENQ_light.pdf",
+    "landing_url": "https://yvonand.ch/vie-politique/reglements-et-tarifs/police-des-constructions/",
+    "sha256": "dbfca614f311db07dec7e1a2169538040e398cac5868a622a683bbf0f1c500d3",
+    "page_count": 1,
+    "native_chars": 0,
+    "acquired_at": "2026-09-16T20:58:36.264094+00:00"
+  }
+]

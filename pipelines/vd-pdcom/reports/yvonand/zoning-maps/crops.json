@@ -1,0 +1,62 @@
+[
+  {
+    "source": "pacom-2000",
+    "page_number": 1,
+    "crop_points": [
+      0.0,
+      0.0,
+      615.5160000000001,
+      862.2900000000001
+    ],
+    "scale": 1.5,
+    "file": "pacom-approval.png"
+  },
+  {
+    "source": "pga-zones",
+    "page_number": 1,
+    "crop_points": [
+      2978.4449999999997,
+      1712.4750000000001,
+      3567.0,
+      2537.0
+    ],
+    "scale": 1.5,
+    "file": "pga-approval.png"
+  },
+  {
+    "source": "pacom-2000",
+    "page_number": 1,
+    "crop_points": [
+      862.655,
+      579.15,
+      1972.4489999999998,
+      900.9
+    ],
+    "scale": 1.5,
+    "file": "mordagne-scope.png"
+  },
+  {
+    "source": "pacom-2000",
+    "page_number": 1,
+    "crop_points": [
+      0,
+      860,
+      660,
+      1550
+    ],
+    "scale": 2,
+    "file": "pacom-legend.png"
+  },
+  {
+    "source": "pacom-5000",
+    "page_number": 1,
+    "crop_points": [
+      0,
+      0,
+      610,
+      1020
+    ],
+    "scale": 1.6,
+    "file": "pacom-5000-detail.png"
+  }
+]

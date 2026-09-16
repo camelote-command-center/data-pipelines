@@ -1,0 +1,27 @@
+{
+  "source_document_id": "b8fc92d6-c4a6-5a3c-8fee-dfa2b11de848",
+  "source_sha256": "d4fecb86752e2f2cb2c3359e835e9555694979b88288bb50795080ec349a1a2b",
+  "adjacent_source_count": 4,
+  "adjacent_pdf_pages": 62,
+  "new_pdcom_documents": 0,
+  "pga_approval_date": "1977-07-13",
+  "pacom_status": "inquiry_version; subsequent approval not established",
+  "mordagne": {
+    "parcel": "326",
+    "eastern_part": "ACA B proposed economic activities zone",
+    "western_part": "white; separated by red dashed boundary",
+    "legend_2000": "Périmètre des plans d’affectation légalisés",
+    "legend_5000": "Périmètre du plan d’affectation communal",
+    "boundary_warning": "Different literal legends. Do not silently equate their red boundaries or infer legal status from map colour.",
+    "historical_contour_area_m2": 43214,
+    "proposal_area_from_report_m2": 32499,
+    "area_warning": "Report area, not a measurement of these newly acquired maps."
+  },
+  "release": "not_ready",
+  "next": [
+    "Acquire separate Mortaigue plan and applicable approval decisions",
+    "Recover revised PDCom and old Mordagne plan geometry",
+    "Resolve thematic envelopes independently of cadastral contours",
+    "Georeference each inset independently before intersection"
+  ]
+}
