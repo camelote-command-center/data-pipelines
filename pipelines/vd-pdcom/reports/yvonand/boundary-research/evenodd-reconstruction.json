@@ -1,0 +1,267 @@
+{
+  "source_sha256": "d4fecb86752e2f2cb2c3359e835e9555694979b88288bb50795080ec349a1a2b",
+  "source_document_id": "b8fc92d6-c4a6-5a3c-8fee-dfa2b11de848",
+  "page_number": 1,
+  "reconstructions": [
+    {
+      "drawing_index": 41,
+      "paint_color": "purple",
+      "source_even_odd": true,
+      "method": "node original segments; polygonize; retain faces with odd ray crossings. No snapping, buffering or vertex displacement.",
+      "faces": 2,
+      "retained_faces": 2,
+      "area_pdf_points2": 8112.188851470712,
+      "zero_interior_raster_differences": true,
+      "raster_scale": 12,
+      "boundary_pixel_differences": 37,
+      "geometry_pdf_display_points": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                849.8350232594933,
+                1410.69653464657
+              ],
+              [
+                875.0400390625,
+                1429.2000732421875
+              ],
+              [
+                893.4600830078125,
+                1442.820068359375
+              ],
+              [
+                897.9600830078125,
+                1443.1199951171875
+              ],
+              [
+                954.1199951171875,
+                1412.4600830078125
+              ],
+              [
+                963.780029296875,
+                1406.820068359375
+              ],
+              [
+                973.080078125,
+                1400.280029296875
+              ],
+              [
+                981.9000244140625,
+                1393.5
+              ],
+              [
+                984.1800537109375,
+                1391.52001953125
+              ],
+              [
+                984.1800537109375,
+                1387.800048828125
+              ],
+              [
+                947.0400390625,
+                1359.47998046875
+              ],
+              [
+                927.780029296875,
+                1344.719970703125
+              ],
+              [
+                905.340087890625,
+                1326.9000244140625
+              ],
+              [
+                895.4400634765625,
+                1340.4600830078125
+              ],
+              [
+                887.52001953125,
+                1352.6400146484375
+              ],
+              [
+                872.760009765625,
+                1375.320068359375
+              ],
+              [
+                865.3800048828125,
+                1386.9600830078125
+              ],
+              [
+                858.0,
+                1398.300048828125
+              ],
+              [
+                849.8350232594933,
+                1410.69653464657
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                849.8350232594933,
+                1410.69653464657
+              ],
+              [
+                849.5400390625,
+                1410.47998046875
+              ],
+              [
+                849.780029296875,
+                1410.780029296875
+              ],
+              [
+                849.8350232594933,
+                1410.69653464657
+              ]
+            ]
+          ]
+        ]
+      },
+      "semantic_status": "paint representation only; not a sector boundary"
+    },
+    {
+      "drawing_index": 737,
+      "paint_color": "orange",
+      "source_even_odd": true,
+      "method": "node original segments; polygonize; retain faces with odd ray crossings. No snapping, buffering or vertex displacement.",
+      "faces": 1,
+      "retained_faces": 1,
+      "area_pdf_points2": 32.011630810797215,
+      "zero_interior_raster_differences": true,
+      "raster_scale": 12,
+      "boundary_pixel_differences": 1024,
+      "geometry_pdf_display_points": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1701.5999755859375,
+              1072.8599853515625
+            ],
+            [
+              1673.5199584960938,
+              1072.8599853515625
+            ],
+            [
+              1703.8799438476562,
+              1075.1400146484375
+            ],
+            [
+              1701.5999755859375,
+              1072.8599853515625
+            ]
+          ]
+        ]
+      },
+      "semantic_status": "paint representation only; not a sector boundary"
+    },
+    {
+      "drawing_index": 783,
+      "paint_color": "yellow",
+      "source_even_odd": true,
+      "method": "node original segments; polygonize; retain faces with odd ray crossings. No snapping, buffering or vertex displacement.",
+      "faces": 2,
+      "retained_faces": 2,
+      "area_pdf_points2": 170.6761993047403,
+      "zero_interior_raster_differences": true,
+      "raster_scale": 12,
+      "boundary_pixel_differences": 23,
+      "geometry_pdf_display_points": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                1900.3200378417969,
+                1050.47998046875
+              ],
+              [
+                1905.4200439453125,
+                1045.0799560546875
+              ],
+              [
+                1874.2200317382812,
+                1045.0799560546875
+              ],
+              [
+                1868.3085112757467,
+                1050.47998046875
+              ],
+              [
+                1900.3200378417969,
+                1050.47998046875
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                1868.280029296875,
+                1050.47998046875
+              ],
+              [
+                1867.9800415039062,
+                1050.780029296875
+              ],
+              [
+                1868.3085112757467,
+                1050.47998046875
+              ],
+              [
+                1868.280029296875,
+                1050.47998046875
+              ]
+            ]
+          ]
+        ]
+      },
+      "semantic_status": "paint representation only; not a sector boundary"
+    },
+    {
+      "drawing_index": 915,
+      "paint_color": "orange",
+      "source_even_odd": true,
+      "method": "node original segments; polygonize; retain faces with odd ray crossings. No snapping, buffering or vertex displacement.",
+      "faces": 1,
+      "retained_faces": 1,
+      "area_pdf_points2": 474.52959488518536,
+      "zero_interior_raster_differences": true,
+      "raster_scale": 12,
+      "boundary_pixel_differences": 4,
+      "geometry_pdf_display_points": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              1845.300048828125,
+              921.239990234375
+            ],
+            [
+              1926.6600341796875,
+              921.239990234375
+            ],
+            [
+              1929.5400390625,
+              919.5599975585938
+            ],
+            [
+              1936.0200500488281,
+              915.5399780273438
+            ],
+            [
+              1851.0000610351562,
+              915.5399780273438
+            ],
+            [
+              1845.300048828125,
+              921.239990234375
+            ]
+          ]
+        ]
+      },
+      "semantic_status": "paint representation only; not a sector boundary"
+    }
+  ]
+}
