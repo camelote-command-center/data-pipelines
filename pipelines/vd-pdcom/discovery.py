@@ -23,8 +23,8 @@ from psycopg2.extras import Json, RealDictCursor
 import requests
 
 DIRECTORY = 'https://www.ucv.ch/annuaire/recherche-par-localite'
-PLAN = re.compile(r'pdcom|plan[s]?[-_ /]+directeur[s]?[-_ /]+communal', re.I)
-NAV = re.compile(r'urbanis|amenagement|planific|plan[-_ ]directeur|pdcom|territoire|reglement|documents|construction', re.I)
+PLAN = re.compile(r'pdcom|plan[s]?[-_ /]+directeur[s]?[-_ /]+communal|dossier[-_ /]+directeur', re.I)
+NAV = re.compile(r'urbanis|amenagement|planific|plan[-_ ]directeur|dossier[-_ ]directeur|pdcom|territoire|reglement|documents|construction', re.I)
 
 
 def normalize(value):

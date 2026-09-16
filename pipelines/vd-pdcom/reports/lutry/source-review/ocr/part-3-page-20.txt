@@ -1,0 +1,62 @@
+8t
+
+GLOSSAIRE D'ABREVIATIONS
+
+BATSOL Bateaux solaires
+
+CGN Compagnie générale de navigation
+
+COREL Communes de la région lausannoise
+
+cos Coefficient d'occupation du sol (surface du bâtiment au sol/surface de la parcelle)
+CUS Coelficient d'utilisation du sol (surface brute des planchers/surface de la parcelle)
+DI Département des infrastructures
+
+DTPAT Département des travaux publics et de l'aménagement du territoire (ancienne dénomination)
+DVC Droit vaudois de la construction
+
+EMS Etablissement médico-social
+
+IFP Inventaire fédéral des paysages, sites et monuments naturels d'importance nationale
+IS0S Inventaire fédéral des sites construits à protéger en Suisse
+
+IVS Inventaire fédéral des voies hisloriques en Suisse
+
+LAT Loi fédérale sur l'aménagement du térriloire
+
+LATC Loi cantonale sur l'aménagement du territoire et les constructions
+
+LPPL Loi sur le plan de protection de Lavaux
+
+OAT Ordonnance fédérale sur l'aménagement du territoire
+
+OPB Ordonnance fédérale sur la protection contre le bruit
+
+P&R Park and ride (parking d'échange: parquer la voiture et continuer en transport public)
+PD Plan directeur
+
+PGA Plan générale d'affectation
+
+PPA Plan partiel d'affectation
+
+PQ Plan de quartier
+
+RATC Règlement d'application de la loi cantonale sur l'aménagement du territoire
+
+RC Route cantonale
+
+SAT Service de l'aménagement du territoire de l'Etat de Vaud
+
+SI Services industriels communaux
+
+TFV Service communal des travaux, des domaines foreslier et viticole
+
+TJM Trafic journalier moyen
+
+TL Transports lausannois
+
+TMI Transport motorisé individuel
+
+TVR Transport en voie réservée
+
+UPC Service de l'urbanisme et de la police des constructions

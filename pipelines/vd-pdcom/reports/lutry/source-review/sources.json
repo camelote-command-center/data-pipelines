@@ -1,0 +1,26 @@
+[
+  {
+    "part": 1,
+    "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_1.pdf",
+    "sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+    "page_count": 44,
+    "bytes": 2915747,
+    "document_id": "70c36475-3e92-580b-92ac-5be498c8fa29"
+  },
+  {
+    "part": 2,
+    "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_2.pdf",
+    "sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+    "page_count": 21,
+    "bytes": 2930925,
+    "document_id": "1146a4f0-9281-5fb9-80c8-462a710229db"
+  },
+  {
+    "part": 3,
+    "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+    "sha256": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+    "page_count": 21,
+    "bytes": 3135641,
+    "document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1"
+  }
+]
