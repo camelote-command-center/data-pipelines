@@ -1,0 +1,91 @@
+{
+  "source_pdf_page": 18,
+  "display_image": "../cadastral-controls/villa-louise-page18.png",
+  "display_image_sha256": "e5cc2b39b058fa07b0399cf968afd44c3bacc6a11a90f45ab15cf4806c430459",
+  "render": "PyMuPDF2x, page rotation applied",
+  "coordinate_system": "display-image pixels, top-left origin",
+  "selection": "Manual visual landmarks and roles recorded before fitting; no snapping, nearest-neighbor matching or post-fit control adjustment",
+  "model": "four-parameter similarity with reflection for pixel-y direction",
+  "control_identity_status": "Visual candidates, not independently surveyed historical stability",
+  "controls": [
+    {
+      "id": "T1",
+      "role": "train",
+      "pixel": [
+        1432,
+        598
+      ],
+      "lv95": [
+        2561012.519,
+        1140069.061
+      ],
+      "reference": "building EGID841451/OBJECTID46315544 ring0 vertex19; uppermost main corner"
+    },
+    {
+      "id": "T2",
+      "role": "train",
+      "pixel": [
+        1390,
+        643
+      ],
+      "lv95": [
+        2560991.724,
+        1140088.707
+      ],
+      "reference": "same building ring0 vertex14; leftmost main corner"
+    },
+    {
+      "id": "T3",
+      "role": "train",
+      "pixel": [
+        1408,
+        670
+      ],
+      "lv95": [
+        2560980.184,
+        1140078.807
+      ],
+      "reference": "same building ring0 vertex13; lowest main corner"
+    },
+    {
+      "id": "C1",
+      "role": "check",
+      "pixel": [
+        1190,
+        582
+      ],
+      "lv95": [
+        2561020.894,
+        1140174.816
+      ],
+      "reference": "DP11 OBJECTID52058008 ring0 vertex14; west bank at upper road junction; historical stability unverified"
+    },
+    {
+      "id": "C2",
+      "role": "check",
+      "pixel": [
+        1198,
+        725
+      ],
+      "lv95": [
+        2560958.865,
+        1140169.048
+      ],
+      "reference": "DP11 same object ring0 vertex0; east bank at lower road junction; historical stability unverified"
+    },
+    {
+      "id": "C3",
+      "role": "check",
+      "pixel": [
+        1460,
+        626
+      ],
+      "lv95": [
+        2560999.133,
+        1140056.116
+      ],
+      "reference": "building EGID841451 ring0 vertex28; rightmost protrusion, manual interpretation uncertain"
+    }
+  ],
+  "release": false
+}
