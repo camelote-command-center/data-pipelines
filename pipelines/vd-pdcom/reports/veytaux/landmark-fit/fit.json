@@ -1,0 +1,166 @@
+{
+  "matrix": [
+    [
+      0.011623089982260906,
+      -0.4539436898694519
+    ],
+    [
+      -0.4539436898694519,
+      -0.011623089982260906
+    ]
+  ],
+  "translation": [
+    2561267.5825735717,
+    1140726.322844368
+  ],
+  "metres_per_pixel": 0.4540924683288954,
+  "controls_sha256": "88c464de429fccb58c386b6352afd43c61578e2be82b1cd2b84a526a2d6ae1a6",
+  "results": [
+    {
+      "id": "T1",
+      "role": "train",
+      "pixel": [
+        1432,
+        598
+      ],
+      "lv95": [
+        2561012.519,
+        1140069.061
+      ],
+      "reference": "building EGID841451/OBJECTID46315544 ring0 vertex19; uppermost main corner",
+      "predicted_lv95": [
+        2561012.7685118844,
+        1140069.3248726656
+      ],
+      "delta_m": [
+        0.24951188452541828,
+        0.26387266558595
+      ],
+      "error_m": 0.36315969512441804
+    },
+    {
+      "id": "T2",
+      "role": "train",
+      "pixel": [
+        1390,
+        643
+      ],
+      "lv95": [
+        2560991.724,
+        1140088.707
+      ],
+      "reference": "same building ring0 vertex14; leftmost main corner",
+      "predicted_lv95": [
+        2560991.852876061,
+        1140087.8674685908
+      ],
+      "delta_m": [
+        0.12887606117874384,
+        -0.8395314090885222
+      ],
+      "error_m": 0.8493656609441582
+    },
+    {
+      "id": "T3",
+      "role": "train",
+      "pixel": [
+        1408,
+        670
+      ],
+      "lv95": [
+        2560980.184,
+        1140078.807
+      ],
+      "reference": "same building ring0 vertex13; lowest main corner",
+      "predicted_lv95": [
+        2560979.805612054,
+        1140079.3826587435
+      ],
+      "delta_m": [
+        -0.3783879457041621,
+        0.5756587435025722
+      ],
+      "error_m": 0.6888834636026446
+    },
+    {
+      "id": "C1",
+      "role": "check",
+      "pixel": [
+        1190,
+        582
+      ],
+      "lv95": [
+        2561020.894,
+        1140174.816
+      ],
+      "reference": "DP11 OBJECTID52058008 ring0 vertex14; west bank at upper road junction; historical stability unverified",
+      "predicted_lv95": [
+        2561017.2188231465,
+        1140179.3652150535
+      ],
+      "delta_m": [
+        -3.675176853314042,
+        4.549215053441003
+      ],
+      "error_m": 5.8482717537396915
+    },
+    {
+      "id": "C2",
+      "role": "check",
+      "pixel": [
+        1198,
+        725
+      ],
+      "lv95": [
+        2560958.865,
+        1140169.048
+      ],
+      "reference": "DP11 same object ring0 vertex0; east bank at lower road junction; historical stability unverified",
+      "predicted_lv95": [
+        2560952.397860215,
+        1140174.0715636672
+      ],
+      "delta_m": [
+        -6.467139785178006,
+        5.023563667200506
+      ],
+      "error_m": 8.189022464216912
+    },
+    {
+      "id": "C3",
+      "role": "check",
+      "pixel": [
+        1460,
+        626
+      ],
+      "lv95": [
+        2560999.133,
+        1140056.116
+      ],
+      "reference": "building EGID841451 ring0 vertex28; rightmost protrusion, manual interpretation uncertain",
+      "predicted_lv95": [
+        2561000.3835350876,
+        1140056.2890028297
+      ],
+      "delta_m": [
+        1.250535087659955,
+        0.1730028297752142
+      ],
+      "error_m": 1.262445240229818
+    }
+  ],
+  "train": {
+    "n": 3,
+    "rmse_m": 0.6652987841511869,
+    "max_m": 0.8493656609441582,
+    "within5m": 3
+  },
+  "check": {
+    "n": 3,
+    "rmse_m": 5.855371875739908,
+    "max_m": 8.189022464216912,
+    "within5m": 1
+  },
+  "interpretation": "Exploratory visual-candidate fit; narrow one-building training footprint, two external stream/road checks and one same-building check. Historical feature stability and independent ground accuracy not established. No control adjustment after fit.",
+  "receiver_release": false
+}

@@ -1,0 +1,60 @@
+{
+  "source_page": 18,
+  "coordinate_system": "display pixels in ../cadastral-controls/villa-louise-page18.png",
+  "label": "Villa Louise \u2014 p\u00e9rim\u00e8tre de la zone interm\u00e9diaire",
+  "method": "manual line-centre trace of historical black dashed boundary, visually refined at bends; not current developable area",
+  "ring": [
+    [
+      1008,
+      706
+    ],
+    [
+      1068,
+      650
+    ],
+    [
+      1270,
+      532
+    ],
+    [
+      1508,
+      556
+    ],
+    [
+      1554,
+      646
+    ],
+    [
+      1450,
+      665
+    ],
+    [
+      1360,
+      685
+    ],
+    [
+      1270,
+      705
+    ],
+    [
+      1198,
+      726
+    ],
+    [
+      1110,
+      750
+    ],
+    [
+      1075,
+      768
+    ],
+    [
+      1008,
+      706
+    ]
+  ],
+  "area_pixel2": 66696.0,
+  "precision": "Approximately2\u20135display pixels manual reading/line width, not a measured accuracy bound",
+  "geographic_release": false,
+  "reason": "exploratory fit fails external check accuracy; currentness/cadastral continuity also unresolved"
+}
