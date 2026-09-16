@@ -1,0 +1,93 @@
+[
+  {
+    "title": "PDEC 2008 – 1. Rapport de synthèse",
+    "linked_url": "http://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-1.-Rapport-de-synthèse.pdf",
+    "url": "https://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-1.-Rapport-de-synthèse.pdf",
+    "file": "source-1.pdf",
+    "sha256": "5865e49e9ed98a9992a02ed8b9a8dc509bf684c97798d7c26e24764844315ce8",
+    "document_id": "390fd9b3-15e3-5c22-b716-3bfcfa814998",
+    "pages": 53,
+    "native_chars": 60784,
+    "vector_pages": 33,
+    "inspection_file": "inspection-1.json",
+    "candidate_id": "5ccbfa70-ceb1-54be-87e7-b90917bc666f"
+  },
+  {
+    "title": "PDEC 2008 – 2. Objectifs_mesures_actions",
+    "linked_url": "http://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-2.-Objectifs_mesures_actions.pdf",
+    "url": "https://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-2.-Objectifs_mesures_actions.pdf",
+    "file": "source-2.pdf",
+    "sha256": "4b1e3a8a9692494d9981a16e1b912636ede4d12dd8a20048ea052bd80f4b5a7d",
+    "document_id": "121a9d59-239c-5d79-a323-baa06467a789",
+    "pages": 15,
+    "native_chars": 24959,
+    "vector_pages": 15,
+    "inspection_file": "inspection-2.json",
+    "candidate_id": "44c85775-5b99-5e39-b0e5-c3200735597a"
+  },
+  {
+    "title": "PDEC 2008 – 3. Equipements et déplacements – Localité",
+    "linked_url": "http://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-3.-Equipements-et-déplacements-Localité.pdf",
+    "url": "https://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-3.-Equipements-et-déplacements-Localité.pdf",
+    "file": "source-3.pdf",
+    "sha256": "99e1f03d89478b5815b7b0e9ef0d5c5511cbfd4e48d6ee038ad80ac86c8b0559",
+    "document_id": "567600de-dc15-516c-b511-e33fbebce5eb",
+    "pages": 1,
+    "native_chars": 4395,
+    "vector_pages": 1,
+    "inspection_file": "inspection-3.json",
+    "candidate_id": "f15a81ee-cf27-5b7a-b0b8-ea42fecde62c"
+  },
+  {
+    "title": "PDEC 2008 – 4. Equipements et déplacements – Commune",
+    "linked_url": "http://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-4.-Equipements-et-déplacements-Commune.pdf",
+    "url": "https://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-4.-Equipements-et-déplacements-Commune.pdf",
+    "file": "source-4.pdf",
+    "sha256": "92966c0617b30c8ed0a7f97ec7e6b62a94c0f6bd744f928133e57a96925cb7d3",
+    "document_id": "4b9f09bf-a3f4-5578-8b1d-47931fd09ca2",
+    "pages": 1,
+    "native_chars": 6158,
+    "vector_pages": 1,
+    "inspection_file": "inspection-4.json",
+    "candidate_id": "41f00a99-c336-5ed7-8b65-4f4842b247b3"
+  },
+  {
+    "title": "PDEC 2008 – 5. Sites et contraintes – Commune",
+    "linked_url": "http://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-5.-Sites-et-contraintes-Commune.pdf",
+    "url": "https://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-5.-Sites-et-contraintes-Commune.pdf",
+    "file": "source-5.pdf",
+    "sha256": "fc9b35b51f8120f4445131e29b31b48c5b987fc3f32fab3cf1d9301aa9663d5c",
+    "document_id": "df9afa21-6c06-56ee-85fb-bc8004ee01f0",
+    "pages": 1,
+    "native_chars": 7198,
+    "vector_pages": 1,
+    "inspection_file": "inspection-5.json",
+    "candidate_id": "0b30e1c7-72f5-50a3-a93f-4a086dae3256"
+  },
+  {
+    "title": "PDEC 2008 – 6. Urbanisation et affectation – Commune",
+    "linked_url": "http://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-6.-Urbanisation-et-affectation-Commune.pdf",
+    "url": "https://www.yvonand.ch/wp-content/uploads/2019/10/PDEC-2008-6.-Urbanisation-et-affectation-Commune.pdf",
+    "file": "source-6.pdf",
+    "sha256": "3ba6ec847c21dbb092c8093fb6d116b1130ce1577937671342bf0a9f983e212b",
+    "document_id": "50cfaad3-713b-5f8c-a9a2-df0e02719582",
+    "pages": 1,
+    "native_chars": 6013,
+    "vector_pages": 1,
+    "inspection_file": "inspection-6.json",
+    "candidate_id": "c0047fcb-6555-5768-bb3b-91313a50422c"
+  },
+  {
+    "title": "PDEC_2008 – 7. Urbanisation et affectation – Localité",
+    "linked_url": "http://www.yvonand.ch/wp-content/uploads/2019/10/PDEC_2008-7.-Urbanisation-et-affectation-Localité.pdf",
+    "url": "https://www.yvonand.ch/wp-content/uploads/2019/10/PDEC_2008-7.-Urbanisation-et-affectation-Localité.pdf",
+    "file": "source-7.pdf",
+    "sha256": "d4fecb86752e2f2cb2c3359e835e9555694979b88288bb50795080ec349a1a2b",
+    "document_id": "b8fc92d6-c4a6-5a3c-8fee-dfa2b11de848",
+    "pages": 1,
+    "native_chars": 4159,
+    "vector_pages": 1,
+    "inspection_file": "inspection-7.json",
+    "candidate_id": "03949e5c-334b-5616-a586-e9db21e4a4fe"
+  }
+]

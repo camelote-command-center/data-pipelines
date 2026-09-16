@@ -454,5 +454,120 @@
       "date": "1996-03-06",
       "summary": "Transport objectives exclude cantonal master-plan objectives, particularly motorway connections under cantonal responsibility."
     }
+  },
+  {
+    "document_id": "567600de-dc15-516c-b511-e33fbebce5eb",
+    "sha256": "99e1f03d89478b5815b7b0e9ef0d5c5511cbfd4e48d6ee038ad80ac86c8b0559",
+    "commune_bfs": 5939,
+    "reviewed_at": "2026-09-16",
+    "reviewed_by": "Codex / 01a09b0a-7538-7983-8871-5eb6a6541d10",
+    "plan_status": "approved",
+    "approval_evidence_page": 1,
+    "approval_date": "2008-04-02",
+    "municipal_council_adoption_date": "2007-11-12",
+    "scope_limit": "Printed approval block, typed names, no handwritten signature established. 2024/11 municipal notice reports entry into force 2 August 2008 and revision underway; discrepancy with printed April approval is unresolved. Indicative PDCom, not zoning or building rights. Historical cadastre; motorway survey not in force. Current amendments unresolved.",
+    "map_pages": [
+      {
+        "page_number": 1,
+        "theme": "PDEC 2008 – 3. Equipements et déplacements – Localité",
+        "scale_denominator": 10000,
+        "limitations": "Preserve existing/projected legend distinction. Long-term development arrows are not closed parcel polygons. Inventory boundaries indicative; original inventories prevail. Source 3 localite sheet prints 1:10000; do not infer 1:5000 from filename."
+      }
+    ],
+    "geographic_validation": "pending",
+    "receiver_release": "not_ready",
+    "currentness_evidence_url": "https://yvonand.ch/vie-politique/preavis-2/docscc2/listing/preavis-no-2024-11-credit-complementaire-detude-pour-la-revision-du-plan-directeur-communal-pdcom-du-plan-daffectationcommunal-pacom-et-du-reglement-du-plan-daffectation-communal"
+  },
+  {
+    "document_id": "4b9f09bf-a3f4-5578-8b1d-47931fd09ca2",
+    "sha256": "92966c0617b30c8ed0a7f97ec7e6b62a94c0f6bd744f928133e57a96925cb7d3",
+    "commune_bfs": 5939,
+    "reviewed_at": "2026-09-16",
+    "reviewed_by": "Codex / 01a09b0a-7538-7983-8871-5eb6a6541d10",
+    "plan_status": "approved",
+    "approval_evidence_page": 1,
+    "approval_date": "2008-04-02",
+    "municipal_council_adoption_date": "2007-11-12",
+    "scope_limit": "Printed approval block, typed names, no handwritten signature established. 2024/11 municipal notice reports entry into force 2 August 2008 and revision underway; discrepancy with printed April approval is unresolved. Indicative PDCom, not zoning or building rights. Historical cadastre; motorway survey not in force. Current amendments unresolved.",
+    "map_pages": [
+      {
+        "page_number": 1,
+        "theme": "PDEC 2008 – 4. Equipements et déplacements – Commune",
+        "scale_denominator": 10000,
+        "limitations": "Preserve existing/projected legend distinction. Long-term development arrows are not closed parcel polygons. Inventory boundaries indicative; original inventories prevail. Source 3 localite sheet prints 1:10000; do not infer 1:5000 from filename."
+      }
+    ],
+    "geographic_validation": "pending",
+    "receiver_release": "not_ready",
+    "currentness_evidence_url": "https://yvonand.ch/vie-politique/preavis-2/docscc2/listing/preavis-no-2024-11-credit-complementaire-detude-pour-la-revision-du-plan-directeur-communal-pdcom-du-plan-daffectationcommunal-pacom-et-du-reglement-du-plan-daffectation-communal"
+  },
+  {
+    "document_id": "df9afa21-6c06-56ee-85fb-bc8004ee01f0",
+    "sha256": "fc9b35b51f8120f4445131e29b31b48c5b987fc3f32fab3cf1d9301aa9663d5c",
+    "commune_bfs": 5939,
+    "reviewed_at": "2026-09-16",
+    "reviewed_by": "Codex / 01a09b0a-7538-7983-8871-5eb6a6541d10",
+    "plan_status": "approved",
+    "approval_evidence_page": 1,
+    "approval_date": "2008-04-02",
+    "municipal_council_adoption_date": "2007-11-12",
+    "scope_limit": "Printed approval block, typed names, no handwritten signature established. 2024/11 municipal notice reports entry into force 2 August 2008 and revision underway; discrepancy with printed April approval is unresolved. Indicative PDCom, not zoning or building rights. Historical cadastre; motorway survey not in force. Current amendments unresolved.",
+    "map_pages": [
+      {
+        "page_number": 1,
+        "theme": "PDEC 2008 – 5. Sites et contraintes – Commune",
+        "scale_denominator": 10000,
+        "limitations": "Preserve existing/projected legend distinction. Long-term development arrows are not closed parcel polygons. Inventory boundaries indicative; original inventories prevail. Source 3 localite sheet prints 1:10000; do not infer 1:5000 from filename."
+      }
+    ],
+    "geographic_validation": "pending",
+    "receiver_release": "not_ready",
+    "currentness_evidence_url": "https://yvonand.ch/vie-politique/preavis-2/docscc2/listing/preavis-no-2024-11-credit-complementaire-detude-pour-la-revision-du-plan-directeur-communal-pdcom-du-plan-daffectationcommunal-pacom-et-du-reglement-du-plan-daffectation-communal"
+  },
+  {
+    "document_id": "50cfaad3-713b-5f8c-a9a2-df0e02719582",
+    "sha256": "3ba6ec847c21dbb092c8093fb6d116b1130ce1577937671342bf0a9f983e212b",
+    "commune_bfs": 5939,
+    "reviewed_at": "2026-09-16",
+    "reviewed_by": "Codex / 01a09b0a-7538-7983-8871-5eb6a6541d10",
+    "plan_status": "approved",
+    "approval_evidence_page": 1,
+    "approval_date": "2008-04-02",
+    "municipal_council_adoption_date": "2007-11-12",
+    "scope_limit": "Printed approval block, typed names, no handwritten signature established. 2024/11 municipal notice reports entry into force 2 August 2008 and revision underway; discrepancy with printed April approval is unresolved. Indicative PDCom, not zoning or building rights. Historical cadastre; motorway survey not in force. Current amendments unresolved.",
+    "map_pages": [
+      {
+        "page_number": 1,
+        "theme": "PDEC 2008 – 6. Urbanisation et affectation – Commune",
+        "scale_denominator": 10000,
+        "limitations": "Preserve existing/projected legend distinction. Long-term development arrows are not closed parcel polygons. Inventory boundaries indicative; original inventories prevail. Source 3 localite sheet prints 1:10000; do not infer 1:5000 from filename."
+      }
+    ],
+    "geographic_validation": "pending",
+    "receiver_release": "not_ready",
+    "currentness_evidence_url": "https://yvonand.ch/vie-politique/preavis-2/docscc2/listing/preavis-no-2024-11-credit-complementaire-detude-pour-la-revision-du-plan-directeur-communal-pdcom-du-plan-daffectationcommunal-pacom-et-du-reglement-du-plan-daffectation-communal"
+  },
+  {
+    "document_id": "b8fc92d6-c4a6-5a3c-8fee-dfa2b11de848",
+    "sha256": "d4fecb86752e2f2cb2c3359e835e9555694979b88288bb50795080ec349a1a2b",
+    "commune_bfs": 5939,
+    "reviewed_at": "2026-09-16",
+    "reviewed_by": "Codex / 01a09b0a-7538-7983-8871-5eb6a6541d10",
+    "plan_status": "approved",
+    "approval_evidence_page": 1,
+    "approval_date": "2008-04-02",
+    "municipal_council_adoption_date": "2007-11-12",
+    "scope_limit": "Printed approval block, typed names, no handwritten signature established. 2024/11 municipal notice reports entry into force 2 August 2008 and revision underway; discrepancy with printed April approval is unresolved. Indicative PDCom, not zoning or building rights. Historical cadastre; motorway survey not in force. Current amendments unresolved.",
+    "map_pages": [
+      {
+        "page_number": 1,
+        "theme": "PDEC_2008 – 7. Urbanisation et affectation – Localité",
+        "scale_denominator": 5000,
+        "limitations": "Preserve existing/projected legend distinction. Long-term development arrows are not closed parcel polygons. Inventory boundaries indicative; original inventories prevail. Source 3 localite sheet prints 1:10000; do not infer 1:5000 from filename."
+      }
+    ],
+    "geographic_validation": "pending",
+    "receiver_release": "not_ready",
+    "currentness_evidence_url": "https://yvonand.ch/vie-politique/preavis-2/docscc2/listing/preavis-no-2024-11-credit-complementaire-detude-pour-la-revision-du-plan-directeur-communal-pdcom-du-plan-daffectationcommunal-pacom-et-du-reglement-du-plan-daffectation-communal"
   }
 ]
