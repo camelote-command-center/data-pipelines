@@ -1,5 +1,7 @@
 # Lutry dossier directeur: official acquisition and first source review
 
+**Subsequent review:** [approval exceptions and missing annexes](../reserve-review/README.md) qualify the general approval statement. Three named sectors had approval suspended; later resolution is unverified.
+
 BFS **5606**. Three official linked PDFs, **44 + 21 + 21 = 86 scanned pages**. This adds a source commune, not a completed commune or delivered parcel layer.
 
 ## Provenance and status

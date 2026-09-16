@@ -1,0 +1,32 @@
+{
+  "source_document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+  "source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+  "pdf_page": 9,
+  "printed_page": 50,
+  "decision_date": "2000-02-28",
+  "decision_authority": "Conseil d’Etat",
+  "status_at_source_date": "approval_procedure_suspended_for_named_sectors",
+  "condition": "Pending the result of revision of the Lavaux protection-plan law (LPPL).",
+  "sectors": [
+    {
+      "approval_sector_id": "A",
+      "name": "Grandchamp"
+    },
+    {
+      "approval_sector_id": "B",
+      "name": "Bossière"
+    },
+    {
+      "approval_sector_id": "C",
+      "name": "situé entre le Châtelard et le Daley"
+    }
+  ],
+  "current_resolution_verified": false,
+  "geometries_digitized": false,
+  "limits": [
+    "Approval-sector letters A/B/C differ from broad-area labels A-O on the land-use map.",
+    "Pink highlights locate the three labels; they are not extracted precise exclusion polygons.",
+    "The general in-force date on the municipal page does not prove that these sector suspensions were lifted.",
+    "Do not release affected geography as approved without later sector-specific evidence."
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "action_annex": {
+    "source_part": 1,
+    "pdf_pages": [
+      4,
+      7
+    ],
+    "index_part": 3,
+    "index_pdf_pages": [
+      16,
+      17,
+      18,
+      19
+    ],
+    "state": "not_in_three_published_parts_not_acquired",
+    "notes": "Table of contents explicitly lists action sheets FA and base data DB as annexes. The three PDFs end at the main dossier/index/glossary; index references are not action-sheet content."
+  },
+  "base_data_annex": {
+    "source_part": 1,
+    "pdf_pages": [
+      7,
+      16,
+      18
+    ],
+    "state": "not_in_three_published_parts_not_acquired",
+    "notes": "Part1 PDF18 says original documents or the base-data annex could be consulted at municipal offices at the historical source date; current availability not verified."
+  },
+  "bounded_search": {
+    "date": "2026-09-16",
+    "official_landing": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
+    "result": "Current page links only the three dossier parts; bounded searches did not locate FA/DB downloads or a sector-suspension resolution. Absence not established.",
+    "stale_indexed_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB/lutry_dossier_directeur_partie_3.pdf",
+    "stale_url_http_status": 404
+  },
+  "source_completeness": "incomplete",
+  "receiver_release": "not_ready"
+}

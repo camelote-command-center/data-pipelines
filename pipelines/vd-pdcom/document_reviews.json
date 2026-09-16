@@ -187,8 +187,102 @@
     "municipal_council_adoption_date": "1999-05-10",
     "municipal_executive_approval_date": "1998-07-27",
     "corroboration_url": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
-    "scope_limit": "Part1 PDF3 contains departmental approval date stamp 28February2000 and council adoption10May1999; signature lines are blank. Current municipal landing states dossier in force since28February2000 and links all three parts. Printed24July1998 is preparation date. Parts2/3 are the separately linked continuations; approval evidence is on this part1 page, not a fabricated page in those parts. Later detailed plans/current parcel rights not assessed.",
+    "scope_limit": "Part1 PDF3 contains departmental approval date stamp 28February2000 and council adoption10May1999; signature lines are blank. Current municipal landing states dossier in force since28February2000 and links all three parts. Printed24July1998 is preparation date. Parts2/3 are the separately linked continuations; approval evidence is on this part1 page, not a fabricated page in those parts. Later detailed plans/current parcel rights not assessed. IMPORTANT: Part2 PDF9 records suspension of approval for Grandchamp, Bossière and the sector between Le Châtelard and Le Daley under the same28February2000 decision. Later resolution unverified; not a blanket approval of all mapped land. FA/DB annexes missing from acquired corpus.",
     "map_pages": [],
+    "geographic_validation": "pending",
+    "receiver_release": "not_ready",
+    "approval_reservations": {
+      "source_document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+      "source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+      "pdf_page": 9,
+      "printed_page": 50,
+      "decision_date": "2000-02-28",
+      "decision_authority": "Conseil d’Etat",
+      "status_at_source_date": "approval_procedure_suspended_for_named_sectors",
+      "condition": "Pending the result of revision of the Lavaux protection-plan law (LPPL).",
+      "sectors": [
+        {
+          "approval_sector_id": "A",
+          "name": "Grandchamp"
+        },
+        {
+          "approval_sector_id": "B",
+          "name": "Bossière"
+        },
+        {
+          "approval_sector_id": "C",
+          "name": "situé entre le Châtelard et le Daley"
+        }
+      ],
+      "current_resolution_verified": false,
+      "geometries_digitized": false,
+      "limits": [
+        "Approval-sector letters A/B/C differ from broad-area labels A-O on the land-use map.",
+        "Pink highlights locate the three labels; they are not extracted precise exclusion polygons.",
+        "The general in-force date on the municipal page does not prove that these sector suspensions were lifted.",
+        "Do not release affected geography as approved without later sector-specific evidence."
+      ]
+    }
+  },
+  {
+    "document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+    "sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+    "commune_bfs": 5606,
+    "reviewed_at": "2026-09-16",
+    "reviewed_by": "Codex / 01a09b0a-7538-7983-8871-5eb6a6541d10",
+    "plan_status": "approved",
+    "approval_evidence_page": 9,
+    "approval_date": "2000-02-28",
+    "approval_reservations": {
+      "source_document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+      "source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+      "pdf_page": 9,
+      "printed_page": 50,
+      "decision_date": "2000-02-28",
+      "decision_authority": "Conseil d’Etat",
+      "status_at_source_date": "approval_procedure_suspended_for_named_sectors",
+      "condition": "Pending the result of revision of the Lavaux protection-plan law (LPPL).",
+      "sectors": [
+        {
+          "approval_sector_id": "A",
+          "name": "Grandchamp"
+        },
+        {
+          "approval_sector_id": "B",
+          "name": "Bossière"
+        },
+        {
+          "approval_sector_id": "C",
+          "name": "situé entre le Châtelard et le Daley"
+        }
+      ],
+      "current_resolution_verified": false,
+      "geometries_digitized": false,
+      "limits": [
+        "Approval-sector letters A/B/C differ from broad-area labels A-O on the land-use map.",
+        "Pink highlights locate the three labels; they are not extracted precise exclusion polygons.",
+        "The general in-force date on the municipal page does not prove that these sector suspensions were lifted.",
+        "Do not release affected geography as approved without later sector-specific evidence."
+      ]
+    },
+    "scope_limit": "Page9 is the explicit decision reservation, not an unconditional approval. Overall approval evidence is part1 PDF3 plus the municipal listing. Three named sectors had approval suspended; later status remains unverified. FA/DB annexes not acquired.",
+    "map_pages": [
+      {
+        "page_number": 8,
+        "theme": "Land use;15destinations and15broad areas",
+        "limitations": "Historical map; printed-grid research RMSE5.567m,not independent accuracy. Part2page9 approval exceptions apply; no polygons extracted."
+      },
+      {
+        "page_number": 9,
+        "theme": "Three sectors with suspended approval",
+        "limitations": "Sector labels locate Grandchamp/Bossière/Châtelard-Daley; no exact exclusion geometry extracted. Do not reuse A/B/C as broad-area categories."
+      },
+      {
+        "page_number": 11,
+        "theme": "Land-use definitions and legend",
+        "limitations": "Strategic reserve,existing housing,activities and equipment are distinct; no current capacity inference."
+      }
+    ],
     "geographic_validation": "pending",
     "receiver_release": "not_ready"
   }

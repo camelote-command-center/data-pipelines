@@ -1,0 +1,39 @@
+13
+
+LIEU DE TRAVAIL ET MOYEN DE TRANSPORT DES PERSONNES ACTIVES
+
+LIEU DE TRAVAIL
+
+3556 (100%) personnes travaillent 6 heures ou plus par semaine, dont :
+
+Q 850 (24%) travaillent dans la Commune
+@ 2631 (76%) travaillent dans une autre commune
+
+MOYEN DE TRANSPORT PRINCIPAL
+
+@ %6 (9,1%) utilisent le train
+5 (0,1%) utilisent le car postal
+@ 40 (124%) utilisent l'autobus
+@ 2155 (60,0%) utilisent l'automobile
+@ & (24%) utilisent le deux roues
+& 497 (138%) vont à pied
+6 (0,2%) utilisent d'autres moyens
+& 72 (20%) ne donnent pas d'indications
+
+ECOLIERS ET ETUDIANTS
+1215 (100%) écoliers et étudiants sont domiciliés à Lutry, dont,
+
+Q 500 (41,2%) vont à l'école dans la Commune
+Q 7% (58,8%) vont à l'école dans une autre commune
+
+MOYEN DE TRANSPORT PRINCIPAL
+
+B 200 (16,5%) utilisent le train
+4 (0,5%) utilisent le car postal
+Q 269 (22,1%) utilisent le bus
+411 (33,8%) utilisent l'automobile
+@ 9 (80%) utilisent le deux roues
+@ 214 (17,1%) vont à pied
+1 (0,1%) utilise d'autres moyens
+@ {19 (1,5%) ne donnent pas d'indications
+
