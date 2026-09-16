@@ -1,0 +1,109 @@
+{
+  "document_id": "98ffb71a-e9e2-5643-9baf-93c42967cb30",
+  "sha256": "02a96fd6036e51c77e45ab188168e1c451d40cef8b71204e1271151431173d6d",
+  "commune_bfs": 5590,
+  "reviewed_at": "2026-09-16",
+  "reviewed_by": "Codex / 01a09b0a-7538-7983-8871-5eb6a6541d10",
+  "plan_status": "approved",
+  "approval_evidence_page": 71,
+  "approval_date": "1996-03-06",
+  "municipal_council_adoption_date": "1995-11-22",
+  "municipal_executive_approval_date": "1995-08-22",
+  "corroboration_url": "https://www.pully.ch/pully-officiel/projets-municipaux/pully-2040",
+  "scope_limit": "PDF71/printed69 explicitly limits approval to numbered grey pages. It prints the adoption/approval dates, with typed names and no visible handwritten signatures. The twelve identified map pages are white-background illustrations, not covered by that blanket grey-page approval. Do not treat map colours or hatched sectors as approved current development rights. Municipal Pully2040 page dated 2March2026 calls this linked1996 PDF current while revision is underway; later detailed planning and parcel-level rights remain unassessed. PDF27 includes cantonal transport qualification; council amendments are incorporated on PDF13/21/22/59.",
+  "map_pages": [
+    {
+      "page_number": 37,
+      "printed_page": 35,
+      "theme": "Organisation urbaine",
+      "approval_scope": "white_page_outside_numbered_grey_page_approval",
+      "limitations": "Uncalibrated composite scan with multiple raster/stencil layers and an imperfect existing OCR text layer. Render the complete page with rotation; do not extract only the colour background or treat stripes as parcel boundaries. Requires source semantics, historical/currentness checks and independent alignment before any geographic release."
+    },
+    {
+      "page_number": 38,
+      "printed_page": 36,
+      "theme": "Sites et paysages",
+      "approval_scope": "white_page_outside_numbered_grey_page_approval",
+      "limitations": "Uncalibrated composite scan with multiple raster/stencil layers and an imperfect existing OCR text layer. Render the complete page with rotation; do not extract only the colour background or treat stripes as parcel boundaries. Requires source semantics, historical/currentness checks and independent alignment before any geographic release."
+    },
+    {
+      "page_number": 39,
+      "printed_page": 37,
+      "theme": "Réseau des déplacements individuels",
+      "approval_scope": "white_page_outside_numbered_grey_page_approval",
+      "limitations": "Uncalibrated composite scan with multiple raster/stencil layers and an imperfect existing OCR text layer. Render the complete page with rotation; do not extract only the colour background or treat stripes as parcel boundaries. Requires source semantics, historical/currentness checks and independent alignment before any geographic release."
+    },
+    {
+      "page_number": 40,
+      "printed_page": 38,
+      "theme": "Réseau des déplacements collectifs",
+      "approval_scope": "white_page_outside_numbered_grey_page_approval",
+      "limitations": "Uncalibrated composite scan with multiple raster/stencil layers and an imperfect existing OCR text layer. Render the complete page with rotation; do not extract only the colour background or treat stripes as parcel boundaries. Requires source semantics, historical/currentness checks and independent alignment before any geographic release."
+    },
+    {
+      "page_number": 41,
+      "printed_page": 39,
+      "theme": "Cheminements piétonniers et cyclistes",
+      "approval_scope": "white_page_outside_numbered_grey_page_approval",
+      "limitations": "Uncalibrated composite scan with multiple raster/stencil layers and an imperfect existing OCR text layer. Render the complete page with rotation; do not extract only the colour background or treat stripes as parcel boundaries. Requires source semantics, historical/currentness checks and independent alignment before any geographic release."
+    },
+    {
+      "page_number": 48,
+      "printed_page": 46,
+      "theme": "Espace Centre",
+      "approval_scope": "white_page_outside_numbered_grey_page_approval",
+      "limitations": "Uncalibrated composite scan with multiple raster/stencil layers and an imperfect existing OCR text layer. Render the complete page with rotation; do not extract only the colour background or treat stripes as parcel boundaries. Requires source semantics, historical/currentness checks and independent alignment before any geographic release."
+    },
+    {
+      "page_number": 53,
+      "printed_page": 51,
+      "theme": "Monts-de-Pully organisation future",
+      "approval_scope": "white_page_outside_numbered_grey_page_approval",
+      "limitations": "Uncalibrated composite scan with multiple raster/stencil layers and an imperfect existing OCR text layer. Render the complete page with rotation; do not extract only the colour background or treat stripes as parcel boundaries. Requires source semantics, historical/currentness checks and independent alignment before any geographic release."
+    },
+    {
+      "page_number": 54,
+      "printed_page": 52,
+      "theme": "Monts-de-Pully sites et paysages",
+      "approval_scope": "white_page_outside_numbered_grey_page_approval",
+      "limitations": "Uncalibrated composite scan with multiple raster/stencil layers and an imperfect existing OCR text layer. Render the complete page with rotation; do not extract only the colour background or treat stripes as parcel boundaries. Requires source semantics, historical/currentness checks and independent alignment before any geographic release."
+    },
+    {
+      "page_number": 61,
+      "printed_page": 59,
+      "theme": "Rives du Lac - Ouest",
+      "approval_scope": "white_page_outside_numbered_grey_page_approval",
+      "limitations": "Uncalibrated composite scan with multiple raster/stencil layers and an imperfect existing OCR text layer. Render the complete page with rotation; do not extract only the colour background or treat stripes as parcel boundaries. Requires source semantics, historical/currentness checks and independent alignment before any geographic release."
+    },
+    {
+      "page_number": 62,
+      "printed_page": 60,
+      "theme": "Rives du Lac - Centre",
+      "approval_scope": "white_page_outside_numbered_grey_page_approval",
+      "limitations": "Uncalibrated composite scan with multiple raster/stencil layers and an imperfect existing OCR text layer. Render the complete page with rotation; do not extract only the colour background or treat stripes as parcel boundaries. Requires source semantics, historical/currentness checks and independent alignment before any geographic release."
+    },
+    {
+      "page_number": 63,
+      "printed_page": 61,
+      "theme": "Rives du Lac - Est",
+      "approval_scope": "white_page_outside_numbered_grey_page_approval",
+      "limitations": "Uncalibrated composite scan with multiple raster/stencil layers and an imperfect existing OCR text layer. Render the complete page with rotation; do not extract only the colour background or treat stripes as parcel boundaries. Requires source semantics, historical/currentness checks and independent alignment before any geographic release."
+    },
+    {
+      "page_number": 70,
+      "printed_page": 68,
+      "theme": "Esquisse illustrative du projet Val Paudèze",
+      "approval_scope": "white_page_outside_numbered_grey_page_approval",
+      "limitations": "Uncalibrated composite scan with multiple raster/stencil layers and an imperfect existing OCR text layer. Render the complete page with rotation; do not extract only the colour background or treat stripes as parcel boundaries. Requires source semantics, historical/currentness checks and independent alignment before any geographic release."
+    }
+  ],
+  "geographic_validation": "pending",
+  "receiver_release": "not_ready",
+  "approval_reservations": {
+    "pdf_page": 27,
+    "printed_page": 25,
+    "authority": "Conseil d’Etat",
+    "date": "1996-03-06",
+    "summary": "Transport objectives exclude cantonal master-plan objectives, particularly motorway connections under cantonal responsibility."
+  }
+}
