@@ -1,5 +1,7 @@
 # Lutry land-use map: printed-grid calibration and legend
 
+**Subsequent review:** [approval exceptions and missing annexes](../reserve-review/README.md) qualify the general approval statement. Three named sectors had approval suspended; later resolution is unverified.
+
 Part 2, PDF page 8, is the historical land-use map. PDF page 11 (printed 51) defines its categories. The approved dossier date remains 28 February 2000; no later parcel rights or remaining capacity are inferred.
 
 ## Raster provenance

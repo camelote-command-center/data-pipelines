@@ -1,0 +1,106 @@
+3.6 Les déplacements
+3.62 Le réseau routier
+
+3.62.1 La hiérarchie du réseau routier
+Le réseau routier structurant :
+
+== les autoroutes
+
+les routes principales :
+== les routes cantonales ((RC) a et b
+= les routes cantonales (RC) c et d
+
+les routes collectrices :
+as les routes communales
+
+Le réseau routier non structurant :
+——l/es autres routes collectrices
+— les routes de desserte
+
+3.622 Principes de classification
+
+Les routes sont classées selon leur fonction, ce qui
+permet de déterminer leurs caractéristiques. On
+distingue:
+
+e Le réseau principal
+
+qui assure des liaisons nationales et
+régionales. Ces routes seront aménagées
+de manière à bien séparer les circulations
+des véhicules et des piétons (trottoirs,
+passages piétions dénivelés ou protégés
+par des feux ou des ilots, etc.). Largeur
+de la chaussée: 6 à 7m.
+
+e Le réseau collecteur
+
+qui constitue l'ossature du réseau de
+distribution par zone et quartier. Les
+espaces réservés aux véhicules et aux
+piétons devront être bien marqués
+trottoirs, balisage des passages piétons,
+etc.). La circulation sur ces routes ne
+devrait pas pouvoir s'effectuer à vitesse
+élevée (aménagements de modération de
+trafic). Largeur de la chaussée: 5 à 6m.
+
+e Le réseau de dessertes
+
+dont la fonction n'est que de desservir les
+habitations et les activités riveraines. Sur
+ces routes à faible trafic, véhicules et
+piétons peuvent cohabiter sur l'espace de
+la voirie. Néanmoins les vitesses
+praticables devront être faibles
+{modération de trafic si nécessaire).
+Largeur de la chaussées: 4,5 à 5m.
+
+La constitution et la fonction du réseau routier
+principal
+
+Le réseau pincipal a d'abord une fonction de liaison
+interrégionale ou intercommunale. || doit donc être
+apte à recevoir un nombre relativement important de
+véhicules en transit.
+
+Suite à l'analyse effectuée, le réseau principal sera
+donc constitué de toutes les routes cantonales, mis
+à part la route de Savuit / Bras-de-Fer qui lie les
+routes des Monts-de-Lavaux et de Lavaux. En
+effet:
+
+e Cette liaison Nord-Sud en transit peut
+s'effectuer par la route de La Conversion
+(temps de parcours entre La Croix-sur-
+Lutry et le Voisinand env. 2,5" par Savuit
+(2km à 50km/h. et env. 4' par La
+Conversion (4km à 60 km/h).
+
+e Les différentes routes qui constituent
+cette liaison Nord-Sud n'ont pas les
+caractéristiques géométriques requises
+pour les routes principales (sauf route du
+Bras-de-Fer).
+
+e La réorganisation en boucle des routes
+Savuit, Crochet et Sermotier sera
+réalisée (le projet est existant) si la
+densité future du trafic l'exige.
+
+Les réseaux collecteurs et de desserte
+Les modifications proposées au niveau de
+
+l'exploitation des réseaux collecteur et de desserte
+sont signalées en plan et légende.
+
+3.623 Les éléments directeurs
+
+O) L'achèvement de la bretelle autoroutière
+
+@) La maîtrise des nuisances sur la route de
+La Bernadaz, partiellement sur la
+commune de Lutry
+
+® La maîtrise des nuisances sur la route de
+La Conversion et du Landar
