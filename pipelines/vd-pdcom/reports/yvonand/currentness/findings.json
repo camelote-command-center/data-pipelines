@@ -1,0 +1,31 @@
+{
+  "source_document_id": "b8fc92d6-c4a6-5a3c-8fee-dfa2b11de848",
+  "source_sha256": "d4fecb86752e2f2cb2c3359e835e9555694979b88288bb50795080ec349a1a2b",
+  "reviewed_at": "2026-09-16",
+  "adjacent_sources_only": true,
+  "new_pdcom_document_count": 0,
+  "later_approval_status": "not_established",
+  "findings": [
+    {
+      "evidence": "pacom-report PDF5",
+      "finding": "A revised PDCom was submitted for preliminary examination in August2022; DGTL requested adaptations17January2023. PACom was prioritised after20January2023 coordination. Revised PDCom bytes/approval not acquired."
+    },
+    {
+      "evidence": "pacom-report PDF1/5/105; presentation PDF5/60",
+      "finding": "Report dated2March2026, public inquiry4March–2April2026. The presentation describes later council/department decisions. These bytes do not establish subsequent adoption/approval. Targeted official-site search found no such decision; absence of search hit is not proof of no decision."
+    },
+    {
+      "evidence": "mordagne-regulation PDF1/4; pacom-report PDF29",
+      "finding": "Published regulation prints cantonal approval10December1993 and municipal stamp. Missing associated map means areasA–E cannot be assigned to historical/current parcel geometries. Report lists this older PQ among existing plans."
+    },
+    {
+      "evidence": "pacom-report PDF53/102; council2025-11-10 PDF3/4",
+      "finding": "Modification33 concerns part of parcel326, stated32499m2, intended activities zoneB. Another part is in separate PA Mortaigue; report says construction held pending that plan validation. Study credit approved2025 does not approve zoning. Do not use whole2008contour43214m2 as current capacity."
+    },
+    {
+      "evidence": "pacom-report PDF53",
+      "finding": "Goilles modification30 described as nomenclature change for existing vacation-home zones; modification31 would place4120m2 of314/315 in green zoneA. Historical PDCom projected expansion is not a remaining vacant-land inventory."
+    }
+  ],
+  "next": "Obtain subsequent council/cantonal decisions, full PACom/PA Mortaigue maps and revised PDCom; preserve historical map semantics and partial geographic research until scoped release."
+}
