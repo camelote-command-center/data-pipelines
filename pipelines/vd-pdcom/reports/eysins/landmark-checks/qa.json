@@ -1,0 +1,846 @@
+{
+  "method": "Frozen PR86 transform; no refitting. Centroid containment and distance to filled official polygons, not distance to their outlines.",
+  "checks": [
+    {
+      "component_id": 24,
+      "source_pixel": [
+        172.92,
+        180.98666666666668
+      ],
+      "point_lv03": [
+        505170.2698229406,
+        137590.39591870597
+      ],
+      "nearest_polygon_distance_m": 2.9005977116447554,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46454620,
+        "EGID": 280012577,
+        "NO_COM_FED": 5716,
+        "NUMERO": "130"
+      },
+      "containing_footprints": [],
+      "footprints_within_5m": [
+        {
+          "OBJECTID": 46454620,
+          "EGID": 280012577,
+          "NO_COM_FED": 5716,
+          "NUMERO": "130"
+        }
+      ],
+      "identity_verified": false
+    },
+    {
+      "component_id": 27,
+      "source_pixel": [
+        195.40495867768595,
+        193.56198347107437
+      ],
+      "point_lv03": [
+        505226.36357912526,
+        137558.3875799272
+      ],
+      "nearest_polygon_distance_m": 4.057749707774504,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46415841,
+        "EGID": 809386,
+        "NO_COM_FED": 5716,
+        "NUMERO": "196"
+      },
+      "containing_footprints": [],
+      "footprints_within_5m": [
+        {
+          "OBJECTID": 46415841,
+          "EGID": 809386,
+          "NO_COM_FED": 5716,
+          "NUMERO": "196"
+        }
+      ],
+      "identity_verified": false
+    },
+    {
+      "component_id": 28,
+      "source_pixel": [
+        175.40816326530611,
+        202.6122448979592
+      ],
+      "point_lv03": [
+        505175.9775658659,
+        137536.09157473868
+      ],
+      "nearest_polygon_distance_m": 0.0,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46524721,
+        "EGID": null,
+        "NO_COM_FED": 5716,
+        "NUMERO": "417"
+      },
+      "containing_footprints": [
+        {
+          "OBJECTID": 46524721,
+          "EGID": null,
+          "NO_COM_FED": 5716,
+          "NUMERO": "417"
+        }
+      ],
+      "footprints_within_5m": [
+        {
+          "OBJECTID": 46524721,
+          "EGID": null,
+          "NO_COM_FED": 5716,
+          "NUMERO": "417"
+        }
+      ],
+      "identity_verified": false
+    },
+    {
+      "component_id": 30,
+      "source_pixel": [
+        175.8238993710692,
+        218.36477987421384
+      ],
+      "point_lv03": [
+        505176.6315546058,
+        137496.56369008584
+      ],
+      "nearest_polygon_distance_m": 28.27760579188131,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46533816,
+        "EGID": null,
+        "NO_COM_FED": 5716,
+        "NUMERO": "541a"
+      },
+      "containing_footprints": [],
+      "footprints_within_5m": [],
+      "identity_verified": false
+    },
+    {
+      "component_id": 33,
+      "source_pixel": [
+        243.19607843137254,
+        222.27450980392157
+      ],
+      "point_lv03": [
+        505345.54022918013,
+        137485.3772594222
+      ],
+      "nearest_polygon_distance_m": 0.0,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46466545,
+        "EGID": 280007149,
+        "NO_COM_FED": 5716,
+        "NUMERO": "158"
+      },
+      "containing_footprints": [
+        {
+          "OBJECTID": 46466545,
+          "EGID": 280007149,
+          "NO_COM_FED": 5716,
+          "NUMERO": "158"
+        }
+      ],
+      "footprints_within_5m": [
+        {
+          "OBJECTID": 46466545,
+          "EGID": 280007149,
+          "NO_COM_FED": 5716,
+          "NUMERO": "158"
+        }
+      ],
+      "identity_verified": false
+    },
+    {
+      "component_id": 34,
+      "source_pixel": [
+        199.10344827586206,
+        223.3793103448276
+      ],
+      "point_lv03": [
+        505234.9052254747,
+        137483.50732457856
+      ],
+      "nearest_polygon_distance_m": 4.004145696477437,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46352667,
+        "EGID": 809317,
+        "NO_COM_FED": 5716,
+        "NUMERO": "206"
+      },
+      "containing_footprints": [],
+      "footprints_within_5m": [
+        {
+          "OBJECTID": 46352667,
+          "EGID": 809317,
+          "NO_COM_FED": 5716,
+          "NUMERO": "206"
+        }
+      ],
+      "identity_verified": false
+    },
+    {
+      "component_id": 38,
+      "source_pixel": [
+        272.29411764705884,
+        236.13368983957218
+      ],
+      "point_lv03": [
+        505418.1914067396,
+        137450.01276603722
+      ],
+      "nearest_polygon_distance_m": 0.0,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46388779,
+        "EGID": 809352,
+        "NO_COM_FED": 5716,
+        "NUMERO": "93"
+      },
+      "containing_footprints": [
+        {
+          "OBJECTID": 46388779,
+          "EGID": 809352,
+          "NO_COM_FED": 5716,
+          "NUMERO": "93"
+        }
+      ],
+      "footprints_within_5m": [
+        {
+          "OBJECTID": 46388779,
+          "EGID": 809352,
+          "NO_COM_FED": 5716,
+          "NUMERO": "93"
+        },
+        {
+          "OBJECTID": 46400164,
+          "EGID": 280060864,
+          "NO_COM_FED": 5716,
+          "NUMERO": "92"
+        }
+      ],
+      "identity_verified": false
+    },
+    {
+      "component_id": 41,
+      "source_pixel": [
+        115.95348837209302,
+        236.86046511627907
+      ],
+      "point_lv03": [
+        505025.9881532799,
+        137451.3868160959
+      ],
+      "nearest_polygon_distance_m": 32.803648884486876,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46527291,
+        "EGID": null,
+        "NO_COM_FED": 5716,
+        "NUMERO": "498b"
+      },
+      "containing_footprints": [],
+      "footprints_within_5m": [],
+      "identity_verified": false
+    },
+    {
+      "component_id": 43,
+      "source_pixel": [
+        192.91666666666666,
+        249.85416666666666
+      ],
+      "point_lv03": [
+        505218.731881648,
+        137417.21470272858
+      ],
+      "nearest_polygon_distance_m": 0.9875544288438457,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46408935,
+        "EGID": 809320,
+        "NO_COM_FED": 5716,
+        "NUMERO": "70a"
+      },
+      "containing_footprints": [],
+      "footprints_within_5m": [
+        {
+          "OBJECTID": 46408935,
+          "EGID": 809320,
+          "NO_COM_FED": 5716,
+          "NUMERO": "70a"
+        }
+      ],
+      "identity_verified": false
+    },
+    {
+      "component_id": 45,
+      "source_pixel": [
+        276.63013698630135,
+        253.31506849315068
+      ],
+      "point_lv03": [
+        505428.6442721389,
+        137406.8200761502
+      ],
+      "nearest_polygon_distance_m": 3.330644183121668,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46285207,
+        "EGID": 280029864,
+        "NO_COM_FED": 5716,
+        "NUMERO": "332"
+      },
+      "containing_footprints": [],
+      "footprints_within_5m": [
+        {
+          "OBJECTID": 46285207,
+          "EGID": 280029864,
+          "NO_COM_FED": 5716,
+          "NUMERO": "332"
+        },
+        {
+          "OBJECTID": 46467185,
+          "EGID": 809334,
+          "NO_COM_FED": 5716,
+          "NUMERO": "86"
+        }
+      ],
+      "identity_verified": false
+    },
+    {
+      "component_id": 47,
+      "source_pixel": [
+        268.16153846153844,
+        262.9230769230769
+      ],
+      "point_lv03": [
+        505407.1633281903,
+        137382.8890499875
+      ],
+      "nearest_polygon_distance_m": 0.0,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46331255,
+        "EGID": 280060685,
+        "NO_COM_FED": 5716,
+        "NUMERO": "456a"
+      },
+      "containing_footprints": [
+        {
+          "OBJECTID": 46331255,
+          "EGID": 280060685,
+          "NO_COM_FED": 5716,
+          "NUMERO": "456a"
+        }
+      ],
+      "footprints_within_5m": [
+        {
+          "OBJECTID": 46331255,
+          "EGID": 280060685,
+          "NO_COM_FED": 5716,
+          "NUMERO": "456a"
+        }
+      ],
+      "identity_verified": false
+    },
+    {
+      "component_id": 48,
+      "source_pixel": [
+        182.7941176470588,
+        263.2647058823529
+      ],
+      "point_lv03": [
+        505193.0080748782,
+        137383.77785202413
+      ],
+      "nearest_polygon_distance_m": 8.566836849709997,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46431198,
+        "EGID": 809321,
+        "NO_COM_FED": 5716,
+        "NUMERO": "67"
+      },
+      "containing_footprints": [],
+      "footprints_within_5m": [],
+      "identity_verified": false
+    },
+    {
+      "component_id": 50,
+      "source_pixel": [
+        169.58823529411765,
+        275.8411764705882
+      ],
+      "point_lv03": [
+        505159.57022240583,
+        137352.4965400602
+      ],
+      "nearest_polygon_distance_m": 0.0,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46378535,
+        "EGID": 809323,
+        "NO_COM_FED": 5716,
+        "NUMERO": "53"
+      },
+      "containing_footprints": [
+        {
+          "OBJECTID": 46378535,
+          "EGID": 809323,
+          "NO_COM_FED": 5716,
+          "NUMERO": "53"
+        }
+      ],
+      "footprints_within_5m": [
+        {
+          "OBJECTID": 46378535,
+          "EGID": 809323,
+          "NO_COM_FED": 5716,
+          "NUMERO": "53"
+        },
+        {
+          "OBJECTID": 46440253,
+          "EGID": 809324,
+          "NO_COM_FED": 5716,
+          "NUMERO": "49"
+        }
+      ],
+      "identity_verified": false
+    },
+    {
+      "component_id": 51,
+      "source_pixel": [
+        181.92857142857142,
+        280.14285714285717
+      ],
+      "point_lv03": [
+        505190.4201380383,
+        137341.45226628857
+      ],
+      "nearest_polygon_distance_m": 0.0,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46502472,
+        "EGID": 809329,
+        "NO_COM_FED": 5716,
+        "NUMERO": "316a"
+      },
+      "containing_footprints": [
+        {
+          "OBJECTID": 46502472,
+          "EGID": 809329,
+          "NO_COM_FED": 5716,
+          "NUMERO": "316a"
+        }
+      ],
+      "footprints_within_5m": [
+        {
+          "OBJECTID": 46502472,
+          "EGID": 809329,
+          "NO_COM_FED": 5716,
+          "NUMERO": "316a"
+        },
+        {
+          "OBJECTID": 46518668,
+          "EGID": null,
+          "NO_COM_FED": 5716,
+          "NUMERO": "316b"
+        }
+      ],
+      "identity_verified": false
+    },
+    {
+      "component_id": 52,
+      "source_pixel": [
+        175.95604395604397,
+        290.54945054945057
+      ],
+      "point_lv03": [
+        505175.18095019035,
+        137315.4667317002
+      ],
+      "nearest_polygon_distance_m": 0.0,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46327408,
+        "EGID": 809327,
+        "NO_COM_FED": 5716,
+        "NUMERO": "57"
+      },
+      "containing_footprints": [
+        {
+          "OBJECTID": 46327408,
+          "EGID": 809327,
+          "NO_COM_FED": 5716,
+          "NUMERO": "57"
+        }
+      ],
+      "footprints_within_5m": [
+        {
+          "OBJECTID": 46327408,
+          "EGID": 809327,
+          "NO_COM_FED": 5716,
+          "NUMERO": "57"
+        },
+        {
+          "OBJECTID": 46401885,
+          "EGID": 809328,
+          "NO_COM_FED": 5716,
+          "NUMERO": "60"
+        }
+      ],
+      "identity_verified": false
+    },
+    {
+      "component_id": 53,
+      "source_pixel": [
+        159.23809523809524,
+        295.04761904761904
+      ],
+      "point_lv03": [
+        505133.1324073665,
+        137304.5237939664
+      ],
+      "nearest_polygon_distance_m": 3.5949340997183032,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46398681,
+        "EGID": 280038653,
+        "NO_COM_FED": 5716,
+        "NUMERO": "372b"
+      },
+      "containing_footprints": [],
+      "footprints_within_5m": [
+        {
+          "OBJECTID": 46398681,
+          "EGID": 280038653,
+          "NO_COM_FED": 5716,
+          "NUMERO": "372b"
+        },
+        {
+          "OBJECTID": 46520676,
+          "EGID": null,
+          "NO_COM_FED": 5716,
+          "NUMERO": "371b"
+        }
+      ],
+      "identity_verified": false
+    },
+    {
+      "component_id": 54,
+      "source_pixel": [
+        143.91860465116278,
+        308.5406976744186
+      ],
+      "point_lv03": [
+        505094.3698739802,
+        137270.986155229
+      ],
+      "nearest_polygon_distance_m": 0.0,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46380509,
+        "EGID": 9029218,
+        "NO_COM_FED": 5716,
+        "NUMERO": "372a"
+      },
+      "containing_footprints": [
+        {
+          "OBJECTID": 46380509,
+          "EGID": 9029218,
+          "NO_COM_FED": 5716,
+          "NUMERO": "372a"
+        }
+      ],
+      "footprints_within_5m": [
+        {
+          "OBJECTID": 46380509,
+          "EGID": 9029218,
+          "NO_COM_FED": 5716,
+          "NUMERO": "372a"
+        },
+        {
+          "OBJECTID": 46519991,
+          "EGID": null,
+          "NO_COM_FED": 5716,
+          "NUMERO": "371a"
+        }
+      ],
+      "identity_verified": false
+    },
+    {
+      "component_id": 55,
+      "source_pixel": [
+        167.61111111111111,
+        300.02777777777777
+      ],
+      "point_lv03": [
+        505154.0134269959,
+        137291.8585158681
+      ],
+      "nearest_polygon_distance_m": 0.0,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46357353,
+        "EGID": 190065024,
+        "NO_COM_FED": 5716,
+        "NUMERO": "493"
+      },
+      "containing_footprints": [
+        {
+          "OBJECTID": 46357353,
+          "EGID": 190065024,
+          "NO_COM_FED": 5716,
+          "NUMERO": "493"
+        }
+      ],
+      "footprints_within_5m": [
+        {
+          "OBJECTID": 46357353,
+          "EGID": 190065024,
+          "NO_COM_FED": 5716,
+          "NUMERO": "493"
+        },
+        {
+          "OBJECTID": 46348154,
+          "EGID": 190065026,
+          "NO_COM_FED": 5716,
+          "NUMERO": "492"
+        },
+        {
+          "OBJECTID": 46517278,
+          "EGID": null,
+          "NO_COM_FED": 5716,
+          "NUMERO": "494"
+        }
+      ],
+      "identity_verified": false
+    },
+    {
+      "component_id": 56,
+      "source_pixel": [
+        129.26785714285714,
+        338.19642857142856
+      ],
+      "point_lv03": [
+        505056.8858801969,
+        137196.88657030227
+      ],
+      "nearest_polygon_distance_m": 0.0,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46536347,
+        "EGID": null,
+        "NO_COM_FED": 5716,
+        "NUMERO": "427b"
+      },
+      "containing_footprints": [
+        {
+          "OBJECTID": 46536347,
+          "EGID": null,
+          "NO_COM_FED": 5716,
+          "NUMERO": "427b"
+        }
+      ],
+      "footprints_within_5m": [
+        {
+          "OBJECTID": 46536347,
+          "EGID": null,
+          "NO_COM_FED": 5716,
+          "NUMERO": "427b"
+        },
+        {
+          "OBJECTID": 46417885,
+          "EGID": 809439,
+          "NO_COM_FED": 5716,
+          "NUMERO": "427a"
+        },
+        {
+          "OBJECTID": 46491904,
+          "EGID": 809440,
+          "NO_COM_FED": 5716,
+          "NUMERO": "27"
+        }
+      ],
+      "identity_verified": false
+    },
+    {
+      "component_id": 58,
+      "source_pixel": [
+        117.5625,
+        362.6875
+      ],
+      "point_lv03": [
+        505026.91799434583,
+        137135.6836569016
+      ],
+      "nearest_polygon_distance_m": 1.2816155986827147,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46509831,
+        "EGID": 280005639,
+        "NO_COM_FED": 5716,
+        "NUMERO": "14"
+      },
+      "containing_footprints": [],
+      "footprints_within_5m": [
+        {
+          "OBJECTID": 46509831,
+          "EGID": 280005639,
+          "NO_COM_FED": 5716,
+          "NUMERO": "14"
+        }
+      ],
+      "identity_verified": false
+    },
+    {
+      "component_id": 59,
+      "source_pixel": [
+        129.34230769230768,
+        372.56538461538463
+      ],
+      "point_lv03": [
+        505056.2241418477,
+        137110.66147056545
+      ],
+      "nearest_polygon_distance_m": 5.335535652840275,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46390073,
+        "EGID": 809391,
+        "NO_COM_FED": 5716,
+        "NUMERO": "21"
+      },
+      "containing_footprints": [],
+      "footprints_within_5m": [],
+      "identity_verified": false
+    },
+    {
+      "component_id": 60,
+      "source_pixel": [
+        108.8974358974359,
+        367.20512820512823
+      ],
+      "point_lv03": [
+        505005.0698815797,
+        137124.52720802094
+      ],
+      "nearest_polygon_distance_m": 1.0975327738141707,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46373063,
+        "EGID": 809446,
+        "NO_COM_FED": 5716,
+        "NUMERO": "10"
+      },
+      "containing_footprints": [],
+      "footprints_within_5m": [
+        {
+          "OBJECTID": 46373063,
+          "EGID": 809446,
+          "NO_COM_FED": 5716,
+          "NUMERO": "10"
+        }
+      ],
+      "identity_verified": false
+    },
+    {
+      "component_id": 61,
+      "source_pixel": [
+        93.45901639344262,
+        375.78688524590166
+      ],
+      "point_lv03": [
+        504966.13026189606,
+        137103.31334509645
+      ],
+      "nearest_polygon_distance_m": 0.0,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46437460,
+        "EGID": 280021571,
+        "NO_COM_FED": 5716,
+        "NUMERO": "2b"
+      },
+      "containing_footprints": [
+        {
+          "OBJECTID": 46437460,
+          "EGID": 280021571,
+          "NO_COM_FED": 5716,
+          "NUMERO": "2b"
+        }
+      ],
+      "footprints_within_5m": [
+        {
+          "OBJECTID": 46437460,
+          "EGID": 280021571,
+          "NO_COM_FED": 5716,
+          "NUMERO": "2b"
+        },
+        {
+          "OBJECTID": 46345893,
+          "EGID": 809450,
+          "NO_COM_FED": 5716,
+          "NUMERO": "1a"
+        }
+      ],
+      "identity_verified": false
+    },
+    {
+      "component_id": 63,
+      "source_pixel": [
+        85.13953488372093,
+        386.0232558139535
+      ],
+      "point_lv03": [
+        504945.0078696108,
+        137077.8028574087
+      ],
+      "nearest_polygon_distance_m": 8.47054133257134,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46481829,
+        "EGID": 3174965,
+        "NO_COM_FED": 5716,
+        "NUMERO": "385c"
+      },
+      "containing_footprints": [],
+      "footprints_within_5m": [],
+      "identity_verified": false
+    },
+    {
+      "component_id": 64,
+      "source_pixel": [
+        116.8974358974359,
+        399.7692307692308
+      ],
+      "point_lv03": [
+        505024.33418767806,
+        137042.66797135034
+      ],
+      "nearest_polygon_distance_m": 2.067914171287341,
+      "nearest_polygon_attributes": {
+        "OBJECTID": 46443497,
+        "EGID": 190036135,
+        "NO_COM_FED": 5716,
+        "NUMERO": "389"
+      },
+      "containing_footprints": [],
+      "footprints_within_5m": [
+        {
+          "OBJECTID": 46443497,
+          "EGID": 190036135,
+          "NO_COM_FED": 5716,
+          "NUMERO": "389"
+        }
+      ],
+      "identity_verified": false
+    }
+  ],
+  "summary": {
+    "selected_components": 25,
+    "inside_current_footprint": 11,
+    "within_5m_of_polygon": 20,
+    "outside_5m_component_ids": [
+      30,
+      41,
+      48,
+      59,
+      63
+    ],
+    "multiple_footprints_within_5m_component_ids": [
+      38,
+      45,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      61
+    ]
+  },
+  "independent_accuracy_verified": false,
+  "parcel_matching_ready": false,
+  "receiver_release": "not_ready"
+}
