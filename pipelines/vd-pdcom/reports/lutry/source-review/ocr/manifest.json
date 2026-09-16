@@ -1,0 +1,71 @@
+{
+  "method": "Tesseract French psm3,PyMuPDF2x page render; raw OCR not corrected,not authoritative transcription",
+  "pages": [
+    {
+      "part": 1,
+      "page": 3,
+      "chars": 749
+    },
+    {
+      "part": 2,
+      "page": 5,
+      "chars": 992
+    },
+    {
+      "part": 2,
+      "page": 7,
+      "chars": 2217
+    },
+    {
+      "part": 2,
+      "page": 11,
+      "chars": 4527
+    },
+    {
+      "part": 2,
+      "page": 13,
+      "chars": 2596
+    },
+    {
+      "part": 2,
+      "page": 15,
+      "chars": 1834
+    },
+    {
+      "part": 2,
+      "page": 17,
+      "chars": 1764
+    },
+    {
+      "part": 3,
+      "page": 16,
+      "chars": 2038
+    },
+    {
+      "part": 3,
+      "page": 17,
+      "chars": 1717
+    },
+    {
+      "part": 3,
+      "page": 18,
+      "chars": 2061
+    },
+    {
+      "part": 3,
+      "page": 19,
+      "chars": 1368
+    },
+    {
+      "part": 3,
+      "page": 20,
+      "chars": 1659
+    }
+  ],
+  "tesseract_version": "tesseract 5.5.2",
+  "source_hashes": {
+    "1": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+    "2": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+    "3": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b"
+  }
+}

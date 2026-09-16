@@ -507,5 +507,32 @@
     "title": "Schéma directeur de l’agglomération nyonnaise — rapport de synthèse2006",
     "plan_status": "approved",
     "scope": "intercommunal"
+  },
+  {
+    "commune_bfs": 5606,
+    "commune_name": "Lutry",
+    "pdf_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_1.pdf",
+    "landing_url": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
+    "title": "Lutry — Dossier directeur, partie 1/3",
+    "plan_status": "approved",
+    "scope": "communal"
+  },
+  {
+    "commune_bfs": 5606,
+    "commune_name": "Lutry",
+    "pdf_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_2.pdf",
+    "landing_url": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
+    "title": "Lutry — Dossier directeur, partie 2/3",
+    "plan_status": "approved",
+    "scope": "communal"
+  },
+  {
+    "commune_bfs": 5606,
+    "commune_name": "Lutry",
+    "pdf_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+    "landing_url": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
+    "title": "Lutry — Dossier directeur, partie 3/3",
+    "plan_status": "approved",
+    "scope": "communal"
   }
 ]

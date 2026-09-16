@@ -109,3 +109,15 @@ class DiscoveryContracts(unittest.TestCase):
         lock.rollback.assert_called_once()
         lock.close.assert_called_once()
         main.close.assert_called_once()
+
+    def test_lutry_dossier_directeur_keeps_all_three_official_parts(self):
+        fixture=Path(__file__).resolve().parents[1]/'reports/lutry/source-review/landing.html'
+        home=BeautifulSoup(fixture.read_bytes(),'html.parser')
+        detail=BeautifulSoup('<a href="https://www.lutry.ch">www.lutry.ch</a>','html.parser')
+        with patch('discovery.fetch_html',side_effect=[('https://www.ucv.ch/a',detail,'a'),('https://www.lutry.ch',home,'b')]):
+            result=discovery.discover({'commune_bfs':5606,'directory_url':'https://www.ucv.ch/a'},page_limit=1)
+        urls={c['source_url'] for c in result['candidates']}
+        expected={f'https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_{n}.pdf' for n in [1,2,3]}
+        self.assertEqual(urls,expected)
+        self.assertTrue(all(c['review_status']=='pending' for c in result['candidates']))
+        self.assertFalse(discovery.PLAN.search('dossier de construction'))
