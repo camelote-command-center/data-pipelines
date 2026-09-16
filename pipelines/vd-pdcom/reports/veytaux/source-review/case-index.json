@@ -1,0 +1,118 @@
+{
+  "cases": [
+    {
+      "number": 1,
+      "label": "Clos de Chillon",
+      "pdf_pages": [
+        16,
+        17
+      ],
+      "amendment_numbers": [
+        3
+      ]
+    },
+    {
+      "number": 2,
+      "label": "Villa Louise",
+      "pdf_pages": [
+        18,
+        19
+      ],
+      "amendment_numbers": [
+        4
+      ]
+    },
+    {
+      "number": 3,
+      "label": "La Tornettaz",
+      "pdf_pages": [
+        20
+      ],
+      "amendment_numbers": []
+    },
+    {
+      "number": 4,
+      "label": "Grandchamp",
+      "pdf_pages": [
+        21
+      ],
+      "amendment_numbers": [
+        5
+      ]
+    },
+    {
+      "number": 5,
+      "label": "La Promenade",
+      "pdf_pages": [
+        22
+      ],
+      "amendment_numbers": [
+        6
+      ]
+    },
+    {
+      "number": 6,
+      "label": "Au-dessus de Veytaux",
+      "pdf_pages": [
+        23
+      ],
+      "amendment_numbers": [
+        7
+      ]
+    },
+    {
+      "number": 7,
+      "label": "En la C\u00f4te",
+      "pdf_pages": [
+        24
+      ],
+      "amendment_numbers": [
+        8
+      ]
+    },
+    {
+      "number": 8,
+      "label": "Grand Champ Babau",
+      "pdf_pages": [
+        25
+      ],
+      "amendment_numbers": []
+    },
+    {
+      "number": 9,
+      "label": "Petit Champ Babau",
+      "pdf_pages": [
+        26
+      ],
+      "amendment_numbers": []
+    },
+    {
+      "number": 10,
+      "label": "Le Cr\u00eat",
+      "pdf_pages": [
+        27
+      ],
+      "amendment_numbers": [
+        9
+      ]
+    },
+    {
+      "number": 11,
+      "label": "Sonchaux",
+      "pdf_pages": [
+        28,
+        29
+      ],
+      "amendment_numbers": [
+        10
+      ]
+    }
+  ],
+  "amendments_pdf_pages": [
+    30,
+    31
+  ],
+  "amendments_count": 10,
+  "adopted": "1993-12-06",
+  "limits": "Case names and page links are source inventory, not eleven development polygons. Amendments1/2 concern general urbanization/equipment sections. Illustrations are indicative; later legal currency unverified. Sonchaux amendment10 changes objectives and returns a large part to alpine zone; no precise boundary inferred."
+}

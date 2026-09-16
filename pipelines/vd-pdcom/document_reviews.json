@@ -285,5 +285,65 @@
     ],
     "geographic_validation": "pending",
     "receiver_release": "not_ready"
+  },
+  {
+    "document_id": "43add308-b945-5a8f-bd9e-fc2217fe9bc5",
+    "sha256": "15978db34e86ca523f27f518b126db915bf52052dc15e087da6e172439c2e348",
+    "commune_bfs": 5891,
+    "reviewed_at": "2026-09-16",
+    "reviewed_by": "Codex / 01a09b0a-7538-7983-8871-5eb6a6541d10",
+    "plan_status": "approved",
+    "approval_evidence_page": 4,
+    "approval_date": "1994-04-27",
+    "municipal_council_adoption_date": "1993-12-06",
+    "scope_limit": "Signed/stamped approval page visually checked. Currentness and later amendments remain unverified. The ten council amendments at PDF30–31 are part of this source and must qualify the sector narratives; indicative illustrations are not parcel rights. Raw32page OCR is unverified transcription.",
+    "amendment_evidence_pages": [
+      30,
+      31
+    ],
+    "map_pages": [
+      {
+        "page_number": 11,
+        "theme": "Plan directeur synthèse",
+        "limitations": "Scanned raster; uncalibrated. Preserve source legend, case text and adopted amendments. No geographic release."
+      },
+      {
+        "page_number": 15,
+        "theme": "Situation des onze cas particuliers",
+        "limitations": "Scanned raster; uncalibrated. Preserve source legend, case text and adopted amendments. No geographic release."
+      },
+      {
+        "page_number": 16,
+        "theme": "Clos de Chillon occupation actuelle",
+        "limitations": "Scanned raster; uncalibrated. Preserve source legend, case text and adopted amendments. No geographic release."
+      },
+      {
+        "page_number": 17,
+        "theme": "Clos de Chillon illustration indicative",
+        "limitations": "Scanned raster; uncalibrated. Preserve source legend, case text and adopted amendments. No geographic release."
+      },
+      {
+        "page_number": 18,
+        "theme": "Villa Louise occupation actuelle",
+        "limitations": "Scanned raster; uncalibrated. Preserve source legend, case text and adopted amendments. No geographic release."
+      },
+      {
+        "page_number": 19,
+        "theme": "Villa Louise illustration indicative",
+        "limitations": "Scanned raster; uncalibrated. Preserve source legend, case text and adopted amendments. No geographic release."
+      },
+      {
+        "page_number": 28,
+        "theme": "Sonchaux PEP context",
+        "limitations": "Scanned raster; uncalibrated. Preserve source legend, case text and adopted amendments. No geographic release."
+      },
+      {
+        "page_number": 29,
+        "theme": "Sonchaux schéma aménagement",
+        "limitations": "Scanned raster; uncalibrated. Preserve source legend, case text and adopted amendments. No geographic release."
+      }
+    ],
+    "geographic_validation": "pending",
+    "receiver_release": "not_ready"
   }
 ]
