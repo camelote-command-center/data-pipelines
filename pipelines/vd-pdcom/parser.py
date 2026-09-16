@@ -20,6 +20,7 @@ from psycopg2.extras import Json
 import requests
 from candidates import extract as extract_candidates
 from spatial_pilot import persist as persist_spatial_pilot
+from morges_pilot import persist as persist_morges_pilot
 
 ROOT = Path(__file__).resolve().parent
 CODE = 'vd_pdcom_coverage'
@@ -131,6 +132,15 @@ class Monitor:
             'startup_id':'eq.'+self.dataset['startup_id']},json=patch)
 
 
+def persist_pilot_spatial(conn, bfs, document_id, sha):
+    """Run spatial refresh in the stage that actually acquires each pilot PDF."""
+    if bfs == 5725:
+        return {'spatial_pilot': persist_spatial_pilot(conn, document_id, sha)}
+    if bfs == 5642:
+        return {'morges_pilot': persist_morges_pilot(conn, document_id, sha)}
+    return {}
+
+
 def persist_pilot_source(c, source, doc_id, sha, inspection, candidates):
     """Refresh one version without replacing accumulated review evidence."""
     c.execute('''INSERT INTO bronze_ch.vd_pdcom_documents
@@ -200,8 +210,7 @@ def run(args):
                 if conn:
                     with conn,conn.cursor() as c:
                         persist_pilot_source(c,source,doc_id,sha,inspection,candidates)
-                    if source['commune_bfs']==5725:
-                        report['spatial_pilot']=persist_spatial_pilot(conn,doc_id,sha)
+                    report.update(persist_pilot_spatial(conn,source['commune_bfs'],doc_id,sha))
             except Exception as e:
                 report['errors'].append({'commune_bfs':source['commune_bfs'],'error_type':type(e).__name__})
                 if conn:

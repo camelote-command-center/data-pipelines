@@ -101,8 +101,6 @@ def persist(conn,source,sha,pages):
     persist_bex(conn,doc_id,sha)
     from orbe_pilot import persist as persist_orbe
     persist_orbe(conn,doc_id,sha)
-    from morges_pilot import persist as persist_morges
-    persist_morges(conn,doc_id,sha)
     return doc_id
 
 
