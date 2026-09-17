@@ -1,0 +1,8 @@
+[
+ {"id":"NW","role":"fit","pdf_point":[732.5,112],"lv03":[509500,142400],"evidence":"top-left.png pixel265,184; crop600,20; scale2"},
+ {"id":"N","role":"fit","pdf_point":[1333,77.5],"lv03":[509650,142550],"evidence":"top-mid.png pixel466,115; crop1100,20; scale2"},
+ {"id":"SE","role":"fit","pdf_point":[1861.5,545],"lv03":[509900,142550],"evidence":"right-mid.png pixel143,650; crop1790,220; scale2"},
+ {"id":"N1","role":"reserved_grid_check","pdf_point":[1135,90],"lv03":[509600,142500],"evidence":"top-mid.png pixel70,140; crop1100,20; scale2"},
+ {"id":"N2","role":"reserved_grid_check","pdf_point":[1532.5,60.5],"lv03":[509700,142600],"evidence":"top-mid.png pixel865,81; crop1100,20; scale2"},
+ {"id":"E1","role":"reserved_grid_check","pdf_point":[1850,345],"lv03":[509850,142600],"evidence":"right-mid.png pixel120,250; crop1790,220; scale2"}
+]
