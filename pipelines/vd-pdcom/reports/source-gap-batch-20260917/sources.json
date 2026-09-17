@@ -1,0 +1,38 @@
+[
+  {
+    "commune_bfs": 5477,
+    "name": "cossonay-pacom",
+    "url": "https://www.cossonay.ch/documents/1-administration/13-service-technique?download=2766%3Aenquete-publique-pacom",
+    "sha256": "de49408b6841a2eb3bc4152e78013de14f1881fea2580f1d5418a1db1e5cf63b",
+    "page_count": 298,
+    "kind": "adjacent_evidence_not_pdcom",
+    "checked_at": "2026-09-17T00:01:11.081095+00:00"
+  },
+  {
+    "commune_bfs": 5764,
+    "name": "vallorbe-regulation",
+    "url": "https://www.vallorbe.ch/_doc/331414",
+    "sha256": "5c14127c1a1739035ec142ba0294c86a8a437c78b38fc40097baccbc01365845",
+    "page_count": 55,
+    "kind": "adjacent_evidence_not_pdcom",
+    "checked_at": "2026-09-17T00:01:12.003744+00:00"
+  },
+  {
+    "commune_bfs": 5861,
+    "name": "rolle-report-2019",
+    "url": "https://www.rolle.ch/N1122/rapport-de-gestion-2019.html",
+    "sha256": "30706214295f51fb0b1f3557d5cc7d357ff6ebe7c124897228b4e79e5448f9ee",
+    "page_count": 189,
+    "kind": "adjacent_evidence_not_pdcom",
+    "checked_at": "2026-09-17T00:01:15.787866+00:00"
+  },
+  {
+    "commune_bfs": 5889,
+    "name": "tour-rpga-proposal",
+    "url": "https://www.la-tour-de-peilz.ch/doc_uploads/images/politique/municipalite/preavis-municipaux/2026/Preavis-09-Modification-RPGA.pdf",
+    "sha256": "397c4369e275836df8e33b0dce90e939c3087490a307179f3ecc74dc6647f234",
+    "page_count": 201,
+    "kind": "adjacent_evidence_not_pdcom",
+    "checked_at": "2026-09-17T00:01:16.721238+00:00"
+  }
+]
