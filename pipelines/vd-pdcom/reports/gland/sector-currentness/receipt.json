@@ -1,0 +1,10 @@
+{
+  "ids": {
+    "operation": "eb15bcd6-b0fc-4d74-98d7-7f841c1ca39e",
+    "checkpoint": "d5c7d391-6c05-44a8-89e4-e555aee214ee"
+  },
+  "document_id": "bbdb0fe7-3d42-56dd-9008-c30918c5bd57",
+  "source_sha256": "f5c9dc1bb73ceac29513a219f43a8ff381e72794a9c5557e4e3c1d46db297f9c",
+  "implementation_status": "named_buildings_in_use_since_2014",
+  "geographic_delivery": false
+}
