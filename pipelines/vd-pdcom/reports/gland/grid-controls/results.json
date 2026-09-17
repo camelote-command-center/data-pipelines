@@ -1,0 +1,53 @@
+{
+  "source_crs": "EPSG:21781",
+  "source_coordinates": "unrotated PDF points",
+  "coefficients_pdf_x_y_1_to_lv03": [
+    [
+      0.2634069980967356,
+      0.23455766020997487
+    ],
+    [
+      0.2369826770179529,
+      -0.2651630447507287
+    ],
+    [
+      509280.51231406815,
+      142257.88477490828
+    ]
+  ],
+  "fit_count": 3,
+  "reserved_grid_checks": [
+    {
+      "id": "N1",
+      "predicted_lv03": [
+        509600.80769783957,
+        142500.24304521905
+      ],
+      "residual_m": 0.8434730455360373
+    },
+    {
+      "id": "N2",
+      "predicted_lv03": [
+        509698.520990611,
+        142601.30202497265
+      ],
+      "residual_m": 1.9704663920447132
+    },
+    {
+      "id": "E1",
+      "predicted_lv03": [
+        509849.5742841183,
+        142600.33519585774
+      ],
+      "residual_m": 0.541839713356439
+    }
+  ],
+  "reserved_grid_rmse_m": 1.276424022506332,
+  "status": "provisional_grid_only_not_ground_validated",
+  "limits": [
+    "Three fitting points solve affine exactly: training residual is not accuracy.",
+    "Checks use the same printed grid, not independent ground controls.",
+    "Manual picks approximate; no refinement using reserved points.",
+    "No geographic sector or parcel delivery; no LV95 conversion performed."
+  ]
+}

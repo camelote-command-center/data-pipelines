@@ -1,0 +1,151 @@
+{
+  "source_sha256": "f5c9dc1bb73ceac29513a219f43a8ff381e72794a9c5557e4e3c1d46db297f9c",
+  "adjacent_map_sha256": "68f36cb156489e4166d61cb6d0938691d0dcfe489fb666ed05a58dbc98ac77b7",
+  "map_pdf_page": 1,
+  "controls": [
+    {
+      "id": "NW",
+      "role": "fit",
+      "pdf_point": [
+        732.5,
+        112
+      ],
+      "lv03": [
+        509500,
+        142400
+      ],
+      "evidence": "top-left.png pixel265,184; crop600,20; scale2"
+    },
+    {
+      "id": "N",
+      "role": "fit",
+      "pdf_point": [
+        1333,
+        77.5
+      ],
+      "lv03": [
+        509650,
+        142550
+      ],
+      "evidence": "top-mid.png pixel466,115; crop1100,20; scale2"
+    },
+    {
+      "id": "SE",
+      "role": "fit",
+      "pdf_point": [
+        1861.5,
+        545
+      ],
+      "lv03": [
+        509900,
+        142550
+      ],
+      "evidence": "right-mid.png pixel143,650; crop1790,220; scale2"
+    },
+    {
+      "id": "N1",
+      "role": "reserved_grid_check",
+      "pdf_point": [
+        1135,
+        90
+      ],
+      "lv03": [
+        509600,
+        142500
+      ],
+      "evidence": "top-mid.png pixel70,140; crop1100,20; scale2"
+    },
+    {
+      "id": "N2",
+      "role": "reserved_grid_check",
+      "pdf_point": [
+        1532.5,
+        60.5
+      ],
+      "lv03": [
+        509700,
+        142600
+      ],
+      "evidence": "top-mid.png pixel865,81; crop1100,20; scale2"
+    },
+    {
+      "id": "E1",
+      "role": "reserved_grid_check",
+      "pdf_point": [
+        1850,
+        345
+      ],
+      "lv03": [
+        509850,
+        142600
+      ],
+      "evidence": "right-mid.png pixel120,250; crop1790,220; scale2"
+    }
+  ],
+  "result": {
+    "source_crs": "EPSG:21781",
+    "source_coordinates": "unrotated PDF points",
+    "coefficients_pdf_x_y_1_to_lv03": [
+      [
+        0.2634069980967356,
+        0.23455766020997487
+      ],
+      [
+        0.2369826770179529,
+        -0.2651630447507287
+      ],
+      [
+        509280.51231406815,
+        142257.88477490828
+      ]
+    ],
+    "fit_count": 3,
+    "reserved_grid_checks": [
+      {
+        "id": "N1",
+        "predicted_lv03": [
+          509600.80769783957,
+          142500.24304521905
+        ],
+        "residual_m": 0.8434730455360373
+      },
+      {
+        "id": "N2",
+        "predicted_lv03": [
+          509698.520990611,
+          142601.30202497265
+        ],
+        "residual_m": 1.9704663920447132
+      },
+      {
+        "id": "E1",
+        "predicted_lv03": [
+          509849.5742841183,
+          142600.33519585774
+        ],
+        "residual_m": 0.541839713356439
+      }
+    ],
+    "reserved_grid_rmse_m": 1.276424022506332,
+    "status": "provisional_grid_only_not_ground_validated",
+    "limits": [
+      "Three fitting points solve affine exactly: training residual is not accuracy.",
+      "Checks use the same printed grid, not independent ground controls.",
+      "Manual picks approximate; no refinement using reserved points.",
+      "No geographic sector or parcel delivery; no LV95 conversion performed."
+    ]
+  },
+  "grid_label_review": "Grid values509500…509950 and142400…142650 visually inspected on official2010map, LV03 coordinate range.",
+  "evidence_crops": {
+    "top-left": "8038e8ba5b5a1ab5f7b5568eaa7061d97aacb8331a047ab0a8ca579fb1fc0d74",
+    "top-mid": "717390e27d43817222f43c0decba763f3de8d52cca7532dbdcf9c2e8aeb811c4",
+    "right-mid": "fe24b5c6b2ec3ea309499e7a7d462de1438efe8627493e3561c1eba032a26fe0"
+  },
+  "pending": [
+    "Independent current cadastral control correspondence",
+    "Lower/western spatial coverage validation",
+    "LV03 to LV95 transformation with declared method",
+    "No retuning on the three reserved checks; new experiments require new controls"
+  ],
+  "delivery": "withheld_research_only"
+}
