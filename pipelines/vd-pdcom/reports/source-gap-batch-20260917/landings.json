@@ -1,0 +1,564 @@
+[
+  {
+    "commune_bfs": 5477,
+    "name": "Cossonay",
+    "url": "https://www.cossonay.ch/documents/1-administration/13-service-technique",
+    "http_status": 200,
+    "sha256": "8f6e45153f1940be2d49318f9ec9f6cd48234a0c5037df2dd94d208b67cf9eb4",
+    "checked_at": "2026-09-17T00:01:08.604276+00:00",
+    "relevant_links": [
+      {
+        "label": "Plans de quartier (PQ) et règlements",
+        "url": "https://www.cossonay.ch/documents/1-administration/13-service-technique/164-plans-de-quartier"
+      },
+      {
+        "label": "Plans partiels d'affectation (RPPA) et règlements",
+        "url": "https://www.cossonay.ch/documents/1-administration/13-service-technique/244-plans-partiels-daffectation"
+      },
+      {
+        "label": "Plan d'extension partiel et règlement",
+        "url": "https://www.cossonay.ch/documents/1-administration/13-service-technique/245-plan-dextension-partiel"
+      },
+      {
+        "label": "Plan et règlement de la zone réservée",
+        "url": "https://www.cossonay.ch/documents/1-administration/13-service-technique/246-plan-et-reglement-de-la-zone-reservee"
+      },
+      {
+        "label": "Plan général d'affectation et son règlement (RPGA)",
+        "url": "https://www.cossonay.ch/documents/1-administration/13-service-technique/247-plan-general-daffectation-et-son-reglement-rpga"
+      },
+      {
+        "label": "Enquête publique - PACom",
+        "url": "https://www.cossonay.ch/documents/1-administration/13-service-technique?download=2766:enquete-publique-pacom"
+      },
+      {
+        "label": "Télécharger",
+        "url": "https://www.cossonay.ch/documents/1-administration/13-service-technique?download=2766:enquete-publique-pacom"
+      },
+      {
+        "label": "Enquête publique - PACom - Règlement sans annotations",
+        "url": "https://www.cossonay.ch/documents/1-administration/13-service-technique?download=2768:enquete-publique-pacom-reglement-sans-annotations"
+      },
+      {
+        "label": "Télécharger",
+        "url": "https://www.cossonay.ch/documents/1-administration/13-service-technique?download=2768:enquete-publique-pacom-reglement-sans-annotations"
+      },
+      {
+        "label": "Plan du site",
+        "url": "https://www.cossonay.ch/plan-du-site"
+      }
+    ],
+    "parser_diagnostics": [],
+    "embedded_table_rows": 0,
+    "finding": "PACom combined dossier PDF165 identifies a July 2000 PDCom; PDF13 says planning documents are deposited at the municipal office. Full PDCom bytes/maps not recovered. This is evidence of a referenced plan, not confirmed absence.",
+    "outcome": "manual_search_required",
+    "full_pdcom_acquired": false
+  },
+  {
+    "commune_bfs": 5749,
+    "name": "Chavornay",
+    "url": "https://www.chavornay.ch/reglemente",
+    "http_status": 200,
+    "sha256": "72646d6a20c094339ac178883892e8be1f15339b94316971b55cfb02d53da4ad",
+    "checked_at": "2026-09-17T00:01:08.529574+00:00",
+    "relevant_links": [
+      {
+        "label": "Plans communaux",
+        "url": "https://www.chavornay.ch/tour"
+      },
+      {
+        "label": "Règlements et plans (sélectionné)",
+        "url": "https://www.chavornay.ch/reglemente"
+      },
+      {
+        "label": "Plan général d'affectation Plan général d'affectation Téléchargement",
+        "url": "https://www.chavornay.ch/_rte/publikation/198146"
+      },
+      {
+        "label": "Règlement du plan partiel d'affectation \"Sous Ville\", \"Perrevuit\", \"Les Places\", \"Vers la Gare\", \"Saint-Marcel\" Règlement du plan partiel d'affectation \"Sous Ville\", \"Perrevuit\", \"Les Places\", \"Vers la Gare\", \"Saint-Marcel\" Téléchargement",
+        "url": "https://www.chavornay.ch/_rte/publikation/198149"
+      },
+      {
+        "label": "Règlement du plan partiel d'affectation \"Grand Pâquier\" Règlement du plan partiel d'affectation \"Grand Pâquier\" Téléchargement",
+        "url": "https://www.chavornay.ch/_rte/publikation/198155"
+      },
+      {
+        "label": "Plan et règlement du plan partiel d'affectation \"Le Pâquier\" Plan et règlement du plan partiel d'affectation \"Le Pâquier\" Téléchargement",
+        "url": "https://www.chavornay.ch/_rte/publikation/198167"
+      },
+      {
+        "label": "Règlements d'application plan de quartier \"Lougilloux-Mollenchire\" Règlements d'application plan de quartier \"Lougilloux-Mollenchire\" Téléchargement",
+        "url": "https://www.chavornay.ch/_rte/publikation/198170"
+      },
+      {
+        "label": "Règlement du plan partiel d'affectation \"Les Moellettes-Bas du Village\" Règlement du plan partiel d'affectation \"Les Moellettes-Bas du Village\" Téléchargement",
+        "url": "https://www.chavornay.ch/_rte/publikation/198185"
+      },
+      {
+        "label": "Plan et règlement du plan de quartier \"Cuenson\" Plan et règlement du plan de quartier \"Cuenson\" Téléchargement",
+        "url": "https://www.chavornay.ch/_rte/publikation/198197"
+      },
+      {
+        "label": "Règlement du plan de quartier \"En Couvalau\" Règlement du plan de quartier \"En Couvalau\" Téléchargement",
+        "url": "https://www.chavornay.ch/_rte/publikation/198206"
+      },
+      {
+        "label": "Plans de quartier \"Lougilloux-Mollenchire\" Plans de quartier \"Lougilloux-Mollenchire\"",
+        "url": "https://www.chavornay.ch/_rte/publikation/236795"
+      },
+      {
+        "label": "Plan partiel d'affectation \"Les Moellettes-Bas du Village\" Plan partiel d'affectation \"Les Moellettes-Bas du Village\" Téléchargement",
+        "url": "https://www.chavornay.ch/_rte/publikation/236813"
+      },
+      {
+        "label": "Plan partiel d'affectation \"Grand Pâquier\" Plan partiel d'affectation \"Grand Pâquier\" Téléchargement",
+        "url": "https://www.chavornay.ch/_rte/publikation/236822"
+      },
+      {
+        "label": "Plan partiel d'affectation \"Sous Ville\", \"Perrevuit\", \"Les Places\", \"Vers la Gare\", \"Saint-Marcel\" Plan partiel d'affectation \"Sous Ville\", \"Perrevuit\", \"Les Places\", \"Vers la Gare\", \"Saint-Marcel\" Téléchargement",
+        "url": "https://www.chavornay.ch/_rte/publikation/236828"
+      },
+      {
+        "label": "Plan d'extension de l'agglomération Corcelles-sur-Chavornay Plan d'extension de l'agglomération Corcelles-sur-Chavornay Téléchargement",
+        "url": "https://www.chavornay.ch/_rte/publikation/236831"
+      },
+      {
+        "label": "Plan d'affectation \"Tuilerie de Corcelles\" Plan d'affectation \"Tuilerie de Corcelles\" Téléchargement",
+        "url": "https://www.chavornay.ch/_rte/publikation/236846"
+      },
+      {
+        "label": "Plan de quartier \"En Couvalau\" Plan de quartier \"En Couvalau\" Téléchargement",
+        "url": "https://www.chavornay.ch/_rte/publikation/236852"
+      },
+      {
+        "label": "Plan fixant les limites de construction Chavornay Plan fixant les limites de construction Chavornay",
+        "url": "https://www.chavornay.ch/_rte/publikation/236867"
+      },
+      {
+        "label": "Plan fixant les limites de construction Corcelles-sur-Chavornay Plan fixant les limites de construction Corcelles-sur-Chavornay Téléchargement",
+        "url": "https://www.chavornay.ch/_rte/publikation/236870"
+      },
+      {
+        "label": "Plan fixant les limites de construction Essert-Pittet Plan fixant les limites de construction Essert-Pittet",
+        "url": "https://www.chavornay.ch/_rte/publikation/236876"
+      },
+      {
+        "label": "Plan de zone Essert-Pittet Plan de zone Essert-Pittet Téléchargement",
+        "url": "https://www.chavornay.ch/_rte/publikation/257746"
+      },
+      {
+        "label": "Règlement sur le plan d'affectation \"Tuilerie de Corcelles\" Règlement sur le plan d'affectation \"Tuilerie de Corcelles\" Téléchargement",
+        "url": "https://www.chavornay.ch/_rte/publikation/339061"
+      },
+      {
+        "label": "Plan et règlement zone réservée communale Plan et règlement zone réservée communale Téléchargement",
+        "url": "https://www.chavornay.ch/_rte/publikation/353981"
+      },
+      {
+        "label": "Plan d'affectation \"Les Moellettes-Bas du Village 2\" Plan d'affectation \"Les Moellettes-Bas du Village 2\" Téléchargement",
+        "url": "https://www.chavornay.ch/_rte/publikation/516037"
+      },
+      {
+        "label": "Règlement du plan d'affectation \"Les Moellettes-Bas du Village 2\" Règlement du plan d'affectation \"Les Moellettes-Bas du Village 2\" Téléchargement",
+        "url": "https://www.chavornay.ch/_rte/publikation/516040"
+      }
+    ],
+    "parser_diagnostics": [],
+    "embedded_table_rows": 53,
+    "finding": "Decoded the published i-web table with the existing bounded parser. It lists zoning and local plans for Chavornay, Corcelles-sur-Chavornay and Essert-Pittet, but no explicit full PDCom link was identified. Check all predecessor territories; bounded result is not absence.",
+    "outcome": "manual_search_required",
+    "full_pdcom_acquired": false
+  },
+  {
+    "commune_bfs": 5764,
+    "name": "Vallorbe",
+    "url": "https://www.vallorbe.ch/reglements",
+    "http_status": 200,
+    "sha256": "d205f5bf850c06fe684f949b57bb65909863478ade987dcb15c50de43df0e946",
+    "checked_at": "2026-09-17T00:01:08.529946+00:00",
+    "relevant_links": [
+      {
+        "label": "Plan communal",
+        "url": "https://www.vallorbe.ch/plan-communal"
+      },
+      {
+        "label": "Plan des vacances",
+        "url": "https://www.vallorbe.ch/ferienplan"
+      },
+      {
+        "label": "Plan général d'affectation (PGA) Plan général d'affectation (PGA)",
+        "url": "https://www.vallorbe.ch/_rte/publikation/24847"
+      }
+    ],
+    "parser_diagnostics": [],
+    "embedded_table_rows": 18,
+    "finding": "Decoded the published i-web table. PGA regulation PDF4 explicitly distinguishes the PDCom and its visual synthesis and says planning documents may be consulted at the municipal secretariat. Full PDCom source remains missing.",
+    "outcome": "manual_search_required",
+    "full_pdcom_acquired": false
+  },
+  {
+    "commune_bfs": 5861,
+    "name": "Rolle",
+    "url": "https://www.rolle.ch/N443/urbanisme.html",
+    "http_status": 200,
+    "sha256": "9bc1cdf967c71a70566557962d836390847757c325990d03990b349cbdb6bc85",
+    "checked_at": "2026-09-17T00:01:08.683443+00:00",
+    "relevant_links": [
+      {
+        "label": "Vivre",
+        "url": "https://www.rolle.ch/N443/urbanisme.html"
+      },
+      {
+        "label": "Découvrir",
+        "url": "https://www.rolle.ch/N443/urbanisme.html"
+      },
+      {
+        "label": "Administration",
+        "url": "https://www.rolle.ch/N443/urbanisme.html"
+      },
+      {
+        "label": "Urbanisme",
+        "url": "https://www.rolle.ch/N443/urbanisme.html"
+      },
+      {
+        "label": "Officiel",
+        "url": "https://www.rolle.ch/N443/urbanisme.html"
+      },
+      {
+        "label": "Rechercher",
+        "url": "https://www.rolle.ch/N443/urbanisme.html"
+      },
+      {
+        "label": "",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/Plan-des-zones-2500-avec-parcelles.pdf"
+      },
+      {
+        "label": "Plan",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/PGA_6nov1992.pdf"
+      },
+      {
+        "label": "Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/00-PGA-reglement.pdf"
+      },
+      {
+        "label": "Plan",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/01-PQ-Vers_La_Piece-Plan-lt.pdf"
+      },
+      {
+        "label": "Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/01-PQ-Vers_La_Piece-Reglement.pdf"
+      },
+      {
+        "label": "Plan",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/02-PQ-Sous-l-Etraz-Plan.pdf"
+      },
+      {
+        "label": "Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/02-PQ-Sous-l-Etraz-Reglement.pdf"
+      },
+      {
+        "label": "Plan & Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/04-PQ-Les_Eaux_I-Plan-Reglement.pdf"
+      },
+      {
+        "label": "Plan",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/04-PQ-Les_Eaux-II-Plan.pdf"
+      },
+      {
+        "label": "Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/04-PQ-Les_Eaux-II-Reglement.pdf"
+      },
+      {
+        "label": "Plan & Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/06-PQ-Aux_Pres_du_Gaud-Plan-Reglement.pdf"
+      },
+      {
+        "label": "Plan",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/07-PQ-Sous-Bellefontaine-Plan.pdf"
+      },
+      {
+        "label": "Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/07-PQ-Sous-Bellefontaine-Reglement.pdf"
+      },
+      {
+        "label": "Plan & Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/08-PQ-Les_Epines-Plan-Reglement.pdf"
+      },
+      {
+        "label": "Plan & Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/09-PQ-Au_Parc-Plan-Reglement.pdf"
+      },
+      {
+        "label": "Plan",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/10-PQ-Au_Parc_Ouest-Plan.pdf"
+      },
+      {
+        "label": "Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/10-PQ-Au_Parc_Ouest-Reglement.pdf"
+      },
+      {
+        "label": "Plan",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/11-PQ-Grandes_Buttes-Jardins-Plan.pdf"
+      },
+      {
+        "label": "Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/11-PQ-Grandes_Buttes-Jardins-Reglement.pdf"
+      },
+      {
+        "label": "Plan & Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/13-PQ-Aux_Uttins-Plan-Reglement.pdf"
+      },
+      {
+        "label": "Plan",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/14_PQ-Au_Maupas-Plan.pdf"
+      },
+      {
+        "label": "Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/14-PQ-Au_Maupas-Reglement.pdf"
+      },
+      {
+        "label": "Plan",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/15-PQ-Fleur_d_Eau-Plan.pdf"
+      },
+      {
+        "label": "Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/15-PQ-Fleur_d_Eau-Reglement.pdf"
+      },
+      {
+        "label": "Plan & Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/16-PQ-Pre_de_Vert-Plan-Reglement.pdf"
+      },
+      {
+        "label": "Plan & Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/17-PQ-Sous_le_Rosey-Plan-Reglement.pdf"
+      },
+      {
+        "label": "Plan",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/18-PQ-La_Combe-Plan.pdf"
+      },
+      {
+        "label": "Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/18-PQ-La_Combe-Reglement.pdf"
+      },
+      {
+        "label": "Plan",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/19-PQ-Baccara-Plan.pdf"
+      },
+      {
+        "label": "Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/19-PQ-Baccara-Reglement.pdf"
+      },
+      {
+        "label": "Plan",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/20-PQ-Le_Rosey-Plan.pdf"
+      },
+      {
+        "label": "Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/20-PQ-Le_Rosey-Reglement.pdf"
+      },
+      {
+        "label": "Plan",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/21-PPA-Centre_Ancien-Plan.pdf"
+      },
+      {
+        "label": "Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/21-PPA-Centre_Ancien-Reglement.pdf"
+      },
+      {
+        "label": "Plan & Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/22-PPA-Martinet-Nord-Plan-Reglement.pdf"
+      },
+      {
+        "label": "Plan & Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/23-PEP-Au_Martinet-Plan-Reglement.pdf"
+      },
+      {
+        "label": "Plan",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/24-PEP-Sur_la_Ville-Plan.pdf"
+      },
+      {
+        "label": "Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/24-PEP-Sur_la_Ville-Reglement.pdf"
+      },
+      {
+        "label": "Plan",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/25-PPA-Ouest_Rollois-Plan.pdf"
+      },
+      {
+        "label": "Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/25-PPA-Ouest_Rollois-Reglement.pdf"
+      },
+      {
+        "label": "Plan & Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/26-PEP-Le_Rosey-Plan-Reglement.pdf"
+      },
+      {
+        "label": "Plan",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/29-PPA-Port_Ouest-Plan.pdf"
+      },
+      {
+        "label": "Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/29-PPA-Port_Ouest-Reglement.pdf"
+      },
+      {
+        "label": "Modification",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/29-PPA-Port_Ouest-Modification-Plan-Reglement.pdf"
+      },
+      {
+        "label": "Plan",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/32-PQ-Gare_Nord-Schenk-Plan.pdf"
+      },
+      {
+        "label": "Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/32-PQ-Gare_Nord-Schenk-Reglement.pdf"
+      },
+      {
+        "label": "Plan & Règlement",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/ZR-Zone_Reservee.pdf"
+      },
+      {
+        "label": "Urbanisme",
+        "url": "https://www.rolle.ch/N1970/urbanisme.html"
+      },
+      {
+        "label": "",
+        "url": "https://www.rolle.ch/N1970/urbanisme.html"
+      },
+      {
+        "label": "Adresse complète",
+        "url": "https://www.rolle.ch/N1970/urbanisme.html"
+      },
+      {
+        "label": "Règlement concernant la taxe relative au financement de l'équipement communautaire lié à des mesures d'aménagement du territoire",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/ZZ_Reglement-concernant-la-taxe-relative-au-financement-de-l_equipement-communautaire-30juillet2013.pdf"
+      },
+      {
+        "label": "Suivre le lien",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/ZZ_Reglement-concernant-la-taxe-relative-au-financement-de-l_equipement-communautaire-30juillet2013.pdf"
+      },
+      {
+        "label": "Règlement concernant les émoluments et frais administratifs en matière de police des constructions et d'aménagement du territoire",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/ZZ_Reglement-emoluments-taxes-police-constructions.pdf"
+      },
+      {
+        "label": "Suivre le lien",
+        "url": "https://www.rolle.ch/data/dataimages/Upload/Urbanisme/ZZ_Reglement-emoluments-taxes-police-constructions.pdf"
+      },
+      {
+        "label": "«",
+        "url": "https://www.rolle.ch/N443/urbanisme.html"
+      },
+      {
+        "label": "",
+        "url": "https://www.rolle.ch/N443/urbanisme.html#atop"
+      }
+    ],
+    "parser_diagnostics": [],
+    "embedded_table_rows": 0,
+    "finding": "Official urbanism page publishes zoning/local plans. Management report 2019 PDF82 lists PDCom municipal adoption 26 April 1999, council adoption 19 September 2000 and approval/entry column 11 June 2001. These are secondary official chronology claims, not exact-version approval evidence; original PDCom missing.",
+    "outcome": "manual_search_required",
+    "full_pdcom_acquired": false
+  },
+  {
+    "commune_bfs": 5872,
+    "name": "Le Chenit",
+    "url": "https://www.communeduchenit.ch/services/bureau-technique/plans-daffectation/",
+    "http_status": 200,
+    "sha256": "63df64964ef0e4d9bb7b1ae2cdc5ed1da42210f890431c34bd1b4992de6ae82c",
+    "checked_at": "2026-09-17T00:01:09.607628+00:00",
+    "relevant_links": [
+      {
+        "label": "Aller au contenu",
+        "url": "https://www.communeduchenit.ch/services/bureau-technique/plans-daffectation/#content"
+      },
+      {
+        "label": "Plans d’affectation",
+        "url": "https://www.communeduchenit.ch/services/bureau-technique/plans-daffectation/"
+      },
+      {
+        "label": "Planification Énergétique Territoriale",
+        "url": "https://www.communeduchenit.ch/services/bureau-technique/developpement-durable-et-energie-renouvelable/planification-energetique-territoriale/"
+      },
+      {
+        "label": "Dossier du plan d'affectation communal",
+        "url": "https://www.communeduchenit.ch/wp-content/uploads/2026/06/Plan-daffectation-communal.zip"
+      },
+      {
+        "label": "Gérer les options",
+        "url": "https://www.communeduchenit.ch/services/bureau-technique/plans-daffectation/"
+      },
+      {
+        "label": "Gérer les services",
+        "url": "https://www.communeduchenit.ch/services/bureau-technique/plans-daffectation/"
+      },
+      {
+        "label": "Gérer {vendor_count} fournisseurs",
+        "url": "https://www.communeduchenit.ch/services/bureau-technique/plans-daffectation/"
+      },
+      {
+        "label": "Voir les préférences",
+        "url": "https://www.communeduchenit.ch/services/bureau-technique/plans-daffectation/"
+      },
+      {
+        "label": "{title}",
+        "url": "https://www.communeduchenit.ch/services/bureau-technique/plans-daffectation/"
+      }
+    ],
+    "parser_diagnostics": [],
+    "embedded_table_rows": 0,
+    "finding": "Official page advertises PACom inquiry 10 June–9 July 2026 and links Plan-daffectation-communal.zip. This is zoning material, not a recovered comprehensive PDCom. Regional activity-zone and mobility plans have separate limited scope and are not full-commune PDCom coverage.",
+    "outcome": "manual_search_required",
+    "full_pdcom_acquired": false
+  },
+  {
+    "commune_bfs": 5889,
+    "name": "La Tour-de-Peilz",
+    "url": "https://www.la-tour-de-peilz.ch/administration/administration.php?mnbid=3",
+    "http_status": 200,
+    "sha256": "90fa20be5b1e66e8937052d84805c7aca7f5fe11e31a2bedff72f08db0981e6e",
+    "checked_at": "2026-09-17T00:01:08.148077+00:00",
+    "relevant_links": [
+      {
+        "label": "Logement, gérance, places de parc et plantages",
+        "url": "https://www.la-tour-de-peilz.ch/administration/cpages.php?id_page_b=17"
+      },
+      {
+        "label": "URBANISME ET ESPACES PUBLICS",
+        "url": "https://www.la-tour-de-peilz.ch/administration/administration.php?mnbid=3"
+      },
+      {
+        "label": "Modification du Règlement du Plan général d’affectation",
+        "url": "https://www.la-tour-de-peilz.ch/rpga/"
+      },
+      {
+        "label": "plan général d’affectation",
+        "url": "https://www.la-tour-de-peilz.ch/rpga/"
+      },
+      {
+        "label": "règlement",
+        "url": "https://www.la-tour-de-peilz.ch/doc_uploads/images/Administration/urbanisme-et-travaux-publics/pdf/reglement-pga.pdf"
+      },
+      {
+        "label": "Volet stratégique",
+        "url": "https://www.la-tour-de-peilz.ch/doc_uploads/images/Administration/urbanisme-et-travaux-publics/pdf/PDM-Volet-strategique.pdf"
+      },
+      {
+        "label": "Volet opérationnel",
+        "url": "https://www.la-tour-de-peilz.ch/doc_uploads/images/Administration/urbanisme-et-travaux-publics/pdf/PDM-Volet-operationnel.pdf"
+      },
+      {
+        "label": "www.plans-reseaux.ch",
+        "url": "http://www.plans-reseaux.ch/"
+      },
+      {
+        "label": "PLAN DE LA VILLE",
+        "url": "https://map.cartoriviera.ch/s/Yq0Gu"
+      }
+    ],
+    "parser_diagnostics": [],
+    "embedded_table_rows": 0,
+    "finding": "2026 RPGA proposal PDF96 explicitly references the 2000 PDCom and says its revision should precede a future PACom revision. Municipal page also links strategic/operational mobility plans. Three legacy PDC candidates are verified one-page permit-procedure guides, not PDCom, and should be rejected.",
+    "outcome": "manual_search_required",
+    "full_pdcom_acquired": false
+  }
+]
