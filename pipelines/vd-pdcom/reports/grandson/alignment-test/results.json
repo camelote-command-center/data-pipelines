@@ -1,0 +1,3975 @@
+{
+  "source_sha256": "1f349cf0dcf2d9f5fb7e13ccddaee37fa041c223c4c95834fef990c9765a360a",
+  "reference_sha256": "0fdcdc95fcc8afed50ebf67b1a4b50bf1a202adabc04ba39923a662eaba71a3a",
+  "candidate_sha256": "18da58719e27d1d067053d287f34e8cb2d7520eee3d239eb2ebd3318d534dd11",
+  "scale_m_per_pdf_point": 1.7638888888888888,
+  "theta_radians_on_reflected_pdf": -0.8722884889614583,
+  "affine_pdf_to_lv95": [
+    1.134314085287549,
+    -1.350790719639408,
+    -1.350790719639408,
+    -1.134314085287549,
+    2540047.4362318534,
+    1186009.6764476772
+  ],
+  "seed_pose_count": 756,
+  "seed_training_score": 151,
+  "invalid_reference_oids": [],
+  "training_summary": {
+    "total": 273,
+    "accepted": 150,
+    "unmatched_or_rejected": 123,
+    "rmse_accepted_m": 1.9590348637146453,
+    "median_iou_accepted": 0.6577509204595626,
+    "iou_ge_085_and_hausdorff_le_5m": 12
+  },
+  "reserved_summary": {
+    "total": 120,
+    "accepted": 66,
+    "unmatched_or_rejected": 54,
+    "rmse_accepted_m": 1.9382765300932592,
+    "median_iou_accepted": 0.6950433063589647,
+    "iou_ge_085_and_hausdorff_le_5m": 2
+  },
+  "training": [
+    {
+      "drawing_index": 1512,
+      "nearest_oid": 46378730,
+      "distance_m": 2.6627120243768587,
+      "iou": 0.7309413521351446,
+      "hausdorff_m": 3.7021057473972987,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1514,
+      "nearest_oid": 46283726,
+      "distance_m": 0.5981099009659675,
+      "iou": 0.6023612944214872,
+      "hausdorff_m": 1.8815807264325244,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1516,
+      "nearest_oid": 46327625,
+      "distance_m": 2.1031984845878253,
+      "iou": 0.6655001858791048,
+      "hausdorff_m": 2.505167031396314,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1518,
+      "nearest_oid": 46377203,
+      "distance_m": 2.4477403172497487,
+      "iou": 0.2780353243938048,
+      "hausdorff_m": 2.8661949051672435,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1520,
+      "nearest_oid": 46444385,
+      "distance_m": 2.15895294847695,
+      "iou": 0.4111804504532671,
+      "hausdorff_m": 2.551193049909648,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1524,
+      "nearest_oid": 46487221,
+      "distance_m": 2.548194307182509,
+      "iou": 0.6837925690445065,
+      "hausdorff_m": 5.7046960116271315,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1526,
+      "nearest_oid": 46298960,
+      "distance_m": 2.115475660608537,
+      "iou": 0.6546428734170605,
+      "hausdorff_m": 3.550354303540816,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1528,
+      "nearest_oid": 46359786,
+      "distance_m": 3.5289812322404774,
+      "iou": 0.09299483618605209,
+      "hausdorff_m": 5.373716781129115,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1530,
+      "nearest_oid": 46310291,
+      "distance_m": 16.929523660130133,
+      "iou": 0.0,
+      "hausdorff_m": 21.131098134923164,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1534,
+      "nearest_oid": 46373482,
+      "distance_m": 0.9254503345069969,
+      "iou": 0.6502585327576368,
+      "hausdorff_m": 2.711187147104031,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1540,
+      "nearest_oid": 46356624,
+      "distance_m": 10.295840276803697,
+      "iou": 0.030799191649637316,
+      "hausdorff_m": 14.151401605725034,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1542,
+      "nearest_oid": 46393312,
+      "distance_m": 0.8139359958243348,
+      "iou": 0.6100992237001333,
+      "hausdorff_m": 1.1238067430919216,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1544,
+      "nearest_oid": 46439835,
+      "distance_m": 2.298515554300279,
+      "iou": 0.5287784698650224,
+      "hausdorff_m": 5.550495491108493,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1550,
+      "nearest_oid": 46427496,
+      "distance_m": 0.617787253018596,
+      "iou": 0.8246806583463829,
+      "hausdorff_m": 2.0758143525977863,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1552,
+      "nearest_oid": 46339251,
+      "distance_m": 9.64971580412586,
+      "iou": 0.5141136905288483,
+      "hausdorff_m": 15.349538219996164,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1554,
+      "nearest_oid": 46462445,
+      "distance_m": 2.3423362079107206,
+      "iou": 0.649630718996247,
+      "hausdorff_m": 3.2186165461190654,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1556,
+      "nearest_oid": 46416856,
+      "distance_m": 1.1727479956341225,
+      "iou": 0.6985275906553512,
+      "hausdorff_m": 3.10336005934034,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1558,
+      "nearest_oid": 46408905,
+      "distance_m": 1.89754340906445,
+      "iou": 0.7241567934297144,
+      "hausdorff_m": 4.364012070360587,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1560,
+      "nearest_oid": 46336637,
+      "distance_m": 3.0372083635256697,
+      "iou": 0.5772824111215487,
+      "hausdorff_m": 3.570382528159998,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1562,
+      "nearest_oid": 46290579,
+      "distance_m": 1.1774857594394077,
+      "iou": 0.8591838047931858,
+      "hausdorff_m": 1.6247116760910765,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1564,
+      "nearest_oid": 46374462,
+      "distance_m": 0.9828205497975016,
+      "iou": 0.35151822602751076,
+      "hausdorff_m": 3.0582946856940434,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1566,
+      "nearest_oid": 46351754,
+      "distance_m": 0.4974669535425714,
+      "iou": 0.8650609707835634,
+      "hausdorff_m": 2.2576225295807784,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1568,
+      "nearest_oid": 46369428,
+      "distance_m": 2.625497324534422,
+      "iou": 0.41983356856761095,
+      "hausdorff_m": 3.8863478271836125,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1570,
+      "nearest_oid": 46427931,
+      "distance_m": 2.7971953747035174,
+      "iou": 0.3491284209094165,
+      "hausdorff_m": 4.275822538559382,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1572,
+      "nearest_oid": 46285587,
+      "distance_m": 1.1445348009991625,
+      "iou": 0.7351469620325004,
+      "hausdorff_m": 1.6045433382729797,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1574,
+      "nearest_oid": 46386841,
+      "distance_m": 1.5828455079059989,
+      "iou": 0.49539795725683466,
+      "hausdorff_m": 4.948234487202763,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1582,
+      "nearest_oid": 46500655,
+      "distance_m": 4.543349169602643,
+      "iou": 0.3768077119735328,
+      "hausdorff_m": 9.85203946848035,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1586,
+      "nearest_oid": 46317614,
+      "distance_m": 1.5025581894171238,
+      "iou": 0.6962748159355979,
+      "hausdorff_m": 3.1846091745051215,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1600,
+      "nearest_oid": 46433504,
+      "distance_m": 0.3591544198466937,
+      "iou": 0.5279213408078807,
+      "hausdorff_m": 1.5309280295756256,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1602,
+      "nearest_oid": 46385917,
+      "distance_m": 3.8501693528921543,
+      "iou": 0.04806014526513404,
+      "hausdorff_m": 7.224627535213595,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1604,
+      "nearest_oid": 46430957,
+      "distance_m": 2.847593090267633,
+      "iou": 0.2711777380806899,
+      "hausdorff_m": 4.577881399000292,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1606,
+      "nearest_oid": 46283804,
+      "distance_m": 3.1978834258802253,
+      "iou": 0.30605100358462745,
+      "hausdorff_m": 3.662500718545365,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1644,
+      "nearest_oid": 46422107,
+      "distance_m": 0.708164566643571,
+      "iou": 0.8307089511921604,
+      "hausdorff_m": 0.7812488082689587,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1646,
+      "nearest_oid": 46515715,
+      "distance_m": 3.7509964044901136,
+      "iou": 0.5623604869018393,
+      "hausdorff_m": 4.540371697221585,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1654,
+      "nearest_oid": 46318636,
+      "distance_m": 1.0035720137563615,
+      "iou": 0.8270588532186206,
+      "hausdorff_m": 2.4145745693576313,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1658,
+      "nearest_oid": 46408213,
+      "distance_m": 0.7326154233219888,
+      "iou": 0.7307554831330071,
+      "hausdorff_m": 0.9378252308567606,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1660,
+      "nearest_oid": 46476062,
+      "distance_m": 2.3920928583498386,
+      "iou": 0.5136522722098733,
+      "hausdorff_m": 5.381368731747192,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1666,
+      "nearest_oid": 46467376,
+      "distance_m": 0.7785154929768495,
+      "iou": 0.7803149996708282,
+      "hausdorff_m": 1.0557471513222816,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1718,
+      "nearest_oid": 46294466,
+      "distance_m": 0.40897835890580103,
+      "iou": 0.8767434776530565,
+      "hausdorff_m": 1.06213982697778,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1740,
+      "nearest_oid": 46388413,
+      "distance_m": 1.8462931262887394,
+      "iou": 0.5392058277239334,
+      "hausdorff_m": 3.4460373072565558,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1742,
+      "nearest_oid": 46449702,
+      "distance_m": 3.05535478671519,
+      "iou": 0.5126379884144499,
+      "hausdorff_m": 5.286477982288964,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1744,
+      "nearest_oid": 46328622,
+      "distance_m": 3.1963060663160188,
+      "iou": 0.4276105706779763,
+      "hausdorff_m": 4.663839731720078,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1746,
+      "nearest_oid": 46507454,
+      "distance_m": 1.0344182511617233,
+      "iou": 0.3624038150869202,
+      "hausdorff_m": 2.373349366656632,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1750,
+      "nearest_oid": 46444647,
+      "distance_m": 1.5001672462162903,
+      "iou": 0.7059674926653967,
+      "hausdorff_m": 1.8438713236599902,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1752,
+      "nearest_oid": 46312842,
+      "distance_m": 35.764823462648685,
+      "iou": 0.0,
+      "hausdorff_m": 39.29799562577592,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1754,
+      "nearest_oid": 46405732,
+      "distance_m": 2.21203085880487,
+      "iou": 0.6247368553271252,
+      "hausdorff_m": 4.231720086077699,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1756,
+      "nearest_oid": 46532443,
+      "distance_m": 5.536675421597057,
+      "iou": 0.17244255289424623,
+      "hausdorff_m": 16.486998187611704,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1758,
+      "nearest_oid": 46347299,
+      "distance_m": 1.8490090105156107,
+      "iou": 0.6338490058629141,
+      "hausdorff_m": 2.3837618147642607,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1762,
+      "nearest_oid": 46463824,
+      "distance_m": 1.96654467161614,
+      "iou": 0.2789496439097485,
+      "hausdorff_m": 2.600823473643144,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1764,
+      "nearest_oid": 46449430,
+      "distance_m": 2.0818101288035034,
+      "iou": 0.5086770963577096,
+      "hausdorff_m": 2.6427163796550963,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1766,
+      "nearest_oid": 46339803,
+      "distance_m": 2.0351774556179714,
+      "iou": 0.62748396216828,
+      "hausdorff_m": 3.0033136724076117,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1768,
+      "nearest_oid": 46331158,
+      "distance_m": 4.633857567616186,
+      "iou": 0.050314168715970616,
+      "hausdorff_m": 17.991365570763456,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1770,
+      "nearest_oid": 46314908,
+      "distance_m": 8.377112188051365,
+      "iou": 0.5473337013018541,
+      "hausdorff_m": 18.64762343284609,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1772,
+      "nearest_oid": 46450569,
+      "distance_m": 1.558308425109749,
+      "iou": 0.5698841144662928,
+      "hausdorff_m": 7.257100613715813,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1778,
+      "nearest_oid": 46306431,
+      "distance_m": 1.9014450423277316,
+      "iou": 0.78115456989649,
+      "hausdorff_m": 3.3501719054393333,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1780,
+      "nearest_oid": 46418517,
+      "distance_m": 7.250552902883282,
+      "iou": 0.42118365939609376,
+      "hausdorff_m": 14.637686405033989,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1786,
+      "nearest_oid": 46296456,
+      "distance_m": 0.9241337378106647,
+      "iou": 0.7463458403884685,
+      "hausdorff_m": 3.494388998028917,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1788,
+      "nearest_oid": 46498195,
+      "distance_m": 6.788053467980966,
+      "iou": 0.10866373275561302,
+      "hausdorff_m": 11.07284200716684,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1790,
+      "nearest_oid": 46341132,
+      "distance_m": 2.7870401995675973,
+      "iou": 0.5681083576996239,
+      "hausdorff_m": 4.751710881376238,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1792,
+      "nearest_oid": 46532457,
+      "distance_m": 0.587643849633554,
+      "iou": 0.6616418062850065,
+      "hausdorff_m": 0.8815316212661266,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1794,
+      "nearest_oid": 46342344,
+      "distance_m": 1.7048778030849208,
+      "iou": 0.6481303300040561,
+      "hausdorff_m": 2.1727321578098895,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1798,
+      "nearest_oid": 46397298,
+      "distance_m": 2.737506350074292,
+      "iou": 0.4116316585523162,
+      "hausdorff_m": 3.4332874940987366,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1800,
+      "nearest_oid": 46383050,
+      "distance_m": 3.8960581963325964,
+      "iou": 0.047535834715604776,
+      "hausdorff_m": 8.104857422211927,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1802,
+      "nearest_oid": 46491792,
+      "distance_m": 1.382854385986954,
+      "iou": 0.6457277363600962,
+      "hausdorff_m": 4.310908157706489,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1806,
+      "nearest_oid": 46465232,
+      "distance_m": 6.008107342926176,
+      "iou": 0.001374160143516223,
+      "hausdorff_m": 7.16623716097734,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1808,
+      "nearest_oid": 46458991,
+      "distance_m": 2.42533281646837,
+      "iou": 0.5854353834411549,
+      "hausdorff_m": 4.330106587726172,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1816,
+      "nearest_oid": 46508085,
+      "distance_m": 23.54342804704697,
+      "iou": 0.0,
+      "hausdorff_m": 30.717715117557553,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1820,
+      "nearest_oid": 46391475,
+      "distance_m": 0.7057094608599644,
+      "iou": 0.659486063402656,
+      "hausdorff_m": 2.1350198465772743,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1822,
+      "nearest_oid": 46335329,
+      "distance_m": 0.9538159853309178,
+      "iou": 0.7146315378458229,
+      "hausdorff_m": 2.1061655249591014,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1824,
+      "nearest_oid": 46466886,
+      "distance_m": 15.765263562439703,
+      "iou": 0.0,
+      "hausdorff_m": 17.268131094241255,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1826,
+      "nearest_oid": 46466886,
+      "distance_m": 0.5650608230257802,
+      "iou": 0.447620674313953,
+      "hausdorff_m": 2.9960574026679496,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1828,
+      "nearest_oid": 46332596,
+      "distance_m": 1.7477391887805032,
+      "iou": 0.599118569225105,
+      "hausdorff_m": 3.204702008390995,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1830,
+      "nearest_oid": 46457038,
+      "distance_m": 3.277766320324402,
+      "iou": 0.37928153927524677,
+      "hausdorff_m": 4.004815359962525,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1832,
+      "nearest_oid": 46378413,
+      "distance_m": 0.8877398533997947,
+      "iou": 0.7756763373728931,
+      "hausdorff_m": 8.169614024764027,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1836,
+      "nearest_oid": 46403866,
+      "distance_m": 0.504006563076718,
+      "iou": 0.41599539855783046,
+      "hausdorff_m": 11.472655347859273,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1838,
+      "nearest_oid": 46386756,
+      "distance_m": 6.2396270467783195,
+      "iou": 0.3689382495207917,
+      "hausdorff_m": 18.333326082720934,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1840,
+      "nearest_oid": 46437683,
+      "distance_m": 2.2750138361675916,
+      "iou": 0.6820947827192275,
+      "hausdorff_m": 4.548846672151984,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1842,
+      "nearest_oid": 46425378,
+      "distance_m": 0.9684561918236396,
+      "iou": 0.7635146117465621,
+      "hausdorff_m": 1.3730084755797145,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1844,
+      "nearest_oid": 46497554,
+      "distance_m": 0.871582703468746,
+      "iou": 0.8132906048829032,
+      "hausdorff_m": 1.3122226494047227,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1846,
+      "nearest_oid": 46379331,
+      "distance_m": 3.8426012347179292,
+      "iou": 0.30564799247396984,
+      "hausdorff_m": 9.580806085989675,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1848,
+      "nearest_oid": 46432061,
+      "distance_m": 0.5267981627083318,
+      "iou": 0.801442858774184,
+      "hausdorff_m": 1.74579570696317,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1850,
+      "nearest_oid": 46292908,
+      "distance_m": 0.24948737512896624,
+      "iou": 0.8057180400287114,
+      "hausdorff_m": 0.9151794605197614,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1854,
+      "nearest_oid": 46338403,
+      "distance_m": 11.951171810337364,
+      "iou": 0.0,
+      "hausdorff_m": 15.807162190741822,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1856,
+      "nearest_oid": 46491268,
+      "distance_m": 1.533214473989006,
+      "iou": 0.460947734353162,
+      "hausdorff_m": 2.4454248093905937,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1858,
+      "nearest_oid": 46278073,
+      "distance_m": 11.969217280273046,
+      "iou": 0.0,
+      "hausdorff_m": 14.711979848252986,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1860,
+      "nearest_oid": 46370782,
+      "distance_m": 13.194806789775237,
+      "iou": 0.0,
+      "hausdorff_m": 22.664190176653186,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1862,
+      "nearest_oid": 46454502,
+      "distance_m": 0.7602458877660577,
+      "iou": 0.5279119323824866,
+      "hausdorff_m": 1.7503463839951963,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1864,
+      "nearest_oid": 46278073,
+      "distance_m": 25.235590248692212,
+      "iou": 0.0,
+      "hausdorff_m": 25.77421266661196,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1866,
+      "nearest_oid": 46475964,
+      "distance_m": 1.1868583979611702,
+      "iou": 0.7565848357989755,
+      "hausdorff_m": 2.6590688231622317,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1868,
+      "nearest_oid": 46308887,
+      "distance_m": 1.874779967897075,
+      "iou": 0.6453221258697158,
+      "hausdorff_m": 3.8151639608106254,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1870,
+      "nearest_oid": 46308461,
+      "distance_m": 5.81032975964914,
+      "iou": 0.6249802472937969,
+      "hausdorff_m": 11.922506424163029,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1872,
+      "nearest_oid": 46322806,
+      "distance_m": 9.339994849741627,
+      "iou": 0.0,
+      "hausdorff_m": 11.515992729380626,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1878,
+      "nearest_oid": 46412964,
+      "distance_m": 8.171444647088084,
+      "iou": 0.549348497163447,
+      "hausdorff_m": 41.4178683028161,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1882,
+      "nearest_oid": 46278073,
+      "distance_m": 0.7258900282183879,
+      "iou": 0.7255295602446244,
+      "hausdorff_m": 4.051496627014017,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1886,
+      "nearest_oid": 46453554,
+      "distance_m": 11.41238920992256,
+      "iou": 0.02188711090007769,
+      "hausdorff_m": 25.169460767358547,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1888,
+      "nearest_oid": 46328713,
+      "distance_m": 28.53913321232479,
+      "iou": 0.0,
+      "hausdorff_m": 33.89192440888795,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1890,
+      "nearest_oid": 46395119,
+      "distance_m": 1.283573729036845,
+      "iou": 0.4769143073145665,
+      "hausdorff_m": 1.7845313285663638,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1892,
+      "nearest_oid": 46478176,
+      "distance_m": 1.0082990538107204,
+      "iou": 0.5620225462809874,
+      "hausdorff_m": 2.2159953471278233,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1894,
+      "nearest_oid": 46331971,
+      "distance_m": 4.149274142941651,
+      "iou": 0.2609532704405446,
+      "hausdorff_m": 4.666502777336797,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1896,
+      "nearest_oid": 46340026,
+      "distance_m": 4.880016307521984,
+      "iou": 0.7742516575754249,
+      "hausdorff_m": 9.423995738727351,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1898,
+      "nearest_oid": 46394544,
+      "distance_m": 16.2590203020507,
+      "iou": 0.400056543300636,
+      "hausdorff_m": 25.393564470746142,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1902,
+      "nearest_oid": 46377531,
+      "distance_m": 1.4259207088642976,
+      "iou": 0.46461388989635954,
+      "hausdorff_m": 2.300643153829513,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1908,
+      "nearest_oid": 46321696,
+      "distance_m": 3.1041160324010186,
+      "iou": 0.483993988073804,
+      "hausdorff_m": 5.527681544259932,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1912,
+      "nearest_oid": 46486573,
+      "distance_m": 5.301062987920922,
+      "iou": 0.01353052444283963,
+      "hausdorff_m": 12.521671758928605,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1918,
+      "nearest_oid": 46341345,
+      "distance_m": 19.270686949706327,
+      "iou": 0.0,
+      "hausdorff_m": 21.59040678633719,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1920,
+      "nearest_oid": 46289524,
+      "distance_m": 16.932632571297386,
+      "iou": 0.0,
+      "hausdorff_m": 22.415745045782348,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1922,
+      "nearest_oid": 46289524,
+      "distance_m": 14.58712299509317,
+      "iou": 0.0,
+      "hausdorff_m": 18.874442955380527,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1924,
+      "nearest_oid": 46458462,
+      "distance_m": 4.8133868040342245,
+      "iou": 0.052071219551602335,
+      "hausdorff_m": 6.12454238789735,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1926,
+      "nearest_oid": 46358378,
+      "distance_m": 0.8223987373028226,
+      "iou": 0.8299990922618053,
+      "hausdorff_m": 2.862069984904582,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1930,
+      "nearest_oid": 46289524,
+      "distance_m": 1.8904023152750304,
+      "iou": 0.6643438462357429,
+      "hausdorff_m": 3.114292806816199,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1932,
+      "nearest_oid": 46314775,
+      "distance_m": 2.0412490469320326,
+      "iou": 0.14236815023198385,
+      "hausdorff_m": 4.022337279126394,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1934,
+      "nearest_oid": 46419517,
+      "distance_m": 0.46255965505579555,
+      "iou": 0.606864893136876,
+      "hausdorff_m": 1.5406354609812272,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1936,
+      "nearest_oid": 46419497,
+      "distance_m": 1.2357944418608449,
+      "iou": 0.3804414888652043,
+      "hausdorff_m": 3.4134405156458567,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1938,
+      "nearest_oid": 46495475,
+      "distance_m": 12.589211467767225,
+      "iou": 0.0,
+      "hausdorff_m": 18.467730923718133,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1940,
+      "nearest_oid": 46495475,
+      "distance_m": 1.450889265171856,
+      "iou": 0.6771167692164826,
+      "hausdorff_m": 2.1677128942594726,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1942,
+      "nearest_oid": 46341345,
+      "distance_m": 5.491311707670435,
+      "iou": 0.0,
+      "hausdorff_m": 5.763047720981337,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1948,
+      "nearest_oid": 46411665,
+      "distance_m": 2.234765285849285,
+      "iou": 0.5289865877906312,
+      "hausdorff_m": 2.607531868238912,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1950,
+      "nearest_oid": 46427200,
+      "distance_m": 11.291830623078612,
+      "iou": 0.0,
+      "hausdorff_m": 14.15498324919338,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1952,
+      "nearest_oid": 46353921,
+      "distance_m": 14.081961936808634,
+      "iou": 0.0,
+      "hausdorff_m": 14.595012905698345,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1958,
+      "nearest_oid": 46333708,
+      "distance_m": 5.273431730805774,
+      "iou": 0.17058294428207643,
+      "hausdorff_m": 21.824697127681553,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1960,
+      "nearest_oid": 46433281,
+      "distance_m": 6.447336097665051,
+      "iou": 0.39004662845759813,
+      "hausdorff_m": 15.6750976752664,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1966,
+      "nearest_oid": 46366628,
+      "distance_m": 12.473742369316593,
+      "iou": 0.0,
+      "hausdorff_m": 17.169435399185076,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1970,
+      "nearest_oid": 46384769,
+      "distance_m": 4.417835416801323,
+      "iou": 0.015344635736569218,
+      "hausdorff_m": 8.59902173799481,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1972,
+      "nearest_oid": 46508100,
+      "distance_m": 1.1662644786826346,
+      "iou": 0.06299175683750838,
+      "hausdorff_m": 42.1361896855987,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1976,
+      "nearest_oid": 46360337,
+      "distance_m": 1.8589221783732148,
+      "iou": 0.25356143993807817,
+      "hausdorff_m": 2.6252197964998345,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1978,
+      "nearest_oid": 46429320,
+      "distance_m": 2.0212802725101304,
+      "iou": 0.568477173703311,
+      "hausdorff_m": 3.9193036038792997,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1982,
+      "nearest_oid": 46474134,
+      "distance_m": 5.1765346949678,
+      "iou": 0.28254598398375325,
+      "hausdorff_m": 10.193681331573924,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1984,
+      "nearest_oid": 46456337,
+      "distance_m": 4.147406184357616,
+      "iou": 0.5717397732561437,
+      "hausdorff_m": 7.9027116634917265,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1986,
+      "nearest_oid": 46313992,
+      "distance_m": 1.450986116370164,
+      "iou": 0.7616191972755338,
+      "hausdorff_m": 4.590326816163542,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1988,
+      "nearest_oid": 46369074,
+      "distance_m": 4.365148015011251,
+      "iou": 0.26598800292758434,
+      "hausdorff_m": 13.330248305819245,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1990,
+      "nearest_oid": 46502672,
+      "distance_m": 4.635886689092954,
+      "iou": 0.31693956549213276,
+      "hausdorff_m": 13.936534661747556,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1994,
+      "nearest_oid": 46497215,
+      "distance_m": 9.297246980121859,
+      "iou": 0.0,
+      "hausdorff_m": 12.91365875766797,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1996,
+      "nearest_oid": 46497215,
+      "distance_m": 7.739388519613624,
+      "iou": 0.24647370852454345,
+      "hausdorff_m": 18.262086345216936,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1998,
+      "nearest_oid": 46463883,
+      "distance_m": 0.2758007802851203,
+      "iou": 0.8731185959214895,
+      "hausdorff_m": 1.5836382042098893,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2000,
+      "nearest_oid": 46425083,
+      "distance_m": 22.530811485139395,
+      "iou": 0.0,
+      "hausdorff_m": 30.054804391203394,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2002,
+      "nearest_oid": 46434952,
+      "distance_m": 23.820633233671945,
+      "iou": 0.0,
+      "hausdorff_m": 29.60483434822428,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2004,
+      "nearest_oid": 46293895,
+      "distance_m": 0.7595265001134295,
+      "iou": 0.7497143887418246,
+      "hausdorff_m": 4.121818114833694,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2008,
+      "nearest_oid": 46491464,
+      "distance_m": 3.41435823222102,
+      "iou": 0.09146546629862519,
+      "hausdorff_m": 44.17182631932359,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2010,
+      "nearest_oid": 46326938,
+      "distance_m": 3.6930460507641083,
+      "iou": 0.048544491019737256,
+      "hausdorff_m": 71.86351943894232,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2012,
+      "nearest_oid": 46317064,
+      "distance_m": 9.03596334627811,
+      "iou": 0.024270442523519925,
+      "hausdorff_m": 10.39077537733522,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2014,
+      "nearest_oid": 46362215,
+      "distance_m": 2.3181962341066282,
+      "iou": 0.02336929022286302,
+      "hausdorff_m": 64.26729975075033,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2016,
+      "nearest_oid": 46425083,
+      "distance_m": 5.69894666229382,
+      "iou": 0.19775281430954306,
+      "hausdorff_m": 23.265423471348793,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2018,
+      "nearest_oid": 46491049,
+      "distance_m": 1.14398197766184,
+      "iou": 0.8377204628494092,
+      "hausdorff_m": 4.591605183617116,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2022,
+      "nearest_oid": 46335570,
+      "distance_m": 1.0211675763644723,
+      "iou": 0.8331721690793661,
+      "hausdorff_m": 2.1676244227618913,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2024,
+      "nearest_oid": 46493410,
+      "distance_m": 6.089583081328954,
+      "iou": 0.27966740141003704,
+      "hausdorff_m": 13.197693267919474,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2030,
+      "nearest_oid": 46462983,
+      "distance_m": 2.6132764200675167,
+      "iou": 0.5736393248822141,
+      "hausdorff_m": 2.7528716155005806,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2034,
+      "nearest_oid": 46394132,
+      "distance_m": 0.5918408556090025,
+      "iou": 0.634151258346648,
+      "hausdorff_m": 1.942996745040443,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2036,
+      "nearest_oid": 46504742,
+      "distance_m": 1.3980420271285916,
+      "iou": 0.36570687716551004,
+      "hausdorff_m": 3.189123191252727,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2038,
+      "nearest_oid": 46327851,
+      "distance_m": 0.804562216683624,
+      "iou": 0.5636610497324335,
+      "hausdorff_m": 3.0676838451007673,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2040,
+      "nearest_oid": 46327851,
+      "distance_m": 28.961433066123,
+      "iou": 0.0,
+      "hausdorff_m": 31.407912633659688,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": true
+    },
+    {
+      "drawing_index": 2042,
+      "nearest_oid": 46327851,
+      "distance_m": 13.128458635139324,
+      "iou": 0.0,
+      "hausdorff_m": 14.204931585561402,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": true
+    },
+    {
+      "drawing_index": 2046,
+      "nearest_oid": 46406238,
+      "distance_m": 20.724653253259067,
+      "iou": 0.0,
+      "hausdorff_m": 28.22836855581858,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2054,
+      "nearest_oid": 46378385,
+      "distance_m": 1.0243744133403303,
+      "iou": 0.31108172559470915,
+      "hausdorff_m": 1.775588338456939,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2056,
+      "nearest_oid": 46343986,
+      "distance_m": 9.815182273282469,
+      "iou": 0.009090112278612582,
+      "hausdorff_m": 19.25855534111507,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2060,
+      "nearest_oid": 46381464,
+      "distance_m": 1.224568652386133,
+      "iou": 0.8316737815397531,
+      "hausdorff_m": 2.3637289170967404,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2062,
+      "nearest_oid": 46416413,
+      "distance_m": 5.071745486093135,
+      "iou": 0.44277230199149614,
+      "hausdorff_m": 13.536969854168792,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2068,
+      "nearest_oid": 46445238,
+      "distance_m": 0.932647906357291,
+      "iou": 0.5245662850400247,
+      "hausdorff_m": 6.451936416445237,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2070,
+      "nearest_oid": 46284002,
+      "distance_m": 2.292685673934218,
+      "iou": 0.5732895322617658,
+      "hausdorff_m": 4.078542921900076,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2072,
+      "nearest_oid": 46360367,
+      "distance_m": 1.754067030563181,
+      "iou": 0.5118026100664921,
+      "hausdorff_m": 2.0859731415331346,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2078,
+      "nearest_oid": 46386252,
+      "distance_m": 2.7008042700608583,
+      "iou": 0.6552790936368902,
+      "hausdorff_m": 3.3306041771825177,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2082,
+      "nearest_oid": 46470496,
+      "distance_m": 2.1728556979756157,
+      "iou": 0.6244741632765741,
+      "hausdorff_m": 3.1648430789537794,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2088,
+      "nearest_oid": 46306427,
+      "distance_m": 5.033021932917325,
+      "iou": 0.49282246491752346,
+      "hausdorff_m": 10.450176147665944,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2098,
+      "nearest_oid": 46379347,
+      "distance_m": 2.8201984694038655,
+      "iou": 0.46867567010583855,
+      "hausdorff_m": 5.801274193297845,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2100,
+      "nearest_oid": 46356010,
+      "distance_m": 1.6220831448359228,
+      "iou": 0.5999277905959978,
+      "hausdorff_m": 2.7649178230106766,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2104,
+      "nearest_oid": 46319887,
+      "distance_m": 1.7019765593110596,
+      "iou": 0.8097113358423378,
+      "hausdorff_m": 4.135953750847327,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2106,
+      "nearest_oid": 46283634,
+      "distance_m": 3.2240067966283616,
+      "iou": 0.8497256680836518,
+      "hausdorff_m": 4.992068701348096,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2108,
+      "nearest_oid": 46374461,
+      "distance_m": 0.9630281457184381,
+      "iou": 0.6546548163990791,
+      "hausdorff_m": 2.301373712226357,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2112,
+      "nearest_oid": 46382300,
+      "distance_m": 1.275915796261071,
+      "iou": 0.7690885994706167,
+      "hausdorff_m": 2.090169488335654,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2114,
+      "nearest_oid": 46453418,
+      "distance_m": 0.30709233223971394,
+      "iou": 0.7711426544632359,
+      "hausdorff_m": 1.449632888196699,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2116,
+      "nearest_oid": 46447078,
+      "distance_m": 2.466013304372994,
+      "iou": 0.5193960235291326,
+      "hausdorff_m": 3.847218867745488,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2118,
+      "nearest_oid": 46295258,
+      "distance_m": 7.238376832970277,
+      "iou": 0.5103956870399698,
+      "hausdorff_m": 18.317399852903442,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2120,
+      "nearest_oid": 46318341,
+      "distance_m": 5.392454411277254,
+      "iou": 0.3630204870551255,
+      "hausdorff_m": 15.161073588509996,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2124,
+      "nearest_oid": 46302901,
+      "distance_m": 0.6405429774512369,
+      "iou": 0.8712642837713076,
+      "hausdorff_m": 0.9235386262306617,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2126,
+      "nearest_oid": 46447785,
+      "distance_m": 2.847632397432672,
+      "iou": 0.6541343917307625,
+      "hausdorff_m": 10.07464091369215,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2134,
+      "nearest_oid": 46424074,
+      "distance_m": 3.0041168147318986,
+      "iou": 0.3803682624067277,
+      "hausdorff_m": 4.608299733700904,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2138,
+      "nearest_oid": 46532593,
+      "distance_m": 2.0728884709091906,
+      "iou": 0.35728153589354017,
+      "hausdorff_m": 2.3692618716938183,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2140,
+      "nearest_oid": 46532469,
+      "distance_m": 1.3203891507296979,
+      "iou": 0.4564680969866025,
+      "hausdorff_m": 1.6046584963479287,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2142,
+      "nearest_oid": 46432714,
+      "distance_m": 2.7774195850971495,
+      "iou": 0.6837120182924411,
+      "hausdorff_m": 3.6013011426650703,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2146,
+      "nearest_oid": 46424819,
+      "distance_m": 2.615696660663723,
+      "iou": 0.5541869569368548,
+      "hausdorff_m": 2.9691486371359614,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2148,
+      "nearest_oid": 46369547,
+      "distance_m": 1.6227280595005469,
+      "iou": 0.6547689460855292,
+      "hausdorff_m": 2.5471128599227573,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2152,
+      "nearest_oid": 46390419,
+      "distance_m": 2.544955901292129,
+      "iou": 0.5044523296426093,
+      "hausdorff_m": 5.017000860508068,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2154,
+      "nearest_oid": 46323417,
+      "distance_m": 1.431240450316545,
+      "iou": 0.5616979955715999,
+      "hausdorff_m": 1.6292693514917909,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2156,
+      "nearest_oid": 46433360,
+      "distance_m": 0.35831694537338876,
+      "iou": 0.8054823149449598,
+      "hausdorff_m": 1.3485866967133755,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2158,
+      "nearest_oid": 46414573,
+      "distance_m": 1.6278281734522573,
+      "iou": 0.6951608527466161,
+      "hausdorff_m": 2.0437502795697435,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2160,
+      "nearest_oid": 46532182,
+      "distance_m": 0.8785889963974024,
+      "iou": 0.7405465780468697,
+      "hausdorff_m": 1.4373054286288143,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2162,
+      "nearest_oid": 46532594,
+      "distance_m": 2.796362522544781,
+      "iou": 0.30789697350138323,
+      "hausdorff_m": 3.480992413180003,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2164,
+      "nearest_oid": 46313269,
+      "distance_m": 2.2341487460113663,
+      "iou": 0.5119482349723197,
+      "hausdorff_m": 5.039396704318461,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2168,
+      "nearest_oid": 46423710,
+      "distance_m": 13.26913640362168,
+      "iou": 0.0,
+      "hausdorff_m": 18.63397722359786,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2170,
+      "nearest_oid": 46439432,
+      "distance_m": 1.1628774797019383,
+      "iou": 0.7859590422594115,
+      "hausdorff_m": 2.060227736787356,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2172,
+      "nearest_oid": 46319935,
+      "distance_m": 2.6640920749921775,
+      "iou": 0.6181969731986128,
+      "hausdorff_m": 3.565608253195553,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2174,
+      "nearest_oid": 46339159,
+      "distance_m": 1.5834514470218704,
+      "iou": 0.6588411898502905,
+      "hausdorff_m": 2.26947155532783,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2176,
+      "nearest_oid": 46476231,
+      "distance_m": 1.9719145551697028,
+      "iou": 0.6496032876390863,
+      "hausdorff_m": 3.2015429197002776,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2180,
+      "nearest_oid": 46298422,
+      "distance_m": 0.2614382878984707,
+      "iou": 0.8344693143734124,
+      "hausdorff_m": 0.6305928917695461,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2184,
+      "nearest_oid": 46384276,
+      "distance_m": 1.6371023489926009,
+      "iou": 0.4901240524468481,
+      "hausdorff_m": 1.794054572604092,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2186,
+      "nearest_oid": 46400784,
+      "distance_m": 0.6936436132165127,
+      "iou": 0.556782249311156,
+      "hausdorff_m": 2.4517836942252598,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2188,
+      "nearest_oid": 46449530,
+      "distance_m": 0.7543071826080516,
+      "iou": 0.59879249653973,
+      "hausdorff_m": 6.034320272881707,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2190,
+      "nearest_oid": 46384939,
+      "distance_m": 14.856941185483246,
+      "iou": 0.0,
+      "hausdorff_m": 17.634359793117074,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2192,
+      "nearest_oid": 46473053,
+      "distance_m": 2.8900916749752468,
+      "iou": 0.3236017182049234,
+      "hausdorff_m": 3.6124558849083725,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2194,
+      "nearest_oid": 46441986,
+      "distance_m": 3.2707847866822983,
+      "iou": 0.4790891314771815,
+      "hausdorff_m": 5.368016868856711,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2196,
+      "nearest_oid": 46418859,
+      "distance_m": 2.797825220019491,
+      "iou": 0.33508737078995504,
+      "hausdorff_m": 3.1843775550500983,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2198,
+      "nearest_oid": 46345066,
+      "distance_m": 3.4007790276041225,
+      "iou": 0.4804053880228139,
+      "hausdorff_m": 5.013583152084352,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2200,
+      "nearest_oid": 46384939,
+      "distance_m": 0.8062699376082179,
+      "iou": 0.6772675978959447,
+      "hausdorff_m": 3.50038130583511,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2202,
+      "nearest_oid": 46433248,
+      "distance_m": 0.34276544961606153,
+      "iou": 0.7168126906023036,
+      "hausdorff_m": 2.417743789099185,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2204,
+      "nearest_oid": 46491961,
+      "distance_m": 3.2436235691734363,
+      "iou": 0.4340713051529105,
+      "hausdorff_m": 5.167449233398182,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2208,
+      "nearest_oid": 46470565,
+      "distance_m": 1.7619065760281039,
+      "iou": 0.3040952838949157,
+      "hausdorff_m": 10.08654444293883,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2212,
+      "nearest_oid": 46532439,
+      "distance_m": 38.6282361742466,
+      "iou": 0.0,
+      "hausdorff_m": 41.935046413433454,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2216,
+      "nearest_oid": 46532439,
+      "distance_m": 14.683002546619138,
+      "iou": 0.0,
+      "hausdorff_m": 26.98127235007666,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2220,
+      "nearest_oid": 46409248,
+      "distance_m": 9.269848649501958,
+      "iou": 0.08809136827874746,
+      "hausdorff_m": 12.501996235764723,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2222,
+      "nearest_oid": 46423710,
+      "distance_m": 10.101257339693486,
+      "iou": 0.32221472597950435,
+      "hausdorff_m": 21.353471331443796,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2224,
+      "nearest_oid": 46422870,
+      "distance_m": 1.2135428420124326,
+      "iou": 0.6654807114564835,
+      "hausdorff_m": 6.097227640376181,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2228,
+      "nearest_oid": 46485864,
+      "distance_m": 0.8700126123964265,
+      "iou": 0.6874366609963736,
+      "hausdorff_m": 4.383193666024953,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2230,
+      "nearest_oid": 46408731,
+      "distance_m": 2.6136094344963707,
+      "iou": 0.5436525777766708,
+      "hausdorff_m": 4.437133416080041,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2234,
+      "nearest_oid": 46478087,
+      "distance_m": 2.2402429946117923,
+      "iou": 0.2783809007021576,
+      "hausdorff_m": 3.425185920056224,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2236,
+      "nearest_oid": 46386693,
+      "distance_m": 3.4658681653824313,
+      "iou": 0.275151744924475,
+      "hausdorff_m": 3.7784036241561716,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2242,
+      "nearest_oid": 46375636,
+      "distance_m": 1.4195360235745018,
+      "iou": 0.1534557971700197,
+      "hausdorff_m": 4.573168659099814,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2244,
+      "nearest_oid": 46397297,
+      "distance_m": 2.3710194776561977,
+      "iou": 0.6178810110208159,
+      "hausdorff_m": 9.525359420830195,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2246,
+      "nearest_oid": 46304935,
+      "distance_m": 5.385997974790155,
+      "iou": 0.14911983952988156,
+      "hausdorff_m": 22.796420632470564,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2250,
+      "nearest_oid": 46496869,
+      "distance_m": 4.071615911494566,
+      "iou": 0.6566606510688349,
+      "hausdorff_m": 15.46813162931972,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2252,
+      "nearest_oid": 46418424,
+      "distance_m": 2.027747134493391,
+      "iou": 0.05942087325069452,
+      "hausdorff_m": 2.4962250258397356,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2254,
+      "nearest_oid": 46418424,
+      "distance_m": 7.809524784011684,
+      "iou": 0.0,
+      "hausdorff_m": 8.31659405745419,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": true
+    },
+    {
+      "drawing_index": 2258,
+      "nearest_oid": 46284091,
+      "distance_m": 3.5238135503615964,
+      "iou": 0.43526364474842877,
+      "hausdorff_m": 7.39632274941611,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2260,
+      "nearest_oid": 46419894,
+      "distance_m": 0.6807066942490883,
+      "iou": 0.8965279147914198,
+      "hausdorff_m": 3.0255319909246503,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2262,
+      "nearest_oid": 46462304,
+      "distance_m": 0.5021870703898168,
+      "iou": 0.6760669943275185,
+      "hausdorff_m": 1.8318198024488042,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2266,
+      "nearest_oid": 46379283,
+      "distance_m": 2.024901355305206,
+      "iou": 0.6534481256926664,
+      "hausdorff_m": 3.0863797049603003,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2268,
+      "nearest_oid": 46323221,
+      "distance_m": 1.48198163335386,
+      "iou": 0.6533876669805239,
+      "hausdorff_m": 1.9117778222057844,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2270,
+      "nearest_oid": 46402112,
+      "distance_m": 2.5409800489194527,
+      "iou": 0.5165966827421731,
+      "hausdorff_m": 8.639523360795332,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2272,
+      "nearest_oid": 46440729,
+      "distance_m": 1.7647145365324335,
+      "iou": 0.6890767856607636,
+      "hausdorff_m": 3.394879045237889,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2276,
+      "nearest_oid": 46333516,
+      "distance_m": 41.43397660070014,
+      "iou": 0.0,
+      "hausdorff_m": 53.65890966634462,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2278,
+      "nearest_oid": 46402112,
+      "distance_m": 32.784197303000866,
+      "iou": 0.0,
+      "hausdorff_m": 41.10941730539454,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2282,
+      "nearest_oid": 46460237,
+      "distance_m": 11.538166813063645,
+      "iou": 0.37757631259889207,
+      "hausdorff_m": 17.56603429263214,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2286,
+      "nearest_oid": 46386138,
+      "distance_m": 0.9933081552237776,
+      "iou": 0.7524697722467976,
+      "hausdorff_m": 1.7560987487102115,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2288,
+      "nearest_oid": 46388238,
+      "distance_m": 0.7190047069129729,
+      "iou": 0.7330341090213623,
+      "hausdorff_m": 2.2891117858451837,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2292,
+      "nearest_oid": 46338824,
+      "distance_m": 2.482060227726095,
+      "iou": 0.5989339815717059,
+      "hausdorff_m": 3.452991130530417,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2296,
+      "nearest_oid": 46437736,
+      "distance_m": 3.5210254285571008,
+      "iou": 0.4512048301444497,
+      "hausdorff_m": 5.9659314682909566,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2298,
+      "nearest_oid": 46404007,
+      "distance_m": 0.7298347853968361,
+      "iou": 0.5179717390201445,
+      "hausdorff_m": 3.602785548493626,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2302,
+      "nearest_oid": 46287618,
+      "distance_m": 2.0110026850926426,
+      "iou": 0.6101408366800954,
+      "hausdorff_m": 3.9523578718498142,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2304,
+      "nearest_oid": 46497502,
+      "distance_m": 3.9116304637867847,
+      "iou": 0.20758924945750099,
+      "hausdorff_m": 5.135167307303456,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2306,
+      "nearest_oid": 46510289,
+      "distance_m": 2.862050456290212,
+      "iou": 0.5375748835006898,
+      "hausdorff_m": 4.6644315100175335,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2314,
+      "nearest_oid": 46424998,
+      "distance_m": 0.23400224846794263,
+      "iou": 0.7340770968104465,
+      "hausdorff_m": 1.1559225347817887,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2316,
+      "nearest_oid": 46485167,
+      "distance_m": 19.626195539477365,
+      "iou": 0.0,
+      "hausdorff_m": 19.73513640072366,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2318,
+      "nearest_oid": 46473860,
+      "distance_m": 1.3567605374207476,
+      "iou": 0.8390855520984679,
+      "hausdorff_m": 2.2365196039741573,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2320,
+      "nearest_oid": 46475334,
+      "distance_m": 0.6567060608297752,
+      "iou": 0.6372750854471646,
+      "hausdorff_m": 2.151012945238288,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2322,
+      "nearest_oid": 46473860,
+      "distance_m": 31.594692887624564,
+      "iou": 0.0,
+      "hausdorff_m": 41.77905529153051,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": true
+    },
+    {
+      "drawing_index": 2324,
+      "nearest_oid": 46489652,
+      "distance_m": 2.3585588277316787,
+      "iou": 0.15181996219726446,
+      "hausdorff_m": 5.437439108688293,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2328,
+      "nearest_oid": 46342499,
+      "distance_m": 0.8203945570984859,
+      "iou": 0.5485581546713195,
+      "hausdorff_m": 1.34742338749425,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2334,
+      "nearest_oid": 46396140,
+      "distance_m": 0.87840096294153,
+      "iou": 0.8293542332768875,
+      "hausdorff_m": 2.078295354091456,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2336,
+      "nearest_oid": 46439379,
+      "distance_m": 0.4014571931285144,
+      "iou": 0.3058151886492531,
+      "hausdorff_m": 10.730303888994795,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2340,
+      "nearest_oid": 46496869,
+      "distance_m": 17.692434461927864,
+      "iou": 0.009670999304160408,
+      "hausdorff_m": 36.28426707176112,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": true
+    },
+    {
+      "drawing_index": 2348,
+      "nearest_oid": 46493144,
+      "distance_m": 1.3632021889956056,
+      "iou": 0.8219449559280653,
+      "hausdorff_m": 1.7376090116054916,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2350,
+      "nearest_oid": 46357678,
+      "distance_m": 1.336626692918247,
+      "iou": 0.9049909301728475,
+      "hausdorff_m": 1.2783996677506893,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2352,
+      "nearest_oid": 46297929,
+      "distance_m": 0.8832919994158724,
+      "iou": 0.850494135545825,
+      "hausdorff_m": 1.5110699433338945,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2355,
+      "nearest_oid": 46286389,
+      "distance_m": 1.2855916303314803,
+      "iou": 0.5764465774089557,
+      "hausdorff_m": 1.2860719512808316,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2357,
+      "nearest_oid": 46389611,
+      "distance_m": 96.65645722122161,
+      "iou": 0.0,
+      "hausdorff_m": 100.90017871824568,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2359,
+      "nearest_oid": 46284893,
+      "distance_m": 1.2824835541607746,
+      "iou": 0.6143682447449127,
+      "hausdorff_m": 1.309703702855726,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2361,
+      "nearest_oid": 46342338,
+      "distance_m": 1.3120588493834064,
+      "iou": 0.7768192444742467,
+      "hausdorff_m": 1.3957876771570203,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2363,
+      "nearest_oid": 46532455,
+      "distance_m": 1.2571963444128065,
+      "iou": 0.44910611697824593,
+      "hausdorff_m": 1.3492342332013765,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2373,
+      "nearest_oid": 46301199,
+      "distance_m": 1.3284098714246628,
+      "iou": 0.6497819664634041,
+      "hausdorff_m": 1.3085416385293742,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2375,
+      "nearest_oid": 46438349,
+      "distance_m": 1.3042608496394572,
+      "iou": 0.6546554166026494,
+      "hausdorff_m": 1.4694767616883357,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2379,
+      "nearest_oid": 46343010,
+      "distance_m": 1.1963574523260552,
+      "iou": 0.7440608708652513,
+      "hausdorff_m": 1.212614321637755,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2381,
+      "nearest_oid": 46458235,
+      "distance_m": 1.233704526632793,
+      "iou": 0.7334395255074163,
+      "hausdorff_m": 1.262057466568882,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2383,
+      "nearest_oid": 46452246,
+      "distance_m": 3.2339583017017546,
+      "iou": 0.2135261428552639,
+      "hausdorff_m": 12.53606295258855,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2387,
+      "nearest_oid": 46459248,
+      "distance_m": 1.1506972730964273,
+      "iou": 0.866315706822057,
+      "hausdorff_m": 1.2027714628490014,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2389,
+      "nearest_oid": 46312037,
+      "distance_m": 1.391768378847084,
+      "iou": 0.8364846000968191,
+      "hausdorff_m": 2.881615362580333,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2391,
+      "nearest_oid": 46532080,
+      "distance_m": 1.0742328691461291,
+      "iou": 0.8569243550157071,
+      "hausdorff_m": 1.1442049793798574,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2393,
+      "nearest_oid": 46532187,
+      "distance_m": 1.1339123076471507,
+      "iou": 0.8572358819919625,
+      "hausdorff_m": 1.2119303303389917,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2395,
+      "nearest_oid": 46483095,
+      "distance_m": 3.0223067094824065,
+      "iou": 0.2181807771929182,
+      "hausdorff_m": 12.438734061421044,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2399,
+      "nearest_oid": 46406938,
+      "distance_m": 2.0948220424706587,
+      "iou": 0.4404963770272026,
+      "hausdorff_m": 5.7352176424921275,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2401,
+      "nearest_oid": 46469252,
+      "distance_m": 1.4383109534044385,
+      "iou": 0.857957176786006,
+      "hausdorff_m": 1.5437334094870208,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2407,
+      "nearest_oid": 46427292,
+      "distance_m": 1.3101211099140626,
+      "iou": 0.7822451064107157,
+      "hausdorff_m": 2.3569694761761135,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2409,
+      "nearest_oid": 46374462,
+      "distance_m": 2.4287905923719073,
+      "iou": 0.4102083511551579,
+      "hausdorff_m": 2.4683977649483153,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2412,
+      "nearest_oid": 46448950,
+      "distance_m": 1.9317114557197446,
+      "iou": 0.6305301571565127,
+      "hausdorff_m": 2.014248054417761,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2426,
+      "nearest_oid": 46532463,
+      "distance_m": 13.420205766805292,
+      "iou": 0.0,
+      "hausdorff_m": 14.189161870212578,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2436,
+      "nearest_oid": 46489624,
+      "distance_m": 1.899698127207778,
+      "iou": 0.6140138104185507,
+      "hausdorff_m": 4.585405677186514,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    }
+  ],
+  "reserved": [
+    {
+      "drawing_index": 1522,
+      "nearest_oid": 46389611,
+      "distance_m": 0.36515014087566655,
+      "iou": 0.8492163510116062,
+      "hausdorff_m": 1.2593046010479,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1532,
+      "nearest_oid": 46397509,
+      "distance_m": 5.103050602598013,
+      "iou": 0.03474360282998098,
+      "hausdorff_m": 7.421215200871163,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1536,
+      "nearest_oid": 46458044,
+      "distance_m": 6.638036516520206,
+      "iou": 0.0,
+      "hausdorff_m": 8.721176916860852,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1538,
+      "nearest_oid": 46301961,
+      "distance_m": 3.2504294927434825,
+      "iou": 0.5339565270468015,
+      "hausdorff_m": 5.831977952661859,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1546,
+      "nearest_oid": 46347001,
+      "distance_m": 4.920869519720086,
+      "iou": 0.7014072149185484,
+      "hausdorff_m": 13.140813052107832,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1548,
+      "nearest_oid": 46412635,
+      "distance_m": 11.857129892946551,
+      "iou": 0.5379967258806548,
+      "hausdorff_m": 35.87033280720497,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1576,
+      "nearest_oid": 46429768,
+      "distance_m": 0.4552173072927681,
+      "iou": 0.6910494078697482,
+      "hausdorff_m": 1.7235590595449928,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1578,
+      "nearest_oid": 46469761,
+      "distance_m": 1.5387022198667883,
+      "iou": 0.7259768592899423,
+      "hausdorff_m": 3.2882223655849616,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1580,
+      "nearest_oid": 46301094,
+      "distance_m": 2.817036949934602,
+      "iou": 0.6344927829791187,
+      "hausdorff_m": 3.4691574872313637,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1584,
+      "nearest_oid": 46511653,
+      "distance_m": 2.4706859716215783,
+      "iou": 0.5986764504393285,
+      "hausdorff_m": 4.516858491804427,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1598,
+      "nearest_oid": 46298179,
+      "distance_m": 4.79819127953547,
+      "iou": 0.022874748705712412,
+      "hausdorff_m": 6.2576368380333145,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1662,
+      "nearest_oid": 46299399,
+      "distance_m": 0.42832841334616684,
+      "iou": 0.861952496327793,
+      "hausdorff_m": 0.9329857863655865,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1664,
+      "nearest_oid": 46498098,
+      "distance_m": 0.8360796748733731,
+      "iou": 0.7823549160271179,
+      "hausdorff_m": 1.0755721327683072,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1716,
+      "nearest_oid": 46365804,
+      "distance_m": 2.433755541965351,
+      "iou": 0.5362126794018343,
+      "hausdorff_m": 3.6233614433356043,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1720,
+      "nearest_oid": 46283767,
+      "distance_m": 3.819925636784278,
+      "iou": 0.5722068287470993,
+      "hausdorff_m": 10.8349780292891,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1748,
+      "nearest_oid": 46532734,
+      "distance_m": 1.26576088225258,
+      "iou": 0.7482571220493287,
+      "hausdorff_m": 1.9207186120600483,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1760,
+      "nearest_oid": 46478751,
+      "distance_m": 1.8103775174271903,
+      "iou": 0.6021483677485786,
+      "hausdorff_m": 2.003765333993565,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1774,
+      "nearest_oid": 46291086,
+      "distance_m": 1.432209950239199,
+      "iou": 0.5465065959796082,
+      "hausdorff_m": 5.0437734628543245,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1776,
+      "nearest_oid": 46344338,
+      "distance_m": 0.723498846271852,
+      "iou": 0.8327620102899379,
+      "hausdorff_m": 3.005124826013573,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1782,
+      "nearest_oid": 46346414,
+      "distance_m": 1.2629442753614175,
+      "iou": 0.7207896386235563,
+      "hausdorff_m": 2.6745248166461115,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1784,
+      "nearest_oid": 46353125,
+      "distance_m": 1.976126208423337,
+      "iou": 0.584429739459066,
+      "hausdorff_m": 2.309967347340958,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1796,
+      "nearest_oid": 46510525,
+      "distance_m": 2.327262186766868,
+      "iou": 0.6129240637408041,
+      "hausdorff_m": 3.845567342897331,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1804,
+      "nearest_oid": 46453427,
+      "distance_m": 0.3224524293148278,
+      "iou": 0.5824162314331718,
+      "hausdorff_m": 3.1279770245086356,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1810,
+      "nearest_oid": 46491697,
+      "distance_m": 1.3582972495691008,
+      "iou": 0.7272039162845885,
+      "hausdorff_m": 3.5863114359483577,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1812,
+      "nearest_oid": 46404625,
+      "distance_m": 1.99406654140513,
+      "iou": 0.5442237129655451,
+      "hausdorff_m": 5.314752447882649,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1814,
+      "nearest_oid": 46508085,
+      "distance_m": 17.748510263625004,
+      "iou": 0.0,
+      "hausdorff_m": 21.573230147296314,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1818,
+      "nearest_oid": 46467388,
+      "distance_m": 3.4616803379805923,
+      "iou": 0.5124044666058829,
+      "hausdorff_m": 10.115382511852808,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1834,
+      "nearest_oid": 46322806,
+      "distance_m": 1.154315943914615,
+      "iou": 0.43204397915466586,
+      "hausdorff_m": 3.1702574718833065,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1852,
+      "nearest_oid": 46308461,
+      "distance_m": 22.265223579520363,
+      "iou": 0.0,
+      "hausdorff_m": 27.95202650151511,
+      "accepted_correspondence": false,
+      "blocked_training_oid": true,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1874,
+      "nearest_oid": 46394544,
+      "distance_m": 26.034023348784146,
+      "iou": 0.10741279171674624,
+      "hausdorff_m": 53.520263919309684,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1876,
+      "nearest_oid": 46482594,
+      "distance_m": 3.8635838759256482,
+      "iou": 0.38717702658829145,
+      "hausdorff_m": 8.14823239203623,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1880,
+      "nearest_oid": 46350898,
+      "distance_m": 1.2230295115453915,
+      "iou": 0.5096597019600743,
+      "hausdorff_m": 3.1518023971586877,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1884,
+      "nearest_oid": 46358768,
+      "distance_m": 3.0709925637632303,
+      "iou": 0.6484311858224381,
+      "hausdorff_m": 4.019283359678634,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1900,
+      "nearest_oid": 46498612,
+      "distance_m": 1.094909369894976,
+      "iou": 0.77982214701675,
+      "hausdorff_m": 2.27620368930718,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1904,
+      "nearest_oid": 46511939,
+      "distance_m": 0.8376897340979295,
+      "iou": 0.834507089954428,
+      "hausdorff_m": 2.5445408029075667,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1906,
+      "nearest_oid": 46422243,
+      "distance_m": 3.652910375096632,
+      "iou": 0.5314386609576988,
+      "hausdorff_m": 8.415325925929611,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1910,
+      "nearest_oid": 46451901,
+      "distance_m": 3.663692246853637,
+      "iou": 0.3502693895776561,
+      "hausdorff_m": 7.775504442108518,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1914,
+      "nearest_oid": 46486573,
+      "distance_m": 9.175436566293985,
+      "iou": 0.0004846643899090615,
+      "hausdorff_m": 17.009940062697066,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1916,
+      "nearest_oid": 46486573,
+      "distance_m": 4.344022063273171,
+      "iou": 0.50529353832582,
+      "hausdorff_m": 13.117712175057802,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1928,
+      "nearest_oid": 46441861,
+      "distance_m": 1.0683796577287248,
+      "iou": 0.5663156118626381,
+      "hausdorff_m": 5.075323376210386,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1944,
+      "nearest_oid": 46318292,
+      "distance_m": 1.1260650305376547,
+      "iou": 0.43409903935924515,
+      "hausdorff_m": 8.577007780238246,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1946,
+      "nearest_oid": 46505589,
+      "distance_m": 1.4423482752439454,
+      "iou": 0.7788831246222173,
+      "hausdorff_m": 4.022748503096414,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1954,
+      "nearest_oid": 46509704,
+      "distance_m": 7.286108112475268,
+      "iou": 0.2238737101032338,
+      "hausdorff_m": 30.89561840092987,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1956,
+      "nearest_oid": 46435768,
+      "distance_m": 8.38277661108431,
+      "iou": 0.0,
+      "hausdorff_m": 17.827410195184026,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1962,
+      "nearest_oid": 46330776,
+      "distance_m": 2.094452220877045,
+      "iou": 0.1937306492497235,
+      "hausdorff_m": 2.7346219749397327,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1964,
+      "nearest_oid": 46332924,
+      "distance_m": 15.370419900372292,
+      "iou": 0.0,
+      "hausdorff_m": 17.25489280167436,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1968,
+      "nearest_oid": 46295993,
+      "distance_m": 13.649679700600505,
+      "iou": 0.3251239673714551,
+      "hausdorff_m": 27.926441323937187,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1974,
+      "nearest_oid": 46453231,
+      "distance_m": 2.4711230183271713,
+      "iou": 0.4923141569663942,
+      "hausdorff_m": 10.182722686283343,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1980,
+      "nearest_oid": 46449895,
+      "distance_m": 2.7433624201678373,
+      "iou": 0.1782998282425201,
+      "hausdorff_m": 7.640193744357889,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 1992,
+      "nearest_oid": 46496963,
+      "distance_m": 1.3230281197357479,
+      "iou": 0.23906068784230208,
+      "hausdorff_m": 6.954179208471431,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2006,
+      "nearest_oid": 46438262,
+      "distance_m": 1.4963450737056978,
+      "iou": 0.20267507293325607,
+      "hausdorff_m": 7.50341011535893,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2020,
+      "nearest_oid": 46285481,
+      "distance_m": 2.8546995116194522,
+      "iou": 0.15017652715599963,
+      "hausdorff_m": 27.2698777199721,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2026,
+      "nearest_oid": 46487092,
+      "distance_m": 1.4652587001320716,
+      "iou": 0.808961842107777,
+      "hausdorff_m": 5.119874279141556,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2028,
+      "nearest_oid": 46365099,
+      "distance_m": 6.3698058835764195,
+      "iou": 0.4023568331935156,
+      "hausdorff_m": 14.781200295998808,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2032,
+      "nearest_oid": 46416413,
+      "distance_m": 12.203845464749007,
+      "iou": 0.0,
+      "hausdorff_m": 16.842494112498635,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2044,
+      "nearest_oid": 46406238,
+      "distance_m": 2.0415930985863606,
+      "iou": 0.5090230574522501,
+      "hausdorff_m": 5.344712326357774,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2048,
+      "nearest_oid": 46326796,
+      "distance_m": 0.29436205862812015,
+      "iou": 0.7193154566111873,
+      "hausdorff_m": 1.5116090396292323,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2050,
+      "nearest_oid": 46434089,
+      "distance_m": 1.6066354582478914,
+      "iou": 0.7874952356105239,
+      "hausdorff_m": 2.3915914849248923,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2052,
+      "nearest_oid": 46302740,
+      "distance_m": 0.6066769381650315,
+      "iou": 0.7844200929196288,
+      "hausdorff_m": 2.3794947352693616,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2058,
+      "nearest_oid": 46344739,
+      "distance_m": 3.558300711795402,
+      "iou": 0.3090882591084607,
+      "hausdorff_m": 9.05483794302667,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2064,
+      "nearest_oid": 46471303,
+      "distance_m": 0.9120578995692535,
+      "iou": 0.49220993863365353,
+      "hausdorff_m": 4.583391153522678,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2066,
+      "nearest_oid": 46368059,
+      "distance_m": 2.7919558066704533,
+      "iou": 0.3924543844781419,
+      "hausdorff_m": 3.950316185650099,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2074,
+      "nearest_oid": 46288853,
+      "distance_m": 1.890681136868934,
+      "iou": 0.6154405631918587,
+      "hausdorff_m": 2.525251889541686,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2076,
+      "nearest_oid": 46443054,
+      "distance_m": 2.9393012224359567,
+      "iou": 0.5845127930694645,
+      "hausdorff_m": 5.736797439649228,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2080,
+      "nearest_oid": 46455995,
+      "distance_m": 1.7465405170375514,
+      "iou": 0.6719289631172005,
+      "hausdorff_m": 2.4494514774119307,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2084,
+      "nearest_oid": 46473565,
+      "distance_m": 6.854945583114139,
+      "iou": 0.47631583315873466,
+      "hausdorff_m": 14.111332905985119,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2086,
+      "nearest_oid": 46418809,
+      "distance_m": 2.0063643321341433,
+      "iou": 0.6015968485116692,
+      "hausdorff_m": 14.726570107867715,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2090,
+      "nearest_oid": 46473565,
+      "distance_m": 19.181184925741206,
+      "iou": 0.0,
+      "hausdorff_m": 29.69979900205884,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": true
+    },
+    {
+      "drawing_index": 2092,
+      "nearest_oid": 46366639,
+      "distance_m": 3.2888653709717253,
+      "iou": 0.5854732341911929,
+      "hausdorff_m": 4.145265790236084,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2094,
+      "nearest_oid": 46532180,
+      "distance_m": 1.7376038070057698,
+      "iou": 0.4157874585057394,
+      "hausdorff_m": 1.8537454410317593,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2096,
+      "nearest_oid": 46377178,
+      "distance_m": 1.5436229886888226,
+      "iou": 0.6427745204875894,
+      "hausdorff_m": 2.3849012541933865,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2102,
+      "nearest_oid": 46532469,
+      "distance_m": 5.2527158919995856,
+      "iou": 0.0,
+      "hausdorff_m": 5.522267409570901,
+      "accepted_correspondence": false,
+      "blocked_training_oid": true,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2110,
+      "nearest_oid": 46418988,
+      "distance_m": 6.811138565482691,
+      "iou": 0.22879195569182584,
+      "hausdorff_m": 10.854538275459472,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2122,
+      "nearest_oid": 46351432,
+      "distance_m": 1.1588970786754647,
+      "iou": 0.5030778072845921,
+      "hausdorff_m": 1.4966315319607886,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2128,
+      "nearest_oid": 46406952,
+      "distance_m": 7.952903821205305,
+      "iou": 0.07854903839915733,
+      "hausdorff_m": 37.929050934503834,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2130,
+      "nearest_oid": 46450927,
+      "distance_m": 2.258443368165226,
+      "iou": 0.09880400713927383,
+      "hausdorff_m": 16.438012608573665,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2132,
+      "nearest_oid": 46459122,
+      "distance_m": 20.235966233473846,
+      "iou": 0.0,
+      "hausdorff_m": 21.05365940380483,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2136,
+      "nearest_oid": 46288885,
+      "distance_m": 3.166546920373208,
+      "iou": 0.4697221277228179,
+      "hausdorff_m": 3.8996460658213614,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2144,
+      "nearest_oid": 46448546,
+      "distance_m": 6.894640670656899,
+      "iou": 0.4132012088868997,
+      "hausdorff_m": 18.031945825698028,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2150,
+      "nearest_oid": 46508280,
+      "distance_m": 2.130740098284713,
+      "iou": 0.7697437204638732,
+      "hausdorff_m": 4.147349339724396,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2166,
+      "nearest_oid": 46340639,
+      "distance_m": 1.7657628149447393,
+      "iou": 0.681247591103288,
+      "hausdorff_m": 2.9358547463516342,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2178,
+      "nearest_oid": 46367816,
+      "distance_m": 1.090618205953196,
+      "iou": 0.6701823703050085,
+      "hausdorff_m": 2.7369744478439455,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2182,
+      "nearest_oid": 46484392,
+      "distance_m": 6.283872691156808,
+      "iou": 0.01617363255637152,
+      "hausdorff_m": 8.086325830637996,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2206,
+      "nearest_oid": 46316785,
+      "distance_m": 0.7796641546063038,
+      "iou": 0.819476386396848,
+      "hausdorff_m": 1.8016895578390602,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2210,
+      "nearest_oid": 46315950,
+      "distance_m": 1.7246912761318485,
+      "iou": 0.6990372048481813,
+      "hausdorff_m": 2.1658667512798018,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2214,
+      "nearest_oid": 46532439,
+      "distance_m": 7.245640980549148,
+      "iou": 0.21301921836133933,
+      "hausdorff_m": 21.021718028129776,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2218,
+      "nearest_oid": 46319887,
+      "distance_m": 26.08355370898113,
+      "iou": 0.0,
+      "hausdorff_m": 40.89686990112597,
+      "accepted_correspondence": false,
+      "blocked_training_oid": true,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2226,
+      "nearest_oid": 46501838,
+      "distance_m": 0.8149496464682631,
+      "iou": 0.8281808967419533,
+      "hausdorff_m": 2.8485772914208143,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2232,
+      "nearest_oid": 46405706,
+      "distance_m": 1.2543696772684236,
+      "iou": 0.758935283457321,
+      "hausdorff_m": 2.3070358568642497,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2238,
+      "nearest_oid": 46508199,
+      "distance_m": 4.513023716214231,
+      "iou": 0.45118933332922206,
+      "hausdorff_m": 9.87468273160523,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2240,
+      "nearest_oid": 46532439,
+      "distance_m": 75.0109390483607,
+      "iou": 0.0,
+      "hausdorff_m": 80.05620701135658,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2248,
+      "nearest_oid": 46496869,
+      "distance_m": 13.605516753737461,
+      "iou": 0.001588873686393591,
+      "hausdorff_m": 51.952533437716156,
+      "accepted_correspondence": false,
+      "blocked_training_oid": true,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2256,
+      "nearest_oid": 46418424,
+      "distance_m": 12.891191728902653,
+      "iou": 0.0,
+      "hausdorff_m": 16.518473548258847,
+      "accepted_correspondence": false,
+      "blocked_training_oid": true,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2264,
+      "nearest_oid": 46363671,
+      "distance_m": 1.502609754048534,
+      "iou": 0.7392551848471528,
+      "hausdorff_m": 2.777308289788532,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2274,
+      "nearest_oid": 46287459,
+      "distance_m": 51.898827523620376,
+      "iou": 0.0,
+      "hausdorff_m": 65.97441891244345,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2280,
+      "nearest_oid": 46374247,
+      "distance_m": 3.135220864001199,
+      "iou": 0.5026812016324205,
+      "hausdorff_m": 4.517060997269457,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2284,
+      "nearest_oid": 46303429,
+      "distance_m": 3.6122411307088065,
+      "iou": 0.4904029758320183,
+      "hausdorff_m": 15.96812804857571,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2290,
+      "nearest_oid": 46411296,
+      "distance_m": 26.304016327352077,
+      "iou": 0.0,
+      "hausdorff_m": 29.7756120376438,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2294,
+      "nearest_oid": 46342455,
+      "distance_m": 0.8310396653823215,
+      "iou": 0.8370590459475473,
+      "hausdorff_m": 1.9164511189889144,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2300,
+      "nearest_oid": 46391153,
+      "distance_m": 5.740758111597448,
+      "iou": 0.26988873958868614,
+      "hausdorff_m": 11.971466743822855,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2308,
+      "nearest_oid": 46452153,
+      "distance_m": 0.9434020368541142,
+      "iou": 0.5053186905870164,
+      "hausdorff_m": 1.416616247783508,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2310,
+      "nearest_oid": 46467756,
+      "distance_m": 1.0570430939044566,
+      "iou": 0.6269875494600873,
+      "hausdorff_m": 1.1921794490896018,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2312,
+      "nearest_oid": 46493376,
+      "distance_m": 1.4623286370975346,
+      "iou": 0.757601913996451,
+      "hausdorff_m": 1.9079409518017056,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2326,
+      "nearest_oid": 46416820,
+      "distance_m": 0.09263449250156953,
+      "iou": 0.7905083601373117,
+      "hausdorff_m": 0.7389263631100129,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2338,
+      "nearest_oid": 46506523,
+      "distance_m": 0.18327086856807015,
+      "iou": 0.830171917309786,
+      "hausdorff_m": 1.9798514874475537,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2365,
+      "nearest_oid": 46412544,
+      "distance_m": 1.3232982888655964,
+      "iou": 0.7479598720119363,
+      "hausdorff_m": 1.4213951900553308,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2367,
+      "nearest_oid": 46432015,
+      "distance_m": 1.3242907855143153,
+      "iou": 0.7387303530598613,
+      "hausdorff_m": 1.4199427895178074,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2369,
+      "nearest_oid": 46333431,
+      "distance_m": 1.2370775465096588,
+      "iou": 0.7563405783844501,
+      "hausdorff_m": 1.264590873071468,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2371,
+      "nearest_oid": 46350942,
+      "distance_m": 1.1942469954142347,
+      "iou": 0.7756996138588742,
+      "hausdorff_m": 1.277632265362977,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2377,
+      "nearest_oid": 46351143,
+      "distance_m": 1.2450389590236426,
+      "iou": 0.3357523623769791,
+      "hausdorff_m": 1.2860638955161126,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2385,
+      "nearest_oid": 46502156,
+      "distance_m": 1.2294039143313193,
+      "iou": 0.8512485291980927,
+      "hausdorff_m": 1.3004348264066452,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2397,
+      "nearest_oid": 46306714,
+      "distance_m": 1.0960683247236815,
+      "iou": 0.39256704666651954,
+      "hausdorff_m": 1.128791331741489,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2403,
+      "nearest_oid": 46493254,
+      "distance_m": 1.4817801038479383,
+      "iou": 0.5346171889746204,
+      "hausdorff_m": 1.4470710331218541,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2405,
+      "nearest_oid": 46532089,
+      "distance_m": 1.1201970928301301,
+      "iou": 0.7504285476161725,
+      "hausdorff_m": 1.2238334672609974,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2422,
+      "nearest_oid": 46339803,
+      "distance_m": 5.339866757767559,
+      "iou": 0.10770277267862735,
+      "hausdorff_m": 9.516074471384654,
+      "accepted_correspondence": false,
+      "blocked_training_oid": true,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2424,
+      "nearest_oid": 46339803,
+      "distance_m": 10.595258850268051,
+      "iou": 0.016753800518859868,
+      "hausdorff_m": 13.477761836979246,
+      "accepted_correspondence": false,
+      "blocked_training_oid": true,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2428,
+      "nearest_oid": 46532079,
+      "distance_m": 0.9810175354253495,
+      "iou": 0.729304974492367,
+      "hausdorff_m": 1.0339229376435666,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2430,
+      "nearest_oid": 46532444,
+      "distance_m": 2.082623310601869,
+      "iou": 0.6842060692143955,
+      "hausdorff_m": 4.147349339724396,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2432,
+      "nearest_oid": 46532450,
+      "distance_m": 10.689941726300242,
+      "iou": 0.6220296454610316,
+      "hausdorff_m": 39.44480640026436,
+      "accepted_correspondence": false,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    },
+    {
+      "drawing_index": 2434,
+      "nearest_oid": 46532454,
+      "distance_m": 0.5418370279298578,
+      "iou": 0.5131811770225587,
+      "hausdorff_m": 1.8236727671579556,
+      "accepted_correspondence": true,
+      "blocked_training_oid": false,
+      "duplicate_oid": false
+    }
+  ],
+  "limits": [
+    "Automated nearest-centroid correspondences; require visual checks and changed-footprint review.",
+    "Reserved rows excluded before fitting and cannot tune transform.",
+    "Reference objects used by accepted training excluded from reserved acceptance.",
+    "Printed scale fixed; source indicative historical cadastre, not surveyed accuracy.",
+    "No runtime sectors or parcel joins."
+  ]
+}

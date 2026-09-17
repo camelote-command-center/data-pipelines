@@ -1,0 +1,62 @@
+[
+  {
+    "drawing_index": 1522,
+    "nearest_oid": 46389611,
+    "distance_m": 0.36515014087566655,
+    "iou": 0.8492163510116062,
+    "hausdorff_m": 1.2593046010479,
+    "accepted_correspondence": true,
+    "blocked_training_oid": false,
+    "duplicate_oid": false
+  },
+  {
+    "drawing_index": 2308,
+    "nearest_oid": 46452153,
+    "distance_m": 0.9434020368541142,
+    "iou": 0.5053186905870164,
+    "hausdorff_m": 1.416616247783508,
+    "accepted_correspondence": true,
+    "blocked_training_oid": false,
+    "duplicate_oid": false
+  },
+  {
+    "drawing_index": 1664,
+    "nearest_oid": 46498098,
+    "distance_m": 0.8360796748733731,
+    "iou": 0.7823549160271179,
+    "hausdorff_m": 1.0755721327683072,
+    "accepted_correspondence": true,
+    "blocked_training_oid": false,
+    "duplicate_oid": false
+  },
+  {
+    "drawing_index": 1716,
+    "nearest_oid": 46365804,
+    "distance_m": 2.433755541965351,
+    "iou": 0.5362126794018343,
+    "hausdorff_m": 3.6233614433356043,
+    "accepted_correspondence": true,
+    "blocked_training_oid": false,
+    "duplicate_oid": false
+  },
+  {
+    "drawing_index": 2377,
+    "nearest_oid": 46351143,
+    "distance_m": 1.2450389590236426,
+    "iou": 0.3357523623769791,
+    "hausdorff_m": 1.2860638955161126,
+    "accepted_correspondence": true,
+    "blocked_training_oid": false,
+    "duplicate_oid": false
+  },
+  {
+    "drawing_index": 1662,
+    "nearest_oid": 46299399,
+    "distance_m": 0.42832841334616684,
+    "iou": 0.861952496327793,
+    "hausdorff_m": 0.9329857863655865,
+    "accepted_correspondence": true,
+    "blocked_training_oid": false,
+    "duplicate_oid": false
+  }
+]
