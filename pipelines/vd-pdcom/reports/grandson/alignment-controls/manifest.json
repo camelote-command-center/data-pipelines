@@ -1,0 +1,21 @@
+{
+  "source_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query",
+  "query": {
+    "f": "json",
+    "where": "NO_COM_FED=5561",
+    "outSR": "2056"
+  },
+  "outFields": "OBJECTID,EGID,NO_COM_FED,NUMERO,GENRE_TXT",
+  "retrieved_at": "2026-09-17T06:11:50.953090+00:00",
+  "count_before_after": 1604,
+  "pages": [
+    {
+      "offset": 0,
+      "count": 1604,
+      "exceededTransferLimit": false
+    }
+  ],
+  "sha256": "0fdcdc95fcc8afed50ebf67b1a4b50bf1a202adabc04ba39923a662eaba71a3a",
+  "null_egid": 91,
+  "scope": "Current official Grandson footprint objects, not historical correspondences or parcel records. No ownership fields."
+}
