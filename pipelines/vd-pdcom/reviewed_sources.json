@@ -721,5 +721,13 @@
     "plan_status": "unverified",
     "scope": "communal",
     "commune_name": "Grandson"
+  },
+  {
+    "commune_bfs": 5805,
+    "title": "Oron — PDCom version consultation publique août 2025",
+    "pdf_url": "https://www.oron.ch/data/dataimages/Upload/PDCom-Consultation-publique-du-15.09.2025-au-14.10.2025-Rapport.pdf",
+    "landing_url": "https://www.oron.ch/N4879/plan-directeur-communal-pdcom.html",
+    "plan_status": "consultation",
+    "scope": "communal"
   }
 ]
