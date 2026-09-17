@@ -1,0 +1,11 @@
+{
+  "ids": {
+    "operation": "d50d061d-f8b4-4a8a-9556-69a0041f38be",
+    "checkpoint": "63da8371-37b0-49c0-be4c-168c2f46fa52"
+  },
+  "document_id": "69a49c76-b8d7-5e18-b740-ed8425fc1f8e",
+  "source_sha256": "1f349cf0dcf2d9f5fb7e13ccddaee37fa041c223c4c95834fef990c9765a360a",
+  "official_footprints": 1604,
+  "historical_candidates": 393,
+  "geographic_delivery": false
+}

@@ -1,0 +1,705 @@
+{
+  "source_sha256": "1f349cf0dcf2d9f5fb7e13ccddaee37fa041c223c4c95834fef990c9765a360a",
+  "official_reference": {
+    "source_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query",
+    "query": {
+      "f": "json",
+      "where": "NO_COM_FED=5561",
+      "outSR": "2056"
+    },
+    "outFields": "OBJECTID,EGID,NO_COM_FED,NUMERO,GENRE_TXT",
+    "retrieved_at": "2026-09-17T06:11:50.953090+00:00",
+    "count_before_after": 1604,
+    "pages": [
+      {
+        "offset": 0,
+        "count": 1604,
+        "exceededTransferLimit": false
+      }
+    ],
+    "sha256": "0fdcdc95fcc8afed50ebf67b1a4b50bf1a202adabc04ba39923a662eaba71a3a",
+    "null_egid": 91,
+    "scope": "Current official Grandson footprint objects, not historical correspondences or parcel records. No ownership fields."
+  },
+  "historical_candidates": {
+    "candidate_count": 393,
+    "excluded_count": 66,
+    "excluded": [
+      {
+        "drawing_index": 1588,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          934.251953125,
+          503.3110046386719,
+          937.10498046875,
+          508.9339904785156
+        ]
+      },
+      {
+        "drawing_index": 1590,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          925.9830322265625,
+          502.4599914550781,
+          928.0759887695312,
+          506.4599914550781
+        ]
+      },
+      {
+        "drawing_index": 1592,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          906.10302734375,
+          505.25201416015625,
+          908.1589965820312,
+          508.468017578125
+        ]
+      },
+      {
+        "drawing_index": 1594,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          907.9829711914062,
+          499.4969787597656,
+          910.64697265625,
+          502.06597900390625
+        ]
+      },
+      {
+        "drawing_index": 1596,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          896.3049926757812,
+          498.010986328125,
+          898.5079956054688,
+          500.8059997558594
+        ]
+      },
+      {
+        "drawing_index": 1608,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          909.5999755859375,
+          394.51397705078125,
+          919.5079956054688,
+          408.8429870605469
+        ]
+      },
+      {
+        "drawing_index": 1610,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          968.1589965820312,
+          509.5129699707031,
+          974.0050048828125,
+          518.1090087890625
+        ]
+      },
+      {
+        "drawing_index": 1612,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          955.5810546875,
+          512.8189697265625,
+          959.97802734375,
+          517.8469848632812
+        ]
+      },
+      {
+        "drawing_index": 1614,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          951.051025390625,
+          505.4460144042969,
+          956.927001953125,
+          510.62200927734375
+        ]
+      },
+      {
+        "drawing_index": 1616,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          918.4830322265625,
+          501.2449951171875,
+          923.1810302734375,
+          506.7120056152344
+        ]
+      },
+      {
+        "drawing_index": 1618,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          910.4710083007812,
+          503.98699951171875,
+          913.947021484375,
+          508.26800537109375
+        ]
+      },
+      {
+        "drawing_index": 1620,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          930.3590087890625,
+          403.7460021972656,
+          946.0389404296875,
+          433.02398681640625
+        ]
+      },
+      {
+        "drawing_index": 1622,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          982.6539916992188,
+          517.8569946289062,
+          985.8369750976562,
+          521.4599609375
+        ]
+      },
+      {
+        "drawing_index": 1624,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          961.7999877929688,
+          513.06201171875,
+          965.948974609375,
+          518.14599609375
+        ]
+      },
+      {
+        "drawing_index": 1626,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          939.5419921875,
+          505.56298828125,
+          944.1300048828125,
+          508.531982421875
+        ]
+      },
+      {
+        "drawing_index": 1628,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1041.699951171875,
+          519.1549682617188,
+          1048.0,
+          525.865966796875
+        ]
+      },
+      {
+        "drawing_index": 1630,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1008.1199951171875,
+          530.593994140625,
+          1013.199951171875,
+          535.677978515625
+        ]
+      },
+      {
+        "drawing_index": 1632,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          997.4710083007812,
+          525.3679809570312,
+          1002.1900634765625,
+          530.8429565429688
+        ]
+      },
+      {
+        "drawing_index": 1634,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          990.3080444335938,
+          519.1110229492188,
+          995.2100219726562,
+          526.1180419921875
+        ]
+      },
+      {
+        "drawing_index": 1636,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1028.68994140625,
+          528.1179809570312,
+          1033.449951171875,
+          532.9010009765625
+        ]
+      },
+      {
+        "drawing_index": 1638,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1055.030029296875,
+          515.8300170898438,
+          1059.1500244140625,
+          520.8380126953125
+        ]
+      },
+      {
+        "drawing_index": 1640,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1035.8599853515625,
+          523.89599609375,
+          1039.8199462890625,
+          526.4400024414062
+        ]
+      },
+      {
+        "drawing_index": 1642,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1017.0999755859375,
+          527.8610229492188,
+          1023.489990234375,
+          532.91796875
+        ]
+      },
+      {
+        "drawing_index": 1648,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          908.85400390625,
+          350.2140197753906,
+          946.4639892578125,
+          389.0010070800781
+        ]
+      },
+      {
+        "drawing_index": 1650,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          897.7169799804688,
+          342.86700439453125,
+          918.5999755859375,
+          353.25
+        ]
+      },
+      {
+        "drawing_index": 1652,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          909.7540283203125,
+          301.93499755859375,
+          916.1199951171875,
+          313.2640075683594
+        ]
+      },
+      {
+        "drawing_index": 1656,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          892.156005859375,
+          288.8219909667969,
+          896.5830078125,
+          291.8970031738281
+        ]
+      },
+      {
+        "drawing_index": 1668,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          974.9930419921875,
+          408.4020080566406,
+          981.0809936523438,
+          413.572021484375
+        ]
+      },
+      {
+        "drawing_index": 1670,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          972.864013671875,
+          429.5039978027344,
+          981.6589965820312,
+          436.7929992675781
+        ]
+      },
+      {
+        "drawing_index": 1672,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1032.8099365234375,
+          416.1679992675781,
+          1043.3900146484375,
+          425.2720031738281
+        ]
+      },
+      {
+        "drawing_index": 1674,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1018.5999755859375,
+          414.59698486328125,
+          1028.1400146484375,
+          422.2330017089844
+        ]
+      },
+      {
+        "drawing_index": 1676,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          989.488037109375,
+          415.1300048828125,
+          997.625,
+          422.6510009765625
+        ]
+      },
+      {
+        "drawing_index": 1678,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1060.989990234375,
+          420.802001953125,
+          1066.7799072265625,
+          426.2690124511719
+        ]
+      },
+      {
+        "drawing_index": 1680,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1004.9299926757812,
+          424.26397705078125,
+          1008.8699951171875,
+          431.572998046875
+        ]
+      },
+      {
+        "drawing_index": 1682,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1004.75,
+          407.364013671875,
+          1008.4299926757812,
+          413.3970031738281
+        ]
+      },
+      {
+        "drawing_index": 1684,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          934.5880126953125,
+          379.8320007324219,
+          947.72998046875,
+          392.98199462890625
+        ]
+      },
+      {
+        "drawing_index": 1686,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1088.010009765625,
+          504.1880187988281,
+          1095.3499755859375,
+          509.9230041503906
+        ]
+      },
+      {
+        "drawing_index": 1688,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1071.81005859375,
+          506.4909973144531,
+          1081.0,
+          517.3319702148438
+        ]
+      },
+      {
+        "drawing_index": 1690,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1081.0400390625,
+          506.1570129394531,
+          1084.10009765625,
+          510.9620056152344
+        ]
+      },
+      {
+        "drawing_index": 1692,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1119.530029296875,
+          494.15399169921875,
+          1129.1099853515625,
+          500.49200439453125
+        ]
+      },
+      {
+        "drawing_index": 1694,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1162.1199951171875,
+          493.23199462890625,
+          1167.669921875,
+          500.3030090332031
+        ]
+      },
+      {
+        "drawing_index": 1696,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1170.8099365234375,
+          491.5680236816406,
+          1177.9599609375,
+          498.9380187988281
+        ]
+      },
+      {
+        "drawing_index": 1698,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1180.18994140625,
+          491.50299072265625,
+          1186.739990234375,
+          498.6730041503906
+        ]
+      },
+      {
+        "drawing_index": 1700,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1107.2899169921875,
+          416.68499755859375,
+          1110.530029296875,
+          420.7389831542969
+        ]
+      },
+      {
+        "drawing_index": 1702,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1094.9300537109375,
+          418.8320007324219,
+          1103.0,
+          426.6029968261719
+        ]
+      },
+      {
+        "drawing_index": 1704,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1081.10009765625,
+          422.6449890136719,
+          1088.4200439453125,
+          430.09600830078125
+        ]
+      },
+      {
+        "drawing_index": 1706,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1153.8199462890625,
+          493.22900390625,
+          1159.8599853515625,
+          501.3320007324219
+        ]
+      },
+      {
+        "drawing_index": 1708,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1143.6300048828125,
+          495.88397216796875,
+          1148.9300537109375,
+          501.9079895019531
+        ]
+      },
+      {
+        "drawing_index": 1710,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1134.8599853515625,
+          496.6080017089844,
+          1139.6099853515625,
+          502.41400146484375
+        ]
+      },
+      {
+        "drawing_index": 1712,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          132.9210205078125,
+          3.3570003509521484,
+          144.0989990234375,
+          18.839000701904297
+        ]
+      },
+      {
+        "drawing_index": 1714,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          124.739990234375,
+          -13.411499977111816,
+          140.1090087890625,
+          6.9375
+        ]
+      },
+      {
+        "drawing_index": 1722,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          106.5030517578125,
+          -8.270099639892578,
+          116.14599609375,
+          0.9411001205444336
+        ]
+      },
+      {
+        "drawing_index": 1724,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          3.2337646484375,
+          447.4090270996094,
+          12.43603515625,
+          458.97802734375
+        ]
+      },
+      {
+        "drawing_index": 1726,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          29.528076171875,
+          416.2139892578125,
+          33.342041015625,
+          422.5419921875
+        ]
+      },
+      {
+        "drawing_index": 1728,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          -2.6697998046875,
+          413.1919860839844,
+          0.1512451171875,
+          415.4639892578125
+        ]
+      },
+      {
+        "drawing_index": 1730,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          20.153076171875,
+          389.3399963378906,
+          28.81103515625,
+          395.82098388671875
+        ]
+      },
+      {
+        "drawing_index": 1732,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          20.865966796875,
+          449.1499938964844,
+          25.7750244140625,
+          457.552001953125
+        ]
+      },
+      {
+        "drawing_index": 1734,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          26.1510009765625,
+          450.4369812011719,
+          38.75,
+          461.04400634765625
+        ]
+      },
+      {
+        "drawing_index": 1736,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          13.032958984375,
+          446.6549987792969,
+          21.02294921875,
+          457.1650085449219
+        ]
+      },
+      {
+        "drawing_index": 1738,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          -3.8267822265625,
+          444.4849853515625,
+          3.339599609375,
+          451.85198974609375
+        ]
+      },
+      {
+        "drawing_index": 2330,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1101.1199951171875,
+          501.9469909667969,
+          1104.300048828125,
+          505.0950012207031
+        ]
+      },
+      {
+        "drawing_index": 2332,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          1107.830078125,
+          498.6990051269531,
+          1111.9100341796875,
+          503.2229919433594
+        ]
+      },
+      {
+        "drawing_index": 2414,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          980.458984375,
+          409.2120056152344,
+          983.6489868164062,
+          413.9510192871094
+        ]
+      },
+      {
+        "drawing_index": 2416,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          993.3079833984375,
+          412.6520080566406,
+          998.0560302734375,
+          416.135009765625
+        ]
+      },
+      {
+        "drawing_index": 2418,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          19.6539306640625,
+          456.802001953125,
+          23.7899169921875,
+          462.1210021972656
+        ]
+      },
+      {
+        "drawing_index": 2420,
+        "reason": "Outside conservative display map rectangle or touches its edge",
+        "display_bbox": [
+          24.8929443359375,
+          449.93701171875,
+          27.8349609375,
+          453.68701171875
+        ]
+      }
+    ],
+    "limits": [
+      "Gray fills are historical candidate footprints, not matched building identities.",
+      "Conservative map rectangle excludes border objects; coverage is not exhaustive.",
+      "Cubic curves sampled at32segments; invalid/discontinuous/unsupported paths explicitly excluded.",
+      "No geographic transform, fitting, validation or runtime sector."
+    ],
+    "display_map_rectangle": [
+      40.0,
+      40.0,
+      895.0,
+      815.0
+    ]
+  },
+  "artifact": "pipelines/vd-pdcom/reports/grandson/alignment-controls",
+  "fit_status": "not_fitted",
+  "next": "Identify correspondences and reserve validation subset before fitting"
+}
