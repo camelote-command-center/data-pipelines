@@ -1,0 +1,322 @@
+{
+  "source_sha256": "68f36cb156489e4166d61cb6d0938691d0dcfe489fb666ed05a58dbc98ac77b7",
+  "pdf_page": 1,
+  "coordinate_space": "unrotated PDF points, top-left origin, y down",
+  "digitization": "manual blue construction-perimeter stroke centres on crop [760,100,1735,810], scale1; approximate raster coordinates",
+  "features": [
+    {
+      "label": "A1",
+      "semantic_type": "historical_ppa_construction_perimeter",
+      "pdf_ring": [
+        [
+          1036,
+          216
+        ],
+        [
+          1210,
+          216
+        ],
+        [
+          1210,
+          276
+        ],
+        [
+          1036,
+          276
+        ],
+        [
+          1036,
+          216
+        ]
+      ],
+      "pdf_area_points2": 10440.0,
+      "outside_diagnostic_corner_hull_fraction": 1.0,
+      "status": "manual_raster_trace_research_only"
+    },
+    {
+      "label": "A2",
+      "semantic_type": "historical_ppa_construction_perimeter",
+      "pdf_ring": [
+        [
+          1492,
+          216
+        ],
+        [
+          1690,
+          216
+        ],
+        [
+          1690,
+          276
+        ],
+        [
+          1492,
+          276
+        ],
+        [
+          1492,
+          216
+        ]
+      ],
+      "pdf_area_points2": 11880.0,
+      "outside_diagnostic_corner_hull_fraction": 1.0,
+      "status": "manual_raster_trace_research_only"
+    },
+    {
+      "label": "B1",
+      "semantic_type": "historical_ppa_construction_perimeter",
+      "pdf_ring": [
+        [
+          804,
+          233
+        ],
+        [
+          982,
+          233
+        ],
+        [
+          981,
+          551
+        ],
+        [
+          803,
+          551
+        ],
+        [
+          804,
+          233
+        ]
+      ],
+      "pdf_area_points2": 56604.0,
+      "outside_diagnostic_corner_hull_fraction": 0.8089553451669833,
+      "status": "manual_raster_trace_research_only"
+    },
+    {
+      "label": "B2",
+      "semantic_type": "historical_ppa_construction_perimeter",
+      "pdf_ring": [
+        [
+          1036,
+          303
+        ],
+        [
+          1210,
+          303
+        ],
+        [
+          1210,
+          581
+        ],
+        [
+          1035,
+          581
+        ],
+        [
+          1036,
+          303
+        ]
+      ],
+      "pdf_area_points2": 48511.0,
+      "outside_diagnostic_corner_hull_fraction": 1.0,
+      "status": "manual_raster_trace_research_only"
+    },
+    {
+      "label": "B3",
+      "semantic_type": "historical_ppa_construction_perimeter",
+      "pdf_ring": [
+        [
+          1263,
+          234
+        ],
+        [
+          1438,
+          234
+        ],
+        [
+          1437,
+          569
+        ],
+        [
+          1262,
+          569
+        ],
+        [
+          1263,
+          234
+        ]
+      ],
+      "pdf_area_points2": 58625.0,
+      "outside_diagnostic_corner_hull_fraction": 1.0,
+      "status": "manual_raster_trace_research_only"
+    },
+    {
+      "label": "B4",
+      "semantic_type": "historical_ppa_construction_perimeter",
+      "pdf_ring": [
+        [
+          1493,
+          303
+        ],
+        [
+          1563,
+          303
+        ],
+        [
+          1562,
+          610
+        ],
+        [
+          1492,
+          610
+        ],
+        [
+          1493,
+          303
+        ]
+      ],
+      "pdf_area_points2": 21490.0,
+      "outside_diagnostic_corner_hull_fraction": 1.0,
+      "status": "manual_raster_trace_research_only"
+    },
+    {
+      "label": "B5",
+      "semantic_type": "historical_ppa_construction_perimeter",
+      "pdf_ring": [
+        [
+          1602,
+          304
+        ],
+        [
+          1690,
+          305
+        ],
+        [
+          1691,
+          576
+        ],
+        [
+          1601,
+          576
+        ],
+        [
+          1602,
+          304
+        ]
+      ],
+      "pdf_area_points2": 24163.5,
+      "outside_diagnostic_corner_hull_fraction": 1.0,
+      "status": "manual_raster_trace_research_only"
+    },
+    {
+      "label": "C1",
+      "semantic_type": "historical_ppa_construction_perimeter",
+      "pdf_ring": [
+        [
+          916,
+          619
+        ],
+        [
+          1208,
+          631
+        ],
+        [
+          1207,
+          697
+        ],
+        [
+          915,
+          679
+        ],
+        [
+          916,
+          619
+        ]
+      ],
+      "pdf_area_points2": 18411.0,
+      "outside_diagnostic_corner_hull_fraction": 0.44191169481320375,
+      "status": "manual_raster_trace_research_only"
+    },
+    {
+      "label": "C2",
+      "semantic_type": "historical_ppa_construction_perimeter",
+      "pdf_ring": [
+        [
+          1237,
+          632
+        ],
+        [
+          1465,
+          640
+        ],
+        [
+          1465,
+          713
+        ],
+        [
+          1235,
+          699
+        ],
+        [
+          1237,
+          632
+        ]
+      ],
+      "pdf_area_points2": 16041.0,
+      "outside_diagnostic_corner_hull_fraction": 1.0,
+      "status": "manual_raster_trace_research_only"
+    },
+    {
+      "label": "D",
+      "semantic_type": "historical_ppa_construction_perimeter",
+      "pdf_ring": [
+        [
+          1593,
+          648
+        ],
+        [
+          1636,
+          648
+        ],
+        [
+          1694,
+          692
+        ],
+        [
+          1694,
+          775
+        ],
+        [
+          1592,
+          774
+        ],
+        [
+          1593,
+          648
+        ]
+      ],
+      "pdf_area_points2": 11564.0,
+      "outside_diagnostic_corner_hull_fraction": 1.0,
+      "status": "manual_raster_trace_research_only"
+    }
+  ],
+  "excluded": [
+    {
+      "label": "SILO",
+      "reason": "Separate dashed parking construction perimeter, not traced as blue building perimeter."
+    }
+  ],
+  "validation": {
+    "valid_polygons": 10,
+    "pairwise_positive_area_overlaps": 0,
+    "geographic_geometry_created": false
+  },
+  "limitations": [
+    "This later PPA geometry does not register or reconstruct the 1997 PDCom boundary.",
+    "These are construction envelopes, not land parcels, current footprints, developable land or remaining capacity.",
+    "Approximate manual stroke picks require source review; no survey precision.",
+    "A1/A2/B1-B5/C1-C2/D maxima apply per perimeter under Article9, not once per intersected parcel.",
+    "SILO parking and other activity/front/underground lines remain untraced.",
+    "Diagnostic-corner convex hull is only a coverage indicator, not a positional accuracy guarantee.",
+    "PPA currentness and approved-version qualifications remain as previously recorded."
+  ]
+}
