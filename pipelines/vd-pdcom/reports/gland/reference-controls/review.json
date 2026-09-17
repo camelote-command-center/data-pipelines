@@ -1,0 +1,37 @@
+{
+  "source_sha256": "f5c9dc1bb73ceac29513a219f43a8ff381e72794a9c5557e4e3c1d46db297f9c",
+  "adjacent_map_sha256": "68f36cb156489e4166d61cb6d0938691d0dcfe489fb666ed05a58dbc98ac77b7",
+  "reference": {
+    "retrieved_at": "2026-09-17T17:21:04.641224+00:00",
+    "service": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query",
+    "query": {
+      "f": "json",
+      "where": "NO_COM_FED=5721",
+      "geometry": "509200,141800,510300,142900",
+      "geometryType": "esriGeometryEnvelope",
+      "inSR": 21781,
+      "spatialRel": "esriSpatialRelIntersects"
+    },
+    "outSR": 21781,
+    "count_before": 756,
+    "count_after": 756,
+    "feature_count": 756,
+    "sha256": "8559303dbd9d112afb0c2dab344b273ffb5db98b23cc608df29c6e26406e6f82",
+    "commune_bfs": 5721,
+    "purpose": "Independent current cadastral reference, not historical control correspondences. No refitting, matched controls or geographic delivery yet."
+  },
+  "alignment_status": "provisional_grid_only_not_ground_validated",
+  "qualitative_review": [
+    "Current magenta cadastral outlines broadly follow multiple historical hatched buildings west of Chemin du Molard and along Rue du Borgeaud. Visible offsets remain; no independently measured error bound is established.",
+    "Many current footprints inside B1/B2/C1 intersect the 2010 prospective construction areas; these are post-plan structures, not usable historical registration controls.",
+    "The PDF contains elevation diagrams below the plan. Diagnostic crops stop at PDF y=920 to exclude these non-plan drawings."
+  ],
+  "coordinate_method": "Official ArcGIS output explicitly requested EPSG:21781; inverse of frozen PR127 affine maps these coordinates to PDF. No LV95 conversion or affine refitting.",
+  "pending": [
+    "Select unchanged historical building corners with independently declared correspondence and distributed spatial coverage",
+    "Measure errors and mismatch cases without refitting on validation observations",
+    "Validate actual map frame and semantic sector outlines",
+    "Declare LV03 to LV95 conversion before any receiver geometry"
+  ],
+  "delivery": "withheld_research_only"
+}
