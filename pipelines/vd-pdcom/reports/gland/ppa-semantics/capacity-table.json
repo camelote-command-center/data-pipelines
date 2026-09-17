@@ -1,0 +1,101 @@
+[
+  {
+    "perimeter_label": "A1",
+    "max_ground_occupation_m2": 1000,
+    "max_gross_floor_area_m2": 3700,
+    "height_label": "R+3",
+    "source": "PPA mapPDF1 capacity table",
+    "visually_transcribed": true,
+    "not_remaining_capacity": true
+  },
+  {
+    "perimeter_label": "A2",
+    "max_ground_occupation_m2": 1100,
+    "max_gross_floor_area_m2": 4000,
+    "height_label": "R+3",
+    "source": "PPA mapPDF1 capacity table",
+    "visually_transcribed": true,
+    "not_remaining_capacity": true
+  },
+  {
+    "perimeter_label": "B1",
+    "max_ground_occupation_m2": 2750,
+    "max_gross_floor_area_m2": 10400,
+    "height_label": "R+3,max50%R+4",
+    "source": "PPA mapPDF1 capacity table",
+    "visually_transcribed": true,
+    "not_remaining_capacity": true
+  },
+  {
+    "perimeter_label": "B2",
+    "max_ground_occupation_m2": 2650,
+    "max_gross_floor_area_m2": 9600,
+    "height_label": "R+4,max50%R+5",
+    "source": "PPA mapPDF1 capacity table",
+    "visually_transcribed": true,
+    "not_remaining_capacity": true
+  },
+  {
+    "perimeter_label": "B3",
+    "max_ground_occupation_m2": 2750,
+    "max_gross_floor_area_m2": 11000,
+    "height_label": "R+4,max50%R+5",
+    "source": "PPA mapPDF1 capacity table",
+    "visually_transcribed": true,
+    "not_remaining_capacity": true
+  },
+  {
+    "perimeter_label": "B4",
+    "max_ground_occupation_m2": 1380,
+    "max_gross_floor_area_m2": 5900,
+    "height_label": "R+4",
+    "source": "PPA mapPDF1 capacity table",
+    "visually_transcribed": true,
+    "not_remaining_capacity": true
+  },
+  {
+    "perimeter_label": "B5",
+    "max_ground_occupation_m2": 950,
+    "max_gross_floor_area_m2": 4000,
+    "height_label": "R+4",
+    "source": "PPA mapPDF1 capacity table",
+    "visually_transcribed": true,
+    "not_remaining_capacity": true
+  },
+  {
+    "perimeter_label": "C1",
+    "max_ground_occupation_m2": 1800,
+    "max_gross_floor_area_m2": 5000,
+    "height_label": "R+2",
+    "source": "PPA mapPDF1 capacity table",
+    "visually_transcribed": true,
+    "not_remaining_capacity": true
+  },
+  {
+    "perimeter_label": "C2",
+    "max_ground_occupation_m2": 1450,
+    "max_gross_floor_area_m2": 4000,
+    "height_label": "R+2",
+    "source": "PPA mapPDF1 capacity table",
+    "visually_transcribed": true,
+    "not_remaining_capacity": true
+  },
+  {
+    "perimeter_label": "D",
+    "max_ground_occupation_m2": 800,
+    "max_gross_floor_area_m2": 3250,
+    "height_label": "R+4",
+    "source": "PPA mapPDF1 capacity table",
+    "visually_transcribed": true,
+    "not_remaining_capacity": true
+  },
+  {
+    "perimeter_label": "SILO",
+    "max_ground_occupation_m2": null,
+    "max_gross_floor_area_m2": null,
+    "height_label": "R+2",
+    "source": "PPA mapPDF1 capacity table",
+    "visually_transcribed": true,
+    "not_remaining_capacity": true
+  }
+]
