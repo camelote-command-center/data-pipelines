@@ -1,0 +1,1071 @@
+{
+  "source_sha256": "f5c9dc1bb73ceac29513a219f43a8ff381e72794a9c5557e4e3c1d46db297f9c",
+  "analysis": {
+    "status": "research_only_not_runtime_or_capacity",
+    "coordinate_method": "Frozen PR127 PDF-to-LV03 affine, no refitting; official PR128 reference explicitly requested in EPSG21781. No datum transformation or LV95/4326 conversion.",
+    "sources": {
+      "map_sha256": "68f36cb156489e4166d61cb6d0938691d0dcfe489fb666ed05a58dbc98ac77b7",
+      "reference_sha256": "8559303dbd9d112afb0c2dab344b273ffb5db98b23cc608df29c6e26406e6f82"
+    },
+    "envelopes": [
+      {
+        "label": "A1",
+        "crs": "EPSG:21781",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                509604.5902223323,
+                142443.61129321964
+              ],
+              [
+                509650.4230400011,
+                142484.4243260962
+              ],
+              [
+                509664.6420006222,
+                142468.51454341115
+              ],
+              [
+                509618.8091829533,
+                142427.70151053462
+              ],
+              [
+                509604.5902223323,
+                142443.61129321964
+              ]
+            ]
+          ]
+        },
+        "envelope_area_m2": 1309.5090762518764,
+        "coverage": {
+          "label": "A1",
+          "outside_combined_diagnostic_hull_fraction": 0.98585403978268
+        },
+        "footprint_matches": [
+          {
+            "OBJECTID": 46436969,
+            "EGID": 280079930,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2326",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 931.8818195994688,
+            "footprint_m2": 950.0147832576865,
+            "footprint_overlap_fraction": 0.9809129668529598,
+            "above_ground": true
+          }
+        ],
+        "aboveground_union_overlap_m2": 931.881819599469,
+        "aboveground_union_fraction": 0.7116268504734113,
+        "sensitivity": [
+          {
+            "illustrative_buffer_m": -2,
+            "aboveground_ids_overlap_gt_1m2": [
+              46436969
+            ],
+            "count": 1
+          },
+          {
+            "illustrative_buffer_m": 0,
+            "aboveground_ids_overlap_gt_1m2": [
+              46436969
+            ],
+            "count": 1
+          },
+          {
+            "illustrative_buffer_m": 2,
+            "aboveground_ids_overlap_gt_1m2": [
+              46436969
+            ],
+            "count": 1
+          }
+        ]
+      },
+      {
+        "label": "A2",
+        "crs": "EPSG:21781",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                509724.7038134644,
+                142550.5695862754
+              ],
+              [
+                509776.8583990875,
+                142597.01200299698
+              ],
+              [
+                509791.0773597086,
+                142581.10222031194
+              ],
+              [
+                509738.9227740854,
+                142534.65980359036
+              ],
+              [
+                509724.7038134644,
+                142550.5695862754
+              ]
+            ]
+          ]
+        },
+        "envelope_area_m2": 1490.1310178047281,
+        "coverage": {
+          "label": "A2",
+          "outside_combined_diagnostic_hull_fraction": 1.0
+        },
+        "footprint_matches": [
+          {
+            "OBJECTID": 46343263,
+            "EGID": 280092486,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2397",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 1082.2121856960023,
+            "footprint_m2": 1099.6815190123511,
+            "footprint_overlap_fraction": 0.9841141885042877,
+            "above_ground": true
+          }
+        ],
+        "aboveground_union_overlap_m2": 1082.2121856960018,
+        "aboveground_union_fraction": 0.7262530426957522,
+        "sensitivity": [
+          {
+            "illustrative_buffer_m": -2,
+            "aboveground_ids_overlap_gt_1m2": [
+              46343263
+            ],
+            "count": 1
+          },
+          {
+            "illustrative_buffer_m": 0,
+            "aboveground_ids_overlap_gt_1m2": [
+              46343263
+            ],
+            "count": 1
+          },
+          {
+            "illustrative_buffer_m": 2,
+            "aboveground_ids_overlap_gt_1m2": [
+              46343263
+            ],
+            "count": 1
+          }
+        ]
+      },
+      {
+        "label": "B1",
+        "crs": "EPSG:21781",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                509547.5085042831,
+                142384.68614429017
+              ],
+              [
+                509594.39494994434,
+                142426.43740780756
+              ],
+              [
+                509669.49203423795,
+                142341.8810019166
+              ],
+              [
+                509622.6055885767,
+                142300.12973839924
+              ],
+              [
+                509547.5085042831,
+                142384.68614429017
+              ]
+            ]
+          ]
+        },
+        "envelope_area_m2": 7099.947485845782,
+        "coverage": {
+          "label": "B1",
+          "outside_combined_diagnostic_hull_fraction": 0.0487106502860382
+        },
+        "footprint_matches": [
+          {
+            "OBJECTID": 46309898,
+            "EGID": 280079908,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2312",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 442.1545820151052,
+            "footprint_m2": 450.2710013057009,
+            "footprint_overlap_fraction": 0.9819743681759215,
+            "above_ground": true
+          },
+          {
+            "OBJECTID": 46318301,
+            "EGID": 280134004,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2314",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 224.19125009845985,
+            "footprint_m2": 224.1912500984598,
+            "footprint_overlap_fraction": 1.0000000000000002,
+            "above_ground": true
+          },
+          {
+            "OBJECTID": 46377963,
+            "EGID": 280079907,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2417",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 225.36355704851016,
+            "footprint_m2": 235.00012231925342,
+            "footprint_overlap_fraction": 0.9589933606176947,
+            "above_ground": true
+          },
+          {
+            "OBJECTID": 46391040,
+            "EGID": 280079909,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2313",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 449.0357369085846,
+            "footprint_m2": 449.03573690858457,
+            "footprint_overlap_fraction": 1.0000000000000002,
+            "above_ground": true
+          },
+          {
+            "OBJECTID": 46392785,
+            "EGID": 280079910,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2311",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 476.3552911247109,
+            "footprint_m2": 476.3552911247109,
+            "footprint_overlap_fraction": 1.0,
+            "above_ground": true
+          },
+          {
+            "OBJECTID": 46437437,
+            "EGID": 280079911,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2310",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 443.2939109414719,
+            "footprint_m2": 449.9044782592396,
+            "footprint_overlap_fraction": 0.9853067314569858,
+            "above_ground": true
+          }
+        ],
+        "aboveground_union_overlap_m2": 2260.394328136843,
+        "aboveground_union_fraction": 0.3183677530915672,
+        "sensitivity": [
+          {
+            "illustrative_buffer_m": -2,
+            "aboveground_ids_overlap_gt_1m2": [
+              46309898,
+              46318301,
+              46377963,
+              46391040,
+              46392785,
+              46437437
+            ],
+            "count": 6
+          },
+          {
+            "illustrative_buffer_m": 0,
+            "aboveground_ids_overlap_gt_1m2": [
+              46309898,
+              46318301,
+              46377963,
+              46391040,
+              46392785,
+              46437437
+            ],
+            "count": 6
+          },
+          {
+            "illustrative_buffer_m": 2,
+            "aboveground_ids_overlap_gt_1m2": [
+              46309898,
+              46318301,
+              46377963,
+              46391040,
+              46392785,
+              46437437
+            ],
+            "count": 6
+          }
+        ]
+      },
+      {
+        "label": "B2",
+        "crs": "EPSG:21781",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                509625.2077152328,
+                142420.54210832634
+              ],
+              [
+                509671.04053290165,
+                142461.3551412029
+              ],
+              [
+                509736.92171711265,
+                142387.63981476217
+              ],
+              [
+                509690.8254924457,
+                142346.59222422543
+              ],
+              [
+                509625.2077152328,
+                142420.54210832634
+              ]
+            ]
+          ]
+        },
+        "envelope_area_m2": 6084.827087941379,
+        "coverage": {
+          "label": "B2",
+          "outside_combined_diagnostic_hull_fraction": 0.0
+        },
+        "footprint_matches": [
+          {
+            "OBJECTID": 46347321,
+            "EGID": 280079915,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2318",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 598.9415931396236,
+            "footprint_m2": 598.9415931396236,
+            "footprint_overlap_fraction": 1.0,
+            "above_ground": true
+          },
+          {
+            "OBJECTID": 46412698,
+            "EGID": 280079912,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2315",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 547.1855729678455,
+            "footprint_m2": 597.927750195227,
+            "footprint_overlap_fraction": 0.9151366077075134,
+            "above_ground": true
+          },
+          {
+            "OBJECTID": 46442423,
+            "EGID": 280079914,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2316",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 376.4714408123549,
+            "footprint_m2": 376.4714408123549,
+            "footprint_overlap_fraction": 1.0,
+            "above_ground": true
+          },
+          {
+            "OBJECTID": 46503575,
+            "EGID": 280079913,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2317",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 443.31170290493714,
+            "footprint_m2": 468.312594789783,
+            "footprint_overlap_fraction": 0.9466149487265694,
+            "above_ground": true
+          }
+        ],
+        "aboveground_union_overlap_m2": 1965.910309824761,
+        "aboveground_union_fraction": 0.3230840057428597,
+        "sensitivity": [
+          {
+            "illustrative_buffer_m": -2,
+            "aboveground_ids_overlap_gt_1m2": [
+              46347321,
+              46412698,
+              46442423,
+              46503575
+            ],
+            "count": 4
+          },
+          {
+            "illustrative_buffer_m": 0,
+            "aboveground_ids_overlap_gt_1m2": [
+              46347321,
+              46412698,
+              46442423,
+              46503575
+            ],
+            "count": 4
+          },
+          {
+            "illustrative_buffer_m": 2,
+            "aboveground_ids_overlap_gt_1m2": [
+              46347321,
+              46412698,
+              46442423,
+              46503575
+            ],
+            "count": 4
+          }
+        ]
+      },
+      {
+        "label": "B3",
+        "crs": "EPSG:21781",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                509668.64929908654,
+                142492.0829472818
+              ],
+              [
+                509714.74552375346,
+                142533.13053781856
+              ],
+              [
+                509793.8713135564,
+                142444.06636016685
+              ],
+              [
+                509747.77508888947,
+                142403.0187696301
+              ],
+              [
+                509668.64929908654,
+                142492.0829472818
+              ]
+            ]
+          ]
+        },
+        "envelope_area_m2": 7353.445363534993,
+        "coverage": {
+          "label": "B3",
+          "outside_combined_diagnostic_hull_fraction": 0.24303571582255565
+        },
+        "footprint_matches": [
+          {
+            "OBJECTID": 46287732,
+            "EGID": 280079918,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2320",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 541.1173258290218,
+            "footprint_m2": 541.1173258290219,
+            "footprint_overlap_fraction": 0.9999999999999998,
+            "above_ground": true
+          },
+          {
+            "OBJECTID": 46317862,
+            "EGID": 280079917,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2322",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 446.95806486616806,
+            "footprint_m2": 479.1994318077491,
+            "footprint_overlap_fraction": 0.9327182696775066,
+            "above_ground": true
+          },
+          {
+            "OBJECTID": 46391152,
+            "EGID": 280079919,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2321",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 455.5830912763122,
+            "footprint_m2": 463.37161417725366,
+            "footprint_overlap_fraction": 0.9831916270599128,
+            "above_ground": true
+          },
+          {
+            "OBJECTID": 46483056,
+            "EGID": 280079916,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2319",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 499.61468126009015,
+            "footprint_m2": 507.5006424426822,
+            "footprint_overlap_fraction": 0.9844611799018901,
+            "above_ground": true
+          }
+        ],
+        "aboveground_union_overlap_m2": 1943.2731632315922,
+        "aboveground_union_fraction": 0.26426702955706877,
+        "sensitivity": [
+          {
+            "illustrative_buffer_m": -2,
+            "aboveground_ids_overlap_gt_1m2": [
+              46287732,
+              46317862,
+              46391152,
+              46483056
+            ],
+            "count": 4
+          },
+          {
+            "illustrative_buffer_m": 0,
+            "aboveground_ids_overlap_gt_1m2": [
+              46287732,
+              46317862,
+              46391152,
+              46483056
+            ],
+            "count": 4
+          },
+          {
+            "illustrative_buffer_m": 2,
+            "aboveground_ids_overlap_gt_1m2": [
+              46287732,
+              46317862,
+              46391152,
+              46483056
+            ],
+            "count": 4
+          }
+        ]
+      },
+      {
+        "label": "B4",
+        "crs": "EPSG:21781",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                509745.58471336303,
+                142527.7349590423
+              ],
+              [
+                509764.02320322976,
+                142544.153995257
+              ],
+              [
+                509836.5134780762,
+                142462.51438285832
+              ],
+              [
+                509818.0749882094,
+                142446.09534664362
+              ],
+              [
+                509745.58471336303,
+                142527.7349590423
+              ]
+            ]
+          ]
+        },
+        "envelope_area_m2": 2695.5316138555727,
+        "coverage": {
+          "label": "B4",
+          "outside_combined_diagnostic_hull_fraction": 0.1251187639970031
+        },
+        "footprint_matches": [
+          {
+            "OBJECTID": 46288160,
+            "EGID": 280079925,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2325",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 469.0374386228889,
+            "footprint_m2": 478.66615071811606,
+            "footprint_overlap_fraction": 0.9798842845252755,
+            "above_ground": true
+          },
+          {
+            "OBJECTID": 46437456,
+            "EGID": 280079926,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2323",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 466.27888748818833,
+            "footprint_m2": 479.51135737973414,
+            "footprint_overlap_fraction": 0.9724042617804634,
+            "above_ground": true
+          },
+          {
+            "OBJECTID": 46466543,
+            "EGID": 280079927,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2324",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 467.940690961804,
+            "footprint_m2": 479.4962493500231,
+            "footprint_overlap_fraction": 0.9759006282032797,
+            "above_ground": true
+          }
+        ],
+        "aboveground_union_overlap_m2": 1403.2570170728811,
+        "aboveground_union_fraction": 0.520586369627371,
+        "sensitivity": [
+          {
+            "illustrative_buffer_m": -2,
+            "aboveground_ids_overlap_gt_1m2": [
+              46288160,
+              46437456,
+              46466543
+            ],
+            "count": 3
+          },
+          {
+            "illustrative_buffer_m": 0,
+            "aboveground_ids_overlap_gt_1m2": [
+              46288160,
+              46437456,
+              46466543
+            ],
+            "count": 3
+          },
+          {
+            "illustrative_buffer_m": 2,
+            "aboveground_ids_overlap_gt_1m2": [
+              46288160,
+              46437456,
+              46466543
+            ],
+            "count": 3
+          }
+        ]
+      },
+      {
+        "label": "B5",
+        "crs": "EPSG:21781",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                509774.5330588326,
+                142553.03658096044
+              ],
+              [
+                509797.9498573421,
+                142573.41249201418
+              ],
+              [
+                509862.4355698121,
+                142501.78786454693
+              ],
+              [
+                509838.72893998335,
+                142480.67767512804
+              ],
+              [
+                509774.5330588326,
+                142553.03658096044
+              ]
+            ]
+          ]
+        },
+        "envelope_area_m2": 3030.8738088159594,
+        "coverage": {
+          "label": "B5",
+          "outside_combined_diagnostic_hull_fraction": 0.5406834678862871
+        },
+        "footprint_matches": [
+          {
+            "OBJECTID": 46298105,
+            "EGID": 811108,
+            "NO_COM_FED": 5721,
+            "NUMERO": "994a",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 301.104178590219,
+            "footprint_m2": 302.9355540439887,
+            "footprint_overlap_fraction": 0.9939545707681979,
+            "above_ground": true
+          },
+          {
+            "OBJECTID": 46298272,
+            "EGID": null,
+            "NO_COM_FED": 5721,
+            "NUMERO": "1176b",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 183.0729229261936,
+            "footprint_m2": 183.07292292619354,
+            "footprint_overlap_fraction": 1.0000000000000002,
+            "above_ground": true
+          },
+          {
+            "OBJECTID": 46372590,
+            "EGID": 281009027,
+            "NO_COM_FED": 5721,
+            "NUMERO": "B255",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 156.39745052907466,
+            "footprint_m2": 156.3974505290746,
+            "footprint_overlap_fraction": 1.0000000000000004,
+            "above_ground": true
+          },
+          {
+            "OBJECTID": 46377765,
+            "EGID": 811107,
+            "NO_COM_FED": 5721,
+            "NUMERO": "1176a",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 376.9565516364431,
+            "footprint_m2": 376.9565516364431,
+            "footprint_overlap_fraction": 1.0,
+            "above_ground": true
+          },
+          {
+            "OBJECTID": 46417111,
+            "EGID": 281011442,
+            "NO_COM_FED": 5721,
+            "NUMERO": "994b",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 58.03457175851528,
+            "footprint_m2": 58.03457175851527,
+            "footprint_overlap_fraction": 1.0000000000000002,
+            "above_ground": true
+          },
+          {
+            "OBJECTID": 46535843,
+            "EGID": null,
+            "NO_COM_FED": 5721,
+            "NUMERO": "B256",
+            "GENRE_TXT": "bâtiment s-sol",
+            "overlap_m2": 721.3622334064864,
+            "footprint_m2": 724.3383616935772,
+            "footprint_overlap_fraction": 0.9958912457982588,
+            "above_ground": false
+          }
+        ],
+        "aboveground_union_overlap_m2": 1075.5656754404451,
+        "aboveground_union_fraction": 0.35486983071084227,
+        "sensitivity": [
+          {
+            "illustrative_buffer_m": -2,
+            "aboveground_ids_overlap_gt_1m2": [
+              46298105,
+              46298272,
+              46372590,
+              46377765,
+              46417111
+            ],
+            "count": 5
+          },
+          {
+            "illustrative_buffer_m": 0,
+            "aboveground_ids_overlap_gt_1m2": [
+              46298105,
+              46298272,
+              46372590,
+              46377765,
+              46417111
+            ],
+            "count": 5
+          },
+          {
+            "illustrative_buffer_m": 2,
+            "aboveground_ids_overlap_gt_1m2": [
+              46298105,
+              46298272,
+              46372590,
+              46377765,
+              46417111
+            ],
+            "count": 5
+          }
+        ]
+      },
+      {
+        "label": "C1",
+        "crs": "EPSG:21781",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                509668.48540139885,
+                142308.6036669599
+              ],
+              [
+                509748.24403696734,
+                142373.9125472042
+              ],
+              [
+                509763.6214866524,
+                142356.17722859047
+              ],
+              [
+                509682.4409550219,
+                142292.45932661465
+              ],
+              [
+                509668.48540139885,
+                142308.6036669599
+              ]
+            ]
+          ]
+        },
+        "envelope_area_m2": 2309.3267818857003,
+        "coverage": {
+          "label": "C1",
+          "outside_combined_diagnostic_hull_fraction": 0.0
+        },
+        "footprint_matches": [
+          {
+            "OBJECTID": 46303154,
+            "EGID": 280079922,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2328",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 1584.9130871680825,
+            "footprint_m2": 1614.8331773871664,
+            "footprint_overlap_fraction": 0.9814717144544335,
+            "above_ground": true
+          },
+          {
+            "OBJECTID": 46528770,
+            "EGID": null,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2330",
+            "GENRE_TXT": "bâtiment s-sol",
+            "overlap_m2": 8.164316729749963,
+            "footprint_m2": 49.72583367880422,
+            "footprint_overlap_fraction": 0.16418662344579305,
+            "above_ground": false
+          }
+        ],
+        "aboveground_union_overlap_m2": 1584.9130871680823,
+        "aboveground_union_fraction": 0.6863095771460755,
+        "sensitivity": [
+          {
+            "illustrative_buffer_m": -2,
+            "aboveground_ids_overlap_gt_1m2": [
+              46303154
+            ],
+            "count": 1
+          },
+          {
+            "illustrative_buffer_m": 0,
+            "aboveground_ids_overlap_gt_1m2": [
+              46303154
+            ],
+            "count": 1
+          },
+          {
+            "illustrative_buffer_m": 2,
+            "aboveground_ids_overlap_gt_1m2": [
+              46303154
+            ],
+            "count": 1
+          }
+        ]
+      },
+      {
+        "label": "C2",
+        "crs": "EPSG:21781",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                509756.11982258916,
+                142380.44955630557
+              ],
+              [
+                509818.07247957133,
+                142431.80739847542
+              ],
+              [
+                509835.3722149937,
+                142412.45049620862
+              ],
+              [
+                509771.47084795317,
+                142362.21451698683
+              ],
+              [
+                509756.11982258916,
+                142380.44955630557
+              ]
+            ]
+          ]
+        },
+        "envelope_area_m2": 2012.0531697493839,
+        "coverage": {
+          "label": "C2",
+          "outside_combined_diagnostic_hull_fraction": 0.0
+        },
+        "footprint_matches": [
+          {
+            "OBJECTID": 46425940,
+            "EGID": 280079923,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2329",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 1256.8364319327536,
+            "footprint_m2": 1275.1971850346524,
+            "footprint_overlap_fraction": 0.9856016361097912,
+            "above_ground": true
+          },
+          {
+            "OBJECTID": 46527507,
+            "EGID": null,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2330",
+            "GENRE_TXT": "bâtiment s-sol",
+            "overlap_m2": 377.4627353514718,
+            "footprint_m2": 411.88645341471,
+            "footprint_overlap_fraction": 0.9164242529030725,
+            "above_ground": false
+          },
+          {
+            "OBJECTID": 46527508,
+            "EGID": null,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2344b",
+            "GENRE_TXT": "bâtiment s-sol",
+            "overlap_m2": 35.91014739852156,
+            "footprint_m2": 2905.2060080204674,
+            "footprint_overlap_fraction": 0.012360619969593761,
+            "above_ground": false
+          },
+          {
+            "OBJECTID": 46529201,
+            "EGID": null,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2330",
+            "GENRE_TXT": "bâtiment s-sol",
+            "overlap_m2": 246.59259591124277,
+            "footprint_m2": 252.34727961523475,
+            "footprint_overlap_fraction": 0.9771953804583651,
+            "above_ground": false
+          }
+        ],
+        "aboveground_union_overlap_m2": 1256.8364319327532,
+        "aboveground_union_fraction": 0.6246536875013603,
+        "sensitivity": [
+          {
+            "illustrative_buffer_m": -2,
+            "aboveground_ids_overlap_gt_1m2": [
+              46425940
+            ],
+            "count": 1
+          },
+          {
+            "illustrative_buffer_m": 0,
+            "aboveground_ids_overlap_gt_1m2": [
+              46425940
+            ],
+            "count": 1
+          },
+          {
+            "illustrative_buffer_m": 2,
+            "aboveground_ids_overlap_gt_1m2": [
+              46425940
+            ],
+            "count": 1
+          }
+        ]
+      },
+      {
+        "label": "D",
+        "crs": "EPSG:21781",
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                509853.6844367439,
+                142459.7094746243
+              ],
+              [
+                509865.01093766204,
+                142469.79545401334
+              ],
+              [
+                509890.71578134043,
+                142471.73262433647
+              ],
+              [
+                509910.38534353295,
+                142449.72409162216
+              ],
+              [
+                509883.2808470501,
+                142426.0643733255
+              ],
+              [
+                509853.6844367439,
+                142459.7094746243
+              ]
+            ]
+          ]
+        },
+        "envelope_area_m2": 1450.49453618581,
+        "coverage": {
+          "label": "D",
+          "outside_combined_diagnostic_hull_fraction": 1.0
+        },
+        "footprint_matches": [
+          {
+            "OBJECTID": 46333604,
+            "EGID": 280082185,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2344a",
+            "GENRE_TXT": "bâtiment",
+            "overlap_m2": 837.7753393636935,
+            "footprint_m2": 866.1732577909028,
+            "footprint_overlap_fraction": 0.9672145056756479,
+            "above_ground": true
+          },
+          {
+            "OBJECTID": 46527508,
+            "EGID": null,
+            "NO_COM_FED": 5721,
+            "NUMERO": "2344b",
+            "GENRE_TXT": "bâtiment s-sol",
+            "overlap_m2": 558.0462479821308,
+            "footprint_m2": 2905.2060080204674,
+            "footprint_overlap_fraction": 0.19208491461243024,
+            "above_ground": false
+          }
+        ],
+        "aboveground_union_overlap_m2": 837.7753393636937,
+        "aboveground_union_fraction": 0.5775791073068708,
+        "sensitivity": [
+          {
+            "illustrative_buffer_m": -2,
+            "aboveground_ids_overlap_gt_1m2": [
+              46333604
+            ],
+            "count": 1
+          },
+          {
+            "illustrative_buffer_m": 0,
+            "aboveground_ids_overlap_gt_1m2": [
+              46333604
+            ],
+            "count": 1
+          },
+          {
+            "illustrative_buffer_m": 2,
+            "aboveground_ids_overlap_gt_1m2": [
+              46333604
+            ],
+            "count": 1
+          }
+        ]
+      }
+    ],
+    "limits": [
+      "Footprint occupancy is not used floor area, unused rights or residual capacity.",
+      "Original PDCom polygons and later PPA envelopes remain separate.",
+      "Historical/current lineage and any demolition/reconstruction dates not established.",
+      "Positive intersections may be raster/alignment edge artifacts; all retained, with separate >1m2 sensitivity.",
+      "Plus/minus2m is illustrative, not a confidence interval.",
+      "Underground buildings excluded from aboveground unions/counts, retained separately among matches.",
+      "Review statuses and extrapolation flags remain unresolved."
+    ]
+  },
+  "delivery": "withheld_research_only"
+}

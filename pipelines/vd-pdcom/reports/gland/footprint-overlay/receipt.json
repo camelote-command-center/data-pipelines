@@ -1,0 +1,10 @@
+{
+  "ids": {
+    "operation": "62b8d1d5-eefc-4745-a20b-85fc6ee9be7c",
+    "checkpoint": "b56baa0f-9e2a-43e2-8939-3b7e9b14368d"
+  },
+  "document_id": "bbdb0fe7-3d42-56dd-9008-c30918c5bd57",
+  "source_sha256": "f5c9dc1bb73ceac29513a219f43a8ff381e72794a9c5557e4e3c1d46db297f9c",
+  "alignment_status": "provisional_grid_only_not_ground_validated",
+  "geographic_delivery": false
+}
