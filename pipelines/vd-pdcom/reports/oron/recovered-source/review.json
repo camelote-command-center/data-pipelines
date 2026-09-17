@@ -1,0 +1,53 @@
+{
+  "retrieved_at": "2026-09-17T22:24:12.557875+00:00",
+  "source": {
+    "commune_bfs": 5805,
+    "title": "Oron — PDCom version consultation publique août 2025",
+    "pdf_url": "https://www.oron.ch/data/dataimages/Upload/PDCom-Consultation-publique-du-15.09.2025-au-14.10.2025-Rapport.pdf",
+    "landing_url": "https://www.oron.ch/N4879/plan-directeur-communal-pdcom.html",
+    "plan_status": "consultation",
+    "scope": "communal",
+    "sha256": "f6c73677a1940ff8529d795c60f375b2270a5f124ad946bf6bb14ca987eb7680",
+    "bytes": 72809914,
+    "page_count": 212
+  },
+  "status": "consultation_not_approved",
+  "approval_review": "PDF3 visually reviewed: municipal/council/Canton signature/date fields blank. Municipal landing describes closed consultation15Sep–14Oct2025, not adopted plan.",
+  "selected_concept_spreads": [
+    {
+      "theme": "urbanisation_services",
+      "legend_page": 76,
+      "map_page": 77
+    },
+    {
+      "theme": "mobilite",
+      "legend_page": 106,
+      "map_page": 107
+    },
+    {
+      "theme": "paysage",
+      "legend_page": 144,
+      "map_page": 145
+    },
+    {
+      "theme": "environnement",
+      "legend_page": 176,
+      "map_page": 177
+    },
+    {
+      "theme": "energie",
+      "legend_page": 204,
+      "map_page": 205
+    }
+  ],
+  "map_review": "Urbanisation map PDF77 visually inspected: mixed thematic symbols and red perimeters; no automatic building-capacity polygon interpretation. Other rendered concept pages require semantic visual review.",
+  "native_vector_pages": 203,
+  "text_characters": 345050,
+  "limits": [
+    "No geographic alignment or parcel extraction.",
+    "Five thematic maps do not imply five development sectors.",
+    "Current Oron includes Essertes; do not double-count former communes.",
+    "Recovered source remains consultation version; no subsequent approval inferred."
+  ],
+  "access_recovery": "Prior403 was historical. Current direct public GET succeeded72,809,914bytes; web reader separately rejected size, not source access. Local missing psycopg2 restored; exact pooler read succeeded. Prior /tmp checkout lacked .git; fresh same-repo checkout /tmp/vd-pdcom-recovered used without modifying previous files."
+}
