@@ -1,0 +1,7 @@
+# Gland — Communet–Borgeaud implementation evidence
+
+The1997PDCom measure2 describes a68,000m²reserve. A later official Communet–Borgeaud PPA map was recovered from the municipal catalogue of plans in force. Its signed approval panel was visually checked: council6May2010, preliminary department approval23June2010 and entry7March2011; versionG, cadastral update20May2010. The sheet is a4956×3517raster at printed1:1000, with a cadastral grid and construction-perimeter legend, not native vector geometry.
+
+The project architect identifies Eikenøtt as Communet–Borgeaud. Municipal management2014PDF30 records B2-4 available fromJune2014 (16protected/17market-rent apartments);PDF32 records50subsidized A2apartments and tenant entry fromDecember;PDF140 records the relocated CMS and associated services. This establishes implementation of named buildings/services. It does not establish complete buildout of the entire historical reserve, identical boundaries, current parcel lineage or remaining capacity.
+
+Two adjacent PDFs153pages acquired/hashed; current official catalogue and project-author naming evidence saved. No new PDCom corpus entry, runtime geometry or receiver dispatch. Historical potentiality must not be presented as68,000m²of presently vacant development land. Next read the accompanying regulation, reconcile boundaries, then align the later sheet using grid controls and independent validation before any parcel-level assessment.

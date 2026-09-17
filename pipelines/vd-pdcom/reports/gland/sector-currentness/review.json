@@ -1,0 +1,101 @@
+{
+  "source_sha256": "f5c9dc1bb73ceac29513a219f43a8ff381e72794a9c5557e4e3c1d46db297f9c",
+  "historical_measure": {
+    "number": 2,
+    "title": "Le Communet – Derrière le Borgeaud",
+    "pdcom_pdf_pages": [
+      15,
+      16,
+      17
+    ],
+    "stated_area_m2": 68000
+  },
+  "later_plan": {
+    "url": "https://www.gland.ch/fileadmin/documents/pdf/Plans_directeurs/PPA_et_PQ/305.7-PPA-Communet-Borgeaud.pdf",
+    "final_url": "https://www.gland.ch/fileadmin/documents/pdf/Plans_directeurs/PPA_et_PQ/305.7-PPA-Communet-Borgeaud.pdf",
+    "retrieved_at": "2026-09-17T14:16:22.310246+00:00",
+    "sha256": "68f36cb156489e4166d61cb6d0938691d0dcfe489fb666ed05a58dbc98ac77b7",
+    "page_count": 1,
+    "selected_pages": [
+      {
+        "pdf_page": 1,
+        "text": ""
+      }
+    ]
+  },
+  "later_plan_review": {
+    "municipal_approval": "2009-04-20",
+    "public_inquiry": [
+      "2009-06-15",
+      "2009-08-10"
+    ],
+    "council_adoption": "2010-05-06",
+    "department_preliminary_approval": "2010-06-23",
+    "entry_into_force": "2011-03-07",
+    "version": "G,18February2010, cadastral update20May2010",
+    "visual_verification": "signed PDF1 approval panel",
+    "map_scale": "1:1000",
+    "native_paths": 0,
+    "raster_dimensions": [
+      4956,
+      3517
+    ],
+    "status": "listed by municipality among plans in force; current parcel-specific amendments not exhaustively checked",
+    "alignment": "not yet aligned; printed grid can support a later controlled alignment experiment"
+  },
+  "implementation": {
+    "source": {
+      "url": "https://www.gland.ch/fileadmin/documents/pdf/Rapports_de_gestion/Gland_RapportGestion2014_FULL_web.pdf",
+      "final_url": "https://www.gland.ch/fileadmin/documents/pdf/Rapports_de_gestion/Gland_RapportGestion2014_FULL_web.pdf",
+      "retrieved_at": "2026-09-17T14:16:22.901096+00:00",
+      "sha256": "52b23ae0041acd50a6aea22f23c81e101cd403d71efb2b8f68f07b50545743ae",
+      "page_count": 152,
+      "selected_pages": [
+        {
+          "pdf_page": 1,
+          "text": "Rapport de Gestion 2014\nde la Municipalité au Conseil communal\n"
+        },
+        {
+          "pdf_page": 30,
+          "text": "| Rapport de Gestion 2014 |\n28\nFête des voisins – édition 2014\nLa fête des voisins s’est déroulée le 23 mai 2014. \nCette fête a été annoncée par l’intermédiaire d’un tous ménages, d’informations sur le \nsite Internet de la commune et des affiches apposées dans toute la ville. 300 affiches A3+ \nont été distribuées aux personnes organisant cette fête dans leur quartier, leur immeuble.\nA cette occasion, la ville a mis gracieusement à disposition de la population: 72 tables de \n3 mètres (pour 12 personnes) et 49 tables de 4 mètres (pour 16 personnes), 1000 cartes \nd’invitation, 100 t-shirts et 500 ballons.\nRéception des nouveaux habitants\nLa réception des nouveaux habitants a eu lieu le 15 septembre à Montoly. Depuis quelques années maintenant cet \naccueil des nouveaux habitants est ouvert à tous les glandois. Pour les nouveaux il s’agit de découvrir et s’informer sur \nleur nouveau lieu de résidence et pour les « anciens » plutôt de venir voir un peu tout ce qui change dans la commune \net aussi s’informer sur les nouveaux projets glandois en toute convivialité. \nPlus d’une quinzaine de stands étaient à disposition des visiteurs concernant tant les autorités que l’administration, \net allant de l’accueil de l’enfance aux écoles, des services techniques communaux aux loisirs, ou des différents services \nde sécurité à la prévention et la santé. \nUn film présentant cette manifestation peut être visionné à l’adresse suivante : http://www.gland.ch/habitants\nSERVICE DU LOGEMENT\nRecherche d’appartements subventionnés - liste d’attente\nLe service du logement dispose d’une liste d’attente qui évolue constamment. La situation au 31 décembre 2014 est la \nsuivante :\nNombre de pièces\nNombre de demandes\n1 pièce\n9\n2 pièces\n69\n3 pièces\n43\n4 pièces\n56\n5 pièces\n11\nTOTAL\n188\nDans la majorité des cas, il s’agit de personnes au bénéfice d’un emploi mais dont les ressources financières demeurent \nprécaires en regard du coût du loyer libre pratiqué dans notre région.\nLa diminution du nombre de demandes par rapport à l’année 2013 (226 demandes) est principalement  due à la mise \nen location de l’immeuble A2 du quartier d’Eikenott.\nBâtiment B2-4 – Allée Léothérius 1 - Eikenott\nDès le mois de juin 2014, les appartements de l’immeuble B2-4 ont été mis à disposition des habitants de notre \ncommune.\nCe bâtiment est composé de :\nǗǗ 16 logements protégés, soit 11 logements de 2,5 pièces et 5 logements de 3,5 pièces\nǗǗ 17 logements à loyers libres, soit 11 logements de 3,5 pièces et 6 logements de 4,5 pièces\nǗǗ Un espace communautaire\n"
+        },
+        {
+          "pdf_page": 32,
+          "text": "| Rapport de Gestion 2014 |\n30\nBâtiment A2 – Eikenott - appartements subventionnés\nL’entrée des locataires s’est faite dès le mois de décembre. 50 appartements subventionnés ont été mis en location \nauprès des demandeurs inscrits au service du logement.\nCeux-ci se décomposent comme suit :\nǗǗ 4 studios\nǗǗ 18 x 2,5 pièces\nǗǗ 16 x 3,5 pièces\nǗǗ 12 x 4,5 pièces\nLes conditions pour l’obtention d’un appartement à loyer modéré\nLes conditions liées à l’obtention d’un tel appartement sont définies par le règlement cantonal sur les conditions \nd’occupation des logements à loyers modérés. Les éléments déterminants sont : le revenu et le nombre de personnes \npar logement. \nǗǗ Revenu déterminant et limite de revenus : \n Le revenu déterminant au sens du présent règlement comprend la somme des revenus déterminants unifiés au sens \ndu règlement d’application de la loi sur l’harmonisation et la coordination de l’octroi des prestations sociales et d’aide \nà la formation et au logement cantonales vaudoises  de chaque personne qui occupe le logement, y compris les pres-\ntations catégorielles octroyées au sens de cette loi.\nǗǗ Le degré d’occupation\nLe nombre de personnes par logement est fixé comme suit:\n1 pièce et 2 pièces\t\n1 pers.\n3 pièces\t\n3 pers.\n4 pièces\t\n4 pers.\n5 pièces\t\n5 pers.\nPour les familles monoparentales, le degré d’occupation est fixé comme il suit : \n3 pièces\t\n2 pers.\n4 pièces\t\n3 pers.\n5 pièces\t\n4 pers.\nD’autre part, nous intégrons une règle communale dans le sens que les bénéficiaires de ces logements doivent être \ndomiciliés à Gland depuis 3 ans.\n"
+        },
+        {
+          "pdf_page": 140,
+          "text": "| Rapport de Gestion 2014 |\n138\n2014 : la naissance du Centre Médico-Social de Gland Ville\nL’importante augmentation des prestations d’aide et de soins à domicile fournies aux habitants de la Ville de Gland et \nde sa région a amené la Fondation de La Côte à scinder le Centre Médico-Social de Gland en deux équipes distinctes.\nLes prestations effectuées dans le Ville de Gland affichent une progression de +7.7% en 2014, inférieure à celle enre-\ngistrée en 2013, mais toujours plus forte que la moyenne de la région de La Côte (+3.8%). \nL’évolution plus marquée des activités sur la Ville de Gland se confirme.\nEvolution des heures et nombre de prestations effectuées, Ville de Gland\nEvolution des heures et nombre de prestations effectuées, Ville de Gland\nAnnée\nNombre d'heures \nde prestations\nVariation \nFLC \nen %\nNombre de presta-\ntions effectuées\nVariation \nen %\nFLC \nen %\n2010\n17’209 \n25'816 \n2011\n19’134 \n+11.2%\n+6.5%\n32'301 \n+25.1%\n+11.9%\n2012\n21’102  \n+10.3%\n+5.5%\n34'578 \n+7.0%\n+8.5%\n2013\n23’869  \n+13.1%\n+3.1%\n41'521 \n+20.1%\n+5.5%\n2014\n25’695 \n+7.7%\n+3.8%\n44’900\n+8.1%\n+5.0%\nAugmentation entre \n2010 et 2014 :\n+49.3%\n+20.2%\n \n+73.9%\n+34.4%\nLes collaborateurs qui desservent la Ville de Gland sont désormais localisés dans de nouveaux locaux situés sur le \nquartier d’Eikenott. \nLe bâtiment regroupe sous le même toit le Centre Médico-Social, un cabinet médical de groupe et une pharma-\ncie, offrant la possibilité de développer des synergies novatrices et efficientes pour la continuité des prestations aux \npatients. Cette configuration est incontestablement une source de facilité pour la population de la Ville de Gland.\nRégion de La Côte\nLa Fondation de La Côte (FLC) procède à d’indispensables investissements pour renforcer l’intégration des soins, \nsoit par l’implémentation du dispositif de nuit des CMS dans le service des urgences des hôpitaux, assurant égale-\nment une couverture 24h/24, soit par la constitution d’un pôle de compétences dans le domaine des plaies chroniques \nou la gestion partagée de la liaison hôpital-domicile.\nA l’échelon local, le CMS garde son rôle de relai opérationnel d’une vision globale d’une société vieillissante. De \npar son expérience et ses compétences, il est investi d’une véritable responsabilité, aux côtés des communes, dans la \n"
+        }
+      ]
+    },
+    "observations": [
+      {
+        "pdf_page": 30,
+        "finding": "B2-4 at Allée Léothérius1 available from June2014:16protected and17market-rent apartments."
+      },
+      {
+        "pdf_page": 32,
+        "finding": "A2:50subsidized apartments offered; tenants entered from December, as reported in2014management report."
+      },
+      {
+        "pdf_page": 140,
+        "finding": "CMS relocated in2014 to Eikenott with medical practice and pharmacy."
+      }
+    ],
+    "naming_cross_reference": {
+      "url": "https://www.lopesperinet.ch/eikenotta.html",
+      "retrieved_at": "2026-09-17T14:17:38.528315+00:00",
+      "sha256": "6383aca658cbe0d200c94a0e534af6ffc8dbe69c9036647b1abffaa881fa6a25",
+      "text": "Eikenott lopes & perinet-marquet architectes epfl Eikenøtt - Communet-Borgeaud, Gland - Elaboration d’un écoquartier avec INSITU, paysagistes, Montreux 1er prix, 2007-2013 réalisé Eikenøtt Densification qualifiée Densifier et favoriser la qualité de vie – cet objectif est conditionné par la prise en compte des structures spatiales existantes et offertes par le lieu, tout en en maîtrisant les nuisances, en particulier celles engendrées par la proximité de l'autoroute. La morphologie, l'implantation des bâtiment favorisent la réalisation par étapes. Développement durable Le projet s'appuie sur les exemples d'écoquartiers réalisés en Europe et sur les expériences de démarche participative. Il propose une réalisation de haute qualité environnementale répondant aux exigences du développement durable : - Efficience économique - Responsabilité environnementale - Solidarité sociale Sous différents aspects, le projet vise cet objectif d'efficience économique: - Les terrassements sont limités, les matériaux de déblais sont réutilisés majoritairement sur le site. - Les espaces extérieurs offrent de nombreuses possibilités d'appropriation sans exclure le potentiel éducatif qu'une structure associative pourrait développer. - La gestion de l'eau, des déchets (lieux de collecte centralisée et compostage...) et celle de l'énergie sont conçues à partir de critères d'éco-construction et de haute qualité environnementale . Organisation spatiale Les espaces structurant le quartier s'organisent clairement en un maillage d'espaces publics et d'espaces collectifs. L'ensemble de ces espaces devra faire l'objet d'une charte d'aménagement accompagnant et illustrant le plan de quartier,définissant les règles nécessaires au caractère homogène du quartier."
+    },
+    "assessment": "Implementation is established for named buildings/services, not exhaustive completion of the entire historic68000m2reserve. Exact perimeter correspondence and residual capacity remain unknown."
+  },
+  "delivery": "research_only_no_sector_or_parcel_join",
+  "pending": [
+    "Reconcile historical PDCom boundary with approved PPA footprint",
+    "Read associated PPA regulation",
+    "Use cadastral grid then independent holdouts for map alignment",
+    "Compare built footprints and land/right identities before any residual-capacity claim"
+  ]
+}
