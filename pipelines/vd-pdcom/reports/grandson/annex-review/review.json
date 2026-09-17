@@ -1,0 +1,98 @@
+{
+  "commune_bfs": 5561,
+  "ocr_pages": 44,
+  "ocr_characters": 61728,
+  "sources": [
+    {
+      "local_index": 12,
+      "pdf_url": "https://www.grandson.ch/wp-content/uploads/2021/01/Annexe-6-Fiches-IMN.pdf",
+      "sha256": "d00560762199fa66db31b04941b2ebe62add9ac2d06629a956c2751b4e39f7fe",
+      "pages": 36
+    },
+    {
+      "local_index": 13,
+      "pdf_url": "https://www.grandson.ch/wp-content/uploads/2021/01/Annexe-7-Fiche-nat-pay.pdf",
+      "sha256": "1608f1ed11014e42f55610ed1edcb98ffb0007c9616dc623eb39b0b8b860fb21",
+      "pages": 8
+    }
+  ],
+  "ocr_method": "Tesseract fra, 180dpi, raw uncorrected transcription; reading-order errors remain",
+  "annex6": {
+    "pages": 36,
+    "meaning": "Historical natural-habitat inventory sheets, not 36 development sectors. Several sheets dated May/June 1997, some undated/updated. Upload path 2021 is not survey date.",
+    "historically_disappeared": [
+      {
+        "page": 15,
+        "object": "8.0",
+        "place": "Fossés boisés – Froideville",
+        "finding": "Sheet states the wooded drainage ditches described in 1980 inventory had disappeared; inventory date 3 June 1997. Visually checked."
+      },
+      {
+        "page": 17,
+        "object": "10.0",
+        "place": "Lieu humide – La Perraudettaz",
+        "finding": "OCR states temporary wet depression disappeared following land-improvement works; inventory date 4 June 1997. Not a 2026 field survey."
+      }
+    ],
+    "suspect_printed_coordinates": [
+      {
+        "page": 13,
+        "object": "6.0",
+        "place": "Haies – La Condémine",
+        "printed": "359’200/185’650",
+        "visual_checked": true,
+        "decision": "Source-level suspect easting; retain verbatim, no digit transposition or geographic use."
+      },
+      {
+        "page": 21,
+        "object": "12.0",
+        "place": "Zone humide – Sur le Mont",
+        "printed": "583’078/183’925",
+        "visual_checked": true,
+        "decision": "Source-level suspect easting; no correction or geographic use. Printed area 7677 m² is inventory attribute, not measured extraction area."
+      }
+    ]
+  },
+  "annex7": {
+    "pages": 8,
+    "topics": [
+      "Hedges",
+      "Orchards",
+      "Natural banks/slopes",
+      "Lakeshores",
+      "Watercourses",
+      "Stone walls",
+      "Outdoor landscaping",
+      "Nature and buildings"
+    ],
+    "meaning": "Nature-landscape guidance with objectives/principles and inventory cross-references, not parcel development boundaries or verified current regulations."
+  },
+  "map_semantics": {
+    "sheets": 11,
+    "finding": "Native legends inventoried separately; all declare indicative boundaries. Preserve constraints, nature, mobility, development, densification, alternative uses and zones to reconsider as different semantics.",
+    "specific_limits": [
+      {
+        "sheet": 6,
+        "meaning": "Alternative allocation to determine after director planning; not confirmed development allocation."
+      },
+      {
+        "sheet": 8,
+        "meaning": "Contains zone to reconsider in addition to new zoning and alternatives."
+      },
+      {
+        "sheet": 10,
+        "meaning": "Predominant greenery/limited construction and alluvial inventory coexist with proposed new zoning."
+      },
+      {
+        "sheet": 11,
+        "meaning": "Probable urbanisation extension, villa densification, new zoning and alternative/complementary densification are separate legend concepts."
+      }
+    ]
+  },
+  "limits": [
+    "No source or commune-count increase.",
+    "No georeferencing, sectors or parcel candidates.",
+    "Full symbol-to-path mapping remains pending; native text inventory is not complete visual validation.",
+    "Grandson remains downloaded/not_ready with exact-version approval/currentness unresolved."
+  ]
+}

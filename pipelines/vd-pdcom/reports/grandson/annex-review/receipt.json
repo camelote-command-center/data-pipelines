@@ -1,0 +1,24 @@
+{
+  "ids": {
+    "operation": "593ed946-b1e1-4c0f-8f7f-7d73817b2fc2",
+    "checkpoint": "57b74ded-ab97-44ec-b237-c502c453a5f9"
+  },
+  "verified_documents": [
+    "449ec689-3eea-5ba0-a6d1-5bbba79068de",
+    "a26435e0-97a3-5067-adda-ac6e4622c44d",
+    "a0c213d9-851b-57e0-80c7-b35720506b40",
+    "29eda327-9615-58e3-b2f8-c8f2c8d117f3",
+    "d954089a-a966-57c5-b171-ae75455030cb",
+    "9ce31850-c141-5c38-b73e-6f90bce81f73",
+    "69a49c76-b8d7-5e18-b740-ed8425fc1f8e",
+    "298eefd7-6d83-5717-885e-477ffe519389",
+    "b98432ef-d5c5-5531-ba6b-80eb5e07fba2",
+    "4b7bf0b9-67b2-5a49-97ae-80b8b4683487",
+    "4ffa09bf-fa4c-5b94-b472-a326b4d4034c",
+    "1f3049b1-065b-5be9-a34c-c07142654664",
+    "7dfd5d94-5a90-552d-b9fa-f6ba7846d783",
+    "7161c865-bb37-518e-95ae-68c093ebc394"
+  ],
+  "ocr_pages": 44,
+  "native_map_legends": 11
+}
