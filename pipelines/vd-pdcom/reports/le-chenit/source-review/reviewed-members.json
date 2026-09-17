@@ -1,0 +1,44 @@
+[
+  {
+    "zip_member": "Plan d'affectation communal/03-R47/24052-rapport47OAT-260606.pdf",
+    "sha256": "0e9484c1f116386ec5a23ec8d2d1533071079c8c4f1d19f5f4d6d497528ebb51",
+    "bytes": 29744727,
+    "pages": 109,
+    "page_sizes": []
+  },
+  {
+    "zip_member": "Plan d'affectation communal/02-Règlement/24052-RPACom-260605.pdf",
+    "sha256": "75bb826eff0f6e26aea6aa0c00542af3deab02f96fd41a59acce493e107a30cf",
+    "bytes": 1093906,
+    "pages": 69,
+    "page_sizes": []
+  },
+  {
+    "zip_member": "Plan d'affectation communal/01-Plans/24052-PACom Chenit 10000-260604.pdf",
+    "sha256": "885380a133e00ac6f05f7496ee14c2dd2467d39406181960c37b73c7a1f48ba2",
+    "bytes": 42950785,
+    "pages": 1,
+    "page_sizes": [
+      [
+        0.0,
+        0.0,
+        4252.0,
+        3005.0
+      ]
+    ]
+  },
+  {
+    "zip_member": "Plan d'affectation communal/01-Plans/24052-PACom Chenit 5000-260604.pdf",
+    "sha256": "78fa4b39250e5d09f2929b41c068bfb10e880f38ffe1d584b27e1b9f6f457e1d",
+    "bytes": 27269614,
+    "pages": 1,
+    "page_sizes": [
+      [
+        0.0,
+        0.0,
+        5386.0,
+        1729.0
+      ]
+    ]
+  }
+]
