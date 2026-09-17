@@ -1,0 +1,152 @@
+[
+  {
+    "pdf_page": 12,
+    "printed_page": 9,
+    "native_paths": 0,
+    "images": [
+      {
+        "file": "mesures-12-xref33.jpeg",
+        "xref": 33,
+        "width": 2480,
+        "height": 1754,
+        "sha256": "e79fa5dbe4cf88f543f6db63322225c19feb9ea9e7187e45200abf50a4663f04"
+      }
+    ],
+    "role": "thematic_synthesis"
+  },
+  {
+    "pdf_page": 16,
+    "printed_page": 13,
+    "native_paths": 0,
+    "images": [
+      {
+        "file": "mesures-16-xref45.jpeg",
+        "xref": 45,
+        "width": 1240,
+        "height": 1754,
+        "sha256": "c85dcfb96635ae88e6188b82598bceb85bf6ff584b321d5fdb1b96bd753f1fcf"
+      }
+    ],
+    "role": "illustration_or_existing_plan_extract_requiring_individual_review"
+  },
+  {
+    "pdf_page": 17,
+    "printed_page": 14,
+    "native_paths": 0,
+    "images": [
+      {
+        "file": "mesures-17-xref48.jpeg",
+        "xref": 48,
+        "width": 1240,
+        "height": 1754,
+        "sha256": "ee76886633ca0a13c9d7d83e2241b6ba0b5801541e1fc32f6f550fb279ec7b21"
+      }
+    ],
+    "role": "illustration_or_existing_plan_extract_requiring_individual_review"
+  },
+  {
+    "pdf_page": 19,
+    "printed_page": 16,
+    "native_paths": 0,
+    "images": [
+      {
+        "file": "mesures-19-xref54.jpeg",
+        "xref": 54,
+        "width": 1240,
+        "height": 1754,
+        "sha256": "52296605363b7f92baaff712666dc2c00bdac0e4650373fbcf7d983b5e8b3996"
+      }
+    ],
+    "role": "illustration_or_existing_plan_extract_requiring_individual_review"
+  },
+  {
+    "pdf_page": 30,
+    "printed_page": 27,
+    "native_paths": 0,
+    "images": [
+      {
+        "file": "mesures-30-xref87.jpeg",
+        "xref": 87,
+        "width": 1240,
+        "height": 1754,
+        "sha256": "cf950436351a3acdc8ba71bfdef5787f15d776b46d18e0720664773ca9d6c030"
+      }
+    ],
+    "role": "illustration_or_existing_plan_extract_requiring_individual_review"
+  },
+  {
+    "pdf_page": 32,
+    "printed_page": 29,
+    "native_paths": 0,
+    "images": [
+      {
+        "file": "mesures-32-xref93.jpeg",
+        "xref": 93,
+        "width": 1240,
+        "height": 1754,
+        "sha256": "790d77c59314e7ff06d51e02e2be9b4e838ab98040b04e36dd87698617181412"
+      }
+    ],
+    "role": "illustration_or_existing_plan_extract_requiring_individual_review"
+  },
+  {
+    "pdf_page": 34,
+    "printed_page": 31,
+    "native_paths": 0,
+    "images": [
+      {
+        "file": "mesures-34-xref99.jpeg",
+        "xref": 99,
+        "width": 1240,
+        "height": 1754,
+        "sha256": "6f2f11720817e295476518ae5b7fafd1a34df84b9ace15077089c083e12600d8"
+      }
+    ],
+    "role": "illustration_or_existing_plan_extract_requiring_individual_review"
+  },
+  {
+    "pdf_page": 37,
+    "printed_page": 34,
+    "native_paths": 0,
+    "images": [
+      {
+        "file": "mesures-37-xref108.jpeg",
+        "xref": 108,
+        "width": 1240,
+        "height": 1754,
+        "sha256": "e8e093e77fea7f5f23dae4e217073718d7f2a0a7b3f698f9f727791867e0ab50"
+      }
+    ],
+    "role": "illustration_or_existing_plan_extract_requiring_individual_review"
+  },
+  {
+    "pdf_page": 39,
+    "printed_page": 36,
+    "native_paths": 0,
+    "images": [
+      {
+        "file": "mesures-39-xref114.jpeg",
+        "xref": 114,
+        "width": 1240,
+        "height": 1754,
+        "sha256": "97d12eb461b5e756494fecd5d8efcdc3d8ef52eb5e32fc32135bd9fda52d57e5"
+      }
+    ],
+    "role": "illustration_or_existing_plan_extract_requiring_individual_review"
+  },
+  {
+    "pdf_page": 47,
+    "printed_page": 44,
+    "native_paths": 0,
+    "images": [
+      {
+        "file": "mesures-47-xref138.jpeg",
+        "xref": 138,
+        "width": 1240,
+        "height": 1754,
+        "sha256": "3b995432368e7bf2421a8a44b25263f8e8b263b9b1d41b492258c57830ba0092"
+      }
+    ],
+    "role": "illustration_or_existing_plan_extract_requiring_individual_review"
+  }
+]

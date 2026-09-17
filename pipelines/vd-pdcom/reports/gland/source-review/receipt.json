@@ -1,0 +1,12 @@
+{
+  "ids": {
+    "operation": "7ccea3da-af0a-4aa1-8e91-fbf033dbd341",
+    "checkpoint": "58cbf154-8781-4167-a645-c5cfcf74d2ef"
+  },
+  "documents": [
+    "ec1b494f-f6d2-5ed6-8fb6-00bc3f732d28",
+    "bbdb0fe7-3d42-56dd-9008-c30918c5bd57"
+  ],
+  "ocr_pages": 102,
+  "geographic_delivery": false
+}
