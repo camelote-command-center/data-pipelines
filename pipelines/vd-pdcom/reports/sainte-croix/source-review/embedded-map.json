@@ -1,0 +1,53 @@
+{
+  "source_pdf_sha256": "bb29086f272cd70e43fcf7c4dc9d59be5cbda29aab24c7e4d675e3d2200fc90d",
+  "pdf_page": 6,
+  "native_paths": 0,
+  "images": [
+    {
+      "file": "pdcom-map.jpeg",
+      "xref": 19,
+      "width": 1388,
+      "height": 982,
+      "sha256": "4561ae11a5eb9cde8cde1a47bb2efdb0a63e6c5fcb5c755748a36b28044854e1",
+      "placement_pdf_points": [
+        [
+          155.9499053955078,
+          181.340087890625,
+          608.2814331054688,
+          501.26190185546875
+        ]
+      ]
+    },
+    {
+      "file": "pdcom-legend-21.jpeg",
+      "xref": 21,
+      "width": 369,
+      "height": 781,
+      "sha256": "352bff91e291dbbf437fa53a4a841d3aa0c7d97345f0996616de3d4a9c012063",
+      "placement_pdf_points": [
+        [
+          212.64990234375,
+          523.318603515625,
+          332.4999084472656,
+          777.230224609375
+        ]
+      ]
+    },
+    {
+      "file": "pdcom-legend-23.jpeg",
+      "xref": 23,
+      "width": 348,
+      "height": 768,
+      "sha256": "ef9263edcaaffd91580d63d6461c57d3f3ee08a286e1692b731b653c0a09ee2b",
+      "placement_pdf_points": [
+        [
+          354.24951171875,
+          528.318603515625,
+          466.8495178222656,
+          777.12841796875
+        ]
+      ]
+    }
+  ],
+  "status": "research_only_original_map_missing"
+}
