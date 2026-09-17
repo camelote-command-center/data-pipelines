@@ -1,0 +1,100 @@
+{
+  "commune_bfs": 5872,
+  "commune_name": "Le Chenit",
+  "landing_url": "https://www.communeduchenit.ch/services/bureau-technique/plans-daffectation/",
+  "archive_url": "https://www.communeduchenit.ch/wp-content/uploads/2026/06/Plan-daffectation-communal.zip",
+  "finding": "Official 109-page June 2026 PACom report confirms an underlying PDCom approved on 30 October 2000 (PDF20) and reviews its implementation/changed intentions on PDF105–106. Original PDCom report/map not recovered in this archive review. Seven grouped currentness findings retained; adjacent PACom is not a replacement PDCom and no parcel opportunities inferred.",
+  "approval_evidence": {
+    "page": 20,
+    "date": "2000-10-30",
+    "scope": "Secondary official report references Council of State approval; original exact-version approval not inspected."
+  },
+  "plan_status": "PACom inquiry dossier; advertised inquiry 10 June–9 July 2026; later adoption/approval unverified",
+  "currentness": [
+    {
+      "locations": [
+        "Les Planches",
+        "Les Moulins (Le Trési)"
+      ],
+      "historical_intent": "Strategic mixed housing/employment",
+      "reported_2026_status": "Les Planches redirected to sports expansion; Trési described as reassigned to agricultural zoning.",
+      "pages": [
+        105
+      ]
+    },
+    {
+      "locations": [
+        "Les Saules",
+        "Crêt Meylan – Les Forges"
+      ],
+      "historical_intent": "Employment hubs",
+      "reported_2026_status": "Both reported implemented; densification at Les Forges ongoing. Not proof of full buildout.",
+      "pages": [
+        106
+      ]
+    },
+    {
+      "locations": [
+        "Saut-Pernet",
+        "Les Côtes du Sentier (Haute Route)",
+        "Sous-les-Côtes des Mollards",
+        "North-east of Crétêts"
+      ],
+      "historical_intent": "Housing development",
+      "reported_2026_status": "First two almost wholly occupied; restricted development at Mollards and none between Crétêts and marsh. PACom proposes agricultural rezoning of latter two.",
+      "pages": [
+        106
+      ]
+    },
+    {
+      "locations": [
+        "Ordons Nord",
+        "North-west of Brassus church",
+        "North of Mas du Crêt Meylan"
+      ],
+      "historical_intent": "Mixed housing/artisan development",
+      "reported_2026_status": "Ordons reoriented to employment (implemented PPA and separate plan under study). Other two reported undeveloped and remain agricultural in proposed PACom. Report wording also mentions two Ordons sectors; no geometry or exact sector count inferred.",
+      "pages": [
+        106
+      ]
+    },
+    {
+      "locations": [
+        "South of Crétêts football ground",
+        "Centre sportif",
+        "South-west of Brassus school"
+      ],
+      "historical_intent": "Public-use extensions",
+      "reported_2026_status": "Sports centre developed with next phase under study; no near-term development planned at other two, agricultural in PACom.",
+      "pages": [
+        106
+      ]
+    },
+    {
+      "locations": [
+        "Village centres and hamlets"
+      ],
+      "historical_intent": "Densification and strengthening",
+      "reported_2026_status": "Report says no densification planned because of cantonal A11 provisions; do not generalise to legal rights for individual parcels.",
+      "pages": [
+        106
+      ]
+    },
+    {
+      "locations": [
+        "Brassus station"
+      ],
+      "historical_intent": "Public-space and parking organisation",
+      "reported_2026_status": "Station demolished and relocated across route du Risoud.",
+      "pages": [
+        106
+      ]
+    }
+  ],
+  "limits": [
+    "No original PDCom map recovered.",
+    "No geometry extraction or parcel linkage performed.",
+    "Report currentness statements are source assertions, not independent construction or legal-status verification.",
+    "No increase in PDCom corpus, delivered sectors or completed communes."
+  ]
+}
