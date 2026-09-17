@@ -1,0 +1,57 @@
+{
+  "commune_bfs": 5938,
+  "checked_at": "2026-09-17T09:15:22.007107+00:00",
+  "source_sha256": "12c67e6a70da31e6d7f336a224fcd5098b0b3b851fa6655471360a9462b4b773",
+  "plan_unchanged": true,
+  "council_register": {
+    "url": "https://www.yverdon-les-bains.ch/vie-politique/conseil-communal/preavis-rapports-et-interventions",
+    "contexts": [
+      "PR25.37PR du 30 octobre 2025 - Reporté par le Conseil communal le 10 septembre 2026 Concernant l’adoption du nouveau Plan directeur communal d’Yverdon-les-Bains Commission Rapport "
+    ],
+    "retrieved_at": "2026-09-17T09:14:23.517671+00:00",
+    "html_sha256": "d76601b9c4691b0c5f2f9ff9b1f2d1ef77c3f119fcbff0e341912b732726b70e"
+  },
+  "landing": {
+    "url": "https://www.yverdon-les-bains.ch/projets-urbains-etarchitecturaux/planifications-communales/plan-directeur-communal-pdcom",
+    "retrieved_at": "2026-09-17T09:14:23.517671+00:00",
+    "html_sha256": "07a06dc34239242f22a29647cffba3de6884b37e68afddc961e2967402527c39",
+    "status_excerpt": "Plongez dans le Plan directeur communal | version octobre 2025, transmise au Conseil communal. Vous pouvez également télécharger dans la section \" Documents à télécharger \" ci-dessous, le dossier complet avec le rapport explicatif et les annexes ou le consulter au Service de l’urbanisme. Processus de validation La consultation publique a eu lieu du 8 mai au 9 juin 2025. Un rapport de consultation fait le point sur les remarques reçues et les réponses de la Municipalité. Le PDCom est désormais en mains du Conseil communal. Une fois adopté, il sera transmis au Canton pour approbation. "
+  },
+  "finding": "Official council register marks PR25.37PR as postponed by Council on10September2026. Landing describes October2025version submitted to Council, with canton approval subsequent to adoption. Main57pagePDF unchanged from corpus. Do not promote proposal or commission recommendation to adoption/approval.",
+  "adjacent_documents": [
+    {
+      "url": "https://www.yverdon-les-bains.ch/fileadmin/documents/ylb/Municipalite/Preavis/2025_preavis/PR25.37PR_PDCom_V2.pdf",
+      "sha256": "7af53c1e789d97ae2701a0327457ee766bf73917bfc304348aabb30edabe8730",
+      "pages": 569
+    },
+    {
+      "url": "https://www.yverdon-les-bains.ch/fileadmin/documents/ylb/Conseil_communal/Rapports/2025_rapports/PR25.37RA_PDCom.pdf",
+      "sha256": "3bc75b956351d951e7f624dab958f366b39ed0a5ed4848dfe9d456ecaf550754",
+      "pages": 28
+    },
+    {
+      "url": "https://www.yverdon-les-bains.ch/fileadmin/documents/ylb/Urbanisme/pdf/pdcom/PDCom_Rapport_de_consultation.pdf",
+      "sha256": "c6d0fdee2542a1c2edde056e3d87b8808d56dcee1bd75f8f8d043ec581bc5d87",
+      "pages": 25
+    }
+  ],
+  "proposal_evidence": {
+    "page": 10,
+    "meaning": "Proposed adoption scope:objectives,measures and concept-director maps of7themes; proposed replacement of28May1997plan; expressly reserves Council of State approval. This is a municipal proposal, not a passed resolution."
+  },
+  "commission_evidence": {
+    "page": 28,
+    "date": "2026-06-30",
+    "meaning": "Recommends acceptance as amended; not Council adoption. Amendments need later decision/exact-version reconciliation."
+  },
+  "prior_plan": {
+    "date": "1997-05-28",
+    "proposal_page": 2,
+    "meaning": "Proposal describes prior plan as still in force but outdated; retain old/new separately. No later cantonal replacement verified."
+  },
+  "limits": [
+    "Postponement is verified from official live index, not signed minutes.",
+    "No new PDCom version, sectors or parcel candidates.",
+    "569-page proposal bundle contains annexes; do not count its repetitions as new plan coverage."
+  ]
+}
