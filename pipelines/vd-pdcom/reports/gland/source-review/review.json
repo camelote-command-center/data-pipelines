@@ -1,0 +1,222 @@
+{
+  "source_hashes": {
+    "bilan": "1ae85ff3bef40dd3c9000292b2ff37c9fa640f436d297e65a04ce7d7c822f05c",
+    "mesures": "f5c9dc1bb73ceac29513a219f43a8ff381e72794a9c5557e4e3c1d46db297f9c"
+  },
+  "ocr": {
+    "pages": 102,
+    "characters": 97107,
+    "language": "fra",
+    "dpi": 170,
+    "status": "raw_research_ocr_not_all_characters_corrected",
+    "pymupdf": "1.28.2"
+  },
+  "approval": {
+    "evidence_pages": {
+      "bilan": 47,
+      "mesures": 55
+    },
+    "visually_verified_both": true,
+    "municipal": "1996-09-23",
+    "council": "1997-10-30",
+    "consultation": [
+      "1996-11-20",
+      "1996-12-20"
+    ],
+    "council_state": "1998-01-21",
+    "cover_date": "July1997",
+    "limit": "No inference that every historical measure remains unimplemented or parcel-buildable today."
+  },
+  "map_inventory": [
+    {
+      "pdf_page": 12,
+      "printed_page": 9,
+      "native_paths": 0,
+      "images": [
+        {
+          "file": "mesures-12-xref33.jpeg",
+          "xref": 33,
+          "width": 2480,
+          "height": 1754,
+          "sha256": "e79fa5dbe4cf88f543f6db63322225c19feb9ea9e7187e45200abf50a4663f04"
+        }
+      ],
+      "role": "thematic_synthesis"
+    },
+    {
+      "pdf_page": 16,
+      "printed_page": 13,
+      "native_paths": 0,
+      "images": [
+        {
+          "file": "mesures-16-xref45.jpeg",
+          "xref": 45,
+          "width": 1240,
+          "height": 1754,
+          "sha256": "c85dcfb96635ae88e6188b82598bceb85bf6ff584b321d5fdb1b96bd753f1fcf"
+        }
+      ],
+      "role": "illustration_or_existing_plan_extract_requiring_individual_review"
+    },
+    {
+      "pdf_page": 17,
+      "printed_page": 14,
+      "native_paths": 0,
+      "images": [
+        {
+          "file": "mesures-17-xref48.jpeg",
+          "xref": 48,
+          "width": 1240,
+          "height": 1754,
+          "sha256": "ee76886633ca0a13c9d7d83e2241b6ba0b5801541e1fc32f6f550fb279ec7b21"
+        }
+      ],
+      "role": "illustration_or_existing_plan_extract_requiring_individual_review"
+    },
+    {
+      "pdf_page": 19,
+      "printed_page": 16,
+      "native_paths": 0,
+      "images": [
+        {
+          "file": "mesures-19-xref54.jpeg",
+          "xref": 54,
+          "width": 1240,
+          "height": 1754,
+          "sha256": "52296605363b7f92baaff712666dc2c00bdac0e4650373fbcf7d983b5e8b3996"
+        }
+      ],
+      "role": "illustration_or_existing_plan_extract_requiring_individual_review"
+    },
+    {
+      "pdf_page": 30,
+      "printed_page": 27,
+      "native_paths": 0,
+      "images": [
+        {
+          "file": "mesures-30-xref87.jpeg",
+          "xref": 87,
+          "width": 1240,
+          "height": 1754,
+          "sha256": "cf950436351a3acdc8ba71bfdef5787f15d776b46d18e0720664773ca9d6c030"
+        }
+      ],
+      "role": "illustration_or_existing_plan_extract_requiring_individual_review"
+    },
+    {
+      "pdf_page": 32,
+      "printed_page": 29,
+      "native_paths": 0,
+      "images": [
+        {
+          "file": "mesures-32-xref93.jpeg",
+          "xref": 93,
+          "width": 1240,
+          "height": 1754,
+          "sha256": "790d77c59314e7ff06d51e02e2be9b4e838ab98040b04e36dd87698617181412"
+        }
+      ],
+      "role": "illustration_or_existing_plan_extract_requiring_individual_review"
+    },
+    {
+      "pdf_page": 34,
+      "printed_page": 31,
+      "native_paths": 0,
+      "images": [
+        {
+          "file": "mesures-34-xref99.jpeg",
+          "xref": 99,
+          "width": 1240,
+          "height": 1754,
+          "sha256": "6f2f11720817e295476518ae5b7fafd1a34df84b9ace15077089c083e12600d8"
+        }
+      ],
+      "role": "illustration_or_existing_plan_extract_requiring_individual_review"
+    },
+    {
+      "pdf_page": 37,
+      "printed_page": 34,
+      "native_paths": 0,
+      "images": [
+        {
+          "file": "mesures-37-xref108.jpeg",
+          "xref": 108,
+          "width": 1240,
+          "height": 1754,
+          "sha256": "e8e093e77fea7f5f23dae4e217073718d7f2a0a7b3f698f9f727791867e0ab50"
+        }
+      ],
+      "role": "illustration_or_existing_plan_extract_requiring_individual_review"
+    },
+    {
+      "pdf_page": 39,
+      "printed_page": 36,
+      "native_paths": 0,
+      "images": [
+        {
+          "file": "mesures-39-xref114.jpeg",
+          "xref": 114,
+          "width": 1240,
+          "height": 1754,
+          "sha256": "97d12eb461b5e756494fecd5d8efcdc3d8ef52eb5e32fc32135bd9fda52d57e5"
+        }
+      ],
+      "role": "illustration_or_existing_plan_extract_requiring_individual_review"
+    },
+    {
+      "pdf_page": 47,
+      "printed_page": 44,
+      "native_paths": 0,
+      "images": [
+        {
+          "file": "mesures-47-xref138.jpeg",
+          "xref": 138,
+          "width": 1240,
+          "height": 1754,
+          "sha256": "3b995432368e7bf2421a8a44b25263f8e8b263b9b1d41b492258c57830ba0092"
+        }
+      ],
+      "role": "illustration_or_existing_plan_extract_requiring_individual_review"
+    }
+  ],
+  "main_map_semantics": {
+    "pdf_page": 12,
+    "solid_vs_hatched": "Legend differentiates existing/built or largely built from potentiality; several public/economic/green/horticultural categories, not all residential opportunity.",
+    "labels": [
+      "utilité publique / potentialité",
+      "équipements privés d’intérêt public / potentialité",
+      "habitation et mixte",
+      "activités lourdes (industriel A)",
+      "activités légères (artisanat, industriel B et tertiaire)",
+      "espace vert",
+      "activité horticole",
+      "espace libre significatif",
+      "habitation et mixte, urbanisation dans le respect de l’environnement",
+      "affectation autorisée ponctuellement"
+    ],
+    "not_georeferenced": true
+  },
+  "coordination": {
+    "numbered_families": 17,
+    "limit": "Families include transport, landscape, policy and equipment, not17buildable sectors.",
+    "example": {
+      "number": 2,
+      "title": "Le Communet – Derrière le Borgeaud",
+      "pdf_pages": [
+        15,
+        16,
+        17
+      ],
+      "stated_historical_area_m2": 68000,
+      "date_of_illustration": "August1994",
+      "layout_status": "PDF17 explicitly Illustration, exemple; no exact proposed building footprints inferred."
+    }
+  },
+  "currentness": "Official landing retains1998PDCom as vision; futurePACom page references February2026information and proposed EnCentre/HorsCentre revision, not an approved replacement. GareSud/Mauverney/Tuilières are separate plans.",
+  "pending": [
+    "Map control selection and independent validation",
+    "Historical sector/current plan reconciliation",
+    "Precise potentiality boundaries and built-versus-proposed semantics",
+    "Private receiver delivery only after validated geometry"
+  ]
+}
