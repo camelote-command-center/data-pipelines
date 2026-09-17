@@ -1,0 +1,10 @@
+{
+  "ids": {
+    "operation": "b2680985-3c8f-4fa6-b97f-a688f684e562",
+    "checkpoint": "0a1ff94d-e9e0-4001-a2a1-7cc612b44685"
+  },
+  "document_id": "3d453b47-ac98-5efc-a2e4-074effbb1972",
+  "source_sha256": "12c67e6a70da31e6d7f336a224fcd5098b0b3b851fa6655471360a9462b4b773",
+  "adoption_status": "postponed_2026_09_10",
+  "geographic_delivery": false
+}
