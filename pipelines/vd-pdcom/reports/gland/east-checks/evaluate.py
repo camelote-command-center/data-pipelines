@@ -1,0 +1,12 @@
+import json,pathlib,numpy as np,hashlib
+p=pathlib.Path(__file__).resolve().parent
+g=p.parent/'grid-controls/results.json';a=np.array(json.loads(g.read_text())['coefficients_pdf_x_y_1_to_lv03'])
+spec=[('east',46377765,[(5,[55,61]),(9,[151,58]),(10,[151,273]),(4,[55,269])]),('east',46298105,[(4,[73,469]),(1,[157,467]),(2,[159,706]),(3,[75,704])]),('northwest',46368375,[(24,[194,85]),(9,[478,104]),(10,[477,223]),(22,[190,204])])]
+boxes=json.loads((p/'crop-boxes.json').read_text());checks=[]
+for name,oid,corners in spec:
+ f=next(x for x in json.loads((p/f'{name}-reference.json').read_text()) if x['attributes']['OBJECTID']==oid)
+ for index,pixel in corners:
+  xy=np.array(pixel)/3+boxes[name][:2];pred=np.r_[xy,1]@a;target=np.array(f['lv03_ring'][index]);delta=pred-target
+  checks.append({'crop':name,'objectid':oid,'building_number':f['attributes']['NUMERO'],'egid':f['attributes']['EGID'],'reference_vertex':index,'pixel_pick':pixel,'pdf_point':xy.tolist(),'predicted_lv03':pred.tolist(),'reference_lv03':target.tolist(),'delta_east_north_m':delta.tolist(),'error_m':float(np.linalg.norm(delta))})
+r={'affine_file_sha256':hashlib.sha256(g.read_bytes()).hexdigest(),'method':'Frozen PR127 affine; manual historical corner picks on original raster crop, corresponding official current footprint vertices. No least-squares fitting or control adjustment.','checks':checks,'corner_count':len(checks),'building_count':3,'rmse_m':float(np.sqrt(np.mean([c['error_m']**2 for c in checks]))),'max_error_m':max(c['error_m'] for c in checks),'mean_delta_east_north_m':np.mean([c['delta_east_north_m'] for c in checks],axis=0).tolist(),'status':'diagnostic_correspondence_checks_not_release_validation','limitations':['Corners within each building are correlated; twelve corners are not twelve independent buildings.','Three visible buildings were selected after viewing overlays; this is not a blind or random holdout sample.','Building numbers and recognizable outline support correspondence; no historical survey/unchanged-building certificate.','Manual raster stroke picks approximate, around two rendered pixels (~0.24m); this is an estimate, not a confidence interval.','Added eastern B5 existing buildings and northwest building; these do not surround the northern/eastern plan extent.','Visible signed offset preserved, not corrected using these observations.','No modern interior building, development capacity or parcel allocation inference.']}
+(p/'results.json').write_text(json.dumps(r,indent=2));print({k:v for k,v in r.items() if k!='checks'})
