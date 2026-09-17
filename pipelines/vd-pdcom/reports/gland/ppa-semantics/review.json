@@ -1,0 +1,218 @@
+{
+  "source_sha256": "f5c9dc1bb73ceac29513a219f43a8ff381e72794a9c5557e4e3c1d46db297f9c",
+  "adjacent_regulation": {
+    "url": "https://www.gland.ch/fileadmin/documents/pdf/Plans_directeurs/PPA_et_PQ/Reglements/305.7-Communet-Borgeaud-Reglement.pdf",
+    "sha256": "a6ae15739228babf271ce5c0adf0ee18fc5a5dc369972e6be8a2886ccdcaf1b5",
+    "page_count": 13,
+    "pages": [
+      {
+        "pdf_page": 1,
+        "text": ""
+      },
+      {
+        "pdf_page": 2,
+        "text": ""
+      },
+      {
+        "pdf_page": 3,
+        "text": ""
+      },
+      {
+        "pdf_page": 4,
+        "text": ""
+      },
+      {
+        "pdf_page": 5,
+        "text": ""
+      },
+      {
+        "pdf_page": 6,
+        "text": ""
+      },
+      {
+        "pdf_page": 7,
+        "text": ""
+      },
+      {
+        "pdf_page": 8,
+        "text": ""
+      },
+      {
+        "pdf_page": 9,
+        "text": ""
+      },
+      {
+        "pdf_page": 10,
+        "text": ""
+      },
+      {
+        "pdf_page": 11,
+        "text": ""
+      },
+      {
+        "pdf_page": 12,
+        "text": ""
+      },
+      {
+        "pdf_page": 13,
+        "text": ""
+      }
+    ]
+  },
+  "ocr": {
+    "pages": 13,
+    "characters": 28268,
+    "dpi": 170,
+    "language": "fra",
+    "status": "raw OCR except reviewed semantic fields"
+  },
+  "approval": {
+    "pdf_page": 1,
+    "council": "2010-05-06",
+    "department_preliminary": "2010-06-23",
+    "entry": "2011-03-07",
+    "version": "Q,18February2010, per cover; internal pages retain June2009versionO headings",
+    "note": "Map cover versionG and regulation coverQ are separate document version labels; do not equate them or discard signed document based on old internal header."
+  },
+  "rules": [
+    {
+      "article": "4",
+      "pdf_page": 3,
+      "meaning": "Medium-density residential zone DSII permits housing/non-disturbing activities, subject toArticle6; centre zone DSIII permits housing/moderately disturbing activities with mandatory activities at ground floor; housing prohibited inD.",
+      "visually_verified": true
+    },
+    {
+      "article": "6",
+      "pdf_page": 4,
+      "meaning": "Silo perimeter primarily parking; limited complementary uses subject to municipal authorization.",
+      "visually_verified": false
+    },
+    {
+      "article": "9",
+      "pdf_page": 5,
+      "meaning": "Floor-area maximum is per construction perimeter, not per cadastral plot; default subdivision allocation proportional to land inside perimeter unless land-register agreement. B5 defaults half each to its two concerned plots unless registered contrary agreement.",
+      "visually_verified": true
+    },
+    {
+      "article": "10-12",
+      "pdf_page": 5,
+      "meaning": "B building length maximum40m; non-contiguous separation at least highest corresponding facade, with stated height definition and attic exception. B1height split along Molard; B2/B3 R+5portion maximum50%.",
+      "visually_verified": true
+    },
+    {
+      "article": "12",
+      "pdf_page": 6,
+      "meaning": "Municipality may allow R+5 inD if ground occupation limited550m2; conditional exception not default.",
+      "visually_verified": false
+    }
+  ],
+  "map_capacity_table": [
+    {
+      "perimeter_label": "A1",
+      "max_ground_occupation_m2": 1000,
+      "max_gross_floor_area_m2": 3700,
+      "height_label": "R+3",
+      "source": "PPA mapPDF1 capacity table",
+      "visually_transcribed": true,
+      "not_remaining_capacity": true
+    },
+    {
+      "perimeter_label": "A2",
+      "max_ground_occupation_m2": 1100,
+      "max_gross_floor_area_m2": 4000,
+      "height_label": "R+3",
+      "source": "PPA mapPDF1 capacity table",
+      "visually_transcribed": true,
+      "not_remaining_capacity": true
+    },
+    {
+      "perimeter_label": "B1",
+      "max_ground_occupation_m2": 2750,
+      "max_gross_floor_area_m2": 10400,
+      "height_label": "R+3,max50%R+4",
+      "source": "PPA mapPDF1 capacity table",
+      "visually_transcribed": true,
+      "not_remaining_capacity": true
+    },
+    {
+      "perimeter_label": "B2",
+      "max_ground_occupation_m2": 2650,
+      "max_gross_floor_area_m2": 9600,
+      "height_label": "R+4,max50%R+5",
+      "source": "PPA mapPDF1 capacity table",
+      "visually_transcribed": true,
+      "not_remaining_capacity": true
+    },
+    {
+      "perimeter_label": "B3",
+      "max_ground_occupation_m2": 2750,
+      "max_gross_floor_area_m2": 11000,
+      "height_label": "R+4,max50%R+5",
+      "source": "PPA mapPDF1 capacity table",
+      "visually_transcribed": true,
+      "not_remaining_capacity": true
+    },
+    {
+      "perimeter_label": "B4",
+      "max_ground_occupation_m2": 1380,
+      "max_gross_floor_area_m2": 5900,
+      "height_label": "R+4",
+      "source": "PPA mapPDF1 capacity table",
+      "visually_transcribed": true,
+      "not_remaining_capacity": true
+    },
+    {
+      "perimeter_label": "B5",
+      "max_ground_occupation_m2": 950,
+      "max_gross_floor_area_m2": 4000,
+      "height_label": "R+4",
+      "source": "PPA mapPDF1 capacity table",
+      "visually_transcribed": true,
+      "not_remaining_capacity": true
+    },
+    {
+      "perimeter_label": "C1",
+      "max_ground_occupation_m2": 1800,
+      "max_gross_floor_area_m2": 5000,
+      "height_label": "R+2",
+      "source": "PPA mapPDF1 capacity table",
+      "visually_transcribed": true,
+      "not_remaining_capacity": true
+    },
+    {
+      "perimeter_label": "C2",
+      "max_ground_occupation_m2": 1450,
+      "max_gross_floor_area_m2": 4000,
+      "height_label": "R+2",
+      "source": "PPA mapPDF1 capacity table",
+      "visually_transcribed": true,
+      "not_remaining_capacity": true
+    },
+    {
+      "perimeter_label": "D",
+      "max_ground_occupation_m2": 800,
+      "max_gross_floor_area_m2": 3250,
+      "height_label": "R+4",
+      "source": "PPA mapPDF1 capacity table",
+      "visually_transcribed": true,
+      "not_remaining_capacity": true
+    },
+    {
+      "perimeter_label": "SILO",
+      "max_ground_occupation_m2": null,
+      "max_gross_floor_area_m2": null,
+      "height_label": "R+2",
+      "source": "PPA mapPDF1 capacity table",
+      "visually_transcribed": true,
+      "not_remaining_capacity": true
+    }
+  ],
+  "map_sha256": "68f36cb156489e4166d61cb6d0938691d0dcfe489fb666ed05a58dbc98ac77b7",
+  "limits": [
+    "All rules are research extraction from this signed version; later amendments not exhaustively checked.",
+    "Do not allocate maxima to current parcels without mapping, lineage and registered agreements.",
+    "Named buildings implemented since2014; these maxima are not vacant or residual capacity.",
+    "Georeferencing and independent holdouts remain pending."
+  ],
+  "geographic_delivery": false
+}
