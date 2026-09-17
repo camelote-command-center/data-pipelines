@@ -604,5 +604,122 @@
     "title": "PDEC_2008 – 7. Urbanisation et affectation – Localité",
     "plan_status": "unverified",
     "scope": "communal"
+  },
+  {
+    "commune_bfs": 5561,
+    "landing_url": "https://www.grandson.ch/officiel/reglements-et-directives/reglements-et-plans/",
+    "pdf_url": "https://www.grandson.ch/wp-content/uploads/2019/02/PLAN-n01_1-10000_Contraintes_08-2011.pdf",
+    "title": "Grandson PDCom — Plan des contraintes",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "commune_name": "Grandson"
+  },
+  {
+    "commune_bfs": 5561,
+    "landing_url": "https://www.grandson.ch/officiel/reglements-et-directives/reglements-et-plans/",
+    "pdf_url": "https://www.grandson.ch/wp-content/uploads/2019/02/PLAN-n02_1-10000_Equipements-et-tourisme_08-2011.pdf",
+    "title": "Grandson PDCom — Plan des équipement et du tourisme",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "commune_name": "Grandson"
+  },
+  {
+    "commune_bfs": 5561,
+    "landing_url": "https://www.grandson.ch/officiel/reglements-et-directives/reglements-et-plans/",
+    "pdf_url": "https://www.grandson.ch/wp-content/uploads/2019/02/PLAN-n03_1-10000_Mobilite_08-2011.pdf",
+    "title": "Grandson PDCom — Plan de la mobilité",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "commune_name": "Grandson"
+  },
+  {
+    "commune_bfs": 5561,
+    "landing_url": "https://www.grandson.ch/officiel/reglements-et-directives/reglements-et-plans/",
+    "pdf_url": "https://www.grandson.ch/wp-content/uploads/2019/02/PLAN-n04_1-10000_Paysage-et-patrimoine_08-2011.pdf",
+    "title": "Grandson PDCom — Plan du paysage et du patrimoine",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "commune_name": "Grandson"
+  },
+  {
+    "commune_bfs": 5561,
+    "landing_url": "https://www.grandson.ch/officiel/reglements-et-directives/reglements-et-plans/",
+    "pdf_url": "https://www.grandson.ch/wp-content/uploads/2019/02/PLAN-n05_1-10000_Urbanisation-et-destination-du-sol_08-2011.pdf",
+    "title": "Grandson PDCom — Plan de l’urbanisation et de la destination du sol",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "commune_name": "Grandson"
+  },
+  {
+    "commune_bfs": 5561,
+    "landing_url": "https://www.grandson.ch/officiel/reglements-et-directives/reglements-et-plans/",
+    "pdf_url": "https://www.grandson.ch/wp-content/uploads/2019/02/PLAN-n06_A3-1-2500-Vieille-ville_08-2011.pdf",
+    "title": "Grandson PDCom — Plan de la vieille ville et des abords",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "commune_name": "Grandson"
+  },
+  {
+    "commune_bfs": 5561,
+    "landing_url": "https://www.grandson.ch/officiel/reglements-et-directives/reglements-et-plans/",
+    "pdf_url": "https://www.grandson.ch/wp-content/uploads/2019/02/PLAN-n07_A3-1-5000_Bellevue-Borne-Nau_08-2011.pdf",
+    "title": "Grandson PDCom — Plan de Bellevue / de Borné-Nau",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "commune_name": "Grandson"
+  },
+  {
+    "commune_bfs": 5561,
+    "landing_url": "https://www.grandson.ch/officiel/reglements-et-directives/reglements-et-plans/",
+    "pdf_url": "https://www.grandson.ch/wp-content/uploads/2019/02/PLAN-n08_A3-1-5000_Grandsonnet_08-2011.pdf",
+    "title": "Grandson PDCom — Plan du Grandsonnet",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "commune_name": "Grandson"
+  },
+  {
+    "commune_bfs": 5561,
+    "landing_url": "https://www.grandson.ch/officiel/reglements-et-directives/reglements-et-plans/",
+    "pdf_url": "https://www.grandson.ch/wp-content/uploads/2019/02/PLAN-n09_A3-1-5000_Repuis_Corcelletes_08-2011.pdf",
+    "title": "Grandson PDCom — Plan du Repuis / de Corcelettes",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "commune_name": "Grandson"
+  },
+  {
+    "commune_bfs": 5561,
+    "landing_url": "https://www.grandson.ch/officiel/reglements-et-directives/reglements-et-plans/",
+    "pdf_url": "https://www.grandson.ch/wp-content/uploads/2019/02/PLAN-n10_A4-1-5000_Brinaz-Pecos_08-2011.pdf",
+    "title": "Grandson PDCom — Plan de la Brinaz / des Pécos",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "commune_name": "Grandson"
+  },
+  {
+    "commune_bfs": 5561,
+    "landing_url": "https://www.grandson.ch/officiel/reglements-et-directives/reglements-et-plans/",
+    "pdf_url": "https://www.grandson.ch/wp-content/uploads/2019/02/PLAN-n11_A4-1-5000_Fiez-Pittet_08-2011.pdf",
+    "title": "Grandson PDCom — Plan de Fiez-Pittet / des Tuileries",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "commune_name": "Grandson"
+  },
+  {
+    "commune_bfs": 5561,
+    "landing_url": "https://www.grandson.ch/officiel/reglements-et-directives/reglements-et-plans/",
+    "pdf_url": "https://www.grandson.ch/wp-content/uploads/2021/01/Annexe-6-Fiches-IMN.pdf",
+    "title": "Grandson PDCom — Annexe 6-Fiches IMN",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "commune_name": "Grandson"
+  },
+  {
+    "commune_bfs": 5561,
+    "landing_url": "https://www.grandson.ch/officiel/reglements-et-directives/reglements-et-plans/",
+    "pdf_url": "https://www.grandson.ch/wp-content/uploads/2021/01/Annexe-7-Fiche-nat-pay.pdf",
+    "title": "Grandson PDCom — Annexe 7-Fiches nat-pay",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "commune_name": "Grandson"
   }
 ]
