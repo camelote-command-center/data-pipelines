@@ -1,0 +1,1356 @@
+[
+  {
+    "theme": "urbanisation",
+    "legend_page": 76,
+    "map_page": 77,
+    "legend_native_text": "Urbanisation & Services\nConcept directeur\n76\nA.1.1 Renforcer la structure et l’attractivité des \nterritoires reconnus comme d'influence régionale\nA.1.2 Sauvegarder la structure et la vitalité des \nlocalités hors centre \nA.1.3 Etudier les possibilités de planifier des zones \nde hameaux et de préserver les constructions de \nl'habitat historiquement dispersé bénéficiant d’une \nvaleur paysagère\nA.2.1 Dézoner prioritairement les franges des zones \nd’habitations et mixtes surdimensionnées et les \nespaces de dégagement importants à l’intérieur du \ntissu bâti\nA.2.2 Définir des indices de constructibilité respectant \nle tissu bâti existant et les différentes polarités\nA.2.3 Supprimer les dispositions règlementaires \nlimitant la densification\nA.2.4 Secteurs d’habitation prioritaires pour une \nmoyenne densification à long terme\nA.3.1 Etudier la possibilité de définir une nouvelle \nzone d’affectation adaptée aux anciens bâtiments \nd’utilité publique désaffectés afin d’y proposer des \nlieux d’échange, de rencontre ou des logements\nBâtiments d’utilité publique déjà réaffectés / à \nréaffecter\nA.3.2 Permettre une variété de typologies de \nlogements\nA.3.3 Permettre la construction de coopératives \nd'habitation intergénérationnelles\nA.3.4 Répondre à la demande et développer les \npossibilités d'extension des EMS\nSite identifié pour l'extension de l'EMS La Faverge / \nSites identifiés pour l'extension de l'EMS Le Flon\nA.5.1 Adapter les mesures de planifications applicables \nen zone d’activité selon les principes retenus dans le \nPDR relatif à la SRGZA\nA.5.2 \nPromouvoir \nle \ndéveloppement \nd’activités \nartisanales et tertiaires dans les zones d’habitation \nadaptées de manière à améliorer la mixité\nA.5.3 Garantir le maintien des activités horticoles/\néquestres présentes sur le territoire communal\nA.6.1 Soutenir l’agriculture locale\nA.6.2 Renforcer les liens entre les habitants et les \nagriculteurs par la sensibilisation à l’espace rural\nA.6.3 Préserver les surfaces d'assolement\nA.4.1 \nPrivilégier \nl’implantation \nd’infrastructures \nd’utilité publique d’importance à l’intérieur ou à \nproximité immédiate des périmètres de centre \nrégional \nA.4.2 \nDévelopper, \nrequalifier \net \noptimiser \nles \ninfrastructures publiques légères dans les zones \nd’utilité publique existantes\nA.4.3 Pôles d’infrastructures sportives à renforcer\nA.4.4 Etudier les possibilités d’un réaménagement \ndu site afin de développer des infrastructures d’utilité \npublique sportives et de loisir d’importance régionale\nA.4.5 Dézoner les zones affectées à des besoins \npublics surdimensionnées\nA.1 Planifier un développement respectant le \ncaractère polycentrique du territoire communal \nà trois niveaux hiérarchiques : centres régionaux, \nlocalités hors centre et habitat historiquement \ndispersé du Jorat\nA.2 Orienter le développement de l’urbanisation \nvers l’intérieur et réduire les zones à bâtir \nsurdimensionnées\nA.3 Encourager la mixité sociale et \nintergénérationelle\nA.5 Garantir le maintien et le développement des \nactivités présentes sur le territoire communal\nA.6 Promouvoir l'économie agricole locale\n*/*\n*/*\nA.4 Organiser la répartition des infrastructures \nd’utilité publique adaptée à la structure du territoire \ncommunal\nLégende\nII. Equipements publics de sport et loisir\n0. Vision générale\nI. Urbanisation\nIII. Economie locale\nConcept \ndirecteur\n/* *\nLimites communales\nForêts\nBâtiments\nSurfaces agricoles\nVoies de chemin de fer\nCours d'eau\nRoutes\nSentiers\nGénéralités\n0\n1\n2 km\n",
+    "measure_codes": [
+      {
+        "code": "A.1.1",
+        "legend_pdf_rects": [
+          [
+            114.18789672851562,
+            617.555419921875,
+            126.46246337890625,
+            625.497802734375
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          62,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          73,
+          97,
+          99,
+          101,
+          102,
+          142,
+          168
+        ]
+      },
+      {
+        "code": "A.1.2",
+        "legend_pdf_rects": [
+          [
+            114.18789672851562,
+            645.9633178710938,
+            127.78816223144531,
+            653.9057006835938
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          65,
+          66,
+          67,
+          69,
+          73,
+          97,
+          98,
+          99,
+          102,
+          104,
+          136,
+          142,
+          168
+        ]
+      },
+      {
+        "code": "A.1.3",
+        "legend_pdf_rects": [
+          [
+            114.18789672851562,
+            674.3712768554688,
+            127.79999542236328,
+            682.3136596679688
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          138,
+          196,
+          198
+        ]
+      },
+      {
+        "code": "A.2.1",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            434.8935241699219,
+            404.5992126464844,
+            442.8359069824219
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          65,
+          66
+        ]
+      },
+      {
+        "code": "A.2.2",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            470.4034118652344,
+            405.9248962402344,
+            478.3457946777344
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          65,
+          139
+        ]
+      },
+      {
+        "code": "A.2.3",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            491.7093200683594,
+            405.9367370605469,
+            499.6517028808594
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          65,
+          66
+        ]
+      },
+      {
+        "code": "A.2.4",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            513.0151977539062,
+            406.4516296386719,
+            520.9575805664062
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          66
+        ]
+      },
+      {
+        "code": "A.3.1",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            569.9940795898438,
+            404.5518798828125,
+            577.9364624023438
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          67,
+          143,
+          196,
+          198
+        ]
+      },
+      {
+        "code": "A.3.2",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            619.7080078125,
+            405.8775329589844,
+            627.650390625
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          67
+        ]
+      },
+      {
+        "code": "A.3.3",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            641.013916015625,
+            405.8893737792969,
+            648.956298828125
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          68
+        ]
+      },
+      {
+        "code": "A.3.4",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            662.3198852539062,
+            406.404296875,
+            670.2622680664062
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          68
+        ]
+      },
+      {
+        "code": "A.5.1",
+        "legend_pdf_rects": [
+          [
+            944.751220703125,
+            426.6396179199219,
+            958.3218994140625,
+            434.5820007324219
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          72,
+          140,
+          202
+        ]
+      },
+      {
+        "code": "A.5.2",
+        "legend_pdf_rects": [
+          [
+            944.751220703125,
+            455.0475158691406,
+            959.6470336914062,
+            462.9898986816406
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          72
+        ]
+      },
+      {
+        "code": "A.5.3",
+        "legend_pdf_rects": [
+          [
+            944.751220703125,
+            483.4549560546875,
+            959.658203125,
+            491.39691162109375
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          73
+        ]
+      },
+      {
+        "code": "A.6.1",
+        "legend_pdf_rects": [
+          [
+            944.751220703125,
+            532.3164672851562,
+            958.5526123046875,
+            540.2588500976562
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          74
+        ]
+      },
+      {
+        "code": "A.6.2",
+        "legend_pdf_rects": [
+          [
+            944.751220703125,
+            546.5205078125,
+            959.8784790039062,
+            554.462890625
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          74,
+          133,
+          136,
+          142
+        ]
+      },
+      {
+        "code": "A.6.3",
+        "legend_pdf_rects": [
+          [
+            944.751220703125,
+            567.8264770507812,
+            959.8903198242188,
+            575.7688598632812
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          75
+        ]
+      },
+      {
+        "code": "A.4.1",
+        "legend_pdf_rects": [
+          [
+            668.1129760742188,
+            434.8935241699219,
+            682.3583374023438,
+            442.8359069824219
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          69
+        ]
+      },
+      {
+        "code": "A.4.2",
+        "legend_pdf_rects": [
+          [
+            668.1129760742188,
+            470.4034118652344,
+            683.6834716796875,
+            478.3457946777344
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          69,
+          102,
+          135,
+          142,
+          143,
+          170
+        ]
+      },
+      {
+        "code": "A.4.3",
+        "legend_pdf_rects": [
+          [
+            668.1129760742188,
+            505.91326904296875,
+            683.6953125,
+            513.8556518554688
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          70,
+          196,
+          198
+        ]
+      },
+      {
+        "code": "A.4.4",
+        "legend_pdf_rects": [
+          [
+            668.1129760742188,
+            527.2192993164062,
+            684.2107543945312,
+            535.1616821289062
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          70,
+          102,
+          142
+        ]
+      },
+      {
+        "code": "A.4.5",
+        "legend_pdf_rects": [
+          [
+            668.1129760742188,
+            555.627197265625,
+            683.6544189453125,
+            563.569580078125
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          71
+        ]
+      }
+    ],
+    "map_vector_paths": 7,
+    "map_embedded_georef": false
+  },
+  {
+    "theme": "mobilite",
+    "legend_page": 106,
+    "map_page": 107,
+    "legend_native_text": "Mobilité\nConcept directeur\n106\nB.1.1 Renforcer les itinéraires de mobilité douce \nstructurants\nsur le réseau cantonal structurant\nsur les routes principales\nsur les routes secondaires\nB.1.2 Mettre en place des aménagements en faveur \nde la mobilité douce sur le réseau cantonal de loisirs\nB.1.3 Valoriser les cheminements piétons et\nvélos sur des itinéraires touristiques\nB.2.1 Réaménager les centres de localité\nRéaménagement prioritaire\nRéaménagement à prévoir avec une temporalité \ndifférente\nB.2.2 Renforcer les mesures de modération des \nvitesses dans les quartiers\nB.2.3 Réaménager les carrefours qui posent des \nproblèmes de sécurité\nB.5.1 Etudier un renforcement des horaires\nB.4.1 Mise en place de mesures en faveur du \ncovoiturage et de l’autopartage\nB.4.2 Réaliser des Plans de Mobilité d'entreprise ou \nde site\nB.3.1 Réorganiser et redimensionner le stationnement \nmotorisé\nB.3.2 Mettre en place une politique de stationnement \nclaire et orientée\nB.3.3 Développer les infrastructures de stationnement \nvélo\nB.3.4 Mettre en place des bornes de recharge \nélectriques à destination des voitures et des vélos\nB.3.5 Développer l'offre de P+R\nB.1 Sécuriser et développer les liaisons pour les \nmodes doux\nB.2 Améliorer la sécurité et la cohabitation entre les \nmodes et apaiser les centres\nB.3 Réorganiser le stationnement\nB.5 Renforcer les transports en commun\nB.4 Inciter à un usage mesuré de la voiture\nLégende\nIII. Stationnement\nI. Mobilité douce\nII. Mobilité générale\nIV. Mobilité motorisée\nV. Mobilité publique\nConcept \ndirecteur\nLimites communales\nForêts\nBâtiments\nSurfaces agricoles\nVoies de chemin de fer\nCours d'eau\nGares\nRoutes\nRéseau bus\nSentiers\nGénéralités\n0\n1\n2 km\n",
+    "measure_codes": [
+      {
+        "code": "B.1.1",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            426.77691650390625,
+            403.0545349121094,
+            434.71929931640625
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          96,
+          102,
+          134,
+          143,
+          165
+        ]
+      },
+      {
+        "code": "B.1.2",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            487.82940673828125,
+            404.3802185058594,
+            495.77178955078125
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          97,
+          101,
+          102,
+          134,
+          165
+        ]
+      },
+      {
+        "code": "B.1.3",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            509.13531494140625,
+            404.3920593261719,
+            517.0776977539062
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          98,
+          102,
+          134,
+          136,
+          137,
+          165
+        ]
+      },
+      {
+        "code": "B.2.1",
+        "legend_pdf_rects": [
+          [
+            391.0989990234375,
+            592.0560913085938,
+            404.5986328125,
+            599.9984741210938
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          99,
+          102,
+          142,
+          172
+        ]
+      },
+      {
+        "code": "B.2.2",
+        "legend_pdf_rects": [
+          [
+            391.0989990234375,
+            640.3373413085938,
+            405.92431640625,
+            648.2797241210938
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          99
+        ]
+      },
+      {
+        "code": "B.2.3",
+        "legend_pdf_rects": [
+          [
+            391.0989990234375,
+            661.643310546875,
+            405.9361572265625,
+            669.585693359375
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          100
+        ]
+      },
+      {
+        "code": "B.5.1",
+        "legend_pdf_rects": [
+          [
+            944.7910766601562,
+            418.6063232421875,
+            958.2019653320312,
+            426.5487060546875
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          104
+        ]
+      },
+      {
+        "code": "B.4.1",
+        "legend_pdf_rects": [
+          [
+            668.2722778320312,
+            566.001220703125,
+            682.3578491210938,
+            573.943603515625
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          101,
+          103,
+          142
+        ]
+      },
+      {
+        "code": "B.4.2",
+        "legend_pdf_rects": [
+          [
+            668.2722778320312,
+            587.3071899414062,
+            683.6829833984375,
+            595.2495727539062
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          103
+        ]
+      },
+      {
+        "code": "B.3.1",
+        "legend_pdf_rects": [
+          [
+            667.9589233398438,
+            418.7685241699219,
+            681.4113159179688,
+            426.7109069824219
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          99,
+          101,
+          102,
+          142,
+          202
+        ]
+      },
+      {
+        "code": "B.3.2",
+        "legend_pdf_rects": [
+          [
+            667.9589233398438,
+            440.07440185546875,
+            682.7369384765625,
+            448.01678466796875
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          99,
+          101
+        ]
+      },
+      {
+        "code": "B.3.3",
+        "legend_pdf_rects": [
+          [
+            667.9589233398438,
+            461.3804016113281,
+            682.748779296875,
+            469.3227844238281
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          69,
+          70,
+          97,
+          98,
+          99,
+          102,
+          142,
+          202
+        ]
+      },
+      {
+        "code": "B.3.4",
+        "legend_pdf_rects": [
+          [
+            667.9589233398438,
+            482.6863098144531,
+            683.2637329101562,
+            490.6286926269531
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          99,
+          102,
+          142,
+          202
+        ]
+      },
+      {
+        "code": "B.3.5",
+        "legend_pdf_rects": [
+          [
+            667.9589233398438,
+            503.9922180175781,
+            682.7073974609375,
+            511.9346008300781
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          102
+        ]
+      }
+    ],
+    "map_vector_paths": 860,
+    "map_embedded_georef": false
+  },
+  {
+    "theme": "paysage",
+    "legend_page": 144,
+    "map_page": 145,
+    "legend_native_text": "Paysage\nConcept directeur\n144\nLégende\nConcept \ndirecteur\nC.1.1 Aménager des sites paysagers\naménagement des points de vue \nvalorisation des arbres solitaires\nC.1.2 Mettre en valeur les sites patrimoniaux\nChâteau d'Oron \nRuines du Château de Palézieux\nTemple de Châtillens\nTemple d'Oron\nTemple de Palézieux\nAbbaye d'Haut-Crêt\nPont historique\nChemin creux\nVoie romaine\nVilla romaine\nMenhir d'Essertes-Auboranges, \"Pierre du dos \nà l'âne\"\nTas des mines, terril, ancienne exploitation de \nlignite\nC.1.3 Renouveler et étendre l'offre en espaces de \nloisirs en plein air\noffre existante à renouveler\noffre nouvelle\nespaces de baignade existants à renouveler\nC.2.1 Étendre le tour existant de la Commune sur \nEssertes et mettre en valeur des points d'intérêts le \nlong du parcours\ntour existant\nextension du tour\nC.2.2 Créer des itinéraires de loisirs thématiques\nau fil de l'eau\nau fil du temps\nau fil des saisons\nC.3.1 Généraliser la notation paysagère à l'habitat \nhistoriquement dispersé du Jorat\nC.4.1 Maintenir une perméabilité visuelle entre \nespaces bâtis et non-bâtis (non cartographiable)\nC.4.2 Renforcer et maintenir la relation entre le bâti \net l'espace rue\nC.4.3 \nConjuguer \nactivités \néconomiques, \nenvironnement et paysage\nC.5.1 Qualifier les places et placettes à rayonnement \nvillageois et à rayonnement communal\nC.5.2 Renforcer les valeurs d'image et d'usage des \nplaces de gare (Palézieux, Oron-le-Châtel, Châtillens)\nC.5.3 Réaménager / Créer des espaces adaptés aux \njeunes (cours et équipements scolaires et aires \nrécréatives)\nC.1 Valoriser les aménités territoriales paysagères et \npatrimoniales (aménagements et communication)\nC.2 Mettre en réseau les aménités territoriales\nC.3 Maintenir les qualités de l'habitat rural dispersé\nC.4 Assurer l'intégration des nouvelles constructions \ndans le grand paysage\nC.5 Qualifier les espaces publics intra-urbanisation\nII. Paysage bâti\nI. Paysage Communal\nLimites communales\nForêts\nBâtiments\nSurfaces agricoles\nVoies de chemin de fer\nCours d'eau\nRoutes\nSentiers\nGénéralités\n12\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n0\n1\n2 km\n/\n",
+    "measure_codes": [
+      {
+        "code": "C.1.1",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            425.89471435546875,
+            402.9006652832031,
+            433.83709716796875
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          75,
+          133,
+          136,
+          137,
+          167,
+          168
+        ]
+      },
+      {
+        "code": "C.1.2",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            491.1837158203125,
+            404.2263488769531,
+            499.1260986328125
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          97,
+          98,
+          134,
+          170
+        ]
+      },
+      {
+        "code": "C.1.3",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            677.1143188476562,
+            404.2381896972656,
+            685.0567016601562
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          69,
+          135,
+          142,
+          143,
+          167
+        ]
+      },
+      {
+        "code": "C.2.1",
+        "legend_pdf_rects": [
+          [
+            667.8715209960938,
+            425.89471435546875,
+            681.21728515625,
+            433.83709716796875
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          75,
+          98,
+          133,
+          134,
+          135,
+          136,
+          137,
+          165
+        ]
+      },
+      {
+        "code": "C.2.2",
+        "legend_pdf_rects": [
+          [
+            667.8715209960938,
+            494.0491027832031,
+            682.5430297851562,
+            501.9914855957031
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          98,
+          133,
+          134,
+          135,
+          136,
+          165
+        ]
+      },
+      {
+        "code": "C.3.1",
+        "legend_pdf_rects": [
+          [
+            944.8187255859375,
+            420.305908203125,
+            958.1172485351562,
+            428.248291015625
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          64,
+          138,
+          139,
+          168
+        ]
+      },
+      {
+        "code": "C.4.1",
+        "legend_pdf_rects": [
+          [
+            944.8187255859375,
+            482.7071228027344,
+            958.7504272460938,
+            490.6495056152344
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          138,
+          139,
+          166
+        ]
+      },
+      {
+        "code": "C.4.2",
+        "legend_pdf_rects": [
+          [
+            944.8187255859375,
+            504.01300048828125,
+            960.0755615234375,
+            511.95538330078125
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          65,
+          139
+        ]
+      },
+      {
+        "code": "C.4.3",
+        "legend_pdf_rects": [
+          [
+            944.8187255859375,
+            525.3190307617188,
+            960.08740234375,
+            533.2614135742188
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          72,
+          140,
+          170,
+          171,
+          174
+        ]
+      },
+      {
+        "code": "C.5.1",
+        "legend_pdf_rects": [
+          [
+            944.5850219726562,
+            584.447021484375,
+            957.842041015625,
+            592.389404296875
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          69,
+          70,
+          75,
+          134,
+          135,
+          141,
+          165,
+          168,
+          170,
+          171,
+          174
+        ]
+      },
+      {
+        "code": "C.5.2",
+        "legend_pdf_rects": [
+          [
+            944.5850219726562,
+            605.7529296875,
+            959.1671752929688,
+            613.6953125
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          103,
+          142,
+          165,
+          168,
+          174
+        ]
+      },
+      {
+        "code": "C.5.3",
+        "legend_pdf_rects": [
+          [
+            944.5850219726562,
+            627.0588989257812,
+            959.1790161132812,
+            635.0012817382812
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          67,
+          69,
+          135,
+          143
+        ]
+      }
+    ],
+    "map_vector_paths": 6,
+    "map_embedded_georef": false
+  },
+  {
+    "theme": "environnement",
+    "legend_page": 176,
+    "map_page": 177,
+    "legend_native_text": "Environnement\nConcept directeur\n176\nD.1.1 Revitalisation des tronçons de cours d’eau \nprioritaires \net/ou \nprésentant \ndes \natteintes \nécomorphologiques notables\nD.1.2 Plantation et /ou renouvellement d’arbres et \narbustes d’espèces indigènes et adaptées au climat \nfutur\nD.1.3 Valorisation et revitalisation de la frange \npaysagère entre l’espace urbain et les terres agricoles \nD.1.4 Aménagement et promotion de biotopes-relais \ndans l’espace agricole\nD.2.1 \nConservation \net \nvalorisation \ndes \nentités \nnaturelles d’intérêt biologique et paysager prioritaires \ndu territoire communal\nSecteur biologique prioritaire à conserver\nAxe bleu à conserver\nD.2.2 Actualisation du plan communal de protection \ndes arbres (et des structures boisées)\nD.2.3 Conservation et renouvellement des surfaces de \nvergers haute-tige\nD.2.4 \nRecensement \ndes \narbres \nmajeurs \net \nremarquables \nD.2.5 Définition d'une politique d'arborisation et de \nvégétalisation dans les localités d'Oron et Palézieux\nD.2.6 Mise en œuvre d'une stratégie de lutte contre \nles plantes exotiques envahissantes\nD.3.1 Mise en œuvre d'une gestion différenciée et \nextensive des espaces verts communaux\nD.3.2 \nAménagement \net \npromotion \nde \npetites \nstructures en faveur de la faune et de la flore urbaine \ndans l'espace public \nD.3.3 Mise en place d'un éclairage public respectueux \nde la faune\nD.3.4 Promotion des mesures biodiversité dans les \njardins privés \nD.3.5 Programme d'action en faveur de la biodiversité\nD.5.1 Mise en place d'un système de valorisation des \ndéchets encombrants \nD.5.2 Promotion de la vaisselle réutilisable lors des \nmanifestations publiques et privées \nD.5.3 Promotion des installations de compostage \ndécentralisées\nD.5.4 Planification des décharges dans le temps en \nfonction des besoins \nD.6.1 Limitation des surfaces imperméables \nD.6.2 Promotion de la gestion des eaux pluviales en \nsurface\nD.4.1 Mise en œuvre d'une politique communale \nambitieuse en matière de protection du climat\nD.4.2 \nLocalisation \ndes \nactivités \nbruyantes \nou \ngénératrices de trafic hors centre\nD.4.3 Assainissement des sites contaminés sous \nresponsabilité communale\nD.1 Renforcer la mise en réseau des milieux naturels \nD.2 Conserver et valoriser le patrimoine naturel \nD.3 Améliorer la capacité d’accueil de la faune et de \nla flore dans les localités\nD.5 Optimiser la gestion des déchets et encourager \nleur revalorisation\nD.5 Promouvoir une gestion durable des eaux claires\nD.4 Réduire l’impact communal en matière de \nprotection de l’air, de bruit et des sols\nLégende\n0. Vision générale\nConcept \ndirecteur\nLimites communales\nForêts\nBâtiments\nSurfaces agricoles\nVoies de chemin de fer\nCours d'eau\nRoutes\nSentiers\nGénéralités\n0\n1\n2 km\n",
+    "measure_codes": [
+      {
+        "code": "D.1.1",
+        "legend_pdf_rects": [
+          [
+            114.18789672851562,
+            584.9608764648438,
+            126.50980377197266,
+            592.9032592773438
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          164,
+          165,
+          166,
+          169,
+          172
+        ]
+      },
+      {
+        "code": "D.1.2",
+        "legend_pdf_rects": [
+          [
+            114.18789672851562,
+            613.3688354492188,
+            127.83549499511719,
+            621.3112182617188
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          97,
+          98,
+          136,
+          137,
+          142,
+          165,
+          166,
+          169,
+          171,
+          172
+        ]
+      },
+      {
+        "code": "D.1.3",
+        "legend_pdf_rects": [
+          [
+            114.18789672851562,
+            641.7767333984375,
+            127.84732818603516,
+            649.7191162109375
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          139,
+          165,
+          166,
+          174
+        ]
+      },
+      {
+        "code": "D.1.4",
+        "legend_pdf_rects": [
+          [
+            114.18789672851562,
+            663.0827026367188,
+            128.36224365234375,
+            671.0250854492188
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          165,
+          166
+        ]
+      },
+      {
+        "code": "D.2.1",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            399.9833984375,
+            404.6465759277344,
+            407.92578125
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          135,
+          167,
+          169
+        ]
+      },
+      {
+        "code": "D.2.2",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            463.90130615234375,
+            405.9722595214844,
+            471.84368896484375
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          133,
+          167,
+          168,
+          169
+        ]
+      },
+      {
+        "code": "D.2.3",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            485.20721435546875,
+            405.9841003417969,
+            493.14959716796875
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          75,
+          138,
+          166,
+          167,
+          168,
+          169
+        ]
+      },
+      {
+        "code": "D.2.4",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            506.51312255859375,
+            406.4989929199219,
+            514.4555053710938
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          133,
+          138,
+          142,
+          166,
+          167,
+          168
+        ]
+      },
+      {
+        "code": "D.2.5",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            527.8191528320312,
+            405.94268798828125,
+            535.7615356445312
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          63,
+          142,
+          165,
+          167,
+          168,
+          170,
+          171,
+          172,
+          174
+        ]
+      },
+      {
+        "code": "D.2.6",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            549.125,
+            406.11431884765625,
+            557.0673828125
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          167,
+          169,
+          172
+        ]
+      },
+      {
+        "code": "D.3.1",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            606.1039428710938,
+            404.5992126464844,
+            614.0463256835938
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          134,
+          140,
+          169,
+          170,
+          171,
+          172
+        ]
+      },
+      {
+        "code": "D.3.2",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            627.4097900390625,
+            405.9248962402344,
+            635.3521728515625
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          69,
+          134,
+          142,
+          170,
+          171,
+          172,
+          174
+        ]
+      },
+      {
+        "code": "D.3.3",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            655.8176879882812,
+            405.9367370605469,
+            663.7600708007812
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          140,
+          142,
+          170,
+          171
+        ]
+      },
+      {
+        "code": "D.3.4",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            677.1237182617188,
+            406.4516296386719,
+            685.0661010742188
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          169,
+          170,
+          171
+        ]
+      },
+      {
+        "code": "D.3.5",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            698.4296264648438,
+            405.89532470703125,
+            706.3720092773438
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          171
+        ]
+      },
+      {
+        "code": "D.5.1",
+        "legend_pdf_rects": [
+          [
+            668.192626953125,
+            507.69073486328125,
+            681.8106079101562,
+            515.6331176757812
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          173
+        ]
+      },
+      {
+        "code": "D.5.2",
+        "legend_pdf_rects": [
+          [
+            668.192626953125,
+            528.9966430664062,
+            683.1363525390625,
+            536.9390258789062
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          173
+        ]
+      },
+      {
+        "code": "D.5.3",
+        "legend_pdf_rects": [
+          [
+            668.192626953125,
+            550.3026123046875,
+            683.148193359375,
+            558.2449951171875
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          173
+        ]
+      },
+      {
+        "code": "D.5.4",
+        "legend_pdf_rects": [
+          [
+            668.192626953125,
+            571.6085205078125,
+            683.6630249023438,
+            579.5509033203125
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          173
+        ]
+      },
+      {
+        "code": "D.6.1",
+        "legend_pdf_rects": [
+          [
+            668.192626953125,
+            627.5728149414062,
+            682.04150390625,
+            635.5151977539062
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          140,
+          142,
+          166,
+          172,
+          174
+        ]
+      },
+      {
+        "code": "D.6.2",
+        "legend_pdf_rects": [
+          [
+            668.192626953125,
+            641.7767333984375,
+            683.3672485351562,
+            649.7191162109375
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          140,
+          142,
+          166,
+          172,
+          174
+        ]
+      },
+      {
+        "code": "D.4.1",
+        "legend_pdf_rects": [
+          [
+            668.1129760742188,
+            408.1000061035156,
+            682.4056396484375,
+            416.0423889160156
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          165,
+          172,
+          174,
+          196,
+          198,
+          200,
+          202
+        ]
+      },
+      {
+        "code": "D.4.2",
+        "legend_pdf_rects": [
+          [
+            668.1129760742188,
+            429.4059143066406,
+            683.7314453125,
+            437.3482971191406
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          99,
+          172
+        ]
+      },
+      {
+        "code": "D.4.3",
+        "legend_pdf_rects": [
+          [
+            668.1129760742188,
+            450.7119140625,
+            683.7432861328125,
+            458.654296875
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          172
+        ]
+      }
+    ],
+    "map_vector_paths": 10545,
+    "map_embedded_georef": false
+  },
+  {
+    "theme": "energie",
+    "legend_page": 204,
+    "map_page": 205,
+    "legend_native_text": "Energie\nConcept directeur\n204\nE.1.1 Stimuler la rénovation thermique des bâtiments\nE.3.1 \nPromouvoir \ndes \nmoyens \nde \nproduction \nd'électricité locale grâce au solaire photovoltaïque\nZones prioritaires pour l'installation de panneaux \nsolaires photovoltaïques (déjà beaucoup de bâtiments \néquipés)\nParkings publics où pourraient être installés des \ncouverts photovoltaïques avec bornes de recharge \nélectrique\nE.2.1 Promouvoir les ressources locales pour la \nproduction de chaleur individuelle\nSecteur bâti où l'installation de sondes géothermiques \nest interdite (pompe à chaleur air/eau uniquement)\nSecteur bâti où l'installation de sondes géothermiques \nest possible.\nE.2.2 Favoriser le développement de réseaux de \nchaleur dans les secteurs propices\nZones de développement possible de réseaux de \nchaleur au bois\nE.1 Réduire les consommations d'énergie\nE.3 Promouvoir la production d'électricipté grâce aux \nressources renouvellables\nE.2 Promouvoir des moyens de production de chaleur \nappropriés selon leur localisation\nLégende\n0. Vision générale\nConcept \ndirecteur\nLimites communales\nForêts\nBâtiments\nSurfaces agricoles\nVoies de chemin de fer\nCours d'eau\nRoutes\nSentiers\nGénéralités\n0\n1\n2 km\n",
+    "measure_codes": [
+      {
+        "code": "E.1.1",
+        "legend_pdf_rects": [
+          [
+            391.0896911621094,
+            418.660400390625,
+            402.67181396484375,
+            426.602783203125
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          64,
+          67,
+          70,
+          172,
+          194
+        ]
+      },
+      {
+        "code": "E.3.1",
+        "legend_pdf_rects": [
+          [
+            390.9397888183594,
+            610.7398071289062,
+            403.85943603515625,
+            618.6821899414062
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          72,
+          101,
+          102,
+          172,
+          201
+        ]
+      },
+      {
+        "code": "E.2.1",
+        "legend_pdf_rects": [
+          [
+            391.1694030761719,
+            468.5372009277344,
+            404.13641357421875,
+            476.4795837402344
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          64,
+          67,
+          70,
+          172,
+          197
+        ]
+      },
+      {
+        "code": "E.2.2",
+        "legend_pdf_rects": [
+          [
+            391.1694030761719,
+            532.4550170898438,
+            405.46209716796875,
+            540.3973999023438
+          ]
+        ],
+        "other_pages_mentioning_code": [
+          172,
+          198
+        ]
+      }
+    ],
+    "map_vector_paths": 20,
+    "map_embedded_georef": false
+  }
+]

@@ -1,0 +1,41 @@
+{
+  "source_sha256": "f6c73677a1940ff8529d795c60f375b2270a5f124ad946bf6bb14ca987eb7680",
+  "themes": 5,
+  "measure_count": 76,
+  "visual_review": "Five concept maps now visually inspected; urbanisation legend also reviewed. Raw native text and source rectangles preserve each measure code; no cross-theme color classifier implemented.",
+  "priority_semantics": [
+    {
+      "code": "A.2.1",
+      "page": 65,
+      "meaning": "Prioritise dezoning oversized residential/mixed fringes and significant interior open spaces; not development opportunity."
+    },
+    {
+      "code": "A.2.4",
+      "page": 66,
+      "meaning": "Three long-term residential densification sectors at Oron-la-Ville and Palezieux-Gare; future PACom revision and conformity conditions. Not current building rights."
+    },
+    {
+      "code": "A.2.3",
+      "page": 66,
+      "meaning": "Document states densification cannot occur while commune remains oversized; must retain this qualification."
+    },
+    {
+      "code": "D.2.1",
+      "page": 176,
+      "meaning": "Conservation of biological priority sectors and blue axes; not housing development."
+    },
+    {
+      "code": "E.2.1",
+      "page": 204,
+      "meaning": "Geothermal-probe permitted/prohibited built sectors; not residential zoning."
+    }
+  ],
+  "anomaly": "PDF176 heading repeats D.5 for water while detailed water measures use D.6.1/D.6.2. Preserve source mismatch, do not silently renumber.",
+  "pending": [
+    "Identify the three A.2.4 map shapes from legend and path evidence",
+    "Validate geometry and independent alignment before parcel overlay",
+    "Separate symbols/lines/areas and non-cartographiable measures",
+    "Consultation approval/currentness unresolved"
+  ],
+  "delivery": "withheld_research_only"
+}
