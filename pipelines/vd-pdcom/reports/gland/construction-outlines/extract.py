@@ -1,0 +1,16 @@
+import pathlib,json,hashlib,numpy as np,pymupdf
+from shapely.geometry import Polygon,MultiPoint
+from PIL import Image,ImageDraw
+p=pathlib.Path(__file__).resolve().parent.parent;q=p/'construction-outlines';q.mkdir(exist_ok=True)
+vertices={'A1':[[276,116],[450,116],[450,176],[276,176]],'A2':[[732,116],[930,116],[930,176],[732,176]],'B1':[[44,133],[222,133],[221,451],[43,451]],'B2':[[276,203],[450,203],[450,481],[275,481]],'B3':[[503,134],[678,134],[677,469],[502,469]],'B4':[[733,203],[803,203],[802,510],[732,510]],'B5':[[842,204],[930,205],[931,476],[841,476]],'C1':[[156,519],[448,531],[447,597],[155,579]],'C2':[[477,532],[705,540],[705,613],[475,599]],'D':[[833,548],[876,548],[934,592],[934,675],[832,674]]}
+a=np.array(json.loads((p/'grid-controls/results.json').read_text())['coefficients_pdf_x_y_1_to_lv03']);checks=json.loads((p/'corner-checks/results.json').read_text())['checks'];hull=MultiPoint([x['pdf_point'] for x in checks]).convex_hull
+out=[];doc=pymupdf.open(p/'sector-currentness/communet-plan.pdf');pix=doc[0].get_pixmap(matrix=pymupdf.Matrix(1,1),clip=pymupdf.Rect(760,100,1735,810));im=Image.frombytes('RGB',[pix.width,pix.height],pix.samples);draw=ImageDraw.Draw(im)
+for label,v in vertices.items():
+ xy=np.array(v)+[760,100];poly=Polygon(xy);assert poly.is_valid and poly.area>0
+ ring=xy.tolist()+[xy[0].tolist()];out.append({'label':label,'semantic_type':'historical_ppa_construction_perimeter','pdf_ring':ring,'pdf_area_points2':poly.area,'outside_diagnostic_corner_hull_fraction':poly.difference(hull).area/poly.area,'status':'manual_raster_trace_research_only'})
+ draw.line(v+[v[0]],fill=(255,0,220),width=2);c=Polygon(v).representative_point();draw.text((c.x,c.y),label,fill=(0,0,0),stroke_width=1,stroke_fill=(255,255,255))
+for i,f in enumerate(out):
+ for g in out[i+1:]:assert Polygon(f['pdf_ring']).intersection(Polygon(g['pdf_ring'])).area<.001
+im.save(q/'annotated.png')
+r={'source_sha256':'68f36cb156489e4166d61cb6d0938691d0dcfe489fb666ed05a58dbc98ac77b7','pdf_page':1,'coordinate_space':'unrotated PDF points, top-left origin, y down','digitization':'manual blue construction-perimeter stroke centres on crop [760,100,1735,810], scale1; approximate raster coordinates','features':out,'excluded':[{'label':'SILO','reason':'Separate dashed parking construction perimeter, not traced as blue building perimeter.'}],'validation':{'valid_polygons':10,'pairwise_positive_area_overlaps':0,'geographic_geometry_created':False},'limitations':['This later PPA geometry does not register or reconstruct the 1997 PDCom boundary.','These are construction envelopes, not land parcels, current footprints, developable land or remaining capacity.','Approximate manual stroke picks require source review; no survey precision.','A1/A2/B1-B5/C1-C2/D maxima apply per perimeter under Article9, not once per intersected parcel.','SILO parking and other activity/front/underground lines remain untraced.','Diagnostic-corner convex hull is only a coverage indicator, not a positional accuracy guarantee.','PPA currentness and approved-version qualifications remain as previously recorded.']}
+(q/'outlines.json').write_text(json.dumps(r,indent=2));print([(x['label'],round(x['outside_diagnostic_corner_hull_fraction'],3)) for x in out])
