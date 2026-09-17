@@ -1,0 +1,360 @@
+{
+  "affine_file_sha256": "37481be3f5b100fa27c5c8285962feb6c097476193fcec7b6bb82bb3e7b69153",
+  "method": "Frozen PR127 affine; manual historical corner picks on original raster crop, corresponding official current footprint vertices. No least-squares fitting or control adjustment.",
+  "checks": [
+    {
+      "crop": "west-north",
+      "objectid": 46320088,
+      "building_number": "2188",
+      "egid": 280061811,
+      "reference_vertex": 0,
+      "pixel_pick": [
+        49,
+        42
+      ],
+      "pdf_point": [
+        706.3333333333334,
+        364.0
+      ],
+      "predicted_lv03": [
+        509552.82715149166,
+        142327.041320614
+      ],
+      "reference_lv03": [
+        509551.66856432334,
+        142326.53837802
+      ],
+      "delta_east_north_m": [
+        1.1585871683200821,
+        0.5029425940010697
+      ],
+      "error_m": 1.263042152683936
+    },
+    {
+      "crop": "west-north",
+      "objectid": 46320088,
+      "building_number": "2188",
+      "egid": 280061811,
+      "reference_vertex": 3,
+      "pixel_pick": [
+        177,
+        47
+      ],
+      "pdf_point": [
+        749.0,
+        365.6666666666667
+      ],
+      "predicted_lv03": [
+        509564.4608212055,
+        142336.60717570837
+      ],
+      "reference_lv03": [
+        509563.51428620145,
+        142336.36337996693
+      ],
+      "delta_east_north_m": [
+        0.9465350040700287,
+        0.24379574143677019
+      ],
+      "error_m": 0.97742768401174
+    },
+    {
+      "crop": "west-north",
+      "objectid": 46320088,
+      "building_number": "2188",
+      "egid": 280061811,
+      "reference_vertex": 14,
+      "pixel_pick": [
+        183,
+        328
+      ],
+      "pdf_point": [
+        751.0,
+        459.3333333333333
+      ],
+      "predicted_lv03": [
+        509587.1850126157,
+        142312.2393525038
+      ],
+      "reference_lv03": [
+        509582.0584463291,
+        142308.40879023983
+      ],
+      "delta_east_north_m": [
+        5.1265662866062485,
+        3.8305622639600188
+      ],
+      "error_m": 6.399600702312784
+    },
+    {
+      "crop": "west-north",
+      "objectid": 46320088,
+      "building_number": "2188",
+      "egid": 280061811,
+      "reference_vertex": 16,
+      "pixel_pick": [
+        51,
+        336
+      ],
+      "pdf_point": [
+        707.0,
+        462.0
+      ],
+      "predicted_lv03": [
+        509576.2270585048,
+        142301.2117140019
+      ],
+      "reference_lv03": [
+        509575.02863293514,
+        142301.0098036806
+      ],
+      "delta_east_north_m": [
+        1.19842556968797,
+        0.20191032130969688
+      ],
+      "error_m": 1.215315442152086
+    },
+    {
+      "crop": "west-middle",
+      "objectid": 46476720,
+      "building_number": "894",
+      "egid": 811140,
+      "reference_vertex": 16,
+      "pixel_pick": [
+        84,
+        32
+      ],
+      "pdf_point": [
+        808.0,
+        645.6666666666666
+      ],
+      "predicted_lv03": [
+        509646.3569836582,
+        142276.20042513055
+      ],
+      "reference_lv03": [
+        509644.8401345741,
+        142275.88160541895
+      ],
+      "delta_east_north_m": [
+        1.5168490841169842,
+        0.3188197115960065
+      ],
+      "error_m": 1.5499926298175404
+    },
+    {
+      "crop": "west-middle",
+      "objectid": 46476720,
+      "building_number": "894",
+      "egid": 811140,
+      "reference_vertex": 17,
+      "pixel_pick": [
+        200,
+        35
+      ],
+      "pdf_point": [
+        846.6666666666666,
+        646.6666666666666
+      ],
+      "predicted_lv03": [
+        509656.7790369283,
+        142285.00482494725
+      ],
+      "reference_lv03": [
+        509655.24989121035,
+        142284.4416068519
+      ],
+      "delta_east_north_m": [
+        1.5291457179700956,
+        0.5632180953398347
+      ],
+      "error_m": 1.6295708790060377
+    },
+    {
+      "crop": "west-middle",
+      "objectid": 46476720,
+      "building_number": "894",
+      "egid": 811140,
+      "reference_vertex": 2,
+      "pixel_pick": [
+        187,
+        376
+      ],
+      "pdf_point": [
+        842.3333333333334,
+        760.3333333333334
+      ],
+      "predicted_lv03": [
+        509682.5746375576,
+        142253.84820899967
+      ],
+      "reference_lv03": [
+        509680.70000770874,
+        142253.56111333024
+      ],
+      "delta_east_north_m": [
+        1.8746298488695174,
+        0.2870956694241613
+      ],
+      "error_m": 1.896486486552081
+    },
+    {
+      "crop": "west-middle",
+      "objectid": 46476720,
+      "building_number": "894",
+      "egid": 811140,
+      "reference_vertex": 3,
+      "pixel_pick": [
+        73,
+        371
+      ],
+      "pdf_point": [
+        804.3333333333334,
+        758.6666666666666
+      ],
+      "predicted_lv03": [
+        509672.17020050157,
+        142245.3769563196
+      ],
+      "reference_lv03": [
+        509670.290250944,
+        142245.011111516
+      ],
+      "delta_east_north_m": [
+        1.879949557594955,
+        0.3658448036003392
+      ],
+      "error_m": 1.9152161129812053
+    },
+    {
+      "crop": "south-east",
+      "objectid": 46421591,
+      "building_number": "928",
+      "egid": 280022235,
+      "reference_vertex": 0,
+      "pixel_pick": [
+        96,
+        207
+      ],
+      "pdf_point": [
+        1332.0,
+        899.0
+      ],
+      "predicted_lv03": [
+        509844.4178621721,
+        142331.93400107705
+      ],
+      "reference_lv03": [
+        509843.17997978814,
+        142331.1416406022
+      ],
+      "delta_east_north_m": [
+        1.237882383982651,
+        0.7923604748502839
+      ],
+      "error_m": 1.4697577755125293
+    },
+    {
+      "crop": "south-east",
+      "objectid": 46421591,
+      "building_number": "928",
+      "egid": 280022235,
+      "reference_vertex": 1,
+      "pixel_pick": [
+        167,
+        204
+      ],
+      "pdf_point": [
+        1355.6666666666667,
+        898.0
+      ],
+      "predicted_lv03": [
+        509850.4148451167,
+        142337.7503620801
+      ],
+      "reference_lv03": [
+        509849.1498297751,
+        142336.82162926008
+      ],
+      "delta_east_north_m": [
+        1.2650153416325338,
+        0.9287328200298361
+      ],
+      "error_m": 1.5693337648716565
+    },
+    {
+      "crop": "south-east",
+      "objectid": 46421591,
+      "building_number": "928",
+      "egid": 280022235,
+      "reference_vertex": 2,
+      "pixel_pick": [
+        168,
+        257
+      ],
+      "pdf_point": [
+        1356.0,
+        915.6666666666666
+      ],
+      "predicted_lv03": [
+        509854.6893414101,
+        142333.1440008429
+      ],
+      "reference_lv03": [
+        509853.22983960435,
+        142332.51170581428
+      ],
+      "delta_east_north_m": [
+        1.4595018057734706,
+        0.632295028626686
+      ],
+      "error_m": 1.5905793046189312
+    },
+    {
+      "crop": "south-east",
+      "objectid": 46421591,
+      "building_number": "928",
+      "egid": 280022235,
+      "reference_vertex": 3,
+      "pixel_pick": [
+        96,
+        259
+      ],
+      "pdf_point": [
+        1332.0,
+        916.3333333333334
+      ],
+      "predicted_lv03": [
+        509848.5255619071,
+        142327.33784163473
+      ],
+      "reference_lv03": [
+        509847.2499897368,
+        142326.83171707424
+      ],
+      "delta_east_north_m": [
+        1.2755721702706069,
+        0.5061245604883879
+      ],
+      "error_m": 1.3723142614934927
+    }
+  ],
+  "corner_count": 12,
+  "building_count": 3,
+  "rmse_m": 2.35126559229318,
+  "max_error_m": 6.399600702312784,
+  "mean_delta_east_north_m": [
+    1.7057216615745954,
+    0.7644751737219243
+  ],
+  "status": "diagnostic_correspondence_checks_not_release_validation",
+  "limitations": [
+    "Corners within each building are correlated; twelve corners are not twelve independent buildings.",
+    "Three visible buildings were selected after viewing overlays; this is not a blind or random holdout sample.",
+    "Building numbers and recognizable outline support correspondence; no historical survey/unchanged-building certificate.",
+    "Manual raster stroke picks approximate, around two rendered pixels (~0.24m); this is an estimate, not a confidence interval.",
+    "Geographic coverage limited to west and south, with no independent east/north building checks.",
+    "Visible signed offset preserved, not corrected using these observations.",
+    "No modern interior building, development capacity or parcel allocation inference."
+  ]
+}
