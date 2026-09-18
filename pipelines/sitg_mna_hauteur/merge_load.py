@@ -104,7 +104,10 @@ for j, i in enumerate(idx):
         f"{px*PX_AREA:.2f}", lm, run_id]) + "\n")
 n_parcels = buf.getvalue().count("\n")
 psql(None, stdin="""
-CREATE TEMP TABLE s (LIKE bronze_ch.ge_mna_hauteur_parcel_stats INCLUDING DEFAULTS);
+-- ON COMMIT DROP in one transaction: re-LLM's SESSION POOLER reuses server connections, so a plain
+-- temp table from an earlier call survives into the next client ("relation s already exists").
+BEGIN;
+CREATE TEMP TABLE s (LIKE bronze_ch.ge_mna_hauteur_parcel_stats INCLUDING DEFAULTS) ON COMMIT DROP;
 \\copy s (egrid,no_commune,no_parcelle,canopy_cover_pct,veg_height_p95_m,veg_height_max_m,veg_height_mean_m,vegetated_area_m2,built_area_m2,built_height_max_m,parcel_area_m2,source_last_modified,run_id) FROM STDIN
 """ + buf.getvalue() + """\\.
 INSERT INTO bronze_ch.ge_mna_hauteur_parcel_stats SELECT * FROM s
@@ -113,6 +116,7 @@ ON CONFLICT (egrid) DO UPDATE SET no_commune=EXCLUDED.no_commune, no_parcelle=EX
  veg_height_mean_m=EXCLUDED.veg_height_mean_m, vegetated_area_m2=EXCLUDED.vegetated_area_m2, built_area_m2=EXCLUDED.built_area_m2,
  built_height_max_m=EXCLUDED.built_height_max_m, parcel_area_m2=EXCLUDED.parcel_area_m2,
  source_last_modified=EXCLUDED.source_last_modified, run_id=EXCLUDED.run_id, computed_at=now();
+COMMIT;
 """)
 
 # ---- buildings
@@ -130,7 +134,10 @@ for j, i in enumerate(bidx):
         N(B["max"][i]), N(b95[j]), N(b50[j]), N(B["sum"][i] / px), lm, run_id]) + "\n")
 n_bldg = buf.getvalue().count("\n")
 psql(None, stdin="""
-CREATE TEMP TABLE s (LIKE bronze_ch.ge_mna_hauteur_building_heights INCLUDING DEFAULTS);
+-- ON COMMIT DROP in one transaction: re-LLM's SESSION POOLER reuses server connections, so a plain
+-- temp table from an earlier call survives into the next client ("relation s already exists").
+BEGIN;
+CREATE TEMP TABLE s (LIKE bronze_ch.ge_mna_hauteur_building_heights INCLUDING DEFAULTS) ON COMMIT DROP;
 \\copy s (footprint_id,egid,no_commune,no_parcelle,roof_area_m2,height_max_m,height_p95_m,height_p50_m,height_mean_m,source_last_modified,run_id) FROM STDIN
 """ + buf.getvalue() + """\\.
 INSERT INTO bronze_ch.ge_mna_hauteur_building_heights SELECT * FROM s
@@ -138,6 +145,7 @@ ON CONFLICT (footprint_id) DO UPDATE SET egid=EXCLUDED.egid, no_commune=EXCLUDED
  roof_area_m2=EXCLUDED.roof_area_m2, height_max_m=EXCLUDED.height_max_m, height_p95_m=EXCLUDED.height_p95_m,
  height_p50_m=EXCLUDED.height_p50_m, height_mean_m=EXCLUDED.height_mean_m,
  source_last_modified=EXCLUDED.source_last_modified, run_id=EXCLUDED.run_id, computed_at=now();
+COMMIT;
 """)
 psql(f"UPDATE bronze_ch.ge_mna_hauteur_runs SET finished_at=now(), parcels={n_parcels}, buildings={n_bldg}, "
      f"status='{'ok' if not os.environ.get('COMMUNE') else 'ok_partial'}' WHERE run_id='{run_id}'")
