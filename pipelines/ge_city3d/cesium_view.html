@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Genève-Cité 3D — Cesium</title>
+<script>window.CESIUM_BASE_URL='https://cdnjs.cloudflare.com/ajax/libs/cesium/1.133.1/';</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.133.1/Cesium.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.133.1/Widgets/widgets.css" rel="stylesheet">
+<style>html,body,#v{margin:0;width:100%;height:100%;overflow:hidden}#hud{position:absolute;top:8px;left:8px;background:#000a;color:#fff;font:12px sans-serif;padding:6px 8px;border-radius:4px}</style></head>
+<body><div id="v"></div><div id="hud">loading…</div><script>
+(async () => {
+  Cesium.Ion.defaultAccessToken = '';
+  const viewer = new Cesium.Viewer('v', {
+    baseLayer: new Cesium.ImageryLayer(new Cesium.UrlTemplateImageryProvider({
+      url: 'https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.swissimage-product/default/current/3857/{z}/{x}/{y}.jpeg',
+      maximumLevel: 20, credit: '© swisstopo'})),
+    terrainProvider: await Cesium.CesiumTerrainProvider.fromUrl('https://3d.geo.admin.ch/ch.swisstopo.terrain.3d/v1/', {requestVertexNormals: true}),
+    baseLayerPicker:false, geocoder:false, homeButton:false, sceneModePicker:false, navigationHelpButton:false,
+    animation:false, timeline:false, fullscreenButton:false, infoBox:false, selectionIndicator:false });
+  const s = viewer.scene;
+  s.globe.depthTestAgainstTerrain = true; s.globe.enableLighting = true;
+  s.shadowMap.enabled = true; s.shadowMap.softShadows = true; s.shadowMap.size = 4096;
+  viewer.clock.currentTime = Cesium.JulianDate.fromIso8601('2026-06-21T15:30:00Z');
+  s.skyAtmosphere.show = true; s.fog.enabled = true; s.postProcessStages.fxaa.enabled = true;
+  const ts = await Cesium.Cesium3DTileset.fromUrl('commune21/tileset.json?' + Date.now(), {maximumScreenSpaceError: 8});
+  s.primitives.add(ts);
+  const x = ts.extras || {};
+  document.getElementById('hud').textContent = `Genève-Cité · ${x.buildings} bâtiments · ${x.trees} arbres · © swisstopo, SITG, OFS`;
+  viewer.camera.flyTo({destination: Cesium.Cartesian3.fromDegrees(6.1505, 46.1995, 520),
+    orientation: {heading: Cesium.Math.toRadians(20), pitch: Cesium.Math.toRadians(-28)}, duration: 0});
+  window.viewer = viewer; window.ts = ts;
+})();
+</script></body></html>
