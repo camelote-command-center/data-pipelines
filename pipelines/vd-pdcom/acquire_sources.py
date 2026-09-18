@@ -61,14 +61,15 @@ def _download_once(url,max_bytes=100_000_000,deadline=None):
     raise ValueError('redirect_limit')
 
 
-def inspect(data):
+def inspect(data, *, enumerate_vectors=True):
     pages=[]
     with fitz.open(stream=data,filetype='pdf') as doc:
         if len(doc)>500:raise ValueError('page_limit')
         for number,page in enumerate(doc,1):
             text=page.get_text()
             pages.append({'page_number':number,'width':page.rect.width,'height':page.rect.height,
-                          'text':text[:30000],'vector_paths':len(page.get_drawings()),
+                          'text':text[:30000],'vector_paths':len(page.get_drawings()) if enumerate_vectors else None,
+                          'vector_inventory_status':'counted' if enumerate_vectors else 'not_evaluated',
                           'embedded_georef':doc.xref_get_key(page.xref,'VP')[0]!='null'})
     return pages
 
@@ -121,13 +122,17 @@ def run(args):
         for source in sources:
             try:
                 data=download(source['pdf_url'],source.get('max_bytes',100_000_000));sha=hashlib.sha256(data).hexdigest()
-                pages=inspect(data)
+                enumerate_vectors=source.get('enumerate_vectors',True)
+                pages=inspect(data,enumerate_vectors=enumerate_vectors)
+                if source.get('source_review') and pages:
+                    pages[0]['source_review']=source['source_review']
                 name=f"{source['commune_bfs']}-{sha[:12]}"
                 (args.output/(name+'.pdf')).write_bytes(data)
                 (args.output/(name+'-inspection.json')).write_text(json.dumps(pages,ensure_ascii=False))
                 doc_id=persist(conn,source,sha,pages) if conn else None
                 result={'commune_bfs':source['commune_bfs'],'covered_commune_bfs':coverage_members(source),'document_id':doc_id,'sha256':sha,'pages':len(pages),
-                        'vector_pages':sum(p['vector_paths']>0 for p in pages),'plan_status':source['plan_status']}
+                        'vector_pages':sum(p['vector_paths']>0 for p in pages) if enumerate_vectors else None,
+                        'vector_inventory_status':'counted' if enumerate_vectors else 'not_evaluated','plan_status':source['plan_status']}
                 report['documents'].append(result);print(json.dumps(result),flush=True)
             except Exception as exc:
                 if conn:conn.rollback()

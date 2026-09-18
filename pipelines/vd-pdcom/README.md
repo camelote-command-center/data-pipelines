@@ -135,3 +135,14 @@ invalid/non-4326 geometry fails the delivery. Empty sources fail closed. No
 DELETE/TRUNCATE or global sync-registry changes. Repeated delivery is idempotent.
 This provides receiver-side review data; it is not a substitute for final QA and
 publication approval criteria in the master task.
+
+Reviewed sources can set `enumerate_vectors: false` to inventory text and page
+metadata without expanding PDF drawing operations. Unknown vector counts stay
+null with `vector_inventory_status=not_evaluated`; this is not a zero-vector or
+validated-map claim. Existing sources retain vector enumeration by default.
+The six Alpes vaudoises tourism documents use this mode; the 228 MB explanatory
+report has a source-specific 250 MB download limit. Their 15 commune links cover
+regional tourism above the upper vineyard limit, not complete communal PDComs.
+Source review metadata persists on newly encountered versions. Existing inspected
+versions and manual research remain preserved. These sources participate in the
+existing annual/full acquisition, without an additional workflow or schedule.
