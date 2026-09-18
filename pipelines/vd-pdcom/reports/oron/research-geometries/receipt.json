@@ -1,0 +1,10 @@
+{
+  "ids": {
+    "operation": "47843d90-83ef-4e7a-94a7-3746f5c3cfc2",
+    "checkpoint": "248a124a-6eab-4ee7-9c02-eb784f5707ab"
+  },
+  "document_id": "5737f410-4b4a-5ec2-a18f-bb3e36f996dc",
+  "source_sha256": "f6c73677a1940ff8529d795c60f375b2270a5f124ad946bf6bb14ca987eb7680",
+  "alignment_status": "withheld_provisional_environment_map_only",
+  "geographic_delivery": false
+}
