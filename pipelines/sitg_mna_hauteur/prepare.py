@@ -40,9 +40,13 @@ def out(k, v):
 
 
 def ogr(dest, layer, sql):
-    subprocess.run(["ogr2ogr", "-f", "GPKG", dest, f"PG:{PG}", "-nln", layer, "-nlt", "MULTIPOLYGON",
-                    "-a_srs", "EPSG:2056", "-lco", "SPATIAL_INDEX=YES", "-overwrite", "-sql", sql],
-                   check=True, capture_output=True)
+    r = subprocess.run(["ogr2ogr", "-f", "GPKG", dest, f"PG:{PG}", "-nln", layer, "-nlt", "MULTIPOLYGON",
+                        "-a_srs", "EPSG:2056", "-lco", "SPATIAL_INDEX=YES", "-overwrite", "-sql", sql],
+                       capture_output=True, text=True)
+    if r.returncode:
+        # surface ogr2ogr's own message; a bare CalledProcessError hid the cause on the first CI run
+        sys.exit(f"ogr2ogr failed for {dest}: {(r.stderr or r.stdout)[-1500:]}")
+    print(f"  wrote {dest}", flush=True)
 
 
 with urllib.request.urlopen(urllib.request.Request(SRC, method="HEAD"), timeout=60) as r:
