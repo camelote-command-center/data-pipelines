@@ -729,5 +729,125 @@
     "landing_url": "https://www.oron.ch/N4879/plan-directeur-communal-pdcom.html",
     "plan_status": "consultation",
     "scope": "communal"
+  },
+  {
+    "candidate_id": "e643954c-191f-442a-ad09-e60e7a8fd0d3",
+    "commune_bfs": 5725,
+    "commune_name": "Prangins",
+    "pdf_url": "https://prangins.ch/uploads/PDF/Plans_directeurs/PDCom_PRANGINS_FINAL_111107_01_portrait.pdf",
+    "landing_url": "https://prangins.ch/autorites-communales/preavis-municipaux-2021-2026/",
+    "title": "Portrait",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "b3ebcab7-5336-4545-b012-ed97cf3c9b6e",
+    "commune_bfs": 5725,
+    "commune_name": "Prangins",
+    "pdf_url": "https://prangins.ch/uploads/PDF/Plans_directeurs/PDCom_PRANGINS_FINAL_111107_03_planifications_superieurs.pdf",
+    "landing_url": "https://prangins.ch/autorites-communales/preavis-municipaux-2021-2026/",
+    "title": "Planifications supérieures",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "752f798b-f305-4c3e-bd7f-89851b90483d",
+    "commune_bfs": 5725,
+    "commune_name": "Prangins",
+    "pdf_url": "https://prangins.ch/uploads/PDF/Plans_directeurs/PDCom_PRANGINS_FINAL_111107_06_annexes.pdf",
+    "landing_url": "https://prangins.ch/autorites-communales/preavis-municipaux-2021-2026/",
+    "title": "Annexes",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "622c7ae7-7d08-4693-9b02-4bc31d0f7420",
+    "commune_bfs": 5725,
+    "commune_name": "Prangins",
+    "pdf_url": "https://prangins.ch/uploads/PDF/Plans_directeurs/PDCom_PRANGINS_FINAL_111107_02_constat.pdf",
+    "landing_url": "https://prangins.ch/autorites-communales/preavis-municipaux-2021-2026/",
+    "title": "Constat",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "23228814-45fa-4a2a-8be2-84f8fdd13ef2",
+    "commune_bfs": 5725,
+    "commune_name": "Prangins",
+    "pdf_url": "https://prangins.ch/uploads/PDF/Plans_directeurs/PDCom_PRANGINS_FINAL_111107_05_mesures_etudes_sectorielles.pdf",
+    "landing_url": "https://prangins.ch/autorites-communales/preavis-municipaux-2021-2026/",
+    "title": "Mesures d'études sectorielles",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "ee1d73c5-5246-4356-b24e-1a31fcb4d2c3",
+    "commune_bfs": 5725,
+    "commune_name": "Prangins",
+    "pdf_url": "https://prangins.ch/uploads/PDF/Plans_directeurs/PDCom_PRANGINS_FINAL_111107_04_projet.pdf",
+    "landing_url": "https://prangins.ch/autorites-communales/preavis-municipaux-2021-2026/",
+    "title": "Projet",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "c7b02c52-30f8-4d6f-9281-51a18cf93a1a",
+    "commune_bfs": 5725,
+    "commune_name": "Prangins",
+    "pdf_url": "https://prangins.ch/uploads/Pr%C3%A9avis%20CC/000_PDC_PRANGINS_130213_00_table%20des%20mati%C3%A8res.pdf",
+    "landing_url": "https://prangins.ch/prangins-officiel/service-de-l-urbanisme/urbanisme/plan-directeur-communal/",
+    "title": "Table des matières",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "1c5466ae-334b-4665-abb8-fbb39a1f943c",
+    "commune_bfs": 5725,
+    "commune_name": "Prangins",
+    "pdf_url": "https://prangins.ch/uploads/Pr%C3%A9avis%20CC/000_PDC_PRANGINS_130213_1_portrait.pdf",
+    "landing_url": "https://prangins.ch/prangins-officiel/service-de-l-urbanisme/urbanisme/plan-directeur-communal/",
+    "title": "Portrait de la Commune",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "3a6b5b4f-0ffe-4616-815e-29ac061601ef",
+    "commune_bfs": 5725,
+    "commune_name": "Prangins",
+    "pdf_url": "https://prangins.ch/uploads/Pr%C3%A9avis%20CC/000_PDC_PRANGINS_130213_5_annexes.pdf",
+    "landing_url": "https://prangins.ch/prangins-officiel/service-de-l-urbanisme/urbanisme/plan-directeur-communal/",
+    "title": "Annexes",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "4001d093-3a9d-46fe-abd8-96f24946a20f",
+    "commune_bfs": 5725,
+    "commune_name": "Prangins",
+    "pdf_url": "https://prangins.ch/uploads/Pr%C3%A9avis%20CC/000_PDC_PRANGINS_130213_3_plan_directeur.pdf",
+    "landing_url": "https://prangins.ch/prangins-officiel/service-de-l-urbanisme/urbanisme/plan-directeur-communal/",
+    "title": "Plan Directeur",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "031a8bf4-5760-4927-94f2-2cd8f4becbd5",
+    "commune_bfs": 5725,
+    "commune_name": "Prangins",
+    "pdf_url": "https://prangins.ch/uploads/Pr%C3%A9avis%20CC/000_PDC_PRANGINS_130213_2_constats.pdf",
+    "landing_url": "https://prangins.ch/prangins-officiel/service-de-l-urbanisme/urbanisme/plan-directeur-communal/",
+    "title": "Constats",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "ade38bd1-19ae-45ce-923d-6ac2b2785ed5",
+    "commune_bfs": 5725,
+    "commune_name": "Prangins",
+    "pdf_url": "https://prangins.ch/uploads/Pr%C3%A9avis%20CC/000_PDC_PRANGINS_130213_4_mesures_amenagement.pdf",
+    "landing_url": "https://prangins.ch/prangins-officiel/service-de-l-urbanisme/urbanisme/plan-directeur-communal/",
+    "title": "Mesures d’aménagement",
+    "plan_status": "unverified",
+    "scope": "communal"
   }
 ]

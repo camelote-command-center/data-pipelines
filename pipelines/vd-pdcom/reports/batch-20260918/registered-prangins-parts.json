@@ -1,0 +1,74 @@
+[
+  {
+    "document_id": "c9f6ea11-cc26-56e4-bb6d-c6a3c59aaec8",
+    "sha256": "4b9f804e646817f0760db55acc4a851b9d9b600f77e12a3d22f73eda6a4c25d1",
+    "pages": 18,
+    "source_url": "https://prangins.ch/uploads/PDF/Plans_directeurs/PDCom_PRANGINS_FINAL_111107_01_portrait.pdf"
+  },
+  {
+    "document_id": "536b2bbe-4246-5581-bb40-5866c8c4f5d5",
+    "sha256": "02c03f9efb98e88d75bc5619829b181d04217812777640ff6e7eeccf7a4ecb75",
+    "pages": 18,
+    "source_url": "https://prangins.ch/uploads/PDF/Plans_directeurs/PDCom_PRANGINS_FINAL_111107_03_planifications_superieurs.pdf"
+  },
+  {
+    "document_id": "fce3edc0-9f14-54f3-82f1-489d57558ec9",
+    "sha256": "d08b73131bdb424abfbd32307f6bd15e863267eab6784ab4b50a7ff5e8fbe1e9",
+    "pages": 9,
+    "source_url": "https://prangins.ch/uploads/PDF/Plans_directeurs/PDCom_PRANGINS_FINAL_111107_06_annexes.pdf"
+  },
+  {
+    "document_id": "30ee5d63-4833-5e44-b892-7fbb94424964",
+    "sha256": "17d261f0b371eceaa5b95fd62f83f2b31cbde2c7bb0cb8e7455f99ee35fcf7d6",
+    "pages": 76,
+    "source_url": "https://prangins.ch/uploads/PDF/Plans_directeurs/PDCom_PRANGINS_FINAL_111107_02_constat.pdf"
+  },
+  {
+    "document_id": "1b960be7-f18d-514f-9ba5-7fe8fd28a8e6",
+    "sha256": "06780c53ec0e577c55f719edbc6f736ab9f3995adac903322acec24398518245",
+    "pages": 58,
+    "source_url": "https://prangins.ch/uploads/PDF/Plans_directeurs/PDCom_PRANGINS_FINAL_111107_05_mesures_etudes_sectorielles.pdf"
+  },
+  {
+    "document_id": "f8c108f0-cdae-5f79-8788-392885eb76e8",
+    "sha256": "a1cac7afd00cffbeaee86bb5dac3dfc4d825c386c9f8d0a30b0ea089babd5835",
+    "pages": 60,
+    "source_url": "https://prangins.ch/uploads/PDF/Plans_directeurs/PDCom_PRANGINS_FINAL_111107_04_projet.pdf"
+  },
+  {
+    "document_id": "2fa197b6-b5b1-5ba5-93b4-9eca87ac023f",
+    "sha256": "10c500de2fe98e9b1cbec7c2749a8507ec543f6a84a41b705a47cb1f76616416",
+    "pages": 3,
+    "source_url": "https://prangins.ch/uploads/Pr%C3%A9avis%20CC/000_PDC_PRANGINS_130213_00_table%20des%20mati%C3%A8res.pdf"
+  },
+  {
+    "document_id": "839bfdeb-1db1-57aa-a417-345b46098d8a",
+    "sha256": "6797f294c35f7fc50a55a9de23200b86fa5d08ed53f6ef3f44b6f31a48b05e70",
+    "pages": 10,
+    "source_url": "https://prangins.ch/uploads/Pr%C3%A9avis%20CC/000_PDC_PRANGINS_130213_1_portrait.pdf"
+  },
+  {
+    "document_id": "5fa94158-4824-593b-bbb4-2881550b6952",
+    "sha256": "21e0e384867607bce560534483ea35ba724e4114d0b3f0c062db7ac0b1fa386c",
+    "pages": 9,
+    "source_url": "https://prangins.ch/uploads/Pr%C3%A9avis%20CC/000_PDC_PRANGINS_130213_5_annexes.pdf"
+  },
+  {
+    "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+    "sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+    "pages": 78,
+    "source_url": "https://prangins.ch/uploads/Pr%C3%A9avis%20CC/000_PDC_PRANGINS_130213_3_plan_directeur.pdf"
+  },
+  {
+    "document_id": "6e43b32d-1833-5926-be3f-5fd54c23e672",
+    "sha256": "56d6ded3d1a01e2ebc1e9e9649d08e454d7feff3c549b668ffe91340570a7d2b",
+    "pages": 76,
+    "source_url": "https://prangins.ch/uploads/Pr%C3%A9avis%20CC/000_PDC_PRANGINS_130213_2_constats.pdf"
+  },
+  {
+    "document_id": "d51be29b-8c9d-542c-988c-56aa3495545b",
+    "sha256": "fc1f4c662e71c43744ff3d241b0be573447756232d68c7425cda976f7138f81e",
+    "pages": 58,
+    "source_url": "https://prangins.ch/uploads/Pr%C3%A9avis%20CC/000_PDC_PRANGINS_130213_4_mesures_amenagement.pdf"
+  }
+]
