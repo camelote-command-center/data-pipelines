@@ -114,7 +114,7 @@ def directory_seeds(soup):
 
 def discover(row, page_limit=12):
     result = {'commune_bfs': row['commune_bfs'], 'directory_url': row['directory_url'],
-              'pages': [], 'candidates': [], 'errors': [], 'website_url': None}
+              'pages': [], 'candidates': [], 'errors': [], 'website_url': None, 'page_budget': page_limit}
     if not row['directory_url']:
         result['errors'].append({'stage': 'seed', 'error': 'directory_name_unmatched'})
         return result
@@ -211,8 +211,10 @@ def run(args):
         with conn, conn.cursor(cursor_factory=RealDictCursor) as cur:
             cur.execute('''SELECT q.* FROM bronze_ch.vd_pdcom_discovery_queue q JOIN bronze_ch.vd_pdcom_communes c USING(commune_bfs)
             WHERE c.is_current AND (q.next_attempt_at<=now() OR
-            (%s AND q.attempt_count<2 AND q.status IN ('manual_search_required','blocked','candidates_found')))
-            ORDER BY q.attempt_count,q.commune_bfs LIMIT %s''', (getattr(args,'backlog',False),args.limit))
+            (%s AND q.status IN ('manual_search_required','blocked','candidates_found')
+              AND NOT EXISTS (SELECT 1 FROM bronze_ch.vd_pdcom_discovery_attempts a
+                WHERE a.commune_bfs=q.commune_bfs AND COALESCE((a.evidence->>'page_budget')::integer,0)>=%s)))
+            ORDER BY q.attempt_count,q.commune_bfs LIMIT %s''', (getattr(args,'backlog',False),args.pages,args.limit))
             rows = cur.fetchall()
         results = []
         with ThreadPoolExecutor(max_workers=args.workers) as executor:
