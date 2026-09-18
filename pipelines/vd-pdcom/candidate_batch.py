@@ -61,7 +61,7 @@ def run(args):
         with conn.cursor(cursor_factory=RealDictCursor) as c:
             c.execute('''SELECT s.* FROM bronze_ch.vd_pdcom_source_candidates s
               JOIN bronze_ch.vd_pdcom_communes c USING(commune_bfs)
-              WHERE c.is_current AND s.kind='pdf' AND s.review_status='pending'
+              WHERE c.is_current AND (s.kind='pdf' OR s.source_url ~ '/_doc/[0-9]+$' OR s.source_url ~ '/[Nn][0-9]+/plan-directeur-communal[.]html$') AND s.review_status='pending'
               AND NOT EXISTS(SELECT 1 FROM bronze_ch.vd_pdcom_documents d WHERE d.source_url=s.source_url)
               AND NOT EXISTS(SELECT 1 FROM bronze_ch.vd_pdcom_discovery_attempts a,
                 jsonb_array_elements(COALESCE(a.evidence->'documents','[]'::jsonb)) x

@@ -55,7 +55,7 @@ class DiscoveryContracts(unittest.TestCase):
         by_url={c['source_url']:c for c in result['candidates']}
         self.assertIn('https://www.example.ch/_rte/publikation/123',by_url)
         self.assertEqual(by_url['https://www.example.ch/_doc/456']['evidence_url'],'https://www.example.ch/formulaires/123')
-        self.assertEqual(by_url['https://www.example.ch/_doc/456']['kind'],'landing')
+        self.assertEqual(by_url['https://www.example.ch/_doc/456']['kind'],'pdf')
         self.assertEqual(result['errors'],[])
 
     def test_embedded_regulation_is_not_pdcom(self):
@@ -121,3 +121,8 @@ class DiscoveryContracts(unittest.TestCase):
         self.assertEqual(urls,expected)
         self.assertTrue(all(c['review_status']=='pending' for c in result['candidates']))
         self.assertFalse(discovery.PLAN.search('dossier de construction'))
+
+    def test_opaque_download_is_pdf_candidate(self):
+        page=BeautifulSoup('<a href="/_doc/5434054">PDCom - Plan Directeur Communal</a>','html.parser')
+        result=self.crawl_home(page)
+        self.assertEqual(result['candidates'][0]['kind'],'pdf')
