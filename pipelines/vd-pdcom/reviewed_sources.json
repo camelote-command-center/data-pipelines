@@ -849,5 +849,65 @@
     "title": "Mesures d’aménagement",
     "plan_status": "unverified",
     "scope": "communal"
+  },
+  {
+    "candidate_id": "a7d618da-8062-4e27-97cd-186be66968b0",
+    "commune_bfs": 5709,
+    "commune_name": "Chéserex",
+    "pdf_url": "https://cheserex.ch/uploads/c5850a4adc647f9622e2785b050d8ca8/documents/rgl_plan-directeur_cahpitre-1-2_1582555156.pdf",
+    "landing_url": "https://cheserex.ch/reglements-communaux",
+    "title": "PDCom 2008 — Chapitres 1 et 2",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "1e0bd950-8a28-4d44-948f-a802d08ec3be",
+    "commune_bfs": 5709,
+    "commune_name": "Chéserex",
+    "pdf_url": "https://cheserex.ch/uploads/c5850a4adc647f9622e2785b050d8ca8/documents/rgl_plan-directeur_cahpitre-3_1582556122.pdf",
+    "landing_url": "https://cheserex.ch/reglements-communaux",
+    "title": "PDCom 2008 — Chapitre 3",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "a6d06f66-e1b4-46d2-88f5-7126741531b1",
+    "commune_bfs": 5709,
+    "commune_name": "Chéserex",
+    "pdf_url": "https://cheserex.ch/uploads/c5850a4adc647f9622e2785b050d8ca8/documents/rgl_plan-directeur_cahpitre-4_1582556016.pdf",
+    "landing_url": "https://cheserex.ch/reglements-communaux",
+    "title": "PDCom 2008 — Chapitre 4",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "73d075dd-3881-48e7-8dc2-c33b3c6485c9",
+    "commune_bfs": 5709,
+    "commune_name": "Chéserex",
+    "pdf_url": "https://cheserex.ch/uploads/c5850a4adc647f9622e2785b050d8ca8/documents/rgl_plan-directeur_cahpitre-7_1582555209.pdf",
+    "landing_url": "https://cheserex.ch/reglements-communaux",
+    "title": "PDCom 2008 — Chapitre 7",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "7114a342-4228-486b-93c3-c71a897aa8e1",
+    "commune_bfs": 5709,
+    "commune_name": "Chéserex",
+    "pdf_url": "https://cheserex.ch/uploads/c5850a4adc647f9622e2785b050d8ca8/documents/rgl_plan-directeur_cahpitre-8_1582612283.pdf",
+    "landing_url": "https://cheserex.ch/reglements-communaux",
+    "title": "PDCom 2008 — Chapitre 8",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "f7a4f900-9303-49ad-b169-0dae14cb24b2",
+    "commune_bfs": 5709,
+    "commune_name": "Chéserex",
+    "pdf_url": "https://cheserex.ch/uploads/c5850a4adc647f9622e2785b050d8ca8/documents/42_1694000531.pdf",
+    "landing_url": "https://cheserex.ch/reglements-communaux",
+    "title": "PDCom 2008 — Chapitres 5 et 6",
+    "plan_status": "unverified",
+    "scope": "communal"
   }
 ]

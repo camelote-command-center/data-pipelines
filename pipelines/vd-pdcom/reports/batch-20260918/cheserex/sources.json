@@ -1,0 +1,50 @@
+{
+  "ids": {
+    "operation": "d33e5b24-925f-4a44-82c9-500191a43783",
+    "checkpoint": "6db9459b-2b6b-489e-93eb-7331c2fe1f32"
+  },
+  "documents": [
+    {
+      "document_id": "ebc41899-fd3e-5311-bd5a-67068362c6dc",
+      "sha256": "151290c593fb7457ad0a0ba24bcb86df027910f830e598ea77ce8f670216e5fe",
+      "pages": 15,
+      "title": "Chapitres 1 et 2",
+      "url": "https://cheserex.ch/uploads/c5850a4adc647f9622e2785b050d8ca8/documents/rgl_plan-directeur_cahpitre-1-2_1582555156.pdf"
+    },
+    {
+      "document_id": "89e3e24d-f35f-53a5-87a8-e3447cbf25f6",
+      "sha256": "80fec1f352b33e946d708e2aebb0719d0f8c3e2a9e34fc305525f56cc2e02f0f",
+      "pages": 17,
+      "title": "Chapitre 3",
+      "url": "https://cheserex.ch/uploads/c5850a4adc647f9622e2785b050d8ca8/documents/rgl_plan-directeur_cahpitre-3_1582556122.pdf"
+    },
+    {
+      "document_id": "9d099a53-5a8a-5af2-bf71-b77ad8efd9a7",
+      "sha256": "dda944ef662952fc1c9e7e00165b904cf19bc7ff77b853b51112e1d4c77bc2ad",
+      "pages": 9,
+      "title": "Chapitre 4",
+      "url": "https://cheserex.ch/uploads/c5850a4adc647f9622e2785b050d8ca8/documents/rgl_plan-directeur_cahpitre-4_1582556016.pdf"
+    },
+    {
+      "document_id": "b85c1d77-df93-5bf1-98eb-f24b5d8dd756",
+      "sha256": "89a4b6523665a3f5d97e8402cc2ee286306df1255d77470cc9981d737e6d137c",
+      "pages": 17,
+      "title": "Chapitre 7",
+      "url": "https://cheserex.ch/uploads/c5850a4adc647f9622e2785b050d8ca8/documents/rgl_plan-directeur_cahpitre-7_1582555209.pdf"
+    },
+    {
+      "document_id": "4ebe803f-99b3-5f72-9718-e27b3de4b84f",
+      "sha256": "c5717548238ea4361a4194b511da062f52ecf1c819b895fc196193d02627fd13",
+      "pages": 45,
+      "title": "Chapitre 8",
+      "url": "https://cheserex.ch/uploads/c5850a4adc647f9622e2785b050d8ca8/documents/rgl_plan-directeur_cahpitre-8_1582612283.pdf"
+    },
+    {
+      "document_id": "2c9720c3-a66d-5cb7-a59c-cbf740ee1a99",
+      "sha256": "b10bec0cee761e404fa9da57f92a56596e25ee2937bacd9bc8005bf4c4ffd7e0",
+      "pages": 19,
+      "title": "Chapitres 5 et 6",
+      "url": "https://cheserex.ch/uploads/c5850a4adc647f9622e2785b050d8ca8/documents/42_1694000531.pdf"
+    }
+  ]
+}
