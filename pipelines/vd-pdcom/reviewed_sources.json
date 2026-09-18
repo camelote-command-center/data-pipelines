@@ -909,5 +909,35 @@
     "title": "PDCom 2008 — Chapitres 5 et 6",
     "plan_status": "unverified",
     "scope": "communal"
+  },
+  {
+    "candidate_id": "b32fdcbc-a7d0-4624-a05d-30e6ec78782f",
+    "commune_bfs": 5607,
+    "commune_name": "Puidoux",
+    "pdf_url": "https://www.puidoux.ch/_doc/5434054",
+    "landing_url": "https://www.puidoux.ch/PDCom/527020",
+    "title": "PDCom Puidoux",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "acf22653-d86d-4187-82f6-89b4398cf997",
+    "commune_bfs": 5851,
+    "commune_name": "Allaman",
+    "pdf_url": "https://www.allaman.ch/_doc/2919188",
+    "landing_url": "https://www.allaman.ch/urbanisme",
+    "title": "PDCom Allaman",
+    "plan_status": "unverified",
+    "scope": "communal"
+  },
+  {
+    "candidate_id": "42890ea3-0cfa-4997-bc0f-102125162bff",
+    "commune_bfs": 5711,
+    "commune_name": "Commugny",
+    "pdf_url": "https://www.commugny.ch/N5539/plan-directeur-communal.html",
+    "landing_url": "https://www.commugny.ch/N5539/plan-directeur-communal.html",
+    "title": "PDCom Commugny",
+    "plan_status": "unverified",
+    "scope": "communal"
   }
 ]

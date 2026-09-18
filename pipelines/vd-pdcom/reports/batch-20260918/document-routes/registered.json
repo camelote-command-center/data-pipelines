@@ -1,0 +1,29 @@
+{
+  "ids": {
+    "operation": "fd9ec20a-a46c-46a4-8ba0-2860f3971905",
+    "checkpoint": "be298f6e-00d8-4c6f-a0bc-28d040433c94"
+  },
+  "documents": [
+    {
+      "document_id": "896b38ec-fef9-5f88-9ccd-345d17adf737",
+      "commune_bfs": 5607,
+      "sha256": "8cd5586803b24104aa1afa42e22b229ca3460fcdc01248f22c69410949c6769e",
+      "pages": 74,
+      "source_url": "https://www.puidoux.ch/_doc/5434054"
+    },
+    {
+      "document_id": "904b343d-c730-5541-adbd-96150c95a4a2",
+      "commune_bfs": 5851,
+      "sha256": "f8c89a783271df54831de5fb3800c5bb51bd06610203d10be1c4aec2be463261",
+      "pages": 99,
+      "source_url": "https://www.allaman.ch/_doc/2919188"
+    },
+    {
+      "document_id": "de0b18ef-3ae2-5471-bf05-0b92cf0669a1",
+      "commune_bfs": 5711,
+      "sha256": "c989b4459ba85d4d15dd1034aa1a94fff90d1f3ad3819f4744de4dc3a0202faf",
+      "pages": 122,
+      "source_url": "https://www.commugny.ch/N5539/plan-directeur-communal.html"
+    }
+  ]
+}

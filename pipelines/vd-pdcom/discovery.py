@@ -169,7 +169,7 @@ def discover(row, page_limit=12):
                 is_download = parsed.path.lower().endswith('.pdf') or bool(re.fullmatch(r'/_doc/\d+', parsed.path))
                 if PLAN.search(text) or (page_is_plan and is_download):
                     candidates[target] = {'source_url': target, 'evidence_url': url, 'link_text': label,
-                                          'kind': 'pdf' if parsed.path.lower().endswith('.pdf') else 'landing',
+                                          'kind': 'pdf' if is_download else 'landing',
                                           'review_status': 'pending'}
                 if parsed.hostname == host and not is_download and not re.search(r'\.(pdf|zip|docx?|xlsx?|jpg|png)$', parsed.path, re.I) and NAV.search(text) and target not in seen and all(item[0] != target for item in queue):
                     queue.append((target, None, None))
