@@ -210,7 +210,9 @@ def run(args):
                 VALUES (%s,%s) ON CONFLICT(commune_bfs) DO UPDATE SET directory_url=excluded.directory_url''', (bfs, seeds.get(normalize(name))))
         with conn, conn.cursor(cursor_factory=RealDictCursor) as cur:
             cur.execute('''SELECT q.* FROM bronze_ch.vd_pdcom_discovery_queue q JOIN bronze_ch.vd_pdcom_communes c USING(commune_bfs)
-            WHERE c.is_current AND q.next_attempt_at<=now() ORDER BY q.attempt_count,q.commune_bfs LIMIT %s''', (args.limit,))
+            WHERE c.is_current AND (q.next_attempt_at<=now() OR
+            (%s AND q.attempt_count<2 AND q.status IN ('manual_search_required','blocked','candidates_found')))
+            ORDER BY q.attempt_count,q.commune_bfs LIMIT %s''', (getattr(args,'backlog',False),args.limit))
             rows = cur.fetchall()
         results = []
         with ThreadPoolExecutor(max_workers=args.workers) as executor:
@@ -220,7 +222,7 @@ def run(args):
                 bfs = result['commune_bfs']
                 status = 'candidates_found' if result['candidates'] else ('blocked' if not result['website_url'] else 'manual_search_required')
                 # Exhausted bounded crawl is manual review, not verified absence.
-                retry_days = 7 if status == 'blocked' else 365
+                retry_days = 7 if status == 'blocked' else (30 if status == 'manual_search_required' else 365)
                 with conn, conn.cursor() as cur:
                     cur.execute('''INSERT INTO bronze_ch.vd_pdcom_discovery_attempts(operation_id,commune_bfs,outcome,evidence)
                     VALUES(%s,%s,%s,%s)''', (operation, bfs, status, Json(result)))
@@ -261,6 +263,7 @@ if __name__ == '__main__':
     parser.add_argument('--pages',type=int,default=12)
     parser.add_argument('--output',type=Path,default=Path('vd-pdcom-output'))
     parser.add_argument('--monitor',action='store_true')
+    parser.add_argument('--backlog',action='store_true',help='Run one deeper second pass before normal recurrence')
     args = parser.parse_args()
     if args.monitor:
         from parser import Monitor

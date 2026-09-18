@@ -45,12 +45,16 @@ jobs:
         env:
           RE_LLM_DB_URL: ${{ secrets.RE_LLM_DB_URL }}
         run: python pipelines/vd-pdcom/cadastral_types.py
-      - name: Resume municipal source discovery (30 due communes)
+      - name: Resume municipal discovery and unresolved second-pass backlog
         env:
           RE_LLM_DB_URL: ${{ secrets.RE_LLM_DB_URL }}
           CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
           CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
-        run: python pipelines/vd-pdcom/discovery.py --limit 30 --workers 4 --monitor
+        run: python pipelines/vd-pdcom/discovery.py --limit 60 --workers 8 --pages 40 --backlog --monitor
+      - name: Batch extract unreviewed PDF candidates
+        env:
+          RE_LLM_DB_URL: ${{ secrets.RE_LLM_DB_URL }}
+        run: python pipelines/vd-pdcom/candidate_batch.py --limit 100 --workers 4
       - name: Verify private Lamap review delivery
         env:
           RE_LLM_DB_URL: ${{ secrets.RE_LLM_DB_URL }}
