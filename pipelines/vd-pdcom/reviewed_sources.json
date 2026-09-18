@@ -1144,5 +1144,115 @@
       "evidence_operation": "c56612e5-8ded-4897-8379-781df4cb39bc",
       "approval_note": "Operational measures PDF5 stamped19January2022; attachment version linkage remains under review."
     }
+  },
+  {
+    "commune_bfs": 5624,
+    "commune_bfs_list": [
+      5624,
+      5583
+    ],
+    "pdf_url": "https://www.bussigny.ch/images/Urbanisme/Plans-R%C3%A8glements/PDL_Arc-en-Ciel_plan.pdf",
+    "landing_url": "https://www.bussigny.ch/ma-commune/reglements/plans-d-affectation",
+    "title": "Plan - PDL Arc-en-Ciel",
+    "plan_status": "unverified",
+    "scope": "intercommunal",
+    "enumerate_vectors": false,
+    "source_review": {
+      "operation_id": "e4f227a1-0972-416a-8cf6-eba3b5b63664",
+      "full_communal_coverage": false,
+      "geometry_delivery": false,
+      "currentness": "unresolved",
+      "scope": "Partial local director plan; not complete communal coverage.",
+      "approval_note": "Map approval fields blank; report September2009. Official SDOL states adopted late2009, cantonal ratification spring2010. Canton25August2021 explicitly modifies this PDL through PDi-OL; exact geometry/version linkage required.",
+      "semantics": "Mixed-use development sectors, mandatory public spaces and indicative places distinguished. LV03 grid ticks available for subsequent alignment; no fitted geometry delivered.",
+      "status_evidence_url": "https://www.vd.ch/actualites/decisions-du-conseil-detat/seance-du-conseil-detat/decision/id/7e3150b5-5afc-4991-8a6a-f4a5033e22b4"
+    }
+  },
+  {
+    "commune_bfs": 5624,
+    "commune_bfs_list": [
+      5624,
+      5583
+    ],
+    "pdf_url": "https://www.bussigny.ch/images/Urbanisme/Plans-R%C3%A8glements/PDL_Arc-en-Ciel_rapport.pdf",
+    "landing_url": "https://www.bussigny.ch/ma-commune/reglements/plans-d-affectation",
+    "title": "Rapport - PDL Arc-en-Ciel",
+    "plan_status": "unverified",
+    "scope": "intercommunal",
+    "enumerate_vectors": false,
+    "source_review": {
+      "operation_id": "e4f227a1-0972-416a-8cf6-eba3b5b63664",
+      "full_communal_coverage": false,
+      "geometry_delivery": false,
+      "currentness": "unresolved",
+      "scope": "Partial local director plan; not complete communal coverage.",
+      "approval_note": "Map approval fields blank; report September2009. Official SDOL states adopted late2009, cantonal ratification spring2010. Canton25August2021 explicitly modifies this PDL through PDi-OL; exact geometry/version linkage required.",
+      "semantics": "Mixed-use development sectors, mandatory public spaces and indicative places distinguished. LV03 grid ticks available for subsequent alignment; no fitted geometry delivered.",
+      "status_evidence_url": "https://www.vd.ch/actualites/decisions-du-conseil-detat/seance-du-conseil-detat/decision/id/7e3150b5-5afc-4991-8a6a-f4a5033e22b4"
+    }
+  },
+  {
+    "commune_bfs": 5624,
+    "commune_bfs_list": [
+      5624
+    ],
+    "pdf_url": "https://www.bussigny.ch/images/2025-01/Bussigny_PDL_-_Plan_directeur_localisé_Cocagne-Buyère_126936_Plan.pdf",
+    "landing_url": "https://www.bussigny.ch/ma-commune/reglements/plans-d-affectation",
+    "title": "Plan – PDL Cocagne-Buyère",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "enumerate_vectors": false,
+    "source_review": {
+      "operation_id": "e4f227a1-0972-416a-8cf6-eba3b5b63664",
+      "full_communal_coverage": false,
+      "geometry_delivery": false,
+      "currentness": "unresolved",
+      "scope": "Partial local director plan; not complete communal coverage.",
+      "approval_note": "Plan and report last page visibly signed: municipal2December2013, council1April2014, Canton28May2014. 2025upload is not adoption date. Later implementation/current remaining capacity unverified.",
+      "semantics": "S1Buyere mixed activities/housing; S2Praz-Megy tertiary; S3Quinson tertiary/public. Historical parcels and SPd maxima are not remaining capacity. SDOL documents Veillon and Cocoon implementation projects; current state requires validation.",
+      "status_evidence_url": "https://ouest-lausannois.ch/projet/cocagne-buyere/"
+    }
+  },
+  {
+    "commune_bfs": 5624,
+    "commune_bfs_list": [
+      5624
+    ],
+    "pdf_url": "https://www.bussigny.ch/images/2025-01/Bussigny_PDL_-_Plan_directeur_localis%C3%A9_Cocagne-Buy%C3%A8re_Rapport.pdf",
+    "landing_url": "https://www.bussigny.ch/ma-commune/reglements/plans-d-affectation",
+    "title": "Rapport – PDL Cocagne-Buyère",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "enumerate_vectors": false,
+    "source_review": {
+      "operation_id": "e4f227a1-0972-416a-8cf6-eba3b5b63664",
+      "full_communal_coverage": false,
+      "geometry_delivery": false,
+      "currentness": "unresolved",
+      "scope": "Partial local director plan; not complete communal coverage.",
+      "approval_note": "Plan and report last page visibly signed: municipal2December2013, council1April2014, Canton28May2014. 2025upload is not adoption date. Later implementation/current remaining capacity unverified.",
+      "semantics": "S1Buyere mixed activities/housing; S2Praz-Megy tertiary; S3Quinson tertiary/public. Historical parcels and SPd maxima are not remaining capacity. SDOL documents Veillon and Cocoon implementation projects; current state requires validation.",
+      "status_evidence_url": "https://ouest-lausannois.ch/projet/cocagne-buyere/"
+    }
+  },
+  {
+    "commune_bfs": 5613,
+    "pdf_url": "https://www.b-e-l.ch/documents/2387/10-2025-annexes.zip",
+    "archive_member": "10-2025-annexes/01-PDCom/PDCom_v20-CC.pdf",
+    "landing_url": "https://www.b-e-l.ch/fr/officiel/conseil-communal/séances-du-conseil",
+    "title": "Bourg-en-Lavaux PDCom — 1 septembre 2025, dossier Conseil communal",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "enumerate_vectors": false,
+    "source_review": {
+      "operation_id": "b83c85c3-055c-4672-9d84-dae7c755b67e",
+      "edition": "1September2025, pre-council version20",
+      "adoption": "Council6October2025 adopted as modified; exact amendments and cantonal approval unresolved. Blank signature fields in PDF3.",
+      "status_evidence_url": "https://www.b-e-l.ch/documents/2507/Extrait_PV_Pr%C3%A9avis_10-2025_PDCom.pdf",
+      "currentness": "unresolved",
+      "geometry_delivery": false,
+      "complete_coverage": false,
+      "semantics": "Existing built fabric, heritage, public-space projects and mobility distinguished. Chincu is a proposed public facility requiring rezoning, not residential capacity. Seven site alternatives include rejected/unavailable locations; not seven proposed developments."
+    }
   }
 ]

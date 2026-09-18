@@ -5,6 +5,8 @@ successful PDF download advances a commune to validated or delivery verified.
 """
 import argparse
 import hashlib
+import io
+import zipfile
 import json
 import os
 from pathlib import Path
@@ -22,13 +24,13 @@ from discovery import public_url
 ROOT=Path(__file__).resolve().parent
 
 
-def download(url,max_bytes=100_000_000,max_seconds=180):
+def download(url,max_bytes=100_000_000,max_seconds=180, *, archive=False):
     """Retry bounded transient GET failures, preserving redirect and size guards."""
     deadline=time.monotonic()+max_seconds
     for attempt in range(3):
         if time.monotonic()>=deadline:raise requests.Timeout("pdf_download_deadline")
         try:
-            return _download_once(url,max_bytes,deadline)
+            return _download_once(url,max_bytes,deadline,archive=True) if archive else _download_once(url,max_bytes,deadline)
         except (requests.Timeout,requests.ConnectionError,requests.HTTPError,requests.exceptions.ChunkedEncodingError) as exc:
             response=getattr(exc,'response',None)
             status=response.status_code if response is not None else None
@@ -39,7 +41,7 @@ def download(url,max_bytes=100_000_000,max_seconds=180):
             time.sleep(delay)
 
 
-def _download_once(url,max_bytes=100_000_000,deadline=None):
+def _download_once(url,max_bytes=100_000_000,deadline=None, *, archive=False):
     if deadline is None:deadline=time.monotonic()+180
     host=urlsplit(url).hostname
     for _ in range(5):
@@ -56,9 +58,36 @@ def _download_once(url,max_bytes=100_000_000,deadline=None):
                 if time.monotonic()>=deadline:raise requests.Timeout("pdf_download_deadline")
                 data.extend(chunk)
                 if len(data)>max_bytes:raise ValueError('pdf_size_limit')
-            if not data.startswith(b'%PDF'):raise ValueError('response_not_pdf')
+            if not data.startswith(b'PK\x03\x04' if archive else b'%PDF'):
+                raise ValueError('response_not_zip' if archive else 'response_not_pdf')
             return bytes(data)
     raise ValueError('redirect_limit')
+
+
+def extract_archive_member(data, member, max_bytes=100_000_000):
+    """Read exactly one reviewed PDF member in memory; never extract paths to disk."""
+    if not isinstance(member,str) or not member or member.startswith('/') or '..' in member.split('/'):
+        raise ValueError('invalid_archive_member')
+    with zipfile.ZipFile(io.BytesIO(data)) as archive:
+        matches=[info for info in archive.infolist() if info.filename==member]
+        if len(matches)!=1:raise ValueError('archive_member_missing_or_ambiguous')
+        info=matches[0]
+        if info.is_dir() or info.flag_bits & 1:raise ValueError('unsupported_archive_member')
+        if info.file_size>max_bytes:raise ValueError('archive_member_size_limit')
+        with archive.open(info) as stream:pdf=stream.read(max_bytes+1)
+        if len(pdf)>max_bytes:raise ValueError('archive_member_size_limit')
+        if not pdf.startswith(b'%PDF'):raise ValueError('archive_member_not_pdf')
+        return pdf
+
+
+def acquire(source):
+    member=source.get('archive_member')
+    if member is None:
+        return download(source['pdf_url'],source.get('max_bytes',100_000_000)),None
+    data=download(source['pdf_url'],source.get('max_archive_bytes',100_000_000),archive=True)
+    pdf=extract_archive_member(data,member,source.get('max_bytes',100_000_000))
+    return pdf,{'archive_url':source['pdf_url'],'archive_sha256':hashlib.sha256(data).hexdigest(),
+                'archive_member':member,'member_sha256':hashlib.sha256(pdf).hexdigest()}
 
 
 def inspect(data, *, enumerate_vectors=True):
@@ -121,9 +150,10 @@ def run(args):
     try:
         for source in sources:
             try:
-                data=download(source['pdf_url'],source.get('max_bytes',100_000_000));sha=hashlib.sha256(data).hexdigest()
+                data,archive_evidence=acquire(source);sha=hashlib.sha256(data).hexdigest()
                 enumerate_vectors=source.get('enumerate_vectors',True)
                 pages=inspect(data,enumerate_vectors=enumerate_vectors)
+                if archive_evidence and pages:pages[0]['archive_evidence']=archive_evidence
                 if source.get('source_review') and pages:
                     pages[0]['source_review']=source['source_review']
                 name=f"{source['commune_bfs']}-{sha[:12]}"

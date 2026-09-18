@@ -146,3 +146,9 @@ regional tourism above the upper vineyard limit, not complete communal PDComs.
 Source review metadata persists on newly encountered versions. Existing inspected
 versions and manual research remain preserved. These sources participate in the
 existing annual/full acquisition, without an additional workflow or schedule.
+
+### Reviewed archive sources
+
+Official ZIP bundles may register an exact `archive_member` alongside `pdf_url` (the archive URL). Only that reviewed PDF is read, in memory. The download retains the existing public URL/redirect/deadline checks; `max_archive_bytes` limits the archive and `max_bytes` limits the uncompressed PDF (both default100MB). Missing, duplicate, encrypted, oversized and non-PDF members fail acquisition. The first page inspection records archive URL/hash, exact member name and extracted PDF hash. A changed member name requires review; the parser never chooses an alternative automatically.
+
+The September2025 Bourg-en-Lavaux source is a pre-council edition from an official annex bundle. Council6October2025 adopted the PDCom **as modified**: exact amendment linkage and cantonal approval remain unresolved. Arc-en-Ciel and Cocagne-Buyere are partial local plans, not full communal coverage; retain their version/currentness notes. Five reviewed source additions are included in the existing annual acquisition route without another workflow.
