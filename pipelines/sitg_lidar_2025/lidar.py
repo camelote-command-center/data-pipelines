@@ -76,15 +76,24 @@ def plan(communes):
 
 
 def stats(copc):
-    m = json.loads(subprocess.run(["pdal", "info", "--stats", "--enumerate", "Classification", copc],
-                                  check=True, capture_output=True, text=True).stdout)
-    st = {s["name"]: s for s in m["stats"]["statistic"]}
+    """Point count, Z range, RGB presence and PER-CLASS POINT COUNTS.
+
+    `pdal info --enumerate Classification` returns only the list of classes present, not how
+    many points each holds — the first Genève-Cité run stored {} on all 70 rows because of it.
+    filters.stats with count=Classification is the option that yields "<class>/<n>" pairs."""
+    pipe = [{"type": "readers.copc", "filename": copc},
+            {"type": "filters.stats", "dimensions": "Z,Red,Classification", "count": "Classification"}]
+    r = subprocess.run(["pdal", "pipeline", "--stdin", "--metadata", "STDOUT"], input=json.dumps(pipe),
+                       capture_output=True, text=True, check=True)
+    meta = json.loads(r.stdout)
+    st = {d["name"]: d for d in meta["stages"]["filters.stats"]["statistic"]}
     counts = {}
     for c in st["Classification"].get("counts", []):
         k, v = c.split("/"); counts[str(int(float(k)))] = int(v)
-    n = int(st["X"]["count"])
-    return {"points": n, "z_min": st["Z"]["minimum"], "z_max": st["Z"]["maximum"],
-            "has_rgb": "Red" in st and st["Red"]["maximum"] > 0, "class_counts": counts}
+    if not counts:
+        sys.exit(f"{copc}: no per-class counts returned — refusing to store an empty class_counts")
+    return {"points": int(st["Z"]["count"]), "z_min": st["Z"]["minimum"], "z_max": st["Z"]["maximum"],
+            "has_rgb": st["Red"]["maximum"] > 0, "class_counts": counts}
 
 
 def fetch(shard, nshards):
