@@ -40,12 +40,24 @@ def out(k, v):
 
 
 def ogr(dest, layer, sql):
-    r = subprocess.run(["ogr2ogr", "-f", "GPKG", dest, f"PG:{PG}", "-nln", layer, "-nlt", "MULTIPOLYGON",
-                        "-a_srs", "EPSG:2056", "-lco", "SPATIAL_INDEX=YES", "-overwrite", "-sql", sql],
+    """Export via psql -> GeoJSONSeq -> ogr2ogr (file to file).
+
+    ogr2ogr reading PostgreSQL directly broke on the CI runner's older GDAL: its second connection
+    issued SET search_path TO "" ("zero-length delimited identifier"), after which ST_MakeValid could
+    not be found. Streaming GeoJSON from psql removes GDAL from the database path entirely."""
+    seq = dest + ".geojsonl"
+    copy = f"COPY (SELECT ST_AsGeoJSON(t.*)::text FROM ({sql}) t) TO STDOUT"
+    with open(seq, "w") as fh:
+        r = subprocess.run(["psql", PG, "-v", "ON_ERROR_STOP=1", "-q", "-c", copy], stdout=fh, stderr=subprocess.PIPE,
+                           text=True, env={**os.environ, "PGOPTIONS": "-c client_min_messages=error"})
+    if r.returncode:
+        sys.exit(f"export failed for {dest}: {r.stderr[-1500:]}")
+    r = subprocess.run(["ogr2ogr", "-f", "GPKG", dest, seq, "-nln", layer, "-nlt", "MULTIPOLYGON",
+                        "-s_srs", "EPSG:2056", "-a_srs", "EPSG:2056", "-lco", "SPATIAL_INDEX=YES", "-overwrite"],
                        capture_output=True, text=True)
     if r.returncode:
-        # surface ogr2ogr's own message; a bare CalledProcessError hid the cause on the first CI run
         sys.exit(f"ogr2ogr failed for {dest}: {(r.stderr or r.stdout)[-1500:]}")
+    os.remove(seq)
     print(f"  wrote {dest}", flush=True)
 
 
