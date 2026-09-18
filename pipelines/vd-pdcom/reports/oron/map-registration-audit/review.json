@@ -1,0 +1,57 @@
+{
+  "source_sha256": "f6c73677a1940ff8529d795c60f375b2270a5f124ad946bf6bb14ca987eb7680",
+  "pdf_page": 177,
+  "path_index": 10342,
+  "path_item_count": 1727,
+  "unique_vertices": 2280,
+  "pdf_bounds": [
+    171.47488403320312,
+    38.54425048828125,
+    1019.074951171875,
+    803.34423828125
+  ],
+  "reference_bounds_lv95": [
+    2549181.26,
+    1152933.613,
+    2556535.058,
+    1159568.899
+  ],
+  "coordinate_method": "North-up independent x/y bbox scaling to current commune bounds; candidate boundary matching only.",
+  "affine_x_y_1_to_e_n": [
+    [
+      8.67602338072644,
+      0,
+      2547693.5398969203
+    ],
+    [
+      0,
+      -8.675844803747893,
+      1159903.3029353132
+    ]
+  ],
+  "diagnostics": {
+    "same_boundary_vertex_distance_rmse_m": 0.37600163003209736,
+    "median_m": 0.26398576474999713,
+    "max_m": 2.028917211494512,
+    "scale_x_m_per_pt": 8.67602338072644,
+    "scale_y_m_per_pt": 8.675844803747893
+  },
+  "status": "provisional_boundary_fit_not_independent_accuracy",
+  "limits": [
+    "Bounding boxes set scale/translation; same-boundary distances are not holdout validation.",
+    "Path identity candidate checked geometrically; no surveyed accuracy.",
+    "Environmental map page177 is separate from urbanisation raster page77; no transform transfer.",
+    "No sector geometry or parcel delivery."
+  ],
+  "building_diagnostics": {
+    "candidate_count": 1563,
+    "skipped": {
+      "non_line": 75,
+      "disjoint_or_short": 1
+    },
+    "centroid_distance_median_m": 1.9483489227678323,
+    "median_iou": 0.5882408762052672,
+    "strong_count_iou_ge_085_distance_le_5": 28,
+    "limits": "Automated nearest-centroid diagnostic on selected gray paths, not verified individual identities or training/refinement. All mismatches retained. No transfer to page77."
+  }
+}
