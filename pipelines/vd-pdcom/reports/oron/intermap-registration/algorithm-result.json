@@ -1,0 +1,34 @@
+{
+  "source_sha256": "f6c73677a1940ff8529d795c60f375b2270a5f124ad946bf6bb14ca987eb7680",
+  "source_page": 77,
+  "target_page": 177,
+  "render_scale": 2,
+  "algorithm": "SIFT8000, ratio<0.7; SHA256 coordinate-pair modulo3 reserved checks before RANSAC fit; RNGseed5805, train-only RANSAC3px, no post-check adjustment.",
+  "opencv_version": "5.0.0",
+  "matches": 240,
+  "fit_count": 153,
+  "fit_inliers": 142,
+  "check_count": 87,
+  "check_within_3px": 76,
+  "all_check_median_pixels": 0.3610645521652121,
+  "accepted_check_rmse_pixels": 0.5021917412647184,
+  "affine_pdf77_to_pdf177": [
+    [
+      0.9796477827419079,
+      -0.007605894442927335,
+      50.84210271521131
+    ],
+    [
+      0.007699298646251865,
+      0.9763657375832379,
+      5.624311368138289
+    ]
+  ],
+  "status": "provisional_intermap_registration_not_ground_accuracy",
+  "limits": [
+    "SIFT correspondences may share features/correlated locations; checks are not independent ground controls.",
+    "All check residuals preserved including rejected descriptor matches.",
+    "Composed geographic accuracy inherits unresolved environment-map reference/generalisation error.",
+    "No sector geographic geometry or runtime delivery."
+  ]
+}
