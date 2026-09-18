@@ -1,0 +1,11 @@
+import pathlib,json,numpy as np,pymupdf
+p=pathlib.Path(__file__).resolve().parent.parent;q=p/'footprint-diagnostics';q.mkdir(exist_ok=True)
+r=json.loads((p/'map-registration-audit/review.json').read_text());checks=json.loads((p/'map-registration-audit/building-checks.json').read_text())['checks'];refs={f['attributes']['OBJECTID']:f for f in json.loads((p/'official-controls/footprints.json').read_text())['features']};a=np.array(r['affine_x_y_1_to_e_n']);inv=np.linalg.inv(a[:,:2]);ratios=np.array([c['source_area_m2']/c['reference_area_m2'] for c in checks]);ordered=sorted(checks,key=lambda c:(c['iou'],c['path_index']));chosen=[ordered[int((len(ordered)-1)*x)] for x in [0,.1,.25,.5,.75,1]];panels=[]
+raw=str(p/'recovered-source/report.pdf')
+for rank,c in enumerate(chosen):
+ d=pymupdf.open(raw);pg=d[176];pa=pg.get_drawings()[c['path_index']];rect=pa['rect'];clip=pymupdf.Rect(rect.x0-10,rect.y0-10,rect.x1+10,rect.y1+10)
+ for ring in refs[c['nearest_objectid']]['geometry']['rings']:
+  xy=(np.array(ring)-a[:,2])@inv.T;pg.draw_polyline([pymupdf.Point(*v) for v in xy],color=(1,0,1),width=.2)
+ for item in pa['items']:pg.draw_line(item[1],item[2],color=(0,0,1),width=.2)
+ filename=f'case-{rank+1}.png';pg.get_pixmap(matrix=pymupdf.Matrix(10,10),clip=clip).save(q/filename);panels.append({**c,'panel':filename,'source_pdf_rect':list(rect),'clip':list(clip),'area_ratio':c['source_area_m2']/c['reference_area_m2']})
+summary={'source_sha256':r['source_sha256'],'population':len(checks),'area_ratio_percentiles':dict(zip(['p10','p25','p50','p75','p90'],np.percentile(ratios,[10,25,50,75,90]).tolist())),'source_larger_count':int(sum(ratios>1)),'centroid_le_5m_count':sum(c['centroid_distance_m']<=5 for c in checks),'iou_ge_05_count':sum(c['iou']>=.5 for c in checks),'selection':'Six predeclared IoU quantiles0/10/25/50/75/100%; sorted byIoU,pathindex. No geometry refinement.','panels':panels,'limits':['Nearest current footprint may be wrong or split/merged; no identity verified solely by distance.','Area differences do not prove map generalisation without individual visual inspection.','This checks environment map177; no cross-page transfer or release.']};(q/'replayed-statistics.json').write_text(json.dumps(summary,indent=2));print({k:v for k,v in summary.items() if k!='panels'})

@@ -1,0 +1,163 @@
+{
+  "source_sha256": "f6c73677a1940ff8529d795c60f375b2270a5f124ad946bf6bb14ca987eb7680",
+  "population": 1563,
+  "area_ratio_percentiles": {
+    "p10": 0.887735264091025,
+    "p25": 1.1572452131049062,
+    "p50": 1.3709169028442614,
+    "p75": 1.6928428591228288,
+    "p90": 2.31924964122541
+  },
+  "source_larger_count": 1336,
+  "centroid_le_5m_count": 1332,
+  "iou_ge_05_count": 1040,
+  "selection": "Six predeclared IoU quantiles0/10/25/50/75/100%; sorted byIoU,pathindex. No geometry refinement.",
+  "panels": [
+    {
+      "path_index": 3398,
+      "nearest_objectid": 46455922,
+      "centroid_distance_m": 48.93051621165032,
+      "iou": 0.0,
+      "source_area_m2": 813.6952614243397,
+      "reference_area_m2": 97.62231850093282,
+      "panel": "case-1.png",
+      "source_pdf_rect": [
+        740.6749267578125,
+        605.4442138671875,
+        745.1749267578125,
+        610.1442260742188
+      ],
+      "clip": [
+        730.6749267578125,
+        595.4442138671875,
+        755.1749267578125,
+        620.1442260742188
+      ],
+      "area_ratio": 8.335135591115515
+    },
+    {
+      "path_index": 4186,
+      "nearest_objectid": 46471572,
+      "centroid_distance_m": 9.639839119290802,
+      "iou": 0.2784479601239229,
+      "source_area_m2": 1111.3873643837996,
+      "reference_area_m2": 388.37753849892783,
+      "panel": "case-2.png",
+      "source_pdf_rect": [
+        647.6749267578125,
+        443.8442077636719,
+        652.4749145507812,
+        451.1441955566406
+      ],
+      "clip": [
+        637.6749267578125,
+        433.8442077636719,
+        662.4749145507812,
+        461.1441955566406
+      ],
+      "area_ratio": 2.861615964402297
+    },
+    {
+      "path_index": 7937,
+      "nearest_objectid": 46405892,
+      "centroid_distance_m": 3.714417462024789,
+      "iou": 0.44890111346929346,
+      "source_area_m2": 186.6723525172034,
+      "reference_area_m2": 87.52013449886573,
+      "panel": "case-3.png",
+      "source_pdf_rect": [
+        299.47491455078125,
+        326.9442138671875,
+        301.27490234375,
+        329.544189453125
+      ],
+      "clip": [
+        289.47491455078125,
+        316.9442138671875,
+        311.27490234375,
+        339.544189453125
+      ],
+      "area_ratio": 2.1329075142088896
+    },
+    {
+      "path_index": 5107,
+      "nearest_objectid": 46433174,
+      "centroid_distance_m": 1.6239886911970776,
+      "iou": 0.5882408762052672,
+      "source_area_m2": 164.8475181223084,
+      "reference_area_m2": 96.97004850053034,
+      "panel": "case-4.png",
+      "source_pdf_rect": [
+        672.5750122070312,
+        293.24420166015625,
+        674.2750244140625,
+        295.044189453125
+      ],
+      "clip": [
+        662.5750122070312,
+        283.24420166015625,
+        684.2750244140625,
+        305.044189453125
+      ],
+      "area_ratio": 1.6999838679198642
+    },
+    {
+      "path_index": 5264,
+      "nearest_objectid": 46320437,
+      "centroid_distance_m": 0.661577293341483,
+      "iou": 0.6867177248336418,
+      "source_area_m2": 175.38674617440452,
+      "reference_area_m2": 127.47653000005221,
+      "panel": "case-5.png",
+      "source_pdf_rect": [
+        572.4749755859375,
+        251.84432983398438,
+        574.1749877929688,
+        253.7443389892578
+      ],
+      "clip": [
+        562.4749755859375,
+        241.84432983398438,
+        584.1749877929688,
+        263.7443389892578
+      ],
+      "area_ratio": 1.375835584592181
+    },
+    {
+      "path_index": 4055,
+      "nearest_objectid": 46471286,
+      "centroid_distance_m": 0.5090209771592513,
+      "iou": 0.919811628990487,
+      "source_area_m2": 1181.7574311348149,
+      "reference_area_m2": 1089.473160004637,
+      "panel": "case-6.png",
+      "source_pdf_rect": [
+        942.0748901367188,
+        510.2442321777344,
+        946.1748657226562,
+        516.4442138671875
+      ],
+      "clip": [
+        932.0748901367188,
+        500.2442321777344,
+        956.1748657226562,
+        526.4442138671875
+      ],
+      "area_ratio": 1.0847054103928406
+    }
+  ],
+  "limits": [
+    "Nearest current footprint may be wrong or split/merged; no identity verified solely by distance.",
+    "Area differences do not prove map generalisation without individual visual inspection.",
+    "This checks environment map177; no cross-page transfer or release."
+  ],
+  "visual_findings": {
+    "case-1": "Selected blue source building and nearest magenta current footprint visibly different objects. Nearest-centroid correspondence fails; temporal change versus missing reference unresolved.",
+    "case-2": "Blue source outline covers a compound building form; magenta reference covers only part. Split/merged/generalised representation plausible, not verified lineage.",
+    "case-3": "Source and reference show visible displacement/shape difference under thematic overprint.",
+    "case-4": "Same recognizable small footprint with offset/size differences.",
+    "case-5": "Small footprint mostly coincident but thematic overprint limits visibility.",
+    "case-6": "Large rectangular footprint closely agrees."
+  },
+  "conclusion": "Do not treat all nearest-neighbour residuals as registration error. Separate identity mismatch, compound outlines, generalisation and actual displacement; no affine refinement or accuracy upgrade."
+}
