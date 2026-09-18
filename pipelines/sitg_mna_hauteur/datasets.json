@@ -1,0 +1,7 @@
+{
+  "workflow": "sitg_mna_hauteur.yml",
+  "datasets": [
+    {"code": "ge_mna_hauteur_parcel_stats",     "schema": "bronze_ch", "table": "ge_mna_hauteur_parcel_stats"},
+    {"code": "ge_mna_hauteur_building_heights", "schema": "bronze_ch", "table": "ge_mna_hauteur_building_heights"}
+  ]
+}

@@ -1,0 +1,102 @@
+name: SITG MNA Hauteur 2025 (20 cm height model -> per-parcel + per-building heights)
+
+# Source: ONE canton-wide 13 GB COG, read in place with HTTP range requests (never downloaded).
+# SITG publishes it "irrégulière", so the monthly run only CHECKS Last-Modified and exits
+# without PATCHing when nothing changed — a skipped run must not stamp freshness.
+# Measured 2026-09-18: ~22 s per 1 km tile -> ~357 tiles / 8 shards ≈ 16-20 min.
+on:
+  schedule:
+    - cron: '20 4 3 * *'   # 3rd of each month, 04:20 UTC
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Recompute even if the source Last-Modified is unchanged'
+        type: boolean
+        default: false
+      commune:
+        description: 'Optional no_commune (1-48) for a partial test run — publishes that commune only, no freshness PATCH'
+        required: false
+        default: ''
+
+env:
+  WORK: work
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      skip: ${{ steps.prep.outputs.skip }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install GDAL + psql
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq gdal-bin python3-gdal python3-numpy postgresql-client
+      - id: prep
+        name: Check source + build inputs
+        run: python3 pipelines/sitg_mna_hauteur/prepare.py
+        env:
+          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI || secrets.RE_LLM_DB_URL }}
+          FORCE: ${{ github.event.inputs.force || 'false' }}
+          COMMUNE: ${{ github.event.inputs.commune }}
+      - if: steps.prep.outputs.skip != 'true'
+        uses: actions/upload-artifact@v4
+        with: { name: inputs, path: work/, retention-days: 3 }
+
+  shard:
+    needs: prepare
+    if: needs.prepare.outputs.skip != 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix: { shard: [0, 1, 2, 3, 4, 5, 6, 7] }
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install GDAL
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq gdal-bin python3-gdal python3-numpy
+      - uses: actions/download-artifact@v4
+        with: { name: inputs, path: work/ }
+      - run: python3 pipelines/sitg_mna_hauteur/worker.py ${{ matrix.shard }} 8
+      - uses: actions/upload-artifact@v4
+        with: { name: 'partials-${{ matrix.shard }}', path: work/partials/, retention-days: 3 }
+
+  merge:
+    needs: [prepare, shard]
+    if: needs.prepare.outputs.skip != 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install GDAL + psql
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq gdal-bin python3-gdal python3-numpy postgresql-client
+      - uses: actions/download-artifact@v4
+        with: { name: inputs, path: work/ }
+      - uses: actions/download-artifact@v4
+        with: { pattern: 'partials-*', path: work/partials/, merge-multiple: true }
+      - name: Merge + upsert + PATCH per dataset code
+        run: python3 pipelines/sitg_mna_hauteur/merge_load.py
+        env:
+          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI || secrets.RE_LLM_DB_URL }}
+          COMMUNE: ${{ github.event.inputs.commune }}
+          GITHUB_RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          CAMELOTE_DATA_SUPABASE_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CAMELOTE_DATA_SUPABASE_SERVICE_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+
+  report-failure:
+    needs: [prepare, shard, merge]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report failure to pixxels_data (per dataset code, active rows only)
+        run: |
+          MSG="GitHub Actions run ${{ github.run_id }} failed at $(date -u +%Y-%m-%dT%H:%M:%SZ). See https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          ESC=$(printf '%s' "$MSG" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
+          for CODE in ge_mna_hauteur_parcel_stats ge_mna_hauteur_building_heights; do
+            curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.$CODE&status=neq.deprecated" \
+              -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+              -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+              -d "{\"last_error\":${ESC}}"
+          done
+        env:
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}

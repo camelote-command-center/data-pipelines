@@ -1,0 +1,6 @@
+{
+  "workflow": "sitg_lidar_2025.yml",
+  "datasets": [
+    {"code": "ge_lidar_2025_tiles", "schema": "bronze_ch", "table": "ge_lidar_2025_tiles"}
+  ]
+}
