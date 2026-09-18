@@ -1,0 +1,113 @@
+{
+  "source_sha256": "f6c73677a1940ff8529d795c60f375b2270a5f124ad946bf6bb14ca987eb7680",
+  "status": "unresolved_research_only",
+  "outside_total_m2": 686.7808557102798,
+  "outside_fraction": 0.006167873595937778,
+  "parts": [
+    {
+      "id": 0,
+      "area_m2": 686.7808557102798,
+      "bounds_lv95": [
+        2553845.500600811,
+        1154254.559557419,
+        2553958.48317028,
+        1154290.075521983
+      ],
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2553958.349235675,
+              1154283.3222766155
+            ],
+            [
+              2553845.500600811,
+              1154254.559557419
+            ],
+            [
+              2553846.2399594807,
+              1154261.550304196
+            ],
+            [
+              2553865.802,
+              1154261.6
+            ],
+            [
+              2553869.789,
+              1154264.661
+            ],
+            [
+              2553943.262,
+              1154288.45
+            ],
+            [
+              2553956.215,
+              1154289.265
+            ],
+            [
+              2553958.48317028,
+              1154290.075521983
+            ],
+            [
+              2553958.349235675,
+              1154283.3222766155
+            ]
+          ]
+        ]
+      },
+      "source_pdf77_ring": [
+        [
+          690.25,
+          652.2499999999709
+        ],
+        [
+          676.9999999999418,
+          655.75
+        ],
+        [
+          677.0805767313577,
+          654.9240885030595
+        ],
+        [
+          679.381956534402,
+          654.9000738591421
+        ],
+        [
+          679.8482117679669,
+          654.5350380004384
+        ],
+        [
+          688.4703247710713,
+          651.6586926626333
+        ],
+        [
+          689.9934660199797,
+          651.5504687727953
+        ],
+        [
+          690.2595677665086,
+          651.4526861241611
+        ],
+        [
+          690.25,
+          652.2499999999709
+        ]
+      ],
+      "max_vertex_distance_to_boundary_m": 6.988845943282838
+    }
+  ],
+  "method": "Frozen prior geometry minus current registered commune boundary; inverse frozen matrix solely for visual inspection. No clipping, fit update or runtime mutation.",
+  "limits": [
+    "Maximum vertex distance is a diagnostic of polygon vertices, not a continuous Hausdorff distance.",
+    "Source proposal, manual tracing and registration uncertainty remain; discrepancy alone establishes no rights or municipal attribution."
+  ],
+  "visual_review": {
+    "images": [
+      "source.png",
+      "overlay.png"
+    ],
+    "finding": "Outside component is a narrow southwest strip at the end of the long hatched band. The frozen current boundary runs just north of the source lower red border. Manual trace also visibly overshoots the eastern curved hatch edge and uses coarse northern vertices. This does not isolate reference error from registration or tracing error.",
+    "decision": "Keep previous trace immutable as provisional. Require refined source-pixel tracing before parcel allocation; do not silently clip or move the fit. No municipal outside-area attribution."
+  }
+}
