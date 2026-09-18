@@ -1,0 +1,10 @@
+{
+  "ids": {
+    "operation": "08299f62-7606-4248-a536-ebeffa58b0c4",
+    "checkpoint": "372a9b6d-953c-41a9-a471-191baf82db6f"
+  },
+  "document_id": "5737f410-4b4a-5ec2-a18f-bb3e36f996dc",
+  "source_sha256": "f6c73677a1940ff8529d795c60f375b2270a5f124ad946bf6bb14ca987eb7680",
+  "alignment_status": "withheld_pending_trace_and_ground_validation",
+  "geographic_delivery": false
+}
