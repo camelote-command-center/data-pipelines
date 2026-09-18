@@ -1,0 +1,95 @@
+name: SITG LiDAR 2025 (commune-scoped COPC mirror -> R2 + manifest)
+
+# ON DEMAND ONLY — no schedule, and a commune list is REQUIRED. The canton is 5,505 x 250 m
+# tiles at ~381 MB (~2.1 TB); this workflow must never be pointed at all of it casually.
+# Genève-Cité (21) = 70 tiles ≈ 6 GB of COPC on R2.
+on:
+  workflow_dispatch:
+    inputs:
+      communes:
+        description: 'Comma-separated no_commune values (1-48), e.g. 21'
+        required: true
+      version:
+        description: 'R2 prefix version. The bucket is WRITE-ONCE: bump to recompute (v1 -> v2).'
+        required: false
+        default: 'v1'
+
+env:
+  WORK: work
+  VERSION: ${{ github.event.inputs.version || 'v1' }}
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client
+      - run: python3 pipelines/sitg_lidar_2025/lidar.py plan "${{ github.event.inputs.communes }}"
+        env:
+          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI || secrets.RE_LLM_DB_URL }}
+      - uses: actions/upload-artifact@v4
+        with: { name: plan, path: work/tiles.json, retention-days: 3 }
+
+  fetch:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    strategy:
+      fail-fast: false
+      matrix: { shard: [0, 1, 2, 3, 4, 5] }
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PDAL + rclone
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq pdal
+          curl -fsSL https://rclone.org/install.sh | sudo bash
+      - name: Configure rclone for R2 (camelote-backups)
+        run: |
+          mkdir -p ~/.config/rclone
+          cat > ~/.config/rclone/rclone.conf <<EOF
+          [r2]
+          type = s3
+          provider = Cloudflare
+          endpoint = https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com
+          access_key_id = ${{ secrets.R2_ACCESS_KEY_ID }}
+          secret_access_key = ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          region = auto
+          no_check_bucket = true
+          EOF
+      - uses: actions/download-artifact@v4
+        with: { name: plan, path: work/ }
+      - run: python3 pipelines/sitg_lidar_2025/lidar.py fetch ${{ matrix.shard }} 6
+      - uses: actions/upload-artifact@v4
+        with: { name: 'rows-${{ matrix.shard }}', path: work/rows/, retention-days: 3, if-no-files-found: ignore }
+
+  load:
+    needs: fetch
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client
+      - uses: actions/download-artifact@v4
+        with: { pattern: 'rows-*', path: work/rows/, merge-multiple: true }
+      - name: Upsert manifest + PATCH by dataset code
+        run: python3 pipelines/sitg_lidar_2025/lidar.py load
+        env:
+          RE_LLM_PG_URI: ${{ secrets.RE_LLM_PG_URI || secrets.RE_LLM_DB_URL }}
+          CAMELOTE_DATA_SUPABASE_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CAMELOTE_DATA_SUPABASE_SERVICE_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+
+  report-failure:
+    needs: [plan, fetch, load]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          MSG="GitHub Actions run ${{ github.run_id }} failed at $(date -u +%Y-%m-%dT%H:%M:%SZ). See https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          ESC=$(printf '%s' "$MSG" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?code=eq.ge_lidar_2025_tiles&status=neq.deprecated" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=minimal" -d "{\"last_error\":${ESC}}"
+        env:
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
