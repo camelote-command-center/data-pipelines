@@ -1,0 +1,45 @@
+{
+  "source_sha256": "f6c73677a1940ff8529d795c60f375b2270a5f124ad946bf6bb14ca987eb7680",
+  "retrieved_at": "2026-09-18T01:23:59.362570+00:00",
+  "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query",
+  "query": {
+    "f": "json",
+    "where": "NO_COM_FED=5805"
+  },
+  "outSR": 2056,
+  "count_before": 2444,
+  "count_after": 2444,
+  "footprints_sha256": "fdabcda0a26eb9080e3b09aa3ff98b2fa869c4fd49d0483b15195a1a046cab2f",
+  "null_egid": 162,
+  "commune_bfs": 5805,
+  "boundary_sha256": "e45fe0c12f687eb589f99adda5b269d27db6f527701010e0921d3eb9dec4fb27",
+  "status": "reference_acquisition_not_alignment",
+  "limits": [
+    "Current cadastral footprints are candidate references, not declared unchanged historical controls.",
+    "No source-to-geographic transform, fit or withheld accuracy checks yet.",
+    "Municipal outline alone is not sufficient evidence of parcel-scale accuracy.",
+    "Aboveground and underground types preserved; nullEGIDs retained.",
+    "Consultation-sector traces not delivered to receivers."
+  ],
+  "validation": {
+    "valid_reference_features": 2444,
+    "types": {
+      "b\u00e2timent": 2304,
+      "b\u00e2timent s-sol": 140
+    },
+    "boundary_valid": true,
+    "boundary_bounds_lv95": [
+      2549181.26,
+      1152933.613,
+      2556535.058,
+      1159568.899
+    ],
+    "zero_interior_overlap_ids": [],
+    "partial_boundary_ids": [
+      46328929,
+      46362651,
+      46407625
+    ],
+    "limits": "Reference snapshot consistency only, not PDF alignment or source-vintage certification."
+  }
+}
