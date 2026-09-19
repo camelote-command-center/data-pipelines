@@ -38,7 +38,11 @@ ON CONFLICT (egrid) DO UPDATE SET
   vegetated_area_m2=EXCLUDED.vegetated_area_m2, parcel_area_m2=EXCLUDED.parcel_area_m2,
   polygon_area_m2=EXCLUDED.polygon_area_m2, dsm_year=EXCLUDED.dsm_year,
   dtm_year=EXCLUDED.dtm_year, vintage_mixed=EXCLUDED.vintage_mixed,
-  computed_at=EXCLUDED.computed_at;
+  computed_at=EXCLUDED.computed_at
+-- Since 2026-09-19 the SITG 20 cm height model (sitg_mna_hauteur, gold_ch.promote_mna_canopy_stats) is the
+-- source for every parcel it covers; this 0.5 m CHM only fills parcels it does not (and its >50 m defects).
+WHERE NOT EXISTS (SELECT 1 FROM bronze_ch.ge_mna_hauteur_parcel_stats m
+                  WHERE m.egrid = t.egrid AND (m.veg_height_max_m IS NULL OR m.veg_height_max_m <= 50));
 COMMIT;
 SELECT 'gold_ch.plot_canopy_stats rows = '||count(*) FROM gold_ch.plot_canopy_stats;
 CALL gold_ch.sync_plot_canopy_stats();

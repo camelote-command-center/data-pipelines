@@ -172,3 +172,21 @@ def patch(code, count):
 
 patch("ge_mna_hauteur_parcel_stats", n_parcels)
 patch("ge_mna_hauteur_building_heights", n_bldg)
+
+# ---- promote to gold (what the app reads) and push to lamap_db ref — full canton runs only.
+# gold_ch.plot_canopy_stats      <- parcel stats   (drawer canopy: get_plot_canopy_stats)
+# gold_ch.building_roof_heights  <- building heights (drawer + 3D tiles: get_building_roof_height)
+# A new flight changes every row; one FDW statement cannot push that inside 900 s, so push commune by commune
+# (sql/002_gold_promote.sql), then once more without a commune for rows with no commune.
+if COMMUNE is None and os.environ.get("SKIP_PROMOTE") != "1":
+    print("  " + psql("SELECT 'gold canopy rows changed: ' || gold_ch.promote_mna_canopy_stats()"))
+    print("  " + psql("SELECT 'gold building rows changed: ' || gold_ch.promote_mna_building_heights()"))
+    for proc, tbl in (("sync_plot_canopy_stats", "plot_canopy_stats"), ("sync_building_roof_heights", "building_roof_heights")):
+        communes = psql(f"SELECT string_agg(DISTINCT no_commune::text, ' ') FROM gold_ch.{tbl} WHERE no_commune IS NOT NULL").split()
+        for c in communes:
+            psql(f"CALL gold_ch.{proc}({int(c)})")
+        psql(f"CALL gold_ch.{proc}()")
+        n_gold = psql(f"SELECT count(*) FROM gold_ch.{tbl}"); n_ref = psql(f"SELECT count(*) FROM lamap_db_foreign.{tbl}")
+        if n_gold != n_ref:
+            sys.exit(f"{tbl}: gold {n_gold} rows but lamap_db ref {n_ref} after the push")
+        print(f"  pushed {tbl} to lamap_db ref over {len(communes)} communes ({n_ref} rows)")

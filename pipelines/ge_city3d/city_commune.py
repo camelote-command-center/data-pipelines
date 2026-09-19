@@ -11,8 +11,12 @@ true heights instead.
   roofs      SWISSIMAGE 10 cm 2023 (JPEG), planar XY projection
   facades    procedural, driven by RegBL per EGID: era (gbaup) -> style, gastw -> floor height,
              gklas -> ground-floor shopfront; colour varies per building within a style
-  trees      LiDAR class 5 canopy peaks (>= 4 m, >= 3 m apart), trunk + 5 jittered crown blobs, sized to the
-             measured height and neighbour spacing
+  trees      SITG 20 cm height model 2025 (MNA_HAUTEUR, same flight as the LiDAR) canopy peaks >= 4 m, kept only
+             where SWISSIMAGE is green (trees_mna.py; vs LiDAR on Geneve-Cite: 92 % real, 73 % found, height
+             median |d| 0.16 m). GPU-instanced, scaled so the model top = the measured height; each instance
+             carries height_m / crown_m (EXT_instance_features) for one-click height
+  metadata   building table: egid, roof_height_m (= gold_ch.building_roof_heights.height_m, -1 = none);
+             tree table: height_m, crown_m
 
 GEOREFERENCING — each tile carries a 4x4 `transform` built numerically from PROJ:
   O  = ECEF(E0, N0, H0)            LV95 -> WGS84 lon/lat; LN02 height used AS ellipsoidal height, to match
@@ -22,7 +26,7 @@ GEOREFERENCING — each tile carries a 4x4 `transform` built numerically from PR
   ez = ECEF(E0, N0, H0+1) - O      one metre up
 glTF is Y-up; Cesium rotates glTF content to Z-up, so vertices are written as (dE, dH, -dN).
 
-Usage: city_commune.py <no_commune> <copc_dir> <out_dir> [tile_key ...]
+Usage: city_commune.py <no_commune> <out_dir> [tile_key ...]      (no LiDAR needed: canton-wide ready)
 """
 import glob, io, json, math, os, subprocess, sys, time
 import numpy as np
@@ -36,12 +40,13 @@ from scipy.spatial import cKDTree
 from shapely.geometry import Polygon as SPoly, box as sbox
 from shapely import contains_xy
 from pyproj import Transformer, network
+import trees_mna
 
 gdal.UseExceptions()
 gdal.SetConfigOption("GDAL_DISABLE_READDIR_ON_OPEN", "EMPTY_DIR")
 network.set_network_enabled(True)
-NO_COMMUNE, COPC_DIR, OUT = int(sys.argv[1]), sys.argv[2], sys.argv[3]
-ONLY = set(sys.argv[4:])
+NO_COMMUNE, OUT = int(sys.argv[1]), sys.argv[2]
+ONLY = set(sys.argv[3:])
 PG = os.environ.get("RE_LLM_PG_URI") or sys.exit("RE_LLM_PG_URI not set")
 TILE = 250.0
 ROOF_PX = 0.20                     # roof texture (m/px) for the 250 m leaf tiles; 0.1 native
@@ -89,10 +94,21 @@ log(f"RegBL attributes for {len(regbl)} of {len(egids)} buildings")
 tile_of = {}
 for b in bldg:
     tile_of.setdefault(b["egid"], f"{int(b['cx'] // TILE * TILE)}_{int(b['cy'] // TILE * TILE)}")
-tiles = sorted(set(tile_of.values()))
+# roof height = the value the app's drawer shows (gold_ch.building_roof_heights: height model 2025 p95, bati3d
+# fallback; see sitg_mna_hauteur/sql/002_gold_promote.sql), so a click in 3D and the drawer never disagree
+roof_h = {r["e"]: r["h"] for r in psql_json(f"""SELECT coalesce(json_agg(json_build_object('e', egid, 'h', height_m::float)), '[]')
+    FROM gold_ch.building_roof_heights WHERE height_m IS NOT NULL AND egid = ANY(ARRAY{egids}::bigint[])""")}
+# every 250 m cell touching the commune gets a tile (parks and woods hold trees but no buildings);
+# trees are kept only inside the commune so neighbouring communes never draw the same tree twice
+from shapely.geometry import shape
+from shapely.ops import unary_union
+COMMUNE = shape(psql_json(f"SELECT ST_AsGeoJSON(ST_Union(geometry))::json FROM bronze_ch.ge_communes_geo WHERE no_commune={NO_COMMUNE}"))
+x0, y0, x1, y1 = COMMUNE.bounds
+tiles = sorted({f"{e}_{n}" for e in range(int(x0 // TILE * TILE), int(x1) + 1, int(TILE)) for n in range(int(y0 // TILE * TILE), int(y1) + 1, int(TILE))
+                if COMMUNE.intersects(sbox(e, n, e + TILE, n + TILE))} | set(tile_of.values()))
 if ONLY:
     tiles = [t for t in tiles if t in ONLY]
-log(f"{len(tiles)} tiles hold buildings")
+log(f"{len(tiles)} tiles touch the commune ({len(set(tile_of.values()))} hold buildings)")
 
 # ------------------------------------------------------------------ facade styles (same rules as block v3/v4)
 STYLES = {
@@ -292,10 +308,40 @@ def _tree_variant(seed):
         if c[1] > c[0] + 10:
             cc[:, :3] *= np.repeat(r.uniform(0.82, 1.12, (len(tri) // 3, 1)), 3, axis=0)
         C.append(np.clip(cc, 0, 1))
-    return np.vstack(P).astype(np.float32), np.vstack(C).astype(np.float32)
+    P = np.vstack(P)
+    # NORMALISE so a height MEASUREMENT on the model returns the measured tree height exactly: crown top at
+    # y = 1.000 and widest crown radius = 0.500 (instances are scaled by height and 2 x crown radius).
+    # Before this, variant 2 topped out at 0.939 (a 23 m tree measured 21.6 m) and was 21 % too wide.
+    P[:, 1] /= P[:, 1].max()
+    P[:, [0, 2]] *= 0.5 / np.hypot(P[:, 0], P[:, 2]).max()
+    return P.astype(np.float32), np.vstack(C).astype(np.float32)
 
 
 TREE_VARIANTS = [_tree_variant(i) for i in range(3)]
+
+
+# ------------------------------------------------------------------ trees (height model, cached per 250 m cell)
+TREE_CACHE = os.environ.get("TREE_CACHE", OUT.rstrip("/") + "_trees")
+os.makedirs(TREE_CACHE, exist_ok=True)
+def trees_in(E0, N0, size, min_h):
+    """Trees whose trunk lies in [E0, E0+size) x [N0, N0+size) and inside the commune. Detection runs once per
+    250 m cell and is cached, so a 1 km parent reuses its 16 leaves' trees instead of re-reading the rasters."""
+    out = {k: [] for k in "xyhrz"}
+    for e in range(int(E0), int(E0 + size), int(TILE)):
+        for n in range(int(N0), int(N0 + size), int(TILE)):
+            f = f"{TREE_CACHE}/{e}_{n}.npz"
+            if not os.path.exists(f):
+                fc = {"type": "FeatureCollection", "features": [{"type": "Feature", "properties": {}, "geometry": g} for g in psql_json(
+                      f"""SELECT coalesce(json_agg(ST_AsGeoJSON(ST_Buffer(geometry,1.5))::json),'[]') FROM bronze_ch.ge_buildings_geo
+                          WHERE geometry && ST_MakeEnvelope({e-2},{n-2},{e+TILE+2},{n+TILE+2},2056)""")]}
+                d = trees_mna.detect(float(e), float(n), TILE, fc) or {k: np.zeros(0) for k in "xyhrz"}
+                tmp = f"{f}.{os.getpid()}.tmp.npz"; np.savez(tmp, **d); os.replace(tmp, f)   # atomic: communes share the cache
+            d = np.load(f)
+            for k in "xyhrz":
+                out[k].append(d[k])
+    T = {k: np.concatenate(v).astype(float) for k, v in out.items()}
+    keep = (T["h"] >= min_h) & np.isfinite(T["z"]) & contains_xy(COMMUNE, T["x"], T["y"])
+    return {k: v[keep] for k, v in T.items()}
 
 
 # ------------------------------------------------------------------ one tile
@@ -305,27 +351,30 @@ def build_tile(key, size=TILE, roof_px=None, min_tree=4.0, tag=""):
     my = [e for e, t in tile_of.items()
           if E0 <= float(t.split("_")[0]) < E0 + size and N0 <= float(t.split("_")[1]) < N0 + size]
     faces = []
-    for layer, kind in (("toit", "roof"), ("facade", "wall"), ("sp_toit", "roof"), ("sp_facade", "dormer"), ("base", "base")):
+    for layer, kind in (("toit", "roof"), ("facade", "wall"), ("sp_toit", "roof"), ("sp_facade", "dormer"), ("base", "base")) if my else ():
         for r in psql_json(f"""SELECT coalesce(json_agg(json_build_object('e',egid::bigint,'g',ST_AsGeoJSON((d).geom)::json)),'[]')
             FROM (SELECT egid, ST_Dump(geom) d FROM bronze_ch.ge_cad_bati3d_{layer} WHERE egid = ANY(ARRAY{my})) x"""):
             faces.append((kind, r["e"], [np.asarray(c, dtype=float) for c in r["g"]["coordinates"]]))
-    if not faces:
+    T = trees_in(E0, N0, size, min_tree)
+    if not faces and not len(T["x"]):
         return None
-    allxyz = np.vstack([r for _, _, rr in faces for r in rr])
+    allxyz = np.vstack([r for _, _, rr in faces for r in rr]) if faces else np.c_[T["x"], T["y"], T["z"]]
     cx0, cy0 = min(allxyz[:, 0].min(), E0) - 2, min(allxyz[:, 1].min(), N0) - 2
     cx1, cy1 = max(allxyz[:, 0].max(), E0 + size) + 2, max(allxyz[:, 1].max(), N0 + size) + 2
     H0 = float(allxyz[:, 2].min())
 
-    # roof texture: SWISSIMAGE 10 cm, resampled to ROOF_PX
-    src = [f"/vsicurl/https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2023_{e}-{n}/"
+    # roof texture: SWISSIMAGE 10 cm, resampled to ROOF_PX (only where there are roofs)
+    src = [] if not faces else [f"/vsicurl/https://data.geo.admin.ch/ch.swisstopo.swissimage-dop10/swissimage-dop10_2023_{e}-{n}/"
            f"swissimage-dop10_2023_{e}-{n}_0.1_2056.tif"
            for e in range(int(cx0 // 1000), int(cx1 // 1000) + 1) for n in range(int(cy0 // 1000), int(cy1 // 1000) + 1)]
-    vrt = gdal.BuildVRT(f"/vsimem/{key}.vrt", src)
-    ds = gdal.Translate(f"/vsimem/{key}.tif", vrt, projWin=[cx0, cy1, cx1, cy0], xRes=roof_px, yRes=roof_px,
-                        bandList=[1, 2, 3], resampleAlg="average")
-    ortho = jpeg(Image.fromarray(np.dstack([ds.GetRasterBand(i).ReadAsArray() for i in (1, 2, 3)]).astype(np.uint8)), 82)
-    del ds, vrt
-    gdal.Unlink(f"/vsimem/{key}.vrt"); gdal.Unlink(f"/vsimem/{key}.tif")
+    ortho = None
+    if src:
+        vrt = gdal.BuildVRT(f"/vsimem/{key}.vrt", src)
+        ds = gdal.Translate(f"/vsimem/{key}.tif", vrt, projWin=[cx0, cy1, cx1, cy0], xRes=roof_px, yRes=roof_px,
+                            bandList=[1, 2, 3], resampleAlg="average")
+        ortho = jpeg(Image.fromarray(np.dstack([ds.GetRasterBand(i).ReadAsArray() for i in (1, 2, 3)]).astype(np.uint8)), 82)
+        del ds, vrt
+        gdal.Unlink(f"/vsimem/{key}.vrt"); gdal.Unlink(f"/vsimem/{key}.tif")
     uv_o = lambda x, y: np.c_[(x - cx0) / (cx1 - cx0), (y - cy0) / (cy1 - cy0)]
 
     TEX, groups = {}, {}
@@ -369,62 +418,32 @@ def build_tile(key, size=TILE, roof_px=None, min_tree=4.0, tag=""):
             m = B.material(k, TEX[k])
         tint = np.vstack(TN) if (k.startswith("up_") or k.startswith("gf_")) else None
         prims.append((m, local(np.vstack(V)), None if k == "base" else np.vstack(UV), np.concatenate(FID), tint))
-    B.building_mesh(prims, [int(e) for e in sorted(feat, key=feat.get)])
+    if prims:
+        eg = [int(e) for e in sorted(feat, key=feat.get)]
+        B.building_mesh(prims, eg, extra={"roof_height_m": (np.array([roof_h.get(e) if roof_h.get(e) is not None else -1.0 for e in eg]), "FLOAT32")})
 
-    # trees: LiDAR class 5 canopy peaks inside THIS tile only (no duplicates across tiles)
-    ntrees = 0
-    copcs = [f for f in glob.glob(f"{COPC_DIR}/*.copc.laz")
-             if (lambda e, n: e < E0 + size + 10 and e + 250 > E0 - 10 and n < N0 + size + 10 and n + 250 > N0 - 10)
-             (*map(float, os.path.basename(f)[:-9].split("_")))]
-    if copcs:
-        bnds = f"([{E0},{E0 + size}],[{N0},{N0 + size}])"
-        def raster(cls, how, name):
-            pipe = [{"type": "readers.copc", "filename": f, "bounds": bnds} for f in copcs] + [
-                    {"type": "filters.merge"}, {"type": "filters.range", "limits": cls},
-                    {"type": "writers.gdal", "filename": name, "resolution": 0.5, "output_type": how,
-                     "bounds": bnds, "data_type": "float32", "nodata": -9999}]
-            subprocess.run(["pdal", "pipeline", "--stdin"], input=json.dumps(pipe), text=True, check=True, capture_output=True)
-            dd = gdal.Open(name); a = np.flipud(dd.GetRasterBand(1).ReadAsArray().astype(float)); del dd
-            os.remove(name)
-            return a
-        dtm = raster("Classification[2:2],Classification[16:16]", "mean", f"/tmp/_dtm_{key}.tif")
-        m = dtm == -9999
-        if not m.all():
-            idx = ndimage.distance_transform_edt(m, return_distances=False, return_indices=True); dtm = dtm[tuple(idx)]
-            veg = raster("Classification[5:5]", "max", f"/tmp/_veg_{key}.tif")
-            h = min(veg.shape[0], dtm.shape[0]); w = min(veg.shape[1], dtm.shape[1]); veg, dtm = veg[:h, :w], dtm[:h, :w]
-            chm = ndimage.gaussian_filter(np.clip(np.where(veg == -9999, 0, veg - dtm), 0, 45), 1.0)
-            pi, pj = np.nonzero((chm == ndimage.maximum_filter(chm, size=7)) & (chm >= min_tree))
-            TX, TY, TH = E0 + (pj + .5) * .5, N0 + (pi + .5) * .5, chm[pi, pj]
-            fps = psql_json(f"""SELECT coalesce(json_agg(ST_AsGeoJSON(ST_Buffer(geometry,0.3))::json),'[]')
-                FROM bronze_ch.ge_buildings_geo WHERE geometry && ST_MakeEnvelope({E0},{N0},{E0+TILE},{N0+TILE},2056)""")
-            if fps and len(TX):
-                from shapely.geometry import shape
-                from shapely.ops import unary_union
-                keep = ~contains_xy(unary_union([shape(g) for g in fps]), TX, TY)
-                TX, TY, TH, pi, pj = TX[keep], TY[keep], TH[keep], pi[keep], pj[keep]
-            if len(TX):
-                dnn = cKDTree(np.c_[TX, TY]).query(np.c_[TX, TY], k=2)[0][:, 1] if len(TX) > 1 else np.full(len(TX), 8.0)
-                TR = np.clip(np.minimum(0.55 * dnn, 0.22 * TH + 1.2), 1.2, 9.0); TZ = dtm[pi, pj]
-                rng = np.random.default_rng(int(E0 + N0))
-                variant = rng.integers(0, len(TREE_VARIANTS), len(TX))
-                ang = rng.uniform(0, 2 * np.pi, len(TX))
-                for vi, (VP, VC) in enumerate(TREE_VARIANTS):
-                    sel = variant == vi
-                    if not sel.any():
-                        continue
-                    tr = local(np.c_[TX[sel], TY[sel], TZ[sel]])
-                    sc = np.c_[2 * TR[sel], TH[sel], 2 * TR[sel]]
-                    rot = np.c_[np.zeros(sel.sum()), np.sin(ang[sel] / 2), np.zeros(sel.sum()), np.cos(ang[sel] / 2)]
-                    B.instanced(f"trees_{vi}", VP, VC, tr, sc, rot)
-                ntrees = len(TX)
+    # trees: one table row per tree, instances split over the 3 variants point back into it
+    ntrees = len(T["x"])
+    if ntrees:
+        ti = B.tree_table(np.round(T["h"], 2), np.round(2 * T["r"], 2))
+        rng = np.random.default_rng(int(E0 + N0))
+        variant = rng.integers(0, len(TREE_VARIANTS), ntrees)
+        ang = rng.uniform(0, 2 * np.pi, ntrees)
+        for vi, (VP, VC) in enumerate(TREE_VARIANTS):
+            sel = np.nonzero(variant == vi)[0]
+            if not len(sel):
+                continue
+            tr = local(np.c_[T["x"][sel], T["y"][sel], T["z"][sel]])
+            sc = np.c_[2 * T["r"][sel], T["h"][sel], 2 * T["r"][sel]]
+            rot = np.c_[np.zeros(len(sel)), np.sin(ang[sel] / 2), np.zeros(len(sel)), np.cos(ang[sel] / 2)]
+            B.instanced(f"trees_{vi}", VP, VC, tr, sc, rot, feature_ids=sel, table=ti)
 
     path = f"{OUT}/{tag}{key}.glb"
     B.save(path)
     # georeferencing frame for this tile
     O = ecef(E0, N0, H0); ex = ecef(E0 + 1, N0, H0) - O; ey = ecef(E0, N0 + 1, H0) - O; ez = ecef(E0, N0, H0 + 1) - O
     transform = [*ex, 0, *ey, 0, *ez, 0, *O, 1]                      # column-major 4x4
-    zmax = float(allxyz[:, 2].max()) - H0 + 40
+    zmax = max(float(allxyz[:, 2].max()), float((T["z"] + T["h"]).max()) if ntrees else -1e9) - H0 + 5
     cxl, cyl = (cx0 + cx1) / 2 - E0, (cy0 + cy1) / 2 - N0
     hx, hy = (cx1 - cx0) / 2, (cy1 - cy0) / 2
     box = [cxl, cyl, zmax / 2, hx, 0, 0, 0, hy, 0, 0, 0, zmax / 2 + 5]     # local Z-up frame (after glTF Y-up -> Z-up)
@@ -475,11 +494,11 @@ orphans = [r for r in leaves if not any(float(r["key"].split("_")[0]) // PARENT 
 children += [leaf_node(r) for r in orphans]
 Os = np.array([r["transform"][12:15] for r in allr.values()])
 center = Os.mean(axis=0); radius = float(np.linalg.norm(Os - center, axis=1).max()) + 1200
-tileset = {"asset": {"version": "1.1", "generator": "lamap ge_city3d v2"}, "geometricError": 400,
+tileset = {"asset": {"version": "1.1", "generator": "lamap ge_city3d v4"}, "geometricError": 400,
            "root": {"boundingVolume": {"sphere": [*center.tolist(), radius]}, "geometricError": 200, "refine": "REPLACE", "children": children},
            "extras": {"commune": NO_COMMUNE, "buildings": sum(r["buildings"] for r in leaves), "trees": sum(r["trees"] for r in leaves),
                       "lod": {"parents_1km": len(pars), "leaves_250m": len(leaves), "parent_roof_px_m": PARENT_ROOF_PX, "leaf_roof_px_m": ROOF_PX},
-                      "sources": ["SITG bati3d", "BFS RegBL", "swisstopo SWISSIMAGE 10 cm 2023", "SITG LiDAR 2025"]}}
+                      "sources": ["SITG bati3d", "BFS RegBL", "swisstopo SWISSIMAGE 10 cm 2023", "SITG MNA hauteur 2025-03 (trees + roof heights)"]}}
 json.dump(tileset, open(f"{OUT}/tileset.json", "w"))
 log(f"tileset.json: {len(pars)} parents + {len(leaves)} leaves, {tileset['extras']['buildings']} buildings, "
     f"{tileset['extras']['trees']} trees, {sum(r['bytes'] for r in allr.values())/1e6:.0f} MB")

@@ -22,6 +22,10 @@ pipeline and none is needed.**
 | `ref.plot_canopy_stats` (lamap_db) | daily FDW copy — **never write here** |
 | `public.get_plot_canopy_stats(p_egrid text)` (lamap_db) | the only frontend read path |
 
+> **2026-09-19:** for every parcel the SITG 20 cm height model covers, `gold_ch.plot_canopy_stats` now comes from
+> `sitg_mna_hauteur` (`gold_ch.promote_mna_canopy_stats()`); `load_stats.py` only fills parcels it does not cover.
+> `ref.plot_trees` / `get_trees_in_bbox` (tree billboards) still come from this CHM until the 3D city layer replaces them.
+
 Documented as `platform.standards` rule_key `plot_canopy_stats_rpc`.
 
 ## Stages
