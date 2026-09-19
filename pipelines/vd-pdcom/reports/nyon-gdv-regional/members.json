@@ -1,0 +1,504 @@
+{
+  "nyon": [
+    {
+      "bfs": 5701,
+      "name": "Arnex-sur-Nyon",
+      "source_name": "Arnex-sur-Nyon",
+      "source_page": 8
+    },
+    {
+      "bfs": 5702,
+      "name": "Arzier-Le Muids",
+      "source_name": "Arzier-Le Muids",
+      "source_page": 8
+    },
+    {
+      "bfs": 5703,
+      "name": "Bassins",
+      "source_name": "Bassins",
+      "source_page": 8
+    },
+    {
+      "bfs": 5704,
+      "name": "Begnins",
+      "source_name": "Begnins",
+      "source_page": 8
+    },
+    {
+      "bfs": 5705,
+      "name": "Bogis-Bossey",
+      "source_name": "Bogis-Bossey",
+      "source_page": 8
+    },
+    {
+      "bfs": 5706,
+      "name": "Borex",
+      "source_name": "Borex",
+      "source_page": 8
+    },
+    {
+      "bfs": 5852,
+      "name": "Bursinel",
+      "source_name": "Bursinel",
+      "source_page": 8
+    },
+    {
+      "bfs": 5853,
+      "name": "Bursins",
+      "source_name": "Bursins",
+      "source_page": 8
+    },
+    {
+      "bfs": 5854,
+      "name": "Burtigny",
+      "source_name": "Burtigny",
+      "source_page": 8
+    },
+    {
+      "bfs": 5707,
+      "name": "Chavannes-de-Bogis",
+      "source_name": "Chavannes-de-Bogis",
+      "source_page": 8
+    },
+    {
+      "bfs": 5708,
+      "name": "Chavannes-des-Bois",
+      "source_name": "Chavannes-des-Bois",
+      "source_page": 8
+    },
+    {
+      "bfs": 5709,
+      "name": "Chéserex",
+      "source_name": "Chéserex",
+      "source_page": 8
+    },
+    {
+      "bfs": 5710,
+      "name": "Coinsins",
+      "source_name": "Coinsins",
+      "source_page": 8
+    },
+    {
+      "bfs": 5711,
+      "name": "Commugny",
+      "source_name": "Commugny",
+      "source_page": 8
+    },
+    {
+      "bfs": 5712,
+      "name": "Coppet",
+      "source_name": "Coppet",
+      "source_page": 8
+    },
+    {
+      "bfs": 5713,
+      "name": "Crans (VD)",
+      "source_name": "Crans",
+      "source_page": 8
+    },
+    {
+      "bfs": 5714,
+      "name": "Crassier",
+      "source_name": "Crassier",
+      "source_page": 8
+    },
+    {
+      "bfs": 5715,
+      "name": "Duillier",
+      "source_name": "Duillier",
+      "source_page": 8
+    },
+    {
+      "bfs": 5855,
+      "name": "Dully",
+      "source_name": "Dully",
+      "source_page": 8
+    },
+    {
+      "bfs": 5856,
+      "name": "Essertines-sur-Rolle",
+      "source_name": "Essertines-sur-Rolle",
+      "source_page": 8
+    },
+    {
+      "bfs": 5716,
+      "name": "Eysins",
+      "source_name": "Eysins",
+      "source_page": 8
+    },
+    {
+      "bfs": 5717,
+      "name": "Founex",
+      "source_name": "Founex",
+      "source_page": 8
+    },
+    {
+      "bfs": 5718,
+      "name": "Genolier",
+      "source_name": "Genolier",
+      "source_page": 8
+    },
+    {
+      "bfs": 5857,
+      "name": "Gilly",
+      "source_name": "Gilly",
+      "source_page": 8
+    },
+    {
+      "bfs": 5719,
+      "name": "Gingins",
+      "source_name": "Gingins",
+      "source_page": 8
+    },
+    {
+      "bfs": 5720,
+      "name": "Givrins",
+      "source_name": "Givrins",
+      "source_page": 8
+    },
+    {
+      "bfs": 5721,
+      "name": "Gland",
+      "source_name": "Gland",
+      "source_page": 8
+    },
+    {
+      "bfs": 5722,
+      "name": "Grens",
+      "source_name": "Grens",
+      "source_page": 8
+    },
+    {
+      "bfs": 5429,
+      "name": "Longirod",
+      "source_name": "Longirod",
+      "source_page": 8
+    },
+    {
+      "bfs": 5858,
+      "name": "Luins",
+      "source_name": "Luins",
+      "source_page": 8
+    },
+    {
+      "bfs": 5430,
+      "name": "Marchissy",
+      "source_name": "Marchissy",
+      "source_page": 8
+    },
+    {
+      "bfs": 5723,
+      "name": "Mies",
+      "source_name": "Mies",
+      "source_page": 8
+    },
+    {
+      "bfs": 5859,
+      "name": "Mont-sur-Rolle",
+      "source_name": "Mont-sur-Rolle",
+      "source_page": 8
+    },
+    {
+      "bfs": 5724,
+      "name": "Nyon",
+      "source_name": "Nyon",
+      "source_page": 8
+    },
+    {
+      "bfs": 5860,
+      "name": "Perroy",
+      "source_name": "Perroy",
+      "source_page": 8
+    },
+    {
+      "bfs": 5725,
+      "name": "Prangins",
+      "source_name": "Prangins",
+      "source_page": 8
+    },
+    {
+      "bfs": 5726,
+      "name": "La Rippe",
+      "source_name": "La Rippe",
+      "source_page": 8
+    },
+    {
+      "bfs": 5861,
+      "name": "Rolle",
+      "source_name": "Rolle",
+      "source_page": 8
+    },
+    {
+      "bfs": 5727,
+      "name": "Saint-Cergue",
+      "source_name": "Saint-Cergue",
+      "source_page": 8
+    },
+    {
+      "bfs": 5434,
+      "name": "Saint-George",
+      "source_name": "Saint-George",
+      "source_page": 8
+    },
+    {
+      "bfs": 5728,
+      "name": "Signy-Avenex",
+      "source_name": "Signy-Avenex",
+      "source_page": 8
+    },
+    {
+      "bfs": 5729,
+      "name": "Tannay",
+      "source_name": "Tannay",
+      "source_page": 8
+    },
+    {
+      "bfs": 5862,
+      "name": "Tartegnin",
+      "source_name": "Tartegnin",
+      "source_page": 8
+    },
+    {
+      "bfs": 5730,
+      "name": "Trélex",
+      "source_name": "Trélex",
+      "source_page": 8
+    },
+    {
+      "bfs": 5731,
+      "name": "Le Vaud",
+      "source_name": "Le Vaud",
+      "source_page": 8
+    },
+    {
+      "bfs": 5732,
+      "name": "Vich",
+      "source_name": "Vich",
+      "source_page": 8
+    },
+    {
+      "bfs": 5863,
+      "name": "Vinzel",
+      "source_name": "Vinzel",
+      "source_page": 8
+    }
+  ],
+  "gdv": [
+    {
+      "bfs": 5511,
+      "name": "Assens",
+      "source_name": "Assens",
+      "source_page": 20
+    },
+    {
+      "bfs": 5512,
+      "name": "Bercher",
+      "source_name": "Bercher",
+      "source_page": 20
+    },
+    {
+      "bfs": 5471,
+      "name": "Bettens",
+      "source_name": "Bettens",
+      "source_page": 20
+    },
+    {
+      "bfs": 5514,
+      "name": "Bottens",
+      "source_name": "Bottens",
+      "source_page": 20
+    },
+    {
+      "bfs": 5661,
+      "name": "Boulens",
+      "source_name": "Boulens",
+      "source_page": 20
+    },
+    {
+      "bfs": 5472,
+      "name": "Bournens",
+      "source_name": "Bournens",
+      "source_page": 20
+    },
+    {
+      "bfs": 5473,
+      "name": "Boussens",
+      "source_name": "Boussens",
+      "source_page": 20
+    },
+    {
+      "bfs": 5515,
+      "name": "Bretigny-sur-Morrens",
+      "source_name": "Bretigny-sur-Morrens",
+      "source_page": 20
+    },
+    {
+      "bfs": 5516,
+      "name": "Cugy (VD)",
+      "source_name": "Cugy",
+      "source_page": 20
+    },
+    {
+      "bfs": 5480,
+      "name": "Daillens",
+      "source_name": "Daillens",
+      "source_page": 20
+    },
+    {
+      "bfs": 5518,
+      "name": "Echallens",
+      "source_name": "Echallens",
+      "source_page": 20
+    },
+    {
+      "bfs": 5520,
+      "name": "Essertines-sur-Yverdon",
+      "source_name": "Essertines-sur-Yverdon",
+      "source_page": 20
+    },
+    {
+      "bfs": 5521,
+      "name": "Etagnières",
+      "source_name": "Etagnières",
+      "source_page": 20
+    },
+    {
+      "bfs": 5522,
+      "name": "Fey",
+      "source_name": "Fey",
+      "source_page": 20
+    },
+    {
+      "bfs": 5523,
+      "name": "Froideville",
+      "source_name": "Froideville",
+      "source_page": 20
+    },
+    {
+      "bfs": 5541,
+      "name": "Goumoëns",
+      "source_name": "Goumoëns",
+      "source_page": 20
+    },
+    {
+      "bfs": 5804,
+      "name": "Jorat-Menthue",
+      "source_name": "Jorat-Menthue",
+      "source_page": 20
+    },
+    {
+      "bfs": 5487,
+      "name": "Lussery-Villars",
+      "source_name": "Lussery-Villars",
+      "source_page": 20
+    },
+    {
+      "bfs": 5489,
+      "name": "Mex (VD)",
+      "source_name": "Mex",
+      "source_page": 20
+    },
+    {
+      "bfs": 5693,
+      "name": "Montanaire",
+      "source_name": "Montanaire",
+      "source_page": 20
+    },
+    {
+      "bfs": 5540,
+      "name": "Montilliez",
+      "source_name": "Montilliez",
+      "source_page": 20
+    },
+    {
+      "bfs": 5527,
+      "name": "Morrens (VD)",
+      "source_name": "Morrens",
+      "source_page": 20
+    },
+    {
+      "bfs": 5680,
+      "name": "Ogens",
+      "source_name": "Ogens",
+      "source_page": 20
+    },
+    {
+      "bfs": 5923,
+      "name": "Oppens",
+      "source_name": "Oppens",
+      "source_page": 20
+    },
+    {
+      "bfs": 5529,
+      "name": "Oulens-sous-Echallens",
+      "source_name": "Oulens-sous-Echallens",
+      "source_page": 20
+    },
+    {
+      "bfs": 5530,
+      "name": "Pailly",
+      "source_name": "Pailly",
+      "source_page": 20
+    },
+    {
+      "bfs": 5495,
+      "name": "Penthalaz",
+      "source_name": "Penthalaz",
+      "source_page": 20
+    },
+    {
+      "bfs": 5496,
+      "name": "Penthaz",
+      "source_name": "Penthaz",
+      "source_page": 20
+    },
+    {
+      "bfs": 5531,
+      "name": "Penthéréaz",
+      "source_name": "Penthéréaz",
+      "source_page": 20
+    },
+    {
+      "bfs": 5533,
+      "name": "Poliez-Pittet",
+      "source_name": "Poliez-Pittet",
+      "source_page": 20
+    },
+    {
+      "bfs": 5534,
+      "name": "Rueyres",
+      "source_name": "Rueyres",
+      "source_page": 20
+    },
+    {
+      "bfs": 5535,
+      "name": "Saint-Barthélemy (VD)",
+      "source_name": "Saint-Barthélemy",
+      "source_page": 20
+    },
+    {
+      "bfs": 5501,
+      "name": "Sullens",
+      "source_name": "Sullens",
+      "source_page": 20
+    },
+    {
+      "bfs": 5537,
+      "name": "Villars-le-Terroir",
+      "source_name": "Villars-le-Terroir",
+      "source_page": 20
+    },
+    {
+      "bfs": 5539,
+      "name": "Vuarrens",
+      "source_name": "Vuarrens",
+      "source_page": 20
+    },
+    {
+      "bfs": 5503,
+      "name": "Vufflens-la-Ville",
+      "source_name": "Vufflens-la-Ville",
+      "source_page": 20
+    }
+  ]
+}
