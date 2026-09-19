@@ -15,8 +15,8 @@ true heights instead.
              where SWISSIMAGE is green (trees_mna.py; vs LiDAR on Geneve-Cite: 92 % real, 73 % found, height
              median |d| 0.16 m). GPU-instanced, scaled so the model top = the measured height; each instance
              carries height_m / crown_m (EXT_instance_features) for one-click height
-  metadata   building table: egid, roof_height_m (= gold_ch.building_roof_heights.height_m, -1 = none);
-             tree table: height_m, crown_m
+  metadata   ONE table per tile (glb_writer): egid, height_m, crown_m, kind 0 building / 1 tree. height_m = roof height
+             for a building (= gold_ch.building_roof_heights.height_m, -1 = none), measured height for a tree
 
 GEOREFERENCING — each tile carries a 4x4 `transform` built numerically from PROJ:
   O  = ECEF(E0, N0, H0)            LV95 -> WGS84 lon/lat; LN02 height used AS ellipsoidal height, to match
@@ -350,6 +350,8 @@ def build_tile(key, size=TILE, roof_px=None, min_tree=4.0, tag=""):
     E0, N0 = map(float, key.split("_"))
     my = [e for e, t in tile_of.items()
           if E0 <= float(t.split("_")[0]) < E0 + size and N0 <= float(t.split("_")[1]) < N0 + size]
+    if os.environ.get("TREES_ONLY") == "1":      # measurement layer for the photomesh view: trees only, no buildings
+        my = []
     faces = []
     for layer, kind in (("toit", "roof"), ("facade", "wall"), ("sp_toit", "roof"), ("sp_facade", "dormer"), ("base", "base")) if my else ():
         for r in psql_json(f"""SELECT coalesce(json_agg(json_build_object('e',egid::bigint,'g',ST_AsGeoJSON((d).geom)::json)),'[]')
@@ -420,7 +422,7 @@ def build_tile(key, size=TILE, roof_px=None, min_tree=4.0, tag=""):
         prims.append((m, local(np.vstack(V)), None if k == "base" else np.vstack(UV), np.concatenate(FID), tint))
     if prims:
         eg = [int(e) for e in sorted(feat, key=feat.get)]
-        B.building_mesh(prims, eg, extra={"roof_height_m": (np.array([roof_h.get(e) if roof_h.get(e) is not None else -1.0 for e in eg]), "FLOAT32")})
+        B.building_mesh(prims, eg, heights=np.array([roof_h.get(e) if roof_h.get(e) is not None else -1.0 for e in eg]))
 
     # trees: one table row per tree, instances split over the 3 variants point back into it
     ntrees = len(T["x"])

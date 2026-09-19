@@ -69,6 +69,10 @@ def main() -> int:
     ap.add_argument("csv", nargs="?", default="work/plot_trees.csv")
     ap.add_argument("--vintage", required=True,
                     help="CHM vintage tag, e.g. chm-v2. Must not already be live.")
+    ap.add_argument("--allow-chm-over-mna", action="store_true",
+                    help="Allow a CHM vintage to supersede the live SITG height-model (mna-*) trees. "
+                         "Since 2026-09-19 mna-2025 is the tree source (92 %% real vs LiDAR); a quarterly CHM "
+                         "run must not silently replace it.")
     ap.add_argument("--keep-previous", action="store_true",
                     help="Load the new vintage but do NOT remove the superseded one. "
                          "Leaves two generations live; use only to inspect a diff.")
@@ -89,6 +93,10 @@ def main() -> int:
     before = psql(pg, "SELECT source||' '||count(*) FROM gold_ch.plot_trees "
                       "GROUP BY source ORDER BY source;", quiet=True).strip()
     print(f"  gold before: {before or '(empty)'}")
+    if args.vintage.startswith("chm-") and " mna-" in f" {before}" and not (args.allow_chm_over_mna or args.keep_previous):
+        print("  REFUSED: gold holds SITG height-model trees (mna-*); a CHM vintage would replace them. "
+              "Pass --allow-chm-over-mna to do it deliberately.", file=sys.stderr)
+        return 3
 
     # ── Stage + promote, one transaction ─────────────────────────────────
     load_sql = f"""
