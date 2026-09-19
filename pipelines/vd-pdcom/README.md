@@ -63,6 +63,12 @@ nor successful downloads close that backlog.
 
 ## Resumable canton-wide discovery (2026-09-14)
 
+Discovery also reads bounded, literal `window.open` document links on table rows
+(such as SDOL), without executing JavaScript. Dynamic handlers remain excluded.
+Intercommunal and localised director plans are discovery candidates; document
+scope, version and relevance still require review before acquisition/coverage.
+
+
 `discovery.py --limit 30 --workers 4 --monitor` matches the current OFS roster
 against UCV's full municipality directory, resolves its official website field,
 and crawls up to 12 planning-related HTML pages per commune. It records candidate
