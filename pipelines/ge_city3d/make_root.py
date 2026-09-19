@@ -13,11 +13,12 @@ for c in sorted(os.listdir(OUT), key=lambda x: (len(x), x)):
     spheres.append(sph)
     for k in stats:
         stats[k] += t["extras"][k]
-    kids.append({"boundingVolume": {"sphere": sph}, "geometricError": t["geometricError"], "content": {"uri": f"{c}/tileset.json"}})
+    kids.append({"boundingVolume": {"sphere": sph}, "geometricError": 100000, "content": {"uri": f"{c}/tileset.json"}})
 S = np.array(spheres); center = S[:, :3].mean(axis=0)
 radius = float((np.linalg.norm(S[:, :3] - center, axis=1) + S[:, 3]).max())
-root = {"asset": {"version": "1.1", "generator": "lamap ge_city3d v4"}, "geometricError": 4000,
-        "root": {"boundingVolume": {"sphere": [*center.tolist(), radius]}, "geometricError": 2000, "refine": "ADD", "children": kids},
+# no content above the per-km wrappers (wrap_parents.py): always refine down to them; they decide the draw range
+root = {"asset": {"version": "1.1", "generator": "lamap ge_city3d v4"}, "geometricError": 100000,
+        "root": {"boundingVolume": {"sphere": [*center.tolist(), radius]}, "geometricError": 100000, "refine": "ADD", "children": kids},
         "extras": {"communes": len(kids), **stats}}
 json.dump(root, open(f"{OUT}/tileset.json", "w"))
 print(f"canton root: {len(kids)} communes, {stats['buildings']} buildings, {stats['trees']} trees")

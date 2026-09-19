@@ -85,6 +85,20 @@ Poles, awnings and structure edges scored ExG +0.00 vs +0.28 for crowns — that
   the commune so neighbouring communes never draw the same tree twice.
 - 1 km parents reuse the leaves' cached detections (trees ≥ 8 m) — no second read of the rasters.
 
+## Canton build (2026-09-19) — live at `https://3d.lamap.ch/city/v2/canton/tileset.json`
+`run_canton.sh` (48 communes, 4 in parallel, shared per-cell tree cache) + `make_root.py`: **80,890 buildings,
+912,526 trees, 5,612 tiles, 3.3 GB**, ~3 h on an M1. Three fixes found while verifying, all measured:
+- **One property table per GLB** (`glb_writer`, `convert_single_table.py` for tiles built before): CesiumJS picks through a
+  single table per model, so with separate building/tree tables, roof clicks returned nothing or a tree's height.
+  Now `kind` 0/1, `egid`, `height_m` (roof or tree), `crown_m`. Checked: roof EGID 2039227 → 26.88 m = `get_building_roof_height`.
+- **Per-km draw range** (`wrap_parents.py`, in the builder): each 1 km parent sits under an empty tile with its own box
+  and geometricError 60 (≈ 2.9 km at MSSE 16). Before, a commune's parents were drawn whenever the camera was inside
+  the commune's bounding sphere — over every neighbour. Flight over Genève-Cité: **43 → 56 fps** (p95 43 → 22 ms);
+  served from 3d.lamap.ch: 54 fps, p95 24 ms. One commune alone: 59.5 fps.
+- **Per-process temp files** in `trees_mna.py` (parallel builds overwrote each other's footprint mask).
+- App settings: MSSE 16, keep Cesium's default cache — `cacheBytes` 384 MB + 128 MB overflow measured *slower*
+  (36 fps, re-loading). The profiler's net/GPU MB figures are capped (250 resource-timing entries); trust frame times.
+
 ## Known limits / next
 - Façade textures are procedural, not photographic.
 - Canton build: ~5,000 cells; detection ~10–15 s per cell (network-bound on the three COGs).
