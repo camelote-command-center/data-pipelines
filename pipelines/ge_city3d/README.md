@@ -38,7 +38,8 @@ open prof.html?key=<public anon key>). Measured on an M1:
 | app default (swissBUILDINGS3D + tree billboards + parcel outlines) | 50–51 | 25–27 ms | 12 | fine |
 | + LiDAR point cloud (8 blocks, eye-dome lighting) | **25** | **99 ms** | **370** | the real frame killer; never finished loading in 30 s |
 | city v1 (merged trees, 45 textures/tile) | 33 | 47 ms | 44 | 531 MB GPU, 140 MB download |
-| city v2 (instanced trees, LOD, JPEG) | 41 | 31 ms | 45 | 77 MB download |
+| city v2 (instanced trees, LOD, JPEG) | 41–44 | 29–31 ms | 36–45 | 77 MB download |
+| **city v3 (v2 + neutral façades with tint, 16 draw calls/tile)** | **49.3** | **28 ms** | 36 | 87 MB download — **on par with the app default (49.6 fps, same run)** |
 
 What changed in v2, each measured:
 - **Trees via `EXT_mesh_gpu_instancing`** (3 low-poly variants, ~250 triangles) instead of ~1,600 merged triangles each.
@@ -52,6 +53,10 @@ What changed in v2, each measured:
 - Every triangle is re-oriented after clipping (walls outward, roofs up, bases down): shapely clipping can flip rings.
 - Note: Cesium's GPU memory figure fills up to `cacheBytes` (512 MiB default) regardless of what is on screen — lower
   `cacheBytes` in the app for small devices rather than reading ~500 MB as a leak.
+
+Integration settings for the app: `maximumScreenSpaceError` 16 (the preview pages use 8, which loads more 20 cm
+leaves than needed; a wide commune view at 8 reached 736 MB before settling) and `cacheBytes` ~256–384 MB on small devices.
+Genève-Cité v3: 9 × 1 km parents + 61 × 250 m leaves, 2,863 buildings, 8,315 trees, 133 MB on disk.
 
 ## Known limits / next
 - Tiles merge geometry by material, so **per-building picking (EGID → drawer) is not wired yet** — needs
