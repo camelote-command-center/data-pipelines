@@ -1,0 +1,154 @@
+{
+  "operation_id": "43e29326-4595-417a-80e7-03ac836572ed",
+  "scope": "Regional Broye-Vully PDCom-related PDR/SRGZA, not31full municipal PDComs",
+  "members": [
+    {
+      "name": "Avenches",
+      "bfs": 5451
+    },
+    {
+      "name": "Bussy-sur-Moudon",
+      "bfs": 5663
+    },
+    {
+      "name": "Champtauroz",
+      "bfs": 5812
+    },
+    {
+      "name": "Chavannes-sur-Moudon",
+      "bfs": 5665
+    },
+    {
+      "name": "Chevroux",
+      "bfs": 5813
+    },
+    {
+      "name": "Corcelles-le-Jorat",
+      "bfs": 5785
+    },
+    {
+      "name": "Corcelles-pr\u00e8s-Payerne",
+      "bfs": 5816
+    },
+    {
+      "name": "Cudrefin",
+      "bfs": 5456
+    },
+    {
+      "name": "Curtilles",
+      "bfs": 5669
+    },
+    {
+      "name": "Dompierre (VD)",
+      "bfs": 5671
+    },
+    {
+      "name": "Faoug",
+      "bfs": 5458
+    },
+    {
+      "name": "Grandcour",
+      "bfs": 5817
+    },
+    {
+      "name": "Henniez",
+      "bfs": 5819
+    },
+    {
+      "name": "Hermenches",
+      "bfs": 5673
+    },
+    {
+      "name": "Lovatens",
+      "bfs": 5674
+    },
+    {
+      "name": "Lucens",
+      "bfs": 5675
+    },
+    {
+      "name": "Missy",
+      "bfs": 5821
+    },
+    {
+      "name": "Moudon",
+      "bfs": 5678
+    },
+    {
+      "name": "Payerne",
+      "bfs": 5822
+    },
+    {
+      "name": "Pr\u00e9vonloup",
+      "bfs": 5683
+    },
+    {
+      "name": "Ropraz",
+      "bfs": 5798
+    },
+    {
+      "name": "Rossenges",
+      "bfs": 5684
+    },
+    {
+      "name": "Syens",
+      "bfs": 5688
+    },
+    {
+      "name": "Trey",
+      "bfs": 5827
+    },
+    {
+      "name": "Treytorrens (Payerne)",
+      "bfs": 5828
+    },
+    {
+      "name": "Valbroye",
+      "bfs": 5831
+    },
+    {
+      "name": "Villars-le-Comte",
+      "bfs": 5690
+    },
+    {
+      "name": "Villarzel",
+      "bfs": 5830
+    },
+    {
+      "name": "Vucherens",
+      "bfs": 5692
+    },
+    {
+      "name": "Vulliens",
+      "bfs": 5803
+    },
+    {
+      "name": "Vully-les-Lacs",
+      "bfs": 5464
+    }
+  ],
+  "membership_evidence": "All31 current names matched to native text of Annexes PDF31classification map; official consultation names same31BFS, district scope stated on dossiers.",
+  "currentness": "May2026complementary consultation concerns Payerne SRGZA changes only. Regional official landing states remarks processing; cantonal approval not established. July2025updated strategy and February2025synthesis are separate vintages.",
+  "documents": 5,
+  "pages": 212,
+  "raw_tables": 25,
+  "raw_table_rows_including_headers": 518,
+  "maps_extracted": 2,
+  "excluded_file": "Carte sectorielle combin\u00e9e: Fribourg operational maps; not attributed to Vaud.",
+  "viewport_correction": "AnnexPDF39 has Subtype/RL measurement metadata, not georeferencing. Corrected inspection and regression-tested acquisition detector. Genuine GEO metadata in excluded FRmapPDF4 remains detectable; no transfer to VDmaps.",
+  "semantics": [
+    "Economic/activity zones, not residential development reserves.",
+    "Diagnostic prepared2019 often with2015data; strategy reference year adjusted2024. Distinguish T0,T1,T2 snapshots and interventions.",
+    "Potentially mobilisable land may be occupied by necessary parking/storage/logistics. Mobilisation estimates extrapolate sampled sectors and require actions by2040.",
+    "Tables mix current built areas, reserves, reconversion/dezoning and proposals. Raw518rows not distinct parcels or usable receiver rows.",
+    "Regional synthesis/map classification depicts existing and proposed features and nearby Fribourg context. Preserve VDscope and separate versions."
+  ],
+  "artifacts": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/broye-regional",
+  "increments": {
+    "documents": 5,
+    "maps_extracted": 2,
+    "validated_sectors": 0,
+    "receiver_rows": 0
+  },
+  "verified_source_commune_increment": 31
+}

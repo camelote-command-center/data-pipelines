@@ -90,6 +90,31 @@ def acquire(source):
                 'archive_member':member,'member_sha256':hashlib.sha256(pdf).hexdigest()}
 
 
+def has_geographic_viewport(doc, page):
+    """Detect GEO viewport metadata, not relative-length measurement viewports.
+
+    Presence is an inspection hint only; CRS/control-point validation is separate.
+    Resolve indirect dictionaries with a bounded traversal and cycle protection.
+    """
+    kind, value = doc.xref_get_key(page.xref, 'VP')
+    if kind == 'null':
+        return False
+    queue, seen, parts = [value], set(), []
+    while queue:
+        value = queue.pop()
+        parts.append(value)
+        for ref in re.findall(r'(?<!\d)(\d+)\s+0\s+R\b', value):
+            ref = int(ref)
+            if ref in seen:
+                continue
+            if len(seen) >= 32:
+                return False
+            seen.add(ref)
+            queue.append(doc.xref_object(ref))
+    metadata = '\n'.join(parts)
+    return bool(re.search(r'/Subtype\s*/GEO\b', metadata))
+
+
 def inspect(data, *, enumerate_vectors=True, max_pages=500):
     if type(max_pages) is not int or not 1 <= max_pages <= 1000:
         raise ValueError('invalid_page_limit')
@@ -101,7 +126,7 @@ def inspect(data, *, enumerate_vectors=True, max_pages=500):
             pages.append({'page_number':number,'width':page.rect.width,'height':page.rect.height,
                           'text':text[:30000],'vector_paths':len(page.get_drawings()) if enumerate_vectors else None,
                           'vector_inventory_status':'counted' if enumerate_vectors else 'not_evaluated',
-                          'embedded_georef':doc.xref_get_key(page.xref,'VP')[0]!='null'})
+                          'embedded_georef':has_geographic_viewport(doc,page)})
     return pages
 
 
