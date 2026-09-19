@@ -99,6 +99,25 @@ Poles, awnings and structure edges scored ExG +0.00 vs +0.28 for crowns — that
 - App settings: MSSE 16, keep Cesium's default cache — `cacheBytes` 384 MB + 128 MB overflow measured *slower*
   (36 fps, re-loading). The profiler's net/GPU MB figures are capped (250 resource-timing entries); trust frame times.
 
+## Photomesh view (2026-09-19) — the look for the app: SITG Photomaillage 3D 2019 + Lamap 2025 measurements
+SITG `3D_PHOTOMESH_2019_05` (Accès libre, level A; credit "© SITG") is streamed as I3S straight from SITG's ArcGIS
+Online SceneServer (`Mesh3D_GENEVE_2019`, WGS84, EGM96 heights). CesiumJS `I3SDataProvider` reads it as is.
+Measured on Genève-Cité (`cesium_view_photomesh.html`):
+- **Alignment**: mesh ground vs swisstopo terrain −0.4 … 0 m with heights used as is (same no-geoid convention).
+- **Buildings** measured on the mesh are within ~0.5 m of `building_roof_heights`; **trees read 0.6–2 m low** (2019
+  vintage + photogrammetry rounds crowns) — so tree heights shown on click come from the 2025 data, not the mesh.
+- **Unlit** (`CustomShader` UNLIT): the photos carry daylight; Cesium's sun made the mesh dark at dusk.
+- **Globe clipped inside the canton** (`ClippingPolygonCollection`, outer rings of `pub/canton_outline.geojson`, inset 5 m):
+  inside, the mesh is the ground; outside, terrain + basemap as before.
+- **Parcels** (clamped GeoJSON / ground polylines) drape onto the mesh (classification BOTH).
+- **Click identity without an extra layer**: `get_3d_feature_at(lon, lat)` (lamap_db, `sql/001_…`) → building (EGID +
+  2025 roof height) / tree (2025 height + crown) / plot, ~30 ms as anon. An invisible 3D tree layer was tried first:
+  pickable at alpha 0.01 but the parcel classification painted it, and it cost ~10 fps.
+- fps on the Cité flight: mesh alone 60, our v4 model 54–56, app default ~50.
+- Trees: `ref.plot_trees` now holds the 912,526 SITG-height-model trees (`source = mna-2025`, loaded with
+  `ge_canopy_height_model/load_trees.py`; chm-v1 snapshotted to `backup.plot_trees_superseded_20260919`).
+  `load_trees.py` refuses to let a `chm-*` vintage replace `mna-*` trees without `--allow-chm-over-mna`.
+
 ## Known limits / next
 - Façade textures are procedural, not photographic.
 - Canton build: ~5,000 cells; detection ~10–15 s per cell (network-bound on the three COGs).

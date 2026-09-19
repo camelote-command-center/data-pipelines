@@ -1,0 +1,93 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Genève 3D — photomaillage vs modèle</title>
+<script>window.CESIUM_BASE_URL='https://cdnjs.cloudflare.com/ajax/libs/cesium/1.133.1/';</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.133.1/Cesium.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.133.1/Widgets/widgets.css" rel="stylesheet">
+<style>html,body,#v{margin:0;width:100%;height:100%;overflow:hidden}
+#hud{position:absolute;top:8px;left:8px;background:#000b;color:#fff;font:13px sans-serif;padding:7px 10px;border-radius:4px;max-width:420px}
+#ctl{position:absolute;top:48px;left:8px;display:flex;gap:6px;font:12px sans-serif}
+#ctl button{padding:7px 11px;border-radius:4px;border:0;background:#fff;cursor:pointer}#ctl button.on{background:#58dca6}</style></head>
+<body><div id="v"></div><div id="hud">chargement…</div>
+<div id="ctl"><button id="bHyb" class="on">Photomaillage + mesures</button><button id="bMesh">Photomaillage seul</button><button id="bOurs">Notre modèle</button></div>
+<script>
+(async () => {
+  Cesium.Ion.defaultAccessToken = '';
+  const viewer = new Cesium.Viewer('v', {
+    baseLayer: new Cesium.ImageryLayer(new Cesium.UrlTemplateImageryProvider({
+      url: 'https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.swissimage-product/default/current/3857/{z}/{x}/{y}.jpeg', maximumLevel: 20, credit: '© swisstopo'})),
+    terrainProvider: await Cesium.CesiumTerrainProvider.fromUrl('https://3d.geo.admin.ch/ch.swisstopo.terrain.3d/v1/'),
+    baseLayerPicker:false, geocoder:false, homeButton:false, sceneModePicker:false, navigationHelpButton:false,
+    animation:false, timeline:false, fullscreenButton:false, infoBox:false, selectionIndicator:false });
+  const s = viewer.scene, hud = document.getElementById('hud');
+  s.globe.depthTestAgainstTerrain = true; s.postProcessStages.fxaa.enabled = true;
+  const P = new URLSearchParams(location.search);
+  const SB = 'https://fckdwddgtdbvhzloejni.supabase.co', KEY = P.get('key') || '';   // public anon key, passed in the URL (not stored)
+  // SITG Photomaillage 3D 2019 (I3S, heights EGM96 used as-is = same convention as the swisstopo terrain)
+  const mesh = await Cesium.I3SDataProvider.fromUrl(
+    'https://tiles.arcgis.com/tiles/Yw7hmHuxwtA1GVg6/arcgis/rest/services/Mesh3D_GENEVE_2019/SceneServer/layers/0',
+    {cesium3dTilesetOptions: {maximumScreenSpaceError: +(P.get('msse') || 16)}});
+  s.primitives.add(mesh);
+  const ours = await Cesium.Cesium3DTileset.fromUrl(P.get('ts') || 'https://3d.lamap.ch/city/v2/canton/tileset.json', {maximumScreenSpaceError: 16});
+  s.primitives.add(ours);
+  ours.shadows = Cesium.ShadowMode.DISABLED;
+  // the photos already contain daylight: draw the mesh UNLIT (Cesium's own sun made it dark at dusk)
+  const unlit = new Cesium.CustomShader({lightingModel: Cesium.LightingModel.UNLIT});
+  mesh.layers.forEach(l => { if (l.tileset) l.tileset.customShader = unlit; });
+  // hybrid: our layer at 1 % opacity = invisible but still pickable (alpha 0 is NOT pickable in Cesium — measured)
+  const GHOST = new Cesium.Cesium3DTileStyle({show: '${kind} === 1', color: "color('white', 0.01)"});   // trees only: buildings are measured on the mesh itself (±0.5 m)
+  const outline = await (await fetch(P.get('outline') || 'pub/canton_outline.geojson')).json();
+  const polys = [];
+  for (const f of outline.features) {
+    const g = f.geometry, parts = g.type === 'MultiPolygon' ? g.coordinates : [g.coordinates];
+    for (const part of parts) polys.push(new Cesium.ClippingPolygon({positions: Cesium.Cartesian3.fromDegreesArray(part[0].flat())}));  // outer ring only
+  }
+  s.globe.clippingPolygons = new Cesium.ClippingPolygonCollection({polygons: polys});
+  // parcels exactly like the app: GeoJsonDataSource clamped to ground -> drapes on terrain AND on 3D tiles (the mesh)
+  const parcels = await Cesium.GeoJsonDataSource.load(P.get('parcels') || 'test_parcels.geojson',
+    {clampToGround: true, stroke: Cesium.Color.WHITE.withAlpha(0.8), fill: Cesium.Color.fromCssColorString('#58dca6').withAlpha(0.18), strokeWidth: 2});
+  parcels.entities.values.forEach(e => { if (e.polygon) e.polygon.classificationType = Cesium.ClassificationType.BOTH; });
+  viewer.dataSources.add(parcels); window.parcels = parcels;
+  const mode = m => {
+    mesh.show = m !== 'ours'; ours.show = m === 'ours';   // hybrid: NO extra layer — identity comes from get_3d_feature_at
+    s.globe.clippingPolygons.enabled = m !== 'ours';   // inside the canton the mesh IS the ground; outside, the globe
+    [['hybrid', bHyb], ['mesh', bMesh], ['ours', bOurs]].forEach(([k, b]) => b.classList.toggle('on', m === k)); window.__mode = m;
+    hud.textContent = {hybrid: 'Photomaillage SITG 2019 + mesures Lamap 2025 — cliquer un arbre ou un bâtiment',
+                       mesh: 'Photomaillage SITG 2019 (7 cm) — cliquer : hauteur au-dessus du sol',
+                       ours: 'Modèle Lamap v4 — cliquer : arbre / bâtiment'}[m];
+  };
+  bHyb.onclick = () => mode('hybrid'); bMesh.onclick = () => mode('mesh'); bOurs.onclick = () => mode('ours');
+  mode(P.get('mode') || 'hybrid');
+  const tp = viewer.terrainProvider;
+  viewer.camera.setView({destination: Cesium.Cartesian3.fromDegrees(+(P.get('lon') || 6.1505), +(P.get('lat') || 46.1995), +(P.get('h') || 520)),
+    orientation: {heading: Cesium.Math.toRadians(+(P.get('hd') || 20)), pitch: Cesium.Math.toRadians(+(P.get('pt') || -28))}});
+  window.viewer = viewer; window.mesh = mesh; window.ours = ours; window.mode = mode;
+  // click: height above ground = picked point - bare terrain (swissALTI3D via the swisstopo terrain)
+  window.heightAt = async (pos) => {
+    const p = s.pickPosition(pos); if (!p) return null;
+    const c = Cesium.Cartographic.fromCartesian(p);
+    const [g] = await Cesium.sampleTerrainMostDetailed(tp, [new Cesium.Cartographic(c.longitude, c.latitude)]);
+    return {top: c.height, ground: g.height, above: c.height - g.height};
+  };
+  viewer.cesiumWidget.screenSpaceEventHandler.setInputAction(async e => {
+    const surf = window.__mode !== 'ours' ? await heightAt(e.position) : null;
+    if (window.__mode === 'hybrid' && surf) {
+      const q = Cesium.Cartographic.fromCartesian(s.pickPosition(e.position));
+      const r = await fetch(`${SB}/rest/v1/rpc/get_3d_feature_at`, {method: 'POST', headers: {apikey: KEY, Authorization: `Bearer ${KEY}`, 'Content-Type': 'application/json'},
+        body: JSON.stringify({p_lon: Cesium.Math.toDegrees(q.longitude), p_lat: Cesium.Math.toDegrees(q.latitude)})}).then(x => x.json());
+      window.__lastFeature = r;
+      const plot = r.plot ? ` · parcelle ${r.plot.no_commune_no_parcelle}` : '';
+      hud.textContent = r.kind === 'tree' ? `Arbre — ${(+r.tree.height_m).toFixed(1)} m (couronne ${(+r.tree.crown_m).toFixed(1)} m) · 2025${plot}`
+        : r.kind === 'building' && r.building.height_m != null ? `Bâtiment EGID ${r.building.egid} — ${(+r.building.height_m).toFixed(1)} m · 2025${plot}`
+        : `Hauteur au-dessus du sol : ${surf.above.toFixed(1)} m${plot}`;
+      return;
+    }
+    if (window.__mode === 'ours') {
+      const f = s.drillPick(e.position, 3).find(x => x && x.getProperty && x.getProperty('kind') !== undefined);
+      const get = k => f.getProperty(k), kind = f ? get('kind') : undefined, h = f ? get('height_m') : undefined;
+      if (kind === 1) { hud.textContent = `Arbre — ${h.toFixed(1)} m (couronne ${get('crown_m').toFixed(1)} m) · hauteur 2025`; return; }
+      if (kind === 0 && h >= 0) { hud.textContent = `Bâtiment EGID ${get('egid')} — ${h.toFixed(1)} m · hauteur 2025`; return; }
+      if (window.__mode === 'ours') { hud.textContent = 'rien'; return; }
+    }
+    hud.textContent = surf ? `Hauteur au-dessus du sol : ${surf.above.toFixed(1)} m (photomaillage)` : 'rien';
+  }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+})();
+</script></body></html>
