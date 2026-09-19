@@ -63,6 +63,15 @@ nor successful downloads close that backlog.
 
 ## Resumable canton-wide discovery (2026-09-14)
 
+Discovery also reads bounded, literal `window.open` document links on table rows
+(such as SDOL), without executing JavaScript. Dynamic handlers remain excluded.
+Intercommunal and localised director plans are discovery candidates; document
+scope, version and relevance still require review before acquisition/coverage.
+Reviewed large compilations may declare `max_pages` (1–1,000; default 500).
+The 792-page 2022 PDi-OL municipal programmes use 800 pages and 120 MB, with
+vector enumeration disabled. Their schedules are indicative, not parcel rights.
+
+
 `discovery.py --limit 30 --workers 4 --monitor` matches the current OFS roster
 against UCV's full municipality directory, resolves its official website field,
 and crawls up to 12 planning-related HTML pages per commune. It records candidate

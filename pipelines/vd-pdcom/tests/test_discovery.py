@@ -126,3 +126,33 @@ class DiscoveryContracts(unittest.TestCase):
         page=BeautifulSoup('<a href="/_doc/5434054">PDCom - Plan Directeur Communal</a>','html.parser')
         result=self.crawl_home(page)
         self.assertEqual(result['candidates'][0]['kind'],'pdf')
+
+    def test_sdol_static_table_rows_keep_plan_and_context(self):
+        page=BeautifulSoup("""<h1>Le Plan Directeur intercommunal - PDI-OL</h1>
+        <table><tr onclick="window.open('/approved.pdf');"><td>2022</td><td>Version adoptee</td></tr>
+        <tr onclick="window.open('/actions.pdf', '_blank'); return false;"><td>Programmes municipaux</td></tr></table>""",'html.parser')
+        result=self.crawl_home(page)
+        self.assertEqual({c['source_url'] for c in result['candidates']}, {'https://www.example.ch/approved.pdf','https://www.example.ch/actions.pdf'})
+        self.assertTrue(all(c['kind']=='pdf' and c['review_status']=='pending' for c in result['candidates']))
+        self.assertIn('Version adoptee',result['candidates'][0]['link_text'])
+
+    def test_dynamic_handlers_and_non_web_targets_ignored(self):
+        page=BeautifulSoup("""<h1>PDCom</h1>
+        <button onclick="window.open(prefix + '/plan.pdf')">PDCom</button>
+        <button onclick="window.open('/plan.pdf'); doSomething()">PDCom</button>
+        <button onclick="window.open('javascript:alert(1)')">PDCom</button>
+        <button onclick="window.open('https://user:secret@example.ch/p.pdf')">PDCom</button>""",'html.parser')
+        self.assertEqual(self.crawl_home(page)['candidates'],[])
+
+    def test_onclick_expansion_is_bounded(self):
+        page=BeautifulSoup('<h1>PDCom</h1>','html.parser')
+        for n in range(1001):
+            tag=page.new_tag('button');tag['onclick']=f"window.open('/plan-{n}.pdf')";page.append(tag)
+        result=self.crawl_home(page)
+        self.assertEqual(len(result['candidates']),1000)
+        self.assertEqual(result['errors'][0]['reason'],'onclick_link_limit')
+
+    def test_local_and_intercommunal_director_plans_are_candidates(self):
+        for title in ['Plan Directeur intercommunal','Plan directeur localisé','PDi-OL']:
+            self.assertTrue(discovery.PLAN.search(title))
+        self.assertFalse(discovery.PLAN.search('plan directeur forestier'))

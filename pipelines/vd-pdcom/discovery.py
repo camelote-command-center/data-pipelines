@@ -23,7 +23,7 @@ from psycopg2.extras import Json, RealDictCursor
 import requests
 
 DIRECTORY = 'https://www.ucv.ch/annuaire/recherche-par-localite'
-PLAN = re.compile(r'pdcom|plan[s]?[-_ /]+directeur[s]?[-_ /]+communal|dossier[-_ /]+directeur', re.I)
+PLAN = re.compile(r'pdcom|pdi[-_ ]?ol|plan[s]?[-_ /]+directeur[s]?[-_ /]+(?:communal|intercommunal|localis[eé])|dossier[-_ /]+directeur', re.I)
 NAV = re.compile(r'urbanis|amenagement|planific|plan[-_ ]directeur|dossier[-_ ]directeur|pdcom|territoire|reglement|documents|construction', re.I)
 
 
@@ -62,8 +62,21 @@ def fetch_html(url):
 
 
 def page_links(page, diagnostics):
-    """Read published i-web table JSON as inert data, with bounded expansion."""
+    """Read published links and literal onclick targets without executing scripts."""
     for link in page.select('a[href]'):
+        yield link, ''
+    # SDOL publishes document links on table rows rather than anchors. Accept
+    # only an entire literal window.open call; never evaluate arbitrary JS.
+    handlers = page.select('[onclick]')
+    if len(handlers) > 1000:
+        diagnostics.append({'stage': 'onclick_links', 'reason': 'onclick_link_limit'})
+    pattern = re.compile(r"""\s*window\.open\(\s*(['"])([^'"\\\r\n]{1,2048})\1\s*(?:,\s*(['"])_blank\3\s*)?\)\s*;?\s*(?:return\s+false\s*;?)?\s*""")
+    for node in handlers[:1000]:
+        match = pattern.fullmatch(node.get('onclick', ''))
+        if match is None:
+            continue
+        link = page.new_tag('a', href=match.group(2))
+        link.string = node.get_text(' ', strip=True)[:500]
         yield link, ''
     rows_left = 1000
     bytes_left = 1_000_000
