@@ -109,6 +109,7 @@ def clean_text(text):
 
 DOCUMENT_TIME_LIMIT_S=30*60   # one oversized scan must not consume a whole bounded run
 RETRY_AFTER='7 days'          # error / needs_ocr references are retried at most weekly
+CRASH_LIMIT=2                 # claims that never completed twice (runner killed) -> quarantined for good
 
 class Budget:
     """Wall-clock budget for one run (monotonic). 0 minutes = unbounded (development runs).
@@ -201,16 +202,19 @@ def store_catalog(conn,run_id,rows):
                 source_metadata=excluded.source_metadata,catalog_hash=excluded.catalog_hash,
                 last_seen_run=excluded.last_seen_run,last_seen_at=now()""",values,page_size=500)
 
-def bounded_map(pool, fn, items, concurrency=3, accepting=lambda:True, submitted=None):
+def bounded_map(pool, fn, items, concurrency=3, accepting=lambda:True, submitted=None, on_submit=None):
     """Yield fn(item) results with at most `concurrency` in flight. Stops submitting new items
-    once accepting() is False; `submitted` (a list) receives the count of items started."""
+    once accepting() is False; `submitted` (a list) receives the count of items started.
+    `on_submit(item)` runs in the caller's thread just before an item starts (crash claim)."""
     iterator=iter(items)
     pending=set();started=0
     def submit_next():
         nonlocal started
         if not accepting():return
         item=next(iterator,None)
-        if item is not None:pending.add(pool.submit(fn,item));started+=1
+        if item is not None:
+            if on_submit is not None:on_submit(item)
+            pending.add(pool.submit(fn,item));started+=1
     for _ in range(concurrency):submit_next()
     while pending:
         done,pending=concurrent.futures.wait(pending,return_when=concurrent.futures.FIRST_COMPLETED)
@@ -274,7 +278,7 @@ def store_extraction(conn,row,payload):
                 c.execute('ALTER TABLE knowledge_ch.chunks ENABLE TRIGGER classify_on_insert')
                 c.execute('ALTER TABLE knowledge_ch.documents ENABLE TRIGGER classify_on_insert')
             c.execute("""UPDATE bronze_ch.planning_document_sources SET current_version_id=%s,
-                last_attempt_at=now(),last_success_at=now(),extraction_status=%s,error_code=null WHERE id=%s""",
+                last_attempt_at=now(),last_success_at=now(),extraction_status=%s,error_code=null,crash_count=0 WHERE id=%s""",
                 (version_id,payload['extraction_status'],source_id))
     return not exists,publish
 
@@ -290,7 +294,11 @@ def due_targets(conn,catalog_run,cantons):
             or last_success_at < now()-interval '365 days'
             or (extraction_status='needs_ocr' and (last_attempt_at is null or last_attempt_at < now()-interval '{RETRY_AFTER}'))
           )
-          order by (last_attempt_at is not null),
+          -- crash quarantine: a document whose claim never completed killed its runner (e.g. out of
+          -- memory). Retried once after RETRY_AFTER, then never again, so it cannot block the queue.
+          and crash_count < {CRASH_LIMIT}
+          and (crash_count = 0 or claimed_at < now()-interval '{RETRY_AFTER}')
+          order by crash_count,(last_attempt_at is not null),
                    case when title ~* '(reglement|règlement|bauordnung|bau.?und.?zonenordnung|RCU)' then 0 else 1 end,canton_code,id""",(catalog_run,cantons))
         rows=c.fetchall()
     conn.commit()
@@ -411,20 +419,31 @@ def main():
                 try:return group,extract(group[0][2],deadline=budget.document_deadline()),None
                 except Exception as e:return group,None,failure_code(e)
             submitted=[]
+            def claim(group):
+                # Committed BEFORE the download starts: if the runner is killed mid-document the
+                # counter stays raised and the queue skips this document next run. Every completion
+                # path below resets it to 0.
+                with conn:
+                    with conn.cursor() as c:
+                        c.execute("update bronze_ch.planning_document_sources set crash_count=crash_count+1,claimed_at=now() where id=any(%s::uuid[])",([r[0] for r in group],))
+            with conn.cursor() as c:
+                c.execute("select count(*) from bronze_ch.planning_document_sources where crash_count>=%s",(CRASH_LIMIT,))
+                report['quarantined_after_runner_crash']=c.fetchone()[0]
+            conn.commit()
             with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
-                for i,(group,payload,error) in enumerate(bounded_map(pool,worker,selected,accepting=budget.accepting,submitted=submitted),1):
+                for i,(group,payload,error) in enumerate(bounded_map(pool,worker,selected,accepting=budget.accepting,submitted=submitted,on_submit=claim),1):
                     if error=='document_time_limit' and budget.hard_expired():
                         # Cut off by the run budget, not by its own size: not an error. Stamp the
                         # attempt so never-attempted documents go first next run.
                         report['abandoned_at_budget']+=1
                         with conn:
                             with conn.cursor() as c:
-                                c.execute("update bronze_ch.planning_document_sources set last_attempt_at=now() where id=any(%s::uuid[])",([r[0] for r in group],))
+                                c.execute("update bronze_ch.planning_document_sources set last_attempt_at=now(),crash_count=0 where id=any(%s::uuid[])",([r[0] for r in group],))
                     elif error:
                         report['errors']+=1
                         with conn:
                             with conn.cursor() as c:
-                                c.execute("update bronze_ch.planning_document_sources set extraction_status='error',error_code=%s,last_attempt_at=now() where id=any(%s::uuid[])",(error,[r[0] for r in group]))
+                                c.execute("update bronze_ch.planning_document_sources set extraction_status='error',error_code=%s,last_attempt_at=now(),crash_count=0 where id=any(%s::uuid[])",(error,[r[0] for r in group]))
                     else:
                         for row in group:
                             new,publish=store_extraction(conn,row,payload)

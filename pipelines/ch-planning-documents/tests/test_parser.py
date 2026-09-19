@@ -98,6 +98,21 @@ class BoundedRuns(unittest.TestCase):
         with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
             out=list(parser.bounded_map(pool,fn,range(10),concurrency=1,accepting=lambda:state['open'],submitted=submitted))
         self.assertEqual(out,[0,1]);self.assertEqual(submitted,[2])
+    def test_on_submit_claims_before_each_start(self):
+        import concurrent.futures
+        events=[]
+        def fn(x):
+            events.append(('run',x));return x
+        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
+            out=list(parser.bounded_map(pool,fn,[1,2,3],concurrency=1,on_submit=lambda x:events.append(('claim',x))))
+        self.assertEqual(sorted(out),[1,2,3])
+        for x in (1,2,3):
+            self.assertLess(events.index(('claim',x)),events.index(('run',x)))
+    def test_queue_quarantines_runner_crashes(self):
+        import inspect
+        src=inspect.getsource(parser.due_targets)
+        self.assertIn('crash_count < {CRASH_LIMIT}',src)
+        self.assertIn("claimed_at < now()-interval '{RETRY_AFTER}'",src)
     def test_document_deadline_is_enforced(self):
         from pypdf import PdfWriter
         w=PdfWriter();w.add_blank_page(width=100,height=100);stream=io.BytesIO();w.write(stream)
