@@ -5,12 +5,14 @@ Not a parser: a build tool over data the parsers already ingest. First commune: 
 
 ```bash
 export RE_LLM_PG_URI=...            # session pooler URI from the supabase-registry
-python city_commune.py 21 <copc_dir> out/                 # all tiles of the commune
-python city_commune.py 21 <copc_dir> out/ 2500500_1117500 # selected tiles (tileset.json merges every tiles_*.json)
-python -m http.server 8765  # then open cesium_view.html (expects out/ at ./commune21/)
+python city_commune.py 21 out/                 # all 250 m cells touching the commune (+ 1 km LOD parents)
+python city_commune.py 21 out/ 2500500_1117500 # selected tiles (tileset.json merges every tiles_*.json)
+python -m http.server 8765  # then open cesium_view.html?ts=out/tileset.json — click a tree or a building for its height
 ```
 Inputs: `bronze_ch.ge_cad_bati3d_*` (buildings), `bronze_ch.bfs_rebl_buildings` (façade style), SWISSIMAGE 10 cm
-2023 (roofs, read by range requests), SITG LiDAR 2025 COPC mirrored by `sitg_lidar_2025` (trees, terrain for tree heights).
+2023 (roofs + tree greenness, range requests), SITG MNA_HAUTEUR 2025 20 cm COG (trees, range requests), swissALTI3D
+(tree base altitude), `gold_ch.building_roof_heights` (building height property). **No LiDAR needed since v4** — the
+same builder runs for any Geneva commune. Tree detections are cached per 250 m cell in `<out>_trees/` (`TREE_CACHE`).
 
 ## What makes it look real — and what did not
 - **Buildings from bati3d LOD2 planar faces, flat shading.** Draping the LiDAR over footprints (v1) melted roofs into blobs,
@@ -18,8 +20,9 @@ Inputs: `bronze_ch.ge_cad_bati3d_*` (buildings), `bronze_ch.bfs_rebl_buildings` 
 - **Roofs textured with SWISSIMAGE** (planar projection), **façades procedural and RegBL-driven**: `gbaup` → style
   (belle époque / inter-war / post-war / curtain wall), `gastw` → floor height, `gklas` 1211/1220/1230 or pre-1945 →
   ground-floor shopfront; colour varies per EGID within a style.
-- **Trees from LiDAR class 5**: canopy peaks ≥ 4 m and ≥ 3 m apart, off building footprints; crown radius from
-  neighbour spacing; trunk + 5 jittered crown blobs.
+- **Trees from the SITG 20 cm height model** (`trees_mna.py`, v4 — was LiDAR class 5 up to v3): canopy peaks ≥ 4 m and
+  ≥ 3.5 m apart, off building footprints (+1.5 m), kept only where SWISSIMAGE is green (ExG ≥ 0.04) and the surface is
+  not jagged (local σ ≤ 2.5 m). Crown radius from neighbour spacing. See v4 below for the check against the LiDAR.
 
 ## ⚠️ Height datum — measured, contradicts older notes
 swisstopo's Cesium terrain (`3d.geo.admin.ch/ch.swisstopo.terrain.3d`) stores **LN02 heights as ellipsoidal heights**
@@ -58,8 +61,30 @@ Integration settings for the app: `maximumScreenSpaceError` 16 (the preview page
 leaves than needed; a wide commune view at 8 reached 736 MB before settling) and `cacheBytes` ~256–384 MB on small devices.
 Genève-Cité v3: 9 × 1 km parents + 61 × 250 m leaves, 2,863 buildings, 8,315 trees, 133 MB on disk.
 
+## v4 (2026-09-19) — trees and heights from the 2025 height model, one-click measurements
+Why: the unified 3D layer must cover the canton. LiDAR class 5 needs the raw point cloud (~2.1 TB for GE); the SITG
+height model (MNA_HAUTEUR_2025_03 = surface − terrain, same March 2025 flight) is one 13 GB COG read by range requests.
+
+**Checked against the LiDAR trees on 6 Genève-Cité tiles** (`validate_trees.py` logic, 651 LiDAR trees):
+
+| detector | detections | real (have a LiDAR twin ≤ 2 m) | LiDAR trees found | height vs LiDAR |
+|---|---|---|---|---|
+| height-model peaks only | 876 | 59 % | 80 % | — |
+| **+ greenness + roughness filter (shipped)** | **519** | **92 %** | **73 %** | median −0.16 m, 90 % within 0.40 m |
+
+Most of the 27 % not found are small trees merged into a neighbour's crown; the 8 % extra are mostly hedges/shrubs ≥ 4 m.
+Poles, awnings and structure edges scored ExG +0.00 vs +0.28 for crowns — that is what the filter removes.
+
+- **Tree models measure true**: the 3 variants are normalised so the crown top is exactly at the scaled height and the
+  crown radius exactly 0.5 × scale — measuring a tree with a height tool returns the detected height (variant 2 was
+  6 % short and 21 % too wide before).
+- **One-click height**: each tree instance carries `height_m` / `crown_m` (`EXT_instance_features` → property table
+  `tree`); each building carries `egid` + `roof_height_m` (= `gold_ch.building_roof_heights.height_m`, the same value
+  the drawer RPC `get_building_roof_height` returns; −1 = none). `scene.pick(pos).getProperty('height_m')`.
+- **Every 250 m cell touching the commune** gets a tile (parks/woods hold trees but no buildings); trees are clipped to
+  the commune so neighbouring communes never draw the same tree twice.
+- 1 km parents reuse the leaves' cached detections (trees ≥ 8 m) — no second read of the rasters.
+
 ## Known limits / next
-- Tiles merge geometry by material, so **per-building picking (EGID → drawer) is not wired yet** — needs
-  EXT_mesh_features feature IDs per building.
-- No LOD: every tile is full detail. Tree-heavy tiles reach ~11 MB — lighten tree meshes, add a coarse LOD.
 - Façade textures are procedural, not photographic.
+- Canton build: ~5,000 cells; detection ~10–15 s per cell (network-bound on the three COGs).

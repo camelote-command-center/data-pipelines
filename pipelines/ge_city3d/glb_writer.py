@@ -4,6 +4,8 @@ Minimal glTF 2.0 writer for city tiles, with the three extensions trimesh cannot
   EXT_mesh_features + EXT_structural_metadata   every building vertex carries _FEATURE_ID_0 -> a property
                                                  table row holding the building's EGID, so Cesium picking
                                                  (feature.getProperty('egid')) knows which building was hit
+  EXT_instance_features                          each tree instance -> a row of the "tree" table (height_m, crown_m),
+                                                 so one click on a tree returns its measured height
   EXT_mesh_gpu_instancing                        each tree variant is ONE small mesh drawn N times with
                                                  per-instance TRANSLATION / SCALE / ROTATION — measured
                                                  need: 8,315 trees as merged geometry cost ~13 M triangles
@@ -27,6 +29,21 @@ class Builder:
         self.g.scene = 0
         self.blob = bytearray()
         self.materials = {}
+        self.classes, self.tables = {}, []
+
+    def _table(self, cls, cols):
+        """cols: {name: (numpy array, componentType)} -> index of a new EXT_structural_metadata property table."""
+        n = len(next(iter(cols.values()))[0])
+        self.classes[cls] = {"properties": {k: {"type": "SCALAR", "componentType": ct} for k, (_, ct) in cols.items()}}
+        dt = {"UINT32": np.uint32, "FLOAT32": np.float32}
+        props = {k: {"values": self._view(np.ascontiguousarray(a, dtype=dt[ct]).tobytes())} for k, (a, ct) in cols.items()}
+        self.tables.append({"class": cls, "count": n, "properties": props})
+        return len(self.tables) - 1
+
+    def _use(self, *exts):
+        for e in exts:
+            if e not in self.g.extensionsUsed:
+                self.g.extensionsUsed.append(e)
 
     def _view(self, data: bytes, target=None):
         while len(self.blob) % 4:
@@ -68,7 +85,7 @@ class Builder:
         n /= np.maximum(np.linalg.norm(n, axis=1, keepdims=True), 1e-12)
         return np.repeat(n, 3, axis=0)
 
-    def building_mesh(self, prims, egids, lit=False):
+    def building_mesh(self, prims, egids, lit=False, extra=None):
         """prims: list of (material_index, positions Nx3 (N % 3 == 0), uvs Nx2 | None, feature_ids N[, tint Nx4 0..1]).
         A per-vertex tint (COLOR_0) multiplies a NEUTRAL facade texture, so one texture serves every palette of a
         style: ~10 materials per tile instead of ~45, i.e. 3-4x fewer draw calls (measured: 1,686 for Geneve-Cite).
@@ -93,18 +110,20 @@ class Builder:
         self.g.meshes.append(G.Mesh(name="buildings", primitives=gprims))
         self.g.nodes.append(G.Node(name="buildings", mesh=len(self.g.meshes) - 1))
         self.g.scenes[0].nodes.append(len(self.g.nodes) - 1)
-        # property table: one row per feature id, column egid (UINT32 fits every Swiss EGID)
-        pv = self._view(np.asarray(egids, dtype=np.uint32).tobytes())
-        self.g.extensions = self.g.extensions or {}
-        self.g.extensions["EXT_structural_metadata"] = {
-            "schema": {"id": "lamap_city", "classes": {"building": {"properties": {"egid": {"type": "SCALAR", "componentType": "UINT32"}}}}},
-            "propertyTables": [{"class": "building", "count": len(egids), "properties": {"egid": {"values": pv}}}]}
-        for e in ("EXT_mesh_features", "EXT_structural_metadata"):
-            if e not in self.g.extensionsUsed:
-                self.g.extensionsUsed.append(e)
+        # property table: one row per feature id; egid as UINT32 (fits every Swiss EGID)
+        cols = {"egid": (np.asarray(egids), "UINT32"), **(extra or {})}
+        ti = self._table("building", cols)
+        for pr in gprims:
+            pr.extensions["EXT_mesh_features"]["featureIds"][0]["propertyTable"] = ti
+        self._use("EXT_mesh_features", "EXT_structural_metadata")
 
-    def instanced(self, name, P, C, translations, scales, rotations=None):
-        """One mesh (non-indexed P with per-vertex colours C in 0..1 RGBA) drawn once per instance."""
+    def tree_table(self, heights, crowns):
+        """One "tree" property table per tile; instances point into it with feature_ids (see instanced)."""
+        return self._table("tree", {"height_m": (heights, "FLOAT32"), "crown_m": (crowns, "FLOAT32")})
+
+    def instanced(self, name, P, C, translations, scales, rotations=None, feature_ids=None, table=None):
+        """One mesh (non-indexed P with per-vertex colours C in 0..1 RGBA) drawn once per instance.
+        feature_ids + table: per-instance row in a property table (EXT_instance_features), for picking."""
         if len(translations) == 0:
             return
         attrs = G.Attributes(POSITION=self._acc(P, "VEC3", minmax=True), NORMAL=self._acc(self.flat_normals(P), "VEC3"),
@@ -114,7 +133,12 @@ class Builder:
         inst = {"TRANSLATION": self._acc(translations, "VEC3", target=None), "SCALE": self._acc(scales, "VEC3", target=None)}
         if rotations is not None:
             inst["ROTATION"] = self._acc(rotations, "VEC4", target=None)
-        self.g.nodes.append(G.Node(name=name, mesh=len(self.g.meshes) - 1, extensions={"EXT_mesh_gpu_instancing": {"attributes": inst}}))
+        ext = {"EXT_mesh_gpu_instancing": {"attributes": inst}}
+        if feature_ids is not None:
+            inst["_FEATURE_ID_0"] = self._acc(np.asarray(feature_ids, dtype=np.float32), "SCALAR", target=None)
+            ext["EXT_instance_features"] = {"featureIds": [{"featureCount": self.tables[table]["count"], "attribute": 0, "propertyTable": table}]}
+            self._use("EXT_instance_features", "EXT_structural_metadata")
+        self.g.nodes.append(G.Node(name=name, mesh=len(self.g.meshes) - 1, extensions=ext))
         self.g.scenes[0].nodes.append(len(self.g.nodes) - 1)
         for e in ("EXT_mesh_gpu_instancing",):
             if e not in self.g.extensionsUsed:
@@ -122,6 +146,9 @@ class Builder:
                 self.g.extensionsRequired = list(set((self.g.extensionsRequired or []) + [e]))
 
     def save(self, path):
+        if self.tables:
+            self.g.extensions = self.g.extensions or {}
+            self.g.extensions["EXT_structural_metadata"] = {"schema": {"id": "lamap_city", "classes": self.classes}, "propertyTables": self.tables}
         while len(self.blob) % 4:
             self.blob.append(0)
         self.g.buffers = [G.Buffer(byteLength=len(self.blob))]

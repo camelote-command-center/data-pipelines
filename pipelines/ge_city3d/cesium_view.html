@@ -23,7 +23,7 @@
   s.shadowMap.enabled = true; s.shadowMap.softShadows = true; s.shadowMap.size = 4096;
   viewer.clock.currentTime = Cesium.JulianDate.fromIso8601('2026-06-21T15:30:00Z');
   s.skyAtmosphere.show = true; s.fog.enabled = true; s.postProcessStages.fxaa.enabled = true;
-  const ts = await Cesium.Cesium3DTileset.fromUrl('commune21/tileset.json?' + Date.now(), {maximumScreenSpaceError: 8});
+  const ts = await Cesium.Cesium3DTileset.fromUrl((new URLSearchParams(location.search).get('ts') || 'commune21/tileset.json'), {maximumScreenSpaceError: 8});
   s.primitives.add(ts);
   const x = ts.extras || {};
   document.getElementById('hud').textContent = `Genève-Cité · ${x.buildings} bâtiments · ${x.trees} arbres · © swisstopo, SITG, OFS`;
@@ -33,9 +33,14 @@
   // click a building -> its EGID (EXT_mesh_features + EXT_structural_metadata)
   viewer.cesiumWidget.screenSpaceEventHandler.setInputAction(e => {
     const f = s.pick(e.position);
-    const egid = f && f.getProperty ? f.getProperty('egid') : undefined;
-    window.__lastPick = egid ?? null;
-    document.getElementById('hud').textContent = egid ? `Bâtiment EGID ${egid}` : 'Clic : aucun bâtiment';
+    const get = (k) => (f && f.getProperty ? f.getProperty(k) : undefined);
+    const egid = get('egid'), th = get('height_m');
+    window.__lastPick = egid ?? (th !== undefined ? {height_m: th, crown_m: get('crown_m')} : null);
+    const rh = get('roof_height_m');
+    document.getElementById('hud').textContent =
+      th !== undefined ? `Arbre — hauteur ${th.toFixed(1)} m, couronne ${get('crown_m').toFixed(1)} m`
+      : egid ? `Bâtiment EGID ${egid}` + (rh >= 0 ? ` — hauteur ${rh.toFixed(1)} m` : '')
+      : 'Clic : rien';
   }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
   const ctrl = s.screenSpaceCameraController, freeBtn = document.getElementById('free');
   // --- orbit mode: lock the camera on a picked point; left-drag then rotates around it, 360 degrees
