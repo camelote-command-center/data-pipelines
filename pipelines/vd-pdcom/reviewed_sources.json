@@ -2141,5 +2141,68 @@
       "version": "2019adoption/2018maps/2017zoning; approved2022equivalence unverified",
       "full_municipal_coverage": false
     }
+  },
+  {
+    "commune_bfs": 5872,
+    "commune_bfs_list": [
+      5871,
+      5872,
+      5873
+    ],
+    "commune_name": "Vallée de Joux (3 communes)",
+    "pdf_url": "https://www.communeduchenit.ch/wp-content/uploads/2026/09/PDRZA_Plan.pdf",
+    "landing_url": "https://www.communeduchenit.ch/2026/09/09/plan-directeur-regional-des-zones-dactivite/",
+    "title": "PDRZA - Plan",
+    "scope": "intercommunal",
+    "plan_status": "consultation",
+    "enumerate_vectors": false,
+    "source_review": {
+      "role": "regional_activity_planning",
+      "version": "August2026; consultation9September–8October2026",
+      "currentness": "approval pending; priorplan cancelled by2025referendum",
+      "full_municipal_coverage": false
+    }
+  },
+  {
+    "commune_bfs": 5872,
+    "commune_bfs_list": [
+      5871,
+      5872,
+      5873
+    ],
+    "commune_name": "Vallée de Joux (3 communes)",
+    "pdf_url": "https://www.communeduchenit.ch/wp-content/uploads/2026/09/PDRZA_Rapport.pdf",
+    "landing_url": "https://www.communeduchenit.ch/2026/09/09/plan-directeur-regional-des-zones-dactivite/",
+    "title": "PDRZA - Rapport",
+    "scope": "intercommunal",
+    "plan_status": "consultation",
+    "enumerate_vectors": false,
+    "source_review": {
+      "role": "regional_activity_planning",
+      "version": "August2026; consultation9September–8October2026",
+      "currentness": "approval pending; priorplan cancelled by2025referendum",
+      "full_municipal_coverage": false
+    }
+  },
+  {
+    "commune_bfs": 5872,
+    "commune_bfs_list": [
+      5871,
+      5872,
+      5873
+    ],
+    "commune_name": "Vallée de Joux (3 communes)",
+    "pdf_url": "https://www.communeduchenit.ch/wp-content/uploads/2026/09/PDRZA_Rapport_explicatif.pdf",
+    "landing_url": "https://www.communeduchenit.ch/2026/09/09/plan-directeur-regional-des-zones-dactivite/",
+    "title": "PDRZA - Rapport explicatif",
+    "scope": "intercommunal",
+    "plan_status": "consultation",
+    "enumerate_vectors": false,
+    "source_review": {
+      "role": "regional_activity_planning",
+      "version": "August2026; consultation9September–8October2026",
+      "currentness": "approval pending; priorplan cancelled by2025referendum",
+      "full_municipal_coverage": false
+    }
   }
 ]
