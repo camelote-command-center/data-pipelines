@@ -73,11 +73,13 @@ def detect(E0, N0, size, footprints_geojson):
     n = h.shape[0]
     mask = np.zeros_like(h, dtype=bool)
     if footprints_geojson:
-        with open("/tmp/_fp.geojson", "w") as f:
+        gj, tif = f"/tmp/_fp_{os.getpid()}.geojson", f"/tmp/_fp_{os.getpid()}.tif"    # per process: builds run in parallel
+        with open(gj, "w") as f:
             json.dump(footprints_geojson, f)
         subprocess.run(["gdal_rasterize", "-q", "-burn", "1", "-init", "0", "-ot", "Byte", "-te", str(E0), str(N0), str(E0 + size), str(N0 + size),
-                        "-tr", str(PX), str(PX), "/tmp/_fp.geojson", "/tmp/_fp.tif"], check=True, capture_output=True)
-        d = gdal.Open("/tmp/_fp.tif"); mask = np.flipud(d.GetRasterBand(1).ReadAsArray().astype(bool)); del d
+                        "-tr", str(PX), str(PX), gj, tif], check=True, capture_output=True)
+        d = gdal.Open(tif); mask = np.flipud(d.GetRasterBand(1).ReadAsArray().astype(bool)); del d
+        os.remove(gj); os.remove(tif)
     chm = np.where(np.isnan(h) | mask, 0.0, np.clip(h, 0, 60))
     chm = ndimage.gaussian_filter(chm, 2.5)               # 0.5 m smoothing at 0.2 m pixels
     win = int(round(MIN_SEP / PX)) | 1
