@@ -34,12 +34,11 @@
   viewer.cesiumWidget.screenSpaceEventHandler.setInputAction(e => {
     const f = s.pick(e.position);
     const get = (k) => (f && f.getProperty ? f.getProperty(k) : undefined);
-    const egid = get('egid'), th = get('height_m');
-    window.__lastPick = egid ?? (th !== undefined ? {height_m: th, crown_m: get('crown_m')} : null);
-    const rh = get('roof_height_m');
+    const kind = get('kind'), egid = get('egid'), h = get('height_m');
+    window.__lastPick = kind === undefined ? null : {kind, egid, height_m: h, crown_m: get('crown_m')};
     document.getElementById('hud').textContent =
-      th !== undefined ? `Arbre — hauteur ${th.toFixed(1)} m, couronne ${get('crown_m').toFixed(1)} m`
-      : egid ? `Bâtiment EGID ${egid}` + (rh >= 0 ? ` — hauteur ${rh.toFixed(1)} m` : '')
+      kind === 1 ? `Arbre — hauteur ${h.toFixed(1)} m, couronne ${get('crown_m').toFixed(1)} m`
+      : kind === 0 ? `Bâtiment EGID ${egid}` + (h >= 0 ? ` — hauteur ${h.toFixed(1)} m` : '')
       : 'Clic : rien';
   }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
   const ctrl = s.screenSpaceCameraController, freeBtn = document.getElementById('free');

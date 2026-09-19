@@ -494,11 +494,15 @@ orphans = [r for r in leaves if not any(float(r["key"].split("_")[0]) // PARENT 
 children += [leaf_node(r) for r in orphans]
 Os = np.array([r["transform"][12:15] for r in allr.values()])
 center = Os.mean(axis=0); radius = float(np.linalg.norm(Os - center, axis=1).max()) + 1200
-tileset = {"asset": {"version": "1.1", "generator": "lamap ge_city3d v4"}, "geometricError": 400,
-           "root": {"boundingVolume": {"sphere": [*center.tolist(), radius]}, "geometricError": 200, "refine": "REPLACE", "children": children},
+# ROOT_GEOM_ERR decides how far the 1 km parents are drawn: at MSSE 16 on a 900 px view, 60 m -> ~2.9 km. 200 drew
+# them to ~10 km, so over Geneve-Cite the canton layer held 973 MB of GPU memory and dropped to 41 fps (measured).
+ROOT_GEOM_ERR = 60
+tileset = {"asset": {"version": "1.1", "generator": "lamap ge_city3d v4"}, "geometricError": ROOT_GEOM_ERR,
+           "root": {"boundingVolume": {"sphere": [*center.tolist(), radius]}, "geometricError": ROOT_GEOM_ERR, "refine": "REPLACE", "children": children},
            "extras": {"commune": NO_COMMUNE, "buildings": sum(r["buildings"] for r in leaves), "trees": sum(r["trees"] for r in leaves),
                       "lod": {"parents_1km": len(pars), "leaves_250m": len(leaves), "parent_roof_px_m": PARENT_ROOF_PX, "leaf_roof_px_m": ROOF_PX},
                       "sources": ["SITG bati3d", "BFS RegBL", "swisstopo SWISSIMAGE 10 cm 2023", "SITG MNA hauteur 2025-03 (trees + roof heights)"]}}
-json.dump(tileset, open(f"{OUT}/tileset.json", "w"))
+from wrap_parents import wrap     # per-km draw range (see wrap_parents.py): 43 -> 56 fps over the canton
+json.dump(wrap(tileset), open(f"{OUT}/tileset.json", "w"))
 log(f"tileset.json: {len(pars)} parents + {len(leaves)} leaves, {tileset['extras']['buildings']} buildings, "
     f"{tileset['extras']['trees']} trees, {sum(r['bytes'] for r in allr.values())/1e6:.0f} MB")
