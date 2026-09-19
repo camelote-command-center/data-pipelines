@@ -3,7 +3,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.133.1/Cesium.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.133.1/Widgets/widgets.css" rel="stylesheet">
 <style>html,body,#v{margin:0;width:100%;height:100%;overflow:hidden}#hud{position:absolute;top:8px;left:8px;background:#000a;color:#fff;font:12px sans-serif;padding:6px 8px;border-radius:4px}</style></head>
-<body><div id="v"></div><div id="hud">loading…</div><script>
+<body><div id="v"></div><div id="hud">loading…</div>
+<div id="ctl" style="position:absolute;top:44px;left:8px;display:flex;flex-direction:column;gap:6px;font:12px sans-serif">
+  <button id="free" style="display:none;padding:6px 10px;border-radius:4px;border:0;background:#fff;cursor:pointer">✕ Libérer l'orbite (Esc)</button>
+  <label style="background:#000a;color:#fff;padding:6px 8px;border-radius:4px;cursor:pointer"><input type="checkbox" id="under"> Voir sous le sol</label>
+  <div style="background:#000a;color:#ddd;padding:6px 8px;border-radius:4px;max-width:230px">Double-clic sur un bâtiment : tourner autour à 360°</div>
+</div><script>
 (async () => {
   Cesium.Ion.defaultAccessToken = '';
   const viewer = new Cesium.Viewer('v', {
@@ -25,5 +30,36 @@
   viewer.camera.flyTo({destination: Cesium.Cartesian3.fromDegrees(6.1505, 46.1995, 520),
     orientation: {heading: Cesium.Math.toRadians(20), pitch: Cesium.Math.toRadians(-28)}, duration: 0});
   window.viewer = viewer; window.ts = ts;
+  // click a building -> its EGID (EXT_mesh_features + EXT_structural_metadata)
+  viewer.cesiumWidget.screenSpaceEventHandler.setInputAction(e => {
+    const f = s.pick(e.position);
+    const egid = f && f.getProperty ? f.getProperty('egid') : undefined;
+    window.__lastPick = egid ?? null;
+    document.getElementById('hud').textContent = egid ? `Bâtiment EGID ${egid}` : 'Clic : aucun bâtiment';
+  }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+  const ctrl = s.screenSpaceCameraController, freeBtn = document.getElementById('free');
+  // --- orbit mode: lock the camera on a picked point; left-drag then rotates around it, 360 degrees
+  let orbiting = false;
+  function release() {
+    viewer.camera.lookAtTransform(Cesium.Matrix4.IDENTITY);
+    orbiting = false; freeBtn.style.display = 'none';
+  }
+  viewer.cesiumWidget.screenSpaceEventHandler.setInputAction(e => {
+    const p = s.pickPosition(e.position);
+    if (!Cesium.defined(p)) return;
+    const range = Cesium.Cartesian3.distance(viewer.camera.positionWC, p);
+    const hpr = new Cesium.HeadingPitchRange(viewer.camera.heading, Math.min(viewer.camera.pitch, -0.2), Math.min(Math.max(range, 40), 400));
+    viewer.camera.lookAt(p, hpr);          // sets a lookAt transform: drags now orbit around p
+    orbiting = true; freeBtn.style.display = 'block';
+  }, Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
+  freeBtn.onclick = release;
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && orbiting) release(); });
+  // --- look from underneath: translucent ground + no camera/terrain collision
+  document.getElementById('under').onchange = e => {
+    const on = e.target.checked;
+    s.globe.translucency.enabled = on;
+    s.globe.translucency.frontFaceAlphaByDistance = on ? new Cesium.NearFarScalar(400, 0.25, 4000, 0.9) : undefined;
+    ctrl.enableCollisionDetection = !on;
+  };
 })();
 </script></body></html>
