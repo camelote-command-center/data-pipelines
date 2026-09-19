@@ -99,51 +99,48 @@ CREATE FOREIGN TABLE IF NOT EXISTS lamap_db_foreign.building_roof_heights (
 -- flight changes every row, and one FDW statement cannot push 73-83k rows inside 900 s (measured on the CHM
 -- first load), so merge_load.py pushes commune by commune, then once without a commune for the remainder.
 DROP PROCEDURE IF EXISTS gold_ch.sync_plot_canopy_stats();
+-- 2026-09-19: push gold -> lamap_db ref without cross-FDW UPDATE ... FROM / NOT EXISTS.
+-- Those joins are not pushed down: every run with a new flight (all rows changed) crawled row by row and
+-- hit the 900 s limit (run 35445765581: 65,495 of 72,949 canopy rows left stale). Now: one remote scan of
+-- (key, computed_at), changed keys computed locally, one pushed-down DELETE ... = ANY(keys), batched INSERT
+-- (server batch_size=1000). Same transaction: lamap_db never sees a half-updated table.
 CREATE OR REPLACE PROCEDURE gold_ch.sync_plot_canopy_stats(p_commune integer DEFAULT NULL)
- LANGUAGE plpgsql
- SECURITY DEFINER
- SET search_path TO 'gold_ch', 'public'
- SET statement_timeout TO '900s'
-AS $procedure$
+LANGUAGE plpgsql SECURITY DEFINER SET search_path = gold_ch, public SET statement_timeout = '900s' AS $$
+DECLARE v_keys text[];
 BEGIN
-  UPDATE lamap_db_foreign.plot_canopy_stats t SET
-    no_commune=s.no_commune, no_parcelle=s.no_parcelle,
-    canopy_cover_pct=s.canopy_cover_pct, height_p95_m=s.height_p95_m,
-    height_max_m=s.height_max_m, height_mean_m=s.height_mean_m,
-    vegetated_area_m2=s.vegetated_area_m2, parcel_area_m2=s.parcel_area_m2,
-    polygon_area_m2=s.polygon_area_m2, dsm_year=s.dsm_year, dtm_year=s.dtm_year,
-    vintage_mixed=s.vintage_mixed, computed_at=s.computed_at
+  SELECT array_agg(s.egrid) INTO v_keys
   FROM gold_ch.plot_canopy_stats s
-  WHERE t.egrid = s.egrid AND t.computed_at IS DISTINCT FROM s.computed_at
-     AND (p_commune IS NULL OR s.no_commune = p_commune);
-
+  LEFT JOIN (SELECT egrid, computed_at FROM lamap_db_foreign.plot_canopy_stats
+              WHERE p_commune IS NULL OR no_commune = p_commune) r ON r.egrid = s.egrid
+  WHERE (p_commune IS NULL OR s.no_commune = p_commune)
+    AND (r.egrid IS NULL OR r.computed_at IS DISTINCT FROM s.computed_at);
+  IF v_keys IS NULL THEN RETURN; END IF;
+  DELETE FROM lamap_db_foreign.plot_canopy_stats WHERE egrid = ANY(v_keys);
   INSERT INTO lamap_db_foreign.plot_canopy_stats
     (egrid,no_commune,no_parcelle,canopy_cover_pct,height_p95_m,height_max_m,height_mean_m,
      vegetated_area_m2,parcel_area_m2,polygon_area_m2,dsm_year,dtm_year,vintage_mixed,computed_at)
   SELECT s.egrid,s.no_commune,s.no_parcelle,s.canopy_cover_pct,s.height_p95_m,s.height_max_m,
      s.height_mean_m,s.vegetated_area_m2,s.parcel_area_m2,s.polygon_area_m2,s.dsm_year,
      s.dtm_year,s.vintage_mixed,s.computed_at
-  FROM gold_ch.plot_canopy_stats s
-  WHERE (p_commune IS NULL OR s.no_commune = p_commune)
-     AND NOT EXISTS (SELECT 1 FROM lamap_db_foreign.plot_canopy_stats t WHERE t.egrid=s.egrid);
-END;$procedure$;
+  FROM gold_ch.plot_canopy_stats s WHERE s.egrid = ANY(v_keys);
+END $$;
 
-DROP PROCEDURE IF EXISTS gold_ch.sync_building_roof_heights();
 CREATE OR REPLACE PROCEDURE gold_ch.sync_building_roof_heights(p_commune integer DEFAULT NULL)
 LANGUAGE plpgsql SECURITY DEFINER SET search_path = gold_ch, public SET statement_timeout = '900s' AS $$
+DECLARE v_keys bigint[];
 BEGIN
-  UPDATE lamap_db_foreign.building_roof_heights t SET
-    no_commune = s.no_commune, height_m = s.height_m, height_source = s.height_source, mna_p95_m = s.mna_p95_m,
-    mna_max_m = s.mna_max_m, bati3d_height_m = s.bati3d_height_m, roof_area_m2 = s.roof_area_m2,
-    footprints = s.footprints, source_vintage = s.source_vintage, computed_at = s.computed_at
+  SELECT array_agg(s.egid) INTO v_keys
   FROM gold_ch.building_roof_heights s
-  WHERE t.egid = s.egid AND t.computed_at IS DISTINCT FROM s.computed_at AND (p_commune IS NULL OR s.no_commune = p_commune);
+  LEFT JOIN (SELECT egid, computed_at FROM lamap_db_foreign.building_roof_heights
+              WHERE p_commune IS NULL OR no_commune = p_commune) r ON r.egid = s.egid
+  WHERE (p_commune IS NULL OR s.no_commune = p_commune)
+    AND (r.egid IS NULL OR r.computed_at IS DISTINCT FROM s.computed_at);
+  IF v_keys IS NULL THEN RETURN; END IF;
+  DELETE FROM lamap_db_foreign.building_roof_heights WHERE egid = ANY(v_keys);
   INSERT INTO lamap_db_foreign.building_roof_heights
   SELECT s.egid, s.no_commune, s.height_m, s.height_source, s.mna_p95_m, s.mna_max_m, s.bati3d_height_m, s.roof_area_m2,
          s.footprints, s.source_vintage, s.computed_at
-  FROM gold_ch.building_roof_heights s
-  WHERE (p_commune IS NULL OR s.no_commune = p_commune)
-    AND NOT EXISTS (SELECT 1 FROM lamap_db_foreign.building_roof_heights t WHERE t.egid = s.egid);
+  FROM gold_ch.building_roof_heights s WHERE s.egid = ANY(v_keys);
 END $$;
 
 -- daily push, next to cron 101 (plot_canopy_stats at 06:35)
