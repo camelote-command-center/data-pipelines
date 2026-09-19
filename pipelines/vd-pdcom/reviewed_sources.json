@@ -1254,5 +1254,55 @@
       "complete_coverage": false,
       "semantics": "Existing built fabric, heritage, public-space projects and mobility distinguished. Chincu is a proposed public facility requiring rezoning, not residential capacity. Seven site alternatives include rejected/unavailable locations; not seven proposed developments."
     }
+  },
+  {
+    "commune_bfs": 5624,
+    "commune_bfs_list": [
+      5583,
+      5589,
+      5591,
+      5624,
+      5627,
+      5635,
+      5648,
+      5651
+    ],
+    "pdf_url": "https://ouest-lausannois.ch/wp-content/uploads/programmes-actions-complet-02-09-2022-light-1.pdf",
+    "landing_url": "https://ouest-lausannois.ch/strategie/pdi/",
+    "title": "PDi-OL — programmes municipaux, 2022",
+    "scope": "intercommunal",
+    "plan_status": "unverified",
+    "enumerate_vectors": false,
+    "source_review": {
+      "edition": "2022 municipal action programmes",
+      "document_role": "municipal_operational_programme",
+      "approval": "Landing describes programmes validated by municipalities; PDF7 states indicative information/calendars, separate later procedures and feasibility checks.",
+      "currentness": "Current implementation not verified; not remaining capacity.",
+      "complete_coverage": false,
+      "geographic_validation": "not performed"
+    },
+    "max_bytes": 120000000,
+    "max_pages": 800
+  },
+  {
+    "commune_bfs": 5624,
+    "commune_bfs_list": [
+      5624,
+      5583
+    ],
+    "pdf_url": "https://ouest-lausannois.ch/wp-content/uploads/brochure-pdl-arc-signee-light.pdf",
+    "landing_url": "https://ouest-lausannois.ch/strategie/pdi/",
+    "title": "Arc-en-Ciel — PDL signé, approbation 28 avril 2010",
+    "scope": "intercommunal",
+    "plan_status": "unverified",
+    "enumerate_vectors": false,
+    "source_review": {
+      "edition": "September2009 signed PDL report",
+      "document_role": "historic_approved_local_plan",
+      "approval": "PDF62 visually confirms Conseil Etat stamp28April2010; Crissier council16November2009, Bussigny council27November2009.",
+      "currentness": "2021PDi amendment linkage unresolved. November2020 consultation conformity proposes removing housing in A/C, whereas approved-edition PDi has mixed-use wording; do not resolve this conflict from consultation alone.",
+      "complete_coverage": false,
+      "geographic_validation": "not performed"
+    }
   }
 ]

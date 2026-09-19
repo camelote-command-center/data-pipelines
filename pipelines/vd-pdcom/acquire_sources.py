@@ -90,10 +90,12 @@ def acquire(source):
                 'archive_member':member,'member_sha256':hashlib.sha256(pdf).hexdigest()}
 
 
-def inspect(data, *, enumerate_vectors=True):
+def inspect(data, *, enumerate_vectors=True, max_pages=500):
+    if type(max_pages) is not int or not 1 <= max_pages <= 1000:
+        raise ValueError('invalid_page_limit')
     pages=[]
     with fitz.open(stream=data,filetype='pdf') as doc:
-        if len(doc)>500:raise ValueError('page_limit')
+        if len(doc)>max_pages:raise ValueError('page_limit')
         for number,page in enumerate(doc,1):
             text=page.get_text()
             pages.append({'page_number':number,'width':page.rect.width,'height':page.rect.height,
@@ -152,7 +154,7 @@ def run(args):
             try:
                 data,archive_evidence=acquire(source);sha=hashlib.sha256(data).hexdigest()
                 enumerate_vectors=source.get('enumerate_vectors',True)
-                pages=inspect(data,enumerate_vectors=enumerate_vectors)
+                pages=inspect(data,enumerate_vectors=enumerate_vectors,**({'max_pages':source['max_pages']} if 'max_pages' in source else {}))
                 if archive_evidence and pages:pages[0]['archive_evidence']=archive_evidence
                 if source.get('source_review') and pages:
                     pages[0]['source_review']=source['source_review']
