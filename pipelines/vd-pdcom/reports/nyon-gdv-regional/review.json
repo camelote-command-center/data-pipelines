@@ -1,0 +1,41 @@
+{
+  "operation_id": "832c499c-0a14-4bdc-8232-b6563af041ba",
+  "acquired_pdfs": 6,
+  "acquired_pages": 471,
+  "registered_pdfs": 4,
+  "registered_indices": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "maps_extracted": 56,
+  "map_native_paths": 2807,
+  "raw_tables": 259,
+  "scope": "Regional activity-zone strategies; not complete municipal PDComs",
+  "nyon": {
+    "roster": 47,
+    "source_roster_page": 8,
+    "approval": "Cover identifies 29April2026 approved version with modifications pages8,16,20,38,52,85,86; official landing agrees. Bassins explicitly excluded onpage8 and signaturepages96/167 crossed out.",
+    "excluded_from_approval": [
+      "Bassins"
+    ],
+    "registration_of_bassins": "diagnostic/source-scope only; no adopted strategy or municipal completion assertion"
+  },
+  "gdv": {
+    "roster_current": 36,
+    "source_roster_page": 20,
+    "version": "5September2024 final report; site publicationJuly2026 does not prove approval",
+    "historical_count": "Page29 says37 communes; explicitpage20roster resolves36current BFS; no invented37th"
+  },
+  "limits": [
+    "Diagnostic reserves include necessary company land, storage and public facilities; not all available.",
+    "Nyon sites include conversion to public parks, agriculture and public needs; preserve2026 modifications.",
+    "GDVpage106 explicitly uses early2020 inventory without subsequent parcel remaniements and onlyfree portions; never substitute current wholeparcels.",
+    "GDVpage29 says constructibility, building volumes and floor-area data incomplete.",
+    "Map insets, district overview sheets and parcel maps have distinct precision; geographic alignment pending.",
+    "Raw tables remain unreviewed: repeated headers, totals and wrapped fields must be resolved before semantics."
+  ],
+  "artifact_root": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/nyon-gdv-regional",
+  "receiver_increment": 0
+}
