@@ -1597,5 +1597,21 @@
       "currentness": "Consultation, approval and implementation unverified",
       "membership_evidence": "AnnexesPDF31,31currentBFSnames; not municipal completion"
     }
+  },
+  {
+    "commune_bfs": 5422,
+    "commune_name": "Aubonne",
+    "pdf_url": "https://www.aubonne.ch/fileadmin/documents/aubonne.ch/pdf/R%C3%A8glements_et_plans/AubonnePDLPlandirecteurlocaliseVieilleville67312Reglement.pdf",
+    "landing_url": "https://www.aubonne.ch/officiel/reglements-et-plans/plans-de-zone-et-reglements",
+    "title": "Plan directeur localisé secteur vieille ville - 2006",
+    "scope": "communal",
+    "plan_status": "unverified",
+    "enumerate_vectors": false,
+    "source_review": {
+      "role": "localized_old_town_pdl",
+      "approval": "28June2006 signed cover",
+      "currentness": "unverified",
+      "full_commune_coverage": false
+    }
   }
 ]
