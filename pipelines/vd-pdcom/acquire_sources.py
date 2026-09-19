@@ -124,7 +124,7 @@ def inspect(data, *, enumerate_vectors=True, max_pages=500):
         for number,page in enumerate(doc,1):
             text=page.get_text()
             pages.append({'page_number':number,'width':page.rect.width,'height':page.rect.height,
-                          'text':text[:30000],'vector_paths':len(page.get_drawings()) if enumerate_vectors else None,
+                          'text':text,'vector_paths':len(page.get_drawings()) if enumerate_vectors else None,
                           'vector_inventory_status':'counted' if enumerate_vectors else 'not_evaluated',
                           'embedded_georef':has_geographic_viewport(doc,page)})
     return pages
