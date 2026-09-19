@@ -1304,5 +1304,53 @@
       "complete_coverage": false,
       "geographic_validation": "not performed"
     }
+  },
+  {
+    "commune_bfs": 5892,
+    "landing_url": "https://www.blonay-saint-legier.ch/plans-directeurs-communaux/534682",
+    "pdf_url": "https://www.blonay-saint-legier.ch/_doc/5505517",
+    "title": "Ancienne communale de St-Légier - La Chiésaz - Plan directeur communal",
+    "scope": "communal",
+    "plan_status": "unverified",
+    "source_review": {
+      "subcommune_scope": "Former Saint-Légier-La Chiésaz",
+      "currentness": "Legacy plan; no whole merged commune completion claim.",
+      "approval_evidence": {
+        "date": "2004-10-06",
+        "pdf_page": 75,
+        "method": "Viewed signed approval page and matched municipal publication dates."
+      },
+      "full_current_commune_coverage": false,
+      "historical_scope_note": "Former commune territory only; current BFS5892 is the merged tracking identity, not an assertion that either document covers the entire merged commune.",
+      "byte_identical_aliases": [
+        "https://www.blonay-saint-legier.ch/_doc/5824549"
+      ],
+      "semantics": "Historical urbanisation includes existing uses; sector boundaries indicative. No current capacity or geographic delivery implied."
+    },
+    "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5892,
+    "landing_url": "https://www.blonay-saint-legier.ch/plans-directeurs-communaux/534907",
+    "pdf_url": "https://www.blonay-saint-legier.ch/_doc/5507254",
+    "title": "Ancienne Commune de Blonay - Plan directeur communal",
+    "scope": "communal",
+    "plan_status": "unverified",
+    "source_review": {
+      "subcommune_scope": "Former Blonay",
+      "currentness": "Legacy plan; no whole merged commune completion claim.",
+      "approval_evidence": {
+        "date": "2006-08-09",
+        "pdf_page": 87,
+        "method": "Viewed signed approval page and matched municipal publication dates."
+      },
+      "full_current_commune_coverage": false,
+      "historical_scope_note": "Former commune territory only; current BFS5892 is the merged tracking identity, not an assertion that either document covers the entire merged commune.",
+      "byte_identical_aliases": [
+        "https://www.blonay-saint-legier.ch/_doc/5797558"
+      ],
+      "semantics": "Historical urbanisation includes existing uses; sector boundaries indicative. No current capacity or geographic delivery implied."
+    },
+    "enumerate_vectors": false
   }
 ]
