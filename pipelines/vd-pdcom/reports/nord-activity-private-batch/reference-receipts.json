@@ -1,0 +1,26 @@
+[
+  {
+    "snapshot_id": "aaf24529-0e9c-562c-a717-87a1af28f96c",
+    "count": 17,
+    "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2532653.6086230944%2C1186923.7273164282%2C2532763.149849508%2C1187013.1359226217&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5552&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+    "response_sha256": "b4315addd063942b2b9cc81ddf405cb5676a95088e94e64eb23d88b2f88f9248"
+  },
+  {
+    "snapshot_id": "922c4469-53c3-5434-9750-b276a99332c6",
+    "count": 7,
+    "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2544399.360623195%2C1174188.7302001766%2C2544521.96869251%2C1174301.6824416285&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5903&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+    "response_sha256": "05092dab7eaacc0daf09ce125582f29721d3b37268563e4e3bf9ac5caeff53ff"
+  },
+  {
+    "snapshot_id": "59f9351d-99eb-5a25-a310-92f54b8fe2aa",
+    "count": 21,
+    "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2546953.98120329%2C1178928.8026164917%2C2547184.692819557%2C1179173.8204961126&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5921&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+    "response_sha256": "e91811bdad4136acbdab84aa81e6952ca9999abcbef9fb2d28477c491c3ce7f4"
+  },
+  {
+    "snapshot_id": "b0425154-221f-5712-9b87-0ef4b4f4103c",
+    "count": 15,
+    "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2535548.581863244%2C1174931.2150188189%2C2535658.297892997%2C1175067.71265545&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5929&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+    "response_sha256": "2975b66c425935ba581b96eb2bf84fc69e8412b85ef9b74ee833eb514c7fea5e"
+  }
+]

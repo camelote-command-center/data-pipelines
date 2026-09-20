@@ -171,6 +171,8 @@ def persist(conn,source,sha,pages):
     persist_orbe(conn,doc_id,sha)
     from rivelac_pilot import persist as persist_rivelac
     persist_rivelac(conn,doc_id,sha)
+    from nord_activity_pilot import persist as persist_nord_activity
+    persist_nord_activity(conn,doc_id,sha)
     return doc_id
 
 
