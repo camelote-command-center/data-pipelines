@@ -104,6 +104,12 @@ A reviewed link does not establish plan approval, currency or spatial coverage:
 `plan_status` remains unverified/consultation pending document-specific review.
 Existing validated/candidate extraction states and delivery states are preserved.
 
+Registered documents also resolve matching pending discovery candidates in the same
+transaction, with a per-commune discovery audit linking document IDs and hashes.
+Only exact PDF URLs and registered landing URLs (whitespace/trailing slash normalized)
+with matching commune membership qualify. Rejected links, malformed relative URLs,
+and other communes remain untouched. This changes source-link review only.
+
 ### Source review gates
 
 `document_reviews.json` binds approval evidence and reviewed map-page references
