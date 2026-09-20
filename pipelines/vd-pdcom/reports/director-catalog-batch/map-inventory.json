@@ -1,0 +1,58 @@
+[
+  {
+    "id": "5582_178006_P01",
+    "page": 1,
+    "role": "partial_PDCom_amendment",
+    "vector_paths": 0,
+    "embedded_georef": false
+  },
+  {
+    "id": "5582_178006_PR01",
+    "page": 1,
+    "role": "partial_PDCom_amendment_with_rules",
+    "vector_paths": 0,
+    "embedded_georef": false
+  },
+  {
+    "id": "5582_130002_PR01",
+    "page": 5,
+    "role": "localized_director_plan",
+    "vector_paths": 0,
+    "embedded_georef": false
+  },
+  {
+    "id": "5631_65022_PR01",
+    "page": 23,
+    "role": "localized_director_plan_and_PPA",
+    "vector_paths": 0,
+    "embedded_georef": false
+  },
+  {
+    "id": "5631_65023_PR01",
+    "page": 22,
+    "role": "localized_director_plan_and_PPA",
+    "vector_paths": 0,
+    "embedded_georef": false
+  },
+  {
+    "id": "5678_62361_PR01",
+    "page": 4,
+    "role": "localized_director_plan_addendum",
+    "vector_paths": 0,
+    "embedded_georef": false
+  },
+  {
+    "id": "5831_66481_PR01",
+    "page": 5,
+    "role": "localized_predecessor_sector_plan",
+    "vector_paths": 0,
+    "embedded_georef": false
+  },
+  {
+    "id": "5822_183754_PR01",
+    "page": 24,
+    "role": "localized_director_plan",
+    "vector_paths": 0,
+    "embedded_georef": false
+  }
+]

@@ -1,0 +1,460 @@
+{
+  "displayFieldName": "SERVICE",
+  "fieldAliases": {
+    "SERVICE": "Service",
+    "TITRE_OFFICIEL": "Titre officiel",
+    "TITRE_USUEL": "Titre usuel",
+    "ABREVIATION": "Abréviation",
+    "NO_OFFICIEL": "N° officiel",
+    "NATURE_DOC": "Nature document",
+    "STATUT_JURIDIQUE": "Statut juridique",
+    "LIEN_DOCUMENT": "Liens vers le document",
+    "OBJECTID": "OBJECTID",
+    "ID_SERVICE": "ID_SERVICE",
+    "ID_DOC": "ID_DOC",
+    "DATE_APPRO": "Date d'approbation",
+    "NIV_ADMIN": "NIV_ADMIN",
+    "SEULEMENT_COMMUNE": "SEULEMENT_COMMUNE",
+    "PUBLIE_DEPUIS": "PUBLIE_DEPUIS",
+    "PUBLIE_JUSQUE": "PUBLIE_JUSQUE"
+  },
+  "fields": [
+    {
+      "name": "SERVICE",
+      "type": "esriFieldTypeString",
+      "alias": "Service",
+      "length": 10
+    },
+    {
+      "name": "TITRE_OFFICIEL",
+      "type": "esriFieldTypeString",
+      "alias": "Titre officiel",
+      "length": 255
+    },
+    {
+      "name": "TITRE_USUEL",
+      "type": "esriFieldTypeString",
+      "alias": "Titre usuel",
+      "length": 255
+    },
+    {
+      "name": "ABREVIATION",
+      "type": "esriFieldTypeString",
+      "alias": "Abréviation",
+      "length": 255
+    },
+    {
+      "name": "NO_OFFICIEL",
+      "type": "esriFieldTypeString",
+      "alias": "N° officiel",
+      "length": 20
+    },
+    {
+      "name": "NATURE_DOC",
+      "type": "esriFieldTypeString",
+      "alias": "Nature document",
+      "length": 20
+    },
+    {
+      "name": "STATUT_JURIDIQUE",
+      "type": "esriFieldTypeString",
+      "alias": "Statut juridique",
+      "length": 50
+    },
+    {
+      "name": "LIEN_DOCUMENT",
+      "type": "esriFieldTypeString",
+      "alias": "Liens vers le document",
+      "length": 255
+    },
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID"
+    },
+    {
+      "name": "ID_SERVICE",
+      "type": "esriFieldTypeString",
+      "alias": "ID_SERVICE",
+      "length": 20
+    },
+    {
+      "name": "ID_DOC",
+      "type": "esriFieldTypeString",
+      "alias": "ID_DOC",
+      "length": 255
+    },
+    {
+      "name": "DATE_APPRO",
+      "type": "esriFieldTypeDate",
+      "alias": "Date d'approbation",
+      "length": 8
+    },
+    {
+      "name": "NIV_ADMIN",
+      "type": "esriFieldTypeString",
+      "alias": "NIV_ADMIN",
+      "length": 10
+    },
+    {
+      "name": "SEULEMENT_COMMUNE",
+      "type": "esriFieldTypeString",
+      "alias": "SEULEMENT_COMMUNE",
+      "length": 4
+    },
+    {
+      "name": "PUBLIE_DEPUIS",
+      "type": "esriFieldTypeDate",
+      "alias": "PUBLIE_DEPUIS",
+      "length": 8
+    },
+    {
+      "name": "PUBLIE_JUSQUE",
+      "type": "esriFieldTypeDate",
+      "alias": "PUBLIE_JUSQUE",
+      "length": 8
+    }
+  ],
+  "features": [
+    {
+      "attributes": {
+        "SERVICE": "DGTL",
+        "TITRE_OFFICIEL": "Schéma directeur de saut-pernet",
+        "TITRE_USUEL": "Schéma directeur de saut-pernet",
+        "ABREVIATION": null,
+        "NO_OFFICIEL": "66268",
+        "NATURE_DOC": "PLAN",
+        "STATUT_JURIDIQUE": "En_vigueur",
+        "LIEN_DOCUMENT": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5872_66268_P03.pdf",
+        "OBJECTID": 14002521,
+        "ID_SERVICE": "CHE-114.965.329_DGTL",
+        "ID_DOC": "5872_66268_P03",
+        "DATE_APPRO": 892598400000,
+        "NIV_ADMIN": "CANTONAL",
+        "SEULEMENT_COMMUNE": "5872",
+        "PUBLIE_DEPUIS": 892598400000,
+        "PUBLIE_JUSQUE": null
+      }
+    },
+    {
+      "attributes": {
+        "SERVICE": "DGTL",
+        "TITRE_OFFICIEL": "Modification du Plan directeur communal - perimetre e2 abrogation partielle du Plan directeur localise \"Nonceret - La Croix\"",
+        "TITRE_USUEL": "Modification du Plan directeur communal - perimetre e2 abrogation partielle du Plan directeur localise \"Nonceret - La Croix\"",
+        "ABREVIATION": null,
+        "NO_OFFICIEL": "178006",
+        "NATURE_DOC": "PLAN",
+        "STATUT_JURIDIQUE": "En_vigueur",
+        "LIEN_DOCUMENT": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5582_178006_P01.pdf",
+        "OBJECTID": 14002544,
+        "ID_SERVICE": "CHE-114.965.329_DGTL",
+        "ID_DOC": "5582_178006_P01",
+        "DATE_APPRO": 1524614400000,
+        "NIV_ADMIN": "COMMUNAL",
+        "SEULEMENT_COMMUNE": "5582",
+        "PUBLIE_DEPUIS": 1524614400000,
+        "PUBLIE_JUSQUE": null
+      }
+    },
+    {
+      "attributes": {
+        "SERVICE": "DGTL",
+        "TITRE_OFFICIEL": "Principes directeurs des aménagements extérieurs",
+        "TITRE_USUEL": "Principes directeurs des aménagements extérieurs",
+        "ABREVIATION": null,
+        "NO_OFFICIEL": "169058",
+        "NATURE_DOC": "PLAN",
+        "STATUT_JURIDIQUE": "En_vigueur",
+        "LIEN_DOCUMENT": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5586_169058_P03.pdf",
+        "OBJECTID": 14002810,
+        "ID_SERVICE": "CHE-114.965.329_DGTL",
+        "ID_DOC": "5586_169058_P03",
+        "DATE_APPRO": 1364774400000,
+        "NIV_ADMIN": "CANTONAL",
+        "SEULEMENT_COMMUNE": "5586",
+        "PUBLIE_DEPUIS": 1364774400000,
+        "PUBLIE_JUSQUE": null
+      }
+    },
+    {
+      "attributes": {
+        "SERVICE": "DGTL",
+        "TITRE_OFFICIEL": "Périmètre i: Plan directeur localisé et fiche",
+        "TITRE_USUEL": "Périmètre i: Plan directeur localisé et fiche",
+        "ABREVIATION": null,
+        "NO_OFFICIEL": "130002",
+        "NATURE_DOC": "PLAN_REGLEMENT",
+        "STATUT_JURIDIQUE": "En_vigueur",
+        "LIEN_DOCUMENT": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5582_130002_PR01.pdf",
+        "OBJECTID": 14003809,
+        "ID_SERVICE": "CHE-114.965.329_DGTL",
+        "ID_DOC": "5582_130002_PR01",
+        "DATE_APPRO": 1308787200000,
+        "NIV_ADMIN": "COMMUNAL",
+        "SEULEMENT_COMMUNE": "5582",
+        "PUBLIE_DEPUIS": 1308787200000,
+        "PUBLIE_JUSQUE": null
+      }
+    },
+    {
+      "attributes": {
+        "SERVICE": "DGTL",
+        "TITRE_OFFICIEL": "Plan directeur \"Ville-Haute\" addenda n°1",
+        "TITRE_USUEL": "Plan directeur \"Ville-Haute\" addenda n°1",
+        "ABREVIATION": null,
+        "NO_OFFICIEL": "62361",
+        "NATURE_DOC": "PLAN_REGLEMENT",
+        "STATUT_JURIDIQUE": "En_vigueur",
+        "LIEN_DOCUMENT": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5678_62361_PR01.pdf",
+        "OBJECTID": 14003902,
+        "ID_SERVICE": "CHE-114.965.329_DGTL",
+        "ID_DOC": "5678_62361_PR01",
+        "DATE_APPRO": 708912000000,
+        "NIV_ADMIN": "CANTONAL",
+        "SEULEMENT_COMMUNE": "5678",
+        "PUBLIE_DEPUIS": 708912000000,
+        "PUBLIE_JUSQUE": null
+      }
+    },
+    {
+      "attributes": {
+        "SERVICE": "DGTL",
+        "TITRE_OFFICIEL": "Intention d'utilisation (Plan directeur)",
+        "TITRE_USUEL": "Intention d'utilisation (Plan directeur)",
+        "ABREVIATION": null,
+        "NO_OFFICIEL": "65576",
+        "NATURE_DOC": "PLAN",
+        "STATUT_JURIDIQUE": "En_vigueur",
+        "LIEN_DOCUMENT": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5495_65576_P01.pdf",
+        "OBJECTID": 14004126,
+        "ID_SERVICE": "CHE-114.965.329_DGTL",
+        "ID_DOC": "5495_65576_P01",
+        "DATE_APPRO": 408326400000,
+        "NIV_ADMIN": "COMMUNAL",
+        "SEULEMENT_COMMUNE": "5495",
+        "PUBLIE_DEPUIS": 408326400000,
+        "PUBLIE_JUSQUE": null
+      }
+    },
+    {
+      "attributes": {
+        "SERVICE": "DGTL",
+        "TITRE_OFFICIEL": "Schéma directeur au lieu dit \"Le Coutelet\"",
+        "TITRE_USUEL": "Schéma directeur au lieu dit \"Le Coutelet\"",
+        "ABREVIATION": null,
+        "NO_OFFICIEL": "61455",
+        "NATURE_DOC": "PLAN",
+        "STATUT_JURIDIQUE": "En_vigueur",
+        "LIEN_DOCUMENT": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5725_61455_P01.pdf",
+        "OBJECTID": 14004416,
+        "ID_SERVICE": "CHE-114.965.329_DGTL",
+        "ID_DOC": "5725_61455_P01",
+        "DATE_APPRO": 803606400000,
+        "NIV_ADMIN": "COMMUNAL",
+        "SEULEMENT_COMMUNE": "5725",
+        "PUBLIE_DEPUIS": 803606400000,
+        "PUBLIE_JUSQUE": null
+      }
+    },
+    {
+      "attributes": {
+        "SERVICE": "DGTL",
+        "TITRE_OFFICIEL": "Plan directeur localisé et Plan partiel d'affectation secteur du bonderex",
+        "TITRE_USUEL": "Plan directeur localisé et Plan partiel d'affectation secteur du bonderex",
+        "ABREVIATION": null,
+        "NO_OFFICIEL": "65022",
+        "NATURE_DOC": "PLAN_REGLEMENT",
+        "STATUT_JURIDIQUE": "En_vigueur",
+        "LIEN_DOCUMENT": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5631_65022_PR01.pdf",
+        "OBJECTID": 14004723,
+        "ID_SERVICE": "CHE-114.965.329_DGTL",
+        "ID_DOC": "5631_65022_PR01",
+        "DATE_APPRO": 1022457600000,
+        "NIV_ADMIN": "COMMUNAL",
+        "SEULEMENT_COMMUNE": "5631",
+        "PUBLIE_DEPUIS": 1022457600000,
+        "PUBLIE_JUSQUE": null
+      }
+    },
+    {
+      "attributes": {
+        "SERVICE": "DGTL",
+        "TITRE_OFFICIEL": "Plan directeur localisé et Plan partiel d'affectation secteur de condémine",
+        "TITRE_USUEL": "Plan directeur localisé et Plan partiel d'affectation secteur de condémine",
+        "ABREVIATION": null,
+        "NO_OFFICIEL": "65023",
+        "NATURE_DOC": "PLAN_REGLEMENT",
+        "STATUT_JURIDIQUE": "En_vigueur",
+        "LIEN_DOCUMENT": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5631_65023_PR01.pdf",
+        "OBJECTID": 14004782,
+        "ID_SERVICE": "CHE-114.965.329_DGTL",
+        "ID_DOC": "5631_65023_PR01",
+        "DATE_APPRO": 1022457600000,
+        "NIV_ADMIN": "COMMUNAL",
+        "SEULEMENT_COMMUNE": "5631",
+        "PUBLIE_DEPUIS": 1022457600000,
+        "PUBLIE_JUSQUE": null
+      }
+    },
+    {
+      "attributes": {
+        "SERVICE": "DGTL",
+        "TITRE_OFFICIEL": "Modification du Plan directeur communal - perimetre e2 abrogation partielle du Plan directeur localise \"Nonceret - La Croix\"",
+        "TITRE_USUEL": "Modification du Plan directeur communal - perimetre e2 abrogation partielle du Plan directeur localise \"Nonceret - La Croix\"",
+        "ABREVIATION": null,
+        "NO_OFFICIEL": "178006",
+        "NATURE_DOC": "PLAN_REGLEMENT",
+        "STATUT_JURIDIQUE": "En_vigueur",
+        "LIEN_DOCUMENT": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5582_178006_PR01.pdf",
+        "OBJECTID": 14006062,
+        "ID_SERVICE": "CHE-114.965.329_DGTL",
+        "ID_DOC": "5582_178006_PR01",
+        "DATE_APPRO": 1524614400000,
+        "NIV_ADMIN": "COMMUNAL",
+        "SEULEMENT_COMMUNE": "5582",
+        "PUBLIE_DEPUIS": 1524614400000,
+        "PUBLIE_JUSQUE": null
+      }
+    },
+    {
+      "attributes": {
+        "SERVICE": "DGTL",
+        "TITRE_OFFICIEL": "Plan directeur communal notice selon l'article 6 rlatc",
+        "TITRE_USUEL": "Plan directeur communal notice selon l'article 6 rlatc",
+        "ABREVIATION": null,
+        "NO_OFFICIEL": "124824",
+        "NATURE_DOC": "REGLEMENT",
+        "STATUT_JURIDIQUE": "En_vigueur",
+        "LIEN_DOCUMENT": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5725_124824_R01.pdf",
+        "OBJECTID": 14009056,
+        "ID_SERVICE": "CHE-114.965.329_DGTL",
+        "ID_DOC": "5725_124824_R01",
+        "DATE_APPRO": 803606400000,
+        "NIV_ADMIN": "COMMUNAL",
+        "SEULEMENT_COMMUNE": "5725",
+        "PUBLIE_DEPUIS": 803606400000,
+        "PUBLIE_JUSQUE": null
+      }
+    },
+    {
+      "attributes": {
+        "SERVICE": "DGTL",
+        "TITRE_OFFICIEL": "Plan directeur de secteur no. 6 \"Avenue De La Gare\"",
+        "TITRE_USUEL": "Plan directeur de secteur no. 6 \"Avenue De La Gare\"",
+        "ABREVIATION": null,
+        "NO_OFFICIEL": "66481",
+        "NATURE_DOC": "PLAN_REGLEMENT",
+        "STATUT_JURIDIQUE": "En_vigueur",
+        "LIEN_DOCUMENT": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5831_66481_PR01.pdf",
+        "OBJECTID": 14010731,
+        "ID_SERVICE": "CHE-114.965.329_DGTL",
+        "ID_DOC": "5831_66481_PR01",
+        "DATE_APPRO": 890006400000,
+        "NIV_ADMIN": "COMMUNAL",
+        "SEULEMENT_COMMUNE": "5831",
+        "PUBLIE_DEPUIS": 890006400000,
+        "PUBLIE_JUSQUE": null
+      }
+    },
+    {
+      "attributes": {
+        "SERVICE": "DGTL",
+        "TITRE_OFFICIEL": "Plan directeur localisé \"A La Coulaz\"",
+        "TITRE_USUEL": "Plan directeur localisé \"A La Coulaz\"",
+        "ABREVIATION": null,
+        "NO_OFFICIEL": "183754",
+        "NATURE_DOC": "PLAN_REGLEMENT",
+        "STATUT_JURIDIQUE": "En_vigueur",
+        "LIEN_DOCUMENT": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5822_183754_PR01.pdf",
+        "OBJECTID": 14011027,
+        "ID_SERVICE": "CHE-114.965.329_DGTL",
+        "ID_DOC": "5822_183754_PR01",
+        "DATE_APPRO": 1289260800000,
+        "NIV_ADMIN": "COMMUNAL",
+        "SEULEMENT_COMMUNE": "5822",
+        "PUBLIE_DEPUIS": 1289260800000,
+        "PUBLIE_JUSQUE": null
+      }
+    },
+    {
+      "attributes": {
+        "SERVICE": "DGTL",
+        "TITRE_OFFICIEL": "Plan directeur industriel Plan de quartier p2 p3 h",
+        "TITRE_USUEL": "Plan directeur industriel Plan de quartier p2 p3 h",
+        "ABREVIATION": null,
+        "NO_OFFICIEL": "60106",
+        "NATURE_DOC": "PLAN_REGLEMENT",
+        "STATUT_JURIDIQUE": "En_vigueur",
+        "LIEN_DOCUMENT": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5624_60106_PR01.pdf",
+        "OBJECTID": 14011590,
+        "ID_SERVICE": "CHE-114.965.329_DGTL",
+        "ID_DOC": "5624_60106_PR01",
+        "DATE_APPRO": 174700800000,
+        "NIV_ADMIN": "COMMUNAL",
+        "SEULEMENT_COMMUNE": "5624",
+        "PUBLIE_DEPUIS": 174700800000,
+        "PUBLIE_JUSQUE": null
+      }
+    },
+    {
+      "attributes": {
+        "SERVICE": "DGTL",
+        "TITRE_OFFICIEL": "Schéma directeur aménagements publics-cheminements piétons",
+        "TITRE_USUEL": "Schéma directeur aménagements publics-cheminements piétons",
+        "ABREVIATION": null,
+        "NO_OFFICIEL": "61698",
+        "NATURE_DOC": "PLAN",
+        "STATUT_JURIDIQUE": "En_vigueur",
+        "LIEN_DOCUMENT": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5589_61698_P01.pdf",
+        "OBJECTID": 14011789,
+        "ID_SERVICE": "CHE-114.965.329_DGTL",
+        "ID_DOC": "5589_61698_P01",
+        "DATE_APPRO": -717811200000,
+        "NIV_ADMIN": "COMMUNAL",
+        "SEULEMENT_COMMUNE": "5589",
+        "PUBLIE_DEPUIS": -717811200000,
+        "PUBLIE_JUSQUE": null
+      }
+    },
+    {
+      "attributes": {
+        "SERVICE": "DGTL",
+        "TITRE_OFFICIEL": "Schéma directeur de la liaison la givrine - les dappes",
+        "TITRE_USUEL": "Schéma directeur de la liaison la givrine - les dappes",
+        "ABREVIATION": null,
+        "NO_OFFICIEL": "93038",
+        "NATURE_DOC": "PLAN",
+        "STATUT_JURIDIQUE": "En_vigueur",
+        "LIEN_DOCUMENT": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5727_93038_P02.pdf",
+        "OBJECTID": 14012142,
+        "ID_SERVICE": "CHE-114.965.329_DGTL",
+        "ID_DOC": "5727_93038_P02",
+        "DATE_APPRO": 1130803200000,
+        "NIV_ADMIN": "COMMUNAL",
+        "SEULEMENT_COMMUNE": "5727",
+        "PUBLIE_DEPUIS": 1130803200000,
+        "PUBLIE_JUSQUE": null
+      }
+    },
+    {
+      "attributes": {
+        "SERVICE": "DGTL",
+        "TITRE_OFFICIEL": "Schéma directeur de la liaison la givrine - les dappes",
+        "TITRE_USUEL": "Schéma directeur de la liaison la givrine - les dappes",
+        "ABREVIATION": null,
+        "NO_OFFICIEL": "93030",
+        "NATURE_DOC": "PLAN",
+        "STATUT_JURIDIQUE": "En_vigueur",
+        "LIEN_DOCUMENT": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5726_93030_P02.pdf",
+        "OBJECTID": 14013291,
+        "ID_SERVICE": "CHE-114.965.329_DGTL",
+        "ID_DOC": "5726_93030_P02",
+        "DATE_APPRO": 1162771200000,
+        "NIV_ADMIN": "COMMUNAL",
+        "SEULEMENT_COMMUNE": "5726",
+        "PUBLIE_DEPUIS": 1166400000000,
+        "PUBLIE_JUSQUE": null
+      }
+    }
+  ]
+}

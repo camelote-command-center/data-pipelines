@@ -1,0 +1,70 @@
+{
+  "displayFieldName": "ID_INFO",
+  "fieldAliases": {
+    "OBJECTID": "OBJECTID",
+    "ID_INFO": "ID_INFO",
+    "LIEN": "LIEN",
+    "TITRE": "DESCRIPTION",
+    "SEULEMENT_COMMUNE": "SEULEMENT_COMMUNE",
+    "STATUT_JURIDIQUE": "STATUT_JURIDIQUE",
+    "PUBLIE_DEPUIS": "PUBLIE_DEPUIS",
+    "PUBLIE_JUSQUE": "PUBLIE_JUSQUE",
+    "NIV_ADMIN": "NIV_ADMIN"
+  },
+  "fields": [
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID"
+    },
+    {
+      "name": "ID_INFO",
+      "type": "esriFieldTypeString",
+      "alias": "ID_INFO",
+      "length": 100
+    },
+    {
+      "name": "LIEN",
+      "type": "esriFieldTypeString",
+      "alias": "LIEN",
+      "length": 255
+    },
+    {
+      "name": "TITRE",
+      "type": "esriFieldTypeString",
+      "alias": "DESCRIPTION",
+      "length": 255
+    },
+    {
+      "name": "SEULEMENT_COMMUNE",
+      "type": "esriFieldTypeString",
+      "alias": "SEULEMENT_COMMUNE",
+      "length": 3
+    },
+    {
+      "name": "STATUT_JURIDIQUE",
+      "type": "esriFieldTypeString",
+      "alias": "STATUT_JURIDIQUE",
+      "length": 50
+    },
+    {
+      "name": "PUBLIE_DEPUIS",
+      "type": "esriFieldTypeDate",
+      "alias": "PUBLIE_DEPUIS",
+      "length": 8
+    },
+    {
+      "name": "PUBLIE_JUSQUE",
+      "type": "esriFieldTypeDate",
+      "alias": "PUBLIE_JUSQUE",
+      "length": 8
+    },
+    {
+      "name": "NIV_ADMIN",
+      "type": "esriFieldTypeString",
+      "alias": "NIV_ADMIN",
+      "length": 10
+    }
+  ],
+  "features": []
+}

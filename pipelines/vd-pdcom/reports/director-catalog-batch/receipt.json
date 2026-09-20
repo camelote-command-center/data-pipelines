@@ -1,0 +1,17 @@
+{
+  "ids": {
+    "operation": "b598b826-50a0-4724-945b-ccd5a2041185",
+    "checkpoint": "2ba3a577-39a5-4529-8c62-fd05ecdde000"
+  },
+  "registered_documents": 8,
+  "registered_pages": 126,
+  "documents_total": 147,
+  "source_communes": 243,
+  "source_increment": 2,
+  "source_gaps": 57,
+  "primary_map_sheets": 8,
+  "aligned_map_increment": 0,
+  "validated_sector_increment": 0,
+  "receiver_increment": 0,
+  "research_rows": 5
+}

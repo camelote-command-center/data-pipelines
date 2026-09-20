@@ -1,0 +1,134 @@
+{
+  "operation_id": "b598b826-50a0-4724-945b-ccd5a2041185",
+  "catalog_url": "https://www.rdppf.vd.ch/portail.aspx",
+  "catalog_query": "Documents official/usual title contains DIRECTEUR:17records, count matched; abbreviation/PDL/PDCOM:2additional records; Information complementaire:0matching records. This is not a full inventory of all PDCom.",
+  "catalog_date": "2026-09-20",
+  "accepted_documents": {
+    "5582_178006_P01": {
+      "bfs": 5582,
+      "name": "Cheseaux-sur-Lausanne",
+      "map_page": 1,
+      "role": "partial_PDCom_amendment",
+      "semantics": "Partial abrogation Nonceret-La Croix, perimeter e2; the red SECTEUR ABROGE is removal, not development potential. Other retained categories are separate.",
+      "approval": "Catalog reports2018-04-25; signed sheet reviewed; current implementation not verified."
+    },
+    "5582_178006_PR01": {
+      "bfs": 5582,
+      "name": "Cheseaux-sur-Lausanne",
+      "map_page": 1,
+      "role": "partial_PDCom_amendment_with_rules",
+      "semantics": "Companion amended PDCom map and measure sheet, same e2 amendment; not a second independent development site.",
+      "approval": "Catalog reports2018-04-25; signed sheet reviewed; current implementation not verified."
+    },
+    "5582_130002_PR01": {
+      "bfs": 5582,
+      "name": "Cheseaux-sur-Lausanne",
+      "map_page": 5,
+      "role": "localized_director_plan",
+      "semantics": "Mon Repos perimeter i/j OCR ambiguity; visual title perimeter i. Multiple land-use and non-built-space prescriptions, not full commune.",
+      "approval": "Page3: municipal11Oct2010, council22Feb2011, canton23Jun2011; matches catalog date."
+    },
+    "5631_65022_PR01": {
+      "bfs": 5631,
+      "name": "Denens",
+      "map_page": 23,
+      "legend_page": 22,
+      "role": "localized_director_plan_and_PPA",
+      "semantics": "Bonderex PDL map23 and legend22 distinguish contiguous housing/orange, individual medium-density housing/yellow, planting/transitions and existing buildings; PPA map32 and illustrations43/44 remain separate. Historical current built status unverified.",
+      "approval": "Signed PDL page23 and separate PPA signature29 show canton27May2002; council11Oct2001. Report says no general communal director plan at time of study; not evidence of absence today."
+    },
+    "5631_65023_PR01": {
+      "bfs": 5631,
+      "name": "Denens",
+      "map_page": 22,
+      "legend_page": 21,
+      "role": "localized_director_plan_and_PPA",
+      "semantics": "Condemine PDL map22/legend21: medium/contiguous/individual housing, equipment extension, forest/green/agricultural areas; PPA map31 and illustrative alternatives excluded from PDL geography.",
+      "approval": "Catalog27May2002, signed source; current land availability not verified."
+    },
+    "5678_62361_PR01": {
+      "bfs": 5678,
+      "name": "Moudon",
+      "map_page": 4,
+      "role": "localized_director_plan_addendum",
+      "semantics": "Ville-Haute addendum1; historic form and building typology, does not provide full original director plan or vacant-land inventory.",
+      "approval": "Signed cover council10Mar1992/canton19Jun1992. Cover handwritten note: proposed council complement not approved by canton; preserve limiting note."
+    },
+    "5831_66481_PR01": {
+      "bfs": 5831,
+      "name": "Valbroye",
+      "map_page": 5,
+      "role": "localized_predecessor_sector_plan",
+      "semantics": "1998 Granges-pres-Marnand Avenue de la Gare sector6 only, currently catalog scoped to Valbroye5831. Built village vs short/medium-term activity vs intermediate zone distinct; no whole-Valbroye coverage.",
+      "approval": "Catalog16Mar1998; historical report, implementation/current vacancy unverified."
+    },
+    "5822_183754_PR01": {
+      "bfs": 5822,
+      "name": "Payerne",
+      "map_page": 24,
+      "role": "localized_director_plan",
+      "semantics": "A la Coulaz mixed housing/public-space/activity intentions with9 thematic explanatory fiches; full municipal PDCom not supplied.",
+      "approval": "Cover consultation Jan2011 but last page signed municipality25Jan2011/council16Jun2011; canton stamp9Nov with overwritten/unclear year. Catalog date2010-11-09 predates council; explicit unresolved date conflict. Do not silently select2010 or2011."
+    }
+  },
+  "held_or_support_only": [
+    "5872_66268_P03",
+    "5586_169058_P03",
+    "5495_65576_P01",
+    "5725_61455_P01",
+    "5725_124824_R01",
+    "5624_60106_PR01",
+    "5589_61698_P01",
+    "5727_93038_P02",
+    "5726_93030_P02"
+  ],
+  "additional_unreviewed_documents": [
+    {
+      "SERVICE": "DGMR",
+      "TITRE_OFFICIEL": "PDL \"Front Sud\"",
+      "TITRE_USUEL": "PDL \"Front Sud\"",
+      "ABREVIATION": null,
+      "NO_OFFICIEL": "5704_20030820",
+      "NATURE_DOC": "PLAN",
+      "STATUT_JURIDIQUE": "En_vigueur",
+      "LIEN_DOCUMENT": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=ROUTES&nom=5704_20030820.pdf",
+      "OBJECTID": 14006926,
+      "ID_SERVICE": "CHE-114.965.329_DGMR",
+      "ID_DOC": "80_5704_20030820",
+      "DATE_APPRO": 1061337600000,
+      "NIV_ADMIN": "CANTONAL",
+      "SEULEMENT_COMMUNE": null,
+      "PUBLIE_DEPUIS": 1061337600000,
+      "PUBLIE_JUSQUE": null
+    },
+    {
+      "SERVICE": "DGMR",
+      "TITRE_OFFICIEL": "PDL et PPA sur la Torche",
+      "TITRE_USUEL": "PDL et PPA sur la Torche",
+      "ABREVIATION": null,
+      "NO_OFFICIEL": "5764_20010409",
+      "NATURE_DOC": "PLAN",
+      "STATUT_JURIDIQUE": "En_vigueur",
+      "LIEN_DOCUMENT": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=ROUTES&nom=5764_20010409.pdf",
+      "OBJECTID": 14006954,
+      "ID_SERVICE": "CHE-114.965.329_DGMR",
+      "ID_DOC": "80_5764_20010409",
+      "DATE_APPRO": 986774400000,
+      "NIV_ADMIN": "CANTONAL",
+      "SEULEMENT_COMMUNE": null,
+      "PUBLIE_DEPUIS": 986774400000,
+      "PUBLIE_JUSQUE": null
+    }
+  ],
+  "limits": [
+    "Two Cheseaux e2 sheets are companions, not distinct sites.",
+    "RDPPF catalogs director documents as linked material; title/En_vigueur alone does not establish exact source version currentness or usable land.",
+    "All8primary map sheets are raster scans (zero native vector paths); no geographic transform validated.",
+    "Keep59initialsourcegaps minus only2newsourcecommunes; no fullcommune completion.",
+    "Prangins2012/2013 notice cataloged with1995date is supporting material; rotated OCR low quality, not used for semantic data.",
+    "Etoyhomepage403; Yensplanspage200emptyPhoca list; CheseauxmunicipalsitepublishesPGA but fullPDComnotfound. These are research gaps, not absence."
+  ],
+  "artifact_root": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/director-document-catalog",
+  "receiver_increment": 0,
+  "validated_sector_increment": 0
+}
