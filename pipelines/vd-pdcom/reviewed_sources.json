@@ -2478,5 +2478,178 @@
         "historical_count": "Page29 says37 communes; explicitpage20roster resolves36current BFS; no invented37th"
       }
     }
+  },
+  {
+    "commune_bfs": 5892,
+    "commune_bfs_list": [
+      5892,
+      5882,
+      5883,
+      5884,
+      5885,
+      5889,
+      5886,
+      5408,
+      5412,
+      5413,
+      5890,
+      5891,
+      5414
+    ],
+    "commune_name": "Rivelac",
+    "pdf_url": "https://promove.ch/sites/default/files/media/documents/20250130_Volet_explicatif_SRGZA_Rivelac_compressed.pdf",
+    "landing_url": "https://promove.ch/fr/strategies-regionales-de-gestion-des-zones-dactivites",
+    "title": "SRGZA Rivelac - volet explicatif",
+    "scope": "intercommunal",
+    "plan_status": "unverified",
+    "enumerate_vectors": false,
+    "source_review": {
+      "role": "regional_activity_strategy_only",
+      "full_municipal_coverage": false,
+      "approval_scope": {
+        "roster": 13,
+        "source_roster_page": 6,
+        "version": "Explicative and operational 30January2025; strategic19June2025. Promove reports strategic adoption autumn2025; cantonal approval fields blank.",
+        "currentness": "Diagnostic maps December2022; employment2018, not current availability."
+      }
+    }
+  },
+  {
+    "commune_bfs": 5613,
+    "commune_bfs_list": [
+      5613,
+      5601,
+      5604,
+      5806,
+      5790,
+      5792,
+      5805,
+      5607,
+      5609,
+      5610,
+      5611,
+      5799
+    ],
+    "commune_name": "Lavaux-Oron",
+    "pdf_url": "https://promove.ch/sites/default/files/media/documents/2025.08.21%20SRGZA_Lavaux-Oron_Volet%20Diagostic.pdf",
+    "landing_url": "https://promove.ch/fr/strategies-regionales-de-gestion-des-zones-dactivites",
+    "title": "SRGZA Lavaux-Oron - volet explicatif",
+    "scope": "intercommunal",
+    "plan_status": "unverified",
+    "enumerate_vectors": false,
+    "source_review": {
+      "role": "regional_activity_strategy_only",
+      "full_municipal_coverage": false,
+      "approval_scope": {
+        "roster": 12,
+        "source_roster_page": 6,
+        "version": "Consultation autumn2025, sections A diagnostic19pages and B strategic37pages. No approved full dossier established.",
+        "missing": "Landing operational link repeats strategic URL; no separate operational PDF acquired."
+      }
+    }
+  },
+  {
+    "commune_bfs": 5892,
+    "commune_bfs_list": [
+      5892,
+      5882,
+      5883,
+      5884,
+      5885,
+      5889,
+      5886,
+      5408,
+      5412,
+      5413,
+      5890,
+      5891,
+      5414
+    ],
+    "commune_name": "Rivelac",
+    "pdf_url": "https://promove.ch/sites/default/files/media/documents/250619__SRGZA%20Rivelac_volet%20stratégique.pdf",
+    "landing_url": "https://promove.ch/fr/strategies-regionales-de-gestion-des-zones-dactivites",
+    "title": "SRGZA Rivelac - volet stratégique",
+    "scope": "intercommunal",
+    "plan_status": "unverified",
+    "enumerate_vectors": false,
+    "source_review": {
+      "role": "regional_activity_strategy_only",
+      "full_municipal_coverage": false,
+      "approval_scope": {
+        "roster": 13,
+        "source_roster_page": 6,
+        "version": "Explicative and operational 30January2025; strategic19June2025. Promove reports strategic adoption autumn2025; cantonal approval fields blank.",
+        "currentness": "Diagnostic maps December2022; employment2018, not current availability."
+      }
+    }
+  },
+  {
+    "commune_bfs": 5613,
+    "commune_bfs_list": [
+      5613,
+      5601,
+      5604,
+      5806,
+      5790,
+      5792,
+      5805,
+      5607,
+      5609,
+      5610,
+      5611,
+      5799
+    ],
+    "commune_name": "Lavaux-Oron",
+    "pdf_url": "https://promove.ch/sites/default/files/media/documents/2025.08.21%20SRGZA_Lavaux-Oron_Volet%20Stratégique.pdf",
+    "landing_url": "https://promove.ch/fr/strategies-regionales-de-gestion-des-zones-dactivites",
+    "title": "SRGZA Lavaux-Oron — Volet stratégique (section B, consultation 2025)",
+    "scope": "intercommunal",
+    "plan_status": "unverified",
+    "enumerate_vectors": false,
+    "source_review": {
+      "role": "regional_activity_strategy_only",
+      "full_municipal_coverage": false,
+      "approval_scope": {
+        "roster": 12,
+        "source_roster_page": 6,
+        "version": "Consultation autumn2025, sections A diagnostic19pages and B strategic37pages. No approved full dossier established.",
+        "missing": "Landing operational link repeats strategic URL; no separate operational PDF acquired."
+      }
+    }
+  },
+  {
+    "commune_bfs": 5892,
+    "commune_bfs_list": [
+      5892,
+      5882,
+      5883,
+      5884,
+      5885,
+      5889,
+      5886,
+      5408,
+      5412,
+      5413,
+      5890,
+      5891,
+      5414
+    ],
+    "commune_name": "Rivelac",
+    "pdf_url": "https://promove.ch/sites/default/files/media/documents/20250130_Volet_operationnel_SRGZA_Rivelac.pdf",
+    "landing_url": "https://promove.ch/fr/strategies-regionales-de-gestion-des-zones-dactivites",
+    "title": "SRGZA Rivelac - volet opérationnel",
+    "scope": "intercommunal",
+    "plan_status": "unverified",
+    "enumerate_vectors": false,
+    "source_review": {
+      "role": "regional_activity_strategy_only",
+      "full_municipal_coverage": false,
+      "approval_scope": {
+        "roster": 13,
+        "source_roster_page": 6,
+        "version": "Explicative and operational 30January2025; strategic19June2025. Promove reports strategic adoption autumn2025; cantonal approval fields blank.",
+        "currentness": "Diagnostic maps December2022; employment2018, not current availability."
+      }
+    }
   }
 ]

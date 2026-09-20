@@ -1,0 +1,38 @@
+{
+  "operation_id": "b7cb1510-5b18-4d14-9f68-71752d29f013",
+  "acquired_pdfs": 5,
+  "acquired_pages": 332,
+  "registered_pdfs": 5,
+  "registered_indices": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "maps_extracted": 86,
+  "map_native_paths": 100530,
+  "raw_tables": 559,
+  "scope": "Regional activity-zone strategies, not complete municipal PDComs",
+  "rivelac": {
+    "roster": 13,
+    "source_roster_page": 6,
+    "version": "Explicative and operational 30January2025; strategic19June2025. Promove reports strategic adoption autumn2025; cantonal approval fields blank.",
+    "currentness": "Diagnostic maps December2022; employment2018, not current availability."
+  },
+  "lavaux": {
+    "roster": 12,
+    "source_roster_page": 6,
+    "version": "Consultation autumn2025, sections A diagnostic19pages and B strategic37pages. No approved full dossier established.",
+    "missing": "Landing operational link repeats strategic URL; no separate operational PDF acquired."
+  },
+  "limits": [
+    "Regional source coverage does not establish municipal PDCom completeness.",
+    "Rivelac Noville Vieux Rhone2.27ha is other occupation/boatworks, not available reserves.",
+    "Rivelac existing activity uses include housing, sport, storage and utility installations.",
+    "Native PDF paths are unaligned; no sectors or parcel delivery accepted.",
+    "559 raw tables are unreviewed and not normalized site records."
+  ],
+  "artifact_root": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/lavaux-rivelac-regional",
+  "receiver_increment": 0
+}

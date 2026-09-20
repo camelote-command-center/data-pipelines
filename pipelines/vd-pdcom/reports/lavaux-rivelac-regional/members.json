@@ -1,0 +1,106 @@
+{
+  "rivelac": [
+    {
+      "bfs": 5892,
+      "name": "Blonay - Saint-Légier"
+    },
+    {
+      "bfs": 5882,
+      "name": "Chardonne"
+    },
+    {
+      "bfs": 5883,
+      "name": "Corseaux"
+    },
+    {
+      "bfs": 5884,
+      "name": "Corsier-sur-Vevey"
+    },
+    {
+      "bfs": 5885,
+      "name": "Jongny"
+    },
+    {
+      "bfs": 5889,
+      "name": "La Tour-de-Peilz"
+    },
+    {
+      "bfs": 5886,
+      "name": "Montreux"
+    },
+    {
+      "bfs": 5408,
+      "name": "Noville"
+    },
+    {
+      "bfs": 5412,
+      "name": "Rennaz"
+    },
+    {
+      "bfs": 5413,
+      "name": "Roche (VD)"
+    },
+    {
+      "bfs": 5890,
+      "name": "Vevey"
+    },
+    {
+      "bfs": 5891,
+      "name": "Veytaux"
+    },
+    {
+      "bfs": 5414,
+      "name": "Villeneuve (VD)"
+    }
+  ],
+  "lavaux": [
+    {
+      "bfs": 5613,
+      "name": "Bourg-en-Lavaux"
+    },
+    {
+      "bfs": 5601,
+      "name": "Chexbres"
+    },
+    {
+      "bfs": 5604,
+      "name": "Forel (Lavaux)"
+    },
+    {
+      "bfs": 5806,
+      "name": "Jorat-Mézières"
+    },
+    {
+      "bfs": 5790,
+      "name": "Maracon"
+    },
+    {
+      "bfs": 5792,
+      "name": "Montpreveyres"
+    },
+    {
+      "bfs": 5805,
+      "name": "Oron"
+    },
+    {
+      "bfs": 5607,
+      "name": "Puidoux"
+    },
+    {
+      "bfs": 5609,
+      "name": "Rivaz"
+    },
+    {
+      "bfs": 5610,
+      "name": "Saint-Saphorin (Lavaux)"
+    },
+    {
+      "bfs": 5611,
+      "name": "Savigny"
+    },
+    {
+      "bfs": 5799,
+      "name": "Servion"
+    }
+  ]
+}
