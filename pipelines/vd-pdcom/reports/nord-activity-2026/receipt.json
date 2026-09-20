@@ -1,0 +1,13 @@
+{
+  "ids": {
+    "operation": "f99e97a1-5ef8-4cbe-a130-943566563b3b",
+    "checkpoint": "5feed588-6447-4589-8fdc-bdf22b092940"
+  },
+  "documents": 139,
+  "source_communes": 241,
+  "source_commune_increment": 0,
+  "research_rows_verified": 70,
+  "new_map_pages": 23,
+  "validated_sector_increment": 0,
+  "receiver_increment": 0
+}

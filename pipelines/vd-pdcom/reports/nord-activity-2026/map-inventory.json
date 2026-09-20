@@ -1,0 +1,178 @@
+[
+  {
+    "doc": 0,
+    "page": 8,
+    "paths": 0,
+    "images": 1,
+    "role": "map_page"
+  },
+  {
+    "doc": 0,
+    "page": 16,
+    "paths": 1,
+    "images": 1,
+    "role": "map_page"
+  },
+  {
+    "doc": 0,
+    "page": 30,
+    "paths": 0,
+    "images": 2,
+    "role": "map_page"
+  },
+  {
+    "doc": 0,
+    "page": 31,
+    "paths": 0,
+    "images": 2,
+    "role": "map_page"
+  },
+  {
+    "doc": 0,
+    "page": 32,
+    "paths": 0,
+    "images": 2,
+    "role": "map_page"
+  },
+  {
+    "doc": 0,
+    "page": 54,
+    "paths": 0,
+    "images": 3,
+    "role": "map_page"
+  },
+  {
+    "doc": 0,
+    "page": 55,
+    "paths": 0,
+    "images": 1,
+    "role": "map_page"
+  },
+  {
+    "doc": 0,
+    "page": 56,
+    "paths": 1,
+    "images": 1,
+    "role": "concept_diagram_not_map"
+  },
+  {
+    "doc": 0,
+    "page": 80,
+    "paths": 0,
+    "images": 1,
+    "role": "legend_only"
+  },
+  {
+    "doc": 0,
+    "page": 81,
+    "paths": 11569,
+    "images": 154,
+    "role": "map_page"
+  },
+  {
+    "doc": 0,
+    "page": 96,
+    "paths": 29,
+    "images": 4,
+    "role": "map_page"
+  },
+  {
+    "doc": 0,
+    "page": 99,
+    "paths": 28,
+    "images": 4,
+    "role": "map_page"
+  },
+  {
+    "doc": 0,
+    "page": 102,
+    "paths": 27,
+    "images": 5,
+    "role": "map_page"
+  },
+  {
+    "doc": 0,
+    "page": 106,
+    "paths": 28,
+    "images": 5,
+    "role": "map_page"
+  },
+  {
+    "doc": 0,
+    "page": 109,
+    "paths": 29,
+    "images": 5,
+    "role": "map_page"
+  },
+  {
+    "doc": 0,
+    "page": 112,
+    "paths": 29,
+    "images": 5,
+    "role": "map_page"
+  },
+  {
+    "doc": 0,
+    "page": 115,
+    "paths": 29,
+    "images": 5,
+    "role": "map_page"
+  },
+  {
+    "doc": 0,
+    "page": 118,
+    "paths": 29,
+    "images": 5,
+    "role": "map_page"
+  },
+  {
+    "doc": 0,
+    "page": 121,
+    "paths": 29,
+    "images": 5,
+    "role": "map_page"
+  },
+  {
+    "doc": 0,
+    "page": 124,
+    "paths": 29,
+    "images": 5,
+    "role": "map_page"
+  },
+  {
+    "doc": 0,
+    "page": 127,
+    "paths": 29,
+    "images": 5,
+    "role": "map_page"
+  },
+  {
+    "doc": 0,
+    "page": 130,
+    "paths": 29,
+    "images": 5,
+    "role": "map_page"
+  },
+  {
+    "doc": 2,
+    "page": 1,
+    "paths": 301,
+    "images": 62,
+    "role": "map_page"
+  },
+  {
+    "doc": 3,
+    "page": 1,
+    "paths": 11569,
+    "images": 154,
+    "role": "map_page"
+  },
+  {
+    "doc": 0,
+    "page": 153,
+    "paths": 0,
+    "images": 5,
+    "role": "map_page",
+    "limit": "Database screenshot examples, not full published database"
+  }
+]
