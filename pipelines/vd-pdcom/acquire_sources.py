@@ -167,6 +167,8 @@ def persist(conn,source,sha,pages):
     persist_bex(conn,doc_id,sha)
     from orbe_pilot import persist as persist_orbe
     persist_orbe(conn,doc_id,sha)
+    from rivelac_pilot import persist as persist_rivelac
+    persist_rivelac(conn,doc_id,sha)
     return doc_id
 
 
