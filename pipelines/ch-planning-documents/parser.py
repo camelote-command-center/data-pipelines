@@ -184,8 +184,26 @@ def extract(url,deadline=None):
 def db_connect():
     uri=os.environ['RE_LLM_DB_URL']
     conn=psycopg2.connect(uri,connect_timeout=20)
-    with conn.cursor() as c:c.execute("set statement_timeout='120s'; set lock_timeout='10s'")
+    # 600 s: this is a batch writer, not a user query. At 120 s a warehouse under load cancelled a
+    # statement mid-run (run 35491765735) and the whole run died with QueryCanceled.
+    with conn.cursor() as c:c.execute("set statement_timeout='600s'; set lock_timeout='30s'")
     conn.commit();return conn
+
+# Cancelled statements and dropped connections are transient: a run that is making progress must
+# survive them (reconnect + backoff), not abort and report the parser as failing.
+DB_TRANSIENT=(psycopg2.errors.QueryCanceled,psycopg2.OperationalError,psycopg2.InterfaceError)
+def db_do(box,fn,attempts=3,sleep=time.sleep):
+    """Run fn(conn) on box[0], retrying transient database failures with a fresh connection.
+    Raises the last error when every attempt fails; the caller decides whether to continue."""
+    for attempt in range(attempts):
+        try:return fn(box[0])
+        except DB_TRANSIENT:
+            try:box[0].rollback()
+            except Exception:pass
+            if attempt==attempts-1:raise
+            sleep(5*2**attempt)
+            if box[0].closed:box[0]=db_connect()
+    raise AssertionError('unreachable')
 
 def store_catalog(conn,run_id,rows):
     with conn:
@@ -414,18 +432,22 @@ def main():
             selected=targets[:args.max_documents] if args.max_documents else targets
             report['deferred_documents']=len(targets)-len(selected)
             report['abandoned_at_budget']=0
+            report['db_failures']=0
             # Download/extract concurrently; serialize short database transactions.
             def worker(group):
                 try:return group,extract(group[0][2],deadline=budget.document_deadline()),None
                 except Exception as e:return group,None,failure_code(e)
             submitted=[]
+            dbx=[conn]
             def claim(group):
                 # Committed BEFORE the download starts: if the runner is killed mid-document the
                 # counter stays raised and the queue skips this document next run. Every completion
                 # path below resets it to 0.
-                with conn:
-                    with conn.cursor() as c:
-                        c.execute("update bronze_ch.planning_document_sources set crash_count=crash_count+1,claimed_at=now() where id=any(%s::uuid[])",([r[0] for r in group],))
+                def _claim(cn):
+                    with cn:
+                        with cn.cursor() as c:
+                            c.execute("update bronze_ch.planning_document_sources set crash_count=crash_count+1,claimed_at=now() where id=any(%s::uuid[])",([r[0] for r in group],))
+                db_do(dbx,_claim)
             with conn.cursor() as c:
                 c.execute("select count(*) from bronze_ch.planning_document_sources where crash_count>=%s",(CRASH_LIMIT,))
                 report['quarantined_after_runner_crash']=c.fetchone()[0]
@@ -436,20 +458,30 @@ def main():
                         # Cut off by the run budget, not by its own size: not an error. Stamp the
                         # attempt so never-attempted documents go first next run.
                         report['abandoned_at_budget']+=1
-                        with conn:
-                            with conn.cursor() as c:
-                                c.execute("update bronze_ch.planning_document_sources set last_attempt_at=now(),crash_count=0 where id=any(%s::uuid[])",([r[0] for r in group],))
+                        def _stamp(cn,group=group):
+                            with cn:
+                                with cn.cursor() as c:
+                                    c.execute("update bronze_ch.planning_document_sources set last_attempt_at=now(),crash_count=0 where id=any(%s::uuid[])",([r[0] for r in group],))
+                        try:db_do(dbx,_stamp)
+                        except DB_TRANSIENT as db_err:report['db_failures']+=1;print(json.dumps({'db_failure':failure_code(db_err),'stage':'abandon_stamp'}),flush=True)
                     elif error:
                         report['errors']+=1
-                        with conn:
-                            with conn.cursor() as c:
-                                c.execute("update bronze_ch.planning_document_sources set extraction_status='error',error_code=%s,last_attempt_at=now(),crash_count=0 where id=any(%s::uuid[])",(error,[r[0] for r in group]))
+                        def _fail(cn,group=group,error=error):
+                            with cn:
+                                with cn.cursor() as c:
+                                    c.execute("update bronze_ch.planning_document_sources set extraction_status='error',error_code=%s,last_attempt_at=now(),crash_count=0 where id=any(%s::uuid[])",(error,[r[0] for r in group]))
+                        try:db_do(dbx,_fail)
+                        except DB_TRANSIENT as db_err:report['db_failures']+=1;print(json.dumps({'db_failure':failure_code(db_err),'stage':'error_stamp'}),flush=True)
                     else:
-                        for row in group:
-                            new,publish=store_extraction(conn,row,payload)
-                            report['versions_new']+=int(new)
-                        report['extracted']+=int(publish)
-                        key=payload['extraction_status'];report.setdefault('extraction_outcomes',{});report['extraction_outcomes'][key]=report['extraction_outcomes'].get(key,0)+1
+                        try:
+                            for row in group:
+                                new,publish=db_do(dbx,lambda cn,row=row:store_extraction(cn,row,payload))
+                                report['versions_new']+=int(new)
+                            report['extracted']+=int(publish)
+                            key=payload['extraction_status'];report.setdefault('extraction_outcomes',{});report['extraction_outcomes'][key]=report['extraction_outcomes'].get(key,0)+1
+                        except DB_TRANSIENT as db_err:
+                            # The claim stays raised: this document is retried next week, not lost.
+                            report['db_failures']+=1;print(json.dumps({'db_failure':failure_code(db_err),'stage':'store'}),flush=True)
                     if i%10==0:
                         print(json.dumps({'processed':i,'selected':len(selected),'errors':report['errors']}),flush=True)
                         Path(args.report).write_text(json.dumps(report,ensure_ascii=False,indent=2))
@@ -457,6 +489,7 @@ def main():
                         for mon in monitors:
                             if mon.code!='ch_planning_document_text':continue
                             mon.call('PATCH','acquisition_logs',params={'id':'eq.'+mon.log_id},json={'records_fetched':i,'notes':run_url+'; '+str(i)+'/'+str(len(selected))+' URLs processed; '+str(report['errors'])+' errors'})
+            conn=dbx[0]
             started=submitted[0] if submitted else 0
             report['processed']=started
             report['deferred_documents']+=len(selected)-started
@@ -476,7 +509,8 @@ def main():
         # A budget-bounded run that made progress and still has work is healthy partial progress; a run
         # that could not start a single document is a real failure and stays red.
         partial=(not complete and not args.catalog_only and not args.max_documents
-                 and report.get('stopped_by_budget',False) and report.get('processed',0)>0)
+                 and (report.get('stopped_by_budget',False) or report.get('db_failures',0)>0)
+                 and report.get('processed',0)>0)
         return 0 if (complete or partial) else 2
     except Exception as e:
         report['fatal_error']=failure_code(e);raise
