@@ -151,6 +151,41 @@ class BoundedRuns(unittest.TestCase):
         self.assertEqual(r['extraction_status'],'needs_ocr')
         self.assertEqual(len(r['pages']),2)
         self.assertEqual({p['method'] for p in r['pages']},{'tesseract-timeout-v1'})
+    def test_db_do_retries_transient_then_succeeds(self):
+        import psycopg2
+        calls=[];slept=[]
+        class Conn:
+            closed=0
+            def rollback(self):pass
+        box=[Conn()]
+        def fn(cn):
+            calls.append(cn)
+            if len(calls)<3:raise psycopg2.errors.QueryCanceled('cancelled')
+            return 'ok'
+        self.assertEqual(parser.db_do(box,fn,sleep=slept.append),'ok')
+        self.assertEqual(len(calls),3);self.assertEqual(slept,[5,10])
+    def test_db_do_raises_after_last_attempt(self):
+        import psycopg2
+        class Conn:
+            closed=0
+            def rollback(self):pass
+        def fn(cn):raise psycopg2.OperationalError('server closed the connection')
+        with self.assertRaises(psycopg2.OperationalError):
+            parser.db_do([Conn()],fn,attempts=2,sleep=lambda s:None)
+    def test_db_do_reconnects_when_connection_closed(self):
+        import psycopg2
+        fresh=object();opened=[]
+        class Conn:
+            closed=1
+            def rollback(self):pass
+        box=[Conn()];seen=[]
+        def fn(cn):
+            seen.append(cn)
+            if len(seen)==1:raise psycopg2.InterfaceError('connection already closed')
+            return cn
+        with patch.object(parser,'db_connect',lambda:(opened.append(1) or fresh)):
+            self.assertIs(parser.db_do(box,fn,sleep=lambda s:None),fresh)
+        self.assertEqual(opened,[1])
     def test_partial_never_overrides_complete(self):
         monitor=object.__new__(parser.Monitor)
         monitor.code='ch_planning_document_text';monitor.dataset={'id':'d','startup_id':'o'};monitor.last_success=None
