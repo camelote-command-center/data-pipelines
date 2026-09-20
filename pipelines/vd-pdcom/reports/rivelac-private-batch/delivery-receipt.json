@@ -1,0 +1,90 @@
+{
+  "ids": {
+    "operation": "c2942c7a-8716-4dbf-a936-48d2254edb20",
+    "checkpoint": "e8c56dcc-8551-4005-881c-3a69be0676b1",
+    "monitor_attempt": "373ef8e3-36c2-4722-914a-808bf5f7fbae",
+    "prior_failed_monitor_attempt": "c2942c7a-8716-4dbf-a936-48d2254edb20"
+  },
+  "persist": {
+    "sectors": 2,
+    "parcel_pairs": 19,
+    "candidates": [
+      {
+        "sector_id": "09d301ab-447c-5d1d-bd6e-83c95ca2c18f",
+        "site_code": "2.4",
+        "parcel_pairs": 4,
+        "reference": {
+          "snapshot_id": "ba2df789-bf6c-5a64-8e0e-958eac4cd6ff",
+          "count": 11,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2560263.190967284%2C1137167.2339394323%2C2560544.9797029556%2C1137547.6854216806&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5408&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "856189ef3f9277d303c3fc4ed8c458c24a4a3888e63d819ca924b076d4635a00"
+        }
+      },
+      {
+        "sector_id": "f18ea7d8-03f7-5fd6-b3f7-8f74c9c1a396",
+        "site_code": "2.11",
+        "parcel_pairs": 15,
+        "reference": {
+          "snapshot_id": "ae792592-a6cc-5eac-9508-3fe4d45530e6",
+          "count": 33,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2560757.9971134625%2C1137174.5837657093%2C2561408.0756055187%2C1137525.2326936333&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5414&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "3c25ea13e5aeaf6ffdad35a9b9c882f97e744e74c64704fe22a286a356d6566e"
+        }
+      }
+    ],
+    "status": "review_required"
+  },
+  "repeat": {
+    "sectors": 2,
+    "parcel_pairs": 19,
+    "candidates": [
+      {
+        "sector_id": "09d301ab-447c-5d1d-bd6e-83c95ca2c18f",
+        "site_code": "2.4",
+        "parcel_pairs": 4,
+        "reference": {
+          "snapshot_id": "ba2df789-bf6c-5a64-8e0e-958eac4cd6ff",
+          "count": 11,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2560263.190967284%2C1137167.2339394323%2C2560544.9797029556%2C1137547.6854216806&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5408&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "856189ef3f9277d303c3fc4ed8c458c24a4a3888e63d819ca924b076d4635a00"
+        }
+      },
+      {
+        "sector_id": "f18ea7d8-03f7-5fd6-b3f7-8f74c9c1a396",
+        "site_code": "2.11",
+        "parcel_pairs": 15,
+        "reference": {
+          "snapshot_id": "ae792592-a6cc-5eac-9508-3fe4d45530e6",
+          "count": 33,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2560757.9971134625%2C1137174.5837657093%2C2561408.0756055187%2C1137525.2326936333&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5414&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "3c25ea13e5aeaf6ffdad35a9b9c882f97e744e74c64704fe22a286a356d6566e"
+        }
+      }
+    ],
+    "status": "review_required"
+  },
+  "delivery": {
+    "publication_status": "internal_review_only",
+    "receiver": "lamap_db",
+    "tables": {
+      "vd_pdcom_review_sectors": {
+        "rows": 42,
+        "mismatches": 0,
+        "valid_4326": true
+      },
+      "vd_pdcom_review_parcels": {
+        "rows": 2286,
+        "mismatches": 0,
+        "valid_4326": true
+      }
+    }
+  },
+  "total_private_sectors": 42,
+  "total_pairs": 2286,
+  "distinct_egrids": 2264,
+  "preexisting_sectors_preserved": 40,
+  "completed_commune_increment": 0,
+  "validated_sector_increment": 0,
+  "private_review_sector_increment": 2,
+  "limitations": "Indicative source outlines only; exact-version approval/currentness/legal boundary precision unresolved. Not confirmed free parcels."
+}

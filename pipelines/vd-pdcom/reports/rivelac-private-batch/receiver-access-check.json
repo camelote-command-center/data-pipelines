@@ -1,0 +1,16 @@
+[
+  {
+    "table": "vd_pdcom_review_sectors",
+    "rows": 42,
+    "rls": true,
+    "anon_select": false,
+    "authenticated_select": false
+  },
+  {
+    "table": "vd_pdcom_review_parcels",
+    "rows": 2286,
+    "rls": true,
+    "anon_select": false,
+    "authenticated_select": false
+  }
+]
