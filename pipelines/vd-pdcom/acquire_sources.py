@@ -122,9 +122,10 @@ def inspect(data, *, enumerate_vectors=True, max_pages=500):
     with fitz.open(stream=data,filetype='pdf') as doc:
         if len(doc)>max_pages:raise ValueError('page_limit')
         for number,page in enumerate(doc,1):
-            text=page.get_text()
+            raw_text=page.get_text()
+            text=raw_text.replace('\x00','\ufffd')
             pages.append({'page_number':number,'width':page.rect.width,'height':page.rect.height,
-                          'text':text,'vector_paths':len(page.get_drawings()) if enumerate_vectors else None,
+                          'text':text,'nul_replacements':raw_text.count('\x00'),'vector_paths':len(page.get_drawings()) if enumerate_vectors else None,
                           'vector_inventory_status':'counted' if enumerate_vectors else 'not_evaluated',
                           'embedded_georef':has_geographic_viewport(doc,page)})
     return pages

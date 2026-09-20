@@ -21,3 +21,13 @@ class SourcePageLimit(unittest.TestCase):
         for limit in [0,-1,1001,True,'800',None]:
             with self.assertRaisesRegex(ValueError,'invalid_page_limit'):
                 acquire_sources.inspect(b'',max_pages=limit)
+
+    def test_pdf_nul_glyph_remains_visible_and_jsonb_safe(self):
+        from unittest.mock import patch
+        with pymupdf.open() as doc:
+            doc.new_page()
+            data=doc.tobytes()
+        with patch.object(pymupdf.Page,'get_text',return_value='Mesures\x00 de planification'):
+            page=acquire_sources.inspect(data,enumerate_vectors=False)[0]
+        self.assertEqual(page['text'],'Mesures\ufffd de planification')
+        self.assertEqual(page['nul_replacements'],1)
