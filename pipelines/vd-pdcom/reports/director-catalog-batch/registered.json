@@ -1,0 +1,58 @@
+[
+  {
+    "id": "88718bfe-ea1f-55fc-ade7-bc209a7d26d4",
+    "catalog_id": "5582_178006_P01",
+    "sha256": "5124f48ab5ce53416bb781e123378f7ba6116a954d7eaab644c2414613fb94b6",
+    "pages": 1,
+    "bfs": 5582
+  },
+  {
+    "id": "63935eee-901a-5101-aa70-a617ab977d36",
+    "catalog_id": "5582_178006_PR01",
+    "sha256": "8d4fdb4f0a207428feb098f051876b39b27a0e82aba92537851fd9576d266e3f",
+    "pages": 1,
+    "bfs": 5582
+  },
+  {
+    "id": "0e9335fa-0a1f-5251-8a47-ccaf3e2587c5",
+    "catalog_id": "5582_130002_PR01",
+    "sha256": "a8e1bf955645980a5956cd4d690f2e7ca533540cd1822663b9f997a4052396d4",
+    "pages": 5,
+    "bfs": 5582
+  },
+  {
+    "id": "e42356ee-f47b-5249-87ed-367d2fb3aa4f",
+    "catalog_id": "5631_65022_PR01",
+    "sha256": "83a15e84e25c774322a361f2e73f99205297e5d3f7ef5135d692f898812d4dad",
+    "pages": 44,
+    "bfs": 5631
+  },
+  {
+    "id": "652e95b3-615f-5498-8448-e8f76b421522",
+    "catalog_id": "5631_65023_PR01",
+    "sha256": "1e85b4dc08c05fa92f3165563141351cd0b05a48ac6bc77eb2458003f38e4e74",
+    "pages": 41,
+    "bfs": 5631
+  },
+  {
+    "id": "4a3407dc-4e67-5423-a7e8-16793f6d98eb",
+    "catalog_id": "5678_62361_PR01",
+    "sha256": "b8edadd14962d64ff65dfc838fe555e09b0324117a4abacbe2fa64fc520c8169",
+    "pages": 4,
+    "bfs": 5678
+  },
+  {
+    "id": "20531bc4-00e7-5128-b26d-9909d700d5de",
+    "catalog_id": "5831_66481_PR01",
+    "sha256": "b33f12a7d8f6dcce4e3d2a08668a6cce6c5c0c8607119751abc9f6c35043a1aa",
+    "pages": 5,
+    "bfs": 5831
+  },
+  {
+    "id": "ac95dce8-1f32-5522-be3e-60377596b2d7",
+    "catalog_id": "5822_183754_PR01",
+    "sha256": "daf8c49ea168d46c13e15f6464d3b575bd064f514f2f0a1db202ffad4c470fb0",
+    "pages": 25,
+    "bfs": 5822
+  }
+]

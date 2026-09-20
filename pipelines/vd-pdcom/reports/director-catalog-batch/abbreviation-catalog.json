@@ -1,0 +1,160 @@
+{
+  "displayFieldName": "SERVICE",
+  "fieldAliases": {
+    "SERVICE": "Service",
+    "TITRE_OFFICIEL": "Titre officiel",
+    "TITRE_USUEL": "Titre usuel",
+    "ABREVIATION": "Abréviation",
+    "NO_OFFICIEL": "N° officiel",
+    "NATURE_DOC": "Nature document",
+    "STATUT_JURIDIQUE": "Statut juridique",
+    "LIEN_DOCUMENT": "Liens vers le document",
+    "OBJECTID": "OBJECTID",
+    "ID_SERVICE": "ID_SERVICE",
+    "ID_DOC": "ID_DOC",
+    "DATE_APPRO": "Date d'approbation",
+    "NIV_ADMIN": "NIV_ADMIN",
+    "SEULEMENT_COMMUNE": "SEULEMENT_COMMUNE",
+    "PUBLIE_DEPUIS": "PUBLIE_DEPUIS",
+    "PUBLIE_JUSQUE": "PUBLIE_JUSQUE"
+  },
+  "fields": [
+    {
+      "name": "SERVICE",
+      "type": "esriFieldTypeString",
+      "alias": "Service",
+      "length": 10
+    },
+    {
+      "name": "TITRE_OFFICIEL",
+      "type": "esriFieldTypeString",
+      "alias": "Titre officiel",
+      "length": 255
+    },
+    {
+      "name": "TITRE_USUEL",
+      "type": "esriFieldTypeString",
+      "alias": "Titre usuel",
+      "length": 255
+    },
+    {
+      "name": "ABREVIATION",
+      "type": "esriFieldTypeString",
+      "alias": "Abréviation",
+      "length": 255
+    },
+    {
+      "name": "NO_OFFICIEL",
+      "type": "esriFieldTypeString",
+      "alias": "N° officiel",
+      "length": 20
+    },
+    {
+      "name": "NATURE_DOC",
+      "type": "esriFieldTypeString",
+      "alias": "Nature document",
+      "length": 20
+    },
+    {
+      "name": "STATUT_JURIDIQUE",
+      "type": "esriFieldTypeString",
+      "alias": "Statut juridique",
+      "length": 50
+    },
+    {
+      "name": "LIEN_DOCUMENT",
+      "type": "esriFieldTypeString",
+      "alias": "Liens vers le document",
+      "length": 255
+    },
+    {
+      "name": "OBJECTID",
+      "type": "esriFieldTypeOID",
+      "alias": "OBJECTID"
+    },
+    {
+      "name": "ID_SERVICE",
+      "type": "esriFieldTypeString",
+      "alias": "ID_SERVICE",
+      "length": 20
+    },
+    {
+      "name": "ID_DOC",
+      "type": "esriFieldTypeString",
+      "alias": "ID_DOC",
+      "length": 255
+    },
+    {
+      "name": "DATE_APPRO",
+      "type": "esriFieldTypeDate",
+      "alias": "Date d'approbation",
+      "length": 8
+    },
+    {
+      "name": "NIV_ADMIN",
+      "type": "esriFieldTypeString",
+      "alias": "NIV_ADMIN",
+      "length": 10
+    },
+    {
+      "name": "SEULEMENT_COMMUNE",
+      "type": "esriFieldTypeString",
+      "alias": "SEULEMENT_COMMUNE",
+      "length": 4
+    },
+    {
+      "name": "PUBLIE_DEPUIS",
+      "type": "esriFieldTypeDate",
+      "alias": "PUBLIE_DEPUIS",
+      "length": 8
+    },
+    {
+      "name": "PUBLIE_JUSQUE",
+      "type": "esriFieldTypeDate",
+      "alias": "PUBLIE_JUSQUE",
+      "length": 8
+    }
+  ],
+  "features": [
+    {
+      "attributes": {
+        "SERVICE": "DGMR",
+        "TITRE_OFFICIEL": "PDL \"Front Sud\"",
+        "TITRE_USUEL": "PDL \"Front Sud\"",
+        "ABREVIATION": null,
+        "NO_OFFICIEL": "5704_20030820",
+        "NATURE_DOC": "PLAN",
+        "STATUT_JURIDIQUE": "En_vigueur",
+        "LIEN_DOCUMENT": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=ROUTES&nom=5704_20030820.pdf",
+        "OBJECTID": 14006926,
+        "ID_SERVICE": "CHE-114.965.329_DGMR",
+        "ID_DOC": "80_5704_20030820",
+        "DATE_APPRO": 1061337600000,
+        "NIV_ADMIN": "CANTONAL",
+        "SEULEMENT_COMMUNE": null,
+        "PUBLIE_DEPUIS": 1061337600000,
+        "PUBLIE_JUSQUE": null
+      }
+    },
+    {
+      "attributes": {
+        "SERVICE": "DGMR",
+        "TITRE_OFFICIEL": "PDL et PPA sur la Torche",
+        "TITRE_USUEL": "PDL et PPA sur la Torche",
+        "ABREVIATION": null,
+        "NO_OFFICIEL": "5764_20010409",
+        "NATURE_DOC": "PLAN",
+        "STATUT_JURIDIQUE": "En_vigueur",
+        "LIEN_DOCUMENT": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=ROUTES&nom=5764_20010409.pdf",
+        "OBJECTID": 14006954,
+        "ID_SERVICE": "CHE-114.965.329_DGMR",
+        "ID_DOC": "80_5764_20010409",
+        "DATE_APPRO": 986774400000,
+        "NIV_ADMIN": "CANTONAL",
+        "SEULEMENT_COMMUNE": null,
+        "PUBLIE_DEPUIS": 986774400000,
+        "PUBLIE_JUSQUE": null
+      }
+    }
+  ]
+}
