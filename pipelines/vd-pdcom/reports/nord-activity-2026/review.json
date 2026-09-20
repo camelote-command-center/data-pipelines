@@ -1,0 +1,526 @@
+{
+  "operation_id": "f99e97a1-5ef8-4cbe-a130-943566563b3b",
+  "scope": "Nord vaudois regional sectoral activity plan, not full municipal PDCom",
+  "source_communes": 70,
+  "membership_source_page": 139,
+  "version": "April2026 consultation; some page footers19June2026; signatures to be inserted after consultation (page5)",
+  "consultation": {
+    "from": "2026-07-20",
+    "through": "2026-09-11",
+    "source_url": "https://adnv.ch/portfolio/plan-directeur-zones-activites/"
+  },
+  "approval": "not_verified; consultation closure does not imply adoption",
+  "pdf_count": 4,
+  "pages": 294,
+  "map_pages": 23,
+  "native_map_paths": 23784,
+  "site_records": [
+    {
+      "source_page": 96,
+      "site_code": 1,
+      "commune_bfs": [
+        5938
+      ],
+      "vocation": "productive mixte",
+      "source_text": "Périmètre et intentions\nVocation\nSituation et enjeux spécifiques\nActeurs de la gestion de la zone\nPlanification(s) en vigueur / en cours\nSituation :\nA COMPLETER/CORRIGER PAR LA COMMUNE\nEnjeux spécifiques : \nA COMPLETER/CORRIGER PAR LA COMMUNE\nZone d’activité productive mixte\nSurfaces destinées aux activités productives cibles et aux \nactivités tertiaires\nOrgane de gestion :\n• \nAggloY, ADNV, Commune Yverdon-les-Bains, Canton\nAutre : \n•\t\nA REMPLIR PAR LA COMMUNE\nA REMPLIR PAR LA COMMUNE\nChiffres clés\nSurfaces en ZA : 47,7 Ha\nParcelles en ZA : 43\nRéserves mobilisables : 30,6 Ha\nRéserves pot. mobilisables : 2,9 Ha\nEmplois (STATENT 2021) : 1’402,2 EPT \nEtablissements (STATENT 2021) : 119 \nDensité : 29,4 EPT / Ha\nEquipements et services : A REMPLIR PAR \nLA COMMUNE\nSite stratégique de développement d’activités (SSDA) : Swiss technopôle Y-Parc\n1\nVersion avril 2026\n1\nProfil de la zone\nSensibilité environnementale\nFaible\nCentralité\nBon\nDistance à l’habitat\nMoyen\nRéseau national\nBon\nRéseau régional\nBon\nTransports publics\nBon\nAccessibilité\nMilieu bâti\nAccessibilité : \nBonne desserte autoroutière (sortie 25-A1) et en trans­\nports publics (niveaux B-C-D-E selon données qualité \nde desserte du Canton de Vaud) avec des bus urbains et \nrégionaux.\nMilieu bâti : \nDans l’agglomération centre cantonal, services à proximité, \nzone à l’écart des zones habitées.\nEnvironnement, paysage et patrimoine \nSensibilité paysagère\nFort\nSensibilité patrimoniale\nMoyen\nSensibilités\nPas d’impacts environnementaux identifiés sur zone. \nTerritoire d’intérêt biologique prioritaire voisin (selon REC). \nImpact paysager potentiellement important (position de \nl’extension prévue au premier plan depuis l’autoroute). Pré­\nsence d’une région archéologique avec vestiges connus\n",
+      "metrics": {
+        "Surfaces en ZA": {
+          "source_value": "47,7",
+          "value": 47.7
+        },
+        "Parcelles en ZA": {
+          "source_value": "43",
+          "value": 43.0
+        },
+        "Réserves mobilisables": {
+          "source_value": "30,6",
+          "value": 30.6
+        },
+        "Réserves pot. mobilisables": {
+          "source_value": "2,9",
+          "value": 2.9
+        },
+        "Emplois (STATENT 2021)": {
+          "source_value": "1’402,2",
+          "value": 1402.2
+        },
+        "Etablissements (STATENT 2021)": {
+          "source_value": "119",
+          "value": 119.0
+        },
+        "Densité": {
+          "source_value": "29,4",
+          "value": 29.4
+        }
+      },
+      "status": "consultation_draft_ungeoreferenced",
+      "limit": "Models still require municipality completion; employment2021; reserve inventory2021, not current availability."
+    },
+    {
+      "source_page": 99,
+      "site_code": 17,
+      "commune_bfs": [
+        5551,
+        5561,
+        5565
+      ],
+      "vocation": "productive",
+      "source_text": "Périmètre et intentions\nVocation\nSituation et enjeux spécifiques\nActeurs de la gestion de la zone\nPlanification(s) en vigueur / en cours\nSituation :\nA COMPLETER/CORRIGER PAR LES COMMUNES\nEnjeux spécifiques : \nA COMPLETER/CORRIGER PAR LES COMMUNES\nLa zone est identifiée comme site prioritaire d’interface rail-\nroute dans la stratégie vaudoise de transport de marchan­\ndises. Une gare de formation de fret est projetée à l’horizon 2035 \n(PRODES EA35)\nZone d’activité productive\nSurfaces destinées aux activités productives cibles\nOrgane de gestion :\n•\t\nADNV, Agglo Y, Bonvillars, Grandson, Onnens, Canton\nAutre : \n•\t\nA REMPLIR PAR LA COMMUNE\nA REMPLIR PAR LA COMMUNE\nLe site d’activités de la Poissine sur Grandson va faire l’objet \nd’un PAC qui est en cours d’élaboration.  La ZA de Bonvillars \nest réglée par le PA communal en cours d’approbation.\nChiffres clés\nSurfaces en ZA : 31,7 Ha\nParcelles en ZA : 15\nRéserves mobilisables : 6,3 Ha\nRéserves pot. mobilisables : 8,1 Ha\nEmplois (STATENT 2021) : 224,2 EPT \nEtablissements (STATENT 2021) : 11 \nDensité : 7 EPT / Ha\nEquipements et services : A REMPLIR PAR \nLA COMMUNE\nSite stratégique de développement d’activités (SSDA) : Arnon-Poissine\n17\nVersion avril 2026\n1\nProfil du SSDA\nSensibilité environnementale\nFort\nCentralité\nMoyen\nDistance à l’habitat\nBon\nRéseau national\nBon\nRéseau régional\nBon\nTransports publics\nFaible\nAccessibilité\nMilieu bâti\nAccessibilité : \nBonne desserte autoroutière (sortie 3-A5) et faible en transports \npublics (niveaux D-E selon données qualité de desserte du Canton \nde Vaud). Présence d’une plateforme rail-route existante. Une \nnouvelle plateforme de transbordement rail/route est projetée à \nl’horizon 2028 et une gare de formation de fret à l’horizon 2035.\nMilieu bâti : \nZone proche du centre régional de Grandson et de l’agglo­\nmération, zone à l’écart des zones habitées.\nEnvironnement, paysage et patrimoine \nSensibilité paysagère\nFort\nSensibilité patrimoniale\nMoyen\nSensibilités\nImpacts environnementaux et paysagers potentiels importants : \nrenforcement de la coupure entre le coteau agricole et les milieux \nnaturels riverains du lac et de l’Arnon (TIBP selon le REC), visibilité \ndes constructions depuis RC et voie ferrée, possible impact sur \nIFP. Présence de 2 régions archéologiques dans l’emprise du site \net de son extension. Présence de site classé et de zones UNES­\nCO à proximité immédiate.\n",
+      "metrics": {
+        "Surfaces en ZA": {
+          "source_value": "31,7",
+          "value": 31.7
+        },
+        "Parcelles en ZA": {
+          "source_value": "15",
+          "value": 15.0
+        },
+        "Réserves mobilisables": {
+          "source_value": "6,3",
+          "value": 6.3
+        },
+        "Réserves pot. mobilisables": {
+          "source_value": "8,1",
+          "value": 8.1
+        },
+        "Emplois (STATENT 2021)": {
+          "source_value": "224,2",
+          "value": 224.2
+        },
+        "Etablissements (STATENT 2021)": {
+          "source_value": "11",
+          "value": 11.0
+        },
+        "Densité": {
+          "source_value": "7",
+          "value": 7.0
+        }
+      },
+      "status": "consultation_draft_ungeoreferenced",
+      "limit": "Models still require municipality completion; employment2021; reserve inventory2021, not current availability."
+    },
+    {
+      "source_page": 102,
+      "site_code": 18,
+      "commune_bfs": [
+        5757,
+        5749
+      ],
+      "vocation": "productive mixte",
+      "source_text": "Périmètre et intentions\nPartie ouest  (Orbe)\nPartie est  (Chavornay)\nVocation\nSituation et enjeux spécifiques\nActeurs de la gestion de la zone\nPlanification(s) en vigueur / en cours\nSituation :\nA COMPLETER/CORRIGER PAR LA COMMUNE\nEnjeux spécifiques : \nA COMPLETER/CORRIGER PAR LA COMMUNE\nLa zone est identifiée comme site prioritaire d’interface \nrail-route dans la stratégie vaudoise de transport de \nmarchandises.\nZone d’activité productive mixte\nSurfaces destinées aux activités productives cibles et activités \ntertiaires\nOrgane de gestion :\n•\t\nADNV, Communes de Chavornay et Orbe, Canton\nAutre : \n•\t\nA REMPLIR PAR LA COMMUNE\nA REMPLIR PAR LA COMMUNE\nChiffres clés\nSurfaces en ZA : 91,2 Ha\nParcelles en ZA : 120\nRéserves mobilisables : 17,1 Ha\nRéserves pot. mobilisables : 14,6 Ha\nEmplois (STATENT 2021) : 3’114,6 EPT \nEtablissements (STATENT 2021) : 145 \nDensité : 34,2 EPT / Ha\nEquipements et services : A REMPLIR PAR \nLA COMMUNE\nSite stratégique de développement d’activités (SSDA) : Orbe Chavornay\n18\nVersion avril 2026\n1\nProfil de la zone\nSensibilité environnementale\nMoyen\nCentralité\nMoyen\nDistance à l’habitat\nFaible\nRéseau national\nBon\nRéseau régional\nBon\nTransports publics\nBon\nAccessibilité\nMilieu bâti\nAccessibilité : \nBonne desserte autoroutière (sortie 22-A1 / 3-A9) et \nbonne en transports publics (niveaux B-C-D selon \ndonnées qualité de desserte du Canton de Vaud). \nPrésence de gare pour frêt ferroviaire..\nMilieu bâti : \nOrbe et Chavornay sont centre régional, zone \nà proximité de l’habitat pour Chavornay avec \nnuisances possibles. \nEnvironnement, paysage et patrimoine \nSensibilité paysagère\nFort\nSensibilité patrimoniale\nMoyen\nSensibilités\nImpact écologique potentiellement important des exten­\nsions sur le Talent par limitation de son potentiel de renatu­\nration (tronçon prioritaire selon la planification cantonale de \nrenaturation). Impact paysager potentiellement important \nsans mesures d’intégration. Présence de régions archéolo­\ngiques, vestiges connus en partie.\n",
+      "metrics": {
+        "Surfaces en ZA": {
+          "source_value": "91,2",
+          "value": 91.2
+        },
+        "Parcelles en ZA": {
+          "source_value": "120",
+          "value": 120.0
+        },
+        "Réserves mobilisables": {
+          "source_value": "17,1",
+          "value": 17.1
+        },
+        "Réserves pot. mobilisables": {
+          "source_value": "14,6",
+          "value": 14.6
+        },
+        "Emplois (STATENT 2021)": {
+          "source_value": "3’114,6",
+          "value": 3114.6
+        },
+        "Etablissements (STATENT 2021)": {
+          "source_value": "145",
+          "value": 145.0
+        },
+        "Densité": {
+          "source_value": "34,2",
+          "value": 34.2
+        }
+      },
+      "status": "consultation_draft_ungeoreferenced",
+      "limit": "Models still require municipality completion; employment2021; reserve inventory2021, not current availability."
+    },
+    {
+      "source_page": 106,
+      "site_code": 38,
+      "commune_bfs": [
+        5922
+      ],
+      "vocation": "mixte",
+      "source_text": "Périmètre et intentions\nVocation\nSituation et enjeux spécifiques\nActeurs de la gestion de la zone\nPlanification(s) en vigueur / en cours\nSituation :\nA COMPLETER/CORRIGER PAR LA COMMUNE\nEnjeux spécifiques : \nA COMPLETER/CORRIGER PAR LA COMMUNE\nLa zone est identifiée comme pôle commercial dans la \nstratégie des ICFF de l’agglomération yverdonnoise. \nDes mesures d’accompagnement favorisant le report \nmodal ou la diminution de la dépendance à la voiture sont à \nencourager.\nZone d’activité mixte\nSurfaces destinées aux activités productives cibles, aux \nactivités tertiaires et commerciales\nOrgane de gestion :\n•\t\nAggloY, ADNV, Commune Montagny-près-Yverdon\nAutre : \n•\t\nA REMPLIR PAR LA COMMUNE\nA REMPLIR PAR LA COMMUNE\nChiffres clés\nSurfaces en ZA : 19,7 Ha\nParcelles en ZA : 21\nRéserves mobilisables : 4,8 Ha\nRéserves pot. mobilisables : 3 Ha\nEmplois (STATENT 2021) : 1’236,5 EPT \nEtablissements (STATENT 2021) : 84 \nDensité : 62,8 EPT / Ha\nEquipements et services : A REMPLIR PAR \nLA COMMUNE\nZone d’activité d’intérêt régional (ZAR) : Montagny-près-Yverdon\n38\nVersion avril 2026\n1\nProfil de la zone\nSensibilité environnementale\nMoyen\nCentralité\nBon\nDistance à l’habitat\nMoyen\nRéseau national\nBon\nRéseau régional\nBon\nTransports publics\nBon\nAccessibilité\nMilieu bâti\nAccessibilité : \nBonne desserte autoroutière (sortie 2-A5) et bonne des­\nserte en transports publics (niveaux C-D selon données \nqualité de desserte du Canton de Vaud) avec plusieurs \narrêts de bus d’agglomération. \nMilieu bâti : \nDans l’agglomération centre cantonal, services à proximité \net sur zone, zone à l’écart des zones habitées mais quartier \nmixte prévus en bordure. \nEnvironnement, paysage et patrimoine \nSensibilité paysagère\nMoyen\nSensibilités\nImpact sur le potentiel de renaturation du canal du Bey. \nImpact paysager en mobilisant les réserves, vue de l’auto­\nroute. Présence d’une région archéologique.\nSensibilité patrimoniale\nFaible\n",
+      "metrics": {
+        "Surfaces en ZA": {
+          "source_value": "19,7",
+          "value": 19.7
+        },
+        "Parcelles en ZA": {
+          "source_value": "21",
+          "value": 21.0
+        },
+        "Réserves mobilisables": {
+          "source_value": "4,8",
+          "value": 4.8
+        },
+        "Réserves pot. mobilisables": {
+          "source_value": "3",
+          "value": 3.0
+        },
+        "Emplois (STATENT 2021)": {
+          "source_value": "1’236,5",
+          "value": 1236.5
+        },
+        "Etablissements (STATENT 2021)": {
+          "source_value": "84",
+          "value": 84.0
+        },
+        "Densité": {
+          "source_value": "62,8",
+          "value": 62.8
+        }
+      },
+      "status": "consultation_draft_ungeoreferenced",
+      "limit": "Models still require municipality completion; employment2021; reserve inventory2021, not current availability."
+    },
+    {
+      "source_page": 109,
+      "site_code": 44,
+      "commune_bfs": [
+        5939
+      ],
+      "vocation": "productive mixte",
+      "source_text": "Périmètre et intentions\nVocation\nSituation et enjeux spécifiques\nActeurs de la gestion de la zone\nPlanification(s) en vigueur / en cours\nSituation :\nA COMPLETER/CORRIGER PAR LA COMMUNE\nEnjeux spécifiques : \nA COMPLETER/CORRIGER PAR LA COMMUNE\nLa zone est identifiée comme site prioritaire d’interface \nrail-route dans la stratégie vaudoise de transport de \nmarchandises.\nFaible accessibilité en transports publics à améliorer. \nZone d’activité productive mixte\nSurfaces destinées aux activités productives cibles, aux \nactivités tertiaires et commerciales\nOrgane de gestion :\n•\t\nADNV, Commune Yvonand\nAutre : \n•\t\nA REMPLIR PAR LA COMMUNE\nA REMPLIR PAR LA COMMUNE\nChiffres clés\nSurfaces en ZA : 10,7 Ha\nParcelles en ZA : 33\nRéserves mobilisables : 0,1 Ha\nRéserves pot. mobilisables : 0,5 Ha\nEmplois (STATENT 2021) : 176,8 EPT \nEtablissements (STATENT 2021) : 24 \nDensité : 16,5 EPT / Ha\nEquipements et services : A REMPLIR PAR \nLA COMMUNE\nZone d’activité d’intérêt régional (ZAR) : Yvonand\n44\nVersion avril 2026\n1\nProfil de la zone\nSensibilité environnementale\nFaible\nCentralité\nBon\nDistance à l’habitat\nMoyen\nRéseau national\nBon\nRéseau régional\nBon\nTransports publics\nBon\nAccessibilité\nMilieu bâti\nAccessibilité : \nBonne accessibilité au réseau régional, accessibilité en \ntransports publics moyenne sur la partie ouest (niveaux \nC-D-E selon données qualité de desserte du Canton de \nVaud). Présence de gare de frêt ferroviaire. \nMilieu bâti : \nDans un centre régional, quartiers habités directement en \nbordure de zone.\nEnvironnement, paysage et patrimoine \nSensibilité paysagère\nFaible\nSensibilité patrimoniale\nForte\nSensibilités\nImpacts potentiels importants avec zones naturelles proté­\ngées à proximité (Grande Cariçaie). Présence d’une région \narchéologique protégeant les stations littorales d’Yvonand \n- Le Marais inventoriées à l’UNESCO. A noter que le site \nest déjà bâti sur remblais conservant les vestiges en sous-\nsol. Aucun impact n’est possible sur ces vestiges.\n",
+      "metrics": {
+        "Surfaces en ZA": {
+          "source_value": "10,7",
+          "value": 10.7
+        },
+        "Parcelles en ZA": {
+          "source_value": "33",
+          "value": 33.0
+        },
+        "Réserves mobilisables": {
+          "source_value": "0,1",
+          "value": 0.1
+        },
+        "Réserves pot. mobilisables": {
+          "source_value": "0,5",
+          "value": 0.5
+        },
+        "Emplois (STATENT 2021)": {
+          "source_value": "176,8",
+          "value": 176.8
+        },
+        "Etablissements (STATENT 2021)": {
+          "source_value": "24",
+          "value": 24.0
+        },
+        "Densité": {
+          "source_value": "16,5",
+          "value": 16.5
+        }
+      },
+      "status": "consultation_draft_ungeoreferenced",
+      "limit": "Models still require municipality completion; employment2021; reserve inventory2021, not current availability."
+    },
+    {
+      "source_page": 112,
+      "site_code": 76,
+      "commune_bfs": [
+        5553
+      ],
+      "vocation": "productive",
+      "source_text": "Périmètre et intentions\nVocation\nSituation et enjeux spécifiques\nActeurs de la gestion de la zone\nPlanification(s) en vigueur / en cours\nSituation :\nA COMPLETER/CORRIGER PAR LA COMMUNE\nEnjeux spécifiques : \nA COMPLETER/CORRIGER PAR LA COMMUNE\nFaible accessibilité en transports publics à améliorer. \nZone d’activité productive\nSurfaces destinées aux activités productives cibles\nOrgane de gestion :\n• \nADNV, Commune Champagne\nAutre : \n•\t\nA REMPLIR PAR LA COMMUNE\nA REMPLIR PAR LA COMMUNE\nChiffres clés\nSurfaces en ZA : 11 Ha\nParcelles en ZA : 19\nRéserves mobilisables : 2,7 Ha\nRéserves pot. mobilisables : 0 Ha\nEmplois (STATENT 2021) : 277,5 EPT \nEtablissements (STATENT 2021) : 28 \nDensité : 25,2 EPT / Ha\nEquipements et services : A REMPLIR PAR \nLA COMMUNE\nZone d’activité d’intérêt régional (ZAR) : Champagne\n76\nVersion avril 2026\n1\nProfil de la zone\nSensibilité environnementale\nFort\nCentralité\nMoyen\nDistance à l’habitat\nBon\nRéseau national\nBon\nRéseau régional\nBon\nTransports publics\nFaible\nAccessibilité\nMilieu bâti\nAccessibilité : \nBonne desserte autoroutière (sortie 3-A5) et faible en transports \npublics (niveaux C-D selon données qualité de desserte du Can­\nton de Vaud). \nMilieu bâti : \nEn bordure d’agglomération, dans un centre local, zone à l’écart \ndes principales zones habitées.\nEnvironnement, paysage et patrimoine \nSensibilité paysagère\nFort\nSensibilité patrimoniale\nFort\nSensibilités\nImpacts biologiques et paysagers potentiels importants : la mobi­\nlisation des réserves au sud, vers l’Arnon, impliquerait la suppres­\nsion d’arbres et de surface agricole assurant une bonne intégra­\ntion des constructions et du point de vue historique depuis la RC. \nSite en grande partie inclus dans un secteur ISOS avec objectif de \nsauvegarde a. Présence d’un bâtiment en note 2 et de plusieurs \nbâtiments en note 3 au RAC. \n",
+      "metrics": {
+        "Surfaces en ZA": {
+          "source_value": "11",
+          "value": 11.0
+        },
+        "Parcelles en ZA": {
+          "source_value": "19",
+          "value": 19.0
+        },
+        "Réserves mobilisables": {
+          "source_value": "2,7",
+          "value": 2.7
+        },
+        "Réserves pot. mobilisables": {
+          "source_value": "0",
+          "value": 0.0
+        },
+        "Emplois (STATENT 2021)": {
+          "source_value": "277,5",
+          "value": 277.5
+        },
+        "Etablissements (STATENT 2021)": {
+          "source_value": "28",
+          "value": 28.0
+        },
+        "Densité": {
+          "source_value": "25,2",
+          "value": 25.2
+        }
+      },
+      "status": "consultation_draft_ungeoreferenced",
+      "limit": "Models still require municipality completion; employment2021; reserve inventory2021, not current availability."
+    },
+    {
+      "source_page": 115,
+      "site_code": 92,
+      "commune_bfs": [
+        5938
+      ],
+      "vocation": "mixte",
+      "source_text": "Périmètre et intentions\nVocation\nSituation et enjeux spécifiques\nActeurs de la gestion de la zone\nPlanification(s) en vigueur / en cours\nSituation :\nA COMPLETER/CORRIGER PAR LA COMMUNE\nEnjeux spécifiques : \nA COMPLETER/CORRIGER PAR LA COMMUNE\nZone d’activité mixte\nSurfaces destinées aux activités productives cibles, aux \nactivités tertiaires et commerciales\nOrgane de gestion :\n• \nAggloY, ADNV, Commune Yverdon-les-Bains\nAutre : \n•\t\nA REMPLIR PAR LA COMMUNE\nA REMPLIR PAR LA COMMUNE\nChiffres clés\nSurfaces en ZA : 20,9 Ha\nParcelles en ZA : 48\nRéserves mobilisables : 0,9 Ha\nRéserves pot. mobilisables : 1,8 Ha\nEmplois (STATENT 2021) : 1’420,8 EPT \nEtablissements (STATENT 2021) : 160\nDensité : 68 EPT / Ha\nEquipements et services : A REMPLIR PAR \nLA COMMUNE\nZone d’activité d’intérêt régional (ZAR) : Yverdon-les-Bains\n92\nVersion avril 2026\n1\nProfil de la zone\nSensibilité environnementale\nFaible\nCentralité\nBon\nDistance à l’habitat\nMoyen\nRéseau national\nBon\nRéseau régional\nBon\nTransports publics\nBon\nAccessibilité\nMilieu bâti\nAccessibilité : \nBonne desserte autoroutière (sortie 25-A1) et en transports \npublics (niveaux B-C selon données qualité de desserte \ndu Canton de Vaud) avec de nombreux bus urbains et \nrégionaux. \nMilieu bâti : \nDans l’agglomération centre cantonal, services à proximité, \nla partie nord-est de la zone est à proximité de zones \nhabitées. \nEnvironnement, paysage et patrimoine \nSensibilité paysagère\nFaible\nSensibilité patrimoniale\nFaible\nSensibilités\nPas d’impacts potentiels identifiés sur la zone. TIBP à \nproxmité selon REC.  \n",
+      "metrics": {
+        "Surfaces en ZA": {
+          "source_value": "20,9",
+          "value": 20.9
+        },
+        "Parcelles en ZA": {
+          "source_value": "48",
+          "value": 48.0
+        },
+        "Réserves mobilisables": {
+          "source_value": "0,9",
+          "value": 0.9
+        },
+        "Réserves pot. mobilisables": {
+          "source_value": "1,8",
+          "value": 1.8
+        },
+        "Emplois (STATENT 2021)": {
+          "source_value": "1’420,8",
+          "value": 1420.8
+        },
+        "Etablissements (STATENT 2021)": {
+          "source_value": "160",
+          "value": 160.0
+        },
+        "Densité": {
+          "source_value": "68",
+          "value": 68.0
+        }
+      },
+      "status": "consultation_draft_ungeoreferenced",
+      "limit": "Models still require municipality completion; employment2021; reserve inventory2021, not current availability."
+    },
+    {
+      "source_page": 118,
+      "site_code": 94,
+      "commune_bfs": [
+        5938
+      ],
+      "vocation": "productive mixte",
+      "source_text": "Périmètre et intentions\nVocation\nSituation et enjeux spécifiques\nActeurs de la gestion de la zone\nPlanification(s) en vigueur / en cours\nSituation :\nA COMPLETER/CORRIGER PAR LA COMMUNE\nEnjeux spécifiques : \nA COMPLETER/CORRIGER PAR LA COMMUNE\nZone d’activité productive mixte\nSurfaces destinées aux activités productives cibles et aux \nactivités tertiaires\nOrgane de gestion :\n• \nAggloY, ADNV, Commune Yverdon-les-Bains\nAutre : \n•\t\nA REMPLIR PAR LA COMMUNE\nA REMPLIR PAR LA COMMUNE\nChiffres clés\nSurfaces en ZA : 14,7 Ha\nParcelles en ZA : 26\nRéserves mobilisables : 1,1 Ha\nRéserves pot. mobilisables : 2,1 Ha\nEmplois (STATENT 2021) : 541 EPT \nEtablissements (STATENT 2021) : 41\nDensité : 36,8 EPT / Ha\nEquipements et services : A REMPLIR PAR \nLA COMMUNE\nZone d’activité d’intérêt régional (ZAR) : Yverdon-les-Bains\n94\nVersion avril 2026\n1\nProfil de la zone\nSensibilité environnementale\nMoyen\nCentralité\nBon\nDistance à l’habitat\nBon\nRéseau national\nBon\nRéseau régional\nBon\nTransports publics\nBon\nAccessibilité\nMilieu bâti\nAccessibilité : \nBonne desserte autoroutière (sortie 25-A1) et en transports \npublics (niveaux C-D selon données qualité de desserte \ndu Canton de Vaud) avec de nombreux bus urbains et \nrégionaux. \nMilieu bâti : \nDans l’agglomération centre cantonal, sans quartiers \nhabités à proximité.\nEnvironnement, paysage et patrimoine \nSensibilité paysagère\nMoyen\nSensibilité patrimoniale\nMoyen\nSensibilités\nImpact potentiel sur la  qualité écologique du canal, et son \npotentiel de revitalisation, et pressions potentiels sur le co­\nteau boisé  limités par la reconversion des parcelles 1493 \net 1494. Présence d’un axe IVS national avec substance. \n",
+      "metrics": {
+        "Surfaces en ZA": {
+          "source_value": "14,7",
+          "value": 14.7
+        },
+        "Parcelles en ZA": {
+          "source_value": "26",
+          "value": 26.0
+        },
+        "Réserves mobilisables": {
+          "source_value": "1,1",
+          "value": 1.1
+        },
+        "Réserves pot. mobilisables": {
+          "source_value": "2,1",
+          "value": 2.1
+        },
+        "Emplois (STATENT 2021)": {
+          "source_value": "541",
+          "value": 541.0
+        },
+        "Etablissements (STATENT 2021)": {
+          "source_value": "41",
+          "value": 41.0
+        },
+        "Densité": {
+          "source_value": "36,8",
+          "value": 36.8
+        }
+      },
+      "status": "consultation_draft_ungeoreferenced",
+      "limit": "Models still require municipality completion; employment2021; reserve inventory2021, not current availability."
+    },
+    {
+      "source_page": 121,
+      "site_code": 97,
+      "commune_bfs": [
+        5568
+      ],
+      "vocation": "productive mixte",
+      "source_text": "Périmètre et intentions\nVocation\nSituation et enjeux spécifiques\nActeurs de la gestion de la zone\nPlanification(s) en vigueur / en cours\nSituation :\nA COMPLETER/CORRIGER PAR LA COMMUNE\nEnjeux spécifiques : \nA COMPLETER/CORRIGER PAR LA COMMUNE\nDe nombreuses parcelles sont reconverties et mises en \nconformité. \nProximité de la frontière pour la main d’oeuvre exogène.\nZone d’activité productive mixte\nSurfaces destinées aux activités productives cibles et aux \nactivités tertiaires\nOrgane de gestion :\n• \nADNV, Commune Sainte-Croix\nAutre : \n•\t\nA REMPLIR PAR LA COMMUNE\nA REMPLIR PAR LA COMMUNE\nChiffres clés\nSurfaces en ZA : 12 Ha\nParcelles en ZA : 37\nRéserves mobilisables : 3,5 Ha\nRéserves pot. mobilisables : 1,05 Ha\nEmplois (STATENT 2021) : 224,2 EPT \nEtablissements (STATENT 2021) : 11\nDensité : 18,7 EPT / Ha\nEquipements et services : A REMPLIR PAR \nLA COMMUNE\nZone d’activité d’intérêt régional (ZAR) : Sainte-Croix\n97\nVersion avril 2026\n1\nProfil de la zone\nSensibilité environnementale\nFaible\nCentralité\nBon\nDistance à l’habitat\nFaible\nRéseau national\nFaible\nRéseau régional\nBon\nTransports publics\nMoyen\nAccessibilité\nMilieu bâti\nAccessibilité : \nZone à l’écart du réseau national avec bonnes connections \nrégionales. Desserte en transports publics moyenne (ni­\nveaux C-D-E selon données qualité de desserte du Canton \nde Vaud) mais bus régionaux.\nMilieu bâti : \nDans un centre régional, dans la ville au contact des zones \nhabitées.\nEnvironnement, paysage et patrimoine \nSensibilité paysagère\nForte\nSensibilité patrimoniale\nForte\nSensibilités\nPas d’impacts environnementaux potentiels identifiés sur \nzone.  Impact paysager potentiel important pour les sec­\nteurs au contact de la zone agricole, en particulier pour les \nextensions. Secteur ISOS objectif a.\n",
+      "metrics": {
+        "Surfaces en ZA": {
+          "source_value": "12",
+          "value": 12.0
+        },
+        "Parcelles en ZA": {
+          "source_value": "37",
+          "value": 37.0
+        },
+        "Réserves mobilisables": {
+          "source_value": "3,5",
+          "value": 3.5
+        },
+        "Réserves pot. mobilisables": {
+          "source_value": "1,05",
+          "value": 1.05
+        },
+        "Emplois (STATENT 2021)": {
+          "source_value": "224,2",
+          "value": 224.2
+        },
+        "Etablissements (STATENT 2021)": {
+          "source_value": "11",
+          "value": 11.0
+        },
+        "Densité": {
+          "source_value": "18,7",
+          "value": 18.7
+        }
+      },
+      "status": "consultation_draft_ungeoreferenced",
+      "limit": "Models still require municipality completion; employment2021; reserve inventory2021, not current availability."
+    },
+    {
+      "source_page": 124,
+      "site_code": 100,
+      "commune_bfs": [
+        5938
+      ],
+      "vocation": "mixte",
+      "source_text": "Périmètre et intentions\nVocation\nSituation et enjeux spécifiques\nActeurs de la gestion de la zone\nPlanification(s) en vigueur / en cours\nSituation :\nA COMPLETER/CORRIGER PAR LA COMMUNE\nEnjeux spécifiques : \nA COMPLETER/CORRIGER PAR LA COMMUNE\nDe nombreuses parcelles sont reconverties et mises en \nconformité. \nZone d’activité mixte\nSurfaces destinées aux activités productives cibles, aux \nactivités tertiaires et commerciales\nOrgane de gestion :\n• \nAggloY, ADNV, Commune Yverdon-les-Bains\nAutre : \n•\t\nA REMPLIR PAR LA COMMUNE\nA REMPLIR PAR LA COMMUNE\nChiffres clés\nSurfaces en ZA : 22,3 Ha\nParcelles en ZA : 66\nRéserves mobilisables : 3 Ha\nRéserves pot. mobilisables : 0,6 Ha\nEmplois (STATENT 2021) : 1’073,2 EPT \nEtablissements (STATENT 2021) : 134\nDensité : 48,1 EPT / Ha\nEquipements et services : A REMPLIR PAR \nLA COMMUNE\nZone d’activité d’intérêt régional (ZAR) : Yverdon-les-Bains\n100\nVersion avril\n1\nProfil de la zone\nSensibilité environnementale\nFaible\nCentralité\nBon\nDistance à l’habitat\nFaible\nRéseau national\nBon\nRéseau régional\nBon\nTransports publics\nBon\nAccessibilité\nMilieu bâti\nAccessibilité : \nBonne desserte autoroutière (sortie 2-A5) et moyenne en \ntransports publics (niveaux B-C-D selon données qualité \nde desserte du Canton de Vaud) avec plusieurs arrêts de \nbus d’agglomération. \nMilieu bâti : \nDans l’agglomération centre cantonal, services à proximité, \ndans le tissu urbain au contact des zones habitées.\nEnvironnement, paysage et patrimoine \nSensibilité paysagère\nFaible\nSensibilité patrimoniale\nMoyenne\nSensibilités\nPas de sensibilité environnementale ou paysagère parti­\nculière sur le site. Secteur ISOS avec objectif de sauve­\ngarde B. Présence d’une site avec note 2 au RAC sur les \nparcelles1254 et 1255. \n",
+      "metrics": {
+        "Surfaces en ZA": {
+          "source_value": "22,3",
+          "value": 22.3
+        },
+        "Parcelles en ZA": {
+          "source_value": "66",
+          "value": 66.0
+        },
+        "Réserves mobilisables": {
+          "source_value": "3",
+          "value": 3.0
+        },
+        "Réserves pot. mobilisables": {
+          "source_value": "0,6",
+          "value": 0.6
+        },
+        "Emplois (STATENT 2021)": {
+          "source_value": "1’073,2",
+          "value": 1073.2
+        },
+        "Etablissements (STATENT 2021)": {
+          "source_value": "134",
+          "value": 134.0
+        },
+        "Densité": {
+          "source_value": "48,1",
+          "value": 48.1
+        }
+      },
+      "status": "consultation_draft_ungeoreferenced",
+      "limit": "Models still require municipality completion; employment2021; reserve inventory2021, not current availability."
+    },
+    {
+      "source_page": 127,
+      "site_code": 101,
+      "commune_bfs": [
+        5922,
+        5938
+      ],
+      "vocation": "mixte",
+      "source_text": "Périmètre et intentions\nVocation\nSituation et enjeux spécifiques\nActeurs de la gestion de la zone\nPlanification(s) en vigueur / en cours\nSituation :\nA COMPLETER/CORRIGER PAR LA COMMUNE\nEnjeux spécifiques : \nA COMPLETER/CORRIGER PAR LA COMMUNE\nDes mesures d’accompagnement favorisant le report \nmodal ou la diminution de la dépendance à la voiture sont à \nencourager.\nZone d’activité mixte\nSurfaces destinées aux activités productives cibles, aux \nactivités tertiaires et commerciales\nOrgane de gestion :\n• \nAggloY, ADNV, Yverdon-les-Bains, Montagny-près-Yver­\ndon\n•\t\nAutre : A REMPLIR PAR LA COMMUNE\nA REMPLIR PAR LA COMMUNE\nChiffres clés\nSurfaces en ZA : 6,1 Ha\nParcelles en ZA : 22\nRéserves mobilisables : 0,4 Ha\nRéserves pot. mobilisables : 0,6 Ha\nEmplois (STATENT 2021) : 226,9 EPT \nEtablissements (STATENT 2021) : 21\nDensité : 37,2 EPT / Ha\nEquipements et services : A REMPLIR PAR \nLA COMMUNE\nZone d’activité d’intérêt régional (ZAR) : Montagny-près-Yverdon\n101\nVersion avril 2026\n1\nProfil de la zone\nSensibilité environnementale\nMoyen\nCentralité\nBon\nDistance à l’habitat\nBon\nRéseau national\nBon\nRéseau régional\nBon\nTransports publics\nMoyen\nAccessibilité\nMilieu bâti\nAccessibilité : \nBonne desserte autoroutière (sortie 2-A5) et moyenne en \ntransports publics (niveaux C-D-E selon données qualité \nde desserte du Canton de Vaud) avec plusieurs arrêts de \nbus d’agglomération. \nMilieu bâti : \nDans un cantonal, services à proximité, pas de quartiers \nhabités à proximité.\nEnvironnement, paysage et patrimoine \nSensibilité paysagère\nFaible\nSensibilité patrimoniale\nFaible\nSensibilités\nImpact biologique potentiel en lien avec la réduction du \npotentiel de renaturation du Bey. Site traversé par un IVS \nnational (tracé historique)\n",
+      "metrics": {
+        "Surfaces en ZA": {
+          "source_value": "6,1",
+          "value": 6.1
+        },
+        "Parcelles en ZA": {
+          "source_value": "22",
+          "value": 22.0
+        },
+        "Réserves mobilisables": {
+          "source_value": "0,4",
+          "value": 0.4
+        },
+        "Réserves pot. mobilisables": {
+          "source_value": "0,6",
+          "value": 0.6
+        },
+        "Emplois (STATENT 2021)": {
+          "source_value": "226,9",
+          "value": 226.9
+        },
+        "Etablissements (STATENT 2021)": {
+          "source_value": "21",
+          "value": 21.0
+        },
+        "Densité": {
+          "source_value": "37,2",
+          "value": 37.2
+        }
+      },
+      "status": "consultation_draft_ungeoreferenced",
+      "limit": "Models still require municipality completion; employment2021; reserve inventory2021, not current availability."
+    },
+    {
+      "source_page": 130,
+      "site_code": 102,
+      "commune_bfs": [
+        5764
+      ],
+      "vocation": "productive",
+      "source_text": "Périmètre et intentions\nVocation\nSituation et enjeux spécifiques\nActeurs de la gestion de la zone\nPlanification(s) en vigueur / en cours\nSituation :\nA COMPLETER/CORRIGER PAR LA COMMUNE\nEnjeux spécifiques : \nA COMPLETER/CORRIGER PAR LA COMMUNE\nDes mesures d’accompagnement favorisant le report \nmodal ou la diminution de la dépendance à la voiture sont à \nencourager.\nProximité de la frontière pour la main d’oeuvre exogène.\nZone d’activité productive\nSurfaces destinées aux activités productives cibles\nOrgane de gestion :\n• \nAggloY, ADNV, Commune Vallorbe\nAutre : \n•\t\nA REMPLIR PAR LA COMMUNE\nA REMPLIR PAR LA COMMUNE\nChiffres clés\nSurfaces en ZA : 20 Ha\nParcelles en ZA : 42\nRéserves mobilisables : 9,3 Ha\nRéserves pot. mobilisables : 2,7 Ha\nEmplois (STATENT 2021) : 253,2 EPT \nEtablissements (STATENT 2021) : 12\nDensité : 12,7 EPT / Ha\nEquipements et services : A REMPLIR PAR \nLA COMMUNE\nZone d’activité d’intérêt régional (ZAR) : Vallorbe\n102\nVersion avril 2026\n1\nProfil de la zone\nSensibilité environnementale\nMoyen\nCentralité\nBon\nDistance à l’habitat\nMoyen\nRéseau national\nMoyen\nRéseau régional\nBon\nTransports publics\nMoyen\nAccessibilité\nMilieu bâti\nAccessibilité : \nAutoroute à proximité mais avec traversée de localité \n(sortie 1-A9), bien connecté à l’axe de la Vallée de Joux, \nbonne desserte en transports publics sur la partie est \nuniquement (C-D-E selon qualité de desserte du Canton de \nVaud). \nMilieu bâti : \nDans un centre régional, quartiers habités à proximité \nde certains secteurs d’activité.\nEnvironnement, paysage et patrimoine \nSensibilité paysagère\nMoyen\nSensibilité patrimoniale\nMoyen\nSensibilités\nPeu d’impacts environnementaux potentiels, mais TIBS \nsur la partie ouest (selon REC). Impact paysager de la \nmobilisation des réserves au contact de la zone agricole.  \nSecteur ISOS avec objectif de sauvegarde b sur la partie \nouest et site entouré de deux secteurs ISOS avec objectif \nde sauvegarde a.\n",
+      "metrics": {
+        "Surfaces en ZA": {
+          "source_value": "20",
+          "value": 20.0
+        },
+        "Parcelles en ZA": {
+          "source_value": "42",
+          "value": 42.0
+        },
+        "Réserves mobilisables": {
+          "source_value": "9,3",
+          "value": 9.3
+        },
+        "Réserves pot. mobilisables": {
+          "source_value": "2,7",
+          "value": 2.7
+        },
+        "Emplois (STATENT 2021)": {
+          "source_value": "253,2",
+          "value": 253.2
+        },
+        "Etablissements (STATENT 2021)": {
+          "source_value": "12",
+          "value": 12.0
+        },
+        "Densité": {
+          "source_value": "12,7",
+          "value": 12.7
+        }
+      },
+      "status": "consultation_draft_ungeoreferenced",
+      "limit": "Models still require municipality completion; employment2021; reserve inventory2021, not current availability."
+    }
+  ],
+  "metrics_count": 84,
+  "limits": [
+    "3SSDA/9ZAR/89ZAL classification; regional scope includes communes without detailed activity analysis.",
+    "12operational models have unfilled municipal situation/action fields.",
+    "2022diagnostic sheet and2021reserve/employment inventories differ from2026plan intentions.",
+    "Extensions, reconversions into activity, reconversions out and de-zoning must remain distinct.",
+    "Annex4 is an illustrative database screenshot; entire GIS/database is not published in this PDF.",
+    "No geographic transform or sector validation accepted."
+  ],
+  "artifact_root": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/nord-activity-2026",
+  "receiver_increment": 0
+}

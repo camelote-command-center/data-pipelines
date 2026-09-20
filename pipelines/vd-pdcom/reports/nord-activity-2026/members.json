@@ -1,0 +1,282 @@
+[
+  {
+    "bfs": 5551,
+    "name": "Bonvillars"
+  },
+  {
+    "bfs": 5761,
+    "name": "Romainmôtier-Envy"
+  },
+  {
+    "bfs": 5552,
+    "name": "Bullet"
+  },
+  {
+    "bfs": 5762,
+    "name": "Sergey"
+  },
+  {
+    "bfs": 5553,
+    "name": "Champagne"
+  },
+  {
+    "bfs": 5763,
+    "name": "Valeyres-sous-Rances"
+  },
+  {
+    "bfs": 5554,
+    "name": "Concise"
+  },
+  {
+    "bfs": 5764,
+    "name": "Vallorbe"
+  },
+  {
+    "bfs": 5555,
+    "name": "Corcelles-près-Concise"
+  },
+  {
+    "bfs": 5765,
+    "name": "Vaulion"
+  },
+  {
+    "bfs": 5556,
+    "name": "Fiez"
+  },
+  {
+    "bfs": 5766,
+    "name": "Vuiteboeuf"
+  },
+  {
+    "bfs": 5557,
+    "name": "Fontaines-sur-Grandson"
+  },
+  {
+    "bfs": 5902,
+    "name": "Belmont-sur-Yverdon"
+  },
+  {
+    "bfs": 5559,
+    "name": "Giez"
+  },
+  {
+    "bfs": 5903,
+    "name": "Bioley-Magnoux"
+  },
+  {
+    "bfs": 5560,
+    "name": "Grandevent"
+  },
+  {
+    "bfs": 5904,
+    "name": "Chamblon"
+  },
+  {
+    "bfs": 5561,
+    "name": "Grandson"
+  },
+  {
+    "bfs": 5905,
+    "name": "Champvent"
+  },
+  {
+    "bfs": 5562,
+    "name": "Mauborget"
+  },
+  {
+    "bfs": 5907,
+    "name": "Chavannes-le-Chêne"
+  },
+  {
+    "bfs": 5563,
+    "name": "Mutrux"
+  },
+  {
+    "bfs": 5908,
+    "name": "Chêne-Pâquier"
+  },
+  {
+    "bfs": 5564,
+    "name": "Novalles"
+  },
+  {
+    "bfs": 5909,
+    "name": "Cheseaux-Noréaz"
+  },
+  {
+    "bfs": 5565,
+    "name": "Onnens (VD)"
+  },
+  {
+    "bfs": 5910,
+    "name": "Cronay"
+  },
+  {
+    "bfs": 5566,
+    "name": "Provence"
+  },
+  {
+    "bfs": 5911,
+    "name": "Cuarny"
+  },
+  {
+    "bfs": 5568,
+    "name": "Sainte-Croix"
+  },
+  {
+    "bfs": 5912,
+    "name": "Démoret"
+  },
+  {
+    "bfs": 5571,
+    "name": "Tévenon"
+  },
+  {
+    "bfs": 5913,
+    "name": "Donneloye"
+  },
+  {
+    "bfs": 5741,
+    "name": "L’Abergement"
+  },
+  {
+    "bfs": 5914,
+    "name": "Ependes (VD)"
+  },
+  {
+    "bfs": 5742,
+    "name": "Agiez"
+  },
+  {
+    "bfs": 5919,
+    "name": "Mathod"
+  },
+  {
+    "bfs": 5743,
+    "name": "Arnex-sur-Orbe"
+  },
+  {
+    "bfs": 5921,
+    "name": "Molondin"
+  },
+  {
+    "bfs": 5744,
+    "name": "Ballaigues"
+  },
+  {
+    "bfs": 5922,
+    "name": "Montagny-près-Yverdon"
+  },
+  {
+    "bfs": 5745,
+    "name": "Baulmes"
+  },
+  {
+    "bfs": 5924,
+    "name": "Orges"
+  },
+  {
+    "bfs": 5746,
+    "name": "Bavois"
+  },
+  {
+    "bfs": 5925,
+    "name": "Orzens"
+  },
+  {
+    "bfs": 5747,
+    "name": "Bofflens"
+  },
+  {
+    "bfs": 5926,
+    "name": "Pomy"
+  },
+  {
+    "bfs": 5748,
+    "name": "Bretonnières"
+  },
+  {
+    "bfs": 5928,
+    "name": "Rovray"
+  },
+  {
+    "bfs": 5749,
+    "name": "Chavornay"
+  },
+  {
+    "bfs": 5929,
+    "name": "Suchy"
+  },
+  {
+    "bfs": 5750,
+    "name": "Les Clées"
+  },
+  {
+    "bfs": 5930,
+    "name": "Suscévaz"
+  },
+  {
+    "bfs": 5752,
+    "name": "Croy"
+  },
+  {
+    "bfs": 5931,
+    "name": "Treycovagnes"
+  },
+  {
+    "bfs": 5754,
+    "name": "Juriens"
+  },
+  {
+    "bfs": 5932,
+    "name": "Ursins"
+  },
+  {
+    "bfs": 5755,
+    "name": "Lignerolle"
+  },
+  {
+    "bfs": 5933,
+    "name": "Valeyres-sous-Montagny"
+  },
+  {
+    "bfs": 5756,
+    "name": "Montcherand"
+  },
+  {
+    "bfs": 5934,
+    "name": "Valeyres-sous-Ursins"
+  },
+  {
+    "bfs": 5757,
+    "name": "Orbe"
+  },
+  {
+    "bfs": 5935,
+    "name": "Villars-Epeney"
+  },
+  {
+    "bfs": 5758,
+    "name": "La Praz"
+  },
+  {
+    "bfs": 5937,
+    "name": "Vugelles-La Mothe"
+  },
+  {
+    "bfs": 5759,
+    "name": "Premier"
+  },
+  {
+    "bfs": 5938,
+    "name": "Yverdon-les-Bains"
+  },
+  {
+    "bfs": 5760,
+    "name": "Rances"
+  },
+  {
+    "bfs": 5939,
+    "name": "Yvonand"
+  }
+]
