@@ -1,0 +1,82 @@
+{
+  "result": {
+    "accepted": 11,
+    "operation_id": "65cecff5-ce9c-4d59-9446-122d8ce3c64d",
+    "communes": 10
+  },
+  "repeat": {
+    "accepted": 0,
+    "operation_id": null,
+    "communes": 0
+  },
+  "expected_candidate_ids": [
+    "42da9079-a18b-400b-b803-cb4f9cbb593a",
+    "8713c395-2713-49fa-ad70-f364715e9350",
+    "055395f1-eda3-4264-92e9-847ba68b7d6c",
+    "c0690894-e0c9-4eca-9813-01ba4e9b5118",
+    "5b5e9047-4a24-46b8-bf24-ed2c0d423ba4",
+    "1bcbef41-5b68-4d6f-967a-c8cd3db3f0d9",
+    "8a9855b3-fddd-4345-ac61-c3b25673c16c",
+    "5a2fd652-6fe6-4583-9ac7-4447da6c4317",
+    "2e4d424e-7348-4a49-af69-6f7624280917",
+    "df8f186d-8404-4025-bc80-c7fedcd759e3",
+    "bb22a024-0315-45ac-ad60-8376ab929491"
+  ],
+  "before_hashes": {
+    "vd_pdcom_documents": [
+      "c5bab6b7531617824f56d896ea36678f",
+      147
+    ],
+    "vd_pdcom_document_communes": [
+      "85e23d5da94fed478b8f1996bd4b8396",
+      1347
+    ],
+    "vd_pdcom_communes": [
+      "8aabdfb5126e9654cf21ae95a3e58104",
+      300
+    ],
+    "vd_pdcom_sectors": [
+      "0547dcd6c3c5eef9bf633f37ab7bf8cd",
+      42
+    ],
+    "vd_pdcom_parcel_candidates": [
+      "172f34305bf9c17ac3b8c2251628a8bf",
+      2286
+    ],
+    "vd_pdcom_source_candidates": [
+      "2f81db2141ba31dd2bfdaf40f227e2cb",
+      187
+    ]
+  },
+  "after_hashes": {
+    "vd_pdcom_documents": [
+      "c5bab6b7531617824f56d896ea36678f",
+      147
+    ],
+    "vd_pdcom_document_communes": [
+      "85e23d5da94fed478b8f1996bd4b8396",
+      1347
+    ],
+    "vd_pdcom_communes": [
+      "8aabdfb5126e9654cf21ae95a3e58104",
+      300
+    ],
+    "vd_pdcom_sectors": [
+      "0547dcd6c3c5eef9bf633f37ab7bf8cd",
+      42
+    ],
+    "vd_pdcom_parcel_candidates": [
+      "172f34305bf9c17ac3b8c2251628a8bf",
+      2286
+    ],
+    "vd_pdcom_source_candidates": [
+      "57bfc657bec54a3a8ea52d033d8d5fff",
+      187
+    ]
+  },
+  "status_counts": {
+    "rejected": 27,
+    "pending": 31,
+    "accepted": 129
+  }
+}
