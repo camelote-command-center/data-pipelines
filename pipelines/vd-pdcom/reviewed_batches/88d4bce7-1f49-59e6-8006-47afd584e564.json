@@ -1,0 +1,1366 @@
+{
+  "document_id": "88d4bce7-1f49-59e6-8006-47afd584e564",
+  "sha256": "e8cabb9a469b4c7df0e8fb669d2184ec64473d9169577afb452bbb3f4669298b",
+  "page_count": 125,
+  "page_annotations": [
+    {
+      "page_number": 1,
+      "fields": {
+        "source_review": {
+          "role": "PA5 regional strategy and measures; separate PDI adoption not established",
+          "observed_at": "2026-09-21",
+          "source_sha256": "e8cabb9a469b4c7df0e8fb669d2184ec64473d9169577afb452bbb3f4669298b",
+          "version_limits": "Mapbook cover14February2024 while measures14February2025; source bytes preserved, discrepancy not silently corrected. Main report introduction still describes dual PDI-PA5 status, superseded procedurally by current official landing.",
+          "geometry_limits": "Report states principle maps not parcel-discriminating. No capacity rights or validated sector geometry inferred.",
+          "official_status": "Official page states PA5 submitted27March2025; federal provisional report19June2026 proposes cofinancing51/55priority measures at30percent. This is not final funding or PDI adoption. PDI formally separated and awaits dedicated consultation/adoption.",
+          "membership_evidence": "Main report introductory Plan directeur intercommunal section explicitly names13Vaud communes;5Fribourg members excluded from Vaud coverage.",
+          "official_publication_evidence": "https://agglorivelac.ch/projet/plan-directeur-intercommunal-pdi-projet-dagglomeration-de-cinquieme-generation-pa5/"
+        }
+      }
+    },
+    {
+      "page_number": 7,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-7.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "14fb2689ddb4570f19e30de83ca8eddaa56eb65c05a055951df792fe3ddfe5ca",
+          "alignment": "not_validated",
+          "page_number": 7,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 11,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-11.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "efd691fb77cc67df2348b57e9f816314936817fbfbc39a5763d79622610454f8",
+          "alignment": "not_validated",
+          "page_number": 11,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 12,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-12.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "3469ff299d09fb156936c6935db6219ff60a3af12ecf937ce1fb29bec29afd0f",
+          "alignment": "not_validated",
+          "page_number": 12,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 13,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-13.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "49f1e7b1b56780ce9f36b8532154504a15cb982bce563cb6bb6669f8beb68ffc",
+          "alignment": "not_validated",
+          "page_number": 13,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 14,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-14.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "0ac7c01e7bbda90915d273d2f8b95b1810eda164ab5cc686db7e66ba94aac7f1",
+          "alignment": "not_validated",
+          "page_number": 14,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 15,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-15.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "b108d486ccf0bcb6e92a8d0c54b5e4933d3070288544ea37fc853ef0e8e48ad2",
+          "alignment": "not_validated",
+          "page_number": 15,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 16,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-16.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "e9440a12686d3a2722de7ff0e35ca8547f14c31d06f889f223c7e99c7fcb4c41",
+          "alignment": "not_validated",
+          "page_number": 16,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 17,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-17.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "f51e06a6bb403dc871107caaf7fe9d226249922bd88ee44316374e474ac46270",
+          "alignment": "not_validated",
+          "page_number": 17,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 18,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-18.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "b5a82aec760c1ce9f0c7c979f220fd2be6c51759ae6612de77770bc8327dd6f5",
+          "alignment": "not_validated",
+          "page_number": 18,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 19,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-19.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "80e09dfa9f93324be58f78ae5002900a9c35ac8459c6b87eadcfee9c3d655a43",
+          "alignment": "not_validated",
+          "page_number": 19,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 20,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-20.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "aeb5a222a5a22857c81a3a902689e15cda3d0f51ce00df4fb9c717449863041f",
+          "alignment": "not_validated",
+          "page_number": 20,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 21,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-21.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "ac9077a266bfef7bcdb8380fc8777a8873a983bb30b7016d589ab2bbfb01c232",
+          "alignment": "not_validated",
+          "page_number": 21,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 22,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-22.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "4780b2d1f65d60085fc1a67b7aca083230be6c875a016d7d3f9ce121e2db0951",
+          "alignment": "not_validated",
+          "page_number": 22,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 23,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-23.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "c894be307d8f5a615cef29dc627d548d159e36bc856267c1b87aae6bb0aa46f8",
+          "alignment": "not_validated",
+          "page_number": 23,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 24,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-24.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "94442eb306786642cf1c100abd6785ef38c1e184e284d287011b7d761af27c74",
+          "alignment": "not_validated",
+          "page_number": 24,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 25,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-25.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "b799fc3c802add917760b368e7ccc93763b48e67b0d183855edc1cd19147c48d",
+          "alignment": "not_validated",
+          "page_number": 25,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 26,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-26.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "3b3d3d31c020ed2860fb52ceb8de7e861338da85b201f2949d39f4e4fb362094",
+          "alignment": "not_validated",
+          "page_number": 26,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 27,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-27.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "65b3fc9bd022b55261fb7a2d7ba935c63bb80da564948951eefce2462902a265",
+          "alignment": "not_validated",
+          "page_number": 27,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 28,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-28.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "86452fbec57d1bc51dfbf28fa21e469846a0903ba4ef3a8e9a57fe6ecb8fd57d",
+          "alignment": "not_validated",
+          "page_number": 28,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 29,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-29.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "1ab63f7cd3b2f840ba3fc8c1d3cc148078840ce603d951c9214f60a68e937dd1",
+          "alignment": "not_validated",
+          "page_number": 29,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 30,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-30.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "97d5f5a5b387213b1ffeb23189ae2ea3c28692da316ac6787013f9f8308d022d",
+          "alignment": "not_validated",
+          "page_number": 30,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 31,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-31.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "7e53114d7608d4aee79544f86c83b7a4b1014e3144148855a01b9129316e7af1",
+          "alignment": "not_validated",
+          "page_number": 31,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 32,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-32.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "b9efdb2e031dbfd0f1f0348cf0405500dce3e61f85a07566f1c3591046128560",
+          "alignment": "not_validated",
+          "page_number": 32,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 35,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-35.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "5238452bbbf17c02204f2b2bc192ab509cbbc21348f7e6cd6e34377866634edd",
+          "alignment": "not_validated",
+          "page_number": 35,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 36,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-36.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "cf304cc311e586738f27a32e5cf0df08a304d6b8045257322777e6f8d6c03786",
+          "alignment": "not_validated",
+          "page_number": 36,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 37,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-37.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "d7220c2ead113c54e42828bff8d0cc2feefed39de37ea18124f7ddf84d06e020",
+          "alignment": "not_validated",
+          "page_number": 37,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 38,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-38.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "73c1c0346df188b2f2a40485d2ab0691b990c6a2dad53f2de62ee419ca4845af",
+          "alignment": "not_validated",
+          "page_number": 38,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 39,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-39.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "7613c22268991526d03dbdb2a93ea16e83a3b529bb6f52e95e26b444ef9bff08",
+          "alignment": "not_validated",
+          "page_number": 39,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 40,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-40.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "341d494e46d2f907e32d5084949eb99168850070393ec4e44438cca3fd50b631",
+          "alignment": "not_validated",
+          "page_number": 40,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 41,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-41.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "10763ca04bb1de84799639dda81e19b22204a8076037b12452b9a7e458399ba3",
+          "alignment": "not_validated",
+          "page_number": 41,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 42,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-42.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "16f35cdf7de072a4fbd817ea231e89185196741e899d1da24e71d01afd036e8c",
+          "alignment": "not_validated",
+          "page_number": 42,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 43,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-43.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "a9629a2f36dba6f6943d85a4fef5487eb9107dd14c0fb909204757b2bcafdcb4",
+          "alignment": "not_validated",
+          "page_number": 43,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 44,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-44.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "df2f8623ffd51c5b624670218afcc353e20004c40eb37d57d32d24e55ed12923",
+          "alignment": "not_validated",
+          "page_number": 44,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 45,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-45.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "c96ee05fcd2fca024ce0962409903d5a284b037d56ba0e230798d2b1fd92c7f6",
+          "alignment": "not_validated",
+          "page_number": 45,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 46,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-46.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "ad9abe1015d3299f5767cf6e5c393c9a17e3f4bfc50a777f27a4949606c8a300",
+          "alignment": "not_validated",
+          "page_number": 46,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 49,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-49.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "7eed5e382f5e5c8d02f29f03be7303117de5e5ecce7941c97d789cc024f2a2a3",
+          "alignment": "not_validated",
+          "page_number": 49,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 50,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-50.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "70b99d9aa88275d6786493a29703aca489112631ee30c0ccdfeba727a34090e1",
+          "alignment": "not_validated",
+          "page_number": 50,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 51,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-51.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "30a0c2580296c37be4dd79e211f22d9604a5cbd8932f9f730d2b286d05d2550f",
+          "alignment": "not_validated",
+          "page_number": 51,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 55,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-55.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "55ffd3b95e9d888010749e5546ec108588d601a38bd3e1d7c1813de3ada263e6",
+          "alignment": "not_validated",
+          "page_number": 55,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 56,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-56.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "a4124429ce179b7c79fde0d77c53893b56548e17268273f337934d6df5f36ddc",
+          "alignment": "not_validated",
+          "page_number": 56,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 57,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-57.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "72fa88598fb9a0547f2254f9db3bad63541cf734649aa2a374539fd00c646b25",
+          "alignment": "not_validated",
+          "page_number": 57,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 58,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-58.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "43ca59beb680c4a60d1e19447b8c8d09d04cdad57decf9c74770998e11909958",
+          "alignment": "not_validated",
+          "page_number": 58,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 59,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-59.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "54d458e3dd2bc43738a41a68c8af519ac8fe7eebd5c74f455aed6be91fd3aafc",
+          "alignment": "not_validated",
+          "page_number": 59,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 60,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-60.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "cc2948d75429ab10e97cf30ed137e29dd4c9ff770b75cb23aeaeabd3eb0711aa",
+          "alignment": "not_validated",
+          "page_number": 60,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 61,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-61.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "f0c8dd5f0cc6bd6140b9b072bb944acedcaede989c5b669e6d00c58229087c21",
+          "alignment": "not_validated",
+          "page_number": 61,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 65,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-65.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "fb7e45a3286f5c46ef5d06ae49b891f7decd0b90c79e046de3d83217f14218ec",
+          "alignment": "not_validated",
+          "page_number": 65,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 66,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-66.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "7a7926aa9e88c8017749432cc1165fede4ae4310b04976194d1e97bcf2f0e785",
+          "alignment": "not_validated",
+          "page_number": 66,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 67,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-67.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "19780c3720a11adbd9364568e4c2d674d0a15df860d7fdcc4572d126789b7990",
+          "alignment": "not_validated",
+          "page_number": 67,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 68,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-68.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "fa610700fa52b17e1521fa9777733201e9204c737c7ed0bda5617bd6cb64c0d8",
+          "alignment": "not_validated",
+          "page_number": 68,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 69,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-69.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "9eb495559402123ba1d12977e66b5a8bd25737a60d5a4fc86911deb09e8b2836",
+          "alignment": "not_validated",
+          "page_number": 69,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 70,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-70.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "9d1f2154a5dd288c688b2a81fb5b86a4583885f50f5da7e5e1126c1247ceae36",
+          "alignment": "not_validated",
+          "page_number": 70,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 71,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-71.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "ce9e9bd246af3063277c56e813d2810d08952e3c3df64b167fe86108193b3128",
+          "alignment": "not_validated",
+          "page_number": 71,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 72,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-72.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "f354c322fdc73564d0ef1047cafd44a1dd3be868421b9843bf77c682f21c307a",
+          "alignment": "not_validated",
+          "page_number": 72,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 73,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-73.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "e6f13135770fa28f6fabe5850b86243aeef3d0462994146cb59ca63bd4a8b4f7",
+          "alignment": "not_validated",
+          "page_number": 73,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 77,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-77.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "2bd4520b740449b996067e0187a0f52d0eae69facb7b8f43c569f0ff1dc8eed2",
+          "alignment": "not_validated",
+          "page_number": 77,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 78,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-78.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "a619f9dfebb359fa548a2dffcd010466e1659cf741003efeefad175c9471ef7b",
+          "alignment": "not_validated",
+          "page_number": 78,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 79,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-79.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "a765471615d208dfb785673c40acb2f0e54f2332e0db2834db957a53b72dd8f2",
+          "alignment": "not_validated",
+          "page_number": 79,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 80,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-80.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "d7d70947c93fda6508231852c3a2ce66450f9ddeafaa3bc51bddab4a1540b403",
+          "alignment": "not_validated",
+          "page_number": 80,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 81,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-81.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "fb1f64b174885796831431191647bf9168e17c32df2ea297e9683796b612a2c5",
+          "alignment": "not_validated",
+          "page_number": 81,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 82,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-82.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "dcaeb4300fa2c6c9c4ef0df7d9d9e077b087484a97e544f787d85ccf6194c93c",
+          "alignment": "not_validated",
+          "page_number": 82,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 83,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-83.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "c7fd904e97cee0b42b9707fc918b350d36d8638893de1e902ac11491974f7ae5",
+          "alignment": "not_validated",
+          "page_number": 83,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 84,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-84.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "bba1563f1996b7cb3ebd80943c543ab0fbcff7f1644f5e3af85fe7f81c1f794b",
+          "alignment": "not_validated",
+          "page_number": 84,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 85,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-85.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "941344007e543d9c44b463efd523bd9a3f83d1bc51498c641caa8afe51cdff75",
+          "alignment": "not_validated",
+          "page_number": 85,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 86,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-86.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "5d99c87f58e2e0df943394a4bd5ae8ae79fcc313b7504619274746dc937917c5",
+          "alignment": "not_validated",
+          "page_number": 86,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 87,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-87.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "24896e43e060fce9ab528407327ecf91010401c8b10f654c61797571c93934b7",
+          "alignment": "not_validated",
+          "page_number": 87,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 88,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-88.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "d7e810075c64bdf851621770f382b5655509a5822acfe7940cadf6935b5dac1f",
+          "alignment": "not_validated",
+          "page_number": 88,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 89,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-89.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "cfb8f60616bb5f747120f40d66f5db6d8bbd4ed20f2433846a3f23fb93bbed90",
+          "alignment": "not_validated",
+          "page_number": 89,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 90,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-90.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "3006da51b1cd966c0a2ffe489a3c2a1f43508c78127763d867bc2a0c53165bc1",
+          "alignment": "not_validated",
+          "page_number": 90,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 91,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-91.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "9d8e3ed261837ff79d73904f61cdc77e80405f58b1e2180066ce2fddb0aa75f2",
+          "alignment": "not_validated",
+          "page_number": 91,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 92,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-92.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "5d33c4590dddb8812452e8dd0a5984959ed8f613bab265700ad07951c01d35f0",
+          "alignment": "not_validated",
+          "page_number": 92,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 93,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-93.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "6175accb171572789692e99cde05964466994644f180ecfa2e19ca25e4d9ca17",
+          "alignment": "not_validated",
+          "page_number": 93,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 94,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-94.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "be9ace473574ed56546066093853008dbea279560fad6939b272ee7f38b9ccb5",
+          "alignment": "not_validated",
+          "page_number": 94,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 95,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-95.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "c8e87972d26607869f3846f6e0f14791a18a17cd5eb577308da4819e7215515b",
+          "alignment": "not_validated",
+          "page_number": 95,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 96,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-96.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "c85b224c5a278830f67b8ab38658737467c8c1fa28d5da22b70b624adaa5ca84",
+          "alignment": "not_validated",
+          "page_number": 96,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 97,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-97.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "8a1db73dfd0f137b15efea18cb2023fa2259f38cc6e052e23b2b1c471a1ba82e",
+          "alignment": "not_validated",
+          "page_number": 97,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 98,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-98.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "1f4788feb2a7a11bc2353a0a951c0cb318fba89a1e5f93d769abfa83f619490c",
+          "alignment": "not_validated",
+          "page_number": 98,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 99,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-99.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "d19f9b451879e47ad0758e5f7087a70ddb331bdb6e1f533825cd77c8cfd1919a",
+          "alignment": "not_validated",
+          "page_number": 99,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 100,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-100.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "08592bec86518f067e8f65b0a119dd00fe1de6cd34da481b828bf355d9bed2a2",
+          "alignment": "not_validated",
+          "page_number": 100,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 101,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-101.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "f84f99c9afcd9042b0103c41a784965b23d7dd04b8dc038e1552a2959230b4dd",
+          "alignment": "not_validated",
+          "page_number": 101,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 102,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-102.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "ad361dbe864d55c4c4b2e422035c9ed23d39f45e696b570c9e4dabe25af59f71",
+          "alignment": "not_validated",
+          "page_number": 102,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 103,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-103.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "07e3efbd793e1c2bb0f9a27515ec69bc182fb334e0527cd59c61c2ba59bd5ca6",
+          "alignment": "not_validated",
+          "page_number": 103,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 104,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-104.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "46e1e15870ab10e39595b703b85ed1cde173479df002ab6cc77e103267d76b63",
+          "alignment": "not_validated",
+          "page_number": 104,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 105,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-105.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "7d9a0bf2658902192e90586cbad981630ef17bb5da3cf050520dccd847b75e10",
+          "alignment": "not_validated",
+          "page_number": 105,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 106,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-106.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "5098595270ce0d41438b0b5701c16859b3510fcc77e4db41df2072dbdfd51252",
+          "alignment": "not_validated",
+          "page_number": 106,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 109,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-109.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "1efc1dcc2b318df0d5acecddb52ef354971dfaa744e1f007df9c98cf7979c6bf",
+          "alignment": "not_validated",
+          "page_number": 109,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 110,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-110.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "3ecfbaf747b10c26cc267f582d315704d39f33a0e5f377cefbe93fe34d60d070",
+          "alignment": "not_validated",
+          "page_number": 110,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 113,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-113.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "baa884ea643675390ba58b1dccab8768f40a7d8357039eae187ac886d9729932",
+          "alignment": "not_validated",
+          "page_number": 113,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 117,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-117.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "cc3f5d0e7249fc8c2d5ac5f5fa8aff98dcce7ae9c696ad0e25cfd3606c9c95b5",
+          "alignment": "not_validated",
+          "page_number": 117,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 118,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-118.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "1abdf6c261fa97e1de544eed2570db8e81f81049cbd2c5325bb63ecfc1f180fd",
+          "alignment": "not_validated",
+          "page_number": 118,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 119,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-119.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "1623f4990fd4d9f8353447d872b07bedf2471a801b1a63da1c1ca287d962fd4b",
+          "alignment": "not_validated",
+          "page_number": 119,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 120,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-120.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "54461c13525c50581cef57bcc2d4cac5331a552ae8bc0a6c7796f6ce3556d077",
+          "alignment": "not_validated",
+          "page_number": 120,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 121,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-121.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "274915220873b55df762b9c8f75428cc90e58534c69c06d9e7b8d5356e8e4b4e",
+          "alignment": "not_validated",
+          "page_number": 121,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 122,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-122.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "ffa703914c5790e137293a8ba380c3d8e172d2ab7ceaa082ee01eb20d3100fe7",
+          "alignment": "not_validated",
+          "page_number": 122,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 123,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-123.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "6b0364c0a2374e3e0906283c88e876ec6979e1e1fc1a04a5e0bff3fa65bc5225",
+          "alignment": "not_validated",
+          "page_number": 123,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 124,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-124.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "6f9e5266389b605d3cdd9faf52c5d2ce9b2d97a85db63a018845e7b1c8fa7fb5",
+          "alignment": "not_validated",
+          "page_number": 124,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 125,
+      "fields": {
+        "reviewed_map": {
+          "file": "Rivelac_Dossier_cartographique-page-125.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "ac4573573b8f5c99be9e9f6cfe4828b7582cdd845a4167bf36e7b94de96a587e",
+          "alignment": "not_validated",
+          "page_number": 125,
+          "source_file": "Rivelac_Dossier_cartographique.pdf",
+          "sector_extraction": "pending"
+        }
+      }
+    }
+  ]
+}
