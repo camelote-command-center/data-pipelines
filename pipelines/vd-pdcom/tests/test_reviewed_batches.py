@@ -38,7 +38,7 @@ class ReviewedBatchTests(unittest.TestCase):
 
     def test_all_saved_batches_replay_and_retain_review_limits(self):
         batches = [json.loads(p.read_text()) for p in ROOT.glob('*.json')]
-        self.assertEqual(len(batches), 4)
+        self.assertGreaterEqual(len(batches), 4)  # Registry grows as reviewed batches are added.
         for batch in batches:
             pages = [{'page_number': n} for n in range(1, batch['page_count']+1)]
             result = annotate(pages, len(pages), batch)

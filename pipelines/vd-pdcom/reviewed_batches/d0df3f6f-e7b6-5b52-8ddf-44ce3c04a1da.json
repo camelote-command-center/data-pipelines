@@ -1,0 +1,31 @@
+{
+  "document_id": "d0df3f6f-e7b6-5b52-8ddf-44ce3c04a1da",
+  "sha256": "76b40085ac0798980aaacc16c62e95590b29936b4accb99f2f1ad8faedd448f5",
+  "page_count": 1,
+  "page_annotations": [
+    {
+      "page_number": 1,
+      "fields": {
+        "reviewed_map": {
+          "file": "Carte-des-mesures-page-1.png",
+          "role": "cartographic_page_candidate",
+          "sha256": "190fcc9eb65407afda641af3f1fc52dbc6317cd112ec0afb89936d3e626f4e01",
+          "alignment": "not_validated",
+          "page_number": 1,
+          "source_file": "Carte-des-mesures.pdf",
+          "sector_extraction": "pending"
+        },
+        "source_review": {
+          "role": "PA5 regional strategy and measures; separate PDI adoption not established",
+          "observed_at": "2026-09-21",
+          "source_sha256": "76b40085ac0798980aaacc16c62e95590b29936b4accb99f2f1ad8faedd448f5",
+          "version_limits": "Mapbook cover14February2024 while measures14February2025; source bytes preserved, discrepancy not silently corrected. Main report introduction still describes dual PDI-PA5 status, superseded procedurally by current official landing.",
+          "geometry_limits": "Report states principle maps not parcel-discriminating. No capacity rights or validated sector geometry inferred.",
+          "official_status": "Official page states PA5 submitted27March2025; federal provisional report19June2026 proposes cofinancing51/55priority measures at30percent. This is not final funding or PDI adoption. PDI formally separated and awaits dedicated consultation/adoption.",
+          "membership_evidence": "Main report introductory Plan directeur intercommunal section explicitly names13Vaud communes;5Fribourg members excluded from Vaud coverage.",
+          "official_publication_evidence": "https://agglorivelac.ch/projet/plan-directeur-intercommunal-pdi-projet-dagglomeration-de-cinquieme-generation-pa5/"
+        }
+      }
+    }
+  ]
+}

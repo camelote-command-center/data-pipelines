@@ -3564,5 +3564,101 @@
     "plan_status": "unverified",
     "scope": "intercommunal",
     "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5890,
+    "commune_bfs_list": [
+      5414,
+      5408,
+      5412,
+      5891,
+      5882,
+      5883,
+      5890,
+      5889,
+      5886,
+      5413,
+      5892,
+      5884,
+      5885
+    ],
+    "pdf_url": "https://agglorivelac.ch/wp-content/uploads/Carte-des-mesures.pdf",
+    "landing_url": "https://agglorivelac.ch/projet/plan-directeur-intercommunal-pdi-projet-dagglomeration-de-cinquieme-generation-pa5/",
+    "title": "Rivelac PA5 — Carte-des-mesures",
+    "plan_status": "unverified",
+    "scope": "intercommunal",
+    "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5890,
+    "commune_bfs_list": [
+      5414,
+      5408,
+      5412,
+      5891,
+      5882,
+      5883,
+      5890,
+      5889,
+      5886,
+      5413,
+      5892,
+      5884,
+      5885
+    ],
+    "pdf_url": "https://agglorivelac.ch/wp-content/uploads/Rivelac_Rapport_principal.pdf",
+    "landing_url": "https://agglorivelac.ch/projet/plan-directeur-intercommunal-pdi-projet-dagglomeration-de-cinquieme-generation-pa5/",
+    "title": "Rivelac PA5 — Rivelac Rapport principal",
+    "plan_status": "unverified",
+    "scope": "intercommunal",
+    "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5890,
+    "commune_bfs_list": [
+      5414,
+      5408,
+      5412,
+      5891,
+      5882,
+      5883,
+      5890,
+      5889,
+      5886,
+      5413,
+      5892,
+      5884,
+      5885
+    ],
+    "pdf_url": "https://agglorivelac.ch/wp-content/uploads/Rivelac_Annexe_mesures.pdf",
+    "landing_url": "https://agglorivelac.ch/projet/plan-directeur-intercommunal-pdi-projet-dagglomeration-de-cinquieme-generation-pa5/",
+    "title": "Rivelac PA5 — Rivelac Annexe mesures",
+    "plan_status": "unverified",
+    "scope": "intercommunal",
+    "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5890,
+    "commune_bfs_list": [
+      5414,
+      5408,
+      5412,
+      5891,
+      5882,
+      5883,
+      5890,
+      5889,
+      5886,
+      5413,
+      5892,
+      5884,
+      5885
+    ],
+    "pdf_url": "https://agglorivelac.ch/wp-content/uploads/Rivelac_Dossier_cartographique.pdf",
+    "landing_url": "https://agglorivelac.ch/projet/plan-directeur-intercommunal-pdi-projet-dagglomeration-de-cinquieme-generation-pa5/",
+    "title": "Rivelac PA5 — Rivelac Dossier cartographique",
+    "plan_status": "unverified",
+    "scope": "intercommunal",
+    "enumerate_vectors": false
   }
 ]
