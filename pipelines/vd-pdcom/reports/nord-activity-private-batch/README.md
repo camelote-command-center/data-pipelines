@@ -16,3 +16,6 @@ Thirteen more native outlines pass the same IoU>0.98 and symmetric-Hausdorff<5m 
 Intentions remain separate: zone16 shows extension/dezoning and potential SDA impact;71 dezoning;74 reconversion out of activity;82 reconversion into activity;99 site-level reconversion out/dezoning. For99 only the eastern native fragment10549 is delivered; western10551 remains held. No intention arrow on the other selected outlines is not proof of absence of change.
 
 Hausdorff distances use GEOS discrete symmetric comparison of the complete boundary shapes. An additional check subdivides each segment at5% intervals for all17 outlines; maximum3.0962m, all below5m. This is a reproducible geometric check, not surveyed accuracy.
+
+
+2026-09-21 semantic correction: ZAL85 is Bioley-Magnoux (BFS5903), not Chêne-Pâquier. ZAL82 Vuiteboeuf has reconversion OUT of activity, not IN. Main report page68 corroborates both. Earlier receipts remain historical evidence; geometry, memberships and review-only status are unchanged.

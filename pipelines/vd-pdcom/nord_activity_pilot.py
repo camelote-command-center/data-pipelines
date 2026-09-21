@@ -33,6 +33,11 @@ def load_artifacts():
         if pr['status']!='private_indicative_outline_review_required':raise ValueError('nord_activity_review_status')
     return fs,ev,{q['site_code']:q for q in qa},frozen
 
+def checked_label(code,current,expected):
+    if current==expected:return expected
+    if code=='85' and current=='ZAL 85 — Chêne-Pâquier' and expected=='ZAL 85 — Bioley-Magnoux':return expected
+    raise ValueError('nord_activity_existing_label_changed_requires_review')
+
 def persist(conn,document_id,sha):
     if str(document_id)!=DOC or sha!=SHA:return None
     fs,ev,qa,frozen=load_artifacts();results=[]
@@ -56,7 +61,8 @@ def persist(conn,document_id,sha):
             VALUES(%s,%s,%s,%s,ST_Transform(ST_SetSRID(ST_GeomFromGeoJSON(%s),2056),4326),%s,%s,'review_required') ON CONFLICT DO NOTHING''',(sid,DOC,page,ev[code]['source_semantics']['label'],g,ev[code]['consistent_control_rmse_m'],Json(evidence)))
             c.execute('SELECT commune_bfs FROM gold_ch.v_vd_pdcom_review_sectors WHERE id=%s',(sid,))
             if c.fetchone()[0]!=[bfs]:raise ValueError('nord_activity_geographic_attribution_mismatch')
-            c.execute("SELECT review_status,ST_Equals(geom,ST_Transform(ST_SetSRID(ST_GeomFromGeoJSON(%s),2056),4326)) FROM bronze_ch.vd_pdcom_sectors WHERE id=%s",(g,sid));status,equal=c.fetchone()
+            c.execute("SELECT label,review_status,ST_Equals(geom,ST_Transform(ST_SetSRID(ST_GeomFromGeoJSON(%s),2056),4326)) FROM bronze_ch.vd_pdcom_sectors WHERE id=%s",(g,sid));label,status,equal=c.fetchone()
+            label=checked_label(code,label,ev[code]['source_semantics']['label'])
             if status!='review_required' or not equal:raise ValueError('nord_activity_existing_sector_changed_requires_review')
             c.execute('SELECT egrid FROM bronze_ch.vd_pdcom_parcel_candidates WHERE sector_id=%s',(sid,));old={x[0] for x in c.fetchall()}
             if old and old!=actual:raise ValueError('nord_activity_existing_candidate_membership_conflict')
@@ -68,7 +74,7 @@ def persist(conn,document_id,sha):
             jsonb_build_object('source_url',s.query_url,'response_sha256',s.response_sha256,'reference_snapshot_ids',jsonb_build_array(n.snapshot_id),'official_attributes',n.official_attributes,'status','matched')
             FROM nord_activity_current_pairs n JOIN bronze_ch.vd_pdcom_parcel_reference_snapshots s ON s.id=n.snapshot_id ON CONFLICT DO NOTHING''',(sid,Json(KINDS)))
             c.execute('''INSERT INTO bronze_ch.vd_pdcom_candidate_parcel_references(sector_id,egrid,snapshot_id) SELECT %s,egrid,snapshot_id FROM nord_activity_current_pairs ON CONFLICT(sector_id,egrid) DO UPDATE SET snapshot_id=EXCLUDED.snapshot_id''',(sid,))
-            c.execute("UPDATE bronze_ch.vd_pdcom_sectors SET validation_evidence=%s WHERE id=%s AND review_status='review_required'",(Json(evidence),sid))
+            c.execute("UPDATE bronze_ch.vd_pdcom_sectors SET label=%s,validation_evidence=%s WHERE id=%s AND review_status='review_required'",(label,Json(evidence),sid))
             c.execute("UPDATE bronze_ch.vd_pdcom_communes SET extraction_status='candidate_vectors',blocker='Private indicative Nord-vaudois outline only; exact-version approval, currentness and legal-boundary precision unresolved' WHERE commune_bfs=%s",(bfs,))
         results.append({'sector_id':sid,'site_code':code,'parcel_pairs':len(actual),'reference':ref})
     return {'sectors':len(results),'parcel_pairs':sum(x['parcel_pairs'] for x in results),'candidates':results,'status':'review_required'}
