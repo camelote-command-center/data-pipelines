@@ -1,4 +1,4 @@
-"""Four source-reviewed Nord-vaudois activity outlines, delivered only to private review routes."""
+"""Seventeen source-reviewed Nord-vaudois activity outlines, delivered only to private review routes."""
 import json,uuid
 from pathlib import Path
 from psycopg2.extras import Json
@@ -7,19 +7,28 @@ from cadastral_types import KINDS
 DOC='95594a29-225b-5388-943a-8e45c423d7c5'
 SHA='3b37f3c821d16573023f225211c80c0b3f87ee45df726724c6ca3edf2778e1e9'
 SITES={'47':(5552,1),'85':(5903,1),'103':(5921,1),'12':(5929,1)}
+SITES.update({'16': (5931, 1), '15': (5929, 1), '4': (5764, 1), '6': (5745, 1), '9': (5745, 1), '34': (5924, 1), '70': (5908, 1), '71': (5747, 1), '74': (5561, 1), '77': (5554, 1), '82': (5766, 1), '51': (5559, 1), '99': (5930, 1)})
 def sector_id(code):
     if code not in SITES:raise ValueError('nord_activity_unreviewed_site')
     return str(uuid.uuid5(uuid.NAMESPACE_URL,DOC+'#site'+code+'#private-outline2026-09-21'))
 def load_artifacts():
     p=Path(__file__).parent/'reports/nord-activity-private-batch'
     fs=json.loads((p/'features.geojson').read_text())['features'];ev=json.loads((p/'evidence.json').read_text());qa=json.loads((p/'parcel-qa.json').read_text());frozen=json.loads((p/'official-parcels.geojson').read_text())['features']
-    if {f['properties']['site_code'] for f in fs}!=set(SITES) or len(fs)!=4:raise ValueError('nord_activity_artifact_scope')
+    if {f['properties']['site_code'] for f in fs}!=set(SITES) or len(fs)!=len(SITES):raise ValueError('nord_activity_artifact_scope')
     for f in fs:
         pr=f['properties'];code=pr['site_code'];e=ev[code]
         holdout=e['independent_shape_holdout']
-        if ((pr['bfs'],pr['page'])!=SITES[code] or not e['reference_held_out_of_fit']
-            or holdout['kind']!='parcelle privée' or holdout['bfs']!=pr['bfs']
-            or not holdout['iou']>0.98 or not 0<=holdout['hausdorff_m']<5):
+        if ((pr['bfs'],pr['page'])!=SITES[code] or e['reference_held_out_of_fit'] is not True
+            or holdout['bfs']!=pr['bfs'] or not holdout['iou']>0.98
+            or not 0<=holdout['hausdorff_m']<5):
+            raise ValueError('nord_activity_control_review')
+        if holdout['kind']=='land_parcel_union':
+            parcels=holdout.get('parcels',[])
+            if (not parcels or holdout.get('partial_land_parcels')!=[]
+                or len({x['egrid'] for x in parcels})!=len(parcels)
+                or any(x['kind']!='parcelle privée' or x['bfs']!=pr['bfs'] for x in parcels)):
+                raise ValueError('nord_activity_control_review')
+        elif holdout['kind']!='parcelle privée':
             raise ValueError('nord_activity_control_review')
         if pr['status']!='private_indicative_outline_review_required':raise ValueError('nord_activity_review_status')
     return fs,ev,{q['site_code']:q for q in qa},frozen

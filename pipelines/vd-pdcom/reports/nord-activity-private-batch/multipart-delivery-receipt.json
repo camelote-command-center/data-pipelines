@@ -1,0 +1,418 @@
+{
+  "ids": {
+    "operation": "cc17dbd9-3a9a-4d96-af5d-11bf8eeedf1e",
+    "checkpoint": "759e1cb2-f88b-4045-b3d1-fc396ca79d7e"
+  },
+  "persist": {
+    "sectors": 17,
+    "parcel_pairs": 149,
+    "candidates": [
+      {
+        "sector_id": "05e2e1a8-1666-5967-b49e-e25a30f2d57d",
+        "site_code": "47",
+        "parcel_pairs": 6,
+        "reference": {
+          "snapshot_id": "aaf24529-0e9c-562c-a717-87a1af28f96c",
+          "count": 17,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2532653.6086230944%2C1186923.7273164282%2C2532763.149849508%2C1187013.1359226217&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5552&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "b4315addd063942b2b9cc81ddf405cb5676a95088e94e64eb23d88b2f88f9248"
+        }
+      },
+      {
+        "sector_id": "a861331d-5275-515f-9bc4-c790bd6845ff",
+        "site_code": "85",
+        "parcel_pairs": 5,
+        "reference": {
+          "snapshot_id": "922c4469-53c3-5434-9750-b276a99332c6",
+          "count": 7,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2544399.360623195%2C1174188.7302001766%2C2544521.96869251%2C1174301.6824416285&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5903&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "05092dab7eaacc0daf09ce125582f29721d3b37268563e4e3bf9ac5caeff53ff"
+        }
+      },
+      {
+        "sector_id": "dfc03385-844f-5fd3-97eb-cb6f9bba4a37",
+        "site_code": "103",
+        "parcel_pairs": 7,
+        "reference": {
+          "snapshot_id": "59f9351d-99eb-5a25-a310-92f54b8fe2aa",
+          "count": 21,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2546953.98120329%2C1178928.8026164917%2C2547184.692819557%2C1179173.8204961126&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5921&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "e91811bdad4136acbdab84aa81e6952ca9999abcbef9fb2d28477c491c3ce7f4"
+        }
+      },
+      {
+        "sector_id": "d4b0259d-0ced-5e45-bc30-da7203d5b056",
+        "site_code": "12",
+        "parcel_pairs": 7,
+        "reference": {
+          "snapshot_id": "b0425154-221f-5712-9b87-0ef4b4f4103c",
+          "count": 15,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2535548.581863244%2C1174931.2150188189%2C2535658.297892997%2C1175067.71265545&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5929&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "2975b66c425935ba581b96eb2bf84fc69e8412b85ef9b74ee833eb514c7fea5e"
+        }
+      },
+      {
+        "sector_id": "844f4e94-f946-55ff-b162-a1f93e24d719",
+        "site_code": "16",
+        "parcel_pairs": 5,
+        "reference": {
+          "snapshot_id": "5fd69e67-d692-59ad-a2b5-c0ab3588f989",
+          "count": 11,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2536156.468101035%2C1180267.9416875504%2C2536376.9238059497%2C1180500.7809144924&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5931&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "c563b6e915c1c456a98dbecdb041ce2be3678be756f4a149a4a08224481d599b"
+        }
+      },
+      {
+        "sector_id": "d8cfbe2d-ba24-54c0-85fb-aa42dbe02cae",
+        "site_code": "15",
+        "parcel_pairs": 11,
+        "reference": {
+          "snapshot_id": "2bf74594-7c80-5dc2-8f9d-b676b84a0a8b",
+          "count": 18,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2536061.857260152%2C1174817.6132975293%2C2536201.9609146873%2C1174974.594066961&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5929&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "d013571cce8fde4cf79d17e75138d6fdf2ad59a6ecd26396cf5c860da7ee7819"
+        }
+      },
+      {
+        "sector_id": "57cce253-2052-5331-ac74-723313ac6ee5",
+        "site_code": "4",
+        "parcel_pairs": 7,
+        "reference": {
+          "snapshot_id": "08ae1c9e-1f65-5312-9371-97d580931a73",
+          "count": 15,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2518344.6067411425%2C1173359.5704501274%2C2518490.7591484734%2C1173455.362289452&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5764&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "78af300d037905854c3f152e79e05a33aaf7d2e660cf4ab17b7b2197059fd8fc"
+        }
+      },
+      {
+        "sector_id": "0043d6cf-1125-5d76-bada-350ebbfae66e",
+        "site_code": "6",
+        "parcel_pairs": 8,
+        "reference": {
+          "snapshot_id": "ed0811b1-219d-5226-857b-e419fdfa5643",
+          "count": 28,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2529976.1752056633%2C1182096.6907550371%2C2530201.776463906%2C1182298.9202642776&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5745&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "ab528cb0ce03644bc015b97c068e203f676d5ee33f05cece637ef369ac0ba8bf"
+        }
+      },
+      {
+        "sector_id": "a62d070e-2e3f-5577-ad88-d01384534848",
+        "site_code": "9",
+        "parcel_pairs": 15,
+        "reference": {
+          "snapshot_id": "8fbe83a4-1a2b-5a69-bb22-2875af29e732",
+          "count": 54,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2530254.934911943%2C1182338.9204023231%2C2530571.5887659146%2C1182551.7551949515&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5745&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "7e0589d705cc550ba7b3955a076998e295f1c60964c5010a3a1330aaa6a73fa5"
+        }
+      },
+      {
+        "sector_id": "2b4f8833-72ae-5ce3-8c94-0cfdfcd87890",
+        "site_code": "34",
+        "parcel_pairs": 14,
+        "reference": {
+          "snapshot_id": "41178534-c40a-5714-a676-77f6b7d682ae",
+          "count": 42,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2535109.783247435%2C1184534.2246231143%2C2535339.4319655458%2C1184801.310737633&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5924&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "554bb9791fa279c8c0bb5e3c8ef749cec8a9a5b7c4f65981a790fa4d4a9147b0"
+        }
+      },
+      {
+        "sector_id": "75cf30b0-751d-5a67-b667-4abf5f887f79",
+        "site_code": "70",
+        "parcel_pairs": 8,
+        "reference": {
+          "snapshot_id": "aea954fc-8b3a-5263-90b3-fc41f35f4f5d",
+          "count": 13,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2548893.1673262357%2C1179762.5416807418%2C2549034.288125033%2C1179935.7324950108&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5908&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "9456191534349810075c6b509a24d2f175678934d219f00068a7724af09ea955"
+        }
+      },
+      {
+        "sector_id": "9f181237-60dd-5d4f-bf8f-7fe9abdd7da4",
+        "site_code": "71",
+        "parcel_pairs": 6,
+        "reference": {
+          "snapshot_id": "9e75ccb1-5919-5fd1-8c91-f8244868f503",
+          "count": 26,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2528233.6170294527%2C1172980.5491903957%2C2528411.3644071124%2C1173155.1362085845&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5747&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "50b4bcf8cc50aed79d4b3cd5dc604e482da16101e38b678955507e46af611744"
+        }
+      },
+      {
+        "sector_id": "27fc1fc4-4f24-56ea-90f2-b079c0c521f4",
+        "site_code": "74",
+        "parcel_pairs": 20,
+        "reference": {
+          "snapshot_id": "c10331a4-ed84-51bb-a9a7-d9fc61be64af",
+          "count": 42,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2539436.996502314%2C1184813.457194118%2C2539693.2552159964%2C1185048.7732164168&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5561&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "9bca55871103122da9b6ba546b62bb294457eba0d8db26c94380ee8fa9a66814"
+        }
+      },
+      {
+        "sector_id": "a0b48106-04ed-5a85-943e-63fbcb5f8194",
+        "site_code": "77",
+        "parcel_pairs": 6,
+        "reference": {
+          "snapshot_id": "1b5bacda-e16f-5fde-8fb1-8f0fb01c39b0",
+          "count": 15,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2545379.7187547395%2C1189539.8544383426%2C2545504.8186515206%2C1189684.0223969284&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5554&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "b590a412bbd240fd269741ea1726bf24be9dbeb67574efad8c252a263bb9320f"
+        }
+      },
+      {
+        "sector_id": "2e0b6fcf-1b27-5b1d-b93f-793429e4986f",
+        "site_code": "82",
+        "parcel_pairs": 9,
+        "reference": {
+          "snapshot_id": "71dcb7d0-065f-5b6a-95d4-2d32a8d0f5ab",
+          "count": 18,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2532838.0378777403%2C1184384.9000272471%2C2533134.7348216213%2C1184692.3446480134&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5766&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "15d2c7076c78112d40e944fd88e960716c952a515e8d1580555d841a3e91bc7a"
+        }
+      },
+      {
+        "sector_id": "b5e70a54-435c-599c-8323-2713dd901921",
+        "site_code": "51",
+        "parcel_pairs": 7,
+        "reference": {
+          "snapshot_id": "9043e249-ce94-532e-b464-2b9957be19cd",
+          "count": 11,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2537735.2848218195%2C1184510.991320576%2C2537876.468972163%2C1184634.788194659&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5559&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "ca8ca3b095a015f6c1bc93646ec6f0e4ea1a6f93621b0a1a7db264044b582a2e"
+        }
+      },
+      {
+        "sector_id": "3b2cabfe-ee84-5e69-a8f9-6f6bd8477301",
+        "site_code": "99",
+        "parcel_pairs": 8,
+        "reference": {
+          "snapshot_id": "701f8d90-d858-5445-86cb-c1198b56b7a0",
+          "count": 19,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2535018.334117957%2C1179808.5952910455%2C2535277.720520917%2C1179978.7367490225&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5930&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "b203605599dc22fd634f70135ed4ecc7e4571fc52f4bc71e65d50324d93f49c0"
+        }
+      }
+    ],
+    "status": "review_required"
+  },
+  "repeat": {
+    "sectors": 17,
+    "parcel_pairs": 149,
+    "candidates": [
+      {
+        "sector_id": "05e2e1a8-1666-5967-b49e-e25a30f2d57d",
+        "site_code": "47",
+        "parcel_pairs": 6,
+        "reference": {
+          "snapshot_id": "aaf24529-0e9c-562c-a717-87a1af28f96c",
+          "count": 17,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2532653.6086230944%2C1186923.7273164282%2C2532763.149849508%2C1187013.1359226217&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5552&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "b4315addd063942b2b9cc81ddf405cb5676a95088e94e64eb23d88b2f88f9248"
+        }
+      },
+      {
+        "sector_id": "a861331d-5275-515f-9bc4-c790bd6845ff",
+        "site_code": "85",
+        "parcel_pairs": 5,
+        "reference": {
+          "snapshot_id": "922c4469-53c3-5434-9750-b276a99332c6",
+          "count": 7,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2544399.360623195%2C1174188.7302001766%2C2544521.96869251%2C1174301.6824416285&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5903&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "05092dab7eaacc0daf09ce125582f29721d3b37268563e4e3bf9ac5caeff53ff"
+        }
+      },
+      {
+        "sector_id": "dfc03385-844f-5fd3-97eb-cb6f9bba4a37",
+        "site_code": "103",
+        "parcel_pairs": 7,
+        "reference": {
+          "snapshot_id": "59f9351d-99eb-5a25-a310-92f54b8fe2aa",
+          "count": 21,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2546953.98120329%2C1178928.8026164917%2C2547184.692819557%2C1179173.8204961126&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5921&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "e91811bdad4136acbdab84aa81e6952ca9999abcbef9fb2d28477c491c3ce7f4"
+        }
+      },
+      {
+        "sector_id": "d4b0259d-0ced-5e45-bc30-da7203d5b056",
+        "site_code": "12",
+        "parcel_pairs": 7,
+        "reference": {
+          "snapshot_id": "b0425154-221f-5712-9b87-0ef4b4f4103c",
+          "count": 15,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2535548.581863244%2C1174931.2150188189%2C2535658.297892997%2C1175067.71265545&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5929&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "2975b66c425935ba581b96eb2bf84fc69e8412b85ef9b74ee833eb514c7fea5e"
+        }
+      },
+      {
+        "sector_id": "844f4e94-f946-55ff-b162-a1f93e24d719",
+        "site_code": "16",
+        "parcel_pairs": 5,
+        "reference": {
+          "snapshot_id": "5fd69e67-d692-59ad-a2b5-c0ab3588f989",
+          "count": 11,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2536156.468101035%2C1180267.9416875504%2C2536376.9238059497%2C1180500.7809144924&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5931&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "c563b6e915c1c456a98dbecdb041ce2be3678be756f4a149a4a08224481d599b"
+        }
+      },
+      {
+        "sector_id": "d8cfbe2d-ba24-54c0-85fb-aa42dbe02cae",
+        "site_code": "15",
+        "parcel_pairs": 11,
+        "reference": {
+          "snapshot_id": "2bf74594-7c80-5dc2-8f9d-b676b84a0a8b",
+          "count": 18,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2536061.857260152%2C1174817.6132975293%2C2536201.9609146873%2C1174974.594066961&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5929&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "d013571cce8fde4cf79d17e75138d6fdf2ad59a6ecd26396cf5c860da7ee7819"
+        }
+      },
+      {
+        "sector_id": "57cce253-2052-5331-ac74-723313ac6ee5",
+        "site_code": "4",
+        "parcel_pairs": 7,
+        "reference": {
+          "snapshot_id": "08ae1c9e-1f65-5312-9371-97d580931a73",
+          "count": 15,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2518344.6067411425%2C1173359.5704501274%2C2518490.7591484734%2C1173455.362289452&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5764&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "78af300d037905854c3f152e79e05a33aaf7d2e660cf4ab17b7b2197059fd8fc"
+        }
+      },
+      {
+        "sector_id": "0043d6cf-1125-5d76-bada-350ebbfae66e",
+        "site_code": "6",
+        "parcel_pairs": 8,
+        "reference": {
+          "snapshot_id": "ed0811b1-219d-5226-857b-e419fdfa5643",
+          "count": 28,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2529976.1752056633%2C1182096.6907550371%2C2530201.776463906%2C1182298.9202642776&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5745&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "ab528cb0ce03644bc015b97c068e203f676d5ee33f05cece637ef369ac0ba8bf"
+        }
+      },
+      {
+        "sector_id": "a62d070e-2e3f-5577-ad88-d01384534848",
+        "site_code": "9",
+        "parcel_pairs": 15,
+        "reference": {
+          "snapshot_id": "8fbe83a4-1a2b-5a69-bb22-2875af29e732",
+          "count": 54,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2530254.934911943%2C1182338.9204023231%2C2530571.5887659146%2C1182551.7551949515&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5745&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "7e0589d705cc550ba7b3955a076998e295f1c60964c5010a3a1330aaa6a73fa5"
+        }
+      },
+      {
+        "sector_id": "2b4f8833-72ae-5ce3-8c94-0cfdfcd87890",
+        "site_code": "34",
+        "parcel_pairs": 14,
+        "reference": {
+          "snapshot_id": "41178534-c40a-5714-a676-77f6b7d682ae",
+          "count": 42,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2535109.783247435%2C1184534.2246231143%2C2535339.4319655458%2C1184801.310737633&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5924&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "554bb9791fa279c8c0bb5e3c8ef749cec8a9a5b7c4f65981a790fa4d4a9147b0"
+        }
+      },
+      {
+        "sector_id": "75cf30b0-751d-5a67-b667-4abf5f887f79",
+        "site_code": "70",
+        "parcel_pairs": 8,
+        "reference": {
+          "snapshot_id": "aea954fc-8b3a-5263-90b3-fc41f35f4f5d",
+          "count": 13,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2548893.1673262357%2C1179762.5416807418%2C2549034.288125033%2C1179935.7324950108&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5908&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "9456191534349810075c6b509a24d2f175678934d219f00068a7724af09ea955"
+        }
+      },
+      {
+        "sector_id": "9f181237-60dd-5d4f-bf8f-7fe9abdd7da4",
+        "site_code": "71",
+        "parcel_pairs": 6,
+        "reference": {
+          "snapshot_id": "9e75ccb1-5919-5fd1-8c91-f8244868f503",
+          "count": 26,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2528233.6170294527%2C1172980.5491903957%2C2528411.3644071124%2C1173155.1362085845&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5747&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "50b4bcf8cc50aed79d4b3cd5dc604e482da16101e38b678955507e46af611744"
+        }
+      },
+      {
+        "sector_id": "27fc1fc4-4f24-56ea-90f2-b079c0c521f4",
+        "site_code": "74",
+        "parcel_pairs": 20,
+        "reference": {
+          "snapshot_id": "c10331a4-ed84-51bb-a9a7-d9fc61be64af",
+          "count": 42,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2539436.996502314%2C1184813.457194118%2C2539693.2552159964%2C1185048.7732164168&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5561&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "9bca55871103122da9b6ba546b62bb294457eba0d8db26c94380ee8fa9a66814"
+        }
+      },
+      {
+        "sector_id": "a0b48106-04ed-5a85-943e-63fbcb5f8194",
+        "site_code": "77",
+        "parcel_pairs": 6,
+        "reference": {
+          "snapshot_id": "1b5bacda-e16f-5fde-8fb1-8f0fb01c39b0",
+          "count": 15,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2545379.7187547395%2C1189539.8544383426%2C2545504.8186515206%2C1189684.0223969284&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5554&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "b590a412bbd240fd269741ea1726bf24be9dbeb67574efad8c252a263bb9320f"
+        }
+      },
+      {
+        "sector_id": "2e0b6fcf-1b27-5b1d-b93f-793429e4986f",
+        "site_code": "82",
+        "parcel_pairs": 9,
+        "reference": {
+          "snapshot_id": "71dcb7d0-065f-5b6a-95d4-2d32a8d0f5ab",
+          "count": 18,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2532838.0378777403%2C1184384.9000272471%2C2533134.7348216213%2C1184692.3446480134&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5766&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "15d2c7076c78112d40e944fd88e960716c952a515e8d1580555d841a3e91bc7a"
+        }
+      },
+      {
+        "sector_id": "b5e70a54-435c-599c-8323-2713dd901921",
+        "site_code": "51",
+        "parcel_pairs": 7,
+        "reference": {
+          "snapshot_id": "9043e249-ce94-532e-b464-2b9957be19cd",
+          "count": 11,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2537735.2848218195%2C1184510.991320576%2C2537876.468972163%2C1184634.788194659&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5559&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "ca8ca3b095a015f6c1bc93646ec6f0e4ea1a6f93621b0a1a7db264044b582a2e"
+        }
+      },
+      {
+        "sector_id": "3b2cabfe-ee84-5e69-a8f9-6f6bd8477301",
+        "site_code": "99",
+        "parcel_pairs": 8,
+        "reference": {
+          "snapshot_id": "701f8d90-d858-5445-86cb-c1198b56b7a0",
+          "count": 19,
+          "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2535018.334117957%2C1179808.5952910455%2C2535277.720520917%2C1179978.7367490225&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5930&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+          "response_sha256": "b203605599dc22fd634f70135ed4ecc7e4571fc52f4bc71e65d50324d93f49c0"
+        }
+      }
+    ],
+    "status": "review_required"
+  },
+  "delivery": {
+    "publication_status": "internal_review_only",
+    "receiver": "lamap_db",
+    "tables": {
+      "vd_pdcom_review_sectors": {
+        "rows": 59,
+        "mismatches": 0,
+        "valid_4326": true
+      },
+      "vd_pdcom_review_parcels": {
+        "rows": 2435,
+        "mismatches": 0,
+        "valid_4326": true
+      }
+    }
+  },
+  "total_private_sectors": 59,
+  "total_pairs": 2435,
+  "distinct_egrids": 2412,
+  "preexisting_sectors_preserved": 46,
+  "completed_commune_increment": 0,
+  "validated_sector_increment": 0,
+  "private_review_sector_increment": 13,
+  "limitations": "Indicative source outlines only; exact-version approval/currentness/legal boundary precision unresolved. Not confirmed free parcels."
+}

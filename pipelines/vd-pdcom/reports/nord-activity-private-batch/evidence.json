@@ -238,5 +238,1309 @@
     "consistent_control_rmse_m": 0.2674233881447327,
     "maximum_consistent_control_error_m": 0.6253323452028703,
     "geographic_match_limit": "A geometric cadastral match verifies placement, not proof the PDCom grants rights on that EGRID. Source scale/generalization and legal precision unresolved."
+  },
+  "16": {
+    "source_semantics": {
+      "label": "ZAL 16 \u2014 Treycovagnes",
+      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "intention": [
+        "extension",
+        "dezoning",
+        "potential_SDA_impact"
+      ],
+      "vocation": "not established by blue category fill",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "source_status": "April2026 consultation synthesis, approval not verified",
+      "availability": "not inferred; whole zone is not a reserve or vacant parcel",
+      "source_code_evidence": "Visually reviewed native outline and leader in 10357-outlined.png",
+      "intention_scope": "Indicative site-level symbol, no geometry for destination or affected subarea inferred",
+      "coverage_extent": "Selected native category outline; no whole-commune coverage claim"
+    },
+    "alignment_method": "Regional boundary bounds fit held fixed; complete independent union of unmodified current LAND parcel shapes is the holdout. No clipping, snapping, refitting or membership optimization.",
+    "regional_fit": {
+      "source_boundary_points": 5455,
+      "source_bounds": [
+        -176.562744140625,
+        -100.233154296875,
+        1779.774169921875,
+        1501.7685546875
+      ],
+      "reference_bounds": [
+        2513470.535,
+        1167788.764,
+        2551073.929,
+        1198584.09
+      ],
+      "transform": [
+        19.22132825368674,
+        0,
+        0,
+        -19.223029430800985,
+        2516864.3054624987,
+        1196657.3051250093
+      ],
+      "scale_bar_m_per_point": 19.37488673395569,
+      "boundary_to_reference_rmse": 1.6692236422433622,
+      "boundary_to_reference_max": 31.71419303306734,
+      "symmetric_hausdorff_m": 31.714193032957443,
+      "symmetric_difference_m2": 29379.05562285226,
+      "reference_area_m2": 577805524.9671732,
+      "accepted": false,
+      "method": "bounding-box fit; not independently identified controls; diagnostic only"
+    },
+    "independent_shape_holdout": {
+      "kind": "land_parcel_union",
+      "bfs": 5931,
+      "iou": 0.992903237671854,
+      "hausdorff_m": 0.6143116173207733,
+      "parcels": [
+        {
+          "egrid": "CH209745758392",
+          "bfs": 5931,
+          "number": "238",
+          "coverage_fraction": 0.9997917603868718,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH988983459828",
+          "bfs": 5931,
+          "number": "105",
+          "coverage_fraction": 0.9999991636854644,
+          "kind": "parcelle priv\u00e9e"
+        }
+      ],
+      "partial_land_parcels": []
+    },
+    "holdout_extent": "Entire source/reference union boundaries, symmetric Hausdorff; not sampled proximity alone.",
+    "acceptance": "Private indicative outline: complete LAND union IoU>0.98 and symmetric Hausdorff<5m, no residual partial land parcel above2%; source code/intentions reviewed.",
+    "source_path_index": 10357,
+    "reference_held_out_of_fit": true,
+    "consistent_control_rmse_m": 0.33896544022089753,
+    "maximum_consistent_control_error_m": 0.6143116173207733,
+    "geographic_match_limit": "A geometric cadastral match verifies placement, not proof the PDCom grants rights on that EGRID. Source scale/generalization and legal precision unresolved."
+  },
+  "15": {
+    "source_semantics": {
+      "label": "ZAL 15 \u2014 Suchy",
+      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "intention": [
+        "No intention symbol shown; not proof of absence of change"
+      ],
+      "vocation": "not established by blue category fill",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "source_status": "April2026 consultation synthesis, approval not verified",
+      "availability": "not inferred; whole zone is not a reserve or vacant parcel",
+      "source_code_evidence": "Visually reviewed native outline and leader in 10361-outlined.png",
+      "intention_scope": "Indicative site-level symbol, no geometry for destination or affected subarea inferred",
+      "coverage_extent": "Selected native category outline; no whole-commune coverage claim"
+    },
+    "alignment_method": "Regional boundary bounds fit held fixed; complete independent union of unmodified current LAND parcel shapes is the holdout. No clipping, snapping, refitting or membership optimization.",
+    "regional_fit": {
+      "source_boundary_points": 5455,
+      "source_bounds": [
+        -176.562744140625,
+        -100.233154296875,
+        1779.774169921875,
+        1501.7685546875
+      ],
+      "reference_bounds": [
+        2513470.535,
+        1167788.764,
+        2551073.929,
+        1198584.09
+      ],
+      "transform": [
+        19.22132825368674,
+        0,
+        0,
+        -19.223029430800985,
+        2516864.3054624987,
+        1196657.3051250093
+      ],
+      "scale_bar_m_per_point": 19.37488673395569,
+      "boundary_to_reference_rmse": 1.6692236422433622,
+      "boundary_to_reference_max": 31.71419303306734,
+      "symmetric_hausdorff_m": 31.714193032957443,
+      "symmetric_difference_m2": 29379.05562285226,
+      "reference_area_m2": 577805524.9671732,
+      "accepted": false,
+      "method": "bounding-box fit; not independently identified controls; diagnostic only"
+    },
+    "independent_shape_holdout": {
+      "kind": "land_parcel_union",
+      "bfs": 5929,
+      "iou": 0.9888602411643365,
+      "hausdorff_m": 0.6298800656226445,
+      "parcels": [
+        {
+          "egrid": "CH769883459122",
+          "bfs": 5929,
+          "number": "421",
+          "coverage_fraction": 0.9986010867357757,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH544583968878",
+          "bfs": 5929,
+          "number": "668",
+          "coverage_fraction": 1.0,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH598396904546",
+          "bfs": 5929,
+          "number": "670",
+          "coverage_fraction": 1.0,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH150883004508",
+          "bfs": 5929,
+          "number": "679",
+          "coverage_fraction": 0.9998847808425025,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH538396458842",
+          "bfs": 5929,
+          "number": "669",
+          "coverage_fraction": 0.9997340445894449,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH160083450845",
+          "bfs": 5929,
+          "number": "680",
+          "coverage_fraction": 1.0,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH558883964543",
+          "bfs": 5929,
+          "number": "667",
+          "coverage_fraction": 1.0,
+          "kind": "parcelle priv\u00e9e"
+        }
+      ],
+      "partial_land_parcels": []
+    },
+    "holdout_extent": "Entire source/reference union boundaries, symmetric Hausdorff; not sampled proximity alone.",
+    "acceptance": "Private indicative outline: complete LAND union IoU>0.98 and symmetric Hausdorff<5m, no residual partial land parcel above2%; source code/intentions reviewed.",
+    "source_path_index": 10361,
+    "reference_held_out_of_fit": true,
+    "consistent_control_rmse_m": 0.3085483142683653,
+    "maximum_consistent_control_error_m": 0.6298800656226445,
+    "geographic_match_limit": "A geometric cadastral match verifies placement, not proof the PDCom grants rights on that EGRID. Source scale/generalization and legal precision unresolved."
+  },
+  "4": {
+    "source_semantics": {
+      "label": "ZAL 4 \u2014 Vallorbe",
+      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "intention": [
+        "No intention symbol shown; not proof of absence of change"
+      ],
+      "vocation": "not established by blue category fill",
+      "asterisk": "No poor-accessibility asterisk shown for this code",
+      "source_status": "April2026 consultation synthesis, approval not verified",
+      "availability": "not inferred; whole zone is not a reserve or vacant parcel",
+      "source_code_evidence": "Visually reviewed native outline and leader in 10399-outlined.png",
+      "intention_scope": "Indicative site-level symbol, no geometry for destination or affected subarea inferred",
+      "coverage_extent": "Selected native category outline; no whole-commune coverage claim"
+    },
+    "alignment_method": "Regional boundary bounds fit held fixed; complete independent union of unmodified current LAND parcel shapes is the holdout. No clipping, snapping, refitting or membership optimization.",
+    "regional_fit": {
+      "source_boundary_points": 5455,
+      "source_bounds": [
+        -176.562744140625,
+        -100.233154296875,
+        1779.774169921875,
+        1501.7685546875
+      ],
+      "reference_bounds": [
+        2513470.535,
+        1167788.764,
+        2551073.929,
+        1198584.09
+      ],
+      "transform": [
+        19.22132825368674,
+        0,
+        0,
+        -19.223029430800985,
+        2516864.3054624987,
+        1196657.3051250093
+      ],
+      "scale_bar_m_per_point": 19.37488673395569,
+      "boundary_to_reference_rmse": 1.6692236422433622,
+      "boundary_to_reference_max": 31.71419303306734,
+      "symmetric_hausdorff_m": 31.714193032957443,
+      "symmetric_difference_m2": 29379.05562285226,
+      "reference_area_m2": 577805524.9671732,
+      "accepted": false,
+      "method": "bounding-box fit; not independently identified controls; diagnostic only"
+    },
+    "independent_shape_holdout": {
+      "kind": "land_parcel_union",
+      "bfs": 5764,
+      "iou": 0.981208246662634,
+      "hausdorff_m": 0.9170347591372169,
+      "parcels": [
+        {
+          "egrid": "CH255283094520",
+          "bfs": 5764,
+          "number": "1755",
+          "coverage_fraction": 0.999993119350246,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH544583826645",
+          "bfs": 5764,
+          "number": "1290",
+          "coverage_fraction": 0.9997410998153315,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH298383964553",
+          "bfs": 5764,
+          "number": "1512",
+          "coverage_fraction": 0.9999876058732539,
+          "kind": "parcelle priv\u00e9e"
+        }
+      ],
+      "partial_land_parcels": []
+    },
+    "holdout_extent": "Entire source/reference union boundaries, symmetric Hausdorff; not sampled proximity alone.",
+    "acceptance": "Private indicative outline: complete LAND union IoU>0.98 and symmetric Hausdorff<5m, no residual partial land parcel above2%; source code/intentions reviewed.",
+    "source_path_index": 10399,
+    "reference_held_out_of_fit": true,
+    "consistent_control_rmse_m": 0.4342357382400064,
+    "maximum_consistent_control_error_m": 0.9170347591372169,
+    "geographic_match_limit": "A geometric cadastral match verifies placement, not proof the PDCom grants rights on that EGRID. Source scale/generalization and legal precision unresolved."
+  },
+  "6": {
+    "source_semantics": {
+      "label": "ZAL 6 \u2014 Baulmes",
+      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "intention": [
+        "No intention symbol shown; not proof of absence of change"
+      ],
+      "vocation": "not established by blue category fill",
+      "asterisk": "No poor-accessibility asterisk shown for this code",
+      "source_status": "April2026 consultation synthesis, approval not verified",
+      "availability": "not inferred; whole zone is not a reserve or vacant parcel",
+      "source_code_evidence": "Visually reviewed native outline and leader in 10403-outlined.png",
+      "intention_scope": "Indicative site-level symbol, no geometry for destination or affected subarea inferred",
+      "coverage_extent": "Selected native category outline; no whole-commune coverage claim"
+    },
+    "alignment_method": "Regional boundary bounds fit held fixed; complete independent union of unmodified current LAND parcel shapes is the holdout. No clipping, snapping, refitting or membership optimization.",
+    "regional_fit": {
+      "source_boundary_points": 5455,
+      "source_bounds": [
+        -176.562744140625,
+        -100.233154296875,
+        1779.774169921875,
+        1501.7685546875
+      ],
+      "reference_bounds": [
+        2513470.535,
+        1167788.764,
+        2551073.929,
+        1198584.09
+      ],
+      "transform": [
+        19.22132825368674,
+        0,
+        0,
+        -19.223029430800985,
+        2516864.3054624987,
+        1196657.3051250093
+      ],
+      "scale_bar_m_per_point": 19.37488673395569,
+      "boundary_to_reference_rmse": 1.6692236422433622,
+      "boundary_to_reference_max": 31.71419303306734,
+      "symmetric_hausdorff_m": 31.714193032957443,
+      "symmetric_difference_m2": 29379.05562285226,
+      "reference_area_m2": 577805524.9671732,
+      "accepted": false,
+      "method": "bounding-box fit; not independently identified controls; diagnostic only"
+    },
+    "independent_shape_holdout": {
+      "kind": "land_parcel_union",
+      "bfs": 5745,
+      "iou": 0.9911008709935499,
+      "hausdorff_m": 2.395615503454199,
+      "parcels": [
+        {
+          "egrid": "CH274582298355",
+          "bfs": 5745,
+          "number": "567",
+          "coverage_fraction": 0.9999924218672128,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH274583988333",
+          "bfs": 5745,
+          "number": "564",
+          "coverage_fraction": 1.0,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH283183458205",
+          "bfs": 5745,
+          "number": "566",
+          "coverage_fraction": 1.0,
+          "kind": "parcelle priv\u00e9e"
+        }
+      ],
+      "partial_land_parcels": []
+    },
+    "holdout_extent": "Entire source/reference union boundaries, symmetric Hausdorff; not sampled proximity alone.",
+    "acceptance": "Private indicative outline: complete LAND union IoU>0.98 and symmetric Hausdorff<5m, no residual partial land parcel above2%; source code/intentions reviewed.",
+    "source_path_index": 10403,
+    "reference_held_out_of_fit": true,
+    "consistent_control_rmse_m": 0.4131374516059801,
+    "maximum_consistent_control_error_m": 2.395615503454199,
+    "geographic_match_limit": "A geometric cadastral match verifies placement, not proof the PDCom grants rights on that EGRID. Source scale/generalization and legal precision unresolved."
+  },
+  "9": {
+    "source_semantics": {
+      "label": "ZAL 9 \u2014 Baulmes",
+      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "intention": [
+        "No intention symbol shown; not proof of absence of change"
+      ],
+      "vocation": "not established by blue category fill",
+      "asterisk": "No poor-accessibility asterisk shown for this code",
+      "source_status": "April2026 consultation synthesis, approval not verified",
+      "availability": "not inferred; whole zone is not a reserve or vacant parcel",
+      "source_code_evidence": "Visually reviewed native outline and leader in 10405-outlined.png",
+      "intention_scope": "Indicative site-level symbol, no geometry for destination or affected subarea inferred",
+      "coverage_extent": "Selected native category outline; no whole-commune coverage claim"
+    },
+    "alignment_method": "Regional boundary bounds fit held fixed; complete independent union of unmodified current LAND parcel shapes is the holdout. No clipping, snapping, refitting or membership optimization.",
+    "regional_fit": {
+      "source_boundary_points": 5455,
+      "source_bounds": [
+        -176.562744140625,
+        -100.233154296875,
+        1779.774169921875,
+        1501.7685546875
+      ],
+      "reference_bounds": [
+        2513470.535,
+        1167788.764,
+        2551073.929,
+        1198584.09
+      ],
+      "transform": [
+        19.22132825368674,
+        0,
+        0,
+        -19.223029430800985,
+        2516864.3054624987,
+        1196657.3051250093
+      ],
+      "scale_bar_m_per_point": 19.37488673395569,
+      "boundary_to_reference_rmse": 1.6692236422433622,
+      "boundary_to_reference_max": 31.71419303306734,
+      "symmetric_hausdorff_m": 31.714193032957443,
+      "symmetric_difference_m2": 29379.05562285226,
+      "reference_area_m2": 577805524.9671732,
+      "accepted": false,
+      "method": "bounding-box fit; not independently identified controls; diagnostic only"
+    },
+    "independent_shape_holdout": {
+      "kind": "land_parcel_union",
+      "bfs": 5745,
+      "iou": 0.9896944542757274,
+      "hausdorff_m": 3.096160792820707,
+      "parcels": [
+        {
+          "egrid": "CH708245208307",
+          "bfs": 5745,
+          "number": "514",
+          "coverage_fraction": 1.0000000000000002,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH444583823513",
+          "bfs": 5745,
+          "number": "515",
+          "coverage_fraction": 1.0,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH414545838263",
+          "bfs": 5745,
+          "number": "507",
+          "coverage_fraction": 1.0,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH889183450801",
+          "bfs": 5745,
+          "number": "1163",
+          "coverage_fraction": 0.9999303181002296,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH298382204596",
+          "bfs": 5745,
+          "number": "519",
+          "coverage_fraction": 0.9997299883006124,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH508345068390",
+          "bfs": 5745,
+          "number": "545",
+          "coverage_fraction": 0.9999697188397402,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH228232834578",
+          "bfs": 5745,
+          "number": "520",
+          "coverage_fraction": 0.9998783743869182,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH168383459842",
+          "bfs": 5745,
+          "number": "521",
+          "coverage_fraction": 0.9819285292667818,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH598383064527",
+          "bfs": 5745,
+          "number": "517",
+          "coverage_fraction": 1.0,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH455083824578",
+          "bfs": 5745,
+          "number": "516",
+          "coverage_fraction": 0.9999862846419054,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH580683458392",
+          "bfs": 5745,
+          "number": "544",
+          "coverage_fraction": 0.999954212347356,
+          "kind": "parcelle priv\u00e9e"
+        }
+      ],
+      "partial_land_parcels": []
+    },
+    "holdout_extent": "Entire source/reference union boundaries, symmetric Hausdorff; not sampled proximity alone.",
+    "acceptance": "Private indicative outline: complete LAND union IoU>0.98 and symmetric Hausdorff<5m, no residual partial land parcel above2%; source code/intentions reviewed.",
+    "source_path_index": 10405,
+    "reference_held_out_of_fit": true,
+    "consistent_control_rmse_m": 0.5362546028694833,
+    "maximum_consistent_control_error_m": 3.096160792820707,
+    "geographic_match_limit": "A geometric cadastral match verifies placement, not proof the PDCom grants rights on that EGRID. Source scale/generalization and legal precision unresolved."
+  },
+  "34": {
+    "source_semantics": {
+      "label": "ZAL 34 \u2014 Orges",
+      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "intention": [
+        "No intention symbol shown; not proof of absence of change"
+      ],
+      "vocation": "not established by blue category fill",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "source_status": "April2026 consultation synthesis, approval not verified",
+      "availability": "not inferred; whole zone is not a reserve or vacant parcel",
+      "source_code_evidence": "Visually reviewed native outline and leader in 10415-outlined.png",
+      "intention_scope": "Indicative site-level symbol, no geometry for destination or affected subarea inferred",
+      "coverage_extent": "Selected native category outline; no whole-commune coverage claim"
+    },
+    "alignment_method": "Regional boundary bounds fit held fixed; complete independent union of unmodified current LAND parcel shapes is the holdout. No clipping, snapping, refitting or membership optimization.",
+    "regional_fit": {
+      "source_boundary_points": 5455,
+      "source_bounds": [
+        -176.562744140625,
+        -100.233154296875,
+        1779.774169921875,
+        1501.7685546875
+      ],
+      "reference_bounds": [
+        2513470.535,
+        1167788.764,
+        2551073.929,
+        1198584.09
+      ],
+      "transform": [
+        19.22132825368674,
+        0,
+        0,
+        -19.223029430800985,
+        2516864.3054624987,
+        1196657.3051250093
+      ],
+      "scale_bar_m_per_point": 19.37488673395569,
+      "boundary_to_reference_rmse": 1.6692236422433622,
+      "boundary_to_reference_max": 31.71419303306734,
+      "symmetric_hausdorff_m": 31.714193032957443,
+      "symmetric_difference_m2": 29379.05562285226,
+      "reference_area_m2": 577805524.9671732,
+      "accepted": false,
+      "method": "bounding-box fit; not independently identified controls; diagnostic only"
+    },
+    "independent_shape_holdout": {
+      "kind": "land_parcel_union",
+      "bfs": 5924,
+      "iou": 0.9934614365440159,
+      "hausdorff_m": 1.8315813015990918,
+      "parcels": [
+        {
+          "egrid": "CH598398874537",
+          "bfs": 5924,
+          "number": "562",
+          "coverage_fraction": 1.0,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH588783459824",
+          "bfs": 5924,
+          "number": "330",
+          "coverage_fraction": 0.9999065076532831,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH514587839823",
+          "bfs": 5924,
+          "number": "565",
+          "coverage_fraction": 0.9999999999999999,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH529887834519",
+          "bfs": 5924,
+          "number": "563",
+          "coverage_fraction": 0.9998756358881496,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH709745568376",
+          "bfs": 5924,
+          "number": "333",
+          "coverage_fraction": 0.9999433833821446,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH469883458731",
+          "bfs": 5924,
+          "number": "601",
+          "coverage_fraction": 1.0,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH458783984501",
+          "bfs": 5924,
+          "number": "559",
+          "coverage_fraction": 1.0,
+          "kind": "parcelle priv\u00e9e"
+        }
+      ],
+      "partial_land_parcels": []
+    },
+    "holdout_extent": "Entire source/reference union boundaries, symmetric Hausdorff; not sampled proximity alone.",
+    "acceptance": "Private indicative outline: complete LAND union IoU>0.98 and symmetric Hausdorff<5m, no residual partial land parcel above2%; source code/intentions reviewed.",
+    "source_path_index": 10415,
+    "reference_held_out_of_fit": true,
+    "consistent_control_rmse_m": 0.40178092242637264,
+    "maximum_consistent_control_error_m": 1.8315813015990918,
+    "geographic_match_limit": "A geometric cadastral match verifies placement, not proof the PDCom grants rights on that EGRID. Source scale/generalization and legal precision unresolved."
+  },
+  "70": {
+    "source_semantics": {
+      "label": "ZAL 70 \u2014 Ch\u00eane-P\u00e2quier",
+      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "intention": [
+        "No intention symbol shown; not proof of absence of change"
+      ],
+      "vocation": "not established by blue category fill",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "source_status": "April2026 consultation synthesis, approval not verified",
+      "availability": "not inferred; whole zone is not a reserve or vacant parcel",
+      "source_code_evidence": "Visually reviewed native outline and leader in 10419-outlined.png",
+      "intention_scope": "Indicative site-level symbol, no geometry for destination or affected subarea inferred",
+      "coverage_extent": "Selected native category outline; no whole-commune coverage claim"
+    },
+    "alignment_method": "Regional boundary bounds fit held fixed; complete independent union of unmodified current LAND parcel shapes is the holdout. No clipping, snapping, refitting or membership optimization.",
+    "regional_fit": {
+      "source_boundary_points": 5455,
+      "source_bounds": [
+        -176.562744140625,
+        -100.233154296875,
+        1779.774169921875,
+        1501.7685546875
+      ],
+      "reference_bounds": [
+        2513470.535,
+        1167788.764,
+        2551073.929,
+        1198584.09
+      ],
+      "transform": [
+        19.22132825368674,
+        0,
+        0,
+        -19.223029430800985,
+        2516864.3054624987,
+        1196657.3051250093
+      ],
+      "scale_bar_m_per_point": 19.37488673395569,
+      "boundary_to_reference_rmse": 1.6692236422433622,
+      "boundary_to_reference_max": 31.71419303306734,
+      "symmetric_hausdorff_m": 31.714193032957443,
+      "symmetric_difference_m2": 29379.05562285226,
+      "reference_area_m2": 577805524.9671732,
+      "accepted": false,
+      "method": "bounding-box fit; not independently identified controls; diagnostic only"
+    },
+    "independent_shape_holdout": {
+      "kind": "land_parcel_union",
+      "bfs": 5908,
+      "iou": 0.9898250748514958,
+      "hausdorff_m": 2.735352698720387,
+      "parcels": [
+        {
+          "egrid": "CH544583948389",
+          "bfs": 5908,
+          "number": "438",
+          "coverage_fraction": 0.999999884647157,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH109745588380",
+          "bfs": 5908,
+          "number": "305",
+          "coverage_fraction": 0.9999919185459533,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH969883459250",
+          "bfs": 5908,
+          "number": "301",
+          "coverage_fraction": 0.9998690938566045,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH674598758325",
+          "bfs": 5908,
+          "number": "302",
+          "coverage_fraction": 0.9998928409189566,
+          "kind": "parcelle priv\u00e9e"
+        }
+      ],
+      "partial_land_parcels": []
+    },
+    "holdout_extent": "Entire source/reference union boundaries, symmetric Hausdorff; not sampled proximity alone.",
+    "acceptance": "Private indicative outline: complete LAND union IoU>0.98 and symmetric Hausdorff<5m, no residual partial land parcel above2%; source code/intentions reviewed.",
+    "source_path_index": 10419,
+    "reference_held_out_of_fit": true,
+    "consistent_control_rmse_m": 0.44574877639905175,
+    "maximum_consistent_control_error_m": 2.735352698720387,
+    "geographic_match_limit": "A geometric cadastral match verifies placement, not proof the PDCom grants rights on that EGRID. Source scale/generalization and legal precision unresolved."
+  },
+  "71": {
+    "source_semantics": {
+      "label": "ZAL 71 \u2014 Bofflens",
+      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "intention": [
+        "dezoning"
+      ],
+      "vocation": "not established by blue category fill",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "source_status": "April2026 consultation synthesis, approval not verified",
+      "availability": "not inferred; whole zone is not a reserve or vacant parcel",
+      "source_code_evidence": "Visually reviewed native outline and leader in 10429-outlined.png",
+      "intention_scope": "Indicative site-level symbol, no geometry for destination or affected subarea inferred",
+      "coverage_extent": "Selected native category outline; no whole-commune coverage claim"
+    },
+    "alignment_method": "Regional boundary bounds fit held fixed; complete independent union of unmodified current LAND parcel shapes is the holdout. No clipping, snapping, refitting or membership optimization.",
+    "regional_fit": {
+      "source_boundary_points": 5455,
+      "source_bounds": [
+        -176.562744140625,
+        -100.233154296875,
+        1779.774169921875,
+        1501.7685546875
+      ],
+      "reference_bounds": [
+        2513470.535,
+        1167788.764,
+        2551073.929,
+        1198584.09
+      ],
+      "transform": [
+        19.22132825368674,
+        0,
+        0,
+        -19.223029430800985,
+        2516864.3054624987,
+        1196657.3051250093
+      ],
+      "scale_bar_m_per_point": 19.37488673395569,
+      "boundary_to_reference_rmse": 1.6692236422433622,
+      "boundary_to_reference_max": 31.71419303306734,
+      "symmetric_hausdorff_m": 31.714193032957443,
+      "symmetric_difference_m2": 29379.05562285226,
+      "reference_area_m2": 577805524.9671732,
+      "accepted": false,
+      "method": "bounding-box fit; not independently identified controls; diagnostic only"
+    },
+    "independent_shape_holdout": {
+      "kind": "land_parcel_union",
+      "bfs": 5747,
+      "iou": 0.9825603579002362,
+      "hausdorff_m": 1.0172436099218445,
+      "parcels": [
+        {
+          "egrid": "CH438382454056",
+          "bfs": 5747,
+          "number": "138",
+          "coverage_fraction": 0.9999893243350227,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH138383458012",
+          "bfs": 5747,
+          "number": "137",
+          "coverage_fraction": 0.9998429563479081,
+          "kind": "parcelle priv\u00e9e"
+        }
+      ],
+      "partial_land_parcels": []
+    },
+    "holdout_extent": "Entire source/reference union boundaries, symmetric Hausdorff; not sampled proximity alone.",
+    "acceptance": "Private indicative outline: complete LAND union IoU>0.98 and symmetric Hausdorff<5m, no residual partial land parcel above2%; source code/intentions reviewed.",
+    "source_path_index": 10429,
+    "reference_held_out_of_fit": true,
+    "consistent_control_rmse_m": 0.4487935492479086,
+    "maximum_consistent_control_error_m": 1.0172436099218445,
+    "geographic_match_limit": "A geometric cadastral match verifies placement, not proof the PDCom grants rights on that EGRID. Source scale/generalization and legal precision unresolved."
+  },
+  "74": {
+    "source_semantics": {
+      "label": "ZAL 74 \u2014 Grandson",
+      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "intention": [
+        "reconversion_out_of_activity"
+      ],
+      "vocation": "not established by blue category fill",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "source_status": "April2026 consultation synthesis, approval not verified",
+      "availability": "not inferred; whole zone is not a reserve or vacant parcel",
+      "source_code_evidence": "Visually reviewed native outline and leader in 10433-outlined.png",
+      "intention_scope": "Indicative site-level symbol, no geometry for destination or affected subarea inferred",
+      "coverage_extent": "Selected native category outline; no whole-commune coverage claim"
+    },
+    "alignment_method": "Regional boundary bounds fit held fixed; complete independent union of unmodified current LAND parcel shapes is the holdout. No clipping, snapping, refitting or membership optimization.",
+    "regional_fit": {
+      "source_boundary_points": 5455,
+      "source_bounds": [
+        -176.562744140625,
+        -100.233154296875,
+        1779.774169921875,
+        1501.7685546875
+      ],
+      "reference_bounds": [
+        2513470.535,
+        1167788.764,
+        2551073.929,
+        1198584.09
+      ],
+      "transform": [
+        19.22132825368674,
+        0,
+        0,
+        -19.223029430800985,
+        2516864.3054624987,
+        1196657.3051250093
+      ],
+      "scale_bar_m_per_point": 19.37488673395569,
+      "boundary_to_reference_rmse": 1.6692236422433622,
+      "boundary_to_reference_max": 31.71419303306734,
+      "symmetric_hausdorff_m": 31.714193032957443,
+      "symmetric_difference_m2": 29379.05562285226,
+      "reference_area_m2": 577805524.9671732,
+      "accepted": false,
+      "method": "bounding-box fit; not independently identified controls; diagnostic only"
+    },
+    "independent_shape_holdout": {
+      "kind": "land_parcel_union",
+      "bfs": 5561,
+      "iou": 0.988809448997556,
+      "hausdorff_m": 1.5313665824603693,
+      "parcels": [
+        {
+          "egrid": "CH545736779929",
+          "bfs": 5561,
+          "number": "2017",
+          "coverage_fraction": 1.0,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH707757993638",
+          "bfs": 5561,
+          "number": "1974",
+          "coverage_fraction": 1.0000000000000002,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH453436775763",
+          "bfs": 5561,
+          "number": "794",
+          "coverage_fraction": 0.9780330441195383,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH433677573479",
+          "bfs": 5561,
+          "number": "1551",
+          "coverage_fraction": 0.9962403956208163,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH593677345790",
+          "bfs": 5561,
+          "number": "2019",
+          "coverage_fraction": 1.0,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH559936775720",
+          "bfs": 5561,
+          "number": "2018",
+          "coverage_fraction": 0.9999999999999999,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH527799365725",
+          "bfs": 5561,
+          "number": "2016",
+          "coverage_fraction": 1.0000000000000002,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH575777343694",
+          "bfs": 5561,
+          "number": "795",
+          "coverage_fraction": 0.9891531912044037,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH567483459555",
+          "bfs": 5561,
+          "number": "1386",
+          "coverage_fraction": 0.7458352621889709,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH515799367744",
+          "bfs": 5561,
+          "number": "2020",
+          "coverage_fraction": 1.0,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH467736573468",
+          "bfs": 5561,
+          "number": "1244",
+          "coverage_fraction": 0.9899774042316636,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH533677579977",
+          "bfs": 5561,
+          "number": "792",
+          "coverage_fraction": 0.9999999999999998,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH583436577720",
+          "bfs": 5561,
+          "number": "1241",
+          "coverage_fraction": 0.99999901207882,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH793677995721",
+          "bfs": 5561,
+          "number": "2006",
+          "coverage_fraction": 0.9999994784355046,
+          "kind": "parcelle priv\u00e9e"
+        }
+      ],
+      "partial_land_parcels": []
+    },
+    "holdout_extent": "Entire source/reference union boundaries, symmetric Hausdorff; not sampled proximity alone.",
+    "acceptance": "Private indicative outline: complete LAND union IoU>0.98 and symmetric Hausdorff<5m, no residual partial land parcel above2%; source code/intentions reviewed.",
+    "source_path_index": 10433,
+    "reference_held_out_of_fit": true,
+    "consistent_control_rmse_m": 0.46522120703493036,
+    "maximum_consistent_control_error_m": 1.5313665824603693,
+    "geographic_match_limit": "A geometric cadastral match verifies placement, not proof the PDCom grants rights on that EGRID. Source scale/generalization and legal precision unresolved."
+  },
+  "77": {
+    "source_semantics": {
+      "label": "ZAL 77 \u2014 Concise",
+      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "intention": [
+        "No intention symbol shown; not proof of absence of change"
+      ],
+      "vocation": "not established by blue category fill",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "source_status": "April2026 consultation synthesis, approval not verified",
+      "availability": "not inferred; whole zone is not a reserve or vacant parcel",
+      "source_code_evidence": "Visually reviewed native outline and leader in 10447-outlined.png",
+      "intention_scope": "Indicative site-level symbol, no geometry for destination or affected subarea inferred",
+      "coverage_extent": "Selected native category outline; no whole-commune coverage claim"
+    },
+    "alignment_method": "Regional boundary bounds fit held fixed; complete independent union of unmodified current LAND parcel shapes is the holdout. No clipping, snapping, refitting or membership optimization.",
+    "regional_fit": {
+      "source_boundary_points": 5455,
+      "source_bounds": [
+        -176.562744140625,
+        -100.233154296875,
+        1779.774169921875,
+        1501.7685546875
+      ],
+      "reference_bounds": [
+        2513470.535,
+        1167788.764,
+        2551073.929,
+        1198584.09
+      ],
+      "transform": [
+        19.22132825368674,
+        0,
+        0,
+        -19.223029430800985,
+        2516864.3054624987,
+        1196657.3051250093
+      ],
+      "scale_bar_m_per_point": 19.37488673395569,
+      "boundary_to_reference_rmse": 1.6692236422433622,
+      "boundary_to_reference_max": 31.71419303306734,
+      "symmetric_hausdorff_m": 31.714193032957443,
+      "symmetric_difference_m2": 29379.05562285226,
+      "reference_area_m2": 577805524.9671732,
+      "accepted": false,
+      "method": "bounding-box fit; not independently identified controls; diagnostic only"
+    },
+    "independent_shape_holdout": {
+      "kind": "land_parcel_union",
+      "bfs": 5554,
+      "iou": 0.9924744233221546,
+      "hausdorff_m": 0.5442922816443153,
+      "parcels": [
+        {
+          "egrid": "CH409445468395",
+          "bfs": 5554,
+          "number": "1644",
+          "coverage_fraction": 0.9999725150429593,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH444583961192",
+          "bfs": 5554,
+          "number": "1967",
+          "coverage_fraction": 0.9999992243881103,
+          "kind": "parcelle priv\u00e9e"
+        }
+      ],
+      "partial_land_parcels": []
+    },
+    "holdout_extent": "Entire source/reference union boundaries, symmetric Hausdorff; not sampled proximity alone.",
+    "acceptance": "Private indicative outline: complete LAND union IoU>0.98 and symmetric Hausdorff<5m, no residual partial land parcel above2%; source code/intentions reviewed.",
+    "source_path_index": 10447,
+    "reference_held_out_of_fit": true,
+    "consistent_control_rmse_m": 0.2524009391069623,
+    "maximum_consistent_control_error_m": 0.5442922816443153,
+    "geographic_match_limit": "A geometric cadastral match verifies placement, not proof the PDCom grants rights on that EGRID. Source scale/generalization and legal precision unresolved."
+  },
+  "82": {
+    "source_semantics": {
+      "label": "ZAL 82 \u2014 Vuiteboeuf",
+      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "intention": [
+        "reconversion_into_activity"
+      ],
+      "vocation": "not established by blue category fill",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "source_status": "April2026 consultation synthesis, approval not verified",
+      "availability": "not inferred; whole zone is not a reserve or vacant parcel",
+      "source_code_evidence": "Visually reviewed native outline and leader in 10481-outlined.png",
+      "intention_scope": "Indicative site-level symbol, no geometry for destination or affected subarea inferred",
+      "coverage_extent": "Selected native category outline; no whole-commune coverage claim"
+    },
+    "alignment_method": "Regional boundary bounds fit held fixed; complete independent union of unmodified current LAND parcel shapes is the holdout. No clipping, snapping, refitting or membership optimization.",
+    "regional_fit": {
+      "source_boundary_points": 5455,
+      "source_bounds": [
+        -176.562744140625,
+        -100.233154296875,
+        1779.774169921875,
+        1501.7685546875
+      ],
+      "reference_bounds": [
+        2513470.535,
+        1167788.764,
+        2551073.929,
+        1198584.09
+      ],
+      "transform": [
+        19.22132825368674,
+        0,
+        0,
+        -19.223029430800985,
+        2516864.3054624987,
+        1196657.3051250093
+      ],
+      "scale_bar_m_per_point": 19.37488673395569,
+      "boundary_to_reference_rmse": 1.6692236422433622,
+      "boundary_to_reference_max": 31.71419303306734,
+      "symmetric_hausdorff_m": 31.714193032957443,
+      "symmetric_difference_m2": 29379.05562285226,
+      "reference_area_m2": 577805524.9671732,
+      "accepted": false,
+      "method": "bounding-box fit; not independently identified controls; diagnostic only"
+    },
+    "independent_shape_holdout": {
+      "kind": "land_parcel_union",
+      "bfs": 5766,
+      "iou": 0.9947941105549183,
+      "hausdorff_m": 1.9042495484466468,
+      "parcels": [
+        {
+          "egrid": "CH314511838314",
+          "bfs": 5766,
+          "number": "276",
+          "coverage_fraction": 0.9999972382738118,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH744583824595",
+          "bfs": 5766,
+          "number": "275",
+          "coverage_fraction": 1.0,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH351183834595",
+          "bfs": 5766,
+          "number": "279",
+          "coverage_fraction": 1.0000000000000002,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH768283454515",
+          "bfs": 5766,
+          "number": "277",
+          "coverage_fraction": 1.0,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH474583928380",
+          "bfs": 5766,
+          "number": "270",
+          "coverage_fraction": 0.999995787264525,
+          "kind": "parcelle priv\u00e9e"
+        }
+      ],
+      "partial_land_parcels": []
+    },
+    "holdout_extent": "Entire source/reference union boundaries, symmetric Hausdorff; not sampled proximity alone.",
+    "acceptance": "Private indicative outline: complete LAND union IoU>0.98 and symmetric Hausdorff<5m, no residual partial land parcel above2%; source code/intentions reviewed.",
+    "source_path_index": 10481,
+    "reference_held_out_of_fit": true,
+    "consistent_control_rmse_m": 0.388199250229342,
+    "maximum_consistent_control_error_m": 1.9042495484466468,
+    "geographic_match_limit": "A geometric cadastral match verifies placement, not proof the PDCom grants rights on that EGRID. Source scale/generalization and legal precision unresolved."
+  },
+  "51": {
+    "source_semantics": {
+      "label": "ZAL 51 \u2014 Giez",
+      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "intention": [
+        "No intention symbol shown; not proof of absence of change"
+      ],
+      "vocation": "not established by blue category fill",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "source_status": "April2026 consultation synthesis, approval not verified",
+      "availability": "not inferred; whole zone is not a reserve or vacant parcel",
+      "source_code_evidence": "Visually reviewed native outline and leader in 10545-outlined.png",
+      "intention_scope": "Indicative site-level symbol, no geometry for destination or affected subarea inferred",
+      "coverage_extent": "Selected native category outline; no whole-commune coverage claim"
+    },
+    "alignment_method": "Regional boundary bounds fit held fixed; complete independent union of unmodified current LAND parcel shapes is the holdout. No clipping, snapping, refitting or membership optimization.",
+    "regional_fit": {
+      "source_boundary_points": 5455,
+      "source_bounds": [
+        -176.562744140625,
+        -100.233154296875,
+        1779.774169921875,
+        1501.7685546875
+      ],
+      "reference_bounds": [
+        2513470.535,
+        1167788.764,
+        2551073.929,
+        1198584.09
+      ],
+      "transform": [
+        19.22132825368674,
+        0,
+        0,
+        -19.223029430800985,
+        2516864.3054624987,
+        1196657.3051250093
+      ],
+      "scale_bar_m_per_point": 19.37488673395569,
+      "boundary_to_reference_rmse": 1.6692236422433622,
+      "boundary_to_reference_max": 31.71419303306734,
+      "symmetric_hausdorff_m": 31.714193032957443,
+      "symmetric_difference_m2": 29379.05562285226,
+      "reference_area_m2": 577805524.9671732,
+      "accepted": false,
+      "method": "bounding-box fit; not independently identified controls; diagnostic only"
+    },
+    "independent_shape_holdout": {
+      "kind": "land_parcel_union",
+      "bfs": 5559,
+      "iou": 0.9908946055502869,
+      "hausdorff_m": 0.7376260997273042,
+      "parcels": [
+        {
+          "egrid": "CH974574958379",
+          "bfs": 5559,
+          "number": "401",
+          "coverage_fraction": 0.9999995256737844,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH867483459550",
+          "bfs": 5559,
+          "number": "142",
+          "coverage_fraction": 0.9999573213586352,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH114504837358",
+          "bfs": 5559,
+          "number": "415",
+          "coverage_fraction": 1.0,
+          "kind": "parcelle priv\u00e9e"
+        }
+      ],
+      "partial_land_parcels": []
+    },
+    "holdout_extent": "Entire source/reference union boundaries, symmetric Hausdorff; not sampled proximity alone.",
+    "acceptance": "Private indicative outline: complete LAND union IoU>0.98 and symmetric Hausdorff<5m, no residual partial land parcel above2%; source code/intentions reviewed.",
+    "source_path_index": 10545,
+    "reference_held_out_of_fit": true,
+    "consistent_control_rmse_m": 0.26011583460752746,
+    "maximum_consistent_control_error_m": 0.7376260997273042,
+    "geographic_match_limit": "A geometric cadastral match verifies placement, not proof the PDCom grants rights on that EGRID. Source scale/generalization and legal precision unresolved."
+  },
+  "99": {
+    "source_semantics": {
+      "label": "ZAL 99 \u2014 Susc\u00e9vaz (partie orientale cartographi\u00e9e)",
+      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "intention": [
+        "reconversion_out_of_activity",
+        "dezoning"
+      ],
+      "vocation": "not established by blue category fill",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "source_status": "April2026 consultation synthesis, approval not verified",
+      "availability": "not inferred; whole zone is not a reserve or vacant parcel",
+      "source_code_evidence": "Visually reviewed native outline and leader in 10549-outlined.png",
+      "intention_scope": "Indicative site-level symbol, no geometry for destination or affected subarea inferred",
+      "coverage_extent": "Only eastern native fragment10549; western fragment10551 remains held and is not delivered."
+    },
+    "alignment_method": "Regional boundary bounds fit held fixed; complete independent union of unmodified current LAND parcel shapes is the holdout. No clipping, snapping, refitting or membership optimization.",
+    "regional_fit": {
+      "source_boundary_points": 5455,
+      "source_bounds": [
+        -176.562744140625,
+        -100.233154296875,
+        1779.774169921875,
+        1501.7685546875
+      ],
+      "reference_bounds": [
+        2513470.535,
+        1167788.764,
+        2551073.929,
+        1198584.09
+      ],
+      "transform": [
+        19.22132825368674,
+        0,
+        0,
+        -19.223029430800985,
+        2516864.3054624987,
+        1196657.3051250093
+      ],
+      "scale_bar_m_per_point": 19.37488673395569,
+      "boundary_to_reference_rmse": 1.6692236422433622,
+      "boundary_to_reference_max": 31.71419303306734,
+      "symmetric_hausdorff_m": 31.714193032957443,
+      "symmetric_difference_m2": 29379.05562285226,
+      "reference_area_m2": 577805524.9671732,
+      "accepted": false,
+      "method": "bounding-box fit; not independently identified controls; diagnostic only"
+    },
+    "independent_shape_holdout": {
+      "kind": "land_parcel_union",
+      "bfs": 5930,
+      "iou": 0.9904959781328597,
+      "hausdorff_m": 0.5995483891325879,
+      "parcels": [
+        {
+          "egrid": "CH638397459292",
+          "bfs": 5930,
+          "number": "490",
+          "coverage_fraction": 0.9994075144438498,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH381383459754",
+          "bfs": 5930,
+          "number": "493",
+          "coverage_fraction": 0.999116271089446,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH338397452270",
+          "bfs": 5930,
+          "number": "491",
+          "coverage_fraction": 0.9993615184453495,
+          "kind": "parcelle priv\u00e9e"
+        },
+        {
+          "egrid": "CH744583979696",
+          "bfs": 5930,
+          "number": "492",
+          "coverage_fraction": 0.9998720104526174,
+          "kind": "parcelle priv\u00e9e"
+        }
+      ],
+      "partial_land_parcels": []
+    },
+    "holdout_extent": "Entire source/reference union boundaries, symmetric Hausdorff; not sampled proximity alone.",
+    "acceptance": "Private indicative outline: complete LAND union IoU>0.98 and symmetric Hausdorff<5m, no residual partial land parcel above2%; source code/intentions reviewed.",
+    "source_path_index": 10549,
+    "reference_held_out_of_fit": true,
+    "consistent_control_rmse_m": 0.34514332184227503,
+    "maximum_consistent_control_error_m": 0.5995483891325879,
+    "geographic_match_limit": "A geometric cadastral match verifies placement, not proof the PDCom grants rights on that EGRID. Source scale/generalization and legal precision unresolved."
   }
 }

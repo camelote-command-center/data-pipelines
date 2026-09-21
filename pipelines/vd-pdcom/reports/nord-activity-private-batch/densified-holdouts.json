@@ -1,0 +1,121 @@
+[
+  {
+    "site_code": "47",
+    "densified_symmetric_hausdorff_m": 0.5787160966727715,
+    "densify_fraction": 0.05,
+    "threshold_m": 5,
+    "passed": true
+  },
+  {
+    "site_code": "85",
+    "densified_symmetric_hausdorff_m": 1.7074144104537543,
+    "densify_fraction": 0.05,
+    "threshold_m": 5,
+    "passed": true
+  },
+  {
+    "site_code": "103",
+    "densified_symmetric_hausdorff_m": 0.053738224872445055,
+    "densify_fraction": 0.05,
+    "threshold_m": 5,
+    "passed": true
+  },
+  {
+    "site_code": "12",
+    "densified_symmetric_hausdorff_m": 0.6253323452028703,
+    "densify_fraction": 0.05,
+    "threshold_m": 5,
+    "passed": true
+  },
+  {
+    "site_code": "16",
+    "densified_symmetric_hausdorff_m": 0.6143116173207733,
+    "densify_fraction": 0.05,
+    "threshold_m": 5,
+    "passed": true
+  },
+  {
+    "site_code": "15",
+    "densified_symmetric_hausdorff_m": 0.6298800656226445,
+    "densify_fraction": 0.05,
+    "threshold_m": 5,
+    "passed": true
+  },
+  {
+    "site_code": "4",
+    "densified_symmetric_hausdorff_m": 0.9170347591372169,
+    "densify_fraction": 0.05,
+    "threshold_m": 5,
+    "passed": true
+  },
+  {
+    "site_code": "6",
+    "densified_symmetric_hausdorff_m": 2.395615503454199,
+    "densify_fraction": 0.05,
+    "threshold_m": 5,
+    "passed": true
+  },
+  {
+    "site_code": "9",
+    "densified_symmetric_hausdorff_m": 3.096160792820707,
+    "densify_fraction": 0.05,
+    "threshold_m": 5,
+    "passed": true
+  },
+  {
+    "site_code": "34",
+    "densified_symmetric_hausdorff_m": 1.8315813015990918,
+    "densify_fraction": 0.05,
+    "threshold_m": 5,
+    "passed": true
+  },
+  {
+    "site_code": "70",
+    "densified_symmetric_hausdorff_m": 2.735352698720387,
+    "densify_fraction": 0.05,
+    "threshold_m": 5,
+    "passed": true
+  },
+  {
+    "site_code": "71",
+    "densified_symmetric_hausdorff_m": 1.0172436099218445,
+    "densify_fraction": 0.05,
+    "threshold_m": 5,
+    "passed": true
+  },
+  {
+    "site_code": "74",
+    "densified_symmetric_hausdorff_m": 1.5313665824603693,
+    "densify_fraction": 0.05,
+    "threshold_m": 5,
+    "passed": true
+  },
+  {
+    "site_code": "77",
+    "densified_symmetric_hausdorff_m": 0.5442922816443153,
+    "densify_fraction": 0.05,
+    "threshold_m": 5,
+    "passed": true
+  },
+  {
+    "site_code": "82",
+    "densified_symmetric_hausdorff_m": 1.9042495484466468,
+    "densify_fraction": 0.05,
+    "threshold_m": 5,
+    "passed": true
+  },
+  {
+    "site_code": "51",
+    "densified_symmetric_hausdorff_m": 0.7376260997273042,
+    "densify_fraction": 0.05,
+    "threshold_m": 5,
+    "passed": true
+  },
+  {
+    "site_code": "99",
+    "densified_symmetric_hausdorff_m": 0.5995483891325879,
+    "densify_fraction": 0.05,
+    "threshold_m": 5,
+    "passed": true
+  }
+]
