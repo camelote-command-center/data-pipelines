@@ -1,0 +1,355 @@
+{
+  "document_id": "b25cff77-d023-5d1f-a822-cb5653e3f0d7",
+  "sha256": "df2091785177c0f8c8213765b008398eed48c86f3e650178428d1749e595a049",
+  "page_count": 24,
+  "page_annotations": [
+    {
+      "page_number": 1,
+      "fields": {
+        "source_review": {
+          "observed_at": "2026-09-22",
+          "approval": "unverified; official publication does not establish statutory PDCom adoption",
+          "currentness": "historical strategy, implementation and current parcel rights unverified",
+          "geometry": "No geographic alignment, sector validation or delivery eligibility",
+          "coverage": "Regional source membership only; not complete municipal PDCom coverage",
+          "source_sha256": "df2091785177c0f8c8213765b008398eed48c86f3e650178428d1749e595a049",
+          "official_publication_evidence": "https://www.est-lausannois.ch/publications/",
+          "role": "Published regional planning strategy or named annex, not an adopted municipal PDCom",
+          "membership_evidence": "SDEL technical report PDF1/12 names Belmont, Lausanne-East only, Lutry, Paudex, Pully; landscape report PDF2 confirms same partners.",
+          "version_limits": "SDEL technical report May2011; brochure October2010 describes pre-validation study; landscape complement November2016. Do not treat different publication vintages as a single current plan."
+        },
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 1,
+          "render": "east-4-p1.png",
+          "sha256": "e1561f564b587de9ce093447ccaa6054ff66c37b07e61a7f1d2ca71f4e18dc7b",
+          "geographic_validation": "not_validated",
+          "role": "landscape_diagnostic_or_concept_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 2,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 2,
+          "render": "east-4-p2.png",
+          "sha256": "8c990371ff5341b0658564fa08865e2deb37346b1fe0b21a129e616c5dc2f4ff",
+          "geographic_validation": "not_validated",
+          "role": "landscape_diagnostic_or_concept_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 3,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 3,
+          "render": "east-4-p3.png",
+          "sha256": "7548ab559cdcd6efccbe4833f4b61f4d6198bcfeeb2892cfeb3606d40b822666",
+          "geographic_validation": "not_validated",
+          "role": "landscape_diagnostic_or_concept_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 4,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 4,
+          "render": "east-4-p4.png",
+          "sha256": "a48e0029d7d5b2618ab4693989c03723892ca7de15484b3181f541cc70489b33",
+          "geographic_validation": "not_validated",
+          "role": "landscape_diagnostic_or_concept_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 5,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 5,
+          "render": "east-4-p5.png",
+          "sha256": "05464f7d7339e3d555d58eacc9124fef8959bb7bcd415d2181a3d03608439c91",
+          "geographic_validation": "not_validated",
+          "role": "landscape_diagnostic_or_concept_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 6,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 6,
+          "render": "east-4-p6.png",
+          "sha256": "81b6a29c16ccf1d4ad076e98df50d0f06246d22e8afdb47f7bf06d9064b9cd3d",
+          "geographic_validation": "not_validated",
+          "role": "landscape_diagnostic_or_concept_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 7,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 7,
+          "render": "east-4-p7.png",
+          "sha256": "c18562ba12dfd20cead4517536716140fa92959d0fcb1149c8c3ac97cf6ab856",
+          "geographic_validation": "not_validated",
+          "role": "landscape_diagnostic_or_concept_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 8,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 8,
+          "render": "east-4-p8.png",
+          "sha256": "e3cac83a0c9b6ac0e416d02f5013b33c02f5965319576c2c4ee547fc93af495f",
+          "geographic_validation": "not_validated",
+          "role": "landscape_diagnostic_or_concept_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 9,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 9,
+          "render": "east-4-p9.png",
+          "sha256": "b8742c753ef657394a621c5e458a59846cf68fd8ab6c456156e0cfc58761ed70",
+          "geographic_validation": "not_validated",
+          "role": "landscape_diagnostic_or_concept_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 10,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 10,
+          "render": "east-4-p10.png",
+          "sha256": "a468f208ecc82be2e817d8d007038503256f6e2ce2ca97ecd6f137f2cbeed2ce",
+          "geographic_validation": "not_validated",
+          "role": "landscape_diagnostic_or_concept_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 11,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 11,
+          "render": "east-4-p11.png",
+          "sha256": "f5fc31be9ea5ecb524b2868dbd2c887db039a86af1b4149c76a48c2af4d98785",
+          "geographic_validation": "not_validated",
+          "role": "landscape_diagnostic_or_concept_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 12,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 12,
+          "render": "east-4-p12.png",
+          "sha256": "6a237f52c6fa92e95d4183f0b502200ad251b3763e3791bb6c3a3550c6d732ef",
+          "geographic_validation": "not_validated",
+          "role": "landscape_diagnostic_or_concept_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 13,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 13,
+          "render": "east-4-p13.png",
+          "sha256": "320b806724c7042a5ad81ec0488c9e50ca0c316ff4df899ca652219552643a24",
+          "geographic_validation": "not_validated",
+          "role": "landscape_diagnostic_or_concept_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 14,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 14,
+          "render": "east-4-p14.png",
+          "sha256": "272d4d2a798c22c8ec65de4792fec3e3a0db896df7e636dadfbb5be472433ab3",
+          "geographic_validation": "not_validated",
+          "role": "landscape_diagnostic_or_concept_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 15,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 15,
+          "render": "east-4-p15.png",
+          "sha256": "81478c31c0d728319e1f2a8a10106bcec6c627cf7dbe28aac897e39e1e6ccd39",
+          "geographic_validation": "not_validated",
+          "role": "landscape_diagnostic_or_concept_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 16,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 16,
+          "render": "east-4-p16.png",
+          "sha256": "cccc6a079fc5b018762638eb659c39a35521cd4a5d4e4519373a02a0bbb905e3",
+          "geographic_validation": "not_validated",
+          "role": "landscape_walk_route_not_development_sector",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 17,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 17,
+          "render": "east-4-p17.png",
+          "sha256": "4be8945e47c6b363f2d1fdbd399b8f6853943e906f13140ffc5b8c10ee6690d8",
+          "geographic_validation": "not_validated",
+          "role": "landscape_walk_route_not_development_sector",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 18,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 18,
+          "render": "east-4-p18.png",
+          "sha256": "3b0872048a64e2066c96d1f28cc0472eafbe6ecbb7100e190b6c98671b7804a6",
+          "geographic_validation": "not_validated",
+          "role": "landscape_walk_route_not_development_sector",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 19,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 19,
+          "render": "east-4-p19.png",
+          "sha256": "633a1e73a31633319c2927cd872a1d895120549fcda5009e930e96a2e73b6e88",
+          "geographic_validation": "not_validated",
+          "role": "landscape_walk_route_not_development_sector",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 20,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 20,
+          "render": "east-4-p20.png",
+          "sha256": "ae4d255667f661b6bfd2bd2ebb570840bf7f3bfdb698e5ae0442f9096854fa4f",
+          "geographic_validation": "not_validated",
+          "role": "landscape_walk_route_not_development_sector",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 21,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 21,
+          "render": "east-4-p21.png",
+          "sha256": "3efc0a17fe8f6bd269883476b162029635ff5ea4a18cdd726cb8011212e40b3c",
+          "geographic_validation": "not_validated",
+          "role": "landscape_walk_route_not_development_sector",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 22,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 22,
+          "render": "east-4-p22.png",
+          "sha256": "4176e2a9012beb60c90a1b5c4b9972fc34c6008154fa8242fa70e3b6250a1d02",
+          "geographic_validation": "not_validated",
+          "role": "landscape_walk_route_not_development_sector",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 23,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 23,
+          "render": "east-4-p23.png",
+          "sha256": "155220732cc9eb1d67158dff66a7fa5a3373b23ceae032c5e6f6e223433fa6c2",
+          "geographic_validation": "not_validated",
+          "role": "landscape_walk_route_not_development_sector",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 24,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "east-4",
+          "page_number": 24,
+          "render": "east-4-p24.png",
+          "sha256": "61af91f2471491ec57ecc9af3349ae2c04219d09a35f79d617c63f99a9db0aa5",
+          "geographic_validation": "not_validated",
+          "role": "landscape_walk_route_not_development_sector",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    }
+  ]
+}

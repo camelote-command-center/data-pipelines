@@ -1,0 +1,66 @@
+{
+  "document_id": "15d6febb-7956-51f5-b15c-9d9502da4dee",
+  "sha256": "ff999c3b18db480fb29da3b1efb59c73475c35538d9be7e0f7ed899dfb73b1bf",
+  "page_count": 10,
+  "page_annotations": [
+    {
+      "page_number": 1,
+      "fields": {
+        "source_review": {
+          "observed_at": "2026-09-22",
+          "approval": "unverified; official publication does not establish statutory PDCom adoption",
+          "currentness": "historical strategy, implementation and current parcel rights unverified",
+          "geometry": "No geographic alignment, sector validation or delivery eligibility",
+          "coverage": "Regional source membership only; not complete municipal PDCom coverage",
+          "source_sha256": "ff999c3b18db480fb29da3b1efb59c73475c35538d9be7e0f7ed899dfb73b1bf",
+          "official_publication_evidence": "https://www.regionmorges.ch/strategie/projet-territoire/",
+          "role": "Published regional planning strategy or named annex, not an adopted municipal PDCom",
+          "membership_evidence": "H1/H2 annex and companion maps concern Denges,Echandens,Lonay,Preverenges,Morges,Tolochenaz,Lully; no whole-region geometric claim.",
+          "version_limits": "SDRM main report January2016. Official landing says some agricultural extensions postponed after LAT/PDCn changes; broad strategy still current, not every proposed urbanisation. Molliau annexes September2013 anticipate future incorporation into PDCom; adoption not established."
+        }
+      }
+    },
+    {
+      "page_number": 5,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-6",
+          "page_number": 5,
+          "render": "morges-6-p5.png",
+          "sha256": "ec625788a508267c497d84d8af28251ddc7707029a968465ecfc64df81b1f2cb",
+          "geographic_validation": "not_validated",
+          "role": "H1_H2_perimeter_variants_not_additional_distinct_maps",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 6,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-6",
+          "page_number": 6,
+          "render": "morges-6-p6.png",
+          "sha256": "88c71508abd752176b77d4d7d38b96df929e9cd8cffc7cf0d50201d32767e138",
+          "geographic_validation": "not_validated",
+          "role": "H1_H2_perimeter_variants_not_additional_distinct_maps",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 7,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-6",
+          "page_number": 7,
+          "render": "morges-6-p7.png",
+          "sha256": "02c97c65c3314020c61e41d71f11e3f894e999a4c19838767c33a8d0cab9fbb5",
+          "geographic_validation": "not_validated",
+          "role": "H1_H2_perimeter_variants_not_additional_distinct_maps",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    }
+  ]
+}

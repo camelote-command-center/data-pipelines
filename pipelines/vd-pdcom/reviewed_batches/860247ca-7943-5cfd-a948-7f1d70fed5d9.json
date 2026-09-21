@@ -1,0 +1,416 @@
+{
+  "document_id": "860247ca-7943-5cfd-a948-7f1d70fed5d9",
+  "sha256": "a267218ebe407b251ddf4d8e5d13c89b1ff68b2a41086d60476ad8bad66f3b67",
+  "page_count": 30,
+  "page_annotations": [
+    {
+      "page_number": 1,
+      "fields": {
+        "source_review": {
+          "observed_at": "2026-09-22",
+          "approval": "unverified; official publication does not establish statutory PDCom adoption",
+          "currentness": "historical strategy, implementation and current parcel rights unverified",
+          "geometry": "No geographic alignment, sector validation or delivery eligibility",
+          "coverage": "Regional source membership only; not complete municipal PDCom coverage",
+          "source_sha256": "a267218ebe407b251ddf4d8e5d13c89b1ff68b2a41086d60476ad8bad66f3b67",
+          "official_publication_evidence": "https://www.regionmorges.ch/strategie/projet-territoire/",
+          "role": "Published regional planning strategy or named annex, not an adopted municipal PDCom",
+          "membership_evidence": "SDRM main report PDF19 lists ten study partner communes, including Chigny and Saint-Prex. Present-day website footer not used to infer historical membership; Lussy excluded.",
+          "version_limits": "SDRM main report January2016. Official landing says some agricultural extensions postponed after LAT/PDCn changes; broad strategy still current, not every proposed urbanisation. Molliau annexes September2013 anticipate future incorporation into PDCom; adoption not established."
+        }
+      }
+    },
+    {
+      "page_number": 3,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 3,
+          "render": "morges-2-p3.png",
+          "sha256": "3ed392bfd76421c22be55e5994820784fca2f963d30680ecd471191aa42fe3fa",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 4,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 4,
+          "render": "morges-2-p4.png",
+          "sha256": "529827d35ad5a098eb3e284881c5b7ec90e9f5f4b25a72c2963e78640fa8003b",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 5,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 5,
+          "render": "morges-2-p5.png",
+          "sha256": "b3e4c0fa0cfb1a3c9c18ef735970059d32a242d4e169944ddb2d40c7ffff3c23",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 6,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 6,
+          "render": "morges-2-p6.png",
+          "sha256": "c58635ed38e47dac9fd71aa5479c125842686d3c7fd843d31894aaaaee384a24",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 7,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 7,
+          "render": "morges-2-p7.png",
+          "sha256": "2518ab3fb9bb50a246236ba62fac600882dc80915041095509cc5ec3f1aac568",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 8,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 8,
+          "render": "morges-2-p8.png",
+          "sha256": "67c946d505b2a560688577fa8367cee3addffb9b2feeda5e9732123309f0c3f1",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 9,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 9,
+          "render": "morges-2-p9.png",
+          "sha256": "e7ca41d452cb64cc7bd7952789998647543d8fd721e44c5321104d844b36d7ea",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 10,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 10,
+          "render": "morges-2-p10.png",
+          "sha256": "f772fcb71aa4fe02cf0cc12878d36fba540454fdfbb4b15c1b8c220c84731ccb",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 11,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 11,
+          "render": "morges-2-p11.png",
+          "sha256": "7a551a5e2a4d584db50db058f133634298ba6a1c79c3de3a16013ed4c80ad1ad",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 12,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 12,
+          "render": "morges-2-p12.png",
+          "sha256": "cc17b76a51dd2ebb5d1b14409562ef42127676b57fc7a73c760ad38489991cab",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 13,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 13,
+          "render": "morges-2-p13.png",
+          "sha256": "aa61484ab87c7a994e7d8dd43af0f1529195755733f5cfb37fa7fcd983304d6f",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 14,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 14,
+          "render": "morges-2-p14.png",
+          "sha256": "6a9e1a4b6a47b993bbe8c8393f7973022c6fd969a5661bae0c6ec07d497a906f",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 15,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 15,
+          "render": "morges-2-p15.png",
+          "sha256": "1ec50d5ea28e40aeda6f1936d1bc77a4afbd8a7b52fc9ebae329e76e51063783",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 16,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 16,
+          "render": "morges-2-p16.png",
+          "sha256": "8bc1f0a0495e1be9c0819e57f7e1769a0baba64bc15702bccd6dd087578896a5",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 17,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 17,
+          "render": "morges-2-p17.png",
+          "sha256": "0806134dc39e6f8ada1eadba36ab74fe65e544c21e016bbcce7e62d5565f99bd",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 18,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 18,
+          "render": "morges-2-p18.png",
+          "sha256": "c9059ffa271997eeef3d2143e3ee9589cb54a947de6a5494ee23f45618a2cfad",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 19,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 19,
+          "render": "morges-2-p19.png",
+          "sha256": "0ec2872c32d1f441de479035dd462d43cd66576f55349981bfb2e5efed83940b",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 20,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 20,
+          "render": "morges-2-p20.png",
+          "sha256": "cd0cf5c5efb1d9944952563828a0c167c2a96404b97d14b1d2f63b166c6a6109",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 21,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 21,
+          "render": "morges-2-p21.png",
+          "sha256": "ce904389b5530e80d623a59e5421652d63ce77e941267a340082262d387f4c59",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 22,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 22,
+          "render": "morges-2-p22.png",
+          "sha256": "e2b6ad9084840b8334863e1ba8f567c5775e16166453607e536a2a97cbc5f9d4",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 23,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 23,
+          "render": "morges-2-p23.png",
+          "sha256": "e9a448fec1aa050807df075e7b5102c69de816ebf83c943afc1e23f506c91cca",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 24,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 24,
+          "render": "morges-2-p24.png",
+          "sha256": "afa4b0186dec798d2e9eafa2b0c74758df83c02470c09d7c2820856b7a6ce143",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 25,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 25,
+          "render": "morges-2-p25.png",
+          "sha256": "6618a92a8a8c4b1b63c9e475e8419846c4ec5896d00a0cf9de53c19259077a52",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 26,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 26,
+          "render": "morges-2-p26.png",
+          "sha256": "6afaab67a7f8c7f2dd8fbb58e953870d1beb923f6e1f901a422e8a041e3203e2",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 27,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 27,
+          "render": "morges-2-p27.png",
+          "sha256": "af9ea40717fba3c80e914ca1522e63b68f1c413e89328362ddbb0e97b1761f2b",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 28,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 28,
+          "render": "morges-2-p28.png",
+          "sha256": "d2b67ddff2037e0bb7c12f7e0c3787f8a9c57548aa4a9db3f8bc64ba55fc936f",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 29,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 29,
+          "render": "morges-2-p29.png",
+          "sha256": "88da903a5c6a83557bb24f8e8cab487e4b1fb47cd5af8c496b18e733276ea707",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    },
+    {
+      "page_number": 30,
+      "fields": {
+        "reviewed_map": {
+          "document_key": "morges-2",
+          "page_number": 30,
+          "render": "morges-2-p30.png",
+          "sha256": "e77ba260272afb34796a59dd284214347084d80bc88a0adb9df2a1ec8ab310bb",
+          "geographic_validation": "not_validated",
+          "role": "regional_diagnostic_or_strategy_map",
+          "visual_review": "Contact sheet visually checked; map presence and broad category only. Boundary and exact legend validation pending."
+        }
+      }
+    }
+  ]
+}

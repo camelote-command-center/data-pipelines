@@ -3660,5 +3660,233 @@
     "plan_status": "unverified",
     "scope": "intercommunal",
     "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5581,
+    "commune_bfs_list": [
+      5581,
+      5586,
+      5606,
+      5588,
+      5590
+    ],
+    "pdf_url": "https://www.est-lausannois.ch/wp-content/uploads/2019/07/Synthese-rapport-technique.pdf",
+    "landing_url": "https://www.est-lausannois.ch/publications/",
+    "title": "SDEL — Brochure de synthèse du rapport technique",
+    "plan_status": "unverified",
+    "scope": "intercommunal",
+    "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5581,
+    "commune_bfs_list": [
+      5581,
+      5586,
+      5606,
+      5588,
+      5590
+    ],
+    "pdf_url": "https://www.est-lausannois.ch/wp-content/uploads/2019/07/SDEL_Rap_final.compressed.pdf",
+    "landing_url": "https://www.est-lausannois.ch/publications/",
+    "title": "SDEL — Rapport technique du Schéma directeur de l’Est lausannois",
+    "plan_status": "unverified",
+    "scope": "intercommunal",
+    "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5581,
+    "commune_bfs_list": [
+      5581,
+      5586,
+      5606,
+      5588,
+      5590
+    ],
+    "pdf_url": "https://www.est-lausannois.ch/wp-content/uploads/SDEL_Etude-strategique-paysage_Rapport-final.pdf",
+    "landing_url": "https://www.est-lausannois.ch/publications/",
+    "title": "SDEL — Rapport de synthèse",
+    "plan_status": "unverified",
+    "scope": "intercommunal",
+    "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5581,
+    "commune_bfs_list": [
+      5581,
+      5586,
+      5606,
+      5588,
+      5590
+    ],
+    "pdf_url": "https://www.est-lausannois.ch/wp-content/uploads/SDEL_Etude-strategique-paysage_Cartes-compresse.pdf",
+    "landing_url": "https://www.est-lausannois.ch/publications/",
+    "title": "SDEL — Cartes au format A3 à insérer au rapport de synthèse",
+    "plan_status": "unverified",
+    "scope": "intercommunal",
+    "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5581,
+    "commune_bfs_list": [
+      5581,
+      5586,
+      5606,
+      5588,
+      5590
+    ],
+    "pdf_url": "https://www.est-lausannois.ch/wp-content/uploads/SDEL_Etude-strategique-paysage_Annexe.pdf",
+    "landing_url": "https://www.est-lausannois.ch/publications/",
+    "title": "SDEL — Annexe : guide des bonnes pratiques",
+    "plan_status": "unverified",
+    "scope": "intercommunal",
+    "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5628,
+    "commune_bfs_list": [
+      5628,
+      5632,
+      5633,
+      5634,
+      5638,
+      5639,
+      5642,
+      5643,
+      5646,
+      5649
+    ],
+    "pdf_url": "https://www.regionmorges.ch/wp-content/uploads/sdrm-c4-urbanisation-et-paysage-rapport-final-1.pdf",
+    "landing_url": "https://www.regionmorges.ch/strategie/projet-territoire/",
+    "title": "SDRM — Urbanisation & Paysage - Rapport final",
+    "plan_status": "unverified",
+    "scope": "intercommunal",
+    "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5628,
+    "commune_bfs_list": [
+      5628,
+      5632,
+      5633,
+      5634,
+      5638,
+      5639,
+      5642,
+      5643,
+      5646,
+      5649
+    ],
+    "pdf_url": "https://www.regionmorges.ch/wp-content/uploads/sdrm-c4-annexe-i-cartes-volets-a-et-b.pdf",
+    "landing_url": "https://www.regionmorges.ch/strategie/projet-territoire/",
+    "title": "SDRM — U&P - Annexe I - Cartes volets A et B",
+    "plan_status": "unverified",
+    "scope": "intercommunal",
+    "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5628,
+    "commune_bfs_list": [
+      5628,
+      5632,
+      5633,
+      5634,
+      5638,
+      5639,
+      5642,
+      5643,
+      5646,
+      5649
+    ],
+    "pdf_url": "https://www.regionmorges.ch/wp-content/uploads/sdrm-c4-annexe-ii-mesures-nature-et-paysage.pdf",
+    "landing_url": "https://www.regionmorges.ch/strategie/projet-territoire/",
+    "title": "SDRM — U&P - Annexe II - Mesures nature et paysage",
+    "plan_status": "unverified",
+    "scope": "intercommunal",
+    "enumerate_vectors": false,
+    "max_bytes": 110000000
+  },
+  {
+    "commune_bfs": 5628,
+    "commune_bfs_list": [
+      5628,
+      5632,
+      5633,
+      5634,
+      5638,
+      5639,
+      5642,
+      5643,
+      5646,
+      5649
+    ],
+    "pdf_url": "https://www.regionmorges.ch/wp-content/uploads/sdrm-c4-annexe-iii-analyse-paysagere.pdf",
+    "landing_url": "https://www.regionmorges.ch/strategie/projet-territoire/",
+    "title": "SDRM — U&P - Annexe III - Analyse paysagère",
+    "plan_status": "unverified",
+    "scope": "intercommunal",
+    "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5628,
+    "commune_bfs_list": [
+      5628,
+      5632,
+      5633,
+      5634,
+      5638,
+      5639,
+      5642,
+      5643,
+      5646,
+      5649
+    ],
+    "pdf_url": "https://www.regionmorges.ch/wp-content/uploads/sdrm-c4-annexe-iv-estimation-du-potentiel-daccueil.pdf",
+    "landing_url": "https://www.regionmorges.ch/strategie/projet-territoire/",
+    "title": "SDRM — U&P - Annexe IV - Estimation du potentiel d'accueil",
+    "plan_status": "unverified",
+    "scope": "intercommunal",
+    "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5632,
+    "commune_bfs_list": [
+      5632,
+      5633,
+      5638,
+      5639,
+      5642,
+      5643,
+      5649
+    ],
+    "pdf_url": "https://www.regionmorges.ch/wp-content/uploads/sdrm-c4-annexe-v-definition-des-perimetres-h1-et-h2.pdf",
+    "landing_url": "https://www.regionmorges.ch/strategie/projet-territoire/",
+    "title": "SDRM — U&P - Annexe V - Définition des périmètres H1 et H2",
+    "plan_status": "unverified",
+    "scope": "intercommunal",
+    "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5649,
+    "commune_bfs_list": [
+      5649
+    ],
+    "pdf_url": "https://www.regionmorges.ch/wp-content/uploads/sdrm-c4-annexe-vi-zimolliau-synthese-planches.pdf",
+    "landing_url": "https://www.regionmorges.ch/strategie/projet-territoire/",
+    "title": "SDRM — U&P - Annexe VI - Etudes-tests de reconversion de la ZI Molliau - Principes directeurs",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5649,
+    "commune_bfs_list": [
+      5649
+    ],
+    "pdf_url": "https://www.regionmorges.ch/wp-content/uploads/sdrm-c4-annexe-vii-zimolliau-synthese-rapport.pdf",
+    "landing_url": "https://www.regionmorges.ch/strategie/projet-territoire/",
+    "title": "SDRM — U&P - Annexe VII - Etudes-tests de reconversion de la ZI Molliau - Rapport de synthèse",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "enumerate_vectors": false
   }
 ]

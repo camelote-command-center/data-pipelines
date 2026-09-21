@@ -1,0 +1,24 @@
+{
+  "document_id": "1e10a384-08ef-566b-842f-b1334f44ede5",
+  "sha256": "907be18f3fe4ce11dfe0e090acb68caa2901df007150c9deb37fc54ee72e75e5",
+  "page_count": 20,
+  "page_annotations": [
+    {
+      "page_number": 1,
+      "fields": {
+        "source_review": {
+          "observed_at": "2026-09-22",
+          "approval": "unverified; official publication does not establish statutory PDCom adoption",
+          "currentness": "historical strategy, implementation and current parcel rights unverified",
+          "geometry": "No geographic alignment, sector validation or delivery eligibility",
+          "coverage": "Regional source membership only; not complete municipal PDCom coverage",
+          "source_sha256": "907be18f3fe4ce11dfe0e090acb68caa2901df007150c9deb37fc54ee72e75e5",
+          "official_publication_evidence": "https://www.est-lausannois.ch/publications/",
+          "role": "Published regional planning strategy or named annex, not an adopted municipal PDCom",
+          "membership_evidence": "SDEL technical report PDF1/12 names Belmont, Lausanne-East only, Lutry, Paudex, Pully; landscape report PDF2 confirms same partners.",
+          "version_limits": "SDEL technical report May2011; brochure October2010 describes pre-validation study; landscape complement November2016. Do not treat different publication vintages as a single current plan."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+[
+  {
+    "key": "east-1",
+    "title": "Brochure de synthèse du rapport technique",
+    "pdf_url": "https://www.est-lausannois.ch/wp-content/uploads/2019/07/Synthese-rapport-technique.pdf",
+    "landing_url": "https://www.est-lausannois.ch/publications/",
+    "sha256": "907be18f3fe4ce11dfe0e090acb68caa2901df007150c9deb37fc54ee72e75e5",
+    "pages": 20,
+    "fetched_at": "2026-09-21T23:50:42.017944+00:00"
+  },
+  {
+    "key": "east-2",
+    "title": "Rapport technique du Schéma directeur de l’Est lausannois",
+    "pdf_url": "https://www.est-lausannois.ch/wp-content/uploads/2019/07/SDEL_Rap_final.compressed.pdf",
+    "landing_url": "https://www.est-lausannois.ch/publications/",
+    "sha256": "a6e1941311c303ad6491683517812d489d06de8efb24b8de17521fd272c777b5",
+    "pages": 178,
+    "fetched_at": "2026-09-21T23:50:46.829357+00:00"
+  },
+  {
+    "key": "east-3",
+    "title": "Rapport de synthèse",
+    "pdf_url": "https://www.est-lausannois.ch/wp-content/uploads/SDEL_Etude-strategique-paysage_Rapport-final.pdf",
+    "landing_url": "https://www.est-lausannois.ch/publications/",
+    "sha256": "ffc49302a3cefa9faac5121716d3d0dfdbcfbb4cf7314dc15e9d33fddfb50cff",
+    "pages": 209,
+    "fetched_at": "2026-09-21T23:50:46.854167+00:00"
+  },
+  {
+    "key": "east-4",
+    "title": "Cartes au format A3 à insérer au rapport de synthèse",
+    "pdf_url": "https://www.est-lausannois.ch/wp-content/uploads/SDEL_Etude-strategique-paysage_Cartes-compresse.pdf",
+    "landing_url": "https://www.est-lausannois.ch/publications/",
+    "sha256": "df2091785177c0f8c8213765b008398eed48c86f3e650178428d1749e595a049",
+    "pages": 24,
+    "fetched_at": "2026-09-21T23:50:44.082110+00:00"
+  },
+  {
+    "key": "east-5",
+    "title": "Annexe : guide des bonnes pratiques",
+    "pdf_url": "https://www.est-lausannois.ch/wp-content/uploads/SDEL_Etude-strategique-paysage_Annexe.pdf",
+    "landing_url": "https://www.est-lausannois.ch/publications/",
+    "sha256": "5689b512525cab45e31e4971b380224b8cd2331081726fe7bff9949c599b76d2",
+    "pages": 18,
+    "fetched_at": "2026-09-21T23:50:43.092916+00:00"
+  },
+  {
+    "key": "morges-1",
+    "title": "Urbanisation & Paysage - Rapport final",
+    "pdf_url": "https://www.regionmorges.ch/wp-content/uploads/sdrm-c4-urbanisation-et-paysage-rapport-final-1.pdf",
+    "landing_url": "https://www.regionmorges.ch/strategie/projet-territoire/",
+    "sha256": "ff2ddb3b20967ad2ce0e0a0cae99491abaf4963779c6102100ce5a020f286a3a",
+    "pages": 124,
+    "fetched_at": "2026-09-21T23:50:54.048664+00:00"
+  },
+  {
+    "key": "morges-2",
+    "title": "U&P - Annexe I - Cartes volets A et B",
+    "pdf_url": "https://www.regionmorges.ch/wp-content/uploads/sdrm-c4-annexe-i-cartes-volets-a-et-b.pdf",
+    "landing_url": "https://www.regionmorges.ch/strategie/projet-territoire/",
+    "sha256": "a267218ebe407b251ddf4d8e5d13c89b1ff68b2a41086d60476ad8bad66f3b67",
+    "pages": 30,
+    "fetched_at": "2026-09-21T23:50:56.266734+00:00"
+  },
+  {
+    "key": "morges-3",
+    "title": "U&P - Annexe II - Mesures nature et paysage",
+    "pdf_url": "https://www.regionmorges.ch/wp-content/uploads/sdrm-c4-annexe-ii-mesures-nature-et-paysage.pdf",
+    "landing_url": "https://www.regionmorges.ch/strategie/projet-territoire/",
+    "max_bytes": 110000000,
+    "sha256": "839dc5ca9fcb79f3d43f44b3beac34e31be1a366094fe3ffd83ff2098a0bb64f",
+    "pages": 29,
+    "fetched_at": "2026-09-21T23:52:28.976501+00:00"
+  },
+  {
+    "key": "morges-4",
+    "title": "U&P - Annexe III - Analyse paysagère",
+    "pdf_url": "https://www.regionmorges.ch/wp-content/uploads/sdrm-c4-annexe-iii-analyse-paysagere.pdf",
+    "landing_url": "https://www.regionmorges.ch/strategie/projet-territoire/",
+    "sha256": "e5b5352b5c01c138acd020e9809cdd0db683d751f4eb9ce54ddd46b01c5bd02d",
+    "pages": 54,
+    "fetched_at": "2026-09-21T23:50:47.421430+00:00"
+  },
+  {
+    "key": "morges-5",
+    "title": "U&P - Annexe IV - Estimation du potentiel d'accueil",
+    "pdf_url": "https://www.regionmorges.ch/wp-content/uploads/sdrm-c4-annexe-iv-estimation-du-potentiel-daccueil.pdf",
+    "landing_url": "https://www.regionmorges.ch/strategie/projet-territoire/",
+    "sha256": "197829f74585f46c8637950f7651f94989d5cd54240ba695a3444b68cbc538bf",
+    "pages": 5,
+    "fetched_at": "2026-09-21T23:50:47.615456+00:00"
+  },
+  {
+    "key": "morges-6",
+    "title": "U&P - Annexe V - Définition des périmètres H1 et H2",
+    "pdf_url": "https://www.regionmorges.ch/wp-content/uploads/sdrm-c4-annexe-v-definition-des-perimetres-h1-et-h2.pdf",
+    "landing_url": "https://www.regionmorges.ch/strategie/projet-territoire/",
+    "sha256": "ff999c3b18db480fb29da3b1efb59c73475c35538d9be7e0f7ed899dfb73b1bf",
+    "pages": 10,
+    "fetched_at": "2026-09-21T23:50:47.918011+00:00"
+  },
+  {
+    "key": "morges-7",
+    "title": "U&P - Annexe VI - Etudes-tests de reconversion de la ZI Molliau - Principes directeurs",
+    "pdf_url": "https://www.regionmorges.ch/wp-content/uploads/sdrm-c4-annexe-vi-zimolliau-synthese-planches.pdf",
+    "landing_url": "https://www.regionmorges.ch/strategie/projet-territoire/",
+    "sha256": "d95f9486e1d65b671afd7e6def90bbbd571046d37ab550397b267e7ff129be12",
+    "pages": 15,
+    "fetched_at": "2026-09-21T23:50:48.698217+00:00"
+  },
+  {
+    "key": "morges-8",
+    "title": "U&P - Annexe VII - Etudes-tests de reconversion de la ZI Molliau - Rapport de synthèse",
+    "pdf_url": "https://www.regionmorges.ch/wp-content/uploads/sdrm-c4-annexe-vii-zimolliau-synthese-rapport.pdf",
+    "landing_url": "https://www.regionmorges.ch/strategie/projet-territoire/",
+    "sha256": "36617c0b5a958ba3bd101c4fc6f4daa27d1a3f31e2254bdb2a7fd400833373a7",
+    "pages": 49,
+    "fetched_at": "2026-09-21T23:50:51.730105+00:00"
+  }
+]
