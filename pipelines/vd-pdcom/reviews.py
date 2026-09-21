@@ -20,9 +20,9 @@ def apply_review(conn,document_id,sha):
         required=[review['approval_evidence_page']]+[p['page_number'] for p in review['map_pages']]
         if any(p<1 or p>page_count for p in required):raise ValueError('review_page_out_of_range')
         for page in inspection:
-            if page['page_number']==review['approval_evidence_page']:page['source_review']=review
+            if page.get('page_number')==review['approval_evidence_page']:page['source_review']=review
             for mapped in review['map_pages']:
-                if page['page_number']==mapped['page_number']:page['reviewed_map']=mapped
+                if page.get('page_number')==mapped['page_number']:page['reviewed_map']=mapped
         c.execute('UPDATE bronze_ch.vd_pdcom_documents SET plan_status=%s,inspection=%s WHERE id=%s AND sha256=%s',
                   (review['plan_status'],Json(inspection),document_id,sha))
         if c.rowcount!=1:raise ValueError('review_target_changed')
