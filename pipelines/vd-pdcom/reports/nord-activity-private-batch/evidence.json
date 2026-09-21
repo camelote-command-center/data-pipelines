@@ -1,11 +1,11 @@
 {
   "47": {
     "source_semantics": {
-      "label": "ZAL 47 \u2014 Bullet",
-      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
-      "intention": "Reconversion en autre zone \u00e0 b\u00e2tir",
+      "label": "ZAL 47 — Bullet",
+      "source_map_category": "Zone d’activité d’intérêt local",
+      "intention": "Reconversion en autre zone à bâtir",
       "vocation": "not established by blue category fill",
-      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), données DGMR",
       "source_status": "April2026 consultation synthesis, approval not verified",
       "availability": "not inferred; whole zone is not a reserve or vacant parcel",
       "source_code_evidence": "Visually reviewed selected native outline and leader in source crop 10327-outlined.png",
@@ -47,7 +47,7 @@
       "egrid": "CH789783457401",
       "number": "154",
       "bfs": 5552,
-      "kind": "parcelle priv\u00e9e",
+      "kind": "parcelle privée",
       "iou": 0.9803081021073068,
       "hausdorff_m": 0.5787160966727715
     },
@@ -61,15 +61,21 @@
   },
   "85": {
     "source_semantics": {
-      "label": "ZAL 85 \u2014 Ch\u00eane-P\u00e2quier",
-      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
-      "intention": "Reconversion en autre zone \u00e0 b\u00e2tir",
+      "label": "ZAL 85 — Bioley-Magnoux",
+      "source_map_category": "Zone d’activité d’intérêt local",
+      "intention": "Reconversion en autre zone à bâtir",
       "vocation": "not established by blue category fill",
-      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), données DGMR",
       "source_status": "April2026 consultation synthesis, approval not verified",
       "availability": "not inferred; whole zone is not a reserve or vacant parcel",
       "source_code_evidence": "Visually reviewed selected native outline and leader in source crop 10485-outlined.png",
-      "intention_scope": "Indicative site-level symbol, no geometry for destination or affected subarea inferred"
+      "intention_scope": "Indicative site-level symbol, no geometry for destination or affected subarea inferred",
+      "report_cross_reference": {
+        "document_id": "941a73b4-aa3c-5cbe-b1c2-2b01cc00612a",
+        "sha256": "9bb0013f7dda7f52e5b6fa59dec0364e71916429b77f67027d3341b48fdef034",
+        "page_number": 68,
+        "correction": "Commune name corrected; BFS5903 and geometry unchanged."
+      }
     },
     "alignment_method": "Regional boundary bounds fit, held fixed; independently checked against complete current cadastral parcel shape. No refitting to cadastral reference.",
     "regional_fit": {
@@ -107,7 +113,7 @@
       "egrid": "CH274597908328",
       "number": "104",
       "bfs": 5903,
-      "kind": "parcelle priv\u00e9e",
+      "kind": "parcelle privée",
       "iou": 0.9843267638016918,
       "hausdorff_m": 1.7074144104537543
     },
@@ -121,11 +127,11 @@
   },
   "103": {
     "source_semantics": {
-      "label": "ZAL 103 \u2014 Molondin",
-      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "label": "ZAL 103 — Molondin",
+      "source_map_category": "Zone d’activité d’intérêt local",
       "intention": "No intention symbol shown on this outline; not proof of absence of change",
       "vocation": "not established by blue category fill",
-      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), données DGMR",
       "source_status": "April2026 consultation synthesis, approval not verified",
       "availability": "not inferred; whole zone is not a reserve or vacant parcel",
       "source_code_evidence": "Visually reviewed selected native outline and leader in source crop 10505-outlined.png",
@@ -167,7 +173,7 @@
       "egrid": "CH114540839602",
       "number": "538",
       "bfs": 5921,
-      "kind": "parcelle priv\u00e9e",
+      "kind": "parcelle privée",
       "iou": 0.9996596263506357,
       "hausdorff_m": 0.053738224872445055
     },
@@ -181,11 +187,11 @@
   },
   "12": {
     "source_semantics": {
-      "label": "ZAL 12 \u2014 Suchy",
-      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "label": "ZAL 12 — Suchy",
+      "source_map_category": "Zone d’activité d’intérêt local",
       "intention": "No intention symbol shown on this outline; not proof of absence of change",
       "vocation": "not established by blue category fill",
-      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), données DGMR",
       "source_status": "April2026 consultation synthesis, approval not verified",
       "availability": "not inferred; whole zone is not a reserve or vacant parcel",
       "source_code_evidence": "Visually reviewed selected native outline and leader in source crop 10529-outlined.png",
@@ -227,7 +233,7 @@
       "egrid": "CH138398457576",
       "number": "102",
       "bfs": 5929,
-      "kind": "parcelle priv\u00e9e",
+      "kind": "parcelle privée",
       "iou": 0.9904300782913511,
       "hausdorff_m": 0.6253323452028703
     },
@@ -241,15 +247,15 @@
   },
   "16": {
     "source_semantics": {
-      "label": "ZAL 16 \u2014 Treycovagnes",
-      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "label": "ZAL 16 — Treycovagnes",
+      "source_map_category": "Zone d’activité d’intérêt local",
       "intention": [
         "extension",
         "dezoning",
         "potential_SDA_impact"
       ],
       "vocation": "not established by blue category fill",
-      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), données DGMR",
       "source_status": "April2026 consultation synthesis, approval not verified",
       "availability": "not inferred; whole zone is not a reserve or vacant parcel",
       "source_code_evidence": "Visually reviewed native outline and leader in 10357-outlined.png",
@@ -299,14 +305,14 @@
           "bfs": 5931,
           "number": "238",
           "coverage_fraction": 0.9997917603868718,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH988983459828",
           "bfs": 5931,
           "number": "105",
           "coverage_fraction": 0.9999991636854644,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         }
       ],
       "partial_land_parcels": []
@@ -321,13 +327,13 @@
   },
   "15": {
     "source_semantics": {
-      "label": "ZAL 15 \u2014 Suchy",
-      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "label": "ZAL 15 — Suchy",
+      "source_map_category": "Zone d’activité d’intérêt local",
       "intention": [
         "No intention symbol shown; not proof of absence of change"
       ],
       "vocation": "not established by blue category fill",
-      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), données DGMR",
       "source_status": "April2026 consultation synthesis, approval not verified",
       "availability": "not inferred; whole zone is not a reserve or vacant parcel",
       "source_code_evidence": "Visually reviewed native outline and leader in 10361-outlined.png",
@@ -377,49 +383,49 @@
           "bfs": 5929,
           "number": "421",
           "coverage_fraction": 0.9986010867357757,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH544583968878",
           "bfs": 5929,
           "number": "668",
           "coverage_fraction": 1.0,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH598396904546",
           "bfs": 5929,
           "number": "670",
           "coverage_fraction": 1.0,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH150883004508",
           "bfs": 5929,
           "number": "679",
           "coverage_fraction": 0.9998847808425025,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH538396458842",
           "bfs": 5929,
           "number": "669",
           "coverage_fraction": 0.9997340445894449,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH160083450845",
           "bfs": 5929,
           "number": "680",
           "coverage_fraction": 1.0,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH558883964543",
           "bfs": 5929,
           "number": "667",
           "coverage_fraction": 1.0,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         }
       ],
       "partial_land_parcels": []
@@ -434,8 +440,8 @@
   },
   "4": {
     "source_semantics": {
-      "label": "ZAL 4 \u2014 Vallorbe",
-      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "label": "ZAL 4 — Vallorbe",
+      "source_map_category": "Zone d’activité d’intérêt local",
       "intention": [
         "No intention symbol shown; not proof of absence of change"
       ],
@@ -490,21 +496,21 @@
           "bfs": 5764,
           "number": "1755",
           "coverage_fraction": 0.999993119350246,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH544583826645",
           "bfs": 5764,
           "number": "1290",
           "coverage_fraction": 0.9997410998153315,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH298383964553",
           "bfs": 5764,
           "number": "1512",
           "coverage_fraction": 0.9999876058732539,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         }
       ],
       "partial_land_parcels": []
@@ -519,8 +525,8 @@
   },
   "6": {
     "source_semantics": {
-      "label": "ZAL 6 \u2014 Baulmes",
-      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "label": "ZAL 6 — Baulmes",
+      "source_map_category": "Zone d’activité d’intérêt local",
       "intention": [
         "No intention symbol shown; not proof of absence of change"
       ],
@@ -575,21 +581,21 @@
           "bfs": 5745,
           "number": "567",
           "coverage_fraction": 0.9999924218672128,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH274583988333",
           "bfs": 5745,
           "number": "564",
           "coverage_fraction": 1.0,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH283183458205",
           "bfs": 5745,
           "number": "566",
           "coverage_fraction": 1.0,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         }
       ],
       "partial_land_parcels": []
@@ -604,8 +610,8 @@
   },
   "9": {
     "source_semantics": {
-      "label": "ZAL 9 \u2014 Baulmes",
-      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "label": "ZAL 9 — Baulmes",
+      "source_map_category": "Zone d’activité d’intérêt local",
       "intention": [
         "No intention symbol shown; not proof of absence of change"
       ],
@@ -660,77 +666,77 @@
           "bfs": 5745,
           "number": "514",
           "coverage_fraction": 1.0000000000000002,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH444583823513",
           "bfs": 5745,
           "number": "515",
           "coverage_fraction": 1.0,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH414545838263",
           "bfs": 5745,
           "number": "507",
           "coverage_fraction": 1.0,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH889183450801",
           "bfs": 5745,
           "number": "1163",
           "coverage_fraction": 0.9999303181002296,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH298382204596",
           "bfs": 5745,
           "number": "519",
           "coverage_fraction": 0.9997299883006124,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH508345068390",
           "bfs": 5745,
           "number": "545",
           "coverage_fraction": 0.9999697188397402,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH228232834578",
           "bfs": 5745,
           "number": "520",
           "coverage_fraction": 0.9998783743869182,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH168383459842",
           "bfs": 5745,
           "number": "521",
           "coverage_fraction": 0.9819285292667818,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH598383064527",
           "bfs": 5745,
           "number": "517",
           "coverage_fraction": 1.0,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH455083824578",
           "bfs": 5745,
           "number": "516",
           "coverage_fraction": 0.9999862846419054,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH580683458392",
           "bfs": 5745,
           "number": "544",
           "coverage_fraction": 0.999954212347356,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         }
       ],
       "partial_land_parcels": []
@@ -745,13 +751,13 @@
   },
   "34": {
     "source_semantics": {
-      "label": "ZAL 34 \u2014 Orges",
-      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "label": "ZAL 34 — Orges",
+      "source_map_category": "Zone d’activité d’intérêt local",
       "intention": [
         "No intention symbol shown; not proof of absence of change"
       ],
       "vocation": "not established by blue category fill",
-      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), données DGMR",
       "source_status": "April2026 consultation synthesis, approval not verified",
       "availability": "not inferred; whole zone is not a reserve or vacant parcel",
       "source_code_evidence": "Visually reviewed native outline and leader in 10415-outlined.png",
@@ -801,49 +807,49 @@
           "bfs": 5924,
           "number": "562",
           "coverage_fraction": 1.0,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH588783459824",
           "bfs": 5924,
           "number": "330",
           "coverage_fraction": 0.9999065076532831,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH514587839823",
           "bfs": 5924,
           "number": "565",
           "coverage_fraction": 0.9999999999999999,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH529887834519",
           "bfs": 5924,
           "number": "563",
           "coverage_fraction": 0.9998756358881496,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH709745568376",
           "bfs": 5924,
           "number": "333",
           "coverage_fraction": 0.9999433833821446,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH469883458731",
           "bfs": 5924,
           "number": "601",
           "coverage_fraction": 1.0,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH458783984501",
           "bfs": 5924,
           "number": "559",
           "coverage_fraction": 1.0,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         }
       ],
       "partial_land_parcels": []
@@ -858,13 +864,13 @@
   },
   "70": {
     "source_semantics": {
-      "label": "ZAL 70 \u2014 Ch\u00eane-P\u00e2quier",
-      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "label": "ZAL 70 — Chêne-Pâquier",
+      "source_map_category": "Zone d’activité d’intérêt local",
       "intention": [
         "No intention symbol shown; not proof of absence of change"
       ],
       "vocation": "not established by blue category fill",
-      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), données DGMR",
       "source_status": "April2026 consultation synthesis, approval not verified",
       "availability": "not inferred; whole zone is not a reserve or vacant parcel",
       "source_code_evidence": "Visually reviewed native outline and leader in 10419-outlined.png",
@@ -914,28 +920,28 @@
           "bfs": 5908,
           "number": "438",
           "coverage_fraction": 0.999999884647157,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH109745588380",
           "bfs": 5908,
           "number": "305",
           "coverage_fraction": 0.9999919185459533,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH969883459250",
           "bfs": 5908,
           "number": "301",
           "coverage_fraction": 0.9998690938566045,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH674598758325",
           "bfs": 5908,
           "number": "302",
           "coverage_fraction": 0.9998928409189566,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         }
       ],
       "partial_land_parcels": []
@@ -950,13 +956,13 @@
   },
   "71": {
     "source_semantics": {
-      "label": "ZAL 71 \u2014 Bofflens",
-      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "label": "ZAL 71 — Bofflens",
+      "source_map_category": "Zone d’activité d’intérêt local",
       "intention": [
         "dezoning"
       ],
       "vocation": "not established by blue category fill",
-      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), données DGMR",
       "source_status": "April2026 consultation synthesis, approval not verified",
       "availability": "not inferred; whole zone is not a reserve or vacant parcel",
       "source_code_evidence": "Visually reviewed native outline and leader in 10429-outlined.png",
@@ -1006,14 +1012,14 @@
           "bfs": 5747,
           "number": "138",
           "coverage_fraction": 0.9999893243350227,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH138383458012",
           "bfs": 5747,
           "number": "137",
           "coverage_fraction": 0.9998429563479081,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         }
       ],
       "partial_land_parcels": []
@@ -1028,13 +1034,13 @@
   },
   "74": {
     "source_semantics": {
-      "label": "ZAL 74 \u2014 Grandson",
-      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "label": "ZAL 74 — Grandson",
+      "source_map_category": "Zone d’activité d’intérêt local",
       "intention": [
         "reconversion_out_of_activity"
       ],
       "vocation": "not established by blue category fill",
-      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), données DGMR",
       "source_status": "April2026 consultation synthesis, approval not verified",
       "availability": "not inferred; whole zone is not a reserve or vacant parcel",
       "source_code_evidence": "Visually reviewed native outline and leader in 10433-outlined.png",
@@ -1084,98 +1090,98 @@
           "bfs": 5561,
           "number": "2017",
           "coverage_fraction": 1.0,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH707757993638",
           "bfs": 5561,
           "number": "1974",
           "coverage_fraction": 1.0000000000000002,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH453436775763",
           "bfs": 5561,
           "number": "794",
           "coverage_fraction": 0.9780330441195383,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH433677573479",
           "bfs": 5561,
           "number": "1551",
           "coverage_fraction": 0.9962403956208163,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH593677345790",
           "bfs": 5561,
           "number": "2019",
           "coverage_fraction": 1.0,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH559936775720",
           "bfs": 5561,
           "number": "2018",
           "coverage_fraction": 0.9999999999999999,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH527799365725",
           "bfs": 5561,
           "number": "2016",
           "coverage_fraction": 1.0000000000000002,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH575777343694",
           "bfs": 5561,
           "number": "795",
           "coverage_fraction": 0.9891531912044037,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH567483459555",
           "bfs": 5561,
           "number": "1386",
           "coverage_fraction": 0.7458352621889709,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH515799367744",
           "bfs": 5561,
           "number": "2020",
           "coverage_fraction": 1.0,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH467736573468",
           "bfs": 5561,
           "number": "1244",
           "coverage_fraction": 0.9899774042316636,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH533677579977",
           "bfs": 5561,
           "number": "792",
           "coverage_fraction": 0.9999999999999998,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH583436577720",
           "bfs": 5561,
           "number": "1241",
           "coverage_fraction": 0.99999901207882,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH793677995721",
           "bfs": 5561,
           "number": "2006",
           "coverage_fraction": 0.9999994784355046,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         }
       ],
       "partial_land_parcels": []
@@ -1190,13 +1196,13 @@
   },
   "77": {
     "source_semantics": {
-      "label": "ZAL 77 \u2014 Concise",
-      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "label": "ZAL 77 — Concise",
+      "source_map_category": "Zone d’activité d’intérêt local",
       "intention": [
         "No intention symbol shown; not proof of absence of change"
       ],
       "vocation": "not established by blue category fill",
-      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), données DGMR",
       "source_status": "April2026 consultation synthesis, approval not verified",
       "availability": "not inferred; whole zone is not a reserve or vacant parcel",
       "source_code_evidence": "Visually reviewed native outline and leader in 10447-outlined.png",
@@ -1246,14 +1252,14 @@
           "bfs": 5554,
           "number": "1644",
           "coverage_fraction": 0.9999725150429593,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH444583961192",
           "bfs": 5554,
           "number": "1967",
           "coverage_fraction": 0.9999992243881103,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         }
       ],
       "partial_land_parcels": []
@@ -1268,18 +1274,24 @@
   },
   "82": {
     "source_semantics": {
-      "label": "ZAL 82 \u2014 Vuiteboeuf",
-      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "label": "ZAL 82 — Vuiteboeuf",
+      "source_map_category": "Zone d’activité d’intérêt local",
       "intention": [
-        "reconversion_into_activity"
+        "reconversion_out_of_activity"
       ],
       "vocation": "not established by blue category fill",
-      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), données DGMR",
       "source_status": "April2026 consultation synthesis, approval not verified",
       "availability": "not inferred; whole zone is not a reserve or vacant parcel",
       "source_code_evidence": "Visually reviewed native outline and leader in 10481-outlined.png",
       "intention_scope": "Indicative site-level symbol, no geometry for destination or affected subarea inferred",
-      "coverage_extent": "Selected native category outline; no whole-commune coverage claim"
+      "coverage_extent": "Selected native category outline; no whole-commune coverage claim",
+      "report_cross_reference": {
+        "document_id": "941a73b4-aa3c-5cbe-b1c2-2b01cc00612a",
+        "sha256": "9bb0013f7dda7f52e5b6fa59dec0364e71916429b77f67027d3341b48fdef034",
+        "page_number": 68,
+        "correction": "Reconversion OUT of activity; previous IN interpretation incorrect. Site-level intention only, affected subgeometry unresolved."
+      }
     },
     "alignment_method": "Regional boundary bounds fit held fixed; complete independent union of unmodified current LAND parcel shapes is the holdout. No clipping, snapping, refitting or membership optimization.",
     "regional_fit": {
@@ -1324,35 +1336,35 @@
           "bfs": 5766,
           "number": "276",
           "coverage_fraction": 0.9999972382738118,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH744583824595",
           "bfs": 5766,
           "number": "275",
           "coverage_fraction": 1.0,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH351183834595",
           "bfs": 5766,
           "number": "279",
           "coverage_fraction": 1.0000000000000002,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH768283454515",
           "bfs": 5766,
           "number": "277",
           "coverage_fraction": 1.0,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH474583928380",
           "bfs": 5766,
           "number": "270",
           "coverage_fraction": 0.999995787264525,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         }
       ],
       "partial_land_parcels": []
@@ -1367,13 +1379,13 @@
   },
   "51": {
     "source_semantics": {
-      "label": "ZAL 51 \u2014 Giez",
-      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "label": "ZAL 51 — Giez",
+      "source_map_category": "Zone d’activité d’intérêt local",
       "intention": [
         "No intention symbol shown; not proof of absence of change"
       ],
       "vocation": "not established by blue category fill",
-      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), données DGMR",
       "source_status": "April2026 consultation synthesis, approval not verified",
       "availability": "not inferred; whole zone is not a reserve or vacant parcel",
       "source_code_evidence": "Visually reviewed native outline and leader in 10545-outlined.png",
@@ -1423,21 +1435,21 @@
           "bfs": 5559,
           "number": "401",
           "coverage_fraction": 0.9999995256737844,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH867483459550",
           "bfs": 5559,
           "number": "142",
           "coverage_fraction": 0.9999573213586352,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH114504837358",
           "bfs": 5559,
           "number": "415",
           "coverage_fraction": 1.0,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         }
       ],
       "partial_land_parcels": []
@@ -1452,14 +1464,14 @@
   },
   "99": {
     "source_semantics": {
-      "label": "ZAL 99 \u2014 Susc\u00e9vaz (partie orientale cartographi\u00e9e)",
-      "source_map_category": "Zone d\u2019activit\u00e9 d\u2019int\u00e9r\u00eat local",
+      "label": "ZAL 99 — Suscévaz (partie orientale cartographiée)",
+      "source_map_category": "Zone d’activité d’intérêt local",
       "intention": [
         "reconversion_out_of_activity",
         "dezoning"
       ],
       "vocation": "not established by blue category fill",
-      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), donn\u00e9es DGMR",
+      "asterisk": "Zone pas ou peu accessible en 2023 (desserte TP D/E/absente), données DGMR",
       "source_status": "April2026 consultation synthesis, approval not verified",
       "availability": "not inferred; whole zone is not a reserve or vacant parcel",
       "source_code_evidence": "Visually reviewed native outline and leader in 10549-outlined.png",
@@ -1509,28 +1521,28 @@
           "bfs": 5930,
           "number": "490",
           "coverage_fraction": 0.9994075144438498,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH381383459754",
           "bfs": 5930,
           "number": "493",
           "coverage_fraction": 0.999116271089446,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH338397452270",
           "bfs": 5930,
           "number": "491",
           "coverage_fraction": 0.9993615184453495,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         },
         {
           "egrid": "CH744583979696",
           "bfs": 5930,
           "number": "492",
           "coverage_fraction": 0.9998720104526174,
-          "kind": "parcelle priv\u00e9e"
+          "kind": "parcelle privée"
         }
       ],
       "partial_land_parcels": []

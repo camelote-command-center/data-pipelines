@@ -61,3 +61,14 @@ class NordActivityArtifacts(unittest.TestCase):
         self.assertIsNone(pilot.persist(None,'another-document',pilot.SHA))
 
 if __name__=='__main__':unittest.main()
+
+
+def test_source_semantic_corrections():
+    import nord_activity_pilot as n
+    _,ev,_,_=n.load_artifacts()
+    assert ev['85']['source_semantics']['label']=='ZAL 85 — Bioley-Magnoux'
+    assert ev['82']['source_semantics']['intention']==['reconversion_out_of_activity']
+    assert n.checked_label('85','ZAL 85 — Chêne-Pâquier','ZAL 85 — Bioley-Magnoux')=='ZAL 85 — Bioley-Magnoux'
+    import pytest
+    with pytest.raises(ValueError):n.checked_label('85','unexpected','ZAL 85 — Bioley-Magnoux')
+    with pytest.raises(ValueError):n.checked_label('82','ZAL 85 — Chêne-Pâquier','ZAL 85 — Bioley-Magnoux')
