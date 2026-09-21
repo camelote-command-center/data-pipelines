@@ -1,0 +1,24 @@
+{
+  "document_id": "67c8c254-c962-56e7-a57b-b0c8863c6c0a",
+  "sha256": "d95f9486e1d65b671afd7e6def90bbbd571046d37ab550397b267e7ff129be12",
+  "page_count": 15,
+  "page_annotations": [
+    {
+      "page_number": 1,
+      "fields": {
+        "source_review": {
+          "observed_at": "2026-09-22",
+          "approval": "unverified; official publication does not establish statutory PDCom adoption",
+          "currentness": "historical strategy, implementation and current parcel rights unverified",
+          "geometry": "No geographic alignment, sector validation or delivery eligibility",
+          "coverage": "Regional source membership only; not complete municipal PDCom coverage",
+          "source_sha256": "d95f9486e1d65b671afd7e6def90bbbd571046d37ab550397b267e7ff129be12",
+          "official_publication_evidence": "https://www.regionmorges.ch/strategie/projet-territoire/",
+          "role": "Published regional planning strategy or named annex, not an adopted municipal PDCom",
+          "membership_evidence": "Molliau annex explicitly Commune de Tolochenaz; development study principles to be transcribed into future PDCom fiche, not proof of adoption.",
+          "version_limits": "SDRM main report January2016. Official landing says some agricultural extensions postponed after LAT/PDCn changes; broad strategy still current, not every proposed urbanisation. Molliau annexes September2013 anticipate future incorporation into PDCom; adoption not established."
+        }
+      }
+    }
+  ]
+}

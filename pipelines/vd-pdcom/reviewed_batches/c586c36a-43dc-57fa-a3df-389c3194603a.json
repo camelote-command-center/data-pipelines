@@ -1658,32 +1658,6 @@
           "mapbook_text_mentions": []
         }
       ],
-      "unparsed_numbered_heading_pages": [
-        107,
-        112,
-        148,
-        152,
-        161,
-        187,
-        231,
-        265,
-        269,
-        276,
-        287,
-        331,
-        336,
-        339,
-        343,
-        345,
-        368,
-        400,
-        425,
-        428,
-        432,
-        435,
-        437,
-        440
-      ],
       "urban_subfiches": [
         {
           "id": "U5.A.1-1",
@@ -1942,10 +1916,1170 @@
         }
       ],
       "limits": [
-        "Header template extraction only; alternate templates/unparsed pages and submeasures remain backlog. Candidate page intervals not independently verified outside17urban subfiches.",
+        "Resolved155numbered heading starts:142individual measures plus13packages. Page intervals end before next numbered header; submeasure/table-row completeness remains unverified.",
         "Text mentions link document occurrences only. Raster maps without readable IDs require OCR/manual alignment; no geometric links fabricated.",
         "PA5 submission is not PDI adoption. Population/jobs are scenarios, not current parcel capacity."
-      ]
+      ],
+      "resolved_numbered_headings": {
+        "resolved_alternate_headers": [
+          {
+            "page": 107,
+            "id_raw": "TP5 - Av",
+            "description_raw": "Paquet de mesures sans demande de contributions fédé-\nrales forfaitaires, catégorie : \nTP – Transports publics urbains, suburbains et régionaux",
+            "priority_raw": "Av",
+            "type": "measure_package",
+            "id_normalized": "TP5-Av"
+          },
+          {
+            "page": 112,
+            "id_raw": "TP5 – Ae",
+            "description_raw": "Paquet de mesures sans demande de contributions \nfédérales forfaitaires, catégorie : \nTP – Transports publics urbains, suburbains et régio-\nnaux",
+            "priority_raw": "Ae",
+            "type": "measure_package",
+            "id_normalized": "TP5-Ae"
+          },
+          {
+            "page": 148,
+            "id_raw": "TP5 – A",
+            "description_raw": "Paquet de mesures bénéficiant de contributions fé-\ndérales forfaitaires, catégorie : \nTP – Transports publics urbains, suburbains et régio-\nnaux",
+            "priority_raw": "A",
+            "type": "measure_package",
+            "id_normalized": "TP5-A"
+          },
+          {
+            "page": 152,
+            "id_raw": "TP5 – B",
+            "description_raw": "Paquet de mesures bénéficiant de contributions fé-\ndérales forfaitaires, catégorie : \nTP – Transports publics urbains, suburbains et régio-\nnaux",
+            "priority_raw": "B",
+            "type": "measure_package",
+            "id_normalized": "TP5-B"
+          },
+          {
+            "page": 161,
+            "id_raw": "MD5 - Av",
+            "description_raw": "Paquet de mesures sans demande de contributions \nfédérales forfaitaires, catégorie : \nMD – Mobilité douce",
+            "priority_raw": "Av",
+            "type": "measure_package",
+            "id_normalized": "MD5-Av"
+          },
+          {
+            "page": 187,
+            "id_raw": "MD5 – A",
+            "description_raw": "Paquet de mesures bénéficiant de contributions fé-\ndérales forfaitaires, catégorie : \nMD – Mobilité douce",
+            "priority_raw": "A",
+            "type": "measure_package",
+            "id_normalized": "MD5-A"
+          },
+          {
+            "page": 231,
+            "id_raw": "MD5 – B",
+            "description_raw": "Paquet de mesures bénéficiant de contributions \nfédérales forfaitaires, catégorie : \nMD – Mobilité douce",
+            "priority_raw": "B",
+            "type": "measure_package",
+            "id_normalized": "MD5-B"
+          },
+          {
+            "page": 265,
+            "id_raw": "GT5.A.Ae01",
+            "description_raw": "Fiches de documentation pour les prestations assu-\nmées entièrement par l’agglomération : \nGestion du trafic et centrale de gestion du trafic",
+            "priority_raw": "Ae",
+            "type": "individual_measure_heading",
+            "id_normalized": "GT5.A.Ae01"
+          },
+          {
+            "page": 269,
+            "id_raw": "GT5 – A",
+            "description_raw": "Paquet de mesures bénéficiant de contributions fé-\ndérales forfaitaires, catégorie : \nGT – Gestion du trafic",
+            "priority_raw": "A",
+            "type": "measure_package",
+            "id_normalized": "GT5-A"
+          },
+          {
+            "page": 276,
+            "id_raw": "GT5 – B",
+            "description_raw": "Paquet de mesures bénéficiant de contributions fé-\ndérales forfaitaires, catégorie : \nGT – Gestion du trafic",
+            "priority_raw": "B",
+            "type": "measure_package",
+            "id_normalized": "GT5-B"
+          },
+          {
+            "page": 287,
+            "id_raw": "I5 - Av",
+            "description_raw": "Paquet de mesures sans demande de contributions \nfédérales forfaitaires, catégorie : \nI – Intermodalité",
+            "priority_raw": "Av",
+            "type": "measure_package",
+            "id_normalized": "I5-Av"
+          },
+          {
+            "page": 331,
+            "id_raw": "S5.A.Ae01",
+            "description_raw": "Fiches de documentation pour les prestations  \nassumées entièrement par l’agglomération : \nGestion du stationnement public",
+            "priority_raw": "Ae",
+            "type": "individual_measure_heading",
+            "id_normalized": "S5.A.Ae01"
+          },
+          {
+            "page": 336,
+            "id_raw": "S5.A.Be02",
+            "description_raw": "Fiches de documentation pour les prestations assu-\nmées entièrement par l’agglomération : \nGestion du stationnement privé",
+            "priority_raw": "Be",
+            "type": "individual_measure_heading",
+            "id_normalized": "S5.A.Be02"
+          },
+          {
+            "page": 339,
+            "id_raw": "S5.A.Ae03",
+            "description_raw": "Fiches de documentation pour les prestations assu-\nmées entièrement par l’agglomération : \nGestion du stationnement P+R",
+            "priority_raw": "Ae",
+            "type": "individual_measure_heading",
+            "id_normalized": "S5.A.Ae03"
+          },
+          {
+            "page": 343,
+            "id_raw": "S5.A.Ae04",
+            "description_raw": "Fiches de documentation pour les prestations assu-\nmées entièrement par l’agglomération : \nPlans de mobilité entreprise, interentreprise et plans \nde site",
+            "priority_raw": "Ae",
+            "type": "individual_measure_heading",
+            "id_normalized": "S5.A.Ae04"
+          },
+          {
+            "page": 345,
+            "id_raw": "VS5 - Av",
+            "description_raw": "Paquet de mesures sans demande de contributions \nfédérales forfaitaires, catégorie : \nVS – Valorisation / sécurisation des espaces routiers \net publics",
+            "priority_raw": "Av",
+            "type": "measure_package",
+            "id_normalized": "VS5-Av"
+          },
+          {
+            "page": 368,
+            "id_raw": "VS5 – A",
+            "description_raw": "Paquet de mesures bénéficiant de contributions \nfédérales forfaitaires, catégorie : \nVS – Valorisation / sécurisation des espaces rou-\ntiers et publics",
+            "priority_raw": "A",
+            "type": "measure_package",
+            "id_normalized": "VS5-A"
+          },
+          {
+            "page": 400,
+            "id_raw": "VS5 – B",
+            "description_raw": "Paquet de mesures bénéficiant de contributions fé-\ndérales forfaitaires, catégorie : \nVS – Valorisation / sécurisation des espaces routiers \net publics",
+            "priority_raw": "B",
+            "type": "measure_package",
+            "id_normalized": "VS5-B"
+          },
+          {
+            "page": 425,
+            "id_raw": "T5.A.01",
+            "description_raw": "Coordination des planifications touristiques",
+            "priority_raw": null,
+            "type": "individual_measure_heading",
+            "id_normalized": "T5.A.01"
+          },
+          {
+            "page": 428,
+            "id_raw": "T5.R.02",
+            "description_raw": "Développement et amélioration des équipements touristiques : localisation, qua-\nlité et positionnement stratégique",
+            "priority_raw": null,
+            "type": "individual_measure_heading",
+            "id_normalized": "T5.R.02"
+          },
+          {
+            "page": 432,
+            "id_raw": "T5.R.03",
+            "description_raw": "Hébergement : qualité, pérennité et diversité de l’offre",
+            "priority_raw": null,
+            "type": "individual_measure_heading",
+            "id_normalized": "T5.R.03"
+          },
+          {
+            "page": 435,
+            "id_raw": "E5.A.01",
+            "description_raw": "Gouvernance intercommunale de l’énergie",
+            "priority_raw": null,
+            "type": "individual_measure_heading",
+            "id_normalized": "E5.A.01"
+          },
+          {
+            "page": 437,
+            "id_raw": "E5.A.02",
+            "description_raw": "Développement des infrastructures communes",
+            "priority_raw": null,
+            "type": "individual_measure_heading",
+            "id_normalized": "E5.A.02"
+          },
+          {
+            "page": 440,
+            "id_raw": "E5.A.03",
+            "description_raw": "Encouragement aux mesures individuelles",
+            "priority_raw": null,
+            "type": "individual_measure_heading",
+            "id_normalized": "E5.A.03"
+          }
+        ],
+        "all_numbered_heading_intervals": [
+          {
+            "page": 7,
+            "id": "A.A.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 8
+          },
+          {
+            "page": 9,
+            "id": "A.A.02",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 11
+          },
+          {
+            "page": 12,
+            "id": "A.A.03",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 13
+          },
+          {
+            "page": 14,
+            "id": "A.A.04",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 16
+          },
+          {
+            "page": 17,
+            "id": "A5.A.05",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 18
+          },
+          {
+            "page": 19,
+            "id": "U5.A.1",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 24
+          },
+          {
+            "page": 25,
+            "id": "U5.A.1-1",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 27
+          },
+          {
+            "page": 28,
+            "id": "U5.A.1-2",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 30
+          },
+          {
+            "page": 31,
+            "id": "U5.A.1-3",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 33
+          },
+          {
+            "page": 34,
+            "id": "U5.A.1-4",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 36
+          },
+          {
+            "page": 37,
+            "id": "U5.A.1-5",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 39
+          },
+          {
+            "page": 40,
+            "id": "U5.A.1-6",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 42
+          },
+          {
+            "page": 43,
+            "id": "U5.A.1-7",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 45
+          },
+          {
+            "page": 46,
+            "id": "U5.A.1-8",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 48
+          },
+          {
+            "page": 49,
+            "id": "U5.A.1-9",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 52
+          },
+          {
+            "page": 53,
+            "id": "U5.A.1-10",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 55
+          },
+          {
+            "page": 56,
+            "id": "U5.A.1-11",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 60
+          },
+          {
+            "page": 61,
+            "id": "U5.A.1-12",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 63
+          },
+          {
+            "page": 64,
+            "id": "U5.A.1-13",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 67
+          },
+          {
+            "page": 68,
+            "id": "U5.A.1-14",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 70
+          },
+          {
+            "page": 71,
+            "id": "U5.A.1-15",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 73
+          },
+          {
+            "page": 74,
+            "id": "U5.A.1-16",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 76
+          },
+          {
+            "page": 77,
+            "id": "U5.A.1-17",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 78
+          },
+          {
+            "page": 79,
+            "id": "U5.A.2",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 81
+          },
+          {
+            "page": 82,
+            "id": "U5.A.3",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 84
+          },
+          {
+            "page": 85,
+            "id": "U5.A.4",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 88
+          },
+          {
+            "page": 89,
+            "id": "U5.A.5",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 90
+          },
+          {
+            "page": 91,
+            "id": "P5.A.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 93
+          },
+          {
+            "page": 94,
+            "id": "P5.R.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 96
+          },
+          {
+            "page": 97,
+            "id": "TF5.H.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 98
+          },
+          {
+            "page": 99,
+            "id": "TF5.H.02",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 99
+          },
+          {
+            "page": 100,
+            "id": "TF5.R.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 100
+          },
+          {
+            "page": 101,
+            "id": "TF5.R.02",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 101
+          },
+          {
+            "page": 102,
+            "id": "TF5.R.03",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 102
+          },
+          {
+            "page": 103,
+            "id": "TF5.R.04",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 103
+          },
+          {
+            "page": 104,
+            "id": "TF5.R.05",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 104
+          },
+          {
+            "page": 105,
+            "id": "TF5.V.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 106
+          },
+          {
+            "page": 107,
+            "id": "TP5-Av",
+            "type": "measure_package",
+            "last_page_before_next_numbered_heading": 111
+          },
+          {
+            "page": 112,
+            "id": "TP5-Ae",
+            "type": "measure_package",
+            "last_page_before_next_numbered_heading": 118
+          },
+          {
+            "page": 119,
+            "id": "TP5.R.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 121
+          },
+          {
+            "page": 122,
+            "id": "TP5.R.02",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 124
+          },
+          {
+            "page": 125,
+            "id": "TP5.V.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 128
+          },
+          {
+            "page": 129,
+            "id": "TP5.V.02",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 132
+          },
+          {
+            "page": 133,
+            "id": "TP5.H.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 136
+          },
+          {
+            "page": 137,
+            "id": "TP5.R.04",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 139
+          },
+          {
+            "page": 140,
+            "id": "TP5.R.05",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 142
+          },
+          {
+            "page": 143,
+            "id": "TP5.R.06",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 144
+          },
+          {
+            "page": 145,
+            "id": "TP5.R.07",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 147
+          },
+          {
+            "page": 148,
+            "id": "TP5-A",
+            "type": "measure_package",
+            "last_page_before_next_numbered_heading": 150
+          },
+          {
+            "page": 151,
+            "id": "TP5.R.03",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 151
+          },
+          {
+            "page": 152,
+            "id": "TP5-B",
+            "type": "measure_package",
+            "last_page_before_next_numbered_heading": 153
+          },
+          {
+            "page": 154,
+            "id": "TP5.R.08",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 155
+          },
+          {
+            "page": 156,
+            "id": "TP5.R.09",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 160
+          },
+          {
+            "page": 161,
+            "id": "MD5-Av",
+            "type": "measure_package",
+            "last_page_before_next_numbered_heading": 162
+          },
+          {
+            "page": 163,
+            "id": "MD5.H.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 166
+          },
+          {
+            "page": 167,
+            "id": "MD5.H.02",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 170
+          },
+          {
+            "page": 171,
+            "id": "MD5.R.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 173
+          },
+          {
+            "page": 174,
+            "id": "MD5.R.02",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 176
+          },
+          {
+            "page": 177,
+            "id": "MD5.R.03",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 179
+          },
+          {
+            "page": 180,
+            "id": "MD5.V.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 182
+          },
+          {
+            "page": 183,
+            "id": "MD5.V.02",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 186
+          },
+          {
+            "page": 187,
+            "id": "MD5-A",
+            "type": "measure_package",
+            "last_page_before_next_numbered_heading": 193
+          },
+          {
+            "page": 194,
+            "id": "MD5.H.03",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 195
+          },
+          {
+            "page": 196,
+            "id": "MD5.H.04",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 197
+          },
+          {
+            "page": 198,
+            "id": "MD5.H.05",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 198
+          },
+          {
+            "page": 199,
+            "id": "MD5.H.06",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 200
+          },
+          {
+            "page": 201,
+            "id": "MD5.H.07",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 202
+          },
+          {
+            "page": 203,
+            "id": "MD5.H.08",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 204
+          },
+          {
+            "page": 205,
+            "id": "MD5.H.09",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 205
+          },
+          {
+            "page": 206,
+            "id": "MD5.R.04",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 208
+          },
+          {
+            "page": 209,
+            "id": "MD5.R.05",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 211
+          },
+          {
+            "page": 212,
+            "id": "MD5.R.06",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 213
+          },
+          {
+            "page": 214,
+            "id": "MD5.R.07",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 215
+          },
+          {
+            "page": 216,
+            "id": "MD5.R.08",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 217
+          },
+          {
+            "page": 218,
+            "id": "MD5.R.09",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 219
+          },
+          {
+            "page": 220,
+            "id": "MD5.R.10",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 221
+          },
+          {
+            "page": 222,
+            "id": "MD5.R.11",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 223
+          },
+          {
+            "page": 224,
+            "id": "MD5.R.12",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 225
+          },
+          {
+            "page": 226,
+            "id": "MD5.R.13",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 226
+          },
+          {
+            "page": 227,
+            "id": "MD5.V.03",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 228
+          },
+          {
+            "page": 229,
+            "id": "MD5.V.04",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 230
+          },
+          {
+            "page": 231,
+            "id": "MD5-B",
+            "type": "measure_package",
+            "last_page_before_next_numbered_heading": 235
+          },
+          {
+            "page": 236,
+            "id": "MD5.H.10",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 237
+          },
+          {
+            "page": 238,
+            "id": "MD5.R.14",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 238
+          },
+          {
+            "page": 239,
+            "id": "MD5.R.15",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 240
+          },
+          {
+            "page": 241,
+            "id": "MD5.R.16",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 242
+          },
+          {
+            "page": 243,
+            "id": "MD5.R.17",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 244
+          },
+          {
+            "page": 245,
+            "id": "MD5.R.18",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 246
+          },
+          {
+            "page": 247,
+            "id": "MD5.R.19",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 248
+          },
+          {
+            "page": 249,
+            "id": "MD5.R.20",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 249
+          },
+          {
+            "page": 250,
+            "id": "MD5.R.21",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 251
+          },
+          {
+            "page": 252,
+            "id": "MD5.R.22",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 252
+          },
+          {
+            "page": 253,
+            "id": "MD5.R.23",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 253
+          },
+          {
+            "page": 254,
+            "id": "MD5.R.24",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 255
+          },
+          {
+            "page": 256,
+            "id": "MD5.V.05",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 264
+          },
+          {
+            "page": 265,
+            "id": "GT5.A.Ae01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 268
+          },
+          {
+            "page": 269,
+            "id": "GT5-A",
+            "type": "measure_package",
+            "last_page_before_next_numbered_heading": 271
+          },
+          {
+            "page": 272,
+            "id": "GT5.R.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 273
+          },
+          {
+            "page": 274,
+            "id": "GT5.R.02",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 275
+          },
+          {
+            "page": 276,
+            "id": "GT5-B",
+            "type": "measure_package",
+            "last_page_before_next_numbered_heading": 277
+          },
+          {
+            "page": 278,
+            "id": "GT5.H.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 279
+          },
+          {
+            "page": 280,
+            "id": "GT5.H.02",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 281
+          },
+          {
+            "page": 282,
+            "id": "GT5.H.03",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 283
+          },
+          {
+            "page": 284,
+            "id": "GT5.R.03",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 286
+          },
+          {
+            "page": 287,
+            "id": "I5-Av",
+            "type": "measure_package",
+            "last_page_before_next_numbered_heading": 287
+          },
+          {
+            "page": 288,
+            "id": "I5.R.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 293
+          },
+          {
+            "page": 294,
+            "id": "I5.R.02",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 297
+          },
+          {
+            "page": 298,
+            "id": "I5.R.03",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 300
+          },
+          {
+            "page": 301,
+            "id": "I5.R.04",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 303
+          },
+          {
+            "page": 304,
+            "id": "I5.R.05",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 307
+          },
+          {
+            "page": 308,
+            "id": "I5.R.06",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 311
+          },
+          {
+            "page": 312,
+            "id": "I5.V.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 314
+          },
+          {
+            "page": 315,
+            "id": "I5.H.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 317
+          },
+          {
+            "page": 318,
+            "id": "I5.R.07",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 321
+          },
+          {
+            "page": 322,
+            "id": "I5.R.08",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 324
+          },
+          {
+            "page": 325,
+            "id": "I5.V.02",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 330
+          },
+          {
+            "page": 331,
+            "id": "S5.A.Ae01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 335
+          },
+          {
+            "page": 336,
+            "id": "S5.A.Be02",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 338
+          },
+          {
+            "page": 339,
+            "id": "S5.A.Ae03",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 342
+          },
+          {
+            "page": 343,
+            "id": "S5.A.Ae04",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 344
+          },
+          {
+            "page": 345,
+            "id": "VS5-Av",
+            "type": "measure_package",
+            "last_page_before_next_numbered_heading": 347
+          },
+          {
+            "page": 348,
+            "id": "VS5.R.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 352
+          },
+          {
+            "page": 353,
+            "id": "VS5.R.02",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 357
+          },
+          {
+            "page": 358,
+            "id": "VS5.R.03",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 360
+          },
+          {
+            "page": 361,
+            "id": "VS5.R.13",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 364
+          },
+          {
+            "page": 365,
+            "id": "VS5.R.14",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 367
+          },
+          {
+            "page": 368,
+            "id": "VS5-A",
+            "type": "measure_package",
+            "last_page_before_next_numbered_heading": 372
+          },
+          {
+            "page": 373,
+            "id": "VS5.H.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 374
+          },
+          {
+            "page": 375,
+            "id": "VS5.H.02",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 376
+          },
+          {
+            "page": 377,
+            "id": "VS5.R.04",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 379
+          },
+          {
+            "page": 380,
+            "id": "VS5.R.05",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 381
+          },
+          {
+            "page": 382,
+            "id": "VS5.R.06",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 383
+          },
+          {
+            "page": 384,
+            "id": "VS5.R.07",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 386
+          },
+          {
+            "page": 387,
+            "id": "VS5.R.08",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 388
+          },
+          {
+            "page": 389,
+            "id": "VS5.R.09",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 390
+          },
+          {
+            "page": 391,
+            "id": "VS5.R.10",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 392
+          },
+          {
+            "page": 393,
+            "id": "VS5.R.11",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 395
+          },
+          {
+            "page": 396,
+            "id": "VS5.R.12",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 396
+          },
+          {
+            "page": 397,
+            "id": "VS5.V.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 399
+          },
+          {
+            "page": 400,
+            "id": "VS5-B",
+            "type": "measure_package",
+            "last_page_before_next_numbered_heading": 403
+          },
+          {
+            "page": 404,
+            "id": "VS5.H.03",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 405
+          },
+          {
+            "page": 406,
+            "id": "VS5.R.15",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 408
+          },
+          {
+            "page": 409,
+            "id": "VS5.R.16",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 410
+          },
+          {
+            "page": 411,
+            "id": "VS5.R.17",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 412
+          },
+          {
+            "page": 413,
+            "id": "VS5.R.18",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 414
+          },
+          {
+            "page": 415,
+            "id": "VS5.R.19",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 415
+          },
+          {
+            "page": 416,
+            "id": "VS5.R.20",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 416
+          },
+          {
+            "page": 417,
+            "id": "VS5.R.21",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 420
+          },
+          {
+            "page": 421,
+            "id": "VS5.V.02",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 424
+          },
+          {
+            "page": 425,
+            "id": "T5.A.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 427
+          },
+          {
+            "page": 428,
+            "id": "T5.R.02",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 431
+          },
+          {
+            "page": 432,
+            "id": "T5.R.03",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 434
+          },
+          {
+            "page": 435,
+            "id": "E5.A.01",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 436
+          },
+          {
+            "page": 437,
+            "id": "E5.A.02",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 439
+          },
+          {
+            "page": 440,
+            "id": "E5.A.03",
+            "type": "individual_measure_heading",
+            "last_page_before_next_numbered_heading": 441
+          }
+        ],
+        "individual_heading_count": 142,
+        "package_count": 13,
+        "limits": "All24previously unparsed numbered-header pages classified by source text. Page intervals end before next numbered header, not a guarantee of all submeasures/table rows. Package/submeasure duplication not counted as extra planning sectors. Priority null means absent from header, not no priority.",
+        "source_sha256": "67efa051bc4f75c8153eaf2e978e093b9a7341e563b145259d14ee4776cbdb63"
+      },
+      "previously_unparsed_numbered_heading_pages": [
+        107,
+        112,
+        148,
+        152,
+        161,
+        187,
+        231,
+        265,
+        269,
+        276,
+        287,
+        331,
+        336,
+        339,
+        343,
+        345,
+        368,
+        400,
+        425,
+        428,
+        432,
+        435,
+        437,
+        440
+      ],
+      "unparsed_numbered_heading_pages": [],
+      "heading_index_status": "Resolved index contains142individual headings plus13packages. Original131records retained for detailed raw text; page intervals in resolved_numbered_headings supersede original intervals."
     },
     "reviewed_operational_metrics": {
       "rows": [

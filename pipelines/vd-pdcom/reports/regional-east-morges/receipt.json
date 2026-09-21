@@ -1,0 +1,18 @@
+{
+  "documents": 13,
+  "pages": 765,
+  "replay_identical_documents": 13,
+  "rendered_pages": 69,
+  "mapbook_cartographic_pages": 52,
+  "additional_variant_map_pages": 3,
+  "validated_sectors_added": 0,
+  "receiver_rows_added": 0,
+  "rivelac_resolved_headings": 142,
+  "rivelac_packages": 13,
+  "total_documents": 173,
+  "total_source_communes": 258,
+  "source_gaps": 42,
+  "new_source_communes": 11,
+  "pending_links": 11,
+  "receiver_full_row_parity": true
+}

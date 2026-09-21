@@ -1,0 +1,24 @@
+{
+  "document_id": "34a1c6eb-6d6d-55b0-9e5f-a7c5c5429418",
+  "sha256": "839dc5ca9fcb79f3d43f44b3beac34e31be1a366094fe3ffd83ff2098a0bb64f",
+  "page_count": 29,
+  "page_annotations": [
+    {
+      "page_number": 1,
+      "fields": {
+        "source_review": {
+          "observed_at": "2026-09-22",
+          "approval": "unverified; official publication does not establish statutory PDCom adoption",
+          "currentness": "historical strategy, implementation and current parcel rights unverified",
+          "geometry": "No geographic alignment, sector validation or delivery eligibility",
+          "coverage": "Regional source membership only; not complete municipal PDCom coverage",
+          "source_sha256": "839dc5ca9fcb79f3d43f44b3beac34e31be1a366094fe3ffd83ff2098a0bb64f",
+          "official_publication_evidence": "https://www.regionmorges.ch/strategie/projet-territoire/",
+          "role": "Published regional planning strategy or named annex, not an adopted municipal PDCom",
+          "membership_evidence": "SDRM main report PDF19 lists ten study partner communes, including Chigny and Saint-Prex. Present-day website footer not used to infer historical membership; Lussy excluded.",
+          "version_limits": "SDRM main report January2016. Official landing says some agricultural extensions postponed after LAT/PDCn changes; broad strategy still current, not every proposed urbanisation. Molliau annexes September2013 anticipate future incorporation into PDCom; adoption not established."
+        }
+      }
+    }
+  ]
+}
