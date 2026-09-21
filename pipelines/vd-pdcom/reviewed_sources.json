@@ -3498,5 +3498,71 @@
       "operation_id": "bba49468-9316-403b-b6ce-636a364f58d2"
     },
     "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5407,
+    "commune_bfs_list": [
+      5401,
+      5402,
+      5403,
+      5404,
+      5405,
+      5406,
+      5407,
+      5409,
+      5410,
+      5411,
+      5415
+    ],
+    "pdf_url": "https://leysin.ch/wp-content/uploads/2025/06/20250131_Volet_strategique_SRGZA_Chablais_vaudois.pdf",
+    "landing_url": "https://www.vd.ch/actualites/decisions-du-conseil-detat/seance-du-conseil-detat/decision/id/14a639bf-8507-4f01-90f6-1d436d8c4b5a",
+    "title": "Chablais vaudois — PDR zones activites — volet strategique",
+    "plan_status": "unverified",
+    "scope": "intercommunal",
+    "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5407,
+    "commune_bfs_list": [
+      5401,
+      5402,
+      5403,
+      5404,
+      5405,
+      5406,
+      5407,
+      5409,
+      5410,
+      5411,
+      5415
+    ],
+    "pdf_url": "https://leysin.ch/wp-content/uploads/2025/06/20250131_Volet_operationnel_SRGZA_Chablais_vaudois.pdf",
+    "landing_url": "https://www.vd.ch/actualites/decisions-du-conseil-detat/seance-du-conseil-detat/decision/id/14a639bf-8507-4f01-90f6-1d436d8c4b5a",
+    "title": "Chablais vaudois — PDR zones activites — volet operationnel",
+    "plan_status": "unverified",
+    "scope": "intercommunal",
+    "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5407,
+    "commune_bfs_list": [
+      5401,
+      5402,
+      5403,
+      5404,
+      5405,
+      5406,
+      5407,
+      5409,
+      5410,
+      5411,
+      5415
+    ],
+    "pdf_url": "https://leysin.ch/wp-content/uploads/2025/06/20250131_Volet_explicatif_SRGZA_Chablais_vaudois_compressed-1.pdf",
+    "landing_url": "https://www.vd.ch/actualites/decisions-du-conseil-detat/seance-du-conseil-detat/decision/id/14a639bf-8507-4f01-90f6-1d436d8c4b5a",
+    "title": "Chablais vaudois — PDR zones activites — volet explicatif",
+    "plan_status": "unverified",
+    "scope": "intercommunal",
+    "enumerate_vectors": false
   }
 ]

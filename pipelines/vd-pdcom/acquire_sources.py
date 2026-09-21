@@ -161,6 +161,8 @@ def persist(conn,source,sha,pages):
         reconcile(conn,document_ids=[doc_id])
     from reviews import apply_review
     apply_review(conn,doc_id,sha)
+    from reviewed_batches import apply_batch
+    apply_batch(conn,doc_id,sha)
     from epalinges_pilot import persist as persist_epalinges
     persist_epalinges(conn,doc_id,sha)
     from aigle_pilot import persist as persist_aigle

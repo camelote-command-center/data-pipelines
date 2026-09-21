@@ -1,0 +1,410 @@
+{
+  "document_id": "68f53aea-2f82-5ab4-9f90-2c6ee01d6aff",
+  "sha256": "c57f4c6fb259acdeff08f6f611914c431e1a29b1c53d0034ef3b36152b41b29d",
+  "page_count": 80,
+  "review_scope": "Reproduce existing verified source transcription only; geographic alignment and later currentness remain pending. No new delivery eligibility.",
+  "page_annotations": [
+    {
+      "page_number": 2,
+      "fields": {
+        "source_review": {
+          "evidence": "Signed and stamped approval page visually inspected in complete 80-page municipal PDF; municipal regulations page links this copy.",
+          "map_pages": [
+            {
+              "file": "map-page-16.png",
+              "role": "context_diagnostic",
+              "sha256": "968537ecd742c746e3bfdadc839c30f513f6468e93f43049cc95813932075a31",
+              "coordinates": "page pixels only",
+              "page_number": 16,
+              "geographic_validation": "pending"
+            },
+            {
+              "file": "map-page-18.png",
+              "role": "context_diagnostic",
+              "sha256": "143a033d663ed57172f783a61f02ace47017635377e6f16106543c2719062cea",
+              "coordinates": "page pixels only",
+              "page_number": 18,
+              "geographic_validation": "pending"
+            },
+            {
+              "file": "map-page-20.png",
+              "role": "context_diagnostic",
+              "sha256": "8f3cb751d1f84e89ec75caab6ad238b1fc3ff8e299ea7db26be7acf82214c8b7",
+              "coordinates": "page pixels only",
+              "page_number": 20,
+              "geographic_validation": "pending"
+            },
+            {
+              "file": "map-page-26.png",
+              "role": "context_diagnostic",
+              "sha256": "46ab77858de66c690454dee9d8b73e64a3f073347641314dcff3e07ffd8efd49",
+              "coordinates": "page pixels only",
+              "page_number": 26,
+              "geographic_validation": "pending"
+            },
+            {
+              "file": "map-page-27.png",
+              "role": "context_diagnostic",
+              "sha256": "932467d27cedc189fd3db2220b29e176a920f097d3cf3c01189bb4894dddbfef",
+              "coordinates": "page pixels only",
+              "page_number": 27,
+              "geographic_validation": "pending"
+            },
+            {
+              "file": "map-page-28.png",
+              "role": "context_diagnostic",
+              "sha256": "0880ea67f9cd49160e4f808cc6d85f648e63759c1e3077c8f614552bea2dd51c",
+              "coordinates": "page pixels only",
+              "page_number": 28,
+              "geographic_validation": "pending"
+            },
+            {
+              "file": "map-page-32.png",
+              "role": "context_diagnostic",
+              "sha256": "163a50dbe15286883ddc866862ae18a9f1257106f2a1f8f66082bbfabd7998f7",
+              "coordinates": "page pixels only",
+              "page_number": 32,
+              "geographic_validation": "pending"
+            },
+            {
+              "file": "map-page-38.png",
+              "role": "context_diagnostic",
+              "sha256": "b06655b13b0696bffad97887d85d3dcaa139712722d5c8cb4aca3da88209e7f8",
+              "coordinates": "page pixels only",
+              "page_number": 38,
+              "geographic_validation": "pending"
+            },
+            {
+              "file": "map-page-43.png",
+              "role": "context_diagnostic",
+              "sha256": "851f479fe877db4b971bfc2e1e009d5786bf979a833e5c6bc7a7f2910b08a868",
+              "coordinates": "page pixels only",
+              "page_number": 43,
+              "geographic_validation": "pending"
+            },
+            {
+              "file": "map-page-44.png",
+              "role": "context_diagnostic",
+              "sha256": "70dd87939f139dd847d19d0649b6f88c10ef70f4a5be3756c482c1d512cd2188",
+              "coordinates": "page pixels only",
+              "page_number": 44,
+              "geographic_validation": "pending"
+            },
+            {
+              "file": "map-page-47.png",
+              "role": "context_diagnostic",
+              "sha256": "810b4b1548a9e3ca19872e4cde0d26cea3c11afa7282f62ca1ce179b7503cdda",
+              "coordinates": "page pixels only",
+              "page_number": 47,
+              "geographic_validation": "pending"
+            },
+            {
+              "file": "map-page-51.png",
+              "role": "context_diagnostic",
+              "sha256": "54422ef2b3b34fa13fadc3c81c9766365f811e970de9a2e536269efef22a45b9",
+              "coordinates": "page pixels only",
+              "page_number": 51,
+              "geographic_validation": "pending"
+            },
+            {
+              "file": "map-page-56.png",
+              "role": "context_diagnostic",
+              "sha256": "ecf34a9b0d23b78025cd44d0efe32ba33e13e4e80506419c906d16e4df0ff971",
+              "coordinates": "page pixels only",
+              "page_number": 56,
+              "geographic_validation": "pending"
+            },
+            {
+              "file": "map-page-63.png",
+              "role": "strategic",
+              "sha256": "9b1b778352aca3a7b062357e648d1911c222ff1f0f9a46301a2e10551328518a",
+              "coordinates": "page pixels only",
+              "page_number": 63,
+              "geographic_validation": "pending"
+            },
+            {
+              "file": "map-page-67.png",
+              "role": "strategic",
+              "sha256": "43b56b4435ea65de7ea2d9e176734407b53cf055c55b4e61bd344392f23f6f37",
+              "coordinates": "page pixels only",
+              "page_number": 67,
+              "geographic_validation": "pending"
+            },
+            {
+              "file": "map-page-71.png",
+              "role": "strategic",
+              "sha256": "5ed86b626e7488e67246a06a31adcb7ac2a36b16f49f9e4d29d4641bd2296f7e",
+              "coordinates": "page pixels only",
+              "page_number": 71,
+              "geographic_validation": "pending"
+            },
+            {
+              "file": "map-page-75.png",
+              "role": "strategic",
+              "sha256": "c82fa1b97ef83066b0b3b7c2dfa4c7caf0cc78b317c89f6e341d99b44933ec56",
+              "coordinates": "page pixels only",
+              "page_number": 75,
+              "geographic_validation": "pending"
+            },
+            {
+              "file": "map-page-80.png",
+              "role": "sectorial",
+              "sha256": "0768604d837ee2b271079eda8b2cd17176205341f708a5b949bb04de7259efc9",
+              "coordinates": "page pixels only",
+              "page_number": 80,
+              "geographic_validation": "pending"
+            }
+          ],
+          "plan_status": "approved_with_reservation",
+          "reservation": [
+            "Developpement a long terme du secteur Pierravaux-La Grotte",
+            "Objectif de deplacement de l arret du LEB de Jouxtens-Mezery"
+          ],
+          "reviewed_at": "2026-09-21",
+          "scope_limit": "Later amendments/current applicability unverified. Reservations apply even though strategic maps still display long-term development and station relocation. Historical cadastral background. No parcel rights or geographic validation inferred.",
+          "approval_date": "2021-11-10",
+          "artifact_root": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/jouxtens-approved",
+          "source_sha256": "c57f4c6fb259acdeff08f6f611914c431e1a29b1c53d0034ef3b36152b41b29d",
+          "acquisition_exception": "requests returned HTTP403; public Chrome viewer displayed and downloaded complete PDF. Annual unattended route remains unverified; no automatic bypass.",
+          "approval_evidence_page": 2,
+          "municipal_council_adoption_date": "2021-06-22",
+          "municipal_executive_approval_date": "2021-03-30"
+        }
+      }
+    },
+    {
+      "page_number": 16,
+      "fields": {
+        "reviewed_map": {
+          "file": "map-page-16.png",
+          "role": "context_diagnostic",
+          "sha256": "968537ecd742c746e3bfdadc839c30f513f6468e93f43049cc95813932075a31",
+          "coordinates": "page pixels only",
+          "page_number": 16,
+          "geographic_validation": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 18,
+      "fields": {
+        "reviewed_map": {
+          "file": "map-page-18.png",
+          "role": "context_diagnostic",
+          "sha256": "143a033d663ed57172f783a61f02ace47017635377e6f16106543c2719062cea",
+          "coordinates": "page pixels only",
+          "page_number": 18,
+          "geographic_validation": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 20,
+      "fields": {
+        "reviewed_map": {
+          "file": "map-page-20.png",
+          "role": "context_diagnostic",
+          "sha256": "8f3cb751d1f84e89ec75caab6ad238b1fc3ff8e299ea7db26be7acf82214c8b7",
+          "coordinates": "page pixels only",
+          "page_number": 20,
+          "geographic_validation": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 26,
+      "fields": {
+        "reviewed_map": {
+          "file": "map-page-26.png",
+          "role": "context_diagnostic",
+          "sha256": "46ab77858de66c690454dee9d8b73e64a3f073347641314dcff3e07ffd8efd49",
+          "coordinates": "page pixels only",
+          "page_number": 26,
+          "geographic_validation": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 27,
+      "fields": {
+        "reviewed_map": {
+          "file": "map-page-27.png",
+          "role": "context_diagnostic",
+          "sha256": "932467d27cedc189fd3db2220b29e176a920f097d3cf3c01189bb4894dddbfef",
+          "coordinates": "page pixels only",
+          "page_number": 27,
+          "geographic_validation": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 28,
+      "fields": {
+        "reviewed_map": {
+          "file": "map-page-28.png",
+          "role": "context_diagnostic",
+          "sha256": "0880ea67f9cd49160e4f808cc6d85f648e63759c1e3077c8f614552bea2dd51c",
+          "coordinates": "page pixels only",
+          "page_number": 28,
+          "geographic_validation": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 32,
+      "fields": {
+        "reviewed_map": {
+          "file": "map-page-32.png",
+          "role": "context_diagnostic",
+          "sha256": "163a50dbe15286883ddc866862ae18a9f1257106f2a1f8f66082bbfabd7998f7",
+          "coordinates": "page pixels only",
+          "page_number": 32,
+          "geographic_validation": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 38,
+      "fields": {
+        "reviewed_map": {
+          "file": "map-page-38.png",
+          "role": "context_diagnostic",
+          "sha256": "b06655b13b0696bffad97887d85d3dcaa139712722d5c8cb4aca3da88209e7f8",
+          "coordinates": "page pixels only",
+          "page_number": 38,
+          "geographic_validation": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 43,
+      "fields": {
+        "reviewed_map": {
+          "file": "map-page-43.png",
+          "role": "context_diagnostic",
+          "sha256": "851f479fe877db4b971bfc2e1e009d5786bf979a833e5c6bc7a7f2910b08a868",
+          "coordinates": "page pixels only",
+          "page_number": 43,
+          "geographic_validation": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 44,
+      "fields": {
+        "reviewed_map": {
+          "file": "map-page-44.png",
+          "role": "context_diagnostic",
+          "sha256": "70dd87939f139dd847d19d0649b6f88c10ef70f4a5be3756c482c1d512cd2188",
+          "coordinates": "page pixels only",
+          "page_number": 44,
+          "geographic_validation": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 47,
+      "fields": {
+        "reviewed_map": {
+          "file": "map-page-47.png",
+          "role": "context_diagnostic",
+          "sha256": "810b4b1548a9e3ca19872e4cde0d26cea3c11afa7282f62ca1ce179b7503cdda",
+          "coordinates": "page pixels only",
+          "page_number": 47,
+          "geographic_validation": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 51,
+      "fields": {
+        "reviewed_map": {
+          "file": "map-page-51.png",
+          "role": "context_diagnostic",
+          "sha256": "54422ef2b3b34fa13fadc3c81c9766365f811e970de9a2e536269efef22a45b9",
+          "coordinates": "page pixels only",
+          "page_number": 51,
+          "geographic_validation": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 56,
+      "fields": {
+        "reviewed_map": {
+          "file": "map-page-56.png",
+          "role": "context_diagnostic",
+          "sha256": "ecf34a9b0d23b78025cd44d0efe32ba33e13e4e80506419c906d16e4df0ff971",
+          "coordinates": "page pixels only",
+          "page_number": 56,
+          "geographic_validation": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 63,
+      "fields": {
+        "reviewed_map": {
+          "file": "map-page-63.png",
+          "role": "strategic",
+          "sha256": "9b1b778352aca3a7b062357e648d1911c222ff1f0f9a46301a2e10551328518a",
+          "coordinates": "page pixels only",
+          "page_number": 63,
+          "geographic_validation": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 67,
+      "fields": {
+        "reviewed_map": {
+          "file": "map-page-67.png",
+          "role": "strategic",
+          "sha256": "43b56b4435ea65de7ea2d9e176734407b53cf055c55b4e61bd344392f23f6f37",
+          "coordinates": "page pixels only",
+          "page_number": 67,
+          "geographic_validation": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 71,
+      "fields": {
+        "reviewed_map": {
+          "file": "map-page-71.png",
+          "role": "strategic",
+          "sha256": "5ed86b626e7488e67246a06a31adcb7ac2a36b16f49f9e4d29d4641bd2296f7e",
+          "coordinates": "page pixels only",
+          "page_number": 71,
+          "geographic_validation": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 75,
+      "fields": {
+        "reviewed_map": {
+          "file": "map-page-75.png",
+          "role": "strategic",
+          "sha256": "c82fa1b97ef83066b0b3b7c2dfa4c7caf0cc78b317c89f6e341d99b44933ec56",
+          "coordinates": "page pixels only",
+          "page_number": 75,
+          "geographic_validation": "pending"
+        }
+      }
+    },
+    {
+      "page_number": 80,
+      "fields": {
+        "reviewed_map": {
+          "file": "map-page-80.png",
+          "role": "sectorial",
+          "sha256": "0768604d837ee2b271079eda8b2cd17176205341f708a5b949bb04de7259efc9",
+          "coordinates": "page pixels only",
+          "page_number": 80,
+          "geographic_validation": "pending"
+        }
+      }
+    }
+  ]
+}
