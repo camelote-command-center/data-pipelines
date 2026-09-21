@@ -17,6 +17,2402 @@
           "official_publication_evidence": "https://agglorivelac.ch/projet/plan-directeur-intercommunal-pdi-projet-dagglomeration-de-cinquieme-generation-pa5/"
         }
       }
+    },
+    {
+      "page_number": 25,
+      "fields": {
+        "reviewed_map": {
+          "role": "urbanisation_fiche_map",
+          "measure_id": "U5.A.1-1",
+          "file": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/rivelac-pa5/measures/U5.A.1-1.png",
+          "sha256": "7771c41990d840c742c921b8539182a3c364d19235962469c56fc8fc4e014132",
+          "scope": "Fribourg_not_Vaud",
+          "alignment": "not_validated",
+          "visual_review": "Map present, checked in17fiche contact sheet; boundary/legend interpretation unvalidated"
+        }
+      }
+    },
+    {
+      "page_number": 28,
+      "fields": {
+        "reviewed_map": {
+          "role": "urbanisation_fiche_map",
+          "measure_id": "U5.A.1-2",
+          "file": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/rivelac-pa5/measures/U5.A.1-2.png",
+          "sha256": "c38cbef1424f4fc0c2f8e644819a5b2f1211210359f174140719707894c96d75",
+          "scope": "Vaud",
+          "alignment": "not_validated",
+          "visual_review": "Map present, checked in17fiche contact sheet; boundary/legend interpretation unvalidated"
+        }
+      }
+    },
+    {
+      "page_number": 31,
+      "fields": {
+        "reviewed_map": {
+          "role": "urbanisation_fiche_map",
+          "measure_id": "U5.A.1-3",
+          "file": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/rivelac-pa5/measures/U5.A.1-3.png",
+          "sha256": "45f2f28222e2043a73e898b0739f9c54166ea3f37acd44421a811a44bfcfdb2b",
+          "scope": "Vaud",
+          "alignment": "not_validated",
+          "visual_review": "Map present, checked in17fiche contact sheet; boundary/legend interpretation unvalidated"
+        }
+      }
+    },
+    {
+      "page_number": 34,
+      "fields": {
+        "reviewed_map": {
+          "role": "urbanisation_fiche_map",
+          "measure_id": "U5.A.1-4",
+          "file": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/rivelac-pa5/measures/U5.A.1-4.png",
+          "sha256": "25c65f5b9f7f5f7fd8771cc10ed0265096632ecf74d42cc35ee3514fedb8f935",
+          "scope": "Vaud",
+          "alignment": "not_validated",
+          "visual_review": "Map present, checked in17fiche contact sheet; boundary/legend interpretation unvalidated"
+        }
+      }
+    },
+    {
+      "page_number": 37,
+      "fields": {
+        "reviewed_map": {
+          "role": "urbanisation_fiche_map",
+          "measure_id": "U5.A.1-5",
+          "file": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/rivelac-pa5/measures/U5.A.1-5.png",
+          "sha256": "19db1ebd6aac590f2e4f0f63532c1ec7c509746c2d9b86b22912ed3ee198801a",
+          "scope": "Vaud",
+          "alignment": "not_validated",
+          "visual_review": "Map present, checked in17fiche contact sheet; boundary/legend interpretation unvalidated"
+        }
+      }
+    },
+    {
+      "page_number": 40,
+      "fields": {
+        "reviewed_map": {
+          "role": "urbanisation_fiche_map",
+          "measure_id": "U5.A.1-6",
+          "file": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/rivelac-pa5/measures/U5.A.1-6.png",
+          "sha256": "67dec4051cbf2c3778a81f750988748c772334d0fe0ecdba7b8ffdc3bfb14cc7",
+          "scope": "Vaud",
+          "alignment": "not_validated",
+          "visual_review": "Map present, checked in17fiche contact sheet; boundary/legend interpretation unvalidated"
+        }
+      }
+    },
+    {
+      "page_number": 43,
+      "fields": {
+        "reviewed_map": {
+          "role": "urbanisation_fiche_map",
+          "measure_id": "U5.A.1-7",
+          "file": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/rivelac-pa5/measures/U5.A.1-7.png",
+          "sha256": "7261b89d5d99cb4e054d0ea7116d7f31324ac3686a58db8d3b3cd41013b35531",
+          "scope": "Vaud",
+          "alignment": "not_validated",
+          "visual_review": "Map present, checked in17fiche contact sheet; boundary/legend interpretation unvalidated"
+        }
+      }
+    },
+    {
+      "page_number": 46,
+      "fields": {
+        "reviewed_map": {
+          "role": "urbanisation_fiche_map",
+          "measure_id": "U5.A.1-8",
+          "file": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/rivelac-pa5/measures/U5.A.1-8.png",
+          "sha256": "f7ae83bbc4a8d956b04bba108abcc5dec911c48fdb1ee9bd8b05093eedef902f",
+          "scope": "Vaud",
+          "alignment": "not_validated",
+          "visual_review": "Map present, checked in17fiche contact sheet; boundary/legend interpretation unvalidated"
+        }
+      }
+    },
+    {
+      "page_number": 49,
+      "fields": {
+        "reviewed_map": {
+          "role": "urbanisation_fiche_map",
+          "measure_id": "U5.A.1-9",
+          "file": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/rivelac-pa5/measures/U5.A.1-9.png",
+          "sha256": "bf202514ec1df0527907411a40f118900a05c7353e56ba28948b4a73208de25e",
+          "scope": "Vaud",
+          "alignment": "not_validated",
+          "visual_review": "Map present, checked in17fiche contact sheet; boundary/legend interpretation unvalidated"
+        }
+      }
+    },
+    {
+      "page_number": 53,
+      "fields": {
+        "reviewed_map": {
+          "role": "urbanisation_fiche_map",
+          "measure_id": "U5.A.1-10",
+          "file": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/rivelac-pa5/measures/U5.A.1-10.png",
+          "sha256": "a1417844138981472e22b7cf5db7781f7fe762f06c5e34a3e5abea90ad2322d8",
+          "scope": "Fribourg_not_Vaud",
+          "alignment": "not_validated",
+          "visual_review": "Map present, checked in17fiche contact sheet; boundary/legend interpretation unvalidated"
+        }
+      }
+    },
+    {
+      "page_number": 56,
+      "fields": {
+        "reviewed_map": {
+          "role": "urbanisation_fiche_map",
+          "measure_id": "U5.A.1-11",
+          "file": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/rivelac-pa5/measures/U5.A.1-11.png",
+          "sha256": "8bcdf5193b72984a84d0c9c4f5ee4b38d1072fba3e5dd332313a49bdc8a19413",
+          "scope": "Vaud",
+          "alignment": "not_validated",
+          "visual_review": "Map present, checked in17fiche contact sheet; boundary/legend interpretation unvalidated"
+        }
+      }
+    },
+    {
+      "page_number": 61,
+      "fields": {
+        "reviewed_map": {
+          "role": "urbanisation_fiche_map",
+          "measure_id": "U5.A.1-12",
+          "file": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/rivelac-pa5/measures/U5.A.1-12.png",
+          "sha256": "38f23611d77dec6f0405633b1314ceb592a77c64520a771add9c02cf396058f7",
+          "scope": "Vaud",
+          "alignment": "not_validated",
+          "visual_review": "Map present, checked in17fiche contact sheet; boundary/legend interpretation unvalidated"
+        }
+      }
+    },
+    {
+      "page_number": 64,
+      "fields": {
+        "reviewed_map": {
+          "role": "urbanisation_fiche_map",
+          "measure_id": "U5.A.1-13",
+          "file": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/rivelac-pa5/measures/U5.A.1-13.png",
+          "sha256": "e60db6494cd3f51a16f4c3e0c699106cd17a10d7223da8dcc177a84d991ae389",
+          "scope": "Vaud",
+          "alignment": "not_validated",
+          "visual_review": "Map present, checked in17fiche contact sheet; boundary/legend interpretation unvalidated"
+        }
+      }
+    },
+    {
+      "page_number": 68,
+      "fields": {
+        "reviewed_map": {
+          "role": "urbanisation_fiche_map",
+          "measure_id": "U5.A.1-14",
+          "file": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/rivelac-pa5/measures/U5.A.1-14.png",
+          "sha256": "55199e9b8aa31a55c6ff55845adc725d40c8c8e3f78b2fa79d41e3b112603d2a",
+          "scope": "Fribourg_not_Vaud",
+          "alignment": "not_validated",
+          "visual_review": "Map present, checked in17fiche contact sheet; boundary/legend interpretation unvalidated"
+        }
+      }
+    },
+    {
+      "page_number": 71,
+      "fields": {
+        "reviewed_map": {
+          "role": "urbanisation_fiche_map",
+          "measure_id": "U5.A.1-15",
+          "file": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/rivelac-pa5/measures/U5.A.1-15.png",
+          "sha256": "57b64cc10fce9a4a1d64afa42096f41de4210a1974b6e5f27b8f0649090d962e",
+          "scope": "Vaud",
+          "alignment": "not_validated",
+          "visual_review": "Map present, checked in17fiche contact sheet; boundary/legend interpretation unvalidated"
+        }
+      }
+    },
+    {
+      "page_number": 74,
+      "fields": {
+        "reviewed_map": {
+          "role": "urbanisation_fiche_map",
+          "measure_id": "U5.A.1-16",
+          "file": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/rivelac-pa5/measures/U5.A.1-16.png",
+          "sha256": "5f5a7945ff9095165342e6e5043407b1d766c83ee397cd29ffc97962c0555f04",
+          "scope": "Vaud",
+          "alignment": "not_validated",
+          "visual_review": "Map present, checked in17fiche contact sheet; boundary/legend interpretation unvalidated"
+        }
+      }
+    },
+    {
+      "page_number": 77,
+      "fields": {
+        "reviewed_map": {
+          "role": "urbanisation_fiche_map",
+          "measure_id": "U5.A.1-17",
+          "file": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/rivelac-pa5/measures/U5.A.1-17.png",
+          "sha256": "dfe35a8294ac88a30c6a21555871a4b011ec3c1d99403d5836130f94a68714dd",
+          "scope": "Vaud",
+          "alignment": "not_validated",
+          "visual_review": "Map present, checked in17fiche contact sheet; boundary/legend interpretation unvalidated"
+        }
+      }
     }
-  ]
+  ],
+  "document_annotations": {
+    "operational_batch": {
+      "source_file": "Rivelac_Annexe_mesures.pdf",
+      "source_sha256": "67efa051bc4f75c8153eaf2e978e093b9a7341e563b145259d14ee4776cbdb63",
+      "measure_heading_records": [
+        {
+          "id": "A.A.01",
+          "title": "Elaboration de projets d’agglomération",
+          "first_page": 7,
+          "priority_raw": "Ae",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "07062cf8552b9adada0163cf422c03c2f6a1ef078bc35e542dfb4bc558b6c9b6",
+          "candidate_last_page": 8,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "A.A.02",
+          "title": "Mise en cohérence des outils de planification",
+          "first_page": 9,
+          "priority_raw": "Ae",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "14fd1bf51e0de7900366dffe215fbb03bf68c89a80e43f6caa53b49a06f8b16c",
+          "candidate_last_page": 11,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "A.A.03",
+          "title": "Organisation de la mise en œuvre des mesures du projet d’agglomération – gouvernance, suivi, monitoring",
+          "first_page": 12,
+          "priority_raw": "Ae",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "22e39d1858ba0bfaf8443962f2f08db1ae8853a0069ff967a92b44efa6fc0dca",
+          "candidate_last_page": 13,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "A.A.04",
+          "title": "Coordination du développement de l’urbanisation et de la mobilité des zones d’activités",
+          "first_page": 14,
+          "priority_raw": "Ae",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "7103bcf2b56d0a8260cab752ee77f63236b92516d7679ca22260dbdd08a9c9d7",
+          "candidate_last_page": 16,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "A5.A.05",
+          "title": "Réalisation d’une Station d’épuration des eaux usées (STEP) intercommunale",
+          "first_page": 17,
+          "priority_raw": "Ae",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "00b694af45f35c223db1fd9180013d988c41e7b5b6466cb7c62075f74f4b08fb",
+          "candidate_last_page": 18,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "U5.A.1",
+          "title": "Secteurs stratégiques de développement",
+          "first_page": 19,
+          "priority_raw": "A / B / C",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "1d79045abcc8f3c9fcc40bba07952ffee0141cca9cd68f2354949c90fdb1991f",
+          "candidate_last_page": 24,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "U5.A.1-1",
+          "title": "Secteur stratégique de développement centre et quartier de la gare de Châtel-St-Denis",
+          "first_page": 25,
+          "priority_raw": "A / C",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "99176eee812b1d0103a520ff0c5255f82d55dd8c66b1ffe02805eee633c12e6b",
+          "candidate_last_page": 27,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir 703 habitants et 150 emplois : \n• \nAvant horizon A :103 habitants et 10 emplois (PAD « En Fossiaux »), 145 habitants \n(PAD « Gare de Châtel-St-Denis») \n• \nHorizon A : 100 emplois (PAD « Gare de Châtel-St-Denis») \n• \nHorizon C : 455 habitants et 40 emplois (PAD « Gare de Châtel-St-Denis »)  \n",
+          "scope": "Fribourg_not_Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-1.png"
+        },
+        {
+          "id": "U5.A.1-2",
+          "title": "Secteur stratégique de développement centre de StLégier-La Chiésaz",
+          "first_page": 28,
+          "priority_raw": "A / B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "60de9a4795b905e90f24fb40b5102c4c861d111e0adea1533546cc36b75cdd77",
+          "candidate_last_page": 30,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation, horizon 2040) : 600 habitants et 130 emplois \n• \nHorizon A : 450 habitants \n• \nHorizon B : 150 habitants et 130 emplois \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-2.png"
+        },
+        {
+          "id": "U5.A.1-3",
+          "title": "Secteur stratégique de développement centre de Blonay",
+          "first_page": 31,
+          "priority_raw": "A / B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "fd5f75c738bae640affa119d6b5d559386a7b8b764fed6bd88d83fe524ab954f",
+          "candidate_last_page": 33,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 180 habitants et 45 emplois  \n• \nAvant et horizon A : 120 habitants et 30 emplois \n• \nHorizon B : 60 habitants et 15 emplois \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-3.png"
+        },
+        {
+          "id": "U5.A.1-4",
+          "title": "Secteur stratégique de développement centre de Vevey",
+          "first_page": 34,
+          "priority_raw": "A / B / C",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "8c6d25003b35fb3e539cf674a0d42f3b6f87e8315a42c74910d838061b52943c",
+          "candidate_last_page": 36,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 1619 habitants et 541 emplois  \n• \nAvant et Horizon A : 1237 habitants et 172 emplois \n• \nHorizon B : 191 habitants et 184 emplois \n• \nHorizon C :  191 habitants et 184 emplois \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-4.png"
+        },
+        {
+          "id": "U5.A.1-5",
+          "title": "Secteur stratégique de développement centre de La Tour-de-Peilz",
+          "first_page": 37,
+          "priority_raw": "A / B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "14aef7a4afd23693141767a874da7b6454072d33aa4dd6233734a54841503b51",
+          "candidate_last_page": 39,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 1500 habitants et 200 emplois  \n• \nHorizon A : 750 habitants et 100 emplois \n• \nHorizon B : 750 habitants et 100 emplois \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-5.png"
+        },
+        {
+          "id": "U5.A.1-6",
+          "title": "Secteur stratégique de développement centre de Clarens",
+          "first_page": 40,
+          "priority_raw": "A / B / C",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "ef7c24c00c28210d82807096d3bb92be5e7cd7f41dcc39d06b4ae0079f3e3178",
+          "candidate_last_page": 42,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 900 habitants et 560 emplois \n• \nHorizon A : 225 habitants et 140 emplois \n• \nHorizon B : 450 habitants et 280 emplois \n• \nHorizon C : 225 habitants et 140 emplois \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-6.png"
+        },
+        {
+          "id": "U5.A.1-7",
+          "title": "Secteur stratégique de développement de Chailly",
+          "first_page": 43,
+          "priority_raw": "A / B / C",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "54ff0fbaa1ac68fa6aa9da5f7a52702ad507a33d088c311a34413d8402000e9d",
+          "candidate_last_page": 45,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 600 habitants et 450 emplois \n• \nHorizon A : 150 habitants et 113 emplois \n• \nHorizon B : 300 habitants et 225 emplois \n• \nHorizon C : 150 habitants et 112 emplois \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-7.png"
+        },
+        {
+          "id": "U5.A.1-8",
+          "title": "Secteur stratégique de développement centre de Montreux",
+          "first_page": 46,
+          "priority_raw": "A / B / C",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "074f475b53ac0b7fcca2d9b9a991a8b19b939ef6a768805ddb52a1bbf7a02ecf",
+          "candidate_last_page": 48,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 1000 habitants et 150 emplois  \n• \nHorizon A : 250 habitants et 38 emplois \n• \nHorizon B : 500 habitants et 75 emplois \n• \nHorizon C : 250 habitants et 37 emplois \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-8.png"
+        },
+        {
+          "id": "U5.A.1-9",
+          "title": "Secteur stratégique de développement Villeneuve gare / centre Sud",
+          "first_page": 49,
+          "priority_raw": "A / B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "a1d7ed4fff04375e1973debe6c0db9ac2113b161332d4171189193899c54758b",
+          "candidate_last_page": 52,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’em-\nplois \nA venir (estimation 2040) : 1210 habitants et 535 emplois  \n• \nHorizon A : 550 habitants et 535 emplois \n• \nHorizon B : 660 habitants \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-9.png"
+        },
+        {
+          "id": "U5.A.1-10",
+          "title": "Secteur stratégique de développement Châtel-St-Denis ZA",
+          "first_page": 53,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "a68c59b58cc6f93d3a0e66a90bd2961e13379f3c0237bd8abf3e36afecd8ee28",
+          "candidate_last_page": 55,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": null,
+          "scope": "Fribourg_not_Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-10.png"
+        },
+        {
+          "id": "U5.A.1-11",
+          "title": "Secteur stratégique de développement St-LégierCorsier",
+          "first_page": 56,
+          "priority_raw": "A / B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "d654d884ef503bb32a329eb67e7c5af8a53a536608685c8a8ad6c3769a3ee76e",
+          "candidate_last_page": 60,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’em-\nplois \n• \n2023 : 1900 EPT  \n• \nJusqu’en 2027 : + 1’100 emplois \n• \n2027 à 2031 : + 1’500 emplois \n• \nJusqu’en 2040 : + 2'565 emplois \n(chiffres SRGZA)  \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-11.png"
+        },
+        {
+          "id": "U5.A.1-12",
+          "title": "Secteur stratégique de développement Villeneuve ZA",
+          "first_page": 61,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "ae2f9fc85d50b6c913dc40610cfec41600e8ab483dc958be64276f53792a5d1f",
+          "candidate_last_page": 63,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 640 emplois pour l’horizon B \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-12.png"
+        },
+        {
+          "id": "U5.A.1-13",
+          "title": "Secteur stratégique de développement Villeneuve – Noville – Rennaz",
+          "first_page": 64,
+          "priority_raw": "A / B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "58e0babf8c69199031b80e7c949b1061897cf5e7d3195361b91d5fd2c46a5b89",
+          "candidate_last_page": 67,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": null,
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-13.png"
+        },
+        {
+          "id": "U5.A.1-14",
+          "title": "Pôle de gare hors noyau urbain de Bossonnens",
+          "first_page": 68,
+          "priority_raw": "C",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "18bc147b220096771e215aa2031a62f5f422508a3fd15c454b06b08dd056fee5",
+          "candidate_last_page": 70,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 600 habitants et 130 emplois pour l’horizon C   \n",
+          "scope": "Fribourg_not_Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-14.png"
+        },
+        {
+          "id": "U5.A.1-15",
+          "title": "Pôle de gare hors noyau urbain de Fontanivent",
+          "first_page": 71,
+          "priority_raw": "A / B / C",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "1ec79d85f380033a19d6286d47953f6a8b942f68bb939ab61786a1970e7d2f75",
+          "candidate_last_page": 73,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 350 habitants et 50 emplois  \n• \nHorizon A : 90 habitants et 15 emplois \n• \nHorizon B : 175 habitants et 25 emplois \n• \nHorizon C : 85 habitants et 10 emplois \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-15.png"
+        },
+        {
+          "id": "U5.A.1-16",
+          "title": "Pôle de gare hors noyau urbain de Chernex",
+          "first_page": 74,
+          "priority_raw": "A / B / C",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "fda1a03a95d85941f98cf69b9b53801f446af4e9a6916a3c948f4cbf7e984a58",
+          "candidate_last_page": 76,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 400 habitants et 70 emplois \n• \nHorizon A : 100 habitants et 20 emplois \n• \nHorizon B : 200 habitants et 35 emplois \n• \nHorizon C : 100 habitants et 15 emplois \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-16.png"
+        },
+        {
+          "id": "U5.A.1-17",
+          "title": "Pôle de gare hors noyau urbain de Roche",
+          "first_page": 77,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "e061678980e0dbce4060c6ad3a0a1ec25e7ab2d3039e4c51defa0bf5e63aaa48",
+          "candidate_last_page": 78,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 250 habitants et 20 emplois \n• \nHorizon A : 125 habitants et 10 emplois \n• \nHorizon B : 125 habitants et 10 emplois \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-17.png"
+        },
+        {
+          "id": "U5.A.2",
+          "title": "Densification le long les axes structurants TP urbains",
+          "first_page": 79,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "4b0bf093b38d1edda206ca8c8b779923666b6a15e13b5128bb8cca93e34d7796",
+          "candidate_last_page": 81,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "U5.A.3",
+          "title": "Densification qualitative vers l’intérieur du milieu bâti",
+          "first_page": 82,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "4f30263d986a9af91b93656b25c3719dd656d6ad4b4562702183c208250aa233",
+          "candidate_last_page": 84,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "U5.A.4",
+          "title": "Valorisation des centres",
+          "first_page": 85,
+          "priority_raw": "A / B / C",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "256b0ad6f8ca3535f866e6acea93f017a77a2e965cd62c623ee0fdffb0da23b2",
+          "candidate_last_page": 88,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "U5.A.5",
+          "title": "Valorisation des espaces publics",
+          "first_page": 89,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "6e69323a1a8249eef70f924371d21810987523293ab994b557c8bda70435ea1b",
+          "candidate_last_page": 90,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "P5.A.01",
+          "title": "Valorisation des cours d’eau et des rives en milieu urbain",
+          "first_page": 91,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "024385a21780dc2908059536cc8769a8c4c3add334ecc1cf15f99f2d88319747",
+          "candidate_last_page": 93,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "P5.R.01",
+          "title": "Valorisation de l’espace paysager central",
+          "first_page": 94,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "14a3ff25af56ba673584237ebfdb9b103372d8277ae89387494356cc87eec90c",
+          "candidate_last_page": 96,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "TF5.H.01",
+          "title": "Nouvelle halte RER de Villeneuve / Rennaz",
+          "first_page": 97,
+          "priority_raw": "C",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "bdfa16239349bce3bdff0b8942b61bf6d12ddda41b1104eebcf896b6b9cb8e68",
+          "candidate_last_page": 98,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "TF5.H.02",
+          "title": "Réouverture de la ligne du Sud – Léman (Tonkin) entre la France et la Suisse (France et Cantons du Valais et de Vaud) avec une fréquence à la demi-heure sur Suisse et horaire en France",
+          "first_page": 99,
+          "priority_raw": "France",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "e291daf09308fa9596e87cb380f19b9ac6174e9346efbc203ca83a45de7a35bd",
+          "candidate_last_page": 99,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "TF5.R.01",
+          "title": "Déplacement de la halte de Planchamp et création de nouveaux points de croisements à Planchamp (VD) et Äbeni-Weid (BE) sur la ligne du MOB pour le développement des cadences du service régional",
+          "first_page": 100,
+          "priority_raw": "PRODES 2035",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "877a80dd983501d1b2c08ebcc67dec91204c6688d859c8fadb1abce0579755ca",
+          "candidate_last_page": 100,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "TF5.R.02",
+          "title": "Aménagements de l’infrastructure dans les gares de Montreux et de Chernex pour le développement des cadences du service régional",
+          "first_page": 101,
+          "priority_raw": "Conven- tions de presta- tions OFT",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "de773c1561152fa8cb2aba9191f29870fa8ce93a3fb0615b4f5a0283975cb252",
+          "candidate_last_page": 101,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "TF5.R.03",
+          "title": "Augmentation de la desserte entre Montreux et les Rochers-de-Naye, avec une fréquence à la demiheure",
+          "first_page": 102,
+          "priority_raw": "Pro- gramme de déve- loppe- ment MOB",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "9cb14b5ed4d907a8dc363a2e38ab4b89f55fc76badfa7e55b0d41aa52e7ba88d",
+          "candidate_last_page": 102,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "TF5.R.04",
+          "title": "Augmentation de la capacité de la gare de Vevey CFF et mise en conformité LHand de la gare MVR",
+          "first_page": 103,
+          "priority_raw": "PRODES 2035",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "199c071237c4a97b35f15a02f4957db465bef59c7b3a198034eb4f2001cd706c",
+          "candidate_last_page": 103,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "TF5.R.05",
+          "title": "Déplacement de la gare de Palézieux",
+          "first_page": 104,
+          "priority_raw": "Conven- tions de presta- tions OFT",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "6c1b472571759a452c5ec46b795cf418e6fa7ccf66fa22f27bab4faa49ef5918",
+          "candidate_last_page": 104,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "TF5.V.01",
+          "title": "Déplacement de la halte de Bossonnens",
+          "first_page": 105,
+          "priority_raw": "Conven- tions de presta- tions OFT",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "154373e82fafce5cc1a843d67cf324e346d76455d137259eaaefe83c3b04a388",
+          "candidate_last_page": 118,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "TP5.R.01",
+          "title": "Installation d'équipements de charge dans le dépôt VMCV en vue de l'électrification de la flotte actuelle (étape 1)",
+          "first_page": 119,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "3b5558a46d3d1d6294341e9b6e1a09d9748f55dd6ebbbdb43b62cc24e74e1251",
+          "candidate_last_page": 121,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "TP5.R.02",
+          "title": "Surcout pour l'acquisition de bus électriques en remplacement de la flotte thermique actuelle (étape 1)",
+          "first_page": 122,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "6358c40a7b68fee62a27d33d4b3db0464c9915d58d6545d2320de66eca122e79",
+          "candidate_last_page": 124,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "TP5.V.01",
+          "title": "Aménagement des infrastructures TP en lien avec la nouvelle desserte en transports publics de Châtel-StDenis",
+          "first_page": 125,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "2ea2334b5e6322284abe6c56548a36867d216b70002887be3f75801e4e1395ec",
+          "candidate_last_page": 128,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "TP5.V.02",
+          "title": "Aménagement des infrastructures TP (arrêts, carrefours, etc.) en lien avec la nouvelle ligne suburbaine Attalens - Vuarat - Tatroz - Remaufens - Châtel-St-Denis",
+          "first_page": 129,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "cc65d10e09c61bd14d07ab069c4e348f5f28865b319aee914324555e05fece6b",
+          "candidate_last_page": 132,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "TP5.H.01",
+          "title": "Aménagement des infrastructures TP (terminus, arrêts, carrefours, etc.) dans la zone industrielle et commerciale de Villeneuve, y compris la réalisation d’un nouveau franchissement TP-MD au Pissot, en lien avec la restructuration du réseau TP régional et urbain du Haut-Lac, 1ère étape",
+          "first_page": 133,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "e9b7f113d62ceb693b2be796ca041be1c9262863709df4aef6640f4d8859fa60",
+          "candidate_last_page": 136,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "TP5.R.04",
+          "title": "Installation d'équipements de charge dans le dépôt VMCV en vue de l'électrification de la flotte actuelle (étape 2)",
+          "first_page": 137,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "c7f5701c430b3946d18a72cd210298445b27f3d236fe0454088316bafe63e2e3",
+          "candidate_last_page": 139,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "TP5.R.05",
+          "title": "Surcout pour l'acquisition de bus électriques en remplacement de la flotte thermique actuelle (étape 2)",
+          "first_page": 140,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "7029b1de3b97800a76f3bd28e42bdaf145b2f2376af1ec1925efc7d4b8208228",
+          "candidate_last_page": 142,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "TP5.R.06",
+          "title": "Aménagement de stations de charge aux terminus des lignes régionales et suburbaines",
+          "first_page": 143,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "072ca156ff48439031499493d8cb197284bb57a652990b870eba9ae00521650c",
+          "candidate_last_page": 144,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "TP5.R.07",
+          "title": "Aménagement des infrastructures TP (terminus, arrêts, carrefours, etc.) en lien avec la nouvelle ligne de bus suburbaine sur les Hauts de Blonay - St-Légier et Fenil (ligne régulière ou TàD)",
+          "first_page": 145,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "8663d8f6bd7dc1eaaa431017505b527ca6f23597a02e43e4cfd66925b5d28031",
+          "candidate_last_page": 150,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "TP5.R.03",
+          "title": "Aménagement du nouvel arrêt fusionné « Vigneron » en lieu et place des arrêts Mémise et Biéler",
+          "first_page": 151,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "4ad41c39361dfb830f2b6dced85cb93bbc79fdf8239a4477242fdbcbe0f88e2f",
+          "candidate_last_page": 153,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "TP5.R.08",
+          "title": "Aménagement des infrastructures TP (terminus et arrêts) en lien avec la restructuration des bus de quartier de Montreux (lignes 205 et 206)",
+          "first_page": 154,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "5d8d3b6a17f7db677d75133afdf6af1fa5d0258df01eaee03efe5e6ef691aa5b",
+          "candidate_last_page": 155,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "TP5.R.09",
+          "title": "Réaménagement et valorisation des arrêts de bus de l'interface multimodale de la halte de Chernex, en lien avec la desserte régionale reconfigurée Bainsde-L'Alliaz - Chernex",
+          "first_page": 156,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "0d691f9f70b4e64aded985b66d50942077bbf8f750e94588f7d3a44ca4e2076c",
+          "candidate_last_page": 162,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.H.01",
+          "title": "Réalisation d’un franchissement MD des voies CFF, secteur Pissot, en lien avec l’accès au nouveau collège de la Tronchenaz",
+          "first_page": 163,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "70cfe0d78331f94616b9e76a465ea249f12dd170e32d4dd478a485580d759fb8",
+          "candidate_last_page": 166,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.H.02",
+          "title": "Réalisation d'un franchissement MD des voies CFF à côté du pont de la Poterlaz",
+          "first_page": 167,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "22e07bbe992e6aa25297f8b0edefcc2590c5a391bab0b17aa38828e063f3a24e",
+          "candidate_last_page": 170,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.01",
+          "title": "Aménagement d’un cheminement piétonnier le long des rives du Lac, étape 1 et 2",
+          "first_page": 171,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "c8319aea44cb44cbb8e0886212f34bc31a59ab653b162852ff98204b0c359815",
+          "candidate_last_page": 173,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.02",
+          "title": "Aménagement d’une liaison MD sécurisée entre les giratoires de Rio-Gredon et de la Bergerie le long des routes cantonales RC742 et 743, itinéraire A3",
+          "first_page": 174,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "1ec48151ec8ca345b13a8c117cad3c80b2a5e0f784736c9e31d60d0cbe7f5731",
+          "candidate_last_page": 176,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.03",
+          "title": "Création d’un ascenseur urbain piéton / PMR / vélo à la gare de Montreux, pour relier av. des Alpes et Grand-Rue",
+          "first_page": 177,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "cb3a6f37bcac4ca8da1d57bac47217893957fb8139396a29985f1eab7408d439",
+          "candidate_last_page": 179,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.V.01",
+          "title": "Aménagement d'une liaison cyclable régionale entre Châtel-St-Denis et Palézieux (étape 1 : Bossonnens - Palézieux)",
+          "first_page": 180,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "e35bd9a458b824a83730a539a0afb82be75228e4f655e3f1a5aafc21e5128942",
+          "candidate_last_page": 182,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.V.02",
+          "title": "Réalisation d'une passerelle MD connectant le centre de Châtel-St-Denis avec la zone d’activités au Sud, itinéraire A9",
+          "first_page": 183,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "21e7e8c4dc67576509d0f6c09e226b8e27c0012b051216c95d556316cb3fed1a",
+          "candidate_last_page": 193,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.H.03",
+          "title": "Aménagement de la Vélolac le long de la voie CFF, entre Villeneuve et Rennaz (les Six Poses) via la route du Pont noir, itinéraire A2",
+          "first_page": 194,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "1c0c8b57db7b91da153800865561301daf4d58be5f189f29f5f1e40811e75dac",
+          "candidate_last_page": 195,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.H.04",
+          "title": "Aménagement de la Vélolac le long de la voie CFF, entre Rennaz et Aigle – tronçon Rennaz les Six Poses – sortie Est de Roche, itinéraire A2",
+          "first_page": 196,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "8f72583d0695f86f11b983471e8639d28c650bfe68246d083fd4bba4320e0838",
+          "candidate_last_page": 197,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.H.05",
+          "title": "Aménagements d'une liaison vélos entre la Poterlaz et l'Eau Froide, sur la rue des Remparts (partie Sud)",
+          "first_page": 198,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "a6403dc77f21be83b594158fb41eca5a71e06d91e751d6c8828c5dce6c2c40c2",
+          "candidate_last_page": 198,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.H.06",
+          "title": "Aménagement d’un réseau de rues cyclables entre la ZA des Vernes, le village, la halte CFF, la Rotzérane et la ZA de la Coche",
+          "first_page": 199,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "d53518e2393251a0af94d19db219bf7d88d6e368968159dd839d795681ef51dc",
+          "candidate_last_page": 200,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.H.07",
+          "title": "Aménagement d’un trottoir entre le collège de PréClos et le centre commercial de la Coche sur la RC780",
+          "first_page": 201,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "b2e5f3f3e7fbfd0a001e68f7a57b8440d7dd998ff6259bcdbd4e49936fd88de9",
+          "candidate_last_page": 202,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.H.08",
+          "title": "Aménagements piétons entre le quartier des Fourches et le Canal de Praz Riond à Rennaz et le manège de Noville, via le chemin des Roseaux",
+          "first_page": 203,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "ed8b3c0032ebcd8e03f11f0971774e94b6606e4001ce83e0108440c59650447a",
+          "candidate_last_page": 204,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.H.09",
+          "title": "Aménagement d'une liaison piétonne entre la RC 780 et la Tronchenaz (en bordure des parcelles 1108 et 1109)",
+          "first_page": 205,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "d932bc16c3079740a9a7f4e6840d3c62c6558cca4c5da3c5e64a9253ca2d92ff",
+          "candidate_last_page": 205,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.04",
+          "title": "Aménagement d’une voie verte entre la gare de Vevey et le SSDA de la Veyre (gare de Vevey – Chaussée des Anciens-Moulins - contours de Gilamont)",
+          "first_page": 206,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "23ec87b6b49bac351de2931d639b46d252244b52e5fcb90bf0cc09b3e8a7b196",
+          "candidate_last_page": 208,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.05",
+          "title": "Piétonnisation de la rue de Lausanne et intégration de la Vélolac place Ronjat",
+          "first_page": 209,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "ff6ab70fdc864dd23d1e6c3594801f599f9304b6d44e6f576857f81272c10648",
+          "candidate_last_page": 211,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.06",
+          "title": "Piétonnisation de la rue de Fribourg Sud",
+          "first_page": 212,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "075bbe036516a9c75dbdb8a73aae06572b590d0cdad5189e14c7f0e7bc3e6142",
+          "candidate_last_page": 213,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.07",
+          "title": "Piétonnisation de la rue de Fribourg Nord",
+          "first_page": 214,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "a9a8da3f4e8042dad920312cd07fab5ba1ec0eafe61c6615c4c939bf36e8868b",
+          "candidate_last_page": 215,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.08",
+          "title": "Amélioration de la liaison MD Riettes – Foges : passerelle MD le long de la baye de Clarens",
+          "first_page": 216,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "62a6733bbed93e9aaabed252833a0d03a9eb820ffe668de257ce1039024ed753",
+          "candidate_last_page": 217,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.09",
+          "title": "Aménagement d'un franchissement MD de la Baye de Montreux dans le cadre de la restructuration piétonnière du centre de Montreux",
+          "first_page": 218,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "e0691f1c03c44e4c16ecee2e38fd22408e5ead1099edb9cc65670b447b7fe49f",
+          "candidate_last_page": 219,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.10",
+          "title": "Aménagement du tronçon manquant pour la liaison piétonne entre le chemin de la Pouponnière et la rue du Centre",
+          "first_page": 220,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "291921cd6e924d2215532ad98b91bbd8e9520792752fbd9a3c2e2f6790dd3fd0",
+          "candidate_last_page": 221,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.11",
+          "title": "Aménagement d'une voie verte entre l'Ancien-Stand à Blonay et le complexe sportif de St-Légier, itinéraire B3",
+          "first_page": 222,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "2d752b8bed0f4347165c83c2c9980a35fe6563dfded4ce96e8e8d7a3438f746a",
+          "candidate_last_page": 223,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.12",
+          "title": "Aménagement d’une liaison MD gare de St-LégierGare - route de Fenil - pont de Fenil - Fenil",
+          "first_page": 224,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "4778979eb7c7e741f2df34fd1220ede1d583654bd9d4b2bf1ca6beb1a9f11e5a",
+          "candidate_last_page": 225,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.13",
+          "title": "Aménagement d’une liaison de mobilité douce Fenil – Châtel-St-Denis par les anciennes voies du train (étape 1 : Moille-Saulaz - café de Fenil)",
+          "first_page": 226,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "be3bd8ede5022b214455e286c69592be1ad126869ff361b397720936af669a4c",
+          "candidate_last_page": 226,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.V.03",
+          "title": "Aménagement MD sur la route de Vuarat : modération et sécurisation des piétons et des vélos",
+          "first_page": 227,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "55f91e329bb9f9e929625b8790f9da2bbb301325e4b40c9c243e3224b6b1509c",
+          "candidate_last_page": 228,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.V.04",
+          "title": "Liaison MD entre la ZI Granges et la gare de Palézieux",
+          "first_page": 229,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "12b0915c7c94bf3d97af2e203910ea3bfbe218e50ceac8cb4a9fd0ebf4dbff7a",
+          "candidate_last_page": 235,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.H.10",
+          "title": "Mise en œuvre du plan vélo, hors Vélolac",
+          "first_page": 236,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "ce8d03cbd237c44f714ddbfbccd64ba0441c7b4a17d2de10abd763d5b2d4ae80",
+          "candidate_last_page": 237,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.14",
+          "title": "Aménagement d'une voie verte le long des voies CFF entre la gare de Vevey et Vevey-Funi, itinéraire C1",
+          "first_page": 238,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "9578922e7b91bbeb6aeec2075ae80c6e4aee4ccf34d2201029e453fbb4094f04",
+          "candidate_last_page": 238,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.15",
+          "title": "Aménagement d'une liaison vélo entre l'avenue Nestlé et la piscine de Vevey - Corseaux-plage, itinéraires A1 et A2",
+          "first_page": 239,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "e83eefcff2c852a82899528e7580cb2b92c622407b04461568e158e65be6ff5e",
+          "candidate_last_page": 240,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.16",
+          "title": "Piétonnisation de la partie aval de la rue du Panorama",
+          "first_page": 241,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "242c246bb6a1df8bedf33adef4574787ecb85b99ae390db98e75ba7f9bc81065",
+          "candidate_last_page": 242,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.17",
+          "title": "Piétonnisation de la rue de la Clergère",
+          "first_page": 243,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "ab505c23d0aad35ae3a879b3145bfa901183ca19e273102c0167bb3ad68d9dab",
+          "candidate_last_page": 244,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.18",
+          "title": "Création d'un ascenseur urbain entre le Nord de la gare de Vevey et le quartier de Charmontey",
+          "first_page": 245,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "abb6ef75ffe43139bcd6a2ec6146bcafe5a52117eb227398f54a5462634c49b5",
+          "candidate_last_page": 246,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.19",
+          "title": "Aménagement d'une liaison vélo Chailly - Clarens : ch. des Jordils, rue du Bourg, ch. des Ecoliers, de la Minjarde, du Crépon et des Riettes, rue du Sacre du printemps, impasse du Sacre du printemps, avenue Gambetta, rue du port, itinéraire A3",
+          "first_page": 247,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "798f0db71e7d51346950fdb1998acaf15170e0fe06fade2854af9004cdfbb749",
+          "candidate_last_page": 248,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.20",
+          "title": "Vélostation à la gare de Montreux",
+          "first_page": 249,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "7e9ee5a8901aec2c04ed139bf489ff140ebc7bcb7cc6427947bbdc45f7556103",
+          "candidate_last_page": 249,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.21",
+          "title": "Aménagement de la Vélolac entre route de Chailly et Burier à La Tour-de-Peilz : piste unidirectionnelle sur la RC780, itinéraire A2",
+          "first_page": 250,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "e049d6fc45b48417346511febc90269961500c79c410e282bbf627b513821e67",
+          "candidate_last_page": 251,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.22",
+          "title": "Aménagements de perméabilités piétonnes et de rabattements vers la nouvelle desserte en transports publics des Hauts de Blonay - St-Légier : ex. entre le ch. de la Baillaz et le ch. des Oches",
+          "first_page": 252,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "1789d7056900c5d3bb4a33442b364c2def97435aba788ea0664a4fbaa4fae7f7",
+          "candidate_last_page": 252,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.23",
+          "title": "Réaménagement des quais de Veytaux : amélioration de la liaison MD gare de Veytaux – Château de Chillon - Villeneuve",
+          "first_page": 253,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "d5e215cc4e38969a694d8bd658dd799d2f8f4301b863e61cef754875ba6c56f2",
+          "candidate_last_page": 253,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.R.24",
+          "title": "Création d'un franchissement MD dans le secteur de la jonction autoroutière de La Veyre, reliant le secteur du giratoire du Genévrier et l’entrée de localité de Blonay - St-Légier, itinéraires A3 et B2",
+          "first_page": 254,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "7215263428d893184ace0446f6ae57097499404e041679426db10ddb516b12f7",
+          "candidate_last_page": 255,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "MD5.V.05",
+          "title": "Aménagement d’une liaison piétonne entre les routes d’Attalens et du Mont-Pèlerin (liaison village – place de jeu)",
+          "first_page": 256,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "4975b775400cdef4af9ebe9a1cd9283775a0403937ad81ca0e82b981157dcdba",
+          "candidate_last_page": 271,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "GT5.R.01",
+          "title": "Gestion des TIM et priorisation TP sur la route de Brent RC737b, giratoire de la Saussaz : réaménagement et régulation du carrefour",
+          "first_page": 272,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "5b5340f90ae5d2376d5c528560e43df8e38b80db2e8222c5a45e84fa94dbdfc1",
+          "candidate_last_page": 273,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "GT5.R.02",
+          "title": "Gestion de l’accès au site touristique des Pléiades : parking payants Motalles et Lally, gestion et limitation des accès TIM",
+          "first_page": 274,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "20ea573d4050d9a85492f0b75c1f45a35eb84d53dd2bfb5ed26ed8885d590ee2",
+          "candidate_last_page": 277,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "GT5.H.01",
+          "title": "Gestion des TIM et priorisation des TP sur la route du Simplon RC780b, carrefours route d'Evian et Praz-Riond",
+          "first_page": 278,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "a8e89760b976db1cda71876b1fca59ff0927a442eb0944eab836ce91b51dc2ab",
+          "candidate_last_page": 279,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "GT5.H.02",
+          "title": "Gestion des TIM sur la route du Simplon RC780b, carrefours Sud de la jonction autoroutière et route des Paquays",
+          "first_page": 280,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "0fa975de308a46c4283af82a885f9d811f6f8ba1af8a9a41d353b4fe774657f8",
+          "candidate_last_page": 281,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "GT5.H.03",
+          "title": "Priorisation des TP en entrée Sud de Villeneuve, secteur Eau-Froide RC780, et élargissement du pont sur l'Eau-Froide pour les TP",
+          "first_page": 282,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "5d27d4929861f9a2a235d2d9652589d4f405179a18e266e34c2750ec34d3343e",
+          "candidate_last_page": 283,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "GT5.R.03",
+          "title": "Aménagement de priorisation TP au pont de Fenil",
+          "first_page": 284,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "64e8fe4f7d32d661db4688052189aafe893270b59227c928f3cedd9942e07555",
+          "candidate_last_page": 287,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "I5.R.01",
+          "title": "Réaménagement de l’interface multimodale de la gare de Vevey, étape 1 : sud des voies CFF",
+          "first_page": 288,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "dd1910c73ac85503c023ecb7cf789e4bdbe7ce24e2c38becb25ceea6d6315fd8",
+          "candidate_last_page": 293,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "I5.R.02",
+          "title": "Réaménagement de l’interface multimodale de Chailly en lien avec la restructuration du réseau de bus urbain : optimisation et valorisation de l’interface TP et MD, stationnement vélo (B+R) et gestion des TIM et TP",
+          "first_page": 294,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "1208fea31c821f0600581753cc378692f296868c2038d41818cd1f08234cea93",
+          "candidate_last_page": 297,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "I5.R.03",
+          "title": "Réaménagement de l’interface multimodale de la halte de Fontanivent en lien avec la restructuration du réseau de bus urbain : valorisation TP et MD et stationnement vélos (B+R)",
+          "first_page": 298,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "5252cda86849f5556140f6d994c4872bb31c3f7009f4037227767a2de7a8f4de",
+          "candidate_last_page": 300,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "I5.R.04",
+          "title": "Réaménagement de l’interface multimodale de la place de la Paix : réorganisation des arrêts de bus, valorisation MD et espace public",
+          "first_page": 301,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "d5faa87aa4a717467a35c63bc0451f8ed1ecf249a04ec9eaa57372cc9f722c1e",
+          "candidate_last_page": 303,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "I5.R.05",
+          "title": "Réaménagement de l’interface multimodale de la gare de Blonay : valorisation de l’interface train-bus en lien avec l’extension de l’offre TP à Blonay : réaménagement de la gare routière, valorisation MD et stationnement vélos (B+R), étape 1 (uniquement aménagements directement liés à la gare)",
+          "first_page": 304,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "3fe2c6e2bf3c10f95e3dd83be4d95a4b124c4399252d47453c2f6fff01485fa1",
+          "candidate_last_page": 307,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "I5.R.06",
+          "title": "Aménagement de l’interface multimodale de Château d’Hauteville : nouvelle interface train-bus en lien avec le prolongement des bus urbains vers la Veyre et la nouvelle desserte par bus express, P+R de périphérie urbaine",
+          "first_page": 308,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "27390354d6b7547212e5eb37159370b46ab051c2c564533322cf569499ee3a3a",
+          "candidate_last_page": 311,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "I5.V.01",
+          "title": "Réaménagement de l’interface multimodale de la Condémine : aménagement P+R et B+R et accès aux bus",
+          "first_page": 312,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "ad7e59dc28307b143525e169edcbadd7893060209e81bd1597d4e352dfe1a86d",
+          "candidate_last_page": 314,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "I5.H.01",
+          "title": "Réaménagement de l’interface multimodale de la gare de Villeneuve",
+          "first_page": 315,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "877bf965d7acb840e12d27ce908b39252d96d922e713d7d8e7f65797cc3aca7b",
+          "candidate_last_page": 317,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "I5.R.07",
+          "title": "Réaménagement de l’interface multimodale de la gare de Vevey, étape 2 : nord des voies CFF",
+          "first_page": 318,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "b7b1066251a742ddc443f02fa86b886bbb42c18ef3e77d61c1ef145bcb8f9a6f",
+          "candidate_last_page": 321,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "I5.R.08",
+          "title": "Réaménagement de l’interface multimodale de la halte de Vevey-Funi",
+          "first_page": 322,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "afe9a5467effda6d5ca0c41c1d4e0c88d910de28d5ecbfc0bd1fb91956373243",
+          "candidate_last_page": 324,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "I5.V.02",
+          "title": "Aménagement d’une interface multimodale à Bossonnens à la suite du déplacement de la halte",
+          "first_page": 325,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "9509f30f7acf9aa949cc1041bc10bb31e3c2ea5575d45895ccdeba03a26a2529",
+          "candidate_last_page": 347,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.R.01",
+          "title": "Réaménagement de l’axe Italie – Simplon en faveur des TP et intégration de la Vélolac",
+          "first_page": 348,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "bb9544f0276527425da7fbfb13daa1042d28dedbf57ee257c6eb89f4099719f4",
+          "candidate_last_page": 352,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.R.02",
+          "title": "Réaménagement en boulevard urbain de la RC780 en traversée de localité de Montreux et entre Clarens et Montreux : priorisation TP, valorisation MD et espace public, étape 2",
+          "first_page": 353,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "00fab4a8e68b87dcebecea6ef6785d1b1b6b2546b7b9aad85caf05822a390df1",
+          "candidate_last_page": 357,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.R.03",
+          "title": "Réaménagement de la RC743-route de Rio Gredon entre les giratoires de Gilamont et Rio-Gredon : priorisation TP et intégration voie verte, itinéraire A5",
+          "first_page": 358,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "a737d2b36b503fadbfd3fe21ed67318b188b9c5f85ca3414575177535884e963",
+          "candidate_last_page": 360,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.R.13",
+          "title": "Réaménagement de l’axe Nestlé et intégration de la Vélolac",
+          "first_page": 361,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "f1f17b00def37f157ede45a57e309554c0509816be2ffd2bfaa217a5ddb6f943",
+          "candidate_last_page": 364,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.R.14",
+          "title": "Réaménagement de la RC780 dans le secteur de Chillon, de la gare de Veytaux à Villeneuve Nord : intégration de la Vélolac, itinéraire A2, sécurisation et valorisation des espaces publics",
+          "first_page": 365,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "3762e46c6869018cfd9679823b8154c5c0e4e49f60d7c706c16bcf983743c1ba",
+          "candidate_last_page": 372,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.H.01",
+          "title": "Aménagement en zone de rencontre de la GrandRue à Villeneuve",
+          "first_page": 373,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "946e6545717600dcdb5f44338733d7ae87df8db186b0f60d281f47d9c54e012f",
+          "candidate_last_page": 374,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.H.02",
+          "title": "Réaménagement de l’axe des Comtes de Savoie à Villeneuve et de ses carrefours de la Tinière et du Débarcadère en faveur de l’insertion de l’axe fort TP et de la Vélolac, itinéraire A2",
+          "first_page": 375,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "bca7784ad8e8959d0d0b34639bdffe0a43b0c588880654c4241db07dc5ce2387",
+          "candidate_last_page": 376,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.R.04",
+          "title": "Réaménagement de l’entrée Est de Vevey (Entredeux-Villes) : priorisation TP, valorisation des liens transversaux MD et espace public",
+          "first_page": 377,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "4a51a5c41a94c65d808e5a9af61e45d15a0301e4ce24a076dde3d13a5c1515f2",
+          "candidate_last_page": 379,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.R.05",
+          "title": "Réaménagement de la rue de l'Oyonne à La Tourde-Peilz et intégration de la Vélolac, itinéraire A2",
+          "first_page": 380,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "9b1f913967a379594f794731f2f19d5445b6a1d377993b57baff6af266258773",
+          "candidate_last_page": 381,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.R.06",
+          "title": "Piétonisation de la rue de l’Eglise Catholique de Montreux",
+          "first_page": 382,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "0c6833d7425cc2b5e6918bf8139b92416a225211bb9fa85d714cdfb37dbbad9f",
+          "candidate_last_page": 383,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.R.07",
+          "title": "Réaménagement de la Grand'Rue de la Tour-de-Peilz : priorisation TP, modération du trafic, valorisation MD et espace public, itinéraire A1",
+          "first_page": 384,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "8770c441c4c435aab27c428ff35a041f92b1fe72623cf3a25bd4edfd15dcff35",
+          "candidate_last_page": 386,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.R.08",
+          "title": "Réaménagement de l’avenue des Alpes de la Tourde-Peilz : modération du trafic avec mise en zone 30 et valorisation MD, TP et espace public, itinéraire B2",
+          "first_page": 387,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "f76af69beba03cb3c488a85bb6b4ba5dcd2f42ba21f81d13eeda1f9dd8d6c6e1",
+          "candidate_last_page": 388,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.R.09",
+          "title": "Réaménagement de l’avenue des Baumes de la Tour-de-Peilz : modération du trafic avec mise en zone 30 et valorisation MD, TP et espace public, itinéraire A7",
+          "first_page": 389,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "7cf5cdef4fc7276f870b31d228e2bc10b1af68fcf21694a0543d9ea026e83bf3",
+          "candidate_last_page": 390,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.R.10",
+          "title": "Réaménagement de l’axe de l'av. de Traménaz et de la route de Chailly à la Tour-de-Peilz et intégration de la Vélolac, itinéraire A2",
+          "first_page": 391,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "f6fe8f35c19f60cd7e80de90442f0a78f2372e09faac3e3a8be8f546511f178e",
+          "candidate_last_page": 392,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.R.11",
+          "title": "Réaménagement de la traversée de localité de Blonay entre le double giratoire des Oches et le giratoire de Bahyse : modération du trafic et valorisation MD et espace public, étape 1 « cœur de village, îlot du Centre »",
+          "first_page": 393,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "e6a93a60d13f9343d140f50986dff8c19d33ae0d5657f6f400bfd4326fc22127",
+          "candidate_last_page": 395,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.R.12",
+          "title": "Réaménagement traversée localité Jongny RC744b, route de Châtel",
+          "first_page": 396,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "e02051901390c5474b592485c345017c3fc0e91ced6f0e81f3fe9c371a313eec",
+          "candidate_last_page": 396,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.V.01",
+          "title": "Réaménagement de la route du lac de Lussy (VALTRALOC) à Châtel-St-Denis : modération et sécurisation de l’itinéraire MD gare/centre – Terrains de sports, et aménagements en faveurs des transports publics",
+          "first_page": 397,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "f1b25c12a6ec99e3c5000a3d3f83fe56783ba83c50ccf2644c066e6ed7836b6d",
+          "candidate_last_page": 403,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.H.03",
+          "title": "Réaménagement de la traversée de localité de Villeneuve RC 780, entre le carrefour de la Tinière à l’entrée nord et jusqu’à l’Eau-Froide : modération du trafic, valorisation MD et espace public",
+          "first_page": 404,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "174f1e792657a273f82c8ff27702c38909ff3e34a2d8e2716c4bcfb74f4ab693",
+          "candidate_last_page": 405,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.R.15",
+          "title": "Réaménagement de l’entrée Ouest de Vevey (Bergère) : priorisation TP, gestion des TIM, valorisation MD et espace public",
+          "first_page": 406,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "e7037e515b71c477061b0f131ed4976e8c9c71bb47f97f677b2ecbe68abd9295",
+          "candidate_last_page": 408,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.R.16",
+          "title": "Réaménagement en boulevard urbain de la RC 780 entre le giratoire de Bergère et la gare de Vevey : priorisation TP, valorisation MD et espace public",
+          "first_page": 409,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "4cc95431ff4bfa9a0282d0d00a40dda397e6f7c223595c0d99cd56f169e758ce",
+          "candidate_last_page": 410,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.R.17",
+          "title": "Réaménagement du boulevard de Charmontey : mise en œuvre d'une accessibilité par poche, zone 30 et sécurisation chemins écoliers",
+          "first_page": 411,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "11983d9fc698fda14e70096bc9cb46639092120848720e2d633693e0e4c20e70",
+          "candidate_last_page": 412,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.R.18",
+          "title": "Création d'un axe privilégié pour les TP et MD (avec maîtrise du TIM) sur la route de la Combe : gestion des TIM, priorisation TP, valorisation de l'itinéraire vélo A6",
+          "first_page": 413,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "037cb2b1fd249135c794c8df9c258e522981033150114b6ed4da0f17d3a7dfa2",
+          "candidate_last_page": 414,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.R.19",
+          "title": "Réaménagement des avenues de Perrausaz et Pérouge : modération du trafic avec mise en zone 30 et valorisation vélos et espace public",
+          "first_page": 415,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "13f0cbf85fd7159c1256d84bc0edeb7e8096dff9e4a290185a0d9bfd5d6c8515",
+          "candidate_last_page": 415,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.R.20",
+          "title": "Réaménagement et sécurisation du Quai Emile-Louis Roussy et de la place du Four",
+          "first_page": 416,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "26f7c08938d0f2a96d7430d7557e9d05c7034337366ca74b4e1d1463dbb35d15",
+          "candidate_last_page": 416,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.R.21",
+          "title": "Réaménagement de la traversée de localité de Blonay entre le double giratoire des Oches et le giratoire de Bahyse : modération du trafic et valorisation MD et espace public, étape 2 « cœur de village, partie ouest »",
+          "first_page": 417,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "ea310ff49ccc1ac4bc3c57625c2a64419c8a976f93c2b3d77b6db79fef754f8c",
+          "candidate_last_page": 420,
+          "mapbook_text_mentions": []
+        },
+        {
+          "id": "VS5.V.02",
+          "title": "Réaménagement de la traversée du centre de Châtel-St-Denis (VALTRALOC), route de la Coula, partie est y compris place d'Armes, en zone de rencontre",
+          "first_page": 421,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "f1abed51e1b26c363eececf0c2148ddace416aa8a66b3167b147db8df244d443",
+          "candidate_last_page": 441,
+          "mapbook_text_mentions": []
+        }
+      ],
+      "unparsed_numbered_heading_pages": [
+        107,
+        112,
+        148,
+        152,
+        161,
+        187,
+        231,
+        265,
+        269,
+        276,
+        287,
+        331,
+        336,
+        339,
+        343,
+        345,
+        368,
+        400,
+        425,
+        428,
+        432,
+        435,
+        437,
+        440
+      ],
+      "urban_subfiches": [
+        {
+          "id": "U5.A.1-1",
+          "title": "Secteur stratégique de développement centre et quartier de la gare de Châtel-St-Denis",
+          "first_page": 25,
+          "priority_raw": "A / C",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "99176eee812b1d0103a520ff0c5255f82d55dd8c66b1ffe02805eee633c12e6b",
+          "candidate_last_page": 27,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir 703 habitants et 150 emplois : \n• \nAvant horizon A :103 habitants et 10 emplois (PAD « En Fossiaux »), 145 habitants \n(PAD « Gare de Châtel-St-Denis») \n• \nHorizon A : 100 emplois (PAD « Gare de Châtel-St-Denis») \n• \nHorizon C : 455 habitants et 40 emplois (PAD « Gare de Châtel-St-Denis »)  \n",
+          "scope": "Fribourg_not_Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-1.png"
+        },
+        {
+          "id": "U5.A.1-2",
+          "title": "Secteur stratégique de développement centre de StLégier-La Chiésaz",
+          "first_page": 28,
+          "priority_raw": "A / B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "60de9a4795b905e90f24fb40b5102c4c861d111e0adea1533546cc36b75cdd77",
+          "candidate_last_page": 30,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation, horizon 2040) : 600 habitants et 130 emplois \n• \nHorizon A : 450 habitants \n• \nHorizon B : 150 habitants et 130 emplois \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-2.png"
+        },
+        {
+          "id": "U5.A.1-3",
+          "title": "Secteur stratégique de développement centre de Blonay",
+          "first_page": 31,
+          "priority_raw": "A / B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "fd5f75c738bae640affa119d6b5d559386a7b8b764fed6bd88d83fe524ab954f",
+          "candidate_last_page": 33,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 180 habitants et 45 emplois  \n• \nAvant et horizon A : 120 habitants et 30 emplois \n• \nHorizon B : 60 habitants et 15 emplois \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-3.png"
+        },
+        {
+          "id": "U5.A.1-4",
+          "title": "Secteur stratégique de développement centre de Vevey",
+          "first_page": 34,
+          "priority_raw": "A / B / C",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "8c6d25003b35fb3e539cf674a0d42f3b6f87e8315a42c74910d838061b52943c",
+          "candidate_last_page": 36,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 1619 habitants et 541 emplois  \n• \nAvant et Horizon A : 1237 habitants et 172 emplois \n• \nHorizon B : 191 habitants et 184 emplois \n• \nHorizon C :  191 habitants et 184 emplois \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-4.png"
+        },
+        {
+          "id": "U5.A.1-5",
+          "title": "Secteur stratégique de développement centre de La Tour-de-Peilz",
+          "first_page": 37,
+          "priority_raw": "A / B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "14aef7a4afd23693141767a874da7b6454072d33aa4dd6233734a54841503b51",
+          "candidate_last_page": 39,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 1500 habitants et 200 emplois  \n• \nHorizon A : 750 habitants et 100 emplois \n• \nHorizon B : 750 habitants et 100 emplois \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-5.png"
+        },
+        {
+          "id": "U5.A.1-6",
+          "title": "Secteur stratégique de développement centre de Clarens",
+          "first_page": 40,
+          "priority_raw": "A / B / C",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "ef7c24c00c28210d82807096d3bb92be5e7cd7f41dcc39d06b4ae0079f3e3178",
+          "candidate_last_page": 42,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 900 habitants et 560 emplois \n• \nHorizon A : 225 habitants et 140 emplois \n• \nHorizon B : 450 habitants et 280 emplois \n• \nHorizon C : 225 habitants et 140 emplois \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-6.png"
+        },
+        {
+          "id": "U5.A.1-7",
+          "title": "Secteur stratégique de développement de Chailly",
+          "first_page": 43,
+          "priority_raw": "A / B / C",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "54ff0fbaa1ac68fa6aa9da5f7a52702ad507a33d088c311a34413d8402000e9d",
+          "candidate_last_page": 45,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 600 habitants et 450 emplois \n• \nHorizon A : 150 habitants et 113 emplois \n• \nHorizon B : 300 habitants et 225 emplois \n• \nHorizon C : 150 habitants et 112 emplois \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-7.png"
+        },
+        {
+          "id": "U5.A.1-8",
+          "title": "Secteur stratégique de développement centre de Montreux",
+          "first_page": 46,
+          "priority_raw": "A / B / C",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "074f475b53ac0b7fcca2d9b9a991a8b19b939ef6a768805ddb52a1bbf7a02ecf",
+          "candidate_last_page": 48,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 1000 habitants et 150 emplois  \n• \nHorizon A : 250 habitants et 38 emplois \n• \nHorizon B : 500 habitants et 75 emplois \n• \nHorizon C : 250 habitants et 37 emplois \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-8.png"
+        },
+        {
+          "id": "U5.A.1-9",
+          "title": "Secteur stratégique de développement Villeneuve gare / centre Sud",
+          "first_page": 49,
+          "priority_raw": "A / B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "a1d7ed4fff04375e1973debe6c0db9ac2113b161332d4171189193899c54758b",
+          "candidate_last_page": 52,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’em-\nplois \nA venir (estimation 2040) : 1210 habitants et 535 emplois  \n• \nHorizon A : 550 habitants et 535 emplois \n• \nHorizon B : 660 habitants \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-9.png"
+        },
+        {
+          "id": "U5.A.1-10",
+          "title": "Secteur stratégique de développement Châtel-St-Denis ZA",
+          "first_page": 53,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "a68c59b58cc6f93d3a0e66a90bd2961e13379f3c0237bd8abf3e36afecd8ee28",
+          "candidate_last_page": 55,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": null,
+          "scope": "Fribourg_not_Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-10.png"
+        },
+        {
+          "id": "U5.A.1-11",
+          "title": "Secteur stratégique de développement St-LégierCorsier",
+          "first_page": 56,
+          "priority_raw": "A / B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "d654d884ef503bb32a329eb67e7c5af8a53a536608685c8a8ad6c3769a3ee76e",
+          "candidate_last_page": 60,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’em-\nplois \n• \n2023 : 1900 EPT  \n• \nJusqu’en 2027 : + 1’100 emplois \n• \n2027 à 2031 : + 1’500 emplois \n• \nJusqu’en 2040 : + 2'565 emplois \n(chiffres SRGZA)  \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-11.png"
+        },
+        {
+          "id": "U5.A.1-12",
+          "title": "Secteur stratégique de développement Villeneuve ZA",
+          "first_page": 61,
+          "priority_raw": "B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "ae2f9fc85d50b6c913dc40610cfec41600e8ab483dc958be64276f53792a5d1f",
+          "candidate_last_page": 63,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 640 emplois pour l’horizon B \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-12.png"
+        },
+        {
+          "id": "U5.A.1-13",
+          "title": "Secteur stratégique de développement Villeneuve – Noville – Rennaz",
+          "first_page": 64,
+          "priority_raw": "A / B",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "58e0babf8c69199031b80e7c949b1061897cf5e7d3195361b91d5fd2c46a5b89",
+          "candidate_last_page": 67,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": null,
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-13.png"
+        },
+        {
+          "id": "U5.A.1-14",
+          "title": "Pôle de gare hors noyau urbain de Bossonnens",
+          "first_page": 68,
+          "priority_raw": "C",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "18bc147b220096771e215aa2031a62f5f422508a3fd15c454b06b08dd056fee5",
+          "candidate_last_page": 70,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 600 habitants et 130 emplois pour l’horizon C   \n",
+          "scope": "Fribourg_not_Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-14.png"
+        },
+        {
+          "id": "U5.A.1-15",
+          "title": "Pôle de gare hors noyau urbain de Fontanivent",
+          "first_page": 71,
+          "priority_raw": "A / B / C",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "1ec79d85f380033a19d6286d47953f6a8b942f68bb939ab61786a1970e7d2f75",
+          "candidate_last_page": 73,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 350 habitants et 50 emplois  \n• \nHorizon A : 90 habitants et 15 emplois \n• \nHorizon B : 175 habitants et 25 emplois \n• \nHorizon C : 85 habitants et 10 emplois \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-15.png"
+        },
+        {
+          "id": "U5.A.1-16",
+          "title": "Pôle de gare hors noyau urbain de Chernex",
+          "first_page": 74,
+          "priority_raw": "A / B / C",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "fda1a03a95d85941f98cf69b9b53801f446af4e9a6916a3c948f4cbf7e984a58",
+          "candidate_last_page": 76,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 400 habitants et 70 emplois \n• \nHorizon A : 100 habitants et 20 emplois \n• \nHorizon B : 200 habitants et 35 emplois \n• \nHorizon C : 100 habitants et 15 emplois \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-16.png"
+        },
+        {
+          "id": "U5.A.1-17",
+          "title": "Pôle de gare hors noyau urbain de Roche",
+          "first_page": 77,
+          "priority_raw": "A",
+          "status": "source_text_extraction_not_validated_measure",
+          "heading_sha256": "e061678980e0dbce4060c6ad3a0a1ec25e7ab2d3039e4c51defa0bf5e63aaa48",
+          "candidate_last_page": 78,
+          "mapbook_text_mentions": [],
+          "capacity_text_raw": "Nombre d’habi-\ntants et d’emplois \nA venir (estimation 2040) : 250 habitants et 20 emplois \n• \nHorizon A : 125 habitants et 10 emplois \n• \nHorizon B : 125 habitants et 10 emplois \n",
+          "scope": "Vaud",
+          "geography": "not_extracted",
+          "capacity_status": "planning_scenario_not_current_available_capacity",
+          "first_page_render": "U5.A.1-17.png"
+        }
+      ],
+      "limits": [
+        "Header template extraction only; alternate templates/unparsed pages and submeasures remain backlog. Candidate page intervals not independently verified outside17urban subfiches.",
+        "Text mentions link document occurrences only. Raster maps without readable IDs require OCR/manual alignment; no geometric links fabricated.",
+        "PA5 submission is not PDI adoption. Population/jobs are scenarios, not current parcel capacity."
+      ]
+    },
+    "reviewed_operational_metrics": {
+      "rows": [
+        {
+          "measure_id": "U5.A.1-1",
+          "source_page": 22,
+          "jurisdiction": "FR",
+          "horizons": {
+            "before_and_A": {
+              "inhabitants": 248,
+              "jobs": 110
+            },
+            "B": {
+              "inhabitants": null,
+              "jobs": null
+            },
+            "C": {
+              "inhabitants": 455,
+              "jobs": 40
+            },
+            "stated_total": {
+              "inhabitants": 703,
+              "jobs": 150
+            }
+          }
+        },
+        {
+          "measure_id": "U5.A.1-2",
+          "source_page": 22,
+          "jurisdiction": "VD",
+          "horizons": {
+            "before_and_A": {
+              "inhabitants": 450,
+              "jobs": null
+            },
+            "B": {
+              "inhabitants": 150,
+              "jobs": 130
+            },
+            "C": {
+              "inhabitants": null,
+              "jobs": null
+            },
+            "stated_total": {
+              "inhabitants": 600,
+              "jobs": 130
+            }
+          }
+        },
+        {
+          "measure_id": "U5.A.1-3",
+          "source_page": 22,
+          "jurisdiction": "VD",
+          "horizons": {
+            "before_and_A": {
+              "inhabitants": 120,
+              "jobs": 30
+            },
+            "B": {
+              "inhabitants": 60,
+              "jobs": 15
+            },
+            "C": {
+              "inhabitants": null,
+              "jobs": null
+            },
+            "stated_total": {
+              "inhabitants": 180,
+              "jobs": 45
+            }
+          }
+        },
+        {
+          "measure_id": "U5.A.1-4",
+          "source_page": 22,
+          "jurisdiction": "VD",
+          "horizons": {
+            "before_and_A": {
+              "inhabitants": 1237,
+              "jobs": 172
+            },
+            "B": {
+              "inhabitants": 191,
+              "jobs": 184
+            },
+            "C": {
+              "inhabitants": 191,
+              "jobs": 184
+            },
+            "stated_total": {
+              "inhabitants": 1619,
+              "jobs": 540
+            }
+          }
+        },
+        {
+          "measure_id": "U5.A.1-5",
+          "source_page": 22,
+          "jurisdiction": "VD",
+          "horizons": {
+            "before_and_A": {
+              "inhabitants": 750,
+              "jobs": 100
+            },
+            "B": {
+              "inhabitants": 750,
+              "jobs": 100
+            },
+            "C": {
+              "inhabitants": null,
+              "jobs": null
+            },
+            "stated_total": {
+              "inhabitants": 1500,
+              "jobs": 200
+            }
+          }
+        },
+        {
+          "measure_id": "U5.A.1-6",
+          "source_page": 23,
+          "jurisdiction": "VD",
+          "horizons": {
+            "before_and_A": {
+              "inhabitants": 225,
+              "jobs": 140
+            },
+            "B": {
+              "inhabitants": 450,
+              "jobs": 280
+            },
+            "C": {
+              "inhabitants": 225,
+              "jobs": 140
+            },
+            "stated_total": {
+              "inhabitants": 900,
+              "jobs": 560
+            }
+          }
+        },
+        {
+          "measure_id": "U5.A.1-7",
+          "source_page": 23,
+          "jurisdiction": "VD",
+          "horizons": {
+            "before_and_A": {
+              "inhabitants": 150,
+              "jobs": 113
+            },
+            "B": {
+              "inhabitants": 300,
+              "jobs": 225
+            },
+            "C": {
+              "inhabitants": 150,
+              "jobs": 112
+            },
+            "stated_total": {
+              "inhabitants": 600,
+              "jobs": 450
+            }
+          }
+        },
+        {
+          "measure_id": "U5.A.1-8",
+          "source_page": 23,
+          "jurisdiction": "VD",
+          "horizons": {
+            "before_and_A": {
+              "inhabitants": 250,
+              "jobs": 38
+            },
+            "B": {
+              "inhabitants": 500,
+              "jobs": 75
+            },
+            "C": {
+              "inhabitants": 250,
+              "jobs": 37
+            },
+            "stated_total": {
+              "inhabitants": 1000,
+              "jobs": 150
+            }
+          }
+        },
+        {
+          "measure_id": "U5.A.1-9",
+          "source_page": 23,
+          "jurisdiction": "VD",
+          "horizons": {
+            "before_and_A": {
+              "inhabitants": 550,
+              "jobs": 535
+            },
+            "B": {
+              "inhabitants": 660,
+              "jobs": null
+            },
+            "C": {
+              "inhabitants": null,
+              "jobs": null
+            },
+            "stated_total": {
+              "inhabitants": 1210,
+              "jobs": 535
+            }
+          }
+        },
+        {
+          "measure_id": "U5.A.1-10",
+          "source_page": 23,
+          "jurisdiction": "FR",
+          "horizons": {
+            "before_and_A": {
+              "inhabitants": null,
+              "jobs": 250
+            },
+            "B": {
+              "inhabitants": null,
+              "jobs": 1050
+            },
+            "C": {
+              "inhabitants": null,
+              "jobs": null
+            },
+            "stated_total": {
+              "inhabitants": null,
+              "jobs": 1300
+            }
+          }
+        },
+        {
+          "measure_id": "U5.A.1-11",
+          "source_page": 23,
+          "jurisdiction": "VD",
+          "horizons": {
+            "before_and_A": {
+              "inhabitants": null,
+              "jobs": 2600
+            },
+            "B": {
+              "inhabitants": null,
+              "jobs": null
+            },
+            "C": {
+              "inhabitants": null,
+              "jobs": 2565
+            },
+            "stated_total": {
+              "inhabitants": null,
+              "jobs": 5165
+            }
+          }
+        },
+        {
+          "measure_id": "U5.A.1-12",
+          "source_page": 23,
+          "jurisdiction": "VD",
+          "horizons": {
+            "before_and_A": {
+              "inhabitants": null,
+              "jobs": null
+            },
+            "B": {
+              "inhabitants": null,
+              "jobs": 640
+            },
+            "C": {
+              "inhabitants": null,
+              "jobs": null
+            },
+            "stated_total": {
+              "inhabitants": null,
+              "jobs": 640
+            }
+          }
+        },
+        {
+          "measure_id": "U5.A.1-13",
+          "source_page": 23,
+          "jurisdiction": "VD",
+          "horizons": {
+            "before_and_A": {
+              "inhabitants": null,
+              "jobs": 380
+            },
+            "B": {
+              "inhabitants": null,
+              "jobs": 1030
+            },
+            "C": {
+              "inhabitants": null,
+              "jobs": null
+            },
+            "stated_total": {
+              "inhabitants": null,
+              "jobs": 1410
+            }
+          }
+        },
+        {
+          "measure_id": "U5.A.1-14",
+          "source_page": 23,
+          "jurisdiction": "FR",
+          "horizons": {
+            "before_and_A": {
+              "inhabitants": null,
+              "jobs": null
+            },
+            "B": {
+              "inhabitants": null,
+              "jobs": null
+            },
+            "C": {
+              "inhabitants": 600,
+              "jobs": 130
+            },
+            "stated_total": {
+              "inhabitants": 600,
+              "jobs": 130
+            }
+          }
+        },
+        {
+          "measure_id": "U5.A.1-15",
+          "source_page": 23,
+          "jurisdiction": "VD",
+          "horizons": {
+            "before_and_A": {
+              "inhabitants": 90,
+              "jobs": 15
+            },
+            "B": {
+              "inhabitants": 175,
+              "jobs": 25
+            },
+            "C": {
+              "inhabitants": 85,
+              "jobs": 10
+            },
+            "stated_total": {
+              "inhabitants": 250,
+              "jobs": 50
+            }
+          }
+        },
+        {
+          "measure_id": "U5.A.1-16",
+          "source_page": 23,
+          "jurisdiction": "VD",
+          "horizons": {
+            "before_and_A": {
+              "inhabitants": 100,
+              "jobs": 20
+            },
+            "B": {
+              "inhabitants": 200,
+              "jobs": 35
+            },
+            "C": {
+              "inhabitants": 100,
+              "jobs": 15
+            },
+            "stated_total": {
+              "inhabitants": 400,
+              "jobs": 70
+            }
+          }
+        },
+        {
+          "measure_id": "U5.A.1-17",
+          "source_page": 23,
+          "jurisdiction": "VD",
+          "horizons": {
+            "before_and_A": {
+              "inhabitants": 125,
+              "jobs": 10
+            },
+            "B": {
+              "inhabitants": 125,
+              "jobs": 10
+            },
+            "C": {
+              "inhabitants": null,
+              "jobs": null
+            },
+            "stated_total": {
+              "inhabitants": 250,
+              "jobs": 20
+            }
+          }
+        }
+      ],
+      "row_conflicts": [
+        {
+          "measure_id": "U5.A.1-15",
+          "metric": "inhabitants",
+          "sum_of_listed_horizons": 350,
+          "stated_total": 250
+        }
+      ],
+      "column_audit": [
+        {
+          "horizon": "before_and_A",
+          "metric": "inhabitants",
+          "sum_of_listed_cells": 4295,
+          "source_total": 4295,
+          "matches": true
+        },
+        {
+          "horizon": "before_and_A",
+          "metric": "jobs",
+          "sum_of_listed_cells": 4513,
+          "source_total": 4513,
+          "matches": true
+        },
+        {
+          "horizon": "B",
+          "metric": "inhabitants",
+          "sum_of_listed_cells": 3561,
+          "source_total": 3561,
+          "matches": true
+        },
+        {
+          "horizon": "B",
+          "metric": "jobs",
+          "sum_of_listed_cells": 3799,
+          "source_total": 3799,
+          "matches": true
+        },
+        {
+          "horizon": "C",
+          "metric": "inhabitants",
+          "sum_of_listed_cells": 2056,
+          "source_total": 2056,
+          "matches": true
+        },
+        {
+          "horizon": "C",
+          "metric": "jobs",
+          "sum_of_listed_cells": 3233,
+          "source_total": 3233,
+          "matches": true
+        },
+        {
+          "horizon": "stated_total",
+          "metric": "inhabitants",
+          "sum_of_listed_cells": 9812,
+          "source_total": 9912,
+          "matches": false
+        },
+        {
+          "horizon": "stated_total",
+          "metric": "jobs",
+          "sum_of_listed_cells": 11545,
+          "source_total": 11545,
+          "matches": true
+        }
+      ],
+      "source_total_horizon_check": {
+        "inhabitants": true,
+        "jobs": true
+      },
+      "verification": "All17rows/4horizons/2metrics transcribed from PDF22-23 and checked visually. Null means metric not printed or slash, NOT asserted zero. Arithmetic uses only listed cells and reports discrepancies without correction.",
+      "limits": "Historical planning scenario to2040, horizonsA2028-2032,B2032-2036,Cafter2036; not current available parcel capacity or guaranteed delivery. Totals include3Fribourg sites. PDI not established as adopted. Before_and_A includes capacity before horizon A; not wholly future supply."
+    }
+  }
 }
