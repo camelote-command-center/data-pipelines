@@ -403,5 +403,1877 @@
     ],
     "area_m2": 4353.060952535759,
     "outside_commune_m2": 0.0
+  },
+  {
+    "site_code": "16",
+    "bfs": 5931,
+    "bounds": [
+      2536156.468101035,
+      1180267.9416875504,
+      2536376.9238059497,
+      1180500.7809144924
+    ],
+    "reference": {
+      "snapshot_id": "5fd69e67-d692-59ad-a2b5-c0ab3588f989",
+      "count": 11,
+      "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2536156.468101035%2C1180267.9416875504%2C2536376.9238059497%2C1180500.7809144924&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5931&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+      "response_sha256": "c563b6e915c1c456a98dbecdb041ce2be3678be756f4a149a4a08224481d599b"
+    },
+    "pairs": [
+      {
+        "egrid": "CH369783456517",
+        "overlap_m2": 0.744570565037017,
+        "parcel_area_m2": 1117.42115501303,
+        "official_attributes": {
+          "EGRID": "CH369783456517",
+          "NUMERO": "DP 17",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5931,
+          "SUPERFICIE_MO": 1117,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH869783453373",
+        "overlap_m2": 11.9591450919006,
+        "parcel_area_m2": 32249.5078544879,
+        "official_attributes": {
+          "EGRID": "CH869783453373",
+          "NUMERO": "106",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5931,
+          "SUPERFICIE_MO": 32250,
+          "SUPERFICIE_RF": 32250
+        }
+      },
+      {
+        "egrid": "CH329888834578",
+        "overlap_m2": 99.3948314912589,
+        "parcel_area_m2": 1475.62590002228,
+        "official_attributes": {
+          "EGRID": "CH329888834578",
+          "NUMERO": "DP 16",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5931,
+          "SUPERFICIE_MO": 1476,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH209745758392",
+        "overlap_m2": 7252.45918164654,
+        "parcel_area_m2": 7253.96974549999,
+        "official_attributes": {
+          "EGRID": "CH209745758392",
+          "NUMERO": "238",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5931,
+          "SUPERFICIE_MO": 7254,
+          "SUPERFICIE_RF": 7254
+        }
+      },
+      {
+        "egrid": "CH988983459828",
+        "overlap_m2": 8643.52638777406,
+        "parcel_area_m2": 8643.53361648686,
+        "official_attributes": {
+          "EGRID": "CH988983459828",
+          "NUMERO": "105",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5931,
+          "SUPERFICIE_MO": 8644,
+          "SUPERFICIE_RF": 8644
+        }
+      }
+    ],
+    "area_m2": 16008.084116575692,
+    "outside_commune_m2": 0.0
+  },
+  {
+    "site_code": "15",
+    "bfs": 5929,
+    "bounds": [
+      2536061.857260152,
+      1174817.6132975293,
+      2536201.9609146873,
+      1174974.594066961
+    ],
+    "reference": {
+      "snapshot_id": "2bf74594-7c80-5dc2-8f9d-b676b84a0a8b",
+      "count": 18,
+      "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2536061.857260152%2C1174817.6132975293%2C2536201.9609146873%2C1174974.594066961&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5929&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+      "response_sha256": "d013571cce8fde4cf79d17e75138d6fdf2ad59a6ecd26396cf5c860da7ee7819"
+    },
+    "pairs": [
+      {
+        "egrid": "CH759183984582",
+        "overlap_m2": 46.6221912430739,
+        "parcel_area_m2": 957.875254498097,
+        "official_attributes": {
+          "EGRID": "CH759183984582",
+          "NUMERO": "DP 1099",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5929,
+          "SUPERFICIE_MO": 958,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH160083450845",
+        "overlap_m2": 145.436066494955,
+        "parcel_area_m2": 145.436066494955,
+        "official_attributes": {
+          "EGRID": "CH160083450845",
+          "NUMERO": "680",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5929,
+          "SUPERFICIE_MO": 145,
+          "SUPERFICIE_RF": 145
+        }
+      },
+      {
+        "egrid": "CH929875834588",
+        "overlap_m2": 19.8483369358666,
+        "parcel_area_m2": 4194.68325993247,
+        "official_attributes": {
+          "EGRID": "CH929875834588",
+          "NUMERO": "DP 1098",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5929,
+          "SUPERFICIE_MO": 4195,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH544583968878",
+        "overlap_m2": 436.800418994394,
+        "parcel_area_m2": 436.800418994394,
+        "official_attributes": {
+          "EGRID": "CH544583968878",
+          "NUMERO": "668",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5929,
+          "SUPERFICIE_MO": 437,
+          "SUPERFICIE_RF": 437
+        }
+      },
+      {
+        "egrid": "CH998391574554",
+        "overlap_m2": 0.0531696690462824,
+        "parcel_area_m2": 9132.91359602569,
+        "official_attributes": {
+          "EGRID": "CH998391574554",
+          "NUMERO": "653",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5929,
+          "SUPERFICIE_MO": 9133,
+          "SUPERFICIE_RF": 9133
+        }
+      },
+      {
+        "egrid": "CH714503839733",
+        "overlap_m2": 0.0266290506832731,
+        "parcel_area_m2": 50656.003347521,
+        "official_attributes": {
+          "EGRID": "CH714503839733",
+          "NUMERO": "422",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5929,
+          "SUPERFICIE_MO": 50656,
+          "SUPERFICIE_RF": 50647
+        }
+      },
+      {
+        "egrid": "CH598396904546",
+        "overlap_m2": 298.211075001786,
+        "parcel_area_m2": 298.211075001786,
+        "official_attributes": {
+          "EGRID": "CH598396904546",
+          "NUMERO": "670",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5929,
+          "SUPERFICIE_MO": 298,
+          "SUPERFICIE_RF": 298
+        }
+      },
+      {
+        "egrid": "CH769883459122",
+        "overlap_m2": 3114.20204704716,
+        "parcel_area_m2": 3118.56464849929,
+        "official_attributes": {
+          "EGRID": "CH769883459122",
+          "NUMERO": "421",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5929,
+          "SUPERFICIE_MO": 3119,
+          "SUPERFICIE_RF": 3118
+        }
+      },
+      {
+        "egrid": "CH558883964543",
+        "overlap_m2": 587.394583507155,
+        "parcel_area_m2": 587.394583507155,
+        "official_attributes": {
+          "EGRID": "CH558883964543",
+          "NUMERO": "667",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5929,
+          "SUPERFICIE_MO": 587,
+          "SUPERFICIE_RF": 588
+        }
+      },
+      {
+        "egrid": "CH150883004508",
+        "overlap_m2": 431.055838386643,
+        "parcel_area_m2": 431.105510000297,
+        "official_attributes": {
+          "EGRID": "CH150883004508",
+          "NUMERO": "679",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5929,
+          "SUPERFICIE_MO": 431,
+          "SUPERFICIE_RF": 431
+        }
+      },
+      {
+        "egrid": "CH538396458842",
+        "overlap_m2": 1317.25371254742,
+        "parcel_area_m2": 1317.60413649649,
+        "official_attributes": {
+          "EGRID": "CH538396458842",
+          "NUMERO": "669",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5929,
+          "SUPERFICIE_MO": 1318,
+          "SUPERFICIE_RF": 1318
+        }
+      }
+    ],
+    "area_m2": 6396.904068874935,
+    "outside_commune_m2": 0.0
+  },
+  {
+    "site_code": "4",
+    "bfs": 5764,
+    "bounds": [
+      2518344.6067411425,
+      1173359.5704501274,
+      2518490.7591484734,
+      1173455.362289452
+    ],
+    "reference": {
+      "snapshot_id": "08ae1c9e-1f65-5312-9371-97d580931a73",
+      "count": 15,
+      "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2518344.6067411425%2C1173359.5704501274%2C2518490.7591484734%2C1173455.362289452&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5764&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+      "response_sha256": "78af300d037905854c3f152e79e05a33aaf7d2e660cf4ab17b7b2197059fd8fc"
+    },
+    "pairs": [
+      {
+        "egrid": "CH255283094520",
+        "overlap_m2": 183.211146883511,
+        "parcel_area_m2": 183.212407503918,
+        "official_attributes": {
+          "EGRID": "CH255283094520",
+          "NUMERO": "1755",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5764,
+          "SUPERFICIE_MO": 183,
+          "SUPERFICIE_RF": 183
+        }
+      },
+      {
+        "egrid": "CH668283455737",
+        "overlap_m2": 0.254739849199233,
+        "parcel_area_m2": 22089.6864890173,
+        "official_attributes": {
+          "EGRID": "CH668283455737",
+          "NUMERO": "647",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5764,
+          "SUPERFICIE_MO": 22090,
+          "SUPERFICIE_RF": 22090
+        }
+      },
+      {
+        "egrid": "CH544583826645",
+        "overlap_m2": 2081.0134102102,
+        "parcel_area_m2": 2081.55232449141,
+        "official_attributes": {
+          "EGRID": "CH544583826645",
+          "NUMERO": "1290",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5764,
+          "SUPERFICIE_MO": 2082,
+          "SUPERFICIE_RF": 2082
+        }
+      },
+      {
+        "egrid": "CH152383824536",
+        "overlap_m2": 65.6089941473302,
+        "parcel_area_m2": 9924.51304353234,
+        "official_attributes": {
+          "EGRID": "CH152383824536",
+          "NUMERO": "DP 182",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5764,
+          "SUPERFICIE_MO": 9925,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH274583808387",
+        "overlap_m2": 10.8786112888448,
+        "parcel_area_m2": 4119.72449497235,
+        "official_attributes": {
+          "EGRID": "CH274583808387",
+          "NUMERO": "655",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5764,
+          "SUPERFICIE_MO": 4120,
+          "SUPERFICIE_RF": 4120
+        }
+      },
+      {
+        "egrid": "CH556683824597",
+        "overlap_m2": 0.016721337381095,
+        "parcel_area_m2": 933.078610494382,
+        "official_attributes": {
+          "EGRID": "CH556683824597",
+          "NUMERO": "646",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5764,
+          "SUPERFICIE_MO": 933,
+          "SUPERFICIE_RF": 933
+        }
+      },
+      {
+        "egrid": "CH298383964553",
+        "overlap_m2": 1773.0898483235,
+        "parcel_area_m2": 1773.11182449619,
+        "official_attributes": {
+          "EGRID": "CH298383964553",
+          "NUMERO": "1512",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5764,
+          "SUPERFICIE_MO": 1773,
+          "SUPERFICIE_RF": 1773
+        }
+      }
+    ],
+    "area_m2": 4114.0734720364835,
+    "outside_commune_m2": 0.0
+  },
+  {
+    "site_code": "6",
+    "bfs": 5745,
+    "bounds": [
+      2529976.1752056633,
+      1182096.6907550371,
+      2530201.776463906,
+      1182298.9202642776
+    ],
+    "reference": {
+      "snapshot_id": "ed0811b1-219d-5226-857b-e419fdfa5643",
+      "count": 28,
+      "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2529976.1752056633%2C1182096.6907550371%2C2530201.776463906%2C1182298.9202642776&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5745&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+      "response_sha256": "ab528cb0ce03644bc015b97c068e203f676d5ee33f05cece637ef369ac0ba8bf"
+    },
+    "pairs": [
+      {
+        "egrid": "CH274583988333",
+        "overlap_m2": 4960.51566349462,
+        "parcel_area_m2": 4960.51566349462,
+        "official_attributes": {
+          "EGRID": "CH274583988333",
+          "NUMERO": "564",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 4961,
+          "SUPERFICIE_RF": 4970
+        }
+      },
+      {
+        "egrid": "CH274582298355",
+        "overlap_m2": 8457.6662691844,
+        "parcel_area_m2": 8457.73036298817,
+        "official_attributes": {
+          "EGRID": "CH274582298355",
+          "NUMERO": "567",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 8458,
+          "SUPERFICIE_RF": 8447
+        }
+      },
+      {
+        "egrid": "CH528371834583",
+        "overlap_m2": 100.514453923039,
+        "parcel_area_m2": 33762.4695124852,
+        "official_attributes": {
+          "EGRID": "CH528371834583",
+          "NUMERO": "207",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 33762,
+          "SUPERFICIE_RF": 33764
+        }
+      },
+      {
+        "egrid": "CH589583458317",
+        "overlap_m2": 0.48800259985701,
+        "parcel_area_m2": 10502.8318375019,
+        "official_attributes": {
+          "EGRID": "CH589583458317",
+          "NUMERO": "569",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 10503,
+          "SUPERFICIE_RF": 10474
+        }
+      },
+      {
+        "egrid": "CH598383954551",
+        "overlap_m2": 21.6314149256386,
+        "parcel_area_m2": 1480.0727089984,
+        "official_attributes": {
+          "EGRID": "CH598383954551",
+          "NUMERO": "DP 1086",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 1480,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH574583068313",
+        "overlap_m2": 4.42519267975867e-05,
+        "parcel_area_m2": 4481.6162059862,
+        "official_attributes": {
+          "EGRID": "CH574583068313",
+          "NUMERO": "DP 1090",
+          "GENRE_TXT": "DP cantonal",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 4482,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH420041834509",
+        "overlap_m2": 8.60569037731699,
+        "parcel_area_m2": 1067.75614449665,
+        "official_attributes": {
+          "EGRID": "CH420041834509",
+          "NUMERO": "DP 1194",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 1068,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH283183458205",
+        "overlap_m2": 1205.18302949581,
+        "parcel_area_m2": 1205.18302949581,
+        "official_attributes": {
+          "EGRID": "CH283183458205",
+          "NUMERO": "566",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 1205,
+          "SUPERFICIE_RF": 1205
+        }
+      }
+    ],
+    "area_m2": 14754.604568256047,
+    "outside_commune_m2": 0.0
+  },
+  {
+    "site_code": "9",
+    "bfs": 5745,
+    "bounds": [
+      2530254.934911943,
+      1182338.9204023231,
+      2530571.5887659146,
+      1182551.7551949515
+    ],
+    "reference": {
+      "snapshot_id": "8fbe83a4-1a2b-5a69-bb22-2875af29e732",
+      "count": 54,
+      "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2530254.934911943%2C1182338.9204023231%2C2530571.5887659146%2C1182551.7551949515&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5745&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+      "response_sha256": "7e0589d705cc550ba7b3955a076998e295f1c60964c5010a3a1330aaa6a73fa5"
+    },
+    "pairs": [
+      {
+        "egrid": "CH708245208307",
+        "overlap_m2": 3168.21884550509,
+        "parcel_area_m2": 3168.21884550509,
+        "official_attributes": {
+          "EGRID": "CH708245208307",
+          "NUMERO": "514",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 3168,
+          "SUPERFICIE_RF": 3166
+        }
+      },
+      {
+        "egrid": "CH444583823513",
+        "overlap_m2": 1701.40377450388,
+        "parcel_area_m2": 1701.40377450388,
+        "official_attributes": {
+          "EGRID": "CH444583823513",
+          "NUMERO": "515",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 1701,
+          "SUPERFICIE_RF": 1704
+        }
+      },
+      {
+        "egrid": "CH580683458392",
+        "overlap_m2": 1342.43334480986,
+        "parcel_area_m2": 1342.4948144961,
+        "official_attributes": {
+          "EGRID": "CH580683458392",
+          "NUMERO": "544",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 1342,
+          "SUPERFICIE_RF": 1337
+        }
+      },
+      {
+        "egrid": "CH598383064527",
+        "overlap_m2": 1754.42979599562,
+        "parcel_area_m2": 1754.42979599562,
+        "official_attributes": {
+          "EGRID": "CH598383064527",
+          "NUMERO": "517",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 1755,
+          "SUPERFICIE_RF": 1758
+        }
+      },
+      {
+        "egrid": "CH228232834578",
+        "overlap_m2": 2329.44392849577,
+        "parcel_area_m2": 2329.72728300488,
+        "official_attributes": {
+          "EGRID": "CH228232834578",
+          "NUMERO": "520",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 2330,
+          "SUPERFICIE_RF": 2328
+        }
+      },
+      {
+        "egrid": "CH508345068390",
+        "overlap_m2": 2253.19053120071,
+        "parcel_area_m2": 2253.25876249041,
+        "official_attributes": {
+          "EGRID": "CH508345068390",
+          "NUMERO": "545",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 2253,
+          "SUPERFICIE_RF": 2245
+        }
+      },
+      {
+        "egrid": "CH168383459842",
+        "overlap_m2": 750.949594245713,
+        "parcel_area_m2": 764.770114996513,
+        "official_attributes": {
+          "EGRID": "CH168383459842",
+          "NUMERO": "521",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 765,
+          "SUPERFICIE_RF": 762
+        }
+      },
+      {
+        "egrid": "CH768383457456",
+        "overlap_m2": 0.516304348288814,
+        "parcel_area_m2": 2415.57090499739,
+        "official_attributes": {
+          "EGRID": "CH768383457456",
+          "NUMERO": "DP 1084",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 2416,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH528371834583",
+        "overlap_m2": 197.620984306127,
+        "parcel_area_m2": 33762.4695124852,
+        "official_attributes": {
+          "EGRID": "CH528371834583",
+          "NUMERO": "207",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 33762,
+          "SUPERFICIE_RF": 33764
+        }
+      },
+      {
+        "egrid": "CH298382204596",
+        "overlap_m2": 368.920390279563,
+        "parcel_area_m2": 369.020030004972,
+        "official_attributes": {
+          "EGRID": "CH298382204596",
+          "NUMERO": "519",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 369,
+          "SUPERFICIE_RF": 370
+        }
+      },
+      {
+        "egrid": "CH183783450848",
+        "overlap_m2": 132.85854999948,
+        "parcel_area_m2": 132.85854999948,
+        "official_attributes": {
+          "EGRID": "CH183783450848",
+          "NUMERO": "1165",
+          "GENRE_TXT": "DDP superficie",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 133,
+          "SUPERFICIE_RF": 133
+        }
+      },
+      {
+        "egrid": "CH544583839513",
+        "overlap_m2": 25.8936525764412,
+        "parcel_area_m2": 1103.56935000973,
+        "official_attributes": {
+          "EGRID": "CH544583839513",
+          "NUMERO": "DP 1080",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 1104,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH455083824578",
+        "overlap_m2": 4978.84205546824,
+        "parcel_area_m2": 4978.91034300652,
+        "official_attributes": {
+          "EGRID": "CH455083824578",
+          "NUMERO": "516",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 4979,
+          "SUPERFICIE_RF": 4982
+        }
+      },
+      {
+        "egrid": "CH414545838263",
+        "overlap_m2": 2616.74671199624,
+        "parcel_area_m2": 2616.74671199624,
+        "official_attributes": {
+          "EGRID": "CH414545838263",
+          "NUMERO": "507",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 2617,
+          "SUPERFICIE_RF": 2622
+        }
+      },
+      {
+        "egrid": "CH889183450801",
+        "overlap_m2": 1644.31695688374,
+        "parcel_area_m2": 1644.43154399777,
+        "official_attributes": {
+          "EGRID": "CH889183450801",
+          "NUMERO": "1163",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5745,
+          "SUPERFICIE_MO": 1644,
+          "SUPERFICIE_RF": 1643
+        }
+      }
+    ],
+    "area_m2": 23132.926870614607,
+    "outside_commune_m2": 0.0
+  },
+  {
+    "site_code": "34",
+    "bfs": 5924,
+    "bounds": [
+      2535109.783247435,
+      1184534.2246231143,
+      2535339.4319655458,
+      1184801.310737633
+    ],
+    "reference": {
+      "snapshot_id": "41178534-c40a-5714-a676-77f6b7d682ae",
+      "count": 42,
+      "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2535109.783247435%2C1184534.2246231143%2C2535339.4319655458%2C1184801.310737633&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5924&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+      "response_sha256": "554bb9791fa279c8c0bb5e3c8ef749cec8a9a5b7c4f65981a790fa4d4a9147b0"
+    },
+    "pairs": [
+      {
+        "egrid": "CH458783984501",
+        "overlap_m2": 1739.79638001056,
+        "parcel_area_m2": 1739.79638001056,
+        "official_attributes": {
+          "EGRID": "CH458783984501",
+          "NUMERO": "559",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5924,
+          "SUPERFICIE_MO": 1740,
+          "SUPERFICIE_RF": 1737
+        }
+      },
+      {
+        "egrid": "CH709745568376",
+        "overlap_m2": 13498.9761703621,
+        "parcel_area_m2": 13499.74048001,
+        "official_attributes": {
+          "EGRID": "CH709745568376",
+          "NUMERO": "333",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5924,
+          "SUPERFICIE_MO": 13500,
+          "SUPERFICIE_RF": 13478
+        }
+      },
+      {
+        "egrid": "CH498397954556",
+        "overlap_m2": 0.380475504422639,
+        "parcel_area_m2": 1064.25494500234,
+        "official_attributes": {
+          "EGRID": "CH498397954556",
+          "NUMERO": "334",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5924,
+          "SUPERFICIE_MO": 1064,
+          "SUPERFICIE_RF": 1068
+        }
+      },
+      {
+        "egrid": "CH238386455672",
+        "overlap_m2": 0.0927017257051005,
+        "parcel_area_m2": 1431.26156997311,
+        "official_attributes": {
+          "EGRID": "CH238386455672",
+          "NUMERO": "DP 1002",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5924,
+          "SUPERFICIE_MO": 1431,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH598398874537",
+        "overlap_m2": 5357.41790998332,
+        "parcel_area_m2": 5357.41790998332,
+        "official_attributes": {
+          "EGRID": "CH598398874537",
+          "NUMERO": "562",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5924,
+          "SUPERFICIE_MO": 5357,
+          "SUPERFICIE_RF": 5346
+        }
+      },
+      {
+        "egrid": "CH469883458731",
+        "overlap_m2": 1511.85015500258,
+        "parcel_area_m2": 1511.85015500258,
+        "official_attributes": {
+          "EGRID": "CH469883458731",
+          "NUMERO": "601",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5924,
+          "SUPERFICIE_MO": 1512,
+          "SUPERFICIE_RF": 1510
+        }
+      },
+      {
+        "egrid": "CH414520830970",
+        "overlap_m2": 0.398052029523498,
+        "parcel_area_m2": 2430.01956449612,
+        "official_attributes": {
+          "EGRID": "CH414520830970",
+          "NUMERO": "665",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5924,
+          "SUPERFICIE_MO": 2430,
+          "SUPERFICIE_RF": 2430
+        }
+      },
+      {
+        "egrid": "CH809745008316",
+        "overlap_m2": 2.19464468878775,
+        "parcel_area_m2": 1343.02511499657,
+        "official_attributes": {
+          "EGRID": "CH809745008316",
+          "NUMERO": "DP 1060",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5924,
+          "SUPERFICIE_MO": 1343,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH529887834519",
+        "overlap_m2": 3065.85959468301,
+        "parcel_area_m2": 3066.24092501237,
+        "official_attributes": {
+          "EGRID": "CH529887834519",
+          "NUMERO": "563",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5924,
+          "SUPERFICIE_MO": 3066,
+          "SUPERFICIE_RF": 3065
+        }
+      },
+      {
+        "egrid": "CH683383459791",
+        "overlap_m2": 0.0837602428128491,
+        "parcel_area_m2": 1449.23841801352,
+        "official_attributes": {
+          "EGRID": "CH683383459791",
+          "NUMERO": "335",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5924,
+          "SUPERFICIE_MO": 1449,
+          "SUPERFICIE_RF": 1449
+        }
+      },
+      {
+        "egrid": "CH588783459824",
+        "overlap_m2": 1750.67461000635,
+        "parcel_area_m2": 1750.83829998774,
+        "official_attributes": {
+          "EGRID": "CH588783459824",
+          "NUMERO": "330",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5924,
+          "SUPERFICIE_MO": 1751,
+          "SUPERFICIE_RF": 1736
+        }
+      },
+      {
+        "egrid": "CH509845878324",
+        "overlap_m2": 135.687776087821,
+        "parcel_area_m2": 3487.71920998902,
+        "official_attributes": {
+          "EGRID": "CH509845878324",
+          "NUMERO": "DP 1059",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5924,
+          "SUPERFICIE_MO": 3488,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH714585839870",
+        "overlap_m2": 37.1640697076387,
+        "parcel_area_m2": 1786.30211049502,
+        "official_attributes": {
+          "EGRID": "CH714585839870",
+          "NUMERO": "DP 1001",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5924,
+          "SUPERFICIE_MO": 1786,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH514587839823",
+        "overlap_m2": 15.8155500005866,
+        "parcel_area_m2": 15.8155500005866,
+        "official_attributes": {
+          "EGRID": "CH514587839823",
+          "NUMERO": "565",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5924,
+          "SUPERFICIE_MO": 16,
+          "SUPERFICIE_RF": 15
+        }
+      }
+    ],
+    "area_m2": 27116.391850028864,
+    "outside_commune_m2": 0.0
+  },
+  {
+    "site_code": "70",
+    "bfs": 5908,
+    "bounds": [
+      2548893.1673262357,
+      1179762.5416807418,
+      2549034.288125033,
+      1179935.7324950108
+    ],
+    "reference": {
+      "snapshot_id": "aea954fc-8b3a-5263-90b3-fc41f35f4f5d",
+      "count": 13,
+      "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2548893.1673262357%2C1179762.5416807418%2C2549034.288125033%2C1179935.7324950108&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5908&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+      "response_sha256": "9456191534349810075c6b509a24d2f175678934d219f00068a7724af09ea955"
+    },
+    "pairs": [
+      {
+        "egrid": "CH687583459823",
+        "overlap_m2": 2.56500741680807,
+        "parcel_area_m2": 9762.76979249339,
+        "official_attributes": {
+          "EGRID": "CH687583459823",
+          "NUMERO": "105",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5908,
+          "SUPERFICIE_MO": 9763,
+          "SUPERFICIE_RF": 9763
+        }
+      },
+      {
+        "egrid": "CH214592839880",
+        "overlap_m2": 29.8196530521334,
+        "parcel_area_m2": 3107.57096001193,
+        "official_attributes": {
+          "EGRID": "CH214592839880",
+          "NUMERO": "DP 1016",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5908,
+          "SUPERFICIE_MO": 3108,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH109745588380",
+        "overlap_m2": 676.110781500599,
+        "parcel_area_m2": 676.116245502967,
+        "official_attributes": {
+          "EGRID": "CH109745588380",
+          "NUMERO": "305",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5908,
+          "SUPERFICIE_MO": 676,
+          "SUPERFICIE_RF": 675
+        }
+      },
+      {
+        "egrid": "CH944583971611",
+        "overlap_m2": 0.374041405599418,
+        "parcel_area_m2": 5774.6697454944,
+        "official_attributes": {
+          "EGRID": "CH944583971611",
+          "NUMERO": "106",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5908,
+          "SUPERFICIE_MO": 5775,
+          "SUPERFICIE_RF": 5785
+        }
+      },
+      {
+        "egrid": "CH969883459250",
+        "overlap_m2": 964.797245584636,
+        "parcel_area_m2": 964.923560006548,
+        "official_attributes": {
+          "EGRID": "CH969883459250",
+          "NUMERO": "301",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5908,
+          "SUPERFICIE_MO": 965,
+          "SUPERFICIE_RF": 970
+        }
+      },
+      {
+        "egrid": "CH951683974505",
+        "overlap_m2": 37.5282514805831,
+        "parcel_area_m2": 888.052544488548,
+        "official_attributes": {
+          "EGRID": "CH951683974505",
+          "NUMERO": "DP 1020",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5908,
+          "SUPERFICIE_MO": 888,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH544583948389",
+        "overlap_m2": 3596.8235246004,
+        "parcel_area_m2": 3596.82393950427,
+        "official_attributes": {
+          "EGRID": "CH544583948389",
+          "NUMERO": "438",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5908,
+          "SUPERFICIE_MO": 3597,
+          "SUPERFICIE_RF": 3597
+        }
+      },
+      {
+        "egrid": "CH674598758325",
+        "overlap_m2": 1629.6914485472,
+        "parcel_area_m2": 1629.86610350107,
+        "official_attributes": {
+          "EGRID": "CH674598758325",
+          "NUMERO": "302",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5908,
+          "SUPERFICIE_MO": 1630,
+          "SUPERFICIE_RF": 1626
+        }
+      }
+    ],
+    "area_m2": 6937.709953590799,
+    "outside_commune_m2": 0.0
+  },
+  {
+    "site_code": "71",
+    "bfs": 5747,
+    "bounds": [
+      2528233.6170294527,
+      1172980.5491903957,
+      2528411.3644071124,
+      1173155.1362085845
+    ],
+    "reference": {
+      "snapshot_id": "9e75ccb1-5919-5fd1-8c91-f8244868f503",
+      "count": 26,
+      "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2528233.6170294527%2C1172980.5491903957%2C2528411.3644071124%2C1173155.1362085845&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5747&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+      "response_sha256": "50b4bcf8cc50aed79d4b3cd5dc604e482da16101e38b678955507e46af611744"
+    },
+    "pairs": [
+      {
+        "egrid": "CH681883458325",
+        "overlap_m2": 14.9018471611739,
+        "parcel_area_m2": 3286.85181600774,
+        "official_attributes": {
+          "EGRID": "CH681883458325",
+          "NUMERO": "DP 1",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5747,
+          "SUPERFICIE_MO": 3287,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH438382454056",
+        "overlap_m2": 4136.69067260525,
+        "parcel_area_m2": 4136.73483500045,
+        "official_attributes": {
+          "EGRID": "CH438382454056",
+          "NUMERO": "138",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5747,
+          "SUPERFICIE_MO": 4137,
+          "SUPERFICIE_RF": 4137
+        }
+      },
+      {
+        "egrid": "CH574582408317",
+        "overlap_m2": 0.452817196237998,
+        "parcel_area_m2": 4128.86220699393,
+        "official_attributes": {
+          "EGRID": "CH574582408317",
+          "NUMERO": "DP 32",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5747,
+          "SUPERFICIE_MO": 4128,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH138383458012",
+        "overlap_m2": 2810.26857633457,
+        "parcel_area_m2": 2810.70998049488,
+        "official_attributes": {
+          "EGRID": "CH138383458012",
+          "NUMERO": "137",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5747,
+          "SUPERFICIE_MO": 2811,
+          "SUPERFICIE_RF": 2811
+        }
+      },
+      {
+        "egrid": "CH951183094516",
+        "overlap_m2": 107.306213788824,
+        "parcel_area_m2": 1904.49508552847,
+        "official_attributes": {
+          "EGRID": "CH951183094516",
+          "NUMERO": "DP 58",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5747,
+          "SUPERFICIE_MO": 1904,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH438382456828",
+        "overlap_m2": 0.156395687876285,
+        "parcel_area_m2": 608.830495000395,
+        "official_attributes": {
+          "EGRID": "CH438382456828",
+          "NUMERO": "DP 33",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5747,
+          "SUPERFICIE_MO": 609,
+          "SUPERFICIE_RF": null
+        }
+      }
+    ],
+    "area_m2": 7069.776522772609,
+    "outside_commune_m2": 0.0
+  },
+  {
+    "site_code": "74",
+    "bfs": 5561,
+    "bounds": [
+      2539436.996502314,
+      1184813.457194118,
+      2539693.2552159964,
+      1185048.7732164168
+    ],
+    "reference": {
+      "snapshot_id": "c10331a4-ed84-51bb-a9a7-d9fc61be64af",
+      "count": 42,
+      "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2539436.996502314%2C1184813.457194118%2C2539693.2552159964%2C1185048.7732164168&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5561&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+      "response_sha256": "9bca55871103122da9b6ba546b62bb294457eba0d8db26c94380ee8fa9a66814"
+    },
+    "pairs": [
+      {
+        "egrid": "CH593677345790",
+        "overlap_m2": 771.682268997173,
+        "parcel_area_m2": 771.682268997173,
+        "official_attributes": {
+          "EGRID": "CH593677345790",
+          "NUMERO": "2019",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5561,
+          "SUPERFICIE_MO": 772,
+          "SUPERFICIE_RF": 772
+        }
+      },
+      {
+        "egrid": "CH533677579977",
+        "overlap_m2": 667.061175278585,
+        "parcel_area_m2": 667.061175278585,
+        "official_attributes": {
+          "EGRID": "CH533677579977",
+          "NUMERO": "792",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5561,
+          "SUPERFICIE_MO": 667,
+          "SUPERFICIE_RF": 667
+        }
+      },
+      {
+        "egrid": "CH467736573468",
+        "overlap_m2": 2632.89231606252,
+        "parcel_area_m2": 2659.54788948536,
+        "official_attributes": {
+          "EGRID": "CH467736573468",
+          "NUMERO": "1244",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5561,
+          "SUPERFICIE_MO": 2660,
+          "SUPERFICIE_RF": 2660
+        }
+      },
+      {
+        "egrid": "CH867383450570",
+        "overlap_m2": 0.00118346651814046,
+        "parcel_area_m2": 29864.2703875044,
+        "official_attributes": {
+          "EGRID": "CH867383450570",
+          "NUMERO": "1387",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5561,
+          "SUPERFICIE_MO": 29864,
+          "SUPERFICIE_RF": 29864
+        }
+      },
+      {
+        "egrid": "CH433677573479",
+        "overlap_m2": 847.819012108434,
+        "parcel_area_m2": 851.018505006624,
+        "official_attributes": {
+          "EGRID": "CH433677573479",
+          "NUMERO": "1551",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5561,
+          "SUPERFICIE_MO": 851,
+          "SUPERFICIE_RF": 851
+        }
+      },
+      {
+        "egrid": "CH720185834566",
+        "overlap_m2": 4.20794225720209,
+        "parcel_area_m2": 1613.4887444988,
+        "official_attributes": {
+          "EGRID": "CH720185834566",
+          "NUMERO": "DP 201",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5561,
+          "SUPERFICIE_MO": 1613,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH567483459555",
+        "overlap_m2": 77.9890324020741,
+        "parcel_area_m2": 104.566030001293,
+        "official_attributes": {
+          "EGRID": "CH567483459555",
+          "NUMERO": "1386",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5561,
+          "SUPERFICIE_MO": 105,
+          "SUPERFICIE_RF": 104
+        }
+      },
+      {
+        "egrid": "CH453436775763",
+        "overlap_m2": 1178.10335810388,
+        "parcel_area_m2": 1204.56396150137,
+        "official_attributes": {
+          "EGRID": "CH453436775763",
+          "NUMERO": "794",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5561,
+          "SUPERFICIE_MO": 1205,
+          "SUPERFICIE_RF": 1205
+        }
+      },
+      {
+        "egrid": "CH527799365725",
+        "overlap_m2": 828.614205723255,
+        "parcel_area_m2": 828.614205723255,
+        "official_attributes": {
+          "EGRID": "CH527799365725",
+          "NUMERO": "2016",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5561,
+          "SUPERFICIE_MO": 829,
+          "SUPERFICIE_RF": 829
+        }
+      },
+      {
+        "egrid": "CH575777343694",
+        "overlap_m2": 1414.89981028347,
+        "parcel_area_m2": 1430.41525100947,
+        "official_attributes": {
+          "EGRID": "CH575777343694",
+          "NUMERO": "795",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5561,
+          "SUPERFICIE_MO": 1430,
+          "SUPERFICIE_RF": 1430
+        }
+      },
+      {
+        "egrid": "CH515799367744",
+        "overlap_m2": 1015.92710400039,
+        "parcel_area_m2": 1015.92710400039,
+        "official_attributes": {
+          "EGRID": "CH515799367744",
+          "NUMERO": "2020",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5561,
+          "SUPERFICIE_MO": 1016,
+          "SUPERFICIE_RF": 1016
+        }
+      },
+      {
+        "egrid": "CH507757343610",
+        "overlap_m2": 19.8721109804296,
+        "parcel_area_m2": 3942.51619600621,
+        "official_attributes": {
+          "EGRID": "CH507757343610",
+          "NUMERO": "793",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5561,
+          "SUPERFICIE_MO": 3943,
+          "SUPERFICIE_RF": 3943
+        }
+      },
+      {
+        "egrid": "CH583436577720",
+        "overlap_m2": 7317.69044768129,
+        "parcel_area_m2": 7317.69767698981,
+        "official_attributes": {
+          "EGRID": "CH583436577720",
+          "NUMERO": "1241",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5561,
+          "SUPERFICIE_MO": 7318,
+          "SUPERFICIE_RF": 7318
+        }
+      },
+      {
+        "egrid": "CH580583457332",
+        "overlap_m2": 1.77357480468273,
+        "parcel_area_m2": 560.025979996955,
+        "official_attributes": {
+          "EGRID": "CH580583457332",
+          "NUMERO": "DP 11",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5561,
+          "SUPERFICIE_MO": 560,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH638301458491",
+        "overlap_m2": 0.986412893711363,
+        "parcel_area_m2": 271.827375501047,
+        "official_attributes": {
+          "EGRID": "CH638301458491",
+          "NUMERO": "DP 188",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5561,
+          "SUPERFICIE_MO": 272,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH793677995721",
+        "overlap_m2": 1343.07738900375,
+        "parcel_area_m2": 1343.0780895056,
+        "official_attributes": {
+          "EGRID": "CH793677995721",
+          "NUMERO": "2006",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5561,
+          "SUPERFICIE_MO": 1343,
+          "SUPERFICIE_RF": 1343
+        }
+      },
+      {
+        "egrid": "CH545736779929",
+        "overlap_m2": 641.820387499782,
+        "parcel_area_m2": 641.820387499782,
+        "official_attributes": {
+          "EGRID": "CH545736779929",
+          "NUMERO": "2017",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5561,
+          "SUPERFICIE_MO": 642,
+          "SUPERFICIE_RF": 642
+        }
+      },
+      {
+        "egrid": "CH559936775720",
+        "overlap_m2": 830.080446503296,
+        "parcel_area_m2": 830.080446503297,
+        "official_attributes": {
+          "EGRID": "CH559936775720",
+          "NUMERO": "2018",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5561,
+          "SUPERFICIE_MO": 830,
+          "SUPERFICIE_RF": 830
+        }
+      },
+      {
+        "egrid": "CH707757993638",
+        "overlap_m2": 1012.06056899746,
+        "parcel_area_m2": 1012.06056899746,
+        "official_attributes": {
+          "EGRID": "CH707757993638",
+          "NUMERO": "1974",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5561,
+          "SUPERFICIE_MO": 1012,
+          "SUPERFICIE_RF": 1012
+        }
+      },
+      {
+        "egrid": "CH538308454603",
+        "overlap_m2": 107.647448338355,
+        "parcel_area_m2": 18070.8907540109,
+        "official_attributes": {
+          "EGRID": "CH538308454603",
+          "NUMERO": "2052",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5561,
+          "SUPERFICIE_MO": 18071,
+          "SUPERFICIE_RF": 18071
+        }
+      }
+    ],
+    "area_m2": 20714.20619539113,
+    "outside_commune_m2": 0.0
+  },
+  {
+    "site_code": "77",
+    "bfs": 5554,
+    "bounds": [
+      2545379.7187547395,
+      1189539.8544383426,
+      2545504.8186515206,
+      1189684.0223969284
+    ],
+    "reference": {
+      "snapshot_id": "1b5bacda-e16f-5fde-8fb1-8f0fb01c39b0",
+      "count": 15,
+      "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2545379.7187547395%2C1189539.8544383426%2C2545504.8186515206%2C1189684.0223969284&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5554&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+      "response_sha256": "b590a412bbd240fd269741ea1726bf24be9dbeb67574efad8c252a263bb9320f"
+    },
+    "pairs": [
+      {
+        "egrid": "CH398394464570",
+        "overlap_m2": 0.138986595297861,
+        "parcel_area_m2": 990.295476494662,
+        "official_attributes": {
+          "EGRID": "CH398394464570",
+          "NUMERO": "DP 37",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5554,
+          "SUPERFICIE_MO": 990,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH374594468356",
+        "overlap_m2": 0.358912378100823,
+        "parcel_area_m2": 690.260663991219,
+        "official_attributes": {
+          "EGRID": "CH374594468356",
+          "NUMERO": "DP 34",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5554,
+          "SUPERFICIE_MO": 690,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH444583961192",
+        "overlap_m2": 2840.67390075173,
+        "parcel_area_m2": 2840.67610401389,
+        "official_attributes": {
+          "EGRID": "CH444583961192",
+          "NUMERO": "1967",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5554,
+          "SUPERFICIE_MO": 2841,
+          "SUPERFICIE_RF": 2841
+        }
+      },
+      {
+        "egrid": "CH414546839442",
+        "overlap_m2": 1.91370180732859,
+        "parcel_area_m2": 871.918642488335,
+        "official_attributes": {
+          "EGRID": "CH414546839442",
+          "NUMERO": "1643",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5554,
+          "SUPERFICIE_MO": 872,
+          "SUPERFICIE_RF": 872
+        }
+      },
+      {
+        "egrid": "CH384683459439",
+        "overlap_m2": 34.991337377611,
+        "parcel_area_m2": 1004.88054850971,
+        "official_attributes": {
+          "EGRID": "CH384683459439",
+          "NUMERO": "DP 36",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5554,
+          "SUPERFICIE_MO": 1005,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH409445468395",
+        "overlap_m2": 2099.93485179208,
+        "parcel_area_m2": 2099.99256999765,
+        "official_attributes": {
+          "EGRID": "CH409445468395",
+          "NUMERO": "1644",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5554,
+          "SUPERFICIE_MO": 2100,
+          "SUPERFICIE_RF": 2100
+        }
+      }
+    ],
+    "area_m2": 4978.011690703039,
+    "outside_commune_m2": 0.0
+  },
+  {
+    "site_code": "82",
+    "bfs": 5766,
+    "bounds": [
+      2532838.0378777403,
+      1184384.9000272471,
+      2533134.7348216213,
+      1184692.3446480134
+    ],
+    "reference": {
+      "snapshot_id": "71dcb7d0-065f-5b6a-95d4-2d32a8d0f5ab",
+      "count": 18,
+      "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2532838.0378777403%2C1184384.9000272471%2C2533134.7348216213%2C1184692.3446480134&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5766&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+      "response_sha256": "15d2c7076c78112d40e944fd88e960716c952a515e8d1580555d841a3e91bc7a"
+    },
+    "pairs": [
+      {
+        "egrid": "CH238382451255",
+        "overlap_m2": 95.1527299033181,
+        "parcel_area_m2": 3417.39181300019,
+        "official_attributes": {
+          "EGRID": "CH238382451255",
+          "NUMERO": "DP 1069",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5766,
+          "SUPERFICIE_MO": 3417,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH768283454515",
+        "overlap_m2": 6482.07754800254,
+        "parcel_area_m2": 6482.07754800254,
+        "official_attributes": {
+          "EGRID": "CH768283454515",
+          "NUMERO": "277",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5766,
+          "SUPERFICIE_MO": 6482,
+          "SUPERFICIE_RF": 6499
+        }
+      },
+      {
+        "egrid": "CH714542838285",
+        "overlap_m2": 37.522719344006,
+        "parcel_area_m2": 5716.34146202967,
+        "official_attributes": {
+          "EGRID": "CH714542838285",
+          "NUMERO": "DP 1072",
+          "GENRE_TXT": "DP cantonal",
+          "NO_COM_FED": 5766,
+          "SUPERFICIE_MO": 5716,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH744583824595",
+        "overlap_m2": 37.738299998771,
+        "parcel_area_m2": 37.738299998771,
+        "official_attributes": {
+          "EGRID": "CH744583824595",
+          "NUMERO": "275",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5766,
+          "SUPERFICIE_MO": 38,
+          "SUPERFICIE_RF": 38
+        }
+      },
+      {
+        "egrid": "CH344583831168",
+        "overlap_m2": 52.367859345432,
+        "parcel_area_m2": 1741.44600000088,
+        "official_attributes": {
+          "EGRID": "CH344583831168",
+          "NUMERO": "DP 1071",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5766,
+          "SUPERFICIE_MO": 1741,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH754583824514",
+        "overlap_m2": 2.08705408981397,
+        "parcel_area_m2": 818.248212490776,
+        "official_attributes": {
+          "EGRID": "CH754583824514",
+          "NUMERO": "DP 1070",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5766,
+          "SUPERFICIE_MO": 818,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH314511838314",
+        "overlap_m2": 2285.97290675452,
+        "parcel_area_m2": 2285.9792200032,
+        "official_attributes": {
+          "EGRID": "CH314511838314",
+          "NUMERO": "276",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5766,
+          "SUPERFICIE_MO": 2286,
+          "SUPERFICIE_RF": 2290
+        }
+      },
+      {
+        "egrid": "CH351183834595",
+        "overlap_m2": 14257.659510518,
+        "parcel_area_m2": 14257.659510518,
+        "official_attributes": {
+          "EGRID": "CH351183834595",
+          "NUMERO": "279",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5766,
+          "SUPERFICIE_MO": 14258,
+          "SUPERFICIE_RF": 14257
+        }
+      },
+      {
+        "egrid": "CH474583928380",
+        "overlap_m2": 12706.7533080709,
+        "parcel_area_m2": 12706.8068384868,
+        "official_attributes": {
+          "EGRID": "CH474583928380",
+          "NUMERO": "270",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5766,
+          "SUPERFICIE_MO": 12707,
+          "SUPERFICIE_RF": 12706
+        }
+      }
+    ],
+    "area_m2": 35957.331936029805,
+    "outside_commune_m2": 0.0
+  },
+  {
+    "site_code": "51",
+    "bfs": 5559,
+    "bounds": [
+      2537735.2848218195,
+      1184510.991320576,
+      2537876.468972163,
+      1184634.788194659
+    ],
+    "reference": {
+      "snapshot_id": "9043e249-ce94-532e-b464-2b9957be19cd",
+      "count": 11,
+      "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2537735.2848218195%2C1184510.991320576%2C2537876.468972163%2C1184634.788194659&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5559&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+      "response_sha256": "ca8ca3b095a015f6c1bc93646ec6f0e4ea1a6f93621b0a1a7db264044b582a2e"
+    },
+    "pairs": [
+      {
+        "egrid": "CH974574958379",
+        "overlap_m2": 1657.99310256888,
+        "parcel_area_m2": 1657.99388899885,
+        "official_attributes": {
+          "EGRID": "CH974574958379",
+          "NUMERO": "401",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5559,
+          "SUPERFICIE_MO": 1658,
+          "SUPERFICIE_RF": 1656
+        }
+      },
+      {
+        "egrid": "CH314596837434",
+        "overlap_m2": 39.7480296087206,
+        "parcel_area_m2": 4186.10189951752,
+        "official_attributes": {
+          "EGRID": "CH314596837434",
+          "NUMERO": "DP 1036",
+          "GENRE_TXT": "DP cantonal",
+          "NO_COM_FED": 5559,
+          "SUPERFICIE_MO": 4186,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH544583730437",
+        "overlap_m2": 0.542813985724834,
+        "parcel_area_m2": 4006.58368302217,
+        "official_attributes": {
+          "EGRID": "CH544583730437",
+          "NUMERO": "144",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5559,
+          "SUPERFICIE_MO": 4007,
+          "SUPERFICIE_RF": 4006
+        }
+      },
+      {
+        "egrid": "CH107345138387",
+        "overlap_m2": 0.108309962325332,
+        "parcel_area_m2": 5251.67767250729,
+        "official_attributes": {
+          "EGRID": "CH107345138387",
+          "NUMERO": "143",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5559,
+          "SUPERFICIE_MO": 5251,
+          "SUPERFICIE_RF": 5252
+        }
+      },
+      {
+        "egrid": "CH867483459550",
+        "overlap_m2": 4280.0217586789,
+        "parcel_area_m2": 4280.20443198882,
+        "official_attributes": {
+          "EGRID": "CH867483459550",
+          "NUMERO": "142",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5559,
+          "SUPERFICIE_MO": 4281,
+          "SUPERFICIE_RF": 4283
+        }
+      },
+      {
+        "egrid": "CH114504837358",
+        "overlap_m2": 14.5001000001189,
+        "parcel_area_m2": 14.5001000001189,
+        "official_attributes": {
+          "EGRID": "CH114504837358",
+          "NUMERO": "415",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5559,
+          "SUPERFICIE_MO": 15,
+          "SUPERFICIE_RF": 14
+        }
+      },
+      {
+        "egrid": "CH138373451372",
+        "overlap_m2": 14.1154306537922,
+        "parcel_area_m2": 2741.71809349931,
+        "official_attributes": {
+          "EGRID": "CH138373451372",
+          "NUMERO": "DP 1033",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5559,
+          "SUPERFICIE_MO": 2742,
+          "SUPERFICIE_RF": null
+        }
+      }
+    ],
+    "area_m2": 6007.02954545955,
+    "outside_commune_m2": 0.0
+  },
+  {
+    "site_code": "99",
+    "bfs": 5930,
+    "bounds": [
+      2535018.334117957,
+      1179808.5952910455,
+      2535277.720520917,
+      1179978.7367490225
+    ],
+    "reference": {
+      "snapshot_id": "701f8d90-d858-5445-86cb-c1198b56b7a0",
+      "count": 19,
+      "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2535018.334117957%2C1179808.5952910455%2C2535277.720520917%2C1179978.7367490225&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5930&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+      "response_sha256": "b203605599dc22fd634f70135ed4ecc7e4571fc52f4bc71e65d50324d93f49c0"
+    },
+    "pairs": [
+      {
+        "egrid": "CH200145798353",
+        "overlap_m2": 1.84438426183685,
+        "parcel_area_m2": 12196.2061870082,
+        "official_attributes": {
+          "EGRID": "CH200145798353",
+          "NUMERO": "DP 7",
+          "GENRE_TXT": "DP cantonal",
+          "NO_COM_FED": 5930,
+          "SUPERFICIE_MO": 12196,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH374597138331",
+        "overlap_m2": 27.1748355319128,
+        "parcel_area_m2": 1692.38965500311,
+        "official_attributes": {
+          "EGRID": "CH374597138331",
+          "NUMERO": "487",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5930,
+          "SUPERFICIE_MO": 1692,
+          "SUPERFICIE_RF": 1692
+        }
+      },
+      {
+        "egrid": "CH338397452270",
+        "overlap_m2": 1004.12338615141,
+        "parcel_area_m2": 1004.76491001321,
+        "official_attributes": {
+          "EGRID": "CH338397452270",
+          "NUMERO": "491",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5930,
+          "SUPERFICIE_MO": 1005,
+          "SUPERFICIE_RF": 1004
+        }
+      },
+      {
+        "egrid": "CH744583979696",
+        "overlap_m2": 1778.19961890038,
+        "parcel_area_m2": 1778.42723899776,
+        "official_attributes": {
+          "EGRID": "CH744583979696",
+          "NUMERO": "492",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5930,
+          "SUPERFICIE_MO": 1778,
+          "SUPERFICIE_RF": 1778
+        }
+      },
+      {
+        "egrid": "CH529871834566",
+        "overlap_m2": 107.332907325328,
+        "parcel_area_m2": 1742.12530452591,
+        "official_attributes": {
+          "EGRID": "CH529871834566",
+          "NUMERO": "DP 1037",
+          "GENRE_TXT": "DP communal",
+          "NO_COM_FED": 5930,
+          "SUPERFICIE_MO": 1742,
+          "SUPERFICIE_RF": null
+        }
+      },
+      {
+        "egrid": "CH381383459754",
+        "overlap_m2": 10201.0884938181,
+        "parcel_area_m2": 10210.1114644992,
+        "official_attributes": {
+          "EGRID": "CH381383459754",
+          "NUMERO": "493",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5930,
+          "SUPERFICIE_MO": 10210,
+          "SUPERFICIE_RF": 10204
+        }
+      },
+      {
+        "egrid": "CH144583989705",
+        "overlap_m2": 1.16370980910244,
+        "parcel_area_m2": 429.852695499161,
+        "official_attributes": {
+          "EGRID": "CH144583989705",
+          "NUMERO": "495",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5930,
+          "SUPERFICIE_MO": 430,
+          "SUPERFICIE_RF": 429
+        }
+      },
+      {
+        "egrid": "CH638397459292",
+        "overlap_m2": 2535.92176523733,
+        "parcel_area_m2": 2537.42515299029,
+        "official_attributes": {
+          "EGRID": "CH638397459292",
+          "NUMERO": "490",
+          "GENRE_TXT": "parcelle priv\u00e9e",
+          "NO_COM_FED": 5930,
+          "SUPERFICIE_MO": 2537,
+          "SUPERFICIE_RF": 2539
+        }
+      }
+    ],
+    "area_m2": 15656.849101028642,
+    "outside_commune_m2": 0.0
   }
 ]

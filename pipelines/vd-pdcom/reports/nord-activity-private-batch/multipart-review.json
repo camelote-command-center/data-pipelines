@@ -1,0 +1,2980 @@
+[
+  {
+    "path_index": 10357,
+    "source_code_review": {
+      "path_index": 10357,
+      "source_code": 16,
+      "category": "ZAL",
+      "observed_intentions": [
+        "extension",
+        "dezoning",
+        "potential_SDA_impact"
+      ],
+      "intentions_limit": "Site-level indicative symbols; absence of shown symbol is not absence of change; no affected subgeometry inferred.",
+      "asterisk_poor_transit_2023": true,
+      "source_crop": "10357-outlined.png",
+      "review": "visual native-boundary and leader association checked"
+    },
+    "land_parcels": [
+      {
+        "egrid": "CH209745758392",
+        "bfs": 5931,
+        "number": "238",
+        "coverage_fraction": 0.9997917603868718
+      },
+      {
+        "egrid": "CH988983459828",
+        "bfs": 5931,
+        "number": "105",
+        "coverage_fraction": 0.9999991636854644
+      }
+    ],
+    "partial_land_parcels": [],
+    "iou": 0.992903237671854,
+    "symmetric_hausdorff_m": 0.6143116173207733,
+    "candidate_complete_shape_match": true,
+    "accepted_for_delivery": false,
+    "method": "Whole original LAND parcels with majority overlap; no clipping, snapping, tolerance buffers, fitting, or optimizing membership. Residual partial parcels >2% explicitly block automatic candidacy.",
+    "reference_union_geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            2536356.934,
+            1180417.336
+          ],
+          [
+            2536231.952,
+            1180287.946
+          ],
+          [
+            2536204.222,
+            1180320.817
+          ],
+          [
+            2536177.632,
+            1180352.347
+          ],
+          [
+            2536176.582,
+            1180358.997
+          ],
+          [
+            2536179.622,
+            1180364.367
+          ],
+          [
+            2536225.653,
+            1180412.207
+          ],
+          [
+            2536230.293,
+            1180417.037
+          ],
+          [
+            2536291.204,
+            1180480.437
+          ],
+          [
+            2536328.914,
+            1180444.236
+          ],
+          [
+            2536356.934,
+            1180417.336
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "path_index": 10361,
+    "source_code_review": {
+      "path_index": 10361,
+      "source_code": 15,
+      "category": "ZAL",
+      "observed_intentions": [],
+      "intentions_limit": "Site-level indicative symbols; absence of shown symbol is not absence of change; no affected subgeometry inferred.",
+      "asterisk_poor_transit_2023": true,
+      "source_crop": "10361-outlined.png",
+      "review": "visual native-boundary and leader association checked"
+    },
+    "land_parcels": [
+      {
+        "egrid": "CH769883459122",
+        "bfs": 5929,
+        "number": "421",
+        "coverage_fraction": 0.9986010867357757
+      },
+      {
+        "egrid": "CH544583968878",
+        "bfs": 5929,
+        "number": "668",
+        "coverage_fraction": 1.0
+      },
+      {
+        "egrid": "CH598396904546",
+        "bfs": 5929,
+        "number": "670",
+        "coverage_fraction": 1.0
+      },
+      {
+        "egrid": "CH150883004508",
+        "bfs": 5929,
+        "number": "679",
+        "coverage_fraction": 0.9998847808425025
+      },
+      {
+        "egrid": "CH538396458842",
+        "bfs": 5929,
+        "number": "669",
+        "coverage_fraction": 0.9997340445894449
+      },
+      {
+        "egrid": "CH160083450845",
+        "bfs": 5929,
+        "number": "680",
+        "coverage_fraction": 1.0
+      },
+      {
+        "egrid": "CH558883964543",
+        "bfs": 5929,
+        "number": "667",
+        "coverage_fraction": 1.0
+      }
+    ],
+    "partial_land_parcels": [],
+    "iou": 0.9888602411643365,
+    "symmetric_hausdorff_m": 0.6298800656226445,
+    "candidate_complete_shape_match": true,
+    "accepted_for_delivery": false,
+    "method": "Whole original LAND parcels with majority overlap; no clipping, snapping, tolerance buffers, fitting, or optimizing membership. Residual partial parcels >2% explicitly block automatic candidacy.",
+    "reference_union_geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            2536151.045,
+            1174856.233
+          ],
+          [
+            2536141.473,
+            1174837.441
+          ],
+          [
+            2536081.922,
+            1174877.489
+          ],
+          [
+            2536095.963,
+            1174905.008
+          ],
+          [
+            2536120.424,
+            1174952.589
+          ],
+          [
+            2536126.474,
+            1174954.229
+          ],
+          [
+            2536144.23,
+            1174942.288
+          ],
+          [
+            2536154.444,
+            1174935.418
+          ],
+          [
+            2536159.552,
+            1174931.983
+          ],
+          [
+            2536164.959,
+            1174928.347
+          ],
+          [
+            2536181.954,
+            1174916.918
+          ],
+          [
+            2536172.907,
+            1174899.155
+          ],
+          [
+            2536151.045,
+            1174856.233
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "path_index": 10375,
+    "source_code_review": {
+      "path_index": 10375,
+      "source_code": 67,
+      "category": "ZAL",
+      "observed_intentions": [],
+      "intentions_limit": "Site-level indicative symbols; absence of shown symbol is not absence of change; no affected subgeometry inferred.",
+      "asterisk_poor_transit_2023": true,
+      "source_crop": "10375-outlined.png",
+      "review": "visual native-boundary and leader association checked"
+    },
+    "land_parcels": [
+      {
+        "egrid": "CH869583452340",
+        "bfs": 5913,
+        "number": "250",
+        "coverage_fraction": 1.0
+      },
+      {
+        "egrid": "CH982383459567",
+        "bfs": 5913,
+        "number": "272",
+        "coverage_fraction": 0.9999320765747934
+      },
+      {
+        "egrid": "CH844583952344",
+        "bfs": 5913,
+        "number": "297",
+        "coverage_fraction": 0.999996915160351
+      },
+      {
+        "egrid": "CH852383954550",
+        "bfs": 5913,
+        "number": "35",
+        "coverage_fraction": 1.0
+      },
+      {
+        "egrid": "CH974595238309",
+        "bfs": 5913,
+        "number": "295",
+        "coverage_fraction": 0.9999999999999998
+      },
+      {
+        "egrid": "CH938300452656",
+        "bfs": 5913,
+        "number": "3026",
+        "coverage_fraction": 0.9999764575412102
+      }
+    ],
+    "partial_land_parcels": [
+      {
+        "egrid": "CH160083452627",
+        "coverage_fraction": 0.02160492034223302
+      }
+    ],
+    "iou": 0.9934414986062396,
+    "symmetric_hausdorff_m": 1.1885298390698582,
+    "candidate_complete_shape_match": false,
+    "accepted_for_delivery": false,
+    "method": "Whole original LAND parcels with majority overlap; no clipping, snapping, tolerance buffers, fitting, or optimizing membership. Residual partial parcels >2% explicitly block automatic candidacy.",
+    "reference_union_geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            2544752.735,
+            1176804.951
+          ],
+          [
+            2544749.557,
+            1176808.086
+          ],
+          [
+            2544737.122,
+            1176820.334
+          ],
+          [
+            2544720.615,
+            1176824.864
+          ],
+          [
+            2544705.364,
+            1176829.892
+          ],
+          [
+            2544709.607,
+            1176862.48
+          ],
+          [
+            2544715.171,
+            1176902.046
+          ],
+          [
+            2544719.166,
+            1176930.672
+          ],
+          [
+            2544723.834,
+            1176952.689
+          ],
+          [
+            2544725.846,
+            1176969.5320000001
+          ],
+          [
+            2544727.766,
+            1176985.604
+          ],
+          [
+            2544729.783,
+            1177002.628
+          ],
+          [
+            2544730.801,
+            1177006.213
+          ],
+          [
+            2544731.947,
+            1177010.611
+          ],
+          [
+            2544738.9359999998,
+            1177036.6
+          ],
+          [
+            2544755.672,
+            1177050.73
+          ],
+          [
+            2544777.954,
+            1177069.542
+          ],
+          [
+            2544792.832,
+            1177059.636
+          ],
+          [
+            2544803.181,
+            1177052.745
+          ],
+          [
+            2544833.302,
+            1177032.689
+          ],
+          [
+            2544798.517,
+            1176950.629
+          ],
+          [
+            2544786.299,
+            1176905.191
+          ],
+          [
+            2544778.304,
+            1176872.56
+          ],
+          [
+            2544775.069,
+            1176847.138
+          ],
+          [
+            2544769.951,
+            1176805.716
+          ],
+          [
+            2544752.735,
+            1176804.951
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "path_index": 10389,
+    "source_code_review": {
+      "path_index": 10389,
+      "source_code": 57,
+      "category": "ZAL",
+      "observed_intentions": [],
+      "intentions_limit": "Site-level indicative symbols; absence of shown symbol is not absence of change; no affected subgeometry inferred.",
+      "asterisk_poor_transit_2023": true,
+      "source_crop": "10389-outlined.png",
+      "review": "visual native-boundary and leader association checked"
+    },
+    "land_parcels": [
+      {
+        "egrid": "CH638399458581",
+        "bfs": 5926,
+        "number": "555",
+        "coverage_fraction": 1.0
+      },
+      {
+        "egrid": "CH269083451794",
+        "bfs": 5926,
+        "number": "574",
+        "coverage_fraction": 0.9999999999999998
+      },
+      {
+        "egrid": "CH629117834528",
+        "bfs": 5926,
+        "number": "584",
+        "coverage_fraction": 0.9999999999999999
+      },
+      {
+        "egrid": "CH898397614522",
+        "bfs": 5926,
+        "number": "344",
+        "coverage_fraction": 0.9999994673232849
+      },
+      {
+        "egrid": "CH374590178382",
+        "bfs": 5926,
+        "number": "575",
+        "coverage_fraction": 0.9999999999999998
+      },
+      {
+        "egrid": "CH829887834514",
+        "bfs": 5926,
+        "number": "113",
+        "coverage_fraction": 0.9999999999999999
+      },
+      {
+        "egrid": "CH838398458720",
+        "bfs": 5926,
+        "number": "345",
+        "coverage_fraction": 0.9553441165353813
+      },
+      {
+        "egrid": "CH638391451727",
+        "bfs": 5926,
+        "number": "585",
+        "coverage_fraction": 1.0000000000000002
+      },
+      {
+        "egrid": "CH814587839818",
+        "bfs": 5926,
+        "number": "117",
+        "coverage_fraction": 1.0
+      },
+      {
+        "egrid": "CH251783904543",
+        "bfs": 5926,
+        "number": "573",
+        "coverage_fraction": 0.9999963081832353
+      },
+      {
+        "egrid": "CH798395564589",
+        "bfs": 5926,
+        "number": "114",
+        "coverage_fraction": 0.9999669936281562
+      },
+      {
+        "egrid": "CH714573839188",
+        "bfs": 5926,
+        "number": "580",
+        "coverage_fraction": 1.0
+      },
+      {
+        "egrid": "CH709145738390",
+        "bfs": 5926,
+        "number": "579",
+        "coverage_fraction": 0.9999999999999999
+      },
+      {
+        "egrid": "CH938398459971",
+        "bfs": 5926,
+        "number": "356",
+        "coverage_fraction": 1.0000000000000002
+      }
+    ],
+    "partial_land_parcels": [],
+    "iou": 0.9799051663554607,
+    "symmetric_hausdorff_m": 3.7456282181600473,
+    "candidate_complete_shape_match": false,
+    "accepted_for_delivery": false,
+    "method": "Whole original LAND parcels with majority overlap; no clipping, snapping, tolerance buffers, fitting, or optimizing membership. Residual partial parcels >2% explicitly block automatic candidacy.",
+    "reference_union_geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            2540643.07,
+            1179131.087
+          ],
+          [
+            2540635.142,
+            1179135.453
+          ],
+          [
+            2540607.496,
+            1179150.679
+          ],
+          [
+            2540584.317,
+            1179163.443
+          ],
+          [
+            2540582.909,
+            1179164.2179999999
+          ],
+          [
+            2540565.389,
+            1179173.868
+          ],
+          [
+            2540505.159,
+            1179203.169
+          ],
+          [
+            2540507.799,
+            1179213.059
+          ],
+          [
+            2540527.53,
+            1179209.539
+          ],
+          [
+            2540549.24,
+            1179208.9679999999
+          ],
+          [
+            2540570.601,
+            1179210.268
+          ],
+          [
+            2540591.792,
+            1179213.388
+          ],
+          [
+            2540612.083,
+            1179216.427
+          ],
+          [
+            2540612.392,
+            1179216.473
+          ],
+          [
+            2540639.764,
+            1179220.567
+          ],
+          [
+            2540659.674,
+            1179222.437
+          ],
+          [
+            2540679.555,
+            1179220.796
+          ],
+          [
+            2540698.615,
+            1179214.816
+          ],
+          [
+            2540708.45,
+            1179209.01
+          ],
+          [
+            2540725.751,
+            1179193.471
+          ],
+          [
+            2540739.356,
+            1179177.357
+          ],
+          [
+            2540754.985,
+            1179159.715
+          ],
+          [
+            2540757.464,
+            1179161.91
+          ],
+          [
+            2540761.506,
+            1179157.122
+          ],
+          [
+            2540758.965,
+            1179154.995
+          ],
+          [
+            2540793.884,
+            1179109.705
+          ],
+          [
+            2540767.401,
+            1179062.735
+          ],
+          [
+            2540721.591,
+            1179087.886
+          ],
+          [
+            2540696.92,
+            1179101.406
+          ],
+          [
+            2540670.921,
+            1179115.736
+          ],
+          [
+            2540643.07,
+            1179131.087
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "path_index": 10399,
+    "source_code_review": {
+      "path_index": 10399,
+      "source_code": 4,
+      "category": "ZAL",
+      "observed_intentions": [],
+      "intentions_limit": "Site-level indicative symbols; absence of shown symbol is not absence of change; no affected subgeometry inferred.",
+      "asterisk_poor_transit_2023": false,
+      "source_crop": "10399-outlined.png",
+      "review": "visual native-boundary and leader association checked"
+    },
+    "land_parcels": [
+      {
+        "egrid": "CH255283094520",
+        "bfs": 5764,
+        "number": "1755",
+        "coverage_fraction": 0.999993119350246
+      },
+      {
+        "egrid": "CH544583826645",
+        "bfs": 5764,
+        "number": "1290",
+        "coverage_fraction": 0.9997410998153315
+      },
+      {
+        "egrid": "CH298383964553",
+        "bfs": 5764,
+        "number": "1512",
+        "coverage_fraction": 0.9999876058732539
+      }
+    ],
+    "partial_land_parcels": [],
+    "iou": 0.981208246662634,
+    "symmetric_hausdorff_m": 0.9170347591372169,
+    "candidate_complete_shape_match": true,
+    "accepted_for_delivery": false,
+    "method": "Whole original LAND parcels with majority overlap; no clipping, snapping, tolerance buffers, fitting, or optimizing membership. Residual partial parcels >2% explicitly block automatic candidacy.",
+    "reference_union_geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            2518365.098,
+            1173379.584
+          ],
+          [
+            2518364.988,
+            1173406.154
+          ],
+          [
+            2518365.308,
+            1173410.024
+          ],
+          [
+            2518412.705,
+            1173421.773
+          ],
+          [
+            2518414.885,
+            1173422.567
+          ],
+          [
+            2518448.754,
+            1173434.903
+          ],
+          [
+            2518451.134,
+            1173428.612
+          ],
+          [
+            2518467.374,
+            1173387.842
+          ],
+          [
+            2518470.764,
+            1173380.602
+          ],
+          [
+            2518413.156,
+            1173380.043
+          ],
+          [
+            2518365.098,
+            1173379.584
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "path_index": 10403,
+    "source_code_review": {
+      "path_index": 10403,
+      "source_code": 6,
+      "category": "ZAL",
+      "observed_intentions": [],
+      "intentions_limit": "Site-level indicative symbols; absence of shown symbol is not absence of change; no affected subgeometry inferred.",
+      "asterisk_poor_transit_2023": false,
+      "source_crop": "10403-outlined.png",
+      "review": "visual native-boundary and leader association checked"
+    },
+    "land_parcels": [
+      {
+        "egrid": "CH274582298355",
+        "bfs": 5745,
+        "number": "567",
+        "coverage_fraction": 0.9999924218672128
+      },
+      {
+        "egrid": "CH274583988333",
+        "bfs": 5745,
+        "number": "564",
+        "coverage_fraction": 1.0
+      },
+      {
+        "egrid": "CH283183458205",
+        "bfs": 5745,
+        "number": "566",
+        "coverage_fraction": 1.0
+      }
+    ],
+    "partial_land_parcels": [],
+    "iou": 0.9911008709935499,
+    "symmetric_hausdorff_m": 2.395615503454199,
+    "candidate_complete_shape_match": true,
+    "accepted_for_delivery": false,
+    "method": "Whole original LAND parcels with majority overlap; no clipping, snapping, tolerance buffers, fitting, or optimizing membership. Residual partial parcels >2% explicitly block automatic candidacy.",
+    "reference_union_geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            2530109.0,
+            1182167.37
+          ],
+          [
+            2530037.319,
+            1182116.7
+          ],
+          [
+            2530023.099,
+            1182154.439
+          ],
+          [
+            2530017.069,
+            1182169.888
+          ],
+          [
+            2530014.319,
+            1182177.148
+          ],
+          [
+            2530011.619,
+            1182184.277
+          ],
+          [
+            2530001.4,
+            1182211.396
+          ],
+          [
+            2529996.24,
+            1182226.226
+          ],
+          [
+            2529999.05,
+            1182227.106
+          ],
+          [
+            2529998.65,
+            1182230.295
+          ],
+          [
+            2530027.06,
+            1182233.886
+          ],
+          [
+            2530036.6,
+            1182236.126
+          ],
+          [
+            2530050.07,
+            1182240.077
+          ],
+          [
+            2530067.9,
+            1182246.9070000001
+          ],
+          [
+            2530069.45,
+            1182245.4070000001
+          ],
+          [
+            2530085.24,
+            1182253.837
+          ],
+          [
+            2530097.31,
+            1182260.817
+          ],
+          [
+            2530104.99,
+            1182265.257
+          ],
+          [
+            2530122.421,
+            1182278.517
+          ],
+          [
+            2530137.06,
+            1182263.7179999999
+          ],
+          [
+            2530142.56,
+            1182258.219
+          ],
+          [
+            2530148.26,
+            1182252.469
+          ],
+          [
+            2530181.78,
+            1182218.671
+          ],
+          [
+            2530109.0,
+            1182167.37
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "path_index": 10405,
+    "source_code_review": {
+      "path_index": 10405,
+      "source_code": 9,
+      "category": "ZAL",
+      "observed_intentions": [],
+      "intentions_limit": "Site-level indicative symbols; absence of shown symbol is not absence of change; no affected subgeometry inferred.",
+      "asterisk_poor_transit_2023": false,
+      "source_crop": "10405-outlined.png",
+      "review": "visual native-boundary and leader association checked"
+    },
+    "land_parcels": [
+      {
+        "egrid": "CH708245208307",
+        "bfs": 5745,
+        "number": "514",
+        "coverage_fraction": 1.0000000000000002
+      },
+      {
+        "egrid": "CH444583823513",
+        "bfs": 5745,
+        "number": "515",
+        "coverage_fraction": 1.0
+      },
+      {
+        "egrid": "CH414545838263",
+        "bfs": 5745,
+        "number": "507",
+        "coverage_fraction": 1.0
+      },
+      {
+        "egrid": "CH889183450801",
+        "bfs": 5745,
+        "number": "1163",
+        "coverage_fraction": 0.9999303181002296
+      },
+      {
+        "egrid": "CH298382204596",
+        "bfs": 5745,
+        "number": "519",
+        "coverage_fraction": 0.9997299883006124
+      },
+      {
+        "egrid": "CH508345068390",
+        "bfs": 5745,
+        "number": "545",
+        "coverage_fraction": 0.9999697188397402
+      },
+      {
+        "egrid": "CH228232834578",
+        "bfs": 5745,
+        "number": "520",
+        "coverage_fraction": 0.9998783743869182
+      },
+      {
+        "egrid": "CH168383459842",
+        "bfs": 5745,
+        "number": "521",
+        "coverage_fraction": 0.9819285292667818
+      },
+      {
+        "egrid": "CH598383064527",
+        "bfs": 5745,
+        "number": "517",
+        "coverage_fraction": 1.0
+      },
+      {
+        "egrid": "CH455083824578",
+        "bfs": 5745,
+        "number": "516",
+        "coverage_fraction": 0.9999862846419054
+      },
+      {
+        "egrid": "CH580683458392",
+        "bfs": 5745,
+        "number": "544",
+        "coverage_fraction": 0.999954212347356
+      }
+    ],
+    "partial_land_parcels": [],
+    "iou": 0.9896944542757274,
+    "symmetric_hausdorff_m": 3.096160792820707,
+    "candidate_complete_shape_match": true,
+    "accepted_for_delivery": false,
+    "method": "Whole original LAND parcels with majority overlap; no clipping, snapping, tolerance buffers, fitting, or optimizing membership. Residual partial parcels >2% explicitly block automatic candidacy.",
+    "reference_union_geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            2530407.992,
+            1182362.572
+          ],
+          [
+            2530407.142,
+            1182361.632
+          ],
+          [
+            2530401.062,
+            1182358.922
+          ],
+          [
+            2530394.622,
+            1182360.842
+          ],
+          [
+            2530365.652,
+            1182380.491
+          ],
+          [
+            2530349.932,
+            1182391.2
+          ],
+          [
+            2530325.372,
+            1182407.849
+          ],
+          [
+            2530309.312,
+            1182418.798
+          ],
+          [
+            2530274.942,
+            1182445.906
+          ],
+          [
+            2530287.112,
+            1182457.186
+          ],
+          [
+            2530301.043,
+            1182466.526
+          ],
+          [
+            2530311.183,
+            1182472.426
+          ],
+          [
+            2530325.453,
+            1182479.696
+          ],
+          [
+            2530350.643,
+            1182487.967
+          ],
+          [
+            2530389.783,
+            1182500.438
+          ],
+          [
+            2530397.423,
+            1182502.838
+          ],
+          [
+            2530407.338,
+            1182506.026
+          ],
+          [
+            2530450.234,
+            1182519.818
+          ],
+          [
+            2530465.764,
+            1182524.498
+          ],
+          [
+            2530482.584,
+            1182527.839
+          ],
+          [
+            2530498.974,
+            1182530.169
+          ],
+          [
+            2530502.414,
+            1182530.289
+          ],
+          [
+            2530514.984,
+            1182531.119
+          ],
+          [
+            2530530.004,
+            1182531.069
+          ],
+          [
+            2530551.594,
+            1182530.34
+          ],
+          [
+            2530544.864,
+            1182524.86
+          ],
+          [
+            2530543.934,
+            1182520.84
+          ],
+          [
+            2530545.984,
+            1182515.45
+          ],
+          [
+            2530507.047,
+            1182472.308
+          ],
+          [
+            2530482.383,
+            1182444.981
+          ],
+          [
+            2530473.263,
+            1182434.972
+          ],
+          [
+            2530457.155,
+            1182417.069
+          ],
+          [
+            2530443.383,
+            1182401.762
+          ],
+          [
+            2530427.872,
+            1182384.642
+          ],
+          [
+            2530407.992,
+            1182362.572
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "path_index": 10407,
+    "source_code_review": {
+      "path_index": 10407,
+      "source_code": 8,
+      "category": "ZAL",
+      "observed_intentions": [],
+      "intentions_limit": "Site-level indicative symbols; absence of shown symbol is not absence of change; no affected subgeometry inferred.",
+      "asterisk_poor_transit_2023": true,
+      "source_crop": "10407-outlined.png",
+      "review": "visual native-boundary and leader association checked"
+    },
+    "land_parcels": [
+      {
+        "egrid": "CH314521838222",
+        "bfs": 5763,
+        "number": "233",
+        "coverage_fraction": 0.9999463038387276
+      },
+      {
+        "egrid": "CH944583902226",
+        "bfs": 5763,
+        "number": "202",
+        "coverage_fraction": 0.9907534137864011
+      }
+    ],
+    "partial_land_parcels": [],
+    "iou": 0.8568566221085231,
+    "symmetric_hausdorff_m": 21.97994373516735,
+    "candidate_complete_shape_match": false,
+    "accepted_for_delivery": false,
+    "method": "Whole original LAND parcels with majority overlap; no clipping, snapping, tolerance buffers, fitting, or optimizing membership. Residual partial parcels >2% explicitly block automatic candidacy.",
+    "reference_union_geometry": {
+      "type": "MultiPolygon",
+      "coordinates": [
+        [
+          [
+            [
+              2530390.136,
+              1178135.901
+            ],
+            [
+              2530410.336,
+              1178101.931
+            ],
+            [
+              2530384.596,
+              1178068.551
+            ],
+            [
+              2530368.7060000002,
+              1178092.221
+            ],
+            [
+              2530385.126,
+              1178111.971
+            ],
+            [
+              2530384.056,
+              1178122.261
+            ],
+            [
+              2530381.4560000002,
+              1178129.861
+            ],
+            [
+              2530383.066,
+              1178134.831
+            ],
+            [
+              2530390.136,
+              1178135.901
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              2530370.296,
+              1178134.241
+            ],
+            [
+              2530375.286,
+              1178126.181
+            ],
+            [
+              2530377.916,
+              1178119.791
+            ],
+            [
+              2530377.896,
+              1178113.261
+            ],
+            [
+              2530374.866,
+              1178107.481
+            ],
+            [
+              2530364.713,
+              1178095.063
+            ],
+            [
+              2530340.966,
+              1178114.165
+            ],
+            [
+              2530362.616,
+              1178140.691
+            ],
+            [
+              2530370.296,
+              1178134.241
+            ]
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "path_index": 10415,
+    "source_code_review": {
+      "path_index": 10415,
+      "source_code": 34,
+      "category": "ZAL",
+      "observed_intentions": [],
+      "intentions_limit": "Site-level indicative symbols; absence of shown symbol is not absence of change; no affected subgeometry inferred.",
+      "asterisk_poor_transit_2023": true,
+      "source_crop": "10415-outlined.png",
+      "review": "visual native-boundary and leader association checked"
+    },
+    "land_parcels": [
+      {
+        "egrid": "CH598398874537",
+        "bfs": 5924,
+        "number": "562",
+        "coverage_fraction": 1.0
+      },
+      {
+        "egrid": "CH588783459824",
+        "bfs": 5924,
+        "number": "330",
+        "coverage_fraction": 0.9999065076532831
+      },
+      {
+        "egrid": "CH514587839823",
+        "bfs": 5924,
+        "number": "565",
+        "coverage_fraction": 0.9999999999999999
+      },
+      {
+        "egrid": "CH529887834519",
+        "bfs": 5924,
+        "number": "563",
+        "coverage_fraction": 0.9998756358881496
+      },
+      {
+        "egrid": "CH709745568376",
+        "bfs": 5924,
+        "number": "333",
+        "coverage_fraction": 0.9999433833821446
+      },
+      {
+        "egrid": "CH469883458731",
+        "bfs": 5924,
+        "number": "601",
+        "coverage_fraction": 1.0
+      },
+      {
+        "egrid": "CH458783984501",
+        "bfs": 5924,
+        "number": "559",
+        "coverage_fraction": 1.0
+      }
+    ],
+    "partial_land_parcels": [],
+    "iou": 0.9934614365440159,
+    "symmetric_hausdorff_m": 1.8315813015990918,
+    "candidate_complete_shape_match": true,
+    "accepted_for_delivery": false,
+    "method": "Whole original LAND parcels with majority overlap; no clipping, snapping, tolerance buffers, fitting, or optimizing membership. Residual partial parcels >2% explicitly block automatic candidacy.",
+    "reference_union_geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            2535284.205,
+            1184601.776
+          ],
+          [
+            2535204.295,
+            1184576.557
+          ],
+          [
+            2535171.202,
+            1184566.269
+          ],
+          [
+            2535141.765,
+            1184557.117
+          ],
+          [
+            2535138.015,
+            1184555.977
+          ],
+          [
+            2535132.295,
+            1184554.227
+          ],
+          [
+            2535135.285,
+            1184570.127
+          ],
+          [
+            2535134.985,
+            1184578.7179999999
+          ],
+          [
+            2535132.965,
+            1184579.098
+          ],
+          [
+            2535130.925,
+            1184627.188
+          ],
+          [
+            2535129.945,
+            1184653.558
+          ],
+          [
+            2535131.115,
+            1184656.988
+          ],
+          [
+            2535158.835,
+            1184676.238
+          ],
+          [
+            2535190.815,
+            1184710.818
+          ],
+          [
+            2535199.115,
+            1184719.828
+          ],
+          [
+            2535215.125,
+            1184732.098
+          ],
+          [
+            2535219.965,
+            1184735.508
+          ],
+          [
+            2535222.235,
+            1184737.048
+          ],
+          [
+            2535243.715,
+            1184751.627
+          ],
+          [
+            2535274.595,
+            1184767.477
+          ],
+          [
+            2535292.725,
+            1184776.617
+          ],
+          [
+            2535304.085,
+            1184780.887
+          ],
+          [
+            2535309.655,
+            1184777.327
+          ],
+          [
+            2535311.525,
+            1184748.287
+          ],
+          [
+            2535313.075,
+            1184721.286
+          ],
+          [
+            2535315.205,
+            1184684.126
+          ],
+          [
+            2535319.435,
+            1184612.596
+          ],
+          [
+            2535284.205,
+            1184601.776
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "path_index": 10419,
+    "source_code_review": {
+      "path_index": 10419,
+      "source_code": 70,
+      "category": "ZAL",
+      "observed_intentions": [],
+      "intentions_limit": "Site-level indicative symbols; absence of shown symbol is not absence of change; no affected subgeometry inferred.",
+      "asterisk_poor_transit_2023": true,
+      "source_crop": "10419-outlined.png",
+      "review": "visual native-boundary and leader association checked"
+    },
+    "land_parcels": [
+      {
+        "egrid": "CH544583948389",
+        "bfs": 5908,
+        "number": "438",
+        "coverage_fraction": 0.999999884647157
+      },
+      {
+        "egrid": "CH109745588380",
+        "bfs": 5908,
+        "number": "305",
+        "coverage_fraction": 0.9999919185459533
+      },
+      {
+        "egrid": "CH969883459250",
+        "bfs": 5908,
+        "number": "301",
+        "coverage_fraction": 0.9998690938566045
+      },
+      {
+        "egrid": "CH674598758325",
+        "bfs": 5908,
+        "number": "302",
+        "coverage_fraction": 0.9998928409189566
+      }
+    ],
+    "partial_land_parcels": [],
+    "iou": 0.9898250748514958,
+    "symmetric_hausdorff_m": 2.735352698720387,
+    "candidate_complete_shape_match": true,
+    "accepted_for_delivery": false,
+    "method": "Whole original LAND parcels with majority overlap; no clipping, snapping, tolerance buffers, fitting, or optimizing membership. Residual partial parcels >2% explicitly block automatic candidacy.",
+    "reference_union_geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            2549010.234,
+            1179852.402
+          ],
+          [
+            2549014.2939999998,
+            1179847.162
+          ],
+          [
+            2549012.244,
+            1179844.542
+          ],
+          [
+            2548989.504,
+            1179816.023
+          ],
+          [
+            2548962.662,
+            1179782.554
+          ],
+          [
+            2548913.244,
+            1179854.949
+          ],
+          [
+            2548939.843,
+            1179888.732
+          ],
+          [
+            2548960.393,
+            1179914.671
+          ],
+          [
+            2548968.353,
+            1179915.471
+          ],
+          [
+            2548982.413,
+            1179892.991
+          ],
+          [
+            2548980.053,
+            1179891.311
+          ],
+          [
+            2548986.423,
+            1179881.0320000001
+          ],
+          [
+            2548988.703,
+            1179882.781
+          ],
+          [
+            2548991.713,
+            1179878.534
+          ],
+          [
+            2549010.234,
+            1179852.402
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "path_index": 10429,
+    "source_code_review": {
+      "path_index": 10429,
+      "source_code": 71,
+      "category": "ZAL",
+      "observed_intentions": [
+        "dezoning"
+      ],
+      "intentions_limit": "Site-level indicative symbols; absence of shown symbol is not absence of change; no affected subgeometry inferred.",
+      "asterisk_poor_transit_2023": true,
+      "source_crop": "10429-outlined.png",
+      "review": "visual native-boundary and leader association checked"
+    },
+    "land_parcels": [
+      {
+        "egrid": "CH438382454056",
+        "bfs": 5747,
+        "number": "138",
+        "coverage_fraction": 0.9999893243350227
+      },
+      {
+        "egrid": "CH138383458012",
+        "bfs": 5747,
+        "number": "137",
+        "coverage_fraction": 0.9998429563479081
+      }
+    ],
+    "partial_land_parcels": [],
+    "iou": 0.9825603579002362,
+    "symmetric_hausdorff_m": 1.0172436099218445,
+    "candidate_complete_shape_match": true,
+    "accepted_for_delivery": false,
+    "method": "Whole original LAND parcels with majority overlap; no clipping, snapping, tolerance buffers, fitting, or optimizing membership. Residual partial parcels >2% explicitly block automatic candidacy.",
+    "reference_union_geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            2528363.666,
+            1173031.867
+          ],
+          [
+            2528349.856,
+            1173008.247
+          ],
+          [
+            2528348.566,
+            1173006.027
+          ],
+          [
+            2528343.896,
+            1173001.6570000001
+          ],
+          [
+            2528337.606,
+            1173000.557
+          ],
+          [
+            2528329.896,
+            1173001.017
+          ],
+          [
+            2528318.736,
+            1173003.697
+          ],
+          [
+            2528254.2060000002,
+            1173024.617
+          ],
+          [
+            2528253.886,
+            1173029.097
+          ],
+          [
+            2528259.736,
+            1173030.457
+          ],
+          [
+            2528270.726,
+            1173035.217
+          ],
+          [
+            2528280.616,
+            1173040.767
+          ],
+          [
+            2528319.577,
+            1173070.578
+          ],
+          [
+            2528321.147,
+            1173071.878
+          ],
+          [
+            2528354.217,
+            1173099.248
+          ],
+          [
+            2528362.497,
+            1173105.808
+          ],
+          [
+            2528371.987,
+            1173114.368
+          ],
+          [
+            2528391.057,
+            1173134.868
+          ],
+          [
+            2528391.367,
+            1173132.618
+          ],
+          [
+            2528379.017,
+            1173078.7179999999
+          ],
+          [
+            2528369.607,
+            1173045.707
+          ],
+          [
+            2528365.736,
+            1173036.337
+          ],
+          [
+            2528364.466,
+            1173033.587
+          ],
+          [
+            2528363.666,
+            1173031.867
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "path_index": 10433,
+    "source_code_review": {
+      "path_index": 10433,
+      "source_code": 74,
+      "category": "ZAL",
+      "observed_intentions": [
+        "reconversion_out_of_activity"
+      ],
+      "intentions_limit": "Site-level indicative symbols; absence of shown symbol is not absence of change; no affected subgeometry inferred.",
+      "asterisk_poor_transit_2023": true,
+      "source_crop": "10433-outlined.png",
+      "review": "visual native-boundary and leader association checked"
+    },
+    "land_parcels": [
+      {
+        "egrid": "CH545736779929",
+        "bfs": 5561,
+        "number": "2017",
+        "coverage_fraction": 1.0
+      },
+      {
+        "egrid": "CH707757993638",
+        "bfs": 5561,
+        "number": "1974",
+        "coverage_fraction": 1.0000000000000002
+      },
+      {
+        "egrid": "CH453436775763",
+        "bfs": 5561,
+        "number": "794",
+        "coverage_fraction": 0.9780330441195383
+      },
+      {
+        "egrid": "CH433677573479",
+        "bfs": 5561,
+        "number": "1551",
+        "coverage_fraction": 0.9962403956208163
+      },
+      {
+        "egrid": "CH593677345790",
+        "bfs": 5561,
+        "number": "2019",
+        "coverage_fraction": 1.0
+      },
+      {
+        "egrid": "CH559936775720",
+        "bfs": 5561,
+        "number": "2018",
+        "coverage_fraction": 0.9999999999999999
+      },
+      {
+        "egrid": "CH527799365725",
+        "bfs": 5561,
+        "number": "2016",
+        "coverage_fraction": 1.0000000000000002
+      },
+      {
+        "egrid": "CH575777343694",
+        "bfs": 5561,
+        "number": "795",
+        "coverage_fraction": 0.9891531912044037
+      },
+      {
+        "egrid": "CH567483459555",
+        "bfs": 5561,
+        "number": "1386",
+        "coverage_fraction": 0.7458352621889709
+      },
+      {
+        "egrid": "CH515799367744",
+        "bfs": 5561,
+        "number": "2020",
+        "coverage_fraction": 1.0
+      },
+      {
+        "egrid": "CH467736573468",
+        "bfs": 5561,
+        "number": "1244",
+        "coverage_fraction": 0.9899774042316636
+      },
+      {
+        "egrid": "CH533677579977",
+        "bfs": 5561,
+        "number": "792",
+        "coverage_fraction": 0.9999999999999998
+      },
+      {
+        "egrid": "CH583436577720",
+        "bfs": 5561,
+        "number": "1241",
+        "coverage_fraction": 0.99999901207882
+      },
+      {
+        "egrid": "CH793677995721",
+        "bfs": 5561,
+        "number": "2006",
+        "coverage_fraction": 0.9999994784355046
+      }
+    ],
+    "partial_land_parcels": [],
+    "iou": 0.988809448997556,
+    "symmetric_hausdorff_m": 1.5313665824603693,
+    "candidate_complete_shape_match": true,
+    "accepted_for_delivery": false,
+    "method": "Whole original LAND parcels with majority overlap; no clipping, snapping, tolerance buffers, fitting, or optimizing membership. Residual partial parcels >2% explicitly block automatic candidacy.",
+    "reference_union_geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            2539467.726,
+            1184897.518
+          ],
+          [
+            2539467.276,
+            1184910.638
+          ],
+          [
+            2539465.476,
+            1184923.678
+          ],
+          [
+            2539462.426,
+            1184936.819
+          ],
+          [
+            2539457.006,
+            1184949.289
+          ],
+          [
+            2539479.769,
+            1184959.691
+          ],
+          [
+            2539483.066,
+            1184961.198
+          ],
+          [
+            2539517.095,
+            1184976.749
+          ],
+          [
+            2539529.765,
+            1184982.539
+          ],
+          [
+            2539534.875,
+            1184984.875
+          ],
+          [
+            2539549.771,
+            1184991.685
+          ],
+          [
+            2539568.265,
+            1185000.139
+          ],
+          [
+            2539599.185,
+            1185014.279
+          ],
+          [
+            2539619.129,
+            1185023.288
+          ],
+          [
+            2539623.476,
+            1185025.252
+          ],
+          [
+            2539630.554,
+            1185028.449
+          ],
+          [
+            2539673.244,
+            1184946.406
+          ],
+          [
+            2539614.857,
+            1184919.719
+          ],
+          [
+            2539594.341,
+            1184905.504
+          ],
+          [
+            2539590.182,
+            1184902.792
+          ],
+          [
+            2539569.102,
+            1184888.059
+          ],
+          [
+            2539561.309,
+            1184881.959
+          ],
+          [
+            2539526.042,
+            1184854.055
+          ],
+          [
+            2539498.889,
+            1184832.563
+          ],
+          [
+            2539480.363,
+            1184867.132
+          ],
+          [
+            2539467.191,
+            1184892.02
+          ],
+          [
+            2539467.726,
+            1184897.518
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "path_index": 10435,
+    "source_code_review": {
+      "path_index": 10435,
+      "source_code": 29,
+      "category": "ZAL",
+      "observed_intentions": [],
+      "intentions_limit": "Site-level indicative symbols; absence of shown symbol is not absence of change; no affected subgeometry inferred.",
+      "asterisk_poor_transit_2023": true,
+      "source_crop": "10435-outlined.png",
+      "review": "visual native-boundary and leader association checked"
+    },
+    "land_parcels": [
+      {
+        "egrid": "CH993679845777",
+        "bfs": 5763,
+        "number": "419",
+        "coverage_fraction": 0.9998600919570818
+      },
+      {
+        "egrid": "CH415784367917",
+        "bfs": 5763,
+        "number": "420",
+        "coverage_fraction": 0.9869547843012084
+      }
+    ],
+    "partial_land_parcels": [],
+    "iou": 0.9797978775362307,
+    "symmetric_hausdorff_m": 2.2801016135692405,
+    "candidate_complete_shape_match": false,
+    "accepted_for_delivery": false,
+    "method": "Whole original LAND parcels with majority overlap; no clipping, snapping, tolerance buffers, fitting, or optimizing membership. Residual partial parcels >2% explicitly block automatic candidacy.",
+    "reference_union_geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            2530574.516,
+            1177901.538
+          ],
+          [
+            2530580.046,
+            1177919.177
+          ],
+          [
+            2530605.286,
+            1177997.737
+          ],
+          [
+            2530613.647,
+            1178023.797
+          ],
+          [
+            2530624.667,
+            1178062.727
+          ],
+          [
+            2530630.457,
+            1178084.697
+          ],
+          [
+            2530639.477,
+            1178090.386
+          ],
+          [
+            2530673.871,
+            1178077.67
+          ],
+          [
+            2530645.692,
+            1177985.33
+          ],
+          [
+            2530615.486,
+            1177889.214
+          ],
+          [
+            2530574.516,
+            1177901.538
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "path_index": 10445,
+    "source_code_review": {
+      "path_index": 10445,
+      "source_code": 78,
+      "category": "ZAL",
+      "observed_intentions": [
+        "reconversion_out_of_activity"
+      ],
+      "intentions_limit": "Site-level indicative symbols; absence of shown symbol is not absence of change; no affected subgeometry inferred.",
+      "asterisk_poor_transit_2023": true,
+      "source_crop": "10445-outlined.png",
+      "review": "visual native-boundary and leader association checked"
+    },
+    "land_parcels": [
+      {
+        "egrid": "CH267383451867",
+        "bfs": 5553,
+        "number": "75",
+        "coverage_fraction": 0.9999974514593513
+      },
+      {
+        "egrid": "CH207445968368",
+        "bfs": 5553,
+        "number": "87",
+        "coverage_fraction": 0.9999563595607153
+      }
+    ],
+    "partial_land_parcels": [
+      {
+        "egrid": "CH607445718307",
+        "coverage_fraction": 0.024916387648368343
+      }
+    ],
+    "iou": 0.9869588947156441,
+    "symmetric_hausdorff_m": 4.966617290663117,
+    "candidate_complete_shape_match": false,
+    "accepted_for_delivery": false,
+    "method": "Whole original LAND parcels with majority overlap; no clipping, snapping, tolerance buffers, fitting, or optimizing membership. Residual partial parcels >2% explicitly block automatic candidacy.",
+    "reference_union_geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            2540395.18,
+            1186975.98
+          ],
+          [
+            2540366.871,
+            1186965.97
+          ],
+          [
+            2540369.231,
+            1186960.06
+          ],
+          [
+            2540362.821,
+            1186954.7
+          ],
+          [
+            2540359.171,
+            1186955.74
+          ],
+          [
+            2540357.069,
+            1186957.04
+          ],
+          [
+            2540355.242,
+            1186958.17
+          ],
+          [
+            2540295.473,
+            1186994.038
+          ],
+          [
+            2540289.953,
+            1187001.378
+          ],
+          [
+            2540288.663,
+            1187006.488
+          ],
+          [
+            2540283.863,
+            1187025.827
+          ],
+          [
+            2540287.463,
+            1187031.767
+          ],
+          [
+            2540331.772,
+            1187040.8969999999
+          ],
+          [
+            2540376.39,
+            1187050.087
+          ],
+          [
+            2540392.33,
+            1186995.669
+          ],
+          [
+            2540397.77,
+            1186977.33
+          ],
+          [
+            2540395.18,
+            1186975.98
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "path_index": 10447,
+    "source_code_review": {
+      "path_index": 10447,
+      "source_code": 77,
+      "category": "ZAL",
+      "observed_intentions": [],
+      "intentions_limit": "Site-level indicative symbols; absence of shown symbol is not absence of change; no affected subgeometry inferred.",
+      "asterisk_poor_transit_2023": true,
+      "source_crop": "10447-outlined.png",
+      "review": "visual native-boundary and leader association checked"
+    },
+    "land_parcels": [
+      {
+        "egrid": "CH409445468395",
+        "bfs": 5554,
+        "number": "1644",
+        "coverage_fraction": 0.9999725150429593
+      },
+      {
+        "egrid": "CH444583961192",
+        "bfs": 5554,
+        "number": "1967",
+        "coverage_fraction": 0.9999992243881103
+      }
+    ],
+    "partial_land_parcels": [],
+    "iou": 0.9924744233221546,
+    "symmetric_hausdorff_m": 0.5442922816443153,
+    "candidate_complete_shape_match": true,
+    "accepted_for_delivery": false,
+    "method": "Whole original LAND parcels with majority overlap; no clipping, snapping, tolerance buffers, fitting, or optimizing membership. Residual partial parcels >2% explicitly block automatic candidacy.",
+    "reference_union_geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            2545441.107,
+            1189560.141
+          ],
+          [
+            2545426.775,
+            1189573.506
+          ],
+          [
+            2545422.793,
+            1189578.325
+          ],
+          [
+            2545400.823,
+            1189604.908
+          ],
+          [
+            2545399.931,
+            1189612.502
+          ],
+          [
+            2545402.138,
+            1189618.167
+          ],
+          [
+            2545414.164,
+            1189635.873
+          ],
+          [
+            2545419.32,
+            1189642.943
+          ],
+          [
+            2545422.976,
+            1189647.432
+          ],
+          [
+            2545426.89,
+            1189651.681
+          ],
+          [
+            2545435.275,
+            1189659.854
+          ],
+          [
+            2545439.916,
+            1189663.811
+          ],
+          [
+            2545465.24,
+            1189632.642
+          ],
+          [
+            2545484.826,
+            1189608.534
+          ],
+          [
+            2545468.551,
+            1189586.409
+          ],
+          [
+            2545460.718,
+            1189575.547
+          ],
+          [
+            2545450.076,
+            1189559.859
+          ],
+          [
+            2545441.107,
+            1189560.141
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "path_index": 10467,
+    "source_code_review": {
+      "path_index": 10467,
+      "source_code": 42,
+      "category": "ZAL",
+      "observed_intentions": [
+        "reconversion_out_of_activity",
+        "dezoning"
+      ],
+      "intentions_limit": "Site-level indicative symbols; absence of shown symbol is not absence of change; no affected subgeometry inferred.",
+      "asterisk_poor_transit_2023": true,
+      "source_crop": "10467-outlined.png",
+      "review": "visual native-boundary and leader association checked"
+    },
+    "land_parcels": [
+      {
+        "egrid": "CH629752834536",
+        "bfs": 5921,
+        "number": "56",
+        "coverage_fraction": 0.9999376476755858
+      },
+      {
+        "egrid": "CH754583024560",
+        "bfs": 5921,
+        "number": "555",
+        "coverage_fraction": 0.9999863615004944
+      }
+    ],
+    "partial_land_parcels": [
+      {
+        "egrid": "CH744583024544",
+        "coverage_fraction": 0.0315586177665194
+      }
+    ],
+    "iou": 0.9806755369488658,
+    "symmetric_hausdorff_m": 3.0131764709656155,
+    "candidate_complete_shape_match": false,
+    "accepted_for_delivery": false,
+    "method": "Whole original LAND parcels with majority overlap; no clipping, snapping, tolerance buffers, fitting, or optimizing membership. Residual partial parcels >2% explicitly block automatic candidacy.",
+    "reference_union_geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            2547455.04,
+            1178757.423
+          ],
+          [
+            2547452.74,
+            1178750.993
+          ],
+          [
+            2547448.0810000002,
+            1178745.703
+          ],
+          [
+            2547446.991,
+            1178740.513
+          ],
+          [
+            2547444.191,
+            1178732.564
+          ],
+          [
+            2547438.961,
+            1178724.054
+          ],
+          [
+            2547435.601,
+            1178717.704
+          ],
+          [
+            2547434.621,
+            1178719.304
+          ],
+          [
+            2547427.491,
+            1178723.814
+          ],
+          [
+            2547425.221,
+            1178735.584
+          ],
+          [
+            2547424.8109999998,
+            1178742.584
+          ],
+          [
+            2547431.405,
+            1178786.006
+          ],
+          [
+            2547433.9189999998,
+            1178802.562
+          ],
+          [
+            2547442.489,
+            1178814.982
+          ],
+          [
+            2547462.079,
+            1178830.441
+          ],
+          [
+            2547480.149,
+            1178811.691
+          ],
+          [
+            2547472.989,
+            1178804.122
+          ],
+          [
+            2547475.869,
+            1178801.2820000001
+          ],
+          [
+            2547462.16,
+            1178773.222
+          ],
+          [
+            2547460.75,
+            1178770.463
+          ],
+          [
+            2547459.452,
+            1178767.5
+          ],
+          [
+            2547455.04,
+            1178757.423
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "path_index": 10481,
+    "source_code_review": {
+      "path_index": 10481,
+      "source_code": 82,
+      "category": "ZAL",
+      "observed_intentions": [
+        "reconversion_into_activity"
+      ],
+      "intentions_limit": "Site-level indicative symbols; absence of shown symbol is not absence of change; no affected subgeometry inferred.",
+      "asterisk_poor_transit_2023": true,
+      "source_crop": "10481-outlined.png",
+      "review": "visual native-boundary and leader association checked"
+    },
+    "land_parcels": [
+      {
+        "egrid": "CH314511838314",
+        "bfs": 5766,
+        "number": "276",
+        "coverage_fraction": 0.9999972382738118
+      },
+      {
+        "egrid": "CH744583824595",
+        "bfs": 5766,
+        "number": "275",
+        "coverage_fraction": 1.0
+      },
+      {
+        "egrid": "CH351183834595",
+        "bfs": 5766,
+        "number": "279",
+        "coverage_fraction": 1.0000000000000002
+      },
+      {
+        "egrid": "CH768283454515",
+        "bfs": 5766,
+        "number": "277",
+        "coverage_fraction": 1.0
+      },
+      {
+        "egrid": "CH474583928380",
+        "bfs": 5766,
+        "number": "270",
+        "coverage_fraction": 0.999995787264525
+      }
+    ],
+    "partial_land_parcels": [],
+    "iou": 0.9947941105549183,
+    "symmetric_hausdorff_m": 1.9042495484466468,
+    "candidate_complete_shape_match": true,
+    "accepted_for_delivery": false,
+    "method": "Whole original LAND parcels with majority overlap; no clipping, snapping, tolerance buffers, fitting, or optimizing membership. Residual partial parcels >2% explicitly block automatic candidacy.",
+    "reference_union_geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            2532924.829,
+            1184467.4679999999
+          ],
+          [
+            2532917.269,
+            1184474.4070000001
+          ],
+          [
+            2532891.769,
+            1184497.806
+          ],
+          [
+            2532858.889,
+            1184528.315
+          ],
+          [
+            2532858.1689999998,
+            1184536.024
+          ],
+          [
+            2532881.469,
+            1184566.554
+          ],
+          [
+            2532901.299,
+            1184592.633
+          ],
+          [
+            2532943.63,
+            1184648.743
+          ],
+          [
+            2532961.04,
+            1184671.822
+          ],
+          [
+            2532967.15,
+            1184671.252
+          ],
+          [
+            2532996.27,
+            1184635.584
+          ],
+          [
+            2533017.02,
+            1184610.405
+          ],
+          [
+            2533066.29,
+            1184550.168
+          ],
+          [
+            2533114.17,
+            1184491.84
+          ],
+          [
+            2533114.74,
+            1184484.031
+          ],
+          [
+            2533098.62,
+            1184470.931
+          ],
+          [
+            2533068.739,
+            1184446.661
+          ],
+          [
+            2533026.41,
+            1184412.558
+          ],
+          [
+            2533008.349,
+            1184409.461
+          ],
+          [
+            2532993.977,
+            1184406.261
+          ],
+          [
+            2532987.589,
+            1184409.511
+          ],
+          [
+            2532934.399,
+            1184458.648
+          ],
+          [
+            2532930.529,
+            1184462.148
+          ],
+          [
+            2532924.829,
+            1184467.4679999999
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "path_index": 10545,
+    "source_code_review": {
+      "path_index": 10545,
+      "source_code": 51,
+      "category": "ZAL",
+      "observed_intentions": [],
+      "intentions_limit": "Site-level indicative symbols; absence of shown symbol is not absence of change; no affected subgeometry inferred.",
+      "asterisk_poor_transit_2023": true,
+      "source_crop": "10545-outlined.png",
+      "review": "visual native-boundary and leader association checked"
+    },
+    "land_parcels": [
+      {
+        "egrid": "CH974574958379",
+        "bfs": 5559,
+        "number": "401",
+        "coverage_fraction": 0.9999995256737844
+      },
+      {
+        "egrid": "CH867483459550",
+        "bfs": 5559,
+        "number": "142",
+        "coverage_fraction": 0.9999573213586352
+      },
+      {
+        "egrid": "CH114504837358",
+        "bfs": 5559,
+        "number": "415",
+        "coverage_fraction": 1.0
+      }
+    ],
+    "partial_land_parcels": [],
+    "iou": 0.9908946055502869,
+    "symmetric_hausdorff_m": 0.7376260997273042,
+    "candidate_complete_shape_match": true,
+    "accepted_for_delivery": false,
+    "method": "Whole original LAND parcels with majority overlap; no clipping, snapping, tolerance buffers, fitting, or optimizing membership. Residual partial parcels >2% explicitly block automatic candidacy.",
+    "reference_union_geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            2537759.091,
+            1184530.992
+          ],
+          [
+            2537760.131,
+            1184560.402
+          ],
+          [
+            2537758.38,
+            1184581.182
+          ],
+          [
+            2537755.77,
+            1184608.222
+          ],
+          [
+            2537755.36,
+            1184612.352
+          ],
+          [
+            2537758.1,
+            1184614.452
+          ],
+          [
+            2537774.01,
+            1184610.021
+          ],
+          [
+            2537790.961,
+            1184603.12
+          ],
+          [
+            2537797.041,
+            1184601.75
+          ],
+          [
+            2537817.141,
+            1184595.929
+          ],
+          [
+            2537829.471,
+            1184593.759
+          ],
+          [
+            2537839.361,
+            1184591.239
+          ],
+          [
+            2537840.692,
+            1184587.599
+          ],
+          [
+            2537856.462,
+            1184544.608
+          ],
+          [
+            2537838.192,
+            1184539.479
+          ],
+          [
+            2537821.192,
+            1184534.65
+          ],
+          [
+            2537800.272,
+            1184533.421
+          ],
+          [
+            2537759.091,
+            1184530.992
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "path_index": 10549,
+    "source_code_review": {
+      "path_index": 10549,
+      "source_code": 99,
+      "category": "ZAL",
+      "observed_intentions": [
+        "reconversion_out_of_activity",
+        "dezoning"
+      ],
+      "intentions_limit": "Site-level indicative symbols; absence of shown symbol is not absence of change; no affected subgeometry inferred.",
+      "asterisk_poor_transit_2023": true,
+      "source_crop": "10549-outlined.png",
+      "review": "visual native-boundary and leader association checked"
+    },
+    "land_parcels": [
+      {
+        "egrid": "CH638397459292",
+        "bfs": 5930,
+        "number": "490",
+        "coverage_fraction": 0.9994075144438498
+      },
+      {
+        "egrid": "CH381383459754",
+        "bfs": 5930,
+        "number": "493",
+        "coverage_fraction": 0.999116271089446
+      },
+      {
+        "egrid": "CH338397452270",
+        "bfs": 5930,
+        "number": "491",
+        "coverage_fraction": 0.9993615184453495
+      },
+      {
+        "egrid": "CH744583979696",
+        "bfs": 5930,
+        "number": "492",
+        "coverage_fraction": 0.9998720104526174
+      }
+    ],
+    "partial_land_parcels": [],
+    "iou": 0.9904959781328597,
+    "symmetric_hausdorff_m": 0.5995483891325879,
+    "candidate_complete_shape_match": true,
+    "accepted_for_delivery": false,
+    "method": "Whole original LAND parcels with majority overlap; no clipping, snapping, tolerance buffers, fitting, or optimizing membership. Residual partial parcels >2% explicitly block automatic candidacy.",
+    "reference_union_geometry": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            2535200.57,
+            1179842.866
+          ],
+          [
+            2535158.799,
+            1179855.364
+          ],
+          [
+            2535151.208,
+            1179857.708
+          ],
+          [
+            2535110.997,
+            1179870.598
+          ],
+          [
+            2535088.253,
+            1179879.1469999999
+          ],
+          [
+            2535074.883,
+            1179884.266
+          ],
+          [
+            2535055.566,
+            1179891.76
+          ],
+          [
+            2535038.355,
+            1179894.472
+          ],
+          [
+            2535048.762,
+            1179930.482
+          ],
+          [
+            2535056.812,
+            1179958.332
+          ],
+          [
+            2535066.232,
+            1179956.402
+          ],
+          [
+            2535077.041,
+            1179954.232
+          ],
+          [
+            2535094.181,
+            1179950.822
+          ],
+          [
+            2535108.191,
+            1179948.001
+          ],
+          [
+            2535121.641,
+            1179945.271
+          ],
+          [
+            2535131.731,
+            1179942.121
+          ],
+          [
+            2535160.021,
+            1179933.25
+          ],
+          [
+            2535173.401,
+            1179929.1
+          ],
+          [
+            2535193.5,
+            1179922.82
+          ],
+          [
+            2535216.15,
+            1179915.659
+          ],
+          [
+            2535257.73,
+            1179905.719
+          ],
+          [
+            2535245.577,
+            1179828.441
+          ],
+          [
+            2535200.57,
+            1179842.866
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "path_index": 10551,
+    "source_code_review": {
+      "path_index": 10551,
+      "source_code": 99,
+      "category": "ZAL",
+      "observed_intentions": [
+        "reconversion_out_of_activity",
+        "dezoning"
+      ],
+      "intentions_limit": "Site-level indicative symbols; absence of shown symbol is not absence of change; no affected subgeometry inferred.",
+      "asterisk_poor_transit_2023": true,
+      "source_crop": "10551-outlined.png",
+      "review": "visual native-boundary and leader association checked"
+    },
+    "land_parcels": [
+      {
+        "egrid": "CH189083459780",
+        "bfs": 5930,
+        "number": "117",
+        "coverage_fraction": 0.9999639931743887
+      },
+      {
+        "egrid": "CH114590839736",
+        "bfs": 5930,
+        "number": "115",
+        "coverage_fraction": 0.9994949734249461
+      },
+      {
+        "egrid": "CH309745678382",
+        "bfs": 5930,
+        "number": "384",
+        "coverage_fraction": 0.9997044249559219
+      },
+      {
+        "egrid": "CH714592839708",
+        "bfs": 5930,
+        "number": "116",
+        "coverage_fraction": 1.0
+      },
+      {
+        "egrid": "CH285683459989",
+        "bfs": 5930,
+        "number": "632",
+        "coverage_fraction": 0.9918828585081422
+      },
+      {
+        "egrid": "CH898397324512",
+        "bfs": 5930,
+        "number": "118",
+        "coverage_fraction": 0.9999970573214301
+      }
+    ],
+    "partial_land_parcels": [],
+    "iou": 0.8971522380845485,
+    "symmetric_hausdorff_m": 28.620191270760213,
+    "candidate_complete_shape_match": false,
+    "accepted_for_delivery": false,
+    "method": "Whole original LAND parcels with majority overlap; no clipping, snapping, tolerance buffers, fitting, or optimizing membership. Residual partial parcels >2% explicitly block automatic candidacy.",
+    "reference_union_geometry": {
+      "type": "MultiPolygon",
+      "coordinates": [
+        [
+          [
+            [
+              2534739.823,
+              1179882.552
+            ],
+            [
+              2534726.199,
+              1179886.584
+            ],
+            [
+              2534724.595,
+              1179890.746
+            ],
+            [
+              2534721.961,
+              1179897.836
+            ],
+            [
+              2534728.465,
+              1179907.108
+            ],
+            [
+              2534747.055,
+              1179908.308
+            ],
+            [
+              2534789.934,
+              1179901.177
+            ],
+            [
+              2534822.902,
+              1179894.394
+            ],
+            [
+              2534822.681,
+              1179892.661
+            ],
+            [
+              2534774.411,
+              1179888.393
+            ],
+            [
+              2534766.397,
+              1179887.672
+            ],
+            [
+              2534739.823,
+              1179882.552
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              2534827.924,
+              1179930.956
+            ],
+            [
+              2534824.104,
+              1179903.836
+            ],
+            [
+              2534812.864,
+              1179906.017
+            ],
+            [
+              2534785.644,
+              1179910.317
+            ],
+            [
+              2534780.3140000002,
+              1179911.757
+            ],
+            [
+              2534777.344,
+              1179912.197
+            ],
+            [
+              2534764.034,
+              1179914.408
+            ],
+            [
+              2534757.615,
+              1179915.038
+            ],
+            [
+              2534742.875,
+              1179916.638
+            ],
+            [
+              2534737.165,
+              1179916.298
+            ],
+            [
+              2534733.905,
+              1179916.2280000001
+            ],
+            [
+              2534722.815,
+              1179915.618
+            ],
+            [
+              2534718.775,
+              1179918.508
+            ],
+            [
+              2534754.124,
+              1179979.698
+            ],
+            [
+              2534761.684,
+              1179983.987
+            ],
+            [
+              2534779.754,
+              1179983.307
+            ],
+            [
+              2534787.604,
+              1179983.137
+            ],
+            [
+              2534834.844,
+              1179981.476
+            ],
+            [
+              2534828.424,
+              1179934.636
+            ],
+            [
+              2534827.924,
+              1179930.956
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              2534747.744,
+              1179986.068
+            ],
+            [
+              2534750.0640000002,
+              1179980.818
+            ],
+            [
+              2534713.055,
+              1179916.118
+            ],
+            [
+              2534705.987,
+              1179914.299
+            ],
+            [
+              2534670.157,
+              1179935.655
+            ],
+            [
+              2534665.195,
+              1179938.698
+            ],
+            [
+              2534647.721,
+              1179946.946
+            ],
+            [
+              2534668.054,
+              1179975.898
+            ],
+            [
+              2534688.424,
+              1180004.818
+            ],
+            [
+              2534704.8140000002,
+              1179996.798
+            ],
+            [
+              2534712.074,
+              1179994.9780000001
+            ],
+            [
+              2534747.744,
+              1179986.068
+            ]
+          ]
+        ]
+      ]
+    }
+  }
+]

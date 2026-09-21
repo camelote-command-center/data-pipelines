@@ -1,0 +1,32 @@
+{
+  "vd_pdcom_review_sectors": {
+    "rows": 59,
+    "rls": true,
+    "anon_select": false,
+    "authenticated_select": false
+  },
+  "vd_pdcom_review_parcels": {
+    "rows": 2435,
+    "rls": true,
+    "anon_select": false,
+    "authenticated_select": false
+  },
+  "distinct_kinds": [
+    [
+      "bien_fonds",
+      2352
+    ],
+    [
+      "ddp_superficie",
+      60
+    ]
+  ],
+  "nord_pairs_unique": [
+    149,
+    148
+  ],
+  "monitor": [
+    "success",
+    59
+  ]
+}
