@@ -3337,5 +3337,166 @@
       },
       "artifact_root": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/director-document-catalog"
     }
+  },
+  {
+    "commune_bfs": 5587,
+    "pdf_url": "https://www.lemontsurlausanne.ch/fileadmin/documents/Tous_documents/4_Le_Mont_officiel/4.5_Services_communaux/4.5.6_SURB/Plan_affectation/plan1_101.pdf",
+    "landing_url": "https://www.lemontsurlausanne.ch/thematiques/urbanisation/plans-daffectation",
+    "title": "Le Mont-sur-Lausanne — Plan directeur des affectations",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "source_review": {
+      "bfs": 5587,
+      "role": "director_plan",
+      "currentness": "unverified; municipal Vision2040 explicitly precedes formal PDCom revision",
+      "geometry_status": "scanned source; alignment and parcel attribution not validated",
+      "artifact_root": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/lausanne-gap-source-batch",
+      "approval": "Municipal index12May1989; signed scan. Current applicability and later replacements unresolved.",
+      "map_pages": [
+        1
+      ],
+      "semantics": "Historical director land-use intentions, not present parcel building rights."
+    },
+    "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5587,
+    "pdf_url": "https://www.lemontsurlausanne.ch/fileadmin/documents/Tous_documents/4_Le_Mont_officiel/4.5_Services_communaux/4.5.6_SURB/Plan_affectation/plan1_103.pdf",
+    "landing_url": "https://www.lemontsurlausanne.ch/thematiques/urbanisation/plans-daffectation",
+    "title": "Le Mont-sur-Lausanne — Plan directeur des sites",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "source_review": {
+      "bfs": 5587,
+      "role": "director_plan",
+      "currentness": "unverified; municipal Vision2040 explicitly precedes formal PDCom revision",
+      "geometry_status": "scanned source; alignment and parcel attribution not validated",
+      "artifact_root": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/lausanne-gap-source-batch",
+      "approval": "Municipal index12May1989; scan approval fields appear blank. Index versus supplied copy discrepancy retained.",
+      "map_pages": [
+        1
+      ],
+      "semantics": "Landscape, protection, forest, viewpoints and pedestrian connections; not development-potential polygons."
+    },
+    "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5587,
+    "pdf_url": "https://www.lemontsurlausanne.ch/fileadmin/documents/Tous_documents/4_Le_Mont_officiel/4.5_Services_communaux/4.5.6_SURB/Plan_affectation/105_PDL_2015.pdf",
+    "landing_url": "https://www.lemontsurlausanne.ch/thematiques/urbanisation/plans-daffectation",
+    "title": "Le Mont-sur-Lausanne — PDL Coppoz / Praz-Prévôt, plan",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "source_review": {
+      "bfs": 5587,
+      "role": "director_plan",
+      "currentness": "unverified; municipal Vision2040 explicitly precedes formal PDCom revision",
+      "geometry_status": "scanned source; alignment and parcel attribution not validated",
+      "artifact_root": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/lausanne-gap-source-batch",
+      "approval": "Visually verified signed sheet: municipality22Feb2014, council6Oct2014, canton25Mar2015.",
+      "map_pages": [
+        1
+      ],
+      "scale": 1000,
+      "semantics": "Mixed uses, collective/grouped housing, public uses and alternatives distinct; hatching is not interchangeable with IUS on report annex."
+    },
+    "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5587,
+    "pdf_url": "https://www.lemontsurlausanne.ch/fileadmin/documents/Tous_documents/4_Le_Mont_officiel/4.5_Services_communaux/4.5.6_SURB/Plan_affectation/Rapport_PDL_2014.pdf",
+    "landing_url": "https://www.lemontsurlausanne.ch/thematiques/urbanisation/plans-daffectation",
+    "title": "Le Mont-sur-Lausanne — PDL Coppoz / Praz-Prévôt, fiches de secteurs",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "source_review": {
+      "bfs": 5587,
+      "role": "director_plan",
+      "currentness": "unverified; municipal Vision2040 explicitly precedes formal PDCom revision",
+      "geometry_status": "scanned source; alignment and parcel attribution not validated",
+      "artifact_root": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/lausanne-gap-source-batch",
+      "approval": "Signed p31: council6Oct2014, canton25Mar2015. CoverDec2013, footer15Oct2014; retain provenance.",
+      "map_pages": [
+        5,
+        7,
+        8,
+        9,
+        11,
+        15,
+        18,
+        20,
+        23,
+        33
+      ],
+      "cross_section_pages": [
+        28,
+        29,
+        30
+      ],
+      "density_legend": {
+        "page": 33,
+        "scale": 2000,
+        "categories": [
+          "IUS > 0.8",
+          "IUS = 0.8",
+          "IUS < 0.8",
+          "public use",
+          "option: collective housing OR public use",
+          "protected buildings",
+          "green space"
+        ]
+      },
+      "semantics": "Multiple illustration panels are alternatives, not additive sites. Broad density bands do not yield exact floor area; some narrative IUS>1 examples are narrower than annex>0.8 category."
+    },
+    "enumerate_vectors": false
+  },
+  {
+    "commune_bfs": 5636,
+    "pdf_url": "https://www.geocommunes.ch/documents_communes/bbhn_dataey/at_pga_ppa/pdl_village_ey.pdf",
+    "landing_url": "https://etoy.geocommunes.ch/",
+    "title": "Etoy — Plan directeur localise du village, janvier2001 modifie fevrier2002",
+    "plan_status": "unverified",
+    "scope": "communal",
+    "source_review": {
+      "instrument": "localized_director_plan",
+      "scope": "Etoy village only; not whole-commune completion",
+      "version": "January2001 modifiedFebruary2002",
+      "approval": "Visually verified signed page31: municipal20Nov2000/12Nov2001; communal council26Mar2001/11Mar2002; cantonal9Sep2002. Current applicability unverified.",
+      "public_catalog_status": "legalise; feature maj_date2021-03-19 is catalog update, not approval",
+      "map_pages": [
+        5,
+        7,
+        12,
+        14,
+        16,
+        20,
+        23,
+        25,
+        27,
+        29
+      ],
+      "sector_map_pages": {
+        "La Romaneche": 7,
+        "Chemin de La Vaux": 12,
+        "Rue d’Estuey": 14,
+        "Chemin Neuf": 16,
+        "Route du Clos-de-Biere": 20,
+        "Le Prieure": 23,
+        "Chemin de l’Ecureuil": 25,
+        "Route de la Gare": 27,
+        "Le Bas du Rosse": 29
+      },
+      "cross_sections": [
+        8,
+        17,
+        21
+      ],
+      "legend_page": 30,
+      "semantics": "Keep imperative measures distinct from indicative/incentive measures. Hatching, implantation fronts, open space, paths and trees are not interchangeable development polygons. Separate full-village1:1000plan mentioned p3 not confirmed as supplied by this31page report.",
+      "geometry_status": "Public WFS at_pga_ppa supplies one scope polygon only, not nine sector geometries. Scanned report maps require independently validated alignment; not accepted geographic sectors.",
+      "artifact_root": "/Users/a/Documents/ChatGPT/RE-LLM/artifacts/vd-pdcom/etoy-public-catalog",
+      "operation_id": "bba49468-9316-403b-b6ce-636a364f58d2"
+    },
+    "enumerate_vectors": false
   }
 ]
