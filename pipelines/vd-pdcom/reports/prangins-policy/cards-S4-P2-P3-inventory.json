@@ -1,0 +1,143 @@
+[
+  {
+    "card": "S4",
+    "document_id": "d51be29b-8c9d-542c-988c-56aa3495545b",
+    "source_sha256": "fc1f4c662e71c43744ff3d241b0be573447756232d68c7425cda976f7138f81e",
+    "pages": [
+      {
+        "pdf_page": 16,
+        "printed_page": 186,
+        "role": "context-map",
+        "text_sha256": "a464b7df8633825ac3acf6d90c113a7ae4707830ae0e886ad00251b2f4efc422",
+        "geometry_action": "scope_and_legend_review_complete; map-specific_extraction_pending"
+      },
+      {
+        "pdf_page": 17,
+        "printed_page": 187,
+        "role": "coordination-text",
+        "text_sha256": "b549583e12ca6f55efd1253b6095116fe64870ca192b49485024444697a1691a",
+        "geometry_action": "exclude_as_polygon_source; retain_semantic_evidence"
+      },
+      {
+        "pdf_page": 18,
+        "printed_page": 188,
+        "role": "indicative-project-map",
+        "text_sha256": "b3611278bc5b5c3b737b6797c7a437fcabc0b06b7bfc82b5b641e939a9025426",
+        "geometry_action": "scope_and_legend_review_complete; map-specific_extraction_pending"
+      },
+      {
+        "pdf_page": 19,
+        "printed_page": 189,
+        "role": "illustrative-section-and-reference-photo",
+        "text_sha256": "85a2a5339f3f07b1377b9cafab6a7129d67315c93e2023963ffc40fd25d5ce6f",
+        "geometry_action": "exclude_as_polygon_source; retain_semantic_evidence"
+      }
+    ],
+    "currentness_dependency": "RDU-development explicitly abandoned2018; retainhistorical",
+    "main_synthesis_transform_must_not_be_reused": true,
+    "project_map_legend": [
+      "RDU",
+      "Parkway paysager",
+      "Extension projetée selon le SDAN",
+      "Mobilité douce",
+      "Bande verte d’équipement",
+      "Equipement existant",
+      "Equipement local",
+      "Equipement régional",
+      "Affectation à définir"
+    ],
+    "symbol_warning": "Sequence highlights and equipment point symbols are not authoritative area boundaries."
+  },
+  {
+    "card": "P2",
+    "document_id": "d51be29b-8c9d-542c-988c-56aa3495545b",
+    "source_sha256": "fc1f4c662e71c43744ff3d241b0be573447756232d68c7425cda976f7138f81e",
+    "pages": [
+      {
+        "pdf_page": 38,
+        "printed_page": 208,
+        "role": "project-map",
+        "text_sha256": "9b3627c93087c8450f58a8b46b1efe7462844861114024765ec34660b95e9320",
+        "geometry_action": "scope_and_legend_review_complete; map-specific_extraction_pending"
+      },
+      {
+        "pdf_page": 39,
+        "printed_page": 209,
+        "role": "coordination-text",
+        "text_sha256": "b8a6761ae1d7cffccf22249ca38f0bdd9e15a276fb562f6aa26c1dbf11043427",
+        "geometry_action": "exclude_as_polygon_source; retain_semantic_evidence"
+      },
+      {
+        "pdf_page": 40,
+        "printed_page": 210,
+        "role": "illustrative-cross-sections",
+        "text_sha256": "27d5dc65d943baae7b3a68b1d52d4f925d3f263128d8482cfa3ea324ad47c7ce",
+        "geometry_action": "exclude_as_polygon_source; retain_semantic_evidence"
+      },
+      {
+        "pdf_page": 41,
+        "printed_page": 211,
+        "role": "reference-photos",
+        "text_sha256": "2178275ed852647b82ef0491587fc98c49aea63b585191678d5da6030376f527",
+        "geometry_action": "exclude_as_polygon_source; retain_semantic_evidence"
+      }
+    ],
+    "currentness_dependency": "Independent farm/built boundary objective; no abandonment established",
+    "main_synthesis_transform_must_not_be_reused": true,
+    "project_map_legend": [
+      "Eléments existants",
+      "Eléments à créer",
+      "Réouverture des ruisseaux (tracé à titre indicatif)",
+      "Chemin piéton",
+      "Séquences"
+    ],
+    "symbol_warning": "Sequence highlights and equipment point symbols are not authoritative area boundaries."
+  },
+  {
+    "card": "P3",
+    "document_id": "d51be29b-8c9d-542c-988c-56aa3495545b",
+    "source_sha256": "fc1f4c662e71c43744ff3d241b0be573447756232d68c7425cda976f7138f81e",
+    "pages": [
+      {
+        "pdf_page": 42,
+        "printed_page": 212,
+        "role": "project-map",
+        "text_sha256": "e7cca398088fb7d18a6f5d0eaaaf3f1febc6c2a77d4cdee21e01c91435000908",
+        "geometry_action": "scope_and_legend_review_complete; map-specific_extraction_pending"
+      },
+      {
+        "pdf_page": 43,
+        "printed_page": 213,
+        "role": "coordination-text",
+        "text_sha256": "5cdad6529ac2aa6d5a368827cebfeb467086fd0b4e0fa23138965766652ad47c",
+        "geometry_action": "exclude_as_polygon_source; retain_semantic_evidence"
+      },
+      {
+        "pdf_page": 44,
+        "printed_page": 214,
+        "role": "illustrative-cross-sections",
+        "text_sha256": "af9e42c05fc519503787d91b0336f967dcd69f53857bb9cc70ba86eb07957b39",
+        "geometry_action": "exclude_as_polygon_source; retain_semantic_evidence"
+      },
+      {
+        "pdf_page": 45,
+        "printed_page": 215,
+        "role": "reference-photos-and-description",
+        "text_sha256": "85fa97de7a2fa9a534a8a8f8ae4ccb18f6fa5dbe71984c182ce92ba6697c5ec4",
+        "geometry_action": "exclude_as_polygon_source; retain_semantic_evidence"
+      }
+    ],
+    "currentness_dependency": "Sequence1 RDU-dependent; sequences2/3 separately conditioned; splitreview",
+    "main_synthesis_transform_must_not_be_reused": true,
+    "project_map_legend": [
+      "Bande verte d’équipements",
+      "Forêts",
+      "Alignement d’arbres",
+      "Ruisseaux existants à ciel ouvert",
+      "Réouverture des ruisseaux (tracé à titre indicatif)",
+      "Chemin piéton",
+      "Séquences:1.Parc,2.Château,3.Lac"
+    ],
+    "symbol_warning": "Sequence highlights and equipment point symbols are not authoritative area boundaries."
+  }
+]

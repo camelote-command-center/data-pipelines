@@ -1,0 +1,466 @@
+{
+  "document_id": "ad153736-58f1-533f-8cca-e41524f9fe12",
+  "synthesis_sha256": "a4079a88201b716ede0793150102306f8b1faddb55c391a7c2c1696244a96d02",
+  "exact_fresh_synthesis_hash_matches": true,
+  "cantonal_approval_date": "2013-04-17",
+  "approval_evidence": {
+    "url": "https://prangins.ch/uploads/calendar/PV_28.05.2013_corrig.pdf",
+    "pdf_page": 3,
+    "limitation": "Municipal minutes report cantonal approval; signed cantonal decision itself not retrieved; council amendments deferred sector details to later plans."
+  },
+  "currentness": {
+    "status": "official_2013_source_with_verified_later_policy_change",
+    "ex_rdu_url": "https://prangins.ch/prangins-officiel/service-de-l-urbanisme/urbanisme/ex-rdu/",
+    "withdrawal": "2018-09",
+    "council_motion_approval": "2018-12-13",
+    "council_evidence": "council-2018.pdf PDF2–4 (OCR plus visual review)",
+    "vote": "47 yes,1 abstention; amendment46 yes,2 abstentions",
+    "scope": "RDU and northern agricultural land development abandoned. This does not establish every unrelated 2013 category obsolete or exact legal amendment geometry.",
+    "required": "Classify source features individually as historical/current/unknown; RDU-dependent proposals cannot be represented as current development potential."
+  },
+  "registered_components": [
+    {
+      "label": "Table des matières",
+      "url": "https://prangins.ch/uploads/Pr%C3%A9avis%20CC/000_PDC_PRANGINS_130213_00_table%20des%20mati%C3%A8res.pdf",
+      "status": 200,
+      "sha256": "10c500de2fe98e9b1cbec7c2749a8507ec543f6a84a41b705a47cb1f76616416",
+      "file": "10c500de2fe9.pdf",
+      "bytes": 1577931,
+      "pdf": true,
+      "pages": 3,
+      "map_candidate_pages": [],
+      "document_id": "2fa197b6-b5b1-5ba5-93b4-9eca87ac023f"
+    },
+    {
+      "label": "Portrait de la Commune",
+      "url": "https://prangins.ch/uploads/Pr%C3%A9avis%20CC/000_PDC_PRANGINS_130213_1_portrait.pdf",
+      "status": 200,
+      "sha256": "6797f294c35f7fc50a55a9de23200b86fa5d08ed53f6ef3f44b6f31a48b05e70",
+      "file": "6797f294c35f.pdf",
+      "bytes": 1024745,
+      "pdf": true,
+      "pages": 10,
+      "map_candidate_pages": [
+        {
+          "pdf_page": 2,
+          "text_head": "Plan directeur communal Prangins \n8\n« Prangins, village vaudois faisant partie du district de \nNyon, est situé au-dessus du lac Léman, entre 372.20 \net 420 mètres d’altitude, avec son point le plus élevé à \n432 mètres. \nAujourd’hui village de résiden",
+          "indicators": []
+        },
+        {
+          "pdf_page": 3,
+          "text_head": "Plan directeur communal Prangins \n9\nCartes historiques\nCarte historique, 1836\nCarte du Général Dufour, 1832-1850\nPortrait historique\nLe portrait historique repose sur la lecture de \nquatre cartes  qui couvrent exactement un \nsiècle de l’histoire de P",
+          "indicators": []
+        },
+        {
+          "pdf_page": 4,
+          "text_head": "Plan directeur communal Prangins \n10\nCarte Siegfried, 1871-1909\nCarte historique, 1932\nPortrait historique\nLa carte Siegfried, 1871-1909 est, com-\nme celle du Général Dufour, une carte à \nl’échelle territoriale. Elle représente un fait \nmajeur pour l",
+          "indicators": [
+            "échelle"
+          ]
+        },
+        {
+          "pdf_page": 7,
+          "text_head": "Plan directeur communal Prangins \n13\nSols et matières\nSi comme nous venons de le voir, Pran-\ngins est une commune « verte », il ne faut \npourtant pas écarter notre attention des \nsurfaces minérales qui souvent témoignent \nd’un passé plus ou moins loi",
+          "indicators": []
+        },
+        {
+          "pdf_page": 8,
+          "text_head": "Plan directeur communal Prangins \n14\nUtilisation du sol \nUne des caractéristiques importantes est le grand \npourcentage de surfaces agricoles utiles - près de \n365 hectares, ce qui correspond à 60 % du territoire \ncommunal. On peut donc considérer qu",
+          "indicators": [
+            "échelle",
+            "localisation",
+            "échelle"
+          ]
+        },
+        {
+          "pdf_page": 9,
+          "text_head": "Plan directeur communal Prangins \n15\nEn ce qui concerne les idées directrices émises par le \nschéma directeur, nous aimerions aussi évoquer:\n- «Idée directrice 2 : créer des nouveaux secteurs \nd’urbanisation identitaires en étroite relation avec les ",
+          "indicators": [
+            "échelle",
+            "localisation"
+          ]
+        }
+      ],
+      "document_id": "839bfdeb-1db1-57aa-a417-345b46098d8a"
+    },
+    {
+      "label": "Constats",
+      "url": "https://prangins.ch/uploads/Pr%C3%A9avis%20CC/000_PDC_PRANGINS_130213_2_constats.pdf",
+      "status": 200,
+      "sha256": "56d6ded3d1a01e2ebc1e9e9649d08e454d7feff3c549b668ffe91340570a7d2b",
+      "file": "56d6ded3d1a0.pdf",
+      "bytes": 30337105,
+      "pdf": true,
+      "pages": 76,
+      "map_candidate_pages": [
+        {
+          "pdf_page": 5,
+          "text_head": "Gland\nPrangins\nNyon\nRolle\nPlan directeur communal Prangins \n21\n1.1 Coulées vertes\nLa rivière principale de la commune est la \nPromenthouse qui constitue la limite avec \nla commune de Gland. Cette rivière, qui \npossède un caractère « naturel » très fo",
+          "indicators": [
+            "échelle"
+          ]
+        },
+        {
+          "pdf_page": 10,
+          "text_head": "Plan directeur communal Prangins \n26\n1.4 Zones vertes\nEvolution de la végétation\nLisible sur les cartes, elle montre une \nextension de la forêt au début du 20ème \nsiècle, puis un défrichement systématique \njusqu’à aujourd’hui. Il ne reste plus actuel",
+          "indicators": []
+        },
+        {
+          "pdf_page": 16,
+          "text_head": "500\n100\nPlan directeur communal Prangins \n32\nRelevé 1980\nCe relevé, réalisé en 1980 par le bureau \nECONAT, et qui a peu évolué jusqu’à \naujourd’hui, montre la diversité des milieux \nsur la commune. Ceci s’explique par la \nprésence encore forte de l’a",
+          "indicators": [
+            "localisation"
+          ]
+        },
+        {
+          "pdf_page": 18,
+          "text_head": "Plan directeur communal Prangins \n34\n2.3 Forêts\nEvolution\nLa forêt représente le «climax» (stade final \nde l’évolution des dynamiques végétales) de \ncette région du bord du Léman. La constitu-\ntion de champs et leur maintien contribuent \nà maîtriser ",
+          "indicators": []
+        },
+        {
+          "pdf_page": 27,
+          "text_head": "Plan directeur communal Prangins \n43\n4.1 Dangers naturels\nPrévention des incendies et des éléments naturels\nLes prescriptions de protection incendie de l’Association des éta-\nblissements cantonaux d’assurance contre les incendies (AEAI), \nédition 200",
+          "indicators": []
+        },
+        {
+          "pdf_page": 29,
+          "text_head": "Plan directeur communal Prangins \n45\n4.2 Nuisances sonores \nnocturnes\nBruit des chemins de fer\nUne étude pour l'assainissement du bruit \nferroviaire sur la commune est actuelle-\nment en cours à l'Office fédéral des Trans-\nports (OFT). Les travaux d'a",
+          "indicators": []
+        },
+        {
+          "pdf_page": 33,
+          "text_head": "Plan directeur communal Prangins \n49\n4.5 Protection des eaux\nCarte indicative des dangers liés aux crues \ndes cours d’eau.\nCertains cours d’eau busés présentent des \nrisques potentiels d’inondation. Ce danger \ns’explique par un dimensionnement insuff",
+          "indicators": []
+        },
+        {
+          "pdf_page": 35,
+          "text_head": "Plan directeur communal Prangins \n51\nMOBILITE\nCONSTATS\nConstats généraux ...................................52\n1. Mobilité douce ......................................55\n1.1 Echelle territoriale ............................................... 56\n1.2 ",
+          "indicators": [
+            "Echelle"
+          ]
+        },
+        {
+          "pdf_page": 36,
+          "text_head": "Plan directeur communal Prangins \n52\nMOBILITE\nConstats généraux\nPendulaires sortants\nPendulaires entrants\nTIM\nTP\nMD\nTIM\nTP\nMD\nNyon\n59%\n34%\n7%\n69%\n12%\n19%\nGland\n91%\n2%\n7%\n87%\n7%\n6%\nAgglomération de Genève\n63%\n37%\n-\n70%\n30%\n-\nLausanne \n48%\n52%\n-\n73%\n27",
+          "indicators": [
+            "localisation"
+          ]
+        },
+        {
+          "pdf_page": 40,
+          "text_head": "Plan directeur communal Prangins \n56\n1.1 Echelle territoriale\nCarte cycliste «La Suisse à vélo»\nRoutes recommandées par l’ATE\nItinéraires cyclables balisés et numérotés,  \navec distance en kilomètres\nItinéraires cyclables balisés et numérotés\nItinéra",
+          "indicators": [
+            "Echelle"
+          ]
+        },
+        {
+          "pdf_page": 41,
+          "text_head": "Plan directeur communal Prangins \n57\n1.1 Echelle territoriale\nInventaire cantonal de chemins pédes-\ntres\nObjectifs au niveau cantonal :\n- maintien de ces itinéraires\n- amélioration des revêtements (revête-\nments mous adaptés aux marcheurs)\n- sécurité",
+          "indicators": [
+            "Echelle"
+          ]
+        },
+        {
+          "pdf_page": 43,
+          "text_head": "Plan directeur communal Prangins \n59\n1.3 Rives du lac\nLe plan directeur des Rives vaudoises du \nlac Léman plaide pour «un cheminement \ncontinu directement en rive du lac, dans la \nmesure où sa construction n’entre pas en \nconflit avec les objectifs d",
+          "indicators": []
+        },
+        {
+          "pdf_page": 47,
+          "text_head": "Plan directeur communal Prangins \n63\nProblématique\nLes routes de L’Etraz et du Lac constituent des coupures \nimportantes dans le territoire. Leur largeur, leur caractère \nexclusivement routier, les importantes charges de trafic, \nla limitation de la ",
+          "indicators": [
+            "échelle"
+          ]
+        },
+        {
+          "pdf_page": 56,
+          "text_head": "500\n100\nPlan directeur communal Prangins \n72\nL’occupation du bord du lac a commencé \ndès le début du 19ème siècle, comme en \ntémoigne une carte historique datée de \n1836. Beaucoup de ces villas sont en \nréalité des maisons de maître, d’une certaine \n",
+          "indicators": []
+        },
+        {
+          "pdf_page": 69,
+          "text_head": "Plan directeur communal Prangins \n85\nII.1.3 ISOS\n« L’ISOS établit une distinction entre les \nsites construits d’importance locale, ré-\ngionale et nationale.»\n«L’ISOS procède à des évaluations, mais \nnon pas en fonction de la qualité des bâti-\nments p",
+          "indicators": []
+        }
+      ],
+      "document_id": "6e43b32d-1833-5926-be3f-5fd54c23e672"
+    },
+    {
+      "label": "Plan Directeur",
+      "url": "https://prangins.ch/uploads/Pr%C3%A9avis%20CC/000_PDC_PRANGINS_130213_3_plan_directeur.pdf",
+      "status": 200,
+      "sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "file": "a70f0043ed91.pdf",
+      "bytes": 28350271,
+      "pdf": true,
+      "pages": 78,
+      "map_candidate_pages": [
+        {
+          "pdf_page": 4,
+          "text_head": "Plan directeur communal Prangins \n96\nPlan directeur cantonal\nObjectifs \nrecherche d’une qualité du cadre de vie\n• \npréservation des surfaces agricoles et naturelles, \n• \néconomie du sol\ncohérence et complémentarité des diverses \n• \nfonctions du terri",
+          "indicators": [
+            "échelle"
+          ]
+        },
+        {
+          "pdf_page": 9,
+          "text_head": "Plan directeur communal Prangins \n101\n- Offrir des opportunités pour des institutions semi-\npubliques et des entreprises de provenance natio-\nnale et internationale\n- Eviter l’implantation d’activités sans valeur d’image \nou avec une faible densité d",
+          "indicators": [
+            "localisation"
+          ]
+        },
+        {
+          "pdf_page": 18,
+          "text_head": "Plan directeur communal Prangins \n110\nCIPEL\nCIPEL\nPar son action en matière de protection des \neaux, la CIPEL (Commission Internationale \npour la Protection des Eaux du Lac) contri-\nbue à la coordination de la politique de l’eau \nà l’échelle du bassi",
+          "indicators": [
+            "échelle"
+          ]
+        },
+        {
+          "pdf_page": 24,
+          "text_head": "Plan directeur communal Prangins \n116\n1.4 Coupes paysagères\nDifférencier les structures linéaires \nselon leurs spécificités en termes \nde hauteur, largeur, composition et \nfonction (production, gestion des \neaux pluviales, ombrage, etc.) \nPrincipes\n1",
+          "indicators": [
+            "échelle"
+          ]
+        },
+        {
+          "pdf_page": 25,
+          "text_head": "Plan directeur communal Prangins \n117\nObjectifs et principes\n2. Milieux naturels\nDans le développement actuel des communes \nriveraines du Léman, il semble difficile de conser-\nver la richesse et la diversité de milieux naturels.\nPrangins, qui possède",
+          "indicators": [
+            "échelle"
+          ]
+        },
+        {
+          "pdf_page": 31,
+          "text_head": "Plan directeur communal Prangins \n123\n4.2 Nuisances sonores\n4.4 Rayonnements\n4.3 Gestion des déchets\nPrincipes\n- D’une façon générale, favoriser la \nmodération de la circulation\n- Mettre en place des zones à vitesse \nlimitée (zone 30, zone modérée)\n-",
+          "indicators": []
+        },
+        {
+          "pdf_page": 32,
+          "text_head": "Plan directeur communal Prangins \n124\n4.5 Protection des eaux\nPrincipes\n- Limiter l’étendue des surfaces \nimperméables dans les aménage-\nments extérieurs \n- Retenir et infiltrer l’eau avant qu’el-\nle n’atteigne le réseau de canalisa-\ntions (toitures ",
+          "indicators": [
+            "échelle"
+          ]
+        },
+        {
+          "pdf_page": 43,
+          "text_head": "Plan directeur communal Prangins \n135\nRappel RDU (Feddersen et Klostermann)\nLe PDCn reprend les grandes options de la \nRDU dont le phasage du projet devra être \ncoordonné avec la planification à l’échelle \nde l’agglomération.\n2. Mobilité individuelle",
+          "indicators": [
+            "échelle"
+          ]
+        },
+        {
+          "pdf_page": 47,
+          "text_head": "500\n100\nPlan directeur communal Prangins \n139\nPrincipes\nLa route de Lac a été aménagée alors que \nl’autoroute A1 n’existait pas. Elle était alors \nchargée d’écouler tout le trafic de transit. \nActuellement, la fonction de cette route \na changé. Même ",
+          "indicators": [
+            "échelle"
+          ]
+        },
+        {
+          "pdf_page": 50,
+          "text_head": "Gare de \nNyon\n \nAxe lourd (tram - cadence 10 - 15’)\n \nDesserte fine (cadence 15 à 30’)\n \n \nLigne régionale (cadence 30’)\nL’Asse\nEysin\nvers Gare de Nyon\nà long terme - vers \nGare de Gland\nPlan directeur communal Prangins \n142\n3.1a Variante à long term",
+          "indicators": [
+            "échelle"
+          ]
+        },
+        {
+          "pdf_page": 56,
+          "text_head": "500\n100\ntransports\nenvironnement\naménagement du territoire\nt e a m +\nCommune de Prangins\nRoute de Benex-Dessus\nAménagements d'un trottoir et\nd'un arrêt de bus    1:500\nPlan directeur communal Prangins \n148\nI.1.1 Centralités\nRenforcer les centralités ",
+          "indicators": []
+        },
+        {
+          "pdf_page": 63,
+          "text_head": "500\n100\nPlan directeur communal Prangins \n155\nInstaurer une zone près du lac pour \nl’implantation prioritaire d’activités à \nhaute valeur ajoutée\nPrincipes\n- Intégrer ces nouvelles constructions de \nfaçon à ne pas porter atteinte aux valeurs \npatrimo",
+          "indicators": [
+            "localisation"
+          ]
+        }
+      ],
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394"
+    },
+    {
+      "label": "Mesures d’aménagement",
+      "url": "https://prangins.ch/uploads/Pr%C3%A9avis%20CC/000_PDC_PRANGINS_130213_4_mesures_amenagement.pdf",
+      "status": 200,
+      "sha256": "fc1f4c662e71c43744ff3d241b0be573447756232d68c7425cda976f7138f81e",
+      "file": "fc1f4c662e71.pdf",
+      "bytes": 12274517,
+      "pdf": true,
+      "pages": 58,
+      "map_candidate_pages": [
+        {
+          "pdf_page": 5,
+          "text_head": "Plan directeur communal Prangins \n175\nDescriptif: La route du Lac a été aménagée alors que l’autoroute A1 n’existait pas. Elle était donc chargée d’écouler \ntout le trafic de transit. Actuellement, la fonction de cette route a changé. Même si elle do",
+          "indicators": [
+            "échelle",
+            "LOCALISATION"
+          ]
+        },
+        {
+          "pdf_page": 9,
+          "text_head": "Plan directeur communal Prangins \n179\nDescriptif : Les terrains situés au bord du lac correspondent à une zone à occuper par plan spécial au sud. \nLes qualités paysagères sont particulièrement importantes dans tout le secteur.\nAnalyse :\n- Projet en c",
+          "indicators": [
+            "LOCALISATION"
+          ]
+        },
+        {
+          "pdf_page": 13,
+          "text_head": "Plan directeur communal Prangins \n183\nDescriptif : Cette route présente un fort trafic routier qui risque de s’aggraver temporairement, dès que le tronçon \nnyonnais de la RDU sera construit. Ce trafic s’accompagne de conséquences : nuisances sonores ",
+          "indicators": [
+            "LOCALISATION"
+          ]
+        },
+        {
+          "pdf_page": 17,
+          "text_head": "Plan directeur communal Prangins \n187\nDescriptif : Le Schéma directeur de l’agglomération nyonnaise prévoit un développement important de la ré-\ngion (augmentation de sa population de l’ordre de 3’000 habitants et de 2’000 emplois supplémentaires d’i",
+          "indicators": [
+            "LOCALISATION"
+          ]
+        },
+        {
+          "pdf_page": 21,
+          "text_head": "Plan directeur communal Prangins \n191\nDescriptif : Le centre du village de Prangins est une structure dense sous forme de village-rue, celle-ci étant bor-\ndée de maisons contiguës. Le centre du village abrite des monuments, une église, l’administrati",
+          "indicators": [
+            "LOCALISATION"
+          ]
+        },
+        {
+          "pdf_page": 25,
+          "text_head": "Plan directeur communal Prangins \n195\nDescriptif : Le plan de quartier « Les Morettes » a été approuvé en 1982, il date donc de 29 ans. Il a donné lieu \nà la construction d’équipements communaux et d’une série d’immeubles de logements. On observe éga",
+          "indicators": [
+            "LOCALISATION"
+          ]
+        },
+        {
+          "pdf_page": 29,
+          "text_head": "Plan directeur communal Prangins \n199\nDescriptif : A Prangins, le tissu industriel et artisanal est à la fois extrêmement réduit et important. En effet, à part \nquelques surfaces de travail et artisanales situées à l’entrée de la commune, le long de ",
+          "indicators": [
+            "LOCALISATION"
+          ]
+        },
+        {
+          "pdf_page": 35,
+          "text_head": "Plan directeur communal Prangins \n205\nFiche de coordination P1\nLOCALISATION\nCOORDINATION\nPréserver et continuer le cheminement le long de la Promenthouse\nLa Promenthouse est une rivière  \nmarquant la limite communale \nentre Prangins et Gland\nDESCRIPT",
+          "indicators": [
+            "LOCALISATION"
+          ]
+        },
+        {
+          "pdf_page": 39,
+          "text_head": "Plan directeur communal Prangins \n209\nFiche de coordination P2\nLOCALISATION\nCOORDINATION\nCréation d’une limite entre la zone agricole et la zone bâtie\nAxe nord-ouest/ sud-est entre \nla ville bâtie et le territoire agri-\ncole.\nDescriptif :\nAujourd’hui",
+          "indicators": [
+            "LOCALISATION"
+          ]
+        },
+        {
+          "pdf_page": 43,
+          "text_head": "Fiche de coordination P3\nCréation d’une bande verte d’équipements\nPlan directeur communal Prangins \n213\nDescriptif : \nCet axe est aujourd’hui partiellement existant. En témoignent le boisement du sentier de la Chenalette et son cours \nd’eau, le boise",
+          "indicators": [
+            "LOCALISATION"
+          ]
+        },
+        {
+          "pdf_page": 47,
+          "text_head": "Fiche de coordination P4\nCréation d’une liaison piétonne entre le château de Changins et le lac\nPlan directeur communal Prangins \n217\nDescriptif : \nLes futurs quartier projetés par le SDAN sont actuellement des champs agricoles. Le territoire communa",
+          "indicators": [
+            "LOCALISATION",
+            "échelle"
+          ]
+        },
+        {
+          "pdf_page": 51,
+          "text_head": "Fiche de coordination P5\nLOCALISATION\nCOORDINATION\nRéouverture des ruisseaux à ciel ouvert\nQuatre nants concernés, deux \nen ville et deux en territoire \nagricole\nDESCRIPTIF, ANALYSE, OBJECTIFS\nDescriptif : \nLa Promenthouse est aujourd’hui la seule ri",
+          "indicators": [
+            "LOCALISATION"
+          ]
+        },
+        {
+          "pdf_page": 55,
+          "text_head": "Fiche de coordination P6\nCohabitation entre pratiques agricoles et promeneurs\nPlan directeur communal Prangins \n225\nDescriptif :\nLe territoire agricole de Prangins est varié en typologies de cultures pratiquées. Il n’est cependant pas aménagé \npour l",
+          "indicators": [
+            "LOCALISATION"
+          ]
+        }
+      ],
+      "document_id": "d51be29b-8c9d-542c-988c-56aa3495545b"
+    },
+    {
+      "label": "Synthèse",
+      "url": "https://prangins.ch/uploads/Pr%C3%A9avis%20CC/000_PDC_PRANGINS_130213_6_planSYNTHESE.pdf",
+      "status": 200,
+      "sha256": "a4079a88201b716ede0793150102306f8b1faddb55c391a7c2c1696244a96d02",
+      "file": "a4079a88201b.pdf",
+      "bytes": 2334879,
+      "pdf": true,
+      "pages": 1,
+      "map_candidate_pages": [
+        {
+          "pdf_page": 1,
+          "text_head": "PAYSAGE ET ENVIRONNEMENT\nURBANISME, PATRIMOINE, ESPACES PUBLICS\nMOBILITE\nVILLAGE \nPLAN DE SYNTHESE\nECHELLE 1/5000\nBois, forêts\nCordons boisés, végétation structurante existante\nCordons boisés à créer\nEspace à vocation agricole\nVignes\nVergers\nLimite p",
+          "indicators": [
+            "PLAN DE SYNTH",
+            "ECHELLE"
+          ]
+        }
+      ],
+      "document_id": "ad153736-58f1-533f-8cca-e41524f9fe12"
+    },
+    {
+      "label": "Annexes",
+      "url": "https://prangins.ch/uploads/Pr%C3%A9avis%20CC/000_PDC_PRANGINS_130213_5_annexes.pdf",
+      "status": 200,
+      "sha256": "21e0e384867607bce560534483ea35ba724e4114d0b3f0c062db7ac0b1fa386c",
+      "file": "21e0e3848676.pdf",
+      "bytes": 1016961,
+      "pdf": true,
+      "pages": 9,
+      "map_candidate_pages": [
+        {
+          "pdf_page": 8,
+          "text_head": "Plan directeur communal Prangins \n236\nPlan directeur de Prangins • Ateliers du 26 janvier 2008 \n7 \n• \nPrangins doit rattraper son retard (dans la réalisation de la RDU) \n• \nDévelopper conjointement la RDU et l'extension urbaine correspondante \n• \nIl ",
+          "indicators": [
+            "échelle"
+          ]
+        }
+      ],
+      "document_id": "5fa94158-4824-593b-bbb4-2881550b6952"
+    }
+  ],
+  "total_source_pages": 235,
+  "synthesis_categories": 59,
+  "represented_category_labels": 9,
+  "existing_rows": 23,
+  "rows_are_not_complete_sectors": true,
+  "new_qualifying_sources": 0,
+  "extraction_exclusions": [
+    "existing15densification paths",
+    "inset1:2000 not transferred",
+    "mixed symbols/strokes/patterns",
+    "ambiguousgreenprojectfill categories",
+    "invalid and multiple-contour paths; see accounting"
+  ],
+  "remaining_deliverables": [
+    {
+      "priority": 1,
+      "task": "Attach verified 2018 RDU withdrawal and council decision to Prangins source/affected private thematic rows, preserving historical geometry and exact source version."
+    },
+    {
+      "priority": 2,
+      "task": "Resolve every undelivered synthesis legend entry: reconstruct area/pattern supports, typed line/point extraction or explicit scope exclusion; inspect main map versus1:2000 village inset separately."
+    },
+    {
+      "priority": 3,
+      "task": "Review13 coordinate-specific sector/landscape cards S1–S7 and P1–P6 in58page Mesures document; link their scopes/requirements to synthesis categories; do not inherit synthesis georeference across maps."
+    },
+    {
+      "priority": 4,
+      "task": "Complete visual cartographic ledger for235source pages; diagnostic/upper-level maps may be explicit context exclusions, but page-level decision evidence is still missing."
+    },
+    {
+      "priority": 5,
+      "task": "Resolve four existing footprint discrepancies, source-indicative boundary precision and semantic/currentness review before any strict validated-sector release; independent current receiver proof after changes."
+    }
+  ],
+  "commune_complete": false,
+  "source_precision_m": null
+}

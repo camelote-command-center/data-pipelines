@@ -185,6 +185,8 @@ def persist(conn,source,sha,pages):
     persist_aigle_thematic(conn,doc_id,sha)
     from prangins_thematic import persist as persist_prangins_thematic
     persist_prangins_thematic(conn,doc_id,sha)
+    from prangins_policy import persist as persist_prangins_policy
+    persist_prangins_policy(conn,doc_id,sha)
     return doc_id
 
 
