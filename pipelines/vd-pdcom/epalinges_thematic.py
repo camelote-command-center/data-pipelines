@@ -9,7 +9,7 @@ from official_references import refresh
 from cadastral_types import KINDS
 DOC='8f42da46-9b59-5b72-aa5b-13522e418682'
 SHA='bd095d80d2284073a93ef7e108f89b083d32fb361c97b689809522b7b8f64c86'
-BATCH_SHA='73d519a5fd39a782b62b76e1a04e334ac9db157da36af9bfb98fa5441b510190'
+BATCH_SHA='aaaae1a6950c648c4c725c42d6f37a693ce20df362d90d86972e913874277f1e'
 KEYS={'99:low','99:village','99:agriculture','99:landscape','99:very_low_inside','102:fallow','102:groundwater','102:contaminated_fill'}
 OLD_PATHS={'99:33','99:44','99:390','99:402','99:415','99:426'}
 def sector_id(key):
