@@ -1,0 +1,1134 @@
+{
+  "frozen_at": "2026-09-22T13:18:30.625733+00:00",
+  "controls": [
+    {
+      "site_id": "M5",
+      "role": "train",
+      "source_path_index": 14232,
+      "source_centroid_pdf": [
+        463.20399475097656,
+        422.44511413574213
+      ],
+      "reference_centroid_lv95": [
+        2527229.342316886,
+        1151667.34117176
+      ],
+      "reference_ids": [
+        {
+          "OBJECTID": 46573184,
+          "EGID": 799329
+        }
+      ],
+      "source_geometry_pdf": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              463.50299072265625,
+              420.8026123046875
+            ],
+            [
+              464.39898681640625,
+              421.4006042480469
+            ],
+            [
+              462.9049987792969,
+              424.0876159667969
+            ],
+            [
+              462.0090026855469,
+              423.4896240234375
+            ],
+            [
+              463.50299072265625,
+              420.8026123046875
+            ]
+          ]
+        ]
+      },
+      "reference_geometry_lv95": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2527226.213,
+              1151649.988
+            ],
+            [
+              2527226.703,
+              1151649.698
+            ],
+            [
+              2527244.913,
+              1151681.378
+            ],
+            [
+              2527233.693,
+              1151687.838
+            ],
+            [
+              2527213.733,
+              1151653.167
+            ],
+            [
+              2527224.503,
+              1151646.998
+            ],
+            [
+              2527226.213,
+              1151649.988
+            ]
+          ]
+        ]
+      },
+      "manual_identity_status": "corresponding_building_or_explicit_whole_row_identified_in_source_photo_and_ground_reference",
+      "review_image": "M5-control-identity.jpg",
+      "precision_limit": "Cartographically generalized outline; centroid is not a surveyed ground-control marker. Matching source identity does not establish exact outline equality.",
+      "union_note": null
+    },
+    {
+      "site_id": "D2",
+      "role": "train",
+      "source_path_index": 9327,
+      "source_centroid_pdf": [
+        704.0001229395701,
+        328.3949995286092
+      ],
+      "reference_centroid_lv95": [
+        2530637.3927401295,
+        1153001.3415658588
+      ],
+      "reference_ids": [
+        {
+          "OBJECTID": 46751466,
+          "EGID": 795552
+        }
+      ],
+      "source_geometry_pdf": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              705.3436279296875,
+              326.45458984375
+            ],
+            [
+              706.2396240234375,
+              329.1416015625
+            ],
+            [
+              702.6555786132812,
+              330.3356018066406
+            ],
+            [
+              701.7615966796875,
+              327.64764404296875
+            ],
+            [
+              705.3436279296875,
+              326.45458984375
+            ]
+          ]
+        ]
+      },
+      "reference_geometry_lv95": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2530669.241,
+              1152994.05
+            ],
+            [
+              2530657.381,
+              1153027.19
+            ],
+            [
+              2530605.539,
+              1153008.638
+            ],
+            [
+              2530617.4189999998,
+              1152975.488
+            ],
+            [
+              2530669.241,
+              1152994.05
+            ]
+          ]
+        ]
+      },
+      "manual_identity_status": "corresponding_building_or_explicit_whole_row_identified_in_source_photo_and_ground_reference",
+      "review_image": "D2-control-identity.jpg",
+      "precision_limit": "Cartographically generalized outline; centroid is not a surveyed ground-control marker. Matching source identity does not establish exact outline equality.",
+      "union_note": null
+    },
+    {
+      "site_id": "L2",
+      "role": "train",
+      "source_path_index": 11689,
+      "source_centroid_pdf": [
+        660.2773157731482,
+        315.49681599104446
+      ],
+      "reference_centroid_lv95": [
+        2530021.662580696,
+        1153179.1250297797
+      ],
+      "reference_ids": [
+        {
+          "OBJECTID": 46708423,
+          "EGID": 9020550
+        }
+      ],
+      "source_geometry_pdf": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              661.4553833007812,
+              316.90032958984375
+            ],
+            [
+              661.1544189453125,
+              316.90032958984375
+            ],
+            [
+              659.6633911132812,
+              317.496337890625
+            ],
+            [
+              657.8723754882812,
+              314.809326171875
+            ],
+            [
+              659.96240234375,
+              313.31732177734375
+            ],
+            [
+              660.857421875,
+              314.51129150390625
+            ],
+            [
+              661.1544189453125,
+              314.21234130859375
+            ],
+            [
+              661.75341796875,
+              315.10931396484375
+            ],
+            [
+              662.0524291992188,
+              314.809326171875
+            ],
+            [
+              662.9464111328125,
+              316.0032958984375
+            ],
+            [
+              661.4553833007812,
+              316.90032958984375
+            ]
+          ],
+          [
+            [
+              660.2603759765625,
+              316.3033447265625
+            ],
+            [
+              660.557373046875,
+              316.0032958984375
+            ],
+            [
+              659.96240234375,
+              315.10931396484375
+            ],
+            [
+              659.6633911132812,
+              315.40728759765625
+            ],
+            [
+              660.2603759765625,
+              316.3033447265625
+            ]
+          ]
+        ]
+      },
+      "reference_geometry_lv95": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2530034.56,
+              1153163.394
+            ],
+            [
+              2530037.57,
+              1153158.784
+            ],
+            [
+              2530056.63,
+              1153172.024
+            ],
+            [
+              2530046.58,
+              1153186.184
+            ],
+            [
+              2530042.0,
+              1153182.914
+            ],
+            [
+              2530032.3,
+              1153196.914
+            ],
+            [
+              2530027.53,
+              1153193.794
+            ],
+            [
+              2530017.74,
+              1153207.655
+            ],
+            [
+              2530008.12,
+              1153201.105
+            ],
+            [
+              2530004.93,
+              1153201.415
+            ],
+            [
+              2529999.69,
+              1153197.725
+            ],
+            [
+              2529999.06,
+              1153194.745
+            ],
+            [
+              2529989.48,
+              1153188.015
+            ],
+            [
+              2530015.74,
+              1153150.454
+            ],
+            [
+              2530034.56,
+              1153163.394
+            ]
+          ],
+          [
+            [
+              2530028.0,
+              1153173.114
+            ],
+            [
+              2530018.7,
+              1153166.714
+            ],
+            [
+              2530009.09,
+              1153180.515
+            ],
+            [
+              2530018.26,
+              1153186.915
+            ],
+            [
+              2530028.0,
+              1153173.114
+            ]
+          ]
+        ]
+      },
+      "manual_identity_status": "corresponding_building_or_explicit_whole_row_identified_in_source_photo_and_ground_reference",
+      "review_image": "L2-control-identity.jpg",
+      "precision_limit": "Cartographically generalized outline; centroid is not a surveyed ground-control marker. Matching source identity does not establish exact outline equality.",
+      "union_note": null
+    },
+    {
+      "site_id": "T4",
+      "role": "train",
+      "source_path_index": 14283,
+      "source_centroid_pdf": [
+        408.7644653320312,
+        503.82052684231957
+      ],
+      "reference_centroid_lv95": [
+        2526460.7093102816,
+        1150513.0691562966
+      ],
+      "reference_ids": [
+        {
+          "OBJECTID": 46558104,
+          "EGID": 801528
+        }
+      ],
+      "source_geometry_pdf": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              406.7738037109375,
+              502.6106262207031
+            ],
+            [
+              408.86480712890625,
+              501.4176025390625
+            ],
+            [
+              410.65478515625,
+              505.2986145019531
+            ],
+            [
+              408.86480712890625,
+              506.193603515625
+            ],
+            [
+              406.7738037109375,
+              502.6106262207031
+            ]
+          ]
+        ]
+      },
+      "reference_geometry_lv95": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2526453.514,
+              1150493.582
+            ],
+            [
+              2526460.254,
+              1150480.663
+            ],
+            [
+              2526487.584,
+              1150495.023
+            ],
+            [
+              2526480.804,
+              1150507.963
+            ],
+            [
+              2526480.684,
+              1150507.903
+            ],
+            [
+              2526472.0439999998,
+              1150524.313
+            ],
+            [
+              2526473.214,
+              1150524.923
+            ],
+            [
+              2526472.664,
+              1150525.953
+            ],
+            [
+              2526471.504,
+              1150525.3429999999
+            ],
+            [
+              2526460.934,
+              1150545.483
+            ],
+            [
+              2526433.894,
+              1150531.242
+            ],
+            [
+              2526453.634,
+              1150493.632
+            ],
+            [
+              2526453.514,
+              1150493.582
+            ]
+          ]
+        ]
+      },
+      "manual_identity_status": "corresponding_building_or_explicit_whole_row_identified_in_source_photo_and_ground_reference",
+      "review_image": "T4-control-identity.jpg",
+      "precision_limit": "Cartographically generalized outline; centroid is not a surveyed ground-control marker. Matching source identity does not establish exact outline equality.",
+      "union_note": null
+    },
+    {
+      "site_id": "P5",
+      "role": "holdout",
+      "source_path_index": 9519,
+      "source_centroid_pdf": [
+        684.474917230097,
+        397.90192177554917
+      ],
+      "reference_centroid_lv95": [
+        2530362.847619957,
+        1152013.845081789
+      ],
+      "reference_ids": [
+        {
+          "OBJECTID": 46590724,
+          "EGID": 90002866
+        }
+      ],
+      "source_geometry_pdf": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              685.041015625,
+              398.70892333984375
+            ],
+            [
+              683.5479736328125,
+              398.1119079589844
+            ],
+            [
+              683.8480224609375,
+              397.21490478515625
+            ],
+            [
+              685.3380126953125,
+              397.513916015625
+            ],
+            [
+              685.041015625,
+              398.70892333984375
+            ]
+          ]
+        ]
+      },
+      "reference_geometry_lv95": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2530350.25,
+              1152009.93
+            ],
+            [
+              2530371.71,
+              1152004.08
+            ],
+            [
+              2530375.4,
+              1152017.609
+            ],
+            [
+              2530366.68,
+              1152019.99
+            ],
+            [
+              2530366.89,
+              1152020.76
+            ],
+            [
+              2530362.85,
+              1152021.85
+            ],
+            [
+              2530362.64,
+              1152021.09
+            ],
+            [
+              2530353.95,
+              1152023.46
+            ],
+            [
+              2530350.25,
+              1152009.93
+            ]
+          ]
+        ]
+      },
+      "manual_identity_status": "corresponding_building_or_explicit_whole_row_identified_in_source_photo_and_ground_reference",
+      "review_image": "P5-control-identity.jpg",
+      "precision_limit": "Cartographically generalized outline; centroid is not a surveyed ground-control marker. Matching source identity does not establish exact outline equality.",
+      "union_note": null
+    },
+    {
+      "site_id": "E1",
+      "role": "holdout",
+      "source_path_index": 8432,
+      "source_centroid_pdf": [
+        748.3158552285587,
+        208.16476428508406
+      ],
+      "reference_centroid_lv95": [
+        2531270.8213933455,
+        1154702.4457561513
+      ],
+      "reference_ids": [
+        {
+          "OBJECTID": 46627984,
+          "EGID": 795793
+        }
+      ],
+      "source_geometry_pdf": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              748.63671875,
+              207.62249755859375
+            ],
+            [
+              748.9357299804688,
+              208.22052001953125
+            ],
+            [
+              748.0377197265625,
+              208.8165283203125
+            ],
+            [
+              747.74072265625,
+              207.9224853515625
+            ],
+            [
+              748.63671875,
+              207.62249755859375
+            ]
+          ]
+        ]
+      },
+      "reference_geometry_lv95": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2531278.257,
+              1154701.958
+            ],
+            [
+              2531273.447,
+              1154708.9780000001
+            ],
+            [
+              2531267.997,
+              1154705.259
+            ],
+            [
+              2531267.157,
+              1154706.499
+            ],
+            [
+              2531263.306,
+              1154703.839
+            ],
+            [
+              2531268.937,
+              1154695.609
+            ],
+            [
+              2531278.257,
+              1154701.958
+            ]
+          ]
+        ]
+      },
+      "manual_identity_status": "corresponding_building_or_explicit_whole_row_identified_in_source_photo_and_ground_reference",
+      "review_image": "E1-control-identity.jpg",
+      "precision_limit": "Cartographically generalized outline; centroid is not a surveyed ground-control marker. Matching source identity does not establish exact outline equality.",
+      "union_note": null
+    },
+    {
+      "site_id": "L6",
+      "role": "holdout",
+      "source_path_index": 11903,
+      "source_centroid_pdf": [
+        624.4316813151042,
+        324.96111806214225
+      ],
+      "reference_centroid_lv95": [
+        2529508.009900236,
+        1153052.0945068684
+      ],
+      "reference_ids": [
+        {
+          "OBJECTID": 46659296,
+          "EGID": 280002581
+        }
+      ],
+      "source_geometry_pdf": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              623.2376708984375,
+              324.66259765625
+            ],
+            [
+              624.4317016601562,
+              323.7666015625
+            ],
+            [
+              625.6256713867188,
+              325.2596435546875
+            ],
+            [
+              624.4317016601562,
+              326.1556396484375
+            ],
+            [
+              623.2376708984375,
+              324.66259765625
+            ]
+          ]
+        ]
+      },
+      "reference_geometry_lv95": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2529506.782,
+              1153066.488
+            ],
+            [
+              2529505.302,
+              1153065.098
+            ],
+            [
+              2529504.912,
+              1153064.878
+            ],
+            [
+              2529503.992,
+              1153065.888
+            ],
+            [
+              2529502.7930517714,
+              1153065.8919479167
+            ],
+            [
+              2529501.6093000732,
+              1153065.7016209376
+            ],
+            [
+              2529500.4720156067,
+              1153065.3220468552
+            ],
+            [
+              2529499.4112415663,
+              1153064.7632527282
+            ],
+            [
+              2529498.455,
+              1153064.04
+            ],
+            [
+              2529498.312,
+              1153063.908
+            ],
+            [
+              2529497.480571825,
+              1153062.9974684939
+            ],
+            [
+              2529496.8127269475,
+              1153061.9609726407
+            ],
+            [
+              2529496.3271900536,
+              1153060.827573171
+            ],
+            [
+              2529496.0375743737,
+              1153059.6290477472
+            ],
+            [
+              2529495.952,
+              1153058.399
+            ],
+            [
+              2529496.132,
+              1153058.199
+            ],
+            [
+              2529492.452,
+              1153054.849
+            ],
+            [
+              2529493.252,
+              1153054.009
+            ],
+            [
+              2529493.012,
+              1153053.779
+            ],
+            [
+              2529509.741,
+              1153035.739
+            ],
+            [
+              2529520.672,
+              1153045.858
+            ],
+            [
+              2529521.582,
+              1153044.958
+            ],
+            [
+              2529521.801397796,
+              1153044.8916660084
+            ],
+            [
+              2529522.0286779637,
+              1153044.8620127337
+            ],
+            [
+              2529522.2577508963,
+              1153044.8698346883
+            ],
+            [
+              2529522.482478952,
+              1153044.914922295
+            ],
+            [
+              2529522.696840904,
+              1153044.9960675042
+            ],
+            [
+              2529522.895093268,
+              1153045.1110961603
+            ],
+            [
+              2529523.071924189,
+              1153045.2569262548
+            ],
+            [
+              2529523.2225957685,
+              1153045.429650505
+            ],
+            [
+              2529523.343071002,
+              1153045.624641042
+            ],
+            [
+              2529523.43012195,
+              1153045.8366734071
+            ],
+            [
+              2529523.4814162212,
+              1153046.060066534
+            ],
+            [
+              2529523.495579469,
+              1153046.2888349623
+            ],
+            [
+              2529523.472232211,
+              1153046.5168492093
+            ],
+            [
+              2529523.412,
+              1153046.738
+            ],
+            [
+              2529522.572,
+              1153047.638
+            ],
+            [
+              2529524.452,
+              1153049.438
+            ],
+            [
+              2529519.482,
+              1153054.798
+            ],
+            [
+              2529518.812,
+              1153054.168
+            ],
+            [
+              2529510.272,
+              1153063.298
+            ],
+            [
+              2529510.932,
+              1153063.958
+            ],
+            [
+              2529507.712,
+              1153067.378
+            ],
+            [
+              2529506.782,
+              1153066.488
+            ]
+          ]
+        ]
+      },
+      "manual_identity_status": "corresponding_building_or_explicit_whole_row_identified_in_source_photo_and_ground_reference",
+      "review_image": "L6-control-identity.jpg",
+      "precision_limit": "Cartographically generalized outline; centroid is not a surveyed ground-control marker. Matching source identity does not establish exact outline equality.",
+      "union_note": null
+    },
+    {
+      "site_id": "Ei1",
+      "role": "holdout",
+      "source_path_index": 11328,
+      "source_centroid_pdf": [
+        515.7574692286391,
+        309.7742476347377
+      ],
+      "reference_centroid_lv95": [
+        2527970.755280974,
+        1153262.908529563
+      ],
+      "reference_ids": [
+        {
+          "OBJECTID": 46752187,
+          "EGID": 9020445
+        },
+        {
+          "OBJECTID": 46635358,
+          "EGID": 280097194
+        },
+        {
+          "OBJECTID": 46752284,
+          "EGID": 796137
+        }
+      ],
+      "source_geometry_pdf": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              515.4536743164062,
+              309.43572998046875
+            ],
+            [
+              515.1547241210938,
+              309.43572998046875
+            ],
+            [
+              516.9467163085938,
+              308.53973388671875
+            ],
+            [
+              517.544677734375,
+              309.43572998046875
+            ],
+            [
+              516.0507202148438,
+              310.3306884765625
+            ],
+            [
+              514.2597045898438,
+              310.9287109375
+            ],
+            [
+              513.960693359375,
+              310.03369140625
+            ],
+            [
+              515.4536743164062,
+              309.43572998046875
+            ]
+          ]
+        ]
+      },
+      "reference_geometry_lv95": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2527953.0,
+              1153247.766
+            ],
+            [
+              2527952.533,
+              1153247.612
+            ],
+            [
+              2527948.91,
+              1153257.621
+            ],
+            [
+              2527945.039,
+              1153255.628
+            ],
+            [
+              2527942.746,
+              1153259.299
+            ],
+            [
+              2527947.123,
+              1153262.023
+            ],
+            [
+              2527947.019,
+              1153262.326
+            ],
+            [
+              2527948.447,
+              1153262.904
+            ],
+            [
+              2527954.481,
+              1153265.358
+            ],
+            [
+              2527955.593,
+              1153265.822
+            ],
+            [
+              2527955.874,
+              1153265.007
+            ],
+            [
+              2527958.247,
+              1153265.8969999999
+            ],
+            [
+              2527957.916,
+              1153266.604
+            ],
+            [
+              2527958.603,
+              1153266.852
+            ],
+            [
+              2527960.074,
+              1153267.405
+            ],
+            [
+              2527960.265,
+              1153266.882
+            ],
+            [
+              2527961.663,
+              1153267.418
+            ],
+            [
+              2527964.062,
+              1153268.341
+            ],
+            [
+              2527966.325,
+              1153269.208
+            ],
+            [
+              2527967.001,
+              1153269.471
+            ],
+            [
+              2527967.327,
+              1153268.492
+            ],
+            [
+              2527978.974,
+              1153274.673
+            ],
+            [
+              2527978.704,
+              1153275.231
+            ],
+            [
+              2527988.263,
+              1153280.197
+            ],
+            [
+              2527995.402,
+              1153265.139
+            ],
+            [
+              2527973.168,
+              1153253.183
+            ],
+            [
+              2527972.103,
+              1153254.731
+            ],
+            [
+              2527968.464,
+              1153253.383
+            ],
+            [
+              2527968.157,
+              1153253.252
+            ],
+            [
+              2527968.016,
+              1153253.216
+            ],
+            [
+              2527964.432,
+              1153251.877
+            ],
+            [
+              2527960.228,
+              1153250.305
+            ],
+            [
+              2527953.0,
+              1153247.766
+            ]
+          ]
+        ]
+      },
+      "manual_identity_status": "corresponding_building_or_explicit_whole_row_identified_in_source_photo_and_ground_reference",
+      "review_image": "Ei1-control-identity.jpg",
+      "precision_limit": "Cartographically generalized outline; centroid is not a surveyed ground-control marker. Matching source identity does not establish exact outline equality.",
+      "union_note": "Three independently visible contiguous building parts combined to correspond to the single source row silhouette; no snapping or buffer."
+    }
+  ],
+  "fit_spec": "One similarity transform on four training centroid pairs, reflected PDF y; all four reserved checks retained. No outlier rejection, adaptive rescale, or holdout refinement.",
+  "screening_gate": "All four reserved checks within 10 m, reported only as coordinate-recovery screen; insufficient alone for sector release.",
+  "prior_selection_failures": {
+    "M5": [
+      {
+        "path": 13990,
+        "reason": "Simplified oval hall differs from detailed current ground footprint."
+      },
+      {
+        "path": 14231,
+        "reason": "Source rectangle corresponds to courtyard/covered ground area; roof silhouette not stable ground-building control."
+      }
+    ],
+    "T4": [
+      {
+        "path": 14308,
+        "reason": "Curved and multipart complex not the same complete outline as one current ground record."
+      }
+    ],
+    "P5": [
+      {
+        "path": 9844,
+        "reason": "Aggregated attached-housing row, not any one of three nearest separate buildings."
+      }
+    ],
+    "E1": [
+      {
+        "path": 9012,
+        "reason": "Simple historical rectangle versus extended current footprint."
+      }
+    ],
+    "L6": [
+      {
+        "path": 11848,
+        "reason": "Complex split current footprint with curved extension."
+      },
+      {
+        "path": 11905,
+        "reason": "Modified L-shaped outline; original geometry not confirmed."
+      }
+    ],
+    "Ei1": [
+      {
+        "path": 11326,
+        "reason": "Expanded current footprint does not preserve the original rectangle."
+      }
+    ]
+  },
+  "limitations": [
+    "Control identity confirmed manually before new fit. Prior localizer used only to nominate the search vicinity, not as ground truth.",
+    "Ground vectors are current and source map is dated 2014; archived photo center flight year is 2012.",
+    "Native map and current official footprints may derive from related cadastral data; these are independent of fit, not independently surveyed accuracy."
+  ]
+}
