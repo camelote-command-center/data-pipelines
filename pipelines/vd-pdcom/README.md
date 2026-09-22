@@ -173,3 +173,27 @@ The September2025 Bourg-en-Lavaux source is a pre-council edition from an offici
 `reviewed_batches.py` reapplies registered inspection annotations only when document ID, SHA-256 and page count match the reviewed bytes. The current four-document batch preserves the Chablais activity source roles, 14 operational fiches and 126 reviewed area/job cells, plus Jouxtens's 18 map-page classifications and signed reservations. Existing page text and unrelated review metadata remain intact; document-level annotations are supported by both review paths. Changed PDF bytes receive no old batch annotations. Replay does not set plan status, geographic validation, commune completion or receiver eligibility.
 
 The three Chablais PDFs are included in the existing annual reviewed-source manifest. Jouxtens replay is registered for its already acquired bytes, but its browser-only acquisition remains an exception and is not added to the unattended manifest. Nyon native DWF decoding is still a separate historical research artifact pending alignment, semantics and production integration.
+
+## Private historical site scenarios
+
+The existing private Lamap delivery step also copies
+`gold_ch.v_vd_pdcom_review_site_scenarios` to
+`ref.vd_pdcom_review_site_scenarios` through `lamap_db_server`.
+It exposes 102 reviewed SDRM source-table scenarios for 51 sites in eight communes.
+These are historical inhabitants-plus-jobs scenarios, **not current housing
+capacity, validated sectors or parcel assignments**. Source blanks, page references,
+word boxes, source dates, arithmetic conflicts and limits remain attached.
+
+Provision once, in order: `sql/lamap_review_site_scenarios.sql` on Lamap,
+then `sql/rellm_review_site_scenarios.sql` and
+`sql/rellm_review_site_scenarios_foreign.sql` on RE-LLM. Both source and receiver
+are private; receiver RLS is enabled and public/anon/authenticated grants revoked.
+The source view selects only the reviewed document ID/hash. Changed bytes or a
+missing/duplicate source inventory fail delivery without deleting prior evidence.
+The `(document_id, site_id, scenario)` key makes repeat delivery idempotent.
+Full-row readback checks preserve nulls and reject mismatches or extra receiver rows.
+
+The existing scheduled/manual delivery step records the scenario result separately
+from spatial counts. No new workflow or recurrence is introduced. Rollback is to
+remove the scenario call from the delivery entry point; retain the private evidence
+tables and leave all existing spatial delivery untouched.
