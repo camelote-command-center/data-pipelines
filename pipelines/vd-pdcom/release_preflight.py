@@ -7,6 +7,7 @@ import argparse
 from collections import Counter
 from datetime import datetime, timezone
 import json
+import math
 import os
 from pathlib import Path
 
@@ -18,7 +19,7 @@ def sector_blockers(row):
     if not row.get('validated_by'):
         blockers.append('validator_missing')
     precision = row.get('source_precision_m')
-    if precision is None or precision <= 0:
+    if not isinstance(precision, (int, float)) or isinstance(precision, bool) or not math.isfinite(precision) or precision <= 0:
         blockers.append('source_precision_unresolved')
     if row.get('valid_geometry') is not True:
         blockers.append('geometry_invalid_or_not_4326')

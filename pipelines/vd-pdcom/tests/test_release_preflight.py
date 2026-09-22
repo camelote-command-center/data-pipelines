@@ -5,6 +5,11 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from release_preflight import sector_blockers
 
 class ReleasePreflightTests(unittest.TestCase):
+    def test_nonfinite_or_nonpositive_precision_blocks(self):
+        for value in (float('nan'), float('inf'), -float('inf'), 0, -1, None, True):
+            with self.subTest(value=value):
+                self.assertIn('source_precision_unresolved', sector_blockers({'source_precision_m': value}))
+
     def test_private_receiver_parity_does_not_validate_sector(self):
         blockers=sector_blockers({'private_receiver_matches':True,'valid_geometry':True,'plan_status':'approved'})
         self.assertIn('sector_validation_not_recorded',blockers)
