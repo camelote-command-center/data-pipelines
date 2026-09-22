@@ -52,6 +52,9 @@ def persist(conn,document_id,sha):
         c.execute('SELECT sha256,page_count FROM bronze_ch.vd_pdcom_documents WHERE id=%s',(DOC,));d=c.fetchone()
         if not d or d[0]!=SHA or not d[1] or d[1]<102:raise ValueError('epalinges_stored_source')
     b=load_artifacts();refs=[refresh(conn,DOC,5584,r['bounds']) for r in b['references']];results=[]
+    with conn.cursor() as c:
+        c.execute('''SELECT count(*) FROM bronze_ch.vd_pdcom_parcel_references a JOIN bronze_ch.vd_pdcom_parcel_references z USING(egrid) WHERE a.snapshot_id=ANY(%s::uuid[]) AND z.snapshot_id=ANY(%s::uuid[]) AND a.snapshot_id<z.snapshot_id AND (NOT ST_Equals(a.geom,z.geom) OR a.commune_bfs IS DISTINCT FROM z.commune_bfs OR a.official_attributes IS DISTINCT FROM z.official_attributes)''',([x['snapshot_id'] for x in refs],[x['snapshot_id'] for x in refs]))
+        if c.fetchone()[0]:raise ValueError('epalinges_conflicting_tile_reference')
     for f in b['features']:
         sid=sector_id(f['key']);geom=json.dumps(f['geometry_lv95']);label='Épalinges — couche indicative partielle — '+f['label']
         frozen=[{'egrid':x['egrid'],'kind':x['attributes']['GENRE_TXT'],'geometry':x['geometry']} for x in f['expected_pairs']]

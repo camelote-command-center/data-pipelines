@@ -23,6 +23,13 @@ class ThematicTests(unittest.TestCase):
  def test_type(self):self.reject(lambda b:b['features'][0]['expected_pairs'][0]['attributes'].update(GENRE_TXT='unknown'))
  def test_semantics(self):self.reject(lambda b:b['features'][0]['properties'][0].update(category='medium'))
  def test_noop_other(self):self.assertIsNone(p.persist(None,p.DOC,'changed'))
+ def test_conflicting_tile_rejected_before_sectors(self):
+  from unittest.mock import MagicMock,patch
+  conn=MagicMock();c=conn.cursor.return_value.__enter__.return_value
+  c.fetchone.side_effect=[(p.SHA,102),(1,)]
+  with patch.object(p,'refresh',return_value={'snapshot_id':'00000000-0000-0000-0000-000000000001'}):
+   with self.assertRaisesRegex(ValueError,'conflicting_tile'):p.persist(conn,p.DOC,p.SHA)
+  self.assertFalse(any('INSERT INTO bronze_ch.vd_pdcom_sectors' in call.args[0] for call in c.execute.call_args_list))
  def test_legacy_replay_scoped(self):
   from unittest.mock import patch
   import epalinges_pilot as old
