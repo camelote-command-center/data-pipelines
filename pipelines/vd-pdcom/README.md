@@ -246,3 +246,17 @@ is enabled; this qualification core deliberately has no publication writer.
 The existing workflow now saves read-only release-preflight results in its normal
 artifact after private receiver verification, without failing simply because
 records need further review.
+
+Native line/point objectives may use the existing private geometry route, without
+buffers or parcel candidate rows. Apply `sql/rellm_native_review_attribution.sql`
+on registered RE-LLM before enabling such adapters. Polygon attribution is
+unchanged. Adapters must supply `validation_evidence.feature_kind` as
+`source_native_line` or `source_native_point`. Lines retain every current commune
+with positive-length overlap, including shared-boundary length; points retain
+every commune covering a constituent point. Source document membership is separate.
+The view records multiple attribution and boundary ambiguity; it never chooses one
+commune silently. Native geometry produces no parcel rights or area metrics.
+Run the opt-in real PostGIS rollback check with `RE_LLM_DB_URL` and
+`python pipelines/vd-pdcom/tests/native_attribution_postgis.py`; it tests interior,
+crossing and boundary cases, rejects wrong kinds, and proves existing polygon
+rows unchanged. The script rolls back all fixtures and view DDL.

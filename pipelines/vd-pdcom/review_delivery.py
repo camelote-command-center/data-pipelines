@@ -19,6 +19,16 @@ def validate_attribution(cursor):
     # remains in bronze_ch.vd_pdcom_document_communes as separate source scope.
     cursor.execute("SELECT count(*) FROM gold_ch.v_vd_pdcom_review_sectors WHERE COALESCE(cardinality(commune_bfs),0)=0")
     if cursor.fetchone()[0]:raise ValueError('review_sector_commune_unresolved')
+    cursor.execute("""SELECT count(*) FROM gold_ch.v_vd_pdcom_review_sectors s
+      WHERE ST_Dimension(s.geom)<>2 AND (
+        (CASE WHEN GeometryType(s.geom) IN ('LINESTRING','MULTILINESTRING')
+          THEN s.validation_evidence->>'feature_kind'='source_native_line'
+          WHEN GeometryType(s.geom) IN ('POINT','MULTIPOINT')
+          THEN s.validation_evidence->>'feature_kind'='source_native_point'
+          ELSE false END) IS NOT TRUE
+        OR s.validation_evidence->'native_attribution' IS NULL
+        OR EXISTS(SELECT 1 FROM bronze_ch.vd_pdcom_parcel_candidates p WHERE p.sector_id=s.id))""")
+    if cursor.fetchone()[0]:raise ValueError('native_review_kind_or_parcel_association_invalid')
 
 
 def deliver(conn):
