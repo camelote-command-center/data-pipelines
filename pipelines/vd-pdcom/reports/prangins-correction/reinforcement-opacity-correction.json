@@ -1,0 +1,234 @@
+{
+  "source_sha256": "a4079a88201b716ede0793150102306f8b1faddb55c391a7c2c1696244a96d02",
+  "class": "Renforcement de la structure existante",
+  "supported_fill_ids": [
+    141,
+    147,
+    150
+  ],
+  "legend_evidence": [
+    {
+      "index": 3020,
+      "type": "f",
+      "even_odd": false,
+      "fill_opacity": 1.0,
+      "fill": [
+        0.3476157784461975,
+        0.5418936610221863,
+        0.24081788957118988
+      ],
+      "rect": [
+        2510.02294921875,
+        250.789794921875,
+        2544.0390625,
+        264.962890625
+      ],
+      "seqno": 3371,
+      "layer": "LEGENDE",
+      "level": 1,
+      "closePath": null,
+      "color": null,
+      "width": null,
+      "lineCap": null,
+      "lineJoin": null,
+      "dashes": null,
+      "stroke_opacity": null
+    },
+    {
+      "index": 3022,
+      "type": "group",
+      "rect": [
+        2510.02001953125,
+        267.800048828125,
+        2544.0400390625,
+        281.969970703125
+      ],
+      "isolated": false,
+      "knockout": false,
+      "blendmode": "Normal",
+      "opacity": 0.5,
+      "level": 2,
+      "layer": "LEGENDE"
+    },
+    {
+      "index": 3024,
+      "type": "f",
+      "even_odd": false,
+      "fill_opacity": 1.0,
+      "fill": [
+        0.3476157784461975,
+        0.5418936610221863,
+        0.24081788957118988
+      ],
+      "rect": [
+        2510.02294921875,
+        267.7978515625,
+        2544.0390625,
+        281.970947265625
+      ],
+      "seqno": 3372,
+      "layer": "LEGENDE",
+      "level": 4,
+      "closePath": null,
+      "color": null,
+      "width": null,
+      "lineCap": null,
+      "lineJoin": null,
+      "dashes": null,
+      "stroke_opacity": null
+    }
+  ],
+  "map_evidence": [
+    {
+      "index": 139,
+      "type": "group",
+      "rect": [
+        761.0969848632812,
+        351.2999267578125,
+        1888.3699951171875,
+        1959.0489501953125
+      ],
+      "isolated": false,
+      "knockout": false,
+      "blendmode": "Normal",
+      "opacity": 0.5,
+      "level": 2,
+      "layer": "PROJET PAYSAGER"
+    },
+    {
+      "index": 141,
+      "closePath": false,
+      "type": "f",
+      "even_odd": false,
+      "fill_opacity": 1.0,
+      "fill": [
+        0.3476157784461975,
+        0.5418936610221863,
+        0.24081788957118988
+      ],
+      "rect": [
+        761.0927734375,
+        349.913330078125,
+        1890.4677734375,
+        1959.080322265625
+      ],
+      "seqno": 121,
+      "layer": "PROJET PAYSAGER",
+      "level": 4,
+      "color": null,
+      "width": null,
+      "lineCap": null,
+      "lineJoin": null,
+      "dashes": null,
+      "stroke_opacity": null
+    },
+    {
+      "index": 145,
+      "type": "group",
+      "rect": [
+        1462.5400390625,
+        1393.0689697265625,
+        1622.3900146484375,
+        1742.322998046875
+      ],
+      "isolated": false,
+      "knockout": false,
+      "blendmode": "Normal",
+      "opacity": 0.5,
+      "level": 2,
+      "layer": "PROJET PAYSAGER"
+    },
+    {
+      "index": 147,
+      "closePath": false,
+      "type": "f",
+      "even_odd": false,
+      "fill_opacity": 1.0,
+      "fill": [
+        0.3476157784461975,
+        0.5418936610221863,
+        0.24081788957118988
+      ],
+      "rect": [
+        1462.5443115234375,
+        1393.06884765625,
+        1622.390380859375,
+        1742.3228759765625
+      ],
+      "seqno": 125,
+      "layer": "PROJET PAYSAGER",
+      "level": 4,
+      "color": null,
+      "width": null,
+      "lineCap": null,
+      "lineJoin": null,
+      "dashes": null,
+      "stroke_opacity": null
+    },
+    {
+      "index": 148,
+      "type": "group",
+      "rect": [
+        943.4169921875,
+        595.139892578125,
+        1612.989990234375,
+        1304.97998046875
+      ],
+      "isolated": false,
+      "knockout": false,
+      "blendmode": "Normal",
+      "opacity": 0.5,
+      "level": 2,
+      "layer": "PROJET PAYSAGER"
+    },
+    {
+      "index": 150,
+      "closePath": false,
+      "type": "f",
+      "even_odd": false,
+      "fill_opacity": 1.0,
+      "fill": [
+        0.3476157784461975,
+        0.5418936610221863,
+        0.24081788957118988
+      ],
+      "rect": [
+        943.4172973632812,
+        595.1431884765625,
+        1612.9873046875,
+        1304.983154296875
+      ],
+      "seqno": 126,
+      "layer": "PROJET PAYSAGER",
+      "level": 4,
+      "color": null,
+      "width": null,
+      "lineCap": null,
+      "lineJoin": null,
+      "dashes": null,
+      "stroke_opacity": null
+    }
+  ],
+  "decision": "Same green RGB distinguishes two categories through group opacity:0.5 reinforcement versus1.0 new wooded cordons",
+  "existing_mapping_correction": {
+    "path": 147,
+    "old_category": "wooded_cordons_create",
+    "correct_category": "reinforcement_existing_structure",
+    "state": "correction_required_before_duplicate_delivery",
+    "unaffected_old_paths": [
+      143,
+      144
+    ]
+  },
+  "geometry_qualification": "Source semantics supported; existing compound/clip topology and independent alignment gates still required. No invalid path repair authorized.",
+  "policy": "Historical2013 source; no specific RDU withdrawal association proven for these eastern/northern structural vegetation features",
+  "remaining_accompaniment": {
+    "state": "unresolved_no_source_absence_proven",
+    "legend_components": [
+      3342,
+      3343,
+      3344
+    ],
+    "reason": "Lightgreen area plus dark border/dotted continuation does not support mapping opaque darkgreen path121 as whole class."
+  }
+}
