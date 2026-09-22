@@ -1,0 +1,730 @@
+{
+  "source_sha256": "a4079a88201b716ede0793150102306f8b1faddb55c391a7c2c1696244a96d02",
+  "categories": [
+    {
+      "source_label": "Front bâti (à titre indicatif)",
+      "label_id": "15c9be40c711915f5447",
+      "source_ledger_index": 44,
+      "legend_style": "red building-front line",
+      "allowed_extraction": "original_source_line",
+      "anchor_or_line_rule": "Use native open path geometry and original dash traversal; preserve disjoint subpaths. No line buffering or closed glyph outlines.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_for_private_native_line",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_groups": [
+        17
+      ],
+      "source_path_ids": [
+        2544,
+        2545,
+        2546,
+        2547,
+        2548,
+        2549,
+        2550,
+        2551,
+        2552,
+        2553,
+        2554,
+        2555,
+        2556,
+        2557,
+        2558,
+        2559,
+        2560,
+        2561,
+        2562,
+        2563,
+        2564,
+        2565
+      ],
+      "source_geometry_type": "LineString/MultiLineString",
+      "evidence": [
+        "Exactsource legend and original stroke color/dash/layer",
+        "Grouped source overlays semantic-sheet-0/1/2.jpg"
+      ]
+    },
+    {
+      "source_label": "Front planté (à titre indicatif)",
+      "label_id": "07f8c63b0277d1d716c1",
+      "source_ledger_index": 45,
+      "legend_style": "dark green dotted planted front",
+      "allowed_extraction": "original_source_line",
+      "anchor_or_line_rule": "Use native open path geometry and original dash traversal; preserve disjoint subpaths. No line buffering or closed glyph outlines.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_for_private_native_line",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_groups": [
+        18
+      ],
+      "source_path_ids": [
+        2566,
+        2567,
+        2568,
+        2569
+      ],
+      "source_geometry_type": "LineString/MultiLineString",
+      "evidence": [
+        "Exactsource legend and original stroke color/dash/layer",
+        "Grouped source overlays semantic-sheet-0/1/2.jpg"
+      ]
+    },
+    {
+      "source_label": "Cours d’eau à remettre à l’air libre (tracé à titre indicatif)",
+      "label_id": "25b9b1fe4260d8b07ce8",
+      "source_ledger_index": 18,
+      "legend_style": "blue continuous stroke",
+      "allowed_extraction": "original_source_line",
+      "anchor_or_line_rule": "Use native open path geometry and original dash traversal; preserve disjoint subpaths. No line buffering or closed glyph outlines.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_for_private_native_line",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_groups": [
+        19
+      ],
+      "source_path_ids": [
+        2573,
+        2575,
+        2576,
+        2577,
+        2578,
+        2579,
+        2580,
+        2581,
+        2582,
+        2583,
+        2584,
+        2585,
+        2586,
+        2587,
+        2588,
+        2589,
+        2590,
+        2592
+      ],
+      "source_geometry_type": "LineString/MultiLineString",
+      "evidence": [
+        "Exactsource legend and original stroke color/dash/layer",
+        "Grouped source overlays semantic-sheet-0/1/2.jpg"
+      ]
+    },
+    {
+      "source_label": "Cours d’eau existants à l’air libre et à revitaliser",
+      "label_id": "82d275a53e61540942d1",
+      "source_ledger_index": 17,
+      "legend_style": "pale cyan continuous stroke",
+      "allowed_extraction": "original_source_line",
+      "anchor_or_line_rule": "Use native open path geometry and original dash traversal; preserve disjoint subpaths. No line buffering or closed glyph outlines.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_for_private_native_line",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_groups": [
+        20,
+        21
+      ],
+      "source_path_ids": [
+        2591,
+        2593
+      ],
+      "source_geometry_type": "LineString/MultiLineString",
+      "evidence": [
+        "Exactsource legend and original stroke color/dash/layer",
+        "Grouped source overlays semantic-sheet-0/1/2.jpg"
+      ]
+    },
+    {
+      "source_label": "Réseau cyclable à sécuriser",
+      "label_id": "7550033e0aa746a4ba6d",
+      "source_ledger_index": 50,
+      "legend_style": "red dashed cycling route",
+      "allowed_extraction": "original_source_line",
+      "anchor_or_line_rule": "Use native open path geometry and original dash traversal; preserve disjoint subpaths. No line buffering or closed glyph outlines.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_for_private_native_line",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_groups": [
+        22
+      ],
+      "source_path_ids": [
+        2595,
+        2596
+      ],
+      "source_geometry_type": "LineString/MultiLineString",
+      "evidence": [
+        "Exactsource legend and original stroke color/dash/layer",
+        "Grouped source overlays semantic-sheet-0/1/2.jpg"
+      ]
+    },
+    {
+      "source_label": "Réseau cyclable en cohabitation avec les autres modes (à titre indicatif)",
+      "label_id": "51d1aee0c68d55113757",
+      "source_ledger_index": 49,
+      "legend_style": "yellow dashed cycling route",
+      "allowed_extraction": "original_source_line",
+      "anchor_or_line_rule": "Use native open path geometry and original dash traversal; preserve disjoint subpaths. No line buffering or closed glyph outlines.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_for_private_native_line",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_groups": [
+        23,
+        39
+      ],
+      "source_path_ids": [
+        2597,
+        2598,
+        2599,
+        2600,
+        2601,
+        2602,
+        2603,
+        2604,
+        2605,
+        2606,
+        2607,
+        2608,
+        2609,
+        2610,
+        2611,
+        2612,
+        2634,
+        2659
+      ],
+      "source_geometry_type": "LineString/MultiLineString",
+      "evidence": [
+        "Exactsource legend and original stroke color/dash/layer",
+        "Grouped source overlays semantic-sheet-0/1/2.jpg"
+      ]
+    },
+    {
+      "source_label": "Chemin des Rives du Lac",
+      "label_id": "9545b1f6236b35b69617",
+      "source_ledger_index": 54,
+      "legend_style": "blue dotted lakeside route",
+      "allowed_extraction": "original_source_line",
+      "anchor_or_line_rule": "Use native open path geometry and original dash traversal; preserve disjoint subpaths. No line buffering or closed glyph outlines.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_for_private_native_line",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_groups": [
+        24
+      ],
+      "source_path_ids": [
+        2613
+      ],
+      "source_geometry_type": "LineString/MultiLineString",
+      "evidence": [
+        "Exactsource legend and original stroke color/dash/layer",
+        "Grouped source overlays semantic-sheet-0/1/2.jpg"
+      ]
+    },
+    {
+      "source_label": "Chemin provisoire",
+      "label_id": "2b426346da0dcfe12bac",
+      "source_ledger_index": 58,
+      "legend_style": "grey dotted provisional route",
+      "allowed_extraction": "original_source_line",
+      "anchor_or_line_rule": "Use native open path geometry and original dash traversal; preserve disjoint subpaths. No line buffering or closed glyph outlines.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_for_private_native_line",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_groups": [
+        25
+      ],
+      "source_path_ids": [
+        2614
+      ],
+      "source_geometry_type": "LineString/MultiLineString",
+      "evidence": [
+        "Exactsource legend and original stroke color/dash/layer",
+        "Grouped source overlays semantic-sheet-0/1/2.jpg"
+      ]
+    },
+    {
+      "source_label": "Chemin de Compostelle",
+      "label_id": "31644f3c016f650c3fee",
+      "source_ledger_index": 52,
+      "legend_style": "brown dotted Compostelle route",
+      "allowed_extraction": "original_source_line",
+      "anchor_or_line_rule": "Use native open path geometry and original dash traversal; preserve disjoint subpaths. No line buffering or closed glyph outlines.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_for_private_native_line",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_groups": [
+        26
+      ],
+      "source_path_ids": [
+        2615
+      ],
+      "source_geometry_type": "LineString/MultiLineString",
+      "evidence": [
+        "Exactsource legend and original stroke color/dash/layer",
+        "Grouped source overlays semantic-sheet-0/1/2.jpg"
+      ]
+    },
+    {
+      "source_label": "Chemin de Toblerone",
+      "label_id": "959202ea5117684cdb9b",
+      "source_ledger_index": 53,
+      "legend_style": "pink dotted Toblerone route",
+      "allowed_extraction": "original_source_line",
+      "anchor_or_line_rule": "Use native open path geometry and original dash traversal; preserve disjoint subpaths. No line buffering or closed glyph outlines.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_for_private_native_line",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_groups": [
+        27
+      ],
+      "source_path_ids": [
+        2616
+      ],
+      "source_geometry_type": "LineString/MultiLineString",
+      "evidence": [
+        "Exactsource legend and original stroke color/dash/layer",
+        "Grouped source overlays semantic-sheet-0/1/2.jpg"
+      ]
+    },
+    {
+      "source_label": "Réseau piétonnier complémentaire (à titre indicatif)",
+      "label_id": "2023c145514c3dbe035b",
+      "source_ledger_index": 51,
+      "legend_style": "red dotted walking route",
+      "allowed_extraction": "original_source_line",
+      "anchor_or_line_rule": "Use native open path geometry and original dash traversal; preserve disjoint subpaths. No line buffering or closed glyph outlines.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_for_private_native_line",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_groups": [
+        28,
+        45
+      ],
+      "source_path_ids": [
+        2617,
+        2618,
+        2619,
+        2620,
+        2621,
+        2622,
+        2623,
+        2624,
+        2625,
+        2626,
+        2627,
+        2628,
+        2629,
+        2630,
+        2631,
+        2632,
+        2633,
+        3459
+      ],
+      "source_geometry_type": "LineString/MultiLineString",
+      "evidence": [
+        "Exactsource legend and original stroke color/dash/layer",
+        "Grouped source overlays semantic-sheet-0/1/2.jpg"
+      ]
+    },
+    {
+      "source_label": "Route secondaire à créer",
+      "label_id": "83a084459a50c8591e54",
+      "source_ledger_index": 40,
+      "legend_style": "alternating red/light dashed route",
+      "allowed_extraction": "original_source_line",
+      "anchor_or_line_rule": "Use native open path geometry and original dash traversal; preserve disjoint subpaths. No line buffering or closed glyph outlines.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_for_private_native_line",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_groups": [
+        29
+      ],
+      "source_path_ids": [
+        2636
+      ],
+      "source_geometry_type": "LineString/MultiLineString",
+      "evidence": [
+        "Exactsource legend and original stroke color/dash/layer",
+        "Grouped source overlays semantic-sheet-0/1/2.jpg"
+      ]
+    },
+    {
+      "source_label": "RDU à créer",
+      "label_id": "c6815289d5254d56c26a",
+      "source_ledger_index": 39,
+      "legend_style": "thick solid red route",
+      "allowed_extraction": "original_source_line",
+      "anchor_or_line_rule": "Use native open path geometry and original dash traversal; preserve disjoint subpaths. No line buffering or closed glyph outlines. Cased routes require native axis, not parallel casing borders; rail ticks are excluded. Filled expanded strokes require source-axis evidence before line delivery.",
+      "policy_status": {
+        "state": "explicit_RDU_dependency_2018_withdrawal_applies_to_policy",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": [],
+        "scope": "RDU project policy; geometry remains historical source evidence, not a current project"
+      },
+      "status": "source_semantics_supported_for_private_native_line",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_groups": [
+        32
+      ],
+      "source_path_ids": [
+        2642,
+        2643
+      ],
+      "source_geometry_type": "LineString/MultiLineString",
+      "evidence": [
+        "Exactsource legend and original stroke color/dash/layer",
+        "Grouped source overlays semantic-sheet-0/1/2.jpg"
+      ]
+    },
+    {
+      "source_label": "Modération de la route de l’Etraz",
+      "label_id": "ab18d45ce2564a40806c",
+      "source_ledger_index": 41,
+      "legend_style": "yellow cased Etraz route",
+      "allowed_extraction": "original_source_line",
+      "anchor_or_line_rule": "Use native open path geometry and original dash traversal; preserve disjoint subpaths. No line buffering or closed glyph outlines. Cased routes require native axis, not parallel casing borders; rail ticks are excluded. Filled expanded strokes require source-axis evidence before line delivery.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_for_private_native_line",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_groups": [
+        34
+      ],
+      "source_path_ids": [
+        2648
+      ],
+      "source_geometry_type": "LineString/MultiLineString",
+      "evidence": [
+        "Exactsource legend and original stroke color/dash/layer",
+        "Grouped source overlays semantic-sheet-0/1/2.jpg"
+      ]
+    },
+    {
+      "source_label": "Réaménagement de la RC1",
+      "label_id": "6f840a6777fa7b255cb3",
+      "source_ledger_index": 42,
+      "legend_style": "orange cased RC1 route",
+      "allowed_extraction": "original_source_line",
+      "anchor_or_line_rule": "Use native open path geometry and original dash traversal; preserve disjoint subpaths. No line buffering or closed glyph outlines. Cased routes require native axis, not parallel casing borders; rail ticks are excluded. Filled expanded strokes require source-axis evidence before line delivery.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_for_private_native_line",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_groups": [
+        36
+      ],
+      "source_path_ids": [
+        2650
+      ],
+      "source_geometry_type": "LineString/MultiLineString",
+      "evidence": [
+        "Exactsource legend and original stroke color/dash/layer",
+        "Grouped source overlays semantic-sheet-0/1/2.jpg"
+      ]
+    },
+    {
+      "source_label": "Voie ferrée",
+      "label_id": "b928b635888294c6c773",
+      "source_ledger_index": 46,
+      "legend_style": "grey railway track line/ticks",
+      "allowed_extraction": "original_source_line",
+      "anchor_or_line_rule": "Use native open path geometry and original dash traversal; preserve disjoint subpaths. No line buffering or closed glyph outlines. Cased routes require native axis, not parallel casing borders; rail ticks are excluded. Filled expanded strokes require source-axis evidence before line delivery.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_for_private_native_line",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_groups": [
+        37
+      ],
+      "source_path_ids": [
+        2652
+      ],
+      "source_geometry_type": "LineString/MultiLineString",
+      "evidence": [
+        "Exactsource legend and original stroke color/dash/layer",
+        "Grouped source overlays semantic-sheet-0/1/2.jpg"
+      ]
+    }
+  ],
+  "pending_classes": [
+    {
+      "source_label": "Points de vue à préserver",
+      "label_id": "33b45b3f314c395017f4",
+      "source_ledger_index": 19,
+      "legend_style": "black view cone and eye",
+      "allowed_extraction": "viewpoint_anchor_review",
+      "anchor_or_line_rule": "Use common vertex of view-cone rays if geometrically present, not eye-glyph centroid. If cone/ray association cannot be established preserve unresolved; eye symbol alone cannot yield surveyed location.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "semantic_contract_ready_actual_map_path_allowlist_pending",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false
+    },
+    {
+      "source_label": "Points de vue à créer",
+      "label_id": "8951d45176feb85bb83d",
+      "source_ledger_index": 20,
+      "legend_style": "red view cone and eye",
+      "allowed_extraction": "viewpoint_anchor_review",
+      "anchor_or_line_rule": "Use common vertex of view-cone rays if geometrically present, not eye-glyph centroid. If cone/ray association cannot be established preserve unresolved; eye symbol alone cannot yield surveyed location.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "semantic_contract_ready_actual_map_path_allowlist_pending",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false
+    },
+    {
+      "source_label": "Limite du Plan directeur communal",
+      "label_id": "4eec6cd53d73ce97c594",
+      "source_ledger_index": 21,
+      "legend_style": "black alternating long/short boundary",
+      "allowed_extraction": "original_source_line",
+      "anchor_or_line_rule": "Use native open path geometry and original dash traversal; preserve disjoint subpaths. No line buffering or closed glyph outlines.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "semantic_contract_ready_actual_map_path_allowlist_pending",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false
+    },
+    {
+      "source_label": "Equipement local à créer",
+      "label_id": "104344a6da1f210e898f",
+      "source_ledger_index": 33,
+      "legend_style": "small orange five-point star",
+      "allowed_extraction": "star_symbol_center",
+      "anchor_or_line_rule": "Use symmetry centre of complete source star; verify five-point glyph and small versus large star class. Point is indicative equipment location, never footprint centroid or parcel accuracy.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "semantic_contract_ready_actual_map_path_allowlist_pending",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false
+    },
+    {
+      "source_label": "Equipement régional à créer",
+      "label_id": "5a67d80233aacdd85202",
+      "source_ledger_index": 34,
+      "legend_style": "large orange five-point star",
+      "allowed_extraction": "star_symbol_center",
+      "anchor_or_line_rule": "Use symmetry centre of complete source star; verify five-point glyph and small versus large star class. Point is indicative equipment location, never footprint centroid or parcel accuracy.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "semantic_contract_ready_actual_map_path_allowlist_pending",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false
+    },
+    {
+      "source_label": "Déchetterie à créer",
+      "label_id": "fd0fe4f4801563d7dafa",
+      "source_ledger_index": 35,
+      "legend_style": "navy ring with yellow centre",
+      "allowed_extraction": "ring_symbol_center",
+      "anchor_or_line_rule": "Use concentric ring centre after grouping complete source circles. For waste site distinguish navy/yellow composite from roundabout red/white ring. Never ring-outline LineString.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "semantic_contract_ready_actual_map_path_allowlist_pending",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false
+    },
+    {
+      "source_label": "Passages CFF existants",
+      "label_id": "d46cbb28d8be2398cc39",
+      "source_ledger_index": 47,
+      "legend_style": "yellow railway-crossing band",
+      "allowed_extraction": "crossing_centerline_review",
+      "anchor_or_line_rule": "Use native crossing axis only if explicitly drawn or objectively identifiable across complete band endpoints; otherwise retain symbol anchor or unresolved. Do not skeletonize arbitrary polygon into assumed route.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "semantic_contract_ready_actual_map_path_allowlist_pending",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false
+    },
+    {
+      "source_label": "Passages CFF à créer (position à titre indicatif)",
+      "label_id": "5fcf4918c48f8ba8c6b6",
+      "source_ledger_index": 48,
+      "legend_style": "red railway-crossing band",
+      "allowed_extraction": "crossing_centerline_review",
+      "anchor_or_line_rule": "Use native crossing axis only if explicitly drawn or objectively identifiable across complete band endpoints; otherwise retain symbol anchor or unresolved. Do not skeletonize arbitrary polygon into assumed route.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "semantic_contract_ready_actual_map_path_allowlist_pending",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false
+    },
+    {
+      "source_label": "Nouveaux giratoires à créer",
+      "label_id": "9f0bb02a4511f97c5dce",
+      "source_ledger_index": 59,
+      "legend_style": "red ring roundabout",
+      "allowed_extraction": "ring_symbol_center",
+      "anchor_or_line_rule": "Use concentric ring centre after grouping complete source circles. For waste site distinguish navy/yellow composite from roundabout red/white ring. Never ring-outline LineString.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "semantic_contract_ready_actual_map_path_allowlist_pending",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false
+    }
+  ],
+  "held_groups": {
+    "30,31,33,35,38": "Casing/tick/closedglyph duplicates, not independent axes",
+    "40,41": "Viewcone strokes require point anchor grouping",
+    "42": "Centrality polygon boundary, not front-bati class",
+    "43": "Mixed accompanying symbol, not automatically front-plante",
+    "44": "Grey background/context requires identity",
+    "53": "Waste ring outline, not line",
+    "57,58": "Repere/reference traces require exact map/inset identity"
+  },
+  "limitations": [
+    "Native source positions indicative, not current legal or surveyed accuracy",
+    "No parcel links or buffers",
+    "Source original line clipping and geometry validation remain required",
+    "Approval is of16 source class mappings, not all25pending classes or commune completion"
+  ]
+}

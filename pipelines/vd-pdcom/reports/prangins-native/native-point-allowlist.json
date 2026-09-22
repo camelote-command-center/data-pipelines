@@ -1,0 +1,528 @@
+{
+  "source_sha256": "a4079a88201b716ede0793150102306f8b1faddb55c391a7c2c1696244a96d02",
+  "categories": [
+    {
+      "source_label": "Points de vue à préserver",
+      "label_id": "33b45b3f314c395017f4",
+      "source_ledger_index": 19,
+      "legend_style": "black view cone and eye",
+      "allowed_extraction": "viewpoint_anchor_review",
+      "anchor_or_line_rule": "Use common vertex of view-cone rays if geometrically present, not eye-glyph centroid. If cone/ray association cannot be established preserve unresolved; eye symbol alone cannot yield surveyed location.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_for_private_native_point",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_path_ids": [
+        2660,
+        2665,
+        2669,
+        2673,
+        2677,
+        2681,
+        2685,
+        2689,
+        2697
+      ],
+      "source_geometry_type": "Point/MultiPoint",
+      "anchors": [
+        {
+          "path_id": 2660,
+          "anchor_rule": "unique common endpoint of two original view-cone rays; indicative symbol vertex, not surveyed point",
+          "geometry_pdf": {
+            "type": "Point",
+            "coordinates": [
+              964.7660522460938,
+              1145.630859375
+            ]
+          },
+          "geometry_lv95": {
+            "type": "Point",
+            "coordinates": [
+              2508695.0445805886,
+              1139835.5787272977
+            ]
+          },
+          "color": [
+            0.021759364753961563,
+            0.02551308460533619,
+            0.026199741289019585
+          ],
+          "rays": [
+            [
+              [
+                1015.4940795898438,
+                1118.23486328125
+              ],
+              [
+                964.7660522460938,
+                1145.630859375
+              ]
+            ],
+            [
+              [
+                964.7660522460938,
+                1145.630859375
+              ],
+              [
+                973.6250610351562,
+                1089.0538330078125
+              ]
+            ]
+          ]
+        },
+        {
+          "path_id": 2665,
+          "anchor_rule": "unique common endpoint of two original view-cone rays; indicative symbol vertex, not surveyed point",
+          "geometry_pdf": {
+            "type": "Point",
+            "coordinates": [
+              1169.7266845703125,
+              1380.515869140625
+            ]
+          },
+          "geometry_lv95": {
+            "type": "Point",
+            "coordinates": [
+              2509055.981873454,
+              1139421.9848629942
+            ]
+          },
+          "color": [
+            0.021759364753961563,
+            0.02551308460533619,
+            0.026199741289019585
+          ],
+          "rays": [
+            [
+              [
+                1178.6796875,
+                1323.56884765625
+              ],
+              [
+                1169.7266845703125,
+                1380.515869140625
+              ]
+            ],
+            [
+              [
+                1169.7266845703125,
+                1380.515869140625
+              ],
+              [
+                1220.5487060546875,
+                1352.7508544921875
+              ]
+            ]
+          ]
+        },
+        {
+          "path_id": 2669,
+          "anchor_rule": "unique common endpoint of two original view-cone rays; indicative symbol vertex, not surveyed point",
+          "geometry_pdf": {
+            "type": "Point",
+            "coordinates": [
+              717.112548828125,
+              1187.4617919921875
+            ]
+          },
+          "geometry_lv95": {
+            "type": "Point",
+            "coordinates": [
+              2508258.952615753,
+              1139761.89706786
+            ]
+          },
+          "color": [
+            0.021759364753961563,
+            0.02551308460533619,
+            0.026199741289019585
+          ],
+          "rays": [
+            [
+              [
+                672.6865234375,
+                1190.08984375
+              ],
+              [
+                717.112548828125,
+                1187.4617919921875
+              ]
+            ],
+            [
+              [
+                717.112548828125,
+                1187.4617919921875
+              ],
+              [
+                691.635498046875,
+                1150.9097900390625
+              ]
+            ]
+          ]
+        },
+        {
+          "path_id": 2673,
+          "anchor_rule": "unique common endpoint of two original view-cone rays; indicative symbol vertex, not surveyed point",
+          "geometry_pdf": {
+            "type": "Point",
+            "coordinates": [
+              1018.0880737304688,
+              1732.5494384765625
+            ]
+          },
+          "geometry_lv95": {
+            "type": "Point",
+            "coordinates": [
+              2508788.989988439,
+              1138802.0724702715
+            ]
+          },
+          "color": [
+            0.021759364753961563,
+            0.02551308460533619,
+            0.026199741289019585
+          ],
+          "rays": [
+            [
+              [
+                1035.080078125,
+                1773.33447265625
+              ],
+              [
+                1018.0880737304688,
+                1732.5494384765625
+              ]
+            ],
+            [
+              [
+                1018.0880737304688,
+                1732.5494384765625
+              ],
+              [
+                1061.9901123046875,
+                1739.1295166015625
+              ]
+            ]
+          ]
+        },
+        {
+          "path_id": 2677,
+          "anchor_rule": "unique common endpoint of two original view-cone rays; indicative symbol vertex, not surveyed point",
+          "geometry_pdf": {
+            "type": "Point",
+            "coordinates": [
+              1203.2479248046875,
+              1880.1253662109375
+            ]
+          },
+          "geometry_lv95": {
+            "type": "Point",
+            "coordinates": [
+              2509115.0524304593,
+              1138542.2203528867
+            ]
+          },
+          "color": [
+            0.021759364753961563,
+            0.02551308460533619,
+            0.026199741289019585
+          ],
+          "rays": [
+            [
+              [
+                1212.7119140625,
+                1935.54931640625
+              ],
+              [
+                1203.2479248046875,
+                1880.1253662109375
+              ]
+            ],
+            [
+              [
+                1203.2479248046875,
+                1880.1253662109375
+              ],
+              [
+                1258.169921875,
+                1899.8792724609375
+              ]
+            ]
+          ]
+        },
+        {
+          "path_id": 2681,
+          "anchor_rule": "unique common endpoint of two original view-cone rays; indicative symbol vertex, not surveyed point",
+          "geometry_pdf": {
+            "type": "Point",
+            "coordinates": [
+              1537.31884765625,
+              1821.820556640625
+            ]
+          },
+          "geometry_lv95": {
+            "type": "Point",
+            "coordinates": [
+              2509703.316288738,
+              1138644.9184078816
+            ]
+          },
+          "color": [
+            0.021759364753961563,
+            0.02551308460533619,
+            0.026199741289019585
+          ],
+          "rays": [
+            [
+              [
+                1489.341796875,
+                1853.79150390625
+              ],
+              [
+                1537.31884765625,
+                1821.820556640625
+              ]
+            ],
+            [
+              [
+                1537.31884765625,
+                1821.820556640625
+              ],
+              [
+                1533.7327880859375,
+                1878.9754638671875
+              ]
+            ]
+          ]
+        },
+        {
+          "path_id": 2685,
+          "anchor_rule": "unique common endpoint of two original view-cone rays; indicative symbol vertex, not surveyed point",
+          "geometry_pdf": {
+            "type": "Point",
+            "coordinates": [
+              948.5582885742188,
+              2051.709716796875
+            ]
+          },
+          "geometry_lv95": {
+            "type": "Point",
+            "coordinates": [
+              2508666.581550344,
+              1138240.0539977918
+            ]
+          },
+          "color": [
+            0.021759364753961563,
+            0.02551308460533619,
+            0.026199741289019585
+          ],
+          "rays": [
+            [
+              [
+                957.6312866210938,
+                2107.19970703125
+              ],
+              [
+                948.5582885742188,
+                2051.709716796875
+              ]
+            ],
+            [
+              [
+                948.5582885742188,
+                2051.709716796875
+              ],
+              [
+                998.4503173828125,
+                2077.18359375
+              ]
+            ]
+          ]
+        },
+        {
+          "path_id": 2689,
+          "anchor_rule": "unique common endpoint of two original view-cone rays; indicative symbol vertex, not surveyed point",
+          "geometry_pdf": {
+            "type": "Point",
+            "coordinates": [
+              661.8281860351562,
+              1966.30126953125
+            ]
+          },
+          "geometry_lv95": {
+            "type": "Point",
+            "coordinates": [
+              2508161.668343464,
+              1138390.4261008971
+            ]
+          },
+          "color": [
+            0.021759364753961563,
+            0.02551308460533619,
+            0.026199741289019585
+          ],
+          "rays": [
+            [
+              [
+                678.8231811523438,
+                2007.09228515625
+              ],
+              [
+                661.8281860351562,
+                1966.30126953125
+              ]
+            ],
+            [
+              [
+                661.8281860351562,
+                1966.30126953125
+              ],
+              [
+                705.732177734375,
+                1972.88525390625
+              ]
+            ]
+          ]
+        },
+        {
+          "path_id": 2697,
+          "anchor_rule": "unique common endpoint of two original view-cone rays; indicative symbol vertex, not surveyed point",
+          "geometry_pdf": {
+            "type": "Point",
+            "coordinates": [
+              1167.0882568359375,
+              1583.5491943359375
+            ]
+          },
+          "geometry_lv95": {
+            "type": "Point",
+            "coordinates": [
+              2509051.3531795847,
+              1139064.4612195084
+            ]
+          },
+          "color": [
+            0.021759364753961563,
+            0.02551308460533619,
+            0.026199741289019585
+          ],
+          "rays": [
+            [
+              [
+                1170.529296875,
+                1627.59814453125
+              ],
+              [
+                1167.0882568359375,
+                1583.5491943359375
+              ]
+            ],
+            [
+              [
+                1167.0882568359375,
+                1583.5491943359375
+              ],
+              [
+                1206.75634765625,
+                1603.4781494140625
+              ]
+            ]
+          ]
+        }
+      ],
+      "anchor_rule": "Unique shared endpoint of two original source cone rays; indicative viewpoint vertex",
+      "evidence": [
+        "Exact source overlay viewpoint-anchors.jpg confirms all10 anchors at cone vertex, not eye centre",
+        "Original source colors black preserve, red create"
+      ],
+      "source_precision_m": null
+    },
+    {
+      "source_label": "Points de vue à créer",
+      "label_id": "8951d45176feb85bb83d",
+      "source_ledger_index": 20,
+      "legend_style": "red view cone and eye",
+      "allowed_extraction": "viewpoint_anchor_review",
+      "anchor_or_line_rule": "Use common vertex of view-cone rays if geometrically present, not eye-glyph centroid. If cone/ray association cannot be established preserve unresolved; eye symbol alone cannot yield surveyed location.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_for_private_native_point",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_path_ids": [
+        2693
+      ],
+      "source_geometry_type": "Point/MultiPoint",
+      "anchors": [
+        {
+          "path_id": 2693,
+          "anchor_rule": "unique common endpoint of two original view-cone rays; indicative symbol vertex, not surveyed point",
+          "geometry_pdf": {
+            "type": "Point",
+            "coordinates": [
+              1325.4150390625,
+              1734.0509033203125
+            ]
+          },
+          "geometry_lv95": {
+            "type": "Point",
+            "coordinates": [
+              2509330.1652514916,
+              1138799.4547729157
+            ]
+          },
+          "color": [
+            0.8042114973068237,
+            0.1264820396900177,
+            0.15184251964092255
+          ],
+          "rays": [
+            [
+              [
+                1317.291015625,
+                1789.68994140625
+              ],
+              [
+                1325.4150390625,
+                1734.0509033203125
+              ]
+            ],
+            [
+              [
+                1325.4150390625,
+                1734.0509033203125
+              ],
+              [
+                1371.5469970703125,
+                1769.81298828125
+              ]
+            ]
+          ]
+        }
+      ],
+      "anchor_rule": "Unique shared endpoint of two original source cone rays; indicative viewpoint vertex",
+      "evidence": [
+        "Exact source overlay viewpoint-anchors.jpg confirms all10 anchors at cone vertex, not eye centre",
+        "Original source colors black preserve, red create"
+      ],
+      "source_precision_m": null
+    }
+  ],
+  "correction_to_message": "Red created viewpoint is2693;2697 is black preserve, per actual source RGB and image",
+  "no_buffers": true,
+  "no_parcel_links": true,
+  "no_surveyed_position_claim": true,
+  "input_sha256": "03d27874b9a141bfa8fd6e967bc2af862305e5da63c8408525ed3f319da7214f"
+}
