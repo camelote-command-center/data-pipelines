@@ -19,6 +19,7 @@ def persist(conn,document_id,sha):
     features=json.loads((root/'sectors-lv95.geojson').read_text())['features']
     with conn,conn.cursor() as c:
         c.execute("SET LOCAL statement_timeout='60s'")
+        sector_ids=[str(uuid.uuid5(uuid.NAMESPACE_URL,str(document_id)+'#drawing='+str(f['properties']['drawing_index']))) for f in features]
         for f in features:
             sid=str(uuid.uuid5(uuid.NAMESPACE_URL,str(document_id)+'#drawing='+str(f['properties']['drawing_index'])))
             c.execute('''INSERT INTO bronze_ch.vd_pdcom_sectors
@@ -29,7 +30,7 @@ def persist(conn,document_id,sha):
           SELECT egrid,ST_Transform(ST_MakeValid(geometry),2056) AS g
           FROM silver_ch.cadastral_plots WHERE commune_bfs=5725 AND geometry IS NOT NULL
         ), sectors AS MATERIALIZED (
-          SELECT id,ST_Transform(geom,2056) AS g FROM bronze_ch.vd_pdcom_sectors WHERE document_id=%s
+          SELECT id,ST_Transform(geom,2056) AS g FROM bronze_ch.vd_pdcom_sectors WHERE id=ANY(%s::uuid[])
         ), pairs AS (
           SELECT s.id,p.egrid,ST_Intersection(s.g,p.g) AS overlap,
                  ST_Area(p.g) AS parcel_area,ST_DWithin(p.g,ST_Boundary(s.g),10) AS boundary_review
@@ -38,9 +39,9 @@ def persist(conn,document_id,sha):
         (sector_id,egrid,overlap_m2,parcel_area_m2,overlap_fraction,boundary_review_required,uncertainty_buffer_m,geom)
         SELECT id,egrid,ST_Area(overlap),parcel_area,LEAST(1,ST_Area(overlap)/parcel_area),boundary_review,10,ST_Transform(overlap,4326)
         FROM pairs WHERE ST_Area(overlap)>0 AND parcel_area>0 AND egrid IS NOT NULL
-        ON CONFLICT(sector_id,egrid) DO NOTHING''',(document_id,))
+        ON CONFLICT(sector_id,egrid) DO NOTHING''',(sector_ids,))
         c.execute('''SELECT count(*),count(DISTINCT p.egrid) FROM bronze_ch.vd_pdcom_parcel_candidates p
-                     JOIN bronze_ch.vd_pdcom_sectors s ON s.id=p.sector_id WHERE s.document_id=%s''',(document_id,))
+                     JOIN bronze_ch.vd_pdcom_sectors s ON s.id=p.sector_id WHERE s.id=ANY(%s::uuid[])''',(sector_ids,))
         pairs,parcels=c.fetchone()
     return {'commune_bfs':5725,'sectors':len(features),'sector_parcel_pairs':pairs,
             'unique_parcels':parcels,'review_status':'review_required','calibration_date':'2026-09-13',
