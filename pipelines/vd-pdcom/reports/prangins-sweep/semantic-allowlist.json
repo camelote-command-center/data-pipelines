@@ -1,0 +1,647 @@
+{
+  "source_sha256": "a4079a88201b716ede0793150102306f8b1faddb55c391a7c2c1696244a96d02",
+  "document_id": "ad153736-58f1-533f-8cca-e41524f9fe12",
+  "approved_for": "source_semantics_only_private_candidate_assembly",
+  "not_approved_for": [
+    "public_release",
+    "commune_completion",
+    "current_rights",
+    "finite_thematic_precision"
+  ],
+  "categories": [
+    {
+      "key": "vineyards",
+      "label": "Vignes",
+      "fill_ids": [],
+      "clip_ids": [
+        166,
+        191
+      ],
+      "status": "source_semantics_supported_for_private_candidate_only",
+      "label_id": "1dea5f9841d21944d32f",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "source_precision_m": null,
+      "source_page": 1,
+      "evidence": [
+        "Exact source legend visual review",
+        "Raw PDF crops in clips-source-detail.jpg and fills-source-detail-0/1/2.jpg",
+        "Layer/fill or pattern with actual recovered area support; companions excluded"
+      ],
+      "limitations": [
+        "Historical2013 source depiction; not verified current legal rights",
+        "No source precision inferred; geometry and receiver gates remain separate",
+        "Paths and components are not physical-sector counts"
+      ]
+    },
+    {
+      "key": "rdu_parkway",
+      "label": "Parkway paysager (RDU)",
+      "fill_ids": [
+        323
+      ],
+      "clip_ids": [],
+      "status": "source_semantics_supported_for_private_candidate_only",
+      "label_id": "e5982c03ff96e69f8695",
+      "policy_status": {
+        "state": "explicit_RDU_dependency_2018_withdrawal_applies_to_policy",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": [],
+        "scope": "RDU project policy; geometry remains historical source evidence, not a current project"
+      },
+      "source_precision_m": null,
+      "source_page": 1,
+      "evidence": [
+        "Exact source legend visual review",
+        "Raw PDF crops in clips-source-detail.jpg and fills-source-detail-0/1/2.jpg",
+        "Layer/fill or pattern with actual recovered area support; companions excluded"
+      ],
+      "limitations": [
+        "Historical2013 source depiction; not verified current legal rights",
+        "No source precision inferred; geometry and receiver gates remain separate",
+        "Paths and components are not physical-sector counts",
+        "Retain verified2018 RDU withdrawal warning; do not present as live development permission"
+      ]
+    },
+    {
+      "key": "intermediate_densification",
+      "label": "Densification des zones intermédiaires",
+      "fill_ids": [],
+      "clip_ids": [
+        1679
+      ],
+      "status": "source_semantics_supported_for_private_candidate_only",
+      "label_id": "45808945cafd665a67d4",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "source_precision_m": null,
+      "source_page": 1,
+      "evidence": [
+        "Exact source legend visual review",
+        "Raw PDF crops in clips-source-detail.jpg and fills-source-detail-0/1/2.jpg",
+        "Layer/fill or pattern with actual recovered area support; companions excluded"
+      ],
+      "limitations": [
+        "Historical2013 source depiction; not verified current legal rights",
+        "No source precision inferred; geometry and receiver gates remain separate",
+        "Paths and components are not physical-sector counts"
+      ]
+    },
+    {
+      "key": "historic_centres",
+      "label": "Centralités historiques à renforcer",
+      "fill_ids": [
+        3379,
+        3383,
+        3386
+      ],
+      "clip_ids": [],
+      "status": "source_semantics_supported_for_private_candidate_only",
+      "label_id": "62257379f09664c773d0",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "source_precision_m": null,
+      "source_page": 1,
+      "evidence": [
+        "Exact source legend visual review",
+        "Raw PDF crops in clips-source-detail.jpg and fills-source-detail-0/1/2.jpg",
+        "Layer/fill or pattern with actual recovered area support; companions excluded"
+      ],
+      "limitations": [
+        "Historical2013 source depiction; not verified current legal rights",
+        "No source precision inferred; geometry and receiver gates remain separate",
+        "Paths and components are not physical-sector counts"
+      ]
+    },
+    {
+      "key": "jardins_proposal",
+      "label": "«Les Jardins de Prangins» : activités à haute valeur ajoutée et logements à créer *",
+      "fill_ids": [
+        218
+      ],
+      "clip_ids": [],
+      "status": "source_semantics_supported_for_private_candidate_only",
+      "label_id": "9cd029c07b45a1318828",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "source_precision_m": null,
+      "source_page": 1,
+      "evidence": [
+        "Exact source legend visual review",
+        "Raw PDF crops in clips-source-detail.jpg and fills-source-detail-0/1/2.jpg",
+        "Layer/fill or pattern with actual recovered area support; companions excluded"
+      ],
+      "limitations": [
+        "Historical2013 source depiction; not verified current legal rights",
+        "No source precision inferred; geometry and receiver gates remain separate",
+        "Paths and components are not physical-sector counts"
+      ]
+    },
+    {
+      "key": "public_parks",
+      "label": "Parcs et jardins publics",
+      "fill_ids": [
+        217
+      ],
+      "clip_ids": [],
+      "status": "source_semantics_supported_for_private_candidate_only",
+      "label_id": "63a562ff2d5ad8c6eb80",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "source_precision_m": null,
+      "source_page": 1,
+      "evidence": [
+        "Exact source legend visual review",
+        "Raw PDF crops in clips-source-detail.jpg and fills-source-detail-0/1/2.jpg",
+        "Layer/fill or pattern with actual recovered area support; companions excluded"
+      ],
+      "limitations": [
+        "Historical2013 source depiction; not verified current legal rights",
+        "No source precision inferred; geometry and receiver gates remain separate",
+        "Paths and components are not physical-sector counts"
+      ]
+    },
+    {
+      "key": "cemetery",
+      "label": "Cimetière",
+      "fill_ids": [],
+      "clip_ids": [
+        3542
+      ],
+      "status": "source_semantics_supported_for_private_candidate_only",
+      "label_id": "b41466ac10af303d8cea",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "source_precision_m": null,
+      "source_page": 1,
+      "evidence": [
+        "Exact source legend visual review",
+        "Raw PDF crops in clips-source-detail.jpg and fills-source-detail-0/1/2.jpg",
+        "Layer/fill or pattern with actual recovered area support; companions excluded"
+      ],
+      "limitations": [
+        "Historical2013 source depiction; not verified current legal rights",
+        "No source precision inferred; geometry and receiver gates remain separate",
+        "Paths and components are not physical-sector counts"
+      ]
+    },
+    {
+      "key": "green_urban_room",
+      "label": "Grande «pièce urbaine» verte",
+      "fill_ids": [
+        164
+      ],
+      "clip_ids": [],
+      "status": "source_semantics_supported_for_private_candidate_only",
+      "label_id": "fb506169cdef9155491b",
+      "policy_status": {
+        "state": "RDU_association_unresolved_no_supersession_claim",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "source_precision_m": null,
+      "source_page": 1,
+      "evidence": [
+        "Exact source legend visual review",
+        "Raw PDF crops in clips-source-detail.jpg and fills-source-detail-0/1/2.jpg",
+        "Layer/fill or pattern with actual recovered area support; companions excluded"
+      ],
+      "limitations": [
+        "Historical2013 source depiction; not verified current legal rights",
+        "No source precision inferred; geometry and receiver gates remain separate",
+        "Paths and components are not physical-sector counts"
+      ]
+    },
+    {
+      "key": "green_equipment_band",
+      "label": "Bande verte d’équipements",
+      "fill_ids": [
+        125,
+        129,
+        133,
+        137
+      ],
+      "clip_ids": [],
+      "status": "source_semantics_supported_for_private_candidate_only",
+      "label_id": "376e250e8f051ad5adf0",
+      "policy_status": {
+        "state": "partial_RDU_association_requires_feature_mapping",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": [],
+        "scope": "P3 sequence1 RDU-dependent; sequences2 and3 not established withdrawn"
+      },
+      "source_precision_m": null,
+      "source_page": 1,
+      "evidence": [
+        "Exact source legend visual review",
+        "Raw PDF crops in clips-source-detail.jpg and fills-source-detail-0/1/2.jpg",
+        "Layer/fill or pattern with actual recovered area support; companions excluded"
+      ],
+      "limitations": [
+        "Historical2013 source depiction; not verified current legal rights",
+        "No source precision inferred; geometry and receiver gates remain separate",
+        "Paths and components are not physical-sector counts",
+        "125/133 southern sequences and129 northern/RDU-associated sequence must retain distinct source support identity;137 is narrow turquoise-bordered continuation, not a new autonomous sector"
+      ]
+    },
+    {
+      "key": "mixed_extensions",
+      "label": "Extension : zone mixte habitat / activités à créer",
+      "fill_ids": [
+        327,
+        331,
+        335,
+        339,
+        343,
+        347,
+        350,
+        354
+      ],
+      "clip_ids": [],
+      "status": "source_semantics_supported_for_private_candidate_only",
+      "label_id": "023d20584f50a438123d",
+      "policy_status": {
+        "state": "partial_RDU_association_requires_feature_mapping",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": [],
+        "scope": "Northern Etraz/S4 extension and allocation affected; no blanket same-style category supersession"
+      },
+      "source_precision_m": null,
+      "source_page": 1,
+      "evidence": [
+        "Exact source legend visual review",
+        "Raw PDF crops in clips-source-detail.jpg and fills-source-detail-0/1/2.jpg",
+        "Layer/fill or pattern with actual recovered area support; companions excluded"
+      ],
+      "limitations": [
+        "Historical2013 source depiction; not verified current legal rights",
+        "No source precision inferred; geometry and receiver gates remain separate",
+        "Paths and components are not physical-sector counts",
+        "Retain verified2018 RDU withdrawal warning; do not present as live development permission"
+      ]
+    },
+    {
+      "key": "public_utility_proposed",
+      "label": "Zone d’utilité publique à créer",
+      "fill_ids": [],
+      "clip_ids": [
+        221,
+        273
+      ],
+      "status": "source_semantics_supported_for_private_candidate_only",
+      "label_id": "d2a453718b5202577470",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "source_precision_m": null,
+      "source_page": 1,
+      "evidence": [
+        "Exact source legend visual review",
+        "Raw PDF crops in clips-source-detail.jpg and fills-source-detail-0/1/2.jpg",
+        "Layer/fill or pattern with actual recovered area support; companions excluded"
+      ],
+      "limitations": [
+        "Historical2013 source depiction; not verified current legal rights",
+        "No source precision inferred; geometry and receiver gates remain separate",
+        "Paths and components are not physical-sector counts"
+      ]
+    },
+    {
+      "key": "allocation_unknown",
+      "label": "Affectation à définir",
+      "fill_ids": [
+        320
+      ],
+      "clip_ids": [],
+      "status": "source_semantics_supported_for_private_candidate_only",
+      "label_id": "bdeaceb4425cecdc1c56",
+      "policy_status": {
+        "state": "partial_RDU_association_requires_feature_mapping",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": [],
+        "scope": "Northern Etraz/S4 extension and allocation affected; no blanket same-style category supersession"
+      },
+      "source_precision_m": null,
+      "source_page": 1,
+      "evidence": [
+        "Exact source legend visual review",
+        "Raw PDF crops in clips-source-detail.jpg and fills-source-detail-0/1/2.jpg",
+        "Layer/fill or pattern with actual recovered area support; companions excluded"
+      ],
+      "limitations": [
+        "Historical2013 source depiction; not verified current legal rights",
+        "No source precision inferred; geometry and receiver gates remain separate",
+        "Paths and components are not physical-sector counts",
+        "Retain verified2018 RDU withdrawal warning; do not present as live development permission"
+      ]
+    },
+    {
+      "key": "existing_equipment",
+      "label": "Equipements existants",
+      "fill_ids": [
+        4075,
+        4076,
+        4077,
+        4078,
+        4079,
+        4080,
+        4081,
+        4082,
+        4083,
+        4084,
+        4085,
+        4086,
+        4087,
+        4088,
+        4089,
+        4090,
+        4091,
+        4092,
+        4093,
+        4094,
+        4095,
+        4096,
+        4097,
+        4098,
+        4099,
+        4100,
+        4101,
+        4102,
+        4103,
+        4104,
+        4105,
+        4106,
+        4107,
+        4108,
+        4109,
+        4110,
+        4111,
+        4112,
+        4113,
+        4114
+      ],
+      "clip_ids": [],
+      "status": "source_semantics_supported_for_private_candidate_only",
+      "label_id": "c4a60853cd2ad5279127",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "source_precision_m": null,
+      "source_page": 1,
+      "evidence": [
+        "Exact source legend visual review",
+        "Raw PDF crops in clips-source-detail.jpg and fills-source-detail-0/1/2.jpg",
+        "Layer/fill or pattern with actual recovered area support; companions excluded"
+      ],
+      "limitations": [
+        "Historical2013 source depiction; not verified current legal rights",
+        "No source precision inferred; geometry and receiver gates remain separate",
+        "Paths and components are not physical-sector counts",
+        "4114 visually matches actual navy equipment building despite slightly different fill; source depiction not validated operational status"
+      ]
+    },
+    {
+      "key": "port",
+      "label": "Port",
+      "fill_ids": [],
+      "clip_ids": [
+        3464
+      ],
+      "status": "source_semantics_supported_for_private_candidate_only",
+      "label_id": "7b9913d6c8bc7ee12882",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "source_precision_m": null,
+      "source_page": 1,
+      "evidence": [
+        "Exact source legend visual review",
+        "Raw PDF crops in clips-source-detail.jpg and fills-source-detail-0/1/2.jpg",
+        "Layer/fill or pattern with actual recovered area support; companions excluded"
+      ],
+      "limitations": [
+        "Historical2013 source depiction; not verified current legal rights",
+        "No source precision inferred; geometry and receiver gates remain separate",
+        "Paths and components are not physical-sector counts"
+      ]
+    },
+    {
+      "key": "beach",
+      "label": "Plage",
+      "fill_ids": [],
+      "clip_ids": [
+        4117
+      ],
+      "status": "source_semantics_supported_for_private_candidate_only",
+      "label_id": "9573a90643592e93eb1c",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "source_precision_m": null,
+      "source_page": 1,
+      "evidence": [
+        "Exact source legend visual review",
+        "Raw PDF crops in clips-source-detail.jpg and fills-source-detail-0/1/2.jpg",
+        "Layer/fill or pattern with actual recovered area support; companions excluded"
+      ],
+      "limitations": [
+        "Historical2013 source depiction; not verified current legal rights",
+        "No source precision inferred; geometry and receiver gates remain separate",
+        "Paths and components are not physical-sector counts"
+      ]
+    },
+    {
+      "key": "aerodrome",
+      "label": "Zone de l’aérodrome",
+      "fill_ids": [],
+      "clip_ids": [
+        3489,
+        3515
+      ],
+      "status": "source_semantics_supported_for_private_candidate_only",
+      "label_id": "84a07e3be1d7ef04e8c5",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "source_precision_m": null,
+      "source_page": 1,
+      "evidence": [
+        "Exact source legend visual review",
+        "Raw PDF crops in clips-source-detail.jpg and fills-source-detail-0/1/2.jpg",
+        "Layer/fill or pattern with actual recovered area support; companions excluded"
+      ],
+      "limitations": [
+        "Historical2013 source depiction; not verified current legal rights",
+        "No source precision inferred; geometry and receiver gates remain separate",
+        "Paths and components are not physical-sector counts"
+      ]
+    },
+    {
+      "key": "sports",
+      "label": "Installations sportives",
+      "fill_ids": [],
+      "clip_ids": [
+        3853,
+        3878,
+        3975,
+        4000,
+        4025,
+        4050
+      ],
+      "status": "source_semantics_supported_for_private_candidate_only",
+      "label_id": "16cd011dc51b60b38854",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "source_precision_m": null,
+      "source_page": 1,
+      "evidence": [
+        "Exact source legend visual review",
+        "Raw PDF crops in clips-source-detail.jpg and fills-source-detail-0/1/2.jpg",
+        "Layer/fill or pattern with actual recovered area support; companions excluded"
+      ],
+      "limitations": [
+        "Historical2013 source depiction; not verified current legal rights",
+        "No source precision inferred; geometry and receiver gates remain separate",
+        "Paths and components are not physical-sector counts"
+      ]
+    },
+    {
+      "key": "public_space",
+      "label": "Espace public à aménager (à titre indicatif)",
+      "fill_ids": [
+        2534
+      ],
+      "clip_ids": [],
+      "status": "source_semantics_supported_for_private_candidate_only",
+      "label_id": "2ff574624711e1e72afc",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "source_precision_m": null,
+      "source_page": 1,
+      "evidence": [
+        "Exact source legend visual review",
+        "Raw PDF crops in clips-source-detail.jpg and fills-source-detail-0/1/2.jpg",
+        "Layer/fill or pattern with actual recovered area support; companions excluded"
+      ],
+      "limitations": [
+        "Historical2013 source depiction; not verified current legal rights",
+        "No source precision inferred; geometry and receiver gates remain separate",
+        "Paths and components are not physical-sector counts"
+      ]
+    }
+  ],
+  "exceptions": [
+    {
+      "ids": [
+        121,
+        122,
+        216,
+        141,
+        150,
+        272,
+        2533,
+        2572,
+        2535,
+        2536,
+        2537,
+        2538,
+        2539,
+        2540,
+        2541,
+        2542,
+        2543,
+        3541,
+        4146,
+        4147
+      ],
+      "state": "explicit_unresolved_or_context_support",
+      "reason": "Shared colors, pattern background, linear graphic or potential inset need exact feature identity; no whole-color assignment or currentness inferred"
+    },
+    {
+      "ids": [
+        126,
+        130,
+        134,
+        138,
+        165,
+        219,
+        321,
+        324,
+        328,
+        332,
+        336,
+        344,
+        351,
+        3380,
+        3387
+      ],
+      "state": "exclude_companion_outline_duplicate_geometry",
+      "reason": "Companion borders are visual identity evidence; not additional source sectors"
+    },
+    {
+      "groups": [
+        22,
+        23,
+        24
+      ],
+      "state": "exclude_context_background",
+      "reason": "Basemap/water depiction not a newly identified legend area"
+    },
+    {
+      "groups": [
+        30,
+        31,
+        32,
+        33,
+        34,
+        39
+      ],
+      "state": "pending_typed_symbol_or_linear_extraction",
+      "reason": "Crossings, routes, viewpoint and equipment stars must not become area sectors"
+    }
+  ],
+  "coverage": "18 additional source classes supported, not delivered by this review. Other59ledger classes remain pending or prior partial mapping.",
+  "review_corrections": [
+    "Port3464 and beach4117 corrected after exactPDF background-pattern review",
+    "Equipmentband continuation137 and equipment building4114 added after raw source crop review"
+  ],
+  "artifact_sha256_inputs": {
+    "groups.json": "3cbc4a9a86a14edbebc81620f5a638771ae6f5a6b08c468f0ff3a66270e2f609",
+    "clip-features.json": "9d0c945d4d5690afedba3d00e16a2a1aa7678686aed1a83fca961786bc138014",
+    "provisional-selections.json": "99ee9b57f05f149ea0d9b29d8c6f3bca1c0420f2cb0dcce2f23f6d8b1144693c"
+  }
+}
