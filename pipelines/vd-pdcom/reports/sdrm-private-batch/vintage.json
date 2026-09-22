@@ -1,0 +1,1290 @@
+[
+  {
+    "site_id": "M5",
+    "requested_time": "2011",
+    "file": "M5-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2527108.5%2C1151395.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2526508%2C1150795%2C2527709%2C1151996&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212411,
+        "id": 212411,
+        "attributes": {
+          "kbnum": "1242-41",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212411
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "M5",
+    "requested_time": "2014",
+    "file": "M5-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2527108.5%2C1151395.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2526508%2C1150795%2C2527709%2C1151996&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223089,
+        "id": 223089,
+        "attributes": {
+          "kbnum": "1242-41",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223089
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "D2",
+    "requested_time": "2011",
+    "file": "D2-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2530463.5%2C1152900.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2529863%2C1152300%2C2531064%2C1153501&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212372,
+        "id": 212372,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212372
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "D2",
+    "requested_time": "2014",
+    "file": "D2-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2530463.5%2C1152900.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2529863%2C1152300%2C2531064%2C1153501&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223108,
+        "id": 223108,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223108
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "P5",
+    "requested_time": "2011",
+    "file": "P5-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2530257.5%2C1152151.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2529657%2C1151551%2C2530858%2C1152752&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212372,
+        "id": 212372,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212372
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "P5",
+    "requested_time": "2014",
+    "file": "P5-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2530257.5%2C1152151.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2529657%2C1151551%2C2530858%2C1152752&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223108,
+        "id": 223108,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223108
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "P1",
+    "requested_time": "2011",
+    "file": "P1-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2530134.5%2C1152577.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2529534%2C1151977%2C2530735%2C1153178&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212372,
+        "id": 212372,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212372
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "P1",
+    "requested_time": "2014",
+    "file": "P1-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2530134.5%2C1152577.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2529534%2C1151977%2C2530735%2C1153178&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223108,
+        "id": 223108,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223108
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "D3",
+    "requested_time": "2011",
+    "file": "D3-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2530892.5%2C1152943.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2530292%2C1152343%2C2531493%2C1153544&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212372,
+        "id": 212372,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212372
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "D3",
+    "requested_time": "2014",
+    "file": "D3-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2530892.5%2C1152943.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2530292%2C1152343%2C2531493%2C1153544&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223108,
+        "id": 223108,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223108
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "M3",
+    "requested_time": "2011",
+    "file": "M3-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2526755.5%2C1151718.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2526155%2C1151118%2C2527356%2C1152319&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212411,
+        "id": 212411,
+        "attributes": {
+          "kbnum": "1242-41",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212411
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "M3",
+    "requested_time": "2014",
+    "file": "M3-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2526755.5%2C1151718.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2526155%2C1151118%2C2527356%2C1152319&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223089,
+        "id": 223089,
+        "attributes": {
+          "kbnum": "1242-41",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223089
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "E1",
+    "requested_time": "2011",
+    "file": "E1-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2530928.5%2C1154251.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2530328%2C1153651%2C2531529%2C1154852&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212372,
+        "id": 212372,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212372
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "E1",
+    "requested_time": "2014",
+    "file": "E1-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2530928.5%2C1154251.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2530328%2C1153651%2C2531529%2C1154852&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223108,
+        "id": 223108,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223108
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "D4",
+    "requested_time": "2011",
+    "file": "D4-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2531022.5%2C1153118.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2530422%2C1152518%2C2531623%2C1153719&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212372,
+        "id": 212372,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212372
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "D4",
+    "requested_time": "2014",
+    "file": "D4-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2531022.5%2C1153118.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2530422%2C1152518%2C2531623%2C1153719&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223108,
+        "id": 223108,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223108
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "M1",
+    "requested_time": "2011",
+    "file": "M1-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2526529.5%2C1151168.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2525929%2C1150568%2C2527130%2C1151769&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212411,
+        "id": 212411,
+        "attributes": {
+          "kbnum": "1242-41",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212411
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "M1",
+    "requested_time": "2014",
+    "file": "M1-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2526529.5%2C1151168.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2525929%2C1150568%2C2527130%2C1151769&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223089,
+        "id": 223089,
+        "attributes": {
+          "kbnum": "1242-41",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223089
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "P4",
+    "requested_time": "2011",
+    "file": "P4-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2530013.5%2C1152683.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2529413%2C1152083%2C2530614%2C1153284&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212372,
+        "id": 212372,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212372
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "P4",
+    "requested_time": "2014",
+    "file": "P4-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2530013.5%2C1152683.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2529413%2C1152083%2C2530614%2C1153284&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223108,
+        "id": 223108,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223108
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "P3",
+    "requested_time": "2011",
+    "file": "P3-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2529707.5%2C1152577.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2529107%2C1151977%2C2530308%2C1153178&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212372,
+        "id": 212372,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212372
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "P3",
+    "requested_time": "2014",
+    "file": "P3-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2529707.5%2C1152577.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2529107%2C1151977%2C2530308%2C1153178&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223108,
+        "id": 223108,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223108
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "E2",
+    "requested_time": "2011",
+    "file": "E2-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2530778.5%2C1154308.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2530178%2C1153708%2C2531379%2C1154909&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212372,
+        "id": 212372,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212372
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "E2",
+    "requested_time": "2014",
+    "file": "E2-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2530778.5%2C1154308.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2530178%2C1153708%2C2531379%2C1154909&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223108,
+        "id": 223108,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223108
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "T5",
+    "requested_time": "2011",
+    "file": "T5-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2526324.5%2C1151133.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2525724%2C1150533%2C2526925%2C1151734&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212411,
+        "id": 212411,
+        "attributes": {
+          "kbnum": "1242-41",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212411
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "T5",
+    "requested_time": "2014",
+    "file": "T5-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2526324.5%2C1151133.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2525724%2C1150533%2C2526925%2C1151734&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223089,
+        "id": 223089,
+        "attributes": {
+          "kbnum": "1242-41",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223089
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "L3",
+    "requested_time": "2011",
+    "file": "L3-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2530098.5%2C1153228.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2529498%2C1152628%2C2530699%2C1153829&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212372,
+        "id": 212372,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212372
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "L3",
+    "requested_time": "2014",
+    "file": "L3-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2530098.5%2C1153228.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2529498%2C1152628%2C2530699%2C1153829&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223108,
+        "id": 223108,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223108
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "Ei1",
+    "requested_time": "2011",
+    "file": "Ei1-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2528326.5%2C1152892.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2527726%2C1152292%2C2528927%2C1153493&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212372,
+        "id": 212372,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212372
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "Ei1",
+    "requested_time": "2014",
+    "file": "Ei1-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2528326.5%2C1152892.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2527726%2C1152292%2C2528927%2C1153493&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223108,
+        "id": 223108,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223108
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "L7",
+    "requested_time": "2011",
+    "file": "L7-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2529698.5%2C1152679.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2529098%2C1152079%2C2530299%2C1153280&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212372,
+        "id": 212372,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212372
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "L7",
+    "requested_time": "2014",
+    "file": "L7-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2529698.5%2C1152679.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2529098%2C1152079%2C2530299%2C1153280&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223108,
+        "id": 223108,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223108
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "E3",
+    "requested_time": "2011",
+    "file": "E3-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2530888.5%2C1154035.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2530288%2C1153435%2C2531489%2C1154636&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212372,
+        "id": 212372,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212372
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "E3",
+    "requested_time": "2014",
+    "file": "E3-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2530888.5%2C1154035.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2530288%2C1153435%2C2531489%2C1154636&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223108,
+        "id": 223108,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223108
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "L4",
+    "requested_time": "2011",
+    "file": "L4-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2528740.5%2C1152605.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2528140%2C1152005%2C2529341%2C1153206&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212372,
+        "id": 212372,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212372
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "L4",
+    "requested_time": "2014",
+    "file": "L4-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2528740.5%2C1152605.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2528140%2C1152005%2C2529341%2C1153206&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223108,
+        "id": 223108,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223108
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "P2",
+    "requested_time": "2011",
+    "file": "P2-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2529325.5%2C1152410.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2528725%2C1151810%2C2529926%2C1153011&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212372,
+        "id": 212372,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212372
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "P2",
+    "requested_time": "2014",
+    "file": "P2-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2529325.5%2C1152410.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2528725%2C1151810%2C2529926%2C1153011&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223108,
+        "id": 223108,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223108
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "L6",
+    "requested_time": "2011",
+    "file": "L6-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2529479.5%2C1152689.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2528879%2C1152089%2C2530080%2C1153290&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212372,
+        "id": 212372,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212372
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "L6",
+    "requested_time": "2014",
+    "file": "L6-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2529479.5%2C1152689.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2528879%2C1152089%2C2530080%2C1153290&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223108,
+        "id": 223108,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223108
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "T4",
+    "requested_time": "2011",
+    "file": "T4-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2526285.5%2C1150380.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2525651%2C1149746%2C2526920%2C1151015&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212411,
+        "id": 212411,
+        "attributes": {
+          "kbnum": "1242-41",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212411
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "T4",
+    "requested_time": "2014",
+    "file": "T4-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2526285.5%2C1150380.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2525651%2C1149746%2C2526920%2C1151015&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223089,
+        "id": 223089,
+        "attributes": {
+          "kbnum": "1242-41",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223089
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "L2",
+    "requested_time": "2011",
+    "file": "L2-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2529838.5%2C1153097.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2529238%2C1152497%2C2530439%2C1153698&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212372,
+        "id": 212372,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212372
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "L2",
+    "requested_time": "2014",
+    "file": "L2-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2529838.5%2C1153097.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2529238%2C1152497%2C2530439%2C1153698&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223108,
+        "id": 223108,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223108
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "L5",
+    "requested_time": "2011",
+    "file": "L5-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2529211.5%2C1152592.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2528611%2C1151992%2C2529812%2C1153193&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212372,
+        "id": 212372,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212372
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "L5",
+    "requested_time": "2014",
+    "file": "L5-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2529211.5%2C1152592.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2528611%2C1151992%2C2529812%2C1153193&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223108,
+        "id": 223108,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223108
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "L9",
+    "requested_time": "2011",
+    "file": "L9-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2529746.5%2C1153140.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2529146%2C1152540%2C2530347%2C1153741&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212372,
+        "id": 212372,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212372
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "L9",
+    "requested_time": "2014",
+    "file": "L9-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2529746.5%2C1153140.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2529146%2C1152540%2C2530347%2C1153741&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223108,
+        "id": 223108,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223108
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "M6",
+    "requested_time": "2011",
+    "file": "M6-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2527175.5%2C1152372.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2526575%2C1151772%2C2527776%2C1152973&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212496,
+        "id": 212496,
+        "attributes": {
+          "kbnum": "1242-23",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212496
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "M6",
+    "requested_time": "2014",
+    "file": "M6-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2527175.5%2C1152372.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2526575%2C1151772%2C2527776%2C1152973&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 222993,
+        "id": 222993,
+        "attributes": {
+          "kbnum": "1242-23",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 222993
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "D8",
+    "requested_time": "2011",
+    "file": "D8-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2531004.5%2C1152318.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2530404%2C1151718%2C2531605%2C1152919&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212372,
+        "id": 212372,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212372
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "D8",
+    "requested_time": "2014",
+    "file": "D8-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2531004.5%2C1152318.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2530404%2C1151718%2C2531605%2C1152919&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223108,
+        "id": 223108,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223108
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "D9",
+    "requested_time": "2011",
+    "file": "D9-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2531187.5%2C1152205.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2530587%2C1151605%2C2531788%2C1152806&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212372,
+        "id": 212372,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212372
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "D9",
+    "requested_time": "2014",
+    "file": "D9-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2531187.5%2C1152205.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2530587%2C1151605%2C2531788%2C1152806&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223108,
+        "id": 223108,
+        "attributes": {
+          "kbnum": "1242-24",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223108
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "S1",
+    "requested_time": "2011",
+    "file": "S1-vintage-2011.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2523856.5%2C1148063.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2523256%2C1147463%2C2524457%2C1148664&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2011",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 212533,
+        "id": 212533,
+        "attributes": {
+          "kbnum": "1242-43",
+          "flightyear": 2009,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2011,
+          "label": 212533
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  },
+  {
+    "site_id": "S1",
+    "requested_time": "2014",
+    "file": "S1-vintage-2014.json",
+    "url": "https://api3.geo.admin.ch/rest/services/api/MapServer/identify?geometry=2523856.5%2C1148063.5&geometryType=esriGeometryPoint&sr=2056&layers=all%3Ach.swisstopo.swissimage-product.metadata&tolerance=0&mapExtent=2523256%2C1147463%2C2524457%2C1148664&imageDisplay=1200%2C1200%2C96&returnGeometry=false&timeInstant=2014",
+    "records": [
+      {
+        "layerBodId": "ch.swisstopo.swissimage-product.metadata",
+        "layerName": "Einteilung SWISSIMAGE Zeitreise",
+        "featureId": 223152,
+        "id": 223152,
+        "attributes": {
+          "kbnum": "1242-43",
+          "flightyear": 2012,
+          "gsd": "25 cm",
+          "colormode": "RGB",
+          "bgdi_flugjahr": 2014,
+          "label": 223152
+        }
+      }
+    ],
+    "scope": "Window center only; does not assert homogeneous capture vintage throughout window."
+  }
+]

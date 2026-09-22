@@ -1,0 +1,58 @@
+[
+  {
+    "site_id": "M5",
+    "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?geometry=2526508%2C1150795%2C2527709%2C1151996&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=1%3D1&outFields=OBJECTID%2CEGID&outSR=2056&f=geojson",
+    "sha256": "d988d5577ae1651249b65b89fa3cb28d85c3e9c677d893f8bb1cd8bee5fa5c97",
+    "count": 876,
+    "source": "Official current ground-building footprints; historical identity requires manual source/photo confirmation."
+  },
+  {
+    "site_id": "D2",
+    "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?geometry=2529863%2C1152300%2C2531064%2C1153501&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=1%3D1&outFields=OBJECTID%2CEGID&outSR=2056&f=geojson",
+    "sha256": "c28a4154c0ea03716c1203981bda5dd6abe30e1bfded16e608b961148f702a64",
+    "count": 391,
+    "source": "Official current ground-building footprints; historical identity requires manual source/photo confirmation."
+  },
+  {
+    "site_id": "L2",
+    "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?geometry=2529238%2C1152497%2C2530439%2C1153698&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=1%3D1&outFields=OBJECTID%2CEGID&outSR=2056&f=geojson",
+    "sha256": "cd722f9f216643fdadf91f6b4a93366a048d8bf82e9d261a69fe5832fdd9b92c",
+    "count": 585,
+    "source": "Official current ground-building footprints; historical identity requires manual source/photo confirmation."
+  },
+  {
+    "site_id": "T4",
+    "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?geometry=2525651%2C1149746%2C2526920%2C1151015&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=1%3D1&outFields=OBJECTID%2CEGID&outSR=2056&f=geojson",
+    "sha256": "d6889330e1c246ca4fbb6f5047a4d53af5fcf751cf22d8ef1244ce416a416abd",
+    "count": 485,
+    "source": "Official current ground-building footprints; historical identity requires manual source/photo confirmation."
+  },
+  {
+    "site_id": "P5",
+    "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?geometry=2529657%2C1151551%2C2530858%2C1152752&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=1%3D1&outFields=OBJECTID%2CEGID&outSR=2056&f=geojson",
+    "sha256": "65f8e21cba647daca9892add8aa6732ebcd216ca3abccded0e20126471aeceee",
+    "count": 742,
+    "source": "Official current ground-building footprints; historical identity requires manual source/photo confirmation."
+  },
+  {
+    "site_id": "E1",
+    "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?geometry=2530328%2C1153651%2C2531529%2C1154852&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=1%3D1&outFields=OBJECTID%2CEGID&outSR=2056&f=geojson",
+    "sha256": "39554dbb019f4ab1d21a45c87f1d2fde6d954d5634390eeceb760de497601d30",
+    "count": 780,
+    "source": "Official current ground-building footprints; historical identity requires manual source/photo confirmation."
+  },
+  {
+    "site_id": "L6",
+    "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?geometry=2528879%2C1152089%2C2530080%2C1153290&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=1%3D1&outFields=OBJECTID%2CEGID&outSR=2056&f=geojson",
+    "sha256": "e23cd6aa347ef7a58ffacebe0afe3ce7148a8342801e4ba121dcdbd03335a80d",
+    "count": 823,
+    "source": "Official current ground-building footprints; historical identity requires manual source/photo confirmation."
+  },
+  {
+    "site_id": "Ei1",
+    "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?geometry=2527726%2C1152292%2C2528927%2C1153493&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=1%3D1&outFields=OBJECTID%2CEGID&outSR=2056&f=geojson",
+    "sha256": "f9941c0e5fbe4b3219e08b37bb33c31dab4ebc7178b60a382154037bf392303b",
+    "count": 704,
+    "source": "Official current ground-building footprints; historical identity requires manual source/photo confirmation."
+  }
+]

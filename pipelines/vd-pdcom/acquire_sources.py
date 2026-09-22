@@ -175,6 +175,8 @@ def persist(conn,source,sha,pages):
     persist_rivelac(conn,doc_id,sha)
     from nord_activity_pilot import persist as persist_nord_activity
     persist_nord_activity(conn,doc_id,sha)
+    from sdrm_historical_pilot import persist as persist_sdrm_historical
+    persist_sdrm_historical(conn,doc_id,sha)
     return doc_id
 
 
