@@ -1,10 +1,11 @@
-import json,math,ast,numpy as np,pymupdf as fitz
+import hashlib,json,math,ast,numpy as np,pymupdf as fitz
 from pathlib import Path
 from shapely.geometry import Polygon,box,mapping,shape
 from shapely.ops import unary_union
 from shapely.affinity import affine_transform
 from PIL import Image,ImageDraw
 p=Path(__file__).parent;old=p.parent/'aigle';tree=ast.parse((old/'extract_source_paths.py').read_text());exec(compile(ast.Module(body=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name in ('flatten','polygon')],type_ignores=[]),'decoder','exec'))
+assert hashlib.sha256((p/'source.pdf').read_bytes()).hexdigest()=='bbd1d3d0474d5f491ac4cc17b05d7bf1c7912861d9f93f9347c719bf7522fedc', 'exact source PDF required'
 a=json.load(open(old/'alignment/alignment.json'));page=fitz.open(p/'source.pdf')[18];ds=page.get_drawings(extended=True);angle,scale,tx,ty=a['parameters'];co=math.cos(angle);si=math.sin(angle);o=a['pdf_origin_y_flipped'];q=a['reference_origin_lv95'];h=page.rect.height;m=[scale*co,scale*si,scale*si,-scale*co,q[0]+tx-scale*co*o[0]-scale*si*(h-o[1]),q[1]+ty-scale*si*o[0]+scale*co*(h-o[1])]
 def rings(items):
  parts=[];cur=[];end=None
