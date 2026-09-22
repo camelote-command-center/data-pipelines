@@ -197,3 +197,15 @@ The existing scheduled/manual delivery step records the scenario result separate
 from spatial counts. No new workflow or recurrence is introduced. Rollback is to
 remove the scenario call from the delivery entry point; retain the private evidence
 tables and leave all existing spatial delivery untouched.
+
+## Read-only release preflight
+
+`python pipelines/vd-pdcom/release_preflight.py --output preflight.json` uses
+`RE_LLM_DB_URL` in a database-enforced read-only transaction. It inventories all
+current communes and each sector's recorded validation, validator, source
+precision, source approval status, geometry, boundary-review flags and full-row
+private receiver parity. It never changes completion or releases data. A clean
+private receiver copy is not final delivery. Even zero listed blockers is only a
+necessary-gate report: independent positional/semantic review, exact current
+version and reservations, exhaustive commune map/category coverage, and a
+registered final release receiver with verified readback remain required.
