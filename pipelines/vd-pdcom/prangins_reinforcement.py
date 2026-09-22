@@ -9,19 +9,22 @@ from official_references import refresh
 from cadastral_types import KINDS
 DOC='ad153736-58f1-533f-8cca-e41524f9fe12'
 SHA='a4079a88201b716ede0793150102306f8b1faddb55c391a7c2c1696244a96d02'
-BATCH_SHA='6d8d30e3ca5eab1501528d3c3fc6956b1305be4c332065137faa4cb8e574e631'
-KEYS={'agriculture','orchards','industrial_rearrange','mixed_zone','wooded_cordons_create','landscape_limit_create','woods_forest','wooded_cordons_existing'}
+BATCH_SHA='31b954a31e7fc84b3027ec38cf3226526bfb518b10f148dcf28d00d165a8b651'
+KEYS={'reinforcement_existing_structure'}
 OLD_PATHS=set() # Extended indices differ from legacy ordinary-drawing indices; layer gate excludes densification.
 def sector_id(key):
     if key not in KEYS:raise ValueError('prangins_unreviewed_category')
     return str(uuid.uuid5(uuid.NAMESPACE_URL,DOC+'#indicative-category-2026-09-22#'+key))
 def validate(b):
     if (b['document_id'],b['source_sha256'])!=(DOC,SHA):raise ValueError('prangins_source')
-    if len(b['features'])!=8 or {f['key'] for f in b['features']}!=KEYS:raise ValueError('prangins_scope')
+    if len(b['features'])!=1 or {f['key'] for f in b['features']}!=KEYS:raise ValueError('prangins_scope')
     if b['publication_status']!='internal_review_only' or b['source_precision_m'] is not None:raise ValueError('prangins_private_precision')
     seen=set();pairs=0;m=b['affine']
     for f in b['features']:
         ids=set(f['path_ids'])
+        semantic=next(x for x in b['semantic_allowlist']['categories'] if x['key']==f['key'])
+        approved={f'fill:{i}' for i in semantic['fill_ids']}|{f'clip:{i}' for i in semantic['clip_ids']}
+        if ids!=approved or f['label']!=semantic['label'] or f['policy_status']!=semantic['policy_status']:raise ValueError('prangins_semantic_allowlist')
         for path in f['source_paths']:
             expected=affine_transform(shape(path['geometry_pdf']),m)
             if not shape(path['geometry_lv95']).equals_exact(expected,1e-7):raise ValueError('prangins_page_transform')
@@ -31,20 +34,20 @@ def validate(b):
         gs=[shape(x['geometry_lv95']) for x in f['source_paths']];g=shape(f['geometry_lv95'])
         if not g.is_valid or g.is_empty or any(not z.is_valid for z in gs) or not g.equals(unary_union(gs)):raise ValueError('prangins_source_union')
         if {x['id'] for x in f['source_paths']}!=ids:raise ValueError('prangins_path_membership')
-        if any(pr['category']!=f['category'] or pr['page']!=f['page'] or pr['source_sha256']!=SHA or pr['layer']=='densification' for pr in f['properties']):raise ValueError('prangins_semantics')
+        if any(pr['category']!=f['category'] or pr['page']!=f['page'] or pr['source_sha256']!=SHA or pr['id'] not in ids or pr['source_kind'] not in ('fill','clip') for pr in f['properties']):raise ValueError('prangins_semantics')
         eg=set()
         for row in f['expected_pairs']:
             r=shape(row['geometry']);at=row['attributes']
             if row['egrid'] in eg or at['EGRID']!=row['egrid'] or at['NO_COM_FED']!=5725 or at['GENRE_TXT'] not in KINDS or not r.is_valid:raise ValueError('prangins_reference_identity')
             if g.intersection(r).area<=0:raise ValueError('prangins_reference_overlap')
             eg.add(row['egrid']);pairs+=1
-    if pairs!=360:raise ValueError('prangins_pair_count')
+    if pairs!=80:raise ValueError('prangins_pair_count')
     return b
 def load_artifacts():
-    raw=(Path(__file__).parent/'reports/prangins-thematic/batch.json').read_bytes()
+    raw=(Path(__file__).parent/'reports/prangins-correction/batch.json').read_bytes()
     if hashlib.sha256(raw).hexdigest()!=BATCH_SHA:raise ValueError('prangins_changed_batch_requires_review')
     return validate(json.loads(raw))
-def persist(conn,document_id,sha,only_keys=None):
+def persist(conn,document_id,sha):
     if str(document_id)!=DOC or sha!=SHA:return None
     with conn.cursor() as c:
         c.execute('SELECT sha256,page_count FROM bronze_ch.vd_pdcom_documents WHERE id=%s',(DOC,));d=c.fetchone()
@@ -54,13 +57,9 @@ def persist(conn,document_id,sha,only_keys=None):
         c.execute('''SELECT count(*) FROM bronze_ch.vd_pdcom_parcel_references a JOIN bronze_ch.vd_pdcom_parcel_references z USING(egrid) WHERE a.snapshot_id=ANY(%s::uuid[]) AND z.snapshot_id=ANY(%s::uuid[]) AND a.snapshot_id<z.snapshot_id AND (NOT ST_Equals(a.geom,z.geom) OR a.commune_bfs IS DISTINCT FROM z.commune_bfs OR a.official_attributes IS DISTINCT FROM z.official_attributes)''',([x['snapshot_id'] for x in refs],[x['snapshot_id'] for x in refs]))
         if c.fetchone()[0]:raise ValueError('prangins_conflicting_tile_reference')
     for f in b['features']:
-        if only_keys is not None and f['key'] not in only_keys:continue
         sid=sector_id(f['key']);geom=json.dumps(f['geometry_lv95']);label='Prangins — couche indicative partielle — '+f['label']
         frozen=[{'egrid':x['egrid'],'kind':x['attributes']['GENRE_TXT'],'geometry':x['geometry']} for x in f['expected_pairs']]
-        evidence={'source_sha256':SHA,'source_path_ids':f['path_ids'],'source_category':f['category'],'page_number':f['page'],'grouping':'Union of explicitly listed source paths; partial thematic collection, not a physical sector','semantics':b['semantics'],'reservation':b['reservation'],'alignment':b['alignment'],'source_transform':b['affine'],'map_review':'Original2013 synthesis transform unchanged; grouped outlines visually checked against exactsource map. No inset transfer/refit or new precision inference.','source_precision':'unknown','source_precision_m':None,'boundary_buffer':'10m review heuristic, not a measured error bound','review_status':'review_required','publication_status':'internal_review_only','reference_scope':'Current official cadastral objects for source commune5725 only; DDP rights distinct from underlying land, not exclusive area; entire source geometry retained, not clipped','official_references':refs,'batch_sha256':BATCH_SHA,'artifact':'pipelines/vd-pdcom/reports/prangins-thematic'}
-        if f['key']=='wooded_cordons_create':
-            from prangins_category_correction import evidence as correction_evidence
-            evidence['source_category_correction']=correction_evidence()
+        evidence={'source_sha256':SHA,'source_path_ids':f['path_ids'],'source_category':f['category'],'source_policy_status':f['policy_status'],'semantic_limitations':f['semantic_limitations'],'legend_label_id':f['label_id'],'page_number':f['page'],'grouping':'Union of explicitly listed source paths; partial thematic collection, not a physical sector','semantics':b['semantics'],'reservation':b['reservation'],'alignment':b['alignment'],'source_transform':b['affine'],'map_review':'Original2013 transformation unchanged; exact filled supports and source pattern clipping polygons visually reviewed. Not buffered strokes or stripe unions; inset and glyphs excluded.','source_precision':'unknown','source_precision_m':None,'boundary_buffer':'10m review heuristic, not a measured error bound','review_status':'review_required','publication_status':'internal_review_only','reference_scope':'Current official cadastral objects for source commune5725 only; DDP rights distinct from underlying land, not exclusive area; entire source geometry retained, not clipped','official_references':refs,'batch_sha256':BATCH_SHA,'artifact':'pipelines/vd-pdcom/reports/prangins-correction'}
         with conn,conn.cursor() as c:
             c.execute("SET LOCAL statement_timeout='90s'");c.execute('SELECT pg_advisory_xact_lock(572500301)')
             c.execute('''SELECT count(*) FROM bronze_ch.vd_pdcom_parcel_references WHERE snapshot_id=ANY(%s::uuid[]) AND geom && ST_SetSRID(ST_GeomFromGeoJSON(%s),2056) AND NOT ST_IsValid(geom)''',([x['snapshot_id'] for x in refs],geom))
@@ -74,9 +73,6 @@ def persist(conn,document_id,sha,only_keys=None):
             if c.fetchone()[0]:raise ValueError('prangins_current_geometry_changed')
             c.execute('SELECT ST_IsValid(ST_Transform(ST_SetSRID(ST_GeomFromGeoJSON(%s),2056),4326)),(SELECT bool_and(ST_IsValid(ST_Transform(overlap,4326))) FROM prangins_pairs)',(geom,))
             if c.fetchone()!=(True,True):raise ValueError('prangins_transformed_geometry_invalid')
-            if f['key']=='wooded_cordons_create':
-                from prangins_category_correction import correct
-                correct(c,sid,geom)
             c.execute('''INSERT INTO bronze_ch.vd_pdcom_sectors(id,document_id,page_number,label,geom,alignment_rmse_m,validation_evidence,review_status) VALUES(%s,%s,%s,%s,ST_Transform(ST_SetSRID(ST_GeomFromGeoJSON(%s),2056),4326),%s,%s,'review_required') ON CONFLICT DO NOTHING''',(sid,DOC,f['page'],label,geom,b['alignment']['holdout_rmse_m'],Json(evidence)))
             c.execute("SELECT label,review_status,source_precision_m,validated_by,ST_Equals(geom,ST_Transform(ST_SetSRID(ST_GeomFromGeoJSON(%s),2056),4326)) FROM bronze_ch.vd_pdcom_sectors WHERE id=%s",(geom,sid))
             if c.fetchone()!=(label,'review_required',None,None,True):raise ValueError('prangins_existing_sector_changed')
@@ -88,8 +84,6 @@ def persist(conn,document_id,sha,only_keys=None):
             if c.fetchone()[0]:raise ValueError('prangins_existing_values')
             c.execute('''INSERT INTO bronze_ch.vd_pdcom_parcel_candidates(sector_id,egrid,overlap_m2,parcel_area_m2,overlap_fraction,boundary_review_required,uncertainty_buffer_m,geom,cadastral_object_kind,cadastral_type_evidence) SELECT %s,n.egrid,ST_Area(n.overlap),n.area,LEAST(1,ST_Area(n.overlap)/n.area),n.edge,10,ST_Transform(n.overlap,4326),n.object_kind,jsonb_build_object('source_url',s.query_url,'response_sha256',s.response_sha256,'reference_snapshot_ids',jsonb_build_array(n.snapshot_id),'official_attributes',n.official_attributes,'status','matched') FROM prangins_pairs n JOIN bronze_ch.vd_pdcom_parcel_reference_snapshots s ON s.id=n.snapshot_id ON CONFLICT DO NOTHING''',(sid,))
             c.execute('''INSERT INTO bronze_ch.vd_pdcom_candidate_parcel_references(sector_id,egrid,snapshot_id) SELECT %s,egrid,snapshot_id FROM prangins_pairs ON CONFLICT(sector_id,egrid) DO UPDATE SET snapshot_id=EXCLUDED.snapshot_id''',(sid,))
-            c.execute('SELECT validation_evidence FROM bronze_ch.vd_pdcom_sectors WHERE id=%s',(sid,))
-            evidence={**(c.fetchone()[0] or {}),**evidence}
             c.execute('UPDATE bronze_ch.vd_pdcom_sectors SET validation_evidence=%s WHERE id=%s',(Json(evidence),sid))
         results.append({'key':f['key'],'sector_id':sid,'parcel_pairs':len(keys)})
     return {'collections':len(results),'parcel_pairs':sum(r['parcel_pairs'] for r in results),'candidates':results,'publication_status':'internal_review_only','review_status':'review_required'}
