@@ -165,6 +165,8 @@ def persist(conn,source,sha,pages):
     apply_batch(conn,doc_id,sha)
     from epalinges_pilot import persist as persist_epalinges
     persist_epalinges(conn,doc_id,sha)
+    from epalinges_thematic import persist as persist_epalinges_thematic
+    persist_epalinges_thematic(conn,doc_id,sha)
     from aigle_pilot import persist as persist_aigle
     persist_aigle(conn,doc_id,sha)
     from bex_pilot import persist as persist_bex

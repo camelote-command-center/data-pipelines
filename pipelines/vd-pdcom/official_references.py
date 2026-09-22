@@ -2,7 +2,7 @@
 import hashlib,json,re,uuid
 from pathlib import Path
 import requests
-from psycopg2.extras import Json
+from psycopg2.extras import Json,execute_values
 URL='https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query'
 def validate(response,count,bfs):
     if 'error' in response or response.get('exceededTransferLimit') or count is None or count<=0 or count!=len(response.get('features',[])):raise ValueError('incomplete_official_parcel_snapshot')
@@ -31,9 +31,10 @@ def refresh(conn,document_id,bfs,bounds):
         c.execute("SET LOCAL statement_timeout='60s'")
         c.execute('''INSERT INTO bronze_ch.vd_pdcom_parcel_reference_snapshots(id,document_id,commune_bfs,query_url,count_url,response_sha256,feature_count,bounds)
         VALUES(%s,%s,%s,%s,%s,%s,%s,ST_MakeEnvelope(%s,%s,%s,%s,2056)) ON CONFLICT(id) DO UPDATE SET last_checked_at=now()''',(sid,document_id,bfs,fr.url,cr.url,sha,count,*bounds))
-        for f in features:
-            p=f['properties'];c.execute('''INSERT INTO bronze_ch.vd_pdcom_parcel_references(snapshot_id,egrid,commune_bfs,geom,official_attributes)
-            VALUES(%s,%s,%s,ST_Multi(ST_SetSRID(ST_GeomFromGeoJSON(%s),2056)),%s) ON CONFLICT DO NOTHING''',(sid,p['EGRID'],bfs,json.dumps(f['geometry']),Json(p)))
+        rows=[(sid,f['properties']['EGRID'],bfs,json.dumps(f['geometry']),Json(f['properties'])) for f in features]
+        execute_values(c,"""INSERT INTO bronze_ch.vd_pdcom_parcel_references(snapshot_id,egrid,commune_bfs,geom,official_attributes)
+            VALUES %s ON CONFLICT DO NOTHING""",rows,
+            template="(%s,%s,%s,ST_Multi(ST_SetSRID(ST_GeomFromGeoJSON(%s),2056)),%s)",page_size=500)
         c.execute('''SELECT count(*),bool_and(ST_Intersects(r.geom,s.bounds)) FROM bronze_ch.vd_pdcom_parcel_references r JOIN bronze_ch.vd_pdcom_parcel_reference_snapshots s ON s.id=r.snapshot_id WHERE r.snapshot_id=%s''',(sid,))
         actual,within=c.fetchone()
         if actual!=count or not within:raise ValueError('persisted_reference_count_or_extent_mismatch')
