@@ -9,15 +9,15 @@ from official_references import refresh
 from cadastral_types import KINDS
 DOC='8f42da46-9b59-5b72-aa5b-13522e418682'
 SHA='bd095d80d2284073a93ef7e108f89b083d32fb361c97b689809522b7b8f64c86'
-BATCH_SHA='aaaae1a6950c648c4c725c42d6f37a693ce20df362d90d86972e913874277f1e'
-KEYS={'99:low','99:village','99:agriculture','99:landscape','99:very_low_inside','102:fallow','102:groundwater','102:contaminated_fill'}
+BATCH_SHA='502dc3d90a19cf395aed06a226db89771375fa7f816bf82965e02ab1266a420b'
+KEYS={'99:low','99:village','99:agriculture','99:landscape','99:very_low_inside','102:groundwater','102:contaminated_fill'}
 OLD_PATHS={'99:33','99:44','99:390','99:402','99:415','99:426'}
 def sector_id(key):
     if key not in KEYS:raise ValueError('epalinges_unreviewed_category')
     return str(uuid.uuid5(uuid.NAMESPACE_URL,DOC+'#indicative-category-2026-09-22#'+key))
 def validate(b):
     if (b['document_id'],b['source_sha256'])!=(DOC,SHA):raise ValueError('epalinges_source')
-    if len(b['features'])!=8 or {f['key'] for f in b['features']}!=KEYS:raise ValueError('epalinges_scope')
+    if len(b['features'])!=7 or {f['key'] for f in b['features']}!=KEYS:raise ValueError('epalinges_scope')
     if b['publication_status']!='internal_review_only' or b['source_precision_m'] is not None:raise ValueError('epalinges_private_precision')
     seen=set();pairs=0;a=b['alignment'];angle,scale,tx,ty=a['parameters'];c=math.cos(angle);s=math.sin(angle);p=a['pdf_origin_y_flipped'];q=a['lv95_origin'];h=841.8900146484375
     m=[scale*c,scale*s,scale*s,-scale*c,q[0]+tx-scale*c*p[0]-scale*s*(h-p[1]),q[1]+ty-scale*s*p[0]+scale*c*(h-p[1])]
@@ -40,7 +40,7 @@ def validate(b):
             if row['egrid'] in eg or at['EGRID']!=row['egrid'] or at['NO_COM_FED']!=5584 or at['GENRE_TXT'] not in KINDS or not r.is_valid:raise ValueError('epalinges_reference_identity')
             if g.intersection(r).area<=0:raise ValueError('epalinges_reference_overlap')
             eg.add(row['egrid']);pairs+=1
-    if pairs!=683:raise ValueError('epalinges_pair_count')
+    if pairs!=676:raise ValueError('epalinges_pair_count')
     return b
 def load_artifacts():
     raw=(Path(__file__).parent/'reports/epalinges-thematic/batch.json').read_bytes()
@@ -70,6 +70,8 @@ def persist(conn,document_id,sha):
             if keys!={x['egrid'] for x in frozen}:raise ValueError('epalinges_current_membership_changed')
             c.execute('''WITH f AS (SELECT x->>'egrid' egrid,x->>'kind' kind,ST_SetSRID(ST_GeomFromGeoJSON(x->'geometry'),2056) geom FROM jsonb_array_elements(%s::jsonb) x) SELECT count(*) FROM epalinges_pairs n LEFT JOIN f USING(egrid) WHERE f.egrid IS NULL OR NOT ST_Equals(n.geom,f.geom) OR (n.official_attributes->>'GENRE_TXT') IS DISTINCT FROM f.kind''',(Json(frozen),))
             if c.fetchone()[0]:raise ValueError('epalinges_current_geometry_changed')
+            c.execute('SELECT ST_IsValid(ST_Transform(ST_SetSRID(ST_GeomFromGeoJSON(%s),2056),4326)),(SELECT bool_and(ST_IsValid(ST_Transform(overlap,4326))) FROM epalinges_pairs)',(geom,))
+            if c.fetchone()!=(True,True):raise ValueError('epalinges_transformed_geometry_invalid')
             c.execute('''INSERT INTO bronze_ch.vd_pdcom_sectors(id,document_id,page_number,label,geom,alignment_rmse_m,validation_evidence,review_status) VALUES(%s,%s,%s,%s,ST_Transform(ST_SetSRID(ST_GeomFromGeoJSON(%s),2056),4326),%s,%s,'review_required') ON CONFLICT DO NOTHING''',(sid,DOC,f['page'],label,geom,b['alignment']['withheld_boundary_rmse_m'],Json(evidence)))
             c.execute("SELECT label,review_status,source_precision_m,validated_by,ST_Equals(geom,ST_Transform(ST_SetSRID(ST_GeomFromGeoJSON(%s),2056),4326)) FROM bronze_ch.vd_pdcom_sectors WHERE id=%s",(geom,sid))
             if c.fetchone()!=(label,'review_required',None,None,True):raise ValueError('epalinges_existing_sector_changed')

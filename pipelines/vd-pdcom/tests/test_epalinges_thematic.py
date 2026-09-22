@@ -9,9 +9,9 @@ class ThematicTests(unittest.TestCase):
   b=copy.deepcopy(self.b);fn(b)
   with self.assertRaises(ValueError):p.validate(b)
  def test_scope(self):
-  self.assertEqual(len(self.b['features']),8)
-  self.assertEqual(sum(len(f['expected_pairs']) for f in self.b['features']),683)
-  self.assertEqual(len({p.sector_id(k) for k in p.KEYS}),8)
+  self.assertEqual(len(self.b['features']),7)
+  self.assertEqual(sum(len(f['expected_pairs']) for f in self.b['features']),676)
+  self.assertEqual(len({p.sector_id(k) for k in p.KEYS}),7)
  def test_source(self):self.reject(lambda b:b.update(source_sha256='wrong'))
  def test_public(self):self.reject(lambda b:b.update(publication_status='public'))
  def test_precision(self):self.reject(lambda b:b.update(source_precision_m=1))
@@ -49,3 +49,17 @@ class ThematicTests(unittest.TestCase):
   self.assertIn('WHERE id=ANY(%s::uuid[])',q);self.assertEqual(len(args[0]),6)
   self.assertTrue(set(args[0]).isdisjoint({p.sector_id(k) for k in p.KEYS}))
 if __name__=='__main__':unittest.main()
+
+class ReferenceBatchTests(unittest.TestCase):
+ def test_all_original_objects_pass_to_batched_insert(self):
+  from unittest.mock import MagicMock,patch
+  import official_references as r
+  data={'features':[{'properties':{'EGRID':'CH123456789012','NO_COM_FED':5584,'GENRE_TXT':'parcelle privée'},'geometry':{'type':'Polygon','coordinates':[[[0,0],[1,0],[1,1],[0,0]]]}}]}
+  count=MagicMock();count.json.return_value={'count':1};geo=MagicMock();geo.json.return_value=data;geo.content=b'raw';geo.url='https://official.example/query'
+  conn=MagicMock();c=conn.cursor.return_value.__enter__.return_value;c.fetchone.side_effect=[(1,),(1,True)]
+  with patch.object(r.requests,'get',side_effect=[count,geo]),patch.object(r,'execute_values') as bulk,patch.object(Path,'write_text'),patch.object(Path,'mkdir'):
+   r.refresh(conn,p.DOC,5584,[0,0,1,1])
+  self.assertEqual(len(bulk.call_args.args[2]),1)
+  self.assertEqual(bulk.call_args.args[2][0][1],'CH123456789012')
+  self.assertEqual(bulk.call_args.kwargs['page_size'],500)
+  self.assertIn('ST_GeomFromGeoJSON',bulk.call_args.kwargs['template'])
