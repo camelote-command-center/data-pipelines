@@ -64,6 +64,8 @@ if __name__=='__main__':
     try:
         conn=psycopg2.connect(os.environ['RE_LLM_DB_URL'],connect_timeout=15)
         result=deliver(conn)
+        from site_scenario_delivery import deliver as deliver_site_scenarios
+        result['site_scenarios']=deliver_site_scenarios(conn)
         Path('vd-pdcom-output').mkdir(exist_ok=True)
         Path('vd-pdcom-output/review-delivery.json').write_text(json.dumps(result,indent=2))
         monitor.finish({'record_count':result['tables']['vd_pdcom_review_sectors']['rows'],'review_delivery':result},True)
