@@ -187,6 +187,8 @@ def persist(conn,source,sha,pages):
     persist_prangins_thematic(conn,doc_id,sha)
     from prangins_policy import persist as persist_prangins_policy
     persist_prangins_policy(conn,doc_id,sha)
+    from prangins_heritage import persist as persist_prangins_heritage
+    persist_prangins_heritage(conn,doc_id,sha)
     return doc_id
 
 
