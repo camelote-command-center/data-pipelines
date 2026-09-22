@@ -1,0 +1,482 @@
+{
+  "source_document_id": "dd172ee9-e928-5c2f-99d6-3a24eb28cd68",
+  "source_sha256": "bbd1d3d0474d5f491ac4cc17b05d7bf1c7912861d9f93f9347c719bf7522fedc",
+  "source_url": "https://www.aigle.ch/N9601/plan-directeur-communal.html",
+  "exact_version": "A.2 2021-04-19",
+  "version_page": 3,
+  "plan_status": "consultation",
+  "approval_date": null,
+  "approval_evidence": "PDF5 visually has blank dates/signatures for municipality, council and canton; no approval established.",
+  "consultation_interval": [
+    "2020-09-28",
+    "2020-10-31"
+  ],
+  "currentness": "Exact version continues served by registered official URL; latest approved plan not established.",
+  "categories": [
+    {
+      "category_id": "perimetre_compact",
+      "label": "Périmètre compact",
+      "legend_pdf_page": 18,
+      "map_pdf_page": 19,
+      "status": "boundary_line"
+    },
+    {
+      "category_id": "ville_dense",
+      "label": "Secteur ville dense",
+      "legend_pdf_page": 18,
+      "map_pdf_page": 19,
+      "status": "boundary_line"
+    },
+    {
+      "category_id": "territoire_urbanise",
+      "label": "Territoire urbanisé",
+      "legend_pdf_page": 18,
+      "map_pdf_page": 19,
+      "status": "supported_private_area_category",
+      "legend_extended_drawing_index": 11,
+      "rgb": [
+        0.9219958782196045,
+        0.9369955062866211,
+        0.9469901323318481
+      ],
+      "semantics": "Contextual urbanized extent; not a building zone, density target, or permission boundary."
+    },
+    {
+      "category_id": "polarite",
+      "label": "Polarité de quartier",
+      "legend_pdf_page": 18,
+      "map_pdf_page": 19,
+      "status": "point_ring_not_area"
+    },
+    {
+      "category_id": "densifier_interieur",
+      "label": "Densifier vers l'intérieur",
+      "legend_pdf_page": 18,
+      "map_pdf_page": 19,
+      "status": "arrow_not_area"
+    },
+    {
+      "category_id": "densifier",
+      "label": "Densifier",
+      "legend_pdf_page": 18,
+      "map_pdf_page": 19,
+      "status": "existing_paths_exclude_duplicates"
+    },
+    {
+      "category_id": "preparer",
+      "label": "Préparer la densification",
+      "legend_pdf_page": 18,
+      "map_pdf_page": 19,
+      "status": "existing_paths_exclude_duplicates"
+    },
+    {
+      "category_id": "front",
+      "label": "Front de rue bâti",
+      "legend_pdf_page": 18,
+      "map_pdf_page": 19,
+      "status": "hatch_support_required"
+    },
+    {
+      "category_id": "limiter",
+      "label": "Limiter la croissance",
+      "legend_pdf_page": 18,
+      "map_pdf_page": 19,
+      "status": "hatch_support_required"
+    },
+    {
+      "category_id": "mutation_villas",
+      "label": "Accompagner la mutation de la zone villas",
+      "legend_pdf_page": 18,
+      "map_pdf_page": 19,
+      "status": "supported_private_area_category",
+      "legend_extended_drawing_index": 18,
+      "rgb": [
+        0.7459983229637146,
+        0.7469901442527771,
+        0.7819943428039551
+      ],
+      "semantics": "Planning objective to accompany change in villa zone; does not itself grant densification or new IUS.",
+      "supporting_pages": [
+        8,
+        54,
+        63
+      ]
+    },
+    {
+      "category_id": "lien",
+      "label": "Lien interquartier",
+      "legend_pdf_page": 18,
+      "map_pdf_page": 19,
+      "status": "line_not_area"
+    }
+  ],
+  "density_symbols": {
+    "status": "point_annotations_not_density_polygons",
+    "legend": "Densité indicative",
+    "classes": [
+      {
+        "symbol": "I",
+        "label": "Très haute densité",
+        "ius": "1.2 à 2.0"
+      },
+      {
+        "symbol": "II",
+        "label": "Haute densité",
+        "ius": "0.8 à 1.2"
+      },
+      {
+        "symbol": "III",
+        "label": "Faible densité",
+        "ius": "0.6 à 0.8"
+      },
+      {
+        "symbol": "IV",
+        "label": "Très faible densité",
+        "ius": "existant 0.2 à 0.4"
+      }
+    ],
+    "rule": "Do not attach these values to area paths by proximity, colour or whole-commune default."
+  },
+  "quartiers": {
+    "numbered_symbols": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "status": "named neighbourhood annotations without automatically established boundaries"
+  },
+  "geometry_constraints": [
+    "Main map only; Fontanney inset must not inherit main-map transform.",
+    "Preserve actual clips, Multiply blending and opacity. RGB alone cannot distinguish gold Densifier fill from Front de rue bâti hatching.",
+    "Retain every contributing path ID in category identity; path count is not physical-sector count.",
+    "Existing 11 densification/preparation paths are not new sources or new deliveries.",
+    "Reference-footprint discrepancies remain unresolved by semantic review; no calibration change."
+  ],
+  "source_precision_m": null,
+  "publication_authorized_by_this_audit": false,
+  "footprint_discrepancy_evidence": {
+    "path": "/Users/a/.codex/task-artifacts/vaud-pdcom/runner-fix-repo/pipelines/vd-pdcom/reports/aigle/qa/summary.json",
+    "sha256": "e8511e17169a50e79bd5c08fc773ad4a7bcf47fe3d26edbe960971956c6d04c5",
+    "holdouts": [
+      {
+        "holdout_index": 0,
+        "old_point_residual_m": 21.100582032842606,
+        "nearest_footprint_m": 0.0
+      },
+      {
+        "holdout_index": 57,
+        "old_point_residual_m": 46.62479465042801,
+        "nearest_footprint_m": 0.0
+      },
+      {
+        "holdout_index": 62,
+        "old_point_residual_m": 13.645630949929872,
+        "nearest_footprint_m": 0.3888969564212831
+      },
+      {
+        "holdout_index": 74,
+        "old_point_residual_m": 10.95965941813843,
+        "nearest_footprint_m": 0.0
+      },
+      {
+        "holdout_index": 107,
+        "old_point_residual_m": 30.708194425955643,
+        "nearest_footprint_m": 17.285770654969443
+      },
+      {
+        "holdout_index": 116,
+        "old_point_residual_m": 15.107033300348585,
+        "nearest_footprint_m": 0.0
+      },
+      {
+        "holdout_index": 125,
+        "old_point_residual_m": 38.04805103555018,
+        "nearest_footprint_m": 15.820156285478113
+      },
+      {
+        "holdout_index": 154,
+        "old_point_residual_m": 28.800144111090702,
+        "nearest_footprint_m": 9.214585144960587
+      },
+      {
+        "holdout_index": 161,
+        "old_point_residual_m": 11.285614559225403,
+        "nearest_footprint_m": 0.0
+      },
+      {
+        "holdout_index": 299,
+        "old_point_residual_m": 22.457564373315392,
+        "nearest_footprint_m": 0.0
+      },
+      {
+        "holdout_index": 366,
+        "old_point_residual_m": 13.556820848517104,
+        "nearest_footprint_m": 0.0
+      },
+      {
+        "holdout_index": 367,
+        "old_point_residual_m": 26.893416290600857,
+        "nearest_footprint_m": 0.0
+      },
+      {
+        "holdout_index": 371,
+        "old_point_residual_m": 18.21416916029079,
+        "nearest_footprint_m": 9.691924131128593
+      },
+      {
+        "holdout_index": 390,
+        "old_point_residual_m": 22.124209259385076,
+        "nearest_footprint_m": 9.620774662111833
+      }
+    ],
+    "interpretation": "Nearest footprint distances do not establish that identical structures were compared or measure full thematic boundary accuracy."
+  },
+  "source_limits": [
+    "PDF7 states reference document not opposable to private persons and future PGA revision follows principles after adoption.",
+    "PDF8 puts reduction of building land into future planning phases.",
+    "No finite thematic precision or current parcel rights established."
+  ],
+  "path_specific_associations": [
+    {
+      "page": 19,
+      "extended_drawing_index": 3718,
+      "category_id": "mutation_villas",
+      "status": "supported_private_semantic_association",
+      "map_fill": [
+        0.15098802745342255,
+        0.29199665784835815,
+        0.37499046325683594
+      ],
+      "bbox": [
+        215.10020446777344,
+        371.3787841796875,
+        352.45220947265625,
+        580.6488037109375
+      ],
+      "visual_evidence": "villa-path3718.png",
+      "basis": "Grey villa-mutation area west of station, matching legend role despite map compositing colour difference.",
+      "limitations": [
+        "Not finite precision",
+        "Do not infer IUS III/II from nearby density circles",
+        "Actual clipping/blending geometry belongs to independent geometry QA"
+      ]
+    }
+  ],
+  "additional_legend_inventory": [
+    {
+      "legend_pdf_page": 26,
+      "map_pdf_page": 27,
+      "label": "Ensemble patrimonial du XVe au XVIIIe s. à protéger",
+      "status": "house_icon_not_area"
+    },
+    {
+      "legend_pdf_page": 26,
+      "map_pdf_page": 27,
+      "label": "Ensemble patrimonial du XXe s. à protéger / réaffecter",
+      "status": "house_icon_not_area"
+    },
+    {
+      "legend_pdf_page": 26,
+      "map_pdf_page": 27,
+      "label": "Ensemble de villas urbaines à protéger / reconnaître",
+      "status": "house_icon_not_area"
+    },
+    {
+      "legend_pdf_page": 26,
+      "map_pdf_page": 27,
+      "label": "Voies de communication historiques",
+      "status": "line_not_area"
+    },
+    {
+      "legend_pdf_page": 26,
+      "map_pdf_page": 27,
+      "label": "Forêt",
+      "status": "textured_class_requires_boundary_support"
+    },
+    {
+      "legend_pdf_page": 26,
+      "map_pdf_page": 27,
+      "label": "Plaine agricole",
+      "status": "textured_class_requires_boundary_support"
+    },
+    {
+      "legend_pdf_page": 26,
+      "map_pdf_page": 27,
+      "label": "Coteau viticole et vigne urbaine",
+      "status": "textured_class_requires_boundary_support"
+    },
+    {
+      "legend_pdf_page": 26,
+      "map_pdf_page": 27,
+      "label": "Sortir les vignes de la zone à bâtir",
+      "status": "texture_objective_requires_boundary_support_not_completed_dezoning"
+    },
+    {
+      "legend_pdf_page": 26,
+      "map_pdf_page": 27,
+      "label": "Poche végétale / parc existant à requalifier",
+      "status": "hatch_support_required"
+    },
+    {
+      "legend_pdf_page": 26,
+      "map_pdf_page": 27,
+      "label": "Poche végétale / parc à créer",
+      "status": "hatched_point_symbol_not_auto_area"
+    },
+    {
+      "legend_pdf_page": 26,
+      "map_pdf_page": 27,
+      "label": "Charpente paysagère existante à maintenir",
+      "status": "hatch_support_required"
+    },
+    {
+      "legend_pdf_page": 26,
+      "map_pdf_page": 27,
+      "label": "Espace public majeur à créer",
+      "status": "hatched_point_symbol_not_auto_area"
+    },
+    {
+      "legend_pdf_page": 26,
+      "map_pdf_page": 27,
+      "label": "Franges urbaines imperméable à requalifier",
+      "status": "hatch_support_required"
+    },
+    {
+      "legend_pdf_page": 26,
+      "map_pdf_page": 27,
+      "label": "Franges urbaines poreuse à conserver / améliorer",
+      "status": "hatch_support_required"
+    },
+    {
+      "legend_pdf_page": 26,
+      "map_pdf_page": 27,
+      "label": "Dégagement sur le grand paysage",
+      "status": "arrow_not_area"
+    },
+    {
+      "legend_pdf_page": 26,
+      "map_pdf_page": 27,
+      "label": "Limite communale",
+      "status": "boundary_line"
+    },
+    {
+      "legend_pdf_page": 26,
+      "map_pdf_page": 27,
+      "label": "Territoire urbanisé",
+      "status": "same_context_extent_do_not_duplicate_page19"
+    },
+    {
+      "legend_pdf_page": 34,
+      "map_pdf_page": 35,
+      "label": "Autoroute, réseau national",
+      "status": "line_not_area"
+    },
+    {
+      "legend_pdf_page": 34,
+      "map_pdf_page": 35,
+      "label": "Route cantonale, réseau d'agglomération",
+      "status": "line_not_area"
+    },
+    {
+      "legend_pdf_page": 34,
+      "map_pdf_page": 35,
+      "label": "Avenue, réseau urbain principal",
+      "status": "line_not_area"
+    },
+    {
+      "legend_pdf_page": 34,
+      "map_pdf_page": 35,
+      "label": "Route de transit à convertir en avenue",
+      "status": "line_not_area"
+    },
+    {
+      "legend_pdf_page": 34,
+      "map_pdf_page": 35,
+      "label": "Rue, réseau urbain secondaire de distribution",
+      "status": "line_not_area"
+    },
+    {
+      "legend_pdf_page": 34,
+      "map_pdf_page": 35,
+      "label": "Parking centralisé à créer",
+      "status": "point_symbol_not_area"
+    },
+    {
+      "legend_pdf_page": 34,
+      "map_pdf_page": 35,
+      "label": "Franchissement MD existant à améliorer",
+      "status": "point_symbol_not_area"
+    },
+    {
+      "legend_pdf_page": 34,
+      "map_pdf_page": 35,
+      "label": "Franchissement MD à créer",
+      "status": "point_symbol_not_area"
+    },
+    {
+      "legend_pdf_page": 34,
+      "map_pdf_page": 35,
+      "label": "Franchissement TIM / MD existant à améliorer",
+      "status": "point_symbol_not_area"
+    },
+    {
+      "legend_pdf_page": 34,
+      "map_pdf_page": 35,
+      "label": "Carrefour existant à améliorer",
+      "status": "point_symbol_not_area"
+    },
+    {
+      "legend_pdf_page": 34,
+      "map_pdf_page": 35,
+      "label": "Carrefour à créer",
+      "status": "point_symbol_not_area"
+    },
+    {
+      "legend_pdf_page": 34,
+      "map_pdf_page": 35,
+      "label": "Zone piétonne existante / à créer (voir SDEP)",
+      "status": "supported_private_area_category_existing_proposed_not_resolved"
+    },
+    {
+      "legend_pdf_page": 34,
+      "map_pdf_page": 35,
+      "label": "Axe piéton prioritaire existant",
+      "status": "line_not_area"
+    },
+    {
+      "legend_pdf_page": 34,
+      "map_pdf_page": 35,
+      "label": "Axe piéton prioritaire à créer",
+      "status": "line_not_area"
+    },
+    {
+      "legend_pdf_page": 34,
+      "map_pdf_page": 35,
+      "label": "Réseau cyclable structurant existant / à créer (voir SDC)",
+      "status": "line_not_area"
+    },
+    {
+      "legend_pdf_page": 34,
+      "map_pdf_page": 35,
+      "label": "Ligne ferroviaire CFF",
+      "status": "line_not_area"
+    },
+    {
+      "legend_pdf_page": 34,
+      "map_pdf_page": 35,
+      "label": "Ligne ferroviaire TPC",
+      "status": "line_not_area"
+    }
+  ],
+  "coverage_statement": "Semantic support is not a claim all source paths/categories have been extracted; geometry lane owns failed-path counts and shared-map transfer tests."
+}
