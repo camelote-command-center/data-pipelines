@@ -1,0 +1,5 @@
+Aigle private source-category batch
+
+The hash-bound fixture contains two collections and622 source-category/cadastral links. Growth extent is the original five-ring clipping support, not merged hatch strokes. Villa mutation is the original filled support with compositing provenance. Both remain consultation-version indicative context, without IUS assignment or current capacity. Blank approval fields and original alignment/footprint exceptions remain unresolved.
+
+To reproduce source supports, place the exact registered PDF as source.pdf beside reproduce.py and run with PyMuPDF, Shapely, NumPy and Pillow. It imports the existing sibling aigle/extract_source_paths.py strict curve decoder and unchanged alignment. This overwrites local source accounting/groups/images only; no persistence. All nested rectangular clips and page bounds are applied; invalid supports and invisible duplicates are explicitly recorded. The reviewed fixture additionally contains frozen official reference records and 4326 preflight results.
