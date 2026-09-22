@@ -179,6 +179,8 @@ def persist(conn,source,sha,pages):
     persist_nord_activity(conn,doc_id,sha)
     from sdrm_historical_pilot import persist as persist_sdrm_historical
     persist_sdrm_historical(conn,doc_id,sha)
+    from orbe_thematic import persist as persist_orbe_thematic
+    persist_orbe_thematic(conn,doc_id,sha)
     from aigle_thematic import persist as persist_aigle_thematic
     persist_aigle_thematic(conn,doc_id,sha)
     from prangins_thematic import persist as persist_prangins_thematic
