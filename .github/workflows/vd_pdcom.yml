@@ -61,6 +61,10 @@ jobs:
           CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
           CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
         run: python pipelines/vd-pdcom/review_delivery.py
+      - name: Inventory validated release gates without advancing completion
+        env:
+          RE_LLM_DB_URL: ${{ secrets.RE_LLM_DB_URL }}
+        run: python pipelines/vd-pdcom/release_preflight.py --output vd-pdcom-output/release-preflight.json
       - name: Report failure to Pixxels without advancing freshness
         if: failure() || cancelled()
         env:

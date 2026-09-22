@@ -209,3 +209,40 @@ private receiver copy is not final delivery. Even zero listed blockers is only a
 necessary-gate report: independent positional/semantic review, exact current
 version and reservations, exhaustive commune map/category coverage, and a
 registered final release receiver with verified readback remain required.
+
+## Append-only sector qualification core
+
+`release_manifest.py` validates and records an explicitly reviewed sector manifest
+in `bronze_ch.vd_pdcom_sector_qualifications` after the additive migration
+`20260922133000_vd_pdcom_sector_qualifications.sql`. No manifests ship with this
+change and no existing sector is promoted. Records are immutable (updates,
+deletes and truncates are rejected); corrections require a new manifest ID.
+Exact replay is idempotent, while reusing an ID for different evidence fails.
+
+The manifest pins sector/document IDs, PDF SHA and EWKB geometry SHA; requires a
+named reviewer, review/expiry dates, exact approval/currentness and reservations,
+independent whole-outline geography, finite measured source precision/error and
+an evidenced intended-use tolerance, source category/meaning/limits. Control-based
+reviews must identify controls independently and hold them out of fitting. Numeric
+residuals alone never establish identity or source precision. Evidence assertions
+must be substantively reviewed before calling `record`; this module cannot
+establish their truth from a URI. `validate` must be rerun against the live source
+before any future use; an append-only historical record is not proof it is current.
+
+Qualification is **sector only**, with parcel/publication authorization false. It
+does not change candidate status or commune completion. Whole-commune completion
+still requires exhaustive map/category coverage with explicit exceptions; parcel
+release requires separate boundary/object-type review and verified final delivery.
+
+Registered route inspection on22September2026 found Pixxels
+`vd_pdcom_coverage`, `vd_pdcom_review_delivery` and the older
+`relm_sync_weekly_pdcom_zones`. RE-LLM's `lamap_db_server` exposes the three private
+VD review tables plus legacy `pdcom_zones`, `pdcom_urbanisation_zones`,
+`plot_pdcom_urbanisation`, `knowledge_pdcom_communes`. No dedicated validated VD
+release dataset was registered. The private VD tables remain review-only and the
+legacy route is not assumed to support VD semantics. A scoped final dataset and
+receiver contract must be registered through Pixxels before a publication writer
+is enabled; this qualification core deliberately has no publication writer.
+The existing workflow now saves read-only release-preflight results in its normal
+artifact after private receiver verification, without failing simply because
+records need further review.
