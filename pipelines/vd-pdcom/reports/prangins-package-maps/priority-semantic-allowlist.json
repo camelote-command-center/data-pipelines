@@ -1,0 +1,167 @@
+{
+  "categories": [
+    {
+      "page": 23,
+      "path_ids": [
+        3758
+      ],
+      "kind": "fill",
+      "category": "ppa_eglantine_peupliers_situation",
+      "source_label": "Situation du PPA «Eglantine - Peupliers»",
+      "semantics": "Source depiction of PPA location, not certified cadastral/legal perimeter and not newly approved zoning",
+      "reviewed_overlay": "prangins-package-maps/priority-overlay-23.png",
+      "original_style": {
+        "fill": [
+          0.6669871211051941,
+          0.7839933037757874,
+          0.1569848209619522
+        ],
+        "color": null
+      },
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "boundary_precision_m": null,
+      "currentness": "Historical2013 source current feature status unknown",
+      "partial": true,
+      "limitations": [
+        "Native source support only; no buffering, no invented precision",
+        "Whole ground-hull supported source geometry only",
+        "Source lines have zero parcel associations; no corridor rights",
+        "Same location may occur on synthesis with other semantics; do not add as new physical sector"
+      ]
+    },
+    {
+      "page": 40,
+      "path_ids": [
+        3757
+      ],
+      "kind": "line",
+      "category": "lakeside_landscape_project_study",
+      "source_label": "Etude de projet paysager",
+      "semantics": "Study objective trace, not completed path",
+      "reviewed_overlay": "prangins-package-maps/priority-overlay-40.png",
+      "original_style": {
+        "fill": null,
+        "color": [
+          0.0,
+          0.32899975776672363,
+          0.7139849066734314
+        ]
+      },
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "boundary_precision_m": null,
+      "currentness": "Historical2013 source current feature status unknown",
+      "partial": true,
+      "limitations": [
+        "Native source support only; no buffering, no invented precision",
+        "Whole ground-hull supported source geometry only",
+        "Source lines have zero parcel associations; no corridor rights",
+        "Same location may occur on synthesis with other semantics; do not add as new physical sector"
+      ]
+    },
+    {
+      "page": 40,
+      "path_ids": [
+        3758
+      ],
+      "kind": "line",
+      "category": "lakeside_transitional_path_proposal",
+      "source_label": "Proposition de chemin transitoire",
+      "semantics": "Provisional proposal behind properties pending lakeside promenade",
+      "reviewed_overlay": "prangins-package-maps/priority-overlay-40.png",
+      "original_style": {
+        "fill": null,
+        "color": [
+          0.1599908471107483,
+          0.35999083518981934,
+          0.8699931502342224
+        ]
+      },
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "boundary_precision_m": null,
+      "currentness": "Historical2013 source current feature status unknown",
+      "partial": true,
+      "limitations": [
+        "Native source support only; no buffering, no invented precision",
+        "Whole ground-hull supported source geometry only",
+        "Source lines have zero parcel associations; no corridor rights",
+        "Same location may occur on synthesis with other semantics; do not add as new physical sector"
+      ]
+    },
+    {
+      "page": 40,
+      "path_ids": [
+        3761
+      ],
+      "kind": "line",
+      "category": "lakeside_existing_path_confirmed",
+      "source_label": "Chemin existant confirmé",
+      "semantics": "Existing path confirmed in cited historical Plan directeur des Rives du lac, not current field verification",
+      "reviewed_overlay": "prangins-package-maps/priority-overlay-40.png",
+      "original_style": {
+        "fill": null,
+        "color": [
+          0.929991602897644,
+          0.6999923586845398,
+          0.17999541759490967
+        ]
+      },
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "boundary_precision_m": null,
+      "currentness": "Historical2013 source current feature status unknown",
+      "partial": true,
+      "limitations": [
+        "Native source support only; no buffering, no invented precision",
+        "Whole ground-hull supported source geometry only",
+        "Source lines have zero parcel associations; no corridor rights",
+        "Same location may occur on synthesis with other semantics; do not add as new physical sector"
+      ]
+    },
+    {
+      "page": 40,
+      "path_ids": [
+        3762
+      ],
+      "kind": "line",
+      "category": "lakeside_path_detail_study",
+      "source_label": "Cheminement à localiser par étude de détail",
+      "semantics": "Schematic indication awaiting detailed location; never exact approved alignment",
+      "reviewed_overlay": "prangins-package-maps/priority-overlay-40.png",
+      "original_style": {
+        "fill": null,
+        "color": [
+          1.0,
+          0.0,
+          0.0
+        ]
+      },
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "boundary_precision_m": null,
+      "currentness": "Historical2013 source current feature status unknown",
+      "partial": true,
+      "limitations": [
+        "Native source support only; no buffering, no invented precision",
+        "Whole ground-hull supported source geometry only",
+        "Source lines have zero parcel associations; no corridor rights",
+        "Same location may occur on synthesis with other semantics; do not add as new physical sector"
+      ]
+    }
+  ],
+  "review": "Exact source page overlays and literal legend styles visually verified; fills/lines refer to map body, not legend",
+  "page75_disposition": {
+    "state": "hold_duplicate_support_reconciliation",
+    "source_label": "Equipements publics existants",
+    "reason": "Narrower source wording than synthesis Equipements existants is insufficient to assert new geometry; compare exact source support identities first. Legend swatches3509/3515 and contextual forest/site/glyphs must not be delivered as public-building areas."
+  },
+  "excluded": [
+    "PD23 watercourse classes already represented: new source geometry only after exact dedup",
+    "PD23 forestplan/nature-reserve area exceeds reviewed subset; no automatic addition",
+    "PD40 other partly outside-hull path pieces held; no clipping to manufacture complete source paths",
+    "PD75 stars are objective glyphs, not building polygons; existing synthesis points already represented"
+  ],
+  "release_scope": "Semantic allowlist only; geometry/adaptor/receiver QA still required; no commune completion"
+}

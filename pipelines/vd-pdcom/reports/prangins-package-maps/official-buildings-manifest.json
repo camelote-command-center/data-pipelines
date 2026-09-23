@@ -1,0 +1,26 @@
+[
+  {
+    "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?where=1%3D1&geometry=2507709.33950755%2C1137985.2367561182%2C2509077.1954788235%2C1139581.161289618&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&outSR=2056&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CNUMERO&returnGeometry=true&resultRecordCount=2000&f=geojson",
+    "sha256": "9b86a994b5aa91cf28fa210c2398d9147184d1261ffba2c9aae214e3895b353d",
+    "count": 1284,
+    "retrieved_at": "2026-09-23T03:29:36.493939+00:00"
+  },
+  {
+    "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?where=1%3D1&geometry=2509077.1954788235%2C1137985.2367561182%2C2510445.051450097%2C1139581.161289618&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&outSR=2056&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CNUMERO&returnGeometry=true&resultRecordCount=2000&f=geojson",
+    "sha256": "29994a6e776957b22a9180c9b173f23e4a77338abc81e66431f6efc8de0fd1cd",
+    "count": 93,
+    "retrieved_at": "2026-09-23T03:29:36.918115+00:00"
+  },
+  {
+    "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?where=1%3D1&geometry=2507709.33950755%2C1139581.161289618%2C2509077.1954788235%2C1141177.0858231178&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&outSR=2056&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CNUMERO&returnGeometry=true&resultRecordCount=2000&f=geojson",
+    "sha256": "ff18cb47e0e093447871433a501cc67087863fd3e4e06c338e056b073b09da85",
+    "count": 268,
+    "retrieved_at": "2026-09-23T03:29:37.418358+00:00"
+  },
+  {
+    "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?where=1%3D1&geometry=2509077.1954788235%2C1139581.161289618%2C2510445.051450097%2C1141177.0858231178&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&outSR=2056&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CNUMERO&returnGeometry=true&resultRecordCount=2000&f=geojson",
+    "sha256": "3714874c7a8f9c8efaca39371736146a75dae9808a90db1a9b00db02138897e9",
+    "count": 174,
+    "retrieved_at": "2026-09-23T03:29:37.900862+00:00"
+  }
+]
