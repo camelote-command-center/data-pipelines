@@ -21,5 +21,6 @@ def validate_alignment(b):
     for f in b['features']:
         for p in f['source_paths']:
             g=shape(p['geometry_pdf']);fraction=g.intersection(hull).area/g.area
+            if not hull.covers(g):raise ValueError('inset_outside_control_hull')
             if abs(fraction-p['ground_hull_fraction'])>1e-8:raise ValueError('inset_extrapolation_evidence')
     if b['source_precision_m'] is not None:raise ValueError('inset_precision_not_certified')

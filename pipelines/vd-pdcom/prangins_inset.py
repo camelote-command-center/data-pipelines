@@ -9,15 +9,15 @@ from official_references import refresh
 from cadastral_types import KINDS
 DOC='ad153736-58f1-533f-8cca-e41524f9fe12'
 SHA='a4079a88201b716ede0793150102306f8b1faddb55c391a7c2c1696244a96d02'
-BATCH_SHA='be3583cdd3c7bed20bfbc3c0589cdd53d2a504be0ce4927613ee4734d7d0fb02'
-KEYS={'village_encounter_public_space','village_zone30'}
+BATCH_SHA='cdc658a7f2c4fc8582e82ec81bea78beac046ece2f9f2cdb4b19d486afda52bd'
+KEYS={'village_encounter_public_space'}
 OLD_PATHS=set() # Extended indices differ from legacy ordinary-drawing indices; layer gate excludes densification.
 def sector_id(key):
     if key not in KEYS:raise ValueError('prangins_unreviewed_category')
     return str(uuid.uuid5(uuid.NAMESPACE_URL,DOC+'#indicative-category-2026-09-22#'+key))
 def validate(b):
     if (b['document_id'],b['source_sha256'])!=(DOC,SHA):raise ValueError('prangins_source')
-    if len(b['features'])!=2 or {f['key'] for f in b['features']}!=KEYS:raise ValueError('prangins_scope')
+    if len(b['features'])!=1 or {f['key'] for f in b['features']}!=KEYS:raise ValueError('prangins_scope')
     if b['publication_status']!='internal_review_only' or b['source_precision_m'] is not None:raise ValueError('prangins_private_precision')
     from prangins_inset_alignment import validate_alignment
     validate_alignment(b)
@@ -26,7 +26,7 @@ def validate(b):
         ids=set(f['path_ids'])
         semantic=next(x for x in b['semantic_allowlist']['categories'] if x['key']==f['key'])
         approved={f'fill:{i}' for i in semantic['fill_ids']}|{f'clip:{i}' for i in semantic['clip_ids']}
-        if ids!=approved or f['label']!=semantic['label'] or f['policy_status']!=semantic['policy_status']:raise ValueError('prangins_semantic_allowlist')
+        if ids!={'fill:2216','fill:2220','fill:2221'} or not ids.issubset(approved) or f['label']!=semantic['label'] or f['policy_status']!=semantic['policy_status']:raise ValueError('prangins_semantic_allowlist')
         for path in f['source_paths']:
             expected=affine_transform(shape(path['geometry_pdf']),m)
             if not shape(path['geometry_lv95']).equals_exact(expected,1e-7):raise ValueError('prangins_page_transform')
@@ -43,7 +43,7 @@ def validate(b):
             if row['egrid'] in eg or at['EGRID']!=row['egrid'] or at['NO_COM_FED']!=5725 or at['GENRE_TXT'] not in KINDS or not r.is_valid:raise ValueError('prangins_reference_identity')
             if g.intersection(r).area<=0:raise ValueError('prangins_reference_overlap')
             eg.add(row['egrid']);pairs+=1
-    if pairs!=66:raise ValueError('prangins_pair_count')
+    if pairs!=22:raise ValueError('prangins_pair_count')
     return b
 def load_artifacts():
     raw=(Path(__file__).parent/'reports/prangins-inset/batch.json').read_bytes()
@@ -61,7 +61,7 @@ def persist(conn,document_id,sha):
     for f in b['features']:
         sid=sector_id(f['key']);geom=json.dumps(f['geometry_lv95']);label='Prangins — couche indicative partielle — '+f['label']
         frozen=[{'egrid':x['egrid'],'kind':x['attributes']['GENRE_TXT'],'geometry':x['geometry']} for x in f['expected_pairs']]
-        evidence={'source_sha256':SHA,'source_path_ids':f['path_ids'],'source_category':f['category'],'source_ledger_indices':f['source_ledger_indices'],'literal_source_labels':f['literal_source_labels'],'ground_hull_fractions':{x['id']:x['ground_hull_fraction'] for x in f['source_paths']},'coordinate_scope':f['coordinate_scope'],'source_policy_status':f['policy_status'],'semantic_limitations':f['semantic_limitations'],'legend_label_id':f['label_id'],'page_number':f['page'],'grouping':'Union of explicitly listed source paths; partial thematic collection, not a physical sector','semantics':b['semantics'],'reservation':b['reservation'],'alignment':b['alignment'],'source_transform':b['affine'],'map_review':'Separate village inset frame:45source-building contour identities with13heldouts; independently fitted to25officialbuilding identities17training8heldout. Exact original filled/clip supports, no main-affine reuse. Beyond-training-hull portions are explicitly extrapolated private candidates, never surveyed accuracy.','source_precision':'unknown','source_precision_m':None,'boundary_buffer':'10m review heuristic, not a measured error bound','review_status':'review_required','publication_status':'internal_review_only','reference_scope':'Current official cadastral objects for source commune5725 only; DDP rights distinct from underlying land, not exclusive area; entire source geometry retained, not clipped','official_references':refs,'batch_sha256':BATCH_SHA,'artifact':'pipelines/vd-pdcom/reports/prangins-inset'}
+        evidence={'source_sha256':SHA,'source_path_ids':f['path_ids'],'source_category':f['category'],'source_ledger_indices':f['source_ledger_indices'],'literal_source_labels':f['literal_source_labels'],'ground_hull_fractions':{x['id']:x['ground_hull_fraction'] for x in f['source_paths']},'coordinate_scope':f['coordinate_scope'],'withheld_source_path_ids':b['delivery_scope']['withheld_path_ids'],'source_policy_status':f['policy_status'],'semantic_limitations':f['semantic_limitations'],'legend_label_id':f['label_id'],'page_number':f['page'],'grouping':'Union of explicitly listed source paths; partial thematic collection, not a physical sector','semantics':b['semantics'],'reservation':b['reservation'],'alignment':b['alignment'],'source_transform':b['affine'],'map_review':'Separate village inset frame:45source-building contour identities with13heldouts; independently fitted to25officialbuilding identities17training8heldout. Exact original filled/clip supports, no main-affine reuse. Only original shapes wholly supported by training hull are delivered; eight withheld shapes remain research evidence, never clipped. No surveyed accuracy claim.','source_precision':'unknown','source_precision_m':None,'boundary_buffer':'10m review heuristic, not a measured error bound','review_status':'review_required','publication_status':'internal_review_only','reference_scope':'Current official cadastral objects for source commune5725 only; DDP rights distinct from underlying land, not exclusive area; entire source geometry retained, not clipped','official_references':refs,'batch_sha256':BATCH_SHA,'artifact':'pipelines/vd-pdcom/reports/prangins-inset'}
         with conn,conn.cursor() as c:
             c.execute("SET LOCAL statement_timeout='90s'");c.execute('SELECT pg_advisory_xact_lock(572500301)')
             c.execute('''SELECT count(*) FROM bronze_ch.vd_pdcom_parcel_references WHERE snapshot_id=ANY(%s::uuid[]) AND geom && ST_SetSRID(ST_GeomFromGeoJSON(%s),2056) AND NOT ST_IsValid(geom)''',([x['snapshot_id'] for x in refs],geom))
