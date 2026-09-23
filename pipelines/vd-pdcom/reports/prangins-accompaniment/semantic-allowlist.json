@@ -1,0 +1,34 @@
+{
+  "source_sha256": "a4079a88201b716ede0793150102306f8b1faddb55c391a7c2c1696244a96d02",
+  "source_label": "Bande d’accompagnement",
+  "source_ledger_index": 22,
+  "source_path_ids": [
+    3388
+  ],
+  "geometry_type": "LineString/MultiLineString",
+  "status": "source_semantics_supported_private_native_linear_component_only",
+  "legend_components": [
+    3342,
+    3343,
+    3344
+  ],
+  "evidence": {
+    "source_style": "darkgreen rounded thickdash6/8 width6 versus finefrontplanté dotted.25/5 width3",
+    "source_map": "prangins-native/group-43.jpg",
+    "supporting_card": "P4 Accompagnement, MesuresPDF47/49, exact2013 SHAfc1f4c662e71c43744ff3d241b0be573447756232d68c7425cda976f7138f81e",
+    "scope_match": "Novartis/CFF/chemin de la Combe to lake: P4 sequences2/3 crossingexisting residential districts"
+  },
+  "policy_status": "Historical2013 proposal; sequence1 northernpark depends on withdrawnRDU; no blanket abandonment of sequences2/3",
+  "limitations": [
+    "Mixed area-and-line source category only partially represented by originalline3388",
+    "No area121 or implicit northernparkextent approved",
+    "No arbitrary buffer, parcel relation or current transport project claim",
+    "Legend and map dash lengths differ; identity uses composite symbol/context, not exactdashnumeric equality"
+  ],
+  "source_precision_m": null,
+  "publication_status": "private_review",
+  "feature_kind": "source_native_line",
+  "parcel_links_allowed": false,
+  "buffer_allowed": false,
+  "label_id": "c8349e861b133740cb50"
+}
