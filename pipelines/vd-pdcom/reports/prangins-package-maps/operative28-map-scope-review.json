@@ -1,0 +1,1293 @@
+{
+  "source_package": "Prangins 2013 registered PDCom",
+  "maps": [
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:21:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 21,
+      "package_index": 109,
+      "source_title": "Limite d’urbanisation",
+      "exact_page_text": "500\n100\nPlan directeur communal Prangins \n113\n1.1 Limite d’urbanisation\nProposer une structure formée de \ndeux entités, la zone bâtie et la zone \nagricole, avec une limite d’urbanisa-\ntion claire\nPrincipes\n- Définir des limites claires pour la zone \nagricole\n- Contenir l’urbanisation à l’intérieur de cette \nlimite\n- Eviter le mitage des espaces naturels et \nagricoles par des installations étrangères à \nleur fonctionnement\n- Préserver les vues majeures, à l’intérieur \ndes deux zones et l’une sur l’autre\nMesures\n- Par une planification adéquate, n’autoriser \nsur la zone agricole que des équipements \nde petite taille et bien intégrés au paysage\n- Matérialiser, par des plantations, la limite \nentre le bâti et les espaces naturels et/ou \ncultivés\n- Empêcher les constructions et les instal-\nlations qui pourraient altérer les grandes \néchappées visuelles vers le lac et le Jura\n \nZone bâtie : limiter l’extension\n \nZone agricole\n \nPréserver les espaces ouverts \n \nexistants (vignes, château de \n \nPrangins, etc)\nRappel des avis des habitants lors du premier \natelier de concertation (23 juin 2007) \n- Maintenir le vignoble entre Nyon et Prangins\n- Préserver les jardins du Château, patrimoine \npaysager et de biodiversité\n- Conserver toutes les réserves naturelles\n- Maintenir les espaces verts dans le village\n- Créer des couloirs écologiques \n",
+      "exact_text_sha256": "77f5a49cdffc501d1043ed0fb03ca47401b7abdcfa206e53421fd5807595f4f3",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 4,
+          "exact_label": "Espace à vocation agricole",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 7,
+          "exact_label": "Limite paysagère à créer entre bâti et campagne",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 15,
+          "exact_label": "Parcs et jardins publics",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 19,
+          "exact_label": "Points de vue à préserver",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [
+        {
+          "card": "P2",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        },
+        {
+          "card": "P6",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        }
+      ],
+      "source_scope_review": "Built-area containment and existing open spaces explicitly distinguished; no statutory zone inferred",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": true,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 3,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:22:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 22,
+      "package_index": 110,
+      "source_title": "Vegetation links",
+      "exact_page_text": "500\n100\nPlan directeur communal Prangins \n114\n1.2 Liaisons végétales\nAffirmer clairement les structures \npaysagères existantes \nPrincipes\n- Développer la continuité des  structures \npaysagères majeures, pour en renforcer la \ncohérence et la lisibilité, assurant ainsi la \npérennité de la composition territoriale\n- Assurer le maintien des corridors écolo-\ngiques\n- Délimiter clairement les différentes entités : \nzone agricole / zone bâtie / zone naturelle \n(Promenthouse)\nMesures\n- Conforter le cordon de la Promenthouse (1) \n- Mettre en place une continuité verte du \nGrand Bois jusqu’au delta par l’aménage-\nment de deux tronçons, sur la route de l’Aé-\nrodrome et le long de la route de la Côte \nRôtie (2)\n- Etablir une démarcation claire entre zones \nagricole et bâtie en épaississant et en pro-\nlongeant les alignements d’arbres existants \ncôté lac, et en suivant la limite de l’urbani-\nsation (3)\n- Créer une bande verte institutionnelle ba-\nsée sur l’enchaînement actuel d’espaces \npublics (jardins et «parcs» du château, ins-\ntallations sportives du bord du lac, espace \ndes Morettes). Ce réseau paysager permet-\ntra de développer l’offre d’équipements (4)\n- Créer une promenade piétonne s’appuyant \nsur la plantation d’arbres dans les rues, \nbordée de jardins privés, du lac jusqu’aux \nallées de Changins (5)\nRappel des avis des habitants lors du premier \natelier de concertation (23 juin 2007) \nConserver les forêts comme éléments structu-\nrants\n \nEléments existants\n \nElements à créer\n \nContinuité / renforcement de la structure\n \nMise en réseau\n1\n2\n3\n4\n5\n",
+      "exact_text_sha256": "9bf2705f7eeeb9a6835c0fe53e48dac077c1102d7f8218d93326da50ee0218e0",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 2,
+          "exact_label": "Cordons boisés, végétation structurante existante",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 3,
+          "exact_label": "Cordons boisés à créer",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 7,
+          "exact_label": "Limite paysagère à créer entre bâti et campagne",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 9,
+          "exact_label": "Renforcement de la structure existante",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 22,
+          "exact_label": "Bande d’accompagnement",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 24,
+          "exact_label": "Bande verte d’équipements",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [
+        {
+          "card": "P1",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        },
+        {
+          "card": "P2",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        },
+        {
+          "card": "P3",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        },
+        {
+          "card": "P4",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        }
+      ],
+      "source_scope_review": "Five numbered landscape connections; network relation is not an extra polygon; creating versus existing versus reinforcement retained",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": true,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 3,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:23:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 23,
+      "package_index": 111,
+      "source_title": "Water reopening",
+      "exact_page_text": "500\n100\nPlan directeur communal Prangins \n115\nRappel des avis des habitants lors du second \natelier de concertation (26 janvier 2008) \n- Quels traitements des plans d’eau (étangs, etc.)\n1.3 Remise à l’air libre  \n des cours d’eau\nRemettre les ruisseaux à l’air libre \npour un bénéfice écologique autant \nque territorial (lisibilité du territoire)\nPrincipes\n- Accueillir à terme une partie des eaux plu-\nviales\n- Dans la zone agricole, profiter de la \nremise à l’air libre des ruisseaux pour \nregrouper l’ensemble des jachères de \ncompensation écologique\nMesures\n- Remettre progressivement les ruisseaux \nà l’air libre en accompagnement des \nbandes végétales\n- Sensibiliser les collectivités, les propriétai-\nres de terres agricoles et de jardins privés\n- Utiliser des plantes de zones humides \nadaptées\n- Inciter dans les nouveaux projets à gérer \nles eaux pluviales en aérien et en favorisant \nl’infiltration\n \nRemise à l’air libre des cours d’eau\n \nactuellement enterrés (tracé à titre indicatif)\n \nCours d’eau à ciel ouvert\n \nSituation du PPA «Eglantine - Peupliers»\n \nChemin piéton prévu dans le PPA\n \nPérimètre du plan forestier de la pointe de  \n \nla Promenthouse (commune de Prangins)\n \nRéserve naturelle\n",
+      "exact_text_sha256": "ce1a30b658c3adbfd8c65c75bc02e550428d39e0ad2562fc90ccf364709f1868",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 17,
+          "exact_label": "Cours d’eau existants à l’air libre et à revitaliser",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 18,
+          "exact_label": "Cours d’eau à remettre à l’air libre (tracé à titre indicatif)",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 51,
+          "exact_label": "Réseau piétonnier complémentaire (à titre indicatif)",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [
+        {
+          "card": "P1",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        },
+        {
+          "card": "P5",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        }
+      ],
+      "source_scope_review": "PPA Eglantine-Peupliers location, its planned pedestrian route, forest-plan perimeter and nature reserve are additional source scopes; reopened watercourse trace explicitly indicative",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": false,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 1,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:29:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 29,
+      "package_index": 117,
+      "source_title": "Agriculture",
+      "exact_page_text": "500\n100\nPlan directeur communal Prangins \n121\nLes développements prévus par le SDAN \nainsi que le projet de RDU auront un impact \nmajeur sur le territoire agricole commu-\nnal. Ils mettent en effet à contribution des \nterrains appartenant à la Confédération et \nutilisés par la station d’essai et d’expérimen-\ntation de Changins. L’avenir de cette station, \nunique en Suisse occidentale pour les gran-\ndes cultures, n’est assuré que si elle dispose \ndes terrains requis. Il sera donc nécessaire \nde compenser à proximité les surfaces pré-\nlevées pour réaliser les aménagements.\n3. Agriculture\n \nTracé de la future RDU\n \nTerrains agricoles\n \n \ndont consommés par le projet  \n \n \nd’extension (tracé indicatif)\n \nStation de recherche Agroscope   \n  \nChangins-Wädenswil ACW\n",
+      "exact_text_sha256": "388a7ef75591b7f57c6d625c351bb1a0e0a3dc14ec14e82876237c01c15f5f64",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 4,
+          "exact_label": "Espace à vocation agricole",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 8,
+          "exact_label": "Parkway paysager (RDU)",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 25,
+          "exact_label": "Extension : zone mixte habitat / activités à créer",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 39,
+          "exact_label": "RDU à créer",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [
+        {
+          "card": "P6",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        }
+      ],
+      "source_scope_review": "Agricultural land consumed by proposed extension is separate historical-impact category; indicative trace; direct RDU dependency",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": true,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 4,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:38:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 38,
+      "package_index": 126,
+      "source_title": "Cycling",
+      "exact_page_text": "500\n100\nPlan directeur communal Prangins \n130\nPrincipes\n- Développer deux types de réseaux : \npendulaire et loisirs\n- Sécuriser les cheminements cyclables \n- Exploiter les vues pittoresques\n- Aménager des places de parcage pour les vé-\nlos, au domicile et à destination (château, cen-\ntre du village, écoles, centre sportif, plage, etc.)\nMesures\n- Planifier et budgétiser les itinéraires \nproposés\n- Organiser la coordination avec les commu-\nnes voisines\n- Coordonner la sécurisation des chemine-\nments de mobilité douce avec la planifica-\ntion des zones à vitesse modérée\n- Intégrer le réseau cyclable aux développe-\nments urbains et routiers futurs\n- Développer une stratégie de communica-\ntion et de valorisation\n- Satisfaire les besoins de parcage par la \ncréation d’infrastructures de stationnement \nadaptées. Ces équipements publics devront \nêtre situés à proximité des points d’intérêts \ntels que arrêts TP, écoles, centre du village, \netc.). Pour être attractifs, ils devront être \nabrités et idéalement offrir des systèmes ef-\nficaces contre le vol et le vandalisme.\nSur la base de l’art. 32 RLATC, des abris \nà vélos fonctionnels doivent être systéma-\ntiquement aménagés dans les immeubles \nd’habitation. Dans le cadre d’une politique \nvisant le développement de la mobilité \ndouce, ce type d’équipement devrait être \nétendu à tous les bâtiments (entreprises, \néquipements publics, etc.)\n1.1 Aménagements cyclables\n \nRéseau cyclable à sécuriser\n \nRéseau cyclable en cohabitation  \n \navec les autres modes \n \n(à sécuriser ponctuellement)\n \n(à titre indicatif)\n",
+      "exact_text_sha256": "0ba168823c1b34f8ac4784ca3f16718c6b1d98356d89cf96229bc93456b37621",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 49,
+          "exact_label": "Réseau cyclable en cohabitation avec les autres modes (à titre indicatif)",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 50,
+          "exact_label": "Réseau cyclable à sécuriser",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [],
+      "source_scope_review": "Exact two cycling objective classes overlap synthesis semantics; indicative network, not current infrastructure assertion",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": false,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 3,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:39:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 39,
+      "package_index": 127,
+      "source_title": "Walking",
+      "exact_page_text": "500\n100\nPlan directeur communal Prangins \n131\nPrincipes\nCompléter et améliorer les cheminements \npiétons et mixtes (piétons / deux-roues \nlégers) de manière à assurer des liaisons \nsûres, confortables et directes entre les \ndifférentes entités et équipements de la \ncommune. Font également partie des équi-\npements les arrêts de transports publics. \nMesures\nDe manière générale, il y a lieu de compléter \net d’améliorer le réseau existant. Dans \nles quartiers résidentiels, l’introduction des \nzones à vitesse modérée peut se substi-\ntuer à la création de cheminements en site \npropre.\nLa continuité de ces cheminements doit par \nailleurs franchir les frontières communales \nafin d’assurer des liaisons avec les commu-\nnes voisines et les itinéraires de randon-\nnées.\nUn soin particulier sera apporté aux \n“chemins de l’école” et aux liaisons perpen-\ndiculaires (lac-jura).\n- Définir un traitement homogène de ces \nparcours pour en faciliter l’identification\n- Sécuriser les traversées de route\n- Accompagner les éléments de gestion des \neaux pluviales : fossés, noues, bassins, etc.\n- Soigner les connexions avec les chemins \npiétons transversaux\nLa coordination cycles-piétons ainsi que \nla mise en évidence des obstacles, hiérar-\nchies et priorités sont à développer dans \nune étude ultérieure plus detaillée sur les \nmobilités douces.\n1.2 Cheminements piétons\n \nMobilité piétonne régionale\n \nMobilité piétonne locale existante\n \nMobilité piétonne locale à renforcer\n \nPassage voies CFF, existants\n \nPassages voies CFF, à créer \n \n(position à titre indicatif)\n \nVues à conserver\n \nVue à créer\n \nRives Vaudoises du Lac Léman\n \nToblerone\n \nSt Jacques de Compostelle \nRappel des avis des habitants lors du premier \natelier de concertation (23 juin 2007) \n- Manque de sentiers piétons, balisage insuffisant\n- Nécessaire amélioration de l’accès piéton au lac\nAtelier du 26 janvier 2008\n- Prévoir un chemin de mobilité douce au dessus \ndu tunnel de l’Etraz (sur Nyon)\n- Prolonger le chemin piéton vers la gare de Nyon \nà travers les vignes\n- Chemins piétons vers les écoles\n",
+      "exact_text_sha256": "6b3144de6f5e2b8dabea4dd7514407ce852d77af27f51be83f9ac5efa5a0277c",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 19,
+          "exact_label": "Points de vue à préserver",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 20,
+          "exact_label": "Points de vue à créer",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 47,
+          "exact_label": "Passages CFF existants",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 48,
+          "exact_label": "Passages CFF à créer (position à titre indicatif)",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 51,
+          "exact_label": "Réseau piétonnier complémentaire (à titre indicatif)",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 52,
+          "exact_label": "Chemin de Compostelle",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 53,
+          "exact_label": "Chemin de Toblerone",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 54,
+          "exact_label": "Chemin des Rives du Lac",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [],
+      "source_scope_review": "Regional/local existing/local reinforcement distinctions exceed generic complementary network; CFF proposed crossing positions indicative; later detailed mobility study explicitly required",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": false,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 2,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:40:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 40,
+      "package_index": 128,
+      "source_title": "Lakeside paths",
+      "exact_page_text": "500\n100\n \nAccès au lac existant\n \nEtude de projet paysager\n \nProposition de chemin   \n \ntransitoire\nPlan directeur des Rives du lac\n(voir aussi p. 108) :\n \nChemin existant confirmé\n \nCheminement à localiser  \n \npar étude de détail\nPlan directeur communal Prangins \n132\n1.3 Rives du lac \nPrincipes \n- «Assurer, dans la mesure du possible, un \ncheminement continu sur l’ensemble des \nrives vaudoises du lac\n- Créer le chemin directement en rive du lac, \ndans la mesure où sa construction n’entre \npas en conflit avec des objectifs de protec-\ntion de la nature et où il est techniquement \nréalisable\n- Favoriser la création ou l’agrandissement des \nplages, dans la mesure où ces projets n’en-\ntrent pas en contradiction notamment avec la \nloi fédérale sur la protection des eaux.»\nSource : Plan directeur cantonal des Rives \nVaudoises\nMesures\n- Pointillés bleus : aménager provisoire-\nment les accès à l’arrière des propriétés \npour améliorer la relation entre le port et la \nplage, dans l’attente d’une vraie promenade \nau bord du lac (fiche C9, plan des Rives, \nvoir p.109)\n- Réaliser la liaison piétonne entre l’embou-\nchure de l’Asse et le port de Prangins en \nretrait de la rive, pour y préserver les mi-\nlieux naturels sensibles (voir aussi p.149 et \nfiche C7)\n- Revoir la qualité des accessibilités à la \nplage (fiche C8)\nConcernant le stationnement lié aux activi-\ntés lacustres, il y a peu de marge de ma-\nnoeuvre pour améliorer le fonctionnement \ndu secteur. Celui-ci est en outre peu dange-\nreux en cas de forte affluence en raison de \nla saturation du réseau automobile.\nUne amélioration du cheminement deux-\nroues sur la route du Lac et du stationne-\nment deux-roues dans le secteur de la \nplage permettrait de diminuer la pression de \nla voiture à cet endroit.\nPlage\nPort\n",
+      "exact_text_sha256": "2778771821cc3f25e5db631f121206e03a208a15d2bb46fcd7598c180a43ebe2",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 30,
+          "exact_label": "Plage",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 54,
+          "exact_label": "Chemin des Rives du Lac",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 58,
+          "exact_label": "Chemin provisoire",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [
+        {
+          "card": "S1",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        }
+      ],
+      "source_scope_review": "Existing lake access; landscape study; transitional route; confirmed existing path versus alignment requiring detailed study must remain separate",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": false,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 1,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:44:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 44,
+      "package_index": 132,
+      "source_title": "Road network hierarchy",
+      "exact_page_text": "Plan directeur communal Prangins \n136\nPrincipes\n- Hiérarchiser le réseau afin d’optimiser la \nfuture RDU \n- Inciter au respect de chaque spécificité de \nvoie\n- Favoriser la maîtrise du trafic dans la \ncommune et l’utilisation des transports \npublics ainsi que la mobilité douce\n-  Organiser le stationnement de manière à \nlimiter le trafic dans les endroits sensibles \n(voir également chap. II.1.3 pour le centre \ndu village)\nMesures\n- Requalification de la route de L’Etraz \n(aménagement dissuassif pour le trafic de \ntransit- contrôle d’accès par la fermeture du \ntronçon entre le carrefour route de l’Etraz \n/ route de Gland et le carrefour «En Mes-\nserin»)\n- Requalification de la route du Lac \n- Introduction de zones à vitesse modérée \ndans les quartiers résidentiels\n- Introduction de mesures d’accompa-\ngnement dans les quartiers (besoins en \nstationnement, lutte contre le parking \nsauvage, etc.)\n- Requalifier les centralités (village et Benex-\nDessus)\n2.2 Hiérarchisation du réseau \nroutier\n \nRéseau principal\n \nRéseau secondaire\n \nProposition\n      Variante\n \nRéseau d’accès et de desserte de niveau 1\n \n«Verrou» : modération forte\n \nRue de village\n \nTransport public et mobilité douce\n \nRéseau de desserte de niveau 2\nAvis des habitants lors du second atelier de \nconcertation (26 janvier 2008) \nTraversée de Benex à 30 km/h ou débouché de la \nroute de l’Etraz sur quartiers à 30 km/h\nP+R\n",
+      "exact_text_sha256": "fd150d544176ec8b9e03b304aa375734e0fcc60d661ef3246767a83fa9468493",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 39,
+          "exact_label": "RDU à créer",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 40,
+          "exact_label": "Route secondaire à créer",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 41,
+          "exact_label": "Modération de la route de l’Etraz",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 42,
+          "exact_label": "Réaménagement de la RC1",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [],
+      "source_scope_review": "Principal/secondary/access-level1/access-level2/village street/public-transport-soft-mobility/verrou are distinct road roles; proposal and variant separate; future RDU-dependent hierarchy",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": true,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 2,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:46:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 46,
+      "package_index": 134,
+      "source_title": "Etraz requalification",
+      "exact_page_text": "500\n100\nPlan directeur communal Prangins \n138\nPrincipes \nCompte tenu de la nouvelle organisation du \nréseau routier, il y a lieu de revaloriser cette \nroute à long terme et de lui donner un rôle \nplus local et un caractère plus urbain. Reste \nnéanmoins à gérer la situation actuelle et la \nsituation intermédiaire durant lesquelles un \ntrafic important s’écoulera sur cette route. \nIl s’agit donc d’améliorer la sécurité aux \nabords de la route de l’Etraz et de réduire \nses nuisances. Ces solutions doivent néan-\nmoins s’appuyer sur un concept d’aména-\ngement de cette rue à long terme.\nMesures\nCourt terme : Trouver des solutions éco-\nnomiques pour améliorer la sécurité aux \nabords de cette route et en diminuer les im-\npacts sur les habitations riveraines. Antici-\nper le moyen terme.\nMoyen terme : Absorber le trafic généré \npar la construction du premier tronçon de la \nRDU sur le territoire nyonnais.\nLong terme : Requalifier la route de l’Etraz \nen traversée de Prangins de manière à lui \nredonner une fonction plus locale et un ca-\nractère plus urbain.\n(Pour plus de détails, voir fiche de coordina-\ntion S3, pp.184-187)\n2.3 Requalification de la route \nde l’Etraz (RC30b)\n",
+      "exact_text_sha256": "45bda72c36a754a6f0da360908e34272f6bf606e0a032f16f93cd75b3a38496d",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 41,
+          "exact_label": "Modération de la route de l’Etraz",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [
+        {
+          "card": "S3",
+          "relationship": "explicit_text_reference"
+        }
+      ],
+      "source_scope_review": "Exact text explicitly points to S3; short-term safety distinct from medium/long-term RDU-dependent requalification; no exact graphic identity established",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": true,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 3,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:47:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 47,
+      "package_index": 135,
+      "source_title": "RC1 requalification",
+      "exact_page_text": "500\n100\nPlan directeur communal Prangins \n139\nPrincipes\nLa route de Lac a été aménagée alors que \nl’autoroute A1 n’existait pas. Elle était alors \nchargée d’écouler tout le trafic de transit. \nActuellement, la fonction de cette route \na changé. Même si elle doit encore écou-\nler du trafic de transit, elle joue également \nun rôle local important. Son tracé est par \nailleurs bordé d’habitations et d’activités. Il y \na donc lieu de revaloriser cette route à long \nterme et de lui donner un rôle plus local et \nun caractère plus paysager. Il s’agit égale-\nment d’améliorer la sécurité des usagers y \ncirculant (véhicules, deux-roues et piétons), \ny accédant (bordiers et utilisateurs des ac-\ntivités riveraines) et la traversant. A terme \nc’est l’ensemble de l’axe Genève-Lausanne \nqui est concerné par une requalification.\nMesures\nCourt terme : Trouver des solutions éco-\nnomiques pour améliorer la sécurité aux \nabords de cette route et en diminuer les im-\npacts sur les habitations riveraines. \nMoyen terme : Requalifier la route du Lac \nsur le territoire de Prangins. Redonner à \ncette rue une fonction plus locale et un ca-\nractère plus paysager.\nS’inspirer de l’approche en cours de requa-\nlification de la RC1 entre Mies et Founex. \nDans l’ensemble ce type de réaménage-\nment doit tendre vers une approche globale \nassurée à l’échelle intercommunale.\n(Pour plus de détails, voir fiche de coordina-\ntion S1, pp.176-179)\n2.4 Requalification de la route \ndu Lac (RC1a)\n",
+      "exact_text_sha256": "2768826953a1c0c253d693ab543c601e50713c413c68fd0442a72b51c5ae896f",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 42,
+          "exact_label": "Réaménagement de la RC1",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [
+        {
+          "card": "S1",
+          "relationship": "explicit_text_reference"
+        }
+      ],
+      "source_scope_review": "Exact text explicitly points to S1; RC1 landscape requalification is not blanket abandoned by RDU withdrawal",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": false,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 3,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:49:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 49,
+      "package_index": 137,
+      "source_title": "Future public transport",
+      "exact_page_text": " \nBus direct (cadence 15’)\n \nDesserte fine (cadence 15 à 30’)\n \n \nLigne régionale (cadence 30’)\nGare de \nNyon\nvers Gare de Nyon\nà long terme - vers \nGare de Gland\nPlan directeur communal Prangins \n141\n3.1 Réseau futur\nPrincipes\nLe réseau est constitué d’une ligne directe, \nd’une ligne assurant la desserte fine et d’une \nligne régionale connectée à Gland. \nLa ligne directe passe sur la route de l’Etraz \net vise à relier rapidement les nouveaux \nquartiers au centre de l’agglomération. En ce \nsens, elle n’est prévue qu’à moyen/long ter-\nmes. Elle contribue à la requalification urbaine \nde la route de l’Etraz.\nLes arrêts situés sur cette route devront être \nreliés de manière performante aux quartiers \ndenses par des chemins de mobilité douce. \nDes équipements de parcage pour deux-\nroues devront y être aménagés. \nLa ligne assurant la desserte fine relie le \ncentre et la gare de Nyon avec le centre de \nPrangins et offre une desserte TP au reste du \nterritoire de Prangins. En particulier, la propo-\nsition de tracé permet de relier les nouveaux \nquartiers nord au centre du village. Cette ligne \ndevrait également assurer les liaisons scolai-\nres. A court terme, elle garde le même tracé \nqu’actuellement avec une boucle village/route \nde Benex/route de l’Etraz/village.\nEnfin, une ligne régionale relie la gare de \nNyon à l’Hôpital de Prangins, en desservant \nles habitations et équipements du bord du \nlac. A terme et si le besoin l’exige, cette ligne \npourrait constituer la liaison avec Gland.\nMesures\n- Créer une ligne performante sur la route de \nl’Etraz\n- Améliorer/adapter la ligne urbaine existante\n- Assurer la desserte des équipements et \nhabitations du bord du lac\n-  Assurer une bonne accessibilité aux arrêts \npour la mobilité douce\n- Garantir une coordination intercommunale\nRappel des avis des habitants lors du pre-\nmier atelier de concertation (23 juin 2007) \nMauvaise organisation du transport public :  \narrêts mal placés, bus bruyants, horaires peu \nclairs et peu fiables aux heures de pointe\nAtelier du 26 janvier 2008\nPas de desserte dans le quartier des Mélèzes\nEnvisager des bus plus petits\n",
+      "exact_text_sha256": "708dd2450df066414c2514cbe1637b53d9cc47c5234048e7ecac946e7b12b52d",
+      "synthesis_relations": [],
+      "card_relations": [],
+      "source_scope_review": "Bus direct15min, fine15-30min, regional30min; planned network with northern-quarter dependencies, not live service schedule",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": true,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 1,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:50:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 50,
+      "package_index": 138,
+      "source_title": "Long-term transport variant",
+      "exact_page_text": "Gare de \nNyon\n \nAxe lourd (tram - cadence 10 - 15’)\n \nDesserte fine (cadence 15 à 30’)\n \n \nLigne régionale (cadence 30’)\nL’Asse\nEysin\nvers Gare de Nyon\nà long terme - vers \nGare de Gland\nPlan directeur communal Prangins \n142\n3.1a Variante à long terme\nPrincipes\nA plus long terme, il y a lieu d’étudier l’op-\nportunité de créer un axe lourd sur l’itiné-\nraire route de l’Etraz, route d’Oulteret, gare \nde Nyon via la voie du Nyon-St-Cergue. \nDes combinaisons entre les branches de \ncet axe lourd pourrait également être envi-\nsagées (liaison Prangins-Asse et/ou Pran-\ngins-Eysins par exemple).\nMesures\n- Vérifier la faisabilité et l’intérêt de ce concept \nà l’échelle de l’agglomération nyonnaise \n- Si nécessaire, réserver les emprises indis-\npensables.\n",
+      "exact_text_sha256": "34e79ff0a87c04eec3740045ae4098af929a5458d53277b0606ac666bd7dc887",
+      "synthesis_relations": [],
+      "card_relations": [],
+      "source_scope_review": "Alternative long-term heavy axis/tram10-15min plus fine/regional; feasibility and benefit explicitly still to study; not same proposal as page49",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": true,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 1,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:51:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 51,
+      "package_index": 139,
+      "source_title": "Railway development",
+      "exact_page_text": "Plan directeur communal Prangins \n143\n3.2 Réseau ferroviaire\nDans le cadre du développement du réseau \nnational et régional, il y a lieu de prévoir la \nréservation d’un couloir non constructible \npour accueillir la troisième voie ferroviaire, \nvoire la quatrième même si aucune étude de \n4ème voie n’est disponible à ce jour.\nEn l’état de la planification, ce couloir corres-\npond à une distance de 15 mètres de part et \nd’autre de l’axe des deux voies existantes.\nPar ailleurs, bien que la réouverture de la \ngare ne soit pas programmée, il s’agit de \nne pas perdre de vue le potentiel de trans-\nport et de développement lié au rail. Aussi \non réservera les secteurs proches à des \nvocations denses en termes d’occupation \nhumaine, notamment le long de la route de \nl’Etraz.\nMesures\n- réserver un couloir de 15m de part et \nd’autre de la voie actuelle dans le PGA\n- prévoir la réouverture éventuelle de la hal-\nte de Prangins.\n- Affecter la parcelle CFF 319 au domaine \nferroviaire.\n500\n100\n319\n",
+      "exact_text_sha256": "eae506296d85b513665d8589aff86034b3f2c73970466c20049d19bf142a0b21",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 46,
+          "exact_label": "Voie ferrée",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [],
+      "source_scope_review": "Rail reservation15m each side of existing axis is source textual objective, not authorization to buffer; parcel319 and possible halt reopening explicit; no fourth-track study available then",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": false,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 1,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:56:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 56,
+      "package_index": 144,
+      "source_title": "Centralities",
+      "exact_page_text": "500\n100\ntransports\nenvironnement\naménagement du territoire\nt e a m +\nCommune de Prangins\nRoute de Benex-Dessus\nAménagements d'un trottoir et\nd'un arrêt de bus    1:500\nPlan directeur communal Prangins \n148\nI.1.1 Centralités\nRenforcer les centralités et la qualité \ndes espaces publics par une plus \ngrande mixité fonctionnelle\nPrincipes\n- Améliorer la qualité des espaces publics\n- Implanter plus d’activités – commerces et \nbureaux\n- Créer des logements supplémentaires\n- Trouver des solutions de stationnement\nMesures\n- Etablir un nouveau projet d’espace public\n- Restructurer le stationnement en étudiant \ndes possibilités d’implantation de parkings \nsouterrains \n- Etudier la possibilité de densifier les plans \npartiels d’affection existants (Bénex-Des-\nsus) et les nouveaux (centre du village)\nRoute de Bénex-Dessus : Aménagement d’un arrêt de \nbus, nouveau revêtement de la chaussée et modération \nde la circulation\n \nRenforcement potentiel de la centralité\n \nRappel des avis des habitants lors du premier \natelier de concertation (23 juin 2007) \n- Réactiver et renforcer le centre\n- Créer une esplanade pour l’Auberge communale\n- Enlever les voitures de la place face à la mai-\nson communale\nAtelier du 26 janvier 2008\n- Donner la priorité aux piétons dans le centre\n- Préserver le centre tel quel avec une circulation \ndouce\n",
+      "exact_text_sha256": "f4001b3e1d19d3b346d15fa87bd1667e037087638f2677c392f8781c29760d97",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 12,
+          "exact_label": "Centralités historiques à renforcer",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 43,
+          "exact_label": "Espace public à aménager (à titre indicatif)",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [
+        {
+          "card": "S5",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        }
+      ],
+      "source_scope_review": "Potential centrality reinforcement; separate 1:500 Benex design inset is illustrative project with independent frame",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": false,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 3,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:57:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 57,
+      "package_index": 145,
+      "source_title": "Low-density densification",
+      "exact_page_text": "500\n100\nPlan directeur communal Prangins \n149\nEtudier les possiblités de densifica-\ntion des zones de faible densité\nPrincipes\n- Augmenter les densités des zones de \nfaible densité et de villas arborisées, ceci \nconformément aux orientations fédérales et \ncantonales\n- Implanter dans ces zones quelques activi-\ntés compatibles avec le logement\nMesures\n- Etudier les possibilités de densifier les zo-\nnes de faible densité selon les caractéristi-\nques de chaque secteur\n- Etudier les incidences de densification \nen ce qui concerne les potentialités à \nbâtir, la génération de trafic et les atteintes \npaysagères\nNote : Dans le secteur au bord du lac, la \ndensification n’est pas encouragée par le \nplan des Rives du lac Léman (voir p.108). \nI.1.2 Densification des zones \nde faible densité\n \nDensification de zones de faible densité\nRappel des avis des habitants lors du premier \natelier de concertation (23 juin 2007) \n- La nécessité de densifier les zones habita-\nbles, en particulier des zones villas\nAtelier du 26 janvier 2008\n- Densification modérée des zones villas\n",
+      "exact_text_sha256": "163db10ecb134b3f9bb8bf5e1816a6e2444bdbe7ea17619a86983f9d077c3318",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 10,
+          "exact_label": "Densification à étudier des zones de faible densité",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [],
+      "source_scope_review": "Low-density densification requires sector studies; lakeside densification explicitly not encouraged by Plan des Rives; no buildable entitlement",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": false,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 2,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:58:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 58,
+      "package_index": 146,
+      "source_title": "Intermediate densification",
+      "exact_page_text": "500\n100\nPlan directeur communal Prangins \n150\nI.1.3 Densification des  \nzones intermédiaires\nEtudier les possiblités de densifica-\ntion des zones intermédiaires\nPrincipes\nPrévoir à court et moyen terme la densifica-\ntion des zones intermédiaires bien situées, \nen tenant compte de la végétation existante \n(conservation et/ou compensation).\nMesures\n- Etablir les nouvelles affectations de ces \nsecteurs en relation aux grandes lignes du \ndéveloppement communal\n- Etudier les conditions d’établissement de \nces nouvelles affectations\n- Légaliser, par des instruments de planifi-\ncation adéquats, les nouvelles affectations \nde ces secteurs\n \nZone intermédiaire\n",
+      "exact_text_sha256": "1ee6bb8864430ac8b13e8bad67a9784faa867bf703ed2560b27d19e5b2b54977",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 11,
+          "exact_label": "Densification des zones intermédiaires",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [],
+      "source_scope_review": "Intermediate zones require new assignment planning and legalization; preserve vegetation; no legalized rezoning assertion",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": false,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 2,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:59:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 59,
+      "package_index": 147,
+      "source_title": "Northern extension",
+      "exact_page_text": "500\n100\nPlan directeur communal Prangins \n151\nPrévoir à moyen terme la densifica-\ntion des zones situées au nord de la \nroute de l’Etraz selon les principes \nd’urbanisation préconisés par le \nSDAN et l’étude Feddersen & Klos-\ntermann concernant la création de la \nRDU.\nLes zones d’extension touchent prioritaire-\nment des zones agricoles dénuées de mi-\nlieux naturels.\nPrincipes\n- Intégrer ces nouvelles extensions au vil-\nlage existant en prêtant une attention parti-\nculière à la qualité des liaisons\n- Favoriser la création d’écoquartiers\n- Favoriser les mixités fonctionnelles, socia-\nles et intergénérationnelles\n- Prévoir l’implantation d’équipements sco-\nlaires, sportifs et culturels\n- Desservir les nouveaux quartiers par les \ntransports publics et par la mobilité douce\nMesures\n- Etudier la possibilité de créer une zone \nartisanale et industrielle servant d’écran \nphonique contre les nuisances le long de la \nRDU. Avec cette option, il serait ainsi possi-\nble de créer des emplois à proximité des ha-\nbitations qui seront construites tôt ou tard.\n- Etablir les nouvelles affectations de ces \nsecteurs en relation aux grandes lignes du \ndéveloppement communal\n- Etudier les conditions d’établissement de \nces nouvelles affectations\n- Légaliser, par des instruments de planifi-\ncation adéquats, les nouvelles affectations \nde ces secteurs et la nouvelle route\nI.1.4 Extension\n \nRDU\n \nZone verte tampon\n \nZone mixte emplois/ logements\n \nAffectation à définir\nRappel des avis des habitants lors du second \natelier de concertation (26 janvier 2008) \n- Réaliser un écoquartier\n- Y intégrer ateliers d’artistes et espaces de \ncréation\n- Créer des commerces de proximité\n- Implanter des équipements (jardins d’enfants)\n- Favoriser la mixité sociale \n- Proposer des incitations communales pour favo-\nriser les constructions Minergie (à faible consom-\nmation d’énergie)\n",
+      "exact_text_sha256": "c061a20c8f9eacbd37c5abce8a3c71e38a3f267456dc103e3a9c2538c0d1ac56",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 8,
+          "exact_label": "Parkway paysager (RDU)",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 25,
+          "exact_label": "Extension : zone mixte habitat / activités à créer",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 27,
+          "exact_label": "Affectation à définir",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 39,
+          "exact_label": "RDU à créer",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [
+        {
+          "card": "P4",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        }
+      ],
+      "source_scope_review": "Northern extension explicitly based on SDAN/Feddersen RDU; green buffer, mixed employment/housing, undefined assignment;2018 withdrawal scoped directly",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": true,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 4,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:61:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 61,
+      "package_index": 149,
+      "source_title": "Etraz activities corridor",
+      "exact_page_text": "500\n100\nPlan directeur communal Prangins \n153\nI.2.1 Route de l’Etraz\nImplanter des logements, des activi-\ntés et des commerces le long de la \nroute de l’Etraz requalifiée\nMesures\n- Prévoir, par des instruments de planifica-\ntion adéquats, le changement d’affectation \ndes deux bords de la route\n- Coordonner ce changement d’affectation \navec le projet de modération et d’aménage-\nment de la route\n \nPotentiel de développement \n  \néconomique : artisanat, commerces\n",
+      "exact_text_sha256": "1df4b7aed8f8e22b7ca2eb21aca22ce63d442b02dfb50d25540cfbcb4de45222",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 44,
+          "exact_label": "Front bâti (à titre indicatif)",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 37,
+          "exact_label": "Zone mixte",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [
+        {
+          "card": "S3",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        }
+      ],
+      "source_scope_review": "Economic potential artisanat/commerces along Etraz; semantic relationship only to built front/mixed classes, not equivalence; proposed changes require planning",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": true,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 2,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:62:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 62,
+      "package_index": 150,
+      "source_title": "Commune entrance and industry",
+      "exact_page_text": "500\n100\nPlan directeur communal Prangins \n154\nValoriser l’entrée ouest de la \ncommune\nPrincipes\n- Améliorer la qualité paysagère de cette \nzone mixte, notamment par l’aménagement \nde bandes vertes tampon le long de la route \nde l’Etraz\n- Intégrer ce secteur dans un projet de \nrequalification de l’espace public de la route \nde l’Etraz\nMesures\n- Revoir, dans les futures planifications, le \nrèglement de cette zone\nI.2.2 Entrée de la commune\n \nZone mixte\n  \nZone industrielle\n \nAire forestière\nRappel des avis des habitants lors du premier \natelier de concertation (23 juin 2007) \n- Améliorer l’intégration esthétique des zones  \nindustrielles et artisanales\n",
+      "exact_text_sha256": "ad9710573c0fc9ce4863ef184ca94f097dfd4050b072f1dbcfd47d9888605ef5",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 1,
+          "exact_label": "Bois, forêts",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 14,
+          "exact_label": "Zone industrielle existante à réaménager",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 37,
+          "exact_label": "Zone mixte",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [
+        {
+          "card": "S7",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        }
+      ],
+      "source_scope_review": "Mixed zone, industrial zone, forest distinct; west entrance landscaping/regulation review; not generic new industrial allocation",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": false,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 3,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:63:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 63,
+      "package_index": 151,
+      "source_title": "Jardins proposal",
+      "exact_page_text": "500\n100\nPlan directeur communal Prangins \n155\nInstaurer une zone près du lac pour \nl’implantation prioritaire d’activités à \nhaute valeur ajoutée\nPrincipes\n- Intégrer ces nouvelles constructions de \nfaçon à ne pas porter atteinte aux valeurs \npatrimoniales, paysagères et environne-\nmentales\nMesures\n- Légaliser, par des instruments de planifica-\ntion adéquats, les nouvelles affectations de \nces secteurs, en conformité avec les condi-\ntions établies par le Canton et la Région\nNota bene \nSelon les instances régionales, le site pour-\nrait remplir les critères pour l’implantation \nd’entreprises de prestige, les conditions \nprécises étant à définir. Cette réflexion da-\ntant des années 2003-2005, le SDT précise \nque la localisation des sites d’exception et \ndes sites stratégiques pour les entreprises \ndoit être confirmée au niveau régional. \nI.2.3 Jardins de Prangins\n \nParc paysager préservé\n \nPotentiel de développement \n \nnotamment pour activités à haute  \n \n \nvaleur ajoutée\n \nSite paysager\n \nPPA Eglantine\n \nPréserver la vue de l’hôpital Hauterive\nRappel des avis des habitants lors du premier \natelier de concertation (23 juin 2007) \n- Opportunité d’implanter des entreprises «de \nprestige», pour autant que soient préservés les \npoints de vue, les qualités paysagères et la pos-\nsibilité pour le public de se promener dans les \nparcs\n",
+      "exact_text_sha256": "d6260d9fbfd17ea50a1c37164d5e45a5b0e4a670720f5bb97f78c4f9d923de8c",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 13,
+          "exact_label": "«Les Jardins de Prangins» : activités à haute valeur ajoutée et logements à créer *",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 15,
+          "exact_label": "Parcs et jardins publics",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 19,
+          "exact_label": "Points de vue à préserver",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [
+        {
+          "card": "S2",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        }
+      ],
+      "source_scope_review": "Preserved landscaped park, high-value activity potential, landscape site, PPA Eglantine, Hauterive view; regional strategic-site status explicitly requires confirmation",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": false,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 2,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:64:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 64,
+      "package_index": 152,
+      "source_title": "Coordination urbanism/mobility; influence circles not parcel rights",
+      "exact_page_text": "500\n100\nPlan directeur communal Prangins \n156\nCoordination \n \n  URBANISATION / MOBILITE\n \nCentralités \n \nRDU\n \nExtension\n \nActivités\n \nEntreprises de prestige \n \nDensification zones villas\n \nen priorité dans le rayon de 500m des arrêts TP\n \nBande verte d’équipements\n \nLimite d’urbanisation\n \nAire forestière\n \nDesserte fine \n \nBus direct\n \nLigne régionale\n \nDistance 300m aux arrêts\nHôpital\n",
+      "exact_text_sha256": "f58fb1cf4b03e3b9524307879bb967ba0fed455502b15c4e920a8fc8c7979287",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 1,
+          "exact_label": "Bois, forêts",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 7,
+          "exact_label": "Limite paysagère à créer entre bâti et campagne",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 10,
+          "exact_label": "Densification à étudier des zones de faible densité",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 12,
+          "exact_label": "Centralités historiques à renforcer",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 13,
+          "exact_label": "«Les Jardins de Prangins» : activités à haute valeur ajoutée et logements à créer *",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 24,
+          "exact_label": "Bande verte d’équipements",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 25,
+          "exact_label": "Extension : zone mixte habitat / activités à créer",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 39,
+          "exact_label": "RDU à créer",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [],
+      "source_scope_review": "Coordination composite reuses themes with fine/direct/regional transit and300m stop distances;500m densification priority textual distinction; distance circles analytical not rights",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": true,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 3,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:66:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 66,
+      "package_index": 154,
+      "source_title": "Historical centralities",
+      "exact_page_text": "500\n100\nPlan directeur communal Prangins \n158\nII.1.1 Centralités historiques\nMettre en valeur les espaces publics \ndes centralités\nPrincipes\n- Modérer et améliorer la circulation \n- Aménager les espaces publics des cen-\ntralités en tenant compte de leur substance \nhistorique et patrimoniale\n- Améliorer les rapports entre le centre du \nvillage et le Château \n- Accroître la convivialité et la sociabilité \ndans ces espaces publics\n- Renforcer la présence d’activités et de \ncommerces au centre du village\nMesures\n- Etablir un plan d’aménagement des \nespaces publics \n- Coordonner cette étude avec des projets \nd’aménagement sectoriels (Château, Mo-\nrettes, etc.)\n- Coordonner cette étude avec les projets de \nmodération de trafic et de stationnement\n- Fonder une politique de marketing pour \nla valorisation touristique de Prangins en \ngénéral et de son patrimoine architectural \nhistorique en particulier.\n \nCentralités\n",
+      "exact_text_sha256": "8cf7b01960c6949dd9e8fa0a46b1dbd6776cde9abc7cb35b57ffb48ee2fe1c97",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 12,
+          "exact_label": "Centralités historiques à renforcer",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 43,
+          "exact_label": "Espace public à aménager (à titre indicatif)",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [
+        {
+          "card": "S5",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        }
+      ],
+      "source_scope_review": "Historic centralities public-space enhancement; relation to page56 potential reinforcement is thematic, not exact geometry equality",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": false,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 3,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:67:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 67,
+      "package_index": 155,
+      "source_title": "Village aerial public-space/parking",
+      "exact_page_text": "Plan directeur communal Prangins \n159\nPrincipes\n- Mettre en adéquation l’utilisation des rues \navec le caractère villageois du site\n- Augmenter la sécurité par une diminution \nde la vitesse de circulation des véhicules \nmotorisés, visant à équilibrer les rapports \nde force entre ceux-ci et les usagers non-\nmotorisés\n- Renforcer le caractère urbain des rues de \nquartier au détriment de la composante rou-\ntière de celles-ci\n- Renforcer la sécurité des chemins vers \nl’école\nMesures\n- Introduire une zone 30 sur les tronçons \nd’approche du centre du village\n- Introduire une zone de rencontre au centre \ndu village et réaménager l’espace public \n- Réorganiser et réglementer le stationne-\nment \n- Offrir des possibilités d’abonnement (par-\nking illimité) aux ayant-droit sur le parking \npublic \n- A terme, créer des places destinées aux \nhabitants du village, en coordination avec \nles programmes de construction privés\n(Toute création de zones 20 et 30 fera l’ob-\njet d’une expertise soumise à l’approbation \nde la Commission cantonale de circulation)\nCoordination \n \n  MOBILITE / CENTRALITE\n \nNouveau PPA\n \nRapport important à \nl’espace public\n \nZone de rencontre\n \nZone modérée (30km/h)\n \nParking public 3h max.\n100 places (actuel :119)\n \nParking souterrain \npour habitants\ncapacité à définir \n \nParcage sur voirie \n30’ à 1h max.\nenv. 20 places (actuel : 21)\n \nParcage sur voirie 2h max\nenv. 20 places (actuel: 27)\n \nPotentiel de parking\n \nen réserve\nRappel des avis des habitants lors du premier \natelier de concertation (23 juin 2007) \nAménagement d’une « zone de rencontre» (zone \n20km/h avec priorité aux piétons) sur la place du \nvillage\n",
+      "exact_text_sha256": "0faaa391af611bbd0b2ce2529699e982f20af4eb03853dbad6a778277941d974",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 55,
+          "exact_label": "Zone de rencontre",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 56,
+          "exact_label": "Espace public à valoriser",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 57,
+          "exact_label": "Zone 30",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [
+        {
+          "card": "S5",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        }
+      ],
+      "source_scope_review": "New PPA/public-space relation and differentiated parking duration/capacity are added objectives;20/30zones explicitly require expert study and cantonal circulation approval",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": false,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 1,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:68:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 68,
+      "package_index": 156,
+      "source_title": "Parking, schematic source",
+      "exact_page_text": "P\nPlan directeur communal Prangins \n160\nPrincipes\n- Offrir la possibilité aux habitants du centre \nne disposant pas de place privée de par-\nquer leur voiture de manière illimitée\n- Libérer la place centrale tout en mainte-\nnant une offre suffisante pour la vitalité des \ncommerces\n- Exclure le parcage sauvage d’usagers se \nrendant à Nyon en bus\nMesures\n- Réorganiser l’offre de stationnement située \ndans le secteur du Vieux-Pressoir dans le \nbut de requalifier cet espace, de supprimer \nle parcage sauvage des pendulaires et de \ngarantir une capacité suffisante pour les ac-\ntivités du village, le Musée, la salle de spec-\ntacle et les habitants\n- Saisir l’opportunité de créer d’autres entités \nde parking dans le cadre de projets situés \naux alentours du centre du village (propriété \nsituée entre l’avenue du Général Guiguer et \nle sentier de la Cure, parcelle aux abords du \ncollège par exemple)\n- Etablir un concept de stationnement pour \nmettre en oeuvre les objectifs.\nLe nombre de places de stationnement doit \nêtre différencié par secteur, en fonction de \nla desserte TP, du potentiel de déplacement \nà pied ou à vélo (référence à la norme en vi-\ngueur). Les équipements générant de nom-\nbreux déplacements doivent prendre place \nen des lieux où l’offre en transports publics \nexiste. Enfin, pour les zones d’activités, des \nmesures incitant le personnel des différen-\ntes entreprises à ne pas utiliser leur voiture \npour le trafic pendulaire doivent être encou-\nragées via le règlement communal (plans \nde mobilité d’entreprise).\nCoordination de ces différentes mesures \navec la politique de stationnement mise en \nplace au niveau de l’Agglomération, et en \nparticulier du SDAN.\nII.1.3 Stationnement\n \nParking sport et musée \n \n156 places - durée illimitée\n \nParking des Morettes\n \nréservé manifestations et \n \nabonnement employés\n \nParking public - durée 3h\n \n120 places\n \n(abonnement pour habitants)\n \nParking privé pour habitants\n \n(capacité à définir \n \nselon opportunité)\n \nParcage sur voirie - 1h max.\n \n20 places\n \nParcage sur voirie - 2h max.\n \n25 places\n \nAdaptation du \n \n \nréglement communal\n \nMesures d’accompagnement\nP\n",
+      "exact_text_sha256": "63fc6f2880b5ce934a766896059bffd7cd56628b50a8ec61f9f2220b5c8fa4c3",
+      "synthesis_relations": [],
+      "card_relations": [],
+      "source_scope_review": "Distinct parking locations, durations, counts and resident/private opportunities; source proposals not current capacity; conflict with page67 counts preserved",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": false,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 1,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:72:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 72,
+      "package_index": 160,
+      "source_title": "Public-space axes",
+      "exact_page_text": "500\n100\nPlan directeur communal Prangins \n164\nModérer la circulation\nRoute de l’Etraz \nPrincipes\n- Densifier ses abords\n- Créer des activités aux rez des immeubles\n- Intégrer les nouvelles constructions aux \nvillas existantes\nMesures\n- A court terme : améliorer la sécurité et \nréduire les nuisances\n- A court et moyen terme : établir un nouveau \nprojet d’espace public\n- Etudier les conditions de densification\n- Planifier la requalification de la route de \nl’Etraz avec celle de la RDU et des quartiers \nd’extension\nRoute du Lac\nPrincipes\n- Densifier certaines parcelles non construites\n- Intégrer les nouvelles constructions aux \nqualités paysagères des sites\nMesures\n- A court terme : améliorer la sécurité et \nréduire les nuisances\n- A court et moyen terme : établir un nou-\nveau projet d’espace public\n- Etudier les conditions de densification\nII.2.1 Valorisation des axes  \nde l’Etraz et du Lac\n \nCentralité\n \nBande verte d’équipements\n \nDensification de l’axe routier\n \nModération de la circulation\n \nValorisation de la rue\n \nRoute de l’Etraz\nRappel des avis des habitants lors du premier \natelier de concertation (23 juin 2007) \n- Remédier aux problèmes de sécurité de la route \nde l’Etraz, qui risquent de s’aggraver temporaire-\nment dès que le tronçon nyonnais de la RDU sera \nconstruit\n",
+      "exact_text_sha256": "87004e5d34924f13002305c80db5298dbd47e7ff8b8b341e914014ea996804e1",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 12,
+          "exact_label": "Centralités historiques à renforcer",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 24,
+          "exact_label": "Bande verte d’équipements",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 41,
+          "exact_label": "Modération de la route de l’Etraz",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 42,
+          "exact_label": "Réaménagement de la RC1",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 43,
+          "exact_label": "Espace public à aménager (à titre indicatif)",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 44,
+          "exact_label": "Front bâti (à titre indicatif)",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [
+        {
+          "card": "S1",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        },
+        {
+          "card": "S3",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        }
+      ],
+      "source_scope_review": "Densification/moderation/street-enhancement roles separate; Etraz long-term coordination depends on RDU, RC1 and short-term safety not blanket withdrawn",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": true,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 3,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:73:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 73,
+      "package_index": 161,
+      "source_title": "Green public spaces with illustrative garden inset",
+      "exact_page_text": "500\n100\nPlan directeur communal Prangins \n165\nII.2.2 Grands espaces verts\nEtablir un réseau continu d’espaces \nverts dans la commune\nPrincipes\n- Mettre en valeur les espaces verts de la \ncommune envisagés comme des espaces \npublics \n- Relier ces espaces de façon à créer un \nréseau continu vert pour la promenade et \nles loisirs\n- Créer, à travers ces espaces verts, des \nrelations entre les différents équipements \nculturels, scolaires et historiques \nMesures\n- Etablir une étude paysagère de ce réseau \nd’espaces verts\n- Coordonner cette étude avec :\nles projets de création de nouveaux équipe-\n• \nments communaux\nles projets d’aménagement sectoriels (Châ-\n• \nteau, Morettes, etc.)\nles études régionales de l’extension pré-\n• \nvue par le SDAN\n \nRéseau vert\n \nAire forestière (à l’intérieur des grands espaces verts)\n \nJardins de Prangins\n \nZone verte tampon\n \nChâteaux\n \nPPA Eglantine\n",
+      "exact_text_sha256": "7ad22a4b8f8bee307ebfb409753044fe8ba107d4c5fc81fc86a63bf2be099734",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 1,
+          "exact_label": "Bois, forêts",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 13,
+          "exact_label": "«Les Jardins de Prangins» : activités à haute valeur ajoutée et logements à créer *",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 15,
+          "exact_label": "Parcs et jardins publics",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 23,
+          "exact_label": "Grande «pièce urbaine» verte",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 24,
+          "exact_label": "Bande verte d’équipements",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [
+        {
+          "card": "P3",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        },
+        {
+          "card": "S2",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        }
+      ],
+      "source_scope_review": "Green network, forest inside greens, Jardins, buffer zone, chateaux/PPAEglantine; separate garden-design inset not main-map geometry",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": true,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 3,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "3336e2a0-6986-5e4b-903b-149dc8d71394:page:75:primary_map",
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "source_sha256": "a70f0043ed910266197e4619a1d33c2d4c111cc8408dff164b98d5cf138b433c",
+      "component": "Plan Directeur",
+      "pdf_page": 75,
+      "package_index": 163,
+      "source_title": "Equipment",
+      "exact_page_text": "500\n100\nPlan directeur communal Prangins \n167\nRenforcer la présence des équipe-\nments dans une nouvelle structure \nverte\nPrincipes\n- Adapter l’offre en équipements scolaires, \nsocioculturels, sportifs, de loisirs et de dé-\ntente aux besoins actuels et futurs\n- Développer la collaboration intercommu-\nnale pour certains équipements\nMesures\n- Intégrer des équipements scolaires et \nautres dans la planification de l’extension\n- Adapter le plan de quartier des Morettes \nde façon à pouvoir créer des logements \nprotégés\n- Entamer une réflexion sur l’évolution des \néquipements d’assainissement et énergéti-\nques\n- Planifier la construction d’une déchetterie \nintercommunale \n- Développer les réseaux pour la promenade \net les loisirs dans l’axe vert en conservant \nl’intégrité et la qualité de l’aire forestière\n- Revoir l’aménagement de la plage en \nétudiant ses possibilités d’extension\nII.3 Equipements \nPlage\nPort\n \nBande d’équipements\n \nSite paysagé\n \nAire forestière\n \nEquipements publics existants\n \nEquipement régional à créer\n \nEquipement local à créer\n \nSite envisagé pour la déchetterie \n \nTerrains de sport\n \nChâteau\nRappel des avis des habitants lors du premier \natelier de concertation (23 juin 2007) \n- Nécessité d’articuler les infrastructures scolaires \navec les nouveaux quartiers\nAtelier du 26 janvier 2008\n- Prévoir une zone de loisirs pour les jeunes par \nexemple dans une zone verte\n",
+      "exact_text_sha256": "37724a536f2fd46e056e6c69e90bffb91f30e43e74914ff9e8720cd2cffac1f3",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 1,
+          "exact_label": "Bois, forêts",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 24,
+          "exact_label": "Bande verte d’équipements",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 28,
+          "exact_label": "Equipements existants",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 29,
+          "exact_label": "Port",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 30,
+          "exact_label": "Plage",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 32,
+          "exact_label": "Installations sportives",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 33,
+          "exact_label": "Equipement local à créer",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 34,
+          "exact_label": "Equipement régional à créer",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 35,
+          "exact_label": "Déchetterie à créer",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [
+        {
+          "card": "P3",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        },
+        {
+          "card": "S6",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        }
+      ],
+      "source_scope_review": "Existing public facilities, sports land, chateau distinct from regional/local proposed equipment and contemplated waste site; northern extension-dependent school siting scoped",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": true,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 2,
+      "new_geometry_delivery": 0,
+      "completion": false
+    },
+    {
+      "map_id": "d51be29b-8c9d-542c-988c-56aa3495545b:page:32:primary_map",
+      "document_id": "d51be29b-8c9d-542c-988c-56aa3495545b",
+      "source_sha256": "fc1f4c662e71c43744ff3d241b0be573447756232d68c7425cda976f7138f81e",
+      "component": "Mesures d’aménagement",
+      "pdf_page": 32,
+      "package_index": 198,
+      "source_title": "Landscape intentions P1–P4 overview",
+      "exact_page_text": "500\n100\nPlan directeur communal Prangins \n202\nINTENTIONS PAYSAGERES\n1\n2\n3\n4\n1  \nPromenthouse\n2  \nLimite\n3  \nBande verte d’équipements\n4  \nAccompagnement\n \nZone bâtie\n \nZone agricole\n \nStructure paysagère \n \nRuisseaux existants à ciel ouvert\n \nRéouverture des ruisseaux \n \n(tracé à titre indicatif)\n \nChemin piéton\n",
+      "exact_text_sha256": "43f941681ba1e4ef1d590894db8f2d62ecd91696a242937fe890a1c03b9b0107",
+      "synthesis_relations": [
+        {
+          "literal_label_index": 2,
+          "exact_label": "Cordons boisés, végétation structurante existante",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 3,
+          "exact_label": "Cordons boisés à créer",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 4,
+          "exact_label": "Espace à vocation agricole",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 7,
+          "exact_label": "Limite paysagère à créer entre bâti et campagne",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 9,
+          "exact_label": "Renforcement de la structure existante",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 17,
+          "exact_label": "Cours d’eau existants à l’air libre et à revitaliser",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 18,
+          "exact_label": "Cours d’eau à remettre à l’air libre (tracé à titre indicatif)",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 22,
+          "exact_label": "Bande d’accompagnement",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 24,
+          "exact_label": "Bande verte d’équipements",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        },
+        {
+          "literal_label_index": 51,
+          "exact_label": "Réseau piétonnier complémentaire (à titre indicatif)",
+          "relationship": "thematic_overlap_only_not_geometry_or_semantic_equivalence"
+        }
+      ],
+      "card_relations": [
+        {
+          "card": "P1",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        },
+        {
+          "card": "P2",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        },
+        {
+          "card": "P3",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        },
+        {
+          "card": "P4",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        },
+        {
+          "card": "P5",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        },
+        {
+          "card": "P6",
+          "relationship": "same_subject_scope_requires_map_comparison"
+        }
+      ],
+      "source_scope_review": "Four numbered landscape-intention bands form overview; existing/reopened watercourse and pedestrian traces; not four new physical sectors",
+      "policy_status": "historical_2013_objective_current_feature_status_unknown",
+      "scoped_RDU_review_required": true,
+      "exact_graphic_duplicate": "not_established_semantic_review_does_not_claim_duplicate",
+      "frame_status": "geometry_lane_source_form_identity_review_pending_no_fit_transfer_authorized",
+      "priority": 3,
+      "new_geometry_delivery": 0,
+      "completion": false
+    }
+  ],
+  "summary": {
+    "maps_reviewed": 28,
+    "exact_duplicates_claimed": 0,
+    "with_thematic_synthesis_relations": 25,
+    "without_direct_synthesis_class_equivalent": 3,
+    "new_geometry_delivery": 0,
+    "commune_complete": false
+  },
+  "dedup_rule": "Only exact vector/form or transformed source-support identity from independent geometry lane may remove duplicate geometry. Same legend/topic is insufficient. Main map, reference inset and illustrative design have separate frames.",
+  "excluded_roles_preserved": "Diagnostic/external-reference/historical/photo/text/illustrative pages remain explicitly inventoried in235page ledger; no exclusion is delivery or absence.",
+  "priority_queue": [
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:23:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:40:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:49:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:50:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:51:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:67:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:68:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:39:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:44:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:57:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:58:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:61:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:63:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:75:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:21:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:22:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:38:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:46:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:47:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:56:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:62:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:64:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:66:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:72:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:73:primary_map",
+    "d51be29b-8c9d-542c-988c-56aa3495545b:page:32:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:29:primary_map",
+    "3336e2a0-6986-5e4b-903b-149dc8d71394:page:59:primary_map"
+  ],
+  "conflicts": [
+    {
+      "pages": [
+        67,
+        68
+      ],
+      "component": "Plan Directeur",
+      "issue": "Page67 publicparking100proposed119current, street20/20 versus page68 public120 and street20/25; retain page-specific proposals, no unified current capacity."
+    }
+  ],
+  "synthesis_state_unchanged": "58partial literal labels; Zone30pending; eight withheld inset shapes remain research only",
+  "independent_page_inventory_qa": "/Users/a/.codex/task-artifacts/vaud-pdcom/delivery-parallel/package-role-independent-qa.json",
+  "geometry_inventory_in_progress": "/Users/a/.codex/task-artifacts/vaud-pdcom/prangins-package-maps/inventory.json"
+}

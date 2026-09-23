@@ -1,0 +1,57 @@
+{
+  "map_count": 28,
+  "shared_frames": 22,
+  "independent_frame_backlog": [
+    {
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "page": 44,
+      "reason": "independent_frame_required"
+    },
+    {
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "page": 49,
+      "reason": "independent_frame_required"
+    },
+    {
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "page": 50,
+      "reason": "independent_frame_required"
+    },
+    {
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "page": 51,
+      "reason": "independent_frame_required"
+    },
+    {
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "page": 67,
+      "reason": "independent_frame_required"
+    },
+    {
+      "document_id": "3336e2a0-6986-5e4b-903b-149dc8d71394",
+      "page": 68,
+      "reason": "independent_frame_required"
+    }
+  ],
+  "extraction": {
+    "area_candidates": 1660,
+    "native_line_candidates": 962,
+    "source_exceptions": 150,
+    "not_delivered_counts": true
+  },
+  "selected": {
+    "pages": [
+      23,
+      40
+    ],
+    "categories": 5,
+    "source_paths": 5,
+    "area_collections": 1,
+    "native_collections": 4,
+    "parcel_pairs": 11
+  },
+  "remaining": "All other candidates retain semantic/topology/hull/dedup exceptions in domain operation; priority selection does not complete28maps",
+  "domain_operation": "76c03278-f6ef-48de-8152-7d75578843ef",
+  "artifact_root": "prangins-package-maps",
+  "commune_complete": false
+}
