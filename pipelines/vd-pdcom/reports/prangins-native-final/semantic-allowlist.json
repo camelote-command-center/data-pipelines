@@ -1,0 +1,413 @@
+{
+  "source_sha256": "a4079a88201b716ede0793150102306f8b1faddb55c391a7c2c1696244a96d02",
+  "categories": [
+    {
+      "source_label": "Equipement local à créer",
+      "label_id": "104344a6da1f210e898f",
+      "source_ledger_index": 33,
+      "legend_style": "small orange five-point star",
+      "allowed_extraction": "star_symbol_center",
+      "anchor_or_line_rule": "Use symmetry centre of complete source star; verify five-point glyph and small versus large star class. Point is indicative equipment location, never footprint centroid or parcel accuracy.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_private_point",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_path_ids": [
+        4143
+      ],
+      "geometry_pdf": {
+        "type": "Point",
+        "coordinates": [
+          851.5341796875,
+          1598.322119140625
+        ]
+      },
+      "anchor_rule": "Complete symmetric10vertexstarcentre",
+      "limitations": [
+        "Glyph regularity is not thematic or geographic precision",
+        "Historical2013 proposed facility, not currentapprovedsite",
+        "No parcel links/buffers"
+      ],
+      "evidence": "native-symbol-source-review.png plus originalsourceitems and symmetry verification"
+    },
+    {
+      "source_label": "Equipement régional à créer",
+      "label_id": "5a67d80233aacdd85202",
+      "source_ledger_index": 34,
+      "legend_style": "large orange five-point star",
+      "allowed_extraction": "star_symbol_center",
+      "anchor_or_line_rule": "Use symmetry centre of complete source star; verify five-point glyph and small versus large star class. Point is indicative equipment location, never footprint centroid or parcel accuracy.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_private_point",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_path_ids": [
+        4142
+      ],
+      "geometry_pdf": {
+        "type": "Point",
+        "coordinates": [
+          531.9312133789062,
+          1454.4036499023437
+        ]
+      },
+      "anchor_rule": "Complete symmetric10vertexstarcentre",
+      "limitations": [
+        "Glyph regularity is not thematic or geographic precision",
+        "Historical2013 proposed facility, not currentapprovedsite",
+        "No parcel links/buffers"
+      ],
+      "evidence": "native-symbol-source-review.png plus originalsourceitems and symmetry verification"
+    },
+    {
+      "source_label": "Déchetterie à créer",
+      "label_id": "fd0fe4f4801563d7dafa",
+      "source_ledger_index": 35,
+      "legend_style": "navy ring with yellow centre",
+      "allowed_extraction": "ring_symbol_center",
+      "anchor_or_line_rule": "Use concentric ring centre after grouping complete source circles. For waste site distinguish navy/yellow composite from roundabout red/white ring. Never ring-outline LineString.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_private_point",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_path_ids": [
+        4147
+      ],
+      "geometry_pdf": {
+        "type": "Point",
+        "coordinates": [
+          900.75341796875,
+          615.4957275390625
+        ]
+      },
+      "anchor_rule": "Fourquartercircle endpoint symmetrycentre; source glyph location",
+      "limitations": [
+        "Glyph regularity is not thematic or geographic precision",
+        "Historical2013 proposed facility, not currentapprovedsite",
+        "No parcel links/buffers"
+      ],
+      "evidence": "native-symbol-source-review.png plus originalsourceitems and symmetry verification"
+    },
+    {
+      "source_label": "Limite du Plan directeur communal",
+      "label_id": "4eec6cd53d73ce97c594",
+      "source_ledger_index": 21,
+      "legend_style": "black alternating long/short boundary",
+      "allowed_extraction": "original_source_line",
+      "anchor_or_line_rule": "Use native open path geometry and original dash traversal; preserve disjoint subpaths. No line buffering or closed glyph outlines.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_private_line",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_path_ids": [
+        4149
+      ],
+      "limitations": [
+        "PDCom sourceplan boundary, not independently current administrative cadastralboundary",
+        "Preserve actualclosedline; no polygonarea or rights assertion"
+      ]
+    },
+    {
+      "source_label": "Passages CFF existants",
+      "label_id": "d46cbb28d8be2398cc39",
+      "source_ledger_index": 47,
+      "legend_style": "yellow railway-crossing band",
+      "allowed_extraction": "crossing_centerline_review",
+      "anchor_or_line_rule": "Use native crossing axis only if explicitly drawn or objectively identifiable across complete band endpoints; otherwise retain symbol anchor or unresolved. Do not skeletonize arbitrary polygon into assumed route.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_private_point",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_path_ids": [
+        2654,
+        2655,
+        2658
+      ],
+      "anchors": [
+        {
+          "path_id": 2654,
+          "geometry_pdf": {
+            "type": "Point",
+            "coordinates": [
+              962.4109649658203,
+              1299.8019714355469
+            ]
+          },
+          "source_vertices": [
+            [
+              958.02197265625,
+              1290.02197265625
+            ],
+            [
+              972.2669677734375,
+              1301.9599609375
+            ],
+            [
+              966.7989501953125,
+              1309.5809326171875
+            ],
+            [
+              952.5559692382812,
+              1297.64501953125
+            ]
+          ],
+          "diagonal_midpoint_difference_pdf_pt": 0.001445966521054948
+        },
+        {
+          "path_id": 2655,
+          "geometry_pdf": {
+            "type": "Point",
+            "coordinates": [
+              1318.5052185058594,
+              763.8218078613281
+            ]
+          },
+          "source_vertices": [
+            [
+              1313.17822265625,
+              754.54931640625
+            ],
+            [
+              1329.2991943359375,
+              765.4722900390625
+            ],
+            [
+              1323.8311767578125,
+              773.0933227539062
+            ],
+            [
+              1307.7122802734375,
+              762.1723022460938
+            ]
+          ],
+          "diagonal_midpoint_difference_pdf_pt": 0.0014248800695713809
+        },
+        {
+          "path_id": 2658,
+          "geometry_pdf": {
+            "type": "Point",
+            "coordinates": [
+              698.8246765136719,
+              1608.4060668945312
+            ]
+          },
+          "source_vertices": [
+            [
+              704.7764282226562,
+              1616.97705078125
+            ],
+            [
+              688.3964233398438,
+              1608.0250244140625
+            ],
+            [
+              692.8734130859375,
+              1599.8341064453125
+            ],
+            [
+              709.25244140625,
+              1608.7880859375
+            ]
+          ],
+          "diagonal_midpoint_difference_pdf_pt": 0.0010918300671385692
+        }
+      ],
+      "anchor_rule": "Complete source parallelogram diagonalintersection (numerical midpoint agreement<.01PDFpt)",
+      "limitations": [
+        "Indicative source crossing glyph location, not surveyed trackcrossing point or centreline",
+        "No band footprint/width or parcel associations",
+        "Numerical glyph symmetry is not geographic precision"
+      ]
+    },
+    {
+      "source_label": "Passages CFF à créer (position à titre indicatif)",
+      "label_id": "5fcf4918c48f8ba8c6b6",
+      "source_ledger_index": 48,
+      "legend_style": "red railway-crossing band",
+      "allowed_extraction": "crossing_centerline_review",
+      "anchor_or_line_rule": "Use native crossing axis only if explicitly drawn or objectively identifiable across complete band endpoints; otherwise retain symbol anchor or unresolved. Do not skeletonize arbitrary polygon into assumed route.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_private_point",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_path_ids": [
+        2656,
+        2657
+      ],
+      "anchors": [
+        {
+          "path_id": 2656,
+          "geometry_pdf": {
+            "type": "Point",
+            "coordinates": [
+              735.3367919921875,
+              1561.6602783203125
+            ]
+          },
+          "source_vertices": [
+            [
+              730.7587890625,
+              1553.39501953125
+            ],
+            [
+              744.69580078125,
+              1562.9710693359375
+            ],
+            [
+              739.913818359375,
+              1569.925048828125
+            ],
+            [
+              725.978759765625,
+              1560.3499755859375
+            ]
+          ],
+          "diagonal_midpoint_difference_pdf_pt": 0.0010918300671385692
+        },
+        {
+          "path_id": 2657,
+          "geometry_pdf": {
+            "type": "Point",
+            "coordinates": [
+              571.0729522705078,
+              1769.6388244628906
+            ]
+          },
+          "source_vertices": [
+            [
+              566.24169921875,
+              1760.21533203125
+            ],
+            [
+              580.9287109375,
+              1771.268310546875
+            ],
+            [
+              575.9036865234375,
+              1779.061279296875
+            ],
+            [
+              561.2177124023438,
+              1768.0103759765625
+            ]
+          ],
+          "diagonal_midpoint_difference_pdf_pt": 0.0011600694463347297
+        }
+      ],
+      "anchor_rule": "Complete source parallelogram diagonalintersection (numerical midpoint agreement<.01PDFpt)",
+      "limitations": [
+        "Indicative source crossing glyph location, not surveyed trackcrossing point or centreline",
+        "No band footprint/width or parcel associations",
+        "Numerical glyph symmetry is not geographic precision"
+      ]
+    },
+    {
+      "source_label": "Nouveaux giratoires à créer",
+      "label_id": "9f0bb02a4511f97c5dce",
+      "source_ledger_index": 59,
+      "legend_style": "red ring roundabout",
+      "allowed_extraction": "ring_symbol_center",
+      "anchor_or_line_rule": "Use concentric ring centre after grouping complete source circles. For waste site distinguish navy/yellow composite from roundabout red/white ring. Never ring-outline LineString.",
+      "policy_status": {
+        "state": "historical_2013_source_feature_currentness_unknown",
+        "document_warning": "verified_2018_policy_change_requires_feature_review",
+        "exact_delivered_paths_proved_abandoned": []
+      },
+      "status": "source_semantics_supported_private_point_partial_class",
+      "precision_m": null,
+      "source_indicative": true,
+      "parcel_links_allowed": false,
+      "buffer_allowed": false,
+      "source_path_ids": [
+        2644,
+        2645
+      ],
+      "anchors": [
+        {
+          "path_id": 2644,
+          "geometry_pdf": {
+            "type": "Point",
+            "coordinates": [
+              609.6842651367188,
+              1181.4660949707031
+            ]
+          },
+          "inner_outer_offset_pdf_pt": 0.45379342833056835
+        },
+        {
+          "path_id": 2645,
+          "geometry_pdf": {
+            "type": "Point",
+            "coordinates": [
+              426.83719635009766,
+              1445.3691711425781
+            ]
+          },
+          "inner_outer_offset_pdf_pt": 0.4540778877511326
+        }
+      ],
+      "anchor_rule": "Centre of circular OUTER sourceglyph only",
+      "limitations": [
+        "Innercircle offset~.454PDFpt retained; no concentricity claim",
+        "Onlyindicative sourceglyph location, not surveyed roundabout centre",
+        "2646 elongated oblong retained unresolved; class remains partial"
+      ]
+    }
+  ],
+  "exceptions": [
+    {
+      "classes": [
+        22
+      ],
+      "state": "mixedaccompaniment unresolved"
+    },
+    {
+      "classes": [
+        59
+      ],
+      "source_path_ids": [
+        2646
+      ],
+      "state": "elongatedoblong no defensible circularanchor; pending representation"
+    }
+  ],
+  "input_sha256": "ae95941ccefb2967666e79de74a80624ed17b60e8dd5d69d18a8d51b40f52a94",
+  "approved_for": "private native source geometry, not publication/completion",
+  "review_stage": "7classes supported with3initialsymbols+5crossings+2roundabouts+1boundary; no deliveryclaim"
+}

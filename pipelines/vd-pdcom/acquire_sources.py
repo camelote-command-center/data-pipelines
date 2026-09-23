@@ -193,6 +193,8 @@ def persist(conn,source,sha,pages):
     persist_prangins_reinforcement(conn,doc_id,sha)
     from prangins_native import persist as persist_prangins_native
     persist_prangins_native(conn,doc_id,sha)
+    from prangins_native_final import persist as persist_prangins_native_final
+    persist_prangins_native_final(conn,doc_id,sha)
     from prangins_heritage import persist as persist_prangins_heritage
     persist_prangins_heritage(conn,doc_id,sha)
     return doc_id
