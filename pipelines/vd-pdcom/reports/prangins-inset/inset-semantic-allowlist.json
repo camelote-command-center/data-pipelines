@@ -1,0 +1,75 @@
+{
+  "document_id": "ad153736-58f1-533f-8cca-e41524f9fe12",
+  "source_sha256": "a4079a88201b716ede0793150102306f8b1faddb55c391a7c2c1696244a96d02",
+  "categories": [
+    {
+      "key": "village_encounter_public_space",
+      "label": "Zone de rencontre / Espace public à valoriser",
+      "literal_source_labels": [
+        "Zone de rencontre",
+        "Espace public à valoriser"
+      ],
+      "source_ledger_indices": [
+        55,
+        56
+      ],
+      "source_label_ids": [
+        "04034d52475b3c97d04c",
+        "101dce73a36ad80b37f9"
+      ],
+      "fill_ids": [
+        2216,
+        2217,
+        2218,
+        2219,
+        2220,
+        2221,
+        2222
+      ],
+      "clip_ids": [],
+      "source_symbol_evidence": {
+        "text_block": 60,
+        "single_yellow_swatch_path": 3374
+      },
+      "geometry_policy": "One shared geometry collection for composite two-line label; never duplicate seven source supports"
+    },
+    {
+      "key": "village_zone30",
+      "label": "Zone 30",
+      "literal_source_labels": [
+        "Zone 30"
+      ],
+      "source_ledger_indices": [
+        57
+      ],
+      "source_label_ids": [
+        "c50811c10285a965568b"
+      ],
+      "fill_ids": [],
+      "clip_ids": [
+        2223,
+        2225,
+        2310,
+        2395
+      ],
+      "geometry_policy": "Exact four original hatch supports only; do not enlarge to implied whole-village traffic zone"
+    }
+  ],
+  "status": "source_semantics_approved_private_candidate",
+  "policy_status": "Historical February2013 source proposal; current traffic regulations and feature-level implementation unverified",
+  "source_precision_m": null,
+  "limits": [
+    "Private review only; geometry/frame QA remains separately evidenced",
+    "Do not transfer main-map affine; separate inset source-frame evidence required",
+    "Retain beyond-ground-control-hull flags; no implied uniform surveyed accuracy",
+    "Source categories/59 literal labels are not autonomous legal sectors or commune completion"
+  ],
+  "accompaniment_same_batch": {
+    "source_path_ids": [
+      3388
+    ],
+    "allowlist": "/Users/a/.codex/task-artifacts/vaud-pdcom/prangins-currentness/accompaniment-linear-allowlist.json",
+    "feature_kind": "native_line",
+    "parcel_links": 0
+  }
+}

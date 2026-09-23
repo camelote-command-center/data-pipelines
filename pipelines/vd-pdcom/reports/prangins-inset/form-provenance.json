@@ -1,0 +1,120 @@
+{
+  "source_sha256": "a4079a88201b716ede0793150102306f8b1faddb55c391a7c2c1696244a96d02",
+  "forms": [
+    {
+      "xref": 266,
+      "name": "Fm21",
+      "invoker": 0,
+      "bounds": [
+        1953.3399658203125,
+        2197.02001953125,
+        2088.330078125,
+        2301.580078125
+      ],
+      "matrix": [
+        "array",
+        "[1 0 0 1 0 0]"
+      ],
+      "bbox": [
+        "array",
+        "[1953.34 2301.58 2088.33 2197.02]"
+      ]
+    },
+    {
+      "xref": 272,
+      "name": "Fm22",
+      "invoker": 0,
+      "bounds": [
+        2219.919921875,
+        1948.6500244140625,
+        2387.39990234375,
+        2025.52001953125
+      ],
+      "matrix": [
+        "array",
+        "[1 0 0 1 0 0]"
+      ],
+      "bbox": [
+        "array",
+        "[2219.92 2025.52 2387.4 1948.65]"
+      ]
+    },
+    {
+      "xref": 278,
+      "name": "Fm23",
+      "invoker": 0,
+      "bounds": [
+        2191.1298828125,
+        2013.3199462890625,
+        2386.409912109375,
+        2111.3701171875
+      ],
+      "matrix": [
+        "array",
+        "[1 0 0 1 0 0]"
+      ],
+      "bbox": [
+        "array",
+        "[2191.13 2111.37 2386.41 2013.32]"
+      ]
+    },
+    {
+      "xref": 284,
+      "name": "Fm24",
+      "invoker": 0,
+      "bounds": [
+        1847.1099853515625,
+        1743.5999755859375,
+        2206.830078125,
+        2152.10009765625
+      ],
+      "matrix": [
+        "array",
+        "[1 0 0 1 0 0]"
+      ],
+      "bbox": [
+        "array",
+        "[1847.11 2152.1 2206.83 1743.6]"
+      ]
+    },
+    {
+      "xref": 290,
+      "name": "Fm25",
+      "invoker": 0,
+      "bounds": [
+        1790.8900146484375,
+        1723.1400146484375,
+        2386.2900390625,
+        2176.300048828125
+      ],
+      "matrix": [
+        "array",
+        "[1 0 0 1 0 0]"
+      ],
+      "bbox": [
+        "array",
+        "[1790.89 2176.3 2386.29 1723.14]"
+      ]
+    },
+    {
+      "xref": 294,
+      "name": "Fm26",
+      "invoker": 0,
+      "bounds": [
+        1952.3800048828125,
+        2056.3701171875,
+        2386.949951171875,
+        2301.85009765625
+      ],
+      "matrix": [
+        "array",
+        "[1 0 0 1 0 0]"
+      ],
+      "bbox": [
+        "array",
+        "[1952.38 2301.85 2386.95 2056.37]"
+      ]
+    }
+  ],
+  "method": "MuPDF extended source drawing coordinates retain page-space Form clipping; separate inset frame recovered from raw building contours and fitted independently to official footprint identities. Raw child pattern2224 outsideframe notused; exact clipping supports represent visible Zone30."
+}

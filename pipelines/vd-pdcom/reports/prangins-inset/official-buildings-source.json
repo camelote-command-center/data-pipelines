@@ -1,0 +1,7 @@
+{
+  "url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/22/query?where=1%3D1&geometry=2508297.731975984%2C1138567.2959621085%2C2508777.163377832%2C1139077.7034111414&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&outSR=2056&outFields=OBJECTID%2CEGID%2CNO_COM_FED%2CNUMERO&returnGeometry=true&resultRecordCount=2000&f=geojson",
+  "sha256": "716b5ccc3387b7b7aa1802658ed18c17427214c8fd985d758b15f30b39bd4151",
+  "count": 236,
+  "retrieved_at": "2026-09-23T01:30:51.960402+00:00",
+  "scope": "independent building identity/alignment reference; sourceframe/mainmap composition used only to bound query, not accepted newfit"
+}
