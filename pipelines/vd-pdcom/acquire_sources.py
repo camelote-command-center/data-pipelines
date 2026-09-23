@@ -199,6 +199,10 @@ def persist(conn,source,sha,pages):
     persist_prangins_accompaniment(conn,doc_id,sha)
     from prangins_inset import persist as persist_prangins_inset
     persist_prangins_inset(conn,doc_id,sha)
+    from prangins_package_areas import persist as persist_prangins_package_areas
+    persist_prangins_package_areas(conn,doc_id,sha)
+    from prangins_package_native import persist as persist_prangins_package_native
+    persist_prangins_package_native(conn,doc_id,sha)
     from prangins_heritage import persist as persist_prangins_heritage
     persist_prangins_heritage(conn,doc_id,sha)
     return doc_id
