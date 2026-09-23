@@ -1,0 +1,16 @@
+{
+  "pub": {
+    "canton": "SZ",
+    "source_organ": "amtsblatt_sz",
+    "source_url": "https://amtsblatt.sz.ch/ (subscription PDF — not scraped)",
+    "publication_date": "2026-03-21",
+    "issue": "12",
+    "grundbuchkreis": "Höfe"
+  },
+  "blocks": [
+    "Fogarty Astrid, Schattdorf, und Reuther Bernd, GB-Cheltenham, ME zu je 1/2, an Garcia Rafael, Wilen bei Wollerau, Nr. 515, Am Freudenberg 8, Einfamilienhaus, Technikgebäude, Tiefgarage, 1'243 m2 Gesamtfläche",
+    "Bianchi Marco, Freienbach, an Bianchi Elena, Freienbach, Nr. 2087, Seestrasse 44, StWE-WQ 85/1'000 (Wohnung im 2. OG)",
+    "Herrenloses Grundstück (Dereliktion), an Genossame Wollerau, Nr. 998, Chatzenstrick, unproduktiv, 1'020 m2",
+    "Erbengemeinschaft Küng, Arth, an diverse Erwerber gemäss Teilung, Nr. 331"
+  ]
+}
