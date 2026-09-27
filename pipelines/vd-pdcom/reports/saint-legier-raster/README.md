@@ -1,0 +1,11 @@
+# Saint-Légier historical raster cartographic support
+
+This private adapter adds one partial thematic collection comprising two approximate cyan component exterior depictions from original PDF42, Urbanisation Planche1. The literal category is institutions, activities and services; companion text requires special plans and a high-quality environment. It is not explicitly existing versus proposed. The signed historical predecessor dossier does not establish current applicability or complete coverage of merged BFS5892.
+
+The source is scanned raster with indicative sector boundaries. Exact RGB thresholds and seeds recover one contiguous component per support, without morphology or gap joining. RETR_EXTERNAL omits six and28 interior color holes respectively; these depict overprinted roads/buildings/icons. The epsilon2 base-pixel simplification has independently measured maximum Hausdorff distances2.000 and1.812 pixels. The eastern yellow notch remains. This is neither exact visible fill nor a complete policy perimeter, net land, buildability or capacity; every edge is uncertain. Central road/building indentations are paint artifacts, not established policy exclusions.
+
+Six explicitly labelled original LV03 grid crossings were frozen before the first affine fit: four outer training controls, two middle held controls. The0.8834m held diagnostic concerns scan registration only. Six historical building locations corroborate geography; two current buildings absent from the historical map remain unresolved. All82 output vertices use exact official REFRAME LV03-to-LV95 responses, sequentially replayed. Two anomalous initial service responses and their corrected exact retries remain in evidence. Source precision stays NULL.
+
+The complete scoped official cadastral snapshot has316 unique BFS5892 objects and23 positive contextual intersections. These remain private review candidates, not allocated land or rights. Runtime refresh requires exact frozen identities, types, geometries and pair membership. Existing private registered delivery routes and review status remain unchanged.
+
+Validation: independent raster/grid/landmark/reference QA is embedded in the pinned fixture; targeted mutation tests, actual transaction rollback and idempotent persistence rehearse the same adapter. No public qualification or commune completion follows from this batch.
