@@ -43,6 +43,12 @@ from shared.freshness import get_dataset_meta, update_dataset_meta
 # ──────────────────────────────────────────────────────────────
 
 OVERPASS_URL = "https://overpass-api.de/api/interpreter"
+# Overpass answers 406 Not Acceptable to a request without a User-Agent (verified 2026-09-27:
+# every run since 2026-09-26 failed that way). Their usage policy asks for an identifying agent.
+OVERPASS_HEADERS = {
+    "User-Agent": "lamap-osm-import/1.0 (+https://lamap.ch; contact: ops@lamap.ch)",
+    "Accept": "application/json",
+}
 TABLE = "osm"
 CONFLICT_COLUMN = "osm_id"
 BATCH_SIZE = 1000
@@ -305,6 +311,7 @@ def overpass_query(query: str, timeout: int = 120) -> dict | None:
             r = requests.post(
                 OVERPASS_URL,
                 data={"data": query},
+                headers=OVERPASS_HEADERS,
                 timeout=timeout + 60,  # HTTP timeout > Overpass timeout
             )
             if r.status_code == 200:
@@ -313,6 +320,10 @@ def overpass_query(query: str, timeout: int = 120) -> dict | None:
                 wait = 15 * attempt
                 print(f"    Overpass {r.status_code}, retrying in {wait}s...")
                 time.sleep(wait)
+            elif r.status_code in (403, 406):
+                # Rejected request shape (missing/blocked agent), not a transient failure: say so plainly.
+                print(f"    Overpass refused the request ({r.status_code}) — check OVERPASS_HEADERS: {r.text[:200]}")
+                return None
             else:
                 print(f"    Overpass error {r.status_code}: {r.text[:300]}")
                 return None
