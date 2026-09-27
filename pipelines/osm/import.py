@@ -619,10 +619,10 @@ def main():
           f"{' | already fresh: ' + ', '.join(fresh) if fresh else ''}")
     print(f"  Time budget: {args.time_budget_minutes} min (refresh interval {args.refresh_days} days)")
     if not due:
+        # Nothing was acquired, so dataset freshness must not be restamped: the marker is neither
+        # 'true' (which would PATCH last_acquired_at) nor 'false' (which would claim work is left).
         print("\n  Nothing due — every canton was refreshed within the interval.")
-        update_dataset_meta(camelote_url, camelote_key, DATASET_CODE,
-                            record_count=rows_before, status="active")
-        print("OSM_CYCLE_COMPLETE=true")
+        print("OSM_CYCLE_COMPLETE=skipped")
         return
 
     # ── Build tag union query (reused for every commune) ──
