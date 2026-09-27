@@ -260,3 +260,16 @@ Run the opt-in real PostGIS rollback check with `RE_LLM_DB_URL` and
 `python pipelines/vd-pdcom/tests/native_attribution_postgis.py`; it tests interior,
 crossing and boundary cases, rejects wrong kinds, and proves existing polygon
 rows unchanged. The script rolls back all fixtures and view DDL.
+
+The existing read-only `release_preflight.py --output …` also returns
+`active_qualifications`. This additive projection revalidates immutable manifest
+identity, digest, live PDF and geometry hashes, approval status and expiry in one
+read-only repeatable-read snapshot. No recorded qualification means ineligible.
+Explicit live municipal evidence that a source is no longer a current reference
+blocks eligibility; other municipal classifications require policy reconciliation.
+A reviewer assertion cannot override that evidence.
+
+`eligible_sector_only` describes an active qualification contract, not publication,
+parcel release, independent verification of the reviewer's assertions, or commune
+completion. Existing private-review gate counts remain unchanged. There is no
+release writer, receiver registration or sector-status mutation in this preflight.
