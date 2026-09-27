@@ -25,10 +25,12 @@ Environment variables:
     RE_LLM_SCHEMA                    - target schema (default: bronze_ch)
 """
 
+import argparse
 import json
 import os
 import sys
 import time
+from datetime import datetime, timedelta, timezone
 
 import requests
 
@@ -65,6 +67,14 @@ CANTONS = [
     ("VS", "CH-VS"),   # Valais           ~123 communes
     ("VD", "CH-VD"),   # Vaud             ~300 communes (largest → last)
 ]
+
+# A full sweep no longer fits in one job: Overpass throttles (429/504 with backoff) and the
+# GitHub job is capped at 180 min — run 36348442561 was cancelled at 3 h with everything still
+# in memory, so nothing landed. Cantons are now written and recorded one by one, and a run stops
+# starting new cantons before the cap; the next run continues where this one stopped.
+STATE_TABLE = "osm_canton_state"
+REFRESH_DAYS = int(os.environ.get("OSM_REFRESH_DAYS", "80"))   # quarterly cadence
+DEFAULT_BUDGET_MIN = int(os.environ.get("OSM_TIME_BUDGET_MIN", "150"))
 
 # Delay between Overpass queries (seconds) — be respectful to the API
 QUERY_DELAY = 3
@@ -338,6 +348,56 @@ def overpass_query(query: str, timeout: int = 120) -> dict | None:
     return None
 
 
+def load_canton_state(url: str, key: str, schema: str) -> dict:
+    """{canton: completed_at} from the state table; empty dict when it cannot be read."""
+    try:
+        r = requests.get(
+            f"{url.rstrip('/')}/rest/v1/{STATE_TABLE}?select=canton,completed_at",
+            headers={"apikey": key, "Authorization": f"Bearer {key}", "Accept-Profile": schema},
+            timeout=30,
+        )
+        if r.status_code != 200:
+            print(f"  Warning: could not read {schema}.{STATE_TABLE} ({r.status_code}); treating every canton as due")
+            return {}
+        out = {}
+        for row in r.json():
+            try:
+                out[row["canton"]] = datetime.fromisoformat(row["completed_at"].replace("Z", "+00:00"))
+            except Exception:
+                pass
+        return out
+    except Exception as e:
+        print(f"  Warning: could not read {schema}.{STATE_TABLE}: {e}")
+        return {}
+
+
+def save_canton_state(url: str, key: str, schema: str, canton: str, iso: str, communes: int, records: int) -> None:
+    """Record a finished canton. A failure here only costs a repeat next run."""
+    try:
+        r = requests.post(
+            f"{url.rstrip('/')}/rest/v1/{STATE_TABLE}",
+            headers={"apikey": key, "Authorization": f"Bearer {key}", "Content-Type": "application/json",
+                     "Content-Profile": schema, "Prefer": "resolution=merge-duplicates,return=minimal"},
+            json=[{"canton": canton, "iso_code": iso, "communes": communes, "records": records,
+                   "completed_at": datetime.now(timezone.utc).isoformat(),
+                   "run_url": os.environ.get("GITHUB_RUN_URL", "")}],
+            timeout=30,
+        )
+        if r.status_code >= 300:
+            print(f"    Warning: could not record {canton} state ({r.status_code}): {r.text[:150]}")
+    except Exception as e:
+        print(f"    Warning: could not record {canton} state: {e}")
+
+
+def upsert_records(url: str, key: str, schema: str, records: list) -> int:
+    """Upsert one canton's records in batches. Never deletes."""
+    done = 0
+    for i in range(0, len(records), BATCH_SIZE):
+        done += batch_upsert(url=url, key=key, table=TABLE, records=records[i : i + BATCH_SIZE],
+                             conflict_column=CONFLICT_COLUMN, schema=schema, batch_size=BATCH_SIZE)
+    return done
+
+
 def probe_canton_column(url: str, key: str, schema: str) -> bool:
     """Check if the 'canton' column exists in the OSM table.
 
@@ -507,6 +567,14 @@ def build_record(
 # ──────────────────────────────────────────────────────────────
 
 def main():
+    ap = argparse.ArgumentParser(description="OSM import (resumable, time-budgeted)")
+    ap.add_argument("--time-budget-minutes", type=int, default=DEFAULT_BUDGET_MIN,
+                    help="stop starting new cantons after N minutes (job cap is 180)")
+    ap.add_argument("--refresh-days", type=int, default=REFRESH_DAYS,
+                    help="a canton completed less than N days ago is skipped")
+    ap.add_argument("--all", action="store_true", help="ignore recorded progress and refresh every canton")
+    args = ap.parse_args()
+
     rellm_url = os.environ.get("RE_LLM_SUPABASE_URL", "")
     rellm_key = os.environ.get("RE_LLM_SUPABASE_SERVICE_ROLE_KEY", "")
     rellm_schema = os.environ.get("RE_LLM_SCHEMA", "bronze_ch")
@@ -541,22 +609,48 @@ def main():
     else:
         print("  Canton column: not found — skipping (add column to table to enable)")
 
+    # ── Which cantons are due? ──
+    state = {} if args.all else load_canton_state(rellm_url, rellm_key, rellm_schema)
+    cutoff = datetime.now(timezone.utc) - timedelta(days=args.refresh_days)
+    due = [(c, iso) for c, iso in CANTONS if args.all or state.get(c) is None or state[c] < cutoff]
+    due_codes = {c for c, _ in due}
+    fresh = [c for c, _ in CANTONS if c not in due_codes]
+    print(f"\n  Due this run: {', '.join(c for c, _ in due) or 'none'}"
+          f"{' | already fresh: ' + ', '.join(fresh) if fresh else ''}")
+    print(f"  Time budget: {args.time_budget_minutes} min (refresh interval {args.refresh_days} days)")
+    if not due:
+        print("\n  Nothing due — every canton was refreshed within the interval.")
+        update_dataset_meta(camelote_url, camelote_key, DATASET_CODE,
+                            record_count=rows_before, status="active")
+        print("OSM_CYCLE_COMPLETE=true")
+        return
+
     # ── Build tag union query (reused for every commune) ──
     tag_union = build_tag_union()
 
     # ── Process each canton ──
-    all_records = []
+    # Records are kept per canton only: each canton is written before the next one starts, so a
+    # cancelled or budget-stopped run keeps everything it already fetched.
     seen_ids = set()
+    total_records = 0
     total_raw = 0
     total_communes = 0
     canton_stats = {}
     start_time = time.time()
 
-    for canton_idx, (canton_code, iso_code) in enumerate(CANTONS):
+    budget_s = args.time_budget_minutes * 60
+    total_upserted = 0
+    stopped_early = False
+    for canton_idx, (canton_code, iso_code) in enumerate(due):
+        if time.time() - start_time > budget_s:
+            print(f"\n  Time budget reached — {len(due) - canton_idx} canton(s) left for the next run: "
+                  f"{', '.join(c for c, _ in due[canton_idx:])}")
+            stopped_early = True
+            break
         canton_start = time.time()
 
         print(f"\n{'━' * 60}")
-        print(f"  Canton {canton_idx + 1}/{len(CANTONS)}: {canton_code} ({iso_code})")
+        print(f"  Canton {canton_idx + 1}/{len(due)}: {canton_code} ({iso_code})")
         print(f"{'━' * 60}")
 
         # ── Fetch communes for this canton ──
@@ -570,7 +664,7 @@ def main():
         print(f"  Found {len(communes)} communes")
         total_communes += len(communes)
         canton_raw = 0
-        canton_records_start = len(all_records)
+        canton_batch = []
 
         # Wait after the commune-list query
         time.sleep(QUERY_DELAY)
@@ -598,21 +692,31 @@ def main():
                 if record["osm_id"] in seen_ids:
                     continue
                 seen_ids.add(record["osm_id"])
-                all_records.append(record)
+                canton_batch.append(record)
                 commune_count += 1
 
             if verbose:
                 print(f"    {len(elements)} elements → {commune_count} new records")
 
             # Progress logging
-            if len(all_records) > 0 and len(all_records) % LOG_EVERY < commune_count:
+            running = total_records + len(canton_batch)
+            if running > 0 and running % LOG_EVERY < commune_count:
                 elapsed = time.time() - start_time
-                print(f"    ── Total so far: {len(all_records):,} records ({elapsed:.0f}s)")
+                print(f"    ── Total so far: {running:,} records ({elapsed:.0f}s)")
 
             # Rate limit: be respectful to Overpass API
             time.sleep(QUERY_DELAY)
 
-        canton_records = len(all_records) - canton_records_start
+        # Write this canton before moving on.
+        if canton_batch:
+            n_up = upsert_records(rellm_url, rellm_key, rellm_schema, canton_batch)
+            total_upserted += n_up
+            print(f"  Upserted {n_up:,} records for {canton_code}")
+            save_canton_state(rellm_url, rellm_key, rellm_schema, canton_code, iso_code,
+                              len(communes), len(canton_batch))
+        canton_records = len(canton_batch)
+        total_records += canton_records
+        canton_batch = []   # free the canton's records now that they are persisted
         canton_elapsed = time.time() - canton_start
         canton_stats[canton_code] = {
             "communes": len(communes),
@@ -623,7 +727,7 @@ def main():
               f"{canton_raw:,} raw → {canton_records:,} records ({canton_elapsed:.0f}s)")
 
         # Extra delay between cantons to avoid Overpass rate limits
-        if canton_idx < len(CANTONS) - 1:
+        if canton_idx < len(due) - 1:
             print(f"  Waiting {CANTON_DELAY}s before next canton...")
             time.sleep(CANTON_DELAY)
 
@@ -632,36 +736,16 @@ def main():
     print(f"\n{'━' * 60}")
     print(f"  Overpass complete ({overpass_elapsed / 60:.1f} min)")
     print(f"  Cantons: {len(canton_stats)}, Communes: {total_communes}")
-    print(f"  Raw elements: {total_raw:,} → Unique records: {len(all_records):,}")
+    print(f"  Raw elements: {total_raw:,} → Unique records: {total_records:,}")
     for code, stats in canton_stats.items():
         print(f"    {code}: {stats['communes']} communes, {stats['records']:,} records")
     print(f"{'━' * 60}")
 
-    if not all_records:
+    if not total_records and not stopped_early:
         print("  ERROR: No records fetched")
         sys.exit(1)
 
-    # ── Upsert in batches ──
-    print(f"\n  Upserting {len(all_records):,} records (batch size {BATCH_SIZE})...")
-
-    total_upserted = 0
-    for i in range(0, len(all_records), BATCH_SIZE):
-        batch = all_records[i : i + BATCH_SIZE]
-        upserted = batch_upsert(
-            url=rellm_url,
-            key=rellm_key,
-            table=TABLE,
-            records=batch,
-            conflict_column=CONFLICT_COLUMN,
-            schema=rellm_schema,
-            batch_size=BATCH_SIZE,
-        )
-        total_upserted += upserted
-
-        if (i + BATCH_SIZE) % LOG_EVERY < BATCH_SIZE:
-            print(f"    Progress: {total_upserted:,} / {len(all_records):,} upserted")
-
-    # ── Row count AFTER ──
+    # ── Row count AFTER (records were written canton by canton, above) ──
     rows_after = get_row_count(rellm_url, rellm_key, rellm_schema, TABLE)
 
     # ── Summary ──
@@ -671,7 +755,7 @@ def main():
     print(f"  Cantons:          {canton_labels}")
     print(f"  Communes queried: {total_communes}")
     print(f"  Raw elements:     {total_raw:,}")
-    print(f"  Unique records:   {len(all_records):,}")
+    print(f"  Unique records:   {total_records:,}")
     print(f"  Rows upserted:    {total_upserted:,}")
     print(f"  Rows before:      {rows_before:,}" if rows_before is not None else "  Rows before:      unknown")
     print(f"  Rows after:       {rows_after:,}" if rows_after is not None else "  Rows after:       unknown")
@@ -681,9 +765,16 @@ def main():
     print(f"  Duration:         {elapsed / 60:.1f} min")
     print("=" * 60)
 
-    if total_upserted == 0:
+    if total_upserted == 0 and not stopped_early:
         print("  FAILED: Zero rows upserted!")
         sys.exit(1)
+
+    # A run that stopped on its budget made real progress; the next run continues. Only a cycle
+    # that refreshed every canton may stamp dataset freshness.
+    print(f"OSM_CYCLE_COMPLETE={'false' if stopped_early else 'true'}")
+    if stopped_early:
+        print("  PARTIAL: budget reached, remaining cantons continue next run")
+        return
 
     # ── Update dataset metadata ──
     update_dataset_meta(
