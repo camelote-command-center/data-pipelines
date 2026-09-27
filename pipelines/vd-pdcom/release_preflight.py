@@ -10,6 +10,7 @@ import json
 import math
 import os
 from pathlib import Path
+from active_qualifications import project
 
 
 def sector_blockers(row):
@@ -36,12 +37,14 @@ def audit(conn):
     from psycopg2.extras import RealDictCursor
     # Caller must supply a dedicated connection. Read-only is enforced by PG,
     # including all foreign-server access; no data mutation statements exist here.
-    conn.set_session(readonly=True)
+    conn.set_session(readonly=True, isolation_level='REPEATABLE READ')
     with conn.cursor(cursor_factory=RealDictCursor) as c:
         c.execute("SET LOCAL statement_timeout='60s'")
         c.execute('''SELECT s.id,s.document_id,s.page_number,s.label,
             s.review_status,s.validated_by,s.source_precision_m,s.alignment_rmse_m,
-            d.title,d.plan_status,d.sha256,
+            d.title,d.plan_status,d.sha256, d.sha256 AS source_sha256,
+            s.validation_evidence,
+            encode(sha256(ST_AsEWKB(s.geom)),'hex') AS geometry_sha256,
             ST_IsValid(s.geom) AND ST_SRID(s.geom)=4326 AS valid_geometry,
             v.commune_bfs,
             COALESCE(to_jsonb(v)=to_jsonb(t),false) AS private_receiver_matches,
@@ -55,6 +58,14 @@ def audit(conn):
         sectors = [dict(r) for r in c.fetchall()]
         for row in sectors:
             row['blocking_gates'] = sector_blockers(row)
+        c.execute('''SELECT id,sector_id,document_id,source_sha256,geometry_sha256,
+            manifest_sha256,manifest FROM bronze_ch.vd_pdcom_sector_qualifications
+            ORDER BY id''')
+        qualifications = project(sectors, [dict(r) for r in c.fetchall()],
+                                 today=datetime.now(timezone.utc).date())
+        # Full private evidence is used for checks but is not duplicated in output.
+        for row in sectors:
+            row.pop('validation_evidence', None)
         c.execute('''SELECT commune_bfs,commune_name,discovery_status,
             extraction_status,delivery_status,resolved,document_count
             FROM bronze_ch.vd_pdcom_coverage WHERE is_current ORDER BY commune_bfs''')
@@ -68,7 +79,8 @@ def audit(conn):
                    'resolved_communes':sum(bool(c['resolved']) for c in communes),
                    'sectors_without_listed_blockers':sum(not s['blocking_gates'] for s in sectors)},
         'blocking_gate_counts':dict(Counter(b for s in sectors for b in s['blocking_gates'])),
-        'sectors':sectors,'communes':communes}
+        'sectors':sectors,'communes':communes,
+        'active_qualifications': qualifications}
 
 
 if __name__ == '__main__':
