@@ -201,6 +201,8 @@ def persist(conn,source,sha,pages):
     persist_prangins_inset(conn,doc_id,sha)
     from prangins_package_areas import persist as persist_prangins_package_areas
     persist_prangins_package_areas(conn,doc_id,sha)
+    from prangins_low_density_study import persist as persist_prangins_low_density_study
+    persist_prangins_low_density_study(conn,doc_id,sha)
     from prangins_package_native import persist as persist_prangins_package_native
     persist_prangins_package_native(conn,doc_id,sha)
     from prangins_transport_native import persist as persist_prangins_transport_native
