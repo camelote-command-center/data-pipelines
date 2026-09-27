@@ -4,6 +4,9 @@ from shapely.geometry import Polygon,box,mapping
 from shapely.ops import unary_union
 from shapely.affinity import affine_transform
 from PIL import Image,ImageDraw
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[2]))
+from native_closed_paths import flatten_cubic
 p=Path(__file__).parent;sha='8b78d42eb83210b6b63404dd8b4270fedd15d1b7e3d65d2a403d6edcee654a3c';assert hashlib.sha256((p/'source.pdf').read_bytes()).hexdigest()==sha
 pg=fitz.open(p/'source.pdf')[0];pg.get_pixmap(matrix=fitz.Matrix(.7,.7)).save(p/'page1.png');ds=pg.get_drawings(extended=True);old=p.parent/'orbe';a=json.load(open(old/'alignment/alignment.json'));ang,s,tx,ty=a['parameters'];c=math.cos(ang);z=math.sin(ang);o=a['source_origin_y_flipped'];q=a['reference_origin_lv95'];m=[s*c,s*z,s*z,-s*c,q[0]+tx-s*c*o[0]+s*z*o[1],q[1]+ty-s*z*o[0]-s*c*o[1]]
 classes={(.937,.561,.847):('mixed_medium','À moyen terme : mixte'),(.859,.925,.651):('sports_expand','Infrastructures et équipements sportifs et de loisirs à étendre'),(.384,.753,1.):('public_develop','Offre en équipements publics à développer'),(.624,.553,.435):('infrastructure_adapt','Infrastructures à adapter aux nouveaux besoins communaux')};groups={};ledger=[];stack=[]
@@ -18,10 +21,10 @@ for i,d in enumerate(ds):
     if it[0]=='re':
      if pts:rings.append(Polygon(pts));pts=[]
      rings.append(box(*it[1]));continue
-    if it[0]!='l':raise ValueError('nonlinear_operator')
+    if it[0] not in ('l','c'):raise ValueError('unsupported_operator')
     if pts and math.dist(pts[-1],it[1])>.001:rings.append(Polygon(pts));pts=[]
     if not pts:pts=[tuple(it[1])]
-    pts.append(tuple(it[2]))
+    pts.extend([tuple(it[2])] if it[0]=='l' else [tuple(v) for v in flatten_cubic(*[list(v) for v in it[1:]])[1:]])
    if pts:rings.append(Polygon(pts))
    if any(not g.is_valid or g.is_empty for g in rings):raise ValueError('invalid_source_ring')
    g=rings[0]

@@ -1,0 +1,13 @@
+# Orbe sports and leisure objective: native cartographic support
+
+One partial private collection reproduces original page-1 extended drawing 9507: a closed chain of 20 cubic Bézier segments for objective 2.2, “infrastructures et équipements sportifs et de loisirs à étendre”. The prior research extractor accepted only line/rectangle operators and rejected this valid curve. The shared decoder now bounds subdivision against the finite endpoint chord at 0.03 PDF point, rejects open/disconnected contours, and preserves active clips without geometry repair. The original 56,633.857 m² support is unchanged by clipping.
+
+This is the original cartographic objective envelope, **not final visible lightgreen land or net sports expansion**. Later river, forest and building overpainting remains source context. Seven official parcel intersections are contextual review links, not allocated or suitable land. Path 9506 remains held outside the original map-control ROI; no category or commune completion is asserted.
+
+The original main-map transform is unchanged. Independent review checks 20 visible same-building source/official identities (16 original training roles and four reserved). Their training hull contains the whole original support. Invisible source control 739 remains unresolved and retained. All 1,528 source records and the 1,222/306 original role split remain in the fixture. Historical control drawing indices use ordinary `get_drawings()`; explicit sequence numbers map each to extended drawing indices, whereas thematic path 9507 is already an extended index. Source 1526 therefore uses ordinary 18420 / extended 18431; this is an index reconciliation, not coordinate adjustment.
+
+The schema-required alignment residual retains the original nearest-RCB diagnostic across 306 reserved sources. It is not independently surveyed accuracy or thematic precision. Source precision is NULL, review remains required, and the original exceptions are preserved. The exact 2021 source has blank approval fields; the municipal 2022 listing does not establish approval of these bytes.
+
+A complete scoped official snapshot contains 23 cadastral objects and independently reproduces seven positive intersections. Runtime checks exact identity, object kind, geometry and membership before writes. The existing 10m boundary-review heuristic is not an error bound.
+
+Validation: independent native-curve, clipping, source-index, geographic-identity, semantics and reference checks; 421 tests (420 passed, one existing skip); actual rollback and idempotent replay. Operational and receiver proofs are in the registered task artifact directories `yvonand-remaining` and `yvonand-remaining-qa`.
