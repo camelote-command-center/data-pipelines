@@ -27,6 +27,7 @@ jobs:
       - run: pip install -r requirements.txt
       - id: run
         run: |
+          set -o pipefail   # without it, tee's exit code would hide a failed import
           ARGS="--time-budget-minutes ${INPUT_BUDGET:-150}"
           if [ "$INPUT_ALL" = "true" ]; then ARGS="$ARGS --all"; fi
           python pipelines/osm/import.py $ARGS | tee osm-run.log
