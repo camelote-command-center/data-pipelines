@@ -7478,7 +7478,7 @@
       "historical_commune": "Saint-L\u00e9gier-La Chi\u00e9saz",
       "current_tracking_bfs": "5892",
       "merged_commune_complete": false,
-      "current_applicability": "unverified"
+      "current_applicability": "historical_not_current_municipal_reference"
     },
     "dates": {
       "report": "2003-11",
@@ -7577,6 +7577,36 @@
         "Ground identity/alignment and receiver verification still pending"
       ],
       "geography_approved": false
+    },
+    "municipal_currentness": {
+      "evidence_id": "blonay_saint_legier_municipal_position_20231205",
+      "reviewed_on": "2026-09-28",
+      "classification": "historical_not_current_municipal_reference",
+      "municipal_position": {
+        "date": "2023-12-05",
+        "source_url": "https://www.blonay-saint-legier.ch/_doc/4885279",
+        "sha256": "dc4243f1c98359facbc9d3923a51d19ed6b2960a09cdbb40dc9cfc3e1dcb4f75",
+        "pages": [
+          1,
+          2,
+          3
+        ],
+        "finding": "Municipality says the2004 Saint-L\u00e9gier and2005 Blonay PDCom were not updated after15years and in their then state could no longer be considered reference documents.",
+        "approval_dates_confirmed": {
+          "Saint-L\u00e9gier-La Chi\u00e9saz": "2004-10-06",
+          "Blonay": "2005-10-25"
+        },
+        "scope": "Dated official municipal position, independently read in original page2; not a claim of formal legal repeal or all later changes."
+      },
+      "later_planning_context": {
+        "signed_date": "2025-02-24",
+        "council_meeting_date": "2025-02-25",
+        "source_url": "https://www.blonay-saint-legier.ch/_doc/5535361",
+        "sha256": "092f090550fe44746972a2404bed39b9a49edcf59c413e7d7c3d6259a9b06ce0",
+        "page": 1,
+        "finding": "Municipal communication describes global territorial vision, PACom and intercommunal planning work underway. This document does not establish final adoption or completion of a replacement."
+      },
+      "required_limit": "Historical source only. Do not use the legacy map as a current municipal reference, applicable zoning, development permission or capacity determination. No blanket legal repeal or exact replacement-version assertion."
     }
   },
   "references": [
@@ -7600,7 +7630,7 @@
     "source_precision_m": null
   },
   "semantics": "Historical indicative raster cartographic support for institutions, activities and services. Not explicitly existing/proposed. Special-plan and quality-environment context.",
-  "reservation": "Not exact sector perimeter, not complete policysector, current zoning or land allocation. All raster edges uncertain. Road/building indentations represent observed paint/overprint, not proven policy exclusions. Interior overprint retained in cartographic support; east yellow notch preserved. No snapping or morphological gap closing.",
+  "reservation": "Not exact sector perimeter, not complete policysector, current zoning or land allocation. All raster edges uncertain. Road/building indentations represent observed paint/overprint, not proven policy exclusions. Interior overprint retained in cartographic support; east yellow notch preserved. No snapping or morphological gap closing. Municipal position5December2023: legacy PDCom no longer considered current municipal reference documents. Historical use only; no assertion of formal legal repeal.",
   "features": [
     {
       "key": "institutions_activities_services",
@@ -12111,5 +12141,35 @@
         "scope": "Current BFS5892 parcel references for historical predecessor Saint-Legier raster cartographic supports only. No former commune completeness/current policy claim."
       }
     }
+  },
+  "municipal_currentness": {
+    "evidence_id": "blonay_saint_legier_municipal_position_20231205",
+    "reviewed_on": "2026-09-28",
+    "classification": "historical_not_current_municipal_reference",
+    "municipal_position": {
+      "date": "2023-12-05",
+      "source_url": "https://www.blonay-saint-legier.ch/_doc/4885279",
+      "sha256": "dc4243f1c98359facbc9d3923a51d19ed6b2960a09cdbb40dc9cfc3e1dcb4f75",
+      "pages": [
+        1,
+        2,
+        3
+      ],
+      "finding": "Municipality says the2004 Saint-L\u00e9gier and2005 Blonay PDCom were not updated after15years and in their then state could no longer be considered reference documents.",
+      "approval_dates_confirmed": {
+        "Saint-L\u00e9gier-La Chi\u00e9saz": "2004-10-06",
+        "Blonay": "2005-10-25"
+      },
+      "scope": "Dated official municipal position, independently read in original page2; not a claim of formal legal repeal or all later changes."
+    },
+    "later_planning_context": {
+      "signed_date": "2025-02-24",
+      "council_meeting_date": "2025-02-25",
+      "source_url": "https://www.blonay-saint-legier.ch/_doc/5535361",
+      "sha256": "092f090550fe44746972a2404bed39b9a49edcf59c413e7d7c3d6259a9b06ce0",
+      "page": 1,
+      "finding": "Municipal communication describes global territorial vision, PACom and intercommunal planning work underway. This document does not establish final adoption or completion of a replacement."
+    },
+    "required_limit": "Historical source only. Do not use the legacy map as a current municipal reference, applicable zoning, development permission or capacity determination. No blanket legal repeal or exact replacement-version assertion."
   }
 }

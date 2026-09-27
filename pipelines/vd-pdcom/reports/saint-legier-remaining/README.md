@@ -1,0 +1,11 @@
+# Remaining Saint-Légier historical raster fragments
+
+Two partial thematic depictions are represented by four disconnected source paint-component exteriors: institutions/activity/services components461/825 and middle public-equipment components663/668. These are two collections, not four complete policy sectors. The cyan crosshatch880 has a different literal meaning and remains held. Northern public-equipment326 has an invalid contour/approximation and remains held without repair. Previously delivered supports and outside-hull components are excluded.
+
+All four exact raw contours and epsilon2 base-pixel approximations lie within the established frozen grid support. No fit, gap joining, morphology or cadastral snapping was performed. RETR_EXTERNAL omits147/0/2/0 interior color holes representing topographic overprint. The depictions are neither exact visible fill nor full planning perimeters; all edges remain uncertain. All118 exact official LV03-to-LV95 vertex responses were sequentially replayed. The complete297-object official snapshot yields9 institutions and7 equipment contextual parcel intersections.
+
+The municipality's5December2023 response explicitly states that the legacy plans were not updated and could no longer be considered reference documents. This dated negative municipal position is retained, without asserting formal legal repeal or a completed replacement. The earlier Saint-Légier collection is enriched with the same qualifier: only its validation evidence changes; its geometry and23 links remain exact. All other previously delivered rows are protected.
+
+The active semantic contract contains only this reviewed batch's selected IDs, acceptance and limitations, with separate pointers to earlier source-review history. New rows remain private, review_required and unknown source precision. Printed-grid residuals describe scan registration only. No current zoning, new-facility, parking-area, capacity, rights or completed-commune claim is made.
+
+Validation includes independent source/contour/hull/datum/reference QA, full tests, and actual transaction rollback plus idempotent persistence on the final fixture. Registered private monitoring and receiver delivery are reused.

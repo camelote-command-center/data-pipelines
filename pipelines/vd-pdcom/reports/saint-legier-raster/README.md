@@ -9,3 +9,5 @@ Six explicitly labelled original LV03 grid crossings were frozen before the firs
 The complete scoped official cadastral snapshot has316 unique BFS5892 objects and23 positive contextual intersections. These remain private review candidates, not allocated land or rights. Runtime refresh requires exact frozen identities, types, geometries and pair membership. Existing private registered delivery routes and review status remain unchanged.
 
 Validation: independent raster/grid/landmark/reference QA is embedded in the pinned fixture; targeted mutation tests, actual transaction rollback and idempotent persistence rehearse the same adapter. No public qualification or commune completion follows from this batch.
+
+Currentness correction: the municipal response of5December2023 states that these legacy PDCom could no longer be considered reference documents. The pinned fixture and live evidence now carry that dated negative municipal position; no formal legal-repeal assertion is made. This correction changes only validation metadata of the existing collection, not geometry or its23 parcel links.

@@ -209,6 +209,8 @@ def persist(conn,source,sha,pages):
     persist_orbe_sports_support(conn,doc_id,sha)
     from saint_legier_raster import persist as persist_saint_legier_raster
     persist_saint_legier_raster(conn,doc_id,sha)
+    from saint_legier_remaining import persist as persist_saint_legier_remaining
+    persist_saint_legier_remaining(conn,doc_id,sha)
     from prangins_package_native import persist as persist_prangins_package_native
     persist_prangins_package_native(conn,doc_id,sha)
     from prangins_transport_native import persist as persist_prangins_transport_native

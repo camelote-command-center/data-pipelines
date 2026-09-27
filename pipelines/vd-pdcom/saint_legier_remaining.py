@@ -8,19 +8,19 @@ from official_references import refresh
 from cadastral_types import KINDS
 DOC='ecaca53c-511b-5af4-94b2-7925852fc740'
 SHA='86b3c0352167167623ab93ebc0aeafd2957e14c0797867a3e982910e65b227eb'
-BATCH_SHA='691368b3382a0b606e43584cb43a5258c050f25441491a04e22824d0c07cfd2f'
-KEYS={'institutions_activities_services'}
+BATCH_SHA='22d36556929094ef4fe5e838c7d6d10d05fd49fcc2edc99aff4876df4b5697f8'
+KEYS={'institutions_northwest','public_equipment_middle'}
 def sector_id(key):
     if key not in KEYS:raise ValueError('saint_legier_unreviewed_category')
-    return str(uuid.uuid5(uuid.NAMESPACE_URL,DOC+'#raster-cyan-support-v1#'+key))
+    return str(uuid.uuid5(uuid.NAMESPACE_URL,DOC+'#raster-fragments-v1#'+key))
 def validate(b):
     if (b['document_id'],b['source_sha256'])!=(DOC,SHA):raise ValueError('saint_legier_source')
-    if len(b['features'])!=1 or {f['key'] for f in b['features']}!=KEYS:raise ValueError('saint_legier_scope')
+    if len(b['features'])!=2 or {f['key'] for f in b['features']}!=KEYS:raise ValueError('saint_legier_scope')
     if b['publication_status']!='internal_review_only' or b['source_precision_m'] is not None or not b['predecessor_scope_only']:raise ValueError('saint_legier_qualification')
     if b['independent_geographic_decision']!='accepted_private_historical_raster_support_only':raise ValueError('saint_legier_qa')
     if b['municipal_currentness']['classification']!='historical_not_current_municipal_reference':raise ValueError('saint_legier_currentness')
     rep=b['raster_representation']
-    if rep['contour_mode']!='RETR_EXTERNAL' or rep['simplification_epsilon_base_pixels']!=2 or rep['morphology']!='none' or rep['gaps_joined'] or not rep['yellow_notch_preserved'] or not rep['all_edges_uncertain'] or rep['omitted_interior_color_holes']!={'central':6,'east':28}:raise ValueError('saint_legier_raster_representation')
+    if rep['contour_mode']!='RETR_EXTERNAL' or rep['simplification_epsilon_base_pixels']!=2 or rep['morphology']!='none' or rep['gaps_joined'] or not rep['all_edges_uncertain'] or rep['omitted_interior_color_holes']!={'cyan_461':147,'cyan_825':0,'public_blue_663':2,'public_blue_668':0}:raise ValueError('saint_legier_raster_representation')
     controls=b['frozen_grid']['controls']
     if len(controls)!=6 or len({c['id'] for c in controls})!=6 or sum(c['role']=='train' for c in controls)!=4 or not b['frozen_grid']['roles_frozen_before_first_fit']:raise ValueError('saint_legier_grid')
     for c in controls:
@@ -29,11 +29,12 @@ def validate(b):
     hull=MultiPoint([c['pdf_xy'] for c in controls if c['role']=='train']).convex_hull
     if len(b['landmark_review'])!=8 or sum(c['status']=='unresolved_absent_on_original_map' for c in b['landmark_review'])!=2:raise ValueError('saint_legier_landmark_ledger')
     m=b['grid_fit']['matrix'];paths=b['source_raster_proof'];derived=[]
-    if {c['id'] for c in paths}!={'central','east'}:raise ValueError('saint_legier_raster_ids')
-    if len(b['conversion_replay']['checks'])!=82 or not b['conversion_replay']['all_vertices_replayed_sequentially'] or any(c['delta_m']>=1e-6 for c in b['conversion_replay']['checks']):raise ValueError('saint_legier_conversion_replay')
+    if {c['id'] for c in paths}!={'cyan_461','cyan_825','public_blue_663','public_blue_668'}:raise ValueError('saint_legier_raster_ids')
+    if len(b['conversion_replay']['checks'])!=118 or not b['conversion_replay']['all_vertices_replayed_sequentially'] or any(c['delta_m']>=1e-6 for c in b['conversion_replay']['checks']):raise ValueError('saint_legier_conversion_replay')
     for c in paths:
         raw=Polygon(c['raw_contour_baseimage_pixels']);approx=Polygon(c['boundary_baseimage_pixels'])
         if not approx.is_valid or raw.hausdorff_distance(approx)>2.000001:raise ValueError('saint_legier_simplification')
+        if not hull.covers(MultiPoint([(x*1190.4000244140625/2480,y*841.4400024414062/1753) for x,y in c['raw_contour_baseimage_pixels']])):raise ValueError('saint_legier_raw_hull')
         p=Polygon([(x*1190.4000244140625/2480,y*841.4400024414062/1753) for x,y in c['boundary_baseimage_pixels']])
         if not p.equals_exact(shape(c['geometry_pdf']),1e-10) or not hull.covers(p):raise ValueError('saint_legier_original_whole_hull')
         pts=list(p.exterior.coords)[:-1];rr=c['official_reframe_responses']
@@ -45,15 +46,20 @@ def validate(b):
         g=Polygon([r['lv95'] for r in rr])
         if not g.is_valid or not g.equals_exact(shape(c['geometry_lv95']),1e-10):raise ValueError('saint_legier_ground_geometry')
         derived.append(g)
-    f=b['features'][0];g=shape(f['geometry_lv95'])
-    if not g.is_valid or not g.equals(unary_union(derived)) or f['path_ids']!=['raster-cyan-central','raster-cyan-east'] or f['invalid_reference_envelope_overlap']:raise ValueError('saint_legier_collection')
-    if len(f['expected_pairs'])!=23 or len({r['egrid'] for r in f['expected_pairs']})!=23:raise ValueError('saint_legier_pair_count')
-    for r in f['expected_pairs']:
-        at=r['attributes'];q=shape(r['geometry'])
-        if at['EGRID']!=r['egrid'] or at['NO_COM_FED']!=5892 or at['GENRE_TXT'] not in KINDS or not q.is_valid or g.intersection(q).area<=0:raise ValueError('saint_legier_reference')
+    byid={c['id']:shape(c['geometry_lv95']) for c in paths}
+    expected={'institutions_northwest':{'cyan_461','cyan_825'},'public_equipment_middle':{'public_blue_663','public_blue_668'}}
+    for f in b['features']:
+        ids=expected[f['key']];g=shape(f['geometry_lv95'])
+        if not g.is_valid or not g.equals(unary_union([byid[k] for k in ids])) or set(f['path_ids'])!={'raster-'+k for k in ids} or f['invalid_reference_envelope_overlap']:raise ValueError('saint_legier_collection')
+        count={'institutions_northwest':9,'public_equipment_middle':7}[f['key']]
+        if len(f['expected_pairs'])!=count or len({r['egrid'] for r in f['expected_pairs']})!=count:raise ValueError('saint_legier_pair_count')
+        for r in f['expected_pairs']:
+            at=r['attributes'];q=shape(r['geometry'])
+            if at['EGRID']!=r['egrid'] or at['NO_COM_FED']!=5892 or at['GENRE_TXT'] not in KINDS or not q.is_valid or g.intersection(q).area<=0:raise ValueError('saint_legier_reference')
+    if not {'cyan_880','public_blue_326'}<=set(b['held_exceptions']):raise ValueError('saint_legier_exceptions')
     return b
 def load_artifacts():
-    raw=(Path(__file__).parent/'reports/saint-legier-raster/batch.json').read_bytes()
+    raw=(Path(__file__).parent/'reports/saint-legier-remaining/batch.json').read_bytes()
     if hashlib.sha256(raw).hexdigest()!=BATCH_SHA:raise ValueError('saint_legier_changed_batch_requires_review')
     return validate(json.loads(raw))
 def persist(conn,document_id,sha):
@@ -68,7 +74,7 @@ def persist(conn,document_id,sha):
     for f in b['features']:
         sid=sector_id(f['key']);geom=json.dumps(f['geometry_lv95']);label='Saint-Légier — représentation cartographique historique partielle — '+f['label']
         frozen=[{'egrid':x['egrid'],'kind':x['attributes']['GENRE_TXT'],'geometry':x['geometry']} for x in f['expected_pairs']]
-        evidence={'source_sha256':SHA,'source_path_ids':f['path_ids'],'source_category':f['category'],'page_number':42,'grouping':'One partial thematic collection of two raster component exterior depictions, not complete physical or policy sectors','semantics':b['semantics'],'reservation':b['reservation'],'alignment':b['alignment'],'literal_semantics':b['literal_semantic_review'],'municipal_currentness':b['municipal_currentness'],'raster_representation':b['raster_representation'],'independent_geographic_decision':b['independent_geographic_decision'],'source_precision':'unknown','source_precision_m':None,'boundary_buffer':'10m review heuristic, not a measured error bound','review_status':'review_required','publication_status':'internal_review_only','reference_scope':'Current official BFS5892 parcels only; historical predecessor support, not merged commune completeness; contextual intersections only','official_references':refs,'batch_sha256':BATCH_SHA,'artifact':'pipelines/vd-pdcom/reports/saint-legier-raster','ground_checks':'Six labelled original LV03 grid identities fixed before first fit: four train, two held. Six corroborating historic building locations and two unresolved references retained. Exact official REFRAME conversion of82vertices sequentially replayed. No global accuracy claim.'}
+        evidence={'source_sha256':SHA,'source_path_ids':f['path_ids'],'source_category':f['category'],'page_number':42,'grouping':'Partial thematic depiction represented by two disconnected raster paint-component exteriors, not complete physical or policy sectors','semantics':b['semantics'],'reservation':b['reservation'],'alignment':b['alignment'],'literal_semantics':b['literal_semantic_review'],'municipal_currentness':b['municipal_currentness'],'raster_representation':b['raster_representation'],'independent_geographic_decision':b['independent_geographic_decision'],'source_precision':'unknown','source_precision_m':None,'boundary_buffer':'10m review heuristic, not a measured error bound','review_status':'review_required','publication_status':'internal_review_only','reference_scope':'Current official BFS5892 parcels only; historical predecessor support, not merged commune completeness; contextual intersections only','official_references':refs,'batch_sha256':BATCH_SHA,'artifact':'pipelines/vd-pdcom/reports/saint-legier-remaining','ground_checks':'Six labelled original LV03 grid identities fixed before first fit: four train, two held. Six corroborating historic building locations and two unresolved references retained. Exact official REFRAME conversion of118vertices sequentially replayed. No global accuracy claim.'}
         with conn,conn.cursor() as c:
             c.execute("SET LOCAL statement_timeout='90s'");c.execute('SELECT pg_advisory_xact_lock(589200301)')
             c.execute('''SELECT count(*) FROM bronze_ch.vd_pdcom_parcel_references WHERE snapshot_id=ANY(%s::uuid[]) AND geom && ST_SetSRID(ST_GeomFromGeoJSON(%s),2056) AND NOT ST_IsValid(geom)''',([x['snapshot_id'] for x in refs],geom))
