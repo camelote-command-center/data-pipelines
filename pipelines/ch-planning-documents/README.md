@@ -137,7 +137,8 @@ Direct Lamap full-field readback remains required after commit. The companion
 this bounded run as `partial`; it restores legacy log-trigger changes to the
 exact locked dataset freshness/count/status fields in the same transaction,
 then verifies them. It never advances national freshness or coverage. Source and receiver commits must be reported separately on failure;
-exact replay safely resumes the same operation/document IDs.
+exact replay safely resumes the same source operation/document IDs with a new
+monitor-attempt UUID; prior failure/completion logs are retained unchanged.
 
 The bridge requires PyMuPDF from the existing `vd-pdcom` runtime in addition to
 this parser's dependencies. Unit tests cover approval scope, provenance conflicts,
@@ -150,7 +151,9 @@ completion.
 Reproducible invocation (inject registered routes as environment variables; never
 write their values to reports). Default rehearses source and optional receiver
 twice in one transaction and rolls back. Add `--commit` only for a reviewed live
-operation; this requires `PIXXELS_DB_URL` and writes a scoped acquisition log.
+operation; this requires `PIXXELS_DB_URL` and a distinct `--monitor-id UUID`,
+and writes a scoped acquisition log. For retry keep `--operation-id` stable, use
+a new monitor ID, and preserve the previous log rather than resetting its status.
 
 ```sh
 python pipelines/ch-planning-documents/vd_pdcom_text.py \

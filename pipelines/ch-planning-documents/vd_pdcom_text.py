@@ -187,15 +187,18 @@ def main():
     p.add_argument('--review',required=True)
     p.add_argument('--operation-id',required=True,type=uuid.UUID)
     p.add_argument('--report',required=True)
+    p.add_argument('--monitor-id',type=uuid.UUID,help='Distinct attempt UUID required for commit; source operation ID stays stable on retry')
     p.add_argument('--deliver',action='store_true',help='Scoped registered knowledge receiver, never global sync')
     p.add_argument('--commit',action='store_true',help='Commit monitored bounded acquisition; default rehearses twice and rolls back')
-    a=p.parse_args();b=build_bundle(a.pdf,json.loads(Path(a.review).read_text()))
+    a=p.parse_args()
+    require(not a.commit or (a.monitor_id is not None and a.monitor_id != a.operation_id), 'distinct_monitor_attempt_id_required')
+    b=build_bundle(a.pdf,json.loads(Path(a.review).read_text()))
     c=psycopg2.connect(os.environ['RE_LLM_DB_URL'],connect_timeout=15)
-    mc=None;begun=False;report={'operation_id':str(a.operation_id),'committed':False}
+    mc=None;begun=False;report={'operation_id':str(a.operation_id),'monitor_id':str(a.monitor_id) if a.monitor_id else None,'committed':False}
     try:
         if a.commit:
             mc=psycopg2.connect(os.environ['PIXXELS_DB_URL'],connect_timeout=15)
-            monitor(mc,a.operation_id,'running',{});mc.commit();begun=True
+            monitor(mc,a.monitor_id,'running',{});mc.commit();begun=True
         report.update(persist(c,b,a.operation_id,a.pdf))
         replay=persist(c,b,a.operation_id,a.pdf)
         require(replay['documents_new']==0 and replay['chunks_new']==0 and replay['document_id']==report['document_id'],'persist_replay_mismatch')
@@ -205,7 +208,7 @@ def main():
         report['bounded_run_receipt']=finish_run(c,a.operation_id,report)
         if a.commit:
             c.commit();report['committed']=True
-            monitor(mc,a.operation_id,'partial',report);mc.commit()
+            monitor(mc,a.monitor_id,'partial',report);mc.commit()
         else:
             c.rollback();report['rolled_back']=True
         Path(a.report).write_text(json.dumps(report,indent=2)+'\n')
@@ -215,7 +218,7 @@ def main():
         # No raw database/connection exception text is stored in a report.
         report['error_type']=type(exc).__name__
         if begun:
-            mc.rollback();monitor(mc,a.operation_id,'failed',report);mc.commit()
+            mc.rollback();monitor(mc,a.monitor_id,'failed',report);mc.commit()
         Path(a.report).write_text(json.dumps(report,indent=2)+'\n')
         raise
     finally:
