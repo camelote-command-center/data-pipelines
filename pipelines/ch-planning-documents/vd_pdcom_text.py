@@ -124,8 +124,9 @@ def persist(conn, bundle, operation_id, pdf_path):
 
 def finish_run(conn, operation_id, report):
     """Complete this bounded operation without overwriting an earlier receipt."""
+    stored_report={k:v for k,v in report.items() if k not in ('committed','rolled_back','bounded_run_receipt')}
     with conn.cursor() as c:
-        c.execute("UPDATE bronze_ch.planning_document_runs SET status='partial',completed_at=now(),report=%s WHERE id=%s AND completed_at IS NULL",(Json(dict(report,national_complete=False)),str(operation_id)))
+        c.execute("UPDATE bronze_ch.planning_document_runs SET status='partial',completed_at=now(),report=%s WHERE id=%s AND completed_at IS NULL",(Json(dict(stored_report,national_complete=False)),str(operation_id)))
         c.execute('SELECT status,completed_at,report FROM bronze_ch.planning_document_runs WHERE id=%s',(str(operation_id),));row=c.fetchone()
         require(row and row[0]=='partial' and row[1] is not None and row[2]['document_id']==report['document_id'],'bounded_run_receipt_mismatch')
         return row[2]

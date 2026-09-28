@@ -69,6 +69,12 @@ class CorpusContractTests(unittest.TestCase):
   self.assertFalse(any('UPDATE public.datasets SET last_acquired_at=now' in s for s in statements))
   self.assertTrue(any('UPDATE public.acquisition_logs' in s for s in statements))
   with self.assertRaisesRegex(ValueError,'scoped_monitor_phase'):m.monitor(conn,'operation','success',{})
+ def test_bounded_run_does_not_store_commit_acknowledgment(self):
+  conn=MagicMock();cursor=conn.cursor.return_value.__enter__.return_value
+  cursor.fetchone.return_value=('partial','timestamp',{'document_id':'doc','national_complete':False})
+  m.finish_run(conn,'operation',{'document_id':'doc','committed':False})
+  inserted=cursor.execute.call_args_list[0].args[1][0].adapted
+  self.assertNotIn('committed',inserted);self.assertFalse(inserted['national_complete'])
  def test_pdf_hash_checked_before_extract(self):
   with self.assertRaisesRegex(ValueError,'pdf_hash_mismatch'):m.build_bundle(ROOT/'README.md',self.r)
 
