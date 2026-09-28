@@ -42,10 +42,17 @@ def validate_review(r):
     require(r['page_count'] > 0 and len(r['source_sha256']) == 64, 'source_identity_required')
 
 def build_bundle(pdf_path, review):
-    import fitz
+    # Review and file identity are checked before the extractor is even loaded: nothing about a
+    # document is read until it is proven to be the reviewed document. Importing PyMuPDF first also
+    # made the hash gate depend on an optional dependency, which broke the scheduled workflow on
+    # 2026-09-28 (ModuleNotFoundError: fitz, reported as "Parser ch_planning_document_text en erreur").
     validate_review(review)
     path = Path(pdf_path)
     require(hashlib.sha256(path.read_bytes()).hexdigest() == review['source_sha256'], 'pdf_hash_mismatch')
+    try:
+        import fitz
+    except ImportError as e:
+        raise RuntimeError('PyMuPDF is required to extract text (pip install PyMuPDF)') from e
     pages = []
     with fitz.open(path) as pdf:
         require(len(pdf) == review['page_count'], 'physical_page_count_mismatch')
