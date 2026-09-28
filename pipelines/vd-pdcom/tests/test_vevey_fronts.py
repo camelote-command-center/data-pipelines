@@ -1,0 +1,21 @@
+import copy,unittest
+import vevey_fronts as a
+class VeveyFrontsTests(unittest.TestCase):
+ @classmethod
+ def setUpClass(cls):cls.b=a.load_artifacts()
+ def test_reviewed_batch(self):
+  self.assertEqual(sum(len(f['source_paths']) for f in self.b['features']),220)
+  self.assertEqual(len({a.sector_id(k) for k in a.PATHS}),3)
+ def reject(self,edit):
+  b=copy.deepcopy(self.b);edit(b)
+  with self.assertRaises(ValueError):a.validate(b)
+ def test_precision(self):self.reject(lambda b:b.update(source_precision_m=.002))
+ def test_status(self):self.reject(lambda b:b.update(source_plan_status='unverified'))
+ def test_no_links(self):self.reject(lambda b:b.update(parcel_links_allowed=True))
+ def test_partition(self):self.reject(lambda b:b['frozen_controls']['controls'][0].update(role='held'))
+ def test_no_source_join(self):self.reject(lambda b:b['features'][0]['source_paths'][0]['native_items'][0][1].__setitem__(0,0))
+ def test_wrong_clip(self):self.reject(lambda b:b['features'][0]['source_paths'][0].update(source_visible_geometry={'type':'LineString','coordinates':[[0,0],[1,1]]}))
+ def test_no_boundary_promotion(self):self.reject(lambda b:b['features'][0]['source_paths'][0].update(index=67813))
+ def test_no_legend_promotion(self):self.reject(lambda b:b['features'][0]['source_paths'][0].update(index=96155))
+ def test_unrelated_source_noop(self):self.assertIsNone(a.persist(None,'unrelated',a.SHA))
+if __name__=='__main__':unittest.main()
