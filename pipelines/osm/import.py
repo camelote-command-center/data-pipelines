@@ -75,6 +75,7 @@ CANTONS = [
 STATE_TABLE = "osm_canton_state"
 REFRESH_DAYS = int(os.environ.get("OSM_REFRESH_DAYS", "80"))   # quarterly cadence
 DEFAULT_BUDGET_MIN = int(os.environ.get("OSM_TIME_BUDGET_MIN", "150"))
+FLUSH_COMMUNES = int(os.environ.get("OSM_FLUSH_COMMUNES", "10"))   # write and record progress this often
 
 # Delay between Overpass queries (seconds) — be respectful to the API
 QUERY_DELAY = 3
@@ -349,10 +350,11 @@ def overpass_query(query: str, timeout: int = 120) -> dict | None:
 
 
 def load_canton_state(url: str, key: str, schema: str) -> dict:
-    """{canton: completed_at} from the state table; empty dict when it cannot be read."""
+    """{canton: row} from the state table; empty dict when it cannot be read (every canton due)."""
     try:
         r = requests.get(
-            f"{url.rstrip('/')}/rest/v1/{STATE_TABLE}?select=canton,completed_at",
+            f"{url.rstrip('/')}/rest/v1/{STATE_TABLE}"
+            "?select=canton,completed_at,complete,done_communes,records",
             headers={"apikey": key, "Authorization": f"Bearer {key}", "Accept-Profile": schema},
             timeout=30,
         )
@@ -361,27 +363,34 @@ def load_canton_state(url: str, key: str, schema: str) -> dict:
             return {}
         out = {}
         for row in r.json():
+            done = row.get("completed_at")
             try:
-                out[row["canton"]] = datetime.fromisoformat(row["completed_at"].replace("Z", "+00:00"))
+                row["completed_at"] = datetime.fromisoformat(done.replace("Z", "+00:00")) if done else None
             except Exception:
-                pass
+                row["completed_at"] = None
+            out[row["canton"]] = row
         return out
     except Exception as e:
         print(f"  Warning: could not read {schema}.{STATE_TABLE}: {e}")
         return {}
 
 
-def save_canton_state(url: str, key: str, schema: str, canton: str, iso: str, communes: int, records: int) -> None:
-    """Record a finished canton. A failure here only costs a repeat next run."""
+def save_canton_state(url: str, key: str, schema: str, canton: str, iso: str, communes: int,
+                      records: int, done_communes: list, complete: bool) -> None:
+    """Record a canton's progress, finished or not. A failure here only costs repeated work."""
+    now = datetime.now(timezone.utc).isoformat()
+    row = {"canton": canton, "iso_code": iso, "communes": communes, "records": records,
+           "done_communes": sorted(done_communes), "complete": complete,
+           "run_url": os.environ.get("GITHUB_RUN_URL", "")}
+    # completed_at marks a finished canton only; a partial row keeps the previous value untouched.
+    if complete:
+        row["completed_at"] = now
     try:
         r = requests.post(
             f"{url.rstrip('/')}/rest/v1/{STATE_TABLE}",
             headers={"apikey": key, "Authorization": f"Bearer {key}", "Content-Type": "application/json",
                      "Content-Profile": schema, "Prefer": "resolution=merge-duplicates,return=minimal"},
-            json=[{"canton": canton, "iso_code": iso, "communes": communes, "records": records,
-                   "completed_at": datetime.now(timezone.utc).isoformat(),
-                   "run_url": os.environ.get("GITHUB_RUN_URL", "")}],
-            timeout=30,
+            json=[row], timeout=30,
         )
         if r.status_code >= 300:
             print(f"    Warning: could not record {canton} state ({r.status_code}): {r.text[:150]}")
@@ -612,10 +621,21 @@ def main():
     # ── Which cantons are due? ──
     state = {} if args.all else load_canton_state(rellm_url, rellm_key, rellm_schema)
     cutoff = datetime.now(timezone.utc) - timedelta(days=args.refresh_days)
-    due = [(c, iso) for c, iso in CANTONS if args.all or state.get(c) is None or state[c] < cutoff]
-    due_codes = {c for c, _ in due}
-    fresh = [c for c, _ in CANTONS if c not in due_codes]
-    print(f"\n  Due this run: {', '.join(c for c, _ in due) or 'none'}"
+
+    def due_reason(code):
+        """None when the canton needs no work, else why it does."""
+        row = state.get(code)
+        if args.all or row is None:
+            return "new"
+        if not row.get("complete", True):
+            return f"resume at {len(row.get('done_communes') or [])} communes"
+        if row.get("completed_at") is None or row["completed_at"] < cutoff:
+            return "stale"
+        return None
+
+    due = [(c, iso, due_reason(c)) for c, iso in CANTONS if due_reason(c)]
+    fresh = [c for c, _ in CANTONS if not due_reason(c)]
+    print(f"\n  Due this run: {', '.join(f'{c} ({why})' for c, _, why in due) or 'none'}"
           f"{' | already fresh: ' + ', '.join(fresh) if fresh else ''}")
     print(f"  Time budget: {args.time_budget_minutes} min (refresh interval {args.refresh_days} days)")
     if not due:
@@ -641,10 +661,10 @@ def main():
     budget_s = args.time_budget_minutes * 60
     total_upserted = 0
     stopped_early = False
-    for canton_idx, (canton_code, iso_code) in enumerate(due):
+    for canton_idx, (canton_code, iso_code, _why) in enumerate(due):
         if time.time() - start_time > budget_s:
             print(f"\n  Time budget reached — {len(due) - canton_idx} canton(s) left for the next run: "
-                  f"{', '.join(c for c, _ in due[canton_idx:])}")
+                  f"{', '.join(c for c, _, _w in due[canton_idx:])}")
             stopped_early = True
             break
         canton_start = time.time()
@@ -661,23 +681,33 @@ def main():
             canton_stats[canton_code] = {"communes": 0, "records": 0, "raw": 0}
             continue
 
-        print(f"  Found {len(communes)} communes")
-        total_communes += len(communes)
+        # Resume: communes already imported in this cycle are skipped by name, so a shifted
+        # commune list (a merged or renamed commune) cannot make the run skip unimported ground.
+        prev = {} if args.all else (state.get(canton_code) or {})
+        already = set(prev.get("done_communes") or []) if not prev.get("complete", True) else set()
+        canton_total_records = prev.get("records", 0) if already else 0
+        todo = [c for c in communes if c["name"] not in already]
+        print(f"  Found {len(communes)} communes"
+              + (f" — {len(already)} already imported, {len(todo)} to go" if already else ""))
+        total_communes += len(todo)
         canton_raw = 0
         canton_batch = []
+        canton_records_run = 0
+        done_names = list(already)
+        canton_partial = False
 
         # Wait after the commune-list query
         time.sleep(QUERY_DELAY)
 
-        # ── Process each commune in this canton ──
-        for i, commune in enumerate(communes):
+        # ── Process each remaining commune in this canton ──
+        for i, commune in enumerate(todo):
             name = commune["name"]
             area_id = commune["area_id"]
 
             # Print every commune for small cantons, every 10th for large ones
-            verbose = len(communes) <= 60 or (i % 10 == 0) or (i == len(communes) - 1)
+            verbose = len(todo) <= 60 or (i % 10 == 0) or (i == len(todo) - 1)
             if verbose:
-                print(f"\n  [{i + 1}/{len(communes)}] {name}")
+                print(f"\n  [{i + 1}/{len(todo)}] {name}")
 
             elements = fetch_commune_features(area_id, tag_union)
             total_raw += len(elements)
@@ -704,30 +734,54 @@ def main():
                 elapsed = time.time() - start_time
                 print(f"    ── Total so far: {running:,} records ({elapsed:.0f}s)")
 
+            done_names.append(name)
+
+            # A canton can outlast the job cap on its own: VD has ~300 communes and one commune
+            # costs ~150 s. Flush every FLUSH_COMMUNES communes so the work survives, and stop
+            # here — not only between cantons — when the budget is spent.
+            out_of_budget = time.time() - start_time > budget_s
+            last_one = i == len(todo) - 1
+            if canton_batch and (len(done_names) % FLUSH_COMMUNES == 0 or out_of_budget or last_one):
+                n_up = upsert_records(rellm_url, rellm_key, rellm_schema, canton_batch)
+                total_upserted += n_up
+                canton_records_run += len(canton_batch)
+                canton_total_records += len(canton_batch)
+                total_records += len(canton_batch)
+                canton_batch = []   # persisted: free it
+                save_canton_state(rellm_url, rellm_key, rellm_schema, canton_code, iso_code,
+                                  len(communes), canton_total_records, done_names,
+                                  complete=last_one)
+                print(f"    ── flushed {n_up:,} records "
+                      f"({len(done_names)}/{len(communes)} communes of {canton_code} done)")
+            if out_of_budget and not last_one:
+                print(f"\n  Time budget reached inside {canton_code} — "
+                      f"{len(todo) - i - 1} commune(s) of it continue next run")
+                stopped_early = True
+                canton_partial = True
+                break
+
             # Rate limit: be respectful to Overpass API
             time.sleep(QUERY_DELAY)
 
-        # Write this canton before moving on.
-        if canton_batch:
-            n_up = upsert_records(rellm_url, rellm_key, rellm_schema, canton_batch)
-            total_upserted += n_up
-            print(f"  Upserted {n_up:,} records for {canton_code}")
+        # Nothing new to write (every commune was already imported): close the canton out.
+        if not todo:
             save_canton_state(rellm_url, rellm_key, rellm_schema, canton_code, iso_code,
-                              len(communes), len(canton_batch))
-        canton_records = len(canton_batch)
-        total_records += canton_records
-        canton_batch = []   # free the canton's records now that they are persisted
+                              len(communes), canton_total_records, done_names, complete=True)
+
         canton_elapsed = time.time() - canton_start
         canton_stats[canton_code] = {
-            "communes": len(communes),
-            "records": canton_records,
+            "communes": len(done_names),
+            "records": canton_records_run,
             "raw": canton_raw,
         }
-        print(f"\n  ── {canton_code} complete: {len(communes)} communes, "
-              f"{canton_raw:,} raw → {canton_records:,} records ({canton_elapsed:.0f}s)")
+        print(f"\n  ── {canton_code} {'partial' if canton_partial else 'complete'}: "
+              f"{len(done_names)}/{len(communes)} communes, "
+              f"{canton_raw:,} raw → {canton_records_run:,} records this run ({canton_elapsed:.0f}s)")
+        if stopped_early:
+            break
 
         # Extra delay between cantons to avoid Overpass rate limits
-        if canton_idx < len(due) - 1:
+        if canton_idx < len(due) - 1 and not stopped_early:
             print(f"  Waiting {CANTON_DELAY}s before next canton...")
             time.sleep(CANTON_DELAY)
 
