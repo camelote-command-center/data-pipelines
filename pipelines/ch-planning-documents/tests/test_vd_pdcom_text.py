@@ -95,5 +95,15 @@ class CorpusContractTests(unittest.TestCase):
   self.assertNotIn('committed',inserted);self.assertFalse(inserted['national_complete'])
  def test_pdf_hash_checked_before_extract(self):
   with self.assertRaisesRegex(ValueError,'pdf_hash_mismatch'):m.build_bundle(ROOT/'README.md',self.r)
+ def test_hash_gate_holds_without_pymupdf(self):
+  # the gate must not depend on the extractor being installed: a wrong file is rejected either way
+  with patch.dict('sys.modules',{'fitz':None}):
+   with self.assertRaisesRegex(ValueError,'pdf_hash_mismatch'):m.build_bundle(ROOT/'README.md',self.r)
+ def test_missing_pymupdf_is_reported_actionably(self):
+  # matching hash, extractor unavailable -> a clear install message, not ModuleNotFoundError
+  import hashlib as _h
+  r=copy.deepcopy(self.r);r['source_sha256']=_h.sha256((ROOT/'README.md').read_bytes()).hexdigest()
+  with patch.dict('sys.modules',{'fitz':None}):
+   with self.assertRaisesRegex(RuntimeError,'PyMuPDF is required'):m.build_bundle(ROOT/'README.md',r)
 
 if __name__=='__main__':unittest.main()
