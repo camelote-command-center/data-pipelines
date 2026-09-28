@@ -1,0 +1,102 @@
+{
+  "result": {
+    "collections": 7,
+    "source_paths": 54,
+    "parcel_pairs": 0,
+    "candidates": [
+      {
+        "sector_id": "2a949b64-9b76-5c55-a8eb-268f7ec8b2f1",
+        "key": "bus",
+        "feature_kind": "source_native_line",
+        "source_paths": 13,
+        "commune_bfs": [
+          5890
+        ]
+      },
+      {
+        "sector_id": "35d1cbd1-237a-5ece-b7bd-699773d39046",
+        "key": "cycle",
+        "feature_kind": "source_native_line",
+        "source_paths": 19,
+        "commune_bfs": [
+          5890
+        ]
+      },
+      {
+        "sector_id": "feb3b8d1-3da8-5c5d-95bf-02635127de31",
+        "key": "modal_distribution_possible_motor_closure",
+        "feature_kind": "source_native_line",
+        "source_paths": 1,
+        "commune_bfs": [
+          5890
+        ]
+      },
+      {
+        "sector_id": "f788a8d8-8009-53c0-abe7-f91feb2b7ae8",
+        "key": "moderated",
+        "feature_kind": "source_native_line",
+        "source_paths": 5,
+        "commune_bfs": [
+          5890
+        ]
+      },
+      {
+        "sector_id": "6ebbaf6d-7b50-5e3e-9094-4f2fe13babc3",
+        "key": "multimodal",
+        "feature_kind": "source_native_line",
+        "source_paths": 5,
+        "commune_bfs": [
+          5890
+        ]
+      },
+      {
+        "sector_id": "74c9637c-afb0-5e71-8f39-c933b5616045",
+        "key": "pedestrian",
+        "feature_kind": "source_native_line",
+        "source_paths": 8,
+        "commune_bfs": [
+          5890
+        ]
+      },
+      {
+        "sector_id": "0e050d8c-76e2-5aaa-8078-e2454602050d",
+        "key": "traffic",
+        "feature_kind": "source_native_line",
+        "source_paths": 3,
+        "commune_bfs": [
+          5890
+        ]
+      }
+    ],
+    "publication_status": "internal_review_only",
+    "review_status": "review_required"
+  },
+  "double_apply": true,
+  "double_registered_fdw_replay": true,
+  "delivery": {
+    "publication_status": "internal_review_only",
+    "receiver": "lamap_db",
+    "tables": {
+      "vd_pdcom_review_sectors": {
+        "rows": 189,
+        "mismatches": 0,
+        "valid_4326": true
+      },
+      "vd_pdcom_review_parcels": {
+        "rows": 5573,
+        "mismatches": 0,
+        "valid_4326": true
+      }
+    }
+  },
+  "committed": false,
+  "before": [
+    0,
+    0
+  ],
+  "after_rollback": [
+    0,
+    0
+  ],
+  "batch_sha256": "7e59e7340b3a432bb62714c603434c5879c8bc35b5d9fc0a1ea3deb82c869415"
+}
