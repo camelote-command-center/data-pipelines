@@ -1,0 +1,5267 @@
+{
+  "document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+  "source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+  "source_plan_status": "approved_with_reservation",
+  "publication_status": "internal_review_only",
+  "review_status": "review_required",
+  "source_precision_m": null,
+  "reservation_applicability": "unresolved_sector_specific_applicability",
+  "literal_semantic_review": {
+    "source_document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+    "source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+    "map_pdf_page": 8,
+    "legend_pdf_page": 11,
+    "reservation_pdf_page": 9,
+    "reviewed_at": "2026-09-28T00:19:59.956663+00:00",
+    "literal_label": "territoire sans destination définie",
+    "meaning": "A mapped planning territory whose destination was not defined in the source dossier. The yellow diagonal crosshatch is distinct from strategic reserve, viticulture and plain green/agricultural territory. It is not evidence of current availability, capacity, buildability or entitlement.",
+    "map_role": "Dossier directeur, land-use destinations; broad planning framework rather than parcel-level zoning.",
+    "source_trace": "pipelines/vd-pdcom/reports/lutry-cartographic/batch.json#/trace",
+    "boundary_review": "The 32-vertex hand trace follows approximate visible colour transitions, retaining the west-side green notch and east forest indentation. Dense contours and hatch overprint obscure precise transitions. It is a cartographic depiction, not an exact visible fill or a legally exact policy boundary. No ground acceptance is supplied by this semantic review.",
+    "source_precision_m": null,
+    "reservation_status": "unresolved_sector_specific_applicability",
+    "reservation_evidence": {
+      "decision_date": "2000-02-28",
+      "A": "Grandchamp",
+      "B": "Bossière",
+      "C": "between Le Châtelard and Le Daley",
+      "condition": "Approval procedure suspended pending outcome of revision of LPPL. Later resolution not established.",
+      "candidate_relation": "The central Corsy depiction is visually separate from the three pink location labels on the original overview. Those labels do not provide exact exception extents; this observation does not certify that the candidate is outside a legal reservation."
+    },
+    "currentness": {
+      "url": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
+      "http_status": 200,
+      "retrieved_at": "2026-09-28T00:19:59.956697+00:00",
+      "html_sha256": "f53779fe405adc4e19d55a011feb6333c6fc789d71ab53ff1f45a8d876faa61a",
+      "page_update": "2026-08-05",
+      "municipal_statement": "Dossier in force since 28 February 2000 as coordinating framework.",
+      "limits": "General municipal statement does not resolve the three sector-specific suspended approvals or establish current parcel rights. PACom I revision procedure is separate."
+    },
+    "corpus_gaps": [
+      "FA action sheets and DB base-data annexes referenced but not acquired",
+      "Later resolution of three sector-specific approval suspensions not established"
+    ],
+    "held_candidates": [
+      {
+        "label": "O activities patch adjacent west",
+        "reason": "Large white letter-label overprint hides the full source extent; no inferred closure or whole area accepted."
+      }
+    ],
+    "qualified_release_authorized": false,
+    "commune_complete": false
+  },
+  "representation": {
+    "method": "manually_reviewed_visible_raster_colour_transition",
+    "vertex_count": 32,
+    "all_edges_uncertain": true,
+    "exact_visible_fill": false,
+    "exact_policy_extent": false,
+    "green_notch_preserved": true,
+    "snapping": "none",
+    "gaps_joined": false,
+    "complete_policy_sector": false
+  },
+  "trace": {
+    "geometry_pixels": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            962.6666666666666,
+            1727.6666666666667
+          ],
+          [
+            1004.0,
+            1727.3333333333333
+          ],
+          [
+            1051.3333333333333,
+            1724.6666666666667
+          ],
+          [
+            1046.0,
+            1748.3333333333333
+          ],
+          [
+            1042.0,
+            1761.0
+          ],
+          [
+            1039.0,
+            1798.0
+          ],
+          [
+            1058.0,
+            1804.3333333333333
+          ],
+          [
+            1072.0,
+            1808.3333333333333
+          ],
+          [
+            1073.0,
+            1839.3333333333333
+          ],
+          [
+            1068.0,
+            1885.0
+          ],
+          [
+            1059.3333333333333,
+            1928.3333333333333
+          ],
+          [
+            1011.6666666666666,
+            1934.3333333333333
+          ],
+          [
+            964.0,
+            1943.3333333333333
+          ],
+          [
+            914.0,
+            1953.0
+          ],
+          [
+            892.0,
+            1942.3333333333333
+          ],
+          [
+            883.0,
+            1906.3333333333333
+          ],
+          [
+            904.0,
+            1899.0
+          ],
+          [
+            926.3333333333334,
+            1885.6666666666667
+          ],
+          [
+            934.6666666666666,
+            1880.0
+          ],
+          [
+            940.6666666666666,
+            1861.6666666666667
+          ],
+          [
+            957.3333333333334,
+            1841.6666666666667
+          ],
+          [
+            955.0,
+            1837.6666666666667
+          ],
+          [
+            942.0,
+            1839.0
+          ],
+          [
+            935.0,
+            1852.6666666666667
+          ],
+          [
+            926.3333333333334,
+            1872.0
+          ],
+          [
+            900.0,
+            1887.6666666666667
+          ],
+          [
+            892.3333333333334,
+            1897.3333333333333
+          ],
+          [
+            871.3333333333334,
+            1881.3333333333333
+          ],
+          [
+            866.3333333333334,
+            1864.6666666666667
+          ],
+          [
+            890.3333333333334,
+            1838.3333333333333
+          ],
+          [
+            912.6666666666666,
+            1798.3333333333333
+          ],
+          [
+            936.6666666666666,
+            1759.0
+          ],
+          [
+            962.6666666666666,
+            1727.6666666666667
+          ]
+        ]
+      ]
+    },
+    "geometry_lv03": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            542774.4327982268,
+            152081.4762117492
+          ],
+          [
+            542839.0195763109,
+            152081.94222823172
+          ],
+          [
+            542913.013607047,
+            152086.00882599104
+          ],
+          [
+            542904.3515446229,
+            152049.4223165299
+          ],
+          [
+            542897.9256380178,
+            152029.84217286934
+          ],
+          [
+            542892.7240560924,
+            151972.63716867077
+          ],
+          [
+            542922.322999517,
+            151962.82201054442
+          ],
+          [
+            542944.1420115936,
+            151956.62057413568
+          ],
+          [
+            542945.273693371,
+            151908.68785991202
+          ],
+          [
+            542936.8267331272,
+            151838.0850350932
+          ],
+          [
+            542922.683136566,
+            151771.09433921127
+          ],
+          [
+            542848.1219606212,
+            151761.8742128043
+          ],
+          [
+            542773.5190953704,
+            151748.01555223882
+          ],
+          [
+            542695.2611995264,
+            151733.128893671
+          ],
+          [
+            542661.0350601702,
+            151749.64774044958
+          ],
+          [
+            542647.4730903878,
+            151805.32090162166
+          ],
+          [
+            542680.3868943072,
+            151816.63445437976
+          ],
+          [
+            542715.467371869,
+            151837.22348267425
+          ],
+          [
+            542728.5667122751,
+            151845.97520342763
+          ],
+          [
+            542738.1963078926,
+            151874.31463354992
+          ],
+          [
+            542764.5154244778,
+            151905.21828484797
+          ],
+          [
+            542760.9252439161,
+            151911.4057844256
+          ],
+          [
+            542740.5945887903,
+            151909.3597433003
+          ],
+          [
+            542729.4673719318,
+            151888.2370053435
+          ],
+          [
+            542715.6572898185,
+            151858.35458272975
+          ],
+          [
+            542674.2945021502,
+            151834.16258398743
+          ],
+          [
+            542662.1812235177,
+            151819.2253546323
+          ],
+          [
+            542629.5916697561,
+            151843.98928977386
+          ],
+          [
+            542622.010920648,
+            151869.76489691553
+          ],
+          [
+            542659.876170657,
+            151910.45224892106
+          ],
+          [
+            542695.3272198276,
+            151972.272691958
+          ],
+          [
+            542733.3731234958,
+            152033.0603586505
+          ],
+          [
+            542774.4327982268,
+            152081.4762117492
+          ]
+        ]
+      ]
+    },
+    "geometry_lv95": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            2542774.028142802,
+            1152081.9006362655
+          ],
+          [
+            2542838.615084263,
+            1152082.3657242595
+          ],
+          [
+            2542912.6091753207,
+            1152086.4314720572
+          ],
+          [
+            2542903.9484025594,
+            1152049.8428770876
+          ],
+          [
+            2542897.5231811637,
+            1152030.2616438344
+          ],
+          [
+            2542892.323638964,
+            1151973.0532552612
+          ],
+          [
+            2542921.9230174012,
+            1151963.2370647942
+          ],
+          [
+            2542943.7423130125,
+            1151957.034929959
+          ],
+          [
+            2542944.875719216,
+            1151909.099298603
+          ],
+          [
+            2542936.43067962,
+            1151838.4972340923
+          ],
+          [
+            2542922.28879962,
+            1151771.508086966
+          ],
+          [
+            2542847.7285132837,
+            1151762.2821446094
+          ],
+          [
+            2542773.126411994,
+            1151748.4198128972
+          ],
+          [
+            2542694.8688324946,
+            1151733.5334127357
+          ],
+          [
+            2542660.6420044936,
+            1151750.0537660266
+          ],
+          [
+            2542647.077997665,
+            1151805.7304968124
+          ],
+          [
+            2542679.991487103,
+            1151817.044246613
+          ],
+          [
+            2542715.071323139,
+            1151837.6340011002
+          ],
+          [
+            2542728.170385804,
+            1151846.386057386
+          ],
+          [
+            2542737.7989905975,
+            1151874.7270596614
+          ],
+          [
+            2542764.117070832,
+            1151905.6321910636
+          ],
+          [
+            2542760.526658066,
+            1151911.8201182224
+          ],
+          [
+            2542740.196019713,
+            1151909.7742544338
+          ],
+          [
+            2542729.069530342,
+            1151888.6504031774
+          ],
+          [
+            2542715.2604827993,
+            1151858.7663769703
+          ],
+          [
+            2542673.898448516,
+            1151834.5735270763
+          ],
+          [
+            2542661.785672502,
+            1151819.6355733054
+          ],
+          [
+            2542629.195138584,
+            1151844.4014896168
+          ],
+          [
+            2542621.613442729,
+            1151870.1787687137
+          ],
+          [
+            2542659.477337249,
+            1151910.8680217927
+          ],
+          [
+            2542694.926265305,
+            1151972.6916804153
+          ],
+          [
+            2542732.970092185,
+            1152033.4824617594
+          ],
+          [
+            2542774.028142802,
+            1152081.9006362655
+          ]
+        ]
+      ]
+    },
+    "official_reframe_responses": [
+      {
+        "lv03": [
+          542774.4327982268,
+          152081.4762117492
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542774.43279823&northing=152081.47621175&format=json",
+        "response": {
+          "easting": "2542774.028142802",
+          "northing": "1152081.9006362655"
+        },
+        "lv95": [
+          2542774.028142802,
+          1152081.9006362655
+        ]
+      },
+      {
+        "lv03": [
+          542839.0195763109,
+          152081.94222823172
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542839.01957631&northing=152081.94222823&format=json",
+        "response": {
+          "easting": "2542838.615084263",
+          "northing": "1152082.3657242595"
+        },
+        "lv95": [
+          2542838.615084263,
+          1152082.3657242595
+        ]
+      },
+      {
+        "lv03": [
+          542913.013607047,
+          152086.00882599104
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542913.01360705&northing=152086.00882599&format=json",
+        "response": {
+          "easting": "2542912.6091753207",
+          "northing": "1152086.4314720572"
+        },
+        "lv95": [
+          2542912.6091753207,
+          1152086.4314720572
+        ]
+      },
+      {
+        "lv03": [
+          542904.3515446229,
+          152049.4223165299
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542904.35154462&northing=152049.42231653&format=json",
+        "response": {
+          "easting": "2542903.9484025594",
+          "northing": "1152049.8428770876"
+        },
+        "lv95": [
+          2542903.9484025594,
+          1152049.8428770876
+        ]
+      },
+      {
+        "lv03": [
+          542897.9256380178,
+          152029.84217286934
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542897.92563802&northing=152029.84217287&format=json",
+        "response": {
+          "easting": "2542897.5231811637",
+          "northing": "1152030.2616438344"
+        },
+        "lv95": [
+          2542897.5231811637,
+          1152030.2616438344
+        ]
+      },
+      {
+        "lv03": [
+          542892.7240560924,
+          151972.63716867077
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542892.72405609&northing=151972.63716867&format=json",
+        "response": {
+          "easting": "2542892.323638964",
+          "northing": "1151973.0532552612"
+        },
+        "lv95": [
+          2542892.323638964,
+          1151973.0532552612
+        ]
+      },
+      {
+        "lv03": [
+          542922.322999517,
+          151962.82201054442
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542922.32299952&northing=151962.82201054&format=json",
+        "response": {
+          "easting": "2542921.9230174012",
+          "northing": "1151963.2370647942"
+        },
+        "lv95": [
+          2542921.9230174012,
+          1151963.2370647942
+        ]
+      },
+      {
+        "lv03": [
+          542944.1420115936,
+          151956.62057413568
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542944.14201159&northing=151956.62057414&format=json",
+        "response": {
+          "easting": "2542943.7423130125",
+          "northing": "1151957.034929959"
+        },
+        "lv95": [
+          2542943.7423130125,
+          1151957.034929959
+        ]
+      },
+      {
+        "lv03": [
+          542945.273693371,
+          151908.68785991202
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542945.27369337&northing=151908.68785991&format=json",
+        "response": {
+          "easting": "2542944.875719216",
+          "northing": "1151909.099298603"
+        },
+        "lv95": [
+          2542944.875719216,
+          1151909.099298603
+        ]
+      },
+      {
+        "lv03": [
+          542936.8267331272,
+          151838.0850350932
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542936.82673313&northing=151838.08503509&format=json",
+        "response": {
+          "easting": "2542936.43067962",
+          "northing": "1151838.4972340923"
+        },
+        "lv95": [
+          2542936.43067962,
+          1151838.4972340923
+        ]
+      },
+      {
+        "lv03": [
+          542922.683136566,
+          151771.09433921127
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542922.68313657&northing=151771.09433921&format=json",
+        "response": {
+          "easting": "2542922.28879962",
+          "northing": "1151771.508086966"
+        },
+        "lv95": [
+          2542922.28879962,
+          1151771.508086966
+        ]
+      },
+      {
+        "lv03": [
+          542848.1219606212,
+          151761.8742128043
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542848.12196062&northing=151761.87421280&format=json",
+        "response": {
+          "easting": "2542847.7285132837",
+          "northing": "1151762.2821446094"
+        },
+        "lv95": [
+          2542847.7285132837,
+          1151762.2821446094
+        ]
+      },
+      {
+        "lv03": [
+          542773.5190953704,
+          151748.01555223882
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542773.51909537&northing=151748.01555224&format=json",
+        "response": {
+          "easting": "2542773.126411994",
+          "northing": "1151748.4198128972"
+        },
+        "lv95": [
+          2542773.126411994,
+          1151748.4198128972
+        ]
+      },
+      {
+        "lv03": [
+          542695.2611995264,
+          151733.128893671
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542695.26119953&northing=151733.12889367&format=json",
+        "response": {
+          "easting": "2542694.8688324946",
+          "northing": "1151733.5334127357"
+        },
+        "lv95": [
+          2542694.8688324946,
+          1151733.5334127357
+        ]
+      },
+      {
+        "lv03": [
+          542661.0350601702,
+          151749.64774044958
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542661.03506017&northing=151749.64774045&format=json",
+        "response": {
+          "easting": "2542660.6420044936",
+          "northing": "1151750.0537660266"
+        },
+        "lv95": [
+          2542660.6420044936,
+          1151750.0537660266
+        ]
+      },
+      {
+        "lv03": [
+          542647.4730903878,
+          151805.32090162166
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542647.47309039&northing=151805.32090162&format=json",
+        "response": {
+          "easting": "2542647.077997665",
+          "northing": "1151805.7304968124"
+        },
+        "lv95": [
+          2542647.077997665,
+          1151805.7304968124
+        ]
+      },
+      {
+        "lv03": [
+          542680.3868943072,
+          151816.63445437976
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542680.38689431&northing=151816.63445438&format=json",
+        "response": {
+          "easting": "2542679.991487103",
+          "northing": "1151817.044246613"
+        },
+        "lv95": [
+          2542679.991487103,
+          1151817.044246613
+        ]
+      },
+      {
+        "lv03": [
+          542715.467371869,
+          151837.22348267425
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542715.46737187&northing=151837.22348267&format=json",
+        "response": {
+          "easting": "2542715.071323139",
+          "northing": "1151837.6340011002"
+        },
+        "lv95": [
+          2542715.071323139,
+          1151837.6340011002
+        ]
+      },
+      {
+        "lv03": [
+          542728.5667122751,
+          151845.97520342763
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542728.56671228&northing=151845.97520343&format=json",
+        "response": {
+          "easting": "2542728.170385804",
+          "northing": "1151846.386057386"
+        },
+        "lv95": [
+          2542728.170385804,
+          1151846.386057386
+        ]
+      },
+      {
+        "lv03": [
+          542738.1963078926,
+          151874.31463354992
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542738.19630789&northing=151874.31463355&format=json",
+        "response": {
+          "easting": "2542737.7989905975",
+          "northing": "1151874.7270596614"
+        },
+        "lv95": [
+          2542737.7989905975,
+          1151874.7270596614
+        ]
+      },
+      {
+        "lv03": [
+          542764.5154244778,
+          151905.21828484797
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542764.51542448&northing=151905.21828485&format=json",
+        "response": {
+          "easting": "2542764.117070832",
+          "northing": "1151905.6321910636"
+        },
+        "lv95": [
+          2542764.117070832,
+          1151905.6321910636
+        ]
+      },
+      {
+        "lv03": [
+          542760.9252439161,
+          151911.4057844256
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542760.92524392&northing=151911.40578443&format=json",
+        "response": {
+          "easting": "2542760.526658066",
+          "northing": "1151911.8201182224"
+        },
+        "lv95": [
+          2542760.526658066,
+          1151911.8201182224
+        ]
+      },
+      {
+        "lv03": [
+          542740.5945887903,
+          151909.3597433003
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542740.59458879&northing=151909.35974330&format=json",
+        "response": {
+          "easting": "2542740.196019713",
+          "northing": "1151909.7742544338"
+        },
+        "lv95": [
+          2542740.196019713,
+          1151909.7742544338
+        ]
+      },
+      {
+        "lv03": [
+          542729.4673719318,
+          151888.2370053435
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542729.46737193&northing=151888.23700534&format=json",
+        "response": {
+          "easting": "2542729.069530342",
+          "northing": "1151888.6504031774"
+        },
+        "lv95": [
+          2542729.069530342,
+          1151888.6504031774
+        ]
+      },
+      {
+        "lv03": [
+          542715.6572898185,
+          151858.35458272975
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542715.65728982&northing=151858.35458273&format=json",
+        "response": {
+          "easting": "2542715.2604827993",
+          "northing": "1151858.7663769703"
+        },
+        "lv95": [
+          2542715.2604827993,
+          1151858.7663769703
+        ]
+      },
+      {
+        "lv03": [
+          542674.2945021502,
+          151834.16258398743
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542674.29450215&northing=151834.16258399&format=json",
+        "response": {
+          "easting": "2542673.898448516",
+          "northing": "1151834.5735270763"
+        },
+        "lv95": [
+          2542673.898448516,
+          1151834.5735270763
+        ]
+      },
+      {
+        "lv03": [
+          542662.1812235177,
+          151819.2253546323
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542662.18122352&northing=151819.22535463&format=json",
+        "response": {
+          "easting": "2542661.785672502",
+          "northing": "1151819.6355733054"
+        },
+        "lv95": [
+          2542661.785672502,
+          1151819.6355733054
+        ]
+      },
+      {
+        "lv03": [
+          542629.5916697561,
+          151843.98928977386
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542629.59166976&northing=151843.98928977&format=json",
+        "response": {
+          "easting": "2542629.195138584",
+          "northing": "1151844.4014896168"
+        },
+        "lv95": [
+          2542629.195138584,
+          1151844.4014896168
+        ]
+      },
+      {
+        "lv03": [
+          542622.010920648,
+          151869.76489691553
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542622.01092065&northing=151869.76489692&format=json",
+        "response": {
+          "easting": "2542621.613442729",
+          "northing": "1151870.1787687137"
+        },
+        "lv95": [
+          2542621.613442729,
+          1151870.1787687137
+        ]
+      },
+      {
+        "lv03": [
+          542659.876170657,
+          151910.45224892106
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542659.87617066&northing=151910.45224892&format=json",
+        "response": {
+          "easting": "2542659.477337249",
+          "northing": "1151910.8680217927"
+        },
+        "lv95": [
+          2542659.477337249,
+          1151910.8680217927
+        ]
+      },
+      {
+        "lv03": [
+          542695.3272198276,
+          151972.272691958
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542695.32721983&northing=151972.27269196&format=json",
+        "response": {
+          "easting": "2542694.926265305",
+          "northing": "1151972.6916804153"
+        },
+        "lv95": [
+          2542694.926265305,
+          1151972.6916804153
+        ]
+      },
+      {
+        "lv03": [
+          542733.3731234958,
+          152033.0603586505
+        ],
+        "request_url": "https://geodesy.geo.admin.ch/reframe/lv03tolv95?easting=542733.37312350&northing=152033.06035865&format=json",
+        "response": {
+          "easting": "2542732.970092185",
+          "northing": "1152033.4824617594"
+        },
+        "lv95": [
+          2542732.970092185,
+          1152033.4824617594
+        ]
+      }
+    ],
+    "frozen_trace": {
+      "trace_sha256": "9585929653547957bd5dfd7c769744d140dc5ee42f3ca1d478c61c018653ed59",
+      "calibration_sha256": "03f0be3ae67b903ee9a419d9f5ad1cd29ecd2ac7b891e9cbffc848478a06d505",
+      "controls_sha256": "24142b80d6d4a989d778237384405f9b37ff48cb91897a768f3de13e3d484570",
+      "source_render_sha256": "af3852095fec0d61df0d31acbf7b074a1770b905f13a2e37db6a8f8bdd831fb1",
+      "source_pixels": [
+        [
+          962.6666666666666,
+          1727.6666666666667
+        ],
+        [
+          1004.0,
+          1727.3333333333333
+        ],
+        [
+          1051.3333333333333,
+          1724.6666666666667
+        ],
+        [
+          1046.0,
+          1748.3333333333333
+        ],
+        [
+          1042.0,
+          1761.0
+        ],
+        [
+          1039.0,
+          1798.0
+        ],
+        [
+          1058.0,
+          1804.3333333333333
+        ],
+        [
+          1072.0,
+          1808.3333333333333
+        ],
+        [
+          1073.0,
+          1839.3333333333333
+        ],
+        [
+          1068.0,
+          1885.0
+        ],
+        [
+          1059.3333333333333,
+          1928.3333333333333
+        ],
+        [
+          1011.6666666666666,
+          1934.3333333333333
+        ],
+        [
+          964.0,
+          1943.3333333333333
+        ],
+        [
+          914.0,
+          1953.0
+        ],
+        [
+          892.0,
+          1942.3333333333333
+        ],
+        [
+          883.0,
+          1906.3333333333333
+        ],
+        [
+          904.0,
+          1899.0
+        ],
+        [
+          926.3333333333334,
+          1885.6666666666667
+        ],
+        [
+          934.6666666666666,
+          1880.0
+        ],
+        [
+          940.6666666666666,
+          1861.6666666666667
+        ],
+        [
+          957.3333333333334,
+          1841.6666666666667
+        ],
+        [
+          955.0,
+          1837.6666666666667
+        ],
+        [
+          942.0,
+          1839.0
+        ],
+        [
+          935.0,
+          1852.6666666666667
+        ],
+        [
+          926.3333333333334,
+          1872.0
+        ],
+        [
+          900.0,
+          1887.6666666666667
+        ],
+        [
+          892.3333333333334,
+          1897.3333333333333
+        ],
+        [
+          871.3333333333334,
+          1881.3333333333333
+        ],
+        [
+          866.3333333333334,
+          1864.6666666666667
+        ],
+        [
+          890.3333333333334,
+          1838.3333333333333
+        ],
+        [
+          912.6666666666666,
+          1798.3333333333333
+        ],
+        [
+          936.6666666666666,
+          1759.0
+        ]
+      ],
+      "lv03": [
+        [
+          542774.4327982268,
+          152081.4762117492
+        ],
+        [
+          542839.0195763109,
+          152081.94222823172
+        ],
+        [
+          542913.013607047,
+          152086.00882599104
+        ],
+        [
+          542904.3515446229,
+          152049.4223165299
+        ],
+        [
+          542897.9256380178,
+          152029.84217286934
+        ],
+        [
+          542892.7240560924,
+          151972.63716867077
+        ],
+        [
+          542922.322999517,
+          151962.82201054442
+        ],
+        [
+          542944.1420115936,
+          151956.62057413568
+        ],
+        [
+          542945.273693371,
+          151908.68785991202
+        ],
+        [
+          542936.8267331272,
+          151838.0850350932
+        ],
+        [
+          542922.683136566,
+          151771.09433921127
+        ],
+        [
+          542848.1219606212,
+          151761.8742128043
+        ],
+        [
+          542773.5190953704,
+          151748.01555223882
+        ],
+        [
+          542695.2611995264,
+          151733.128893671
+        ],
+        [
+          542661.0350601702,
+          151749.64774044958
+        ],
+        [
+          542647.4730903878,
+          151805.32090162166
+        ],
+        [
+          542680.3868943072,
+          151816.63445437976
+        ],
+        [
+          542715.467371869,
+          151837.22348267425
+        ],
+        [
+          542728.5667122751,
+          151845.97520342763
+        ],
+        [
+          542738.1963078926,
+          151874.31463354992
+        ],
+        [
+          542764.5154244778,
+          151905.21828484797
+        ],
+        [
+          542760.9252439161,
+          151911.4057844256
+        ],
+        [
+          542740.5945887903,
+          151909.3597433003
+        ],
+        [
+          542729.4673719318,
+          151888.2370053435
+        ],
+        [
+          542715.6572898185,
+          151858.35458272975
+        ],
+        [
+          542674.2945021502,
+          151834.16258398743
+        ],
+        [
+          542662.1812235177,
+          151819.2253546323
+        ],
+        [
+          542629.5916697561,
+          151843.98928977386
+        ],
+        [
+          542622.010920648,
+          151869.76489691553
+        ],
+        [
+          542659.876170657,
+          151910.45224892106
+        ],
+        [
+          542695.3272198276,
+          151972.272691958
+        ],
+        [
+          542733.3731234958,
+          152033.0603586505
+        ]
+      ],
+      "no_refit": true
+    }
+  },
+  "frozen_grid": {
+    "source_pdf": "../source-review/part-2.pdf",
+    "source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+    "pdf_page": 8,
+    "render_scale": 4,
+    "render_size": [
+      2380,
+      3368
+    ],
+    "coordinates": "composited_PDF_render_pixels_top_left_y_down",
+    "target_crs": "EPSG:21781",
+    "crs_basis": "LV03 inferred from labelled Swiss grid values and Lutry location; no embedded CRS metadata",
+    "selection": "Manually read grid intersections; train/check roles frozen before affine fit. Checkpoints were not used to choose the fitted transform. No surveyed ground accuracy claim.",
+    "reading_precision_pixels": "approximately 1-3 pixels, varying with base-map overprint; not a statistical uncertainty model",
+    "points": [
+      {
+        "id": "T1",
+        "split": "train",
+        "pixel": [
+          1095,
+          486
+        ],
+        "lv03": [
+          543000,
+          154000
+        ]
+      },
+      {
+        "id": "T2",
+        "split": "train",
+        "pixel": [
+          1737,
+          487
+        ],
+        "lv03": [
+          544000,
+          154000
+        ]
+      },
+      {
+        "id": "T3",
+        "split": "train",
+        "pixel": [
+          480,
+          3075
+        ],
+        "lv03": [
+          542000,
+          150000
+        ]
+      },
+      {
+        "id": "T4",
+        "split": "train",
+        "pixel": [
+          1118,
+          3073
+        ],
+        "lv03": [
+          543000,
+          150000
+        ]
+      },
+      {
+        "id": "C1",
+        "split": "check",
+        "pixel": [
+          1100,
+          1136
+        ],
+        "lv03": [
+          543000,
+          153000
+        ]
+      },
+      {
+        "id": "C2",
+        "split": "check",
+        "pixel": [
+          1749,
+          1776
+        ],
+        "lv03": [
+          544000,
+          152000
+        ]
+      }
+    ],
+    "geographic_validation": "research_grid_only",
+    "receiver_release": "not_ready"
+  },
+  "grid_fit": {
+    "status": "printed_grid_research_calibration",
+    "affine_pixel_to_lv03": [
+      [
+        1.5624712727155683,
+        -0.013896435332633784,
+        541294.302194469
+      ],
+      [
+        -0.001194585526597217,
+        -1.5461780528423534,
+        154753.90648204344
+      ]
+    ],
+    "residuals": [
+      {
+        "id": "T1",
+        "split": "train",
+        "pixel": [
+          1095,
+          486
+        ],
+        "lv03": [
+          543000,
+          154000
+        ],
+        "calculated_lv03": [
+          542998.4545705209,
+          154001.15587721043
+        ],
+        "delta_m": [
+          -1.5454294790979475,
+          1.1558772104326636
+        ],
+        "distance_m": 1.929871602066456
+      },
+      {
+        "id": "T2",
+        "split": "train",
+        "pixel": [
+          1737,
+          487
+        ],
+        "lv03": [
+          544000,
+          154000
+        ],
+        "calculated_lv03": [
+          544001.547231169,
+          153998.8427752495
+        ],
+        "delta_m": [
+          1.5472311689518392,
+          -1.1572247504955158
+        ],
+        "distance_m": 1.9321214799632769
+      },
+      {
+        "id": "T3",
+        "split": "train",
+        "pixel": [
+          480,
+          3075
+        ],
+        "lv03": [
+          542000,
+          150000
+        ],
+        "calculated_lv03": [
+          542001.5568667246,
+          149998.83556850045
+        ],
+        "delta_m": [
+          1.5568667246261612,
+          -1.164431499550119
+        ],
+        "distance_m": 1.9441539844859845
+      },
+      {
+        "id": "T4",
+        "split": "train",
+        "pixel": [
+          1118,
+          3073
+        ],
+        "lv03": [
+          543000,
+          150000
+        ],
+        "calculated_lv03": [
+          542998.4413315878,
+          150001.16577904017
+        ],
+        "delta_m": [
+          -1.5586684121517465,
+          1.165779040165944
+        ],
+        "distance_m": 1.9464038608495093
+      },
+      {
+        "id": "C1",
+        "split": "check",
+        "pixel": [
+          1100,
+          1136
+        ],
+        "lv03": [
+          543000,
+          153000
+        ],
+        "calculated_lv03": [
+          542997.2342439183,
+          152996.13416993528
+        ],
+        "delta_m": [
+          -2.7657560816733167,
+          -3.865830064722104
+        ],
+        "distance_m": 4.753319765450485
+      },
+      {
+        "id": "C2",
+        "split": "check",
+        "pixel": [
+          1749,
+          1776
+        ],
+        "lv03": [
+          544000,
+          152000
+        ],
+        "calculated_lv03": [
+          544002.3843812977,
+          152005.8049301094
+        ],
+        "delta_m": [
+          2.384381297742948,
+          5.804930109414272
+        ],
+        "distance_m": 6.27554680870207
+      }
+    ],
+    "check_rmse_m": 5.566710722717366,
+    "check_max_m": 6.27554680870207,
+    "independent_ground_accuracy_verified": false,
+    "receiver_release": "not_ready",
+    "raster_layers": [
+      {
+        "xref": 47,
+        "width": 416,
+        "height": 80,
+        "filter": "DCTDecode",
+        "placements_pdf_points": [
+          [
+            313.8611145019531,
+            171.83221435546875,
+            525.3690795898438,
+            213.41854858398438
+          ]
+        ]
+      },
+      {
+        "xref": 48,
+        "width": 584,
+        "height": 24,
+        "filter": "DCTDecode",
+        "placements_pdf_points": [
+          [
+            42.94520568847656,
+            800.5442504882812,
+            339.66888427734375,
+            814.065185546875
+          ]
+        ]
+      },
+      {
+        "xref": 49,
+        "width": 456,
+        "height": 64,
+        "filter": "DCTDecode",
+        "placements_pdf_points": [
+          [
+            339.6142272949219,
+            781.5535888671875,
+            571.4055786132812,
+            815.10302734375
+          ]
+        ]
+      },
+      {
+        "xref": 50,
+        "width": 1096,
+        "height": 704,
+        "filter": "DCTDecode",
+        "placements_pdf_points": [
+          [
+            18.707107543945312,
+            422.48681640625,
+            577.07177734375,
+            782.6095581054688
+          ]
+        ]
+      },
+      {
+        "xref": 51,
+        "width": 2224,
+        "height": 3184,
+        "filter": "CCITTFaxDecode",
+        "placements_pdf_points": [
+          [
+            14.461074829101562,
+            12.00872802734375,
+            582.9745483398438,
+            823.2673950195312
+          ]
+        ]
+      },
+      {
+        "xref": 52,
+        "width": 72,
+        "height": 264,
+        "filter": "DCTDecode",
+        "placements_pdf_points": [
+          [
+            17.173873901367188,
+            81.09600830078125,
+            54.35032653808594,
+            215.3705291748047
+          ]
+        ]
+      },
+      {
+        "xref": 53,
+        "width": 224,
+        "height": 56,
+        "filter": "DCTDecode",
+        "placements_pdf_points": [
+          [
+            221.1183319091797,
+            21.046981811523438,
+            335.03662109375,
+            50.00447082519531
+          ]
+        ]
+      },
+      {
+        "xref": 54,
+        "width": 400,
+        "height": 40,
+        "filter": "DCTDecode",
+        "placements_pdf_points": [
+          [
+            30.021194458007812,
+            48.638946533203125,
+            233.31019592285156,
+            69.86907958984375
+          ]
+        ]
+      },
+      {
+        "xref": 55,
+        "width": 88,
+        "height": 32,
+        "filter": "DCTDecode",
+        "placements_pdf_points": [
+          [
+            481.138916015625,
+            50.65992736816406,
+            525.915283203125,
+            67.11604309082031
+          ]
+        ]
+      },
+      {
+        "xref": 56,
+        "width": 112,
+        "height": 120,
+        "filter": "DCTDecode",
+        "placements_pdf_points": [
+          [
+            517.36865234375,
+            83.33546447753906,
+            574.5371704101562,
+            144.5497589111328
+          ]
+        ]
+      },
+      {
+        "xref": 57,
+        "width": 392,
+        "height": 56,
+        "filter": "DCTDecode",
+        "placements_pdf_points": [
+          [
+            54.22288513183594,
+            81.25987243652344,
+            253.4843292236328,
+            110.59971618652344
+          ]
+        ]
+      },
+      {
+        "xref": 58,
+        "width": 1080,
+        "height": 408,
+        "filter": "DCTDecode",
+        "placements_pdf_points": [
+          [
+            20.309295654296875,
+            215.22488403320312,
+            569.8723754882812,
+            424.9447021484375
+          ]
+        ]
+      },
+      {
+        "xref": 59,
+        "width": 104,
+        "height": 48,
+        "filter": "DCTDecode",
+        "placements_pdf_points": [
+          [
+            294.16033935546875,
+            49.822418212890625,
+            347.10107421875,
+            74.44287109375
+          ]
+        ]
+      },
+      {
+        "xref": 60,
+        "width": 440,
+        "height": 8,
+        "filter": "DCTDecode",
+        "placements_pdf_points": [
+          [
+            305.7149963378906,
+            212.43536376953125,
+            529.2509765625,
+            217.50070190429688
+          ]
+        ]
+      },
+      {
+        "xref": 61,
+        "width": 472,
+        "height": 176,
+        "filter": "DCTDecode",
+        "placements_pdf_points": [
+          [
+            253.08380126953125,
+            82.15203857421875,
+            493.2579345703125,
+            172.6333465576172
+          ]
+        ]
+      }
+    ],
+    "limits": [
+      "Six manually read grid intersections; only four fitted, two withheld.",
+      "Printed-grid consistency does not establish real-world accuracy or current parcel rights.",
+      "Scan deformation and manual line reading remain unresolved.",
+      "Page consists of composited image tiles; no single embedded color tile is the complete map."
+    ]
+  },
+  "alignment": {
+    "holdout_rmse_m": 5.566710722717366,
+    "denominator": "2 reserved printed-grid intersections;4 training; unchanged historical scan calibration",
+    "qualification": "Internal scan/grid consistency only; not surveyed ground, thematic boundary or parcel-level accuracy",
+    "source_precision_m": null
+  },
+  "references": [
+    {
+      "bounds": [
+        2542606.6135424683,
+        1151718.5379432566,
+        2542959.8715280634,
+        1152101.4176685885
+      ],
+      "count": 64,
+      "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2542606.6135424683%2C1151718.5379432566%2C2542959.8715280634%2C1152101.4176685885&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=1%3D1&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+      "count_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2542606.6135424683%2C1151718.5379432566%2C2542959.8715280634%2C1152101.4176685885&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=1%3D1&f=json&returnCountOnly=true",
+      "sha256": "7db56b5c2c52304729fdf0f5a1f53f4286625c0dece1de468552cf97911329cd",
+      "scope": "all official parcels intersecting full candidate envelope plus15m, no commune clipping"
+    }
+  ],
+  "features": [
+    {
+      "key": "undefined_destination",
+      "label": "territoire sans destination définie — représentation cartographique historique approximative",
+      "category": "Territoire sans destination définie",
+      "page": 8,
+      "path_ids": [
+        "manual-raster-transition-32-vertices-v1"
+      ],
+      "geometry_lv95": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              2542774.028142802,
+              1152081.9006362655
+            ],
+            [
+              2542838.615084263,
+              1152082.3657242595
+            ],
+            [
+              2542912.6091753207,
+              1152086.4314720572
+            ],
+            [
+              2542903.9484025594,
+              1152049.8428770876
+            ],
+            [
+              2542897.5231811637,
+              1152030.2616438344
+            ],
+            [
+              2542892.323638964,
+              1151973.0532552612
+            ],
+            [
+              2542921.9230174012,
+              1151963.2370647942
+            ],
+            [
+              2542943.7423130125,
+              1151957.034929959
+            ],
+            [
+              2542944.875719216,
+              1151909.099298603
+            ],
+            [
+              2542936.43067962,
+              1151838.4972340923
+            ],
+            [
+              2542922.28879962,
+              1151771.508086966
+            ],
+            [
+              2542847.7285132837,
+              1151762.2821446094
+            ],
+            [
+              2542773.126411994,
+              1151748.4198128972
+            ],
+            [
+              2542694.8688324946,
+              1151733.5334127357
+            ],
+            [
+              2542660.6420044936,
+              1151750.0537660266
+            ],
+            [
+              2542647.077997665,
+              1151805.7304968124
+            ],
+            [
+              2542679.991487103,
+              1151817.044246613
+            ],
+            [
+              2542715.071323139,
+              1151837.6340011002
+            ],
+            [
+              2542728.170385804,
+              1151846.386057386
+            ],
+            [
+              2542737.7989905975,
+              1151874.7270596614
+            ],
+            [
+              2542764.117070832,
+              1151905.6321910636
+            ],
+            [
+              2542760.526658066,
+              1151911.8201182224
+            ],
+            [
+              2542740.196019713,
+              1151909.7742544338
+            ],
+            [
+              2542729.069530342,
+              1151888.6504031774
+            ],
+            [
+              2542715.2604827993,
+              1151858.7663769703
+            ],
+            [
+              2542673.898448516,
+              1151834.5735270763
+            ],
+            [
+              2542661.785672502,
+              1151819.6355733054
+            ],
+            [
+              2542629.195138584,
+              1151844.4014896168
+            ],
+            [
+              2542621.613442729,
+              1151870.1787687137
+            ],
+            [
+              2542659.477337249,
+              1151910.8680217927
+            ],
+            [
+              2542694.926265305,
+              1151972.6916804153
+            ],
+            [
+              2542732.970092185,
+              1152033.4824617594
+            ],
+            [
+              2542774.028142802,
+              1152081.9006362655
+            ]
+          ]
+        ]
+      },
+      "expected_pairs": [
+        {
+          "egrid": "CH328783834532",
+          "attributes": {
+            "EGRID": "CH328783834532",
+            "NUMERO": "4398",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 1853,
+            "SUPERFICIE_RF": 1853
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542658.275,
+                  1151804.499
+                ],
+                [
+                  2542656.414,
+                  1151819.96
+                ],
+                [
+                  2542653.033,
+                  1151847.962
+                ],
+                [
+                  2542640.923,
+                  1151848.382
+                ],
+                [
+                  2542635.043,
+                  1151847.642
+                ],
+                [
+                  2542629.623,
+                  1151844.902
+                ],
+                [
+                  2542626.224,
+                  1151841.462
+                ],
+                [
+                  2542608.185,
+                  1151812.131
+                ],
+                [
+                  2542627.045,
+                  1151799.129
+                ],
+                [
+                  2542629.025,
+                  1151798.529
+                ],
+                [
+                  2542637.825,
+                  1151792.299
+                ],
+                [
+                  2542658.275,
+                  1151804.499
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH914584838722",
+          "attributes": {
+            "EGRID": "CH914584838722",
+            "NUMERO": "4027",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 4875,
+            "SUPERFICIE_RF": 4875
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542685.869,
+                  1151732.227
+                ],
+                [
+                  2542692.298,
+                  1151734.065
+                ],
+                [
+                  2542715.227,
+                  1151740.825
+                ],
+                [
+                  2542742.157,
+                  1151748.285
+                ],
+                [
+                  2542765.207,
+                  1151754.595
+                ],
+                [
+                  2542781.667,
+                  1151758.795
+                ],
+                [
+                  2542773.216,
+                  1151776.366
+                ],
+                [
+                  2542763.596,
+                  1151796.367
+                ],
+                [
+                  2542758.205,
+                  1151807.558
+                ],
+                [
+                  2542755.445,
+                  1151813.308
+                ],
+                [
+                  2542694.006,
+                  1151789.308
+                ],
+                [
+                  2542679.699,
+                  1151783.68
+                ],
+                [
+                  2542690.964,
+                  1151754.314
+                ],
+                [
+                  2542680.635,
+                  1151750.363
+                ],
+                [
+                  2542685.869,
+                  1151732.227
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH544583879895",
+          "attributes": {
+            "EGRID": "CH544583879895",
+            "NUMERO": "4025",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 2049,
+            "SUPERFICIE_RF": 2049
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542871.621,
+                  1151868.3530000001
+                ],
+                [
+                  2542889.714,
+                  1151884.493
+                ],
+                [
+                  2542889.713,
+                  1151919.025
+                ],
+                [
+                  2542881.393,
+                  1151916.411
+                ],
+                [
+                  2542873.313,
+                  1151914.506
+                ],
+                [
+                  2542866.599,
+                  1151912.83
+                ],
+                [
+                  2542861.8490181174,
+                  1151911.0928496355
+                ],
+                [
+                  2542857.3422407107,
+                  1151908.7974244724
+                ],
+                [
+                  2542853.144,
+                  1151905.977
+                ],
+                [
+                  2542842.468,
+                  1151895.188
+                ],
+                [
+                  2542835.825,
+                  1151878.842
+                ],
+                [
+                  2542830.612,
+                  1151871.295
+                ],
+                [
+                  2542849.731,
+                  1151865.176
+                ],
+                [
+                  2542871.621,
+                  1151868.3530000001
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH108745828384",
+          "attributes": {
+            "EGRID": "CH108745828384",
+            "NUMERO": "3962",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 106,
+            "SUPERFICIE_RF": 106
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542788.307,
+                  1152031.561
+                ],
+                [
+                  2542786.637,
+                  1152023.331
+                ],
+                [
+                  2542799.068,
+                  1152020.83
+                ],
+                [
+                  2542800.777,
+                  1152029.021
+                ],
+                [
+                  2542788.307,
+                  1152031.561
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH528743834533",
+          "attributes": {
+            "EGRID": "CH528743834533",
+            "NUMERO": "4423",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 414,
+            "SUPERFICIE_RF": 414
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542832.336,
+                  1152074.563
+                ],
+                [
+                  2542838.306,
+                  1152075.083
+                ],
+                [
+                  2542846.116,
+                  1152076.293
+                ],
+                [
+                  2542879.315,
+                  1152092.504
+                ],
+                [
+                  2542878.475,
+                  1152096.424
+                ],
+                [
+                  2542840.135,
+                  1152088.204
+                ],
+                [
+                  2542832.336,
+                  1152074.563
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH454383874558",
+          "attributes": {
+            "EGRID": "CH454383874558",
+            "NUMERO": "DP 202",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "DP communal",
+            "SUPERFICIE_MO": 889,
+            "SUPERFICIE_RF": null
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542637.513,
+                  1151869.894
+                ],
+                [
+                  2542614.153,
+                  1151848.413
+                ],
+                [
+                  2542621.393,
+                  1151845.0219999999
+                ],
+                [
+                  2542606.744,
+                  1151818.361
+                ],
+                [
+                  2542602.775,
+                  1151811.121
+                ],
+                [
+                  2542580.496,
+                  1151780.479
+                ],
+                [
+                  2542579.1859999998,
+                  1151777.949
+                ],
+                [
+                  2542575.696,
+                  1151771.479
+                ],
+                [
+                  2542577.566,
+                  1151765.338
+                ],
+                [
+                  2542581.6859999998,
+                  1151762.2179999999
+                ],
+                [
+                  2542593.306,
+                  1151761.258
+                ],
+                [
+                  2542611.587,
+                  1151757.607
+                ],
+                [
+                  2542616.357,
+                  1151756.427
+                ],
+                [
+                  2542622.1859999998,
+                  1151759.947
+                ],
+                [
+                  2542615.426,
+                  1151760.977
+                ],
+                [
+                  2542604.556,
+                  1151762.608
+                ],
+                [
+                  2542594.906,
+                  1151764.248
+                ],
+                [
+                  2542592.646,
+                  1151764.788
+                ],
+                [
+                  2542589.296,
+                  1151765.548
+                ],
+                [
+                  2542586.726,
+                  1151766.2280000001
+                ],
+                [
+                  2542582.9560000002,
+                  1151773.429
+                ],
+                [
+                  2542606.085,
+                  1151808.71
+                ],
+                [
+                  2542608.185,
+                  1151812.131
+                ],
+                [
+                  2542626.224,
+                  1151841.462
+                ],
+                [
+                  2542629.623,
+                  1151844.902
+                ],
+                [
+                  2542634.943,
+                  1151856.463
+                ],
+                [
+                  2542637.513,
+                  1151869.894
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH538387459816",
+          "attributes": {
+            "EGRID": "CH538387459816",
+            "NUMERO": "4021",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 1324,
+            "SUPERFICIE_RF": 1324
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542658.275,
+                  1151804.499
+                ],
+                [
+                  2542637.825,
+                  1151792.299
+                ],
+                [
+                  2542616.316,
+                  1151779.428
+                ],
+                [
+                  2542595.616,
+                  1151771.388
+                ],
+                [
+                  2542592.646,
+                  1151764.788
+                ],
+                [
+                  2542594.906,
+                  1151764.248
+                ],
+                [
+                  2542604.556,
+                  1151762.608
+                ],
+                [
+                  2542615.426,
+                  1151760.977
+                ],
+                [
+                  2542622.1859999998,
+                  1151759.947
+                ],
+                [
+                  2542643.516,
+                  1151773.798
+                ],
+                [
+                  2542666.296,
+                  1151782.948
+                ],
+                [
+                  2542661.415,
+                  1151796.079
+                ],
+                [
+                  2542658.275,
+                  1151804.499
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH468783454381",
+          "attributes": {
+            "EGRID": "CH468783454381",
+            "NUMERO": "4023",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 1598,
+            "SUPERFICIE_RF": 1598
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542802.972,
+                  1151897.393
+                ],
+                [
+                  2542771.942,
+                  1151886.573
+                ],
+                [
+                  2542761.552,
+                  1151882.953
+                ],
+                [
+                  2542741.303,
+                  1151875.902
+                ],
+                [
+                  2542732.933,
+                  1151872.992
+                ],
+                [
+                  2542747.513,
+                  1151859.451
+                ],
+                [
+                  2542748.223,
+                  1151854.511
+                ],
+                [
+                  2542752.373,
+                  1151855.461
+                ],
+                [
+                  2542762.943,
+                  1151857.901
+                ],
+                [
+                  2542800.833,
+                  1151866.651
+                ],
+                [
+                  2542802.972,
+                  1151897.393
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH938387458488",
+          "attributes": {
+            "EGRID": "CH938387458488",
+            "NUMERO": "4040",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 2069,
+            "SUPERFICIE_RF": 2069
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542724.362,
+                  1151881.173
+                ],
+                [
+                  2542728.453,
+                  1151877.153
+                ],
+                [
+                  2542754.422,
+                  1151902.234
+                ],
+                [
+                  2542770.871,
+                  1151912.314
+                ],
+                [
+                  2542811.791,
+                  1151937.405
+                ],
+                [
+                  2542812.67,
+                  1151962.1469999999
+                ],
+                [
+                  2542788.869,
+                  1151967.597
+                ],
+                [
+                  2542786.719,
+                  1151967.287
+                ],
+                [
+                  2542766.131,
+                  1151934.336
+                ],
+                [
+                  2542760.791,
+                  1151918.925
+                ],
+                [
+                  2542749.352,
+                  1151902.614
+                ],
+                [
+                  2542741.622,
+                  1151896.924
+                ],
+                [
+                  2542734.052,
+                  1151900.084
+                ],
+                [
+                  2542724.362,
+                  1151881.173
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH698307334514",
+          "attributes": {
+            "EGRID": "CH698307334514",
+            "NUMERO": "5858",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 877,
+            "SUPERFICIE_RF": 877
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542888.758,
+                  1151850.233
+                ],
+                [
+                  2542871.621,
+                  1151868.3530000001
+                ],
+                [
+                  2542849.731,
+                  1151865.176
+                ],
+                [
+                  2542851.003,
+                  1151855.313
+                ],
+                [
+                  2542848.227,
+                  1151852.686
+                ],
+                [
+                  2542868.585,
+                  1151831.153
+                ],
+                [
+                  2542888.758,
+                  1151850.233
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH260783459031",
+          "attributes": {
+            "EGRID": "CH260783459031",
+            "NUMERO": "5850",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 5668,
+            "SUPERFICIE_RF": 5668
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542853.144,
+                  1151905.977
+                ],
+                [
+                  2542857.3422407107,
+                  1151908.7974244724
+                ],
+                [
+                  2542861.8490181174,
+                  1151911.0928496355
+                ],
+                [
+                  2542866.599,
+                  1151912.83
+                ],
+                [
+                  2542873.313,
+                  1151914.506
+                ],
+                [
+                  2542881.393,
+                  1151916.411
+                ],
+                [
+                  2542889.713,
+                  1151919.025
+                ],
+                [
+                  2542892.321,
+                  1151920.13
+                ],
+                [
+                  2542900.406,
+                  1151923.636
+                ],
+                [
+                  2542908.177,
+                  1151927.794
+                ],
+                [
+                  2542916.539,
+                  1151933.715
+                ],
+                [
+                  2542913.201,
+                  1151934.763
+                ],
+                [
+                  2542894.591,
+                  1151940.494
+                ],
+                [
+                  2542877.231,
+                  1151945.675
+                ],
+                [
+                  2542859.92,
+                  1151950.385
+                ],
+                [
+                  2542842.63,
+                  1151954.956
+                ],
+                [
+                  2542825.21,
+                  1151959.046
+                ],
+                [
+                  2542812.67,
+                  1151962.1469999999
+                ],
+                [
+                  2542811.791,
+                  1151937.405
+                ],
+                [
+                  2542770.871,
+                  1151912.314
+                ],
+                [
+                  2542754.422,
+                  1151902.234
+                ],
+                [
+                  2542728.453,
+                  1151877.153
+                ],
+                [
+                  2542732.933,
+                  1151872.992
+                ],
+                [
+                  2542741.303,
+                  1151875.902
+                ],
+                [
+                  2542761.552,
+                  1151882.953
+                ],
+                [
+                  2542771.942,
+                  1151886.573
+                ],
+                [
+                  2542802.972,
+                  1151897.393
+                ],
+                [
+                  2542805.157,
+                  1151898.155
+                ],
+                [
+                  2542805.157,
+                  1151905.4679999999
+                ],
+                [
+                  2542853.144,
+                  1151905.977
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH928784834513",
+          "attributes": {
+            "EGRID": "CH928784834513",
+            "NUMERO": "DP 36",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "DP cantonal",
+            "SUPERFICIE_MO": 11428,
+            "SUPERFICIE_RF": null
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542908.076,
+                  1151757.503
+                ],
+                [
+                  2542912.816,
+                  1151758.244
+                ],
+                [
+                  2542932.586,
+                  1151760.355
+                ],
+                [
+                  2542947.266,
+                  1151761.476
+                ],
+                [
+                  2542944.065,
+                  1151774.535
+                ],
+                [
+                  2542945.485,
+                  1151785.235
+                ],
+                [
+                  2542930.345,
+                  1151783.934
+                ],
+                [
+                  2542910.446,
+                  1151781.942
+                ],
+                [
+                  2542890.576,
+                  1151779.621
+                ],
+                [
+                  2542870.806,
+                  1151776.829
+                ],
+                [
+                  2542866.236,
+                  1151776.339
+                ],
+                [
+                  2542859.7060000002,
+                  1151775.158
+                ],
+                [
+                  2542851.086,
+                  1151773.678
+                ],
+                [
+                  2542831.367,
+                  1151769.816
+                ],
+                [
+                  2542811.817,
+                  1151765.785
+                ],
+                [
+                  2542808.937,
+                  1151765.215
+                ],
+                [
+                  2542788.537,
+                  1151760.355
+                ],
+                [
+                  2542781.667,
+                  1151758.795
+                ],
+                [
+                  2542765.207,
+                  1151754.595
+                ],
+                [
+                  2542742.157,
+                  1151748.285
+                ],
+                [
+                  2542715.227,
+                  1151740.825
+                ],
+                [
+                  2542692.298,
+                  1151734.065
+                ],
+                [
+                  2542685.869,
+                  1151732.227
+                ],
+                [
+                  2542676.238,
+                  1151729.475
+                ],
+                [
+                  2542672.758,
+                  1151728.495
+                ],
+                [
+                  2542673.068,
+                  1151727.584
+                ],
+                [
+                  2542673.408,
+                  1151726.594
+                ],
+                [
+                  2542638.338,
+                  1151717.814
+                ],
+                [
+                  2542636.938,
+                  1151721.525
+                ],
+                [
+                  2542631.398,
+                  1151719.435
+                ],
+                [
+                  2542560.408,
+                  1151700.805
+                ],
+                [
+                  2542522.478,
+                  1151696.006
+                ],
+                [
+                  2542533.78,
+                  1151656.494
+                ],
+                [
+                  2542563.6890000002,
+                  1151667.863
+                ],
+                [
+                  2542591.719,
+                  1151679.493
+                ],
+                [
+                  2542635.509,
+                  1151687.633
+                ],
+                [
+                  2542636.739,
+                  1151687.003
+                ],
+                [
+                  2542643.839,
+                  1151683.552
+                ],
+                [
+                  2542644.9390000002,
+                  1151683.612
+                ],
+                [
+                  2542650.449,
+                  1151685.682
+                ],
+                [
+                  2542651.559,
+                  1151686.912
+                ],
+                [
+                  2542651.889,
+                  1151688.7719999999
+                ],
+                [
+                  2542664.759,
+                  1151694.033
+                ],
+                [
+                  2542673.6890000002,
+                  1151700.933
+                ],
+                [
+                  2542674.789,
+                  1151704.243
+                ],
+                [
+                  2542698.958,
+                  1151711.373
+                ],
+                [
+                  2542722.158,
+                  1151718.163
+                ],
+                [
+                  2542745.088,
+                  1151724.633
+                ],
+                [
+                  2542768.168,
+                  1151730.773
+                ],
+                [
+                  2542791.398,
+                  1151736.624
+                ],
+                [
+                  2542814.657,
+                  1151742.056
+                ],
+                [
+                  2542834.147,
+                  1151746.257
+                ],
+                [
+                  2542853.767,
+                  1151749.799
+                ],
+                [
+                  2542864.587,
+                  1151751.88
+                ],
+                [
+                  2542873.357,
+                  1151753.23
+                ],
+                [
+                  2542893.096,
+                  1151755.942
+                ],
+                [
+                  2542908.076,
+                  1151757.503
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH389083450705",
+          "attributes": {
+            "EGRID": "CH389083450705",
+            "NUMERO": "5854",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 7070,
+            "SUPERFICIE_RF": 7070
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542888.758,
+                  1151850.233
+                ],
+                [
+                  2542868.585,
+                  1151831.153
+                ],
+                [
+                  2542833.444,
+                  1151797.916
+                ],
+                [
+                  2542842.116,
+                  1151792.346
+                ],
+                [
+                  2542852.4359999998,
+                  1151787.677
+                ],
+                [
+                  2542860.046,
+                  1151783.458
+                ],
+                [
+                  2542866.236,
+                  1151776.339
+                ],
+                [
+                  2542870.806,
+                  1151776.829
+                ],
+                [
+                  2542890.576,
+                  1151779.621
+                ],
+                [
+                  2542910.446,
+                  1151781.942
+                ],
+                [
+                  2542930.345,
+                  1151783.934
+                ],
+                [
+                  2542945.485,
+                  1151785.235
+                ],
+                [
+                  2542946.715,
+                  1151792.745
+                ],
+                [
+                  2542953.055,
+                  1151807.555
+                ],
+                [
+                  2542950.864,
+                  1151817.834
+                ],
+                [
+                  2542952.604,
+                  1151823.194
+                ],
+                [
+                  2542952.8140000002,
+                  1151829.304
+                ],
+                [
+                  2542951.204,
+                  1151839.443
+                ],
+                [
+                  2542942.414,
+                  1151844.642
+                ],
+                [
+                  2542942.194,
+                  1151847.002
+                ],
+                [
+                  2542948.763,
+                  1151861.952
+                ],
+                [
+                  2542951.683,
+                  1151873.102
+                ],
+                [
+                  2542960.463,
+                  1151883.412
+                ],
+                [
+                  2542961.022,
+                  1151890.202
+                ],
+                [
+                  2542964.102,
+                  1151894.952
+                ],
+                [
+                  2542964.892,
+                  1151898.592
+                ],
+                [
+                  2542962.892,
+                  1151902.2820000001
+                ],
+                [
+                  2542960.102,
+                  1151906.871
+                ],
+                [
+                  2542960.472,
+                  1151918.412
+                ],
+                [
+                  2542949.642,
+                  1151922.262
+                ],
+                [
+                  2542953.722,
+                  1151898.831
+                ],
+                [
+                  2542947.963,
+                  1151882.981
+                ],
+                [
+                  2542936.103,
+                  1151863.161
+                ],
+                [
+                  2542934.734,
+                  1151851.502
+                ],
+                [
+                  2542935.071,
+                  1151850.384
+                ],
+                [
+                  2542888.758,
+                  1151850.233
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH138388457470",
+          "attributes": {
+            "EGRID": "CH138388457470",
+            "NUMERO": "4429",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "DDP superficie",
+            "SUPERFICIE_MO": 456,
+            "SUPERFICIE_RF": 0
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542828.366,
+                  1152067.623
+                ],
+                [
+                  2542846.116,
+                  1152076.293
+                ],
+                [
+                  2542879.315,
+                  1152092.504
+                ],
+                [
+                  2542878.475,
+                  1152096.424
+                ],
+                [
+                  2542840.135,
+                  1152088.204
+                ],
+                [
+                  2542832.336,
+                  1152074.563
+                ],
+                [
+                  2542828.366,
+                  1152067.623
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH898387854540",
+          "attributes": {
+            "EGRID": "CH898387854540",
+            "NUMERO": "DP 206",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "DP communal",
+            "SUPERFICIE_MO": 563,
+            "SUPERFICIE_RF": null
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542859.7060000002,
+                  1151775.158
+                ],
+                [
+                  2542866.236,
+                  1151776.339
+                ],
+                [
+                  2542860.046,
+                  1151783.458
+                ],
+                [
+                  2542852.4359999998,
+                  1151787.677
+                ],
+                [
+                  2542842.116,
+                  1151792.346
+                ],
+                [
+                  2542833.444,
+                  1151797.916
+                ],
+                [
+                  2542831.576,
+                  1151799.116
+                ],
+                [
+                  2542821.605,
+                  1151806.437
+                ],
+                [
+                  2542812.515,
+                  1151813.988
+                ],
+                [
+                  2542803.335,
+                  1151822.808
+                ],
+                [
+                  2542799.515,
+                  1151826.479
+                ],
+                [
+                  2542797.8140000002,
+                  1151831.149
+                ],
+                [
+                  2542784.865,
+                  1151824.809
+                ],
+                [
+                  2542789.115,
+                  1151824.379
+                ],
+                [
+                  2542794.615,
+                  1151821.618
+                ],
+                [
+                  2542808.485,
+                  1151809.527
+                ],
+                [
+                  2542817.756,
+                  1151801.817
+                ],
+                [
+                  2542827.996,
+                  1151794.316
+                ],
+                [
+                  2542838.766,
+                  1151787.366
+                ],
+                [
+                  2542849.846,
+                  1151782.217
+                ],
+                [
+                  2542856.256,
+                  1151778.758
+                ],
+                [
+                  2542859.7060000002,
+                  1151775.158
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH398307904542",
+          "attributes": {
+            "EGRID": "CH398307904542",
+            "NUMERO": "5853",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 2925,
+            "SUPERFICIE_RF": 2925
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542799.114,
+                  1151842.02
+                ],
+                [
+                  2542801.084,
+                  1151835.229
+                ],
+                [
+                  2542797.8140000002,
+                  1151831.149
+                ],
+                [
+                  2542799.515,
+                  1151826.479
+                ],
+                [
+                  2542803.335,
+                  1151822.808
+                ],
+                [
+                  2542812.515,
+                  1151813.988
+                ],
+                [
+                  2542821.605,
+                  1151806.437
+                ],
+                [
+                  2542831.576,
+                  1151799.116
+                ],
+                [
+                  2542833.444,
+                  1151797.916
+                ],
+                [
+                  2542868.585,
+                  1151831.153
+                ],
+                [
+                  2542848.227,
+                  1151852.686
+                ],
+                [
+                  2542851.003,
+                  1151855.313
+                ],
+                [
+                  2542849.731,
+                  1151865.176
+                ],
+                [
+                  2542830.612,
+                  1151871.295
+                ],
+                [
+                  2542822.265,
+                  1151861.252
+                ],
+                [
+                  2542799.114,
+                  1151842.02
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH374507908328",
+          "attributes": {
+            "EGRID": "CH374507908328",
+            "NUMERO": "5852",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 4647,
+            "SUPERFICIE_RF": 4647
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542888.758,
+                  1151850.233
+                ],
+                [
+                  2542935.071,
+                  1151850.384
+                ],
+                [
+                  2542934.734,
+                  1151851.502
+                ],
+                [
+                  2542936.103,
+                  1151863.161
+                ],
+                [
+                  2542947.963,
+                  1151882.981
+                ],
+                [
+                  2542953.722,
+                  1151898.831
+                ],
+                [
+                  2542949.642,
+                  1151922.262
+                ],
+                [
+                  2542947.532,
+                  1151923.012
+                ],
+                [
+                  2542930.531,
+                  1151929.323
+                ],
+                [
+                  2542916.539,
+                  1151933.715
+                ],
+                [
+                  2542908.177,
+                  1151927.794
+                ],
+                [
+                  2542900.406,
+                  1151923.636
+                ],
+                [
+                  2542892.321,
+                  1151920.13
+                ],
+                [
+                  2542889.713,
+                  1151919.025
+                ],
+                [
+                  2542889.714,
+                  1151884.493
+                ],
+                [
+                  2542871.621,
+                  1151868.3530000001
+                ],
+                [
+                  2542888.758,
+                  1151850.233
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH356083074567",
+          "attributes": {
+            "EGRID": "CH356083074567",
+            "NUMERO": "5869",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "DDP superficie",
+            "SUPERFICIE_MO": 3210,
+            "SUPERFICIE_RF": 3210
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542739.796,
+                  1151903.388
+                ],
+                [
+                  2542780.339,
+                  1151968.277
+                ],
+                [
+                  2542721.299,
+                  1151976.579
+                ],
+                [
+                  2542719.259,
+                  1151976.699
+                ],
+                [
+                  2542707.769,
+                  1151962.618
+                ],
+                [
+                  2542696.074,
+                  1151938.426
+                ],
+                [
+                  2542739.171,
+                  1151918.045
+                ],
+                [
+                  2542731.091,
+                  1151907.505
+                ],
+                [
+                  2542739.796,
+                  1151903.388
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH858483874576",
+          "attributes": {
+            "EGRID": "CH858483874576",
+            "NUMERO": "4417",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 1007,
+            "SUPERFICIE_RF": 1007
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542676.238,
+                  1151729.475
+                ],
+                [
+                  2542669.167,
+                  1151753.976
+                ],
+                [
+                  2542647.737,
+                  1151744.546
+                ],
+                [
+                  2542645.667,
+                  1151747.256
+                ],
+                [
+                  2542635.387,
+                  1151740.496
+                ],
+                [
+                  2542632.037,
+                  1151739.916
+                ],
+                [
+                  2542631.897,
+                  1151734.285
+                ],
+                [
+                  2542636.938,
+                  1151721.525
+                ],
+                [
+                  2542638.338,
+                  1151717.814
+                ],
+                [
+                  2542673.408,
+                  1151726.594
+                ],
+                [
+                  2542673.068,
+                  1151727.584
+                ],
+                [
+                  2542672.758,
+                  1151728.495
+                ],
+                [
+                  2542676.238,
+                  1151729.475
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH968783459058",
+          "attributes": {
+            "EGRID": "CH968783459058",
+            "NUMERO": "DP 205",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "DP communal",
+            "SUPERFICIE_MO": 823,
+            "SUPERFICIE_RF": null
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542622.1859999998,
+                  1151759.947
+                ],
+                [
+                  2542624.167,
+                  1151757.057
+                ],
+                [
+                  2542626.137,
+                  1151758.507
+                ],
+                [
+                  2542629.596,
+                  1151761.067
+                ],
+                [
+                  2542640.776,
+                  1151768.777
+                ],
+                [
+                  2542647.896,
+                  1151771.167
+                ],
+                [
+                  2542668.143,
+                  1151779.133
+                ],
+                [
+                  2542679.699,
+                  1151783.68
+                ],
+                [
+                  2542694.006,
+                  1151789.308
+                ],
+                [
+                  2542755.445,
+                  1151813.308
+                ],
+                [
+                  2542776.015,
+                  1151821.349
+                ],
+                [
+                  2542784.865,
+                  1151824.809
+                ],
+                [
+                  2542797.8140000002,
+                  1151831.149
+                ],
+                [
+                  2542801.084,
+                  1151835.229
+                ],
+                [
+                  2542799.114,
+                  1151842.02
+                ],
+                [
+                  2542774.345,
+                  1151824.659
+                ],
+                [
+                  2542666.296,
+                  1151782.948
+                ],
+                [
+                  2542643.516,
+                  1151773.798
+                ],
+                [
+                  2542622.1859999998,
+                  1151759.947
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH768783458534",
+          "attributes": {
+            "EGRID": "CH768783458534",
+            "NUMERO": "4022",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 5919,
+            "SUPERFICIE_RF": 5919
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542658.275,
+                  1151804.499
+                ],
+                [
+                  2542661.415,
+                  1151796.079
+                ],
+                [
+                  2542666.296,
+                  1151782.948
+                ],
+                [
+                  2542774.345,
+                  1151824.659
+                ],
+                [
+                  2542759.934,
+                  1151834.65
+                ],
+                [
+                  2542750.594,
+                  1151841.13
+                ],
+                [
+                  2542748.223,
+                  1151854.511
+                ],
+                [
+                  2542747.513,
+                  1151859.451
+                ],
+                [
+                  2542732.933,
+                  1151872.992
+                ],
+                [
+                  2542728.453,
+                  1151877.153
+                ],
+                [
+                  2542724.362,
+                  1151881.173
+                ],
+                [
+                  2542721.143,
+                  1151874.813
+                ],
+                [
+                  2542714.653,
+                  1151865.882
+                ],
+                [
+                  2542706.953,
+                  1151858.492
+                ],
+                [
+                  2542697.033,
+                  1151852.012
+                ],
+                [
+                  2542686.493,
+                  1151848.372
+                ],
+                [
+                  2542675.514,
+                  1151847.122
+                ],
+                [
+                  2542653.033,
+                  1151847.962
+                ],
+                [
+                  2542656.414,
+                  1151819.96
+                ],
+                [
+                  2542658.275,
+                  1151804.499
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH538387458529",
+          "attributes": {
+            "EGRID": "CH538387458529",
+            "NUMERO": "4028",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 3478,
+            "SUPERFICIE_RF": 3478
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542859.7060000002,
+                  1151775.158
+                ],
+                [
+                  2542856.256,
+                  1151778.758
+                ],
+                [
+                  2542849.846,
+                  1151782.217
+                ],
+                [
+                  2542838.766,
+                  1151787.366
+                ],
+                [
+                  2542827.996,
+                  1151794.316
+                ],
+                [
+                  2542817.756,
+                  1151801.817
+                ],
+                [
+                  2542808.485,
+                  1151809.527
+                ],
+                [
+                  2542794.615,
+                  1151821.618
+                ],
+                [
+                  2542789.115,
+                  1151824.379
+                ],
+                [
+                  2542784.865,
+                  1151824.809
+                ],
+                [
+                  2542776.015,
+                  1151821.349
+                ],
+                [
+                  2542755.445,
+                  1151813.308
+                ],
+                [
+                  2542758.205,
+                  1151807.558
+                ],
+                [
+                  2542763.596,
+                  1151796.367
+                ],
+                [
+                  2542773.216,
+                  1151776.366
+                ],
+                [
+                  2542781.667,
+                  1151758.795
+                ],
+                [
+                  2542788.537,
+                  1151760.355
+                ],
+                [
+                  2542808.937,
+                  1151765.215
+                ],
+                [
+                  2542811.817,
+                  1151765.785
+                ],
+                [
+                  2542831.367,
+                  1151769.816
+                ],
+                [
+                  2542851.086,
+                  1151773.678
+                ],
+                [
+                  2542859.7060000002,
+                  1151775.158
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH968783458860",
+          "attributes": {
+            "EGRID": "CH968783458860",
+            "NUMERO": "DP 37",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "DP communal",
+            "SUPERFICIE_MO": 4964,
+            "SUPERFICIE_RF": null
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542637.513,
+                  1151869.894
+                ],
+                [
+                  2542644.593,
+                  1151872.344
+                ],
+                [
+                  2542650.782,
+                  1151876.824
+                ],
+                [
+                  2542662.942,
+                  1151888.904
+                ],
+                [
+                  2542671.187,
+                  1151898.563
+                ],
+                [
+                  2542649.202,
+                  1151917.328
+                ],
+                [
+                  2542645.051,
+                  1151912.426
+                ],
+                [
+                  2542628.602,
+                  1151896.415
+                ],
+                [
+                  2542622.942,
+                  1151893.815
+                ],
+                [
+                  2542618.962,
+                  1151894.995
+                ],
+                [
+                  2542615.572,
+                  1151891.395
+                ],
+                [
+                  2542611.892,
+                  1151888.025
+                ],
+                [
+                  2542609.782,
+                  1151883.755
+                ],
+                [
+                  2542605.652,
+                  1151878.555
+                ],
+                [
+                  2542589.023,
+                  1151866.384
+                ],
+                [
+                  2542572.493,
+                  1151856.814
+                ],
+                [
+                  2542552.613,
+                  1151848.384
+                ],
+                [
+                  2542533.643,
+                  1151842.133
+                ],
+                [
+                  2542510.733,
+                  1151836.384
+                ],
+                [
+                  2542509.334,
+                  1151833.213
+                ],
+                [
+                  2542504.034,
+                  1151821.233
+                ],
+                [
+                  2542503.324,
+                  1151819.643
+                ],
+                [
+                  2542497.334,
+                  1151806.102
+                ],
+                [
+                  2542509.914,
+                  1151809.472
+                ],
+                [
+                  2542523.864,
+                  1151813.202
+                ],
+                [
+                  2542545.464,
+                  1151818.942
+                ],
+                [
+                  2542547.534,
+                  1151821.5320000001
+                ],
+                [
+                  2542556.144,
+                  1151822.962
+                ],
+                [
+                  2542586.524,
+                  1151834.822
+                ],
+                [
+                  2542614.153,
+                  1151848.413
+                ],
+                [
+                  2542637.513,
+                  1151869.894
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH874587818338",
+          "attributes": {
+            "EGRID": "CH874587818338",
+            "NUMERO": "4019",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 3970,
+            "SUPERFICIE_RF": 3970
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542724.362,
+                  1151881.173
+                ],
+                [
+                  2542734.052,
+                  1151900.084
+                ],
+                [
+                  2542741.622,
+                  1151896.924
+                ],
+                [
+                  2542749.352,
+                  1151902.614
+                ],
+                [
+                  2542760.791,
+                  1151918.925
+                ],
+                [
+                  2542766.131,
+                  1151934.336
+                ],
+                [
+                  2542786.719,
+                  1151967.287
+                ],
+                [
+                  2542780.339,
+                  1151968.277
+                ],
+                [
+                  2542721.299,
+                  1151976.579
+                ],
+                [
+                  2542719.259,
+                  1151976.699
+                ],
+                [
+                  2542707.769,
+                  1151962.618
+                ],
+                [
+                  2542696.074,
+                  1151938.426
+                ],
+                [
+                  2542739.171,
+                  1151918.045
+                ],
+                [
+                  2542731.091,
+                  1151907.505
+                ],
+                [
+                  2542719.911,
+                  1151885.551
+                ],
+                [
+                  2542724.362,
+                  1151881.173
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH528785834543",
+          "attributes": {
+            "EGRID": "CH528785834543",
+            "NUMERO": "4026",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 1719,
+            "SUPERFICIE_RF": 1719
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542685.869,
+                  1151732.227
+                ],
+                [
+                  2542680.635,
+                  1151750.363
+                ],
+                [
+                  2542690.964,
+                  1151754.314
+                ],
+                [
+                  2542679.699,
+                  1151783.68
+                ],
+                [
+                  2542668.143,
+                  1151779.133
+                ],
+                [
+                  2542647.896,
+                  1151771.167
+                ],
+                [
+                  2542640.776,
+                  1151768.777
+                ],
+                [
+                  2542629.596,
+                  1151761.067
+                ],
+                [
+                  2542626.137,
+                  1151758.507
+                ],
+                [
+                  2542624.167,
+                  1151757.057
+                ],
+                [
+                  2542635.387,
+                  1151740.496
+                ],
+                [
+                  2542645.667,
+                  1151747.256
+                ],
+                [
+                  2542647.737,
+                  1151744.546
+                ],
+                [
+                  2542669.167,
+                  1151753.976
+                ],
+                [
+                  2542676.238,
+                  1151729.475
+                ],
+                [
+                  2542685.869,
+                  1151732.227
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH474507978370",
+          "attributes": {
+            "EGRID": "CH474507978370",
+            "NUMERO": "5855",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 5013,
+            "SUPERFICIE_RF": 5013
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542637.513,
+                  1151869.894
+                ],
+                [
+                  2542634.943,
+                  1151856.463
+                ],
+                [
+                  2542629.623,
+                  1151844.902
+                ],
+                [
+                  2542635.043,
+                  1151847.642
+                ],
+                [
+                  2542640.923,
+                  1151848.382
+                ],
+                [
+                  2542653.033,
+                  1151847.962
+                ],
+                [
+                  2542675.514,
+                  1151847.122
+                ],
+                [
+                  2542686.493,
+                  1151848.372
+                ],
+                [
+                  2542697.033,
+                  1151852.012
+                ],
+                [
+                  2542706.953,
+                  1151858.492
+                ],
+                [
+                  2542714.653,
+                  1151865.882
+                ],
+                [
+                  2542721.143,
+                  1151874.813
+                ],
+                [
+                  2542724.362,
+                  1151881.173
+                ],
+                [
+                  2542719.911,
+                  1151885.551
+                ],
+                [
+                  2542731.091,
+                  1151907.505
+                ],
+                [
+                  2542739.171,
+                  1151918.045
+                ],
+                [
+                  2542696.074,
+                  1151938.426
+                ],
+                [
+                  2542694.46,
+                  1151935.087
+                ],
+                [
+                  2542685.5609999998,
+                  1151918.286
+                ],
+                [
+                  2542674.961,
+                  1151902.985
+                ],
+                [
+                  2542671.187,
+                  1151898.563
+                ],
+                [
+                  2542662.942,
+                  1151888.904
+                ],
+                [
+                  2542650.782,
+                  1151876.824
+                ],
+                [
+                  2542644.593,
+                  1151872.344
+                ],
+                [
+                  2542637.513,
+                  1151869.894
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH600745138350",
+          "attributes": {
+            "EGRID": "CH600745138350",
+            "NUMERO": "5861",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "DDP superficie",
+            "SUPERFICIE_MO": 4875,
+            "SUPERFICIE_RF": 4875
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542679.699,
+                  1151783.68
+                ],
+                [
+                  2542690.964,
+                  1151754.314
+                ],
+                [
+                  2542680.635,
+                  1151750.363
+                ],
+                [
+                  2542685.869,
+                  1151732.227
+                ],
+                [
+                  2542692.298,
+                  1151734.065
+                ],
+                [
+                  2542715.227,
+                  1151740.825
+                ],
+                [
+                  2542742.157,
+                  1151748.285
+                ],
+                [
+                  2542765.207,
+                  1151754.595
+                ],
+                [
+                  2542781.667,
+                  1151758.795
+                ],
+                [
+                  2542773.216,
+                  1151776.366
+                ],
+                [
+                  2542763.596,
+                  1151796.367
+                ],
+                [
+                  2542758.205,
+                  1151807.558
+                ],
+                [
+                  2542755.445,
+                  1151813.308
+                ],
+                [
+                  2542694.006,
+                  1151789.308
+                ],
+                [
+                  2542679.699,
+                  1151783.68
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH259083074567",
+          "attributes": {
+            "EGRID": "CH259083074567",
+            "NUMERO": "5851",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 1764,
+            "SUPERFICIE_RF": 1764
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542799.114,
+                  1151842.02
+                ],
+                [
+                  2542822.265,
+                  1151861.252
+                ],
+                [
+                  2542830.612,
+                  1151871.295
+                ],
+                [
+                  2542835.825,
+                  1151878.842
+                ],
+                [
+                  2542842.468,
+                  1151895.188
+                ],
+                [
+                  2542853.144,
+                  1151905.977
+                ],
+                [
+                  2542805.157,
+                  1151905.4679999999
+                ],
+                [
+                  2542805.157,
+                  1151898.155
+                ],
+                [
+                  2542802.972,
+                  1151897.393
+                ],
+                [
+                  2542800.833,
+                  1151866.651
+                ],
+                [
+                  2542799.114,
+                  1151842.02
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH485383458717",
+          "attributes": {
+            "EGRID": "CH485383458717",
+            "NUMERO": "4024",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 1373,
+            "SUPERFICIE_RF": 1373
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542774.345,
+                  1151824.659
+                ],
+                [
+                  2542799.114,
+                  1151842.02
+                ],
+                [
+                  2542800.833,
+                  1151866.651
+                ],
+                [
+                  2542762.943,
+                  1151857.901
+                ],
+                [
+                  2542752.373,
+                  1151855.461
+                ],
+                [
+                  2542748.223,
+                  1151854.511
+                ],
+                [
+                  2542750.594,
+                  1151841.13
+                ],
+                [
+                  2542759.934,
+                  1151834.65
+                ],
+                [
+                  2542774.345,
+                  1151824.659
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH414553838783",
+          "attributes": {
+            "EGRID": "CH414553838783",
+            "NUMERO": "DP 295",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "DP cantonal",
+            "SUPERFICIE_MO": 4826,
+            "SUPERFICIE_RF": null
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542832.336,
+                  1152074.563
+                ],
+                [
+                  2542840.135,
+                  1152088.204
+                ],
+                [
+                  2542878.475,
+                  1152096.424
+                ],
+                [
+                  2542879.315,
+                  1152092.504
+                ],
+                [
+                  2542846.116,
+                  1152076.293
+                ],
+                [
+                  2542850.356,
+                  1152076.953
+                ],
+                [
+                  2542862.016,
+                  1152079.823
+                ],
+                [
+                  2542873.576,
+                  1152083.643
+                ],
+                [
+                  2542884.815,
+                  1152088.563
+                ],
+                [
+                  2542895.525,
+                  1152094.463
+                ],
+                [
+                  2542905.695,
+                  1152100.944
+                ],
+                [
+                  2542916.305,
+                  1152109.074
+                ],
+                [
+                  2542928.3140000002,
+                  1152119.794
+                ],
+                [
+                  2542929.004,
+                  1152120.58
+                ],
+                [
+                  2542912.086,
+                  1152127.638
+                ],
+                [
+                  2542901.761,
+                  1152119.068
+                ],
+                [
+                  2542858.627,
+                  1152115.333
+                ],
+                [
+                  2542859.4809385934,
+                  1152113.9261666732
+                ],
+                [
+                  2542860.084992367,
+                  1152112.3953139142
+                ],
+                [
+                  2542860.4218043652,
+                  1152110.7844294338
+                ],
+                [
+                  2542860.4816965903,
+                  1152109.1398005842
+                ],
+                [
+                  2542860.2629480925,
+                  1152107.5086843327
+                ],
+                [
+                  2542859.7718444173,
+                  1152105.9379493736
+                ],
+                [
+                  2542859.0224969983,
+                  1152104.472729398
+                ],
+                [
+                  2542858.0364376763,
+                  1152103.1551262164
+                ],
+                [
+                  2542856.842,
+                  1152102.023
+                ],
+                [
+                  2542855.0225974447,
+                  1152100.410903286
+                ],
+                [
+                  2542853.0038253437,
+                  1152099.056783395
+                ],
+                [
+                  2542850.822,
+                  1152097.985
+                ],
+                [
+                  2542846.610873029,
+                  1152096.4971112385
+                ],
+                [
+                  2542842.273408429,
+                  1152095.4323088264
+                ],
+                [
+                  2542837.852,
+                  1152094.801
+                ],
+                [
+                  2542829.011278492,
+                  1152093.890019958
+                ],
+                [
+                  2542820.131,
+                  1152093.531
+                ],
+                [
+                  2542811.2539665047,
+                  1152093.785001624
+                ],
+                [
+                  2542802.394,
+                  1152094.391
+                ],
+                [
+                  2542791.7012143955,
+                  1152095.6079724596
+                ],
+                [
+                  2542781.048,
+                  1152097.133
+                ],
+                [
+                  2542762.848,
+                  1152080.069
+                ],
+                [
+                  2542762.615,
+                  1152080.104
+                ],
+                [
+                  2542749.2060000002,
+                  1152069.214
+                ],
+                [
+                  2542741.146,
+                  1152063.714
+                ],
+                [
+                  2542736.876,
+                  1152061.234
+                ],
+                [
+                  2542732.426,
+                  1152058.824
+                ],
+                [
+                  2542727.876,
+                  1152056.914
+                ],
+                [
+                  2542723.126,
+                  1152055.104
+                ],
+                [
+                  2542718.346,
+                  1152053.554
+                ],
+                [
+                  2542715.316,
+                  1152052.704
+                ],
+                [
+                  2542713.826,
+                  1152052.294
+                ],
+                [
+                  2542708.976,
+                  1152051.054
+                ],
+                [
+                  2542704.036,
+                  1152050.174
+                ],
+                [
+                  2542699.356,
+                  1152049.704
+                ],
+                [
+                  2542693.966,
+                  1152049.184
+                ],
+                [
+                  2542737.967,
+                  1152022.151
+                ],
+                [
+                  2542746.147,
+                  1152034.912
+                ],
+                [
+                  2542759.086,
+                  1152051.913
+                ],
+                [
+                  2542770.776,
+                  1152065.383
+                ],
+                [
+                  2542788.946,
+                  1152076.164
+                ],
+                [
+                  2542801.066,
+                  1152074.784
+                ],
+                [
+                  2542813.1859999998,
+                  1152074.053
+                ],
+                [
+                  2542826.226,
+                  1152074.043
+                ],
+                [
+                  2542832.336,
+                  1152074.563
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH698387894596",
+          "attributes": {
+            "EGRID": "CH698387894596",
+            "NUMERO": "DP 39",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "DP cantonal",
+            "SUPERFICIE_MO": 20953,
+            "SUPERFICIE_RF": null
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542916.539,
+                  1151933.715
+                ],
+                [
+                  2542930.531,
+                  1151929.323
+                ],
+                [
+                  2542947.532,
+                  1151923.012
+                ],
+                [
+                  2542949.642,
+                  1151922.262
+                ],
+                [
+                  2542960.472,
+                  1151918.412
+                ],
+                [
+                  2542960.612,
+                  1151922.632
+                ],
+                [
+                  2542961.651,
+                  1151930.602
+                ],
+                [
+                  2542967.371,
+                  1151948.734
+                ],
+                [
+                  2542962.461,
+                  1151950.584
+                ],
+                [
+                  2542945.59,
+                  1151956.454
+                ],
+                [
+                  2542928.3,
+                  1151962.425
+                ],
+                [
+                  2542912,
+                  1151967.815
+                ],
+                [
+                  2542894.73,
+                  1151972.966
+                ],
+                [
+                  2542877.329,
+                  1151978.017
+                ],
+                [
+                  2542859.819,
+                  1151982.467
+                ],
+                [
+                  2542842.389,
+                  1151986.838
+                ],
+                [
+                  2542822.709,
+                  1151991.508
+                ],
+                [
+                  2542802.449,
+                  1151996.049
+                ],
+                [
+                  2542801.709,
+                  1151995.569
+                ],
+                [
+                  2542782.358,
+                  1152007.11
+                ],
+                [
+                  2542737.967,
+                  1152022.151
+                ],
+                [
+                  2542693.966,
+                  1152049.184
+                ],
+                [
+                  2542688.966,
+                  1152049.034
+                ],
+                [
+                  2542684.4359999998,
+                  1152049.144
+                ],
+                [
+                  2542669.566,
+                  1152050.084
+                ],
+                [
+                  2542636.746,
+                  1152052.145
+                ],
+                [
+                  2542626.856,
+                  1152052.905
+                ],
+                [
+                  2542616.836,
+                  1152054.065
+                ],
+                [
+                  2542575.408,
+                  1151992.152
+                ],
+                [
+                  2542588.348,
+                  1151994.712
+                ],
+                [
+                  2542615.649,
+                  1151979.841
+                ],
+                [
+                  2542622.099,
+                  1151973.43
+                ],
+                [
+                  2542623.449,
+                  1151975.7
+                ],
+                [
+                  2542640.199,
+                  1151965.019
+                ],
+                [
+                  2542648.279,
+                  1151959.279
+                ],
+                [
+                  2542654.96,
+                  1151952.878
+                ],
+                [
+                  2542658.59,
+                  1151946.908
+                ],
+                [
+                  2542658.1,
+                  1151936.787
+                ],
+                [
+                  2542656.651,
+                  1151928.3969999999
+                ],
+                [
+                  2542651.681,
+                  1151920.256
+                ],
+                [
+                  2542649.202,
+                  1151917.328
+                ],
+                [
+                  2542671.187,
+                  1151898.563
+                ],
+                [
+                  2542674.961,
+                  1151902.985
+                ],
+                [
+                  2542685.5609999998,
+                  1151918.286
+                ],
+                [
+                  2542694.46,
+                  1151935.087
+                ],
+                [
+                  2542696.074,
+                  1151938.426
+                ],
+                [
+                  2542707.769,
+                  1151962.618
+                ],
+                [
+                  2542719.259,
+                  1151976.699
+                ],
+                [
+                  2542721.299,
+                  1151976.579
+                ],
+                [
+                  2542780.339,
+                  1151968.277
+                ],
+                [
+                  2542786.719,
+                  1151967.287
+                ],
+                [
+                  2542788.869,
+                  1151967.597
+                ],
+                [
+                  2542812.67,
+                  1151962.1469999999
+                ],
+                [
+                  2542825.21,
+                  1151959.046
+                ],
+                [
+                  2542842.63,
+                  1151954.956
+                ],
+                [
+                  2542859.92,
+                  1151950.385
+                ],
+                [
+                  2542877.231,
+                  1151945.675
+                ],
+                [
+                  2542894.591,
+                  1151940.494
+                ],
+                [
+                  2542913.201,
+                  1151934.763
+                ],
+                [
+                  2542916.539,
+                  1151933.715
+                ]
+              ]
+            ]
+          }
+        },
+        {
+          "egrid": "CH874587858326",
+          "attributes": {
+            "EGRID": "CH874587858326",
+            "NUMERO": "3961",
+            "NO_COM_FED": 5606,
+            "GENRE_TXT": "parcelle privée",
+            "SUPERFICIE_MO": 26871,
+            "SUPERFICIE_RF": 26871
+          },
+          "reference_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  2542832.336,
+                  1152074.563
+                ],
+                [
+                  2542826.226,
+                  1152074.043
+                ],
+                [
+                  2542813.1859999998,
+                  1152074.053
+                ],
+                [
+                  2542801.066,
+                  1152074.784
+                ],
+                [
+                  2542788.946,
+                  1152076.164
+                ],
+                [
+                  2542770.776,
+                  1152065.383
+                ],
+                [
+                  2542759.086,
+                  1152051.913
+                ],
+                [
+                  2542746.147,
+                  1152034.912
+                ],
+                [
+                  2542737.967,
+                  1152022.151
+                ],
+                [
+                  2542782.358,
+                  1152007.11
+                ],
+                [
+                  2542801.709,
+                  1151995.569
+                ],
+                [
+                  2542802.449,
+                  1151996.049
+                ],
+                [
+                  2542822.709,
+                  1151991.508
+                ],
+                [
+                  2542842.389,
+                  1151986.838
+                ],
+                [
+                  2542859.819,
+                  1151982.467
+                ],
+                [
+                  2542877.329,
+                  1151978.017
+                ],
+                [
+                  2542894.73,
+                  1151972.966
+                ],
+                [
+                  2542912,
+                  1151967.815
+                ],
+                [
+                  2542928.3,
+                  1151962.425
+                ],
+                [
+                  2542945.59,
+                  1151956.454
+                ],
+                [
+                  2542962.461,
+                  1151950.584
+                ],
+                [
+                  2542967.371,
+                  1151948.734
+                ],
+                [
+                  2542969.48,
+                  1151955.394
+                ],
+                [
+                  2542970.52,
+                  1151958.704
+                ],
+                [
+                  2542975.39,
+                  1151976.745
+                ],
+                [
+                  2542983.519,
+                  1151984.405
+                ],
+                [
+                  2542983.1890000002,
+                  1152008.377
+                ],
+                [
+                  2542993.748,
+                  1152018.127
+                ],
+                [
+                  2542996.028,
+                  1152023.748
+                ],
+                [
+                  2542991.698,
+                  1152028.458
+                ],
+                [
+                  2542988.818,
+                  1152034.868
+                ],
+                [
+                  2542990.747,
+                  1152043.259
+                ],
+                [
+                  2542991.987,
+                  1152046.089
+                ],
+                [
+                  2542985.117,
+                  1152054.67
+                ],
+                [
+                  2542987.296,
+                  1152066.45
+                ],
+                [
+                  2542987.526,
+                  1152075.391
+                ],
+                [
+                  2542988.9359999998,
+                  1152089.132
+                ],
+                [
+                  2542996.045,
+                  1152100.012
+                ],
+                [
+                  2542997.285,
+                  1152102.482
+                ],
+                [
+                  2542975.844,
+                  1152128.744
+                ],
+                [
+                  2542972.074,
+                  1152146.165
+                ],
+                [
+                  2542958.843,
+                  1152154.566
+                ],
+                [
+                  2542934.764,
+                  1152127.145
+                ],
+                [
+                  2542929.004,
+                  1152120.58
+                ],
+                [
+                  2542928.3140000002,
+                  1152119.794
+                ],
+                [
+                  2542916.305,
+                  1152109.074
+                ],
+                [
+                  2542905.695,
+                  1152100.944
+                ],
+                [
+                  2542895.525,
+                  1152094.463
+                ],
+                [
+                  2542884.815,
+                  1152088.563
+                ],
+                [
+                  2542873.576,
+                  1152083.643
+                ],
+                [
+                  2542862.016,
+                  1152079.823
+                ],
+                [
+                  2542850.356,
+                  1152076.953
+                ],
+                [
+                  2542846.116,
+                  1152076.293
+                ],
+                [
+                  2542838.306,
+                  1152075.083
+                ],
+                [
+                  2542832.336,
+                  1152074.563
+                ]
+              ],
+              [
+                [
+                  2542788.307,
+                  1152031.561
+                ],
+                [
+                  2542800.777,
+                  1152029.021
+                ],
+                [
+                  2542799.068,
+                  1152020.83
+                ],
+                [
+                  2542786.637,
+                  1152023.331
+                ],
+                [
+                  2542788.307,
+                  1152031.561
+                ]
+              ]
+            ]
+          }
+        }
+      ],
+      "invalid_reference_envelope_overlap": false
+    }
+  ],
+  "semantics": "A mapped planning territory whose destination was not defined in the source dossier. The yellow diagonal crosshatch is distinct from strategic reserve, viticulture and plain green/agricultural territory. It is not evidence of current availability, capacity, buildability or entitlement.",
+  "reservation": "Manual approximate historical cartographic depiction only, all boundaries uncertain. Undefined destination is not strategic reserve, current availability, capacity or entitlement. Candidate applicability of named suspended approvals unresolved. Missing FA/DB annexes retained. Contextual parcel intersections confer no planning rights.",
+  "independent_geographic_decision": "accepted_private_historical_cartographic_depiction_only",
+  "independent_proof": {
+    "path": "../lutry-qa/candidate-independent-decision.json",
+    "sha256": "c689cf8dd2cc43568c20fd4d9fd5e5b157017530b5e4d11147e1cb12609ef4b5",
+    "content": {
+      "decision": "accepted_bounded_private_historical_cartographic_depiction_only",
+      "candidate_sha256": "60e16ea1fa8f3883184827724956a13d568219ed4c44cfaa625f18bc6ebeae81",
+      "source_precision_m": null,
+      "whole_source_hull_review": "source-grid-independent.json",
+      "exact_official_reframe_vertices_replayed": 32,
+      "replay_max_delta_m": 0.0,
+      "reference_count_verified": 64,
+      "reference_response_sha256": "7db56b5c2c52304729fdf0f5a1f53f4286625c0dece1de468552cf97911329cd",
+      "reference_types": {
+        "parcelle privée": 47,
+        "DP communal": 7,
+        "DP cantonal": 7,
+        "DDP superficie": 3
+      },
+      "positive_contextual_intersections": 32,
+      "distinct_egrids": 32,
+      "independent_geographic_context": "Original topographic road network west/south and watercourse east correspond broadly to current official DP39/DP37/DP36/DP214 reference context, inspected without fitting or snapping. Internal parcel subdivisions differ. No independent cadastral precision claim.",
+      "limitations": [
+        "Manual approximate cartographic transition tracing, not exact visible fill or policy boundary",
+        "Grid residual5.5667mRMSE is internal scan diagnostic only; source precision unknown",
+        "Three suspended-sector approval reservations unresolved as to applicability",
+        "No parcel rights, capacity, current release or commune completion established"
+      ],
+      "reference_geometry_field_note": "Input pairs.geometry stores whole official reference parcels, not overlap geometry. Runtime must recompute exact intersection and must not persist whole parcel as overlap. Independently reconstructed all32membership/areas.",
+      "qualified_release_authorized": false
+    }
+  },
+  "reference_geometry_semantics": "expected_pairs reference_geometry is whole official reference object; runtime computes positive-area ST_Intersection for delivered overlap"
+}
