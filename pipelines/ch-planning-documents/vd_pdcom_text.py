@@ -26,8 +26,14 @@ def require(ok, reason):
 
 def validate_review(r):
     uuid.UUID(r['vd_document_id'])
-    require(r['source_role'] == 'approved_main', 'only_approved_main_supported')
+    require(r['source_role'] in ('approved_main','approved_amendment'), 'only_reviewed_approved_source_roles_supported')
+    if r['source_role']=='approved_amendment':
+        scope=r.get('amendment_scope',{})
+        require(bool(scope.get('predecessor')) and bool(scope.get('replaced_part')) and bool(scope.get('approved_scope')) and scope.get('replaces_entire_plan') is False, 'explicit_limited_amendment_scope_required')
     require(r['plan_status'] in ('approved', 'approved_with_reservation'), 'approval_required')
+    if r['plan_status']=='approved_with_reservation':
+        reservations=r.get('reservations')
+        require(isinstance(reservations,list) and bool(reservations) and all(isinstance(v,dict) and bool(v.get('scope')) and isinstance(v.get('evidence_pdf_pages'),list) and bool(v['evidence_pdf_pages']) and all(isinstance(n,int) and 1<=n<=r['page_count'] for n in v['evidence_pdf_pages']) for v in reservations), 'explicit_reservation_scope_and_evidence_required')
     require(r['canton'] == 'VD' and isinstance(r['commune_bfs'], int), 'explicit_vd_scope_required')
     require(urlparse(r['source_url']).scheme == 'https' and urlparse(r['source_url']).hostname == r['official_host'], 'official_source_url_mismatch')
     require(r['signed_approval']['visually_verified'] is True and bool(r['signed_approval']['scope']), 'approval_scope_review_required')
@@ -60,7 +66,11 @@ def assemble(review, pages, byte_count):
                   'commune_bfs': review['commune_bfs'], 'approval_scope': review['signed_approval'],
                   'all_prose_is_binding': False, 'diagnostic_vintage_limit': review['diagnostic_vintage_limit'],
                   'limits': review['limits'], 'spatial_qualification': False, 'commune_complete': False,
-                  'source_role': 'approved_main', 'plan_status': review['plan_status'], 'review_sha256': digest(review)}
+                  'source_role': review['source_role'], 'plan_status': review['plan_status'], 'review_sha256': digest(review)}
+    if review['source_role']=='approved_amendment':
+        provenance['amendment_scope']=review['amendment_scope']
+    if review['plan_status']=='approved_with_reservation':
+        provenance['reservations']=review['reservations']
     chunks = []
     for p in pages:
         for start in range(0, len(p['text']), 2000):

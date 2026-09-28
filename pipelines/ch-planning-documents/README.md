@@ -143,8 +143,13 @@ monitor-attempt UUID; prior failure/completion logs are retained unchanged.
 The bridge requires PyMuPDF from the existing `vd-pdcom` runtime in addition to
 this parser's dependencies. Unit tests cover approval scope, provenance conflicts,
 exact bytes, physical-page gaps and deterministic replay. Its caller must preserve
-the approved review file and the same operation ID; supplements require their own
-review and cannot inherit main-document approval. This delivers searchable source
+the approved review file and the same operation ID; supplements cannot inherit main-document approval. A separately signed approved
+replacement chapter can use `source_role=approved_amendment` only with explicit
+predecessor, replaced part, approved scope and `replaces_entire_plan=false`; that
+limited scope and the original approval dates travel in every chunk. An
+`approved_with_reservation` source also requires a nonempty explicit reservation
+scope and physical evidence-page list, copied into every document and chunk. Unapproved
+action programmes and consultation supplements remain rejected. This delivers searchable source
 text, not extracted legal rules, current capacity, qualified geometry or commune
 completion.
 

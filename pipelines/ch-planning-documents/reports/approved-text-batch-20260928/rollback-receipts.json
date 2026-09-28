@@ -1,0 +1,112 @@
+{
+  "morges": {
+    "first": {
+      "documents_new": 1,
+      "chunks_new": 207,
+      "document_id": "b7c39cc5-674e-593d-b90f-40c24a873954",
+      "version_id": "433e4ccf-8480-52d9-ae44-d6ebe2b01a56",
+      "physical_pages": 144,
+      "searchable_chunks": 207,
+      "empty_native_text_pages": [
+        4,
+        104,
+        143
+      ],
+      "spatial_increment": 0,
+      "national_complete": false
+    },
+    "second": {
+      "documents_new": 0,
+      "chunks_new": 0,
+      "document_id": "b7c39cc5-674e-593d-b90f-40c24a873954",
+      "version_id": "433e4ccf-8480-52d9-ae44-d6ebe2b01a56",
+      "physical_pages": 144,
+      "searchable_chunks": 207,
+      "empty_native_text_pages": [
+        4,
+        104,
+        143
+      ],
+      "spatial_increment": 0,
+      "national_complete": false
+    },
+    "receiver": {
+      "knowledge_documents": 1,
+      "knowledge_chunks": 207
+    },
+    "rollback_no_rows_remain": true,
+    "review_sha256": "9a34a0dbec663ecb7e0adeffb502864521d4a630e22a67ed8c6c514e48c63ad6",
+    "image_only_pages": [
+      104,
+      143
+    ],
+    "blank_native_pages": [
+      4
+    ]
+  },
+  "epalinges": {
+    "first": {
+      "documents_new": 1,
+      "chunks_new": 139,
+      "document_id": "3ae59c11-a367-511f-acba-1b8a5fcb8c30",
+      "version_id": "b48318c7-acac-5849-b70d-b8ef961a5165",
+      "physical_pages": 108,
+      "searchable_chunks": 139,
+      "empty_native_text_pages": [
+        4,
+        8,
+        12,
+        26,
+        28,
+        30,
+        32,
+        98,
+        104,
+        106
+      ],
+      "spatial_increment": 0,
+      "national_complete": false
+    },
+    "second": {
+      "documents_new": 0,
+      "chunks_new": 0,
+      "document_id": "3ae59c11-a367-511f-acba-1b8a5fcb8c30",
+      "version_id": "b48318c7-acac-5849-b70d-b8ef961a5165",
+      "physical_pages": 108,
+      "searchable_chunks": 139,
+      "empty_native_text_pages": [
+        4,
+        8,
+        12,
+        26,
+        28,
+        30,
+        32,
+        98,
+        104,
+        106
+      ],
+      "spatial_increment": 0,
+      "national_complete": false
+    },
+    "receiver": {
+      "knowledge_documents": 1,
+      "knowledge_chunks": 139
+    },
+    "rollback_no_rows_remain": true,
+    "review_sha256": "2aea395cf8c34a794befdef82ee901895c948d8e2b538ccadf90f5447f2ad274",
+    "image_only_pages": [],
+    "blank_native_pages": [
+      4,
+      8,
+      12,
+      26,
+      28,
+      30,
+      32,
+      98,
+      104,
+      106
+    ]
+  }
+}

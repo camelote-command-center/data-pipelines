@@ -30,7 +30,25 @@ class CorpusContractTests(unittest.TestCase):
   with self.assertRaisesRegex(ValueError,'no_searchable_text'):m.assemble(self.r,self.pages,123)
  def test_supplement_cannot_inherit_approval(self):
   self.r['source_role']='action_programmes'
-  with self.assertRaisesRegex(ValueError,'approved_main'):m.assemble(self.r,self.pages,123)
+  with self.assertRaisesRegex(ValueError,'approved_source_roles'):m.assemble(self.r,self.pages,123)
+ def test_amendment_preserves_limited_scope_everywhere(self):
+  self.r['source_role']='approved_amendment';self.r['amendment_scope']={'predecessor':'PDCom2012','replaced_part':'chapter5 mobility','approved_scope':'approved mobility chapter only','replaces_entire_plan':False}
+  b=m.assemble(self.r,self.pages,123)
+  for meta in [b['metadata']]+[c['metadata']for c in b['chunks']]:
+   self.assertEqual(meta['source_role'],'approved_amendment');self.assertEqual(meta['amendment_scope'],self.r['amendment_scope']);self.assertFalse(meta['all_prose_is_binding'])
+ def test_amendment_cannot_inherit_whole_main_approval(self):
+  self.r['source_role']='approved_amendment'
+  with self.assertRaisesRegex(ValueError,'limited_amendment_scope'):m.assemble(self.r,self.pages,123)
+  self.r['amendment_scope']={'predecessor':'oldplan','replaced_part':'chapter5','approved_scope':'mobility','replaces_entire_plan':True}
+  with self.assertRaisesRegex(ValueError,'limited_amendment_scope'):m.assemble(self.r,self.pages,123)
+ def test_reserved_approval_requires_explicit_scope_evidence(self):
+  self.r['plan_status']='approved_with_reservation'
+  with self.assertRaisesRegex(ValueError,'reservation_scope_and_evidence'):m.assemble(self.r,self.pages,123)
+  self.r['reservations']=[{'scope':'chapter2.2 only','evidence_pdf_pages':[]}]
+  with self.assertRaisesRegex(ValueError,'reservation_scope_and_evidence'):m.assemble(self.r,self.pages,123)
+  self.r['reservations'][0]['evidence_pdf_pages']=[3]
+  b=m.assemble(self.r,self.pages,123)
+  for meta in [b['metadata']]+[c['metadata']for c in b['chunks']]:self.assertEqual(meta['reservations'],self.r['reservations'])
  def test_approval_provenance_required(self):
   self.r['signed_approval']['visually_verified']=False
   with self.assertRaisesRegex(ValueError,'approval_scope'):m.assemble(self.r,self.pages,123)
