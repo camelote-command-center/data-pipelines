@@ -1,0 +1,32 @@
+{
+  "operation_id": "143a8629-0db2-43d7-bde0-344f8872f399",
+  "actual_monitor_rehearsal": [
+    "partial",
+    1,
+    153,
+    true
+  ],
+  "running_transition_entire_dataset_unchanged": true,
+  "trigger_owned_fields": {
+    "ch_planning_document_text": {
+      "last_acquired_at": null,
+      "last_db_update_at": "2026-09-27T22:14:22.74555+00:00",
+      "next_acquisition_at": null,
+      "record_count": 12308,
+      "last_error": null,
+      "status": "active",
+      "updated_at": "2026-09-27T22:14:23.113821+00:00"
+    },
+    "ch_planning_documents": {
+      "last_acquired_at": "2026-09-15T10:44:13.383355+00:00",
+      "last_db_update_at": "2026-09-15T10:44:13.383369+00:00",
+      "next_acquisition_at": "2027-09-15T10:44:13.383355+00:00",
+      "record_count": 111505,
+      "last_error": null,
+      "status": "active",
+      "updated_at": "2026-09-15T10:44:13.296853+00:00"
+    }
+  },
+  "entire_dataset_rows_unchanged": true,
+  "rollback_no_log_remains": true
+}

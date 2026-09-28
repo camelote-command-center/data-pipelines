@@ -1,0 +1,58 @@
+{
+  "operation_id": "143a8629-0db2-43d7-bde0-344f8872f399",
+  "first": {
+    "documents_new": 1,
+    "chunks_new": 223,
+    "document_id": "7472fdcd-c14f-5fe5-9348-4e2e5ec3a313",
+    "version_id": "23fefd2b-5ff7-5037-8a59-a6298bd7cc03",
+    "physical_pages": 153,
+    "searchable_chunks": 223,
+    "empty_native_text_pages": [
+      2,
+      4,
+      104,
+      107,
+      146,
+      150,
+      152,
+      153
+    ],
+    "spatial_increment": 0,
+    "national_complete": false
+  },
+  "second": {
+    "documents_new": 0,
+    "chunks_new": 0,
+    "document_id": "7472fdcd-c14f-5fe5-9348-4e2e5ec3a313",
+    "version_id": "23fefd2b-5ff7-5037-8a59-a6298bd7cc03",
+    "physical_pages": 153,
+    "searchable_chunks": 223,
+    "empty_native_text_pages": [
+      2,
+      4,
+      104,
+      107,
+      146,
+      150,
+      152,
+      153
+    ],
+    "spatial_increment": 0,
+    "national_complete": false
+  },
+  "receiver_scoped_rehearsal": {
+    "knowledge_documents": 1,
+    "knowledge_chunks": 223
+  },
+  "rollback_no_rows_remain": true,
+  "classifier_triggers_restored": [
+    [
+      "knowledge_ch.documents",
+      "O"
+    ],
+    [
+      "knowledge_ch.chunks",
+      "O"
+    ]
+  ]
+}

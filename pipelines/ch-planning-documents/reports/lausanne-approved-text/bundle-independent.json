@@ -1,0 +1,30 @@
+{
+  "decision": "passed_source_and_bundle_text_qa",
+  "review_sha256": "9f4ec4a2f91f54b3f7506573eedb9c1c8886996f8ff68f2c1808ef3bbef82da9",
+  "review_semantic_digest": "b43a25b64ed1db923176012a17d4af424390161d2699a31f748042e8d320c14b",
+  "source_sha256": "a298cdfa07477f5c31258f2c735730d75f26b3103e4ab3e2eb1c36af830e1b7d",
+  "document_id": "7472fdcd-c14f-5fe5-9348-4e2e5ec3a313",
+  "version_id": "23fefd2b-5ff7-5037-8a59-a6298bd7cc03",
+  "source_id": "c07f30a5-4948-56c8-866b-cee577126b95",
+  "physical_pages": 153,
+  "native_text_pages": 145,
+  "chunks": 223,
+  "all_page_text_exact_fresh_source": true,
+  "all_non_whitespace_characters_covered_without_additions": true,
+  "physical_page_citations": true,
+  "image_only_gaps": [
+    104,
+    107,
+    153
+  ],
+  "blank_pages": [
+    2,
+    4,
+    146,
+    150,
+    152
+  ],
+  "per_chunk_limited_approval_vintage_spatial_caveats": true,
+  "no_fake_approval_transcription": true,
+  "database_rehearsal_and_receiver_qa_pending": true
+}
