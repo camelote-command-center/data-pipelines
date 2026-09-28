@@ -104,3 +104,68 @@ Default runs always fetch the current catalog; successful downloads younger than
 Schema: `supabase/migrations/20260913145910_ch_planning_documents.sql` (RE-LLM only).
 Rollback is to disable this workflow and pause this dataset, retaining audit data.
 Never truncate or delete existing knowledge or receiver tables for rollback.
+
+## Reviewed municipal VD corpus bridge
+
+`vd_pdcom_text.py` is a separately scoped bridge for an explicitly reviewed approved
+municipal PDCom PDF already registered in `bronze_ch.vd_pdcom_documents`. It reads
+hash-bound local bytes (including PDFs exceeding the national fetch cap); it does
+not change national discovery, download limits, extraction or publisher defaults.
+`source=vd_pdcom_municipal` and the actual municipal publisher preserve provenance.
+The first reviewed source is `reports/lausanne-approved-text/review.json`.
+
+`build_bundle(pdf_path, review)` retains every physical page, exact native text,
+empty/image-only status and original page citations. Only nonempty native text
+becomes searchable chunks. Page status and signed approval scope, historic
+statistical limits and lack of spatial qualification accompany documents and
+all chunks. `partial_native_text` is deliberately not complete visual/OCR coverage;
+`ingestion_status=completed` means the native-text ingestion operation completed.
+Image-only gaps remain explicit, including approval images reviewed separately.
+
+`persist(connection, bundle, operation_id, pdf_path)` rebuilds from exact PDF
+bytes before writing, checks current registered URL/hash/status/page count/BFS,
+and verifies same-ID provenance on replay. It does not commit. Rehearse twice in
+one transaction and roll back; check no rows remain and classifiers are restored.
+Unexpected classifier state and an active older version of the same URL fail
+closed pending explicit reviewed supersession. No unrelated source is deactivated.
+
+`deliver(connection, document_id)` checks the existing active LIA sync manifest
+and exact source/foreign columns, then updates/inserts only that document and its
+chunks. It never calls the global truncating sync or expands geographic routes.
+Direct Lamap full-field readback remains required after commit. The companion
+`monitor` function uses the registered text dataset's acquisition log, reporting
+this bounded run as `partial`; it restores legacy log-trigger changes to the
+exact locked dataset freshness/count/status fields in the same transaction,
+then verifies them. It never advances national freshness or coverage. Source and receiver commits must be reported separately on failure;
+exact replay safely resumes the same source operation/document IDs with a new
+monitor-attempt UUID; prior failure/completion logs are retained unchanged.
+
+The bridge requires PyMuPDF from the existing `vd-pdcom` runtime in addition to
+this parser's dependencies. Unit tests cover approval scope, provenance conflicts,
+exact bytes, physical-page gaps and deterministic replay. Its caller must preserve
+the approved review file and the same operation ID; supplements require their own
+review and cannot inherit main-document approval. This delivers searchable source
+text, not extracted legal rules, current capacity, qualified geometry or commune
+completion.
+
+Reproducible invocation (inject registered routes as environment variables; never
+write their values to reports). Default rehearses source and optional receiver
+twice in one transaction and rolls back. Add `--commit` only for a reviewed live
+operation; this requires `PIXXELS_DB_URL` and a distinct `--monitor-id UUID`,
+and writes a scoped acquisition log. For retry keep `--operation-id` stable, use
+a new monitor ID, and preserve the previous log rather than resetting its status.
+
+```sh
+python pipelines/ch-planning-documents/vd_pdcom_text.py \
+  --pdf /approved/project/path/approved.pdf \
+  --review pipelines/ch-planning-documents/reports/lausanne-approved-text/review.json \
+  --operation-id EXISTING_OPERATION_UUID --deliver \
+  --report /approved/project/path/text-receipt.json
+```
+
+`RE_LLM_DB_URL` is the registered source session-pooler route. Receiver access uses
+its already registered FDW; the command does not accept an arbitrary receiver.
+`PIXXELS_DB_URL` is the registered monitor route. Run outside Desktop/Documents;
+keep reports and PDF under the approved local project root. A failed commit/monitor
+acknowledgment remains an explicit failure requiring scoped readback, never an
+assumed successful receiver delivery.
