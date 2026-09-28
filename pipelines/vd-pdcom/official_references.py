@@ -15,12 +15,25 @@ def validate(response,count,bfs):
         seen.add(e)
     return response['features']
 
-def refresh(conn,document_id,bfs,bounds):
+ARC_CONTEXT={'document_id':'e2072261-5391-5a80-9708-001fad9e56fb','source_sha256':'e55a18076cbc2ca67fe2042fdb76565f0edba400fc72beb444ab70ee7fe7a8c5','source_communes':[5583,5624],'contextual_commune':5635}
+def validate_context_declaration(document_id,bfs,declaration):
+    if declaration!=ARC_CONTEXT or str(document_id)!=ARC_CONTEXT['document_id'] or bfs!=5635:raise ValueError('unreviewed_contextual_reference_scope')
+
+def refresh(conn,document_id,bfs,bounds,*,context_declaration=None):
     if len(bounds)!=4 or not (0<bounds[2]-bounds[0]<=2000 and 0<bounds[3]-bounds[1]<=2000):raise ValueError('reference_extent_too_large')
     with conn,conn.cursor() as c:
-        c.execute('''SELECT count(*) FROM bronze_ch.vd_pdcom_document_communes dc JOIN bronze_ch.vd_pdcom_communes c USING(commune_bfs)
-                     WHERE dc.document_id=%s AND dc.commune_bfs=%s AND c.is_current''',(document_id,bfs))
-        if c.fetchone()[0]!=1:raise ValueError('reference_scope_not_current')
+        if context_declaration is None:
+            c.execute('''SELECT count(*) FROM bronze_ch.vd_pdcom_document_communes dc JOIN bronze_ch.vd_pdcom_communes c USING(commune_bfs)
+                         WHERE dc.document_id=%s AND dc.commune_bfs=%s AND c.is_current''',(document_id,bfs))
+            if c.fetchone()[0]!=1:raise ValueError('reference_scope_not_current')
+        else:
+            validate_context_declaration(document_id,bfs,context_declaration)
+            c.execute('SELECT sha256 FROM bronze_ch.vd_pdcom_documents WHERE id=%s',(document_id,))
+            if c.fetchone()!=(context_declaration['source_sha256'],):raise ValueError('context_reference_source_changed')
+            c.execute('SELECT dc.commune_bfs,c.is_current FROM bronze_ch.vd_pdcom_document_communes dc JOIN bronze_ch.vd_pdcom_communes c USING(commune_bfs) WHERE dc.document_id=%s ORDER BY dc.commune_bfs',(document_id,))
+            if c.fetchall()!=[(5583,True),(5624,True)]:raise ValueError('context_reference_document_scope_changed')
+            c.execute('SELECT is_current FROM bronze_ch.vd_pdcom_communes WHERE commune_bfs=%s',(bfs,))
+            if c.fetchone()!=(True,):raise ValueError('context_reference_commune_not_current')
     params={'geometry':','.join(map(str,bounds)),'geometryType':'esriGeometryEnvelope','inSR':2056,'spatialRel':'esriSpatialRelIntersects','where':f'NO_COM_FED={int(bfs)}'}
     cr=requests.get(URL,params={**params,'returnCountOnly':'true','f':'json'},timeout=(15,60));cr.raise_for_status();count=cr.json().get('count')
     fr=requests.get(URL,params={**params,'outFields':'EGRID,NUMERO,NO_COM_FED,GENRE_TXT,SUPERFICIE_MO,SUPERFICIE_RF','outSR':2056,'f':'geojson'},timeout=(15,60));fr.raise_for_status()
@@ -38,4 +51,4 @@ def refresh(conn,document_id,bfs,bounds):
         c.execute('''SELECT count(*),bool_and(ST_Intersects(r.geom,s.bounds)) FROM bronze_ch.vd_pdcom_parcel_references r JOIN bronze_ch.vd_pdcom_parcel_reference_snapshots s ON s.id=r.snapshot_id WHERE r.snapshot_id=%s''',(sid,))
         actual,within=c.fetchone()
         if actual!=count or not within:raise ValueError('persisted_reference_count_or_extent_mismatch')
-    return {'snapshot_id':sid,'count':count,'query_url':fr.url,'response_sha256':sha}
+    return {'snapshot_id':sid,'count':count,'query_url':fr.url,'response_sha256':sha,**({'contextual_reference_only':context_declaration,'document_communes_unchanged':True} if context_declaration is not None else {})}
