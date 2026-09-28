@@ -1,0 +1,55 @@
+{
+  "vd_document_id": "8f42da46-9b59-5b72-aa5b-13522e418682",
+  "source_sha256": "bd095d80d2284073a93ef7e108f89b083d32fb361c97b689809522b7b8f64c86",
+  "source_url": "https://www.epalinges.ch/wp-content/uploads/2025/04/2024_PDCom_Epalinges_cahier_II_signe_Chancelier.pdf",
+  "official_host": "www.epalinges.ch",
+  "publisher": "Commune d’Épalinges",
+  "title": "Épalinges — PDCom Cahier II opérationnel, 31 octobre 2022, approuvé avec réserve 5 juillet 2023",
+  "canton": "VD",
+  "commune_bfs": 5584,
+  "page_count": 108,
+  "source_role": "approved_main",
+  "plan_status": "approved_with_reservation",
+  "all_prose_is_binding": false,
+  "spatial_qualification": false,
+  "signed_approval": {
+    "pdf_page": 3,
+    "municipal": "2021-09-13",
+    "council": "2022-09-20",
+    "canton": "2023-07-05",
+    "visually_verified": true,
+    "scope": "Signed operational CahierII containing territorial project, guiding principles, measures and synthesis maps; explicit cantonal reservation applies to communal resizing principles chapter2.2 pages21–22. Not every diagnostic number or future measure is a binding private right.",
+    "reservation": "les principes communaux de redimensionnement de la zone d’habitation et mixte, tels qu’énoncés au chapitre 2.2 (pages 21 et 22).",
+    "reservation_pdf_pages": [
+      21,
+      22
+    ]
+  },
+  "diagnostic_vintage_limit": "Cover date31October2022; 2024 is dossier number, not approval year. Cantonal approval5July2023 with reservation does not make older capacity estimates, project statuses or horizon2036 projections current measurements or enforceable parcel capacity.",
+  "limits": [
+    "CahierII is the operative core identified on PDF9–10, not an unapproved technical supplement; CahierI diagnostic is not included by association.",
+    "Explicit cantonal reservation on chapter2.2 pages21–22 must remain on every chunk, especially historical housing/mixed-zone resizing statements.",
+    "PDF21 footnote says only the future PGA revision officially determines affected parcels; no parcel-specific rezoning or development-right claim.",
+    "Official current index states entry into force5July2023; publication alone does not establish every measure implemented or absence of later local revisions.",
+    "Source text is not spatial qualification, municipal completeness or current numeric rule extraction; preserve image-only/blank page accounting."
+  ],
+  "map_pages": [
+    22,
+    25,
+    27,
+    99,
+    100,
+    101,
+    102
+  ],
+  "reservations": [
+    {
+      "scope": "les principes communaux de redimensionnement de la zone d’habitation et mixte, tels qu’énoncés au chapitre 2.2 (pages 21 et 22).",
+      "evidence_pdf_pages": [
+        3,
+        21,
+        22
+      ]
+    }
+  ]
+}

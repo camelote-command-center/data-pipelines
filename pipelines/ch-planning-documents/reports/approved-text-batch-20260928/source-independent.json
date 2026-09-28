@@ -1,0 +1,20 @@
+[
+  {
+    "name": "morges",
+    "physical_pages": 144,
+    "native_text_pages": 141,
+    "chunks": 207,
+    "sha256": "129c5a3245eb2251af5f0a268934bf2294fa093796e621cf4dd71b588abe6456",
+    "all_raw_pages_and_chunk_characters_exact": true,
+    "scope_limits_present": true
+  },
+  {
+    "name": "epalinges",
+    "physical_pages": 108,
+    "native_text_pages": 98,
+    "chunks": 139,
+    "sha256": "bd095d80d2284073a93ef7e108f89b083d32fb361c97b689809522b7b8f64c86",
+    "all_raw_pages_and_chunk_characters_exact": true,
+    "scope_limits_present": true
+  }
+]

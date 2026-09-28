@@ -1,0 +1,50 @@
+{
+  "vd_document_id": "7e056f98-9415-5bf9-84cf-3a6108c003b0",
+  "source_sha256": "129c5a3245eb2251af5f0a268934bf2294fa093796e621cf4dd71b588abe6456",
+  "source_url": "https://www.morges.ch/media/document/3/pdcom-mobilites-rapport-v18-annexes-signe.pdf",
+  "official_host": "www.morges.ch",
+  "publisher": "Ville de Morges",
+  "title": "Morges — Plan directeur communal des mobilités, approuvé 17 mai 2023",
+  "canton": "VD",
+  "commune_bfs": 5642,
+  "page_count": 144,
+  "source_role": "approved_amendment",
+  "plan_status": "approved",
+  "all_prose_is_binding": false,
+  "spatial_qualification": false,
+  "signed_approval": {
+    "pdf_page": 104,
+    "municipal": "2021-06-07",
+    "council": "2022-09-07",
+    "canton": "2023-05-17",
+    "visually_verified": true,
+    "scope": "Approved municipal mobility planning document. Replaces only chapter5 Réseaux de déplacement et mobilité of the 2012 PDCom, not the entire municipal plan. Integrated annexes and diagnostics remain supporting context; not blanket private rights or proof every proposed action is outstanding."
+  },
+  "amendment_scope": {
+    "predecessor": "Morges PDCom adopted March2012 and approved October2012",
+    "replaced_part": "Chapter5 Réseaux de déplacement et mobilité",
+    "approved_scope": "Municipal mobility strategy and operational measures of PDCom des mobilités approved17May2023",
+    "replaces_entire_plan": false
+  },
+  "diagnostic_vintage_limit": "Cover January2019/version2 September2020/version2.1 April2021; amended council adoption2022 and cantonal approval2023 do not reset dates of transport counts, projections, historical implementation states or annex studies. PDF63 G.3 planned P+Rail opening end2020 is not a new unimplemented 2026 project.",
+  "limits": [
+    "Scope is the approved municipal mobility replacement chapter, not all land-use policies of the 2012 plan.",
+    "Official current index states in force; this does not certify every action current/unimplemented or parking tariffs unchanged.",
+    "Strategic modal principles and indicative map symbols do not establish parcel rights, cadastral geometry, construction capacities or site qualification.",
+    "Diagnostic tables, annexes and historical statistics remain source-vintage context; no all-prose-binding claim.",
+    "Image-only pages and native-text gaps remain explicit; no OCR success assumed."
+  ],
+  "map_pages": [
+    39,
+    47,
+    53,
+    54,
+    65,
+    71,
+    75,
+    81,
+    85,
+    91,
+    95
+  ]
+}
