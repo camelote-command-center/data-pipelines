@@ -1,0 +1,7 @@
+# Arc-en-Ciel historical coherent planning supports
+
+Pinned original unsigned map document e2072261-5391-5a80-9708-001fad9e56fb, modified 6 February 2009. Six exact original native network faces (A1/A2/B1/B2/D1/D2) are private historical gross planning supports, not current development rights or net land. The 2021 partial text amendment removed housing possibilities; old housing/CUS/SPB/capacity assertions are excluded. Signed-byte equivalence and current perimeter invariance remain unverified.
+
+Four frozen printed outer grid crossings establish the frame; 251 counted native grid crossings provide intrinsic consistency checks only. All six original faces are wholly inside that frame. Independent QA reconstructed original operators/active clips and sequentially replayed all 309 official REFRAME vertices. Source precision remains unknown, review required. Combined C faces and open E faces remain held without inferred subdivisions or closures.
+
+The complete official 486-object reference inventory yields 104 contextual intersections. Bussigny/Crissier remain the document scope; one D2 intersection with an Ecublens object is contextual only. The narrowly pinned reference declaration does not add a document commune. Runtime writes actual intersection geometry and rejects changed memberships/reference geometry. All source traces, datum receipts, semantic/currentness evidence, independent QA and held states are in batch.json.
