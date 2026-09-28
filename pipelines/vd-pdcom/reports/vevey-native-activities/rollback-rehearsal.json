@@ -1,0 +1,47 @@
+{
+  "result": {
+    "collections": 2,
+    "parcel_pairs": 92,
+    "candidates": [
+      {
+        "key": "tertiary",
+        "sector_id": "4c640e56-a797-5b63-b0dc-dc9613ceca71",
+        "parcel_pairs": 59
+      },
+      {
+        "key": "activities",
+        "sector_id": "786d8409-7321-5550-b840-1fd12b6dc000",
+        "parcel_pairs": 33
+      }
+    ],
+    "publication_status": "internal_review_only",
+    "review_status": "review_required"
+  },
+  "double_apply": true,
+  "double_registered_fdw_replay": true,
+  "delivery": {
+    "publication_status": "internal_review_only",
+    "receiver": "lamap_db",
+    "tables": {
+      "vd_pdcom_review_sectors": {
+        "rows": 181,
+        "mismatches": 0,
+        "valid_4326": true
+      },
+      "vd_pdcom_review_parcels": {
+        "rows": 5521,
+        "mismatches": 0,
+        "valid_4326": true
+      }
+    }
+  },
+  "committed": false,
+  "before": [
+    0,
+    0
+  ],
+  "after_rollback": [
+    0,
+    0
+  ]
+}

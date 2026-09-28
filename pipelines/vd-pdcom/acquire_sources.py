@@ -215,6 +215,8 @@ def persist(conn,source,sha,pages):
     persist_lutry_cartographic(conn,doc_id,sha)
     from arc_en_ciel_native import persist as persist_arc_en_ciel_native
     persist_arc_en_ciel_native(conn,doc_id,sha)
+    from vevey_native_activities import persist as persist_vevey_native_activities
+    persist_vevey_native_activities(conn,doc_id,sha)
     from prangins_package_native import persist as persist_prangins_package_native
     persist_prangins_package_native(conn,doc_id,sha)
     from prangins_transport_native import persist as persist_prangins_transport_native

@@ -1,0 +1,9 @@
+# Vevey approved programming map: partial native supports
+
+This pinned batch represents two literal programming classes on physical PDF page 67 of the approved 22 August 2024 municipal PDCom: tertiary activity poles and sectors/buildings dedicated to activities. It preserves 18 disjoint original native supports in two thematic collections. One western red support remains outside the independently supported training hull; the two legend boxes are excluded.
+
+The six training and five reserved building footprints were identified and reviewed before one reflected-similarity fit. The reserved RMSE is 0.001967 m and maximum 0.002661 m. These values measure consistency with the digital building base, not thematic boundary precision. Source precision stays NULL, review is required, and the result remains private. Exact source clipping is retained; no shape is clipped to the control hull or municipal boundary. All selected shapes are wholly in Vevey.
+
+The complete official reference query contains 648 objects. Two collections have 59 and 33 contextual cadastral intersections respectively. The source's programming objectives require implementation through plans d'affectation; they do not establish vacant land, net developable area, capacity, parcel zoning or building rights. This partial batch neither qualifies nor completes the commune.
+
+Validation: 503 tests, 502 passed and one pre-existing skip. Actual double persistence and double registered FDW replay passed within an owned transaction; rollback verified zero new sector or parcel rows remained. Independent source/operator, original clip, full-footprint identity, reserved residual, municipal containment and reference-membership checks passed. Final live receiver verification is recorded separately after the authorized operation.
