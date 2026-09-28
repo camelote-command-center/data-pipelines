@@ -1,0 +1,11 @@
+# Vevey existing educational and sports equipment supports
+
+The approved municipal PDCom, physical PDF67, depicts sixteen dashed closed outlines for principal educational, paraschool and sports equipment. This batch retains twelve whole original supports in one partial thematic collection. Three outlines remain outside the frozen training hull (94843/94849/94850); one crosses the municipal boundary (94855). None is cropped to gain eligibility. Stars for future equipment, plan-study halos and the legend are excluded.
+
+Each area represents the interior of its original native dashed outline, not a painted fill, buffered stroke or legal parcel boundary. Original Bézier operators, dash arrays and active clips are retained. Final geometry uses adaptive finite-chord linearization bounded by0.003PDFpoint. Comparing0.03 versus0.003 changes the geometry by at most0.07494m Hausdorff and retains exactly the same52 parcel memberships. This is numerical approximation evidence, not cartographic policy accuracy.
+
+The exact same PDF67 frame reuses the independently reviewed six training and five reserved building identities without any new fit. Source precision remains NULL, private review is required, and the existing-site adaptation/needs studies under A3 do not establish spare land, capacity or construction rights. All twelve selected supports lie wholly in Vevey. A complete1679-object reference query supports52 contextual intersections; scoped runtime refresh uses four Vevey-only tiles.
+
+Validation:515 tests,514 passed and one existing skip. Actual double persistence and double registered FDW replay passed inside an owned transaction; rollback confirmed no new sector or parcel rows remained. Independent source/operator, clip, curve, whole-hull, municipal-scope and reference QA passed.
+
+This PR also includes the narrowly scoped commune_review_progress helper. Its caller owns the transaction. It preserves original acquisition evidence, records a fixed reconciliation receipt for already verified private extraction, and changes downloaded to candidate_vectors while delivery remains not_ready. It does not qualify or complete a commune; a later batch cannot silently expand the fixed receipt.
