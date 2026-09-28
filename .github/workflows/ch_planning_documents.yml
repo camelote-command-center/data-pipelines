@@ -77,6 +77,31 @@ jobs:
               with urllib.request.urlopen(req,timeout=45) as response:
                   assert len(json.load(response))==1, 'Dataset registration missing'
           PY
+      - name: Clear a previous workflow-failure marker after a successful run
+        # Without this a single failed run left both datasets on status='error' for good: only a full
+        # run clears the catalog dataset, and the next one is scheduled for 2027. That is how the
+        # 2026-09-28 contract-step failure (an undeclared PyMuPDF import) kept "Parser
+        # ch_planning_document_text en erreur" alive after the workflow itself was green again.
+        # Only this workflow's own failure marker is cleared, and freshness is never touched: a real
+        # acquisition error carries a different last_error and stays.
+        if: success()
+        env:
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+        run: |
+          python - <<'PY'
+          import os, json, urllib.request, urllib.parse
+          marker='Planning acquisition workflow failed'
+          for code in ('ch_planning_documents','ch_planning_document_text'):
+              query='code=eq.'+code+'&last_error=like.'+urllib.parse.quote(marker+'*')
+              payload=json.dumps({'status':'active','last_error':None}).encode()
+              req=urllib.request.Request(os.environ['CMD_URL']+'/rest/v1/datasets?'+query,data=payload,method='PATCH',
+                  headers={'apikey':os.environ['CMD_KEY'],'Authorization':'Bearer '+os.environ['CMD_KEY'],
+                           'Content-Type':'application/json','Prefer':'return=representation'})
+              with urllib.request.urlopen(req,timeout=45) as response:
+                  cleared=json.load(response)
+              print(f"{code}: {'cleared' if cleared else 'nothing to clear'}")
+          PY
       - name: Save acquisition and coverage report
         if: always()
         uses: actions/upload-artifact@v4
