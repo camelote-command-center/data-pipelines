@@ -221,6 +221,8 @@ def persist(conn,source,sha,pages):
     persist_vevey_equipment(conn,doc_id,sha)
     from vevey_mobility import persist as persist_vevey_mobility
     persist_vevey_mobility(conn,doc_id,sha)
+    from vevey_access import persist as persist_vevey_access
+    persist_vevey_access(conn,doc_id,sha)
     from prangins_package_native import persist as persist_prangins_package_native
     persist_prangins_package_native(conn,doc_id,sha)
     from prangins_transport_native import persist as persist_prangins_transport_native
