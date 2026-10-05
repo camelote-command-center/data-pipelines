@@ -1,0 +1,33 @@
+{
+  "batch_sha256": "78029f9d6ad728fe3cd422b768c2b36dce799a46d67f5c43774fc47258a11281",
+  "complete_blue_green_fill_denominator": 679,
+  "exceptions": 5,
+  "categories": [
+    {
+      "key": "equipment_public",
+      "whole_components": 26,
+      "geometry_valid": true,
+      "bounds_for_future_complete_reference_query": [
+        2546665.7315982915,
+        1182180.4006115508,
+        2547463.2914432622,
+        1183941.89052973
+      ],
+      "private_candidate_only": true
+    },
+    {
+      "key": "existing_public_green",
+      "whole_components": 4,
+      "geometry_valid": true,
+      "bounds_for_future_complete_reference_query": [
+        2546970.3198110466,
+        1183007.9113630631,
+        2547835.824690468,
+        1183532.315508198
+      ],
+      "private_candidate_only": true
+    }
+  ],
+  "database_mutations": false,
+  "canonical_repository_changes": false
+}

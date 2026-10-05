@@ -1,0 +1,47 @@
+{
+  "decision": "accepted_private_geographic_parcel_candidate_pending_adapter_and_transactional_qa",
+  "geographic_batch_sha256": "ef0c965e4fd5339de2480aae8a75739cc7a4403cee148004a5c0a5a2ee2eae5b",
+  "native_batch_sha256": "78029f9d6ad728fe3cd422b768c2b36dce799a46d67f5c43774fc47258a11281",
+  "reference_sha256": "f662bd40d8886bbc63c0253c262ecc19faaf2a2097736199be69eab3261ab9cd",
+  "complete_bbox_reference_objects": 716,
+  "all_valid_bfs5939": true,
+  "categories": [
+    {
+      "key": "equipment_public",
+      "components": 26,
+      "exact_positive_area_pairs": 23,
+      "boundary_flags": 23,
+      "official_type_counts": {
+        "DP communal": 3,
+        "parcelle priv\u00e9e": 20
+      },
+      "minimum_positive_overlap_m2": 0.19391148866795055,
+      "whole_geometry_area_m2": 13341.308398958045,
+      "sum_link_overlap_m2_nonexclusive": 13341.308398959165
+    },
+    {
+      "key": "existing_public_green",
+      "components": 4,
+      "exact_positive_area_pairs": 15,
+      "boundary_flags": 15,
+      "official_type_counts": {
+        "DP communal": 4,
+        "parcelle priv\u00e9e": 10,
+        "DDP superficie": 1
+      },
+      "minimum_positive_overlap_m2": 0.027067123635711107,
+      "whole_geometry_area_m2": 10014.063510109976,
+      "sum_link_overlap_m2_nonexclusive": 10014.329313264107
+    }
+  ],
+  "total_links": 38,
+  "distinct_egrids": 35,
+  "all_boundary_review_required": true,
+  "five_holds_unchanged": true,
+  "no_minimum_overlap_filter": true,
+  "source_precision_m": null,
+  "publication_status": "internal_review_only",
+  "review_status": "review_required",
+  "ddp_overlap_not_exclusive_area": true,
+  "no_mutations": true
+}

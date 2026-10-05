@@ -1,0 +1,26 @@
+{
+  "source": "Official Vaud APIGeo layer21 cadastral objects",
+  "retrieved_at": "2026-10-05T23:10:16.087061+00:00",
+  "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2546665.7315982915%2C1182180.4006115508%2C2547835.824690468%2C1183941.89052973&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5939&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+  "count_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2546665.7315982915%2C1182180.4006115508%2C2547835.824690468%2C1183941.89052973&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5939&returnCountOnly=true&f=json",
+  "bounds": [
+    2546665.7315982915,
+    1182180.4006115508,
+    2547835.824690468,
+    1183941.89052973
+  ],
+  "sha256": "f662bd40d8886bbc63c0253c262ecc19faaf2a2097736199be69eab3261ab9cd",
+  "count": 716,
+  "unique_egrids": 716,
+  "count_verified": true,
+  "source_commune_bfs": 5939,
+  "complete_entire_category_union_bbox": true,
+  "invalid_reference_egrids": [],
+  "object_types": {
+    "parcelle privée": 617,
+    "DP communal": 79,
+    "DP cantonal": 16,
+    "DDP superficie": 4
+  },
+  "cache_reuse_decision": "Previous commercial category snapshot does not cover this unionbbox; obtained one fresh completebbox response, no crawl repeated."
+}

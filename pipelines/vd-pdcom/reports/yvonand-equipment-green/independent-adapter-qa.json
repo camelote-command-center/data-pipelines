@@ -1,0 +1,34 @@
+{
+  "decision": "accepted_for_parent_controlled_rollback_rehearsal",
+  "hashes": {
+    "module": "fe0647d9416ae7baed97c3a13cb34503593898268faf196fe238a6b2671410a9",
+    "fixture": "ff0c049c60f60719ce5b112bca600704aeeb7e762f38b1a2dc4b47da122764a9",
+    "runner": "bf4c2027e81af943b28658edfa35293868e607107e3e1ffec1252009430968a4"
+  },
+  "new_categories": 2,
+  "whole_native_components": 30,
+  "contextual_links": 38,
+  "held_paths": [
+    1,
+    55,
+    67,
+    91,
+    94
+  ],
+  "prior_protected_collections": 201,
+  "prior_protected_links": 7815,
+  "all38_boundary_heuristic_flags_retained": true,
+  "monitor_total203_delta2_links38": true,
+  "actual_monitor_id_saved": true,
+  "scope": "Private authored support only; preserved laterpaint/overlap, existing-green style caveat, unknown sourceprecision/currentapplicability, DDP/context; no qualification or completeness.",
+  "exact_geometry_and_pairs_unchanged_from_independent_qa": true,
+  "receiver_fullrow_evidence_preserved": true,
+  "runner_owned_transaction_and_fresh_direct_readback_reviewed": true,
+  "sector_ids": {
+    "equipment_public": "305c8a19-1d67-5c88-83ec-5120a8cfeb80",
+    "existing_public_green": "4b2faec8-a410-5cc8-9112-3f460e780753"
+  },
+  "remaining": "Parent rollback then fresh independent absence/baseline verification before merge and live.",
+  "superseded_module_sha256": "f174bc93de4c85b361642b40e7e26a12e2702e4328ba659acba4bac4a1f841a5",
+  "final_delta_review": "Only existing-row SELECT/tuple guard additionally verifies stored scalar alignment equals frozen actual source3 diagnostic. Independently reconstructed previous exact module hash; fixture and runner unchanged."
+}

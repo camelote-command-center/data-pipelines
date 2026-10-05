@@ -1,0 +1,80 @@
+{
+  "source_native_batch_sha256": "78029f9d6ad728fe3cd422b768c2b36dce799a46d67f5c43774fc47258a11281",
+  "geographic_batch_sha256": "ef0c965e4fd5339de2480aae8a75739cc7a4403cee148004a5c0a5a2ee2eae5b",
+  "reference": {
+    "source": "Official Vaud APIGeo layer21 cadastral objects",
+    "retrieved_at": "2026-10-05T23:10:16.087061+00:00",
+    "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2546665.7315982915%2C1182180.4006115508%2C2547835.824690468%2C1183941.89052973&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5939&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+    "count_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2546665.7315982915%2C1182180.4006115508%2C2547835.824690468%2C1183941.89052973&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5939&returnCountOnly=true&f=json",
+    "bounds": [
+      2546665.7315982915,
+      1182180.4006115508,
+      2547835.824690468,
+      1183941.89052973
+    ],
+    "sha256": "f662bd40d8886bbc63c0253c262ecc19faaf2a2097736199be69eab3261ab9cd",
+    "count": 716,
+    "unique_egrids": 716,
+    "count_verified": true,
+    "source_commune_bfs": 5939,
+    "complete_entire_category_union_bbox": true,
+    "invalid_reference_egrids": [],
+    "object_types": {
+      "parcelle privée": 617,
+      "DP communal": 79,
+      "DP cantonal": 16,
+      "DDP superficie": 4
+    },
+    "cache_reuse_decision": "Previous commercial category snapshot does not cover this unionbbox; obtained one fresh completebbox response, no crawl repeated."
+  },
+  "category_counts": [
+    {
+      "key": "equipment_public",
+      "components": 26,
+      "pairs": 23,
+      "unique_egrids": 23,
+      "boundary_flags": 23,
+      "official_types": {
+        "DP communal": 3,
+        "parcelle privée": 20
+      },
+      "total_overlap_m2_nonexclusive_diagnostic": 13341.308398959165,
+      "category_geometry_area_m2": 13341.308398958045,
+      "minimum_positive_overlap_m2": 0.19391148866795055
+    },
+    {
+      "key": "existing_public_green",
+      "components": 4,
+      "pairs": 15,
+      "unique_egrids": 15,
+      "boundary_flags": 15,
+      "official_types": {
+        "DP communal": 4,
+        "parcelle privée": 10,
+        "DDP superficie": 1
+      },
+      "total_overlap_m2_nonexclusive_diagnostic": 10014.329313264107,
+      "category_geometry_area_m2": 10014.063510109976,
+      "minimum_positive_overlap_m2": 0.027067123635711107
+    }
+  ],
+  "proposed": {
+    "partial_category_collections": 2,
+    "native_components": 30,
+    "contextual_parcel_pairs": 38,
+    "unique_egrids_across_categories": 35
+  },
+  "held_paths": [
+    91,
+    94,
+    1,
+    55,
+    67
+  ],
+  "persisted": {
+    "collections": 0,
+    "parcel_links": 0,
+    "qualified": 0,
+    "completed_communes": 0
+  }
+}
