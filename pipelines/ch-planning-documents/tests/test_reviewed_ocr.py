@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import unittest
 from unittest.mock import MagicMock, patch
+import _pipeline_path  # noqa: F401  (adds the pipeline dir to sys.path)
 import vd_pdcom_text as m
 import reviewed_ocr as o
 ROOT=Path(__file__).resolve().parents[1]

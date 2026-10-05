@@ -1,5 +1,6 @@
 import copy,json,unittest
 from pathlib import Path
+import _pipeline_path  # noqa: F401  (adds the pipeline dir to sys.path)
 import vd_pdcom_text as bridge
 import mixed_text
 ROOT=Path(__file__).resolve().parents[1]

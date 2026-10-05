@@ -1,11 +1,10 @@
 import io
 from pathlib import Path
-import sys
 import tempfile
 import unittest
 import zipfile
 from unittest.mock import patch
-sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+import _pipeline_path  # noqa: F401  (adds the pipeline dir to sys.path)
 import sources
 import parser
 
