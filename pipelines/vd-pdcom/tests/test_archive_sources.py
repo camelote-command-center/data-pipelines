@@ -3,6 +3,7 @@ import unittest
 import warnings
 import zipfile
 from unittest.mock import patch
+import _pipeline_path  # noqa: F401  (adds the pipeline dir to sys.path)
 from acquire_sources import acquire, extract_archive_member
 
 class ArchiveSourceTests(unittest.TestCase):

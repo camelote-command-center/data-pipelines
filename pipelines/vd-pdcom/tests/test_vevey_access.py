@@ -1,4 +1,5 @@
 import copy,unittest
+import _pipeline_path  # noqa: F401  (adds the pipeline dir to sys.path)
 import vevey_access as a
 class VeveyAccessTests(unittest.TestCase):
  @classmethod

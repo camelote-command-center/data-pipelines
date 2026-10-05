@@ -1,5 +1,6 @@
 import copy,json,unittest
 from pathlib import Path
+import _pipeline_path  # noqa: F401  (adds the pipeline dir to sys.path)
 import prangins_transport_native as adapter
 
 class TransportEvidenceTest(unittest.TestCase):

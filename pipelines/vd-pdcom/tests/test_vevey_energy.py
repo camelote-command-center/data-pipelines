@@ -1,5 +1,6 @@
 import copy
 import unittest
+import _pipeline_path  # noqa: F401  (adds the pipeline dir to sys.path)
 import vevey_energy as a
 
 class VeveyEnergyTests(unittest.TestCase):

@@ -1,4 +1,5 @@
 import pymupdf as fitz
+import _pipeline_path  # noqa: F401  (adds the pipeline dir to sys.path)
 from acquire_sources import has_geographic_viewport
 
 
