@@ -46,7 +46,14 @@
       "physical part-specific PDF citation",
       "no numeric normalization or map extraction/qualification/completion"
     ],
-    "map_pages": [],
+    "map_pages": [
+      6,
+      8,
+      9,
+      12,
+      14,
+      16
+    ],
     "ocr_quality": "uncorrected_machine_ocr",
     "requires_source_image_verification": true,
     "corpus_limits": {
@@ -508,7 +515,7 @@
         "commune_complete": false,
         "source_role": "approved_main",
         "plan_status": "approved_with_reservation",
-        "review_sha256": "e0a283d890516d425884f517cbc48a732552e29e3694e5a7869882a1d8eda475",
+        "review_sha256": "bcff074f1a572fd1739a2c6cefe9dd63e418e8e3c5e78c81e252cc14ed095f42",
         "ocr_quality": "uncorrected_machine_ocr",
         "requires_source_image_verification": true,
         "corpus_limits": {
@@ -652,7 +659,7 @@
         "commune_complete": false,
         "source_role": "approved_main",
         "plan_status": "approved_with_reservation",
-        "review_sha256": "e0a283d890516d425884f517cbc48a732552e29e3694e5a7869882a1d8eda475",
+        "review_sha256": "bcff074f1a572fd1739a2c6cefe9dd63e418e8e3c5e78c81e252cc14ed095f42",
         "ocr_quality": "uncorrected_machine_ocr",
         "requires_source_image_verification": true,
         "corpus_limits": {
@@ -796,7 +803,7 @@
         "commune_complete": false,
         "source_role": "approved_main",
         "plan_status": "approved_with_reservation",
-        "review_sha256": "e0a283d890516d425884f517cbc48a732552e29e3694e5a7869882a1d8eda475",
+        "review_sha256": "bcff074f1a572fd1739a2c6cefe9dd63e418e8e3c5e78c81e252cc14ed095f42",
         "ocr_quality": "uncorrected_machine_ocr",
         "requires_source_image_verification": true,
         "corpus_limits": {
@@ -940,7 +947,7 @@
         "commune_complete": false,
         "source_role": "approved_main",
         "plan_status": "approved_with_reservation",
-        "review_sha256": "e0a283d890516d425884f517cbc48a732552e29e3694e5a7869882a1d8eda475",
+        "review_sha256": "bcff074f1a572fd1739a2c6cefe9dd63e418e8e3c5e78c81e252cc14ed095f42",
         "ocr_quality": "uncorrected_machine_ocr",
         "requires_source_image_verification": true,
         "corpus_limits": {
@@ -1084,7 +1091,7 @@
         "commune_complete": false,
         "source_role": "approved_main",
         "plan_status": "approved_with_reservation",
-        "review_sha256": "e0a283d890516d425884f517cbc48a732552e29e3694e5a7869882a1d8eda475",
+        "review_sha256": "bcff074f1a572fd1739a2c6cefe9dd63e418e8e3c5e78c81e252cc14ed095f42",
         "ocr_quality": "uncorrected_machine_ocr",
         "requires_source_image_verification": true,
         "corpus_limits": {
@@ -1228,7 +1235,7 @@
         "commune_complete": false,
         "source_role": "approved_main",
         "plan_status": "approved_with_reservation",
-        "review_sha256": "e0a283d890516d425884f517cbc48a732552e29e3694e5a7869882a1d8eda475",
+        "review_sha256": "bcff074f1a572fd1739a2c6cefe9dd63e418e8e3c5e78c81e252cc14ed095f42",
         "ocr_quality": "uncorrected_machine_ocr",
         "requires_source_image_verification": true,
         "corpus_limits": {
@@ -1372,7 +1379,7 @@
         "commune_complete": false,
         "source_role": "approved_main",
         "plan_status": "approved_with_reservation",
-        "review_sha256": "e0a283d890516d425884f517cbc48a732552e29e3694e5a7869882a1d8eda475",
+        "review_sha256": "bcff074f1a572fd1739a2c6cefe9dd63e418e8e3c5e78c81e252cc14ed095f42",
         "ocr_quality": "uncorrected_machine_ocr",
         "requires_source_image_verification": true,
         "corpus_limits": {
@@ -1516,7 +1523,7 @@
         "commune_complete": false,
         "source_role": "approved_main",
         "plan_status": "approved_with_reservation",
-        "review_sha256": "e0a283d890516d425884f517cbc48a732552e29e3694e5a7869882a1d8eda475",
+        "review_sha256": "bcff074f1a572fd1739a2c6cefe9dd63e418e8e3c5e78c81e252cc14ed095f42",
         "ocr_quality": "uncorrected_machine_ocr",
         "requires_source_image_verification": true,
         "corpus_limits": {
@@ -1660,7 +1667,7 @@
         "commune_complete": false,
         "source_role": "approved_main",
         "plan_status": "approved_with_reservation",
-        "review_sha256": "e0a283d890516d425884f517cbc48a732552e29e3694e5a7869882a1d8eda475",
+        "review_sha256": "bcff074f1a572fd1739a2c6cefe9dd63e418e8e3c5e78c81e252cc14ed095f42",
         "ocr_quality": "uncorrected_machine_ocr",
         "requires_source_image_verification": true,
         "corpus_limits": {
@@ -1804,7 +1811,7 @@
         "commune_complete": false,
         "source_role": "approved_main",
         "plan_status": "approved_with_reservation",
-        "review_sha256": "e0a283d890516d425884f517cbc48a732552e29e3694e5a7869882a1d8eda475",
+        "review_sha256": "bcff074f1a572fd1739a2c6cefe9dd63e418e8e3c5e78c81e252cc14ed095f42",
         "ocr_quality": "uncorrected_machine_ocr",
         "requires_source_image_verification": true,
         "corpus_limits": {
@@ -1948,7 +1955,7 @@
         "commune_complete": false,
         "source_role": "approved_main",
         "plan_status": "approved_with_reservation",
-        "review_sha256": "e0a283d890516d425884f517cbc48a732552e29e3694e5a7869882a1d8eda475",
+        "review_sha256": "bcff074f1a572fd1739a2c6cefe9dd63e418e8e3c5e78c81e252cc14ed095f42",
         "ocr_quality": "uncorrected_machine_ocr",
         "requires_source_image_verification": true,
         "corpus_limits": {
@@ -2090,7 +2097,7 @@
     "commune_complete": false,
     "source_role": "approved_main",
     "plan_status": "approved_with_reservation",
-    "review_sha256": "e0a283d890516d425884f517cbc48a732552e29e3694e5a7869882a1d8eda475",
+    "review_sha256": "bcff074f1a572fd1739a2c6cefe9dd63e418e8e3c5e78c81e252cc14ed095f42",
     "ocr_quality": "uncorrected_machine_ocr",
     "requires_source_image_verification": true,
     "corpus_limits": {
@@ -2503,7 +2510,14 @@
       }
     ],
     "extraction_status": "partial_reviewed_ocr",
-    "map_pages": [],
+    "map_pages": [
+      6,
+      8,
+      9,
+      12,
+      14,
+      16
+    ],
     "full_visual_map_extraction": false
   }
 }

@@ -45,7 +45,16 @@
     "physical part-specific PDF citation",
     "no numeric normalization or map extraction/qualification/completion"
   ],
-  "map_pages": [],
+  "map_pages": [
+    1,
+    5,
+    7,
+    8,
+    9,
+    10,
+    11,
+    13
+  ],
   "ocr_quality": "uncorrected_machine_ocr",
   "requires_source_image_verification": true,
   "corpus_limits": {
