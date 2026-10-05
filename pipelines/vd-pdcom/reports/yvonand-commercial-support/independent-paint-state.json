@@ -1,0 +1,38 @@
+{
+  "source3_sha256": "99e1f03d89478b5815b7b0e9ef0d5c5511cbfd4e48d6ee038ad80ac86c8b0559",
+  "candidate_sequences": [
+    19,
+    70
+  ],
+  "candidate_levels": [
+    1,
+    1
+  ],
+  "active_candidate_nonpage_clips": 0,
+  "active_group": {
+    "level": 0,
+    "isolated": true,
+    "knockout": false,
+    "blendmode": "Normal",
+    "opacity": 1.0
+  },
+  "reason": "Both candidate records are at level1 immediately inside page normal group at level0. Earlier clips at level1 or deeper have ended before these records.",
+  "page_extgstate_objects": {
+    "36": "<<\n  /Type /ExtGState\n  /SA false\n  /SM .02\n  /TR2 /Default\n>>",
+    "300": "<<\n  /TK true\n  /OPM 0\n  /BM /Normal\n  /HT /Default\n  /CA 1\n  /OP false\n  /SMask /None\n  /BG2 /Default\n  /ca 1\n  /AIS false\n  /op false\n  /TR2 /Default\n  /Type /ExtGState\n  /SA false\n  /UCR2 /Default\n  /SM .0200043\n>>",
+    "301": "<<\n  /TK true\n  /OPM 0\n  /BM /Compatible\n  /HT /Default\n  /CA 1\n  /OP false\n  /SMask /None\n  /BG2 /Default\n  /ca 1\n  /AIS false\n  /op false\n  /TR2 /Default\n  /Type /ExtGState\n  /SA false\n  /UCR2 /Default\n  /SM .0200043\n>>"
+  },
+  "image_boxes_native": [
+    [
+      29.50970458984375,
+      2004.943359375,
+      83.44970703125,
+      2049.5576171875
+    ]
+  ],
+  "images_overlap_candidate": false,
+  "candidate_fill_rule": "even-odd with single explicit closed simple chain each",
+  "candidate_opacity": 1.0,
+  "verdict": "No active candidate clipping, mask, opacity, or blend hazard found. Later thematic overpaint remains and authored-support cannot be described as final visible-yellow area.",
+  "inspection_note": "Inspected referenced page graphics states only; an exploratory scan of obsolete/unreferenced xrefs encountered missing239 0 R, so it is not used as evidence of complete historical-xref coverage."
+}

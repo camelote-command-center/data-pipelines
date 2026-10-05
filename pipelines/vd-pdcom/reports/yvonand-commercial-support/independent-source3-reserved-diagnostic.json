@@ -1,0 +1,62 @@
+{
+  "kind": "source3_frozen_reviewed_reserved_identity_centroid_diagnostic",
+  "count": 8,
+  "rmse_m": 0.6240366434443635,
+  "controls": [
+    {
+      "source3_path": 326,
+      "source7_path": 1340,
+      "reference_OBJECTID": 46461342,
+      "centroid_residual_m": 0.16257193613551585
+    },
+    {
+      "source3_path": 3227,
+      "source7_path": 4145,
+      "reference_OBJECTID": 46347202,
+      "centroid_residual_m": 0.07197586991949
+    },
+    {
+      "source3_path": 518,
+      "source7_path": 1530,
+      "reference_OBJECTID": 46299346,
+      "centroid_residual_m": 0.2728776965568242
+    },
+    {
+      "source3_path": 269,
+      "source7_path": 1285,
+      "reference_OBJECTID": 46335327,
+      "centroid_residual_m": 0.20964555905579205
+    },
+    {
+      "source3_path": 1261,
+      "source7_path": 2240,
+      "reference_OBJECTID": 46444792,
+      "centroid_residual_m": 0.017502393007222002
+    },
+    {
+      "source3_path": 822,
+      "source7_path": 1825,
+      "reference_OBJECTID": 46364752,
+      "centroid_residual_m": 1.7204527269000314
+    },
+    {
+      "source3_path": 1964,
+      "source7_path": 2925,
+      "reference_OBJECTID": 46429865,
+      "centroid_residual_m": 0.047882057175330575
+    },
+    {
+      "source3_path": 2560,
+      "source7_path": 3495,
+      "reference_OBJECTID": 46371282,
+      "centroid_residual_m": 0.05285442510229852
+    }
+  ],
+  "no_refit_or_reselection": true,
+  "scope": "Same eight previously reviewed reserved source7 identities transferred via demonstrated native translation; not all248originalreserved candidates, not unbiased validation, not positional precision or qualification.",
+  "original_reserved_denominator": 248,
+  "original_reserved_matched": 114,
+  "original_reserved_unmatched": 134,
+  "source_precision_m": null,
+  "global_accuracy_claim": false
+}

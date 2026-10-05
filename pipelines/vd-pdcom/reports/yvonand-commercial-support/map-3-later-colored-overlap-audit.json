@@ -1,0 +1,194 @@
+[
+  {
+    "candidate_drawing_index": 18,
+    "closed_native_later_colored_path_overlaps": [
+      {
+        "drawing_index": 43,
+        "seqno": 46,
+        "fill": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "overlap_square_pdf_points": 333.2108154054731,
+        "source_envelope_area_square_pdf_points": 333.2108154054731,
+        "clip_level": 1,
+        "claim": "Unclipped native-path overlap only; complete clipping context remains in full ledger."
+      },
+      {
+        "drawing_index": 4567,
+        "seqno": 5921,
+        "fill": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "overlap_square_pdf_points": 57.59076086431742,
+        "source_envelope_area_square_pdf_points": 57.59076086431742,
+        "clip_level": 1,
+        "claim": "Unclipped native-path overlap only; complete clipping context remains in full ledger."
+      },
+      {
+        "drawing_index": 4621,
+        "seqno": 6029,
+        "fill": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "overlap_square_pdf_points": 5.316184177291341,
+        "source_envelope_area_square_pdf_points": 58.08934592269361,
+        "clip_level": 1,
+        "claim": "Unclipped native-path overlap only; complete clipping context remains in full ledger."
+      }
+    ]
+  },
+  {
+    "candidate_drawing_index": 65,
+    "closed_native_later_colored_path_overlaps": [
+      {
+        "drawing_index": 81,
+        "seqno": 88,
+        "fill": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "overlap_square_pdf_points": 652.775405054912,
+        "source_envelope_area_square_pdf_points": 652.775405054912,
+        "clip_level": 1,
+        "claim": "Unclipped native-path overlap only; complete clipping context remains in full ledger."
+      },
+      {
+        "drawing_index": 83,
+        "seqno": 91,
+        "fill": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "overlap_square_pdf_points": 1603.702540576458,
+        "source_envelope_area_square_pdf_points": 1603.702540576458,
+        "clip_level": 1,
+        "claim": "Unclipped native-path overlap only; complete clipping context remains in full ledger."
+      },
+      {
+        "drawing_index": 4870,
+        "seqno": 6495,
+        "fill": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "overlap_square_pdf_points": 175.30909467674792,
+        "source_envelope_area_square_pdf_points": 175.30909467674792,
+        "clip_level": 1,
+        "claim": "Unclipped native-path overlap only; complete clipping context remains in full ledger."
+      },
+      {
+        "drawing_index": 4873,
+        "seqno": 6499,
+        "fill": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "overlap_square_pdf_points": 20.232544492766618,
+        "source_envelope_area_square_pdf_points": 35.343086425215006,
+        "clip_level": 1,
+        "claim": "Unclipped native-path overlap only; complete clipping context remains in full ledger."
+      },
+      {
+        "drawing_index": 4875,
+        "seqno": 6502,
+        "fill": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "overlap_square_pdf_points": 124.42619620006337,
+        "source_envelope_area_square_pdf_points": 373.83807582966983,
+        "clip_level": 1,
+        "claim": "Unclipped native-path overlap only; complete clipping context remains in full ledger."
+      },
+      {
+        "drawing_index": 5195,
+        "seqno": 7057,
+        "fill": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "overlap_square_pdf_points": 121.08610693365335,
+        "source_envelope_area_square_pdf_points": 121.08610693365335,
+        "clip_level": 1,
+        "claim": "Unclipped native-path overlap only; complete clipping context remains in full ledger."
+      },
+      {
+        "drawing_index": 5206,
+        "seqno": 7073,
+        "fill": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "overlap_square_pdf_points": 66.37132888101041,
+        "source_envelope_area_square_pdf_points": 66.37132888101041,
+        "clip_level": 1,
+        "claim": "Unclipped native-path overlap only; complete clipping context remains in full ledger."
+      },
+      {
+        "drawing_index": 5209,
+        "seqno": 7077,
+        "fill": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "overlap_square_pdf_points": 125.84708569385111,
+        "source_envelope_area_square_pdf_points": 125.84708569385111,
+        "clip_level": 1,
+        "claim": "Unclipped native-path overlap only; complete clipping context remains in full ledger."
+      },
+      {
+        "drawing_index": 5214,
+        "seqno": 7085,
+        "fill": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "overlap_square_pdf_points": 52.97404321283102,
+        "source_envelope_area_square_pdf_points": 52.97404321283102,
+        "clip_level": 1,
+        "claim": "Unclipped native-path overlap only; complete clipping context remains in full ledger."
+      },
+      {
+        "drawing_index": 5250,
+        "seqno": 7149,
+        "fill": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "overlap_square_pdf_points": 85.90150832571089,
+        "source_envelope_area_square_pdf_points": 85.90150832571089,
+        "clip_level": 1,
+        "claim": "Unclipped native-path overlap only; complete clipping context remains in full ledger."
+      },
+      {
+        "drawing_index": 5256,
+        "seqno": 7160,
+        "fill": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "overlap_square_pdf_points": 57.60722504928708,
+        "source_envelope_area_square_pdf_points": 57.60722504928708,
+        "clip_level": 1,
+        "claim": "Unclipped native-path overlap only; complete clipping context remains in full ledger."
+      }
+    ]
+  }
+]

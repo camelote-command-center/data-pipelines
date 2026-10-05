@@ -1,0 +1,15 @@
+{
+  "retrieved_at": "2026-10-05T22:51:59.051895+00:00",
+  "bounds": [
+    2546664.249991914,
+    1183140.8380038915,
+    2547251.730713282,
+    1183555.916350144
+  ],
+  "count": 208,
+  "sha256": "6709f437cfa9127c7d492321e3b4f66b390b02cdec379b24a963b6f262812475",
+  "query_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2546664.249991914%2C1183140.8380038915%2C2547251.730713282%2C1183555.916350144&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5939&outFields=EGRID%2CNUMERO%2CNO_COM_FED%2CGENRE_TXT%2CSUPERFICIE_MO%2CSUPERFICIE_RF&outSR=2056&f=geojson",
+  "count_url": "https://ags.map.vd.ch/ags/rest/services/API/APIGeo/MapServer/21/query?geometry=2546664.249991914%2C1183140.8380038915%2C2547251.730713282%2C1183555.916350144&geometryType=esriGeometryEnvelope&inSR=2056&spatialRel=esriSpatialRelIntersects&where=NO_COM_FED%3D5939&f=json&returnCountOnly=true",
+  "complete_bbox_count_verified": true,
+  "coverage_scope": "Whole exact union bbox with commune5939 equality; no geoclip."
+}
