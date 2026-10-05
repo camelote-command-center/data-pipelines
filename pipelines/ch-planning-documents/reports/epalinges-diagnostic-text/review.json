@@ -1,0 +1,80 @@
+{
+  "vd_document_id": "6967798a-aaf8-5d5b-a897-b40132d28d53",
+  "source_sha256": "4a6640222c279c112853745003f9ab692e804b4713f989cbe4313c0855fd43cc",
+  "source_url": "https://www.epalinges.ch/wp-content/uploads/2025/04/2024_PDCom_Epalinges_cahier_I_signe_Chancelier.pdf",
+  "official_host": "www.epalinges.ch",
+  "publisher": "Commune d’Épalinges",
+  "title": "Épalinges — PDCom Cahier I diagnostic, 31 octobre 2022, approuvé avec réserve 5 juillet 2023",
+  "canton": "VD",
+  "commune_bfs": 5584,
+  "page_count": 144,
+  "source_role": "approved_main",
+  "plan_status": "approved_with_reservation",
+  "all_prose_is_binding": false,
+  "spatial_qualification": false,
+  "signed_approval": {
+    "pdf_page": 3,
+    "municipal": "2021-09-13",
+    "council": "2022-09-20",
+    "canton": "2023-07-05",
+    "visually_verified": true,
+    "scope": "Signed diagnostic Cahier I of the two-volume PDCom. Cantonal reservation concerns communal resizing principles in operational Cahier II chapter2.2 pages21–22, not diagnostic pages21–22. Approval does not make diagnostic figures binding private rights.",
+    "extraction_discrepancy": "Existing embedded text reads council28September; original signed image visibly20September2022. Original text layer is preserved without silent correction."
+  },
+  "reservations": [
+    {
+      "literal_stamp": "les principes communaux de redimensionnement de la zone d’habitation et mixte, tels qu’énoncés au chapitre 2.2 (pages 21 et 22).",
+      "interpretation": "The stamp itself does not name a Cahier; matching chapter2.2 content and pages21–22 identifies operational CahierII, not diagnostic CahierI.",
+      "scope": "Communal principles for resizing residential and mixed zones, operational Cahier II chapter2.2 pages21–22. Not diagnostic Cahier I pages21–22. Future PGA revision determines affected parcels; no current parcel entitlement or capacity claim.",
+      "evidence_pdf_pages": [
+        3
+      ],
+      "evidence_document_id": "6967798a-aaf8-5d5b-a897-b40132d28d53",
+      "evidence_source_sha256": "4a6640222c279c112853745003f9ab692e804b4713f989cbe4313c0855fd43cc",
+      "cross_part_document_id": "8f42da46-9b59-5b72-aa5b-13522e418682",
+      "cross_part_source_sha256": "bd095d80d2284073a93ef7e108f89b083d32fb361c97b689809522b7b8f64c86",
+      "cross_part_source_url": "https://www.epalinges.ch/wp-content/uploads/2025/04/2024_PDCom_Epalinges_cahier_II_signe_Chancelier.pdf",
+      "cross_part_pdf_pages": [
+        21,
+        22
+      ],
+      "visually_verified": true
+    }
+  ],
+  "diagnostic_vintage_limit": "Diagnostic volume, cover31October2022;2024 is dossier number. Historical surveys, capacity estimates, project states and horizon2036 projections remain source-vintage context, not current measurements or enforceable capacity. Operational policies and resizing reservation belong to CahierII; do not map its section/page numbering to this diagnostic volume.",
+  "limits": [
+    "Diagnostic role; CahierII contains operational measures.",
+    "Cover31October2022;2024 is dossier number, not approval year.",
+    "Historical diagnostics, capacity estimates and horizons are not current measurements or parcel entitlements.",
+    "Retain resizing reservation and cross-part link on document/chunks.",
+    "No new geometry, sourceprecision, parcel associations, qualification or completion.",
+    "Native reading order/figures/tables/annexes require independent extraction review; do not assume every page is suitable prose.",
+    "Diagnostic role applies to every page/chunk. PDF10 text-layer reading order mixes descriptions of the two volumes; descriptions of the operational CahierII do not make this diagnostic CahierI operational.",
+    "Extraction uses the existing PDF text layer, not a claim that all text is author-native. Scanned approvalPDF3 contains imperfect embedded text; legal status/dates were reviewed visually. No original text is silently corrected.",
+    "Table/figure reading order and image content are not certified; no normalized numeric rules, map geometry or visual-map completeness.",
+    "Map inventory is not assessed by this text extraction; null map_pages does not mean the document has no maps."
+  ],
+  "map_pages": null,
+  "supporting_documents": [
+    {
+      "document_id": "8f42da46-9b59-5b72-aa5b-13522e418682",
+      "sha256": "bd095d80d2284073a93ef7e108f89b083d32fb361c97b689809522b7b8f64c86",
+      "plan_status": "approved_with_reservation",
+      "page_count": 108,
+      "source_url": "https://www.epalinges.ch/wp-content/uploads/2025/04/2024_PDCom_Epalinges_cahier_II_signe_Chancelier.pdf"
+    }
+  ],
+  "currentness_evidence": {
+    "url": "https://www.epalinges.ch/administration/urbanisme-et-architecture/urbanisme-et-police-des-constructions/pdcom/",
+    "status": 200,
+    "statement": "PDCom entered into force 5July2023; two cahiers constitute revised PDCom; binding on authorities not private individuals.",
+    "local_html": "/Users/a/LLM_Work/re-llm/vaud-pdcom/registered-original-review/epalinges-diagnostic-current.html",
+    "sha256": "657a799c74e5769a940bd2a7dc42d61b8d35cb327db9e5c4416184f3287b414f"
+  },
+  "semantic_contract_sha256": "75eab9a36ff417c329f84cc3642a11a68ab110a09a3dcfbb3a96ddeb899866e5",
+  "source_status_transition": {
+    "from": "unverified",
+    "to": "approved_with_reservation",
+    "only_field": "plan_status"
+  }
+}

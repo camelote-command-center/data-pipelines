@@ -569,5 +569,23 @@
     "geographic_validation": "pending",
     "receiver_release": "not_ready",
     "currentness_evidence_url": "https://yvonand.ch/vie-politique/preavis-2/docscc2/listing/preavis-no-2024-11-credit-complementaire-detude-pour-la-revision-du-plan-directeur-communal-pdcom-du-plan-daffectationcommunal-pacom-et-du-reglement-du-plan-daffectation-communal"
+  },
+  {
+    "document_id": "6967798a-aaf8-5d5b-a897-b40132d28d53",
+    "sha256": "4a6640222c279c112853745003f9ab692e804b4713f989cbe4313c0855fd43cc",
+    "commune_bfs": 5584,
+    "reviewed_at": "2026-10-05",
+    "reviewed_by": "Codex / independent original-source review",
+    "plan_status": "approved_with_reservation",
+    "approval_evidence_page": 3,
+    "approval_date": "2023-07-05",
+    "municipal_council_adoption_date": "2022-09-20",
+    "reservation": "Communal resizing principles in operational Cahier II chapter2.2 pages21–22; not diagnostic Cahier I pages21–22.",
+    "scope_limit": "Signed diagnostic original, cover31October2022; dossier2024 is not approval year. Existing PDF text includes embedded approval-date error; visual signed page establishes20September2022 council date. Diagnostic counts/projections remain historical, not current capacity or private rights. Current official index lists both volumes as in force5July2023. No map qualification or commune completeness. Empty map_pages is an unassessed registry inventory, not an assertion that no maps exist.",
+    "map_pages": [],
+    "geographic_validation": "pending",
+    "receiver_release": "not_ready",
+    "text_review": "pipelines/ch-planning-documents/reports/epalinges-diagnostic-text/review.json",
+    "map_inventory_status": "not_assessed"
   }
 ]
