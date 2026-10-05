@@ -3,6 +3,7 @@ import hashlib
 import json
 from pathlib import Path
 
+SPAN_METHOD='raw_ocr_selected_span'
 METHODS=('raw_fullpage_tesseract_ocr','raw_tesseract_localized_recovery','separately_labeled_assistant_image_grounded_transcription')
 
 def require(ok,reason):
@@ -23,21 +24,52 @@ def evidence(r):
     require(hashlib.sha256(raw).hexdigest()==m['sha256'],'mixed_artifact_hash_changed')
     e=json.loads(raw);require(e['document_id']==r['vd_document_id'] and e['source_sha256']==r['source_sha256'],'mixed_source_changed')
     require([p['page_number'] for p in e['pages']]==list(range(1,r['page_count']+1)),'mixed_page_inventory_required')
+    if m.get('amendment_map'):
+        actual=[{'number':x.get('amendment_number'),'source_physical_page':x.get('physical_page'),'target_printed_page':x.get('target_printed_page'),'target_physical_page':x.get('target_physical_page'),'case':x.get('case')} for x in e['localized_representations']]
+        require(actual==m['amendment_map'],'mixed_amendment_association_changed')
     return e
 
 def representations(e):
     result=[]
     for p in e['pages']:
         require(hashlib.sha256(p['raw_ocr_text'].encode()).hexdigest()==p['raw_ocr_sha256'],'mixed_raw_ocr_hash_changed')
-        require(type(p['include_raw_ocr']) is bool and bool(p['selection_reason']) and p['approval_class'] in ('numbered_grey_approval_scope','white_nonapproved_context'),'mixed_page_role_required')
+        require(type(p['include_raw_ocr']) is bool and bool(p['selection_reason']) and p['approval_class'] in ('numbered_grey_approval_scope','white_nonapproved_context','historical_approved_source_context'),'mixed_page_role_required')
         if p['include_raw_ocr']:
             result.append({'representation_id':'raw-page-'+str(p['page_number']),'page_number':p['page_number'],'text':p['raw_ocr_text'],'text_sha256':p['raw_ocr_sha256'],'method':METHODS[0],'approval_class':p['approval_class'],'coverage':'partial_raw_ocr_not_fullpage_certified','confidence':None,'confidence_status':'not_recorded','source_provenance':e['raw_ocr_provenance']})
+        last_end=0
+        for j,span in enumerate(p.get('raw_ocr_spans',[])):
+            start,end=span.get('start'),span.get('end')
+            require(not p['include_raw_ocr'] and type(start) is int and type(end) is int and 0<=start<end<=len(p['raw_ocr_text']), 'mixed_span_bounds_invalid')
+            require(start>=last_end,'mixed_span_overlap_or_reorder')
+            last_end=end
+            text=p['raw_ocr_text'][start:end]
+            require('text' not in span or span['text']==text,'mixed_span_text_changed')
+            require(hashlib.sha256(text.encode()).hexdigest()==span.get('text_sha256') and span.get('method')==SPAN_METHOD and bool(span.get('scope')), 'mixed_span_identity_changed')
+            result.append({'representation_id':'raw-span-'+str(p['page_number'])+'-'+str(j),'page_number':p['page_number'],'text':text,'text_sha256':span['text_sha256'],'method':SPAN_METHOD,'approval_class':p['approval_class'],'coverage':'selected_raw_ocr_span_only_not_fullpage_certified','confidence':None,'confidence_status':'not_recorded','source_provenance':dict(e['raw_ocr_provenance'],original_raw_ocr_sha256=p['raw_ocr_sha256'],exact_start=start,exact_end=end,span_scope=span['scope'])})
+    transcripts={x['sha256']:x['text'] for x in e.get('full_transcripts',[])}
+    require(len(transcripts)==len(e.get('full_transcripts',[])),'mixed_duplicate_full_transcript')
+    transcript_intervals={sha:[] for sha in transcripts}
+    amendment_numbers=set()
+    for sha,text in transcripts.items():
+        require(hashlib.sha256(text.encode()).hexdigest()==sha,'mixed_full_transcript_hash_changed')
     for i,p in enumerate(e['localized_representations']):
+        if 'full_transcript_sha256' in p:
+            full=transcripts.get(p['full_transcript_sha256']);start=p.get('transcript_start');end=p.get('transcript_end')
+            require(full is not None and type(start) is int and type(end) is int and 0<=start<end<=len(full),'mixed_transcript_span_bounds_invalid')
+            require(p['text']==full[start:end],'mixed_transcript_span_text_changed')
+            require(all(end<=a or start>=b for a,b in transcript_intervals[p['full_transcript_sha256']]),'mixed_transcript_overlap_or_duplicate')
+            transcript_intervals[p['full_transcript_sha256']].append((start,end))
+            number=p.get('amendment_number')
+            require(type(number) is int and number not in amendment_numbers,'mixed_amendment_number_duplicate_or_missing')
+            amendment_numbers.add(number)
         require(hashlib.sha256(p['text'].encode()).hexdigest()==p['text_sha256'],'mixed_passage_hash_changed')
         require(p['representation'] in METHODS[1:],'mixed_passage_method_required')
         if p['decision']=='accepted_exact_visible_words':
             result.append({'representation_id':'localized-'+str(i),'page_number':p['physical_page'],'text':p['text'],'text_sha256':p['text_sha256'],'method':p['representation'],'approval_class':e['pages'][p['physical_page']-1]['approval_class'],'coverage':'independently_verified_localized_passage_only','confidence':None,'confidence_status':'not_calibrated_or_invented','source_provenance':{k:v for k,v in p.items() if k!='text'}})
         else:require(p['decision']=='held_residual_recognition_errors','mixed_unknown_passage_decision')
+    for sha,intervals in transcript_intervals.items():
+        ordered=sorted(intervals)
+        require(bool(ordered) and ordered[0][0]==0 and ordered[-1][1]==len(transcripts[sha]) and all(a[1]==b[0] for a,b in zip(ordered,ordered[1:])),'mixed_transcript_coverage_incomplete')
     require(len({x['representation_id'] for x in result})==len(result),'mixed_duplicate_representation')
     return result
 

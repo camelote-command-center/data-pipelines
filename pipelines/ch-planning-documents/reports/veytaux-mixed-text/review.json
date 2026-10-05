@@ -1,0 +1,120 @@
+{
+  "vd_document_id": "43add308-b945-5a8f-bd9e-fc2217fe9bc5",
+  "source_sha256": "15978db34e86ca523f27f518b126db915bf52052dc15e087da6e172439c2e348",
+  "source_url": "https://veytaux.ch/uploads/26c3b5aecb7be4adf973b0b883013a99/documents/PDCom%20du%2027_1600259156.pdf",
+  "official_host": "veytaux.ch",
+  "publisher": "Commune de Veytaux",
+  "title": "Veytaux — PDCom 1994, constats OCR partiels et dix amendements transcrits séparément",
+  "canton": "VD",
+  "commune_bfs": 5891,
+  "scope": "municipal",
+  "page_count": 32,
+  "source_role": "approved_main",
+  "plan_status": "approved",
+  "all_prose_is_binding": false,
+  "spatial_qualification": false,
+  "signed_approval": {
+    "municipal": "1993-09-09",
+    "council": "1993-12-06",
+    "canton": "1994-04-27",
+    "pdf_page": 4,
+    "visually_verified": true,
+    "scope": "Signed approval of historical municipal original27April1994; counciladopted amendments6December1993 included. Present legal currency or unchanged measures not established."
+  },
+  "diagnostic_vintage_limit": "Historical1993–1994 source context. Descriptions, areas, ownership, nuisance and development intentions are not current facts, currentcapacity or private rights. Current publication verifies availability only.",
+  "limits": [
+    "Historical1994approved original; current municipal publication confirms availability of these exact bytes, not present legal currency, unchanged measures or private development rights.",
+    "Eight selected representations are exact uncorrected rawOCR prefixes onPDF20–27 before Objectifs; all objective/measure tables excluded. Source-era descriptions/areas/ownership/noise are not current facts or spatial evidence.",
+    "Ten adopted amendments fromPDF30–31 are separately labeled image-grounded transcriptions, not OCR output; full original rawOCR preserved unchanged and held for these pages.",
+    "Every amendment retains its number,sourcephysicalpage,targetprintedpage,targetphysicalpage,fulltranscriptSHA and exactspanoffsets. Targets1–2 usephysical=printed+1;targets3–10 usephysical=printed+3.",
+    "Amendments adopted6December1993 must accompany affected historicalpolicies; do not reconstruct or claim fullyconsolidated currentpolicy from missingheldtables.",
+    "Sonchaux amendment10 links equipmentcosts to objective1; clusterssmallhamlets aroundrestaurantTerravet forobjective2; returnslargeparttoalpinezone inmeasure2;accessmayimproveorbecreated inmeasure3. It is not blanketdevelopmentcapacity or proof of parcelrights.",
+    "Ten distinct amendmentspans must remain complete; no splitting or duplication that loses amendmentidentity or source/target associations.",
+    "No fullpage/fullplan/map/commune completeness, numericrule normalization, geometry, precision, parcel links or qualification promotion."
+  ],
+  "map_pages": null,
+  "mixed_representations": {
+    "mode": "reviewed_mixed_representations",
+    "artifact": "veytaux-mixed-text/representations.json",
+    "sha256": "53b02b9485c74646be8cf7d2b02b30f6d3fd716536340122ddac111ffc97b4d8",
+    "fully_certified_pages": 0,
+    "approval_scope": "Historical1994approved source with ten counciladopted amendments6December1993; no currentpolicy consolidation or private rights.",
+    "transport_qualification": "Transport, access and equipment statements retain source-era scope; no present traffic/legal condition or developmentcapacity inference.",
+    "currentness_caveat": "Historical1994approved original; current municipal publication confirms availability of these exact bytes, not present legal currency, unchanged measures or private development rights.",
+    "ocr_quality_limit": "Raw OCR is uncorrected partial research text, with unknown confidence and original-image verification required. Selected spans are not fullpage transcription.",
+    "representation_limit": "Eight rawOCR constats prefixes and ten separately authored image-grounded amendment spans; all fullrawOCR retained and no silent corrections.",
+    "amendment_map": [
+      {
+        "number": 1,
+        "target_printed_page": 6,
+        "target_physical_page": 7,
+        "case": "Urbanisation & Equipements publics",
+        "source_physical_page": 30
+      },
+      {
+        "number": 2,
+        "target_printed_page": 7,
+        "target_physical_page": 8,
+        "case": "Urbanisation & Equipements publics",
+        "source_physical_page": 30
+      },
+      {
+        "number": 3,
+        "target_printed_page": 14,
+        "target_physical_page": 17,
+        "case": "Clos de Chillon",
+        "source_physical_page": 30
+      },
+      {
+        "number": 4,
+        "target_printed_page": 16,
+        "target_physical_page": 19,
+        "case": "Villa Louise",
+        "source_physical_page": 30
+      },
+      {
+        "number": 5,
+        "target_printed_page": 18,
+        "target_physical_page": 21,
+        "case": "Grandchamp",
+        "source_physical_page": 30
+      },
+      {
+        "number": 6,
+        "target_printed_page": 19,
+        "target_physical_page": 22,
+        "case": "La Promenade",
+        "source_physical_page": 30
+      },
+      {
+        "number": 7,
+        "target_printed_page": 20,
+        "target_physical_page": 23,
+        "case": "Au-dessus de Veytaux",
+        "source_physical_page": 30
+      },
+      {
+        "number": 8,
+        "target_printed_page": 21,
+        "target_physical_page": 24,
+        "case": "En la côte",
+        "source_physical_page": 31
+      },
+      {
+        "number": 9,
+        "target_printed_page": 24,
+        "target_physical_page": 27,
+        "case": "Le Crêt",
+        "source_physical_page": 31
+      },
+      {
+        "number": 10,
+        "target_printed_page": 26,
+        "target_physical_page": 29,
+        "case": "Sonchaux",
+        "source_physical_page": 31
+      }
+    ]
+  },
+  "semantic_contract_sha256": "ee33e1c780c252961ac23e8974e4cd8f3a08f6dad6683c8e6061fee041f12842"
+}
