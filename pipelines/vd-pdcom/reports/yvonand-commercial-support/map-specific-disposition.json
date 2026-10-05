@@ -94,5 +94,11 @@
     "parcel_links": 0,
     "qualified_communes": 0,
     "complete_communes": 0
+  },
+  "subsequent_review": {
+    "final_independent_decision": "independent-adapter-qa.json",
+    "map3": "Both complete components now pass bounded independent historical registration, training-hull and current registered commune checks; one private geographic collection/163contextual associations prepared. Actual database delivery remains pending execution verification.",
+    "map4": "Corroboration remains nonduplicate; no additional geographic collection.",
+    "maps5_6": "Original map-specific holds unchanged; not exhausted or complete."
   }
 }

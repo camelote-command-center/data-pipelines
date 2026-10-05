@@ -21,3 +21,5 @@ The prepared operational runner is `/Users/a/LLM_Work/re-llm/vaud-pdcom/yvonand-
 Prepared operation: `641570ee-3365-43e5-b906-6b97879471a5`. Candidate sector: `09e3a561-0ba7-5136-ba4f-e6184bd433f0`. Database rehearsal/delivery is pending parent review; this README does not claim execution.
 
 Validation:621tests run,620passed and1existing skip. Independent semantic, paint, registration, commune, parcel and adapter review records accompany the fixture.
+
+Final frozen adapter/fixture acceptance is in `independent-adapter-qa.json`; it supersedes the preliminary metadata warnings in `independent-batch-qa.json` after corrections, while retaining the same exact geometry and pair identities.
