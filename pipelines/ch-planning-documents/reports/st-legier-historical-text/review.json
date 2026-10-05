@@ -1,0 +1,72 @@
+{
+  "vd_document_id": "ecaca53c-511b-5af4-94b2-7925852fc740",
+  "source_sha256": "86b3c0352167167623ab93ebc0aeafd2957e14c0797867a3e982910e65b227eb",
+  "source_url": "https://www.blonay-saint-legier.ch/_doc/5505517",
+  "official_host": "www.blonay-saint-legier.ch",
+  "publisher": "Ancienne commune de Saint-Légier-La Chiésaz",
+  "title": "Référence historique — Saint-Légier-La Chiésaz, rapport2003 approuvé2004; portée actuelle non établie",
+  "canton": "VD",
+  "commune_bfs": null,
+  "scope": "historical_former_commune",
+  "page_count": 75,
+  "source_role": "historical_former_commune_reference",
+  "plan_status": "unverified",
+  "all_prose_is_binding": false,
+  "spatial_qualification": false,
+  "signed_approval": {
+    "pdf_page": 75,
+    "council": "2003-05-26",
+    "canton": "2004-10-06",
+    "visually_verified": true,
+    "scope": "Historical original signatures and approval date reviewed; council adoption includes amendments whose separate list was not found. Registered status remains unverified; no current merged-commune approval inferred."
+  },
+  "diagnostic_vintage_limit": "Historical former-commune reportNovember2003/cantonalapprovalOctober2004; source-era1995–1996 diagnostics and2010 projections are not current measurements or rights. Unknown incorporation of adopted amendments; separate annex cahier excluded from adoption.",
+  "limits": [
+    "Historical former-commune report only; fresh publication does not establish present rights or normative currency and cannot unblock three spatial collections",
+    "PDF75 signatures/cantonal date visually verified, council adoption26May2003 includes amendments; no separate amendment list identified in this exact75page file. No full incorporation assertion",
+    "PDF8 explicitly separates plan from annex cahier excluded from adoption procedure. No annex publication approval inference",
+    "PDF61 states five village-sequence illustrations are indicative possible measures; held drawings/maps are not validated geometry",
+    "Historical1995–1996diagnostic figures,2010forecast, jobs and capacity proposals are not present-day measured facts/rights",
+    "PDF32 preserves quality/landscape/controlled urbanisation/moderate densification; PDF35–36 preserves sparse urbanisation southA9 and coordination",
+    "Page32 rawOCR reading order includes side summaries before body; both are source text but not certified linear order",
+    "RawOCR visible spelling/linebreak errors remain; do not silently normalize or represent as native/certified full text",
+    "No source/commune/geometry/qualified/completed increments from this local review",
+    "Tightened delivery excludes PDF15, corrupt traffic-year paragraphPDF23, detached side summariesPDF32 and wrong road-number bulletPDF36; source rawOCR remains preserved.",
+    "Historical label prepended to chunk content is authored scope metadata, not original OCR; the raw body remains exact and separately hashed."
+  ],
+  "map_pages": null,
+  "mixed_representations": {
+    "mode": "reviewed_mixed_representations",
+    "artifact": "st-legier-historical-text/representations.json",
+    "sha256": "6654b601b9bd1bd04b80c5432da87b64989c75bb2a71edb96bb5c26371281874",
+    "fully_certified_pages": 0,
+    "approval_scope": "Historical source approval evidencePDF75 does not promote registry status or current territorial coverage. Missing amendment list prevents complete incorporation claim.",
+    "transport_qualification": "Historical transport descriptions do not establish current routes, traffic or road law; known erroneous road-number paragraph excluded.",
+    "currentness_caveat": "Référence historique — ancienne commune de Saint-Légier-La Chiésaz (OFS5888); validité actuelle et intégration des amendements non établies.",
+    "ocr_quality_limit": "Uncorrected partial researchOCR, confidence not recorded; verify original image. Known material erroneous spans excluded, not silently corrected.",
+    "representation_limit": "16 disjoint rawOCR spans on15physicalpages;60held;0fullycertifiedpages; no images/maps/annex adoption inferred."
+  },
+  "historical_scope": {
+    "former_commune_bfs": 5888,
+    "registry_tracking_bfs": 5892,
+    "registry_coverage_extent": "unverified",
+    "tracking_is_not_coverage": true,
+    "current_municipal_reference": false,
+    "current_merged_commune_coverage": false,
+    "source_status_promotion": false,
+    "spatial_currentness_block_retained": true,
+    "amendment_incorporation": "unknown_missing_separate_list",
+    "separate_annex_cahier_adopted": false,
+    "human_readable_caveat": "Référence historique — ancienne commune de Saint-Légier-La Chiésaz (OFS5888); validité actuelle et intégration des amendements non établies.",
+    "page_specific_limits": {
+      "5-7": "Selected prose continues across pages5–6–7; no complete section claim.",
+      "8": "Main-report page8 describes separate annex cahier excluded from adoption; page8 itself is not the excluded annex.",
+      "15": "Whole orphan conditional/capacity paragraph excluded; no searchable representation.",
+      "23": "Corrupt traffic-year paragraph excluded as exact raw interval684:874; remaining two spans preserve separation.",
+      "32": "Detached side summaries/header excluded before character258; remaining body only, no fullpage certification.",
+      "35-36": "Prose continues across35–36; PDF36 road-number bullet excluded through character192; do not infer route identity from excluded OCR.",
+      "61": "Five village-sequence illustrations are indicative possible measures; drawings/maps remain held."
+    }
+  },
+  "semantic_contract_sha256": "444643e1c7179581aa4e6c5e52ce7bb3b48e178350ab472ac9796e12d23bf22a"
+}
