@@ -50,4 +50,4 @@ class MixedTextTests(unittest.TestCase):
    b=json.loads(path.read_text())
    if isinstance(b,dict) and all(k in b for k in ('review','pages','byte_count','chunks')):
     self.assertEqual(bridge.assemble(b['review'],b['pages'],b['byte_count']),b,str(path));n+=1
-  self.assertEqual(n,6)
+  self.assertGreaterEqual(n,6)
