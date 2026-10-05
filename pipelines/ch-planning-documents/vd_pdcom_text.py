@@ -41,6 +41,9 @@ def require(ok, reason):
 
 def validate_review(r):
     uuid.UUID(r['vd_document_id'])
+    if r.get('mixed_representations'):
+        from mixed_text import validate_review as validate_mixed
+        validate_mixed(r)
     if r.get('native_page_selection'):
         from selected_native import validate_review as validate_selection
         validate_selection(r)
@@ -83,6 +86,9 @@ def build_bundle(pdf_path, review):
         if review.get('text_extraction', {}).get('mode')=='reviewed_ocr':
             from reviewed_ocr import load_pages
             return assemble(review, load_pages(pdf, review), path.stat().st_size)
+        if review.get('mixed_representations'):
+            from mixed_text import load_pages
+            return assemble(review,load_pages(pdf,review),path.stat().st_size)
         if review.get('native_page_selection'):
             from selected_native import load_pages
             return assemble(review, load_pages(pdf, review), path.stat().st_size)
@@ -95,6 +101,9 @@ def build_bundle(pdf_path, review):
 
 def assemble(review, pages, byte_count):
     validate_review(review)
+    if review.get('mixed_representations'):
+        from mixed_text import assemble as assemble_mixed
+        return assemble_mixed(review,pages,byte_count)
     require([p['page_number'] for p in pages] == list(range(1, review['page_count']+1)), 'physical_pages_incomplete_or_reordered')
     require(all(isinstance(p['text'], str) and p['status'] in (('reviewed_ocr_search_text','ocr_withheld') if review.get('text_extraction') else (('native_text_extracted','native_text_withheld') if review.get('native_page_selection') else ('native_text_extracted', 'not_extracted_image_page', 'no_native_text'))) for p in pages), 'page_status_required')
     if review.get('native_page_selection'):
@@ -137,6 +146,8 @@ def assemble(review, pages, byte_count):
             'version_id': uid('version:'+url+':'+sha), 'document_id': doc, 'metadata': metadata}
 
 def page_extraction_report(bundle):
+    if bundle['review'].get('mixed_representations'):
+        return {'withheld_mixed_pages':[p['page_number'] for p in bundle['pages'] if p['status']=='mixed_withheld'],'fully_certified_pages':0,'searchable_representations':sum(len(p['representations']) for p in bundle['pages'])}
     if bundle['review'].get('native_page_selection'):
         return {'withheld_native_pages':[p['page_number'] for p in bundle['pages'] if p['status']=='native_text_withheld']}
     if bundle['review'].get('text_extraction'):
@@ -210,6 +221,10 @@ def deliver(conn, document_id):
         c.execute('SELECT source,raw_metadata FROM knowledge_ch.documents WHERE id=%s', (document_id,))
         row=c.fetchone()
         require(row is not None and row[0] in (SOURCE,REGIONAL_SOURCE,OCR_SOURCE) and row[1].get('spatial_qualification') is False and row[1].get('all_prose_is_binding') is False, 'scoped_document_contract_required')
+        if row[1].get('mixed_representations'):
+            from mixed_text import validate_delivery as validate_mixed_delivery
+            c.execute('SELECT id::text,chunk_index,page_number,content,metadata FROM knowledge_ch.chunks WHERE document_id=%s', (document_id,))
+            validate_mixed_delivery(row[1],[{'id':i,'chunk_index':n,'page_number':p,'content':t,'metadata':m} for i,n,p,t,m in c.fetchall()])
         if row[1].get('native_page_selection'):
             from selected_native import validate_delivery as validate_selection_delivery
             c.execute('SELECT metadata FROM knowledge_ch.chunks WHERE document_id=%s', (document_id,))
