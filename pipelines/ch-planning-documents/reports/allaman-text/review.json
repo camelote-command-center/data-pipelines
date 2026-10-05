@@ -1,0 +1,859 @@
+{
+  "vd_document_id": "904b343d-c730-5541-adbd-96150c95a4a2",
+  "source_sha256": "f8c89a783271df54831de5fb3800c5bb51bd06610203d10be1c4aec2be463261",
+  "source_url": "https://www.allaman.ch/_doc/2919188",
+  "official_host": "www.allaman.ch",
+  "publisher": "Commune d’Allaman",
+  "title": "Allaman — Plan directeur communal, approuvé le 10 février 2016 — sélection de texte existant",
+  "canton": "VD",
+  "commune_bfs": 5851,
+  "page_count": 99,
+  "scope": "municipal",
+  "source_role": "approved_main",
+  "plan_status": "approved",
+  "all_prose_is_binding": false,
+  "spatial_qualification": false,
+  "signed_approval": {
+    "pdf_page": 3,
+    "municipal": "2015-06-08",
+    "council": "2015-12-07",
+    "canton": "2016-02-10",
+    "visually_verified": true,
+    "scope": "Signed original municipal planning source approved10February2016; approval directs authorities, not private zoning or building rights. Approval established visually; scanned stamp page is withheld from searchable text."
+  },
+  "diagnostic_vintage_limit": "Approved2016 source with historical2015 diagnoses and horizon2023 assumptions; continued official publication is not proof every measure remains current or that no later amendments exist. No current capacity, legal rule or parcel entitlement inferred.",
+  "limits": [
+    "Approved2016 original planning source; current official publication does not establish every measure remains current or that no amendments exist.",
+    "Historical2015diagnostics and horizon2023 assumptions are source-vintage context, not present measurements or parcel capacity.",
+    "Authority-directed planning is not zoning, private entitlement, building permission or quantified development rights.",
+    "PDF33 theoretical134inhabitants/35percent and parcel180 share refer to historic analysis; AuClos extension is a principle awaiting a special plan defining constructibility, with no precise capacity established.",
+    "Narrative with historic figures/maps may be searchable; figure interpretation, map geometry, numerical normalization and whole-page visual completeness are not certified.",
+    "PDF38 groundwater categories and source-era summaries do not establish current parcel coverage or current governing legal rules.",
+    "PDF61 is an annex index only; PDF75 historical landscape narrative. Neither claims all annexes extracted or current municipal policy.",
+    "26selected native pages only;73withheld pages retain full original text hashes;21existing OCR pages remain evidence only and produce no search chunks.",
+    "No geometry, source precision, parcel links, qualification or commune completion changes."
+  ],
+  "map_pages": null,
+  "native_page_selection": {
+    "mode": "reviewed_existing_pdf_text",
+    "pymupdf_version": "1.26.7",
+    "extraction_call": "page.get_text('text')",
+    "partial": true,
+    "currentness_caveat": "No explicit whole-plan currentness or no-amendments statement; continued publication does not make every2015diagnostic or future measure current.",
+    "coverage_limit": "26 selected existing PDF text pages;73 pages withheld for layout/association or evidence limits. Original text hashes and counts retained. No OCR search text, visual-map extraction or annex completion claim.",
+    "pages": [
+      {
+        "page_number": 1,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "a4fd04735daf3ba1a8d17b5a57ea81e407e5e2df6990e05fd63fd2e4bef43d73",
+        "original_char_count": 123
+      },
+      {
+        "page_number": 2,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "6ba577c4e9b0101f1eef751d6eabaa741f95b7b4f79cee665c624c7deacef234",
+        "original_char_count": 317
+      },
+      {
+        "page_number": 3,
+        "include_in_search": false,
+        "reason": "signed_approval_visual_evidence_only_raw_OCR_omits_and_misreads_content",
+        "role": "signed_approval_visual_evidence_only",
+        "original_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "original_char_count": 0
+      },
+      {
+        "page_number": 4,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "original_char_count": 0
+      },
+      {
+        "page_number": 5,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "9e0fc381277dd242878fd594563890f05d1785374007db0f3692253aa1268fc9",
+        "original_char_count": 4163
+      },
+      {
+        "page_number": 6,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "c148239479b2922aeec8b15ebab07d0d7805c72067efc265d85e985f2373b247",
+        "original_char_count": 3601
+      },
+      {
+        "page_number": 7,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "0b98e9665a41e8d3f990fcb63a37e078553f898539b7f35abc7eadde1a231a21",
+        "original_char_count": 3435
+      },
+      {
+        "page_number": 8,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "eb7df25936a480694487f1bc78e56a22df9e6e5877550abc285f1994a94444b6",
+        "original_char_count": 2471
+      },
+      {
+        "page_number": 9,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "f05a410f131dadae667555deb28bbfee122699e7fe471c73f65fb8b4a378e966",
+        "original_char_count": 950
+      },
+      {
+        "page_number": 10,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "19bef5c7c87e5b2d178b43915f1eeb62b0846c0237cbaa3cdcbaa2604e47aadc",
+        "original_char_count": 1153
+      },
+      {
+        "page_number": 11,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "9ea1546656653a3b17695954566ea6dc8cf3b7f723c683f81bf84a7d13032a6a",
+        "original_char_count": 1696
+      },
+      {
+        "page_number": 12,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "7b67cfddf89c4bfd3b7008060728803833c1b6ac08fc67bfd41315107691cd3f",
+        "original_char_count": 2146
+      },
+      {
+        "page_number": 13,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "01af790e094cd0e17d50200607cae3b321849664a8579cc77ff610b047f0d5f1",
+        "original_char_count": 1138
+      },
+      {
+        "page_number": 14,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "c2a951a683e6761036a6043e0bdccd163a52d47d45884b5ba871e5c4f437527c",
+        "original_char_count": 1053
+      },
+      {
+        "page_number": 15,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "aa058d6eefcf250bc6d2eb082cb229e55f08b1d32f9ff51d4330250c8f07a359",
+        "original_char_count": 852
+      },
+      {
+        "page_number": 16,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "9ad21f7e45517b5adccb8754da2ac8c4208771f68aa49ce40417b00ce36c9683",
+        "original_char_count": 1080
+      },
+      {
+        "page_number": 17,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "4644f5b99703dcb0961387ef70a3198a467bdadfc0e2412b56221fbe3057da5b",
+        "original_char_count": 2038
+      },
+      {
+        "page_number": 18,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "897b08d90ae66e7255a5551a87a4d078fa3648c17c09f75ec30390697540cc3d",
+        "original_char_count": 1697
+      },
+      {
+        "page_number": 19,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "cd49cfbd1511096b46342db79bbca4a456f13b20941253b8392f0b99059e55c5",
+        "original_char_count": 941
+      },
+      {
+        "page_number": 20,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "0b62104bbbcec2eeeef625de8f673862455cbf8ae11437be0fa63036d43fde79",
+        "original_char_count": 2379
+      },
+      {
+        "page_number": 21,
+        "include_in_search": false,
+        "reason": "two_column_cantonal_measure_table_association_not_certified",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "a92cb96f9c7e3bd609cb9afd6c0c11f30cdac02f85432ba9e8d47a1e362ac4c9",
+        "original_char_count": 2630
+      },
+      {
+        "page_number": 22,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "d65a4692af7bfc581a766639b83deda7a444b0d6a2a405c59db959cb456f0c2b",
+        "original_char_count": 1090
+      },
+      {
+        "page_number": 23,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "39f3e6bc78312590c4305f19531f7e67a24f3aadbe2ffd103e15b41210fe4059",
+        "original_char_count": 2342
+      },
+      {
+        "page_number": 24,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "2db5dba5fd34be372547cd45949aa22c8fe387bb6045bf576e70507f15de89fd",
+        "original_char_count": 159
+      },
+      {
+        "page_number": 25,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "f4e0b5a18aefa55eeea6bec6f37eccf00eec39d37d877ace18a21543a3a9d509",
+        "original_char_count": 299
+      },
+      {
+        "page_number": 26,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "a62f383b2a4f9aebdfe34bdfaaff270d02de975f0aa732a328a88d3972097aea",
+        "original_char_count": 1570
+      },
+      {
+        "page_number": 27,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "15018f5991f50a4203c6f2ea114d1792d7e17e38fda19e34b2c10dc74d438457",
+        "original_char_count": 1293
+      },
+      {
+        "page_number": 28,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "f6eaece70fb3a73c3d26080322e17acc5989c1660b517aba196a3a3a03150fee",
+        "original_char_count": 292
+      },
+      {
+        "page_number": 29,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "3c39c81788725d52c88c182d32cf5dd6819f433497f4ea3100f2114a0828c15d",
+        "original_char_count": 2099
+      },
+      {
+        "page_number": 30,
+        "include_in_search": false,
+        "reason": "urbanisation_map_legend_not_sector_entitlement",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "06eea3221a4d037a1f1afd1ba9a8d2e6c62972569e06652bafcaf279ad81ff41",
+        "original_char_count": 1175
+      },
+      {
+        "page_number": 31,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "be476728932eab3500876eb55a12735ede4b4b95be435097e1fb88121d67d9fe",
+        "original_char_count": 2492
+      },
+      {
+        "page_number": 32,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "31643cbc2cd54573fc7b494ed8a65c4a0b9dc4fa2a3be9e7f8dba7bf17b8b40a",
+        "original_char_count": 818
+      },
+      {
+        "page_number": 33,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "50950ecb03cf313a19af7e4040321d8036370f6e9af5d73549700523570917ee",
+        "original_char_count": 2624
+      },
+      {
+        "page_number": 34,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "ee89340f3063015aea97b500449029feb4838a13f5348d28e3d70572ffa61bec",
+        "original_char_count": 1458
+      },
+      {
+        "page_number": 35,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "53d408663af4ad314135bd6a99646cd7a9c63dfa47b53845b013913730fee959",
+        "original_char_count": 2719
+      },
+      {
+        "page_number": 36,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "2c9c2bc38ea9530b20149ee3dccb671c37449e9e69a2404b73c7858a9707927a",
+        "original_char_count": 2145
+      },
+      {
+        "page_number": 37,
+        "include_in_search": false,
+        "reason": "objectives_measures_table_not_certified",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "5e28ca947274b4f46d96b254c2e1f7f306738928d24d9cd82f2441e617ffbecb",
+        "original_char_count": 1907
+      },
+      {
+        "page_number": 38,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "bcf905eb25fdf3d15ea771d5839a98ea129f642d211c3ba542ce77df18218522",
+        "original_char_count": 1855
+      },
+      {
+        "page_number": 39,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "c49cbae298a25cf13de95f1a1f7cdd226125f92a25b35b899430690e9f425937",
+        "original_char_count": 1933
+      },
+      {
+        "page_number": 40,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "0fdbd1601826634fd516aed141c3a62021fa3a756f4ffec8c493654fe2164a4d",
+        "original_char_count": 1173
+      },
+      {
+        "page_number": 41,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "5eeed2f97817797d8963f79e53b3ed0820af028dbc450ddebeac4d66aaffb457",
+        "original_char_count": 780
+      },
+      {
+        "page_number": 42,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "5b7bfc71bbe356ca75669e39df8da850d6bdf956f58eabe648f7db7583dbfde2",
+        "original_char_count": 2160
+      },
+      {
+        "page_number": 43,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "e5fc70d890426a8499afc24f349f91b381e02027c14c09306f9decdb4533afa9",
+        "original_char_count": 2013
+      },
+      {
+        "page_number": 44,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "7e9ec4da9b7e1629b006a974ed77c538c15754ee81d2ee9c8c4843d6c252547b",
+        "original_char_count": 2776
+      },
+      {
+        "page_number": 45,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "fa9c35382ca905dafb40a1568e1d2ff2cc886fe587986d90d12ba86873b16594",
+        "original_char_count": 755
+      },
+      {
+        "page_number": 46,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "original_char_count": 0
+      },
+      {
+        "page_number": 47,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "0962ce86da9c4d82c2e43d66d17a69e40769d773aecb72a4939e55fd82a21d33",
+        "original_char_count": 923
+      },
+      {
+        "page_number": 48,
+        "include_in_search": false,
+        "reason": "objectives_measures_table_not_certified",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "1d7328d08255abba3af7a060275380b830583889a9794c49c15ca37ad77676bb",
+        "original_char_count": 2427
+      },
+      {
+        "page_number": 49,
+        "include_in_search": false,
+        "reason": "timetable_and_objectives_measures_table_not_certified",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "24455b55d95e3aac0a159a7a85f023d19d8e912af5fc525267fbe7132378efbb",
+        "original_char_count": 1796
+      },
+      {
+        "page_number": 50,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "9af2c1308897a953f20d2d0ac9dc471498c0031695032f0758e38c78c0542150",
+        "original_char_count": 1719
+      },
+      {
+        "page_number": 51,
+        "include_in_search": false,
+        "reason": "objectives_measures_table_not_certified",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "1ad1da7107f8511d7c51b783b2ef112f2dd0fce6b13ec6826516e63448ab3220",
+        "original_char_count": 937
+      },
+      {
+        "page_number": 52,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "ef5ac0bd472a450267f1372e7b1632a7b6dc7c07278c18965bd2774aba0e8501",
+        "original_char_count": 1967
+      },
+      {
+        "page_number": 53,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "14378cfb3514a0b382f245f5f838aafc38b89d3a8e8828ae0e4e84f9ec2a6da8",
+        "original_char_count": 365
+      },
+      {
+        "page_number": 54,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_planning_narrative",
+        "original_text_sha256": "2b580d613c443c68c0f8db0c13304e4eb4f57cf03e2452f6538989ffaccb5734",
+        "original_char_count": 347
+      },
+      {
+        "page_number": 55,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "original_char_count": 0
+      },
+      {
+        "page_number": 56,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "1a102601bf296d7edceba6ad97042d7c92d1e19ad4c83dff50daca5b99dd1d49",
+        "original_char_count": 1318
+      },
+      {
+        "page_number": 57,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "50608281954360fee9d153097b0eb970387fb6c5e4a473cf30939c9b142716b7",
+        "original_char_count": 6426
+      },
+      {
+        "page_number": 58,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "1404e2f76660b1055847bb5329a0fec04c1269ec3b1d765f70bf1d9cf3116e67",
+        "original_char_count": 1502
+      },
+      {
+        "page_number": 59,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "becb671d7f9eb45dbde062e848653b1324ba40c637b1e88a6f5769ce3c07c93f",
+        "original_char_count": 5622
+      },
+      {
+        "page_number": 60,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "original_char_count": 0
+      },
+      {
+        "page_number": 61,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "annex_index_only",
+        "original_text_sha256": "c88a3aa859321a0f05a8a544eeec085ce60cdf29b58147ce05741637b4d256cf",
+        "original_char_count": 631
+      },
+      {
+        "page_number": 62,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "original_char_count": 0
+      },
+      {
+        "page_number": 63,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "245ef1697cb9b5a70b2d98510acee7af846bd4fa0b106279cc25242fdb76486e",
+        "original_char_count": 49
+      },
+      {
+        "page_number": 64,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "12bae6c26fd97fa1ad8808c7fb75a02c39f34b8ada34882cece53211927f8e19",
+        "original_char_count": 44
+      },
+      {
+        "page_number": 65,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "f2207737def6184388c3b883b74b8879c2011da10e962bd95e6f2b068512fd6f",
+        "original_char_count": 72
+      },
+      {
+        "page_number": 66,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "1611f7a3da6a551ca69b46a9844d8a432bb894d8064af80f9a08620346e14ac5",
+        "original_char_count": 101
+      },
+      {
+        "page_number": 67,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "1b7de8b56f28383b34b7fec2e01281de727dac9c81ec3a6bd923d3564085e014",
+        "original_char_count": 101
+      },
+      {
+        "page_number": 68,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "a7f10b571a4433386adb33d48018a63b218615b397a65c51995ac81345a3c974",
+        "original_char_count": 1619
+      },
+      {
+        "page_number": 69,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "bbdea306c83cf5b986951ff108f74353f9df9cfc8a908e79e48c0a82a5796a57",
+        "original_char_count": 1622
+      },
+      {
+        "page_number": 70,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "b997268e220478628d1ee89ff48506fe198856e2aca2701437a84724b031651a",
+        "original_char_count": 998
+      },
+      {
+        "page_number": 71,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "d822d10bdb256a19423445c2f576f9fb54701a67b71b5e2ca5761692fadc7464",
+        "original_char_count": 1530
+      },
+      {
+        "page_number": 72,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "4a0718ca29b08d0fb325b925a947556f6376942b0bbb4e9193cf1dafc6545df7",
+        "original_char_count": 22
+      },
+      {
+        "page_number": 73,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "f3e993615ef9eef5625bf880b238896797ea4665efa2b1154d63984bea1263b6",
+        "original_char_count": 5
+      },
+      {
+        "page_number": 74,
+        "include_in_search": false,
+        "reason": "typology_map_labels_interleaved",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "4fefb6a9c4f67fa1ffb3929ca2b433289c32192e89e90668d383f06877c53fcf",
+        "original_char_count": 490
+      },
+      {
+        "page_number": 75,
+        "include_in_search": true,
+        "reason": "reviewed_native_narrative_or_context",
+        "role": "historical_landscape_context",
+        "original_text_sha256": "9b192b874fd2260591c41dd7b78abe84a39ab3f7a94dbb8badce8c55cb3d8e48",
+        "original_char_count": 424
+      },
+      {
+        "page_number": 76,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "2d55d074524cddc0f1de9f1c1e5b44c40e638e3943fa9c83357275f07129c736",
+        "original_char_count": 238
+      },
+      {
+        "page_number": 77,
+        "include_in_search": false,
+        "reason": "archaeology_map_labels_interleaved",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "8fd4159c83799cd68de708817af970e5fdd791f4a64124fa10e299a7f325dee0",
+        "original_char_count": 1286
+      },
+      {
+        "page_number": 78,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "eb9238c1580a70505d92c04b9fbabe766fd54706944df8c5393bbe9a3874df0b",
+        "original_char_count": 329
+      },
+      {
+        "page_number": 79,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "a3f81516a0c33c753649c3e6d21810e866a88226587172a39b472c3c2f515828",
+        "original_char_count": 301
+      },
+      {
+        "page_number": 80,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "1f9288fa7575e0ba66f3267076a978411258668bad114e904e1f3c2d31de7130",
+        "original_char_count": 2172
+      },
+      {
+        "page_number": 81,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "e6282b53b3e3f33db9c873344bbcc8ecf8724fe42abcaa36a1f6ee25639ca5c2",
+        "original_char_count": 1893
+      },
+      {
+        "page_number": 82,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "3cc8d22235425e27f8933d500d9a65021afff782cea4618727075a9f40296d97",
+        "original_char_count": 2151
+      },
+      {
+        "page_number": 83,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "c5a25ab8070ccc2c0fde732d536fc9f319efdedf270bd9dd60d59a4a8eaceece",
+        "original_char_count": 994
+      },
+      {
+        "page_number": 84,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "original_char_count": 0
+      },
+      {
+        "page_number": 85,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "fa1095ec0fda970c3b4269a3a9cf036b94508ddc63c2b85ef2e4bd24858cedf9",
+        "original_char_count": 5
+      },
+      {
+        "page_number": 86,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "31fb81adc3186d08399fa151f066d9ad27c1e0eaf0eabee8d1653271b8a98a48",
+        "original_char_count": 5
+      },
+      {
+        "page_number": 87,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "988b6b325e94477e5152c12ea40270ad869a9d949031f1b8a2a6c96146ca2aae",
+        "original_char_count": 8
+      },
+      {
+        "page_number": 88,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "7079fb4e07f149fd35385090e6fee5ee163b26a86d1216da8db4ff1a000794c0",
+        "original_char_count": 5
+      },
+      {
+        "page_number": 89,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "fd1f86fec95790eee3d4ca7d29e266a0a55df5d11ac46fe43776e1db35426993",
+        "original_char_count": 5
+      },
+      {
+        "page_number": 90,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "5f4af4410a2c4e1120585533febaf271e8da68aa430708e73b30cbe6bc0153e3",
+        "original_char_count": 5
+      },
+      {
+        "page_number": 91,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "02eec0f0cda71967c0ff4264ea4b97accfd5808308d68baf85f22e9a7763c05d",
+        "original_char_count": 5
+      },
+      {
+        "page_number": 92,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "8351aa454a57afe62f376e015650cc42cdb40785a4ccc16efccd844c6867ad4e",
+        "original_char_count": 5
+      },
+      {
+        "page_number": 93,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "97fd556e38368b0184bc285855ba5bb76188f8ee04aa89a31b696cbd051ad499",
+        "original_char_count": 5
+      },
+      {
+        "page_number": 94,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "2413b3ecd84bff81cc905133c4864eb88bf298da89aaa7880ec04078b1c3af70",
+        "original_char_count": 657
+      },
+      {
+        "page_number": 95,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "d119662adf2a7271380dd371d7e6d5d5c3cc9423e9d9d7f39e019160cdc4e98b",
+        "original_char_count": 1003
+      },
+      {
+        "page_number": 96,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "original_char_count": 0
+      },
+      {
+        "page_number": 97,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "08446db3e636171835e7c009e5580d39e132ea761795bc216b3f029cafec1b4d",
+        "original_char_count": 939
+      },
+      {
+        "page_number": 98,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "5235798128ecb154b1c1c1fb6c2f83e64d1de6c912aa472a3e3b2d52d6c5fefb",
+        "original_char_count": 72
+      },
+      {
+        "page_number": 99,
+        "include_in_search": false,
+        "reason": "held_map_table_sparse_blank_front_matter_or_unreliable_extraction",
+        "role": "withheld_unreviewed_layout_or_evidence",
+        "original_text_sha256": "a1b1f3e588ca75328176d519490ea9de62648ce085dcf6a25e66dbdcc0256725",
+        "original_char_count": 3478
+      }
+    ]
+  },
+  "currentness_evidence": {
+    "url": "https://www.allaman.ch/urbanisme",
+    "status": 200,
+    "html_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/registered-original-review/allaman-current.html",
+    "sha256": "1d5e022b39fcc0ff803cc26939921e02fd20ee7585e99928da2c34e83de2e939",
+    "statement": "Lists PDCom10February2016 among accessible planning documents and links exact registered bytes.",
+    "limit": "No explicit whole-plan currentness or no-amendments statement; continued publication does not make every2015diagnostic or future measure current."
+  },
+  "semantic_contract_sha256": "42a4390ceb78cbef0f6bfd4fd562c6e4f29b49cda758b6d54a8c01a74497a4de",
+  "preserved_ocr_evidence": {
+    "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/registered-original-review/allaman-existing-ocr.json",
+    "sha256": "d23a6e993cd3b562cc38f9de6c3b9f061cb9b82a6cecc48a0c04edcc9f575fa1",
+    "searchable": false,
+    "pages": 21
+  },
+  "source_status_transition": {
+    "from": "unverified",
+    "to": "approved",
+    "only_field": "plan_status"
+  }
+}
