@@ -1,5 +1,6 @@
 import unittest,uuid
 from unittest.mock import MagicMock
+import _pipeline_path  # noqa: F401  (adds the pipeline dir to sys.path)
 import prangins_category_correction as p
 SID=str(uuid.uuid5(uuid.NAMESPACE_URL,p.DOC+'#indicative-category-2026-09-22#wooded_cordons_create'))
 class CorrectionTests(unittest.TestCase):

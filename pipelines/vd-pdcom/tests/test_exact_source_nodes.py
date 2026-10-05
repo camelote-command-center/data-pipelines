@@ -6,6 +6,7 @@ import unittest
 from unittest.mock import patch
 from shapely.affinity import affine_transform
 from shapely.geometry import MultiPolygon, shape
+import _pipeline_path  # noqa: F401  (adds the pipeline dir to sys.path)
 from exact_source_nodes import node_existing_vertices
 
 ROOT=Path(__file__).resolve().parents[1]

@@ -1,4 +1,5 @@
 import copy,unittest
+import _pipeline_path  # noqa: F401  (adds the pipeline dir to sys.path)
 import vevey_historic as historic,vevey_mixed as mixed
 
 class VeveyHistoricMixedTests(unittest.TestCase):

@@ -1,5 +1,6 @@
 import unittest,copy
 from unittest.mock import MagicMock
+import _pipeline_path  # noqa: F401  (adds the pipeline dir to sys.path)
 import prangins_native_final as p
 class NativeTests(unittest.TestCase):
  @classmethod

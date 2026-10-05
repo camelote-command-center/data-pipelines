@@ -1,4 +1,5 @@
 import unittest
+import _pipeline_path  # noqa: F401  (adds the pipeline dir to sys.path)
 from commune_review_progress import projection
 class ProgressTests(unittest.TestCase):
  def setUp(self):
