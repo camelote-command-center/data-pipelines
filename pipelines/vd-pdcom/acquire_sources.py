@@ -233,6 +233,8 @@ def persist(conn,source,sha,pages):
     persist_vevey_historic(conn,doc_id,sha)
     from vevey_mixed import persist as persist_vevey_mixed
     persist_vevey_mixed(conn,doc_id,sha)
+    from vevey_collective import persist as persist_vevey_collective
+    persist_vevey_collective(conn,doc_id,sha)
     from prangins_package_native import persist as persist_prangins_package_native
     persist_prangins_package_native(conn,doc_id,sha)
     from prangins_transport_native import persist as persist_prangins_transport_native
