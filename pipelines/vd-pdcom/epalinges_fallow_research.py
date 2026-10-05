@@ -65,7 +65,8 @@ def extract(source_pdf):
             'page':102,'path_ids':review['path_ids'],'source_precision_m':None,'qualification':False,
             'exact_insertions':noded['insertions'],'noded_source_geometries':noded['geometries'],
             'geometry_lv95':mapping(collection),'native_source_proof':review['native_source_proof'],
-            'remaining_gates':review['remaining_gates'],'no_database_actions':True}
+            'remaining_gates':review['remaining_gates'],'geographic_hold':review['geographic_hold'],
+            'no_database_actions':True}
 
 
 def main():
