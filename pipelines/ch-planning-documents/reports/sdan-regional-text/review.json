@@ -1,0 +1,114 @@
+{
+  "historical_vintage": "2006-02-16",
+  "scope": "intercommunal",
+  "approval_status_as_source": "approved",
+  "currentness_caveat": "Historical SDAN2006; later project changes include Prangins RDU abandonment2018. Verify later applicable planning before interpreting a measure as current.",
+  "no_parcel_rights": true,
+  "no_geometry_qualification": true,
+  "member_communes": [
+    5713,
+    5715,
+    5716,
+    5722,
+    5724,
+    5725,
+    5728,
+    5730
+  ],
+  "vd_document_id": "bd31519f-f1a2-5579-9ee0-e852f082d1dc",
+  "source_sha256": "35b62cc028b93a649c7b752c14c2e549bee6ac5d207f1c3033ecf55445b5a729",
+  "source_url": "https://www.nyon.ch/media/document/0/rapport-synthese-sdan-document-urb-nyon-071220.pdf",
+  "official_host": "www.nyon.ch",
+  "publisher": "COPIL de l’agglomération nyonnaise",
+  "title": "SDAN — Rapport de synthèse approuvé le 16 février 2006, référence régionale historique",
+  "canton": "VD",
+  "commune_bfs": null,
+  "page_count": 43,
+  "source_role": "approved_main",
+  "plan_status": "approved",
+  "all_prose_is_binding": false,
+  "spatial_qualification": false,
+  "signed_approval": {
+    "pdf_page": 1,
+    "date": "2006-02-16",
+    "visually_verified": true,
+    "scope": "Original PDF1 approval by municipalities, regional council and Canton on16February2006; PDF5 contractual orientation document, engagement specifically chapters6-8; PDF41 preserves municipal prerogatives."
+  },
+  "diagnostic_vintage_limit": "Historical 2006 regional planning hypotheses and horizon 2020; no current capacity or implementation assertion. Prangins abandoned RDU on its territory in September 2018.",
+  "limits": [
+    "Preserve original text faithfully; do not rewrite historical proposals as current policy.",
+    "Quantities and horizon2020 remain historical planning hypotheses; no parcel capacity allocation.",
+    "PDF21Prangins development and PDF31RDU workstreams require retained currentness caveat.",
+    "Source chapter5key-sector descriptions are regional concepts; maps remain unvalidated raster supports.",
+    "No municipality completion, qualified geometry, source precision, new geometry or parcel associations.",
+    "Map-page list records existing reviewed thematic map inventory only; full visual map extraction remains false."
+  ],
+  "map_pages": [
+    12,
+    20,
+    22,
+    30
+  ],
+  "semantic_contract": {
+    "decision": "accept_historical_regional_native_text_only_subject_to_exact_byte_and_chunk_QA",
+    "reviewed_at": "2026-10-05T08:46:20.758881+00:00",
+    "source_document_id": "bd31519f-f1a2-5579-9ee0-e852f082d1dc",
+    "source_sha256": "35b62cc028b93a649c7b752c14c2e549bee6ac5d207f1c3033ecf55445b5a729",
+    "source_pages": 43,
+    "source_vintage": "2006-02-16",
+    "scope": "intercommunal_sdan",
+    "member_communes": [
+      5713,
+      5715,
+      5716,
+      5722,
+      5724,
+      5725,
+      5728,
+      5730
+    ],
+    "approval": {
+      "basis": "Original PDF1 approval by municipalities, regional council and Canton on16February2006; PDF5 contractual orientation document, engagement specifically chapters6-8; PDF41 preserves municipal prerogatives.",
+      "not_equivalent_to": "Eight approved municipal PDComs, current zoning, parcel development rights or implementation completion"
+    },
+    "currentness": {
+      "classification": "historical_approved_source_with_known_later_project_changes",
+      "official_publication": "Nyon current territorial planning page continues to publish the report separately under intercommunal/regional planning. Continued publication is not proof every2006measure is current.",
+      "material_later_change": "Prangins official Ex-RDU page records municipality abandoned the RDU concept on its territory inSeptember2018; preserve this specific territorial limit rather than label entireSDANrepealed.",
+      "evidence_urls": [
+        "https://www.nyon.ch/nyon-officiel/politiques-thematiques/amenagement-du-territoire/planification-territoriale-946",
+        "https://prangins.ch/prangins-officiel/service-de-l-urbanisme/urbanisme/ex-rdu/"
+      ]
+    },
+    "mandatory_document_and_chunk_metadata": {
+      "historical_vintage": "2006-02-16",
+      "scope": "intercommunal",
+      "approval_status_as_source": "approved",
+      "currentness_caveat": "Historical SDAN2006; later project changes include Prangins RDU abandonment2018. Verify later applicable planning before interpreting a measure as current.",
+      "no_parcel_rights": true,
+      "no_geometry_qualification": true
+    },
+    "content_rules": [
+      "Preserve original text faithfully; do not rewrite historical proposals as current policy.",
+      "Quantities and horizon2020 remain historical planning hypotheses; no parcel capacity allocation.",
+      "PDF21Prangins development and PDF31RDU workstreams require retained currentness caveat.",
+      "Source chapter5key-sector descriptions are regional concepts; maps remain unvalidated raster supports.",
+      "No municipality completion, qualified geometry, source precision, new geometry or parcel associations."
+    ],
+    "release_delta": {
+      "new_source_documents": 0,
+      "new_source_communes": 0,
+      "geometry_collections": 0,
+      "parcel_links": 0,
+      "completed_communes": 0,
+      "qualified_sectors": 0
+    },
+    "evidence_files": {
+      "sdan-registration.json": "fbef2f4fe7a2366cf49b6d2e440173fc84551d0935410289e31fbb77d7b9d8a9",
+      "nyon-current.html": "bd7750751a6767c7bbb574f0352020dda4f477f93beaef7e92cc88fb3de8167d",
+      "nyon-current-fetch.json": "e37de9909341fc121b39997f60d3db1f5a78b04c4526a3f2c86d39693a675b72",
+      "prangins-ex-rdu.html": "c73906cc205ada311eb739f2ab046420a18c44294ea66e973eda58bd9da46d69",
+      "prangins-ex-rdu-fetch.json": "7b31cab4ba2fbba96a5af4b4c908c4e7227537ddc3c8a6fc4731723bb91b55b5"
+    }
+  }
+}
