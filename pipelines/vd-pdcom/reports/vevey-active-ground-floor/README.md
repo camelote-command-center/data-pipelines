@@ -1,0 +1,11 @@
+# Vevey ground-floor activity: native wavy line supports
+
+Approved signed source, physical PDF page 67. This partial private collection preserves two complete original solid red wavy paths, ordinary IDs 95078 and 95079. Dashed paths 95080 and 95081 remain wholly held outside the frozen training hull; legend 96164 is excluded. No buffer, area, artificial joining, or parcel association is created. Source precision remains NULL.
+
+The literal category is “Rez-de-chaussée d’activités se déployant sur l’espace public”. A2 is a programming orientation implemented through future plans d’affectation and public-space project briefs. It does not establish current businesses, installed terraces, public access rights, tenancy, construction entitlement, retail ratios, or available capacity. No separate current/planned meaning is assigned to the held dashed style.
+
+The original cubic strokes, exact style, native PDF clipping and graphics ancestry, and matched raw page-content statements are preserved. Both accepted strokes are direct vectors; decorative raster shadows are excluded. The existing six training and five held controls and their transform remain unchanged. Whole raw supports pass both hull and Vevey before visibility clips; the accepted paths are wholly visible. No qualification or completeness promotion.
+
+The separate orange potential-densification overlay was assessed during this batch and remains undelivered. It has thirteen original bounded pattern fills, but its raster luminosity mask varies inside every fill. Ten otherwise geographically eligible fills remain on source-mask-visibility hold, three fail whole geographic gates, and the legend is excluded. No raster threshold, inferred mask boundary or parcel association was generated. Blue equipment glyphs and halos remain unaccepted as point anchors.
+
+Evidence and reconciled category inventory: `/Users/a/LLM_Work/re-llm/vaud-pdcom/vevey-potential/`. Independent line and mask evidence: `/Users/a/LLM_Work/re-llm/vaud-pdcom/vevey-potential-qa/`. The page-67 ledger was reconciled against eleven existing registered private collections; this line class was not previously delivered. Counts are partial collections, not municipal completeness.
