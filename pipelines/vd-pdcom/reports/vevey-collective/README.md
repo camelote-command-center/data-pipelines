@@ -1,0 +1,9 @@
+# Vevey collective open spaces — private contextual supports
+
+Approved signed PDF, physical page 67; document `9d0a37f4-0265-59b3-a2f6-b21b57ae5414`. This batch preserves 43 original P1 bounded pattern-fill contours and 224 positive-area contextual cadastral intersections. Whole supports 87014 and 87230 remain held at the unchanged frozen hull gate; legend 98856 is excluded. Source precision remains NULL. No qualification, public access or ownership right, development capacity, or commune completeness is inferred.
+
+Map P1 and legend P11 have identical native pattern streams; their original phase matrices remain distinct. The inner dot-pattern cell clips are rendering ancestry, never geographic support boundaries. `native-paint.json.gz` is deterministic compressed JSON preserving all 23,856 original paint operators and their complete clip/group ancestry, keyed by extended index. The batch pins its SHA256; the adapter verifies and decodes it before validation. Full evidence is persisted with the contextual collection.
+
+The six training and five held controls and their existing transformation remain frozen. Every whole raw support passes hull/Vevey containment before original PDF visibility clips. Curve convergence at .03/.003 PDF points preserves pair membership. Independent QA reconstructs all 46 raw fills, including the held shorthand-curve case. The extraction ledger's older nearest-fill match for held 87230 is unresolved and is never used to promote that support.
+
+Independent source, semantic, and parcel evidence: `/Users/a/LLM_Work/re-llm/vaud-pdcom/validation-accelerated/`. Extraction work and handoff: `/Users/a/LLM_Work/re-llm/vaud-pdcom/extraction-accelerated/`. No production write is performed by these offline generation scripts. Parent integration must complete rollback rehearsal and receiver parity verification before reporting delivery.
