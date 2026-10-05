@@ -1,0 +1,104 @@
+{
+  "decision": "accepted_native_semantics_and_bounded_geography_for_private_candidate_preparation",
+  "batch_sha256": "78029f9d6ad728fe3cd422b768c2b36dce799a46d67f5c43774fc47258a11281",
+  "source_sha256": "99e1f03d89478b5815b7b0e9ef0d5c5511cbfd4e48d6ee038ad80ac86c8b0559",
+  "selected_fullfill_ledger_count": 679,
+  "classification_counts": {
+    "accepted_original_equipment_support": 26,
+    "held_equipment_reservoir_whole_support_outside_training_hull": 2,
+    "excluded_repeated_cycle_pedestrian_route_dot": 478,
+    "excluded_camping_tent_symbol_not_equipment_area": 1,
+    "excluded_route_dot_legend": 6,
+    "excluded_equipment_legend_swatch": 1,
+    "excluded_camping_legend_border": 4,
+    "held_existing_green_whole_support_outside_training_hull": 2,
+    "accepted_original_existing_green_support": 4,
+    "held_small_solid_green_shore_endpoint_semantic_review_needed": 1,
+    "excluded_linear_pedestrian_route_dash_or_route_cap": 154
+  },
+  "categories": [
+    {
+      "category": "equipment_public",
+      "paths": [
+        23,
+        63,
+        4142,
+        4147,
+        4203,
+        4428,
+        4510,
+        4532,
+        4541,
+        4563,
+        4624,
+        4655,
+        4669,
+        4826,
+        4843,
+        4845,
+        4848,
+        4851,
+        4853,
+        4870,
+        4873,
+        4875,
+        5195,
+        5214,
+        5250,
+        5256
+      ],
+      "components": 26,
+      "component_area_sum_m2": 13385.028916138854,
+      "union_area_m2": 13341.308398958045,
+      "within_category_overlap_m2": 43.72051718080911,
+      "all_literal_lines_closed": true,
+      "whole_hull": true,
+      "whole_registered_commune": true,
+      "no_active_mask_clip_opacity_hazard": true
+    },
+    {
+      "category": "existing_public_green",
+      "paths": [
+        43,
+        73,
+        81,
+        83
+      ],
+      "components": 4,
+      "component_area_sum_m2": 10014.063510109976,
+      "union_area_m2": 10014.063510109976,
+      "within_category_overlap_m2": 0.0,
+      "all_literal_lines_closed": true,
+      "whole_hull": true,
+      "whole_registered_commune": true,
+      "no_active_mask_clip_opacity_hazard": true
+    }
+  ],
+  "preserved_holds": [
+    91,
+    94,
+    1,
+    55,
+    67
+  ],
+  "commercial_overlap_area_m2_by_category": {
+    "equipment_public": 1983.5713479885267,
+    "existing_public_green": 8057.300937543341
+  },
+  "blue_green_overlap_area_m2": 5.515517030126399,
+  "overlap_contract": "Category geometries overlap intentionally. Use per-category unions and distinct sector/category keys; do not sum supports into exclusive land area or create duplicate commercial collection.",
+  "semantics": [
+    "Blue facility/building supports use literal Equipement public category; separate cyan Bâtiment public symbol is not relabeled or absorbed.",
+    "Solid green existing supports distinguished from crosshatched create/develop and linear route pieces by native shape, painting and visual context; legend/map RGB discrepancy explicitly retained.",
+    "Projected green, route dots/dashes, camping tent and legend furniture excluded.",
+    "Source-authored support includes later thematic/context overpaint, never claims net visible paint, ownership, present public use, current zoning or rights."
+  ],
+  "source_precision_m": null,
+  "publication_status": "internal_review_only",
+  "review_status": "review_required",
+  "remaining_gates": [
+    "Complete official cadastral reference snapshot and independent percategory membership/typing/boundary verification.",
+    "Frozen adapter, protected baseline, transactional rehearsal and exact private receiver verification before delivery."
+  ],
+  "no_mutations": true
+}
