@@ -237,6 +237,8 @@ def persist(conn,source,sha,pages):
     persist_vevey_collective(conn,doc_id,sha)
     from vevey_villas import persist as persist_vevey_villas
     persist_vevey_villas(conn,doc_id,sha)
+    from vevey_active_ground_floor import persist as persist_vevey_active_ground_floor
+    persist_vevey_active_ground_floor(conn,doc_id,sha)
     from prangins_package_native import persist as persist_prangins_package_native
     persist_prangins_package_native(conn,doc_id,sha)
     from prangins_transport_native import persist as persist_prangins_transport_native
