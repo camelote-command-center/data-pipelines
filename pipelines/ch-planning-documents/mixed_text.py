@@ -10,9 +10,13 @@ def require(ok,reason):
     if not ok:raise ValueError(reason)
 
 def validate_review(r):
-    require(r.get('source_role')=='approved_main' and r.get('plan_status')=='approved', 'mixed_only_approved_main_supported')
+    if r.get('historical_scope'):
+        from historical_former_commune import validate as validate_historical
+        validate_historical(r)
+    else:
+        require(r.get('source_role')=='approved_main' and r.get('plan_status')=='approved', 'mixed_only_approved_main_supported')
     require(not r.get('text_extraction') and not r.get('native_page_selection'),'mixed_mode_exclusive')
-    require(r.get('scope','municipal')=='municipal' and type(r.get('commune_bfs')) is int,'mixed_municipal_scope_required')
+    require(bool(r.get('historical_scope')) or (r.get('scope','municipal')=='municipal' and type(r.get('commune_bfs')) is int),'mixed_municipal_scope_required')
     m=r['mixed_representations'];name=Path(m['artifact'])
     require(m.get('mode')=='reviewed_mixed_representations' and m.get('fully_certified_pages')==0,'mixed_partial_scope_required')
     require(not name.is_absolute() and '..' not in name.parts and name.suffix=='.json' and len(m.get('sha256',''))==64,'mixed_artifact_identity_required')
@@ -33,7 +37,7 @@ def representations(e):
     result=[]
     for p in e['pages']:
         require(hashlib.sha256(p['raw_ocr_text'].encode()).hexdigest()==p['raw_ocr_sha256'],'mixed_raw_ocr_hash_changed')
-        require(type(p['include_raw_ocr']) is bool and bool(p['selection_reason']) and p['approval_class'] in ('numbered_grey_approval_scope','white_nonapproved_context','historical_approved_source_context'),'mixed_page_role_required')
+        require(type(p['include_raw_ocr']) is bool and bool(p['selection_reason']) and p['approval_class'] in ('numbered_grey_approval_scope','white_nonapproved_context','historical_approved_source_context','historical_former_commune_research'),'mixed_page_role_required')
         if p['include_raw_ocr']:
             result.append({'representation_id':'raw-page-'+str(p['page_number']),'page_number':p['page_number'],'text':p['raw_ocr_text'],'text_sha256':p['raw_ocr_sha256'],'method':METHODS[0],'approval_class':p['approval_class'],'coverage':'partial_raw_ocr_not_fullpage_certified','confidence':None,'confidence_status':'not_recorded','source_provenance':e['raw_ocr_provenance']})
         last_end=0
@@ -86,11 +90,19 @@ def load_pages(pdf,r):
         t=original.get_text('text');require(hashlib.sha256(t.encode()).hexdigest()==p['original_pdf_text_sha256'] and len(t)==p['original_pdf_char_count'] and original.rect.width==p['width'] and original.rect.height==p['height'],'mixed_original_pdf_layer_changed')
     return pages
 
+def render_chunk_content(review,text):
+    if review.get('historical_scope'):
+        from historical_former_commune import LABEL
+        return LABEL+'\n\n'+text
+    return text
+
 def assemble(r,pages,byte_count):
     from vd_pdcom_text import validate_review,uid,digest,source_kind
     validate_review(r);require(pages==expected_pages(r),'mixed_page_or_representation_changed')
     url=r['source_url'];sha=r['source_sha256'];doc=uid('knowledge:'+url+':'+sha)
-    provenance={'parser':source_kind(r),'vd_document_id':r['vd_document_id'],'content_hash':sha,'commune_bfs':r['commune_bfs'],'scope':'municipal','approval_scope':r['signed_approval'],'all_prose_is_binding':False,'diagnostic_vintage_limit':r['diagnostic_vintage_limit'],'limits':r['limits'],'spatial_qualification':False,'commune_complete':False,'source_role':r['source_role'],'plan_status':r['plan_status'],'review_sha256':digest(r),'mixed_representations':r['mixed_representations']}
+    provenance={'parser':source_kind(r),'vd_document_id':r['vd_document_id'],'content_hash':sha,'commune_bfs':r['commune_bfs'],'scope':r.get('scope','municipal'),'approval_scope':r['signed_approval'],'all_prose_is_binding':False,'diagnostic_vintage_limit':r['diagnostic_vintage_limit'],'limits':r['limits'],'spatial_qualification':False,'commune_complete':False,'source_role':r['source_role'],'plan_status':r['plan_status'],'review_sha256':digest(r),'mixed_representations':r['mixed_representations']}
+    if r.get('historical_scope'):
+        provenance['historical_scope']=r['historical_scope']
     chunks=[]
     for p in pages:
         for rep in p['representations']:
@@ -98,7 +110,7 @@ def assemble(r,pages,byte_count):
             for start in range(0,len(rep['text']),2000):
                 content=rep['text'][start:start+2000].strip()
                 if content:
-                    i=len(chunks);chunks.append({'id':uid(doc+':'+str(i)),'document_id':doc,'chunk_index':i,'content':content,'page_number':p['page_number'],'metadata':dict(provenance,source_url=url,citation=url+'#page='+str(p['page_number']),extraction_status='partial_mixed_representation',representation=proof)})
+                    i=len(chunks);chunks.append({'id':uid(doc+':'+str(i)),'document_id':doc,'chunk_index':i,'content':render_chunk_content(r,content),'page_number':p['page_number'],'metadata':dict(provenance,source_url=url,citation=url+'#page='+str(p['page_number']),extraction_status='partial_mixed_representation',representation=proof)})
     require(bool(chunks),'mixed_no_searchable_text')
     metadata=dict(provenance,source_url=url,physical_page_count=len(pages),page_manifest=[{k:v for k,v in p.items() if k not in ('text','representations')} for p in pages],extraction_status='partial_mixed_representations',map_pages=r['map_pages'],full_visual_map_extraction=False)
     return {'review':r,'pages':pages,'byte_count':byte_count,'chunks':chunks,'source_id':uid(source_kind(r)+':VD:'+r['vd_document_id']),'version_id':uid('version:'+url+':'+sha),'document_id':doc,'metadata':metadata}
@@ -114,11 +126,15 @@ def validate_delivery(document,chunks):
         for n in range(0,len(rep['text']),2000):
             t=rep['text'][n:n+2000].strip()
             if t:
-                i=len(expected);expected.append((uid(doc+':'+str(i)),i,rep['page_number'],t,rep['representation_id']))
+                i=len(expected);expected.append((uid(doc+':'+str(i)),i,rep['page_number'],render_chunk_content(document,t),rep['representation_id']))
     actual=[(x['id'],x['chunk_index'],x['page_number'],x['content'],x['metadata'].get('representation',{}).get('representation_id')) for x in sorted(chunks,key=lambda x:x['chunk_index'])]
     require(actual==expected,'mixed_delivery_sequence_incomplete_or_changed')
     for chunk in chunks:
-        m=chunk['metadata'];proof=m.get('representation',{});rep=reps.get(proof.get('representation_id'))
+        m=chunk['metadata']
+        if document.get('historical_scope'):
+            from historical_former_commune import validate_chunk
+            validate_chunk(document,m)
+        proof=m.get('representation',{});rep=reps.get(proof.get('representation_id'))
         require(rep is not None and proof=={k:v for k,v in rep.items() if k!='text'},'mixed_delivery_representation_changed')
-        require(chunk['page_number']==rep['page_number'] and chunk['content'] in [rep['text'][n:n+2000].strip() for n in range(0,len(rep['text']),2000)],'mixed_delivery_text_changed')
+        require(chunk['page_number']==rep['page_number'] and chunk['content'] in [render_chunk_content(document,rep['text'][n:n+2000].strip()) for n in range(0,len(rep['text']),2000)],'mixed_delivery_text_changed')
         require(all(m.get(k)==document.get(k) for k in ('mixed_representations','approval_scope','diagnostic_vintage_limit','limits')),'mixed_delivery_caveat_changed')

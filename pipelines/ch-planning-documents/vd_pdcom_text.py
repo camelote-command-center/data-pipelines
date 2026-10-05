@@ -14,8 +14,11 @@ from psycopg2.extras import Json
 SOURCE = 'vd_pdcom_municipal'
 REGIONAL_SOURCE = 'vd_sdan_regional'
 OCR_SOURCE = 'vd_pdcom_municipal_ocr'
+HISTORICAL_SOURCE = 'vd_pdcom_historical_former_commune'
 
 def source_kind(review):
+    if review.get('historical_scope'):
+        return HISTORICAL_SOURCE
     if review.get('text_extraction'):
         return OCR_SOURCE
     return REGIONAL_SOURCE if review.get('scope') == 'intercommunal' else SOURCE
@@ -41,6 +44,10 @@ def require(ok, reason):
 
 def validate_review(r):
     uuid.UUID(r['vd_document_id'])
+    historical=bool(r.get('historical_scope'))
+    if historical:
+        from historical_former_commune import validate as validate_historical
+        validate_historical(r)
     if r.get('mixed_representations'):
         from mixed_text import validate_review as validate_mixed
         validate_mixed(r)
@@ -50,18 +57,18 @@ def validate_review(r):
     if r.get('text_extraction'):
         from reviewed_ocr import validate_review as validate_ocr_review
         validate_ocr_review(r)
-    require(r['source_role'] in ('approved_main','approved_amendment'), 'only_reviewed_approved_source_roles_supported')
+    require(historical or r['source_role'] in ('approved_main','approved_amendment'), 'only_reviewed_approved_source_roles_supported')
     if r['source_role']=='approved_amendment':
         scope=r.get('amendment_scope',{})
         require(bool(scope.get('predecessor')) and bool(scope.get('replaced_part')) and bool(scope.get('approved_scope')) and scope.get('replaces_entire_plan') is False, 'explicit_limited_amendment_scope_required')
-    require(r['plan_status'] in ('approved', 'approved_with_reservation'), 'approval_required')
+    require(historical or r['plan_status'] in ('approved', 'approved_with_reservation'), 'approval_required')
     if r['plan_status']=='approved_with_reservation':
         reservations=r.get('reservations')
         require(isinstance(reservations,list) and bool(reservations) and all(isinstance(v,dict) and bool(v.get('scope')) and isinstance(v.get('evidence_pdf_pages'),list) and bool(v['evidence_pdf_pages']) and all(isinstance(n,int) and 1<=n<=r['page_count'] for n in v['evidence_pdf_pages']) for v in reservations), 'explicit_reservation_scope_and_evidence_required')
-    require(r.get('scope', 'municipal') in ('municipal', 'intercommunal'), 'unsupported_planning_scope')
+    require(historical or r.get('scope', 'municipal') in ('municipal', 'intercommunal'), 'unsupported_planning_scope')
     if r.get('scope')=='intercommunal':
         validate_regional_scope(r)
-    require(r['canton'] == 'VD' and (r.get('scope')=='intercommunal' or isinstance(r['commune_bfs'], int)), 'explicit_vd_scope_required')
+    require(r['canton'] == 'VD' and (historical or r.get('scope')=='intercommunal' or isinstance(r['commune_bfs'], int)), 'explicit_vd_scope_required')
     require(urlparse(r['source_url']).scheme == 'https' and urlparse(r['source_url']).hostname == r['official_host'], 'official_source_url_mismatch')
     require(r['signed_approval']['visually_verified'] is True and bool(r['signed_approval']['scope']), 'approval_scope_review_required')
     require(r['all_prose_is_binding'] is False and r['spatial_qualification'] is False, 'no_blanket_approval_or_geometry')
@@ -173,7 +180,10 @@ def persist(conn, bundle, operation_id, pdf_path):
         c.execute("SET LOCAL statement_timeout='90s'")
         c.execute('SELECT sha256,plan_status,page_count,source_url FROM bronze_ch.vd_pdcom_documents WHERE id=%s FOR SHARE', (r['vd_document_id'],))
         require(c.fetchone() == (r['source_sha256'], r['plan_status'], r['page_count'], r['source_url']), 'registered_source_changed')
-        if r.get('scope')=='intercommunal':
+        if r.get('historical_scope'):
+            from historical_former_commune import validate_registered_mapping
+            validate_registered_mapping(c)
+        elif r.get('scope')=='intercommunal':
             c.execute('SELECT commune_bfs FROM bronze_ch.vd_pdcom_document_communes WHERE document_id=%s ORDER BY commune_bfs', (r['vd_document_id'],))
             require([v[0] for v in c.fetchall()]==r['member_communes'], 'registered_regional_members_changed')
         else:
@@ -186,8 +196,8 @@ def persist(conn, bundle, operation_id, pdf_path):
         require(not c.fetchall(), 'active_prior_version_requires_explicit_reviewed_supersession')
         c.execute('SELECT count(*) FROM knowledge_ch.documents WHERE id=%s',(b['document_id'],));documents_before=c.fetchone()[0]
         c.execute('SELECT count(*) FROM knowledge_ch.chunks WHERE document_id=%s',(b['document_id'],));chunks_before=c.fetchone()[0]
-        checked_insert(c,'bronze_ch','planning_document_runs',{'id':str(operation_id),'scope':{'kind':('scoped_historical_regional_text' if source_kind(r)==REGIONAL_SOURCE else 'scoped_municipal_pdcom_text'),'document_id':r['vd_document_id']}})
-        checked_insert(c,'bronze_ch','planning_document_sources',{'id':b['source_id'],'source':source_kind(r),'canton_code':'VD','source_key':r['vd_document_id'],'title':r['title'],'document_url':r['source_url'],'commune_bfs':r['commune_bfs'],'language':'fr','legal_status':r['plan_status'],'document_type':('regional_sdan' if source_kind(r)==REGIONAL_SOURCE else 'municipal_pdcom'),'source_metadata':r,'catalog_hash':digest(r),'current_version_id':b['version_id'],'extraction_status':b['metadata']['extraction_status']})
+        checked_insert(c,'bronze_ch','planning_document_runs',{'id':str(operation_id),'scope':{'kind':('scoped_historical_former_commune_text' if source_kind(r)==HISTORICAL_SOURCE else ('scoped_historical_regional_text' if source_kind(r)==REGIONAL_SOURCE else 'scoped_municipal_pdcom_text')),'document_id':r['vd_document_id']}})
+        checked_insert(c,'bronze_ch','planning_document_sources',{'id':b['source_id'],'source':source_kind(r),'canton_code':'VD','source_key':r['vd_document_id'],'title':r['title'],'document_url':r['source_url'],'commune_bfs':r['commune_bfs'],'language':'fr','legal_status':r['plan_status'],'document_type':('historical_former_commune_pdcom' if source_kind(r)==HISTORICAL_SOURCE else ('regional_sdan' if source_kind(r)==REGIONAL_SOURCE else 'municipal_pdcom')),'source_metadata':r,'catalog_hash':digest(r),'current_version_id':b['version_id'],'extraction_status':b['metadata']['extraction_status']})
         checked_insert(c,'bronze_ch','planning_document_versions',{'id':b['version_id'],'source_id':b['source_id'],'content_hash':r['source_sha256'],'final_url':r['source_url'],'content_type':'application/pdf','byte_count':b['byte_count'],'pages':b['pages'],'extraction_status':b['metadata']['extraction_status'],'knowledge_document_id':b['document_id']})
         # Only the expensive classifier is suspended; taxonomy remains enabled.
         # Transaction rollback restores trigger state if any assertion fails.
@@ -220,7 +230,13 @@ def deliver(conn, document_id):
         c.execute("SET LOCAL statement_timeout='120s'")
         c.execute('SELECT source,raw_metadata FROM knowledge_ch.documents WHERE id=%s', (document_id,))
         row=c.fetchone()
-        require(row is not None and row[0] in (SOURCE,REGIONAL_SOURCE,OCR_SOURCE) and row[1].get('spatial_qualification') is False and row[1].get('all_prose_is_binding') is False, 'scoped_document_contract_required')
+        require(row is not None and row[0] in (SOURCE,REGIONAL_SOURCE,OCR_SOURCE,HISTORICAL_SOURCE) and row[1].get('spatial_qualification') is False and row[1].get('all_prose_is_binding') is False, 'scoped_document_contract_required')
+        if row[0]==HISTORICAL_SOURCE or row[1].get('historical_scope'):
+            require(row[0]==source_kind(row[1]),'source_kind_scope_mismatch')
+        if row[0]==HISTORICAL_SOURCE:
+            from historical_former_commune import validate as validate_historical
+            validate_historical(row[1])
+            require(bool(row[1].get('mixed_representations')),'historical_mixed_representation_required')
         if row[1].get('mixed_representations'):
             from mixed_text import validate_delivery as validate_mixed_delivery
             c.execute('SELECT id::text,chunk_index,page_number,content,metadata FROM knowledge_ch.chunks WHERE document_id=%s', (document_id,))
