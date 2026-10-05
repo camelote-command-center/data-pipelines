@@ -1,0 +1,138 @@
+{
+  "vd_document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+  "source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+  "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_2.pdf",
+  "official_host": "www.lutry.ch",
+  "publisher": "Commune de Lutry",
+  "title": "Lutry — Dossier directeur, partie 2/3, OCR de recherche partiel",
+  "canton": "VD",
+  "commune_bfs": 5606,
+  "page_count": 21,
+  "source_role": "approved_main",
+  "plan_status": "approved_with_reservation",
+  "all_prose_is_binding": false,
+  "spatial_qualification": false,
+  "signed_approval": {
+    "status": "approved_with_reservation",
+    "evidence_document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+    "evidence_source_sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+    "evidence_pdf_page": 3,
+    "visually_verified": true,
+    "date": "2000-02-28",
+    "scope": "Official three-part dossier; approval date stamp visible, signature fields blank. Parts2and3 are continuations linked in same official municipal listing, not independently signed documents.",
+    "not_claimed": "Current zoning, parcel rights, exhaustive current capacity or unconditional approval of every sector."
+  },
+  "reservations": [
+    {
+      "scope": "Grandchamp, Bossière, between Le Châtelard and Le Daley: Approval procedure suspended pending outcome of revision of LPPL. Later sector-specific resolution not established.",
+      "evidence_document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+      "evidence_source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+      "evidence_pdf_pages": [
+        9
+      ],
+      "visually_verified": true
+    }
+  ],
+  "diagnostic_vintage_limit": "1998–2000 source diagnostics, schedules, counts and projections are historical, not current facts. Verify original image before relying on wording, numbers or associations. No numeric rules normalized.",
+  "limits": [
+    "approval_with_reservation and cross-document evidence",
+    "three suspended sectors with unestablished later resolution",
+    "missing FA/DB annexes; index is not referenced annexes",
+    "raw uncorrected OCR with explicit method and source/ocr hashes",
+    "OCR confidence null because not recorded; not evidence of measured quality",
+    "verify original image before relying on wording, numbers or associations",
+    "historical1998-2000 diagnostics, schedules, counts and projections; not current facts",
+    "physical part-specific PDF citation",
+    "no numeric normalization or map extraction/qualification/completion"
+  ],
+  "map_pages": [
+    6,
+    8,
+    9,
+    12,
+    14,
+    16
+  ],
+  "ocr_quality": "uncorrected_machine_ocr",
+  "requires_source_image_verification": true,
+  "corpus_limits": {
+    "missing": [
+      "FA action-sheet annexes",
+      "DB base-data annexes",
+      "later resolution of three suspended sector approvals"
+    ],
+    "index_is_not_annex": true,
+    "source_parts": 3,
+    "published_search_pages_in_part": [
+      1,
+      2,
+      3,
+      5,
+      7,
+      17,
+      18,
+      19,
+      20
+    ],
+    "held_pages_in_part": [
+      4,
+      6,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      21
+    ],
+    "full_visual_map_extraction": false,
+    "currentness": {
+      "checked_at": "2026-10-05T09:43:31.385905+00:00",
+      "official_url": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
+      "statement": "Municipality currently publishes dossier as in force since2000-02-28. Listing update2026-08-05 is not a plan revision.",
+      "limit": "General in-force statement does not resolve suspended sectors. Adjacent PAComI procedure does not establish replacement of director dossier."
+    }
+  },
+  "supporting_documents": [
+    {
+      "part": 1,
+      "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_1.pdf",
+      "sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+      "page_count": 44,
+      "bytes": 2915747,
+      "document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+      "plan_status": "approved_with_reservation"
+    },
+    {
+      "part": 2,
+      "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_2.pdf",
+      "sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+      "page_count": 21,
+      "bytes": 2930925,
+      "document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+      "plan_status": "approved_with_reservation"
+    },
+    {
+      "part": 3,
+      "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+      "sha256": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+      "page_count": 21,
+      "bytes": 3135641,
+      "document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+      "plan_status": "approved_with_reservation"
+    }
+  ],
+  "text_extraction": {
+    "mode": "reviewed_ocr",
+    "artifact": "lutry-reviewed-ocr/part-2-ocr.json",
+    "sha256": "ccc0affc6998c279e51d0da6a9d79875fedf582b93c54763e7b21ddf014539c3",
+    "method": "Tesseract French psm3,PyMuPDF2x; raw uncorrected research OCR. Existing12pages reused,74new pages.",
+    "engine": "tesseract 5.5.2",
+    "confidence": null,
+    "confidence_status": "not_recorded"
+  },
+  "semantic_contract_sha256": "1048cc8478dce65349916e660b7bd2554018073c8704bd9942627542977c9c9d"
+}

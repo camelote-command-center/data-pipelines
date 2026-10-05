@@ -1,0 +1,2815 @@
+{
+  "review": {
+    "vd_document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+    "source_sha256": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+    "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+    "official_host": "www.lutry.ch",
+    "publisher": "Commune de Lutry",
+    "title": "Lutry — Dossier directeur, partie 3/3, OCR de recherche partiel",
+    "canton": "VD",
+    "commune_bfs": 5606,
+    "page_count": 21,
+    "source_role": "approved_main",
+    "plan_status": "approved_with_reservation",
+    "all_prose_is_binding": false,
+    "spatial_qualification": false,
+    "signed_approval": {
+      "status": "approved_with_reservation",
+      "evidence_document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+      "evidence_source_sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+      "evidence_pdf_page": 3,
+      "visually_verified": true,
+      "date": "2000-02-28",
+      "scope": "Official three-part dossier; approval date stamp visible, signature fields blank. Parts2and3 are continuations linked in same official municipal listing, not independently signed documents.",
+      "not_claimed": "Current zoning, parcel rights, exhaustive current capacity or unconditional approval of every sector."
+    },
+    "reservations": [
+      {
+        "scope": "Grandchamp, Bossière, between Le Châtelard and Le Daley: Approval procedure suspended pending outcome of revision of LPPL. Later sector-specific resolution not established.",
+        "evidence_document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+        "evidence_source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+        "evidence_pdf_pages": [
+          9
+        ],
+        "visually_verified": true
+      }
+    ],
+    "diagnostic_vintage_limit": "1998–2000 source diagnostics, schedules, counts and projections are historical, not current facts. Verify original image before relying on wording, numbers or associations. No numeric rules normalized.",
+    "limits": [
+      "approval_with_reservation and cross-document evidence",
+      "three suspended sectors with unestablished later resolution",
+      "missing FA/DB annexes; index is not referenced annexes",
+      "raw uncorrected OCR with explicit method and source/ocr hashes",
+      "OCR confidence null because not recorded; not evidence of measured quality",
+      "verify original image before relying on wording, numbers or associations",
+      "historical1998-2000 diagnostics, schedules, counts and projections; not current facts",
+      "physical part-specific PDF citation",
+      "no numeric normalization or map extraction/qualification/completion"
+    ],
+    "map_pages": [
+      1,
+      5,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13
+    ],
+    "ocr_quality": "uncorrected_machine_ocr",
+    "requires_source_image_verification": true,
+    "corpus_limits": {
+      "missing": [
+        "FA action-sheet annexes",
+        "DB base-data annexes",
+        "later resolution of three suspended sector approvals"
+      ],
+      "index_is_not_annex": true,
+      "source_parts": 3,
+      "published_search_pages_in_part": [
+        2,
+        3,
+        6,
+        12,
+        14,
+        15,
+        20
+      ],
+      "held_pages_in_part": [
+        1,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        16,
+        17,
+        18,
+        19,
+        21
+      ],
+      "full_visual_map_extraction": false,
+      "currentness": {
+        "checked_at": "2026-10-05T09:43:31.385905+00:00",
+        "official_url": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
+        "statement": "Municipality currently publishes dossier as in force since2000-02-28. Listing update2026-08-05 is not a plan revision.",
+        "limit": "General in-force statement does not resolve suspended sectors. Adjacent PAComI procedure does not establish replacement of director dossier."
+      }
+    },
+    "supporting_documents": [
+      {
+        "part": 1,
+        "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_1.pdf",
+        "sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+        "page_count": 44,
+        "bytes": 2915747,
+        "document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+        "plan_status": "approved_with_reservation"
+      },
+      {
+        "part": 2,
+        "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_2.pdf",
+        "sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+        "page_count": 21,
+        "bytes": 2930925,
+        "document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+        "plan_status": "approved_with_reservation"
+      },
+      {
+        "part": 3,
+        "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+        "sha256": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+        "page_count": 21,
+        "bytes": 3135641,
+        "document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+        "plan_status": "approved_with_reservation"
+      }
+    ],
+    "text_extraction": {
+      "mode": "reviewed_ocr",
+      "artifact": "lutry-reviewed-ocr/part-3-ocr.json",
+      "sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380",
+      "method": "Tesseract French psm3,PyMuPDF2x; raw uncorrected research OCR. Existing12pages reused,74new pages.",
+      "engine": "tesseract 5.5.2",
+      "confidence": null,
+      "confidence_status": "not_recorded"
+    },
+    "semantic_contract_sha256": "1048cc8478dce65349916e660b7bd2554018073c8704bd9942627542977c9c9d"
+  },
+  "pages": [
+    {
+      "page_number": 1,
+      "text": "",
+      "method": "tesseract_fra_frozen_evidence",
+      "status": "ocr_withheld",
+      "width": 595.0,
+      "height": 842.0,
+      "ocr_provenance": {
+        "text_sha256": "6edf56a35c260ed63ca73a07d6141cc4ba498e614fe3b1694d94e5b7ee4f0440",
+        "confidence": null,
+        "confidence_status": "not_recorded",
+        "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+        "include_in_search": false
+      },
+      "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+    },
+    {
+      "page_number": 2,
+      "text": "3.6 Les déplacements\n3.62 Le réseau routier\n\n3.62.1 La hiérarchie du réseau routier\nLe réseau routier structurant :\n\n== les autoroutes\n\nles routes principales :\n== les routes cantonales ((RC) a et b\n= les routes cantonales (RC) c et d\n\nles routes collectrices :\nas les routes communales\n\nLe réseau routier non structurant :\n——l/es autres routes collectrices\n— les routes de desserte\n\n3.622 Principes de classification\n\nLes routes sont classées selon leur fonction, ce qui\npermet de déterminer leurs caractéristiques. On\ndistingue:\n\ne Le réseau principal\n\nqui assure des liaisons nationales et\nrégionales. Ces routes seront aménagées\nde manière à bien séparer les circulations\ndes véhicules et des piétons (trottoirs,\npassages piétions dénivelés ou protégés\npar des feux ou des ilots, etc.). Largeur\nde la chaussée: 6 à 7m.\n\ne Le réseau collecteur\n\nqui constitue l'ossature du réseau de\ndistribution par zone et quartier. Les\nespaces réservés aux véhicules et aux\npiétons devront être bien marqués\ntrottoirs, balisage des passages piétons,\netc.). La circulation sur ces routes ne\ndevrait pas pouvoir s'effectuer à vitesse\nélevée (aménagements de modération de\ntrafic). Largeur de la chaussée: 5 à 6m.\n\ne Le réseau de dessertes\n\ndont la fonction n'est que de desservir les\nhabitations et les activités riveraines. Sur\nces routes à faible trafic, véhicules et\npiétons peuvent cohabiter sur l'espace de\nla voirie. Néanmoins les vitesses\npraticables devront être faibles\n{modération de trafic si nécessaire).\nLargeur de la chaussées: 4,5 à 5m.\n\nLa constitution et la fonction du réseau routier\nprincipal\n\nLe réseau pincipal a d'abord une fonction de liaison\ninterrégionale ou intercommunale. || doit donc être\napte à recevoir un nombre relativement important de\nvéhicules en transit.\n\nSuite à l'analyse effectuée, le réseau principal sera\ndonc constitué de toutes les routes cantonales, mis\nà part la route de Savuit / Bras-de-Fer qui lie les\nroutes des Monts-de-Lavaux et de Lavaux. En\neffet:\n\ne Cette liaison Nord-Sud en transit peut\ns'effectuer par la route de La Conversion\n(temps de parcours entre La Croix-sur-\nLutry et le Voisinand env. 2,5\" par Savuit\n(2km à 50km/h. et env. 4' par La\nConversion (4km à 60 km/h).\n\ne Les différentes routes qui constituent\ncette liaison Nord-Sud n'ont pas les\ncaractéristiques géométriques requises\npour les routes principales (sauf route du\nBras-de-Fer).\n\ne La réorganisation en boucle des routes\nSavuit, Crochet et Sermotier sera\nréalisée (le projet est existant) si la\ndensité future du trafic l'exige.\n\nLes réseaux collecteurs et de desserte\nLes modifications proposées au niveau de\n\nl'exploitation des réseaux collecteur et de desserte\nsont signalées en plan et légende.\n\n3.623 Les éléments directeurs\n\nO) L'achèvement de la bretelle autoroutière\n\n@) La maîtrise des nuisances sur la route de\nLa Bernadaz, partiellement sur la\ncommune de Lutry\n\n® La maîtrise des nuisances sur la route de\nLa Conversion et du Landar\n",
+      "method": "tesseract_fra_frozen_evidence",
+      "status": "reviewed_ocr_search_text",
+      "width": 595.0,
+      "height": 842.0,
+      "ocr_provenance": {
+        "text_sha256": "3170c45436a67c125dd8f48b7a98410ca8df23f6e99e53723f1aee750de5a476",
+        "confidence": null,
+        "confidence_status": "not_recorded",
+        "selection_reason": "searchable uncorrected prose; verify original image",
+        "include_in_search": true
+      },
+      "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+    },
+    {
+      "page_number": 3,
+      "text": "64\n\nLe réaménagement du carrefour du\nVoisinand\n\nLe réaménagement de la route de Lavaux\n{RC780a) du carrefour du Grand-Pont à\ncelui de la route de Savuit en passant par\ncelui du Voisinand\n\nL'évitement du Voisinand\n\nLa mise en place d'un schéma de\ncirculation à sens unique permettant la\ncréation de trottoirs entre Savuit, les\nroutes de Savuit, de Crochet et Sermotier\n\n© ©\n\nLe réaménagement du carrefour de La\nCroix-sur-Lutry\n\nL'aménagement du chemin du Crêt des\nPierres et son débouché sur la route des\nMonts-de-Lavaux. Les études sont en\ncours\n\nModération dissuasive sur la route de\nBelmont et le chemin de Monteiller (déjà\nréalisée).\n\n(Q)\n\n3.624 Commentaires et principes\ngénéraux d'application\n\nLa réalisation de la prolongation de la bretelle\nautoroutière permettrait notamment de décharger\nfortement les axes suivants :\n\n- la route du Landar: de 40 à 60%\n- la route de La Conversion: de 20 à 25%\n- la route de Lavaux: de 20 à 25%\n\nla route de La Bernadaz: de 60 à 80%.\n\nDans le cas d'une réalisation moins immédiate de la\nbretelle, les nuisances sonores et atmosphériques\naffectant de ce fait les routes de La Conversion, du\nLandar, de La Bernadaz, de Lavaux et des Monts-\nde-Lavaux seront à maîtriser. Cette option, issue\nd'une concertation avec les communes concernées,\nest encouragée par l'Etat.\n\nLes principes d'exploitation et d'aménagement de la\nliaison Nord-Sud par Savuit devront être redéfinis\navec pour objectifs :\n\nde diminuer l'attractivité de cette liaison\ntout en maintenant une bonne\naccessibilité au secteur\n\nde poursuivre la réalisation des\nmodérations de trafic (maîtrise des\nnuisances) sur la route de Savuit\n\nd'améliorer la sécurité sur les tronçons\ndélicats.\n\nL'aménagement et l'exploitation du carrefour de La\nCroix-sur-Lutry devront être étudiés avec comme\nobjectif d'améliorer la sécurité. De plus, l'émergence\nde la Croix-sur-Lutry en tant que pôle d'équipements\ncollectifs doit stimuler l'organisation d'un domaine\npublic à l'usage mesuré et mieux partagé.\n\nAfin de réduire le trafic circulant dans les zones\nrésidentielles, l'exploitation et l'aménagement du\nréseau routier doit inciter ou obliger les\nautomobilistes à atteindre le réseau principal par\nl'itinéraire le plus court possible.\n\nL'accessibilité du trafic véhicules au \"territoire à\nurbaniser sans destination définie\" sera planifiée\navec le souci de protéger les zones d'habitat.\n\nIl conviendra d'améliorer, voire de définir, des accès\nsûrs et confortables aux secteurs à fort potentiel de\ndéveloppement.\n\n3.625 Les pistes cyclables\n\nLa topographie n'aide pas à la réalisation de pistes\npour cyclistes. Le profil horizontal des grandes\nroutes de transit leur est favorable mais la densité\ndu trafic motorisé l'est moins. Un meilleur usage du\ndomaine public ainsi qu'une modération de la\nvitesse doivent être encouragés.\n\nLutry est correctement greffé sur le réseau cantonal\nselon la \"Planification des aménagements pour\ndeux roues légers\" (DTPAT 1992), voir ci-après.\n\nEn conformité avec ce document, des\naménagements pour les cyclistes doivent viser une\namélioration de leurs accès au réseau des\ntransports en commun.\n\nLors du réaménagement de la RC780 mentionné\nsous chiffre 5 du chapitre 3.62.3, il y aura lieu de\ncoupler modération du trafic et aménagements\ncyclables.\n\nExtrait de “Planification des aménagements pour\ndeux roues légers\" (DTPAT 1992)\n\nmms Degré d'urgence !\næ=— Degré d'urgence ll\n\n",
+      "method": "tesseract_fra_frozen_evidence",
+      "status": "reviewed_ocr_search_text",
+      "width": 595.0,
+      "height": 842.0,
+      "ocr_provenance": {
+        "text_sha256": "d4df951038fc8d1506455a63b48f8bb2309633fb68d95502b2e16165391b0c49",
+        "confidence": null,
+        "confidence_status": "not_recorded",
+        "selection_reason": "searchable uncorrected prose; verify original image",
+        "include_in_search": true
+      },
+      "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+    },
+    {
+      "page_number": 4,
+      "text": "",
+      "method": "tesseract_fra_frozen_evidence",
+      "status": "ocr_withheld",
+      "width": 595.0,
+      "height": 842.0,
+      "ocr_provenance": {
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "confidence": null,
+        "confidence_status": "not_recorded",
+        "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+        "include_in_search": false
+      },
+      "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+    },
+    {
+      "page_number": 5,
+      "text": "",
+      "method": "tesseract_fra_frozen_evidence",
+      "status": "ocr_withheld",
+      "width": 595.0,
+      "height": 842.0,
+      "ocr_provenance": {
+        "text_sha256": "7ab10870f086d4e93ab111a0e019b404d991f81f9af0065993a08f039d162af1",
+        "confidence": null,
+        "confidence_status": "not_recorded",
+        "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+        "include_in_search": false
+      },
+      "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+    },
+    {
+      "page_number": 6,
+      "text": "67\n3.6 Les déplacements\n\n3.63 Les transports en commun\n3.63.2 Nature et situation des transports en\ncommun\n\nLa commune de Lutry est desservie par différents\ntypes de transports en commun:\n\npar le train\n\nA ligne CFF de Berne avec les haltes de\nLa Conversion et Bossières (32 trains par\njour ouvrable dans la direction Berne, 34\n\ntrains par jour ouvrable dans la direction\nLausanne; durée du trajet La Conversion -\nLausanne: 4’),\n\nligne CFF du Simplon avec la halte de\nLutry (22 trains par jour ouvrable dans la\ndirection Vevey, 23 trains par jour ouvrable\ndans la direction Lausanne; durée du\ntrajet: 7);\n\npar les trolleybus et bus TL (Transports\npublics de la région lausannoise)\n\nC ligne 9 (trolleybus): Prilly - Lausanne -\nLutry/Petite Corniche (1 bus par sens\ntoutes les 6', les jours ouvrables, entre\n6h00 et 19h00; durée du trajet Petite\nCorniche - Saint-François: 16')\n\nligne 66 (bus): Lausanne - Belmont - La\nCroix-sur-Lutry (par la rte des Monts-de-\nLavaux; 13 bus par sens et par jour\nouvrable, entre 6h00 et 20h00; durée du\ntrajet La Croix - Saint-François: 22°)\n\nL 1\n\nligne 68 (minibus): rte des Monts-de-\nLavaux - Bourg de Lutry par la rte de La\nConversion (env. 7 bus par sens et par\njour ouvrable, entre 07h00 et 20h00\n\nM\n\nligne 69 (minibus): La Croix-sur-Lutry -\nBourg de Lutry par la rte du Bras-de-Fer et\nde Savuit (env. 6 bus par sens et par jour\nouvrable entre 08h00 et 19h00);\n\nmn\n\npar bateaux\n\nG lignes touristiques saisonnières CGN,\nrayonnant d'Ouchy (env. toutes les 2h.\ndans la même direction)\n\nH ligne touristique saisonnière Batsol,\ncabotant entre Lutry, Ouchy et St-Sulpice\n(env. 3x par jour).\n\nAnalyses et perspectives :\n\nLa RC 780b\n\nC'est l'axe fort des transports en commun en\nrelation avec le centre de Lausanne (16' de trajet)\navec 10 bus par heure durant la journée.\n\nLa ligne CFF Lausanne-Berne\n\nLes quartiers situés à proximité des haltes CFF de\nLa Conversion et de Bossières sont relativement\nbien reliés au centre de Lausanne (1 à 2 trains par\nheure durant la journée pour 4' de trajet). À La\nConversion, un aménagement de type transfert\nmodal (Park & Ride) avec stationnement de\nvéhicules privés et transbordement sur les trains\nest envisagé à condition qu'un financement\nextérieur soit assuré.\n\nParkings d'échange\n\nA proximité des arrêts de bus, réserver les terrains\nnécessaires à la création de parkings d'échange.\nL'option voiture privée\n\nPour le reste du territoire, notamment les Hauts de\nLutry, l'accès à l'agglomération lausannoise reste\nnettement plus attractif par véhicule privé.\n\nProlongement et nouvelle ligne de bus\n\nLe secteur Est des Hauts de Lutry (Miroir, Bras-de-\nFer), qu a connu un développement de population\nnon négligeable, n'est pas desservi par une ligne de\nbus directe le reliant à Lausanne. Proposé par le\nPlan directeur, un prolongement de la ligne 66 (rte\ndes Monts-de-Lavaux) permettrait cette liaison.\nD'autre part, une ligne de bus desservant le littoral\nentre Lutry et les hautes écoles de l'Ouest\nlausannois est à l'étude.\n\nLes RER et TVR\n\nL'éventualité de navettes régionales de type RER\nest étudiée sur les deux lignes CFF de Berne et du\nSimplon. Un TVR est également envisagé pour\ndesservir le littoral de l'Est de la région lausannoise\njusqu'à Cully.\n\nLa liaison Nord-Sud\n\nLes lignes de bus 68 et 69 permettent de relier les\nsecteurs urbanisés du territoire communal,\nnotamment les Hauts de Lutry, au réseau principal\nde transports publics.\n\nEn fonction de l'utilisation, il est envisageable d'en\naccroître la fréquence.\n\nLes lignes de navigation\n\nLa vocation des lignes de navigation est\ntraditionnellement touristique. Le potentiel utilitaire\nde la ligne d'abord touristique des bateaux solaires\nqui longe la côte de Lutry à St-Sulpice, est tributaire\nde l'efficacité de ces navettes.\n",
+      "method": "tesseract_fra_frozen_evidence",
+      "status": "reviewed_ocr_search_text",
+      "width": 595.0,
+      "height": 842.0,
+      "ocr_provenance": {
+        "text_sha256": "1a339519fe92d3371f0c362d3a61a5c89d861d6569c0d1f35008ac6e48219a81",
+        "confidence": null,
+        "confidence_status": "not_recorded",
+        "selection_reason": "searchable uncorrected prose; verify original image",
+        "include_in_search": true
+      },
+      "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+    },
+    {
+      "page_number": 7,
+      "text": "",
+      "method": "tesseract_fra_frozen_evidence",
+      "status": "ocr_withheld",
+      "width": 595.0,
+      "height": 842.0,
+      "ocr_provenance": {
+        "text_sha256": "06c03ebab8304f33b7cbe91ce166c351e49e5e767ecf82cfee4aacf520477cea",
+        "confidence": null,
+        "confidence_status": "not_recorded",
+        "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+        "include_in_search": false
+      },
+      "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+    },
+    {
+      "page_number": 8,
+      "text": "",
+      "method": "tesseract_fra_frozen_evidence",
+      "status": "ocr_withheld",
+      "width": 595.0,
+      "height": 842.0,
+      "ocr_provenance": {
+        "text_sha256": "ce20d492e368a69b146c4e91147f35c8d9221ec88271fd1727d8e2a037f247c5",
+        "confidence": null,
+        "confidence_status": "not_recorded",
+        "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+        "include_in_search": false
+      },
+      "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+    },
+    {
+      "page_number": 9,
+      "text": "",
+      "method": "tesseract_fra_frozen_evidence",
+      "status": "ocr_withheld",
+      "width": 595.0,
+      "height": 842.0,
+      "ocr_provenance": {
+        "text_sha256": "f1417887f9aa00250a174d64aa3f26905ff01bf86277938ee728d867fc461b66",
+        "confidence": null,
+        "confidence_status": "not_recorded",
+        "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+        "include_in_search": false
+      },
+      "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+    },
+    {
+      "page_number": 10,
+      "text": "",
+      "method": "tesseract_fra_frozen_evidence",
+      "status": "ocr_withheld",
+      "width": 595.0,
+      "height": 842.0,
+      "ocr_provenance": {
+        "text_sha256": "d890828b63ab43df238b3d258c0b6a5cfbc3f368187b7a2c074bdd57ac96c077",
+        "confidence": null,
+        "confidence_status": "not_recorded",
+        "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+        "include_in_search": false
+      },
+      "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+    },
+    {
+      "page_number": 11,
+      "text": "",
+      "method": "tesseract_fra_frozen_evidence",
+      "status": "ocr_withheld",
+      "width": 595.0,
+      "height": 842.0,
+      "ocr_provenance": {
+        "text_sha256": "45b8153e55fe7e70fc39598b20b102b609ab25ab9fcb4cda01743286cba53a79",
+        "confidence": null,
+        "confidence_status": "not_recorded",
+        "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+        "include_in_search": false
+      },
+      "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+    },
+    {
+      "page_number": 12,
+      "text": "3.6 Les déplacements\n\n3.64 Le réseau piétonnier\n3.645 Nature et situation du réseau piétonnier\n\nLe réseau piétonnier de Lutry est de deux types\ncomplémentaires qui ne sont pas différenciés sur plan:\n\ne Le réseau touristique greffé sur le réseau\nrégional.\ne Le réseau interne plutôt utilitaire.\n\nOn distingue deux sortes de cheminements montrés\nsur plan:\n\nLes itinéraires en site propre destinés au seul\nusage piétonnier, à l'exception de quelques\ndeux-roues.\n\nLes itinéraires en site banal, tels trottoirs,\nrues, routes, routes du vignoble chemins de\ncampagne, etc. où le piéton doit partager son\nespace avec les usagers motorisés el les\ncyclistes.\n\n3.646 Analyse du trafic piétonnier\n\nLe trafic piétonnier utilitaire est quantitativement faible\nles jours ouvrables dans les secteurs étudiés. Ceci\ns'explique en partie par la topographie difficile, la forte\nmotorisation des habitants, et des services de\ntransports en commun relativement bons.\n\n8.647 Description du réseau\n\nLes principales liaisons piétonnes sont assurées par:\nLiaisons Est-Ouest\n\nA Les trottoirs des routes de Lavaux (RC780a)\net les Monts-de-Lavaux (RC773c).\nB Le sentier de la ligne CFF de Beme.\n\nLiaison Nord-Sud\n\nc Les trottoirs des routes du Landar et de La\nConversion (RC770b).\n\nD Les trottoirs de la route de Savuit, de La\nCroix-sur-Lutry à Savuit.\n\nE Les itinéraires qui utilisent le domaine public\n\nentre Savuit, la gare de Lutry et le Voisinand.\n\nDe nombreux sentiers permettent des cheminements\nsûrs, tant utilitaires que de loisirs, entre les quartiers ou\ndans leur distribution intérieure, et particulièrement pour\ndesservir les écoles.\n\nLes principaux pôles d'attraction pour les itinéraires\npiétons sont:\n\nLes écoles\n\nCollège du Grand-Pont\nCollège des Pâles\nCollège des Marionnettes\nCollège des Echerins\nCollège de Savuit\nCollège de Corsy.\n\n606660e\n\nLes arrêts transports\n\n® Gares et halte CFF\nArrêts lrolleybus et bus.\n\nLes autres pôles\n\n©) Le Bourg, commerces et loisirs\nQ) Les hameaux, quartiers et leurs équipements.\n\n3.648 Les éléments directeurs\n\nSouvent de l'ordre d'aménagement de détail, les\néléments directeurs ayant trait au réseau piétonnier\nsont désignés sur plan à titre indicatif, Les problèmes\nspécifiques, mesures et moyens d'application sont\ntraités par les fiches programme (dossier municipal).\n\n1 Passages piétons :\n\n— rte de La conversion, rte d'Orzens,\n\nre de La Conversion, ch. du Braillon, ou\nproximité plus au Sud, ou\n\nproximité plus au Nord (- 20m),\n\nre des Monts-de-Lavaux, Crêts-des-Pierres.\n\n2 Signalisation :\nfe de La Conversion, ch. du Braillon.\n\n3 Trottoirs :\nee) re de La Conversion, ch. du Braillon.\n\n4 Ilots :\nrte des Monts-de-Lavaux, Crêt-des-Pierres.\n\n5 Tronçons nouveaux\n\n6 Autres aménagements protecteurs.\n\n",
+      "method": "tesseract_fra_frozen_evidence",
+      "status": "reviewed_ocr_search_text",
+      "width": 595.0,
+      "height": 842.0,
+      "ocr_provenance": {
+        "text_sha256": "89e6ab1a2e59215562287788b9b8467750afee16ad3a3a9fc08df4c9d66c6728",
+        "confidence": null,
+        "confidence_status": "not_recorded",
+        "selection_reason": "searchable uncorrected prose; verify original image",
+        "include_in_search": true
+      },
+      "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+    },
+    {
+      "page_number": 13,
+      "text": "",
+      "method": "tesseract_fra_frozen_evidence",
+      "status": "ocr_withheld",
+      "width": 595.0,
+      "height": 842.0,
+      "ocr_provenance": {
+        "text_sha256": "83c325517d98a1bb7ec55a652fad7879abe1eb36788e641b6a9bc4ea179eb1bf",
+        "confidence": null,
+        "confidence_status": "not_recorded",
+        "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+        "include_in_search": false
+      },
+      "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+    },
+    {
+      "page_number": 14,
+      "text": "3.6 Les déplacements\n\n3.65 Le domaine public\n\n3.65.1 Principes de partage du domaine\npublic et de modération du trafic\n\nLe domaine public routier a été organisé pendant\nlongtemps en espace spécialisé, pour les besoins\nimpératifs du trafic des véhicules motorisés. Se\nfondant sur des normes généreuses, on a attribué à\nce trafic des surfaces démesurées. Les\npréoccupations d'aujourd'hui tendent au contraire\nvers une amélioration de la qualité de la vie tout en\npréservant la fluidité du trafic sur les routes\nimportantes. Cela se traduit par la volonté de\nmaîtriser les nuisances visuelles, sonores et\natmosphériques, d'améliorer la sécurité des\npersonnes et plus particulièrement des enfants, de\nsupprimer les entraves physiques, et de favoriser la\nconvivialité. Une condition pour atteindre ces buts\nest de reconquérir le domaine public en partageant\nplus équitablement son usage entre tous les\nutilisateurs, piétons, cyclistes, automobilistes, etc.\n\nA Les routes à grand trafic, bordées de\ntrottoirs,\n\n© diminuer au strict nécessaire l'emprise\napparente des voies de circulation,\n\n© arboriser et paysager la voirie pour changer le\nrapport visuel trottoirs/voies de circulation,\n\n© faire évoluer la notion classique de trottoir\nvers l'idée d'un espace d'itinéraire sécuritaire\npaysager au sens vert ou urbain du terme,\nqui occupera le terrain entre le front construit\net les voies de circulation,\n\n© yintégrer les mesures de maîtrise des\nnuisances, tertres, auto-protection des fronts\nconstruits, etc.\n\n© traiter les passages piétons, et autres\ncarrefours comme jalonnements\nmodérateurs.\n\nB Les traversées de villages,\n\n© inspirer au conducteur un comportement\nd'invité,\n\nutiliser pour ce faire des moyens physiques\net psychologiques tels portes d'entrée,\nresserrements, traitements de surface,\ntracés, jalonnements, objets d'intérêt,\nsignalisations atypiques, etc.\n\npermettre à tous les usagers de partager une\nemprise occasionnelle ou permanente sur le\ndomaine public.\n\nLes grands axes et grands carrefours,\n\nmettre l'usager motorisé dans l'expectative\npour qu'il ralentisse,\n\ndiminuer l'importance des voies de\ncirculation: démesure des surfaces,\nmarquages excessifs, forêts de\nsuperstructures lumineuses, etc.\n\nintervenir par des moyens lourds si\nnécessaire: passages inférieurs ou\nsupérieurs, suppression de césures dans le\ntissu construit, etc.\n\ncombiner les éléments doux de circulation:\ngiratoire, modération, etc.\n\nagir sur les règles de comportement par la\nsuggestion, traitements de surface, tracés,\nportes, etc.\n\néviter de travestir le paysage urbain par des\ndérives paysagères.\n\nLes carrefours-places avec pôles\nd'attraction,\n\ninspirer au conducteur un comportement\nd'invité,\n\nutiliser des moyens physiques et\npsychologiques tels portes d'entrée,\nresserrements, traitements de surface,\ntracés, jalonnements, objets d'intérêt,\nSignalisations alypiques, etc.\n\ncréer un espace-place de fonctionnement où\nles voies de circulation ne sont pas un\nélément dominant,\n\ntraiter les passages piétons comme\njalonnements modérateurs.\n",
+      "method": "tesseract_fra_frozen_evidence",
+      "status": "reviewed_ocr_search_text",
+      "width": 595.0,
+      "height": 842.0,
+      "ocr_provenance": {
+        "text_sha256": "db93a9a0884b2d69df0b1f5f047fff96015871dd9f20f0be319ddd911ba9e56b",
+        "confidence": null,
+        "confidence_status": "not_recorded",
+        "selection_reason": "searchable uncorrected prose; verify original image",
+        "include_in_search": true
+      },
+      "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+    },
+    {
+      "page_number": 15,
+      "text": "Les rues et routes de dessertes,\n\ndéfinir les pistes de sécurité piétonnes par\ndes moyens simples, jeux de bandes\nrugueuses collées, etc.\n\ninfluencer les règles de comportement des\nusagers motorisés ou cyclistes par des\nmoyens de persuasion visuelle, des\nmodérations, traitements de surface,\njalonnements, elc.\n\ntraiter les traversées piétonnes comme\njalonnements modérateurs.\n\nLes routes bordées de murs,\n\naccepter l'utilisation simultanée, véhicules-\npiétons , de ces itinéraires modérateurs par\nleur étroitesse,\n\nmodérer de façon extensive le trafic\nvéhicules en recourant à tous les moyens\naccessibles tout en préservant la nalure site,\n\ndéfinir les tronçons difficiles , tant au niveau\nde la visibilité que de la sécurité piétons\ndirecte , par des marquages sonores, jeux de\nbandes rugueuses collées, etc.\n\nConclusion\n\nToute démarche d'aménagement est complexe. Elle nécessite la\nprise en compte de nombreux facteurs, très divers et souvent\ncontradictoires. Dans ce contexte, la façon de poser le problème est\nprimordiale.\n\nLe plan directeur communal est à cet égard un instrument de travail\ntrès utile. Il contient les éléments qui permettent de préciser le\ncontexte de chacun de nos futurs projets d'aménagement, qu'il\ns'agisse par exemple d'un équipement collectif, d'une modification\ndans la structure du réseau routier ou encore d’un plan partiel\nd'affectation.\n\nLe plan directeur communal apporte une vision globale; il met en\névidence des contraintes et des incompatibilités; il définit des\npriorités. C'est un document de référence. Il doit cependant rester\névolutif. Il sera en outre régulièrement complété par de nouvelles\nfiches d'action.\n\nLe territoire communal n'est pas extensible; il constitue une denrée\nrare et précieuse qu'il convient de préserver, tout en offrant à ceux qui\nl'occupent et à leurs descendants, la meilleure qualité de vie possible\ndans le respect des valeurs naturelles et construites.\n\nA l'aube du prochain millénaire, le plan directeur communal\ncontribuera à entretenir une réflexion exigeante sur l'avenir de notre\ncommune.\n\n",
+      "method": "tesseract_fra_frozen_evidence",
+      "status": "reviewed_ocr_search_text",
+      "width": 595.0,
+      "height": 842.0,
+      "ocr_provenance": {
+        "text_sha256": "7ba462d461809334debd5c6d7aeaf52f38be091f4ff4d4594cb18ef605187edd",
+        "confidence": null,
+        "confidence_status": "not_recorded",
+        "selection_reason": "searchable uncorrected prose; verify original image",
+        "include_in_search": true
+      },
+      "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+    },
+    {
+      "page_number": 16,
+      "text": "",
+      "method": "tesseract_fra_frozen_evidence",
+      "status": "ocr_withheld",
+      "width": 595.0,
+      "height": 842.0,
+      "ocr_provenance": {
+        "text_sha256": "7ccade3a30b181079a14077753ea76b73471f54fb7bf5038d7f90da21153eb23",
+        "confidence": null,
+        "confidence_status": "not_recorded",
+        "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+        "include_in_search": false
+      },
+      "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+    },
+    {
+      "page_number": 17,
+      "text": "",
+      "method": "tesseract_fra_frozen_evidence",
+      "status": "ocr_withheld",
+      "width": 595.0,
+      "height": 842.0,
+      "ocr_provenance": {
+        "text_sha256": "c5b82ee9ee0889b90d1796b0edf49c6266ffe0bb7245cc9ed4218d1f309d97c7",
+        "confidence": null,
+        "confidence_status": "not_recorded",
+        "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+        "include_in_search": false
+      },
+      "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+    },
+    {
+      "page_number": 18,
+      "text": "",
+      "method": "tesseract_fra_frozen_evidence",
+      "status": "ocr_withheld",
+      "width": 595.0,
+      "height": 842.0,
+      "ocr_provenance": {
+        "text_sha256": "aa72c2a2c654cb3f6ac6cf6fcdbb511232cc78cd336d739517c874aa5a8bf6ac",
+        "confidence": null,
+        "confidence_status": "not_recorded",
+        "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+        "include_in_search": false
+      },
+      "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+    },
+    {
+      "page_number": 19,
+      "text": "",
+      "method": "tesseract_fra_frozen_evidence",
+      "status": "ocr_withheld",
+      "width": 595.0,
+      "height": 842.0,
+      "ocr_provenance": {
+        "text_sha256": "17607cdc15c0a97b5d609740c6d345be2e2195063da37689526ec0d463bbb537",
+        "confidence": null,
+        "confidence_status": "not_recorded",
+        "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+        "include_in_search": false
+      },
+      "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+    },
+    {
+      "page_number": 20,
+      "text": "8t\n\nGLOSSAIRE D'ABREVIATIONS\n\nBATSOL Bateaux solaires\n\nCGN Compagnie générale de navigation\n\nCOREL Communes de la région lausannoise\n\ncos Coefficient d'occupation du sol (surface du bâtiment au sol/surface de la parcelle)\nCUS Coelficient d'utilisation du sol (surface brute des planchers/surface de la parcelle)\nDI Département des infrastructures\n\nDTPAT Département des travaux publics et de l'aménagement du territoire (ancienne dénomination)\nDVC Droit vaudois de la construction\n\nEMS Etablissement médico-social\n\nIFP Inventaire fédéral des paysages, sites et monuments naturels d'importance nationale\nIS0S Inventaire fédéral des sites construits à protéger en Suisse\n\nIVS Inventaire fédéral des voies hisloriques en Suisse\n\nLAT Loi fédérale sur l'aménagement du térriloire\n\nLATC Loi cantonale sur l'aménagement du territoire et les constructions\n\nLPPL Loi sur le plan de protection de Lavaux\n\nOAT Ordonnance fédérale sur l'aménagement du territoire\n\nOPB Ordonnance fédérale sur la protection contre le bruit\n\nP&R Park and ride (parking d'échange: parquer la voiture et continuer en transport public)\nPD Plan directeur\n\nPGA Plan générale d'affectation\n\nPPA Plan partiel d'affectation\n\nPQ Plan de quartier\n\nRATC Règlement d'application de la loi cantonale sur l'aménagement du territoire\n\nRC Route cantonale\n\nSAT Service de l'aménagement du territoire de l'Etat de Vaud\n\nSI Services industriels communaux\n\nTFV Service communal des travaux, des domaines foreslier et viticole\n\nTJM Trafic journalier moyen\n\nTL Transports lausannois\n\nTMI Transport motorisé individuel\n\nTVR Transport en voie réservée\n\nUPC Service de l'urbanisme et de la police des constructions\n",
+      "method": "tesseract_fra_frozen_evidence",
+      "status": "reviewed_ocr_search_text",
+      "width": 595.0,
+      "height": 842.0,
+      "ocr_provenance": {
+        "text_sha256": "a920eceb8e0db2b8fcf00ffdbbe19cb6ac70af628e4eeb5e7f9f6f80da68f692",
+        "confidence": null,
+        "confidence_status": "not_recorded",
+        "selection_reason": "searchable uncorrected prose; verify original image",
+        "include_in_search": true
+      },
+      "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+    },
+    {
+      "page_number": 21,
+      "text": "",
+      "method": "tesseract_fra_frozen_evidence",
+      "status": "ocr_withheld",
+      "width": 595.0,
+      "height": 842.0,
+      "ocr_provenance": {
+        "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "confidence": null,
+        "confidence_status": "not_recorded",
+        "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+        "include_in_search": false
+      },
+      "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+    }
+  ],
+  "byte_count": 3135641,
+  "chunks": [
+    {
+      "id": "adc5afb7-6c1b-53aa-9af3-8e292854da75",
+      "document_id": "dce8e097-05f4-5870-a73f-df3256f8098f",
+      "chunk_index": 0,
+      "content": "3.6 Les déplacements\n3.62 Le réseau routier\n\n3.62.1 La hiérarchie du réseau routier\nLe réseau routier structurant :\n\n== les autoroutes\n\nles routes principales :\n== les routes cantonales ((RC) a et b\n= les routes cantonales (RC) c et d\n\nles routes collectrices :\nas les routes communales\n\nLe réseau routier non structurant :\n——l/es autres routes collectrices\n— les routes de desserte\n\n3.622 Principes de classification\n\nLes routes sont classées selon leur fonction, ce qui\npermet de déterminer leurs caractéristiques. On\ndistingue:\n\ne Le réseau principal\n\nqui assure des liaisons nationales et\nrégionales. Ces routes seront aménagées\nde manière à bien séparer les circulations\ndes véhicules et des piétons (trottoirs,\npassages piétions dénivelés ou protégés\npar des feux ou des ilots, etc.). Largeur\nde la chaussée: 6 à 7m.\n\ne Le réseau collecteur\n\nqui constitue l'ossature du réseau de\ndistribution par zone et quartier. Les\nespaces réservés aux véhicules et aux\npiétons devront être bien marqués\ntrottoirs, balisage des passages piétons,\netc.). La circulation sur ces routes ne\ndevrait pas pouvoir s'effectuer à vitesse\nélevée (aménagements de modération de\ntrafic). Largeur de la chaussée: 5 à 6m.\n\ne Le réseau de dessertes\n\ndont la fonction n'est que de desservir les\nhabitations et les activités riveraines. Sur\nces routes à faible trafic, véhicules et\npiétons peuvent cohabiter sur l'espace de\nla voirie. Néanmoins les vitesses\npraticables devront être faibles\n{modération de trafic si nécessaire).\nLargeur de la chaussées: 4,5 à 5m.\n\nLa constitution et la fonction du réseau routier\nprincipal\n\nLe réseau pincipal a d'abord une fonction de liaison\ninterrégionale ou intercommunale. || doit donc être\napte à recevoir un nombre relativement important de\nvéhicules en transit.\n\nSuite à l'analyse effectuée, le réseau principal sera\ndonc constitué de toutes les routes cantonales, mis\nà part la route de Savuit / Bras-de-Fer qui lie les\nroutes des Monts-de-Lavaux et de Lavaux. En\neffet:\n\ne Cette li",
+      "page_number": 2,
+      "metadata": {
+        "parser": "vd_pdcom_municipal_ocr",
+        "vd_document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+        "content_hash": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+        "commune_bfs": 5606,
+        "approval_scope": {
+          "status": "approved_with_reservation",
+          "evidence_document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+          "evidence_source_sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+          "evidence_pdf_page": 3,
+          "visually_verified": true,
+          "date": "2000-02-28",
+          "scope": "Official three-part dossier; approval date stamp visible, signature fields blank. Parts2and3 are continuations linked in same official municipal listing, not independently signed documents.",
+          "not_claimed": "Current zoning, parcel rights, exhaustive current capacity or unconditional approval of every sector."
+        },
+        "all_prose_is_binding": false,
+        "diagnostic_vintage_limit": "1998–2000 source diagnostics, schedules, counts and projections are historical, not current facts. Verify original image before relying on wording, numbers or associations. No numeric rules normalized.",
+        "limits": [
+          "approval_with_reservation and cross-document evidence",
+          "three suspended sectors with unestablished later resolution",
+          "missing FA/DB annexes; index is not referenced annexes",
+          "raw uncorrected OCR with explicit method and source/ocr hashes",
+          "OCR confidence null because not recorded; not evidence of measured quality",
+          "verify original image before relying on wording, numbers or associations",
+          "historical1998-2000 diagnostics, schedules, counts and projections; not current facts",
+          "physical part-specific PDF citation",
+          "no numeric normalization or map extraction/qualification/completion"
+        ],
+        "spatial_qualification": false,
+        "commune_complete": false,
+        "source_role": "approved_main",
+        "plan_status": "approved_with_reservation",
+        "review_sha256": "7d8936a8601e488b3a10332717daac08c246043c706dd4a8d823c4838816fb10",
+        "ocr_quality": "uncorrected_machine_ocr",
+        "requires_source_image_verification": true,
+        "corpus_limits": {
+          "missing": [
+            "FA action-sheet annexes",
+            "DB base-data annexes",
+            "later resolution of three suspended sector approvals"
+          ],
+          "index_is_not_annex": true,
+          "source_parts": 3,
+          "published_search_pages_in_part": [
+            2,
+            3,
+            6,
+            12,
+            14,
+            15,
+            20
+          ],
+          "held_pages_in_part": [
+            1,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            16,
+            17,
+            18,
+            19,
+            21
+          ],
+          "full_visual_map_extraction": false,
+          "currentness": {
+            "checked_at": "2026-10-05T09:43:31.385905+00:00",
+            "official_url": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
+            "statement": "Municipality currently publishes dossier as in force since2000-02-28. Listing update2026-08-05 is not a plan revision.",
+            "limit": "General in-force statement does not resolve suspended sectors. Adjacent PAComI procedure does not establish replacement of director dossier."
+          }
+        },
+        "supporting_documents": [
+          {
+            "part": 1,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_1.pdf",
+            "sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+            "page_count": 44,
+            "bytes": 2915747,
+            "document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 2,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_2.pdf",
+            "sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "page_count": 21,
+            "bytes": 2930925,
+            "document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 3,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+            "sha256": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+            "page_count": 21,
+            "bytes": 3135641,
+            "document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+            "plan_status": "approved_with_reservation"
+          }
+        ],
+        "text_extraction": {
+          "mode": "reviewed_ocr",
+          "artifact": "lutry-reviewed-ocr/part-3-ocr.json",
+          "sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380",
+          "method": "Tesseract French psm3,PyMuPDF2x; raw uncorrected research OCR. Existing12pages reused,74new pages.",
+          "engine": "tesseract 5.5.2",
+          "confidence": null,
+          "confidence_status": "not_recorded"
+        },
+        "reservations": [
+          {
+            "scope": "Grandchamp, Bossière, between Le Châtelard and Le Daley: Approval procedure suspended pending outcome of revision of LPPL. Later sector-specific resolution not established.",
+            "evidence_document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "evidence_source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "evidence_pdf_pages": [
+              9
+            ],
+            "visually_verified": true
+          }
+        ],
+        "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+        "citation": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf#page=2",
+        "extraction_status": "reviewed_ocr_search_text",
+        "ocr_provenance": {
+          "text_sha256": "3170c45436a67c125dd8f48b7a98410ca8df23f6e99e53723f1aee750de5a476",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "searchable uncorrected prose; verify original image",
+          "include_in_search": true
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      }
+    },
+    {
+      "id": "510b869c-889b-5d57-8632-6812835d53fb",
+      "document_id": "dce8e097-05f4-5870-a73f-df3256f8098f",
+      "chunk_index": 1,
+      "content": "aison Nord-Sud en transit peut\ns'effectuer par la route de La Conversion\n(temps de parcours entre La Croix-sur-\nLutry et le Voisinand env. 2,5\" par Savuit\n(2km à 50km/h. et env. 4' par La\nConversion (4km à 60 km/h).\n\ne Les différentes routes qui constituent\ncette liaison Nord-Sud n'ont pas les\ncaractéristiques géométriques requises\npour les routes principales (sauf route du\nBras-de-Fer).\n\ne La réorganisation en boucle des routes\nSavuit, Crochet et Sermotier sera\nréalisée (le projet est existant) si la\ndensité future du trafic l'exige.\n\nLes réseaux collecteurs et de desserte\nLes modifications proposées au niveau de\n\nl'exploitation des réseaux collecteur et de desserte\nsont signalées en plan et légende.\n\n3.623 Les éléments directeurs\n\nO) L'achèvement de la bretelle autoroutière\n\n@) La maîtrise des nuisances sur la route de\nLa Bernadaz, partiellement sur la\ncommune de Lutry\n\n® La maîtrise des nuisances sur la route de\nLa Conversion et du Landar",
+      "page_number": 2,
+      "metadata": {
+        "parser": "vd_pdcom_municipal_ocr",
+        "vd_document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+        "content_hash": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+        "commune_bfs": 5606,
+        "approval_scope": {
+          "status": "approved_with_reservation",
+          "evidence_document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+          "evidence_source_sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+          "evidence_pdf_page": 3,
+          "visually_verified": true,
+          "date": "2000-02-28",
+          "scope": "Official three-part dossier; approval date stamp visible, signature fields blank. Parts2and3 are continuations linked in same official municipal listing, not independently signed documents.",
+          "not_claimed": "Current zoning, parcel rights, exhaustive current capacity or unconditional approval of every sector."
+        },
+        "all_prose_is_binding": false,
+        "diagnostic_vintage_limit": "1998–2000 source diagnostics, schedules, counts and projections are historical, not current facts. Verify original image before relying on wording, numbers or associations. No numeric rules normalized.",
+        "limits": [
+          "approval_with_reservation and cross-document evidence",
+          "three suspended sectors with unestablished later resolution",
+          "missing FA/DB annexes; index is not referenced annexes",
+          "raw uncorrected OCR with explicit method and source/ocr hashes",
+          "OCR confidence null because not recorded; not evidence of measured quality",
+          "verify original image before relying on wording, numbers or associations",
+          "historical1998-2000 diagnostics, schedules, counts and projections; not current facts",
+          "physical part-specific PDF citation",
+          "no numeric normalization or map extraction/qualification/completion"
+        ],
+        "spatial_qualification": false,
+        "commune_complete": false,
+        "source_role": "approved_main",
+        "plan_status": "approved_with_reservation",
+        "review_sha256": "7d8936a8601e488b3a10332717daac08c246043c706dd4a8d823c4838816fb10",
+        "ocr_quality": "uncorrected_machine_ocr",
+        "requires_source_image_verification": true,
+        "corpus_limits": {
+          "missing": [
+            "FA action-sheet annexes",
+            "DB base-data annexes",
+            "later resolution of three suspended sector approvals"
+          ],
+          "index_is_not_annex": true,
+          "source_parts": 3,
+          "published_search_pages_in_part": [
+            2,
+            3,
+            6,
+            12,
+            14,
+            15,
+            20
+          ],
+          "held_pages_in_part": [
+            1,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            16,
+            17,
+            18,
+            19,
+            21
+          ],
+          "full_visual_map_extraction": false,
+          "currentness": {
+            "checked_at": "2026-10-05T09:43:31.385905+00:00",
+            "official_url": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
+            "statement": "Municipality currently publishes dossier as in force since2000-02-28. Listing update2026-08-05 is not a plan revision.",
+            "limit": "General in-force statement does not resolve suspended sectors. Adjacent PAComI procedure does not establish replacement of director dossier."
+          }
+        },
+        "supporting_documents": [
+          {
+            "part": 1,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_1.pdf",
+            "sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+            "page_count": 44,
+            "bytes": 2915747,
+            "document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 2,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_2.pdf",
+            "sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "page_count": 21,
+            "bytes": 2930925,
+            "document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 3,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+            "sha256": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+            "page_count": 21,
+            "bytes": 3135641,
+            "document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+            "plan_status": "approved_with_reservation"
+          }
+        ],
+        "text_extraction": {
+          "mode": "reviewed_ocr",
+          "artifact": "lutry-reviewed-ocr/part-3-ocr.json",
+          "sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380",
+          "method": "Tesseract French psm3,PyMuPDF2x; raw uncorrected research OCR. Existing12pages reused,74new pages.",
+          "engine": "tesseract 5.5.2",
+          "confidence": null,
+          "confidence_status": "not_recorded"
+        },
+        "reservations": [
+          {
+            "scope": "Grandchamp, Bossière, between Le Châtelard and Le Daley: Approval procedure suspended pending outcome of revision of LPPL. Later sector-specific resolution not established.",
+            "evidence_document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "evidence_source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "evidence_pdf_pages": [
+              9
+            ],
+            "visually_verified": true
+          }
+        ],
+        "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+        "citation": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf#page=2",
+        "extraction_status": "reviewed_ocr_search_text",
+        "ocr_provenance": {
+          "text_sha256": "3170c45436a67c125dd8f48b7a98410ca8df23f6e99e53723f1aee750de5a476",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "searchable uncorrected prose; verify original image",
+          "include_in_search": true
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      }
+    },
+    {
+      "id": "62b64f1c-7f90-5da1-bfbb-0da04119a1f1",
+      "document_id": "dce8e097-05f4-5870-a73f-df3256f8098f",
+      "chunk_index": 2,
+      "content": "64\n\nLe réaménagement du carrefour du\nVoisinand\n\nLe réaménagement de la route de Lavaux\n{RC780a) du carrefour du Grand-Pont à\ncelui de la route de Savuit en passant par\ncelui du Voisinand\n\nL'évitement du Voisinand\n\nLa mise en place d'un schéma de\ncirculation à sens unique permettant la\ncréation de trottoirs entre Savuit, les\nroutes de Savuit, de Crochet et Sermotier\n\n© ©\n\nLe réaménagement du carrefour de La\nCroix-sur-Lutry\n\nL'aménagement du chemin du Crêt des\nPierres et son débouché sur la route des\nMonts-de-Lavaux. Les études sont en\ncours\n\nModération dissuasive sur la route de\nBelmont et le chemin de Monteiller (déjà\nréalisée).\n\n(Q)\n\n3.624 Commentaires et principes\ngénéraux d'application\n\nLa réalisation de la prolongation de la bretelle\nautoroutière permettrait notamment de décharger\nfortement les axes suivants :\n\n- la route du Landar: de 40 à 60%\n- la route de La Conversion: de 20 à 25%\n- la route de Lavaux: de 20 à 25%\n\nla route de La Bernadaz: de 60 à 80%.\n\nDans le cas d'une réalisation moins immédiate de la\nbretelle, les nuisances sonores et atmosphériques\naffectant de ce fait les routes de La Conversion, du\nLandar, de La Bernadaz, de Lavaux et des Monts-\nde-Lavaux seront à maîtriser. Cette option, issue\nd'une concertation avec les communes concernées,\nest encouragée par l'Etat.\n\nLes principes d'exploitation et d'aménagement de la\nliaison Nord-Sud par Savuit devront être redéfinis\navec pour objectifs :\n\nde diminuer l'attractivité de cette liaison\ntout en maintenant une bonne\naccessibilité au secteur\n\nde poursuivre la réalisation des\nmodérations de trafic (maîtrise des\nnuisances) sur la route de Savuit\n\nd'améliorer la sécurité sur les tronçons\ndélicats.\n\nL'aménagement et l'exploitation du carrefour de La\nCroix-sur-Lutry devront être étudiés avec comme\nobjectif d'améliorer la sécurité. De plus, l'émergence\nde la Croix-sur-Lutry en tant que pôle d'équipements\ncollectifs doit stimuler l'organisation d'un domaine\npublic à l'usage mesuré et mieux partagé.\n\nAfin de ré",
+      "page_number": 3,
+      "metadata": {
+        "parser": "vd_pdcom_municipal_ocr",
+        "vd_document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+        "content_hash": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+        "commune_bfs": 5606,
+        "approval_scope": {
+          "status": "approved_with_reservation",
+          "evidence_document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+          "evidence_source_sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+          "evidence_pdf_page": 3,
+          "visually_verified": true,
+          "date": "2000-02-28",
+          "scope": "Official three-part dossier; approval date stamp visible, signature fields blank. Parts2and3 are continuations linked in same official municipal listing, not independently signed documents.",
+          "not_claimed": "Current zoning, parcel rights, exhaustive current capacity or unconditional approval of every sector."
+        },
+        "all_prose_is_binding": false,
+        "diagnostic_vintage_limit": "1998–2000 source diagnostics, schedules, counts and projections are historical, not current facts. Verify original image before relying on wording, numbers or associations. No numeric rules normalized.",
+        "limits": [
+          "approval_with_reservation and cross-document evidence",
+          "three suspended sectors with unestablished later resolution",
+          "missing FA/DB annexes; index is not referenced annexes",
+          "raw uncorrected OCR with explicit method and source/ocr hashes",
+          "OCR confidence null because not recorded; not evidence of measured quality",
+          "verify original image before relying on wording, numbers or associations",
+          "historical1998-2000 diagnostics, schedules, counts and projections; not current facts",
+          "physical part-specific PDF citation",
+          "no numeric normalization or map extraction/qualification/completion"
+        ],
+        "spatial_qualification": false,
+        "commune_complete": false,
+        "source_role": "approved_main",
+        "plan_status": "approved_with_reservation",
+        "review_sha256": "7d8936a8601e488b3a10332717daac08c246043c706dd4a8d823c4838816fb10",
+        "ocr_quality": "uncorrected_machine_ocr",
+        "requires_source_image_verification": true,
+        "corpus_limits": {
+          "missing": [
+            "FA action-sheet annexes",
+            "DB base-data annexes",
+            "later resolution of three suspended sector approvals"
+          ],
+          "index_is_not_annex": true,
+          "source_parts": 3,
+          "published_search_pages_in_part": [
+            2,
+            3,
+            6,
+            12,
+            14,
+            15,
+            20
+          ],
+          "held_pages_in_part": [
+            1,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            16,
+            17,
+            18,
+            19,
+            21
+          ],
+          "full_visual_map_extraction": false,
+          "currentness": {
+            "checked_at": "2026-10-05T09:43:31.385905+00:00",
+            "official_url": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
+            "statement": "Municipality currently publishes dossier as in force since2000-02-28. Listing update2026-08-05 is not a plan revision.",
+            "limit": "General in-force statement does not resolve suspended sectors. Adjacent PAComI procedure does not establish replacement of director dossier."
+          }
+        },
+        "supporting_documents": [
+          {
+            "part": 1,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_1.pdf",
+            "sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+            "page_count": 44,
+            "bytes": 2915747,
+            "document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 2,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_2.pdf",
+            "sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "page_count": 21,
+            "bytes": 2930925,
+            "document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 3,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+            "sha256": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+            "page_count": 21,
+            "bytes": 3135641,
+            "document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+            "plan_status": "approved_with_reservation"
+          }
+        ],
+        "text_extraction": {
+          "mode": "reviewed_ocr",
+          "artifact": "lutry-reviewed-ocr/part-3-ocr.json",
+          "sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380",
+          "method": "Tesseract French psm3,PyMuPDF2x; raw uncorrected research OCR. Existing12pages reused,74new pages.",
+          "engine": "tesseract 5.5.2",
+          "confidence": null,
+          "confidence_status": "not_recorded"
+        },
+        "reservations": [
+          {
+            "scope": "Grandchamp, Bossière, between Le Châtelard and Le Daley: Approval procedure suspended pending outcome of revision of LPPL. Later sector-specific resolution not established.",
+            "evidence_document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "evidence_source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "evidence_pdf_pages": [
+              9
+            ],
+            "visually_verified": true
+          }
+        ],
+        "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+        "citation": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf#page=3",
+        "extraction_status": "reviewed_ocr_search_text",
+        "ocr_provenance": {
+          "text_sha256": "d4df951038fc8d1506455a63b48f8bb2309633fb68d95502b2e16165391b0c49",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "searchable uncorrected prose; verify original image",
+          "include_in_search": true
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      }
+    },
+    {
+      "id": "823df58f-de64-588d-8f9c-b8b275f4b0de",
+      "document_id": "dce8e097-05f4-5870-a73f-df3256f8098f",
+      "chunk_index": 3,
+      "content": "duire le trafic circulant dans les zones\nrésidentielles, l'exploitation et l'aménagement du\nréseau routier doit inciter ou obliger les\nautomobilistes à atteindre le réseau principal par\nl'itinéraire le plus court possible.\n\nL'accessibilité du trafic véhicules au \"territoire à\nurbaniser sans destination définie\" sera planifiée\navec le souci de protéger les zones d'habitat.\n\nIl conviendra d'améliorer, voire de définir, des accès\nsûrs et confortables aux secteurs à fort potentiel de\ndéveloppement.\n\n3.625 Les pistes cyclables\n\nLa topographie n'aide pas à la réalisation de pistes\npour cyclistes. Le profil horizontal des grandes\nroutes de transit leur est favorable mais la densité\ndu trafic motorisé l'est moins. Un meilleur usage du\ndomaine public ainsi qu'une modération de la\nvitesse doivent être encouragés.\n\nLutry est correctement greffé sur le réseau cantonal\nselon la \"Planification des aménagements pour\ndeux roues légers\" (DTPAT 1992), voir ci-après.\n\nEn conformité avec ce document, des\naménagements pour les cyclistes doivent viser une\namélioration de leurs accès au réseau des\ntransports en commun.\n\nLors du réaménagement de la RC780 mentionné\nsous chiffre 5 du chapitre 3.62.3, il y aura lieu de\ncoupler modération du trafic et aménagements\ncyclables.\n\nExtrait de “Planification des aménagements pour\ndeux roues légers\" (DTPAT 1992)\n\nmms Degré d'urgence !\næ=— Degré d'urgence ll",
+      "page_number": 3,
+      "metadata": {
+        "parser": "vd_pdcom_municipal_ocr",
+        "vd_document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+        "content_hash": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+        "commune_bfs": 5606,
+        "approval_scope": {
+          "status": "approved_with_reservation",
+          "evidence_document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+          "evidence_source_sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+          "evidence_pdf_page": 3,
+          "visually_verified": true,
+          "date": "2000-02-28",
+          "scope": "Official three-part dossier; approval date stamp visible, signature fields blank. Parts2and3 are continuations linked in same official municipal listing, not independently signed documents.",
+          "not_claimed": "Current zoning, parcel rights, exhaustive current capacity or unconditional approval of every sector."
+        },
+        "all_prose_is_binding": false,
+        "diagnostic_vintage_limit": "1998–2000 source diagnostics, schedules, counts and projections are historical, not current facts. Verify original image before relying on wording, numbers or associations. No numeric rules normalized.",
+        "limits": [
+          "approval_with_reservation and cross-document evidence",
+          "three suspended sectors with unestablished later resolution",
+          "missing FA/DB annexes; index is not referenced annexes",
+          "raw uncorrected OCR with explicit method and source/ocr hashes",
+          "OCR confidence null because not recorded; not evidence of measured quality",
+          "verify original image before relying on wording, numbers or associations",
+          "historical1998-2000 diagnostics, schedules, counts and projections; not current facts",
+          "physical part-specific PDF citation",
+          "no numeric normalization or map extraction/qualification/completion"
+        ],
+        "spatial_qualification": false,
+        "commune_complete": false,
+        "source_role": "approved_main",
+        "plan_status": "approved_with_reservation",
+        "review_sha256": "7d8936a8601e488b3a10332717daac08c246043c706dd4a8d823c4838816fb10",
+        "ocr_quality": "uncorrected_machine_ocr",
+        "requires_source_image_verification": true,
+        "corpus_limits": {
+          "missing": [
+            "FA action-sheet annexes",
+            "DB base-data annexes",
+            "later resolution of three suspended sector approvals"
+          ],
+          "index_is_not_annex": true,
+          "source_parts": 3,
+          "published_search_pages_in_part": [
+            2,
+            3,
+            6,
+            12,
+            14,
+            15,
+            20
+          ],
+          "held_pages_in_part": [
+            1,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            16,
+            17,
+            18,
+            19,
+            21
+          ],
+          "full_visual_map_extraction": false,
+          "currentness": {
+            "checked_at": "2026-10-05T09:43:31.385905+00:00",
+            "official_url": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
+            "statement": "Municipality currently publishes dossier as in force since2000-02-28. Listing update2026-08-05 is not a plan revision.",
+            "limit": "General in-force statement does not resolve suspended sectors. Adjacent PAComI procedure does not establish replacement of director dossier."
+          }
+        },
+        "supporting_documents": [
+          {
+            "part": 1,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_1.pdf",
+            "sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+            "page_count": 44,
+            "bytes": 2915747,
+            "document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 2,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_2.pdf",
+            "sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "page_count": 21,
+            "bytes": 2930925,
+            "document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 3,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+            "sha256": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+            "page_count": 21,
+            "bytes": 3135641,
+            "document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+            "plan_status": "approved_with_reservation"
+          }
+        ],
+        "text_extraction": {
+          "mode": "reviewed_ocr",
+          "artifact": "lutry-reviewed-ocr/part-3-ocr.json",
+          "sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380",
+          "method": "Tesseract French psm3,PyMuPDF2x; raw uncorrected research OCR. Existing12pages reused,74new pages.",
+          "engine": "tesseract 5.5.2",
+          "confidence": null,
+          "confidence_status": "not_recorded"
+        },
+        "reservations": [
+          {
+            "scope": "Grandchamp, Bossière, between Le Châtelard and Le Daley: Approval procedure suspended pending outcome of revision of LPPL. Later sector-specific resolution not established.",
+            "evidence_document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "evidence_source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "evidence_pdf_pages": [
+              9
+            ],
+            "visually_verified": true
+          }
+        ],
+        "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+        "citation": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf#page=3",
+        "extraction_status": "reviewed_ocr_search_text",
+        "ocr_provenance": {
+          "text_sha256": "d4df951038fc8d1506455a63b48f8bb2309633fb68d95502b2e16165391b0c49",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "searchable uncorrected prose; verify original image",
+          "include_in_search": true
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      }
+    },
+    {
+      "id": "59e47bae-76b0-5b58-983f-dd62942947b9",
+      "document_id": "dce8e097-05f4-5870-a73f-df3256f8098f",
+      "chunk_index": 4,
+      "content": "67\n3.6 Les déplacements\n\n3.63 Les transports en commun\n3.63.2 Nature et situation des transports en\ncommun\n\nLa commune de Lutry est desservie par différents\ntypes de transports en commun:\n\npar le train\n\nA ligne CFF de Berne avec les haltes de\nLa Conversion et Bossières (32 trains par\njour ouvrable dans la direction Berne, 34\n\ntrains par jour ouvrable dans la direction\nLausanne; durée du trajet La Conversion -\nLausanne: 4’),\n\nligne CFF du Simplon avec la halte de\nLutry (22 trains par jour ouvrable dans la\ndirection Vevey, 23 trains par jour ouvrable\ndans la direction Lausanne; durée du\ntrajet: 7);\n\npar les trolleybus et bus TL (Transports\npublics de la région lausannoise)\n\nC ligne 9 (trolleybus): Prilly - Lausanne -\nLutry/Petite Corniche (1 bus par sens\ntoutes les 6', les jours ouvrables, entre\n6h00 et 19h00; durée du trajet Petite\nCorniche - Saint-François: 16')\n\nligne 66 (bus): Lausanne - Belmont - La\nCroix-sur-Lutry (par la rte des Monts-de-\nLavaux; 13 bus par sens et par jour\nouvrable, entre 6h00 et 20h00; durée du\ntrajet La Croix - Saint-François: 22°)\n\nL 1\n\nligne 68 (minibus): rte des Monts-de-\nLavaux - Bourg de Lutry par la rte de La\nConversion (env. 7 bus par sens et par\njour ouvrable, entre 07h00 et 20h00\n\nM\n\nligne 69 (minibus): La Croix-sur-Lutry -\nBourg de Lutry par la rte du Bras-de-Fer et\nde Savuit (env. 6 bus par sens et par jour\nouvrable entre 08h00 et 19h00);\n\nmn\n\npar bateaux\n\nG lignes touristiques saisonnières CGN,\nrayonnant d'Ouchy (env. toutes les 2h.\ndans la même direction)\n\nH ligne touristique saisonnière Batsol,\ncabotant entre Lutry, Ouchy et St-Sulpice\n(env. 3x par jour).\n\nAnalyses et perspectives :\n\nLa RC 780b\n\nC'est l'axe fort des transports en commun en\nrelation avec le centre de Lausanne (16' de trajet)\navec 10 bus par heure durant la journée.\n\nLa ligne CFF Lausanne-Berne\n\nLes quartiers situés à proximité des haltes CFF de\nLa Conversion et de Bossières sont relativement\nbien reliés au centre de Lausanne (1 à 2 trains par\nheure durant la jou",
+      "page_number": 6,
+      "metadata": {
+        "parser": "vd_pdcom_municipal_ocr",
+        "vd_document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+        "content_hash": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+        "commune_bfs": 5606,
+        "approval_scope": {
+          "status": "approved_with_reservation",
+          "evidence_document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+          "evidence_source_sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+          "evidence_pdf_page": 3,
+          "visually_verified": true,
+          "date": "2000-02-28",
+          "scope": "Official three-part dossier; approval date stamp visible, signature fields blank. Parts2and3 are continuations linked in same official municipal listing, not independently signed documents.",
+          "not_claimed": "Current zoning, parcel rights, exhaustive current capacity or unconditional approval of every sector."
+        },
+        "all_prose_is_binding": false,
+        "diagnostic_vintage_limit": "1998–2000 source diagnostics, schedules, counts and projections are historical, not current facts. Verify original image before relying on wording, numbers or associations. No numeric rules normalized.",
+        "limits": [
+          "approval_with_reservation and cross-document evidence",
+          "three suspended sectors with unestablished later resolution",
+          "missing FA/DB annexes; index is not referenced annexes",
+          "raw uncorrected OCR with explicit method and source/ocr hashes",
+          "OCR confidence null because not recorded; not evidence of measured quality",
+          "verify original image before relying on wording, numbers or associations",
+          "historical1998-2000 diagnostics, schedules, counts and projections; not current facts",
+          "physical part-specific PDF citation",
+          "no numeric normalization or map extraction/qualification/completion"
+        ],
+        "spatial_qualification": false,
+        "commune_complete": false,
+        "source_role": "approved_main",
+        "plan_status": "approved_with_reservation",
+        "review_sha256": "7d8936a8601e488b3a10332717daac08c246043c706dd4a8d823c4838816fb10",
+        "ocr_quality": "uncorrected_machine_ocr",
+        "requires_source_image_verification": true,
+        "corpus_limits": {
+          "missing": [
+            "FA action-sheet annexes",
+            "DB base-data annexes",
+            "later resolution of three suspended sector approvals"
+          ],
+          "index_is_not_annex": true,
+          "source_parts": 3,
+          "published_search_pages_in_part": [
+            2,
+            3,
+            6,
+            12,
+            14,
+            15,
+            20
+          ],
+          "held_pages_in_part": [
+            1,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            16,
+            17,
+            18,
+            19,
+            21
+          ],
+          "full_visual_map_extraction": false,
+          "currentness": {
+            "checked_at": "2026-10-05T09:43:31.385905+00:00",
+            "official_url": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
+            "statement": "Municipality currently publishes dossier as in force since2000-02-28. Listing update2026-08-05 is not a plan revision.",
+            "limit": "General in-force statement does not resolve suspended sectors. Adjacent PAComI procedure does not establish replacement of director dossier."
+          }
+        },
+        "supporting_documents": [
+          {
+            "part": 1,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_1.pdf",
+            "sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+            "page_count": 44,
+            "bytes": 2915747,
+            "document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 2,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_2.pdf",
+            "sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "page_count": 21,
+            "bytes": 2930925,
+            "document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 3,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+            "sha256": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+            "page_count": 21,
+            "bytes": 3135641,
+            "document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+            "plan_status": "approved_with_reservation"
+          }
+        ],
+        "text_extraction": {
+          "mode": "reviewed_ocr",
+          "artifact": "lutry-reviewed-ocr/part-3-ocr.json",
+          "sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380",
+          "method": "Tesseract French psm3,PyMuPDF2x; raw uncorrected research OCR. Existing12pages reused,74new pages.",
+          "engine": "tesseract 5.5.2",
+          "confidence": null,
+          "confidence_status": "not_recorded"
+        },
+        "reservations": [
+          {
+            "scope": "Grandchamp, Bossière, between Le Châtelard and Le Daley: Approval procedure suspended pending outcome of revision of LPPL. Later sector-specific resolution not established.",
+            "evidence_document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "evidence_source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "evidence_pdf_pages": [
+              9
+            ],
+            "visually_verified": true
+          }
+        ],
+        "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+        "citation": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf#page=6",
+        "extraction_status": "reviewed_ocr_search_text",
+        "ocr_provenance": {
+          "text_sha256": "1a339519fe92d3371f0c362d3a61a5c89d861d6569c0d1f35008ac6e48219a81",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "searchable uncorrected prose; verify original image",
+          "include_in_search": true
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      }
+    },
+    {
+      "id": "f5b60487-623d-5c2f-95ee-82891d4c78ec",
+      "document_id": "dce8e097-05f4-5870-a73f-df3256f8098f",
+      "chunk_index": 5,
+      "content": "rnée pour 4' de trajet). À La\nConversion, un aménagement de type transfert\nmodal (Park & Ride) avec stationnement de\nvéhicules privés et transbordement sur les trains\nest envisagé à condition qu'un financement\nextérieur soit assuré.\n\nParkings d'échange\n\nA proximité des arrêts de bus, réserver les terrains\nnécessaires à la création de parkings d'échange.\nL'option voiture privée\n\nPour le reste du territoire, notamment les Hauts de\nLutry, l'accès à l'agglomération lausannoise reste\nnettement plus attractif par véhicule privé.\n\nProlongement et nouvelle ligne de bus\n\nLe secteur Est des Hauts de Lutry (Miroir, Bras-de-\nFer), qu a connu un développement de population\nnon négligeable, n'est pas desservi par une ligne de\nbus directe le reliant à Lausanne. Proposé par le\nPlan directeur, un prolongement de la ligne 66 (rte\ndes Monts-de-Lavaux) permettrait cette liaison.\nD'autre part, une ligne de bus desservant le littoral\nentre Lutry et les hautes écoles de l'Ouest\nlausannois est à l'étude.\n\nLes RER et TVR\n\nL'éventualité de navettes régionales de type RER\nest étudiée sur les deux lignes CFF de Berne et du\nSimplon. Un TVR est également envisagé pour\ndesservir le littoral de l'Est de la région lausannoise\njusqu'à Cully.\n\nLa liaison Nord-Sud\n\nLes lignes de bus 68 et 69 permettent de relier les\nsecteurs urbanisés du territoire communal,\nnotamment les Hauts de Lutry, au réseau principal\nde transports publics.\n\nEn fonction de l'utilisation, il est envisageable d'en\naccroître la fréquence.\n\nLes lignes de navigation\n\nLa vocation des lignes de navigation est\ntraditionnellement touristique. Le potentiel utilitaire\nde la ligne d'abord touristique des bateaux solaires\nqui longe la côte de Lutry à St-Sulpice, est tributaire\nde l'efficacité de ces navettes.",
+      "page_number": 6,
+      "metadata": {
+        "parser": "vd_pdcom_municipal_ocr",
+        "vd_document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+        "content_hash": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+        "commune_bfs": 5606,
+        "approval_scope": {
+          "status": "approved_with_reservation",
+          "evidence_document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+          "evidence_source_sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+          "evidence_pdf_page": 3,
+          "visually_verified": true,
+          "date": "2000-02-28",
+          "scope": "Official three-part dossier; approval date stamp visible, signature fields blank. Parts2and3 are continuations linked in same official municipal listing, not independently signed documents.",
+          "not_claimed": "Current zoning, parcel rights, exhaustive current capacity or unconditional approval of every sector."
+        },
+        "all_prose_is_binding": false,
+        "diagnostic_vintage_limit": "1998–2000 source diagnostics, schedules, counts and projections are historical, not current facts. Verify original image before relying on wording, numbers or associations. No numeric rules normalized.",
+        "limits": [
+          "approval_with_reservation and cross-document evidence",
+          "three suspended sectors with unestablished later resolution",
+          "missing FA/DB annexes; index is not referenced annexes",
+          "raw uncorrected OCR with explicit method and source/ocr hashes",
+          "OCR confidence null because not recorded; not evidence of measured quality",
+          "verify original image before relying on wording, numbers or associations",
+          "historical1998-2000 diagnostics, schedules, counts and projections; not current facts",
+          "physical part-specific PDF citation",
+          "no numeric normalization or map extraction/qualification/completion"
+        ],
+        "spatial_qualification": false,
+        "commune_complete": false,
+        "source_role": "approved_main",
+        "plan_status": "approved_with_reservation",
+        "review_sha256": "7d8936a8601e488b3a10332717daac08c246043c706dd4a8d823c4838816fb10",
+        "ocr_quality": "uncorrected_machine_ocr",
+        "requires_source_image_verification": true,
+        "corpus_limits": {
+          "missing": [
+            "FA action-sheet annexes",
+            "DB base-data annexes",
+            "later resolution of three suspended sector approvals"
+          ],
+          "index_is_not_annex": true,
+          "source_parts": 3,
+          "published_search_pages_in_part": [
+            2,
+            3,
+            6,
+            12,
+            14,
+            15,
+            20
+          ],
+          "held_pages_in_part": [
+            1,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            16,
+            17,
+            18,
+            19,
+            21
+          ],
+          "full_visual_map_extraction": false,
+          "currentness": {
+            "checked_at": "2026-10-05T09:43:31.385905+00:00",
+            "official_url": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
+            "statement": "Municipality currently publishes dossier as in force since2000-02-28. Listing update2026-08-05 is not a plan revision.",
+            "limit": "General in-force statement does not resolve suspended sectors. Adjacent PAComI procedure does not establish replacement of director dossier."
+          }
+        },
+        "supporting_documents": [
+          {
+            "part": 1,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_1.pdf",
+            "sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+            "page_count": 44,
+            "bytes": 2915747,
+            "document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 2,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_2.pdf",
+            "sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "page_count": 21,
+            "bytes": 2930925,
+            "document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 3,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+            "sha256": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+            "page_count": 21,
+            "bytes": 3135641,
+            "document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+            "plan_status": "approved_with_reservation"
+          }
+        ],
+        "text_extraction": {
+          "mode": "reviewed_ocr",
+          "artifact": "lutry-reviewed-ocr/part-3-ocr.json",
+          "sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380",
+          "method": "Tesseract French psm3,PyMuPDF2x; raw uncorrected research OCR. Existing12pages reused,74new pages.",
+          "engine": "tesseract 5.5.2",
+          "confidence": null,
+          "confidence_status": "not_recorded"
+        },
+        "reservations": [
+          {
+            "scope": "Grandchamp, Bossière, between Le Châtelard and Le Daley: Approval procedure suspended pending outcome of revision of LPPL. Later sector-specific resolution not established.",
+            "evidence_document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "evidence_source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "evidence_pdf_pages": [
+              9
+            ],
+            "visually_verified": true
+          }
+        ],
+        "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+        "citation": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf#page=6",
+        "extraction_status": "reviewed_ocr_search_text",
+        "ocr_provenance": {
+          "text_sha256": "1a339519fe92d3371f0c362d3a61a5c89d861d6569c0d1f35008ac6e48219a81",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "searchable uncorrected prose; verify original image",
+          "include_in_search": true
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      }
+    },
+    {
+      "id": "151d039a-11fe-5291-bafa-eac716b36bd8",
+      "document_id": "dce8e097-05f4-5870-a73f-df3256f8098f",
+      "chunk_index": 6,
+      "content": "3.6 Les déplacements\n\n3.64 Le réseau piétonnier\n3.645 Nature et situation du réseau piétonnier\n\nLe réseau piétonnier de Lutry est de deux types\ncomplémentaires qui ne sont pas différenciés sur plan:\n\ne Le réseau touristique greffé sur le réseau\nrégional.\ne Le réseau interne plutôt utilitaire.\n\nOn distingue deux sortes de cheminements montrés\nsur plan:\n\nLes itinéraires en site propre destinés au seul\nusage piétonnier, à l'exception de quelques\ndeux-roues.\n\nLes itinéraires en site banal, tels trottoirs,\nrues, routes, routes du vignoble chemins de\ncampagne, etc. où le piéton doit partager son\nespace avec les usagers motorisés el les\ncyclistes.\n\n3.646 Analyse du trafic piétonnier\n\nLe trafic piétonnier utilitaire est quantitativement faible\nles jours ouvrables dans les secteurs étudiés. Ceci\ns'explique en partie par la topographie difficile, la forte\nmotorisation des habitants, et des services de\ntransports en commun relativement bons.\n\n8.647 Description du réseau\n\nLes principales liaisons piétonnes sont assurées par:\nLiaisons Est-Ouest\n\nA Les trottoirs des routes de Lavaux (RC780a)\net les Monts-de-Lavaux (RC773c).\nB Le sentier de la ligne CFF de Beme.\n\nLiaison Nord-Sud\n\nc Les trottoirs des routes du Landar et de La\nConversion (RC770b).\n\nD Les trottoirs de la route de Savuit, de La\nCroix-sur-Lutry à Savuit.\n\nE Les itinéraires qui utilisent le domaine public\n\nentre Savuit, la gare de Lutry et le Voisinand.\n\nDe nombreux sentiers permettent des cheminements\nsûrs, tant utilitaires que de loisirs, entre les quartiers ou\ndans leur distribution intérieure, et particulièrement pour\ndesservir les écoles.\n\nLes principaux pôles d'attraction pour les itinéraires\npiétons sont:\n\nLes écoles\n\nCollège du Grand-Pont\nCollège des Pâles\nCollège des Marionnettes\nCollège des Echerins\nCollège de Savuit\nCollège de Corsy.\n\n606660e\n\nLes arrêts transports\n\n® Gares et halte CFF\nArrêts lrolleybus et bus.\n\nLes autres pôles\n\n©) Le Bourg, commerces et loisirs\nQ) Les hameaux, quartiers et leurs équipemen",
+      "page_number": 12,
+      "metadata": {
+        "parser": "vd_pdcom_municipal_ocr",
+        "vd_document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+        "content_hash": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+        "commune_bfs": 5606,
+        "approval_scope": {
+          "status": "approved_with_reservation",
+          "evidence_document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+          "evidence_source_sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+          "evidence_pdf_page": 3,
+          "visually_verified": true,
+          "date": "2000-02-28",
+          "scope": "Official three-part dossier; approval date stamp visible, signature fields blank. Parts2and3 are continuations linked in same official municipal listing, not independently signed documents.",
+          "not_claimed": "Current zoning, parcel rights, exhaustive current capacity or unconditional approval of every sector."
+        },
+        "all_prose_is_binding": false,
+        "diagnostic_vintage_limit": "1998–2000 source diagnostics, schedules, counts and projections are historical, not current facts. Verify original image before relying on wording, numbers or associations. No numeric rules normalized.",
+        "limits": [
+          "approval_with_reservation and cross-document evidence",
+          "three suspended sectors with unestablished later resolution",
+          "missing FA/DB annexes; index is not referenced annexes",
+          "raw uncorrected OCR with explicit method and source/ocr hashes",
+          "OCR confidence null because not recorded; not evidence of measured quality",
+          "verify original image before relying on wording, numbers or associations",
+          "historical1998-2000 diagnostics, schedules, counts and projections; not current facts",
+          "physical part-specific PDF citation",
+          "no numeric normalization or map extraction/qualification/completion"
+        ],
+        "spatial_qualification": false,
+        "commune_complete": false,
+        "source_role": "approved_main",
+        "plan_status": "approved_with_reservation",
+        "review_sha256": "7d8936a8601e488b3a10332717daac08c246043c706dd4a8d823c4838816fb10",
+        "ocr_quality": "uncorrected_machine_ocr",
+        "requires_source_image_verification": true,
+        "corpus_limits": {
+          "missing": [
+            "FA action-sheet annexes",
+            "DB base-data annexes",
+            "later resolution of three suspended sector approvals"
+          ],
+          "index_is_not_annex": true,
+          "source_parts": 3,
+          "published_search_pages_in_part": [
+            2,
+            3,
+            6,
+            12,
+            14,
+            15,
+            20
+          ],
+          "held_pages_in_part": [
+            1,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            16,
+            17,
+            18,
+            19,
+            21
+          ],
+          "full_visual_map_extraction": false,
+          "currentness": {
+            "checked_at": "2026-10-05T09:43:31.385905+00:00",
+            "official_url": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
+            "statement": "Municipality currently publishes dossier as in force since2000-02-28. Listing update2026-08-05 is not a plan revision.",
+            "limit": "General in-force statement does not resolve suspended sectors. Adjacent PAComI procedure does not establish replacement of director dossier."
+          }
+        },
+        "supporting_documents": [
+          {
+            "part": 1,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_1.pdf",
+            "sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+            "page_count": 44,
+            "bytes": 2915747,
+            "document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 2,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_2.pdf",
+            "sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "page_count": 21,
+            "bytes": 2930925,
+            "document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 3,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+            "sha256": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+            "page_count": 21,
+            "bytes": 3135641,
+            "document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+            "plan_status": "approved_with_reservation"
+          }
+        ],
+        "text_extraction": {
+          "mode": "reviewed_ocr",
+          "artifact": "lutry-reviewed-ocr/part-3-ocr.json",
+          "sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380",
+          "method": "Tesseract French psm3,PyMuPDF2x; raw uncorrected research OCR. Existing12pages reused,74new pages.",
+          "engine": "tesseract 5.5.2",
+          "confidence": null,
+          "confidence_status": "not_recorded"
+        },
+        "reservations": [
+          {
+            "scope": "Grandchamp, Bossière, between Le Châtelard and Le Daley: Approval procedure suspended pending outcome of revision of LPPL. Later sector-specific resolution not established.",
+            "evidence_document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "evidence_source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "evidence_pdf_pages": [
+              9
+            ],
+            "visually_verified": true
+          }
+        ],
+        "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+        "citation": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf#page=12",
+        "extraction_status": "reviewed_ocr_search_text",
+        "ocr_provenance": {
+          "text_sha256": "89e6ab1a2e59215562287788b9b8467750afee16ad3a3a9fc08df4c9d66c6728",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "searchable uncorrected prose; verify original image",
+          "include_in_search": true
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      }
+    },
+    {
+      "id": "2255bab9-86c3-57a2-bc89-d9ab887461ff",
+      "document_id": "dce8e097-05f4-5870-a73f-df3256f8098f",
+      "chunk_index": 7,
+      "content": "ts.\n\n3.648 Les éléments directeurs\n\nSouvent de l'ordre d'aménagement de détail, les\néléments directeurs ayant trait au réseau piétonnier\nsont désignés sur plan à titre indicatif, Les problèmes\nspécifiques, mesures et moyens d'application sont\ntraités par les fiches programme (dossier municipal).\n\n1 Passages piétons :\n\n— rte de La conversion, rte d'Orzens,\n\nre de La Conversion, ch. du Braillon, ou\nproximité plus au Sud, ou\n\nproximité plus au Nord (- 20m),\n\nre des Monts-de-Lavaux, Crêts-des-Pierres.\n\n2 Signalisation :\nfe de La Conversion, ch. du Braillon.\n\n3 Trottoirs :\nee) re de La Conversion, ch. du Braillon.\n\n4 Ilots :\nrte des Monts-de-Lavaux, Crêt-des-Pierres.\n\n5 Tronçons nouveaux\n\n6 Autres aménagements protecteurs.",
+      "page_number": 12,
+      "metadata": {
+        "parser": "vd_pdcom_municipal_ocr",
+        "vd_document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+        "content_hash": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+        "commune_bfs": 5606,
+        "approval_scope": {
+          "status": "approved_with_reservation",
+          "evidence_document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+          "evidence_source_sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+          "evidence_pdf_page": 3,
+          "visually_verified": true,
+          "date": "2000-02-28",
+          "scope": "Official three-part dossier; approval date stamp visible, signature fields blank. Parts2and3 are continuations linked in same official municipal listing, not independently signed documents.",
+          "not_claimed": "Current zoning, parcel rights, exhaustive current capacity or unconditional approval of every sector."
+        },
+        "all_prose_is_binding": false,
+        "diagnostic_vintage_limit": "1998–2000 source diagnostics, schedules, counts and projections are historical, not current facts. Verify original image before relying on wording, numbers or associations. No numeric rules normalized.",
+        "limits": [
+          "approval_with_reservation and cross-document evidence",
+          "three suspended sectors with unestablished later resolution",
+          "missing FA/DB annexes; index is not referenced annexes",
+          "raw uncorrected OCR with explicit method and source/ocr hashes",
+          "OCR confidence null because not recorded; not evidence of measured quality",
+          "verify original image before relying on wording, numbers or associations",
+          "historical1998-2000 diagnostics, schedules, counts and projections; not current facts",
+          "physical part-specific PDF citation",
+          "no numeric normalization or map extraction/qualification/completion"
+        ],
+        "spatial_qualification": false,
+        "commune_complete": false,
+        "source_role": "approved_main",
+        "plan_status": "approved_with_reservation",
+        "review_sha256": "7d8936a8601e488b3a10332717daac08c246043c706dd4a8d823c4838816fb10",
+        "ocr_quality": "uncorrected_machine_ocr",
+        "requires_source_image_verification": true,
+        "corpus_limits": {
+          "missing": [
+            "FA action-sheet annexes",
+            "DB base-data annexes",
+            "later resolution of three suspended sector approvals"
+          ],
+          "index_is_not_annex": true,
+          "source_parts": 3,
+          "published_search_pages_in_part": [
+            2,
+            3,
+            6,
+            12,
+            14,
+            15,
+            20
+          ],
+          "held_pages_in_part": [
+            1,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            16,
+            17,
+            18,
+            19,
+            21
+          ],
+          "full_visual_map_extraction": false,
+          "currentness": {
+            "checked_at": "2026-10-05T09:43:31.385905+00:00",
+            "official_url": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
+            "statement": "Municipality currently publishes dossier as in force since2000-02-28. Listing update2026-08-05 is not a plan revision.",
+            "limit": "General in-force statement does not resolve suspended sectors. Adjacent PAComI procedure does not establish replacement of director dossier."
+          }
+        },
+        "supporting_documents": [
+          {
+            "part": 1,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_1.pdf",
+            "sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+            "page_count": 44,
+            "bytes": 2915747,
+            "document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 2,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_2.pdf",
+            "sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "page_count": 21,
+            "bytes": 2930925,
+            "document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 3,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+            "sha256": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+            "page_count": 21,
+            "bytes": 3135641,
+            "document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+            "plan_status": "approved_with_reservation"
+          }
+        ],
+        "text_extraction": {
+          "mode": "reviewed_ocr",
+          "artifact": "lutry-reviewed-ocr/part-3-ocr.json",
+          "sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380",
+          "method": "Tesseract French psm3,PyMuPDF2x; raw uncorrected research OCR. Existing12pages reused,74new pages.",
+          "engine": "tesseract 5.5.2",
+          "confidence": null,
+          "confidence_status": "not_recorded"
+        },
+        "reservations": [
+          {
+            "scope": "Grandchamp, Bossière, between Le Châtelard and Le Daley: Approval procedure suspended pending outcome of revision of LPPL. Later sector-specific resolution not established.",
+            "evidence_document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "evidence_source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "evidence_pdf_pages": [
+              9
+            ],
+            "visually_verified": true
+          }
+        ],
+        "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+        "citation": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf#page=12",
+        "extraction_status": "reviewed_ocr_search_text",
+        "ocr_provenance": {
+          "text_sha256": "89e6ab1a2e59215562287788b9b8467750afee16ad3a3a9fc08df4c9d66c6728",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "searchable uncorrected prose; verify original image",
+          "include_in_search": true
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      }
+    },
+    {
+      "id": "34d6996d-f7d2-5ad7-9986-d54362da60a8",
+      "document_id": "dce8e097-05f4-5870-a73f-df3256f8098f",
+      "chunk_index": 8,
+      "content": "3.6 Les déplacements\n\n3.65 Le domaine public\n\n3.65.1 Principes de partage du domaine\npublic et de modération du trafic\n\nLe domaine public routier a été organisé pendant\nlongtemps en espace spécialisé, pour les besoins\nimpératifs du trafic des véhicules motorisés. Se\nfondant sur des normes généreuses, on a attribué à\nce trafic des surfaces démesurées. Les\npréoccupations d'aujourd'hui tendent au contraire\nvers une amélioration de la qualité de la vie tout en\npréservant la fluidité du trafic sur les routes\nimportantes. Cela se traduit par la volonté de\nmaîtriser les nuisances visuelles, sonores et\natmosphériques, d'améliorer la sécurité des\npersonnes et plus particulièrement des enfants, de\nsupprimer les entraves physiques, et de favoriser la\nconvivialité. Une condition pour atteindre ces buts\nest de reconquérir le domaine public en partageant\nplus équitablement son usage entre tous les\nutilisateurs, piétons, cyclistes, automobilistes, etc.\n\nA Les routes à grand trafic, bordées de\ntrottoirs,\n\n© diminuer au strict nécessaire l'emprise\napparente des voies de circulation,\n\n© arboriser et paysager la voirie pour changer le\nrapport visuel trottoirs/voies de circulation,\n\n© faire évoluer la notion classique de trottoir\nvers l'idée d'un espace d'itinéraire sécuritaire\npaysager au sens vert ou urbain du terme,\nqui occupera le terrain entre le front construit\net les voies de circulation,\n\n© yintégrer les mesures de maîtrise des\nnuisances, tertres, auto-protection des fronts\nconstruits, etc.\n\n© traiter les passages piétons, et autres\ncarrefours comme jalonnements\nmodérateurs.\n\nB Les traversées de villages,\n\n© inspirer au conducteur un comportement\nd'invité,\n\nutiliser pour ce faire des moyens physiques\net psychologiques tels portes d'entrée,\nresserrements, traitements de surface,\ntracés, jalonnements, objets d'intérêt,\nsignalisations atypiques, etc.\n\npermettre à tous les usagers de partager une\nemprise occasionnelle ou permanente sur le\ndomaine public.\n\nLes grands axes et grands",
+      "page_number": 14,
+      "metadata": {
+        "parser": "vd_pdcom_municipal_ocr",
+        "vd_document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+        "content_hash": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+        "commune_bfs": 5606,
+        "approval_scope": {
+          "status": "approved_with_reservation",
+          "evidence_document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+          "evidence_source_sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+          "evidence_pdf_page": 3,
+          "visually_verified": true,
+          "date": "2000-02-28",
+          "scope": "Official three-part dossier; approval date stamp visible, signature fields blank. Parts2and3 are continuations linked in same official municipal listing, not independently signed documents.",
+          "not_claimed": "Current zoning, parcel rights, exhaustive current capacity or unconditional approval of every sector."
+        },
+        "all_prose_is_binding": false,
+        "diagnostic_vintage_limit": "1998–2000 source diagnostics, schedules, counts and projections are historical, not current facts. Verify original image before relying on wording, numbers or associations. No numeric rules normalized.",
+        "limits": [
+          "approval_with_reservation and cross-document evidence",
+          "three suspended sectors with unestablished later resolution",
+          "missing FA/DB annexes; index is not referenced annexes",
+          "raw uncorrected OCR with explicit method and source/ocr hashes",
+          "OCR confidence null because not recorded; not evidence of measured quality",
+          "verify original image before relying on wording, numbers or associations",
+          "historical1998-2000 diagnostics, schedules, counts and projections; not current facts",
+          "physical part-specific PDF citation",
+          "no numeric normalization or map extraction/qualification/completion"
+        ],
+        "spatial_qualification": false,
+        "commune_complete": false,
+        "source_role": "approved_main",
+        "plan_status": "approved_with_reservation",
+        "review_sha256": "7d8936a8601e488b3a10332717daac08c246043c706dd4a8d823c4838816fb10",
+        "ocr_quality": "uncorrected_machine_ocr",
+        "requires_source_image_verification": true,
+        "corpus_limits": {
+          "missing": [
+            "FA action-sheet annexes",
+            "DB base-data annexes",
+            "later resolution of three suspended sector approvals"
+          ],
+          "index_is_not_annex": true,
+          "source_parts": 3,
+          "published_search_pages_in_part": [
+            2,
+            3,
+            6,
+            12,
+            14,
+            15,
+            20
+          ],
+          "held_pages_in_part": [
+            1,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            16,
+            17,
+            18,
+            19,
+            21
+          ],
+          "full_visual_map_extraction": false,
+          "currentness": {
+            "checked_at": "2026-10-05T09:43:31.385905+00:00",
+            "official_url": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
+            "statement": "Municipality currently publishes dossier as in force since2000-02-28. Listing update2026-08-05 is not a plan revision.",
+            "limit": "General in-force statement does not resolve suspended sectors. Adjacent PAComI procedure does not establish replacement of director dossier."
+          }
+        },
+        "supporting_documents": [
+          {
+            "part": 1,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_1.pdf",
+            "sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+            "page_count": 44,
+            "bytes": 2915747,
+            "document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 2,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_2.pdf",
+            "sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "page_count": 21,
+            "bytes": 2930925,
+            "document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 3,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+            "sha256": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+            "page_count": 21,
+            "bytes": 3135641,
+            "document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+            "plan_status": "approved_with_reservation"
+          }
+        ],
+        "text_extraction": {
+          "mode": "reviewed_ocr",
+          "artifact": "lutry-reviewed-ocr/part-3-ocr.json",
+          "sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380",
+          "method": "Tesseract French psm3,PyMuPDF2x; raw uncorrected research OCR. Existing12pages reused,74new pages.",
+          "engine": "tesseract 5.5.2",
+          "confidence": null,
+          "confidence_status": "not_recorded"
+        },
+        "reservations": [
+          {
+            "scope": "Grandchamp, Bossière, between Le Châtelard and Le Daley: Approval procedure suspended pending outcome of revision of LPPL. Later sector-specific resolution not established.",
+            "evidence_document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "evidence_source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "evidence_pdf_pages": [
+              9
+            ],
+            "visually_verified": true
+          }
+        ],
+        "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+        "citation": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf#page=14",
+        "extraction_status": "reviewed_ocr_search_text",
+        "ocr_provenance": {
+          "text_sha256": "db93a9a0884b2d69df0b1f5f047fff96015871dd9f20f0be319ddd911ba9e56b",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "searchable uncorrected prose; verify original image",
+          "include_in_search": true
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      }
+    },
+    {
+      "id": "d5c3237a-0d43-56a6-bc45-e590345a2358",
+      "document_id": "dce8e097-05f4-5870-a73f-df3256f8098f",
+      "chunk_index": 9,
+      "content": "carrefours,\n\nmettre l'usager motorisé dans l'expectative\npour qu'il ralentisse,\n\ndiminuer l'importance des voies de\ncirculation: démesure des surfaces,\nmarquages excessifs, forêts de\nsuperstructures lumineuses, etc.\n\nintervenir par des moyens lourds si\nnécessaire: passages inférieurs ou\nsupérieurs, suppression de césures dans le\ntissu construit, etc.\n\ncombiner les éléments doux de circulation:\ngiratoire, modération, etc.\n\nagir sur les règles de comportement par la\nsuggestion, traitements de surface, tracés,\nportes, etc.\n\néviter de travestir le paysage urbain par des\ndérives paysagères.\n\nLes carrefours-places avec pôles\nd'attraction,\n\ninspirer au conducteur un comportement\nd'invité,\n\nutiliser des moyens physiques et\npsychologiques tels portes d'entrée,\nresserrements, traitements de surface,\ntracés, jalonnements, objets d'intérêt,\nSignalisations alypiques, etc.\n\ncréer un espace-place de fonctionnement où\nles voies de circulation ne sont pas un\nélément dominant,\n\ntraiter les passages piétons comme\njalonnements modérateurs.",
+      "page_number": 14,
+      "metadata": {
+        "parser": "vd_pdcom_municipal_ocr",
+        "vd_document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+        "content_hash": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+        "commune_bfs": 5606,
+        "approval_scope": {
+          "status": "approved_with_reservation",
+          "evidence_document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+          "evidence_source_sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+          "evidence_pdf_page": 3,
+          "visually_verified": true,
+          "date": "2000-02-28",
+          "scope": "Official three-part dossier; approval date stamp visible, signature fields blank. Parts2and3 are continuations linked in same official municipal listing, not independently signed documents.",
+          "not_claimed": "Current zoning, parcel rights, exhaustive current capacity or unconditional approval of every sector."
+        },
+        "all_prose_is_binding": false,
+        "diagnostic_vintage_limit": "1998–2000 source diagnostics, schedules, counts and projections are historical, not current facts. Verify original image before relying on wording, numbers or associations. No numeric rules normalized.",
+        "limits": [
+          "approval_with_reservation and cross-document evidence",
+          "three suspended sectors with unestablished later resolution",
+          "missing FA/DB annexes; index is not referenced annexes",
+          "raw uncorrected OCR with explicit method and source/ocr hashes",
+          "OCR confidence null because not recorded; not evidence of measured quality",
+          "verify original image before relying on wording, numbers or associations",
+          "historical1998-2000 diagnostics, schedules, counts and projections; not current facts",
+          "physical part-specific PDF citation",
+          "no numeric normalization or map extraction/qualification/completion"
+        ],
+        "spatial_qualification": false,
+        "commune_complete": false,
+        "source_role": "approved_main",
+        "plan_status": "approved_with_reservation",
+        "review_sha256": "7d8936a8601e488b3a10332717daac08c246043c706dd4a8d823c4838816fb10",
+        "ocr_quality": "uncorrected_machine_ocr",
+        "requires_source_image_verification": true,
+        "corpus_limits": {
+          "missing": [
+            "FA action-sheet annexes",
+            "DB base-data annexes",
+            "later resolution of three suspended sector approvals"
+          ],
+          "index_is_not_annex": true,
+          "source_parts": 3,
+          "published_search_pages_in_part": [
+            2,
+            3,
+            6,
+            12,
+            14,
+            15,
+            20
+          ],
+          "held_pages_in_part": [
+            1,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            16,
+            17,
+            18,
+            19,
+            21
+          ],
+          "full_visual_map_extraction": false,
+          "currentness": {
+            "checked_at": "2026-10-05T09:43:31.385905+00:00",
+            "official_url": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
+            "statement": "Municipality currently publishes dossier as in force since2000-02-28. Listing update2026-08-05 is not a plan revision.",
+            "limit": "General in-force statement does not resolve suspended sectors. Adjacent PAComI procedure does not establish replacement of director dossier."
+          }
+        },
+        "supporting_documents": [
+          {
+            "part": 1,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_1.pdf",
+            "sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+            "page_count": 44,
+            "bytes": 2915747,
+            "document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 2,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_2.pdf",
+            "sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "page_count": 21,
+            "bytes": 2930925,
+            "document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 3,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+            "sha256": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+            "page_count": 21,
+            "bytes": 3135641,
+            "document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+            "plan_status": "approved_with_reservation"
+          }
+        ],
+        "text_extraction": {
+          "mode": "reviewed_ocr",
+          "artifact": "lutry-reviewed-ocr/part-3-ocr.json",
+          "sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380",
+          "method": "Tesseract French psm3,PyMuPDF2x; raw uncorrected research OCR. Existing12pages reused,74new pages.",
+          "engine": "tesseract 5.5.2",
+          "confidence": null,
+          "confidence_status": "not_recorded"
+        },
+        "reservations": [
+          {
+            "scope": "Grandchamp, Bossière, between Le Châtelard and Le Daley: Approval procedure suspended pending outcome of revision of LPPL. Later sector-specific resolution not established.",
+            "evidence_document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "evidence_source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "evidence_pdf_pages": [
+              9
+            ],
+            "visually_verified": true
+          }
+        ],
+        "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+        "citation": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf#page=14",
+        "extraction_status": "reviewed_ocr_search_text",
+        "ocr_provenance": {
+          "text_sha256": "db93a9a0884b2d69df0b1f5f047fff96015871dd9f20f0be319ddd911ba9e56b",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "searchable uncorrected prose; verify original image",
+          "include_in_search": true
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      }
+    },
+    {
+      "id": "511d1dff-4184-5b78-bf71-f52e9393c43a",
+      "document_id": "dce8e097-05f4-5870-a73f-df3256f8098f",
+      "chunk_index": 10,
+      "content": "Les rues et routes de dessertes,\n\ndéfinir les pistes de sécurité piétonnes par\ndes moyens simples, jeux de bandes\nrugueuses collées, etc.\n\ninfluencer les règles de comportement des\nusagers motorisés ou cyclistes par des\nmoyens de persuasion visuelle, des\nmodérations, traitements de surface,\njalonnements, elc.\n\ntraiter les traversées piétonnes comme\njalonnements modérateurs.\n\nLes routes bordées de murs,\n\naccepter l'utilisation simultanée, véhicules-\npiétons , de ces itinéraires modérateurs par\nleur étroitesse,\n\nmodérer de façon extensive le trafic\nvéhicules en recourant à tous les moyens\naccessibles tout en préservant la nalure site,\n\ndéfinir les tronçons difficiles , tant au niveau\nde la visibilité que de la sécurité piétons\ndirecte , par des marquages sonores, jeux de\nbandes rugueuses collées, etc.\n\nConclusion\n\nToute démarche d'aménagement est complexe. Elle nécessite la\nprise en compte de nombreux facteurs, très divers et souvent\ncontradictoires. Dans ce contexte, la façon de poser le problème est\nprimordiale.\n\nLe plan directeur communal est à cet égard un instrument de travail\ntrès utile. Il contient les éléments qui permettent de préciser le\ncontexte de chacun de nos futurs projets d'aménagement, qu'il\ns'agisse par exemple d'un équipement collectif, d'une modification\ndans la structure du réseau routier ou encore d’un plan partiel\nd'affectation.\n\nLe plan directeur communal apporte une vision globale; il met en\névidence des contraintes et des incompatibilités; il définit des\npriorités. C'est un document de référence. Il doit cependant rester\névolutif. Il sera en outre régulièrement complété par de nouvelles\nfiches d'action.\n\nLe territoire communal n'est pas extensible; il constitue une denrée\nrare et précieuse qu'il convient de préserver, tout en offrant à ceux qui\nl'occupent et à leurs descendants, la meilleure qualité de vie possible\ndans le respect des valeurs naturelles et construites.\n\nA l'aube du prochain millénaire, le plan directeur communal\ncontribuera à",
+      "page_number": 15,
+      "metadata": {
+        "parser": "vd_pdcom_municipal_ocr",
+        "vd_document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+        "content_hash": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+        "commune_bfs": 5606,
+        "approval_scope": {
+          "status": "approved_with_reservation",
+          "evidence_document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+          "evidence_source_sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+          "evidence_pdf_page": 3,
+          "visually_verified": true,
+          "date": "2000-02-28",
+          "scope": "Official three-part dossier; approval date stamp visible, signature fields blank. Parts2and3 are continuations linked in same official municipal listing, not independently signed documents.",
+          "not_claimed": "Current zoning, parcel rights, exhaustive current capacity or unconditional approval of every sector."
+        },
+        "all_prose_is_binding": false,
+        "diagnostic_vintage_limit": "1998–2000 source diagnostics, schedules, counts and projections are historical, not current facts. Verify original image before relying on wording, numbers or associations. No numeric rules normalized.",
+        "limits": [
+          "approval_with_reservation and cross-document evidence",
+          "three suspended sectors with unestablished later resolution",
+          "missing FA/DB annexes; index is not referenced annexes",
+          "raw uncorrected OCR with explicit method and source/ocr hashes",
+          "OCR confidence null because not recorded; not evidence of measured quality",
+          "verify original image before relying on wording, numbers or associations",
+          "historical1998-2000 diagnostics, schedules, counts and projections; not current facts",
+          "physical part-specific PDF citation",
+          "no numeric normalization or map extraction/qualification/completion"
+        ],
+        "spatial_qualification": false,
+        "commune_complete": false,
+        "source_role": "approved_main",
+        "plan_status": "approved_with_reservation",
+        "review_sha256": "7d8936a8601e488b3a10332717daac08c246043c706dd4a8d823c4838816fb10",
+        "ocr_quality": "uncorrected_machine_ocr",
+        "requires_source_image_verification": true,
+        "corpus_limits": {
+          "missing": [
+            "FA action-sheet annexes",
+            "DB base-data annexes",
+            "later resolution of three suspended sector approvals"
+          ],
+          "index_is_not_annex": true,
+          "source_parts": 3,
+          "published_search_pages_in_part": [
+            2,
+            3,
+            6,
+            12,
+            14,
+            15,
+            20
+          ],
+          "held_pages_in_part": [
+            1,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            16,
+            17,
+            18,
+            19,
+            21
+          ],
+          "full_visual_map_extraction": false,
+          "currentness": {
+            "checked_at": "2026-10-05T09:43:31.385905+00:00",
+            "official_url": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
+            "statement": "Municipality currently publishes dossier as in force since2000-02-28. Listing update2026-08-05 is not a plan revision.",
+            "limit": "General in-force statement does not resolve suspended sectors. Adjacent PAComI procedure does not establish replacement of director dossier."
+          }
+        },
+        "supporting_documents": [
+          {
+            "part": 1,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_1.pdf",
+            "sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+            "page_count": 44,
+            "bytes": 2915747,
+            "document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 2,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_2.pdf",
+            "sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "page_count": 21,
+            "bytes": 2930925,
+            "document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 3,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+            "sha256": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+            "page_count": 21,
+            "bytes": 3135641,
+            "document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+            "plan_status": "approved_with_reservation"
+          }
+        ],
+        "text_extraction": {
+          "mode": "reviewed_ocr",
+          "artifact": "lutry-reviewed-ocr/part-3-ocr.json",
+          "sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380",
+          "method": "Tesseract French psm3,PyMuPDF2x; raw uncorrected research OCR. Existing12pages reused,74new pages.",
+          "engine": "tesseract 5.5.2",
+          "confidence": null,
+          "confidence_status": "not_recorded"
+        },
+        "reservations": [
+          {
+            "scope": "Grandchamp, Bossière, between Le Châtelard and Le Daley: Approval procedure suspended pending outcome of revision of LPPL. Later sector-specific resolution not established.",
+            "evidence_document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "evidence_source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "evidence_pdf_pages": [
+              9
+            ],
+            "visually_verified": true
+          }
+        ],
+        "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+        "citation": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf#page=15",
+        "extraction_status": "reviewed_ocr_search_text",
+        "ocr_provenance": {
+          "text_sha256": "7ba462d461809334debd5c6d7aeaf52f38be091f4ff4d4594cb18ef605187edd",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "searchable uncorrected prose; verify original image",
+          "include_in_search": true
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      }
+    },
+    {
+      "id": "a15e8902-9129-562e-9151-b37b910aa108",
+      "document_id": "dce8e097-05f4-5870-a73f-df3256f8098f",
+      "chunk_index": 11,
+      "content": "entretenir une réflexion exigeante sur l'avenir de notre\ncommune.",
+      "page_number": 15,
+      "metadata": {
+        "parser": "vd_pdcom_municipal_ocr",
+        "vd_document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+        "content_hash": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+        "commune_bfs": 5606,
+        "approval_scope": {
+          "status": "approved_with_reservation",
+          "evidence_document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+          "evidence_source_sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+          "evidence_pdf_page": 3,
+          "visually_verified": true,
+          "date": "2000-02-28",
+          "scope": "Official three-part dossier; approval date stamp visible, signature fields blank. Parts2and3 are continuations linked in same official municipal listing, not independently signed documents.",
+          "not_claimed": "Current zoning, parcel rights, exhaustive current capacity or unconditional approval of every sector."
+        },
+        "all_prose_is_binding": false,
+        "diagnostic_vintage_limit": "1998–2000 source diagnostics, schedules, counts and projections are historical, not current facts. Verify original image before relying on wording, numbers or associations. No numeric rules normalized.",
+        "limits": [
+          "approval_with_reservation and cross-document evidence",
+          "three suspended sectors with unestablished later resolution",
+          "missing FA/DB annexes; index is not referenced annexes",
+          "raw uncorrected OCR with explicit method and source/ocr hashes",
+          "OCR confidence null because not recorded; not evidence of measured quality",
+          "verify original image before relying on wording, numbers or associations",
+          "historical1998-2000 diagnostics, schedules, counts and projections; not current facts",
+          "physical part-specific PDF citation",
+          "no numeric normalization or map extraction/qualification/completion"
+        ],
+        "spatial_qualification": false,
+        "commune_complete": false,
+        "source_role": "approved_main",
+        "plan_status": "approved_with_reservation",
+        "review_sha256": "7d8936a8601e488b3a10332717daac08c246043c706dd4a8d823c4838816fb10",
+        "ocr_quality": "uncorrected_machine_ocr",
+        "requires_source_image_verification": true,
+        "corpus_limits": {
+          "missing": [
+            "FA action-sheet annexes",
+            "DB base-data annexes",
+            "later resolution of three suspended sector approvals"
+          ],
+          "index_is_not_annex": true,
+          "source_parts": 3,
+          "published_search_pages_in_part": [
+            2,
+            3,
+            6,
+            12,
+            14,
+            15,
+            20
+          ],
+          "held_pages_in_part": [
+            1,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            16,
+            17,
+            18,
+            19,
+            21
+          ],
+          "full_visual_map_extraction": false,
+          "currentness": {
+            "checked_at": "2026-10-05T09:43:31.385905+00:00",
+            "official_url": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
+            "statement": "Municipality currently publishes dossier as in force since2000-02-28. Listing update2026-08-05 is not a plan revision.",
+            "limit": "General in-force statement does not resolve suspended sectors. Adjacent PAComI procedure does not establish replacement of director dossier."
+          }
+        },
+        "supporting_documents": [
+          {
+            "part": 1,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_1.pdf",
+            "sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+            "page_count": 44,
+            "bytes": 2915747,
+            "document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 2,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_2.pdf",
+            "sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "page_count": 21,
+            "bytes": 2930925,
+            "document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 3,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+            "sha256": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+            "page_count": 21,
+            "bytes": 3135641,
+            "document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+            "plan_status": "approved_with_reservation"
+          }
+        ],
+        "text_extraction": {
+          "mode": "reviewed_ocr",
+          "artifact": "lutry-reviewed-ocr/part-3-ocr.json",
+          "sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380",
+          "method": "Tesseract French psm3,PyMuPDF2x; raw uncorrected research OCR. Existing12pages reused,74new pages.",
+          "engine": "tesseract 5.5.2",
+          "confidence": null,
+          "confidence_status": "not_recorded"
+        },
+        "reservations": [
+          {
+            "scope": "Grandchamp, Bossière, between Le Châtelard and Le Daley: Approval procedure suspended pending outcome of revision of LPPL. Later sector-specific resolution not established.",
+            "evidence_document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "evidence_source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "evidence_pdf_pages": [
+              9
+            ],
+            "visually_verified": true
+          }
+        ],
+        "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+        "citation": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf#page=15",
+        "extraction_status": "reviewed_ocr_search_text",
+        "ocr_provenance": {
+          "text_sha256": "7ba462d461809334debd5c6d7aeaf52f38be091f4ff4d4594cb18ef605187edd",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "searchable uncorrected prose; verify original image",
+          "include_in_search": true
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      }
+    },
+    {
+      "id": "37057916-1f83-5976-9f7a-44c76c54fde5",
+      "document_id": "dce8e097-05f4-5870-a73f-df3256f8098f",
+      "chunk_index": 12,
+      "content": "8t\n\nGLOSSAIRE D'ABREVIATIONS\n\nBATSOL Bateaux solaires\n\nCGN Compagnie générale de navigation\n\nCOREL Communes de la région lausannoise\n\ncos Coefficient d'occupation du sol (surface du bâtiment au sol/surface de la parcelle)\nCUS Coelficient d'utilisation du sol (surface brute des planchers/surface de la parcelle)\nDI Département des infrastructures\n\nDTPAT Département des travaux publics et de l'aménagement du territoire (ancienne dénomination)\nDVC Droit vaudois de la construction\n\nEMS Etablissement médico-social\n\nIFP Inventaire fédéral des paysages, sites et monuments naturels d'importance nationale\nIS0S Inventaire fédéral des sites construits à protéger en Suisse\n\nIVS Inventaire fédéral des voies hisloriques en Suisse\n\nLAT Loi fédérale sur l'aménagement du térriloire\n\nLATC Loi cantonale sur l'aménagement du territoire et les constructions\n\nLPPL Loi sur le plan de protection de Lavaux\n\nOAT Ordonnance fédérale sur l'aménagement du territoire\n\nOPB Ordonnance fédérale sur la protection contre le bruit\n\nP&R Park and ride (parking d'échange: parquer la voiture et continuer en transport public)\nPD Plan directeur\n\nPGA Plan générale d'affectation\n\nPPA Plan partiel d'affectation\n\nPQ Plan de quartier\n\nRATC Règlement d'application de la loi cantonale sur l'aménagement du territoire\n\nRC Route cantonale\n\nSAT Service de l'aménagement du territoire de l'Etat de Vaud\n\nSI Services industriels communaux\n\nTFV Service communal des travaux, des domaines foreslier et viticole\n\nTJM Trafic journalier moyen\n\nTL Transports lausannois\n\nTMI Transport motorisé individuel\n\nTVR Transport en voie réservée\n\nUPC Service de l'urbanisme et de la police des constructions",
+      "page_number": 20,
+      "metadata": {
+        "parser": "vd_pdcom_municipal_ocr",
+        "vd_document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+        "content_hash": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+        "commune_bfs": 5606,
+        "approval_scope": {
+          "status": "approved_with_reservation",
+          "evidence_document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+          "evidence_source_sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+          "evidence_pdf_page": 3,
+          "visually_verified": true,
+          "date": "2000-02-28",
+          "scope": "Official three-part dossier; approval date stamp visible, signature fields blank. Parts2and3 are continuations linked in same official municipal listing, not independently signed documents.",
+          "not_claimed": "Current zoning, parcel rights, exhaustive current capacity or unconditional approval of every sector."
+        },
+        "all_prose_is_binding": false,
+        "diagnostic_vintage_limit": "1998–2000 source diagnostics, schedules, counts and projections are historical, not current facts. Verify original image before relying on wording, numbers or associations. No numeric rules normalized.",
+        "limits": [
+          "approval_with_reservation and cross-document evidence",
+          "three suspended sectors with unestablished later resolution",
+          "missing FA/DB annexes; index is not referenced annexes",
+          "raw uncorrected OCR with explicit method and source/ocr hashes",
+          "OCR confidence null because not recorded; not evidence of measured quality",
+          "verify original image before relying on wording, numbers or associations",
+          "historical1998-2000 diagnostics, schedules, counts and projections; not current facts",
+          "physical part-specific PDF citation",
+          "no numeric normalization or map extraction/qualification/completion"
+        ],
+        "spatial_qualification": false,
+        "commune_complete": false,
+        "source_role": "approved_main",
+        "plan_status": "approved_with_reservation",
+        "review_sha256": "7d8936a8601e488b3a10332717daac08c246043c706dd4a8d823c4838816fb10",
+        "ocr_quality": "uncorrected_machine_ocr",
+        "requires_source_image_verification": true,
+        "corpus_limits": {
+          "missing": [
+            "FA action-sheet annexes",
+            "DB base-data annexes",
+            "later resolution of three suspended sector approvals"
+          ],
+          "index_is_not_annex": true,
+          "source_parts": 3,
+          "published_search_pages_in_part": [
+            2,
+            3,
+            6,
+            12,
+            14,
+            15,
+            20
+          ],
+          "held_pages_in_part": [
+            1,
+            4,
+            5,
+            7,
+            8,
+            9,
+            10,
+            11,
+            13,
+            16,
+            17,
+            18,
+            19,
+            21
+          ],
+          "full_visual_map_extraction": false,
+          "currentness": {
+            "checked_at": "2026-10-05T09:43:31.385905+00:00",
+            "official_url": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
+            "statement": "Municipality currently publishes dossier as in force since2000-02-28. Listing update2026-08-05 is not a plan revision.",
+            "limit": "General in-force statement does not resolve suspended sectors. Adjacent PAComI procedure does not establish replacement of director dossier."
+          }
+        },
+        "supporting_documents": [
+          {
+            "part": 1,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_1.pdf",
+            "sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+            "page_count": 44,
+            "bytes": 2915747,
+            "document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 2,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_2.pdf",
+            "sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "page_count": 21,
+            "bytes": 2930925,
+            "document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "plan_status": "approved_with_reservation"
+          },
+          {
+            "part": 3,
+            "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+            "sha256": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+            "page_count": 21,
+            "bytes": 3135641,
+            "document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+            "plan_status": "approved_with_reservation"
+          }
+        ],
+        "text_extraction": {
+          "mode": "reviewed_ocr",
+          "artifact": "lutry-reviewed-ocr/part-3-ocr.json",
+          "sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380",
+          "method": "Tesseract French psm3,PyMuPDF2x; raw uncorrected research OCR. Existing12pages reused,74new pages.",
+          "engine": "tesseract 5.5.2",
+          "confidence": null,
+          "confidence_status": "not_recorded"
+        },
+        "reservations": [
+          {
+            "scope": "Grandchamp, Bossière, between Le Châtelard and Le Daley: Approval procedure suspended pending outcome of revision of LPPL. Later sector-specific resolution not established.",
+            "evidence_document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+            "evidence_source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+            "evidence_pdf_pages": [
+              9
+            ],
+            "visually_verified": true
+          }
+        ],
+        "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+        "citation": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf#page=20",
+        "extraction_status": "reviewed_ocr_search_text",
+        "ocr_provenance": {
+          "text_sha256": "a920eceb8e0db2b8fcf00ffdbbe19cb6ac70af628e4eeb5e7f9f6f80da68f692",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "searchable uncorrected prose; verify original image",
+          "include_in_search": true
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      }
+    }
+  ],
+  "source_id": "ab49c832-d4dc-522b-a05c-a8686f90f2fa",
+  "version_id": "adb2f009-1e66-5925-aa2b-d1d1747c69a2",
+  "document_id": "dce8e097-05f4-5870-a73f-df3256f8098f",
+  "metadata": {
+    "parser": "vd_pdcom_municipal_ocr",
+    "vd_document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+    "content_hash": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+    "commune_bfs": 5606,
+    "approval_scope": {
+      "status": "approved_with_reservation",
+      "evidence_document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+      "evidence_source_sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+      "evidence_pdf_page": 3,
+      "visually_verified": true,
+      "date": "2000-02-28",
+      "scope": "Official three-part dossier; approval date stamp visible, signature fields blank. Parts2and3 are continuations linked in same official municipal listing, not independently signed documents.",
+      "not_claimed": "Current zoning, parcel rights, exhaustive current capacity or unconditional approval of every sector."
+    },
+    "all_prose_is_binding": false,
+    "diagnostic_vintage_limit": "1998–2000 source diagnostics, schedules, counts and projections are historical, not current facts. Verify original image before relying on wording, numbers or associations. No numeric rules normalized.",
+    "limits": [
+      "approval_with_reservation and cross-document evidence",
+      "three suspended sectors with unestablished later resolution",
+      "missing FA/DB annexes; index is not referenced annexes",
+      "raw uncorrected OCR with explicit method and source/ocr hashes",
+      "OCR confidence null because not recorded; not evidence of measured quality",
+      "verify original image before relying on wording, numbers or associations",
+      "historical1998-2000 diagnostics, schedules, counts and projections; not current facts",
+      "physical part-specific PDF citation",
+      "no numeric normalization or map extraction/qualification/completion"
+    ],
+    "spatial_qualification": false,
+    "commune_complete": false,
+    "source_role": "approved_main",
+    "plan_status": "approved_with_reservation",
+    "review_sha256": "7d8936a8601e488b3a10332717daac08c246043c706dd4a8d823c4838816fb10",
+    "ocr_quality": "uncorrected_machine_ocr",
+    "requires_source_image_verification": true,
+    "corpus_limits": {
+      "missing": [
+        "FA action-sheet annexes",
+        "DB base-data annexes",
+        "later resolution of three suspended sector approvals"
+      ],
+      "index_is_not_annex": true,
+      "source_parts": 3,
+      "published_search_pages_in_part": [
+        2,
+        3,
+        6,
+        12,
+        14,
+        15,
+        20
+      ],
+      "held_pages_in_part": [
+        1,
+        4,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11,
+        13,
+        16,
+        17,
+        18,
+        19,
+        21
+      ],
+      "full_visual_map_extraction": false,
+      "currentness": {
+        "checked_at": "2026-10-05T09:43:31.385905+00:00",
+        "official_url": "https://www.lutry.ch/vivre-a-lutry/urbanisme-et-constructions/amenagement-du-territoire/planifications-communales",
+        "statement": "Municipality currently publishes dossier as in force since2000-02-28. Listing update2026-08-05 is not a plan revision.",
+        "limit": "General in-force statement does not resolve suspended sectors. Adjacent PAComI procedure does not establish replacement of director dossier."
+      }
+    },
+    "supporting_documents": [
+      {
+        "part": 1,
+        "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_1.pdf",
+        "sha256": "84d2e80ae5dd86bc9cccd2954b2df861a5dbf4acb2bc4c9b98eab2f55378ca75",
+        "page_count": 44,
+        "bytes": 2915747,
+        "document_id": "70c36475-3e92-580b-92ac-5be498c8fa29",
+        "plan_status": "approved_with_reservation"
+      },
+      {
+        "part": 2,
+        "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_2.pdf",
+        "sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+        "page_count": 21,
+        "bytes": 2930925,
+        "document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+        "plan_status": "approved_with_reservation"
+      },
+      {
+        "part": 3,
+        "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+        "sha256": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+        "page_count": 21,
+        "bytes": 3135641,
+        "document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+        "plan_status": "approved_with_reservation"
+      }
+    ],
+    "text_extraction": {
+      "mode": "reviewed_ocr",
+      "artifact": "lutry-reviewed-ocr/part-3-ocr.json",
+      "sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380",
+      "method": "Tesseract French psm3,PyMuPDF2x; raw uncorrected research OCR. Existing12pages reused,74new pages.",
+      "engine": "tesseract 5.5.2",
+      "confidence": null,
+      "confidence_status": "not_recorded"
+    },
+    "reservations": [
+      {
+        "scope": "Grandchamp, Bossière, between Le Châtelard and Le Daley: Approval procedure suspended pending outcome of revision of LPPL. Later sector-specific resolution not established.",
+        "evidence_document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+        "evidence_source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+        "evidence_pdf_pages": [
+          9
+        ],
+        "visually_verified": true
+      }
+    ],
+    "source_url": "https://www.lutry.ch/fileadmin/user_upload/Documents_services/ATB_et_G%C3%A9rance/lutry_dossier_directeur_partie_3.pdf",
+    "physical_page_count": 21,
+    "page_manifest": [
+      {
+        "page_number": 1,
+        "method": "tesseract_fra_frozen_evidence",
+        "status": "ocr_withheld",
+        "width": 595.0,
+        "height": 842.0,
+        "ocr_provenance": {
+          "text_sha256": "6edf56a35c260ed63ca73a07d6141cc4ba498e614fe3b1694d94e5b7ee4f0440",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+          "include_in_search": false
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      },
+      {
+        "page_number": 2,
+        "method": "tesseract_fra_frozen_evidence",
+        "status": "reviewed_ocr_search_text",
+        "width": 595.0,
+        "height": 842.0,
+        "ocr_provenance": {
+          "text_sha256": "3170c45436a67c125dd8f48b7a98410ca8df23f6e99e53723f1aee750de5a476",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "searchable uncorrected prose; verify original image",
+          "include_in_search": true
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      },
+      {
+        "page_number": 3,
+        "method": "tesseract_fra_frozen_evidence",
+        "status": "reviewed_ocr_search_text",
+        "width": 595.0,
+        "height": 842.0,
+        "ocr_provenance": {
+          "text_sha256": "d4df951038fc8d1506455a63b48f8bb2309633fb68d95502b2e16165391b0c49",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "searchable uncorrected prose; verify original image",
+          "include_in_search": true
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      },
+      {
+        "page_number": 4,
+        "method": "tesseract_fra_frozen_evidence",
+        "status": "ocr_withheld",
+        "width": 595.0,
+        "height": 842.0,
+        "ocr_provenance": {
+          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+          "include_in_search": false
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      },
+      {
+        "page_number": 5,
+        "method": "tesseract_fra_frozen_evidence",
+        "status": "ocr_withheld",
+        "width": 595.0,
+        "height": 842.0,
+        "ocr_provenance": {
+          "text_sha256": "7ab10870f086d4e93ab111a0e019b404d991f81f9af0065993a08f039d162af1",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+          "include_in_search": false
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      },
+      {
+        "page_number": 6,
+        "method": "tesseract_fra_frozen_evidence",
+        "status": "reviewed_ocr_search_text",
+        "width": 595.0,
+        "height": 842.0,
+        "ocr_provenance": {
+          "text_sha256": "1a339519fe92d3371f0c362d3a61a5c89d861d6569c0d1f35008ac6e48219a81",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "searchable uncorrected prose; verify original image",
+          "include_in_search": true
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      },
+      {
+        "page_number": 7,
+        "method": "tesseract_fra_frozen_evidence",
+        "status": "ocr_withheld",
+        "width": 595.0,
+        "height": 842.0,
+        "ocr_provenance": {
+          "text_sha256": "06c03ebab8304f33b7cbe91ce166c351e49e5e767ecf82cfee4aacf520477cea",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+          "include_in_search": false
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      },
+      {
+        "page_number": 8,
+        "method": "tesseract_fra_frozen_evidence",
+        "status": "ocr_withheld",
+        "width": 595.0,
+        "height": 842.0,
+        "ocr_provenance": {
+          "text_sha256": "ce20d492e368a69b146c4e91147f35c8d9221ec88271fd1727d8e2a037f247c5",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+          "include_in_search": false
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      },
+      {
+        "page_number": 9,
+        "method": "tesseract_fra_frozen_evidence",
+        "status": "ocr_withheld",
+        "width": 595.0,
+        "height": 842.0,
+        "ocr_provenance": {
+          "text_sha256": "f1417887f9aa00250a174d64aa3f26905ff01bf86277938ee728d867fc461b66",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+          "include_in_search": false
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      },
+      {
+        "page_number": 10,
+        "method": "tesseract_fra_frozen_evidence",
+        "status": "ocr_withheld",
+        "width": 595.0,
+        "height": 842.0,
+        "ocr_provenance": {
+          "text_sha256": "d890828b63ab43df238b3d258c0b6a5cfbc3f368187b7a2c074bdd57ac96c077",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+          "include_in_search": false
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      },
+      {
+        "page_number": 11,
+        "method": "tesseract_fra_frozen_evidence",
+        "status": "ocr_withheld",
+        "width": 595.0,
+        "height": 842.0,
+        "ocr_provenance": {
+          "text_sha256": "45b8153e55fe7e70fc39598b20b102b609ab25ab9fcb4cda01743286cba53a79",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+          "include_in_search": false
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      },
+      {
+        "page_number": 12,
+        "method": "tesseract_fra_frozen_evidence",
+        "status": "reviewed_ocr_search_text",
+        "width": 595.0,
+        "height": 842.0,
+        "ocr_provenance": {
+          "text_sha256": "89e6ab1a2e59215562287788b9b8467750afee16ad3a3a9fc08df4c9d66c6728",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "searchable uncorrected prose; verify original image",
+          "include_in_search": true
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      },
+      {
+        "page_number": 13,
+        "method": "tesseract_fra_frozen_evidence",
+        "status": "ocr_withheld",
+        "width": 595.0,
+        "height": 842.0,
+        "ocr_provenance": {
+          "text_sha256": "83c325517d98a1bb7ec55a652fad7879abe1eb36788e641b6a9bc4ea179eb1bf",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+          "include_in_search": false
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      },
+      {
+        "page_number": 14,
+        "method": "tesseract_fra_frozen_evidence",
+        "status": "reviewed_ocr_search_text",
+        "width": 595.0,
+        "height": 842.0,
+        "ocr_provenance": {
+          "text_sha256": "db93a9a0884b2d69df0b1f5f047fff96015871dd9f20f0be319ddd911ba9e56b",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "searchable uncorrected prose; verify original image",
+          "include_in_search": true
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      },
+      {
+        "page_number": 15,
+        "method": "tesseract_fra_frozen_evidence",
+        "status": "reviewed_ocr_search_text",
+        "width": 595.0,
+        "height": 842.0,
+        "ocr_provenance": {
+          "text_sha256": "7ba462d461809334debd5c6d7aeaf52f38be091f4ff4d4594cb18ef605187edd",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "searchable uncorrected prose; verify original image",
+          "include_in_search": true
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      },
+      {
+        "page_number": 16,
+        "method": "tesseract_fra_frozen_evidence",
+        "status": "ocr_withheld",
+        "width": 595.0,
+        "height": 842.0,
+        "ocr_provenance": {
+          "text_sha256": "7ccade3a30b181079a14077753ea76b73471f54fb7bf5038d7f90da21153eb23",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+          "include_in_search": false
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      },
+      {
+        "page_number": 17,
+        "method": "tesseract_fra_frozen_evidence",
+        "status": "ocr_withheld",
+        "width": 595.0,
+        "height": 842.0,
+        "ocr_provenance": {
+          "text_sha256": "c5b82ee9ee0889b90d1796b0edf49c6266ffe0bb7245cc9ed4218d1f309d97c7",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+          "include_in_search": false
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      },
+      {
+        "page_number": 18,
+        "method": "tesseract_fra_frozen_evidence",
+        "status": "ocr_withheld",
+        "width": 595.0,
+        "height": 842.0,
+        "ocr_provenance": {
+          "text_sha256": "aa72c2a2c654cb3f6ac6cf6fcdbb511232cc78cd336d739517c874aa5a8bf6ac",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+          "include_in_search": false
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      },
+      {
+        "page_number": 19,
+        "method": "tesseract_fra_frozen_evidence",
+        "status": "ocr_withheld",
+        "width": 595.0,
+        "height": 842.0,
+        "ocr_provenance": {
+          "text_sha256": "17607cdc15c0a97b5d609740c6d345be2e2195063da37689526ec0d463bbb537",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+          "include_in_search": false
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      },
+      {
+        "page_number": 20,
+        "method": "tesseract_fra_frozen_evidence",
+        "status": "reviewed_ocr_search_text",
+        "width": 595.0,
+        "height": 842.0,
+        "ocr_provenance": {
+          "text_sha256": "a920eceb8e0db2b8fcf00ffdbbe19cb6ac70af628e4eeb5e7f9f6f80da68f692",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "searchable uncorrected prose; verify original image",
+          "include_in_search": true
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      },
+      {
+        "page_number": 21,
+        "method": "tesseract_fra_frozen_evidence",
+        "status": "ocr_withheld",
+        "width": 595.0,
+        "height": 842.0,
+        "ocr_provenance": {
+          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "confidence": null,
+          "confidence_status": "not_recorded",
+          "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+          "include_in_search": false
+        },
+        "ocr_artifact_sha256": "02a6786d32ae724c884fa3f050bae0bf0a7502a6407693b34b26a5c5caed7380"
+      }
+    ],
+    "extraction_status": "partial_reviewed_ocr",
+    "map_pages": [
+      1,
+      5,
+      7,
+      8,
+      9,
+      10,
+      11,
+      13
+    ],
+    "full_visual_map_extraction": false
+  }
+}

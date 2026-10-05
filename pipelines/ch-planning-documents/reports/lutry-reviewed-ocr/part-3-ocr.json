@@ -1,0 +1,219 @@
+{
+  "document_id": "d60f7b01-8c86-5f13-870e-ec6fef6552f1",
+  "source_sha256": "5c462889d2f261d68d77638ab7bf263a95af61c7e7cbcb5403f99aef5cc3749b",
+  "original_manifest_sha256": "3c19d70b09b6bf79dfd9ec8f1b830816ae21486832bc8cd14e676be9a0366019",
+  "method": "Tesseract French psm3,PyMuPDF2x; raw uncorrected research OCR. Existing12pages reused,74new pages.",
+  "engine": "tesseract 5.5.2",
+  "pages": [
+    {
+      "page_number": 1,
+      "raw_ocr_text": "62\n\nCANTON DE VAUD - DISTRICT\n\nLE DOSSIER DIRECTEUR DE Éoo LA\n\n[ TE 7\n\n3.6 Les déplacements\n\n-[3.62 Le réseau routier\n\ntél. 021 652 55 55 lax. 021 652 92 22\n\nDE LAVAUX\nCOMMUNE DE LUTRY.\n\nTRANSITEC ingénieurs conseils SA\n17, Avenue des Bovetesses\nCH 1010 Lausanne\n\n",
+      "text_sha256": "6edf56a35c260ed63ca73a07d6141cc4ba498e614fe3b1694d94e5b7ee4f0440",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "ocr/part-3-page-1.txt"
+    },
+    {
+      "page_number": 2,
+      "raw_ocr_text": "3.6 Les déplacements\n3.62 Le réseau routier\n\n3.62.1 La hiérarchie du réseau routier\nLe réseau routier structurant :\n\n== les autoroutes\n\nles routes principales :\n== les routes cantonales ((RC) a et b\n= les routes cantonales (RC) c et d\n\nles routes collectrices :\nas les routes communales\n\nLe réseau routier non structurant :\n——l/es autres routes collectrices\n— les routes de desserte\n\n3.622 Principes de classification\n\nLes routes sont classées selon leur fonction, ce qui\npermet de déterminer leurs caractéristiques. On\ndistingue:\n\ne Le réseau principal\n\nqui assure des liaisons nationales et\nrégionales. Ces routes seront aménagées\nde manière à bien séparer les circulations\ndes véhicules et des piétons (trottoirs,\npassages piétions dénivelés ou protégés\npar des feux ou des ilots, etc.). Largeur\nde la chaussée: 6 à 7m.\n\ne Le réseau collecteur\n\nqui constitue l'ossature du réseau de\ndistribution par zone et quartier. Les\nespaces réservés aux véhicules et aux\npiétons devront être bien marqués\ntrottoirs, balisage des passages piétons,\netc.). La circulation sur ces routes ne\ndevrait pas pouvoir s'effectuer à vitesse\nélevée (aménagements de modération de\ntrafic). Largeur de la chaussée: 5 à 6m.\n\ne Le réseau de dessertes\n\ndont la fonction n'est que de desservir les\nhabitations et les activités riveraines. Sur\nces routes à faible trafic, véhicules et\npiétons peuvent cohabiter sur l'espace de\nla voirie. Néanmoins les vitesses\npraticables devront être faibles\n{modération de trafic si nécessaire).\nLargeur de la chaussées: 4,5 à 5m.\n\nLa constitution et la fonction du réseau routier\nprincipal\n\nLe réseau pincipal a d'abord une fonction de liaison\ninterrégionale ou intercommunale. || doit donc être\napte à recevoir un nombre relativement important de\nvéhicules en transit.\n\nSuite à l'analyse effectuée, le réseau principal sera\ndonc constitué de toutes les routes cantonales, mis\nà part la route de Savuit / Bras-de-Fer qui lie les\nroutes des Monts-de-Lavaux et de Lavaux. En\neffet:\n\ne Cette liaison Nord-Sud en transit peut\ns'effectuer par la route de La Conversion\n(temps de parcours entre La Croix-sur-\nLutry et le Voisinand env. 2,5\" par Savuit\n(2km à 50km/h. et env. 4' par La\nConversion (4km à 60 km/h).\n\ne Les différentes routes qui constituent\ncette liaison Nord-Sud n'ont pas les\ncaractéristiques géométriques requises\npour les routes principales (sauf route du\nBras-de-Fer).\n\ne La réorganisation en boucle des routes\nSavuit, Crochet et Sermotier sera\nréalisée (le projet est existant) si la\ndensité future du trafic l'exige.\n\nLes réseaux collecteurs et de desserte\nLes modifications proposées au niveau de\n\nl'exploitation des réseaux collecteur et de desserte\nsont signalées en plan et légende.\n\n3.623 Les éléments directeurs\n\nO) L'achèvement de la bretelle autoroutière\n\n@) La maîtrise des nuisances sur la route de\nLa Bernadaz, partiellement sur la\ncommune de Lutry\n\n® La maîtrise des nuisances sur la route de\nLa Conversion et du Landar\n",
+      "text_sha256": "3170c45436a67c125dd8f48b7a98410ca8df23f6e99e53723f1aee750de5a476",
+      "include_in_search": true,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "searchable uncorrected prose; verify original image",
+      "original_ocr_file": "ocr/part-3-page-2.txt"
+    },
+    {
+      "page_number": 3,
+      "raw_ocr_text": "64\n\nLe réaménagement du carrefour du\nVoisinand\n\nLe réaménagement de la route de Lavaux\n{RC780a) du carrefour du Grand-Pont à\ncelui de la route de Savuit en passant par\ncelui du Voisinand\n\nL'évitement du Voisinand\n\nLa mise en place d'un schéma de\ncirculation à sens unique permettant la\ncréation de trottoirs entre Savuit, les\nroutes de Savuit, de Crochet et Sermotier\n\n© ©\n\nLe réaménagement du carrefour de La\nCroix-sur-Lutry\n\nL'aménagement du chemin du Crêt des\nPierres et son débouché sur la route des\nMonts-de-Lavaux. Les études sont en\ncours\n\nModération dissuasive sur la route de\nBelmont et le chemin de Monteiller (déjà\nréalisée).\n\n(Q)\n\n3.624 Commentaires et principes\ngénéraux d'application\n\nLa réalisation de la prolongation de la bretelle\nautoroutière permettrait notamment de décharger\nfortement les axes suivants :\n\n- la route du Landar: de 40 à 60%\n- la route de La Conversion: de 20 à 25%\n- la route de Lavaux: de 20 à 25%\n\nla route de La Bernadaz: de 60 à 80%.\n\nDans le cas d'une réalisation moins immédiate de la\nbretelle, les nuisances sonores et atmosphériques\naffectant de ce fait les routes de La Conversion, du\nLandar, de La Bernadaz, de Lavaux et des Monts-\nde-Lavaux seront à maîtriser. Cette option, issue\nd'une concertation avec les communes concernées,\nest encouragée par l'Etat.\n\nLes principes d'exploitation et d'aménagement de la\nliaison Nord-Sud par Savuit devront être redéfinis\navec pour objectifs :\n\nde diminuer l'attractivité de cette liaison\ntout en maintenant une bonne\naccessibilité au secteur\n\nde poursuivre la réalisation des\nmodérations de trafic (maîtrise des\nnuisances) sur la route de Savuit\n\nd'améliorer la sécurité sur les tronçons\ndélicats.\n\nL'aménagement et l'exploitation du carrefour de La\nCroix-sur-Lutry devront être étudiés avec comme\nobjectif d'améliorer la sécurité. De plus, l'émergence\nde la Croix-sur-Lutry en tant que pôle d'équipements\ncollectifs doit stimuler l'organisation d'un domaine\npublic à l'usage mesuré et mieux partagé.\n\nAfin de réduire le trafic circulant dans les zones\nrésidentielles, l'exploitation et l'aménagement du\nréseau routier doit inciter ou obliger les\nautomobilistes à atteindre le réseau principal par\nl'itinéraire le plus court possible.\n\nL'accessibilité du trafic véhicules au \"territoire à\nurbaniser sans destination définie\" sera planifiée\navec le souci de protéger les zones d'habitat.\n\nIl conviendra d'améliorer, voire de définir, des accès\nsûrs et confortables aux secteurs à fort potentiel de\ndéveloppement.\n\n3.625 Les pistes cyclables\n\nLa topographie n'aide pas à la réalisation de pistes\npour cyclistes. Le profil horizontal des grandes\nroutes de transit leur est favorable mais la densité\ndu trafic motorisé l'est moins. Un meilleur usage du\ndomaine public ainsi qu'une modération de la\nvitesse doivent être encouragés.\n\nLutry est correctement greffé sur le réseau cantonal\nselon la \"Planification des aménagements pour\ndeux roues légers\" (DTPAT 1992), voir ci-après.\n\nEn conformité avec ce document, des\naménagements pour les cyclistes doivent viser une\namélioration de leurs accès au réseau des\ntransports en commun.\n\nLors du réaménagement de la RC780 mentionné\nsous chiffre 5 du chapitre 3.62.3, il y aura lieu de\ncoupler modération du trafic et aménagements\ncyclables.\n\nExtrait de “Planification des aménagements pour\ndeux roues légers\" (DTPAT 1992)\n\nmms Degré d'urgence !\næ=— Degré d'urgence ll\n\n",
+      "text_sha256": "d4df951038fc8d1506455a63b48f8bb2309633fb68d95502b2e16165391b0c49",
+      "include_in_search": true,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "searchable uncorrected prose; verify original image",
+      "original_ocr_file": "ocr/part-3-page-3.txt"
+    },
+    {
+      "page_number": 4,
+      "raw_ocr_text": "",
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "ocr/part-3-page-4.txt"
+    },
+    {
+      "page_number": 5,
+      "raw_ocr_text": "66\nCANTON DE VAUD - DISTRICT DE LAVAUX\n\nLE DOSSIER DIRECTEUR DE LA COMMUNE DE LUTRY\n\nLot | SE\n\n3.6 | Les déplacements\n\n| 3.63.1 Les éléments directeurs\n\n© Les lignes RER sur les voies CFF de\nBerne et du Simplon\n\n3.63 Les transports en commun\n\nÀ @) La complémentarité entre les différents\n\ntransports en commun tant au niveau\ndes correspondances interfaces qu'à\ncelui des moyens\n\nLe prolongement de la ligne TVR\n\nLe prolongement de la ligne 66 de bus\nTL\n\n=\n\n@ La ligne de bus longeant le littoral pour\nrelier Lutry et les hautes écoles de\nl'Ouest lausannois\n\nEX\n\nLE\n\n© La ligne de cabotage de bateaux\nsolaires entre Lutry, Ouchy et St-|:\nSulpice\n\nTRANSITEC ingénieurs- conseils SA\n17, Avenue des Boveresses\nCH 1010 Lausanne\ntél. 021 652 85 55 la. 021 652 32 22\n\nBUREAU D'AMENAGEMENT DU TERRITOIRI\n\nnn Erirg. CH 1003 Lausana,\nargés déc ; Jean-Daniel U\n\n",
+      "text_sha256": "7ab10870f086d4e93ab111a0e019b404d991f81f9af0065993a08f039d162af1",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "ocr/part-3-page-5.txt"
+    },
+    {
+      "page_number": 6,
+      "raw_ocr_text": "67\n3.6 Les déplacements\n\n3.63 Les transports en commun\n3.63.2 Nature et situation des transports en\ncommun\n\nLa commune de Lutry est desservie par différents\ntypes de transports en commun:\n\npar le train\n\nA ligne CFF de Berne avec les haltes de\nLa Conversion et Bossières (32 trains par\njour ouvrable dans la direction Berne, 34\n\ntrains par jour ouvrable dans la direction\nLausanne; durée du trajet La Conversion -\nLausanne: 4’),\n\nligne CFF du Simplon avec la halte de\nLutry (22 trains par jour ouvrable dans la\ndirection Vevey, 23 trains par jour ouvrable\ndans la direction Lausanne; durée du\ntrajet: 7);\n\npar les trolleybus et bus TL (Transports\npublics de la région lausannoise)\n\nC ligne 9 (trolleybus): Prilly - Lausanne -\nLutry/Petite Corniche (1 bus par sens\ntoutes les 6', les jours ouvrables, entre\n6h00 et 19h00; durée du trajet Petite\nCorniche - Saint-François: 16')\n\nligne 66 (bus): Lausanne - Belmont - La\nCroix-sur-Lutry (par la rte des Monts-de-\nLavaux; 13 bus par sens et par jour\nouvrable, entre 6h00 et 20h00; durée du\ntrajet La Croix - Saint-François: 22°)\n\nL 1\n\nligne 68 (minibus): rte des Monts-de-\nLavaux - Bourg de Lutry par la rte de La\nConversion (env. 7 bus par sens et par\njour ouvrable, entre 07h00 et 20h00\n\nM\n\nligne 69 (minibus): La Croix-sur-Lutry -\nBourg de Lutry par la rte du Bras-de-Fer et\nde Savuit (env. 6 bus par sens et par jour\nouvrable entre 08h00 et 19h00);\n\nmn\n\npar bateaux\n\nG lignes touristiques saisonnières CGN,\nrayonnant d'Ouchy (env. toutes les 2h.\ndans la même direction)\n\nH ligne touristique saisonnière Batsol,\ncabotant entre Lutry, Ouchy et St-Sulpice\n(env. 3x par jour).\n\nAnalyses et perspectives :\n\nLa RC 780b\n\nC'est l'axe fort des transports en commun en\nrelation avec le centre de Lausanne (16' de trajet)\navec 10 bus par heure durant la journée.\n\nLa ligne CFF Lausanne-Berne\n\nLes quartiers situés à proximité des haltes CFF de\nLa Conversion et de Bossières sont relativement\nbien reliés au centre de Lausanne (1 à 2 trains par\nheure durant la journée pour 4' de trajet). À La\nConversion, un aménagement de type transfert\nmodal (Park & Ride) avec stationnement de\nvéhicules privés et transbordement sur les trains\nest envisagé à condition qu'un financement\nextérieur soit assuré.\n\nParkings d'échange\n\nA proximité des arrêts de bus, réserver les terrains\nnécessaires à la création de parkings d'échange.\nL'option voiture privée\n\nPour le reste du territoire, notamment les Hauts de\nLutry, l'accès à l'agglomération lausannoise reste\nnettement plus attractif par véhicule privé.\n\nProlongement et nouvelle ligne de bus\n\nLe secteur Est des Hauts de Lutry (Miroir, Bras-de-\nFer), qu a connu un développement de population\nnon négligeable, n'est pas desservi par une ligne de\nbus directe le reliant à Lausanne. Proposé par le\nPlan directeur, un prolongement de la ligne 66 (rte\ndes Monts-de-Lavaux) permettrait cette liaison.\nD'autre part, une ligne de bus desservant le littoral\nentre Lutry et les hautes écoles de l'Ouest\nlausannois est à l'étude.\n\nLes RER et TVR\n\nL'éventualité de navettes régionales de type RER\nest étudiée sur les deux lignes CFF de Berne et du\nSimplon. Un TVR est également envisagé pour\ndesservir le littoral de l'Est de la région lausannoise\njusqu'à Cully.\n\nLa liaison Nord-Sud\n\nLes lignes de bus 68 et 69 permettent de relier les\nsecteurs urbanisés du territoire communal,\nnotamment les Hauts de Lutry, au réseau principal\nde transports publics.\n\nEn fonction de l'utilisation, il est envisageable d'en\naccroître la fréquence.\n\nLes lignes de navigation\n\nLa vocation des lignes de navigation est\ntraditionnellement touristique. Le potentiel utilitaire\nde la ligne d'abord touristique des bateaux solaires\nqui longe la côte de Lutry à St-Sulpice, est tributaire\nde l'efficacité de ces navettes.\n",
+      "text_sha256": "1a339519fe92d3371f0c362d3a61a5c89d861d6569c0d1f35008ac6e48219a81",
+      "include_in_search": true,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "searchable uncorrected prose; verify original image",
+      "original_ocr_file": "ocr/part-3-page-6.txt"
+    },
+    {
+      "page_number": 7,
+      "raw_ocr_text": "68\n\nCANTON DE VAUD - DISTRICT DE LAVAUX\nLE DOSSIER DIRECTEUR DE LA COMMUNE DE LUTRY\n\nés)\n<| Le traitement du réseau :]:\n| piétonnier est réparti sur quatre |:£x\nHG] planches:\n3.64.1 L'ensemble du\n\nterritoire\n\n3.642 Parties du territoire\n11] 3.64.3\n\nBUREAU D'ANENAGEMENT DU TERRITOIRE)\nJEXVDANEL URECHRACHTECTE EPFUSUVFAS, URBANISTE US.\nNB. Eng. CH 100 ausarn, 021 12 4 31, ar 021 30 9 8\nChamgés duc : Ja} Daniel U ra ch, Jean-Claude A0 5 51e\n\nCPRNES GENE E TERRE PT\n",
+      "text_sha256": "06c03ebab8304f33b7cbe91ce166c351e49e5e767ecf82cfee4aacf520477cea",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "ocr/part-3-page-7.txt"
+    },
+    {
+      "page_number": 8,
+      "raw_ocr_text": "69\n\nCANTON DE VAUD -+ DISTRICT DE LAVAUX\nLE DOSSIER DIRECTEUR DE te LA COMMUNE DE LUTRY\n\n3.64.1 Le réseau piétonnier\n\n: | Légende\n\nem lES itinéraires en site propre\n\n. les itinéraires en site banal, tels trottoirs,\nrues, routes, routes du vignoble chemins\nde campagne\n\nles chemins pédestres viticoles\n\nles principales liaisons piétonnes\n\nRER\n\nDal”\n\nTRANSITEC ingénieurs- conseils SA\n\n17, Avenue des Boveresses\n\nCH 1010 Lausanne\n\ntél. 021 65255 55 fax. 021 652 32 22\n\nPR RSR ARE RTE ES\nDU TERRITOIRE)\n\n(\nî\n\n",
+      "text_sha256": "ce20d492e368a69b146c4e91147f35c8d9221ec88271fd1727d8e2a037f247c5",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "ocr/part-3-page-8.txt"
+    },
+    {
+      "page_number": 9,
+      "raw_ocr_text": "CANTON DE VAUD\nLE DOSSIER DIRECTEUR DE po) LA COMMUNE DE LUTRY\n\nCa TT#\n\nterre\n\n7\n- DISTRICT DE LAVAUX\n\nre\n\n3. | Les déplacements\n\n3.64.2 Le réseau piétonnier\n\nes BRIE 2 2 A NI Te Ÿ\n\n: Légende\n\n= |es itinéraires en site propre\n\n——— les itinéraires en site banal, tels trottoirs,\nrues, routes, routes du vignoble chemins\nde campagne\n\nles chemins pédestres viticoles\n\n@ les principaux pôles d'attraction\npour les itinéraires piétons\n\n2 les éléments directeurs\n\nUETSIO\n\n",
+      "text_sha256": "f1417887f9aa00250a174d64aa3f26905ff01bf86277938ee728d867fc461b66",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "ocr/part-3-page-9.txt"
+    },
+    {
+      "page_number": 10,
+      "raw_ocr_text": "ñ\nCANTON DE VAUD - DISTRICT DE LAVAUX\n\nLE DOSSIER DIRECTEUR DE Fe LA COMMUNE DE LUTRY\n\n== PISE PU CRE RE) me\n\n; 3. 6 Les déplacements\n\n13.643 Le réseau piétonnier\n\n5] em—. [es itinéraires en site propre\n\nFe] —— les itinéraires en site banal, tels trottoirs, &\nrues, routes, routes du vignoble chemins\nde campagne\n\n_ les chemins pédestres viticoles\n\nles principaux pôles d'attraction\npour les itinéraires piétons\n\nles éléments directeurs\n\nTRANSITEC ingénieurs- conseils SA\n17, Avenue des Bovèresses\n\nCH 1010 Lausanne\n\ntél.021 652 55 55 lex. 021 652 32 22\n\nBUREAU D'AMENAGEMENT DU TERRITOIRE]\nJEAN DAEL URECH, ARCHITECTE EPFUSLUFAS, URBAMSTE FUS |\nrue Er, CH 100 Lauanee, O2 312 34 3, ac 021 320 9 6.\nGhargés détude : Jean-Daniel U 8h, Jean\n\n",
+      "text_sha256": "d890828b63ab43df238b3d258c0b6a5cfbc3f368187b7a2c074bdd57ac96c077",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "ocr/part-3-page-10.txt"
+    },
+    {
+      "page_number": 11,
+      "raw_ocr_text": "72\n\nCANTON DE VAUD - DISTRICT DE LAVAUX\nLE DOSSIER DIRECTEUR DE ES LA COMMUNE DE LUTRY\n3.6 Les déplacements AE Légende DE Il\n\nje\n( ——— es itinéraires en site propre | |\n\n‘|3.64.4 Le réseau piétonnier les itinéraires en site banal, tels trottoirs,\n\nrues, routes, routes du vignoble chemins “l\nde campagne 1\n\nles chemins pédestres viticoles\n\n@ les principaux pôles d'attraction ||\npour les itinéraires piétons\n\n4Q 2] les éléments directeurs\npr\n\ndx Sur Liitry\n12\n\n",
+      "text_sha256": "45b8153e55fe7e70fc39598b20b102b609ab25ab9fcb4cda01743286cba53a79",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "ocr/part-3-page-11.txt"
+    },
+    {
+      "page_number": 12,
+      "raw_ocr_text": "3.6 Les déplacements\n\n3.64 Le réseau piétonnier\n3.645 Nature et situation du réseau piétonnier\n\nLe réseau piétonnier de Lutry est de deux types\ncomplémentaires qui ne sont pas différenciés sur plan:\n\ne Le réseau touristique greffé sur le réseau\nrégional.\ne Le réseau interne plutôt utilitaire.\n\nOn distingue deux sortes de cheminements montrés\nsur plan:\n\nLes itinéraires en site propre destinés au seul\nusage piétonnier, à l'exception de quelques\ndeux-roues.\n\nLes itinéraires en site banal, tels trottoirs,\nrues, routes, routes du vignoble chemins de\ncampagne, etc. où le piéton doit partager son\nespace avec les usagers motorisés el les\ncyclistes.\n\n3.646 Analyse du trafic piétonnier\n\nLe trafic piétonnier utilitaire est quantitativement faible\nles jours ouvrables dans les secteurs étudiés. Ceci\ns'explique en partie par la topographie difficile, la forte\nmotorisation des habitants, et des services de\ntransports en commun relativement bons.\n\n8.647 Description du réseau\n\nLes principales liaisons piétonnes sont assurées par:\nLiaisons Est-Ouest\n\nA Les trottoirs des routes de Lavaux (RC780a)\net les Monts-de-Lavaux (RC773c).\nB Le sentier de la ligne CFF de Beme.\n\nLiaison Nord-Sud\n\nc Les trottoirs des routes du Landar et de La\nConversion (RC770b).\n\nD Les trottoirs de la route de Savuit, de La\nCroix-sur-Lutry à Savuit.\n\nE Les itinéraires qui utilisent le domaine public\n\nentre Savuit, la gare de Lutry et le Voisinand.\n\nDe nombreux sentiers permettent des cheminements\nsûrs, tant utilitaires que de loisirs, entre les quartiers ou\ndans leur distribution intérieure, et particulièrement pour\ndesservir les écoles.\n\nLes principaux pôles d'attraction pour les itinéraires\npiétons sont:\n\nLes écoles\n\nCollège du Grand-Pont\nCollège des Pâles\nCollège des Marionnettes\nCollège des Echerins\nCollège de Savuit\nCollège de Corsy.\n\n606660e\n\nLes arrêts transports\n\n® Gares et halte CFF\nArrêts lrolleybus et bus.\n\nLes autres pôles\n\n©) Le Bourg, commerces et loisirs\nQ) Les hameaux, quartiers et leurs équipements.\n\n3.648 Les éléments directeurs\n\nSouvent de l'ordre d'aménagement de détail, les\néléments directeurs ayant trait au réseau piétonnier\nsont désignés sur plan à titre indicatif, Les problèmes\nspécifiques, mesures et moyens d'application sont\ntraités par les fiches programme (dossier municipal).\n\n1 Passages piétons :\n\n— rte de La conversion, rte d'Orzens,\n\nre de La Conversion, ch. du Braillon, ou\nproximité plus au Sud, ou\n\nproximité plus au Nord (- 20m),\n\nre des Monts-de-Lavaux, Crêts-des-Pierres.\n\n2 Signalisation :\nfe de La Conversion, ch. du Braillon.\n\n3 Trottoirs :\nee) re de La Conversion, ch. du Braillon.\n\n4 Ilots :\nrte des Monts-de-Lavaux, Crêt-des-Pierres.\n\n5 Tronçons nouveaux\n\n6 Autres aménagements protecteurs.\n\n",
+      "text_sha256": "89e6ab1a2e59215562287788b9b8467750afee16ad3a3a9fc08df4c9d66c6728",
+      "include_in_search": true,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "searchable uncorrected prose; verify original image",
+      "original_ocr_file": "ocr/part-3-page-12.txt"
+    },
+    {
+      "page_number": 13,
+      "raw_ocr_text": "74\nCANTON DE VAUD - DISTRICT DE LAVAUX\n\n13.6 Les déplacements\n\n3.65 Le domaine public\n\nLes routes à grand trafic, bordées de\ntrottoirs,\n\n\\\\ wi\n\nRER\n\nva!\n\nLes carrefours-places avec pôles\nd'attraction,\n\n| AVS BUREAU D'AMENAGEMENT DU TERRITOIRE 73\n8 É DE Re JENDAMEL URECH ARCHITECTE EPFUSAAS, URBANISE FUS|\n\n$ LDPQC 508 Eng CH 1003 Lara, 61 31234 1, a. 21 320 95 88 | AE\nÉ Jésgés date: mnt rec dune Ross 1e1/ AMEN\nll à\n\n|\n\n",
+      "text_sha256": "83c325517d98a1bb7ec55a652fad7879abe1eb36788e641b6a9bc4ea179eb1bf",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "ocr/part-3-page-13.txt"
+    },
+    {
+      "page_number": 14,
+      "raw_ocr_text": "3.6 Les déplacements\n\n3.65 Le domaine public\n\n3.65.1 Principes de partage du domaine\npublic et de modération du trafic\n\nLe domaine public routier a été organisé pendant\nlongtemps en espace spécialisé, pour les besoins\nimpératifs du trafic des véhicules motorisés. Se\nfondant sur des normes généreuses, on a attribué à\nce trafic des surfaces démesurées. Les\npréoccupations d'aujourd'hui tendent au contraire\nvers une amélioration de la qualité de la vie tout en\npréservant la fluidité du trafic sur les routes\nimportantes. Cela se traduit par la volonté de\nmaîtriser les nuisances visuelles, sonores et\natmosphériques, d'améliorer la sécurité des\npersonnes et plus particulièrement des enfants, de\nsupprimer les entraves physiques, et de favoriser la\nconvivialité. Une condition pour atteindre ces buts\nest de reconquérir le domaine public en partageant\nplus équitablement son usage entre tous les\nutilisateurs, piétons, cyclistes, automobilistes, etc.\n\nA Les routes à grand trafic, bordées de\ntrottoirs,\n\n© diminuer au strict nécessaire l'emprise\napparente des voies de circulation,\n\n© arboriser et paysager la voirie pour changer le\nrapport visuel trottoirs/voies de circulation,\n\n© faire évoluer la notion classique de trottoir\nvers l'idée d'un espace d'itinéraire sécuritaire\npaysager au sens vert ou urbain du terme,\nqui occupera le terrain entre le front construit\net les voies de circulation,\n\n© yintégrer les mesures de maîtrise des\nnuisances, tertres, auto-protection des fronts\nconstruits, etc.\n\n© traiter les passages piétons, et autres\ncarrefours comme jalonnements\nmodérateurs.\n\nB Les traversées de villages,\n\n© inspirer au conducteur un comportement\nd'invité,\n\nutiliser pour ce faire des moyens physiques\net psychologiques tels portes d'entrée,\nresserrements, traitements de surface,\ntracés, jalonnements, objets d'intérêt,\nsignalisations atypiques, etc.\n\npermettre à tous les usagers de partager une\nemprise occasionnelle ou permanente sur le\ndomaine public.\n\nLes grands axes et grands carrefours,\n\nmettre l'usager motorisé dans l'expectative\npour qu'il ralentisse,\n\ndiminuer l'importance des voies de\ncirculation: démesure des surfaces,\nmarquages excessifs, forêts de\nsuperstructures lumineuses, etc.\n\nintervenir par des moyens lourds si\nnécessaire: passages inférieurs ou\nsupérieurs, suppression de césures dans le\ntissu construit, etc.\n\ncombiner les éléments doux de circulation:\ngiratoire, modération, etc.\n\nagir sur les règles de comportement par la\nsuggestion, traitements de surface, tracés,\nportes, etc.\n\néviter de travestir le paysage urbain par des\ndérives paysagères.\n\nLes carrefours-places avec pôles\nd'attraction,\n\ninspirer au conducteur un comportement\nd'invité,\n\nutiliser des moyens physiques et\npsychologiques tels portes d'entrée,\nresserrements, traitements de surface,\ntracés, jalonnements, objets d'intérêt,\nSignalisations alypiques, etc.\n\ncréer un espace-place de fonctionnement où\nles voies de circulation ne sont pas un\nélément dominant,\n\ntraiter les passages piétons comme\njalonnements modérateurs.\n",
+      "text_sha256": "db93a9a0884b2d69df0b1f5f047fff96015871dd9f20f0be319ddd911ba9e56b",
+      "include_in_search": true,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "searchable uncorrected prose; verify original image",
+      "original_ocr_file": "ocr/part-3-page-14.txt"
+    },
+    {
+      "page_number": 15,
+      "raw_ocr_text": "Les rues et routes de dessertes,\n\ndéfinir les pistes de sécurité piétonnes par\ndes moyens simples, jeux de bandes\nrugueuses collées, etc.\n\ninfluencer les règles de comportement des\nusagers motorisés ou cyclistes par des\nmoyens de persuasion visuelle, des\nmodérations, traitements de surface,\njalonnements, elc.\n\ntraiter les traversées piétonnes comme\njalonnements modérateurs.\n\nLes routes bordées de murs,\n\naccepter l'utilisation simultanée, véhicules-\npiétons , de ces itinéraires modérateurs par\nleur étroitesse,\n\nmodérer de façon extensive le trafic\nvéhicules en recourant à tous les moyens\naccessibles tout en préservant la nalure site,\n\ndéfinir les tronçons difficiles , tant au niveau\nde la visibilité que de la sécurité piétons\ndirecte , par des marquages sonores, jeux de\nbandes rugueuses collées, etc.\n\nConclusion\n\nToute démarche d'aménagement est complexe. Elle nécessite la\nprise en compte de nombreux facteurs, très divers et souvent\ncontradictoires. Dans ce contexte, la façon de poser le problème est\nprimordiale.\n\nLe plan directeur communal est à cet égard un instrument de travail\ntrès utile. Il contient les éléments qui permettent de préciser le\ncontexte de chacun de nos futurs projets d'aménagement, qu'il\ns'agisse par exemple d'un équipement collectif, d'une modification\ndans la structure du réseau routier ou encore d’un plan partiel\nd'affectation.\n\nLe plan directeur communal apporte une vision globale; il met en\névidence des contraintes et des incompatibilités; il définit des\npriorités. C'est un document de référence. Il doit cependant rester\névolutif. Il sera en outre régulièrement complété par de nouvelles\nfiches d'action.\n\nLe territoire communal n'est pas extensible; il constitue une denrée\nrare et précieuse qu'il convient de préserver, tout en offrant à ceux qui\nl'occupent et à leurs descendants, la meilleure qualité de vie possible\ndans le respect des valeurs naturelles et construites.\n\nA l'aube du prochain millénaire, le plan directeur communal\ncontribuera à entretenir une réflexion exigeante sur l'avenir de notre\ncommune.\n\n",
+      "text_sha256": "7ba462d461809334debd5c6d7aeaf52f38be091f4ff4d4594cb18ef605187edd",
+      "include_in_search": true,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "searchable uncorrected prose; verify original image",
+      "original_ocr_file": "ocr/part-3-page-15.txt"
+    },
+    {
+      "page_number": 16,
+      "raw_ocr_text": "4. INDEX D'ACCES\nET GLOSSAIRE D'ABREVIATIONS\n\n| page ou annexe\n\n| chapitre et rubrique\n\nPobjectif | fiche d'action\n\nA\n_activités 231 50-51 33 ï A19\nagglomération lausannoïse 2440-41 748-49 2321230732 2710 A10\nagriculture (agricole) 10/18/23/34750-51 13/16/23.1/33 177 A7\naperçu de l'équipement 15+Données de base [14 de\narbres (plan de classement) Données de base\narchéologiques (régions) 52-53+Données de base | 3.4 8 A?\nautoroutes g/nt 12/13 10712 A10\naxes de communication 1 13 10712 AT0/A16\nB\nbarrière (elfets de) (axes rail-route) 19724726 T6 213 A16\nBellingard (Le) _ 107187321748 13716734 8 A20\nBelmont [10/17/24 13/15 2 Ait\nBernadaz (route de la) 40/58 / 63-64 3.61.3/3.62.3 et 4 10 AÏ0/A16\nbiotope 36153 34 8 A20\nobjectifs sectoriels 36-45 238-12 8-12\nbois de la Chaux 9 13 8 A20\nbois de la Gameyre 9 13 8 A20\nbois de la Ville 9 13 8 A20\nBossières 48754 32136 418112 | A?f\nBourg 7T9T4BTSATTS 117167321736 TTATATE AGT AA\nbretelle autoroutière 117197 40758762-63 RATS TSRTSTASEET 10  |At0\nbruit (cadastre du) 15 14\n_bus 11744 13 12 An\n€\ncabotage 4466-67 3.63/3.63.2 12 A2\ncapacité d'urbanisation 10711718 13716 ï ATTA2\ncésure (effets de) (axes rail-roule) 23127 173 A16\nChâtelard (Le) 10729 13 47678 AG7 AB\nchemin de fer _ 971744 766-67 1211317363 E AT2TAIS\n_collectil (habitat) 51 332 A2\ncollectrices (routes) 62-63 3.62 12 A4\ncollines: 267341367525 34 778 ATTA20\ncommerces 187237424317 5051 16723112311133 HAL\nCommune (en chilires) 9756-57 1373.61 A\nCommune (son aménagement) 15/17/26 14715 3 A4\nCommune (son histoire) 719728 11/12 4\n_communes voisines 17124 15 [2 AN\n_compensalion (zone agricole) 39 4 [A7\nConversion (La) 14728-29738-39742744 | 1313213683 419/N17 | AI2TAI8\n149 / 54 1 66-67 12\nConversion (La) (route de) 58/ 63-64 3.61/3.62 10 AO/A16\ncordons boisés h 2752-53 34 3/8 A20\nCOREL 17745 15 12 AÏO7AT2\nCorsy 10728-29/3839/421 |13/32 41911 | A6\n48-49 _] :\ncoleaux 53 34 8 A20T A2\nCours d'eau L 18/53 16/34 8 A20\n_Crêt Bernard 10 _ 13\nCroix-sur-Lulry, La 28-29 / 48-49 53/64 3213571362 479\ncyclables (pistes) 64 3.625\n\n",
+      "text_sha256": "7ccade3a30b181079a14077753ea76b73471f54fb7bf5038d7f90da21153eb23",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "../source-review/ocr/part-3-page-16.txt"
+    },
+    {
+      "page_number": 17,
+      "raw_ocr_text": "| page ou annexe\n\n| chapitre et rubrique\n\n[objectif | fiche d'action\n\nD\ndéplacements 44-457 56-57 36 12\ndesserte (routes de) 62-63 3.62 BR\ndestinations 80-51 332\ndomaine public 7475 365 A4\ndonnées de base (les) cahier annexe F\nE\neaux 14-15/52-53 13/14/34 8\nEcherins 14/48-49 13/32 LE A\nécoles 42-431 54-55 173 3.5/3.64 ii Ait\nécrans. (trafic) 58 361.3\nemplois 12 13 A19\néquipements collectifs 18723742 1672212311 1 A12\néquipements collectifs TSISSTARASTEOST 6733735 1174 Ai\néquipements sportifs (installations) 14 13 11 AÏT\néquipements techniques 14 13 AÏ\névénement formateur E 12\nF\nfaible densité 50-51 33 A5\ntiches d'action cahier annexe\nFlonzel (Le) [10 13\nfonctions de substitution (aire rurale) 94-35 237 7 A7\nForel 7 1.5 2\nforestier (ère) 18/5051 16/33 7 A7\nforêts [10 13 u A7\nforte densité 50-51 33 A5\nG\n_ gare de Bossières 54-55 / 66-67 35/36 12 AÏ8\n_gare de La Conversion 38-39/ 54-557 6-67 239/35/36 9712 AB\n_gare de Lutry 54-55 / 66-67 35/36 12 AI8\ngéologique (carte) Données de base 34\nGrand-Pont 30-31 235 5 A7\nH\nhabitat 18/50-51 16/33\nhameaux 28-29 23.4 4 A6\nHauts de Lutry 34-35 / 42 / 48-49 234/23.712311132 | 417111 ATIAN\nhistoire (événements formateurs) 9 1.2\nHistorique 7 ti\nhistorique 719 11/12 3 A2 —\nHôtel de ville 8/14 11/13\n|\n_identités locales __[ 28-29 / 48-49 234132 4\nindividuel (habitat) 50/51 33\ninstallations sport et loisirs 35 237 7 AT\nintentions générales 18-19 1.6\nintroduction 7419 1\ninventaires 52-53+Données de base | 3.4 8 A20/ A21\nISOS Données de base 8 A2\nIVS 52-3+Données de base 34 8 A1\nJK,L\nJorat 9 13 8 L oo\nlac 30-31 /44-45/ 52-53 23.5/23.12/34 5/8/12 ni TA17/A20/\nLandar (route du) 58-59 / 62-64 ___ [3617362 10 A10\nLausanne 17 15 2\nLavaux 10/17/3233 13/15/7236 216 A8\n\n",
+      "text_sha256": "c5b82ee9ee0889b90d1796b0edf49c6266ffe0bb7245cc9ed4218d1f309d97c7",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "../source-review/ocr/part-3-page-17.txt"
+    },
+    {
+      "page_number": 18,
+      "raw_ocr_text": "| page ou annexe\n\n| chapitre et rubrique\n\n[objectif | fiche d'action\n\nLignes (transports en commun) 66-67 3.63 12 A12\n. LPPL (Protection de Lavaux) 171 52-53 15 A20 7 A2\n\nM\n\nMâcheret (Le) 10 13\n\nmesures directrices 25/27129131133/351 | 23.2-12\n\n37139/41/43/45\n\nMiroir (Le) 10/15/3435 13/14/1237 7 A7\n\nmodération du trafic 7475 3.65 10/12 A4\n\nMonts-de-Lavaux (route des) A ratrsesa/ 62-641 13/3617362/3.63\n\nmotorisation 57 3612\n\nmoyenne densité 50-51 33\n\nmurs du vignoble (terrasses) 52-53/ 74-75 3413.65 8 A21\n\nN\n\nnaturelles (valeurs) 36-37 238 8 A20\n\nnuisances 19/27 1 40-41 1.6/233/23.10 10 AO/A16\n\nQ]\n\nobjectif général 23 23.41 1\n\nobjectifs (délinition) El 21 —\n_objectifs (thèmes des) 2 22\n\nobjectifs territoriaux 24-35 2327 27\n\noption \"0\" A0\n\nP\n\npara-agricoles (territoires) 50-51 33 A7 A7\n\npatrimoine 14719 13/16 8 A20\n_paysage 52-53 34 8 A20 / A2\n\npiétonnier (réseau) (piétons) 11768-73775 1373.64 13.65.1 12 A137A14\n\npistes cyclables 64 3625 12 At4\n\nplage 3031 235 5 A7\n\nPlan d'affectation 1987 15/19 14716\n\nPlan de protection de Lavaux (LPPL, Loi | 17752-53 1.5/34\n\nsur la):\n\nPlan directeur (pourquoi) 17 15\n\nPlan directeur cantonal (Vaud)\n\nPlan directeur cantonal des rives 17 15\n\nvaudoises du lac Léman\n\nPlan directeur de la région lausannoise | 17 15\n\nplans de quartier (PQ) 15/19+Données de base | 1.4/16\n\nplans directeurs (définition) _ 47 31\n\nplans directeurs (planches) 48-76 326\n\nplans partiels d'affectation (PPA) 15719+Données de base | 1.4/1.6\n\npôles 38-39 / 42-43 / 54-55 2.39/2311/35 9/11 At\n\npopulation 12/18 13/16 î Ai\n\nport 819/14/30-31/ 66-67 11/12/13/3.63 5/12 A2/A17\n\nprincipes d'aménagement 251/271291311331357 | 23.2-12 EL\n\n37139/41/43/45\n\nproteclions (Le site) 36-37 238 8 A20 / A21\n\nPully 17 [15\n\nQ,R\n\nRecensement architectural Données de base\n\nrégion (la) et Lutry 24-25 23.2 2\n\nrépartitions (les grandes) 50-51 331 3 A1-9\n\nréseau piétonnier (itinéraire) 6873 364 12 A3\n\nrives du Lac _] 3031 235 5 A7\n\nroutes (réseau routier) 11/19/40-417 44-457 13/1.6/361/3.62 10/12 AÏO/A14/A15\n\n_[ 56-59 / 62-63\nrurale (aire) 34-35 237 7 A7\n\n",
+      "text_sha256": "aa72c2a2c654cb3f6ac6cf6fcdbb511232cc78cd336d739517c874aa5a8bf6ac",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "../source-review/ocr/part-3-page-18.txt"
+    },
+    {
+      "page_number": 19,
+      "raw_ocr_text": "| page ou annexe\n\n| chapitre et rubrique\n\nLobjectif | fiche d'action\n\nS\nsans destination définie (territoires) 50-51 33 Î A9\n_Savigny 8/9/10/17 11/12/13/15 2\nSavuit 10/28-29 / 48-49 / 59 13/32/3614 4 A6/A8\nSchéma directeur régional des 17745 15 12 A2\n_déplacements\nsecteurs \"S\" 52-59 34 8 A20\nsemi-collectif (habitat) 50-51 33 A5\nsemi-individuel (habitat) 6051 33 A5\nSignal de Bochat 10 13 El\nSite 52 34 8 A20 / A21\nsituation actuelle 9 13 toutes\nsports et loisirs 35/60-51/54-55 33/35 7IN A7 At\nstratégiques (territoire) 50-51 33 10 ACTA3\nstructure d'aménagement 26-27 3\nT\nTaillepied 48-49 32 4\nterrasses (vignobles) 52-53 34 8 A20/ A21\nterritoire 9/15 13/14 1/21/1314 | AS/A2/A3TA4\ntopographie 52:53 34\ntrafic CE] 361 10712 ROTATZTAIET\nl\ntrain régional 49 2312 #2 |A\ntransports en commun 9/ 44.45 / 66-67 13/363 12 A12\ntravail (emplois) 12 13 1/12 | AI9\nTVR 45/1 66-67 36 12 A12\nU\n_urbanisation (aire de l') 50-51 33 _\nutilisation du sol 10/50-51 13133 ll 21316 | A2\nV\nvaleurs naturelles et construites 9637/5253 34 8 A207 A21\nvignoble (vignes) La 10/24726/80817 11/13/7331 21316 AB\nvillages 10/15/19750-51 13/1.4/1.6/33 4 A6\nVillette 10/17 13/15 2 A17\nviticole (viticulture) 10/18/23/32/50-51 13/16/33 176 AB\nvocations de Lutry 22123 2341 1 ATTAG\nvues 52-53 3.44 4/8 A20/ A21\nW, X, Y,Z\nzones constructibles 10-11 13 172 AT\n_zones inconstructibles 10:11 13 : 172 A\n\n",
+      "text_sha256": "17607cdc15c0a97b5d609740c6d345be2e2195063da37689526ec0d463bbb537",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "../source-review/ocr/part-3-page-19.txt"
+    },
+    {
+      "page_number": 20,
+      "raw_ocr_text": "8t\n\nGLOSSAIRE D'ABREVIATIONS\n\nBATSOL Bateaux solaires\n\nCGN Compagnie générale de navigation\n\nCOREL Communes de la région lausannoise\n\ncos Coefficient d'occupation du sol (surface du bâtiment au sol/surface de la parcelle)\nCUS Coelficient d'utilisation du sol (surface brute des planchers/surface de la parcelle)\nDI Département des infrastructures\n\nDTPAT Département des travaux publics et de l'aménagement du territoire (ancienne dénomination)\nDVC Droit vaudois de la construction\n\nEMS Etablissement médico-social\n\nIFP Inventaire fédéral des paysages, sites et monuments naturels d'importance nationale\nIS0S Inventaire fédéral des sites construits à protéger en Suisse\n\nIVS Inventaire fédéral des voies hisloriques en Suisse\n\nLAT Loi fédérale sur l'aménagement du térriloire\n\nLATC Loi cantonale sur l'aménagement du territoire et les constructions\n\nLPPL Loi sur le plan de protection de Lavaux\n\nOAT Ordonnance fédérale sur l'aménagement du territoire\n\nOPB Ordonnance fédérale sur la protection contre le bruit\n\nP&R Park and ride (parking d'échange: parquer la voiture et continuer en transport public)\nPD Plan directeur\n\nPGA Plan générale d'affectation\n\nPPA Plan partiel d'affectation\n\nPQ Plan de quartier\n\nRATC Règlement d'application de la loi cantonale sur l'aménagement du territoire\n\nRC Route cantonale\n\nSAT Service de l'aménagement du territoire de l'Etat de Vaud\n\nSI Services industriels communaux\n\nTFV Service communal des travaux, des domaines foreslier et viticole\n\nTJM Trafic journalier moyen\n\nTL Transports lausannois\n\nTMI Transport motorisé individuel\n\nTVR Transport en voie réservée\n\nUPC Service de l'urbanisme et de la police des constructions\n",
+      "text_sha256": "a920eceb8e0db2b8fcf00ffdbbe19cb6ac70af628e4eeb5e7f9f6f80da68f692",
+      "include_in_search": true,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "searchable uncorrected prose; verify original image",
+      "original_ocr_file": "../source-review/ocr/part-3-page-20.txt"
+    },
+    {
+      "page_number": 21,
+      "raw_ocr_text": "",
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "ocr/part-3-page-21.txt"
+    }
+  ]
+}

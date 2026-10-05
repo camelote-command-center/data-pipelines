@@ -13,8 +13,11 @@ from psycopg2.extras import Json
 
 SOURCE = 'vd_pdcom_municipal'
 REGIONAL_SOURCE = 'vd_sdan_regional'
+OCR_SOURCE = 'vd_pdcom_municipal_ocr'
 
 def source_kind(review):
+    if review.get('text_extraction'):
+        return OCR_SOURCE
     return REGIONAL_SOURCE if review.get('scope') == 'intercommunal' else SOURCE
 
 def validate_regional_scope(r):
@@ -38,6 +41,9 @@ def require(ok, reason):
 
 def validate_review(r):
     uuid.UUID(r['vd_document_id'])
+    if r.get('text_extraction'):
+        from reviewed_ocr import validate_review as validate_ocr_review
+        validate_ocr_review(r)
     require(r['source_role'] in ('approved_main','approved_amendment'), 'only_reviewed_approved_source_roles_supported')
     if r['source_role']=='approved_amendment':
         scope=r.get('amendment_scope',{})
@@ -71,6 +77,9 @@ def build_bundle(pdf_path, review):
     pages = []
     with fitz.open(path) as pdf:
         require(len(pdf) == review['page_count'], 'physical_page_count_mismatch')
+        if review.get('text_extraction', {}).get('mode')=='reviewed_ocr':
+            from reviewed_ocr import load_pages
+            return assemble(review, load_pages(pdf, review), path.stat().st_size)
         for i, page in enumerate(pdf):
             text = page.get_text('text')
             status = 'native_text_extracted' if text.strip() else ('not_extracted_image_page' if page.get_images() else 'no_native_text')
@@ -81,7 +90,7 @@ def build_bundle(pdf_path, review):
 def assemble(review, pages, byte_count):
     validate_review(review)
     require([p['page_number'] for p in pages] == list(range(1, review['page_count']+1)), 'physical_pages_incomplete_or_reordered')
-    require(all(isinstance(p['text'], str) and p['status'] in ('native_text_extracted', 'not_extracted_image_page', 'no_native_text') for p in pages), 'page_status_required')
+    require(all(isinstance(p['text'], str) and p['status'] in (('reviewed_ocr_search_text','ocr_withheld') if review.get('text_extraction') else ('native_text_extracted', 'not_extracted_image_page', 'no_native_text')) for p in pages), 'page_status_required')
     url, sha = review['source_url'], review['source_sha256']
     doc = uid('knowledge:'+url+':'+sha)
     provenance = {'parser': source_kind(review), 'vd_document_id': review['vd_document_id'], 'content_hash': sha,
@@ -89,6 +98,9 @@ def assemble(review, pages, byte_count):
                   'all_prose_is_binding': False, 'diagnostic_vintage_limit': review['diagnostic_vintage_limit'],
                   'limits': review['limits'], 'spatial_qualification': False, 'commune_complete': False,
                   'source_role': review['source_role'], 'plan_status': review['plan_status'], 'review_sha256': digest(review)}
+    if review.get('text_extraction'):
+        from reviewed_ocr import FIELDS
+        provenance.update({k:review[k] for k in FIELDS + ('text_extraction',)})
     if review.get('scope')=='intercommunal':
         provenance.update({k:review[k] for k in ('scope','member_communes','historical_vintage','approval_status_as_source','currentness_caveat','no_parcel_rights','no_geometry_qualification')})
     if review['source_role']=='approved_amendment':
@@ -103,11 +115,11 @@ def assemble(review, pages, byte_count):
                 i = len(chunks)
                 chunks.append({'id': uid(doc+':'+str(i)), 'document_id': doc, 'chunk_index': i, 'content': text,
                                'page_number': p['page_number'], 'metadata': dict(provenance, source_url=url,
-                               citation=url+'#page='+str(p['page_number']), extraction_status=p['status'])})
+                               citation=url+'#page='+str(p['page_number']), extraction_status=p['status'], **({'ocr_provenance':p['ocr_provenance'],'ocr_artifact_sha256':p['ocr_artifact_sha256']} if review.get('text_extraction') else {}))})
     require(bool(chunks), 'no_searchable_text')
     metadata = dict(provenance, source_url=url, physical_page_count=len(pages),
                     page_manifest=[{k:v for k,v in p.items() if k != 'text'} for p in pages],
-                    extraction_status='partial_native_text', map_pages=review['map_pages'],
+                    extraction_status=('partial_reviewed_ocr' if review.get('text_extraction') else 'partial_native_text'), map_pages=review['map_pages'],
                     full_visual_map_extraction=False)
     return {'review': review, 'pages': pages, 'byte_count': byte_count, 'chunks': chunks,
             'source_id': uid(source_kind(review)+':VD:'+review['vd_document_id']),
@@ -138,13 +150,16 @@ def persist(conn, bundle, operation_id, pdf_path):
         else:
             c.execute('SELECT 1 FROM bronze_ch.vd_pdcom_document_communes WHERE document_id=%s AND commune_bfs=%s', (r['vd_document_id'],r['commune_bfs']))
             require(c.fetchone() is not None, 'registered_commune_scope_missing')
+        for support in r.get('supporting_documents', []):
+            c.execute('SELECT sha256,plan_status,page_count,source_url FROM bronze_ch.vd_pdcom_documents WHERE id=%s FOR SHARE', (support['document_id'],))
+            require(c.fetchone()==(support['sha256'],support['plan_status'],support['page_count'],support['source_url']), 'supporting_document_changed')
         c.execute('SELECT id FROM knowledge_ch.documents WHERE original_url=%s AND is_active AND id<>%s', (r['source_url'], b['document_id']))
         require(not c.fetchall(), 'active_prior_version_requires_explicit_reviewed_supersession')
         c.execute('SELECT count(*) FROM knowledge_ch.documents WHERE id=%s',(b['document_id'],));documents_before=c.fetchone()[0]
         c.execute('SELECT count(*) FROM knowledge_ch.chunks WHERE document_id=%s',(b['document_id'],));chunks_before=c.fetchone()[0]
         checked_insert(c,'bronze_ch','planning_document_runs',{'id':str(operation_id),'scope':{'kind':('scoped_historical_regional_text' if source_kind(r)==REGIONAL_SOURCE else 'scoped_municipal_pdcom_text'),'document_id':r['vd_document_id']}})
-        checked_insert(c,'bronze_ch','planning_document_sources',{'id':b['source_id'],'source':source_kind(r),'canton_code':'VD','source_key':r['vd_document_id'],'title':r['title'],'document_url':r['source_url'],'commune_bfs':r['commune_bfs'],'language':'fr','legal_status':r['plan_status'],'document_type':('regional_sdan' if source_kind(r)==REGIONAL_SOURCE else 'municipal_pdcom'),'source_metadata':r,'catalog_hash':digest(r),'current_version_id':b['version_id'],'extraction_status':'partial_native_text'})
-        checked_insert(c,'bronze_ch','planning_document_versions',{'id':b['version_id'],'source_id':b['source_id'],'content_hash':r['source_sha256'],'final_url':r['source_url'],'content_type':'application/pdf','byte_count':b['byte_count'],'pages':b['pages'],'extraction_status':'partial_native_text','knowledge_document_id':b['document_id']})
+        checked_insert(c,'bronze_ch','planning_document_sources',{'id':b['source_id'],'source':source_kind(r),'canton_code':'VD','source_key':r['vd_document_id'],'title':r['title'],'document_url':r['source_url'],'commune_bfs':r['commune_bfs'],'language':'fr','legal_status':r['plan_status'],'document_type':('regional_sdan' if source_kind(r)==REGIONAL_SOURCE else 'municipal_pdcom'),'source_metadata':r,'catalog_hash':digest(r),'current_version_id':b['version_id'],'extraction_status':b['metadata']['extraction_status']})
+        checked_insert(c,'bronze_ch','planning_document_versions',{'id':b['version_id'],'source_id':b['source_id'],'content_hash':r['source_sha256'],'final_url':r['source_url'],'content_type':'application/pdf','byte_count':b['byte_count'],'pages':b['pages'],'extraction_status':b['metadata']['extraction_status'],'knowledge_document_id':b['document_id']})
         # Only the expensive classifier is suspended; taxonomy remains enabled.
         # Transaction rollback restores trigger state if any assertion fails.
         c.execute("SELECT tgrelid::regclass::text,tgenabled FROM pg_trigger WHERE tgname='classify_on_insert' AND tgrelid IN ('knowledge_ch.documents'::regclass,'knowledge_ch.chunks'::regclass) ORDER BY 1")
@@ -176,7 +191,12 @@ def deliver(conn, document_id):
         c.execute("SET LOCAL statement_timeout='120s'")
         c.execute('SELECT source,raw_metadata FROM knowledge_ch.documents WHERE id=%s', (document_id,))
         row=c.fetchone()
-        require(row is not None and row[0] in (SOURCE,REGIONAL_SOURCE) and row[1].get('spatial_qualification') is False and row[1].get('all_prose_is_binding') is False, 'scoped_document_contract_required')
+        require(row is not None and row[0] in (SOURCE,REGIONAL_SOURCE,OCR_SOURCE) and row[1].get('spatial_qualification') is False and row[1].get('all_prose_is_binding') is False, 'scoped_document_contract_required')
+        if row[0]==OCR_SOURCE:
+            require(row[1].get('text_extraction',{}).get('mode')=='reviewed_ocr', 'ocr_delivery_mode_required')
+            from reviewed_ocr import validate_delivery as validate_ocr_delivery
+            c.execute('SELECT metadata FROM knowledge_ch.chunks WHERE document_id=%s', (document_id,))
+            validate_ocr_delivery(row[1], [m[0] for m in c.fetchall()])
         if row[0]==REGIONAL_SOURCE:
             validate_regional_scope(row[1])
             c.execute('SELECT metadata FROM knowledge_ch.chunks WHERE document_id=%s', (document_id,))

@@ -1,0 +1,219 @@
+{
+  "document_id": "1146a4f0-9281-5fb9-80c8-462a710229db",
+  "source_sha256": "f2dcfe50c628863dd1bb7fcb6632536cecb67d112b61b28fea0ed7c4e118190d",
+  "original_manifest_sha256": "3c19d70b09b6bf79dfd9ec8f1b830816ae21486832bc8cd14e676be9a0366019",
+  "method": "Tesseract French psm3,PyMuPDF2x; raw uncorrected research OCR. Existing12pages reused,74new pages.",
+  "engine": "tesseract 5.5.2",
+  "pages": [
+    {
+      "page_number": 1,
+      "raw_ocr_text": "Principes d'aménagement\n\nLes équipements collectifs favorisent l'équilibre, les rencontres et les échanges. Leur\nlocalisation doit tenir compte au mieux de la répartition de la population, des identités\nlocales et des besoins.\n\nMesures directrices\n\nM Compenser les déficits en équipements collectifs de certains secteurs.\n\nM Favoriser l'implantation d'équipements collectifs qui renforcent les identités locales.\nM Eviter l'implantation de projets commerciaux inadaptés au tissu local.\nL]\n\nPromouvoir dans le Bourg l'implantation d'une offre commerciale diversifiée et de qualité afin de\nconsolider son rôle de pôle principal.\n\nFavoriser la reconversion partielle ou complète de certains équipements collectifs existants en fonction\nde l'évolution des besoins.\n\n",
+      "text_sha256": "bc3c3ef2d3abba9d8edabd26285132180e88d4c86155d5ff2ca6cbc7a79db905",
+      "include_in_search": true,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "searchable uncorrected prose; verify original image",
+      "original_ocr_file": "ocr/part-2-page-1.txt"
+    },
+    {
+      "page_number": 2,
+      "raw_ocr_text": "Les objectifs sectoriels\n\n23.12 Les déplacements\n\nen dépit de sa position parfois inconfortable, à la\nconvergence de grands axes de déplacement, Lutry\nbénéficie d'une diversité de moyens de transports\n\nLes alternatives offertes aux transports motorisés individuels (TMI) ne sont pas\nsuffisamment attractives pour en diminuer l'importance .\nLe rattachement aux transports en commun régionaux n'a pas affecté les TMIÏ de façon\n\nLutry est correctement greffée sur les itinéraires traversants de déplacement: jonction\nautoroutière, gares sur les deux lignes de chemin de fer, accès aux routes cantonales,\n\nDans toutes leurs formes, les déplacements ont pour but principal l'agglomération\n\nLes cheminements piétons utilitaires sont courts et internes, tandis que les parcours\ntouristiques sillonnent le territoire communal d'Ouest en Est sur différents étages,\n\nLe bateau est utilisé comme moyen de déplacement touristique.\n\nConstat:\nsensible.\net débarcadère sur le réseau lacustre.\nlausannoise.\nZigzaguant entre le lac et les campagnes.\nObjectif:\n\nintégrer Lutry dans un schéma régional de tous les\nmoyens, les formes et les itinéraires de déplacement et\nassurer leur complémentarité\n\n",
+      "text_sha256": "4e1e03a1c573f50e078090d4bf869edd72961ecee3700a926eef7c2fd277ef05",
+      "include_in_search": true,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "searchable uncorrected prose; verify original image",
+      "original_ocr_file": "ocr/part-2-page-2.txt"
+    },
+    {
+      "page_number": 3,
+      "raw_ocr_text": "Principes d'aménagement\n\nLutry est intégré au Schéma directeur régional des déplacements (COREL). Son\nrattachement aux itinéraires pédestres régionaux et l'organisation des transports en\ncommun internes doivent être assurés.\n\nMesures directrices\nM Préparer les nouvelles formes de déplacements régionaux.\n\nM Analyser les perspectives et l'intérêt de créer un TVR ou un train régional jusqu'à Lutry en utilisant les\ninfrastructures existantes des CFF.\n\nm Etudier un rattachement de l'axe Nord-Sud au réseau des transports en commun régionaux:\n\nm Poursuivre les démarches réalisées pour un cabotage touristique le long des rives vers une version\nplus utilitaire reliant Lutry aux hautes écoles de l'Ouest lausannois.\n\nm Réaliser et améliorer les cheminements piétonniers.\n\nm Concevoir une politique générale de développement des aires de stationnement de véhicules pour\nfavoriser la réalisation des mesures qui précèdent.\n\n",
+      "text_sha256": "c0e3cf43b1e7ed5652ca01ec6abdff1ff8fde6c2d84e90c6b36146a37f71699b",
+      "include_in_search": true,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "searchable uncorrected prose; verify original image",
+      "original_ocr_file": "ocr/part-2-page-3.txt"
+    },
+    {
+      "page_number": 4,
+      "raw_ocr_text": "",
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "ocr/part-2-page-4.txt"
+    },
+    {
+      "page_number": 5,
+      "raw_ocr_text": "_ LES PLANS DIRECTEURS\n\n47\n\nDéfinition\n\nLes PLANS DIRECTEURS sont des outils essentiels de\ncoordination. Ils confrontent les objectifs à la réalité du terrain\net conduisent une première démarche générale de leur\napplication à travers les domaines de l'aménagement du\nterritoire: l'UTILISATION DU SOL, le SITE, les ÉQUIPEMENTS\nCOLLECTIFS et les DÉPLACEMENTS. Les fortes\ncaractéristiques du Bourg, des villages, des hameaux et de\nleur territoire ont conduit à élaborer un premier plan propre à\nLutry: les IDENTITÉS LOCALES.\n\nLe volet DÉPLACEMENT (transports) est principalement une\ntransposition du dossier “PLAN DIRECTEUR DES CIRCULATIONS”\nélaboré en 1991 déjà. Une mise à jour a été nécessaire,\nnotamment pour intégrer les données nouvelles sur la\npopulation et tenir compte des développements récents qui\naffectent les politiques régionale et locale des circulations.\nAinsi, des chapitres importants traitant des pistes cyclables,\ndu réseau piétonnier et du domaine public ont été ajoutés.\n\n",
+      "text_sha256": "773af1b0ce11c0aa4c2642e5d8cf7c1783efe369e980d538486ac3c543fd304f",
+      "include_in_search": true,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "searchable uncorrected prose; verify original image",
+      "original_ocr_file": "../source-review/ocr/part-2-page-5.txt"
+    },
+    {
+      "page_number": 6,
+      "raw_ocr_text": "48\nCANTON DE VAUD - DISTRICT DE LAVAUX\n\nLE DOSSIER DIRECTEUR DE LA COMMUNE DE LUTRY |\n\nAL Must — |\n\n3.2 Les identités locales\n\n",
+      "text_sha256": "7217f2bc0e4babe5c4b628d3ebad0cbf1d5b90b7973555f5a321235068643732",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "ocr/part-2-page-6.txt"
+    },
+    {
+      "page_number": 7,
+      "raw_ocr_text": "49\n\n3.2 Les identités locales\n\n3.21 L'identité de Lutry\n\nC'est une mosaïque d'identités locales qui se\ncalque sur les particularités physiques du territoire\ncommunal et les appellations qui les distinguent.\n\n3.22 Les identités rattachées aux\ngrandes subdivisions du\nterritoire\n\n© L'ensemble urbanisé constituant la limite\nEst de l'agglomération lausannoise\n\n© Le territoire viticole et rural de Lavaux\n\n© Les Hauts de Lutry.\n\n3.23 Les identités rattachées aux\n\nlieux\n\nLe Bourg de Lutry\nTaillepied\n\nSavuit\n\nLe Châtelard\nBossières\n\nLa Conversion\n\nCorsy\n\nLa Croix-sur-Lutry\n\nEcherins\n\n© Les autres lieux représentant des\nsubdivisions fines de micro-identités.\n\n3.24 L'identité personnelle\n\nL'identité est un facteur important du bien-être et de\nla vie. Elle est liée au sentiment d'appartenance à\nun groupe, à une idée, au passé, à un territoire. Elle\nse vit individuellement.\n\n3.25 L'identité collective\n\nL'identité est également un facteur déterminant de\nla cohérence et de l'équilibre d'une communauté.\nC'est donc aussi un phénomène collectif.\n\nIdentité individuelle et identité collective sont\ncomplémentaires. Ainsi, chaque individu ou chaque\n\ngroupe peut se réclamer de plusieurs identités à la\nfois.\n\n3.26 L'identité et l'aménagement du\nterritoire\n\nCes considérations permettent de comprendre\npourquoi et comment l'identité a un rôle à jouer dans\nl'urbanisme.\n\nDu point de vue de l'aménagement du territoire ce\nrôle est lié:\n\nà l'appartenance à un territoire,\naux différentes sensibilités locales,\naux valeurs paysagères,\n\naux structures urbanistiques,\n\naux équipements communautaires.\n\n3.27 Lutry et ses identités\n\nLe présent plan met en évidence les territoires qui\naffichent des identités distinctes. || est proposé de\nles respecter et de les mettre en valeur tout en se\ngardant d'en dresser un portrait figé. Reconnaître et\nrenforcer l'identité d'un lieu évitent la banalisation de\nl'urbanisation.\n\nCes identités forment la personnalité collective de\nLutry.\n\n3.28 La fonction du plan des\nidentités locales\n\nLe plan des identités locales sert de base de\nréférences, de guide à la conception et de moyen\nde contrôle, au service des actes et décisions\nd'aménagement du territoire pouvant affecter les\nidentités.\n",
+      "text_sha256": "55990cb62e4c727635ed2657279e7fb895bb58943145361b3d302da3aa87bbda",
+      "include_in_search": true,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "searchable uncorrected prose; verify original image",
+      "original_ocr_file": "../source-review/ocr/part-2-page-7.txt"
+    },
+    {
+      "page_number": 8,
+      "raw_ocr_text": "CANTON 5 VAU. - DIS RICY Je  cAVe&uUX\nLE DOSSIER DIRECTEUR DE te LA COMMUNE DE LUTRY\n\nPS 4 HF3 ZE: DA Ë T fr £ =\n\nDA\n\n3.3 L'utilisation du sol\n\n3.31 Les grandes répartitions\n\nK13.32 Les destinations\n\nPA 7\n\n",
+      "text_sha256": "ec0e6a9686d03cf600925f2008bfd9967352f66af11e64c8f2663734258184be",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "ocr/part-2-page-8.txt"
+    },
+    {
+      "page_number": 9,
+      "raw_ocr_text": "50\n\n= ie\n\nTRICT DE LAVAUNX\n\nLA COMMUNE DE LUTRY\n\n“ANTON DE VAiD\n\nDIRECTEUR DE\n\nSecteur A Grandchamp\nSecteur B Bossière\nSecteur C situé entre ie Chätelard et le Daley\n\ndont la procédure d'approbation du plan directeur est suspendue jusqu'à connaissance\ndu résultat de la révision de la loi sur la plan de protection de Lavaux (LPPL).\n\nDécision du Conseil d'Etat du..28.février...2000\n\nGHxsIere\n",
+      "text_sha256": "1e40e4f8490a9a672f0bda09f9439b69eacb86947e9678c4d7e59d0d00d794ab",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "ocr/part-2-page-9.txt"
+    },
+    {
+      "page_number": 10,
+      "raw_ocr_text": "",
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "ocr/part-2-page-10.txt"
+    },
+    {
+      "page_number": 11,
+      "raw_ocr_text": "51\n3.3 L'utilisation du sol\n\n3.31\n\nÀ Aire de l'urbanisation du Bourg\n\nL'essentiel du patrimoine bâti de valeur, témoin de l'histoire\nde Lutry, s'y trouve concentré. Elle doit concilier le passé avec\nla vie d'aujourd'hui dans un mélange équilibré d'activités et\nde fonctions propres au Bourg: l'habitat et les petites\nentreprises, les commerces, la vinification et le négoce du vin,\nla vie du lac, la défense de la ville, sa vie religieuse et\nculturelle, le tourisme et la circulation (objectifs 1, 5, et 6).\n\nLes grandes répartitions\n\nB Aire lacustre\n\nLe lerritoire de Lutry se prolonge sur le lac avec une forte\ncontribution à la qualité du paysage et de l'environnement,\nliée à sa vocation de tourisme et de loisirs qui remplace sa\nvocation utilitaire historique (objectifs 1 et 5)\n\nC _Aïre de l'urbanisation de ville\n\nLimites de l'agglomération, les quartiers principalement\nrésidentiels de l'Est lausannois s'arrêtent aux abords de la\nLutrive (objectifs 1 et 2).\n\nD Aire viticole dans le territoire urbanisé\n\nL'aire d'urbanisation de l'Est lausannois laisse à l'Ouest de la\nLutrive le vignoble de Crêt de Plan qui préfigure le paysage\nde Lavaux et enrichit la qualité paysagère des quartiers\nrésidentiels (objectifs 1 et 4).\n\nE Aire de l'urbanisation viticole\n\nLe patrimoine bâti de valeur y est concentré. Elle est\ncaractérisée par la cullure de la vigne et la vinification. Elle\ndoit concilier sa préservation avec des fonctions\ncontemporaines en mulalion (objectifs 6 et 8).\n\nF Aire viticole\n\nLa configuration du sol résulte principalement de la culture\nde la vigne. L'évolution de cette activité engendre la mutation\ndu paysage traditionnel construit tout en respectant ses\nvaleurs (objectifs 1, 6 et 8).\n\nG Aire d'extension récente de l'urbanisation\n\nUne frange d'habitat individuel à l'Est de la Lutrive s'est\nformée entre les collines des Hauts et les vignobles. Elle est\ninsérée dans le paysage de Lavaux (objeclifs 3 el 4).\n\nH Aire de l'urbanisation de village\n\nUn des villages de Lutry, Corsy et son patrimoine bâti, garde\nle témoin d'une voie historique. Il est encerclé par les fortes\n\n3.32 Les destinations\n\nterritoire du Bourg de Lutry\nterriloire des villages el des hameaux\n\nterritoire de l'habitat individuel,\nsemi-individuel et semi-collectif, à\nfaible et moyenne densité\n\nterritoire de l'habitat collectif à forte\ndensité\n\nterritoire d'activités\n\nterritoire stratégique de réserve\n\nterritoire viticole\n\ninfrastructures routières actuelles mais renaîl avec\nl'émergence d'un pôle d'équipements (objectifs 3, 4, 9 et-11).\n\n1 Aire d'une urbanisation ville - campagne\n\nLa Croix-sur-Lutry, croisement des routes des Monts-de-\nLavaux et de Savigny, a engendré l'embryon d'un hameau\ndisparale qui devient un pôle d'équipements collectifs des\nHauts de Lutry (objectifs 9 el 11).\n\nJ Aire agricole\n\nLes activités agricoles constituent le rôle premier et essentiel\nde l'utilisation du sol mais l'évolution générale de ce secteur\nde l'économie doit permettre d'envisager des activités\nalternalives compatibles (objectif 7).\n\nK Aire de l'urbanisation para-agricole\n\nDans les limites d'une planification de détail, des installations\nconstruites ou non, destinées à des activités para-agricoles\n(arboriculture, horticulture, paysagisme, cultures\nspécialisées, cultures maraîchères, technologies\napparentées, etc.) peuvent y être envisagées (objectif 7).\n\nL Aire de détente et de loisirs\n\nDans un esprit de diversification des activités de l'aire rurale,\nmais dans le respect de la législation en vigueur, des\ninstallations destinées à des activités principalement de plein\nair, de détente et de loisirs, ou à d'autres activités\ncompatibles avec celte destination, peuvent y être\nenvisagées (ojectils 7 et 11).\n\nM Aire forestière\n\nSa nature et ses fonctions essentielles sont protégées par les\nlégislations en vigueur. Les activités de sport et de loisirs ne\nnécessitant pas d'infrastructures qui s'y déroulent les\nrespectent (objectifs 1, 7 et 8).\n\nN Liaison périphérique\n\nLes grandes aires de répartition de l'utilisation du sol à Lutry\nse Snplent avec celles des communes voisines (objectifs 1\net2).\n\nO Les aires d'activités\n\nConstellation de petites surfaces adaptées aux territoires\nparticuliers de Lutry et vouées aux activités (objectifs 3, 4, 9 et\n11).\n\nterritoire vert et/ou agricole\nterritoire para-agricole\nterritoire forestier\n\naire lacustre\n\nterritoire d'équipements collectifs\n\nterritoire de sport et loisirs\nterritoire sans destination définie\n\nET\nE3\nnr\nCTI]\nDCX]\nfe. |\n\nterritoire d'équipements techniques\n",
+      "text_sha256": "924c2b6727252e7287873794560587ce7f1920843184aab8b904b42c7680a49b",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "Legend text interleaves into H paragraph and breaks logical reading order.",
+      "original_ocr_file": "../source-review/ocr/part-2-page-11.txt"
+    },
+    {
+      "page_number": 12,
+      "raw_ocr_text": "52\nCANTON DE VAUD - DISTRICT DE LAVAUX\n\nLE DOSSIER DIRECTEUR DE LA COMMUNE DE LUTRY\n\n JEADANIEL URECH. ARCHITECTE EPFUSUVFAS, URBAISTE FUS|\nCHI 6.100 Enring. CH 1003 Lausanne, A. Q21 312 M 31. ax. 021 320 95 68%\nl'Ureen, JeanCide Rossi\n\n4 LAS SES\n",
+      "text_sha256": "37b0bbcdd5a9d7f99f3879c1cc72b35492269aa3e3201562835d6b3d270f7031",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "ocr/part-2-page-12.txt"
+    },
+    {
+      "page_number": 13,
+      "raw_ocr_text": "3.4 Le site\n\n3.41 Les protection en vigueur, les\ninventaires et recensements\n\nLe plan du site est lié aux documents mentionnés ci-\n\ndessous par l'une ou l'autre des manières suivantes :\n\n*%%e% la planche 3.4 Le site en reproduit entièrement\nles données ayant trait à Lutry,\n\n%3% la planche 3.4 Le site n'en donne que le cadre ou\nun échantillonnage; les documents de référence sont\nreproduits dans l'annexe Il “Les données de base” ou\npeuvent être consultés à l'administration communale,\n\n% la présente légende de la planche 3.4 Le site n'en fait\nque référence ci-après (voir aussi l'annexe II! “Les\ndonnées de base”).\n\nD pi | 1e Plan de protection de Lavaux (périmètre)\n\nl'inventaire cantonal des monuments\nnalurels et des sites #\n\nge. l'Inventaire fédéral des paysages, sites et\n\"TS monuments naturels d'importance nationale\n(IFP) #4\n\nle Plan directeur cantonal (notamment les\nplans Sites et Contraintes naturelles) #:K%\n\nle Plan directeur des rives vaudoises du\nlac Léman #\n\n== | les Régions archéologiques #%3%\n\nl'Inventaire fédéral des sites construits à\nprotéger en Suisse (ISOS) #\n\nl'inventaire des voies historiques en Suisse\nse (IVS) #*%\n\nle Recensement architectural #\n\nles Secteurs “S” de protection des eaux\n4x\n\nle Plan communal de classement des\narbres #\n\nla Carte géologique de Lutry et glissements\nde terrain #\n\n3.42 Les grands éléments du site\n\nnaturel ou construit\n\nC'est par eux que le site est perçu dans ses\ngrandes lignes et dans ses points forts. Ils méritent\nune attention générale en vue de préserver l'intégrité\ndu paysage dans son ensemble.\n\nle lac\nles rives du lac\n\n: la configuration topographique générale\nCC) les coteaux urbanisés\nC2 les coteaux du vignoble\n\nPÂ les collines\nER les forêts\n\næ& les cordons boisés\na le Bourg et les villages\n== les terrasses du vignoble\n\n3.43 Les éléments particuliers\n\nIls constituent la substance du site. Leurs valeurs\nspécifiques sont reconnues. Ils sont aussi évalués\npour leur apport à la valeur générale du site.\n\nles cours d'eau boisés et à découvert\nEE les cours d'eau urbains et domestiqués\n\n= les cours d'eau recouverts ou canalisés\nae l'étang et biotope\n\n60% les sources\n\n2088 l'arborisation\n\nIN les particularités de la topographie\n\n3.44 Les vues qui permettent de\ndéfinir l'image de Lutry\n\nÀ ce titre, elles servent de référence et de point\nd'observation pour mesurer les interventions dans le\npaysage. Ces localisations ne sont qu'indicatives et\nla liste n'est pas exhaustive. Chacun possède ses\npropres repères et références dans le paysage.\n\nIX) les vues d'ensemble et aériennes\nBD les vues spécifiques\n\nVi les repères\n",
+      "text_sha256": "f4e440e1b3a245613730cd5d4531770e2fc5bba021d787fac38830662b9fc5c3",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "OCR destroys distinct asterisk/reference-scope marks; cannot reliably assign document/reference relation.",
+      "original_ocr_file": "../source-review/ocr/part-2-page-13.txt"
+    },
+    {
+      "page_number": 14,
+      "raw_ocr_text": "54\nCANTON DE VAUD - DISTRICT DE LAVAUX\n\nLE DOSSIER DIRECTEUR DE à LA COMMUNE DE LUTRY.\n\n+.\n\nCamping Portillon\nVERS « |\n\nBUREAU D'AMENAGEMENT DU TERRITOI\nJEXNDAREL URECH, ARCHITECTE EPFUSLVFAS, UABANSTE\nA. 6.8 En. CH 1603 Lausanne HAL 02 312 4 31, 021 920\nÀ Ghargés d'étude: dean-Damel Ure ch, Jean Claude No ss\n\nA En NN HE A LAN\n\n",
+      "text_sha256": "d1d52fe704bd3d7684ba45cacdd44fa068839ec7e7a12b7f8f2e267853bfcd58",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "ocr/part-2-page-14.txt"
+    },
+    {
+      "page_number": 15,
+      "raw_ocr_text": "56\n\n3.5 Les équipements collectifs\n\n3.51 Les équipements collectifs existants\n\nleur potentiel et perspective\n\nL'action des équipements collectifs agit en réseau, en complémentarité et en hiérarchie.\n\nLeur type de\ngroupement\n\npôle central\nd'équipements collectifs\nTerritoire concerné\n\nà\nÔ à él oca\nCe)\n\n2. pôle local potentiel\n\nlieu d'implantation d'un\n(o) équipement spécifique\n\nS potentiel point d'ancrage\nd'équipements collectifs\n\ntissu d'équipements\ndispersés\n\nsecteur d'équipements\n\nS < collectifs\n\n3.52 Démarches prospectives\n\nLeur nature\n\nd'attractivité multiple,\nd'offre différenciée en\nnature et en temps\n\nsi possible d'attractivité\nmultiple à fonctions\nmélangées\n\nsi posssible d'attractivié\nmultiple à fonctions\nmélangées\n\ndispersé sur le territoire,\nd'importance diverse et\nd'attractivité unique\n\ndispersé sur le territoire,\npotentiel d'importance et\nd'attractivités diverses\n\nlocalisation éclatée et\nd'attractivités diverses\n\nd'attractivités multiples et\npartielles\n\nLeur importance\n\nde rayonnement :\n\n- comunal\n\n- intercommunal\n\n- d'agglomération (Lausanne)\n- de quartier\n\nrayonnant sur :\n\n- une portion de\nterritoire\n\n- Un quartier\n\nrayonnant sur :\n\n- une portion de\nterritoire\n\n- un quartier\n\nrayonnant sur :\n\n- une portion de\nterritoire\n\n- un quartier\n\ncontribution ponctuelle à un\nenrichissement de la vie\ncommunautaire du territoire urbanisé.\n\nrayonnant sur :\n\n- une portion de\nterritoire\n\n- un quartier\n\nde rayonnement inégal, communal,\nsupra-communal ou de quartier dont\nla cohésion doit être organisée et\nconsolidées et dont les potentialités\nsont à mettre en valeur pour la vie\ncommunautaire\n\nPT Localisation générale de terrains aptes à être réservés pour des équipements collectifs.\n\n= Localisation générale de terrains remplissant les conditions de base pour implanter des équipements\n\ncollectifs de plein air\n",
+      "text_sha256": "64b5219f7e9834db62366bb79e276f6de26c5f2bbd86288d7ad1f9089ca7d92a",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "Symbol/table columns serialize without reliable row association.",
+      "original_ocr_file": "../source-review/ocr/part-2-page-15.txt"
+    },
+    {
+      "page_number": 16,
+      "raw_ocr_text": "56\nVAUD - DISTRICT DE LAVAUX\n\nLA COMMUNE DE LUTRY\n\nSi —\n\nCANTON DE\nLE DOSSIER DIRECTEUR DE\n\nTES 2.\n\nN\n\nÉ | &\n‘Adaplalion du Plan directeur des circulations établi par\nNT TRANSITEC. ingénieurs- conseils SA |}\n{| 17, Avenue des Boveresses\nCH 1010 Lausanne\n| 161.021 6525555 ax. 021 652 32 22 N\n\n0 Erning. CH 1009 Lautamne, UL 02 312 4 31 La. 621 320 65 6 |\nangés Gétude : Jean Daniel Ur ec, Jean-Claude À\n\n",
+      "text_sha256": "dad8ffb323f5a2c5c7d7ffa880d3dc0d647acaee7a7b1b6aeea530cd3cecef36",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "ocr/part-2-page-16.txt"
+    },
+    {
+      "page_number": 17,
+      "raw_ocr_text": "3.6 Les déplacements\n\n3.61\n3.61.1 La croissance de la population\n\nL'aperçu des données\n\nLe plan donne d'une part l'état de la population en\n1996 par secteur homogène d'occupation du sol, et\nd'autre part l'état estimé en l'an 2010.\n\nIlest à relever que:\n\ne La croissance relative de la population\ndevrait être inférieure à 25% (env. +1900\nhab.) entre 1996 et l'an 2010, soit une\ncroissance annuelle de 1,5% en légère\nbaisse par rapport à la période 1980 - 1996\n(+2,0% l'an).\n\ne Exception faite de la réalisation du PQ\nGustave Doret (env. 150 habitants), la\npopulation du Bourg devrait rester stable.\n\nL] Les secteurs qui possèdent le potentiel de\ncroissance le plus important sont les\nsecteurs situés à l'Ouest de la Lutrive,\nentre l'autoroute et la ligne CFF du\nSimplon.\n\ne L'autoroute, la ligne CFF du Simplon, la\nroute de Lavaux et la Lutrive constituent\ndes \"barrières\" relativement importantes\nqui séparent bien les bassins de\npopulation. Celle-ci est répartie comme\nsuit.\n\n3.61.2 Taux de motorisation et parc de\nvéhicules\n\nAlors que la population a connu de 1980 à 1996 une\ncroissance annuelle moyenne de 2,0%, le parc de\nvéhicules a, dans le même temps, augmenté en\nmoyenne de 3,3% par année (4,3% par an de 1980\nà 1990, puis seulement 1,6% de 1990 à 1996).\n\nLe taux de motorisation pour véhicules légers qui\nétait de 470 pour 1000 habitants en 1980, a passé à\n590 en 1990, soit une croissance annuelle moyenne\nde 2,3%, puis a légèrement régressé pour s'établir\nà 570 en 1996.\n\nRelevons que le taux de motorisation de Lutry reste\nnettement plus élevé que la moyenne cantonale\n(530 véhicules légers pour 1000 habitants en 1996).\n\nPOPULATION 1996:\n8100 HABITANTS (100%)\n\nRoute de Lavaux\n\nPROJECTION 2010:\n10000 HABITANTS (100%)\n\nAutoroute A9\n\nRoute de Lavaux\n\n",
+      "text_sha256": "0f20c960a685850937388bbf12c636d6873de2f080167b8620d340f1cbbfdbe1",
+      "include_in_search": true,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "searchable uncorrected prose; verify original image",
+      "original_ocr_file": "../source-review/ocr/part-2-page-17.txt"
+    },
+    {
+      "page_number": 18,
+      "raw_ocr_text": "3.61.3 L'évolution du trafic\n\nEntre 1985 et 1990\n\nL'analyse des statistiques du Service des routes\n(Recensements de la circulation - Trafic journalier\n\nCes résultats s'expliquent essentiellement par:\n\nmoyen - TJM 1985 et 1990 - réalisés dans le cadre  @ L'urbanisation des Hauts de Lutry.\nde l'étude du plan directeur des circulations 1992) a  .\npermis de constater que: e L'utilisation de plus en plus grande de\nl'autoroute.\ne Le nombre de véhicules empruntant les\ndemi-jonctions de Corsy et Belmont a\nfortement augmenté: +10% par an, Entre 1990 et 1995\n410,5% respectivement.\nUne analyse des dernières évolutions du trafic sur\ne Les plus fortes augmentations relatives de le réseau principal, entre 1990 et 1995, montre que:\ntrafic ont été constatées sur les Hauts de\nLutry: +6% par an (Rte du Bras-de-Fer) à e Les charges de trafic sont restées stables\n+9% par an (Rte des Monts-de-Lavaux). voire ont légèrement diminué sur la RC\nRelevons que la moyenne cantonale est 780a et sur la route de Savuit.\nd'environ +3,5% par an.\ne Le trafic a en revanche augmenté (+4%\ne La croissance du trafic Nord-Sud par an) sur la route de La Conversion (RC\n(ECRANS 1 et 2) est plus forte que celle 770b), sur la route de La Bernadaz (+3%\ndu trafic Est-Ouest (ECRANS 3 et 4), et par an) et sur la route des Monts-de-\nceci dans la partie supérieure (ECRAN 1) Lavaux (6% par an).\nen particulier.\ne Le trafic en relation avec l'autoroute\ne L'augmentation relative du trafic Est- continue à croître, mais plus faiblement\nOuest (ECRANS 3 et 4) est plus forte (+4% par an) qu'auparavant.\nvers Lausanne (+2,9% par an) que vers\nVevey (+1,8% par an).\nL'évolution du trafic entre 1985 et 1990\nAE\nÿ 1900] À|S [2500 Ha ta°\n35'350 3'850 2250 [SI |3'800 3400 16:200\n+2, 49% +34%/5] Le (63 +1,8%\nAie des Monts-de-Lavaux (RC 773c)\nRNA9 : DEMI. je\n; 5600 LONETOn Par\nZ [6150\n<h C8% + 1 , à\nœ Bretelle A9 Ë L\no À LS [4000 | pEm Ë Te <\nn < Eorex $ à\n+10% Le}\n5200 S fi =\n5200 |A ECRAN 2\n«à 5500 detr 7\nSd a (RC 70h) rare LTD\n\" 15% 5 43%] Potie Comiche\nWe (RC 7684)\n _Lavaux (RC 7808)\ner Légende: L\n1 [500] fi. 16000 12'800\n: 300 | | |P000 |11M 1980 Rat DE 1%\n+2, +5% | Variation annuelle\n\n",
+      "text_sha256": "e0fa90ef8546bd6957613e88672c0b56add3f2ae7e75e869b8e110c3fd0bd6b5",
+      "include_in_search": true,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "searchable uncorrected prose; verify original image",
+      "original_ocr_file": "ocr/part-2-page-18.txt"
+    },
+    {
+      "page_number": 19,
+      "raw_ocr_text": "59\n\n3.614 Le trafic actuel\nLutry possède deux axes à fort trafic:\n\ne La route de Lavaux (RC 780a), avec 13000\nà 24000 véhicules par jour qui est, à part\nl'autoroute, la route principale d'accès à\nLausanne depuis la Riviera.\n\ne La liaison Nord-Sud, route du Landar - La\nConversion (RC 770b), avec 8000 à 14000\nvéhicules par jour. Avec le développement\nde l'urbanisation, le trafic va encore croître\nces prochaines années mais plus\nfaiblement.\n\nD'autre part si le trafic total aux deux\ndemi-jonctions (env. 15000 véhicules par\njour) est encore relativement moyen, la\nforte croissance enregistrée ces dernières\nannées devrait se poursuivre mais avec un\ncertain fléchissement.\n\nSur le reste du réseau, on remarque des problèmes\nde nuisances, de sécurité ou de confort sur certains\ntronçons plutôt que de fluidité:\n\ne La liaison Nord-Sud route de La Croix -\nroute de Savuit - route de Crochet qui\ntraverse le hameau de Savuit et la partie\nNord du Bourg de Lutry (Nord du\nVoisinand) où les nuisances sont\nfortement ressenties et la sécurité du trafic\nprécaire.\n\ne Le carrefour de La Croix-sur-Lutry n'est\npas satisfaisant au niveau de la sécurité\nprincipalement.\n\n3.61.5 Les routes\n\nA côté des nombreuses routes cantonales (6 RC),\nLutry possède un important réseau de routes\ncollectrices et de dessertes qui sont pour la plupart\nd'anciennes routes d'exploitation viticole, agricole ou\nforestière, dont une partie, malgré leur changement\nde fonction (desserte de zone d'habitat), a gardé les\ncaractéristiques de ce type de routes: étroites,\nbordées de murs de vigne et très pentues.\n\nPeu de routes traversent La Lutrive qui constitue\nune barrière topographique d'importance: la route de\nLavaux (RC 780a) la rue du Voisinand (à env. 50m.\nau Nord de la RC 780a) et la route des Monts-de-\nLavaux (RC 773e, env. 1800m. au Nord de la\ndernière. L'A9 et la Bretelle la traversent aussi.\n",
+      "text_sha256": "ce5b03a1fc3e4a37ebd500c03dba56ac0c74fb70d41dd71748064c121950cf19",
+      "include_in_search": true,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "searchable uncorrected prose; verify original image",
+      "original_ocr_file": "ocr/part-2-page-19.txt"
+    },
+    {
+      "page_number": 20,
+      "raw_ocr_text": "3.61.6 Analyse de la structure\n\nLa structure du trafic peut être évaluée comme suit\nétat 1990):\n\nCORDON COMMUNAL DE LUTRY\n\nTOTAL AU CORDON:\nENV. 58000 VEHICULES\nPAR JOUR\n\n(17000 + 8000)\n\nTOTAL ORIGINE/DESTINATION\n21000 VEHICULES PAR JOUR\n(16000 + 5000)\n\nTOTAL TRANSIT\n25000 VEHICULES PAR JOUR\n\nLu\n\nTRAFIC. | TRAFIC\nORIGINE/DESTINATION DE TRANSIT\nDE LUTRY SANS AUTOROUTE PAR LUTRY\n\nL'analyse de la structure du trafic 1990 révèle que:\n\n25000 déplacements de véhicules ont lieu\njournellement en transit par la Commune\nde Lutry, dont 8000 qui utilisent les\njonctions autoroutières.\n\nLutry génère quelque 21000 déplacements\nde véhicules en échange avec l'extérieur\nde la Commune, dont 5000 par le réseau\nautoroutier.\n\nLes parts respectives des déplacements\nliés à l'extérieur de la Commune (donc sauf\ninternes à la Commune) sont ainsi de 55%\nen transit et 45% en origine ou destination\nLutry.\n\nAu cordon communal (58000 véhicules par\njour), la part du trafic de transit est de 74%\n(8000 véhicules en relation avec l'autoroute\net deux fois 17000 véhicules par jour sur le\nréseau cantonal).\n\nLa Commune de Lutry, avec 21000\nvéhicules par jour en Origine/\nDestination Lutry (1990), génère pres de\n3 déplacements quotidiens par habitant\nen échange avec l'extérieur de la\nCommune.\n\nIl faut relever que l'achèvement de la\nbretelle de Corsy permettrait de diminuer\nde quelque 30 à 40% le transit total (env.\n25000 véhicules par jour) actuellement très\nélevé à Lutry.\n\nSur la base de l'analyse des dernières\névolutions du trafic entre 1990 et 1995,\non constate que le trafic de transit n'a\npas évolué mais que le trafic\nOrigine/Destination Lutry continue sa\ncroissance liée essentiellement au\ndéveloppement de la population,\n",
+      "text_sha256": "1c06611b8d2d8ee0a63ecfd8d4deed69da88e437c0a7322dce23e672d1476711",
+      "include_in_search": true,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "searchable uncorrected prose; verify original image",
+      "original_ocr_file": "ocr/part-2-page-20.txt"
+    },
+    {
+      "page_number": 21,
+      "raw_ocr_text": "61\n",
+      "text_sha256": "2a62cf402cd3396aa00f55f892f4545f308f74d01c8caa0f2837b1982f821595",
+      "include_in_search": false,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "selection_reason": "withheld blank, map, diagram or table; raw OCR retained only",
+      "original_ocr_file": "ocr/part-2-page-21.txt"
+    }
+  ]
+}
