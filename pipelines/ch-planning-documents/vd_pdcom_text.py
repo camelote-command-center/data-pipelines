@@ -125,6 +125,11 @@ def assemble(review, pages, byte_count):
             'source_id': uid(source_kind(review)+':VD:'+review['vd_document_id']),
             'version_id': uid('version:'+url+':'+sha), 'document_id': doc, 'metadata': metadata}
 
+def page_extraction_report(bundle):
+    if bundle['review'].get('text_extraction'):
+        return {'withheld_ocr_pages':[p['page_number'] for p in bundle['pages'] if p['status']=='ocr_withheld']}
+    return {'empty_native_text_pages':[p['page_number'] for p in bundle['pages'] if not p['text'].strip()]}
+
 def checked_insert(c, schema, table, row, key='id'):
     cols = list(row)
     values = [Json(row[k]) if isinstance(row[k], (dict, list)) and k not in ('accessible_to_products',) else row[k] for k in cols]
@@ -173,7 +178,7 @@ def persist(conn, bundle, operation_id, pdf_path):
         require(c.fetchone()[0] == len(b['chunks']), 'unexpected_extra_chunks')
         c.execute('ALTER TABLE knowledge_ch.chunks ENABLE TRIGGER classify_on_insert')
         c.execute('ALTER TABLE knowledge_ch.documents ENABLE TRIGGER classify_on_insert')
-    return {'documents_new':1-documents_before,'chunks_new':len(b['chunks'])-chunks_before,'document_id':b['document_id'],'version_id':b['version_id'],'physical_pages':len(b['pages']),'searchable_chunks':len(b['chunks']),'empty_native_text_pages':[p['page_number'] for p in b['pages'] if not p['text'].strip()],'spatial_increment':0,'national_complete':False}
+    return {'documents_new':1-documents_before,'chunks_new':len(b['chunks'])-chunks_before,'document_id':b['document_id'],'version_id':b['version_id'],'physical_pages':len(b['pages']),'searchable_chunks':len(b['chunks']),**page_extraction_report(b),'spatial_increment':0,'national_complete':False}
 
 def finish_run(conn, operation_id, report):
     """Complete this bounded operation without overwriting an earlier receipt."""

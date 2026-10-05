@@ -66,3 +66,9 @@ class ReviewedOCRTests(unittest.TestCase):
   for field in ('signed_approval','reservations'):
    r=copy.deepcopy(self.b['review']);ref=r[field] if field=='signed_approval' else r[field][0];ref['evidence_source_sha256']='0'*64
    with self.assertRaisesRegex(ValueError,'ocr_cross_document_evidence'):m.validate_review(r)
+
+ def test_receipt_distinguishes_held_ocr_from_empty_native_text(self):
+  result=m.page_extraction_report(self.b)
+  self.assertEqual(result,{'withheld_ocr_pages':[4,6,8,9,10,11,12,13,14,15,16,21]})
+  native={'review':{},'pages':[{'page_number':1,'text':'native'},{'page_number':2,'text':''}]}
+  self.assertEqual(m.page_extraction_report(native),{'empty_native_text_pages':[2]})
