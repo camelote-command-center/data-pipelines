@@ -41,6 +41,9 @@ def require(ok, reason):
 
 def validate_review(r):
     uuid.UUID(r['vd_document_id'])
+    if r.get('native_page_selection'):
+        from selected_native import validate_review as validate_selection
+        validate_selection(r)
     if r.get('text_extraction'):
         from reviewed_ocr import validate_review as validate_ocr_review
         validate_ocr_review(r)
@@ -80,6 +83,9 @@ def build_bundle(pdf_path, review):
         if review.get('text_extraction', {}).get('mode')=='reviewed_ocr':
             from reviewed_ocr import load_pages
             return assemble(review, load_pages(pdf, review), path.stat().st_size)
+        if review.get('native_page_selection'):
+            from selected_native import load_pages
+            return assemble(review, load_pages(pdf, review), path.stat().st_size)
         for i, page in enumerate(pdf):
             text = page.get_text('text')
             status = 'native_text_extracted' if text.strip() else ('not_extracted_image_page' if page.get_images() else 'no_native_text')
@@ -90,7 +96,10 @@ def build_bundle(pdf_path, review):
 def assemble(review, pages, byte_count):
     validate_review(review)
     require([p['page_number'] for p in pages] == list(range(1, review['page_count']+1)), 'physical_pages_incomplete_or_reordered')
-    require(all(isinstance(p['text'], str) and p['status'] in (('reviewed_ocr_search_text','ocr_withheld') if review.get('text_extraction') else ('native_text_extracted', 'not_extracted_image_page', 'no_native_text')) for p in pages), 'page_status_required')
+    require(all(isinstance(p['text'], str) and p['status'] in (('reviewed_ocr_search_text','ocr_withheld') if review.get('text_extraction') else (('native_text_extracted','native_text_withheld') if review.get('native_page_selection') else ('native_text_extracted', 'not_extracted_image_page', 'no_native_text'))) for p in pages), 'page_status_required')
+    if review.get('native_page_selection'):
+        from selected_native import validate_pages
+        validate_pages(review,pages)
     url, sha = review['source_url'], review['source_sha256']
     doc = uid('knowledge:'+url+':'+sha)
     provenance = {'parser': source_kind(review), 'vd_document_id': review['vd_document_id'], 'content_hash': sha,
@@ -101,6 +110,8 @@ def assemble(review, pages, byte_count):
     if review.get('text_extraction'):
         from reviewed_ocr import FIELDS
         provenance.update({k:review[k] for k in FIELDS + ('text_extraction',)})
+    if review.get('native_page_selection'):
+        provenance['native_page_selection']=review['native_page_selection']
     if review.get('scope')=='intercommunal':
         provenance.update({k:review[k] for k in ('scope','member_communes','historical_vintage','approval_status_as_source','currentness_caveat','no_parcel_rights','no_geometry_qualification')})
     if review['source_role']=='approved_amendment':
@@ -115,17 +126,19 @@ def assemble(review, pages, byte_count):
                 i = len(chunks)
                 chunks.append({'id': uid(doc+':'+str(i)), 'document_id': doc, 'chunk_index': i, 'content': text,
                                'page_number': p['page_number'], 'metadata': dict(provenance, source_url=url,
-                               citation=url+'#page='+str(p['page_number']), extraction_status=p['status'], **({'ocr_provenance':p['ocr_provenance'],'ocr_artifact_sha256':p['ocr_artifact_sha256']} if review.get('text_extraction') else {}))})
+                               citation=url+'#page='+str(p['page_number']), extraction_status=p['status'], **({'native_selection_provenance':p['native_selection_provenance']} if review.get('native_page_selection') else {}), **({'ocr_provenance':p['ocr_provenance'],'ocr_artifact_sha256':p['ocr_artifact_sha256']} if review.get('text_extraction') else {}))})
     require(bool(chunks), 'no_searchable_text')
     metadata = dict(provenance, source_url=url, physical_page_count=len(pages),
                     page_manifest=[{k:v for k,v in p.items() if k != 'text'} for p in pages],
-                    extraction_status=('partial_reviewed_ocr' if review.get('text_extraction') else 'partial_native_text'), map_pages=review['map_pages'],
+                    extraction_status=('partial_reviewed_ocr' if review.get('text_extraction') else ('partial_selected_native_text' if review.get('native_page_selection') else 'partial_native_text')), map_pages=review['map_pages'],
                     full_visual_map_extraction=False)
     return {'review': review, 'pages': pages, 'byte_count': byte_count, 'chunks': chunks,
             'source_id': uid(source_kind(review)+':VD:'+review['vd_document_id']),
             'version_id': uid('version:'+url+':'+sha), 'document_id': doc, 'metadata': metadata}
 
 def page_extraction_report(bundle):
+    if bundle['review'].get('native_page_selection'):
+        return {'withheld_native_pages':[p['page_number'] for p in bundle['pages'] if p['status']=='native_text_withheld']}
     if bundle['review'].get('text_extraction'):
         return {'withheld_ocr_pages':[p['page_number'] for p in bundle['pages'] if p['status']=='ocr_withheld']}
     return {'empty_native_text_pages':[p['page_number'] for p in bundle['pages'] if not p['text'].strip()]}
@@ -197,6 +210,10 @@ def deliver(conn, document_id):
         c.execute('SELECT source,raw_metadata FROM knowledge_ch.documents WHERE id=%s', (document_id,))
         row=c.fetchone()
         require(row is not None and row[0] in (SOURCE,REGIONAL_SOURCE,OCR_SOURCE) and row[1].get('spatial_qualification') is False and row[1].get('all_prose_is_binding') is False, 'scoped_document_contract_required')
+        if row[1].get('native_page_selection'):
+            from selected_native import validate_delivery as validate_selection_delivery
+            c.execute('SELECT metadata FROM knowledge_ch.chunks WHERE document_id=%s', (document_id,))
+            validate_selection_delivery(row[1], [m[0] for m in c.fetchall()])
         if row[0]==OCR_SOURCE:
             require(row[1].get('text_extraction',{}).get('mode')=='reviewed_ocr', 'ocr_delivery_mode_required')
             from reviewed_ocr import validate_delivery as validate_ocr_delivery
