@@ -1,0 +1,14 @@
+{
+  "decision": "accepted_for_parent_controlled_private_rollback_rehearsal",
+  "module_sha256": "a384d867fb0722fb72f27dffcc0da1fbf9548ee0f0e67ca4827a931618d11780",
+  "batch_sha256": "510fabf0b391ca5e8a39930757e236727cbdb9f14190bda2410de87a2574df79",
+  "source_component_count": 2,
+  "parcel_links": 163,
+  "publication_status": "internal_review_only",
+  "source_precision_m": null,
+  "reserved_diagnostic_actual_source3_m": 0.6240366434443635,
+  "full_source_components_and_pairs_unchanged_from_independent_geometry_qa": true,
+  "metadata_corrections_verified": true,
+  "runtime_execution_performed": false,
+  "remaining": "Parent-controlled transactional rehearsal and scoped receiver fullrow readback; protected prior200collections7652links and0qualified/complete; apply postcommit readback."
+}

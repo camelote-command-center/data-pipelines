@@ -1,0 +1,153 @@
+{
+  "kind": "independent_semantic_candidate_contract",
+  "status": "candidate_only_not_geographic_qualification",
+  "review": "Full page renders and literal PDF text inspected for all four maps; native candidate commands inspected for maps 3 and 4.",
+  "source7_hold_applies_to_this_batch": false,
+  "common_caveat": "Ce plan définit de manière indicative la vocation des territoires et les contraintes d’aménagement à respecter. Ce n’est pas un plan d’affectations. Il ne définit pas les droits de bâtir.",
+  "approval_date": "2008-04-02",
+  "plan_date": "2007-04-23",
+  "currentness": "Historical approved source dates verified within originals; current legal applicability not established.",
+  "source5_extra_caveat": "Les périmètres des différents inventaires figurent à titre indicatif ; seuls les plans originaux font foi.",
+  "candidate_contract": {
+    "literal_category": "Activités commerciales et centrales à renforcer",
+    "preferred_source": 3,
+    "crosscheck_source": 4,
+    "geometry_semantics": "Full original thematic polygon components, not visible-pixel fragments, parcel boundaries, current commercial-use observations, or building rights.",
+    "legend_status": "Single solid yellow swatch; no Existant/Projeté split in these equipment/deplacement legends.",
+    "deduplication": "Maps3 and4 depict overlapping geographic coverage; do not create duplicate equivalent collections without explicit source/coverage distinction.",
+    "source_component_preservation": "Preserve both complete source components and stable path identities. Do not clip, simplify, trim opacity or change tolerances.",
+    "remaining_gates": [
+      "Validate active native clip and graphics-state coverage for both paths.",
+      "Validate any occluding paint semantics without treating symbol overlays as new geometric holes.",
+      "Establish independent georeferencing identity and applicable existing accuracy gates.",
+      "Retain historical/currentness hold and private review status."
+    ]
+  },
+  "other_family_findings": {
+    "3_4": "Green existing vs patterned create/develop must remain separate; blue equipment polygons must not absorb cycle/pedestrian dots or public-building symbols; dashed archaeology boundary is a distinct interpretation.",
+    "5": "Inventory/reference overlays require literal identity and warning; coloured strokes/point labels/patterned polygons cannot be collapsed by colour.",
+    "6": "Explicit Existant/Projeté legend means same-colour category status requires native pattern interpretation; teal category also contains stripe paint and is not solid-only."
+  },
+  "sources": [
+    {
+      "map": 3,
+      "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/yvonand-maps3-6-audit/source-3.pdf",
+      "sha256": "99e1f03d89478b5815b7b0e9ef0d5c5511cbfd4e48d6ee038ad80ac86c8b0559",
+      "rotation": 90,
+      "page_count": 1,
+      "yellow_components": [
+        {
+          "path_index": 18,
+          "seqno": 19,
+          "type": "fs",
+          "fill": [
+            1.0,
+            1.0,
+            0.0
+          ],
+          "opacity": 1.0,
+          "even_odd": true,
+          "closePath_flag": false,
+          "explicit_closed_chain": true,
+          "all_line_items": true,
+          "item_count": 14,
+          "bbox_native": [
+            634.6199951171875,
+            853.3399658203125,
+            850.9199829101562,
+            1043.5399169921875
+          ]
+        },
+        {
+          "path_index": 65,
+          "seqno": 70,
+          "type": "fs",
+          "fill": [
+            1.0,
+            1.0,
+            0.0
+          ],
+          "opacity": 1.0,
+          "even_odd": true,
+          "closePath_flag": false,
+          "explicit_closed_chain": true,
+          "all_line_items": true,
+          "item_count": 18,
+          "bbox_native": [
+            642.0,
+            710.47998046875,
+            869.9400024414062,
+            853.3399658203125
+          ]
+        }
+      ]
+    },
+    {
+      "map": 4,
+      "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/yvonand-maps3-6-audit/source-4.pdf",
+      "sha256": "92966c0617b30c8ed0a7f97ec7e6b62a94c0f6bd744f928133e57a96925cb7d3",
+      "rotation": 90,
+      "page_count": 1,
+      "yellow_components": [
+        {
+          "path_index": 22,
+          "seqno": 25,
+          "type": "fs",
+          "fill": [
+            1.0,
+            1.0,
+            0.0
+          ],
+          "opacity": 1.0,
+          "even_odd": true,
+          "closePath_flag": false,
+          "explicit_closed_chain": true,
+          "all_line_items": true,
+          "item_count": 14,
+          "bbox_native": [
+            593.52001953125,
+            1193.47998046875,
+            701.8200073242188,
+            1288.4599609375
+          ]
+        },
+        {
+          "path_index": 69,
+          "seqno": 76,
+          "type": "fs",
+          "fill": [
+            1.0,
+            1.0,
+            0.0
+          ],
+          "opacity": 1.0,
+          "even_odd": true,
+          "closePath_flag": false,
+          "explicit_closed_chain": true,
+          "all_line_items": true,
+          "item_count": 18,
+          "bbox_native": [
+            597.239990234375,
+            1122.02001953125,
+            711.47998046875,
+            1193.47998046875
+          ]
+        }
+      ]
+    },
+    {
+      "map": 5,
+      "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/yvonand-maps3-6-audit/source-5.pdf",
+      "sha256": "fc9b35b51f8120f4445131e29b31b48c5b987fc3f32fab3cf1d9301aa9663d5c",
+      "rotation": 90,
+      "page_count": 1
+    },
+    {
+      "map": 6,
+      "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/yvonand-maps3-6-audit/source-6.pdf",
+      "sha256": "3ba6ec847c21dbb092c8093fb6d116b1130ce1577937671342bf0a9f983e212b",
+      "rotation": 90,
+      "page_count": 1
+    }
+  ]
+}

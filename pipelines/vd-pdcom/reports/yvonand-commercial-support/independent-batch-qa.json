@@ -1,0 +1,1658 @@
+{
+  "status": "geometry_reference_membership_pass_semantic_metadata_corrections_requested",
+  "source_batch_sha256": "01fa4d9f922783a04aea94eec1460ec3f66209102a2b70da90527665ea7c3076",
+  "reference_sha256": "6709f437cfa9127c7d492321e3b4f66b390b02cdec379b24a963b6f262812475",
+  "exact_source_component_count": 2,
+  "exact_transform_verified": true,
+  "whole_union_no_clip_no_subtraction": true,
+  "official_ref_count": 208,
+  "unique_positive_area_pairs": 163,
+  "all_reference_geometries_valid": true,
+  "all_reference_bfs": 5939,
+  "parcel_kind_counts": {
+    "parcelle privée": 142,
+    "DP communal": 20,
+    "DDP superficie": 1
+  },
+  "boundary_10m_heuristic_count": 76,
+  "ddp_count": 1,
+  "public_domain_context_count": 20,
+  "pair_details": [
+    {
+      "egrid": "CH344583866208",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.25951808699322215,
+      "overlap_m2": 217.70262535713258,
+      "reference_area_m2": 838.8726499930555,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH656383864535",
+      "official_kind": "DP communal",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999999,
+      "overlap_m2": 1469.9735350007604,
+      "reference_area_m2": 1469.9735350007606,
+      "context_only": true,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH852483914535",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.5832295134453404,
+      "overlap_m2": 2957.865605430141,
+      "reference_area_m2": 5071.529367498904,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH929878834561",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 776.7349150024859,
+      "reference_area_m2": 776.7349150024858,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH384283459252",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 109.74430502632464,
+      "reference_area_m2": 109.74430502632453,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH844583972239",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 746.2517805013752,
+      "reference_area_m2": 746.2517805013752,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH714541839779",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999999,
+      "overlap_m2": 30.525150000557908,
+      "reference_area_m2": 30.52515000055791,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH944583988338",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.3340206555584457,
+      "overlap_m2": 548.861431854692,
+      "reference_area_m2": 1643.196080006059,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH398397264506",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.8194540293652857,
+      "overlap_m2": 211.08819077580674,
+      "reference_area_m2": 257.5961350013822,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH869783455452",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 1222.348095499238,
+      "reference_area_m2": 1222.3480954992376,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH198390074597",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 153.98035500087738,
+      "reference_area_m2": 153.98035500087738,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH869683450333",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.8229251600316472,
+      "overlap_m2": 1881.8094813843254,
+      "reference_area_m2": 2286.732223999515,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH538397458140",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999998,
+      "overlap_m2": 1278.1237450004776,
+      "reference_area_m2": 1278.1237450004778,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH644583972903",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 49.32328500172885,
+      "reference_area_m2": 49.323285001728834,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH869883457801",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999997,
+      "overlap_m2": 155.35046500076965,
+      "reference_area_m2": 155.3504650007697,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH514581839778",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 1141.2509954943234,
+      "reference_area_m2": 1141.2509954943234,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH414541839784",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999994,
+      "overlap_m2": 816.7551532191583,
+      "reference_area_m2": 816.7551532191587,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH568683456354",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.9999999999999999,
+      "overlap_m2": 1463.7183504971672,
+      "reference_area_m2": 1463.7183504971674,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH456483864576",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.788085038194305,
+      "overlap_m2": 3975.58913637165,
+      "reference_area_m2": 5044.619481015265,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH498397414524",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.37989441005471847,
+      "overlap_m2": 755.1260988827993,
+      "reference_area_m2": 1987.7262705024639,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH569783458823",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 301.46115000057495,
+      "reference_area_m2": 301.4611500005749,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH338397454250",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 1014.0177055029301,
+      "reference_area_m2": 1014.01770550293,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH438394458894",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 638.4433600029304,
+      "reference_area_m2": 638.4433600029304,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH869183452450",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.7804738184091202,
+      "overlap_m2": 1529.5361235084226,
+      "reference_area_m2": 1959.7532773439532,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH869983458663",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 830.8661050057201,
+      "reference_area_m2": 830.8661050057195,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH814548839779",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 1109.0760599991293,
+      "reference_area_m2": 1109.076059999129,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH382683459791",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 1518.6957799954241,
+      "reference_area_m2": 1518.6957799954241,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH388383459707",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999999,
+      "overlap_m2": 360.3828005014534,
+      "reference_area_m2": 360.38280050145346,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH288083459725",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 791.1629599932536,
+      "reference_area_m2": 791.1629599932535,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH869783454363",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.9999999999999999,
+      "overlap_m2": 751.0306199990728,
+      "reference_area_m2": 751.0306199990729,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH974597048348",
+      "official_kind": "DP communal",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.03556342631101087,
+      "overlap_m2": 69.6364559467132,
+      "reference_area_m2": 1958.0918704999158,
+      "context_only": true,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH644583865510",
+      "official_kind": "DP communal",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.19654593642965754,
+      "overlap_m2": 230.68018094891232,
+      "reference_area_m2": 1173.6705685160334,
+      "context_only": true,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH486283458666",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.846843221849414,
+      "overlap_m2": 583.9316104203625,
+      "reference_area_m2": 689.5392149979297,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH686383458668",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.3029223952052983,
+      "overlap_m2": 248.64091483283204,
+      "reference_area_m2": 820.8073050007469,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH586483458675",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 1708.7181194972902,
+      "reference_area_m2": 1708.7181194972902,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH438386456493",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.7579568196108537,
+      "overlap_m2": 1149.7354534547956,
+      "reference_area_m2": 1516.887801135013,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH468683456487",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 833.2811499993956,
+      "reference_area_m2": 833.2811499993956,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH344583970829",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.17875045765404307,
+      "overlap_m2": 181.63201423864552,
+      "reference_area_m2": 1016.1205550040016,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH298397594538",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.04662656821954355,
+      "overlap_m2": 1863.6973114617601,
+      "reference_area_m2": 39970.715894990324,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH238397453096",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.24940339610375986,
+      "overlap_m2": 188.3795826452995,
+      "reference_area_m2": 755.3208400054325,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH809745488366",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 213.864045006257,
+      "reference_area_m2": 213.86404500625687,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH914524839173",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.21131503886313513,
+      "overlap_m2": 968.3909650846904,
+      "reference_area_m2": 4582.688341987337,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH369983458441",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 1120.95903499686,
+      "reference_area_m2": 1120.95903499686,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH951083974570",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 1218.6198300030221,
+      "reference_area_m2": 1218.6198300030221,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH369883458072",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999998,
+      "overlap_m2": 1341.1686249953377,
+      "reference_area_m2": 1341.168624995338,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH374597268389",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999998,
+      "overlap_m2": 585.8483599964368,
+      "reference_area_m2": 585.8483599964369,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH869783454066",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.002861334206094252,
+      "overlap_m2": 1.0093705952573861,
+      "reference_area_m2": 352.76221599964254,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH854083974570",
+      "official_kind": "DP communal",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.23037274991302265,
+      "overlap_m2": 560.0033868174966,
+      "reference_area_m2": 2430.857759995165,
+      "context_only": true,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH629786834521",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999997,
+      "overlap_m2": 1243.3562549971352,
+      "reference_area_m2": 1243.3562549971357,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH229730834579",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 290.03613000083095,
+      "reference_area_m2": 290.03613000083095,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH289783459751",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999997,
+      "overlap_m2": 677.3661807278615,
+      "reference_area_m2": 677.3661807278618,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH909745008379",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.41612858404876407,
+      "overlap_m2": 1172.8622034040848,
+      "reference_area_m2": 2818.509105989803,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH588483459709",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 1,
+      "overlap_m2": 1192.8362550010972,
+      "reference_area_m2": 1192.836255001097,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH538397450519",
+      "official_kind": "DP communal",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.9921014975738117,
+      "overlap_m2": 900.3256423165566,
+      "reference_area_m2": 907.4934817841789,
+      "context_only": true,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH544583978182",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 412.3236387076441,
+      "reference_area_m2": 412.3236387076441,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH429714834558",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999998,
+      "overlap_m2": 1223.1307650034607,
+      "reference_area_m2": 1223.130765003461,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH985483459704",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 743.2934249954823,
+      "reference_area_m2": 743.2934249954823,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH529781834503",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.26443233148540135,
+      "overlap_m2": 540.8788631406546,
+      "reference_area_m2": 2045.4339304969417,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH714565839757",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.31369453657987456,
+      "overlap_m2": 256.6605629587731,
+      "reference_area_m2": 818.1862704944522,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH669783459381",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.7729373008913799,
+      "overlap_m2": 598.6169330642321,
+      "reference_area_m2": 774.4702350033888,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH444583866469",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 1,
+      "overlap_m2": 737.6622186277942,
+      "reference_area_m2": 737.662218627794,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH429488834555",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999999,
+      "overlap_m2": 26.385495000756105,
+      "reference_area_m2": 26.38549500075611,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH529788834537",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 1,
+      "overlap_m2": 2872.6586249971447,
+      "reference_area_m2": 2872.6586249971438,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH429717834531",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.7864470338106903,
+      "overlap_m2": 854.8119743754797,
+      "reference_area_m2": 1086.9288555054122,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH788883459826",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.04077901051486035,
+      "overlap_m2": 122.97465453796761,
+      "reference_area_m2": 3015.6360584853865,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH198397824503",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 1345.7749550016867,
+      "reference_area_m2": 1345.7749550016865,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH338397458012",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 1432.5018249939046,
+      "reference_area_m2": 1432.5018249939046,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH981183450890",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 769.8557760003772,
+      "reference_area_m2": 769.8557760003771,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH109745828308",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 894.2954799994694,
+      "reference_area_m2": 894.2954799994694,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH698307544548",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.6072067957963121,
+      "overlap_m2": 483.8015908084693,
+      "reference_area_m2": 796.7657709989808,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH244583971061",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999998,
+      "overlap_m2": 1313.9393899964114,
+      "reference_area_m2": 1313.9393899964116,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH298397974521",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999999,
+      "overlap_m2": 870.8641199981301,
+      "reference_area_m2": 870.8641199981303,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH998397004574",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 1656.350625496546,
+      "reference_area_m2": 1656.350625496546,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH174598838374",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 1,
+      "overlap_m2": 663.4523999995521,
+      "reference_area_m2": 663.4523999995521,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH757183974543",
+      "official_kind": "DP communal",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.3725986354314647,
+      "overlap_m2": 987.7163112299685,
+      "reference_area_m2": 2650.8854765026313,
+      "context_only": true,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH356283864567",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.012296813943921368,
+      "overlap_m2": 323.40060646674874,
+      "reference_area_m2": 26299.54457647251,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH614563838623",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.005857389489505728,
+      "overlap_m2": 5.646384624337897,
+      "reference_area_m2": 963.9762960025326,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH574586648306",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.999999999999999,
+      "overlap_m2": 230.85120475632544,
+      "reference_area_m2": 230.85120475632567,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH409745418329",
+      "official_kind": "DP communal",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.30797624169073257,
+      "overlap_m2": 643.7511127486712,
+      "reference_area_m2": 2090.2622527458507,
+      "context_only": true,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH538397458833",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 674.6008149987318,
+      "reference_area_m2": 674.6008149987318,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH998391244556",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 1,
+      "overlap_m2": 1013.9956449993483,
+      "reference_area_m2": 1013.9956449993483,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH829748834504",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 1252.2751005018958,
+      "reference_area_m2": 1252.2751005018956,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH974591248342",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.6008628337264083,
+      "overlap_m2": 491.60258969947995,
+      "reference_area_m2": 818.1610878653913,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH574597298312",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 2227.2997250027042,
+      "reference_area_m2": 2227.2997250027042,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH669783454235",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 689.3545699989353,
+      "reference_area_m2": 689.3545699989353,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH309245428301",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 1,
+      "overlap_m2": 873.5353804969479,
+      "reference_area_m2": 873.5353804969479,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH814520839740",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 955.2940149986787,
+      "reference_area_m2": 955.2940149986787,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH251083974517",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 360.48006999818944,
+      "reference_area_m2": 360.4800699981894,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH514505839783",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 392.96749999961935,
+      "reference_area_m2": 392.96749999961935,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH598397124577",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.8743193084058827,
+      "overlap_m2": 827.9398913961146,
+      "reference_area_m2": 946.9536854969723,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH969783451062",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 590.0573299977026,
+      "reference_area_m2": 590.0573299977025,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH652983974547",
+      "official_kind": "DP communal",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 529.0910654966048,
+      "reference_area_m2": 529.0910654966045,
+      "context_only": true,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH159583984581",
+      "official_kind": "DP communal",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.3375890338263828,
+      "overlap_m2": 878.5158132053809,
+      "reference_area_m2": 2602.3233137874645,
+      "context_only": true,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH698397974579",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.18988020898580327,
+      "overlap_m2": 1154.1388583800017,
+      "reference_area_m2": 6078.2472514884,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH774597948340",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999999,
+      "overlap_m2": 764.9378684994812,
+      "reference_area_m2": 764.9378684994813,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH608645638395",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999999,
+      "overlap_m2": 800.8532699991263,
+      "reference_area_m2": 800.8532699991264,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH674586638372",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.07239389550281847,
+      "overlap_m2": 484.66433196594204,
+      "reference_area_m2": 6694.823211261963,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH269783454274",
+      "official_kind": "DP communal",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.21749581595984407,
+      "overlap_m2": 562.6908477092958,
+      "reference_area_m2": 2587.1341258959415,
+      "context_only": true,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH544583978875",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 667.1871849967491,
+      "reference_area_m2": 667.187184996749,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH982483459144",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.14220748791264487,
+      "overlap_m2": 140.5043016798544,
+      "reference_area_m2": 988.0232310000673,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH129883834594",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 1331.0170499958776,
+      "reference_area_m2": 1331.0170499958776,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH350883974537",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.00015568184074778619,
+      "overlap_m2": 0.2848026275819092,
+      "reference_area_m2": 1829.388875503511,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH269283454215",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.14549112449758542,
+      "overlap_m2": 416.6672234779097,
+      "reference_area_m2": 2863.866953511826,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH374592428386",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.3235474200047188,
+      "overlap_m2": 417.81996255224084,
+      "reference_area_m2": 1291.371640503723,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH798397414519",
+      "official_kind": "DP communal",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 1828.843651492984,
+      "reference_area_m2": 1828.8436514929826,
+      "context_only": true,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH854383974586",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999998,
+      "overlap_m2": 1814.3607089942566,
+      "reference_area_m2": 1814.360708994257,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH398397054569",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 315.7853049953887,
+      "reference_area_m2": 315.7853049953887,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH109845838375",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999999,
+      "overlap_m2": 403.5266095064317,
+      "reference_area_m2": 403.5266095064318,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH298397864554",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999997,
+      "overlap_m2": 675.8106200001247,
+      "reference_area_m2": 675.8106200001249,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH550883974566",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.49384827743216614,
+      "overlap_m2": 287.9458414456015,
+      "reference_area_m2": 583.0653960014128,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH398397834529",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 130.5791000026398,
+      "reference_area_m2": 130.5791000026398,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH381083459738",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 1,
+      "overlap_m2": 2905.7409994948425,
+      "reference_area_m2": 2905.7409994948425,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH409745178304",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 248.63476449515957,
+      "reference_area_m2": 248.63476449515954,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH188383459874",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.9995912578644395,
+      "overlap_m2": 394.7526319889683,
+      "reference_area_m2": 394.9140500011286,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH369783455131",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.43245968752533376,
+      "overlap_m2": 755.7709177617819,
+      "reference_area_m2": 1747.6100999992245,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH169783458070",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.5485236710712175,
+      "overlap_m2": 3246.108440912747,
+      "reference_area_m2": 5917.90037898162,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH474586628346",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.9999999999999999,
+      "overlap_m2": 820.7799249946569,
+      "reference_area_m2": 820.779924994657,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH638386456326",
+      "official_kind": "DP communal",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.9913330027943404,
+      "overlap_m2": 3253.873748185923,
+      "reference_area_m2": 3282.3216204988626,
+      "context_only": true,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH314542839712",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 2162.073365498505,
+      "reference_area_m2": 2162.0733654985047,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH169783456387",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 521.6089749978037,
+      "reference_area_m2": 521.6089749978037,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH814522839722",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.0690653318262397,
+      "overlap_m2": 50.57576896465916,
+      "reference_area_m2": 732.2888000002937,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH558883974540",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 1783.8807550043205,
+      "reference_area_m2": 1783.88075500432,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH914578839865",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 383.47064550387825,
+      "reference_area_m2": 383.47064550387825,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH754883974582",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 533.9829399980115,
+      "reference_area_m2": 533.9829399980115,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH909145248372",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 643.6181322905196,
+      "reference_area_m2": 643.6181322905195,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH469783452919",
+      "official_kind": "DP communal",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999997,
+      "overlap_m2": 594.7768050017339,
+      "reference_area_m2": 594.7768050017341,
+      "context_only": true,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH874597208334",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999999,
+      "overlap_m2": 801.4626355030889,
+      "reference_area_m2": 801.462635503089,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH774597438396",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.028049453881692568,
+      "overlap_m2": 50.55618043649378,
+      "reference_area_m2": 1802.3944654940678,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH598397544548",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.9663050001637573,
+      "overlap_m2": 1791.987511998924,
+      "reference_area_m2": 1854.4740135829168,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH709745418324",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.42682790124491277,
+      "overlap_m2": 927.5001103806292,
+      "reference_area_m2": 2173.0072183084208,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH169883458241",
+      "official_kind": "DP communal",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.702778253488106,
+      "overlap_m2": 688.2459942783664,
+      "reference_area_m2": 979.3217004971177,
+      "context_only": true,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH869783451096",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.9999999999999998,
+      "overlap_m2": 1200.3708569975795,
+      "reference_area_m2": 1200.3708569975797,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH144583978619",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 341.53700000030875,
+      "reference_area_m2": 341.5370000003087,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH614586839796",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999999,
+      "overlap_m2": 418.4693300008546,
+      "reference_area_m2": 418.46933000085465,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH489883450746",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.0005203287260121649,
+      "overlap_m2": 0.6005424364269565,
+      "reference_area_m2": 1154.1596809954256,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH638397458601",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 237.6906000011502,
+      "reference_area_m2": 237.69060000115016,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH529705834508",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 1,
+      "overlap_m2": 7705.318871511452,
+      "reference_area_m2": 7705.318871511449,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH609745868320",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999998,
+      "overlap_m2": 1115.324209688381,
+      "reference_area_m2": 1115.3242096883812,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH214530839757",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 2632.7881449982765,
+      "reference_area_m2": 2632.788144998276,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH269783451009",
+      "official_kind": "DP communal",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999997,
+      "overlap_m2": 1196.9574960103503,
+      "reference_area_m2": 1196.9574960103507,
+      "context_only": true,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH809845078365",
+      "official_kind": "DDP superficie",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 30.11595499957826,
+      "reference_area_m2": 30.11595499957826,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": true
+    },
+    {
+      "egrid": "CH509745128382",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 1,
+      "overlap_m2": 988.8218055059555,
+      "reference_area_m2": 988.8218055059555,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH558183974535",
+      "official_kind": "DP communal",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.9999999999999998,
+      "overlap_m2": 3429.8887917801035,
+      "reference_area_m2": 3429.8887917801044,
+      "context_only": true,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH198398834588",
+      "official_kind": "DP communal",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.8220938778725351,
+      "overlap_m2": 1318.4129642567675,
+      "reference_area_m2": 1603.7255595050012,
+      "context_only": true,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH358083984530",
+      "official_kind": "DP communal",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.62726082289368,
+      "overlap_m2": 347.4614507638206,
+      "reference_area_m2": 553.934564510041,
+      "context_only": true,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH428664834502",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.6606237445672862,
+      "overlap_m2": 554.9787315382142,
+      "reference_area_m2": 840.0829308697187,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH986183459412",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 1004.494325498152,
+      "reference_area_m2": 1004.494325498152,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH698397534517",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.8181578787057368,
+      "overlap_m2": 768.5009938608997,
+      "reference_area_m2": 939.306476002663,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH309745268311",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.4737120399350236,
+      "overlap_m2": 2957.461077952831,
+      "reference_area_m2": 6243.162150488068,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH714566839748",
+      "official_kind": "DP communal",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.47767068498874615,
+      "overlap_m2": 587.1882524519483,
+      "reference_area_m2": 1229.2742069063383,
+      "context_only": true,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH581783450864",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.0347380370451725,
+      "overlap_m2": 46.31288283689902,
+      "reference_area_m2": 1333.203795501596,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH709745878380",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 1314.0531949979156,
+      "reference_area_m2": 1314.0531949979154,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH569783458130",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999998,
+      "overlap_m2": 255.15680000138565,
+      "reference_area_m2": 255.1568000013857,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH288683459757",
+      "official_kind": "DP communal",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 2243.087616977574,
+      "reference_area_m2": 2243.0876169775734,
+      "context_only": true,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH509745058306",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999998,
+      "overlap_m2": 1043.5098345420781,
+      "reference_area_m2": 1043.5098345420784,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH574597848341",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 531.1309000032007,
+      "reference_area_m2": 531.1309000032007,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH209745868359",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 0.9999999999999999,
+      "overlap_m2": 6436.333631002408,
+      "reference_area_m2": 6436.333631002409,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH874597488347",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 399.24325999805217,
+      "reference_area_m2": 399.24325999805217,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH114583839801",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.6616339590842946,
+      "overlap_m2": 306.0586864143509,
+      "reference_area_m2": 462.58007499787044,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH974597548392",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 2006.682260008956,
+      "reference_area_m2": 2006.682260008956,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH884883459706",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 0.18156108102173352,
+      "overlap_m2": 79.00693533190744,
+      "reference_area_m2": 435.1534750029938,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH298397804572",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": false,
+      "overlap_fraction": 1,
+      "overlap_m2": 772.557675005645,
+      "reference_area_m2": 772.557675005645,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    },
+    {
+      "egrid": "CH344583988051",
+      "official_kind": "parcelle privée",
+      "boundary_review_required_10m_heuristic": true,
+      "overlap_fraction": 1,
+      "overlap_m2": 991.1360949951902,
+      "reference_area_m2": 991.13609499519,
+      "context_only": false,
+      "ddp_distinct_overlapping_right": false
+    }
+  ],
+  "semantic_corrections_requested": [
+    "Remove stale no-registration/no-intersections hold from geographic batch.",
+    "Label proposed1collection/163links separately from persisted0.",
+    "Explicit internal_review_only/review_required fields; nullsourceprecision."
+  ],
+  "limits": "10m is review heuristic, not measured uncertainty. DDP is distinct right, may overlap underlying land; public-domain objects remain context. No mutations or qualification."
+}

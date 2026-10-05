@@ -205,6 +205,8 @@ def persist(conn,source,sha,pages):
     persist_prangins_low_density_study(conn,doc_id,sha)
     from yvonand_existing_vocations import persist as persist_yvonand_existing_vocations
     persist_yvonand_existing_vocations(conn,doc_id,sha)
+    from yvonand_commercial_support import persist as persist_yvonand_commercial_support
+    persist_yvonand_commercial_support(conn,doc_id,sha)
     from orbe_sports_support import persist as persist_orbe_sports_support
     persist_orbe_sports_support(conn,doc_id,sha)
     from saint_legier_raster import persist as persist_saint_legier_raster

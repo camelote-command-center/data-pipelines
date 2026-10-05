@@ -1,0 +1,27 @@
+{
+  "boundary_sha256": "f7d1d9f3c1eda89bd9aff0f7ebaad124521f882a2279ba164c156bdd69a4ad37",
+  "freshness": "current registered database row; not a fresh upstream boundary download",
+  "bfs": 5939,
+  "boundary_valid": true,
+  "no_clipping_or_buffer": true,
+  "components": {
+    "18": {
+      "valid": true,
+      "whole_boundary_covers": true,
+      "outside_area_m2": 0.0,
+      "boundary_distance_m": 1268.6112340618804
+    },
+    "65": {
+      "valid": true,
+      "whole_boundary_covers": true,
+      "outside_area_m2": 0.0,
+      "boundary_distance_m": 1202.1390666879524
+    },
+    "union": {
+      "valid": true,
+      "whole_boundary_covers": true,
+      "outside_area_m2": 0.0,
+      "boundary_distance_m": 1202.1390666879524
+    }
+  }
+}
