@@ -1,6 +1,7 @@
 import copy,json,unittest
 from pathlib import Path
 from unittest.mock import MagicMock
+import _pipeline_path  # noqa: F401  (adds the pipeline dir to sys.path)
 import vd_pdcom_text as bridge
 import mixed_text
 import historical_former_commune as h

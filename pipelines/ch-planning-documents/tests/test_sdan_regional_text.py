@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 import unittest
 from unittest.mock import MagicMock
+import _pipeline_path  # noqa: F401  (adds the pipeline dir to sys.path)
 import vd_pdcom_text as m
 ROOT=Path(__file__).resolve().parents[1]
 class RegionalTests(unittest.TestCase):
