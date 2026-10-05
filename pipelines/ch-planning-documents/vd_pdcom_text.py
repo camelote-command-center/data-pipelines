@@ -1,4 +1,4 @@
-"""Scoped municipal PDCom text acquisition; no spatial or national-completion claims.
+"""Scoped municipal and historical regional planning text acquisition; no spatial or national-completion claims.
 
 Caller owns transactions. The national parser remains unchanged. This bridge
 uses its deterministic version IDs and existing registered knowledge routes.
@@ -12,6 +12,18 @@ from psycopg2 import sql
 from psycopg2.extras import Json
 
 SOURCE = 'vd_pdcom_municipal'
+REGIONAL_SOURCE = 'vd_sdan_regional'
+
+def source_kind(review):
+    return REGIONAL_SOURCE if review.get('scope') == 'intercommunal' else SOURCE
+
+def validate_regional_scope(r):
+    require(r.get("scope")=="intercommunal", "regional_scope_required")
+    members = r.get('member_communes', [])
+    require(isinstance(members, list) and len(members)>1 and all(type(v) is int for v in members) and members==sorted(set(members)), 'explicit_regional_members_required')
+    require(r.get('commune_bfs') is None, 'regional_source_has_no_single_municipal_scope')
+    require(r.get('historical_vintage') and r.get('currentness_caveat') and r.get('approval_status_as_source')=='approved', 'regional_historical_currentness_required')
+    require(r.get('no_parcel_rights') is True and r.get('no_geometry_qualification') is True, 'regional_no_rights_required')
 NS = uuid.uuid5(uuid.NAMESPACE_URL, 'pixxels:ch-planning-documents:v1')
 
 def uid(value):
@@ -34,7 +46,10 @@ def validate_review(r):
     if r['plan_status']=='approved_with_reservation':
         reservations=r.get('reservations')
         require(isinstance(reservations,list) and bool(reservations) and all(isinstance(v,dict) and bool(v.get('scope')) and isinstance(v.get('evidence_pdf_pages'),list) and bool(v['evidence_pdf_pages']) and all(isinstance(n,int) and 1<=n<=r['page_count'] for n in v['evidence_pdf_pages']) for v in reservations), 'explicit_reservation_scope_and_evidence_required')
-    require(r['canton'] == 'VD' and isinstance(r['commune_bfs'], int), 'explicit_vd_scope_required')
+    require(r.get('scope', 'municipal') in ('municipal', 'intercommunal'), 'unsupported_planning_scope')
+    if r.get('scope')=='intercommunal':
+        validate_regional_scope(r)
+    require(r['canton'] == 'VD' and (r.get('scope')=='intercommunal' or isinstance(r['commune_bfs'], int)), 'explicit_vd_scope_required')
     require(urlparse(r['source_url']).scheme == 'https' and urlparse(r['source_url']).hostname == r['official_host'], 'official_source_url_mismatch')
     require(r['signed_approval']['visually_verified'] is True and bool(r['signed_approval']['scope']), 'approval_scope_review_required')
     require(r['all_prose_is_binding'] is False and r['spatial_qualification'] is False, 'no_blanket_approval_or_geometry')
@@ -69,11 +84,13 @@ def assemble(review, pages, byte_count):
     require(all(isinstance(p['text'], str) and p['status'] in ('native_text_extracted', 'not_extracted_image_page', 'no_native_text') for p in pages), 'page_status_required')
     url, sha = review['source_url'], review['source_sha256']
     doc = uid('knowledge:'+url+':'+sha)
-    provenance = {'parser': SOURCE, 'vd_document_id': review['vd_document_id'], 'content_hash': sha,
+    provenance = {'parser': source_kind(review), 'vd_document_id': review['vd_document_id'], 'content_hash': sha,
                   'commune_bfs': review['commune_bfs'], 'approval_scope': review['signed_approval'],
                   'all_prose_is_binding': False, 'diagnostic_vintage_limit': review['diagnostic_vintage_limit'],
                   'limits': review['limits'], 'spatial_qualification': False, 'commune_complete': False,
                   'source_role': review['source_role'], 'plan_status': review['plan_status'], 'review_sha256': digest(review)}
+    if review.get('scope')=='intercommunal':
+        provenance.update({k:review[k] for k in ('scope','member_communes','historical_vintage','approval_status_as_source','currentness_caveat','no_parcel_rights','no_geometry_qualification')})
     if review['source_role']=='approved_amendment':
         provenance['amendment_scope']=review['amendment_scope']
     if review['plan_status']=='approved_with_reservation':
@@ -93,7 +110,7 @@ def assemble(review, pages, byte_count):
                     extraction_status='partial_native_text', map_pages=review['map_pages'],
                     full_visual_map_extraction=False)
     return {'review': review, 'pages': pages, 'byte_count': byte_count, 'chunks': chunks,
-            'source_id': uid(SOURCE+':VD:'+review['vd_document_id']),
+            'source_id': uid(source_kind(review)+':VD:'+review['vd_document_id']),
             'version_id': uid('version:'+url+':'+sha), 'document_id': doc, 'metadata': metadata}
 
 def checked_insert(c, schema, table, row, key='id'):
@@ -115,14 +132,18 @@ def persist(conn, bundle, operation_id, pdf_path):
         c.execute("SET LOCAL statement_timeout='90s'")
         c.execute('SELECT sha256,plan_status,page_count,source_url FROM bronze_ch.vd_pdcom_documents WHERE id=%s FOR SHARE', (r['vd_document_id'],))
         require(c.fetchone() == (r['source_sha256'], r['plan_status'], r['page_count'], r['source_url']), 'registered_source_changed')
-        c.execute('SELECT 1 FROM bronze_ch.vd_pdcom_document_communes WHERE document_id=%s AND commune_bfs=%s', (r['vd_document_id'],r['commune_bfs']))
-        require(c.fetchone() is not None, 'registered_commune_scope_missing')
+        if r.get('scope')=='intercommunal':
+            c.execute('SELECT commune_bfs FROM bronze_ch.vd_pdcom_document_communes WHERE document_id=%s ORDER BY commune_bfs', (r['vd_document_id'],))
+            require([v[0] for v in c.fetchall()]==r['member_communes'], 'registered_regional_members_changed')
+        else:
+            c.execute('SELECT 1 FROM bronze_ch.vd_pdcom_document_communes WHERE document_id=%s AND commune_bfs=%s', (r['vd_document_id'],r['commune_bfs']))
+            require(c.fetchone() is not None, 'registered_commune_scope_missing')
         c.execute('SELECT id FROM knowledge_ch.documents WHERE original_url=%s AND is_active AND id<>%s', (r['source_url'], b['document_id']))
         require(not c.fetchall(), 'active_prior_version_requires_explicit_reviewed_supersession')
         c.execute('SELECT count(*) FROM knowledge_ch.documents WHERE id=%s',(b['document_id'],));documents_before=c.fetchone()[0]
         c.execute('SELECT count(*) FROM knowledge_ch.chunks WHERE document_id=%s',(b['document_id'],));chunks_before=c.fetchone()[0]
-        checked_insert(c,'bronze_ch','planning_document_runs',{'id':str(operation_id),'scope':{'kind':'scoped_municipal_pdcom_text','document_id':r['vd_document_id']}})
-        checked_insert(c,'bronze_ch','planning_document_sources',{'id':b['source_id'],'source':SOURCE,'canton_code':'VD','source_key':r['vd_document_id'],'title':r['title'],'document_url':r['source_url'],'commune_bfs':r['commune_bfs'],'language':'fr','legal_status':r['plan_status'],'document_type':'municipal_pdcom','source_metadata':r,'catalog_hash':digest(r),'current_version_id':b['version_id'],'extraction_status':'partial_native_text'})
+        checked_insert(c,'bronze_ch','planning_document_runs',{'id':str(operation_id),'scope':{'kind':('scoped_historical_regional_text' if source_kind(r)==REGIONAL_SOURCE else 'scoped_municipal_pdcom_text'),'document_id':r['vd_document_id']}})
+        checked_insert(c,'bronze_ch','planning_document_sources',{'id':b['source_id'],'source':source_kind(r),'canton_code':'VD','source_key':r['vd_document_id'],'title':r['title'],'document_url':r['source_url'],'commune_bfs':r['commune_bfs'],'language':'fr','legal_status':r['plan_status'],'document_type':('regional_sdan' if source_kind(r)==REGIONAL_SOURCE else 'municipal_pdcom'),'source_metadata':r,'catalog_hash':digest(r),'current_version_id':b['version_id'],'extraction_status':'partial_native_text'})
         checked_insert(c,'bronze_ch','planning_document_versions',{'id':b['version_id'],'source_id':b['source_id'],'content_hash':r['source_sha256'],'final_url':r['source_url'],'content_type':'application/pdf','byte_count':b['byte_count'],'pages':b['pages'],'extraction_status':'partial_native_text','knowledge_document_id':b['document_id']})
         # Only the expensive classifier is suspended; taxonomy remains enabled.
         # Transaction rollback restores trigger state if any assertion fails.
@@ -130,7 +151,7 @@ def persist(conn, bundle, operation_id, pdf_path):
         require(c.fetchall() == [('knowledge_ch.chunks','O'),('knowledge_ch.documents','O')], 'classifier_trigger_state_unexpected')
         c.execute('ALTER TABLE knowledge_ch.documents DISABLE TRIGGER classify_on_insert')
         c.execute('ALTER TABLE knowledge_ch.chunks DISABLE TRIGGER classify_on_insert')
-        checked_insert(c,'knowledge_ch','documents',{'id':b['document_id'],'title':r['title'],'source':SOURCE,'original_url':r['source_url'],'document_type':'planning_document','publisher':r['publisher'],'language':'fr','country':'CH','canton_code':'VD','ingestion_status':'completed','chunk_count':len(b['chunks']),'is_active':True,'raw_metadata':b['metadata'],'domain':'real_estate','accessible_to_products':['lamap','lbi']})
+        checked_insert(c,'knowledge_ch','documents',{'id':b['document_id'],'title':r['title'],'source':source_kind(r),'original_url':r['source_url'],'document_type':'planning_document','publisher':r['publisher'],'language':'fr','country':'CH','canton_code':'VD','ingestion_status':'completed','chunk_count':len(b['chunks']),'is_active':True,'raw_metadata':b['metadata'],'domain':'real_estate','accessible_to_products':['lamap','lbi']})
         for chunk in b['chunks']:
             checked_insert(c,'knowledge_ch','chunks',dict(chunk,domain='real_estate',accessible_to_products=['lamap','lbi']))
         c.execute('SELECT count(*) FROM knowledge_ch.chunks WHERE document_id=%s',(b['document_id'],))
@@ -155,7 +176,15 @@ def deliver(conn, document_id):
         c.execute("SET LOCAL statement_timeout='120s'")
         c.execute('SELECT source,raw_metadata FROM knowledge_ch.documents WHERE id=%s', (document_id,))
         row=c.fetchone()
-        require(row is not None and row[0]==SOURCE and row[1].get('spatial_qualification') is False and row[1].get('all_prose_is_binding') is False, 'scoped_document_contract_required')
+        require(row is not None and row[0] in (SOURCE,REGIONAL_SOURCE) and row[1].get('spatial_qualification') is False and row[1].get('all_prose_is_binding') is False, 'scoped_document_contract_required')
+        if row[0]==REGIONAL_SOURCE:
+            validate_regional_scope(row[1])
+            c.execute('SELECT metadata FROM knowledge_ch.chunks WHERE document_id=%s', (document_id,))
+            metadata=c.fetchall()
+            require(bool(metadata), 'regional_chunks_required')
+            for (m,) in metadata:
+                validate_regional_scope(m)
+                require(all(m.get(k)==row[1].get(k) for k in ('scope','member_communes','historical_vintage','approval_status_as_source','currentness_caveat','no_parcel_rights','no_geometry_qualification')), 'regional_chunk_scope_mismatch')
         for src,dst,key in [('v_documents_sync','knowledge_documents','id'),('v_chunks_sync','knowledge_chunks','document_id')]:
             c.execute("SELECT source_schema,source_view,foreign_schema,target_server,target_db,is_active FROM gold_ch.lia_sync_manifest WHERE target_table=%s",(dst,))
             require(c.fetchall() == [('knowledge_ch',src,'lamap_db_foreign','lamap_db_server','lamap_db',True)], 'registered_delivery_route_changed')
@@ -182,10 +211,10 @@ def monitor(conn, operation_id, phase, report):
         rows=c.fetchall();require(len(rows)==1,'text_dataset_registration_missing')
         dataset=str(rows[0][0]);before=rows[0][1:]
         if phase=='running':
-            c.execute("INSERT INTO public.acquisition_logs(id,dataset_id,status,triggered_by,notes) VALUES(%s,%s,'running','manual',%s) ON CONFLICT(id) DO NOTHING",(str(operation_id),dataset,'Scoped municipal PDCom approved-corpus bridge; not national completeness'))
+            c.execute("INSERT INTO public.acquisition_logs(id,dataset_id,status,triggered_by,notes) VALUES(%s,%s,'running','manual',%s) ON CONFLICT(id) DO NOTHING",(str(operation_id),dataset,'Scoped approved planning text bridge; not national completeness'))
             c.execute('SELECT dataset_id::text,status FROM public.acquisition_logs WHERE id=%s',(str(operation_id),));require(c.fetchone()==(dataset,'running'),'monitor_operation_conflict')
         else:
-            c.execute("UPDATE public.acquisition_logs SET status=%s,completed_at=now(),records_fetched=%s,records_new=%s,error_details=%s,error_message=%s WHERE id=%s AND dataset_id=%s AND status='running' RETURNING id",(phase,report.get('physical_pages',0),report.get('documents_new',0),Json(dict(report,national_complete=False)),None if phase=='partial' else 'Scoped municipal text bridge failed; inspect sanitized report',str(operation_id),dataset));require(c.fetchone() is not None,'monitor_completion_conflict')
+            c.execute("UPDATE public.acquisition_logs SET status=%s,completed_at=now(),records_fetched=%s,records_new=%s,error_details=%s,error_message=%s WHERE id=%s AND dataset_id=%s AND status='running' RETURNING id",(phase,report.get('physical_pages',0),report.get('documents_new',0),Json(dict(report,national_complete=False)),None if phase=='partial' else 'Scoped planning text bridge failed; inspect sanitized report',str(operation_id),dataset));require(c.fetchone() is not None,'monitor_completion_conflict')
         # Legacy acquisition-log trigger treats partial as national freshness.
         # Restore only its affected fields while holding the exact dataset row.
         setters=sql.SQL(',').join(sql.SQL('{}=%s').format(sql.Identifier(k)) for k in fields)
