@@ -214,6 +214,10 @@ def persist(conn, bundle, operation_id, pdf_path):
             require(c.fetchone()==(support['sha256'],support['plan_status'],support['page_count'],support['source_url']), 'supporting_document_changed')
         c.execute('SELECT id FROM knowledge_ch.documents WHERE original_url=%s AND is_active AND id<>%s', (r['source_url'], b['document_id']))
         require(not c.fetchall(), 'active_prior_version_requires_explicit_reviewed_supersession')
+        from historical_layout_recovery import SOURCE_IDS as historical_layout_ids, base_replay as historical_layout_replay
+        historical_layout_count = historical_layout_replay(c,b) if r['vd_document_id'] in historical_layout_ids else None
+        if historical_layout_count:
+            return {'documents_new':0,'chunks_new':0,'document_id':b['document_id'],'version_id':b['version_id'],'physical_pages':len(b['pages']),'searchable_chunks':historical_layout_count,'base_searchable_chunks':len(b['chunks']),**page_extraction_report(b),'spatial_increment':0,'national_complete':False,'layout_extension_preserved':True}
         from layout_recovery import SOURCE_IDS as layout_source_ids, base_replay as layout_base_replay
         layout_count = layout_base_replay(c,b) if r['vd_document_id'] in layout_source_ids else None
         if layout_count:
@@ -255,6 +259,10 @@ def deliver(conn, document_id):
         c.execute('SELECT source,raw_metadata FROM knowledge_ch.documents WHERE id=%s', (document_id,))
         row=c.fetchone()
         require(row is not None and row[0] in (SOURCE,REGIONAL_SOURCE,OCR_SOURCE,HISTORICAL_SOURCE,HISTORICAL_REFERENCE_SOURCE) and row[1].get('spatial_qualification') is False and row[1].get('all_prose_is_binding') is False, 'scoped_document_contract_required')
+        if row[1].get('historical_layout_recovery'):
+            require(row[0]==HISTORICAL_REFERENCE_SOURCE and row[1].get('historical_reference'),'historical_layout_source_kind_mismatch')
+            from historical_layout_recovery import deliver as deliver_historical_layout
+            return deliver_historical_layout(conn,document_id)
         if row[1].get('layout_recovery'):
             require(row[0]==HISTORICAL_REFERENCE_SOURCE and row[1].get('historical_reference'),'layout_source_kind_mismatch')
             from layout_recovery import deliver as deliver_layout
