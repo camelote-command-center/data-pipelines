@@ -1,0 +1,782 @@
+{
+  "decision": "selected_historical_raw_ocr_accepted_with_explicit_holds",
+  "review_method": "All53 initially selected original-page images independently inspected in7contact sheets and compared with raw OCR. Source bytes and102page raw OCR strings independently checked against cached original evidence. No new OCR, corrections, paragraph trimming or layout reconstruction.",
+  "sources": {
+    "bilan": {
+      "source_document_id": "ec1b494f-f6d2-5ed6-8fb6-00bc3f732d28",
+      "source_sha256": "1ae85ff3bef40dd3c9000292b2ff37c9fa640f436d297e65a04ce7d7c822f05c",
+      "physical_pages": 47,
+      "initial_selected_pages": [
+        4,
+        9,
+        10,
+        12,
+        16,
+        19,
+        20,
+        22,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        31,
+        32,
+        33,
+        34,
+        38,
+        39,
+        40
+      ],
+      "selected_pages": [
+        4,
+        9,
+        10,
+        16,
+        19,
+        20,
+        22,
+        27,
+        28,
+        29,
+        32,
+        33,
+        34,
+        38,
+        39
+      ],
+      "selected_count": 15,
+      "selected_raw_characters": 20839,
+      "prospective_2000_character_chunks": 15,
+      "new_holds": {
+        "12": "Three population/employment potential tables: raw flattened OCR does not preserve cells.",
+        "24": "Map-dominant cheminements page; incomplete map-label extraction.",
+        "25": "Transport diagram and multicolumn modal-share table; row/column associations unverified.",
+        "26": "Population/activity/employment comparison table; flattened cell associations unverified.",
+        "31": "Map-dominant regional objectives illustration; no geographic legend-to-shape inference.",
+        "40": "Three intermediate-zone capacity tables; flattened cells cannot be interpreted as reliable capacity."
+      },
+      "page_ledger": [
+        {
+          "physical_page": 1,
+          "include_in_search": false,
+          "raw_ocr_sha256": "4b113ad729734dfd10258bcd884d25acd5239e3a9772ac8a2e198a9d7953f312",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 2,
+          "include_in_search": false,
+          "raw_ocr_sha256": "6041d50517a793d4834223db241935c3bce9484666b45559386c0393cdea738c",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 3,
+          "include_in_search": false,
+          "raw_ocr_sha256": "a09bafa82f5f3869c6046c77d024b8d097bab2b8f197e196b53aae54e4d25c14",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 4,
+          "include_in_search": true,
+          "raw_ocr_sha256": "4ac35729ab9d3d9023f89356d582d4e895a5d2cc76c9efca1c1b09be2def4153",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 5,
+          "include_in_search": false,
+          "raw_ocr_sha256": "2956ea0a225c94f3171f85f53c13ed5bf958ddc30fe4cea04340efd432311c41",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 6,
+          "include_in_search": false,
+          "raw_ocr_sha256": "7789c22b70daf9b34df39f4a722eeb19b4f97ebaebe6302b8745ca76e9c3eb4b",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 7,
+          "include_in_search": false,
+          "raw_ocr_sha256": "e5669fc481a0bb9aed47f9e037c61e31337b79298cc4335f4ae563f4aff5cbfd",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 8,
+          "include_in_search": false,
+          "raw_ocr_sha256": "25edb40ce3d95175ef50611f7d016ee6127893b1caa7b18313f1fc94604e0026",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 9,
+          "include_in_search": true,
+          "raw_ocr_sha256": "07611cef48f1092d313b2c5b0a94af18a0695e732db1cdb62f7dc00f972a633e",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 10,
+          "include_in_search": true,
+          "raw_ocr_sha256": "4ed82832e072a357e3fc27545f083c2c3d4bd9212ae1c9933040cfbd2a194ad4",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 11,
+          "include_in_search": false,
+          "raw_ocr_sha256": "5363d9dcee2ec16c2278d4aac3d04629bd8ec029e22b79ed2a212bd74a125e09",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 12,
+          "include_in_search": false,
+          "raw_ocr_sha256": "54f02558962711d5640fea5062719c5c53545a79ad75662fb5d3c18b31503151",
+          "reason": "Three population/employment potential tables: raw flattened OCR does not preserve cells."
+        },
+        {
+          "physical_page": 13,
+          "include_in_search": false,
+          "raw_ocr_sha256": "c3e3c359866a926d08fd9a68d39853f14e5c778749c2f7f111ff6456a8fd6917",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 14,
+          "include_in_search": false,
+          "raw_ocr_sha256": "46b65591b5b5cb4f15a53458d0f1f015f2a03b314fb56c3882e411d525ad41b7",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 15,
+          "include_in_search": false,
+          "raw_ocr_sha256": "2632fe7899e93802f1086d1c5ad80dc340fb22cb25e98b0f1a39ebd1f2bbda7e",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 16,
+          "include_in_search": true,
+          "raw_ocr_sha256": "46dad3087858bf52e20ef5bc7ab397ac3564b1842dba955d57e448ae528f8370",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 17,
+          "include_in_search": false,
+          "raw_ocr_sha256": "0aa6a3f0978baa7c9ebc80471fcf40622983a4aeda3b7ddfc187b67295f56dce",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 18,
+          "include_in_search": false,
+          "raw_ocr_sha256": "593f7888db2e62e3152a9ab84d41609f22349674761f101a14b76b73e44bc778",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 19,
+          "include_in_search": true,
+          "raw_ocr_sha256": "a3a6f3a023c0f5a2faceb4c005e35bc02c2a1a2734b8ae598732781eace60511",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 20,
+          "include_in_search": true,
+          "raw_ocr_sha256": "7a24fda10228885954eb3d9a468882a0ec83e2e752cdeeb18b83a16b3f860c4c",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 21,
+          "include_in_search": false,
+          "raw_ocr_sha256": "55b9a3d06ffcc5833d7f033de765029a4feb875d1a70434563543fa839bc9a1d",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 22,
+          "include_in_search": true,
+          "raw_ocr_sha256": "18bf5d624bd58a1d8b4afcbc4af9e8af270f7c96c9bf32327842e315ec610b5e",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 23,
+          "include_in_search": false,
+          "raw_ocr_sha256": "d402985b8087371cde905a92b360bddb625f2907697cf4b57c58dc75ff23a158",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 24,
+          "include_in_search": false,
+          "raw_ocr_sha256": "96147134aafae73c269dc51bb0139c8f94328b225bc2c7862526826d53945580",
+          "reason": "Map-dominant cheminements page; incomplete map-label extraction."
+        },
+        {
+          "physical_page": 25,
+          "include_in_search": false,
+          "raw_ocr_sha256": "4f387c00d7269f497d24fc70021c0aa024e8cdc2ce5c00c273c634dc8122d74c",
+          "reason": "Transport diagram and multicolumn modal-share table; row/column associations unverified."
+        },
+        {
+          "physical_page": 26,
+          "include_in_search": false,
+          "raw_ocr_sha256": "3b8ce8f6d7ec68938a15ea3f200d8497cf462762cb3107aa12c0e406c7dc8339",
+          "reason": "Population/activity/employment comparison table; flattened cell associations unverified."
+        },
+        {
+          "physical_page": 27,
+          "include_in_search": true,
+          "raw_ocr_sha256": "292b1219dd6ea83a3554cf2baa229182e332b572dbde435cdb826d0dd737a143",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 28,
+          "include_in_search": true,
+          "raw_ocr_sha256": "5d65dd728de53d756d042465cd16d83a8a467e231584ade959a626508567c11d",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 29,
+          "include_in_search": true,
+          "raw_ocr_sha256": "5f28ca0231b9f95a2a50e47260739cd070e0bffd25852e53373124d52db798d6",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 30,
+          "include_in_search": false,
+          "raw_ocr_sha256": "7344cf2409c4b2f0c19e947fb87078981591dad3f5f2c0e99ea213b152c0e345",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 31,
+          "include_in_search": false,
+          "raw_ocr_sha256": "40e9a2f39d4edc330ffaa7943014d748c21c0b19c151b7746ea5c4a3f23428b1",
+          "reason": "Map-dominant regional objectives illustration; no geographic legend-to-shape inference."
+        },
+        {
+          "physical_page": 32,
+          "include_in_search": true,
+          "raw_ocr_sha256": "c147ff43d516f7f1764342f31c7b2764a79e1c236c76d53bb488c05c7b4bf9a7",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 33,
+          "include_in_search": true,
+          "raw_ocr_sha256": "27621f49466cac758d4f40f9cad3e5cac15d5b4d1ad48056c3d686d376d1909f",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 34,
+          "include_in_search": true,
+          "raw_ocr_sha256": "87c6a4f70508005b3ca280869c7c488f1b9db9e6ea9ba47587770f6d11343edf",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 35,
+          "include_in_search": false,
+          "raw_ocr_sha256": "1e013618a7695ca6349816c19ee394c3741bb67d9faa00e87d6fd1aa38bba06f",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 36,
+          "include_in_search": false,
+          "raw_ocr_sha256": "d9aadd35df860323cb45bf739445aa0aa31c4e1fa3f8dc10d51666e8041f6473",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 37,
+          "include_in_search": false,
+          "raw_ocr_sha256": "493c94d00328476d1008086a3a19a4a6ea6c2ec25c2a50d544b5c2b89e803b11",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 38,
+          "include_in_search": true,
+          "raw_ocr_sha256": "45ace4ba27739c6d4f6289e6b4cfea2f83a048c157cdde63e391351d7904c32c",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 39,
+          "include_in_search": true,
+          "raw_ocr_sha256": "aeecc86abd0dd4eb1253fc702c1a33af5a8673fc2fdbe9a4a8149706dbc6b2f7",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 40,
+          "include_in_search": false,
+          "raw_ocr_sha256": "3e02ad3d5c31d108b64ad25fc0c0efd82186dec2a0249c6aacdda818cf8f1d0d",
+          "reason": "Three intermediate-zone capacity tables; flattened cells cannot be interpreted as reliable capacity."
+        },
+        {
+          "physical_page": 41,
+          "include_in_search": false,
+          "raw_ocr_sha256": "9340de5b30b490d55d3704fcba5f335eb7e048d27b36b6a8e149bde9096d1e29",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 42,
+          "include_in_search": false,
+          "raw_ocr_sha256": "a9741bffd9244a6a5a420f4935549c6c5e504b48d322ab3480874a4761aa437e",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 43,
+          "include_in_search": false,
+          "raw_ocr_sha256": "4dadb0fcf039432ff382fc39a9129662d23c63f7769dadc22e445d52db4eede1",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 44,
+          "include_in_search": false,
+          "raw_ocr_sha256": "e52d67eb1c0eee3ad3ce8bb1eccd81231da5df19d16a9f4430f92253cc433148",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 45,
+          "include_in_search": false,
+          "raw_ocr_sha256": "8b603913298aedb6ab9eaa8a3fddb3276a8838a6f21c878a9564b1629cefd01d",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 46,
+          "include_in_search": false,
+          "raw_ocr_sha256": "ac01ee87042895a0f95f0ba8ea8b1883cd391d7772acde1062f6c10e5ac355c3",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 47,
+          "include_in_search": false,
+          "raw_ocr_sha256": "28a72469244999484d3a93262fcfe3b6ba2468798811190c35f6329647ae941f",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        }
+      ],
+      "candidate_file_sha256": "b3035a0ebd3014d27016cde776369baea9ca73ba0f015276cd280f7dfad4348a",
+      "original_ocr_file_sha256": "b434c5b378c947ccd16208606dce3c079dfd449d912a8303441348fe10559e6f",
+      "representation": "existing_uncorrected_research_ocr",
+      "confidence": null,
+      "confidence_status": "not_recorded"
+    },
+    "mesures": {
+      "source_document_id": "bbdb0fe7-3d42-56dd-9008-c30918c5bd57",
+      "source_sha256": "f5c9dc1bb73ceac29513a219f43a8ff381e72794a9c5557e4e3c1d46db297f9c",
+      "physical_pages": 55,
+      "initial_selected_pages": [
+        13,
+        14,
+        15,
+        18,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        31,
+        33,
+        35,
+        36,
+        38,
+        40,
+        41,
+        42,
+        43,
+        44,
+        46,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54
+      ],
+      "selected_pages": [
+        13,
+        14,
+        15,
+        18,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        28,
+        29,
+        31,
+        33,
+        35,
+        36,
+        40,
+        41,
+        42,
+        44,
+        46,
+        48,
+        49,
+        51,
+        52,
+        54
+      ],
+      "selected_count": 26,
+      "selected_raw_characters": 27532,
+      "prospective_2000_character_chunks": 26,
+      "new_holds": {
+        "20": "Diagram OCR includes garbled structural fragments mixed with text; whole page held without silent trimming.",
+        "27": "Demography/sites/equipment headings displaced ahead of associated prose and noisy diagram legend; associations unverified.",
+        "38": "11a/11b markers precede first subsection body out of visual sequence; additional noisy map OCR.",
+        "43": "13c marker displaced ahead of 13b body; cannot safely attribute measures by flattened order.",
+        "50": "15a/15b markers appear before first subsection body; subsection attribution unverified.",
+        "53": "Map-dominant regional transport diagram; incomplete geographic labels."
+      },
+      "page_ledger": [
+        {
+          "physical_page": 1,
+          "include_in_search": false,
+          "raw_ocr_sha256": "3ecef5bb327d10a0f5011ca6ab6066882fb58b3cf0bd0a475a0766700e3d04ca",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 2,
+          "include_in_search": false,
+          "raw_ocr_sha256": "6d4e81cbf691d2d2f9e23fbfca0833d0031428560fe4817bdb78e3fa9e374d29",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 3,
+          "include_in_search": false,
+          "raw_ocr_sha256": "061a8188ecbbd3092a9e0a58923b744dbae13558b9eeda9d5914f1d0eeadc661",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 4,
+          "include_in_search": false,
+          "raw_ocr_sha256": "cf81270f78f5592da57d895ca6a3315fe4bae301acc56a9c859b72b309a9d730",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 5,
+          "include_in_search": false,
+          "raw_ocr_sha256": "97ff85bc6c278457b66da32d5abaa37e28a6434b0231ef6d2d0db8f162a50fb1",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 6,
+          "include_in_search": false,
+          "raw_ocr_sha256": "c9750f7ddb33c88f1c363c974962c22c52637686d2e755bf20c282dad3a9efc7",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 7,
+          "include_in_search": false,
+          "raw_ocr_sha256": "9e4aa4440cd02ff14bdbe10d823396428ca91d7aa316bbceef3eaf0b878e353a",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 8,
+          "include_in_search": false,
+          "raw_ocr_sha256": "2105819fb4ccd13a40c4f69e3d05c07a4112a0adb8e6fa9b74b42b8555552187",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 9,
+          "include_in_search": false,
+          "raw_ocr_sha256": "bd80781b33362433a93eeb6cdf1047c1487e33e98f89c2d2a97e39d793d5197b",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 10,
+          "include_in_search": false,
+          "raw_ocr_sha256": "ffb5dd2ccee2d9d77e61a2498f2f825c458825e5e3f0346539afa7ebe89cb8c7",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 11,
+          "include_in_search": false,
+          "raw_ocr_sha256": "46d6522a1d3c82968a131e396c5f9d43e0414aae9f65ca8d64a8a546f6b24ee0",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 12,
+          "include_in_search": false,
+          "raw_ocr_sha256": "87eaff90ee73067ca4cb48299b6378c4c52ac85e5f4598abf5bee1a4c3755791",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 13,
+          "include_in_search": true,
+          "raw_ocr_sha256": "f6b4bf1a09471e0f8629d8364d5df32e9e4ab4ebf00a620c65ada461d401d684",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 14,
+          "include_in_search": true,
+          "raw_ocr_sha256": "ff249921f113136859bf7c9ca5b106bc190a282d8674716e102574ac5f7f7c02",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 15,
+          "include_in_search": true,
+          "raw_ocr_sha256": "6c0d73aa65b0b9b8b3483f17942c5b1736fc2b2f345ca21663bbdcf0a68057d3",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 16,
+          "include_in_search": false,
+          "raw_ocr_sha256": "8488d057d78c8e6daf77fad20564c8052f267f543845ad65614b65ecfd116a78",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 17,
+          "include_in_search": false,
+          "raw_ocr_sha256": "89e1ed5afa99168b9d72a56774fc8207fec3dbd89fd5581da610abd5b399a786",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 18,
+          "include_in_search": true,
+          "raw_ocr_sha256": "e107b4656ee28f89c88b14d760217d1e75a6aadad9ccef1151bad8ba596ce34b",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 19,
+          "include_in_search": false,
+          "raw_ocr_sha256": "98b6eea7e7af90d896c15eba9adf323f8e3cc9aee06f623161951b6a75d9e0bb",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 20,
+          "include_in_search": false,
+          "raw_ocr_sha256": "9765f99325f6f166e7f71157da96ada038b675c6be1234a9557f4dbf5c58881d",
+          "reason": "Diagram OCR includes garbled structural fragments mixed with text; whole page held without silent trimming."
+        },
+        {
+          "physical_page": 21,
+          "include_in_search": true,
+          "raw_ocr_sha256": "c811e14a5c38443cc309f74bb70eeb51e1d5cf46921cac519cb292ada3aa4f55",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 22,
+          "include_in_search": true,
+          "raw_ocr_sha256": "c0c66f1e339fa149d6bd780db18a5b1be1d8d01fe003f4b59ce45c0f5c98822c",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 23,
+          "include_in_search": true,
+          "raw_ocr_sha256": "36f491e70db0b583b76c2f63efc24fe730a83887f948c4f2aa5c818db6fd1834",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 24,
+          "include_in_search": true,
+          "raw_ocr_sha256": "a8d492d4545fa25d16b8a133fb434d31cb994b1d8858b5270dee300124575499",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 25,
+          "include_in_search": true,
+          "raw_ocr_sha256": "b01837fa5e6814e6c103babb4050ebaeb5a7cdb696dcb1769709ead41851abbc",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 26,
+          "include_in_search": true,
+          "raw_ocr_sha256": "f17b8f2b8125398eaa9000db78336f03bbe9e2c1d9945c5ad286ca1df65b44f1",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 27,
+          "include_in_search": false,
+          "raw_ocr_sha256": "1ea6a8515e0ad36ca0f3fbebf11a5c0352003ff0ff4146616e34c4b79c62ae2e",
+          "reason": "Demography/sites/equipment headings displaced ahead of associated prose and noisy diagram legend; associations unverified."
+        },
+        {
+          "physical_page": 28,
+          "include_in_search": true,
+          "raw_ocr_sha256": "d5a5db9c4cd43ae54801883d6157c6252515c682c6c0a55303ff5dce48874ed8",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 29,
+          "include_in_search": true,
+          "raw_ocr_sha256": "96fa26b206f68ab91c08d73c2cd7f95dab101ba5d7cab7d8b7ecfc2fff01d6ba",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 30,
+          "include_in_search": false,
+          "raw_ocr_sha256": "407f1f365a1e1c14a68e9cb41a1ee5757463f927cb4df5f7d56fada85b7bb525",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 31,
+          "include_in_search": true,
+          "raw_ocr_sha256": "7094287a3ae7a1fcea41f2841b6f6483e9dac95632ff3d04ea2b4cb2a05bdaa6",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 32,
+          "include_in_search": false,
+          "raw_ocr_sha256": "80614c1f5e83bff3bee3af565641873af048da188e490045960c3ac0d885e11c",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 33,
+          "include_in_search": true,
+          "raw_ocr_sha256": "dc631416cdedbb6046152126a9bbadbf1e722dd225f91a04aa16d3ca2d92f53b",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 34,
+          "include_in_search": false,
+          "raw_ocr_sha256": "23d8b2f89f4e04681c2cb93b279f83a99b3278a46762b30fc62164e30b5cbca3",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 35,
+          "include_in_search": true,
+          "raw_ocr_sha256": "ac57599df0738ce773567c50d9dd9e4823230f1248c8c626b853968230d4709f",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 36,
+          "include_in_search": true,
+          "raw_ocr_sha256": "a6577f6bc585dc06f0a8b0ef2bbb68889411cc34bb0c0a0c88c595fa5b859da4",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 37,
+          "include_in_search": false,
+          "raw_ocr_sha256": "3561e966ca90682c5b7c565755398923b593432e5ab89612a7a1fac999f0f052",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 38,
+          "include_in_search": false,
+          "raw_ocr_sha256": "145e999af2198124d2851da38de34d6cf58962edb15967d757685431abbf64c1",
+          "reason": "11a/11b markers precede first subsection body out of visual sequence; additional noisy map OCR."
+        },
+        {
+          "physical_page": 39,
+          "include_in_search": false,
+          "raw_ocr_sha256": "daf9c317f2b8a3de8d8240ed202dcfa9a062c6442256a9a0f91a47384573f4ad",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 40,
+          "include_in_search": true,
+          "raw_ocr_sha256": "fcbbdedffa1d8d107e4db5ecd93aa834d9b1e710e214cb12e43b3575210c7d87",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 41,
+          "include_in_search": true,
+          "raw_ocr_sha256": "d43ccc06965e7389b192902938da853870f12abacc9b3bd1e0d3afcfcb6db8af",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 42,
+          "include_in_search": true,
+          "raw_ocr_sha256": "a07563302cb98403df6163764dee0046bd960cb2c74389a5a5af673372dd7c55",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 43,
+          "include_in_search": false,
+          "raw_ocr_sha256": "fe3760b6f9b7267aff1eb1a7685389d5ed19357f1f94386a2d1f7d4ee3c17059",
+          "reason": "13c marker displaced ahead of 13b body; cannot safely attribute measures by flattened order."
+        },
+        {
+          "physical_page": 44,
+          "include_in_search": true,
+          "raw_ocr_sha256": "487878f100268c168afa6476520afca529d2a1d0bf227ba5e51edbcf25b6330f",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 45,
+          "include_in_search": false,
+          "raw_ocr_sha256": "d7c59c90dd3065bc0feea01024f994ac35a6f1663ca5de93ead4ad7cfaad341e",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 46,
+          "include_in_search": true,
+          "raw_ocr_sha256": "f79559335ae4384f4a680da1bd30cbb21fcc7faff8997d09eb463234ba145fd6",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 47,
+          "include_in_search": false,
+          "raw_ocr_sha256": "d99d76dc9cf84bc5527441c0f13d7e6d6a9e3fed5d87957ddb3db4e001654ce8",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        },
+        {
+          "physical_page": 48,
+          "include_in_search": true,
+          "raw_ocr_sha256": "79b12901bb73d0a296730edca1db0d540a0d7b9c67d93e096deaa8dd883820f9",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 49,
+          "include_in_search": true,
+          "raw_ocr_sha256": "d2f9cca0c4e976eb309854f12cea3bf6ccfce49adcf16d2b4e04a08c0a079a52",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 50,
+          "include_in_search": false,
+          "raw_ocr_sha256": "739d589b45fa1af0e35cbd3da35f00966cb765727bfd5a741f9b1d43048cdc30",
+          "reason": "15a/15b markers appear before first subsection body; subsection attribution unverified."
+        },
+        {
+          "physical_page": 51,
+          "include_in_search": true,
+          "raw_ocr_sha256": "c64b330312b9fb0a8a979b0b46c3e93e1b6a13815bdebcd87417d71b0e2b27cc",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 52,
+          "include_in_search": true,
+          "raw_ocr_sha256": "da26b0fe7ba4937d4e459a80a48ee7dbd6cc0f412ae88d3d7ddb47b0de9942fc",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 53,
+          "include_in_search": false,
+          "raw_ocr_sha256": "d85a31b48246f292daf7a21bc96062a66d795866d6ed83230b931977357bcef5",
+          "reason": "Map-dominant regional transport diagram; incomplete geographic labels."
+        },
+        {
+          "physical_page": 54,
+          "include_in_search": true,
+          "raw_ocr_sha256": "0f893288a871a38297073db9574dc7d9837964221e2c8243114b45974ad981af",
+          "reason": "Accepted historical raw prose with mandatory limits"
+        },
+        {
+          "physical_page": 55,
+          "include_in_search": false,
+          "raw_ocr_sha256": "beea1399b5cbe31acd4318fd94434f86ec53ce34264cfdbfda802bdffad38507",
+          "reason": "Withheld: source-status page, maps/illustrations, table/graph association, index, or unreviewed annex"
+        }
+      ],
+      "candidate_file_sha256": "3bd20b5ed8bbc5d25341299fa1481a08caee292cf2d097aad632b3848ac29115",
+      "original_ocr_file_sha256": "b434c5b378c947ccd16208606dce3c079dfd449d912a8303441348fe10559e6f",
+      "representation": "existing_uncorrected_research_ocr",
+      "confidence": null,
+      "confidence_status": "not_recorded"
+    }
+  },
+  "mandatory_limits": [
+    "Historical Gland July1997 source approved21January1998 only; publication/reference in current municipal FAQ does not establish present validity of every measure. Registry plan_status and5721 mapping remain unverified.",
+    "Existing French170dpi researchOCR is uncorrected; no recognition-confidence or certified page claim. Exact physical-page citations and original image remain authoritative.",
+    "Selected prose is a historical search aid, not normalized structured measures, zoning rights, present capacities, available land or permission to build.",
+    "Headings and objective/measure lists on accepted pages retain raw order; minor OCR glyph/unit errors remain. Do not turn OCR section numbers or quantitative prose into structured facts without checking images.",
+    "Mixed illustrated pages preserve only raw OCR text; figures/maps/legends/spatial relationships are not completely represented or qualified.",
+    "Bilan physical10 explicitly describes effective occupation rather than legal soil status. Bilan4 says measures are proposed means to implement objectives.",
+    "1990s population, infrastructure, traffic forecasts and land reserves are source-vintage descriptions, not current capacity. Terms actuel/aujourd’hui/en cours remain dated to source.",
+    "Mesures25 explicitly distinguishes realized and unused projects at source date. Mesures40 explicitly says some projects in1989illustration were already realized. These cannot be counted as new/current projects.",
+    "La Falaise density reference, Lignière surface/setback, GrandChamp77,913m2 and EnBord73,000/65,000m2 are historical conditional source statements, not current parcel rights or residual capacity.",
+    "No new geometry, parcel attribution, spatial qualification, commune completion or national completion."
+  ],
+  "approval_review": "Reuses parent accepted original signature review; no fresh approval inference",
+  "database_mutations": false,
+  "selected_page_count": 41,
+  "prospective_chunk_count": 41
+}

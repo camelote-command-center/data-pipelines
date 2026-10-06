@@ -1,4 +1,4 @@
-"""Exact Blonay/Puidoux historical text references; no registry status promotion.
+"""Exact Blonay/Puidoux/Gland historical text references; no registry status promotion.
 
 Both source identities, complete review contracts and frozen representations are
 pinned. This does not broaden the legacy Saint-Légier contract or approve plans.
@@ -11,6 +11,8 @@ SOURCE = 'vd_pdcom_historical_reference'
 ROOT = Path(__file__).parent / 'reports' / 'blonay-puidoux-historical-text'
 # Full contracts are pinned after independent source and page-selection review.
 PINS = {'2bcdca02-b3cb-5846-a712-3f538a524557': {'review_sha256': 'b456495fc3a28d898615f0f862d89a2a484ce9c8fad029bcc3c9a5b118566506', 'source_sha256': 'ce5224d0effbabac8c62751ac25d97b03e6ac6186307a2cdd9ec809249c837d9', 'page_count': 145, 'artifact': 'blonay-representations.json', 'tracking_bfs': 5892, 'selected_pages': [3, 4, 6, 8, 15, 17, 19, 21, 25, 37, 38, 39, 40, 41, 44, 52, 56, 57, 58, 59, 60, 61, 64, 65, 66, 67, 68, 97, 98], 'representation': 'embedded_pdf_text'}, '896b38ec-fef9-5f88-9ccd-345d17adf737': {'review_sha256': '7f98fd1a13e1f9b3107ba8c7d0c2f9af8325497541379b6b5dbb12d86ff64019', 'source_sha256': '8cd5586803b24104aa1afa42e22b229ca3460fcdc01248f22c69410949c6769e', 'page_count': 74, 'artifact': 'puidoux-representations.json', 'tracking_bfs': 5607, 'selected_pages': [4, 5, 6, 8, 9, 14, 16, 17, 18, 19, 23, 24, 25, 26, 27], 'representation': 'existing_uncorrected_research_ocr'}}
+
+PINS.update({'ec1b494f-f6d2-5ed6-8fb6-00bc3f732d28': {'review_sha256': 'b7b1103c33a04bd48fb7dc7802b209dd41825618b4597415618b4b9965ddd722', 'source_sha256': '1ae85ff3bef40dd3c9000292b2ff37c9fa640f436d297e65a04ce7d7c822f05c', 'page_count': 47, 'artifact': 'gland-bilan-representations.json', 'tracking_bfs': 5721, 'selected_pages': [4, 9, 10, 16, 19, 20, 22, 27, 28, 29, 32, 33, 34, 38, 39], 'representation': 'existing_uncorrected_research_ocr', 'evidence_directory': 'gland-historical-text'}, 'bbdb0fe7-3d42-56dd-9008-c30918c5bd57': {'review_sha256': 'c21bf440fdac6e139e1919fc6687a27165e7f1da7f34bcc67001e7aed0f12717', 'source_sha256': 'f5c9dc1bb73ceac29513a219f43a8ff381e72794a9c5557e4e3c1d46db297f9c', 'page_count': 55, 'artifact': 'gland-mesures-representations.json', 'tracking_bfs': 5721, 'selected_pages': [13, 14, 15, 18, 21, 22, 23, 24, 25, 26, 28, 29, 31, 33, 35, 36, 40, 41, 42, 44, 46, 48, 49, 51, 52, 54], 'representation': 'existing_uncorrected_research_ocr', 'evidence_directory': 'gland-historical-text'}})
 
 
 def require(ok, reason):
@@ -35,10 +37,11 @@ def validate_review(r):
 
 def evidence(r):
     pin = validate_review(r)
+    root = ROOT.parent / pin['evidence_directory'] if 'evidence_directory' in pin else ROOT
     for name, key in [('independent-source-review.json', 'independent_source_review_sha256'),
                       ('independent-content-review.json', 'independent_content_review_sha256')]:
-        require(hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == r['historical_reference'][key], 'historical_reference_independent_review_changed')
-    raw = (ROOT / pin['artifact']).read_bytes()
+        require(hashlib.sha256((root / name).read_bytes()).hexdigest() == r['historical_reference'][key], 'historical_reference_independent_review_changed')
+    raw = (root / pin['artifact']).read_bytes()
     require(hashlib.sha256(raw).hexdigest() == r['historical_reference']['artifact_sha256'], 'historical_reference_artifact_changed')
     e = json.loads(raw)
     require(e['document_id'] == r['vd_document_id'] and e['source_sha256'] == r['source_sha256'], 'historical_reference_artifact_identity_changed')
@@ -91,7 +94,9 @@ def assemble(r, pages, byte_count):
     chunks = []
     for p in pages:
         for start in range(0, len(p['text']), 2000):
-            content = p['text'][start:start + 2000].strip()
+            content = p['text'][start:start + 2000]
+            if not r['historical_reference'].get('preserve_raw_ocr_whitespace'):
+                content = content.strip()
             if content:
                 n = len(chunks)
                 chunks.append({

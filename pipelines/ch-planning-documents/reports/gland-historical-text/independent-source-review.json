@@ -1,0 +1,39 @@
+{
+  "decision": "historical_signed_approval_visual_evidence_accepted_not_current_applicability",
+  "reviewer": "parent independent visual inspection",
+  "reviewed_at": "2026-10-06T05:54:44.203848+00:00",
+  "sources": [
+    {
+      "document_id": "ec1b494f-f6d2-5ed6-8fb6-00bc3f732d28",
+      "source_sha256": "1ae85ff3bef40dd3c9000292b2ff37c9fa640f436d297e65a04ce7d7c822f05c",
+      "approval_page": 47,
+      "approval_image": "/Users/a/.codex/task-artifacts/vaud-pdcom/runner-fix-repo/pipelines/vd-pdcom/reports/gland/source-review/bilan-47.png",
+      "approval_image_sha256": "b4ca86e68e9c661d32ee8422cf8175e4f5f7e22ea35d5c0716673d6202939517",
+      "municipal_approval": "1996-09-23",
+      "public_consultation": [
+        "1996-11-20",
+        "1996-12-20"
+      ],
+      "council_adoption": "1997-10-30",
+      "cantonal_approval": "1998-01-21",
+      "current_applicability": "unestablished"
+    },
+    {
+      "document_id": "bbdb0fe7-3d42-56dd-9008-c30918c5bd57",
+      "source_sha256": "f5c9dc1bb73ceac29513a219f43a8ff381e72794a9c5557e4e3c1d46db297f9c",
+      "approval_page": 55,
+      "approval_image": "/Users/a/.codex/task-artifacts/vaud-pdcom/runner-fix-repo/pipelines/vd-pdcom/reports/gland/source-review/mesures-55.png",
+      "approval_image_sha256": "8b43e5414e7c466d5074b6243e652bdccdd795ccc5118d1c2e9711dd1487eefd",
+      "municipal_approval": "1996-09-23",
+      "public_consultation": [
+        "1996-11-20",
+        "1996-12-20"
+      ],
+      "council_adoption": "1997-10-30",
+      "cantonal_approval": "1998-01-21",
+      "current_applicability": "unestablished"
+    }
+  ],
+  "registry_status_changes": false,
+  "geometry_qualification": false
+}

@@ -7,17 +7,17 @@ from pathlib import Path
 from unittest.mock import MagicMock, patch
 import _pipeline_path  # noqa: F401
 import historical_reference as h
-import historical_reference_runner as runner
+import gland_historical_reference_runner as runner
 import vd_pdcom_text as bridge
 
 
-class HistoricalReferenceTests(unittest.TestCase):
+class GlandHistoricalReferenceTests(unittest.TestCase):
     def setUp(self):
-        self.bundles = [json.loads((h.ROOT / (s + '-bundle.json')).read_text()) for s in runner.SLUGS]
+        self.bundles = [json.loads((runner.BATCH_ROOT / (s + '-bundle.json')).read_text()) for s in runner.SLUGS]
 
     def test_exact_two_sources_reassemble_and_deliver_with_visible_caveats(self):
         self.assertEqual(len(h.PINS), 4)
-        self.assertEqual(sum(len(b['chunks']) for b in self.bundles), 73)
+        self.assertEqual(sum(len(b['chunks']) for b in self.bundles), 41)
         self.assertIn(h.SOURCE, bridge.TEXT_SOURCES)
         for b in self.bundles:
             self.assertEqual(bridge.assemble(b['review'], b['pages'], b['byte_count']), b)
@@ -27,10 +27,15 @@ class HistoricalReferenceTests(unittest.TestCase):
             for chunk in b['chunks']:
                 self.assertTrue(chunk['content'].startswith(b['review']['historical_reference']['human_readable_caveat'] + '\n\n'))
                 self.assertIn('#page=' + str(chunk['page_number']), chunk['metadata']['citation'])
-        self.assertIsNone(self.bundles[0]['review']['commune_bfs'])
-        self.assertEqual(self.bundles[0]['review']['historical_reference']['territory']['former_commune_bfs'], 5881)
-        self.assertEqual(self.bundles[0]['review']['historical_reference']['territory']['registry_tracking_bfs'], 5892)
-        self.assertTrue(all(any('January2005' in s for s in c['metadata']['limits']) for c in self.bundles[0]['chunks']))
+        self.assertEqual(sum(len(b['pages']) for b in self.bundles), 102)
+        self.assertEqual(sum(not p['include_in_search'] for b in self.bundles for p in b['pages']), 61)
+        for b in self.bundles:
+            self.assertEqual(b['review']['commune_bfs'], 5721)
+            for p in b['pages']:
+                if p['include_in_search']:
+                    chunk = next(c for c in b['chunks'] if c['page_number'] == p['page_number'])
+                    self.assertEqual(chunk['content'].split('\n\n', 1)[1], p['text'])
+                    self.assertIn('already realized', ' '.join(chunk['metadata']['limits']))
 
     def test_source_review_scope_status_and_representation_changes_fail_closed(self):
         for b in self.bundles:
@@ -73,7 +78,7 @@ class HistoricalReferenceTests(unittest.TestCase):
             h.validate_delivery(b['metadata'], chunks)
         with self.assertRaisesRegex(ValueError, 'historical_reference_chunk_content'):
             h.validate_delivery(b['metadata'], b['chunks'][:-1])
-        doc = copy.deepcopy(b['metadata']); doc['historical_reference']['territory']['former_commune_bfs'] = 5892
+        doc = copy.deepcopy(b['metadata']); doc['historical_reference']['territory']['commune_bfs'] = 9999
         with self.assertRaises(ValueError): h.validate_delivery(doc, b['chunks'])
 
     def test_delivery_cannot_hide_reference_flag_and_relabel_as_current(self):
@@ -120,38 +125,42 @@ class HistoricalReferenceTests(unittest.TestCase):
             h.load_pages(pages, b['review'])
 
     def test_independent_review_exact_selected_hashes(self):
-        qa = json.loads((h.ROOT / 'independent-content-review.json').read_text())
-        for b, accepted in zip(self.bundles, qa['candidates']):
+        qa = json.loads((runner.BATCH_ROOT / 'independent-content-review.json').read_text())
+        for b, slug in zip(self.bundles, ('bilan', 'mesures')):
+            accepted = qa['sources'][slug]
             self.assertEqual(b['review']['source_sha256'], accepted['source_sha256'])
             self.assertEqual(b['review']['historical_reference']['selected_pages'], accepted['selected_pages'])
+            ledger = {p['physical_page']: p for p in accepted['page_ledger']}
             for p in b['pages']:
+                self.assertEqual(p['include_in_search'], ledger[p['page_number']]['include_in_search'])
+                self.assertEqual(p['original_representation_text_sha256'], ledger[p['page_number']]['raw_ocr_sha256'])
                 if p['include_in_search']:
-                    self.assertEqual(p['text_sha256'], accepted['accepted_page_text_hashes'][str(p['page_number'])])
-        self.assertFalse({27, 36, 42, 43, 53, 54, 88} & {p['page_number'] for p in self.bundles[0]['pages'] if p['include_in_search']})
-        self.assertFalse({32, 38, 39, 40, 41} & {p['page_number'] for p in self.bundles[1]['pages'] if p['include_in_search']})
+                    self.assertEqual(p['text_sha256'], ledger[p['page_number']]['raw_ocr_sha256'])
+                else:
+                    self.assertEqual(p['text'], '')
 
     def test_runner_owner_rejects_nested_commit_and_hashes_code_and_all_source_kinds(self):
         with self.assertRaisesRegex(RuntimeError, 'batch owner'):
             runner.OwnedTransaction(MagicMock()).commit()
         hashes = runner.artifact_hashes(self.bundles)
         self.assertIn(h.SOURCE, hashes['source_kinds'])
-        self.assertEqual(set(hashes['implementation']), {'historical_reference.py', 'historical_reference_runner.py', 'vd_pdcom_text.py'})
-        self.assertEqual(runner.BASELINE, (13, 1272)); self.assertEqual(runner.FINAL, (15, 1345))
+        self.assertEqual(set(hashes['implementation']), {'historical_reference.py', 'gland_historical_reference_runner.py', 'vd_pdcom_text.py'})
+        self.assertEqual(runner.BASELINE, (15, 1345)); self.assertEqual(runner.FINAL, (17, 1386))
 
     def test_commit_acknowledgement_loss_records_unknown_without_failed_rollback_claim(self):
-        root = Path('/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-municipal-text')
+        root = Path('/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-next-original-text')
         ops = {s: {'commit': s + '-op', 'rehearse': s + '-rehearsal'} for s in runner.SLUGS}
         ops['monitor'] = 'monitor-op'
         before = {'guard': 'unchanged'}; hashes = {'code': 'frozen'}; datasets = [{'dataset': 'unchanged'}]
-        baseline = {'knowledge_documents': {'rows': 13}, 'knowledge_chunks': {'rows': 1272}}
-        final = {'knowledge_documents': {'rows': 15}, 'knowledge_chunks': {'rows': 1345}}
+        baseline = {'knowledge_documents': {'rows': 15}, 'knowledge_chunks': {'rows': 1345}}
+        final = {'knowledge_documents': {'rows': 17}, 'knowledge_chunks': {'rows': 1386}}
         receipt = {'rolled_back': True, 'operations': ops, 'before': before, 'artifact_hashes': hashes,
                    'national_before': datasets, 'baseline_corpus': baseline}
         source, receiver, monitor = MagicMock(), MagicMock(), MagicMock()
         source.commit.side_effect = psycopg2.OperationalError('simulated lost acknowledgement')
         def read(path, *args, **kwargs):
-            if path.name == 'historical-reference-operations.json': return json.dumps(ops)
-            if path.name == 'historical-reference-rollback.json': return json.dumps(receipt)
+            if path.name == 'gland-historical-reference-operations.json': return json.dumps(ops)
+            if path.name == 'gland-historical-reference-rollback.json': return json.dumps(receipt)
             return '{}'
         with patch('sys.argv', ['runner', '--mode', 'commit', '--evidence-dir', str(root)]), \
              patch.object(Path, 'exists', return_value=True), patch.object(Path, 'read_text', new=read), \
@@ -168,7 +177,7 @@ class HistoricalReferenceTests(unittest.TestCase):
         self.assertEqual([call.args[2] for call in log.call_args_list], ['running'])
         self.assertEqual(saved.call_count, 1)
         path, result = saved.call_args.args
-        self.assertEqual(path.name, 'historical-reference-commit-outcome-unknown.json')
+        self.assertEqual(path.name, 'gland-historical-reference-commit-outcome-unknown.json')
         self.assertEqual(result['commit_outcome'], 'unknown')
         self.assertFalse(result['rolled_back']); self.assertFalse(result['automatic_retry_permitted'])
         self.assertEqual(result['operations'], ops)
