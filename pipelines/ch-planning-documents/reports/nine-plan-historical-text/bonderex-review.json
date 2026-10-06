@@ -1,0 +1,69 @@
+{
+  "vd_document_id": "e42356ee-f47b-5249-87ed-367d2fb3aa4f",
+  "source_sha256": "83a15e84e25c774322a361f2e73f99205297e5d3f7ef5135d692f898812d4dad",
+  "source_url": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5631_65022_PR01.pdf",
+  "official_host": "www.rdppf.vd.ch",
+  "publisher": "Official municipal/cantonal source",
+  "title": "Plan directeur localisé et Plan partiel d'affectation secteur du bonderex — référence historique partielle",
+  "canton": "VD",
+  "commune_bfs": 5631,
+  "scope": "localized",
+  "plan_type": "localized_pdl",
+  "page_count": 44,
+  "source_role": "historical_source_reference",
+  "plan_status": "unverified",
+  "all_prose_is_binding": false,
+  "spatial_qualification": false,
+  "signed_approval": {
+    "page": 6,
+    "municipal": "2001-01-08",
+    "council": "2001-10-11",
+    "canton": "2002-05-27",
+    "image_sha256": "4f840d851c479a0a8488946bc5cf1c2393f6f5da467f8c8aa22ba211fc5f196f",
+    "visually_verified": true,
+    "scope": "Observed historical source signature only; no current applicability or extension to separate PPA/regulatory components."
+  },
+  "diagnostic_vintage_limit": "Source-vintage statements and historical signatures only; no current legal, ownership, project realization, capacity or spatial conclusions.",
+  "limits": [
+    "Historical reference only. Registered source status, commune mapping and current applicability are not upgraded by content QA or historical signatures.",
+    "Localized planning dossier, not complete municipal PDCom coverage; preserve exact PDL/PPA/report scope and source-specific approval evidence.",
+    "Embedded PDF text is uncorrected scan OCR, preserved byte-for-byte with whitespace. Confidence is null/not recorded. Binding-margin letters, OCR substitutions and broken words are not corrected.",
+    "Accepted for narrative historical search with original physical PDF page citations, not an authoritative transcription, structured rule/number extraction, current legal guidance or buildability determination.",
+    "Figures, photographs, maps, diagrams and tables are not completely represented. No geometry, parcel/EGRID association, precision or spatial qualification is established.",
+    "Only listed accepted pages are searchable; every other physical page remains held/not selected. No document-completion or commune-completion claim; page breaks and omitted intervening pages remain explicit.",
+    "Past, proposed and conditional measures retain their historical tense; implementation, remaining capacity, current ownership and current legal applicability are unverified.",
+    "No material strike-through/amendment conflict was identified in accepted-page visual review. This is not a legal consolidation or a review of all unselected pages.",
+    "Combined PDL/PPA package: selected introduction/procedure/objectives do not include PPA regulations; PDL signatures must not be extended to the separate PPA dossier.",
+    "The introductory two-column document-structure diagram reads as sequential source labels; it is not a structured cross-reference or approval hierarchy.",
+    "The statement that Denens lacks a PDCom because it had fewer than 1000 inhabitants is historical source commentary, not a current rule or current population/status.",
+    "Bonderex and Condémine share introductory content but remain separately sourced localized dossiers; duplicate prose is not additive coverage or new physical sectors.",
+    "Raw reviewed strings retain original whitespace. Embedded text is extracted with pinned PyMuPDF formatting, not claimed identical to older registry inspection serialization; registry remains untouched."
+  ],
+  "map_pages": null,
+  "historical_reference": {
+    "mode": "exact_historical_reference",
+    "current_applicability": "unverified",
+    "source_status_promotion": false,
+    "registry_coverage_extent": "unverified",
+    "spatial_currentness_block_retained": true,
+    "fully_certified_pages": 0,
+    "human_readable_caveat": "BONDEREX — PARTIAL HISTORICAL REFERENCE. Localized dossier, not municipality-wide PDCom. Uncorrected scan/research OCR; original physical page image is authoritative. Current applicability unverified. No structured rules, current capacity, parcel rights, maps or buildability interpretation.",
+    "preserve_raw_ocr_whitespace": true,
+    "selected_pages": [
+      3,
+      4,
+      7
+    ],
+    "representation": "embedded_pdf_text",
+    "plan_type": "localized_pdl",
+    "municipality_wide_pdcom": false,
+    "territory": {
+      "commune_bfs": 5631,
+      "scope": "localized"
+    },
+    "independent_source_review_sha256": "d49cc5c1c0c91b3f682fbd691df1a4689028c1b86280c355868e3f3a490858ea",
+    "independent_content_review_sha256": "5862747e2ff67aa5d288bc14b959cbe25faf542cb2fff32ea5ff200c8b10b545",
+    "source_vintage_approval_does_not_establish_currentness": true,
+    "artifact_sha256": "47ee18c83586295a4d636b60450f410f5870296e1dcccbfe7e4be8dd19a06f90"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "vd_document_id": "b4cb6c89-963b-5d91-b14f-f145ccef2e2a",
+  "source_sha256": "c158ade8eb784c572209cc48a9765fc8737f8a0a3ac1d49023bb1cefe47cf3d9",
+  "source_url": "https://www.yverdon-les-bains.ch/fileadmin/documents/ylb/Urbanisme/pdf/Plan_directeur.pdf",
+  "official_host": "www.yverdon-les-bains.ch",
+  "publisher": "Official municipal/cantonal source",
+  "title": "Dossier directeur du 28 mai 1997 — référence historique partielle",
+  "canton": "VD",
+  "commune_bfs": 5938,
+  "scope": "municipal",
+  "plan_type": "municipal_pdcom_dossier",
+  "page_count": 31,
+  "source_role": "historical_source_reference",
+  "plan_status": "unverified",
+  "all_prose_is_binding": false,
+  "spatial_qualification": false,
+  "signed_approval": {
+    "page": 1,
+    "council": "1996-12-12",
+    "canton": "1997-05-28",
+    "image_sha256": "0f59fc1d2baa3b0f426016c40521d8c31f87f627a9d30b06fa66d2133bb8b7fc",
+    "visually_verified": true,
+    "scope": "Observed historical source signature only; no current applicability or extension to separate PPA/regulatory components."
+  },
+  "diagnostic_vintage_limit": "Source-vintage statements and historical signatures only; no current legal, ownership, project realization, capacity or spatial conclusions.",
+  "limits": [
+    "Historical reference only. Registered source status, commune mapping and current applicability are not upgraded by content QA or historical signatures.",
+    "Accepted for narrative historical search with original physical PDF page citations, not an authoritative transcription, structured rule/number extraction, current legal guidance or buildability determination.",
+    "Figures, photographs, maps, diagrams and tables are not completely represented. No geometry, parcel/EGRID association, precision or spatial qualification is established.",
+    "Only listed accepted pages are searchable; every other physical page remains held/not selected. No document-completion or commune-completion claim; page breaks and omitted intervening pages remain explicit.",
+    "Past, proposed and conditional measures retain their historical tense; implementation, remaining capacity, current ownership and current legal applicability are unverified.",
+    "No material strike-through/amendment conflict was identified in accepted-page visual review. This is not a legal consolidation or a review of all unselected pages.",
+    "Municipal historical DossierDirecteur; acceptedpage7AvantPropos only, not complete1997plan.",
+    "New200dpi Tesseract5.5.2fraPSM3 OCR provenance/text/image hashes verified. Page7column flow largely follows prose; repeatedheader intrudes between paragraphs, emphasized terms are sometimes missing, and glypherrors remain. Page10interleaves independentboxedtopic headings/bodies and isheld.",
+    "Physical10 excluded pending separatelyreviewed layout-aware source-box extraction.",
+    "Page7mentions historiclaws and then-currentplans: no present legal applicability asserted.",
+    "Modernrevision cannot establish blanket supersession without formal evidence; currentapplicabilityunknown.",
+    "Raw reviewed strings retain original whitespace. Embedded text is extracted with pinned PyMuPDF formatting, not claimed identical to older registry inspection serialization; registry remains untouched."
+  ],
+  "map_pages": null,
+  "historical_reference": {
+    "mode": "exact_historical_reference",
+    "current_applicability": "unverified",
+    "source_status_promotion": false,
+    "registry_coverage_extent": "unverified",
+    "spatial_currentness_block_retained": true,
+    "fully_certified_pages": 0,
+    "human_readable_caveat": "YVERDON-1997 — PARTIAL HISTORICAL REFERENCE. Municipal dossier, incomplete selected prose only. Uncorrected scan/research OCR; original physical page image is authoritative. Current applicability unverified. No structured rules, current capacity, parcel rights, maps or buildability interpretation.",
+    "preserve_raw_ocr_whitespace": true,
+    "selected_pages": [
+      7
+    ],
+    "representation": "new_bounded_uncorrected_research_ocr",
+    "plan_type": "municipal_pdcom_dossier",
+    "municipality_wide_pdcom": true,
+    "territory": {
+      "commune_bfs": 5938,
+      "scope": "municipal"
+    },
+    "independent_source_review_sha256": "d49cc5c1c0c91b3f682fbd691df1a4689028c1b86280c355868e3f3a490858ea",
+    "independent_content_review_sha256": "5862747e2ff67aa5d288bc14b959cbe25faf542cb2fff32ea5ff200c8b10b545",
+    "source_vintage_approval_does_not_establish_currentness": true,
+    "artifact_sha256": "cdcfadee3cfaca8cc4c6cca922b2f186e197b62dfc531f488f8c17d4e638815f"
+  }
+}

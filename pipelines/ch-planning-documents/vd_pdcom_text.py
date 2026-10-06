@@ -198,7 +198,7 @@ def persist(conn, bundle, operation_id, pdf_path):
         c.execute('SELECT sha256,plan_status,page_count,source_url FROM bronze_ch.vd_pdcom_documents WHERE id=%s FOR SHARE', (r['vd_document_id'],))
         require(c.fetchone() == (r['source_sha256'], r['plan_status'], r['page_count'], r['source_url']), 'registered_source_changed')
         if r.get('historical_reference'):
-            from historical_reference import validate_registered_mapping as validate_reference_mapping
+            from historical_reference import validate_registered_mapping as validate_reference_mapping, document_type as reference_document_type
             validate_reference_mapping(c, r)
         elif r.get('historical_scope'):
             from historical_former_commune import validate_registered_mapping
@@ -217,7 +217,7 @@ def persist(conn, bundle, operation_id, pdf_path):
         c.execute('SELECT count(*) FROM knowledge_ch.documents WHERE id=%s',(b['document_id'],));documents_before=c.fetchone()[0]
         c.execute('SELECT count(*) FROM knowledge_ch.chunks WHERE document_id=%s',(b['document_id'],));chunks_before=c.fetchone()[0]
         checked_insert(c,'bronze_ch','planning_document_runs',{'id':str(operation_id),'scope':{'kind':('scoped_historical_source_reference_text' if source_kind(r)==HISTORICAL_REFERENCE_SOURCE else ('scoped_historical_former_commune_text' if source_kind(r)==HISTORICAL_SOURCE else ('scoped_historical_regional_text' if source_kind(r)==REGIONAL_SOURCE else 'scoped_municipal_pdcom_text'))),'document_id':r['vd_document_id']}})
-        checked_insert(c,'bronze_ch','planning_document_sources',{'id':b['source_id'],'source':source_kind(r),'canton_code':'VD','source_key':r['vd_document_id'],'title':r['title'],'document_url':r['source_url'],'commune_bfs':r['commune_bfs'],'language':'fr','legal_status':r['plan_status'],'document_type':('historical_pdcom_source_reference' if source_kind(r)==HISTORICAL_REFERENCE_SOURCE else ('historical_former_commune_pdcom' if source_kind(r)==HISTORICAL_SOURCE else ('regional_sdan' if source_kind(r)==REGIONAL_SOURCE else 'municipal_pdcom'))),'source_metadata':r,'catalog_hash':digest(r),'current_version_id':b['version_id'],'extraction_status':b['metadata']['extraction_status']})
+        checked_insert(c,'bronze_ch','planning_document_sources',{'id':b['source_id'],'source':source_kind(r),'canton_code':'VD','source_key':r['vd_document_id'],'title':r['title'],'document_url':r['source_url'],'commune_bfs':r['commune_bfs'],'language':'fr','legal_status':r['plan_status'],'document_type':(reference_document_type(r) if source_kind(r)==HISTORICAL_REFERENCE_SOURCE else ('historical_former_commune_pdcom' if source_kind(r)==HISTORICAL_SOURCE else ('regional_sdan' if source_kind(r)==REGIONAL_SOURCE else 'municipal_pdcom'))),'source_metadata':r,'catalog_hash':digest(r),'current_version_id':b['version_id'],'extraction_status':b['metadata']['extraction_status']})
         checked_insert(c,'bronze_ch','planning_document_versions',{'id':b['version_id'],'source_id':b['source_id'],'content_hash':r['source_sha256'],'final_url':r['source_url'],'content_type':'application/pdf','byte_count':b['byte_count'],'pages':b['pages'],'extraction_status':b['metadata']['extraction_status'],'knowledge_document_id':b['document_id']})
         # Only the expensive classifier is suspended; taxonomy remains enabled.
         # Transaction rollback restores trigger state if any assertion fails.

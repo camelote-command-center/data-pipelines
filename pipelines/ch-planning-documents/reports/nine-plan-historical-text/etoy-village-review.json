@@ -1,0 +1,72 @@
+{
+  "vd_document_id": "e4fd59d2-5dba-5aa5-af2b-5c4f09ce1313",
+  "source_sha256": "2bc37dad0119471e9c57cbade059b7e9fe1724607b7641d966a5a8e91ba12143",
+  "source_url": "https://www.geocommunes.ch/documents_communes/bbhn_dataey/at_pga_ppa/pdl_village_ey.pdf",
+  "official_host": "www.geocommunes.ch",
+  "publisher": "Official municipal/cantonal source",
+  "title": "Etoy — Plan directeur localise du village, janvier2001 modifie fevrier2002 — référence historique partielle",
+  "canton": "VD",
+  "commune_bfs": 5636,
+  "scope": "localized",
+  "plan_type": "localized_pdl",
+  "page_count": 31,
+  "source_role": "historical_source_reference",
+  "plan_status": "unverified",
+  "all_prose_is_binding": false,
+  "spatial_qualification": false,
+  "signed_approval": {
+    "page": 31,
+    "council": [
+      "2001-03-26",
+      "2002-03-11"
+    ],
+    "canton": "2002-09-09",
+    "image_sha256": "9e209f5bb94fa8f1f4482a5b117ea41dbe1f77e0f7f82082aad597d4d1ba2d0c",
+    "municipal": [
+      "2000-11-20",
+      "2001-11-12"
+    ],
+    "visually_verified": true,
+    "scope": "Observed historical source signature only; no current applicability or extension to separate PPA/regulatory components."
+  },
+  "diagnostic_vintage_limit": "Source-vintage statements and historical signatures only; no current legal, ownership, project realization, capacity or spatial conclusions.",
+  "limits": [
+    "Historical reference only. Registered source status, commune mapping and current applicability are not upgraded by content QA or historical signatures.",
+    "Accepted for narrative historical search with original physical PDF page citations, not an authoritative transcription, structured rule/number extraction, current legal guidance or buildability determination.",
+    "Figures, photographs, maps, diagrams and tables are not completely represented. No geometry, parcel/EGRID association, precision or spatial qualification is established.",
+    "Only listed accepted pages are searchable; every other physical page remains held/not selected. No document-completion or commune-completion claim; page breaks and omitted intervening pages remain explicit.",
+    "Past, proposed and conditional measures retain their historical tense; implementation, remaining capacity, current ownership and current legal applicability are unverified.",
+    "No material strike-through/amendment conflict was identified in accepted-page visual review. This is not a legal consolidation or a review of all unselected pages.",
+    "Localized villagePDL; physical3/4 generalobjectives/concept for threehamlets. No commune-wide PDCom normalization.",
+    "New200dpi Tesseract5.5.2fraPSM3 provenance/text/image hashes verified. Physical3/4singlecolumn meaning recognizable despite numerous glypherrors(PDL→POL,etc), uncorrected. Physical9objectivesheading moved beforecharacteristics and critical nonbâti phrase corrupted; held.",
+    "Physical9 excluded from sequentialsearch until independentlyreviewed extraction represents originalorder/qualification.",
+    "Observed2001/2002approvaldates preserved together; no inference of no lateramendments.",
+    "Raw reviewed strings retain original whitespace. Embedded text is extracted with pinned PyMuPDF formatting, not claimed identical to older registry inspection serialization; registry remains untouched."
+  ],
+  "map_pages": null,
+  "historical_reference": {
+    "mode": "exact_historical_reference",
+    "current_applicability": "unverified",
+    "source_status_promotion": false,
+    "registry_coverage_extent": "unverified",
+    "spatial_currentness_block_retained": true,
+    "fully_certified_pages": 0,
+    "human_readable_caveat": "ETOY-VILLAGE — PARTIAL HISTORICAL REFERENCE. Localized dossier, not municipality-wide PDCom. Uncorrected scan/research OCR; original physical page image is authoritative. Current applicability unverified. No structured rules, current capacity, parcel rights, maps or buildability interpretation.",
+    "preserve_raw_ocr_whitespace": true,
+    "selected_pages": [
+      3,
+      4
+    ],
+    "representation": "new_bounded_uncorrected_research_ocr",
+    "plan_type": "localized_pdl",
+    "municipality_wide_pdcom": false,
+    "territory": {
+      "commune_bfs": 5636,
+      "scope": "localized"
+    },
+    "independent_source_review_sha256": "d49cc5c1c0c91b3f682fbd691df1a4689028c1b86280c355868e3f3a490858ea",
+    "independent_content_review_sha256": "5862747e2ff67aa5d288bc14b959cbe25faf542cb2fff32ea5ff200c8b10b545",
+    "source_vintage_approval_does_not_establish_currentness": true,
+    "artifact_sha256": "457b73b393e6ad83827499906b43320e25931b5a6660bf91330a7af66a0c91ff"
+  }
+}

@@ -1,0 +1,222 @@
+{
+  "decision": "historical_signature_images_independently_verified_only",
+  "historical_signature_dates": {
+    "aubonne-vieille-ville": {
+      "page": 1,
+      "municipal": "2001-02-13",
+      "council": [
+        "2003-07-01",
+        "2005-06-28"
+      ],
+      "canton": "2006-06-28",
+      "image_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/aubonne-vieille-ville-page-1.png",
+      "image_sha256": "b2ba6bc6e4605e199aefc5cd8457f578c3177af5cf6320772a8d85bf00d664bd",
+      "source": {
+        "slug": "aubonne-vieille-ville",
+        "id": "c2fe6145-5bff-5beb-b27f-649f0125c146",
+        "url": "https://www.aubonne.ch/fileadmin/documents/aubonne.ch/pdf/R%C3%A8glements_et_plans/AubonnePDLPlandirecteurlocaliseVieilleville67312Reglement.pdf",
+        "http_status": 200,
+        "sha256": "d5d93e0e17fbd80ce10629550c0c60c6ba100f8ac45c62dd3929a5ee3483fe73",
+        "exact_registered_sha": true,
+        "pages": 71,
+        "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/aubonne-vieille-ville.pdf",
+        "approval_review_images": [
+          "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/aubonne-vieille-ville-page-1.png",
+          "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/aubonne-vieille-ville-page-40.png"
+        ]
+      }
+    },
+    "bussigny-cocagne": {
+      "page": 70,
+      "municipal": "2013-12-02",
+      "council": "2014-04-04",
+      "canton": "2014-05-28",
+      "image_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/bussigny-cocagne-page-70.png",
+      "image_sha256": "10dccf59753bad179e596bf1e2ffe972563f0d8d01fe27cea58d35adb90c71c9",
+      "source": {
+        "slug": "bussigny-cocagne",
+        "id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "url": "https://www.bussigny.ch/images/2025-01/Bussigny_PDL_-_Plan_directeur_localis%C3%A9_Cocagne-Buy%C3%A8re_Rapport.pdf",
+        "http_status": 200,
+        "sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "exact_registered_sha": true,
+        "pages": 70,
+        "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/bussigny-cocagne.pdf",
+        "approval_review_images": [
+          "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/bussigny-cocagne-page-70.png"
+        ]
+      }
+    },
+    "bonderex": {
+      "page": 6,
+      "municipal": "2001-01-08",
+      "council": "2001-10-11",
+      "canton": "2002-05-27",
+      "image_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/bonderex-page-6.png",
+      "image_sha256": "4f840d851c479a0a8488946bc5cf1c2393f6f5da467f8c8aa22ba211fc5f196f",
+      "source": {
+        "slug": "bonderex",
+        "id": "e42356ee-f47b-5249-87ed-367d2fb3aa4f",
+        "url": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5631_65022_PR01.pdf",
+        "http_status": 200,
+        "sha256": "83a15e84e25c774322a361f2e73f99205297e5d3f7ef5135d692f898812d4dad",
+        "exact_registered_sha": true,
+        "pages": 44,
+        "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/bonderex.pdf",
+        "approval_review_images": [
+          "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/bonderex-page-6.png",
+          "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/bonderex-page-23.png"
+        ]
+      }
+    },
+    "condemine": {
+      "page": 8,
+      "municipal": "2001-01-08",
+      "council": "2001-10-11",
+      "canton": "2002-05-27",
+      "image_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/condemine-page-8.png",
+      "image_sha256": "693f9b540e5022e2cb82b4bb581dae41629d5bb342004301cc525cf9a9073fc8",
+      "source": {
+        "slug": "condemine",
+        "id": "652e95b3-615f-5498-8448-e8f76b421522",
+        "url": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5631_65023_PR01.pdf",
+        "http_status": 200,
+        "sha256": "1e85b4dc08c05fa92f3165563141351cd0b05a48ac6bc77eb2458003f38e4e74",
+        "exact_registered_sha": true,
+        "pages": 41,
+        "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/condemine.pdf",
+        "approval_review_images": [
+          "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/condemine-page-8.png",
+          "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/condemine-page-22.png"
+        ]
+      }
+    },
+    "payerne-coulaz": {
+      "page": 25,
+      "municipal": "2011-01-25",
+      "council": "2011-06-16",
+      "canton": "2011-11-09",
+      "image_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/payerne-coulaz-page-25.png",
+      "image_sha256": "590a38fe2796894045f1b1b52af18c64faa18a630d59e261c4b1b1cbf86cfbe8",
+      "source": {
+        "slug": "payerne-coulaz",
+        "id": "ac95dce8-1f32-5522-be3e-60377596b2d7",
+        "url": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5822_183754_PR01.pdf",
+        "http_status": 200,
+        "sha256": "daf8c49ea168d46c13e15f6464d3b575bd064f514f2f0a1db202ffad4c470fb0",
+        "exact_registered_sha": true,
+        "pages": 25,
+        "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/payerne-coulaz.pdf",
+        "approval_review_images": [
+          "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/payerne-coulaz-page-25.png"
+        ]
+      }
+    },
+    "le-mont-coppoz": {
+      "page": 31,
+      "council": "2014-10-06",
+      "canton": "2015-03-25",
+      "image_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/le-mont-coppoz-page-31.png",
+      "image_sha256": "4ce0eca5f5290f85ebe8ce77444189d9bcec82f6a4248fe2dafd50766d9dbd2a",
+      "source": {
+        "slug": "le-mont-coppoz",
+        "id": "8c09cbd6-8ede-58e3-980f-fa313f707d58",
+        "url": "https://www.lemontsurlausanne.ch/fileadmin/documents/Tous_documents/4_Le_Mont_officiel/4.5_Services_communaux/4.5.6_SURB/Plan_affectation/Rapport_PDL_2014.pdf",
+        "http_status": 200,
+        "sha256": "c9a40b1969175e32d0890c562a608f10e4a0f37e45a21ee3acd6d4587a26efa1",
+        "exact_registered_sha": true,
+        "pages": 33,
+        "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/le-mont-coppoz.pdf",
+        "images": [
+          "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/le-mont-coppoz-page-31.png"
+        ]
+      },
+      "municipal": "2010-02-22"
+    },
+    "cheseaux-mon-repos": {
+      "page": 3,
+      "council": "2011-02-22",
+      "canton": "2011-06-29",
+      "image_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/cheseaux-mon-repos-page-3.png",
+      "image_sha256": "9b91c583c4f1e880701c8eb045d87997d61f6659cfcc591e426b548632bb7d7d",
+      "source": {
+        "slug": "cheseaux-mon-repos",
+        "id": "0e9335fa-0a1f-5251-8a47-ccaf3e2587c5",
+        "url": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5582_130002_PR01.pdf",
+        "http_status": 200,
+        "sha256": "a8e1bf955645980a5956cd4d690f2e7ca533540cd1822663b9f997a4052396d4",
+        "exact_registered_sha": true,
+        "pages": 5,
+        "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/cheseaux-mon-repos.pdf",
+        "images": [
+          "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/cheseaux-mon-repos-page-3.png",
+          "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/cheseaux-mon-repos-page-5.png"
+        ]
+      },
+      "municipal": "2010-10-11"
+    },
+    "yverdon-1997": {
+      "page": 1,
+      "council": "1996-12-12",
+      "canton": "1997-05-28",
+      "image_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/yverdon-1997-page-1.png",
+      "image_sha256": "0f59fc1d2baa3b0f426016c40521d8c31f87f627a9d30b06fa66d2133bb8b7fc",
+      "source": {
+        "slug": "yverdon-1997",
+        "id": "b4cb6c89-963b-5d91-b14f-f145ccef2e2a",
+        "url": "https://www.yverdon-les-bains.ch/fileadmin/documents/ylb/Urbanisme/pdf/Plan_directeur.pdf",
+        "http_status": 200,
+        "sha256": "c158ade8eb784c572209cc48a9765fc8737f8a0a3ac1d49023bb1cefe47cf3d9",
+        "exact_registered_sha": true,
+        "pages": 31,
+        "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/yverdon-1997.pdf",
+        "images": [
+          "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/yverdon-1997-page-1.png",
+          "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/yverdon-1997-page-2.png",
+          "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/yverdon-1997-page-31.png"
+        ]
+      }
+    },
+    "etoy-village": {
+      "page": 31,
+      "council": [
+        "2001-03-26",
+        "2002-03-11"
+      ],
+      "canton": "2002-09-09",
+      "image_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/etoy-village-page-31.png",
+      "image_sha256": "9e209f5bb94fa8f1f4482a5b117ea41dbe1f77e0f7f82082aad597d4d1ba2d0c",
+      "source": {
+        "slug": "etoy-village",
+        "id": "e4fd59d2-5dba-5aa5-af2b-5c4f09ce1313",
+        "url": "https://www.geocommunes.ch/documents_communes/bbhn_dataey/at_pga_ppa/pdl_village_ey.pdf",
+        "http_status": 200,
+        "sha256": "2bc37dad0119471e9c57cbade059b7e9fe1724607b7641d966a5a8e91ba12143",
+        "exact_registered_sha": true,
+        "pages": 31,
+        "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/etoy-village.pdf",
+        "images": [
+          "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/etoy-village-page-1.png",
+          "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/etoy-village-page-2.png",
+          "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/etoy-village-page-31.png"
+        ]
+      },
+      "municipal": [
+        "2000-11-20",
+        "2001-11-12"
+      ]
+    }
+  },
+  "limits": [
+    "Exact historic signatures only; no current validity or absence of amendments claim.",
+    "Eight sources are localized plans; Yverdon1997 alone is a municipality-wide PDCom dossier. No municipality completion claim.",
+    "Denens bundles contain separately approved PPA material excluded from candidate selection.",
+    "Aubonne appendix contains other old plans and cadastral inventories, not blanket2006approval.",
+    "Existing embedded text is scan/OCR derived; glyph noise and order uncorrected, image authoritative."
+  ],
+  "source_status_mutation": false,
+  "current_applicability": "unverified",
+  "database_writes": false,
+  "reviewer": "parent",
+  "content_selection": "Separate independent content reviews required; no blanket acceptance of candidate pages."
+}
