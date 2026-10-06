@@ -211,6 +211,8 @@ def persist(conn,source,sha,pages):
     persist_yvonand_equipment_green(conn,doc_id,sha)
     from yvonand_map5_inventories import persist as persist_yvonand_map5_inventories
     persist_yvonand_map5_inventories(conn,doc_id,sha)
+    from yvonand_map6_provenance import persist as persist_yvonand_map6_provenance
+    persist_yvonand_map6_provenance(conn,doc_id,sha)
     from orbe_sports_support import persist as persist_orbe_sports_support
     persist_orbe_sports_support(conn,doc_id,sha)
     from saint_legier_raster import persist as persist_saint_legier_raster
