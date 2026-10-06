@@ -273,3 +273,29 @@ A reviewer assertion cannot override that evidence.
 parcel release, independent verification of the reviewer's assertions, or commune
 completion. Existing private-review gate counts remain unchanged. There is no
 release writer, receiver registration or sector-status mutation in this preflight.
+
+
+## Qualified sector preview (read-only)
+
+`qualified_preview.py --output /approved/local/path/preview.json` reads a dedicated
+`RE_LLM_DB_URL` connection in a PostgreSQL read-only, repeatable-read transaction.
+The output path must have an existing parent and must not already exist. The CLI
+rolls back and closes the connection on success or failure; there is no writer,
+receiver registration, migration, publication route or fallback to private rows.
+
+The preview reuses `active_qualifications.project` unchanged. It joins only active
+manifest-qualified sector identities to the current source hash and exact EWKB
+geometry, checks that the emitted geometry bytes match the pinned hash, and retains
+all active reviews separately with their manifest IDs/digests, reviewers, dates,
+precision/tolerance evidence, source semantics and reservations. One sector is
+emitted once even when several manifests are active. Duplicate input IDs fail
+closed. An empty active set produces an empty sector payload.
+
+This is a point-in-time private preview of contract eligibility, not independent
+verification of reviewer assertions. It conveys no parcel rights, capacity or
+commune completion. Stored snapshots are not a consumer authorization mechanism:
+regenerate from the live source before use. Expiry, source/geometry changes,
+supersession, lost qualification and negative/unreconciled municipal currentness
+remove eligibility on the next live projection. A persistent receiver and its
+read-time invalidation/revocation policy still require separate registration and
+review; this preview does not implement either.
