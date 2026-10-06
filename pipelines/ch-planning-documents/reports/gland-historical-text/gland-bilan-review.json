@@ -1,0 +1,73 @@
+{
+  "vd_document_id": "ec1b494f-f6d2-5ed6-8fb6-00bc3f732d28",
+  "source_sha256": "1ae85ff3bef40dd3c9000292b2ff37c9fa640f436d297e65a04ce7d7c822f05c",
+  "source_url": "https://www.gland.ch/fileadmin/documents/pdf/Plans_directeurs/302.1-PDCom1998-bilan-objectifs-principes.pdf",
+  "official_host": "www.gland.ch",
+  "publisher": "Commune de Gland",
+  "title": "Gland — PDCom 1998, bilan, référence historique OCR partielle",
+  "canton": "VD",
+  "commune_bfs": 5721,
+  "scope": "municipal",
+  "page_count": 47,
+  "source_role": "historical_source_reference",
+  "plan_status": "unverified",
+  "all_prose_is_binding": false,
+  "spatial_qualification": false,
+  "signed_approval": {
+    "pdf_page": 47,
+    "municipal": "1996-09-23",
+    "council": "1997-10-30",
+    "canton": "1998-01-21",
+    "visually_verified": true,
+    "scope": "Historical source approval only. Registry remains unverified; no current applicability or binding parcel rights inferred."
+  },
+  "diagnostic_vintage_limit": "July 1997 text approved January 1998. Continued official publication and current vision reference do not establish each measure current, pending or parcel-buildable.",
+  "limits": [
+    "Historical Gland July1997 source approved21January1998 only; publication/reference in current municipal FAQ does not establish present validity of every measure. Registry plan_status and5721 mapping remain unverified.",
+    "Existing French170dpi researchOCR is uncorrected; no recognition-confidence or certified page claim. Exact physical-page citations and original image remain authoritative.",
+    "Selected prose is a historical search aid, not normalized structured measures, zoning rights, present capacities, available land or permission to build.",
+    "Headings and objective/measure lists on accepted pages retain raw order; minor OCR glyph/unit errors remain. Do not turn OCR section numbers or quantitative prose into structured facts without checking images.",
+    "Mixed illustrated pages preserve only raw OCR text; figures/maps/legends/spatial relationships are not completely represented or qualified.",
+    "Bilan physical10 explicitly describes effective occupation rather than legal soil status. Bilan4 says measures are proposed means to implement objectives.",
+    "1990s population, infrastructure, traffic forecasts and land reserves are source-vintage descriptions, not current capacity. Terms actuel/aujourd’hui/en cours remain dated to source.",
+    "Mesures25 explicitly distinguishes realized and unused projects at source date. Mesures40 explicitly says some projects in1989illustration were already realized. These cannot be counted as new/current projects.",
+    "La Falaise density reference, Lignière surface/setback, GrandChamp77,913m2 and EnBord73,000/65,000m2 are historical conditional source statements, not current parcel rights or residual capacity.",
+    "No new geometry, parcel attribution, spatial qualification, commune completion or national completion."
+  ],
+  "map_pages": null,
+  "historical_reference": {
+    "mode": "exact_historical_reference",
+    "current_applicability": "unverified",
+    "source_status_promotion": false,
+    "registry_coverage_extent": "unverified",
+    "spatial_currentness_block_retained": true,
+    "fully_certified_pages": 0,
+    "human_readable_caveat": "GLAND — HISTORICAL REFERENCE, July 1997 plan approved 21 January 1998. Uncorrected research OCR; original page image is authoritative. Current applicability is unverified. Historical figures and already-realized projects are not current capacity or new projects. No map, figure, structured rule, parcel-right or buildability interpretation.",
+    "preserve_raw_ocr_whitespace": true,
+    "artifact_sha256": "3eb95eb34c9be15183ee486a3d1c30f8a67a58b2195f8fee5af0c1454e7454f1",
+    "selected_pages": [
+      4,
+      9,
+      10,
+      16,
+      19,
+      20,
+      22,
+      27,
+      28,
+      29,
+      32,
+      33,
+      34,
+      38,
+      39
+    ],
+    "representation": "existing_uncorrected_research_ocr",
+    "territory": {
+      "commune_bfs": 5721
+    },
+    "independent_source_review_sha256": "9b8becf85604196081ad86de055ff324a75d61b393303eb51fcb4555e4feae4b",
+    "independent_content_review_sha256": "4826dbf5e3cea27277f141c181a4078131b010731b71c1691d9521b2680a0d4d",
+    "source_vintage_approval_does_not_establish_currentness": true
+  }
+}
