@@ -1,0 +1,13 @@
+# Nine reviewed historical planning references
+
+One batch adds 9 documents, 65 selected physical pages and 124 raw-text chunks. The guarded runner expects 17 documents / 1,386 chunks before and 26 / 1,510 after, across all five text source kinds. All 286 unselected physical pages remain held. Spatial baseline stays 212 sectors / 8,776 parcel links; registry status, mapping, coverage and national dataset state remain unchanged.
+
+Eight sources are localized PDL dossiers or selected PDL portions of combined PDL/PPA packages. They use `scope=localized` and the exact pinned bronze type `historical_localized_planning_reference`. Yverdon is a municipal historical dossier. No localized source counts as whole-municipality PDCom coverage or commune completion. Separate PPA regulations, diagrams, map geometry, structured rights and current applicability are not inferred.
+
+Independent source-signature evidence is frozen in `independent-source-review.json`. `independent-content-review.json` preserves both complete independent content reviews with their original byte hashes. Those final accepted lists supersede earlier proposal selections; all source-specific limitations appear in review contracts and every chunk's metadata. Historical signatures establish only their documented source-vintage scope.
+
+Seven PDFs contain uncorrected embedded scan/OCR text. Frozen strings are exactly `page.get_text('text')` under PyMuPDF 1.26.7, preserving whitespace. This is current parser serialization of the existing layer, which differs from older registered inspection formatting for six PDFs. Source bytes and registered inspection remain unchanged. Yverdon and Etoy use bounded French Tesseract 5.5.2 OCR, 200 dpi, PSM 3; original layers are empty. Per-page image/text hashes and engine provenance are retained. Confidence is null, never invented. Original page images remain authoritative. Cheseaux's perimeter-letter and signature OCR errors remain raw and are expressly documented; Yverdon 10 and Etoy 9 remain held.
+
+The runner rebuilds every bundle from original PDF bytes, verifies full contracts and raw page hashes, and owns its transaction. Inspect is read-only. Rehearsal rolls back; commit requires the exact rehearsal receipt and unchanged protected rows/code. Lost commit acknowledgement produces an unknown-outcome receipt and forbids automatic retry. Fresh direct receiver checks follow commit. Future corpus guards must continue including all five `TEXT_SOURCES` kinds.
+
+Original PDFs and operational receipts are under `/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/`. Use `nine_plan_historical_reference_runner.py --mode inspect|rehearse|commit --evidence-dir` with that path. This preparation does not execute a database mutation.

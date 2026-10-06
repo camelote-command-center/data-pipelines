@@ -1,0 +1,118 @@
+{
+  "document_id": "0e9335fa-0a1f-5251-8a47-ccaf3e2587c5",
+  "source_sha256": "a8e1bf955645980a5956cd4d690f2e7ca533540cd1822663b9f997a4052396d4",
+  "pymupdf_version": "1.26.7",
+  "provenance": "Frozen independent-review raw text; original PDF bytes pinned; parser formatting differs from earlier inspection where documented. Unselected pages remain held.",
+  "pages": [
+    {
+      "page_number": 1,
+      "text": "",
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_representation_text_sha256": "4a964afee7f4ab1c9969dbe7b6256eb11e0a98b8ba4d2bf6be4ff70a70211f14",
+      "representation": "embedded_pdf_text",
+      "include_in_search": false,
+      "selection_reason": "Held: not in final independent accepted-page list; no searchable content.",
+      "original_pdf_text_sha256": "4a964afee7f4ab1c9969dbe7b6256eb11e0a98b8ba4d2bf6be4ff70a70211f14",
+      "original_pdf_char_count": 239,
+      "width": 593.25,
+      "height": 840.4500122070312,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "existing_ocr_provenance": {
+        "text_layer_origin": "uncorrected_scan_ocr",
+        "extraction_runtime": "PyMuPDF 1.26.7",
+        "extraction_call": "page.get_text('text')",
+        "registered_inspection_unchanged": true,
+        "current_parser_formatting_may_differ_from_previous_inspection": true
+      }
+    },
+    {
+      "page_number": 2,
+      "text": "",
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_representation_text_sha256": "e4192f46d060fd90c6f6f2ff574bcf32a90f1ff878a8561ffba69218e1fb151f",
+      "representation": "embedded_pdf_text",
+      "include_in_search": false,
+      "selection_reason": "Held: not in final independent accepted-page list; no searchable content.",
+      "original_pdf_text_sha256": "e4192f46d060fd90c6f6f2ff574bcf32a90f1ff878a8561ffba69218e1fb151f",
+      "original_pdf_char_count": 329,
+      "width": 599.0,
+      "height": 840.2000122070312,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "existing_ocr_provenance": {
+        "text_layer_origin": "uncorrected_scan_ocr",
+        "extraction_runtime": "PyMuPDF 1.26.7",
+        "extraction_call": "page.get_text('text')",
+        "registered_inspection_unchanged": true,
+        "current_parser_formatting_may_differ_from_previous_inspection": true
+      }
+    },
+    {
+      "page_number": 3,
+      "text": "",
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_representation_text_sha256": "8e56eaca24f2e9e743eead8b6760fdd93030f297bb782a859a3a0ceeec88b298",
+      "representation": "embedded_pdf_text",
+      "include_in_search": false,
+      "selection_reason": "Held: not in final independent accepted-page list; no searchable content.",
+      "original_pdf_text_sha256": "8e56eaca24f2e9e743eead8b6760fdd93030f297bb782a859a3a0ceeec88b298",
+      "original_pdf_char_count": 569,
+      "width": 593.75,
+      "height": 840.2000122070312,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "existing_ocr_provenance": {
+        "text_layer_origin": "uncorrected_scan_ocr",
+        "extraction_runtime": "PyMuPDF 1.26.7",
+        "extraction_call": "page.get_text('text')",
+        "registered_inspection_unchanged": true,
+        "current_parser_formatting_may_differ_from_previous_inspection": true
+      }
+    },
+    {
+      "page_number": 4,
+      "text": "Li \nPERIMETRE j  \nPLAN DIRECTEUR LOCALISE \"MON REPOS\" \nu \nu \n1. \nObjectifs d'aménagement \n•  Délimiter les sous-secteurs équipés, bâtis ou faciles à bâtir, par rapport au sous-secteur non-équipé et non-bâti \ndestiné à un développement ultérieur. \nR  •  Définir l'organisation d'ensemble du quartier. \n2. Principes d'aménagement \nOrganiser la desserte du quartier en fonction des voies de circulation existantes; aménager un trottoir, ainsi que \ndes places de stationnement arborisées pour visiteurs et, au bord de la rupture de pente du versant de la Mèbre, \nun rebroussement pour camions de 10m. \nGarantir une qualité d'ensemble et apporter un soin particulier à l'insertion des nouvelles constructions dans un \nR  contexte de mixité (logements et activités). \nAménager l'espace d'accueil de manière à structurer et définir la rue de desserte. \nAssurer que les bâtiments et les surfaces extérieures des futures entreprises qui donnent sur la rue de desserte \nR  soient conçus avec soin, afin de conférer aux abords de la rue de desserte la qualité d'un espace d'accueil. \nR\n.  Adapter la structure parcellaire du sous-secteur non-bâti et non-équipé au Sud de la rue de desserte aux \nbesoins d'une zone mixte. \n3. Mesures d'aménagement \n•  Etendre les zones à bâtir aux parties non bâties par le biais d'un plan de quartier. La participation des proprié-\ntaires aux frais d'équipement et d'aménagement de la zone devra être coordonnée avec la Municipalité; la \nstructure parcellaire devra être modifiée en fonction du plan de quartier. \n4. Programme d'actions \nCoordonner le nouveau statut du sol des parcelles situées en zone intermédiaire avec le plan général d'affec-\ntation lors de sa révision. \nAménager le cheminement piéton situé dans l'aire agricole, si possible à court terme, en respectant les fonctions \nécologiques de l'aire. \nRenforcer les boisements riverains de la Mèbre et exploiter l'aire agricole de manière extensive (prairie, pâturage) \nafin de préserver et améliorer les qualités écologiques du couloir biologique le long de la Mèbre. \nu \nu \nu \na \nu \nu \n",
+      "text_sha256": "ba65b4fe201d4ec7ef1aa0aeafbee50c650149652d906da6da8e895eb4b15d72",
+      "original_representation_text_sha256": "ba65b4fe201d4ec7ef1aa0aeafbee50c650149652d906da6da8e895eb4b15d72",
+      "representation": "embedded_pdf_text",
+      "include_in_search": true,
+      "selection_reason": "Independently reviewed partial historical prose; preserve raw OCR and all source-specific limits.",
+      "original_pdf_text_sha256": "ba65b4fe201d4ec7ef1aa0aeafbee50c650149652d906da6da8e895eb4b15d72",
+      "original_pdf_char_count": 2075,
+      "width": 593.75,
+      "height": 839.25,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "existing_ocr_provenance": {
+        "text_layer_origin": "uncorrected_scan_ocr",
+        "extraction_runtime": "PyMuPDF 1.26.7",
+        "extraction_call": "page.get_text('text')",
+        "registered_inspection_unchanged": true,
+        "current_parser_formatting_may_differ_from_previous_inspection": true
+      }
+    },
+    {
+      "page_number": 5,
+      "text": "",
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_representation_text_sha256": "2355179ad4bb2d698190d1114a8138fcad5f173ae3bd2ba72ad69a3c26b71a3b",
+      "representation": "embedded_pdf_text",
+      "include_in_search": false,
+      "selection_reason": "Held: not in final independent accepted-page list; no searchable content.",
+      "original_pdf_text_sha256": "2355179ad4bb2d698190d1114a8138fcad5f173ae3bd2ba72ad69a3c26b71a3b",
+      "original_pdf_char_count": 1368,
+      "width": 1682.4000244140625,
+      "height": 837.7999877929688,
+      "confidence": null,
+      "confidence_status": "not_recorded",
+      "existing_ocr_provenance": {
+        "text_layer_origin": "uncorrected_scan_ocr",
+        "extraction_runtime": "PyMuPDF 1.26.7",
+        "extraction_call": "page.get_text('text')",
+        "registered_inspection_unchanged": true,
+        "current_parser_formatting_may_differ_from_previous_inspection": true
+      }
+    }
+  ]
+}

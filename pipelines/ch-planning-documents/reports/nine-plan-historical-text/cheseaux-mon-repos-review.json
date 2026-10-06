@@ -1,0 +1,65 @@
+{
+  "vd_document_id": "0e9335fa-0a1f-5251-8a47-ccaf3e2587c5",
+  "source_sha256": "a8e1bf955645980a5956cd4d690f2e7ca533540cd1822663b9f997a4052396d4",
+  "source_url": "https://www.rdppf.vd.ch/ws/utilities/GetDocuments.ashx?rep=AMENAGEMENT&nom=5582_130002_PR01.pdf",
+  "official_host": "www.rdppf.vd.ch",
+  "publisher": "Official municipal/cantonal source",
+  "title": "Périmètre i: Plan directeur localisé et fiche — référence historique partielle",
+  "canton": "VD",
+  "commune_bfs": 5582,
+  "scope": "localized",
+  "plan_type": "localized_pdl",
+  "page_count": 5,
+  "source_role": "historical_source_reference",
+  "plan_status": "unverified",
+  "all_prose_is_binding": false,
+  "spatial_qualification": false,
+  "signed_approval": {
+    "page": 3,
+    "council": "2011-02-22",
+    "canton": "2011-06-29",
+    "image_sha256": "9b91c583c4f1e880701c8eb045d87997d61f6659cfcc591e426b548632bb7d7d",
+    "municipal": "2010-10-11",
+    "visually_verified": true,
+    "scope": "Observed historical source signature only; no current applicability or extension to separate PPA/regulatory components."
+  },
+  "diagnostic_vintage_limit": "Source-vintage statements and historical signatures only; no current legal, ownership, project realization, capacity or spatial conclusions.",
+  "limits": [
+    "Historical reference only. Registered source status, commune mapping and current applicability are not upgraded by content QA or historical signatures.",
+    "Accepted for narrative historical search with original physical PDF page citations, not an authoritative transcription, structured rule/number extraction, current legal guidance or buildability determination.",
+    "Figures, photographs, maps, diagrams and tables are not completely represented. No geometry, parcel/EGRID association, precision or spatial qualification is established.",
+    "Only listed accepted pages are searchable; every other physical page remains held/not selected. No document-completion or commune-completion claim; page breaks and omitted intervening pages remain explicit.",
+    "Past, proposed and conditional measures retain their historical tense; implementation, remaining capacity, current ownership and current legal applicability are unverified.",
+    "No material strike-through/amendment conflict was identified in accepted-page visual review. This is not a legal consolidation or a review of all unselected pages.",
+    "Modification of localized Mon Repos PDL, perimeter i observed on originalpage4; not entireMonRepos or commune.",
+    "Original4 visually inspected: coherent objectives/principles/measures/actionprogramme. EmbeddedOCR has perimeter j where image says i. ExcludedsignatureOCR incorrectlyreads2017whereimage2011. No rawtextcorrection made; sourceimage remains authority.",
+    "Receiver context must state localized modification and perimeter-letterOCR uncertainty.",
+    "No mapped boundary or present zoning inferred from page4.",
+    "Raw reviewed strings retain original whitespace. Embedded text is extracted with pinned PyMuPDF formatting, not claimed identical to older registry inspection serialization; registry remains untouched."
+  ],
+  "map_pages": null,
+  "historical_reference": {
+    "mode": "exact_historical_reference",
+    "current_applicability": "unverified",
+    "source_status_promotion": false,
+    "registry_coverage_extent": "unverified",
+    "spatial_currentness_block_retained": true,
+    "fully_certified_pages": 0,
+    "human_readable_caveat": "CHESEAUX-MON-REPOS — PARTIAL HISTORICAL REFERENCE. Localized dossier, not municipality-wide PDCom. Uncorrected scan/research OCR; original physical page image is authoritative. Current applicability unverified. No structured rules, current capacity, parcel rights, maps or buildability interpretation.",
+    "preserve_raw_ocr_whitespace": true,
+    "selected_pages": [
+      4
+    ],
+    "representation": "embedded_pdf_text",
+    "plan_type": "localized_pdl",
+    "municipality_wide_pdcom": false,
+    "territory": {
+      "commune_bfs": 5582,
+      "scope": "localized"
+    },
+    "independent_source_review_sha256": "d49cc5c1c0c91b3f682fbd691df1a4689028c1b86280c355868e3f3a490858ea",
+    "independent_content_review_sha256": "5862747e2ff67aa5d288bc14b959cbe25faf542cb2fff32ea5ff200c8b10b545",
+    "source_vintage_approval_does_not_establish_currentness": true,
+    "artifact_sha256": "0ac413479bd4eae21d545f079f24387e91534130538314cfd466dbc2e48e12b5"
+  }
+}

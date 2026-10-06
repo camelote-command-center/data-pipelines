@@ -16,7 +16,7 @@ class GlandHistoricalReferenceTests(unittest.TestCase):
         self.bundles = [json.loads((runner.BATCH_ROOT / (s + '-bundle.json')).read_text()) for s in runner.SLUGS]
 
     def test_exact_two_sources_reassemble_and_deliver_with_visible_caveats(self):
-        self.assertEqual(len(h.PINS), 4)
+        self.assertEqual(len(h.PINS), 13)
         self.assertEqual(sum(len(b['chunks']) for b in self.bundles), 41)
         self.assertIn(h.SOURCE, bridge.TEXT_SOURCES)
         for b in self.bundles:

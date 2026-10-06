@@ -1,0 +1,2948 @@
+{
+  "original_reviews": [
+    {
+      "path": "independent-first-five-content-review.json",
+      "sha256": "503b69fb61edf692465cececa39006a22307ccac575cc6362a14ffaf6e7640b3",
+      "review": {
+        "schema": "independent_municipal_text_content_review_v1",
+        "reviewer": "yvonand_map_validation",
+        "created_at": "2026-10-06T08:05:10.356628+00:00",
+        "status": "accepted_selected_raw_historical_text_only",
+        "scope": "First five sources only; remaining four independently reviewed elsewhere. No expansion beyond original 63 proposed pages.",
+        "method": [
+          "Visual inspection of all 63 proposed page images in the existing selected-page contact sheets.",
+          "Comparison of proposed raw text, substantive order, tables, maps, diagrams, source scope and historical/conditional states.",
+          "Fresh hash verification of five original PDFs and exact PyMuPDF get_text() equality for all 63 proposed raw texts."
+        ],
+        "mandatory_limits": [
+          "Historical reference only. Registered source status, commune mapping and current applicability are not upgraded by content QA or historical signatures.",
+          "Localized planning dossier, not complete municipal PDCom coverage; preserve exact PDL/PPA/report scope and source-specific approval evidence.",
+          "Embedded PDF text is uncorrected scan OCR, preserved byte-for-byte with whitespace. Confidence is null/not recorded. Binding-margin letters, OCR substitutions and broken words are not corrected.",
+          "Accepted for narrative historical search with original physical PDF page citations, not an authoritative transcription, structured rule/number extraction, current legal guidance or buildability determination.",
+          "Figures, photographs, maps, diagrams and tables are not completely represented. No geometry, parcel/EGRID association, precision or spatial qualification is established.",
+          "Only listed accepted pages are searchable; every other physical page remains held/not selected. No document-completion or commune-completion claim; page breaks and omitted intervening pages remain explicit.",
+          "Past, proposed and conditional measures retain their historical tense; implementation, remaining capacity, current ownership and current legal applicability are unverified.",
+          "No material strike-through/amendment conflict was identified in accepted-page visual review. This is not a legal consolidation or a review of all unselected pages."
+        ],
+        "sources": [
+          {
+            "slug": "aubonne-vieille-ville",
+            "source_document_id": "c2fe6145-5bff-5beb-b27f-649f0125c146",
+            "source_sha256": "d5d93e0e17fbd80ce10629550c0c60c6ba100f8ac45c62dd3929a5ee3483fe73",
+            "source_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/aubonne-vieille-ville.pdf",
+            "physical_page_count": 71,
+            "candidate_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/aubonne-vieille-ville-page-candidates.json",
+            "candidate_sha256": "5a079750da9af1b06aa3f0293b5900b8eda34171c8e8719a6e32be8cbfd99458",
+            "original_proposed_pages": [
+              5,
+              6,
+              7,
+              11,
+              15,
+              16,
+              17,
+              18,
+              20,
+              22,
+              24,
+              26,
+              29,
+              30
+            ],
+            "accepted_pages": [
+              5,
+              6,
+              7,
+              15,
+              16,
+              17,
+              18,
+              20,
+              22,
+              24,
+              26,
+              30
+            ],
+            "additional_held_pages": {
+              "11": "Objective/measure table: flattened text does not preserve column associations.",
+              "29": "Implantation diagram labels interleave the explanatory prose; no silent removal or reconstruction."
+            },
+            "all_held_pages": [
+              1,
+              2,
+              3,
+              4,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              19,
+              21,
+              23,
+              25,
+              27,
+              28,
+              29,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63,
+              64,
+              65,
+              66,
+              67,
+              68,
+              69,
+              70,
+              71
+            ],
+            "accepted_raw_text_characters": 31689,
+            "mandatory_limits": [
+              "Historical reference only. Registered source status, commune mapping and current applicability are not upgraded by content QA or historical signatures.",
+              "Localized planning dossier, not complete municipal PDCom coverage; preserve exact PDL/PPA/report scope and source-specific approval evidence.",
+              "Embedded PDF text is uncorrected scan OCR, preserved byte-for-byte with whitespace. Confidence is null/not recorded. Binding-margin letters, OCR substitutions and broken words are not corrected.",
+              "Accepted for narrative historical search with original physical PDF page citations, not an authoritative transcription, structured rule/number extraction, current legal guidance or buildability determination.",
+              "Figures, photographs, maps, diagrams and tables are not completely represented. No geometry, parcel/EGRID association, precision or spatial qualification is established.",
+              "Only listed accepted pages are searchable; every other physical page remains held/not selected. No document-completion or commune-completion claim; page breaks and omitted intervening pages remain explicit.",
+              "Past, proposed and conditional measures retain their historical tense; implementation, remaining capacity, current ownership and current legal applicability are unverified.",
+              "No material strike-through/amendment conflict was identified in accepted-page visual review. This is not a legal consolidation or a review of all unselected pages.",
+              "Vieille Ville localized study includes Fossés-Dessous/Poyet and Gare; PDL study scope differs from PGA regulatory scope, and Industrie/rue des Granges is deferred to a separate instrument.",
+              "The source distinguishes objectives/principles from analytical commentary, photographs and diagrams. It states PDL directives are not opposable to third parties and implementation requires other planning instruments; no blanket regulatory force is assigned.",
+              "Historical ISOS/architectural inventories, 1995 traffic and site observations, and June 2002 base updates are source-vintage evidence, not current inventories or conditions.",
+              "Parcel-reference annex/database and future cadastre coupling mentioned in prose are not a supplied public GIS layer or georeferencing evidence."
+            ],
+            "page_ledger": [
+              {
+                "page_number": 1,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "eded33789da4745768b5e931f731fbee4d71058ee9b72cf00ad23d8ba228bdff",
+                "raw_text_characters": 1063
+              },
+              {
+                "page_number": 2,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "7619662a55eeb141323716ead70be943d9378d9efde33e0bed825fbb32962576",
+                "raw_text_characters": 5361
+              },
+              {
+                "page_number": 3,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "784b93778f1fc923b3237fa97bb04a477268895404cc33de92335eb376559036",
+                "raw_text_characters": 877
+              },
+              {
+                "page_number": 4,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "ddd986ed222180de3914858a0ea069e3ab70f39ee3fe0dd4c1e9a7f22b717e2a",
+                "raw_text_characters": 116
+              },
+              {
+                "page_number": 5,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "4f7c68f7ccdb0bedbd85272001c688feff737465ada715cc2221ba16d87d9c9f",
+                "raw_text_characters": 3173
+              },
+              {
+                "page_number": 6,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "41abfe90fa5b909950104b3165605793b9167e9bd8f9a5327c34c2c988d4fe7c",
+                "raw_text_characters": 2579
+              },
+              {
+                "page_number": 7,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "89f6caa8c53538276b773f7a51843991d8871a8dff73f71b030493f98330c0c1",
+                "raw_text_characters": 2662
+              },
+              {
+                "page_number": 8,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "f27d89a49935bbcf4e80a4b6de09d3ac33681f3fe6ae1cf5e30b07a9260a99bb",
+                "raw_text_characters": 504
+              },
+              {
+                "page_number": 9,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "8ba3c2f8653c84072ca4892860cc135fb1a3a90b9824dfc867527b4fac5b9505",
+                "raw_text_characters": 875
+              },
+              {
+                "page_number": 10,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "edf73e836e2eae1c2e73e3ad37f4afceb8de79a705a4997e7ec4b3140f7ac986",
+                "raw_text_characters": 132
+              },
+              {
+                "page_number": 11,
+                "initially_proposed": true,
+                "decision": "held",
+                "reason": "Objective/measure table: flattened text does not preserve column associations.",
+                "raw_text_sha256": "8f7c107f0cbd3406c7cabc591bce7e6116b3ef91faa98e2a255db71bb3192c5e",
+                "raw_text_characters": 1728
+              },
+              {
+                "page_number": 12,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "ea7cf8b0413c6fd5a84ea8fcae57d6dccac6386c410db2448659011ae839f660",
+                "raw_text_characters": 2210
+              },
+              {
+                "page_number": 13,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "6baafd0518558d296ce53b0c825e7b62e9040f5b604838045a289d5c71bff5d6",
+                "raw_text_characters": 515
+              },
+              {
+                "page_number": 14,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "7375fef1b63fa28d71d903b0ab37df6b6af33827689fa45e825178c577ad51aa",
+                "raw_text_characters": 115
+              },
+              {
+                "page_number": 15,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "2ac65cb5b68cbd873a01862d48508a49418da84a25708f856930750b6c3e4ca7",
+                "raw_text_characters": 3088
+              },
+              {
+                "page_number": 16,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "a0caa2b0b7ef9843f506ec55fad7897676ac5d6f8853d0ab274de2b1edfb4f57",
+                "raw_text_characters": 3125
+              },
+              {
+                "page_number": 17,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "8233e30fcc9cc3d6af39a5b5dd10b37d2a09c41fe00efa158b6dea48068e486f",
+                "raw_text_characters": 3315
+              },
+              {
+                "page_number": 18,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "f582faed1de95fa20ebf13a0c5a67e741112a18dbc873a04e12c0450218ba8d4",
+                "raw_text_characters": 2909
+              },
+              {
+                "page_number": 19,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "abb3e499da70413c3cf872326cb18b45e614dc60e12c784167da27703cebfcfe",
+                "raw_text_characters": 717
+              },
+              {
+                "page_number": 20,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "c40f51e851453af4a21095adda80ed74009e57e05d12121b1f4684066368d4d6",
+                "raw_text_characters": 3229
+              },
+              {
+                "page_number": 21,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "ff5315c683c76bf139ed19b05fd2ca4d7ba207122ff88c04c9f319c4f2625f01",
+                "raw_text_characters": 824
+              },
+              {
+                "page_number": 22,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "fed3b3f89aa40e8e13ab9c530c28332c91adbd6092898928c46e8fa8b432f21b",
+                "raw_text_characters": 1970
+              },
+              {
+                "page_number": 23,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "ea830b4317ad92859a9ded20aad9fe07924de59cdd8ddf40892e3aee801d0133",
+                "raw_text_characters": 1115
+              },
+              {
+                "page_number": 24,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "5af10222bf763945e5b2d80a000ab2e7a0223ae13432dc1c3952a3d794ff65e0",
+                "raw_text_characters": 2226
+              },
+              {
+                "page_number": 25,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "3d461d9d2d4f21360c193c3447f08509ae07a98846edcfb49a1528198d37270e",
+                "raw_text_characters": 904
+              },
+              {
+                "page_number": 26,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "bad6d66a251794c357f8a1c15d52829a60087a3e65e7939ab7e620c6151d02df",
+                "raw_text_characters": 2538
+              },
+              {
+                "page_number": 27,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "1847f3ee4e33dcd39c64c03f242585bc805aaef27063007a93f9a6a138dce1f2",
+                "raw_text_characters": 905
+              },
+              {
+                "page_number": 28,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "a990eba8dd5e8f5b28588ba345c418384e26154885c174d78b4dd865f2435b46",
+                "raw_text_characters": 127
+              },
+              {
+                "page_number": 29,
+                "initially_proposed": true,
+                "decision": "held",
+                "reason": "Implantation diagram labels interleave the explanatory prose; no silent removal or reconstruction.",
+                "raw_text_sha256": "0a891321f2bad11a4c03b649a8af1b547c20f3d3a66f9a309690bffe3bd6c43c",
+                "raw_text_characters": 2694
+              },
+              {
+                "page_number": 30,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "1675d1764d838e3a71ccbe91e05ca7849af1ea9b0255152082f76e592c1aec70",
+                "raw_text_characters": 875
+              },
+              {
+                "page_number": 31,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "b22bdad391cda7a793b461102f3fe6698265d02eec9645af829da9762f31ad24",
+                "raw_text_characters": 950
+              },
+              {
+                "page_number": 32,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "e130b012829b87b64a7985514534093ec77163a58f00685960f6712f1e6d1dd0",
+                "raw_text_characters": 1000
+              },
+              {
+                "page_number": 33,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "6ccf90d7aea1a76a7052031f7299db37d30741dcb4ac872643ed42afd2f83284",
+                "raw_text_characters": 899
+              },
+              {
+                "page_number": 34,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "caafebf1585220728ae17d34fcc663b0baf381215f4522bc1ad399d0728f8bfb",
+                "raw_text_characters": 1689
+              },
+              {
+                "page_number": 35,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "fef4085b6efcf817cf9e9c7ddbba5721a7e8cf04c472ec6c37ba51a95c76f054",
+                "raw_text_characters": 1995
+              },
+              {
+                "page_number": 36,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "930faf65f1e9699ddbdbecce6bd4738eeb3b06ee176b8ca581420edb30b847da",
+                "raw_text_characters": 877
+              },
+              {
+                "page_number": 37,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "45b8d09e976c1028cd68bae5580c58ccf854c789564569e3d42001c240279cda",
+                "raw_text_characters": 1186
+              },
+              {
+                "page_number": 38,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "33630e72126f48340851a0f1cab9eb5428fb395b86f782c769901d292df8ff31",
+                "raw_text_characters": 509
+              },
+              {
+                "page_number": 39,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "2714941dcbc9c5acc10aa1ffc4ab2206b30f7c023faa62e86248efcc05661a3e",
+                "raw_text_characters": 507
+              },
+              {
+                "page_number": 40,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "5ca81ba323541dfe79c520501e8418de8761f53862d81ac121207e5f76da9a73",
+                "raw_text_characters": 1520
+              },
+              {
+                "page_number": 41,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "fb1549f92328cf264217bbb080d961e9a4ab9468d7bddccfa24f6ec4502bad10",
+                "raw_text_characters": 1038
+              },
+              {
+                "page_number": 42,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "730063203fbac24e90272134ce60453427a4be5cd8fbcadb0439eff187d3d91a",
+                "raw_text_characters": 1125
+              },
+              {
+                "page_number": 43,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "d6eafef73bf69fef2f8cf75d5ba9790dac9a91ec27436d137fde584b7c40b90b",
+                "raw_text_characters": 1806
+              },
+              {
+                "page_number": 44,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "1b78a8a042d560c89be12e3d968bdfa6b491d04c46b3d711774ba221508cbebb",
+                "raw_text_characters": 1712
+              },
+              {
+                "page_number": 45,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "e23963f86f88c9436fcd49feb98e0d9d8f0750379ecb1171295de41dc50589b9",
+                "raw_text_characters": 1610
+              },
+              {
+                "page_number": 46,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "7168e5048651de8dbf90b277ee514caf40a85aac676cd2e2f63e806d837685ef",
+                "raw_text_characters": 1690
+              },
+              {
+                "page_number": 47,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "82d5e01e430ac188f0ec7f1b149550387f89637cd3446c1a1fd220ecfb8a43ff",
+                "raw_text_characters": 1584
+              },
+              {
+                "page_number": 48,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "300188730ecd0d557cc062347268856e0dc18d8d6b47ae1e8ca5c81c2d6d7399",
+                "raw_text_characters": 1468
+              },
+              {
+                "page_number": 49,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "d40cdd34e9c42aa1a711b41532631637129a8397ab969f924cfd856ee88b2c1b",
+                "raw_text_characters": 1696
+              },
+              {
+                "page_number": 50,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "3964f418d28c5e2aa9922c981ca38dcaaa35250eb411aba50eb6e7eb3e19e9e0",
+                "raw_text_characters": 1670
+              },
+              {
+                "page_number": 51,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "5a9183c036c2e0593781dcd436b293580ddc67d16c18bd6b589fff2f0dc34c15",
+                "raw_text_characters": 1656
+              },
+              {
+                "page_number": 52,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "af6566580c37083523c84c79120680bd5fc583aed13f1e137daa6bafdd3232ef",
+                "raw_text_characters": 1506
+              },
+              {
+                "page_number": 53,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "42d58a17e54e9970b508dab42eb25623c9e1c9b385b285c8c7756ba1ba95ba03",
+                "raw_text_characters": 1437
+              },
+              {
+                "page_number": 54,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "cab0645788d755e95630088b515430bbe7279e93c480770b5dbc33207385f9b0",
+                "raw_text_characters": 1754
+              },
+              {
+                "page_number": 55,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "bed65c7c3cb5bf6d72cb1d6eba85f7abe1c750776249719f29236a35e9976580",
+                "raw_text_characters": 1703
+              },
+              {
+                "page_number": 56,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "3b415e608da02f4eabf21cb8ca841224ffb0dc29f8a0a0c46d95f8311b3ebbe4",
+                "raw_text_characters": 1499
+              },
+              {
+                "page_number": 57,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "9ededf1316c1e129064ab76434049f58e49062f1944bfd52dfedcb092ec3d197",
+                "raw_text_characters": 1279
+              },
+              {
+                "page_number": 58,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "6005dfa5afd22c4d34acc9659d9c09e816a889e910ba2bcc3a01cd063c8df1d3",
+                "raw_text_characters": 953
+              },
+              {
+                "page_number": 59,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "2c7a7a3fd38b64af22d884ca500cc294983ee8f369263b572ed8a3028ad13e93",
+                "raw_text_characters": 1282
+              },
+              {
+                "page_number": 60,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "21537f4245ead56d8295cabdc91b129dde2061b4d1315a7f81cfac63023b085b",
+                "raw_text_characters": 1979
+              },
+              {
+                "page_number": 61,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "e9dd37f89463ac0d4313d9c3b5eec7802813489b12d9ebad019cd7885f5050e4",
+                "raw_text_characters": 2859
+              },
+              {
+                "page_number": 62,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "16a93815c169b78d6980f3d321965ceda6980874940842cb17f7bd08c6520353",
+                "raw_text_characters": 1884
+              },
+              {
+                "page_number": 63,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "26516e39403311bcb4adc2d2d21b9773bd8ced495b6e155de7c16c80023c1376",
+                "raw_text_characters": 485
+              },
+              {
+                "page_number": 64,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "a70101b0f6bba1f104b7ef9c9f0b41301d0606d243cef41a3baee870f3de66f7",
+                "raw_text_characters": 47
+              },
+              {
+                "page_number": 65,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "raw_text_characters": 0
+              },
+              {
+                "page_number": 66,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "92e1ee1f410d0c464728878b1a34d2dce7a713976e52ff36502d57b553f80e8a",
+                "raw_text_characters": 142
+              },
+              {
+                "page_number": 67,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "fcae763e8a79b2405506c2f0a5bd61bd909a908085259d254e65996b5f49e6be",
+                "raw_text_characters": 145
+              },
+              {
+                "page_number": 68,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "61fe3058917fd9f880eb1a43995100babf427ad9c6ad962f54d9f1b289bfb517",
+                "raw_text_characters": 115
+              },
+              {
+                "page_number": 69,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "raw_text_characters": 0
+              },
+              {
+                "page_number": 70,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "610c40e10fdf11c108e26f4b82cf9ab57235efac35204dc3283097bccb792400",
+                "raw_text_characters": 814
+              },
+              {
+                "page_number": 71,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "c9a61814732036711466e9ca699e6be0caed3a55f34bd1ec8f278ace0a29d0f7",
+                "raw_text_characters": 1758
+              }
+            ],
+            "contact_sheet_evidence": [
+              {
+                "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/aubonne-vieille-ville-selection/contact-1.png",
+                "sha256": "e1e3314ee65b27ae1c7f06df63d422962cdd609eb53ee956f33368df0f217d12"
+              },
+              {
+                "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/aubonne-vieille-ville-selection/contact-13.png",
+                "sha256": "08dec07721ceb2489d76d4e11b348bf39e1fa9eb8e2aa2ae4a198833e9f324e5"
+              },
+              {
+                "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/aubonne-vieille-ville-selection/contact-7.png",
+                "sha256": "993e2b31d9158d7c18cf9022176a1cfe436f9ca6ece55780fe13f9e2962582f5"
+              }
+            ],
+            "source_bytes_verified": true,
+            "all_proposed_text_hashes_and_pdf_extraction_equal": true
+          },
+          {
+            "slug": "bussigny-cocagne",
+            "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+            "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+            "source_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/bussigny-cocagne.pdf",
+            "physical_page_count": 70,
+            "candidate_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/bussigny-cocagne-page-candidates.json",
+            "candidate_sha256": "6f9aa656e2294c127b8a52484cc6464c39b48b7c054bb963895848bcade4dcca",
+            "original_proposed_pages": [
+              2,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              20,
+              24,
+              25,
+              26,
+              28,
+              30,
+              31,
+              32,
+              34,
+              36,
+              38,
+              40,
+              42,
+              44,
+              46,
+              48,
+              50,
+              51,
+              52,
+              55,
+              65,
+              66
+            ],
+            "accepted_pages": [
+              2,
+              7,
+              8,
+              9,
+              10,
+              11,
+              14,
+              26,
+              28,
+              40,
+              42,
+              44,
+              46,
+              48,
+              50,
+              51,
+              52,
+              65,
+              66
+            ],
+            "additional_held_pages": {
+              "6": "Historical parcel ownership/area table; flattened associations not accepted.",
+              "12": "Multi-column PALM measures/capacity table.",
+              "13": "Parallel sector capacity columns and map; associations not retained reliably.",
+              "15": "Map-dominant contextual page; selected raw text does not represent its substantive geographic content.",
+              "20": "Substantial garbled map/legend OCR appended to narrative; whole-page hold, no prose-only trimming.",
+              "24": "Cross-section diagram labels collapse into garbled text after narrative; whole-page hold.",
+              "25": "Map-dominant page; geometry and label relationships not represented.",
+              "30": "Program/capacity table with grouped figures and OCR corruption; numeric associations not accepted.",
+              "31": "Sector capacity table with corrupted technical-area figures; whole-page hold.",
+              "32": "Sector capacity table combined with measures; retain whole-page hold rather than separating prose.",
+              "34": "Variant capacity table and section graphics; alternative scenario not structured extraction.",
+              "36": "Variant capacity table and section graphics; alternative scenario not structured extraction.",
+              "38": "Variant capacity table and section graphics; alternative scenario not structured extraction.",
+              "55": "Multi-column urbanisation/infrastructure coordination matrix loses row/column relationships."
+            },
+            "all_held_pages": [
+              1,
+              3,
+              4,
+              5,
+              6,
+              12,
+              13,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              27,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              41,
+              43,
+              45,
+              47,
+              49,
+              53,
+              54,
+              55,
+              56,
+              57,
+              58,
+              59,
+              60,
+              61,
+              62,
+              63,
+              64,
+              67,
+              68,
+              69,
+              70
+            ],
+            "accepted_raw_text_characters": 69133,
+            "mandatory_limits": [
+              "Historical reference only. Registered source status, commune mapping and current applicability are not upgraded by content QA or historical signatures.",
+              "Localized planning dossier, not complete municipal PDCom coverage; preserve exact PDL/PPA/report scope and source-specific approval evidence.",
+              "Embedded PDF text is uncorrected scan OCR, preserved byte-for-byte with whitespace. Confidence is null/not recorded. Binding-margin letters, OCR substitutions and broken words are not corrected.",
+              "Accepted for narrative historical search with original physical PDF page citations, not an authoritative transcription, structured rule/number extraction, current legal guidance or buildability determination.",
+              "Figures, photographs, maps, diagrams and tables are not completely represented. No geometry, parcel/EGRID association, precision or spatial qualification is established.",
+              "Only listed accepted pages are searchable; every other physical page remains held/not selected. No document-completion or commune-completion claim; page breaks and omitted intervening pages remain explicit.",
+              "Past, proposed and conditional measures retain their historical tense; implementation, remaining capacity, current ownership and current legal applicability are unverified.",
+              "No material strike-through/amendment conflict was identified in accepted-page visual review. This is not a legal consolidation or a review of all unselected pages.",
+              "Cocagne-Buyère PDL/report is localized to Buyère, Praz Mégy and Quinson; references to PDCn 2008, PALM 2012, SDOL and PDCom 1999 are historical context, not independent approval of every quoted instrument.",
+              "Programmes, SPd/COS, heights, inhabitants/jobs, parking and traffic estimates are historical proposals/conditions, not current residual capacity, realized development or individual building rights. Alternatives are not cumulative.",
+              "Later PPA/PQ, road procedures, conventions, servitudes and OPB/OPAM/ORNI requirements remain necessary within the source narrative. Proposed abrogation of the 1975 quartier plan is not verified as implemented.",
+              "Forecast transport dates (2013, 2014–2016, 2020–2025 and 2025–2030), tram/BHNS, project road works and already-operating bus service retain their different historical states; no present completion claim.",
+              "PDF11 narrative is retained with incomplete map labels explicitly non-geographic; PDF26 labels/prose include OCR Al/Si/M substitutions and are not structured perimeter identifiers. PDF66 sequential A1–A4 explanations remain narrative, not spatial records.",
+              "Historical land-feasibility and owner-agreement assertions on PDF65–66 do not verify current title, consent or enforceable rights. Physical-page continuations across omitted illustrations are not silently joined."
+            ],
+            "page_ledger": [
+              {
+                "page_number": 1,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "30f68b204b96ea4eabd7a14e8bd0162109b669c9705c959f56625a992cfcea50",
+                "raw_text_characters": 635
+              },
+              {
+                "page_number": 2,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "f2ee54a299d095e6c0320e642471661200cb43e9a618e7722cb84932257e521a",
+                "raw_text_characters": 3598
+              },
+              {
+                "page_number": 3,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "a7ba2cb97a9836a094c9da0ddc1418589e3f6bd97cfb588058bbef82a0edf9bd",
+                "raw_text_characters": 2808
+              },
+              {
+                "page_number": 4,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "2281cf5872aa0df446c2eea6d0eba55809184aef7eb9e19fb5e2a1f8d3b75628",
+                "raw_text_characters": 6008
+              },
+              {
+                "page_number": 5,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "5049c3021350b1fe012db48c3d0dd019fafe8008f0ea5ad561ab15e24b26e5ec",
+                "raw_text_characters": 282
+              },
+              {
+                "page_number": 6,
+                "initially_proposed": true,
+                "decision": "held",
+                "reason": "Historical parcel ownership/area table; flattened associations not accepted.",
+                "raw_text_sha256": "43e76219c17b5a05d420d0b01b8553a57ce4d27c565f00743f90a59e164dd77c",
+                "raw_text_characters": 2271
+              },
+              {
+                "page_number": 7,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "35070ee2b9ded6bdd20680925486055513d7915813e63d9b2fee6d23cad5b675",
+                "raw_text_characters": 3186
+              },
+              {
+                "page_number": 8,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "37ddd5d88e0cd475af6e979d8a64669958b78f5e71091adb5439ee570f4e70d4",
+                "raw_text_characters": 3321
+              },
+              {
+                "page_number": 9,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "2e505464ee04c055bba636816844af6ad597420026a6c7f969537145ed1e937c",
+                "raw_text_characters": 3234
+              },
+              {
+                "page_number": 10,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "5ac32d37adae0bb994cf46f8b98e0ef4b280ffe1c3ed75825884c035b384b192",
+                "raw_text_characters": 4642
+              },
+              {
+                "page_number": 11,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "933576f8d10a7c7507e4890a7acfbf9655e5411dd5ccc0b3da064016e8b4bc29",
+                "raw_text_characters": 2483
+              },
+              {
+                "page_number": 12,
+                "initially_proposed": true,
+                "decision": "held",
+                "reason": "Multi-column PALM measures/capacity table.",
+                "raw_text_sha256": "9adb0d77b97518f9ff2802254f50854be5b746fa2e0ac9f9fcd5dae8ba33a11e",
+                "raw_text_characters": 3582
+              },
+              {
+                "page_number": 13,
+                "initially_proposed": true,
+                "decision": "held",
+                "reason": "Parallel sector capacity columns and map; associations not retained reliably.",
+                "raw_text_sha256": "b612fa66fbe403dd0725d485b23892daa1384d736c993e938147dca305691714",
+                "raw_text_characters": 2726
+              },
+              {
+                "page_number": 14,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "d7f2e04ce65af28e2a878cc6951c88c1c361f6f6df5f12538122fc2f5e1d0374",
+                "raw_text_characters": 3680
+              },
+              {
+                "page_number": 15,
+                "initially_proposed": true,
+                "decision": "held",
+                "reason": "Map-dominant contextual page; selected raw text does not represent its substantive geographic content.",
+                "raw_text_sha256": "543ad03e9ced23616d12e0641df9b5e942740b0ef0025174837608e90ce5e385",
+                "raw_text_characters": 2069
+              },
+              {
+                "page_number": 16,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "0ebabb9b70140691ef6f17b237d7b20f798350e0c333f78e8bf388730d5175ea",
+                "raw_text_characters": 2016
+              },
+              {
+                "page_number": 17,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "220662be318fd749ae627694f4dcccad3cb4d08ed994f18e565b8fed912fd82b",
+                "raw_text_characters": 434
+              },
+              {
+                "page_number": 18,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "6d0af41ca5c7edfc308d4515b350e1cf7644725c8d2c9858b263e617dece40f2",
+                "raw_text_characters": 1611
+              },
+              {
+                "page_number": 19,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "9b952b8f7ffc3f293dc1bf1b31b68e861b5f47e7db7cfc962a24bddbd2850258",
+                "raw_text_characters": 825
+              },
+              {
+                "page_number": 20,
+                "initially_proposed": true,
+                "decision": "held",
+                "reason": "Substantial garbled map/legend OCR appended to narrative; whole-page hold, no prose-only trimming.",
+                "raw_text_sha256": "f84be37e27843c1e1cbdcb53d30c6be9768b23a7263ffef03af476e050054ef9",
+                "raw_text_characters": 2473
+              },
+              {
+                "page_number": 21,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "9d8d1cf418c4e836de46e1a155d47f49371610bde845e70bb66238df4eb8cd70",
+                "raw_text_characters": 1155
+              },
+              {
+                "page_number": 22,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "9f8641c3e63dd9139badda3ad8b809b3f37b64292b5c56d652951a744e0fb17d",
+                "raw_text_characters": 872
+              },
+              {
+                "page_number": 23,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "0400daff8566843aa3513238ffb40a82ca061c698af98791117c753691ff1899",
+                "raw_text_characters": 1479
+              },
+              {
+                "page_number": 24,
+                "initially_proposed": true,
+                "decision": "held",
+                "reason": "Cross-section diagram labels collapse into garbled text after narrative; whole-page hold.",
+                "raw_text_sha256": "73b4563abf2ff31e3377f4c1831c5b6f584263cf80f944ae53be3dc2ee4c98de",
+                "raw_text_characters": 3797
+              },
+              {
+                "page_number": 25,
+                "initially_proposed": true,
+                "decision": "held",
+                "reason": "Map-dominant page; geometry and label relationships not represented.",
+                "raw_text_sha256": "a94b2fabbaf38232df08459c952eb4d8c4a34e93bc4a6bed1cae4eb3e8286bed",
+                "raw_text_characters": 1368
+              },
+              {
+                "page_number": 26,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "a51aa75244122b8902a00c6442b964396efedb6487fc05082ed1bf792bb7a544",
+                "raw_text_characters": 3308
+              },
+              {
+                "page_number": 27,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "947b463784594b2c40fed2ca1d9c6f851ed08c1d3f405e8f8231596c30988828",
+                "raw_text_characters": 155
+              },
+              {
+                "page_number": 28,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "8963e1ec7f24a74108221c4077685a8556d3f2c25d205024f7506e064a594cc6",
+                "raw_text_characters": 3124
+              },
+              {
+                "page_number": 29,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "235778b07b563b41dd5c9355607d5f35c1b2f23c6e3741a903cca2d6e1ef1d5d",
+                "raw_text_characters": 587
+              },
+              {
+                "page_number": 30,
+                "initially_proposed": true,
+                "decision": "held",
+                "reason": "Program/capacity table with grouped figures and OCR corruption; numeric associations not accepted.",
+                "raw_text_sha256": "7ac3cb017a907e7547df833ced3d6a22a8af8febe15e7518192f9c47035ebd7a",
+                "raw_text_characters": 2496
+              },
+              {
+                "page_number": 31,
+                "initially_proposed": true,
+                "decision": "held",
+                "reason": "Sector capacity table with corrupted technical-area figures; whole-page hold.",
+                "raw_text_sha256": "76eb30692ab5886e65cf6ea2109162a733dfa96623bae0bd2b84aae4f7df5095",
+                "raw_text_characters": 3676
+              },
+              {
+                "page_number": 32,
+                "initially_proposed": true,
+                "decision": "held",
+                "reason": "Sector capacity table combined with measures; retain whole-page hold rather than separating prose.",
+                "raw_text_sha256": "421f203bd583621f1ac76cb6e05adc4e71421bce012c317d08931ef1b4ab62e9",
+                "raw_text_characters": 3552
+              },
+              {
+                "page_number": 33,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "a71314a132643224879e7cac1e736bb98979c0c6effb6d8ed312f71618c01f65",
+                "raw_text_characters": 466
+              },
+              {
+                "page_number": 34,
+                "initially_proposed": true,
+                "decision": "held",
+                "reason": "Variant capacity table and section graphics; alternative scenario not structured extraction.",
+                "raw_text_sha256": "cb2527e2972a642564c83afb2b40a9a3538b7c06fc341dded7d1e37d58767aac",
+                "raw_text_characters": 2008
+              },
+              {
+                "page_number": 35,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "6715f007c7f5c7127d96391a7adb7901aba6cc631d07fdf32bb2a1b3a5ff3167",
+                "raw_text_characters": 225
+              },
+              {
+                "page_number": 36,
+                "initially_proposed": true,
+                "decision": "held",
+                "reason": "Variant capacity table and section graphics; alternative scenario not structured extraction.",
+                "raw_text_sha256": "40331efc17f03d4d11843d7162b346b4569d8ae7677e96e799c1a513e142ca97",
+                "raw_text_characters": 2029
+              },
+              {
+                "page_number": 37,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "69b9217d07f70ebc8cb9b00c955dd0cc34368ace7ef60a061edcd7c57828a216",
+                "raw_text_characters": 339
+              },
+              {
+                "page_number": 38,
+                "initially_proposed": true,
+                "decision": "held",
+                "reason": "Variant capacity table and section graphics; alternative scenario not structured extraction.",
+                "raw_text_sha256": "8d4506b01fe69ef5ef4ba22c60ef0a40d3973948b1945bc40faa15b6a8bcd810",
+                "raw_text_characters": 1821
+              },
+              {
+                "page_number": 39,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "03ebe151179e562886cca4315608488196a866fd07b8e1d4c6d3b66867743317",
+                "raw_text_characters": 131
+              },
+              {
+                "page_number": 40,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "4676d82f3a70eaa25e6899555d2080439e16107cc7abf14fb52e1378975dc9d7",
+                "raw_text_characters": 3791
+              },
+              {
+                "page_number": 41,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "7879d92e24f02d499ec9333a881ade50dba23366b3a755ee7a4cc51b2771ccc8",
+                "raw_text_characters": 307
+              },
+              {
+                "page_number": 42,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "65dca41cbc68f8044d34f7c09b082156abb2ab9efe7adb022248ca32334cfb05",
+                "raw_text_characters": 3763
+              },
+              {
+                "page_number": 43,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "807ff510edc096e689a0cbf1803d8cbd684b2c29e8afa650d3cdae60962da49e",
+                "raw_text_characters": 170
+              },
+              {
+                "page_number": 44,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "97a4500f2973a746e2caefbdad78c555543df43d50e2857ccfd7c6eca8713082",
+                "raw_text_characters": 3695
+              },
+              {
+                "page_number": 45,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "87222cf181dea55f11d9c97b5617fe2620bf674efe20ef5f6dfd332ddbf397de",
+                "raw_text_characters": 734
+              },
+              {
+                "page_number": 46,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "0594f12c4c4d4fbe3c1c569a881867da49fc68ad28192b65cb71b328ad8c293e",
+                "raw_text_characters": 2913
+              },
+              {
+                "page_number": 47,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "ba551a05907dfa57e05dd799636f464a785d88ea7d4f3ce86a679a43d0e97b37",
+                "raw_text_characters": 67
+              },
+              {
+                "page_number": 48,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "92fdc2a445318cd21f1966722b6b7326c222bd15cf6a45e6c11292896a6dda0f",
+                "raw_text_characters": 3711
+              },
+              {
+                "page_number": 49,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "34ef53f8450040e2e59d23a7af91f70fd768d6c6878504171103aa48b57d83d1",
+                "raw_text_characters": 151
+              },
+              {
+                "page_number": 50,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "9f5aad840f53b5b78863f70cb03e87ef583850b6bfc56da7f0ac490a060bcadd",
+                "raw_text_characters": 4296
+              },
+              {
+                "page_number": 51,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "2bee35eae30930b9d3b9d6fe61b28c94e446175c986367148c38312760c2223c",
+                "raw_text_characters": 4178
+              },
+              {
+                "page_number": 52,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "78cdd7d7866f3a29218d9e27a1a82c174e793eac0144015901ff7cbe67ba2afb",
+                "raw_text_characters": 4028
+              },
+              {
+                "page_number": 53,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "e1ca5df1d5a69975a76052db3b96b5d3c7e2c23ada8b1eefb89311d15ee9f802",
+                "raw_text_characters": 1244
+              },
+              {
+                "page_number": 54,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "db132ff9ed2f4e7c5fc0550b46258bf333205026fbff8b9e4adf7c4c1b659d92",
+                "raw_text_characters": 2653
+              },
+              {
+                "page_number": 55,
+                "initially_proposed": true,
+                "decision": "held",
+                "reason": "Multi-column urbanisation/infrastructure coordination matrix loses row/column relationships.",
+                "raw_text_sha256": "2337d922c791fd00ea3c04d30b9b786ca8468f150f786594b81ef96fa0392fbd",
+                "raw_text_characters": 3027
+              },
+              {
+                "page_number": 56,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "233988512780b724d02586ca95ed8ce70c908ae46b18c35647247eb4e5181026",
+                "raw_text_characters": 670
+              },
+              {
+                "page_number": 57,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "85957bda06128d77ff2cbf7070dc33d784e49b0c1e9e39ca70fd76c2bc4870a0",
+                "raw_text_characters": 3917
+              },
+              {
+                "page_number": 58,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "22d94818174841c5b291a5dc012dba90272728785a369b00527827ec9d84510e",
+                "raw_text_characters": 2775
+              },
+              {
+                "page_number": 59,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "7d911b7946defdc3f5854e915dc0da66e30b147bba5f1166faa19416df04cbac",
+                "raw_text_characters": 2796
+              },
+              {
+                "page_number": 60,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "82b1fb40e8799c22c2c5378aa35819f596a3cbd2ea857bc1a6b90b0d45933733",
+                "raw_text_characters": 2937
+              },
+              {
+                "page_number": 61,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "bdb90031eebe1e4d2b5a5e1ff2c72015b5e1a01e0201e668479f160310a3d543",
+                "raw_text_characters": 3382
+              },
+              {
+                "page_number": 62,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "2f0d2837bbd0c4d4b15e2c6ff175b41d55ed8bcc71c34444d7ad0a9803da1b67",
+                "raw_text_characters": 3296
+              },
+              {
+                "page_number": 63,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "a3bf34a472fc6a00145f4affee7f09287aae85a18f4321f33782930c49f0893a",
+                "raw_text_characters": 3671
+              },
+              {
+                "page_number": 64,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "3ff7b8c6c65a6a69d4b34af494ce3d3fcec5c1a4c79e0e5e77a31712981439e7",
+                "raw_text_characters": 1697
+              },
+              {
+                "page_number": 65,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "ec16bd6f6137a6d650731d9ecde889e6e3b93c52c457e788a0c6f6972d585ca8",
+                "raw_text_characters": 3571
+              },
+              {
+                "page_number": 66,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "0a90df756e1283f9b6cee20ab8ec180d75ed6b8666fe5ef36794eb6c185e08f3",
+                "raw_text_characters": 4611
+              },
+              {
+                "page_number": 67,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "082a78e4897807aa36b8330185944d9da5b47761672a552ece66b7607db8eb68",
+                "raw_text_characters": 236
+              },
+              {
+                "page_number": 68,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "4d12b37573221622eed094473bf1de303be47a83661e75a7938e37408596413b",
+                "raw_text_characters": 2511
+              },
+              {
+                "page_number": 69,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "50ef791f4b776f03b7cbe2bb0ad7ed612757114e178945039fbf6bfe62c2dcb3",
+                "raw_text_characters": 12
+              },
+              {
+                "page_number": 70,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "9f2ffc6a3034d332babce385c41d77a93b1830d9c35b995f8f936f03402efa6c",
+                "raw_text_characters": 520
+              }
+            ],
+            "contact_sheet_evidence": [
+              {
+                "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/bussigny-cocagne-selection/contact-1.png",
+                "sha256": "a4e9c4909374b677ca098f92b39b61f5b29e1e66e86cb7308a7c297d24ab33aa"
+              },
+              {
+                "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/bussigny-cocagne-selection/contact-13.png",
+                "sha256": "343cca1e0289fe29efcce75333efd3189374254164bc86aef87d2833fcff2d82"
+              },
+              {
+                "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/bussigny-cocagne-selection/contact-19.png",
+                "sha256": "9b5e88b5cf7444a2bae456696de36944c7304ffb5f52eadbc9f4b15e40c7cdd6"
+              },
+              {
+                "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/bussigny-cocagne-selection/contact-25.png",
+                "sha256": "e7f843f8e17d825751dcc60ce9deb0efa8562ef1f5ca94c3d4dec177e8b93304"
+              },
+              {
+                "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/bussigny-cocagne-selection/contact-31.png",
+                "sha256": "7030a987b0aa655c4a07c561ea05bbcc9b91b59b2bfef6ded99d235dbe113d8f"
+              },
+              {
+                "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/bussigny-cocagne-selection/contact-7.png",
+                "sha256": "78c9943519e53745dc8dd23356e305be0b68f69d9932a9ed2e6ca71e32a99f07"
+              }
+            ],
+            "source_bytes_verified": true,
+            "all_proposed_text_hashes_and_pdf_extraction_equal": true
+          },
+          {
+            "slug": "bonderex",
+            "source_document_id": "e42356ee-f47b-5249-87ed-367d2fb3aa4f",
+            "source_sha256": "83a15e84e25c774322a361f2e73f99205297e5d3f7ef5135d692f898812d4dad",
+            "source_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/bonderex.pdf",
+            "physical_page_count": 44,
+            "candidate_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/bonderex-page-candidates.json",
+            "candidate_sha256": "7512903f7b84be903de318e082693b8ee078ae84c198409b5efedf8d8cfc00a8",
+            "original_proposed_pages": [
+              3,
+              4,
+              5,
+              7
+            ],
+            "accepted_pages": [
+              3,
+              4,
+              7
+            ],
+            "additional_held_pages": {
+              "5": "Sector diagram/map yields garbled labels after description; no geographic or prose-only reconstruction."
+            },
+            "all_held_pages": [
+              1,
+              2,
+              5,
+              6,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44
+            ],
+            "accepted_raw_text_characters": 4220,
+            "mandatory_limits": [
+              "Historical reference only. Registered source status, commune mapping and current applicability are not upgraded by content QA or historical signatures.",
+              "Localized planning dossier, not complete municipal PDCom coverage; preserve exact PDL/PPA/report scope and source-specific approval evidence.",
+              "Embedded PDF text is uncorrected scan OCR, preserved byte-for-byte with whitespace. Confidence is null/not recorded. Binding-margin letters, OCR substitutions and broken words are not corrected.",
+              "Accepted for narrative historical search with original physical PDF page citations, not an authoritative transcription, structured rule/number extraction, current legal guidance or buildability determination.",
+              "Figures, photographs, maps, diagrams and tables are not completely represented. No geometry, parcel/EGRID association, precision or spatial qualification is established.",
+              "Only listed accepted pages are searchable; every other physical page remains held/not selected. No document-completion or commune-completion claim; page breaks and omitted intervening pages remain explicit.",
+              "Past, proposed and conditional measures retain their historical tense; implementation, remaining capacity, current ownership and current legal applicability are unverified.",
+              "No material strike-through/amendment conflict was identified in accepted-page visual review. This is not a legal consolidation or a review of all unselected pages.",
+              "Combined PDL/PPA package: selected introduction/procedure/objectives do not include PPA regulations; PDL signatures must not be extended to the separate PPA dossier.",
+              "The introductory two-column document-structure diagram reads as sequential source labels; it is not a structured cross-reference or approval hierarchy.",
+              "The statement that Denens lacks a PDCom because it had fewer than 1000 inhabitants is historical source commentary, not a current rule or current population/status.",
+              "Bonderex and Condémine share introductory content but remain separately sourced localized dossiers; duplicate prose is not additive coverage or new physical sectors."
+            ],
+            "page_ledger": [
+              {
+                "page_number": 1,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "9fb324c26357906d7b12f4caa007ff55833a95a176d721fcb667b0b741aabf5d",
+                "raw_text_characters": 228
+              },
+              {
+                "page_number": 2,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "236489a2f57930b1a216e2ccfdf63e728c0ca3d3d99ab4c8d7336bc980554a2d",
+                "raw_text_characters": 899
+              },
+              {
+                "page_number": 3,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "cf9c13454a40356a2761f9f3a4717ddcf82ddac9a3482e8bb83657f202f18051",
+                "raw_text_characters": 2789
+              },
+              {
+                "page_number": 4,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "ba31d5de67116506584326d84dbeaa3568deb9b45782e053b0fab5249c8c7bef",
+                "raw_text_characters": 862
+              },
+              {
+                "page_number": 5,
+                "initially_proposed": true,
+                "decision": "held",
+                "reason": "Sector diagram/map yields garbled labels after description; no geographic or prose-only reconstruction.",
+                "raw_text_sha256": "7cf33bad9e1d2892349cfa8517dd72e085796170122b9b78337e9b2fa3e95d63",
+                "raw_text_characters": 1188
+              },
+              {
+                "page_number": 6,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "8b60893270561a8f39d673d68f7f58e997d6dcc593a43faa0e19ace90131c022",
+                "raw_text_characters": 616
+              },
+              {
+                "page_number": 7,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "9367626edd9f9060e6998ede94473fa3f22e8bd76e993538fa75d263d5d1a534",
+                "raw_text_characters": 569
+              },
+              {
+                "page_number": 8,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "3115d9646a36b48c60057a400c273a9f4bd2d45ea276921c27d18909625b339b",
+                "raw_text_characters": 2316
+              },
+              {
+                "page_number": 9,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "8313aa3c32766832ea4a0db43293aaa2d429eae7924c307aee110fbcb4ee353c",
+                "raw_text_characters": 224
+              },
+              {
+                "page_number": 10,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "90d4fc7fd030afbdfc1d462425f69d26df96520fa79e6874842cf783b1ba5695",
+                "raw_text_characters": 219
+              },
+              {
+                "page_number": 11,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "8d319efd67de1f11b72b8c5456ced9b31b42d3753fae5f7fe0a0273dca26b054",
+                "raw_text_characters": 2052
+              },
+              {
+                "page_number": 12,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "e523305969b816e12621b7c3ecbe47859a58b0c20eb407575b16a956a879a404",
+                "raw_text_characters": 837
+              },
+              {
+                "page_number": 13,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "a2e8d4b38043a91c4ab74d4460df6a8a3f524b5478db183ebabdbab01f0842d6",
+                "raw_text_characters": 2432
+              },
+              {
+                "page_number": 14,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "ab76bbd533e8cb21720a7af11753fe6870146fba7f79ad5622501b29cc540b2f",
+                "raw_text_characters": 223
+              },
+              {
+                "page_number": 15,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "19127be900d18b077a1419609ea9f938cd4b597a3849fe107ffce272e834d9e5",
+                "raw_text_characters": 1011
+              },
+              {
+                "page_number": 16,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "9a0df919970a44b26fb04b7176d34e187e43c5068d419980faae7e2522a55f0d",
+                "raw_text_characters": 757
+              },
+              {
+                "page_number": 17,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "017fa289bddc13e136d852cf93b682339686f69665c20976b4133ab81e5276d5",
+                "raw_text_characters": 1797
+              },
+              {
+                "page_number": 18,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "0295a7af8e8b6f7362bcdd108046a031466aba1bbc598ef3058b66e28224814f",
+                "raw_text_characters": 1531
+              },
+              {
+                "page_number": 19,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "0e6f607b57f800e8ac396888be6c6ece2cbbf200bef384f6bed174fbd6c58785",
+                "raw_text_characters": 953
+              },
+              {
+                "page_number": 20,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "b0ccf9006d8c6d837e2d533dff08c0a8ae10d36884d926228c9289f7608afc9e",
+                "raw_text_characters": 1483
+              },
+              {
+                "page_number": 21,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "be192eb8a3952212eb65e4861611bb51dd90ffbe89e5ee9fe177517a76249b11",
+                "raw_text_characters": 94
+              },
+              {
+                "page_number": 22,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "4044370c9b2194b1373bce55a78345898ffcb4fcbf63ea42a30ada3f5b721f35",
+                "raw_text_characters": 1718
+              },
+              {
+                "page_number": 23,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "aa8eb13a7faad38a8cb694752b90176bb6067bcdf03f82e3d7b13418df386457",
+                "raw_text_characters": 631
+              },
+              {
+                "page_number": 24,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "c4fc0d170e5d4911cec7b28237c70224c15bb990ac713180d5ab72695203d2aa",
+                "raw_text_characters": 2404
+              },
+              {
+                "page_number": 25,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "be867834a0f3dc3af631f135e197d1f583da1195a22ac8dbad338ddc92630e79",
+                "raw_text_characters": 1944
+              },
+              {
+                "page_number": 26,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "4589ee6e72cdbc357ce08fdfd36251de4c0a9b7aee7296f156dd7242083cc9d6",
+                "raw_text_characters": 1489
+              },
+              {
+                "page_number": 27,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "58f848dbf4bbc045ad90d49606c332bf9e9fa022041e67dab4ded7190be69341",
+                "raw_text_characters": 2300
+              },
+              {
+                "page_number": 28,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "9929bdb054b8c916d05ec16e57a1ecdf1eed517e35e73c6e81231fc6093bd988",
+                "raw_text_characters": 1707
+              },
+              {
+                "page_number": 29,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "fd6337503ce19ba1dce037f0dc7120010b8e6ecce060086fd0ffc2b8ab13fb66",
+                "raw_text_characters": 479
+              },
+              {
+                "page_number": 30,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "477176a7381fedb50886f3b9365bfd688a62e0f958409db132d9052d78eec39d",
+                "raw_text_characters": 96
+              },
+              {
+                "page_number": 31,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "fff04f0ada048b76b655976fb6fdd52cac1f9b6af0a6d9aca9b6021749b90d2c",
+                "raw_text_characters": 1279
+              },
+              {
+                "page_number": 32,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "97ce157cec2fcc48349f56bea82591416a9d6aea4a5137cfc2ac83db0b663c40",
+                "raw_text_characters": 844
+              },
+              {
+                "page_number": 33,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "c46a43c21f60116209c917e573956eb68affcc20bdfbf85de6852e09e33ade72",
+                "raw_text_characters": 197
+              },
+              {
+                "page_number": 34,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "2e584c61357a0c12544ba181d7f40016f68cd2a293c11517879645778eb7fdba",
+                "raw_text_characters": 237
+              },
+              {
+                "page_number": 35,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "03fb55bddcc2b817a6418ecfd8fe9435647d55793b654453a8ad58dd48265091",
+                "raw_text_characters": 237
+              },
+              {
+                "page_number": 36,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "e2b5f47ab5e5dec9936d0a0110443fd3558d0c081b1ffd3f677c3211c0b0db11",
+                "raw_text_characters": 770
+              },
+              {
+                "page_number": 37,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "e29521512cdb8693839c8b24645aba9c417dd3472045d1273dd6be74d783dfac",
+                "raw_text_characters": 420
+              },
+              {
+                "page_number": 38,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "d61b8dbbf9c04f86c415cae6f13ae0a40758a0d9dd44d63319b9b92cdcd018a0",
+                "raw_text_characters": 96
+              },
+              {
+                "page_number": 39,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "c760b2d9ff9e59ffb454db5d86649d369c9bd6cf068451026e42b9a399ef4417",
+                "raw_text_characters": 476
+              },
+              {
+                "page_number": 40,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "1fc7d1aa8f959af7be531b71be0ca0db70abd6a8d07d2e9da6b3f8f06a4a59dd",
+                "raw_text_characters": 426
+              },
+              {
+                "page_number": 41,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "5dacf8d5a04f0ca07c29d5d0055e6d553e861d5c07934153b04a856fe45c5037",
+                "raw_text_characters": 891
+              },
+              {
+                "page_number": 42,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "a3e0315acdefa76f6cb4fc0655b322553176e756aecfd1c9c2f3f3323d702aea",
+                "raw_text_characters": 100
+              },
+              {
+                "page_number": 43,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "ae018017111d2a1482c1bff28407b8d5fb8e7584c80f110939e101a7170dc8e5",
+                "raw_text_characters": 286
+              },
+              {
+                "page_number": 44,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "89917a38497a2477128824434907e5cf40b667e5e2f2c035af8b9dd801e8fb97",
+                "raw_text_characters": 298
+              }
+            ],
+            "contact_sheet_evidence": [
+              {
+                "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/bonderex-selection/contact-1.png",
+                "sha256": "84b899a68c98b15e32ad79c9d9d25cfe67e0f0b200b20ac1fdb0b6b34581f67a"
+              }
+            ],
+            "source_bytes_verified": true,
+            "all_proposed_text_hashes_and_pdf_extraction_equal": true
+          },
+          {
+            "slug": "condemine",
+            "source_document_id": "652e95b3-615f-5498-8448-e8f76b421522",
+            "source_sha256": "1e85b4dc08c05fa92f3165563141351cd0b05a48ac6bc77eb2458003f38e4e74",
+            "source_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/condemine.pdf",
+            "physical_page_count": 41,
+            "candidate_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/condemine-page-candidates.json",
+            "candidate_sha256": "e726424f7be07b7c26bf24f90f42dfe5bd45e45b9374e1a952aab9df5276cc1d",
+            "original_proposed_pages": [
+              4,
+              5,
+              6,
+              7,
+              9
+            ],
+            "accepted_pages": [
+              4,
+              5,
+              6,
+              9
+            ],
+            "additional_held_pages": {
+              "7": "Sector/parcel map yields garbled labels and cannot preserve boundaries or parcel associations."
+            },
+            "all_held_pages": [
+              1,
+              2,
+              3,
+              7,
+              8,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41
+            ],
+            "accepted_raw_text_characters": 4945,
+            "mandatory_limits": [
+              "Historical reference only. Registered source status, commune mapping and current applicability are not upgraded by content QA or historical signatures.",
+              "Localized planning dossier, not complete municipal PDCom coverage; preserve exact PDL/PPA/report scope and source-specific approval evidence.",
+              "Embedded PDF text is uncorrected scan OCR, preserved byte-for-byte with whitespace. Confidence is null/not recorded. Binding-margin letters, OCR substitutions and broken words are not corrected.",
+              "Accepted for narrative historical search with original physical PDF page citations, not an authoritative transcription, structured rule/number extraction, current legal guidance or buildability determination.",
+              "Figures, photographs, maps, diagrams and tables are not completely represented. No geometry, parcel/EGRID association, precision or spatial qualification is established.",
+              "Only listed accepted pages are searchable; every other physical page remains held/not selected. No document-completion or commune-completion claim; page breaks and omitted intervening pages remain explicit.",
+              "Past, proposed and conditional measures retain their historical tense; implementation, remaining capacity, current ownership and current legal applicability are unverified.",
+              "No material strike-through/amendment conflict was identified in accepted-page visual review. This is not a legal consolidation or a review of all unselected pages.",
+              "Combined PDL/PPA package: selected introduction/procedure/description/objectives do not include PPA regulations; separate approval routes remain distinct.",
+              "The introductory two-column document-structure diagram is narrative source labeling, not a structured cross-reference or approval hierarchy.",
+              "The earlier abandoned scheme and subsequent school/communal-building competition proposal on PDF6 retain their different source-time states; completion is unverified. Photograph OCR is incidental, not an image description.",
+              "PDF9 contains a displaced short word in an objective (un/implanter front); raw OCR is retained without syntactic correction and cannot support exact normative quotation.",
+              "Denens population/PDCom assertions are historical. Common introductory content with Bonderex is separate provenance, not additive coverage."
+            ],
+            "page_ledger": [
+              {
+                "page_number": 1,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "647ca2e3e7b51a6b39849c2aafd0b5e0e6decd038101ed61268a90a525f7e4c4",
+                "raw_text_characters": 206
+              },
+              {
+                "page_number": 2,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "bff79542b98d8c6909100213b18cd60b8f68bd1269022f3fa5d80e31f2a5c76e",
+                "raw_text_characters": 446
+              },
+              {
+                "page_number": 3,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "f2ecdd008db50b8c501e1e0ba3ee00a86a7f371f33e18c98a401a41e1414bd0f",
+                "raw_text_characters": 469
+              },
+              {
+                "page_number": 4,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "6f65a66742d01cafba9f7b426afdceb00d117ac8aec522334635f6e6cab5ed7a",
+                "raw_text_characters": 2798
+              },
+              {
+                "page_number": 5,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "343382a3a96ba25785eb0383dff1b7f27072d8e8a77aa186b99bc94efc40351c",
+                "raw_text_characters": 856
+              },
+              {
+                "page_number": 6,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "cbf1bb99f3276ac20ea2aa8ab2ea549126a7d2840282a0216e9d727b65c0c88e",
+                "raw_text_characters": 845
+              },
+              {
+                "page_number": 7,
+                "initially_proposed": true,
+                "decision": "held",
+                "reason": "Sector/parcel map yields garbled labels and cannot preserve boundaries or parcel associations.",
+                "raw_text_sha256": "690812ad1db74bd2f037699fe491d9773d5f096da9159e0366cd4815e33452b9",
+                "raw_text_characters": 953
+              },
+              {
+                "page_number": 8,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "ea0b55d38ddb06843766111f683a7d920155eace2a27ecc54e2d019145a6b2ee",
+                "raw_text_characters": 658
+              },
+              {
+                "page_number": 9,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "d0d65728be9739514b861d93be52feec606b53fdb34a3ee609766735342f6b42",
+                "raw_text_characters": 446
+              },
+              {
+                "page_number": 10,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "fb18fc0231ab71b04ccb3c23396facddaacbf42bb4eb417d0b6b9ee7367cad88",
+                "raw_text_characters": 1261
+              },
+              {
+                "page_number": 11,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "f7a192a869188c0adc91267be8ea72469be70d345a6792d8a11a6e3ae6acbfa8",
+                "raw_text_characters": 188
+              },
+              {
+                "page_number": 12,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "51ae491d44f15a886d7789350a458b59c3bd912115b48dfaab64ebf0941f08c6",
+                "raw_text_characters": 2000
+              },
+              {
+                "page_number": 13,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "318ad5c4a2aa7fe1de165939bd44b252a14e604aee179851cd13305e467cb2f1",
+                "raw_text_characters": 1479
+              },
+              {
+                "page_number": 14,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "292a5c1922ed22217ae029347ccd6c9cc01e64dc86cd3e0ebd72433d07efece2",
+                "raw_text_characters": 2044
+              },
+              {
+                "page_number": 15,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "c4df6f59e6fae24a73a27dda87102c4ab714a53d829098990c3f73fbe250abe7",
+                "raw_text_characters": 1758
+              },
+              {
+                "page_number": 16,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "8d51a69e11f5254709fe81f2c20701a2207335d0f0ac0f60a8b6d7272cdb2209",
+                "raw_text_characters": 1473
+              },
+              {
+                "page_number": 17,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "2babdc6aee25b7dc0be6d5d282cd9737db529332a68b96671d85e0146f49e015",
+                "raw_text_characters": 908
+              },
+              {
+                "page_number": 18,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "3e4042d5a105e08659fecb10706c4019e77ad7cb8825813c8f2a1cfc40ac4ecf",
+                "raw_text_characters": 1866
+              },
+              {
+                "page_number": 19,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "eb8f8c2e0e20d0193e83602813dc350d8ed5e6e0c56e45cc96a681a66b463d95",
+                "raw_text_characters": 1979
+              },
+              {
+                "page_number": 20,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "8fc0c3eb3fe80eabdbfd89b4f165498cf4015b40caef2a12b0f9165337038d77",
+                "raw_text_characters": 91
+              },
+              {
+                "page_number": 21,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "b7b693d24dd4b0080a4f214845ca2bf6aa4be5c05e318a5315942a6711d2e5d2",
+                "raw_text_characters": 1564
+              },
+              {
+                "page_number": 22,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "366362c892bc77b9b05c6207024c93cb9c6413915fd87adc4e2ba68755218a57",
+                "raw_text_characters": 806
+              },
+              {
+                "page_number": 23,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "91bcefda62dcfb4804035f77ffb0921980117961a2eb68b5c33637eac48bd29b",
+                "raw_text_characters": 2086
+              },
+              {
+                "page_number": 24,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "c4a41df9c73890a958be6a4db15ad6269b1251a761fef8eab10e04dc46685d9d",
+                "raw_text_characters": 2195
+              },
+              {
+                "page_number": 25,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "2be63029f2eaf0b6720979bd6052172a5fb216b82e24f2910df3b6db011b5ab1",
+                "raw_text_characters": 2020
+              },
+              {
+                "page_number": 26,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "022dcaa58467ec65da82f4faf25292564964b7e106eeeb33126ecc5e82d9afba",
+                "raw_text_characters": 1972
+              },
+              {
+                "page_number": 27,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "843d5989028c0f8c5a7125673842e1ebb3a7524ac0e84422bc6041d33273c16e",
+                "raw_text_characters": 2192
+              },
+              {
+                "page_number": 28,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "f5d3ffd57d33db844e67b58ab37e8a4dfdd34f6eef49dd15378e8b6b36835cf5",
+                "raw_text_characters": 1034
+              },
+              {
+                "page_number": 29,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "779cb26475dad57ec8df06ec625bee09419ce9f1fc529d83105da50c909d4ed5",
+                "raw_text_characters": 97
+              },
+              {
+                "page_number": 30,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "d86efbe622856c0f3d83c4c14198ec48e5241211b917916d6ba7e8132e5b937e",
+                "raw_text_characters": 1411
+              },
+              {
+                "page_number": 31,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "2ee024f8441df4c8a6b3da94de85293b4df029111c0357ad5cc4043213a7337f",
+                "raw_text_characters": 1090
+              },
+              {
+                "page_number": 32,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "1f10cbb337ad130403208ed48fab27ee602b7d70c13cb1e06d595c7be072d68f",
+                "raw_text_characters": 173
+              },
+              {
+                "page_number": 33,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "a50795173490eafa42b090b213d0647c6b6c9aadca201a76a085ff087bd6821c",
+                "raw_text_characters": 205
+              },
+              {
+                "page_number": 34,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "9529324da831924148e4c1ea834e497dff18b6d8d288c9c751b68603daa4c1f7",
+                "raw_text_characters": 1020
+              },
+              {
+                "page_number": 35,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "2de6cd808a9ee41d285ad8bc455d2144091ac1caa9e74879dda1ae46a4ab5ce2",
+                "raw_text_characters": 100
+              },
+              {
+                "page_number": 36,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "4535b8329fea7b153807ba09611e68ce0ec33027e7df83347ce6c526621f9d78",
+                "raw_text_characters": 150
+              },
+              {
+                "page_number": 37,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "9e572e4ec8a0c53fdeac6693fa1a38bacc1205558989731a093764ab297b3835",
+                "raw_text_characters": 241
+              },
+              {
+                "page_number": 38,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "3c7d14a5a660f86514b22b50be9db3e33cfd08fef47997e7722237f405bbc434",
+                "raw_text_characters": 564
+              },
+              {
+                "page_number": 39,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "139218bdd4d7a65566c0c326f32d2c5a4ff65a7802b6d3c9f701c37237afa655",
+                "raw_text_characters": 100
+              },
+              {
+                "page_number": 40,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "86b052a498bcf86f1bf2605458efe3aa42923c96db34974eb115060d293a646b",
+                "raw_text_characters": 253
+              },
+              {
+                "page_number": 41,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "6097b061dd01d7fd1298d7aa53aa0264105b8a4b226640c554aa8fc715206fc0",
+                "raw_text_characters": 226
+              }
+            ],
+            "contact_sheet_evidence": [
+              {
+                "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/condemine-selection/contact-1.png",
+                "sha256": "56e1393e6311952a42b618cd7cbd7fcab1d5b262e7d52240ea5806f651ae9687"
+              }
+            ],
+            "source_bytes_verified": true,
+            "all_proposed_text_hashes_and_pdf_extraction_equal": true
+          },
+          {
+            "slug": "payerne-coulaz",
+            "source_document_id": "ac95dce8-1f32-5522-be3e-60377596b2d7",
+            "source_sha256": "daf8c49ea168d46c13e15f6464d3b575bd064f514f2f0a1db202ffad4c470fb0",
+            "source_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/payerne-coulaz.pdf",
+            "physical_page_count": 25,
+            "candidate_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/payerne-coulaz-page-candidates.json",
+            "candidate_sha256": "18855bf4945708c1e6725f89430ed9e9e8ad56b9e34a37a300667ffc00341c9f",
+            "original_proposed_pages": [
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "accepted_pages": [
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "additional_held_pages": {},
+            "all_held_pages": [
+              1,
+              2,
+              3,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25
+            ],
+            "accepted_raw_text_characters": 15433,
+            "mandatory_limits": [
+              "Historical reference only. Registered source status, commune mapping and current applicability are not upgraded by content QA or historical signatures.",
+              "Localized planning dossier, not complete municipal PDCom coverage; preserve exact PDL/PPA/report scope and source-specific approval evidence.",
+              "Embedded PDF text is uncorrected scan OCR, preserved byte-for-byte with whitespace. Confidence is null/not recorded. Binding-margin letters, OCR substitutions and broken words are not corrected.",
+              "Accepted for narrative historical search with original physical PDF page citations, not an authoritative transcription, structured rule/number extraction, current legal guidance or buildability determination.",
+              "Figures, photographs, maps, diagrams and tables are not completely represented. No geometry, parcel/EGRID association, precision or spatial qualification is established.",
+              "Only listed accepted pages are searchable; every other physical page remains held/not selected. No document-completion or commune-completion claim; page breaks and omitted intervening pages remain explicit.",
+              "Past, proposed and conditional measures retain their historical tense; implementation, remaining capacity, current ownership and current legal applicability are unverified.",
+              "No material strike-through/amendment conflict was identified in accepted-page visual review. This is not a legal consolidation or a review of all unselected pages.",
+              "La Coulaz explanatory PDL report was studied jointly with a PPA; selected pages do not replace that PPA or its regulations.",
+              "Quoted regional/communal measures, 2006 public-space concept and 2008 development strategy are contextual historical sources; they do not become a complete commune-wide PDCom dataset.",
+              "PDF10 states intermediate zoning and need for a PPA to make parcels constructible at source time. Historical parcel numbers, named owners, consultation and absence of objections do not establish current title, consent, zoning or rights.",
+              "PDF7–8 illustrations are incomplete in text; narrative sequence remains usable with margin/illustration OCR noise retained. No mapped routes, riverbank boundaries or landscape geometry is extracted."
+            ],
+            "page_ledger": [
+              {
+                "page_number": 1,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "5108d6e97d45ee32f81f700d08c3d414b601bb63ee39504da6386d922f601eb6",
+                "raw_text_characters": 324
+              },
+              {
+                "page_number": 2,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "354878cbab0b2be3da592579be0d328343b2432416c4aa24710f7ab3e5a7ed8f",
+                "raw_text_characters": 480
+              },
+              {
+                "page_number": 3,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "218e089dbb3229e72449cd3b6f7370730de4c567cf783786f05d2ccdce7aecd0",
+                "raw_text_characters": 1821
+              },
+              {
+                "page_number": 4,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "3855b515bc908840e26d99a5ece7c6483c824d8eeb38a2a0c4596a02627b1c8d",
+                "raw_text_characters": 2151
+              },
+              {
+                "page_number": 5,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "8ab58e6a52e4c8443288124569a39e0ba3bcd7752d5c4eb383573d299c10a2b3",
+                "raw_text_characters": 1801
+              },
+              {
+                "page_number": 6,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "bbed63f2fe4745a952961f89d2e6979cc20ac2dd08cf869d610512ab6c441bed",
+                "raw_text_characters": 3002
+              },
+              {
+                "page_number": 7,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "49e68e06664ec792411016e154a8af4129512da1a7954d633d8ca9dd601ec240",
+                "raw_text_characters": 2010
+              },
+              {
+                "page_number": 8,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "8a83727ebbdf75e4cb229cca82c8ff0913fdb7a5f30c6d08ad053f9381f35f8b",
+                "raw_text_characters": 2426
+              },
+              {
+                "page_number": 9,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "cc46895907ff548c37e96d04c6088b2ad76aff523bfc0c055ed7a695fe4cbd3e",
+                "raw_text_characters": 2059
+              },
+              {
+                "page_number": 10,
+                "initially_proposed": true,
+                "decision": "accepted_raw_historical_text",
+                "reason": "Narrative ordering usable under mandatory OCR and source-scope limits.",
+                "raw_text_sha256": "d31b7e8ef7b727ea3cc22348af5c1f028631392569364cf66ae60486eeab6bfe",
+                "raw_text_characters": 1984
+              },
+              {
+                "page_number": 11,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "7003083266a306d476fb7c120f99c8c2f63f64ff80a74ec00ddeeb0f35dd46a6",
+                "raw_text_characters": 1624
+              },
+              {
+                "page_number": 12,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "e8362f9e2fca2253b953cc0d26745de8d3c6b62b97b951b0eb1ed0709cf86384",
+                "raw_text_characters": 1519
+              },
+              {
+                "page_number": 13,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "b6780bb2c67b2bbf13ffb961e57ec695dd4d38b520f64d65992e782c2b4e285b",
+                "raw_text_characters": 40
+              },
+              {
+                "page_number": 14,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "424cbb42319297d475f6fbc5f07f3bdbc679e1782e84155b3f86f5d5f8ede933",
+                "raw_text_characters": 391
+              },
+              {
+                "page_number": 15,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "d8fb924735a28ee5711fffa756a3ff67aede08a3263fca05b3668b12468f2be1",
+                "raw_text_characters": 1179
+              },
+              {
+                "page_number": 16,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "f8bddfdc9bd638718fce1e0121dcfd0831ca910c59c93b4f5033523b9739d49e",
+                "raw_text_characters": 1210
+              },
+              {
+                "page_number": 17,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "ec78c3c418e6222368824e59b56454863a6d6ecc1fe0c16cec7a1203468a1abc",
+                "raw_text_characters": 1150
+              },
+              {
+                "page_number": 18,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "493902e297e1b292cbafaae764f697dc8554581da7574deaad0e1de38974b90d",
+                "raw_text_characters": 924
+              },
+              {
+                "page_number": 19,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "0505317a47fc46874756a6e4dea02aa9a7d20279f9b148e4de5bbd1c06428018",
+                "raw_text_characters": 1194
+              },
+              {
+                "page_number": 20,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "1d69f88691e490b1b2dc21022848af18c341be2276d97ebdabf41786a4cd1829",
+                "raw_text_characters": 1206
+              },
+              {
+                "page_number": 21,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "a4be3bf840eb6f6c867006fac93882fbb505f02937ed990af3f8d4e7e744bed1",
+                "raw_text_characters": 950
+              },
+              {
+                "page_number": 22,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "53cd3c4696bd0a2f62ef48b83aeee78199a9434e70db9b3d77ea8520f314bcda",
+                "raw_text_characters": 1163
+              },
+              {
+                "page_number": 23,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "3ffe81eb3bf14339a0d0f3aaf3162f60f1c771570201b874a339a68cbe2f6369",
+                "raw_text_characters": 688
+              },
+              {
+                "page_number": 24,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "7b1bde1ba8b79e0302143f0e5d05beb41897672ea13bde584a88e94d0fe300bc",
+                "raw_text_characters": 1793
+              },
+              {
+                "page_number": 25,
+                "initially_proposed": false,
+                "decision": "held",
+                "reason": "Not in proposed selection; original hold retained.",
+                "raw_text_sha256": "c66e5cb7fe29eed305ec072bf5b4b748b0df127278317ada09d9663a409eeced",
+                "raw_text_characters": 366
+              }
+            ],
+            "contact_sheet_evidence": [
+              {
+                "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/payerne-coulaz-selection/contact-1.png",
+                "sha256": "d46321df37f75079b7e5b4796e7f4a88a65b1a167d3af8039705970999c74a00"
+              },
+              {
+                "path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-remaining-original-batch/payerne-coulaz-selection/contact-7.png",
+                "sha256": "f8a6a99cd5cac48bc82146b1d41ccb345246a13fa89dfe3326a3bcf6a78d9c67"
+              }
+            ],
+            "source_bytes_verified": true,
+            "all_proposed_text_hashes_and_pdf_extraction_equal": true
+          }
+        ],
+        "no_database_or_canonical_mutations": true,
+        "totals": {
+          "sources": 5,
+          "physical_pages": 251,
+          "original_proposed_pages": 63,
+          "accepted_pages": 45,
+          "additional_held_pages": 18,
+          "all_held_pages": 206,
+          "chunks": "To be frozen by preparer from exact accepted raw texts; this review does not infer final chunk count."
+        }
+      }
+    },
+    {
+      "path": "independent-last-four-qa/review.json",
+      "sha256": "b009c23892c9bf71109cc525a08289742ee16143ab2b430f7cf75806a141c710",
+      "review": {
+        "decision": "20 proposed pages accepted; 2 held for material OCR order or semantic loss",
+        "assigned_sources_only": 4,
+        "accepted_pages": 20,
+        "held_pages": [
+          {
+            "slug": "yverdon-1997",
+            "page": 10
+          },
+          {
+            "slug": "etoy-village",
+            "page": 9
+          }
+        ],
+        "sources": [
+          {
+            "slug": "le-mont-coppoz",
+            "source_document_id": "8c09cbd6-8ede-58e3-980f-fa313f707d58",
+            "source_sha256": "c9a40b1969175e32d0890c562a608f10e4a0f37e45a21ee3acd6d4587a26efa1",
+            "candidate_sha256": "8ea27aff9d3a30fabaf3df0eb661f9e34b3e7519554b10a4530034d3e711ecd1",
+            "selected_page_hashes": [
+              {
+                "physical_page": 6,
+                "raw_text_sha256": "5fca9438aba4a2593d6a15859a41da32f8ae7583d002b552a96554811f1c42f3",
+                "representation": "embedded_pdf_text_uncorrected_scan_ocr",
+                "characters": 1568
+              },
+              {
+                "physical_page": 7,
+                "raw_text_sha256": "0e13439966a5d95045558c4ee97ab2b4f85e6b7235dfa6b0290a929c2f2c2033",
+                "representation": "embedded_pdf_text_uncorrected_scan_ocr",
+                "characters": 2700
+              },
+              {
+                "physical_page": 8,
+                "raw_text_sha256": "7fbca4ac305054a97592bd78806fd5ac45303e97cf97071f852610e7a77f7f04",
+                "representation": "embedded_pdf_text_uncorrected_scan_ocr",
+                "characters": 2842
+              },
+              {
+                "physical_page": 9,
+                "raw_text_sha256": "c4769b68e5c8ce3680661129e95f772d800777453c1365e02a5a5d2447d0d400",
+                "representation": "embedded_pdf_text_uncorrected_scan_ocr",
+                "characters": 2463
+              },
+              {
+                "physical_page": 10,
+                "raw_text_sha256": "06502aa12e9e5c919797d81be40e310ab41cc5e586fefddaf840c430acebde58",
+                "representation": "embedded_pdf_text_uncorrected_scan_ocr",
+                "characters": 2043
+              },
+              {
+                "physical_page": 12,
+                "raw_text_sha256": "9e460a2221937b77e6d400127640c6813ea7bb9d6205edba1d28dedf0c458929",
+                "representation": "embedded_pdf_text_uncorrected_scan_ocr",
+                "characters": 2509
+              },
+              {
+                "physical_page": 13,
+                "raw_text_sha256": "5907aa437ffb47fdde7465b97a1794fd00656f022a60c9b1d94fe6256028cd8c",
+                "representation": "embedded_pdf_text_uncorrected_scan_ocr",
+                "characters": 2622
+              },
+              {
+                "physical_page": 14,
+                "raw_text_sha256": "e295b8ca9d61571050d9b80b191fa9de24fed4f66c80985a39c6c997bc99e0db",
+                "representation": "embedded_pdf_text_uncorrected_scan_ocr",
+                "characters": 1019
+              },
+              {
+                "physical_page": 16,
+                "raw_text_sha256": "8b181fdf2e97a774df2fb1256ad89ee18da29d01f6571bb1e0af8111b9833738",
+                "representation": "embedded_pdf_text_uncorrected_scan_ocr",
+                "characters": 2598
+              },
+              {
+                "physical_page": 17,
+                "raw_text_sha256": "f02050a0ba1afa5169ca0cf17f658d3d215f5d8b3acfea6b762248f5586a1173",
+                "representation": "embedded_pdf_text_uncorrected_scan_ocr",
+                "characters": 2109
+              },
+              {
+                "physical_page": 19,
+                "raw_text_sha256": "9928f205039dd45b518fcb3825f1b24e2a0ee0b7b5862283c60d0167cef1c326",
+                "representation": "embedded_pdf_text_uncorrected_scan_ocr",
+                "characters": 1898
+              },
+              {
+                "physical_page": 21,
+                "raw_text_sha256": "d97195097c6705ae1d4175e96cc06433a32296682fb2ee3aa740e8c3d3db977e",
+                "representation": "embedded_pdf_text_uncorrected_scan_ocr",
+                "characters": 2169
+              },
+              {
+                "physical_page": 22,
+                "raw_text_sha256": "a739790e3b738c78b5c63d5cfef908d4d0570890edc75a72b0a6ca0d915a0c6b",
+                "representation": "embedded_pdf_text_uncorrected_scan_ocr",
+                "characters": 591
+              },
+              {
+                "physical_page": 24,
+                "raw_text_sha256": "55e4f280bb4503f89d3f5140bd16b0e1b37db018127f41380efd3dcdb53f6532",
+                "representation": "embedded_pdf_text_uncorrected_scan_ocr",
+                "characters": 2813
+              },
+              {
+                "physical_page": 25,
+                "raw_text_sha256": "6ccfa7da9e2d2987b6282d15454ffa00ff31484bdcdbbcebbede7fcd3413d4d8",
+                "representation": "embedded_pdf_text_uncorrected_scan_ocr",
+                "characters": 2498
+              },
+              {
+                "physical_page": 26,
+                "raw_text_sha256": "ec1087feedc3cf919490ce281cbcb3457072c39e1d03fd9e14ed8ed48f51ebb8",
+                "representation": "embedded_pdf_text_uncorrected_scan_ocr",
+                "characters": 2174
+              }
+            ],
+            "all_raw_hashes_verified": true,
+            "all_original_layer_hashes_verified": true,
+            "new_ocr_image_text_provenance_verified": false,
+            "scope": "Localized Coppoz/Praz-Prévôt sector sheets; not commune-wide PDCom.",
+            "signature": {
+              "physical_page": 31,
+              "municipal": "2010-02-22",
+              "public_inquiry": [
+                "2013-12-10",
+                "2014-02-07"
+              ],
+              "council": "2014-10-06",
+              "canton": "2015-03-25"
+            },
+            "quality": "All16proposed pages visually inspected against contact sheets; raw embedded scanOCR verified exact tosourcePDF. Binding noise, glyph substitutions and illustration labels remain uncorrected. Several pages begin/end midcontinuation: partial prose selection does not imply complete sector/objective coverage.",
+            "holds": [
+              "Unselected sector opening/map pages are not filled by inference.",
+              "Programmes and proposed zoning/PPA/PQ measures are historicalintent, not current rights or remaining capacity."
+            ],
+            "accepted_physical_pages": [
+              6,
+              7,
+              8,
+              9,
+              10,
+              12,
+              13,
+              14,
+              16,
+              17,
+              19,
+              21,
+              22,
+              24,
+              25,
+              26
+            ],
+            "held_proposed_pages": [],
+            "current_applicability": "unverified",
+            "approval_scope": "observed_historical_original_signature_only",
+            "decision": "accept_partial_historical_research_text_with_explicit_uncorrected_OCR_and_scope_holds",
+            "no_raw_corrections": true,
+            "no_geographic_qualification": true
+          },
+          {
+            "slug": "cheseaux-mon-repos",
+            "source_document_id": "0e9335fa-0a1f-5251-8a47-ccaf3e2587c5",
+            "source_sha256": "a8e1bf955645980a5956cd4d690f2e7ca533540cd1822663b9f997a4052396d4",
+            "candidate_sha256": "af12dba1e7aa1d2d300d82ea0ce5301979856be3cab30b287bdce4f4e9136e3c",
+            "selected_page_hashes": [
+              {
+                "physical_page": 4,
+                "raw_text_sha256": "ba65b4fe201d4ec7ef1aa0aeafbee50c650149652d906da6da8e895eb4b15d72",
+                "representation": "embedded_pdf_text_uncorrected_scan_ocr",
+                "characters": 2075
+              }
+            ],
+            "all_raw_hashes_verified": true,
+            "all_original_layer_hashes_verified": true,
+            "new_ocr_image_text_provenance_verified": false,
+            "scope": "Modification of localized Mon Repos PDL, perimeter i observed on originalpage4; not entireMonRepos or commune.",
+            "signature": {
+              "physical_page": 3,
+              "municipal": "2010-10-11",
+              "public_inquiry": [
+                "2010-10-22",
+                "2010-11-22"
+              ],
+              "council": "2011-02-22",
+              "canton": "2011-06-29"
+            },
+            "quality": "Original4 visually inspected: coherent objectives/principles/measures/actionprogramme. EmbeddedOCR has perimeter j where image says i. ExcludedsignatureOCR incorrectlyreads2017whereimage2011. No rawtextcorrection made; sourceimage remains authority.",
+            "holds": [
+              "Receiver context must state localized modification and perimeter-letterOCR uncertainty.",
+              "No mapped boundary or present zoning inferred from page4."
+            ],
+            "accepted_physical_pages": [
+              4
+            ],
+            "held_proposed_pages": [],
+            "current_applicability": "unverified",
+            "approval_scope": "observed_historical_original_signature_only",
+            "decision": "accept_partial_historical_research_text_with_explicit_uncorrected_OCR_and_scope_holds",
+            "no_raw_corrections": true,
+            "no_geographic_qualification": true
+          },
+          {
+            "slug": "yverdon-1997",
+            "source_document_id": "b4cb6c89-963b-5d91-b14f-f145ccef2e2a",
+            "source_sha256": "c158ade8eb784c572209cc48a9765fc8737f8a0a3ac1d49023bb1cefe47cf3d9",
+            "candidate_sha256": "ccff1d0b9532ee831ff2b6561693500e75af769cbde6ae85893f53f83faccdc1",
+            "selected_page_hashes": [
+              {
+                "physical_page": 7,
+                "raw_text_sha256": "8bd6a0e7692b33f44e57d991cca8db536c2f90c009978e1a4c3739fcf6a31f0d",
+                "representation": "new_bounded_uncorrected_research_ocr",
+                "characters": 9949
+              },
+              {
+                "physical_page": 10,
+                "raw_text_sha256": "363a60458a36224f18957b3512825d361e67e1a6ce7a81868e6ee5fdb37c46bc",
+                "representation": "new_bounded_uncorrected_research_ocr",
+                "characters": 13956
+              }
+            ],
+            "all_raw_hashes_verified": true,
+            "all_original_layer_hashes_verified": true,
+            "new_ocr_image_text_provenance_verified": true,
+            "scope": "Municipal historical DossierDirecteur; acceptedpage7AvantPropos only, not complete1997plan.",
+            "signature": {
+              "physical_page": 1,
+              "council": "1996-12-12",
+              "canton": "1997-05-28"
+            },
+            "quality": "New200dpi Tesseract5.5.2fraPSM3 OCR provenance/text/image hashes verified. Page7column flow largely follows prose; repeatedheader intrudes between paragraphs, emphasized terms are sometimes missing, and glypherrors remain. Page10interleaves independentboxedtopic headings/bodies and isheld.",
+            "holds": [
+              "Physical10 excluded pending separatelyreviewed layout-aware source-box extraction.",
+              "Page7mentions historiclaws and then-currentplans: no present legal applicability asserted.",
+              "Modernrevision cannot establish blanket supersession without formal evidence; currentapplicabilityunknown."
+            ],
+            "accepted_physical_pages": [
+              7
+            ],
+            "held_proposed_pages": [
+              10
+            ],
+            "current_applicability": "unverified",
+            "approval_scope": "observed_historical_original_signature_only",
+            "decision": "accept_partial_historical_research_text_with_explicit_uncorrected_OCR_and_scope_holds",
+            "no_raw_corrections": true,
+            "no_geographic_qualification": true
+          },
+          {
+            "slug": "etoy-village",
+            "source_document_id": "e4fd59d2-5dba-5aa5-af2b-5c4f09ce1313",
+            "source_sha256": "2bc37dad0119471e9c57cbade059b7e9fe1724607b7641d966a5a8e91ba12143",
+            "candidate_sha256": "e98fffc2d80801daffdf6a69a4903d67a58b0fde50967f3e8f8631cf93bd7d8a",
+            "selected_page_hashes": [
+              {
+                "physical_page": 3,
+                "raw_text_sha256": "00b464cef106400dab153a43d8c346f176c1db3b7211fcf2949b778262d34e96",
+                "representation": "new_bounded_uncorrected_research_ocr",
+                "characters": 1390
+              },
+              {
+                "physical_page": 4,
+                "raw_text_sha256": "1e22a2154d44c460ad407a6feda95b2fb4c9f72b0abb6e4bc00a4f74442b63d1",
+                "representation": "new_bounded_uncorrected_research_ocr",
+                "characters": 2532
+              },
+              {
+                "physical_page": 9,
+                "raw_text_sha256": "2ed9fe2d9362c925076c94f8f0cdae217eab02e0f872e0bf93653c89b453a71e",
+                "representation": "new_bounded_uncorrected_research_ocr",
+                "characters": 1991
+              }
+            ],
+            "all_raw_hashes_verified": true,
+            "all_original_layer_hashes_verified": true,
+            "new_ocr_image_text_provenance_verified": true,
+            "scope": "Localized villagePDL; physical3/4 generalobjectives/concept for threehamlets. No commune-wide PDCom normalization.",
+            "signature": {
+              "physical_page": 31,
+              "municipal": [
+                "2000-11-20",
+                "2001-11-12"
+              ],
+              "council": [
+                "2001-03-26",
+                "2002-03-11"
+              ],
+              "canton": "2002-09-09"
+            },
+            "quality": "New200dpi Tesseract5.5.2fraPSM3 provenance/text/image hashes verified. Physical3/4singlecolumn meaning recognizable despite numerous glypherrors(PDL→POL,etc), uncorrected. Physical9objectivesheading moved beforecharacteristics and critical nonbâti phrase corrupted; held.",
+            "holds": [
+              "Physical9 excluded from sequentialsearch until independentlyreviewed extraction represents originalorder/qualification.",
+              "Observed2001/2002approvaldates preserved together; no inference of no lateramendments."
+            ],
+            "accepted_physical_pages": [
+              3,
+              4
+            ],
+            "held_proposed_pages": [
+              9
+            ],
+            "current_applicability": "unverified",
+            "approval_scope": "observed_historical_original_signature_only",
+            "decision": "accept_partial_historical_research_text_with_explicit_uncorrected_OCR_and_scope_holds",
+            "no_raw_corrections": true,
+            "no_geographic_qualification": true
+          }
+        ],
+        "limits": [
+          "Not current legal validation.",
+          "Not independentabsence-of-amendmentscertification.",
+          "No rawOCR silentlycorrected or rewritten.",
+          "NoDB/codewrites."
+        ],
+        "proposed_pages": 22
+      }
+    }
+  ]
+}
