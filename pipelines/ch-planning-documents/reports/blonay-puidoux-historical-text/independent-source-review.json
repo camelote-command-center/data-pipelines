@@ -1,0 +1,30 @@
+{
+  "decision": "source_bytes_and_visible_historical_approval_accepted_for_text_preparation_only",
+  "reviewed_at": "2026-10-06T02:56:56.057963+00:00",
+  "reviewer": "parent independent visual inspection",
+  "records": [
+    {
+      "document_id": "2bcdca02-b3cb-5846-a712-3f538a524557",
+      "sha256": "ce5224d0effbabac8c62751ac25d97b03e6ac6186307a2cdd9ec809249c837d9",
+      "pdf_page": 87,
+      "printed_page": 85,
+      "council_adoption": "2005-10-25",
+      "addenda": "2006-02-21",
+      "cantonal_approval": "2006-08-09",
+      "scope": "former Blonay only; not whole current merged commune",
+      "current_applicability": "unestablished"
+    },
+    {
+      "document_id": "896b38ec-fef9-5f88-9ccd-345d17adf737",
+      "sha256": "8cd5586803b24104aa1afa42e22b229ca3460fcdc01248f22c69410949c6769e",
+      "pdf_page": 1,
+      "council_adoption": "2001-05-10",
+      "cantonal_approval": "2002-11-18",
+      "current_applicability": "unestablished",
+      "text_requires_ocr_qualification": true
+    }
+  ],
+  "no_source_status_mutation": true,
+  "geometry_not_accepted": true,
+  "delivery_not_executed": true
+}

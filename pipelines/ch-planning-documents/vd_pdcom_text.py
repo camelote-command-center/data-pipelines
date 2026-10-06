@@ -15,8 +15,14 @@ SOURCE = 'vd_pdcom_municipal'
 REGIONAL_SOURCE = 'vd_sdan_regional'
 OCR_SOURCE = 'vd_pdcom_municipal_ocr'
 HISTORICAL_SOURCE = 'vd_pdcom_historical_former_commune'
+HISTORICAL_REFERENCE_SOURCE = 'vd_pdcom_historical_reference'
+# Use this complete set in scoped corpus verification; historical references are
+# knowledge documents even though their registry approval remains unverified.
+TEXT_SOURCES = (SOURCE, REGIONAL_SOURCE, OCR_SOURCE, HISTORICAL_SOURCE, HISTORICAL_REFERENCE_SOURCE)
 
 def source_kind(review):
+    if review.get('historical_reference'):
+        return HISTORICAL_REFERENCE_SOURCE
     if review.get('historical_scope'):
         return HISTORICAL_SOURCE
     if review.get('text_extraction'):
@@ -44,8 +50,11 @@ def require(ok, reason):
 
 def validate_review(r):
     uuid.UUID(r['vd_document_id'])
-    historical=bool(r.get('historical_scope'))
-    if historical:
+    historical=bool(r.get('historical_scope') or r.get('historical_reference'))
+    if r.get('historical_reference'):
+        from historical_reference import validate_review as validate_reference
+        validate_reference(r)
+    if r.get('historical_scope'):
         from historical_former_commune import validate as validate_historical
         validate_historical(r)
     if r.get('mixed_representations'):
@@ -90,6 +99,9 @@ def build_bundle(pdf_path, review):
     pages = []
     with fitz.open(path) as pdf:
         require(len(pdf) == review['page_count'], 'physical_page_count_mismatch')
+        if review.get('historical_reference'):
+            from historical_reference import load_pages
+            return assemble(review, load_pages(pdf, review), path.stat().st_size)
         if review.get('text_extraction', {}).get('mode')=='reviewed_ocr':
             from reviewed_ocr import load_pages
             return assemble(review, load_pages(pdf, review), path.stat().st_size)
@@ -108,6 +120,9 @@ def build_bundle(pdf_path, review):
 
 def assemble(review, pages, byte_count):
     validate_review(review)
+    if review.get('historical_reference'):
+        from historical_reference import assemble as assemble_reference
+        return assemble_reference(review, pages, byte_count)
     if review.get('mixed_representations'):
         from mixed_text import assemble as assemble_mixed
         return assemble_mixed(review,pages,byte_count)
@@ -153,6 +168,8 @@ def assemble(review, pages, byte_count):
             'version_id': uid('version:'+url+':'+sha), 'document_id': doc, 'metadata': metadata}
 
 def page_extraction_report(bundle):
+    if bundle['review'].get('historical_reference'):
+        return {'withheld_historical_reference_pages':[p['page_number'] for p in bundle['pages'] if not p['include_in_search']], 'fully_certified_pages':0}
     if bundle['review'].get('mixed_representations'):
         return {'withheld_mixed_pages':[p['page_number'] for p in bundle['pages'] if p['status']=='mixed_withheld'],'fully_certified_pages':0,'searchable_representations':sum(len(p['representations']) for p in bundle['pages'])}
     if bundle['review'].get('native_page_selection'):
@@ -180,7 +197,10 @@ def persist(conn, bundle, operation_id, pdf_path):
         c.execute("SET LOCAL statement_timeout='90s'")
         c.execute('SELECT sha256,plan_status,page_count,source_url FROM bronze_ch.vd_pdcom_documents WHERE id=%s FOR SHARE', (r['vd_document_id'],))
         require(c.fetchone() == (r['source_sha256'], r['plan_status'], r['page_count'], r['source_url']), 'registered_source_changed')
-        if r.get('historical_scope'):
+        if r.get('historical_reference'):
+            from historical_reference import validate_registered_mapping as validate_reference_mapping
+            validate_reference_mapping(c, r)
+        elif r.get('historical_scope'):
             from historical_former_commune import validate_registered_mapping
             validate_registered_mapping(c)
         elif r.get('scope')=='intercommunal':
@@ -196,8 +216,8 @@ def persist(conn, bundle, operation_id, pdf_path):
         require(not c.fetchall(), 'active_prior_version_requires_explicit_reviewed_supersession')
         c.execute('SELECT count(*) FROM knowledge_ch.documents WHERE id=%s',(b['document_id'],));documents_before=c.fetchone()[0]
         c.execute('SELECT count(*) FROM knowledge_ch.chunks WHERE document_id=%s',(b['document_id'],));chunks_before=c.fetchone()[0]
-        checked_insert(c,'bronze_ch','planning_document_runs',{'id':str(operation_id),'scope':{'kind':('scoped_historical_former_commune_text' if source_kind(r)==HISTORICAL_SOURCE else ('scoped_historical_regional_text' if source_kind(r)==REGIONAL_SOURCE else 'scoped_municipal_pdcom_text')),'document_id':r['vd_document_id']}})
-        checked_insert(c,'bronze_ch','planning_document_sources',{'id':b['source_id'],'source':source_kind(r),'canton_code':'VD','source_key':r['vd_document_id'],'title':r['title'],'document_url':r['source_url'],'commune_bfs':r['commune_bfs'],'language':'fr','legal_status':r['plan_status'],'document_type':('historical_former_commune_pdcom' if source_kind(r)==HISTORICAL_SOURCE else ('regional_sdan' if source_kind(r)==REGIONAL_SOURCE else 'municipal_pdcom')),'source_metadata':r,'catalog_hash':digest(r),'current_version_id':b['version_id'],'extraction_status':b['metadata']['extraction_status']})
+        checked_insert(c,'bronze_ch','planning_document_runs',{'id':str(operation_id),'scope':{'kind':('scoped_historical_source_reference_text' if source_kind(r)==HISTORICAL_REFERENCE_SOURCE else ('scoped_historical_former_commune_text' if source_kind(r)==HISTORICAL_SOURCE else ('scoped_historical_regional_text' if source_kind(r)==REGIONAL_SOURCE else 'scoped_municipal_pdcom_text'))),'document_id':r['vd_document_id']}})
+        checked_insert(c,'bronze_ch','planning_document_sources',{'id':b['source_id'],'source':source_kind(r),'canton_code':'VD','source_key':r['vd_document_id'],'title':r['title'],'document_url':r['source_url'],'commune_bfs':r['commune_bfs'],'language':'fr','legal_status':r['plan_status'],'document_type':('historical_pdcom_source_reference' if source_kind(r)==HISTORICAL_REFERENCE_SOURCE else ('historical_former_commune_pdcom' if source_kind(r)==HISTORICAL_SOURCE else ('regional_sdan' if source_kind(r)==REGIONAL_SOURCE else 'municipal_pdcom'))),'source_metadata':r,'catalog_hash':digest(r),'current_version_id':b['version_id'],'extraction_status':b['metadata']['extraction_status']})
         checked_insert(c,'bronze_ch','planning_document_versions',{'id':b['version_id'],'source_id':b['source_id'],'content_hash':r['source_sha256'],'final_url':r['source_url'],'content_type':'application/pdf','byte_count':b['byte_count'],'pages':b['pages'],'extraction_status':b['metadata']['extraction_status'],'knowledge_document_id':b['document_id']})
         # Only the expensive classifier is suspended; taxonomy remains enabled.
         # Transaction rollback restores trigger state if any assertion fails.
@@ -230,7 +250,13 @@ def deliver(conn, document_id):
         c.execute("SET LOCAL statement_timeout='120s'")
         c.execute('SELECT source,raw_metadata FROM knowledge_ch.documents WHERE id=%s', (document_id,))
         row=c.fetchone()
-        require(row is not None and row[0] in (SOURCE,REGIONAL_SOURCE,OCR_SOURCE,HISTORICAL_SOURCE) and row[1].get('spatial_qualification') is False and row[1].get('all_prose_is_binding') is False, 'scoped_document_contract_required')
+        require(row is not None and row[0] in (SOURCE,REGIONAL_SOURCE,OCR_SOURCE,HISTORICAL_SOURCE,HISTORICAL_REFERENCE_SOURCE) and row[1].get('spatial_qualification') is False and row[1].get('all_prose_is_binding') is False, 'scoped_document_contract_required')
+        from historical_reference import PINS as historical_reference_pins
+        if row[0]==HISTORICAL_REFERENCE_SOURCE or row[1].get('historical_reference') or row[1].get('vd_document_id') in historical_reference_pins:
+            require(row[0]==HISTORICAL_REFERENCE_SOURCE and row[1].get('historical_reference'), 'historical_reference_source_kind_mismatch')
+            from historical_reference import validate_delivery as validate_reference_delivery
+            c.execute('SELECT id::text,document_id::text,chunk_index,page_number,content,metadata FROM knowledge_ch.chunks WHERE document_id=%s', (document_id,))
+            validate_reference_delivery(row[1],[{'id':i,'document_id':d,'chunk_index':n,'page_number':p,'content':t,'metadata':m} for i,d,n,p,t,m in c.fetchall()])
         if row[0]==HISTORICAL_SOURCE or row[1].get('historical_scope'):
             require(row[0]==source_kind(row[1]),'source_kind_scope_mismatch')
         if row[0]==HISTORICAL_SOURCE:

@@ -174,3 +174,47 @@ its already registered FDW; the command does not accept an arbitrary receiver.
 keep reports and PDF under the approved local project root. A failed commit/monitor
 acknowledgment remains an explicit failure requiring scoped readback, never an
 assumed successful receiver delivery.
+
+### Exact Blonay and Puidoux historical references
+
+`historical_reference.py` accepts only the two reviewed PDF hashes and full review
+contracts in `reports/blonay-puidoux-historical-text/`. Both registry rows remain
+`unverified`; historical signature evidence does not establish current applicability.
+Blonay covers former OFS5881, with OFS5892 used solely as the existing tracking
+association. Puidoux remains OFS5607. Source mappings and spatial currentness blocks
+are preserved. This path does not broaden the separate Saint-Légier validator.
+
+The partial selection contains 29 Blonay pages / 51 chunks of unchanged embedded
+PDF text and 15 Puidoux pages / 22 chunks of existing, uncorrected research OCR.
+Every chunk carries a visible historical caveat and immutable page provenance.
+Blonay's ambiguous replacement passages and map/table content are withheld;
+PDF64–67 retain the explicit distinction between consultation-era sports proposals
+and the red January2005 realized-project update. Puidoux's later Le Vergnolet
+amendment (PDF38–41) remains withheld. No text is certified as a complete normative
+representation, author-native text, current parcel rights or geometry.
+
+Use `vd_pdcom_text.TEXT_SOURCES` for corpus verification: the fifth source kind,
+`vd_pdcom_historical_reference`, must not disappear from future baseline guards.
+The exact-batch runner checks the entire previous 13-document / 1272-chunk corpus
+and expects 15 documents / 1345 chunks after delivery, with all source-view, FDW
+and direct `lia` receiver fields equal. It fingerprints registered sources,
+commune mappings, previous text rows and spatial state (212 sectors / 8776 links),
+checks classifier triggers remain enabled, and preserves national dataset fields.
+
+The guarded runner defaults to read-only inspection. It reads credentials from
+registered project routes without logging them. All PDFs and local receipts belong
+under the approved RE-LLM working root; the repository does not contain the PDFs.
+
+```sh
+python -B historical_reference_runner.py --mode inspect --evidence-dir /Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-municipal-text
+python -B historical_reference_runner.py --mode rehearse --evidence-dir /Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-municipal-text
+python -B historical_reference_runner.py --mode commit --evidence-dir /Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-municipal-text
+```
+
+`rehearse` performs writes only inside its owned transaction and always rolls back;
+`commit` requires the exact successful rollback receipt, code/fixture hashes and
+unchanged baseline. Both replay the scoped insertion and delivery to verify
+idempotency. Source registry status, associations and geometry are never updated.
+These modes are operational actions, not executed by tests or scheduled national
+acquisition. A saved committed receipt must be inspected before retrying after a
+post-commit monitoring or verification error.
