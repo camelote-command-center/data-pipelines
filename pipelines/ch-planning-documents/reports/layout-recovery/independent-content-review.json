@@ -1,0 +1,826 @@
+{
+  "original": {
+    "status": "independent_content_review_complete_partial_acceptance",
+    "candidate_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-layout-recovery/candidate-blocks.json",
+    "candidate_sha256": "405b74a3db253c00e655fe0bd9de8911101a523d6bd7cfc6b6ff84e981d7c107",
+    "integrity_proof": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-layout-recovery/independent-block-integrity.json",
+    "integrity_proof_sha256": "eb0a95b5b9bb97ea288adf4bfed843a62a979af2f355535260bf8290f416fd27",
+    "visual_review_scope": "All 32 exact candidate crop images compared with their raw texts; Yverdon original physical page 3 errata independently rendered and reviewed. No OCR correction.",
+    "accepted_block_ids": [
+      "yverdon-1997-p010-topic-1",
+      "yverdon-1997-p010-topic-2",
+      "yverdon-1997-p010-topic-4",
+      "yverdon-1997-p010-topic-6",
+      "yverdon-1997-p010-topic-7",
+      "yverdon-1997-p010-topic-9",
+      "yverdon-1997-p010-topic-10",
+      "aubonne-vieille-ville-p029-concept-prose",
+      "aubonne-vieille-ville-p029-reference-dossier",
+      "bussigny-cocagne-p006-territorial-reading",
+      "bussigny-cocagne-p013-urban-intensity-before-held-capacity-columns",
+      "bussigny-cocagne-p020-pdcom-context-before-held-map",
+      "bussigny-cocagne-p030-urbanisation-introduction",
+      "bussigny-cocagne-p030-s1-objectives",
+      "bussigny-cocagne-p031-s1-principles-and-measures-continuation",
+      "bussigny-cocagne-p031-s2-objectives",
+      "bussigny-cocagne-p031-s2-principles-and-measures-after-held-capacity-table",
+      "bussigny-cocagne-p032-s2-measures-continuation",
+      "bussigny-cocagne-p032-s3-objectives",
+      "bussigny-cocagne-p032-s3-principles-and-measures-after-held-capacity-table",
+      "bonderex-p005-sector-description-before-held-map",
+      "condemine-p007-sector-description-before-held-map"
+    ],
+    "held_block_ids": [
+      "yverdon-1997-p010-topic-3",
+      "yverdon-1997-p010-topic-5",
+      "yverdon-1997-p010-topic-8",
+      "etoy-village-p009-characteristics",
+      "etoy-village-p009-objectives",
+      "bussigny-cocagne-p006-situation-before-held-ownership-table",
+      "bussigny-cocagne-p015-context-before-held-map",
+      "bussigny-cocagne-p024-objectives-and-integration-before-held-section",
+      "bussigny-cocagne-p025-landscape-prose-before-held-map",
+      "bussigny-cocagne-p055-infrastructure-prose-before-held-matrix"
+    ],
+    "accepted_blocks": 22,
+    "held_blocks": 10,
+    "accepted_partial_pages": 10,
+    "accepted_source_documents": 5,
+    "accepted_raw_characters": 25513,
+    "blocks": [
+      {
+        "block_id": "yverdon-1997-p010-topic-1",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "b4cb6c89-963b-5d91-b14f-f145ccef2e2a",
+        "source_sha256": "c158ade8eb784c572209cc48a9765fc8737f8a0a3ac1d49023bb1cefe47cf3d9",
+        "physical_page": 10,
+        "bbox_pdf_points": [
+          122.29200439453126,
+          197.14896679687502,
+          431.69077551269527,
+          591.4469003906249
+        ],
+        "reading_order_within_page": 1,
+        "text_sha256": "eed5f6ff244a8e054f26484e5bcb9279908693a8082d903d79755e4c33023602",
+        "crop_image_sha256": "eeab638f607074c748e54846ae40b2fe3c1cff75716556ccc35998345bdd2231",
+        "representation": "new_coordinate_bound_uncorrected_ocr"
+      },
+      {
+        "block_id": "yverdon-1997-p010-topic-2",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "b4cb6c89-963b-5d91-b14f-f145ccef2e2a",
+        "source_sha256": "c158ade8eb784c572209cc48a9765fc8737f8a0a3ac1d49023bb1cefe47cf3d9",
+        "physical_page": 10,
+        "bbox_pdf_points": [
+          122.29200439453126,
+          610.1420610351562,
+          431.69077551269527,
+          1043.5298759765624
+        ],
+        "reading_order_within_page": 2,
+        "text_sha256": "fee626de75e127c2179bcb466f5405031b2be6fd338d65a2ed9b8e0c9fea1d33",
+        "crop_image_sha256": "819683d5de42f261242c60638158569f4d69aafce17f8ec8fb59c86e3a03859a",
+        "representation": "new_coordinate_bound_uncorrected_ocr"
+      },
+      {
+        "block_id": "yverdon-1997-p010-topic-3",
+        "decision": "held",
+        "reason": "Material phrase corruption in new OCR (visions d’approche) leaves the approach/design relation unreliable; no silent correction.",
+        "source_document_id": "b4cb6c89-963b-5d91-b14f-f145ccef2e2a",
+        "source_sha256": "c158ade8eb784c572209cc48a9765fc8737f8a0a3ac1d49023bb1cefe47cf3d9",
+        "physical_page": 10,
+        "bbox_pdf_points": [
+          122.29200439453126,
+          1067.323716796875,
+          431.69077551269527,
+          1403.8366083984374
+        ],
+        "reading_order_within_page": 3,
+        "text_sha256": "eac2e3277a4706f497b9a35c53f3e1affdb0555a9e99b5e0fa8b869e87f75e76",
+        "crop_image_sha256": "fcc508df5965897a1e2250984210f03164b6b2ed0083f0a2b24615220ba8b278",
+        "representation": "new_coordinate_bound_uncorrected_ocr"
+      },
+      {
+        "block_id": "yverdon-1997-p010-topic-4",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "b4cb6c89-963b-5d91-b14f-f145ccef2e2a",
+        "source_sha256": "c158ade8eb784c572209cc48a9765fc8737f8a0a3ac1d49023bb1cefe47cf3d9",
+        "physical_page": 10,
+        "bbox_pdf_points": [
+          122.29200439453126,
+          1412.3344086914062,
+          431.69077551269527,
+          1682.5644580078124
+        ],
+        "reading_order_within_page": 4,
+        "text_sha256": "0aa5a6b972c520436312bc6c3a0ec149bdc4b9d928ce3945d94d606ab333e9a2",
+        "crop_image_sha256": "6867bdca16604dc7d5787525fee1ea5cacf477a1ce2a260f0061dfb07b177b27",
+        "representation": "new_coordinate_bound_uncorrected_ocr"
+      },
+      {
+        "block_id": "yverdon-1997-p010-topic-5",
+        "decision": "held",
+        "reason": "Material relation word complémentarité is severely corrupted; faithful topic transcription not established.",
+        "source_document_id": "b4cb6c89-963b-5d91-b14f-f145ccef2e2a",
+        "source_sha256": "c158ade8eb784c572209cc48a9765fc8737f8a0a3ac1d49023bb1cefe47cf3d9",
+        "physical_page": 10,
+        "bbox_pdf_points": [
+          480.6075772705078,
+          197.14896679687502,
+          787.5605083007813,
+          610.1420610351562
+        ],
+        "reading_order_within_page": 5,
+        "text_sha256": "cdcfe1d458454789fbfc50e55144ef2276a22a7e348ed00709f42fa8b8e44b55",
+        "crop_image_sha256": "473b839a3866d9fa25e3bb78a8d961f94fc131ac5fbeb45c506031c6758e8ca0",
+        "representation": "new_coordinate_bound_uncorrected_ocr"
+      },
+      {
+        "block_id": "yverdon-1997-p010-topic-6",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "b4cb6c89-963b-5d91-b14f-f145ccef2e2a",
+        "source_sha256": "c158ade8eb784c572209cc48a9765fc8737f8a0a3ac1d49023bb1cefe47cf3d9",
+        "physical_page": 10,
+        "bbox_pdf_points": [
+          480.6075772705078,
+          664.5279829101563,
+          787.5605083007813,
+          1135.306119140625
+        ],
+        "reading_order_within_page": 6,
+        "text_sha256": "c77c894273dba1d7c517ef335341a070e07feb0ebeb303c542a8e58cec145f1a",
+        "crop_image_sha256": "979ce52aed60a8676d7ab32fcba4bbb4f313f1c7895ba362a4ce3d061b538618",
+        "representation": "new_coordinate_bound_uncorrected_ocr"
+      },
+      {
+        "block_id": "yverdon-1997-p010-topic-7",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "b4cb6c89-963b-5d91-b14f-f145ccef2e2a",
+        "source_sha256": "c158ade8eb784c572209cc48a9765fc8737f8a0a3ac1d49023bb1cefe47cf3d9",
+        "physical_page": 10,
+        "bbox_pdf_points": [
+          480.6075772705078,
+          1208.3872016601563,
+          787.5605083007813,
+          1660.4701772460937
+        ],
+        "reading_order_within_page": 7,
+        "text_sha256": "f552c3e8dc648bc7ca37c2f7fe2badffbb968f08df305447623002c28522cb02",
+        "crop_image_sha256": "478de59a51720349b9eae8ecf32e8c8322e2db858b70e4ae3f9251c9628fe55d",
+        "representation": "new_coordinate_bound_uncorrected_ocr"
+      },
+      {
+        "block_id": "yverdon-1997-p010-topic-8",
+        "decision": "held",
+        "reason": "Parc Technologique designation is severely corrupted in OCR; strategic actor/site relationship cannot be reliably recovered from this raw text.",
+        "source_document_id": "b4cb6c89-963b-5d91-b14f-f145ccef2e2a",
+        "source_sha256": "c158ade8eb784c572209cc48a9765fc8737f8a0a3ac1d49023bb1cefe47cf3d9",
+        "physical_page": 10,
+        "bbox_pdf_points": [
+          840.1460701904298,
+          197.14896679687502,
+          1149.5448413085937,
+          572.7517397460938
+        ],
+        "reading_order_within_page": 8,
+        "text_sha256": "08a48b5b32f68c3e049920ba0575bcccc7f3c1ab4739f602600b372ecd8ac92a",
+        "crop_image_sha256": "d22e0cc9a4daf95c514e5a6ebd4124946092abd0746efd6e2823f384cf278e71",
+        "representation": "new_coordinate_bound_uncorrected_ocr"
+      },
+      {
+        "block_id": "yverdon-1997-p010-topic-9",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "b4cb6c89-963b-5d91-b14f-f145ccef2e2a",
+        "source_sha256": "c158ade8eb784c572209cc48a9765fc8737f8a0a3ac1d49023bb1cefe47cf3d9",
+        "physical_page": 10,
+        "bbox_pdf_points": [
+          838.9231501464844,
+          582.9491000976562,
+          1149.5448413085937,
+          1152.3017197265626
+        ],
+        "reading_order_within_page": 9,
+        "text_sha256": "38b41361be21bf950a3dfc441c3ed481d83ee8bb8a0af06eccb05aad23e29248",
+        "crop_image_sha256": "4b98f19fe68dc588b98d6c7ffb2d63be232ad3736d1c7479b5dd351166afa58c",
+        "representation": "new_coordinate_bound_uncorrected_ocr"
+      },
+      {
+        "block_id": "yverdon-1997-p010-topic-10",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "b4cb6c89-963b-5d91-b14f-f145ccef2e2a",
+        "source_sha256": "c158ade8eb784c572209cc48a9765fc8737f8a0a3ac1d49023bb1cefe47cf3d9",
+        "physical_page": 10,
+        "bbox_pdf_points": [
+          841.3689902343749,
+          1206.6876416015625,
+          1150.767761352539,
+          1655.3714970703124
+        ],
+        "reading_order_within_page": 10,
+        "text_sha256": "3e6661cfbd51f1979a3f654b482bf5d62d306c04bdcb5a1be646e458d4b9aabc",
+        "crop_image_sha256": "091365b313b56a756a725f349a0bd038a94ac5faaf544e766acf0338a4698b47",
+        "representation": "new_coordinate_bound_uncorrected_ocr"
+      },
+      {
+        "block_id": "etoy-village-p009-characteristics",
+        "decision": "held",
+        "reason": "Right crop boundary truncates line endings; incomplete source words and OCR corruption. Requires a separately frozen complete rectangle, not text repair.",
+        "source_document_id": "e4fd59d2-5dba-5aa5-af2b-5c4f09ce1313",
+        "source_sha256": "2bc37dad0119471e9c57cbade059b7e9fe1724607b7641d966a5a8e91ba12143",
+        "physical_page": 9,
+        "bbox_pdf_points": [
+          70.21,
+          63.15,
+          527.17,
+          294.7
+        ],
+        "reading_order_within_page": 1,
+        "text_sha256": "e1350790b30e70e0c311f2f7d9b496c08961eb8567a52a3896b4a7aa7e62387f",
+        "crop_image_sha256": "7248797ed6b6cc2deffb6eaff75667187f8ff7c634dcc6cf2135afce15b75557",
+        "representation": "new_coordinate_bound_uncorrected_ocr"
+      },
+      {
+        "block_id": "etoy-village-p009-objectives",
+        "decision": "held",
+        "reason": "Material OCR confusion of liaison with Maison in the first objective and other substantive glyph errors leave the stated pedestrian-link relationship unreliable.",
+        "source_document_id": "e4fd59d2-5dba-5aa5-af2b-5c4f09ce1313",
+        "source_sha256": "2bc37dad0119471e9c57cbade059b7e9fe1724607b7641d966a5a8e91ba12143",
+        "physical_page": 9,
+        "bbox_pdf_points": [
+          69.02000000000001,
+          314.908,
+          527.17,
+          612.134
+        ],
+        "reading_order_within_page": 2,
+        "text_sha256": "932ee997774e557c7854122c2937437b718ade78ae9bf8f81bbee674b71b060a",
+        "crop_image_sha256": "b71c34188c977ddfb697b9a9c3424ccb2c95e175080beb9187e38aafc454fbc5",
+        "representation": "new_coordinate_bound_uncorrected_ocr"
+      },
+      {
+        "block_id": "aubonne-vieille-ville-p029-concept-prose",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "c2fe6145-5bff-5beb-b27f-649f0125c146",
+        "source_sha256": "d5d93e0e17fbd80ce10629550c0c60c6ba100f8ac45c62dd3929a5ee3483fe73",
+        "physical_page": 29,
+        "bbox_pdf_points": [
+          59.615002441406254,
+          58.66349914550782,
+          548.4580224609375,
+          431.5957437133789
+        ],
+        "reading_order_within_page": 1,
+        "text_sha256": "1020d3750e84c0f736971c3608ac316ecf3e923d4a608d89b4c40e8ce5a282d5",
+        "crop_image_sha256": "3ee3566fbd57c25ac722bfbd90dc826ad58153938fb1a78c9c8ae66e2900500f",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr"
+      },
+      {
+        "block_id": "aubonne-vieille-ville-p029-reference-dossier",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "c2fe6145-5bff-5beb-b27f-649f0125c146",
+        "source_sha256": "d5d93e0e17fbd80ce10629550c0c60c6ba100f8ac45c62dd3929a5ee3483fe73",
+        "physical_page": 29,
+        "bbox_pdf_points": [
+          59.615002441406254,
+          535.513942199707,
+          548.4580224609375,
+          769.3298887939453
+        ],
+        "reading_order_within_page": 2,
+        "text_sha256": "d3b9b6a00ebcb01ec5e7818aef9536f4ede4eee88bb8beec40dd405721462066",
+        "crop_image_sha256": "1ed3d6838573acb3067808df00acd29cffb99255e3f30ac1fc0e42453fa68034",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr"
+      },
+      {
+        "block_id": "bussigny-cocagne-p006-situation-before-held-ownership-table",
+        "decision": "held",
+        "reason": "Last sentence introduces the excluded ownership table. Current block ends with an unfulfilled list/table dependency.",
+        "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "physical_page": 6,
+        "bbox_pdf_points": [
+          50.59200103759766,
+          92.15799865722656,
+          550.5600112915039,
+          235.42179656982424
+        ],
+        "reading_order_within_page": 1,
+        "text_sha256": "53074b932b821e493b10a0ddbaa67de3a504b4e5f1ed4a9c0f72fff62680b18e",
+        "crop_image_sha256": "c9e07347bb87ba429b681d91fe0cb14cbbc57230de7b2dfe9ad7c609655a2b08",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr"
+      },
+      {
+        "block_id": "bussigny-cocagne-p006-territorial-reading",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "physical_page": 6,
+        "bbox_pdf_points": [
+          50.59200103759766,
+          330.93099517822264,
+          550.5600112915039,
+          526.1383923339844
+        ],
+        "reading_order_within_page": 2,
+        "text_sha256": "f7d654b0322527d03dfbc52582f03ee4f2c007837a1bf8840d64a76bb4bb79cf",
+        "crop_image_sha256": "700c10b8198fe387349a4c95c7c43b59f492f6611572f1e54a4d0577481d8ecd",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr"
+      },
+      {
+        "block_id": "bussigny-cocagne-p013-urban-intensity-before-held-capacity-columns",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "physical_page": 13,
+        "bbox_pdf_points": [
+          50.60900207519531,
+          96.485,
+          550.7450225830079,
+          306.235
+        ],
+        "reading_order_within_page": 1,
+        "text_sha256": "ef0956779c9697f6880f885c3ab863fcc085d3398668c3c9a895de03db5eab79",
+        "crop_image_sha256": "25af0414d47052c9c354e615c54c06a1a516b4406d200faf25757e83beca240e",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr"
+      },
+      {
+        "block_id": "bussigny-cocagne-p015-context-before-held-map",
+        "decision": "held",
+        "reason": "Final sentence ends at décidé des programmes; continuation outside current box is absent.",
+        "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "physical_page": 15,
+        "bbox_pdf_points": [
+          50.60900207519531,
+          90.48239868164062,
+          550.7450225830079,
+          306.6347955322266
+        ],
+        "reading_order_within_page": 1,
+        "text_sha256": "51d6617ee3ba8bcfb0fe11f4183fe5cf780cb7a199c23c6fabaccca985f305ec",
+        "crop_image_sha256": "f0067852379932d4080599e1e7e19b9d7be5c8761e72f9256dc2ba32ac57fef0",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr"
+      },
+      {
+        "block_id": "bussigny-cocagne-p020-pdcom-context-before-held-map",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "physical_page": 20,
+        "bbox_pdf_points": [
+          50.630252075195315,
+          92.18549865722656,
+          550.9762725830078,
+          356.1712448120117
+        ],
+        "reading_order_within_page": 1,
+        "text_sha256": "4f1b60d1cdf17707401c8bd68376971b25ee93d9039ae2e1b425ffe61f8a7778",
+        "crop_image_sha256": "c45317b79afc333538ffa7b974af59ab3a65983e260db0bb282228f153e7f3f0",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr"
+      },
+      {
+        "block_id": "bussigny-cocagne-p024-objectives-and-integration-before-held-section",
+        "decision": "held",
+        "reason": "Coordinate sort still interleaves separate integration bullets and lines (sonores/la création and continuité/Un traitement); reading order remains corrupted.",
+        "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "physical_page": 24,
+        "bbox_pdf_points": [
+          50.54950103759766,
+          90.48239868164062,
+          550.0975112915039,
+          624.1609909057618
+        ],
+        "reading_order_within_page": 1,
+        "text_sha256": "9084e88fe36db761680befd857b223ad7feffb16320eed917c1175cf14a0d4a7",
+        "crop_image_sha256": "29b5e903e978083cd7166cfa4204dd59f3ada3412d62b3e12699cd6a676f1a62",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr"
+      },
+      {
+        "block_id": "bussigny-cocagne-p025-landscape-prose-before-held-map",
+        "decision": "held",
+        "reason": "Final paragraph stops at mettre en place des articulations; continuation on next physical page is omitted. Existing delivered continuation must not be silently joined.",
+        "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "physical_page": 25,
+        "bbox_pdf_points": [
+          50.57075103759766,
+          92.21299865722656,
+          550.328761291504,
+          264.06449615478516
+        ],
+        "reading_order_within_page": 1,
+        "text_sha256": "bb1545215f47bf9f82022e5923435d446830cc8c9364e6fbac614a079d7c4f38",
+        "crop_image_sha256": "3cf829c05ce493dc8ae6e2419a66f9b419f59cdf89dc329141df09fe8e52c8e0",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr"
+      },
+      {
+        "block_id": "bussigny-cocagne-p030-urbanisation-introduction",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "physical_page": 30,
+        "bbox_pdf_points": [
+          50.60900207519531,
+          90.56339868164062,
+          550.7450225830079,
+          217.1844468383789
+        ],
+        "reading_order_within_page": 1,
+        "text_sha256": "9e74411a0570f5879c9b3c72cd6b532e0ca1a188dbe2822cd6fbd50c72fc833a",
+        "crop_image_sha256": "7413c0be30ab641ba4eaa7261151440f99b1e171b3d3f60bd057a84dccdfa173",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr"
+      },
+      {
+        "block_id": "bussigny-cocagne-p030-s1-objectives",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "physical_page": 30,
+        "bbox_pdf_points": [
+          50.60900207519531,
+          446.1085935058594,
+          550.7450225830079,
+          536.6719921875
+        ],
+        "reading_order_within_page": 2,
+        "text_sha256": "eaf2c218ead3ceaf34bb9d7c34d81d3576546d9098eb248b3bf179ce29e96257",
+        "crop_image_sha256": "e251febbd65cc9c0aa5c5b2ce83339f8f9ed928ba75e07472322bac69301fa84",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr"
+      },
+      {
+        "block_id": "bussigny-cocagne-p031-s1-principles-and-measures-continuation",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "physical_page": 31,
+        "bbox_pdf_points": [
+          50.630252075195315,
+          92.24049865722657,
+          550.9762725830078,
+          360.57649475097656
+        ],
+        "reading_order_within_page": 1,
+        "text_sha256": "4c642a2aaa0520e45e31a51499524dc1c27deb5df8fcc6b033502a9e4e4c77d6",
+        "crop_image_sha256": "85cbf9fcdf6283c3f19d50060b71962e3a781dc7e1c564b4279021c622c8c1c3",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr"
+      },
+      {
+        "block_id": "bussigny-cocagne-p031-s2-objectives",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "physical_page": 31,
+        "bbox_pdf_points": [
+          50.630252075195315,
+          366.44634466552736,
+          550.9762725830078,
+          488.87464288330074
+        ],
+        "reading_order_within_page": 2,
+        "text_sha256": "a6598aadba8e6a2346b64a5b475f61d41939dc85202af4b01bb53aedc8535c7d",
+        "crop_image_sha256": "0ee863a01997f820d954969cf8af4cb010aad3d523a1eeb0800219a1e9f31db4",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr"
+      },
+      {
+        "block_id": "bussigny-cocagne-p031-s2-principles-and-measures-after-held-capacity-table",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "physical_page": 31,
+        "bbox_pdf_points": [
+          50.630252075195315,
+          624.7197409057617,
+          550.9762725830078,
+          747.1480391235351
+        ],
+        "reading_order_within_page": 3,
+        "text_sha256": "92b40a0e08c6fe23a66228c748479b100bee69bbd32c60221552e12b0291721b",
+        "crop_image_sha256": "f07f72147b465f7d4227d342a178c2d7aa8485ee814f0cb9d99e3366da1d9346",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr"
+      },
+      {
+        "block_id": "bussigny-cocagne-p032-s2-measures-continuation",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "physical_page": 32,
+        "bbox_pdf_points": [
+          50.65150207519532,
+          92.21299865722656,
+          551.2075225830079,
+          227.17929669189454
+        ],
+        "reading_order_within_page": 1,
+        "text_sha256": "27dad9598ed97585f8e1c296122f0a2fa2561406dddc9f67933b349e6884a3db",
+        "crop_image_sha256": "a4263af74999ea6af44112f6ff50be65d7b3f73da8f1e29ab46e8b864cd1058e",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr"
+      },
+      {
+        "block_id": "bussigny-cocagne-p032-s3-objectives",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "physical_page": 32,
+        "bbox_pdf_points": [
+          50.65150207519532,
+          233.8856965942383,
+          551.2075225830079,
+          302.6262955932617
+        ],
+        "reading_order_within_page": 2,
+        "text_sha256": "972aae7f2dcfd230fa02c9a8cf1624e3e86f7846d4b860e0b0d83b1b5457ad4a",
+        "crop_image_sha256": "2be7545602753f8a4b0b848b78e7f389e2e1db8c44c4d42149d734bf2e0f1f30",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr"
+      },
+      {
+        "block_id": "bussigny-cocagne-p032-s3-principles-and-measures-after-held-capacity-table",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "physical_page": 32,
+        "bbox_pdf_points": [
+          50.65150207519532,
+          394.83929425048825,
+          551.2075225830079,
+          670.6399902343751
+        ],
+        "reading_order_within_page": 3,
+        "text_sha256": "498dcaa37010ff5d70aff4be3bd323ae57407b3dac1c0ca0f315f3810dbd902c",
+        "crop_image_sha256": "8f3162e70e971dc9242c158547129006837969030de5d9953dccbcebf177d74d",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr"
+      },
+      {
+        "block_id": "bussigny-cocagne-p055-infrastructure-prose-before-held-matrix",
+        "decision": "held",
+        "reason": "Final paragraph introduces stratégie ... suivante ... : but its matrix is excluded. Current complete block cannot stand as a recovered strategy.",
+        "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "physical_page": 55,
+        "bbox_pdf_points": [
+          50.54950103759766,
+          90.50939868164062,
+          550.0975112915039,
+          302.5360455932617
+        ],
+        "reading_order_within_page": 1,
+        "text_sha256": "ef8da8ea4ee5716f9a91b3a6810c613f9e398e5bf4d8b9f0e382c234bcde1e08",
+        "crop_image_sha256": "f7bb63358b8c49fbc5edf2217137f335cf2930a039988be8d850dd026946162b",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr"
+      },
+      {
+        "block_id": "bonderex-p005-sector-description-before-held-map",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "e42356ee-f47b-5249-87ed-367d2fb3aa4f",
+        "source_sha256": "83a15e84e25c774322a361f2e73f99205297e5d3f7ef5135d692f898812d4dad",
+        "physical_page": 5,
+        "bbox_pdf_points": [
+          89.0625,
+          75.5775,
+          534.375,
+          393.00300000000004
+        ],
+        "reading_order_within_page": 1,
+        "text_sha256": "446ba72b5501802e73027083db870ade81375a2f4206a8d7a8166e40bfabf44c",
+        "crop_image_sha256": "c8250985c7f794d155ebd31b81f2c685267268dbb69622a5b96b60a31c1a960f",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr"
+      },
+      {
+        "block_id": "condemine-p007-sector-description-before-held-map",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Visual box/text comparison supports coherent local prose order and complete sentences; raw OCR limitations and omitted surrounding material remain explicit.",
+        "source_document_id": "652e95b3-615f-5498-8448-e8f76b421522",
+        "source_sha256": "1e85b4dc08c05fa92f3165563141351cd0b05a48ac6bc77eb2458003f38e4e74",
+        "physical_page": 7,
+        "bbox_pdf_points": [
+          86.30400177001952,
+          75.50999999999999,
+          550.5600112915039,
+          317.981
+        ],
+        "reading_order_within_page": 1,
+        "text_sha256": "71e13a64ca1403d58e9ecb2f9db44effea3c9063b6c4cbe14c9b4f652a146c95",
+        "crop_image_sha256": "fba59f774385d0a793a4e9fe43fe6f82e26c65cb83ab33c26a699fb11fb4adc8",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr"
+      }
+    ],
+    "mandatory_limits": [
+      "Accepted only as coordinate-bound, partial-page, uncorrected historical OCR references; not authoritative transcription or current applicable planning rules.",
+      "All source signatures, municipal scope, historical/currentness and amendment caveats from the original pinned reviews remain mandatory. A signature does not prove an unamended or current text.",
+      "Whole pages remain held. Only the exact accepted block IDs, rectangles and raw text hashes supersede prior layout exclusion for this representation. All other page regions, maps, diagrams, tables, matrix content and five fully held pages remain excluded.",
+      "No glyph repair, normalization, omitted-text joining, geometry, parcel association, structured capacity/rule extraction or legal inference. Numeric narrative is historical prose, not current development entitlement.",
+      "Raw OCR confidence remains null; source image must remain accessible for exact wording, proper names and numbers. Minor glyph errors retained in accepted blocks are not certified correct.",
+      "Block order is local to explicit source page and source sector/topic. Partial sector measures do not assert complete sector programmes; held tables remain essential omitted context.",
+      "Yverdon physical page 3 errata dated 5 July 1996 applies to the dossier: natural-site inventories missing/corrected, indicative P perimeters and non-explicit lacustrine OROEM site, and secondary cycling connection toward Yvonand disputed. Accepted page 10 strategy boxes do not establish completeness of inventories, protected boundaries or validity of that cycling link; no errata correction is silently applied.",
+      "Bussigny source-time proposals and abandoned 2005 bridge context cannot be presented as realized or current projects. Aubonne concept prose remains dependent on excluded diagrams and referenced dossier/architectural recommendations.",
+      "Existing delivered 26 documents / 1510 chunks and spatial 212 collections / 8776 links are untouched; acceptance here is not delivery."
+    ],
+    "fully_held_pages_unchanged": {
+      "aubonne-vieille-ville": [
+        11
+      ],
+      "bussigny-cocagne": [
+        12,
+        34,
+        36,
+        38
+      ]
+    },
+    "errata_evidence": {
+      "source_sha256": "c158ade8eb784c572209cc48a9765fc8737f8a0a3ac1d49023bb1cefe47cf3d9",
+      "physical_page": 3,
+      "image_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-layout-recovery/independent-yverdon-errata-p003.png",
+      "image_sha256": "3ef269f23e8b0fd4cf39531719517c93a0c327075cf84de8a8d610d5c26be979",
+      "sections": "2.1 natural and built site values; 3.3 cycling network",
+      "page10_assessment": "No direct amendment to the accepted numbered strategy prose identified; natural-site and cycling claims remain expressly unvalidated. Topics 3,5,8 separately held for material OCR corruption."
+    },
+    "database_mutations": 0,
+    "canonical_mutations": 0,
+    "new_delivered_chunks": 0
+  },
+  "repair": {
+    "status": "independent_repair_content_review_complete_partial_acceptance",
+    "candidate_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-layout-recovery/repair-candidate-blocks.json",
+    "candidate_sha256": "6fc17049ec5869999b647945eba71118923b93281cfda5e8b178eb371c9df27c",
+    "original_review_path": "/Users/a/LLM_Work/re-llm/vaud-pdcom/oct6-layout-recovery/independent-layout-content-review.json",
+    "original_review_sha256": "314f388ecdabce785e85d745bd5fa19c78a43734ba0f11a651e14f86c4d1f03c",
+    "accepted_block_ids": [
+      "bussigny-cocagne-p006-situation-before-held-ownership-table-r3",
+      "bussigny-cocagne-p015-context-before-held-map-r3",
+      "bussigny-cocagne-p024-objectives-and-integration-before-held-section-r3",
+      "bussigny-cocagne-p025-landscape-prose-before-held-map-r3",
+      "bussigny-cocagne-p055-infrastructure-prose-before-held-matrix-r3"
+    ],
+    "held_block_ids": [
+      "etoy-village-p009-characteristics-r3"
+    ],
+    "accepted_blocks": 5,
+    "held_blocks": 1,
+    "blocks": [
+      {
+        "block_id": "etoy-village-p009-characteristics-r3",
+        "source_document_id": "e4fd59d2-5dba-5aa5-af2b-5c4f09ce1313",
+        "source_sha256": "2bc37dad0119471e9c57cbade059b7e9fe1724607b7641d966a5a8e91ba12143",
+        "physical_page": 9,
+        "bbox_pdf_points": [
+          70.21,
+          63.15,
+          547.4,
+          294.7
+        ],
+        "reading_order_within_page": 1,
+        "text_sha256": "e1350790b30e70e0c311f2f7d9b496c08961eb8567a52a3896b4a7aa7e62387f",
+        "crop_image_sha256": "d18dbcd99b9c40fc7548fd01df8400c6919ea18787b14cd7d6c31959b52211b9",
+        "representation": "new_coordinate_bound_uncorrected_ocr",
+        "decision": "held",
+        "reason": "Widened image now displays complete right line endings, but raw OCR still changes pas de contiguïté to bas de contiguité and materially corrupts source wording; crop repair alone does not resolve the substantive transcription hold. No further retry or correction authorized by this proof.",
+        "fresh_exact_source_crop_pixels_match": true,
+        "raw_text_file_and_manifest_match": true
+      },
+      {
+        "block_id": "bussigny-cocagne-p006-situation-before-held-ownership-table-r3",
+        "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "physical_page": 6,
+        "bbox_pdf_points": [
+          50.59200103759766,
+          92.15799865722656,
+          550.5600112915039,
+          222.01699676513672
+        ],
+        "reading_order_within_page": 1,
+        "text_sha256": "1e0e59cc66fbc6d16b2fa8ad0bb0cafc75c22ab0f7aff3a0bd3258f388d3e1c6",
+        "crop_image_sha256": "a611be0dbfa49030b7682ec64011c1520c6a34471415ec532c4687ae69aaff10",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Complete revised prose/bullets retain local reading order and complete sentences. Specifically removed held material stays excluded.",
+        "fresh_exact_source_crop_pixels_match": true,
+        "raw_text_file_and_manifest_match": true
+      },
+      {
+        "block_id": "bussigny-cocagne-p015-context-before-held-map-r3",
+        "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "physical_page": 15,
+        "bbox_pdf_points": [
+          50.60900207519531,
+          90.48239868164062,
+          550.7450225830079,
+          289.0409957885742
+        ],
+        "reading_order_within_page": 1,
+        "text_sha256": "e61a66a4f5fd5657689b8b5ec4b78bfc01d4f7a38202829ce9b34a47131b3088",
+        "crop_image_sha256": "fc4fa130deeab76dd9c0768e5c58bae9715fd5b7f7a6a8d4cb3b4075205270d0",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Complete revised prose/bullets retain local reading order and complete sentences. Specifically removed held material stays excluded.",
+        "fresh_exact_source_crop_pixels_match": true,
+        "raw_text_file_and_manifest_match": true
+      },
+      {
+        "block_id": "bussigny-cocagne-p024-objectives-and-integration-before-held-section-r3",
+        "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "physical_page": 24,
+        "bbox_pdf_points": [
+          50.54950103759766,
+          90.48239868164062,
+          550.0975112915039,
+          427.2779937744141
+        ],
+        "reading_order_within_page": 1,
+        "text_sha256": "b4ded1c89f6aed574f873895adbec091224b9cd261152eabe8fab9248b759b5e",
+        "crop_image_sha256": "51116ee19188290fd20fd8589ef38000a219bdea266c8691483ef10159721422",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Complete revised prose/bullets retain local reading order and complete sentences. Specifically removed held material stays excluded.",
+        "fresh_exact_source_crop_pixels_match": true,
+        "raw_text_file_and_manifest_match": true
+      },
+      {
+        "block_id": "bussigny-cocagne-p025-landscape-prose-before-held-map-r3",
+        "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "physical_page": 25,
+        "bbox_pdf_points": [
+          50.57075103759766,
+          92.21299865722656,
+          550.328761291504,
+          213.76649688720704
+        ],
+        "reading_order_within_page": 1,
+        "text_sha256": "0efaf0a46385e4bae4af3582b17b67b1d1ab9ad786fc28ca6fd50ddbf1ee47aa",
+        "crop_image_sha256": "2ca3514b6d903b2df36bd7f723d9d919d2952686c83de268d29f5499bde14480",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Complete revised prose/bullets retain local reading order and complete sentences. Specifically removed held material stays excluded.",
+        "fresh_exact_source_crop_pixels_match": true,
+        "raw_text_file_and_manifest_match": true
+      },
+      {
+        "block_id": "bussigny-cocagne-p055-infrastructure-prose-before-held-matrix-r3",
+        "source_document_id": "09abf66c-7e4b-57a8-bf2e-a645e99eb128",
+        "source_sha256": "d49afa92ff66edd3a0a52b0bcf89405728176fbb0285006fb6ea20fb450d2559",
+        "physical_page": 55,
+        "bbox_pdf_points": [
+          50.54950103759766,
+          90.50939868164062,
+          550.0975112915039,
+          234.65399658203128
+        ],
+        "reading_order_within_page": 1,
+        "text_sha256": "8788d020004bcff8a753d4b15179cffeabbdb4216c033ad0c70ed10faa58a9b4",
+        "crop_image_sha256": "29382f3c2757714a5f0e63a19c89cd682364f49356e1e8eafd11f0cf95b0a16e",
+        "representation": "coordinate_sorted_embedded_uncorrected_scan_ocr",
+        "decision": "accepted_historical_raw_box_only",
+        "reason": "Complete revised prose/bullets retain local reading order and complete sentences. Specifically removed held material stays excluded.",
+        "fresh_exact_source_crop_pixels_match": true,
+        "raw_text_file_and_manifest_match": true
+      }
+    ],
+    "mandatory_limits": [
+      "Accepted only as coordinate-bound, partial-page, uncorrected historical OCR references; not authoritative transcription or current applicable planning rules.",
+      "All source signatures, municipal scope, historical/currentness and amendment caveats from the original pinned reviews remain mandatory. A signature does not prove an unamended or current text.",
+      "Whole pages remain held. Only the exact accepted block IDs, rectangles and raw text hashes supersede prior layout exclusion for this representation. All other page regions, maps, diagrams, tables, matrix content and five fully held pages remain excluded.",
+      "No glyph repair, normalization, omitted-text joining, geometry, parcel association, structured capacity/rule extraction or legal inference. Numeric narrative is historical prose, not current development entitlement.",
+      "Raw OCR confidence remains null; source image must remain accessible for exact wording, proper names and numbers. Minor glyph errors retained in accepted blocks are not certified correct.",
+      "Block order is local to explicit source page and source sector/topic. Partial sector measures do not assert complete sector programmes; held tables remain essential omitted context.",
+      "Yverdon physical page 3 errata dated 5 July 1996 applies to the dossier: natural-site inventories missing/corrected, indicative P perimeters and non-explicit lacustrine OROEM site, and secondary cycling connection toward Yvonand disputed. Accepted page 10 strategy boxes do not establish completeness of inventories, protected boundaries or validity of that cycling link; no errata correction is silently applied.",
+      "Bussigny source-time proposals and abandoned 2005 bridge context cannot be presented as realized or current projects. Aubonne concept prose remains dependent on excluded diagrams and referenced dossier/architectural recommendations.",
+      "Existing delivered 26 documents / 1510 chunks and spatial 212 collections / 8776 links are untouched; acceptance here is not delivery.",
+      "This separate review accepts only five revised Bussigny rectangles. Original wider held blocks stay held; never append both representations or restore their removed paragraphs, ownership table, integration bullets, map or matrix.",
+      "Bussigny p24 begins a continued historical PDL discussion and is not a standalone complete section; source-time 10–15 year forecast is not a current schedule. OPB is misrecognized as ORB in raw OCR: no structured legal citation extraction.",
+      "Bussigny p15 explicitly retains the source-time rejection of the P+R proposal. Bussigny p25 retains abandonment of the 2005 footbridge proposal. Do not present either as a currently planned or realized project.",
+      "Bussigny p55 contains four complete continued list items only; the beginning of that list and subsequent strategy matrix are not included. Historical bicycle-place figures are prose, not verified present capacity or enforceable requirements."
+    ],
+    "visual_review_scope": "All six revised images compared directly with exact raw text; fresh original-PDF pixel equality and source/text/image hashes independently checked. No text correction.",
+    "original_candidate_unchanged": true,
+    "combined_accepted_blocks": 27,
+    "database_mutations": 0,
+    "canonical_mutations": 0,
+    "new_delivered_chunks": 0
+  },
+  "original_review_sha256": "314f388ecdabce785e85d745bd5fa19c78a43734ba0f11a651e14f86c4d1f03c",
+  "repair_review_sha256": "6f21e36a2ce904f1e2a010e1c6d07509b528fca713d09a219cd8c30003f6b50b"
+}

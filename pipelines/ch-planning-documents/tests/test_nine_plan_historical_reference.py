@@ -39,7 +39,7 @@ class NinePlanHistoricalReferenceTests(unittest.TestCase):
             r = b['review']; conn = MagicMock(); cur = conn.cursor.return_value.__enter__.return_value
             cur.fetchone.side_effect = [(r['source_sha256'], 'unverified', r['page_count'], r['source_url']), (0,), (0,), (len(b['chunks']),)]
             cur.fetchall.side_effect = [[(r['commune_bfs'], 'unverified')], [], [('knowledge_ch.chunks', 'O'), ('knowledge_ch.documents', 'O')]]
-            with patch.object(bridge, 'build_bundle', return_value=b), patch.object(bridge, 'checked_insert') as inserted:
+            with patch.object(bridge, 'build_bundle', return_value=b), patch.object(bridge, 'checked_insert') as inserted, patch('layout_recovery.base_replay', return_value=False):
                 bridge.persist(conn, b, 'review-test-operation', Path('unused.pdf'))
             source = next(c.args[3] for c in inserted.call_args_list if c.args[2] == 'planning_document_sources')
             self.assertEqual(source['document_type'], h.document_type(r))
