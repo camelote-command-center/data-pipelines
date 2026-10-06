@@ -1,0 +1,69 @@
+{
+  "vd_document_id": "896b38ec-fef9-5f88-9ccd-345d17adf737",
+  "source_sha256": "8cd5586803b24104aa1afa42e22b229ca3460fcdc01248f22c69410949c6769e",
+  "source_url": "https://www.puidoux.ch/_doc/5434054",
+  "official_host": "www.puidoux.ch",
+  "publisher": "Commune de Puidoux",
+  "title": "Puidoux — ancien PDCom, OCR historique partiel, validité actuelle non établie",
+  "canton": "VD",
+  "commune_bfs": 5607,
+  "scope": "municipal",
+  "page_count": 74,
+  "source_role": "historical_source_reference",
+  "plan_status": "unverified",
+  "all_prose_is_binding": false,
+  "spatial_qualification": false,
+  "signed_approval": {
+    "pdf_page": 1,
+    "council": "2001-05-10",
+    "canton": "2002-11-18",
+    "visually_verified": true,
+    "scope": "Historical source approval only; source registry remains unverified. Original cover approval; later LeVergnolet sector6 amendment PDF38–41 is separately dated and wholly withheld. No assertion every74-page component shares2002approval."
+  },
+  "diagnostic_vintage_limit": "Unverified. Official publication verifies access and historical source dates, not continuing applicability.",
+  "limits": [
+    "Existing research OCR only; recognition and page reading order are not certified. No new OCR performed.",
+    "Physical-page citations required for every chunk. Original images authoritative. No normalized measures, capacity, geometry, parcel rights or complete document claim.",
+    "Historical statistics, dates, infrastructure assumptions and legal references are source-vintage only.",
+    "Approval signature evidence accepted independently; text-page selection still needs review.",
+    "PDF38–41 contain the later Le Vergnolet sector6 amendment; PDF39 has its separate approval stamp (11May2005 visible at contact scale; full-size verification pending). Entire amendment held. No claim74pages all approved18Nov2002.",
+    "PDF23 contains sector-name/objective associations; OCR must not be converted to structured rules. PDF18/23/25/27 are hierarchical objective/measure lists, not binding parcel rights.",
+    "Selected text is a historical search aid. Current applicability and completeness are unverified. Registry status and commune mapping must remain unchanged. Every search chunk visibly carries a historical-reference caveat."
+  ],
+  "map_pages": null,
+  "historical_reference": {
+    "mode": "exact_historical_reference",
+    "current_applicability": "unverified",
+    "source_status_promotion": false,
+    "registry_coverage_extent": "unverified",
+    "spatial_currentness_block_retained": true,
+    "fully_certified_pages": 0,
+    "human_readable_caveat": "Référence historique — Puidoux (OFS5607); validité actuelle non établie; OCR partiel non corrigé, à vérifier sur l’image originale.",
+    "artifact_sha256": "0a7d824fba274a71000b9c405a7b64cd5979771ce0dc9de67501f7826d488144",
+    "selected_pages": [
+      4,
+      5,
+      6,
+      8,
+      9,
+      14,
+      16,
+      17,
+      18,
+      19,
+      23,
+      24,
+      25,
+      26,
+      27
+    ],
+    "representation": "existing_uncorrected_research_ocr",
+    "territory": {
+      "commune_bfs": 5607,
+      "cross_commune_sector_Signal_Chexbres_excluded": true
+    },
+    "independent_source_review_sha256": "44fa24d33be1bfe52a45cb1c52e51909b5df12bf592efa5546f5f0d07e98ea74",
+    "independent_content_review_sha256": "88dce2abc7e9558c0fd290eeca33819a49e9b5c480d6cb61d7cb670ac41cb28e",
+    "source_vintage_approval_does_not_establish_currentness": true
+  }
+}
