@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<KK03:publication xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:KK03="https://shab.ch/shab/KK03-export" xsi:schemaLocation="https://shab.ch/shab/KK03-export https://amtsblattportal.ch/api/v1/schemas/shab/1.26/KK03-export.xsd">
+<meta>
+  <id>74996e0b-23bc-48f0-808a-820803350f10</id>
+  <rubric>KK</rubric>
+  <subRubric>KK03</subRubric>
+  <language>fr</language>
+  <registrationOffice>
+    <id>c7b442bb-f04e-11f0-86e9-045056009069</id>
+    <displayName>Office des faillites du Jura bernois-Seeland, Agence du Jura bernois-Seeland</displayName>
+    <street>Sur le Brassiège</street>
+    <streetNumber>3</streetNumber>
+    <swissZipCode>2605</swissZipCode>
+    <town>Sonceboz-Sombeval</town>
+    <containsPostOfficeBox>false</containsPostOfficeBox>
+  </registrationOffice>
+  <publicationNumber>KK03-0000079594</publicationNumber>
+  <publicationState>PUBLISHED</publicationState>
+  <publicationDate>2026-07-15</publicationDate>
+  <expirationDate>2031-07-15</expirationDate>
+  <primaryTenantCode>shab</primaryTenantCode>
+  <legalRemedy>La faillite est clôturée, faute d'actifs, si, dans le délai indiqué, les créanciers n'en requièrent pas la liquidation et ne fournissent pas la sûreté exigée pour les frais qui ne seront pas couverts par la masse. La réclamation ultérieure d'avances supplémentaires est réservée, si la garantie s'avère insuffisante. &lt;br />Publication selon les art. 230 et 230a LP.</legalRemedy>
+  <cantons>BE</cantons>
+  <secondaryTenants>
+    <tenantCode>kabbe</tenantCode>
+    <publicationDate>2026-07-15</publicationDate>
+  </secondaryTenants>
+  <title>
+    <de>Einstellung des Konkursverfahrens Martin Benjamin von Allmen, ausgeschlagene Erbschaft</de>
+    <en>Suspension of bankruptcy proceedings Martin Benjamin von Allmen, refused estate</en>
+    <it>Sospensione della procedura di fallimento Martin Benjamin von Allmen, eredità rifiutata</it>
+    <fr>Suspension de la procédure de faillite Martin Benjamin von Allmen, succession répudiée</fr>
+  </title>
+</meta>
+<content>
+  <debtor>
+    <selectType>person</selectType>
+    <person>
+      <prename>Martin Benjamin</prename>
+      <name>von Allmen</name>
+      <countryOfOrigin>
+        <name>
+          <de>Schweiz</de>
+          <fr>Suisse</fr>
+          <it>Svizzera</it>
+          <en>Switzerland</en>
+        </name>
+        <isoCode>CH</isoCode>
+      </countryOfOrigin>
+      <placeOfOrigin>Beatenberg BE</placeOfOrigin>
+      <dateOfBirth>1966-10-25</dateOfBirth>
+      <dateOfDeath>2025-12-31</dateOfDeath>
+      <residence>
+        <selectType>switzerland</selectType>
+      </residence>
+      <addressSwitzerland>
+        <street>Chemin des Lorettes</street>
+        <houseNumber>20</houseNumber>
+        <swissZipCode>2520</swissZipCode>
+        <town>La Neuveville</town>
+      </addressSwitzerland>
+    </person>
+  </debtor>
+  <resolutionDate>2026-05-01</resolutionDate>
+  <addition>refusedLegacy</addition>
+  <cessationDate>2026-07-07</cessationDate>
+  <advanceAmount>4000.00</advanceAmount>
+  <daysAfterPublication>20</daysAfterPublication>
+  <entryDeadline>2026-08-04</entryDeadline>
+  <registrationOffice>Office des faillites du Jura bernois-Seeland, Agence du Jura bernois-Seeland, Sur le Brassiège 3, 2605 Sonceboz-Sombeval</registrationOffice>
+</content>
+</KK03:publication>
