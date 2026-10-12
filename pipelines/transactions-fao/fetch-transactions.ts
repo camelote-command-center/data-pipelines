@@ -38,6 +38,7 @@ import { supabase, upsertBronze, sleep, verifyBronzeAccess, BRONZE_SCHEMA, resol
 import { createFaoSession } from '../_shared/fao-session.js';
 import { cleanSwissPrice, validateParsedPrice, priceGate, type UnextractedPrice } from './price.js';
 import { normalizeOwners, makeLocalityMatcher, type OwnerFlag } from './owners.js';
+import { isValidBuildingId, normalizeBuildingIds } from './buildings.js';
 
 /**
  * Swiss locality names (silver_ch.ref_communes canonical + aliases, already accent-stripped
@@ -292,6 +293,7 @@ Analyze this transaction text and return the data strictly in the following JSON
       "Building commune": "Building commune",
       "Building ID": "Building ID",
       "Feuillet number": "Feuillet number",
+      "COP lot number": "COP lot number",
       "Pourmille number": "Pourmille number",
       "Parts COP": "Parts COP",
       "Premises": [
@@ -312,6 +314,7 @@ Rules:
 - The price field should contain only numbers (e.g. 100000), no characters. Do NOT include any price if there is no value
 - Transaction type should be from text, like: cession - transfert, achat, héritage, donation, etc.
 - Building ID usually has format "number/number" like "32/1953". Record it in format "number/number" without additional characters
+- A COP lot carries two suffixes: in "23/3009-1-1" the parcelle is 23/3009, the PPE feuillet is 1 and the COP lot is 1. Put those in "Building ID", "Feuillet number" and "COP lot number" — never leave a suffix on "Building ID"
 - Parts COP are usually small numbers like 1/2 or 1/3
 - Pourmille number must be extracted only from expressions following "sur", like: sur 22/1000 or sur 6,692/1000
 - Premises example: "Type": "appartement", "Details": "2.01"
@@ -356,7 +359,10 @@ async function parseViaDeepSeek(transactionText: string): Promise<any> {
     },
     body: JSON.stringify({
       model: 'deepseek-chat',
-      max_tokens: 4096,
+      // 8192 is deepseek-chat's ceiling. 4096 truncated the JSON of affaire 2026/8599/0
+      // (33 lots) mid-string on every attempt; an affaire too big for 8192 falls through
+      // to Sonnet, which has more headroom.
+      max_tokens: 8192,
       response_format: { type: 'json_object' },
       messages: [
         { role: 'system', content: EXTRACTION_PROMPT },
@@ -379,7 +385,9 @@ async function parseViaAnthropic(transactionText: string): Promise<any> {
     // Kept in sync with main's fix — this is the DeepSeek fallback path, so a
     // dead id here would only surface when DeepSeek is already failing.
     model: 'claude-sonnet-4-6',
-    max_tokens: 4096,
+    // Headroom beyond deepseek's 8192 ceiling: this is the path that has to be able to
+    // finish an affaire the primary model cannot (2026/8599/0, 33 lots).
+    max_tokens: 16384,
     system: EXTRACTION_PROMPT,
     messages: [
       { role: 'user', content: `Transaction text:\n"${transactionText}"` },
@@ -410,9 +418,6 @@ async function parseTransaction(transactionText: string, attempt = 0): Promise<a
     return parseTransaction(transactionText, attempt + 1);
   }
 }
-
-// Building ID validation
-const isValidBuildingId = (id: string): boolean => /^\d+\/\d+(-\d+)?$/.test(id);
 
 // ---------------------------------------------------------------------------
 // Skip-before-extract — which affaire_numbers do we already have?
@@ -689,15 +694,10 @@ async function main() {
         continue;
       }
 
-      // Bug fix: Split building_id PPE feuillet suffix (e.g. "27/157-108" → id="27/157", feuillet="108")
-      for (const building of parsedData.Buildings) {
-        const bid = building['Building ID'] || '';
-        const feuilletMatch = bid.match(/^(\d+\/\d+)-(\d+)$/);
-        if (feuilletMatch) {
-          building['Building ID'] = feuilletMatch[1];
-          building['Feuillet number'] = feuilletMatch[2];
-        }
-      }
+      // Split the suffixes off every Building ID: "27/157-108" -> id 27/157 + feuillet 108,
+      // "23/3009-1-1" -> id 23/3009 + feuillet 1 + COP lot 1. buildings.ts records why the
+      // two-suffix COP form used to drop whole affaires.
+      normalizeBuildingIds(parsedData.Buildings);
 
       // Format keys to snake_case
       const formatted = formatKeys(parsedData);

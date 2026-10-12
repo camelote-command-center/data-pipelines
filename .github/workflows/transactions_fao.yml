@@ -88,6 +88,12 @@ jobs:
             exit 1
           fi
           npx tsx price-gate.selftest.ts --clean
+      - name: Regression test — PPE/COP building ids and the LLM output budget
+        # Pure: no DB, no network. A COP id carries two suffixes ("23/3009-1-1"); the
+        # validator used to allow one, so every COP affaire was dropped whole — that is
+        # how the CHF 11.4M 33-lot affaire 2026/8599/0 was lost on 2026-10-12. Also
+        # guards the max_tokens budget that truncated its JSON on both providers.
+        run: cd pipelines/transactions-fao && npx tsx buildings.test.ts
       - name: Regression test — owner names never carry the domicile
         # Pure: no DB, no network. "NAME, LOCALITY" is split deterministically; a party
         # that is only a locality (phantom / swap / truncated public body) is flagged,
