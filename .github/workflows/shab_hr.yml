@@ -1,0 +1,59 @@
+name: shab-hr
+
+# Daily: commercial-register notices (GE + VD) → company officers → officer links pushed to LaMap and LBI.
+# Runs after amtsblattportal (07:00 UTC) has indexed the day's notices.
+
+on:
+  schedule:
+    - cron: '30 8 * * *'   # daily 08:30 UTC
+  workflow_dispatch:
+    inputs:
+      since:
+        description: 'YYYY-MM-DD — fetch notices from this date (blank = last 30 days)'
+        required: false
+        type: string
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install -r pipelines/shab-hr/requirements.txt
+      - name: Fetch notice texts
+        run: cd pipelines/shab-hr && python fetch.py
+        env:
+          RE_LLM_DB_URL: ${{ secrets.RE_LLM_DB_URL }}
+          SHAB_SINCE: ${{ inputs.since }}
+      - name: Parse into officers and company events
+        run: cd pipelines/shab-hr && python load.py
+        env:
+          RE_LLM_DB_URL: ${{ secrets.RE_LLM_DB_URL }}
+      - name: Rebuild officer links and push to LaMap + LBI
+        run: cd pipelines/shab-hr && python links.py
+        env:
+          RE_LLM_DB_URL: ${{ secrets.RE_LLM_DB_URL }}
+      - name: Update dataset metadata (success)
+        if: success()
+        run: |
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?workflow_file=eq.shab_hr.yml" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+            -d "{\"last_acquired_at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"last_error\":null}"
+        env:
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
+      - name: Report failure to camelote_data
+        if: failure()
+        run: |
+          MSG="Workflow run ${{ github.run_id }} failed at $(date -u +%Y-%m-%dT%H:%M:%SZ). See https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          ESC=$(printf '%s' "$MSG" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))')
+          curl -s -X PATCH "$CMD_URL/rest/v1/datasets?workflow_file=eq.shab_hr.yml" \
+            -H "apikey: $CMD_KEY" -H "Authorization: Bearer $CMD_KEY" \
+            -H "Content-Type: application/json" -H "Prefer: return=minimal" \
+            -d "{\"last_error\":${ESC}}"
+        env:
+          CMD_URL: ${{ secrets.CAMELOTE_DATA_SUPABASE_URL }}
+          CMD_KEY: ${{ secrets.CAMELOTE_DATA_SUPABASE_SERVICE_KEY }}
