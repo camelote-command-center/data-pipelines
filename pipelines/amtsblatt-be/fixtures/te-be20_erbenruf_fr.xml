@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TE-BE20:publication xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TE-BE20="https://shab.ch/kabbe/TE-BE20-export" xsi:schemaLocation="https://shab.ch/kabbe/TE-BE20-export https://amtsblattportal.ch/api/v1/schemas/kabbe/1.26/TE-BE20-export.xsd">
+<meta>
+  <id>af9c75bf-3f41-442b-b74f-04a7d1f279b9</id>
+  <rubric>TE-BE</rubric>
+  <subRubric>TE-BE20</subRubric>
+  <language>fr</language>
+  <registrationOffice>
+    <id>cd33f610-4897-11ee-a002-045056009063</id>
+    <displayName>Commune de La Neuveville</displayName>
+    <street>Place du Marché</street>
+    <streetNumber>3</streetNumber>
+    <swissZipCode>2520</swissZipCode>
+    <town>La Neuveville</town>
+    <containsPostOfficeBox>false</containsPostOfficeBox>
+    <municipalityId>723</municipalityId>
+  </registrationOffice>
+  <publicationNumber>TE-BE20-0000000122</publicationNumber>
+  <publicationState>PUBLISHED</publicationState>
+  <publicationDate>2026-03-25</publicationDate>
+  <expirationDate>2027-03-25</expirationDate>
+  <primaryTenantCode>kabbe</primaryTenantCode>
+  <legalRemedy>Les personnes appelées sont invitées à s'annoncer au point de contact dans le délai indiqué. Il importe ce faisant qu'ils présentent les documents attestant de leur qualité d'héritier, faute de quoi ils ne pourront être pris en considération dans la succession. &lt;br />Publication selon les art. 555 et 558, al. 2, CC.</legalRemedy>
+  <cantons>BE</cantons>
+  <title>
+    <de>Erbenaufruf Henri Bernard Dürst, La Neuveville</de>
+    <en>Erbenaufruf Henri Bernard Dürst, La Neuveville</en>
+    <it>Erbenaufruf Henri Bernard Dürst, La Neuveville</it>
+    <fr>Appel aux héritiers Henri Bernard Dürst, La Neuveville</fr>
+  </title>
+</meta>
+<content>
+  <localization>
+    <municipalityId>
+      <key>723</key>
+      <term>
+        <de>La Neuveville</de>
+        <fr>La Neuveville</fr>
+      </term>
+    </municipalityId>
+  </localization>
+  <testator>
+    <prename>Henri Bernard</prename>
+    <name>Dürst</name>
+    <countryOfOrigin>
+      <name>
+        <de>Schweiz</de>
+        <fr>Suisse</fr>
+        <it>Svizzera</it>
+        <en>Switzerland</en>
+      </name>
+      <isoCode>CH</isoCode>
+    </countryOfOrigin>
+    <placeOfOrigin>Glarus Nord /GL</placeOfOrigin>
+    <dateOfBirth>1938-01-28</dateOfBirth>
+    <bornIn>Glarus Nord / GL</bornIn>
+    <informationAboutDeath>
+      <selectType>dateOfDeath</selectType>
+    </informationAboutDeath>
+    <dateOfDeath>2025-07-06</dateOfDeath>
+    <residence>
+      <selectType>switzerland</selectType>
+    </residence>
+    <addressSwitzerland>
+      <addressLine1>Home Hebron</addressLine1>
+      <street>Rue du Tilleul</street>
+      <houseNumber>3</houseNumber>
+      <swissZipCode>2608</swissZipCode>
+      <town>Courtelary</town>
+    </addressSwitzerland>
+    <furtherInformationTestator>M. Henri Bernard Dürst était  au Home Hebron, rue du Tilleul 3, 2608 Courtelary et sous curatelle auprès du service social de La Neuveville.</furtherInformationTestator>
+  </testator>
+  <callInheritance>&lt;p>Les héritiers éventuels de feu M. Henri Bernard Dürst, fils de M.  Ernest Henri Dürst et de Mme Marie Willy, né le 28.01.1938, divorcé, décédé le 06.07.2026 à Courtelary de son dernier domicile au Home Hebron, rue du Tilleul 3 à 2608 Courtelary, sont sommés de  s'annoncer par écrit dans le délai d'une année auprès de la Municipalité de La Neuveville, place du Marché 3, 2520 La Neuveville - luca.longo@neuveville.ch (maire). &lt;/p></callInheritance>
+  <monthsAfterPublication>12</monthsAfterPublication>
+  <entryDeadline>2027-03-25</entryDeadline>
+  <registrationOffice>Municipalité de La Neuveville
+M. Luca Longo
+Place du Marché 3 
+2520 La Neuveville</registrationOffice>
+</content>
+</TE-BE20:publication>

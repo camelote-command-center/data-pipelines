@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TE-BE10:publication xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TE-BE10="https://shab.ch/kabbe/TE-BE10-export" xsi:schemaLocation="https://shab.ch/kabbe/TE-BE10-export https://amtsblattportal.ch/api/v1/schemas/kabbe/1.26/TE-BE10-export.xsd">
+<meta>
+  <id>6a5b6a00-5942-4555-bfbd-a563bd0a11a9</id>
+  <rubric>TE-BE</rubric>
+  <subRubric>TE-BE10</subRubric>
+  <language>de</language>
+  <registrationOffice>
+    <id>c15259b8-74bb-11ee-bb46-04505600905a</id>
+    <displayName>Gemeinde Ostermundigen - Präsidiales</displayName>
+    <street>Schiessplatzweg</street>
+    <streetNumber>1</streetNumber>
+    <swissZipCode>3072</swissZipCode>
+    <town>Ostermundigen</town>
+    <containsPostOfficeBox>false</containsPostOfficeBox>
+    <municipalityId>363</municipalityId>
+  </registrationOffice>
+  <publicationNumber>TE-BE10-0000001778</publicationNumber>
+  <publicationState>PUBLISHED</publicationState>
+  <publicationDate>2026-07-15</publicationDate>
+  <expirationDate>2027-07-15</expirationDate>
+  <primaryTenantCode>kabbe</primaryTenantCode>
+  <legalRemedy>Die hiernach genannten Personen haben Verfügungen von Todes wegen hinterlassen. Soweit die Adressen der gesetzlichen Erben der Eröffnungsbehörde bekannt sind, hat sie diesen Abschriften zugestellt. Für gesetzliche Erben unbekannten Aufenthaltes gelten die hiernach folgenden Publikationen als Eröffnung im Sinne von Artikel 558 ZGB. Gesetzliche Erben können innert der Auflagefrist in die vorgefundenen Verfügungen Einsicht nehmen, davon Abschriften verlangen und gegebenenfalls dagegen Einsprache erheben. Erfolgt innerhalb der angegebenen Frist keine Einsprache, so wird den eingesetzten Erben auf Verlangen die Erbenbescheinigung gemäss Artikel 559 ZGB ausgestellt, unter Vorbehalt der Ungültigkeits- und der Erbschaftsklage.</legalRemedy>
+  <cantons>BE</cantons>
+  <repeatedPublications>
+    <publicationDate>2026-07-22</publicationDate>
+    <publicationNumber/>
+  </repeatedPublications>
+  <repeatedPublications>
+    <publicationDate>2026-07-29</publicationDate>
+    <publicationNumber/>
+  </repeatedPublications>
+  <title>
+    <de>Testamentseröffnung Rudolf Schmutz, Ostermundigen</de>
+    <en>Testamentseröffnung Rudolf Schmutz, Ostermundigen</en>
+    <it>Testamentseröffnung Rudolf Schmutz, Ostermundigen</it>
+    <fr>Ouverture du testament Rudolf Schmutz, Ostermundigen</fr>
+  </title>
+</meta>
+<content>
+  <localization>
+    <municipalityId>
+      <key>363</key>
+      <term>
+        <de>Ostermundigen</de>
+        <fr>Ostermundigen</fr>
+      </term>
+    </municipalityId>
+  </localization>
+  <testator>
+    <prename>Rudolf</prename>
+    <name>Schmutz</name>
+    <countryOfOrigin>
+      <name>
+        <de>Schweiz</de>
+        <fr>Suisse</fr>
+        <it>Svizzera</it>
+        <en>Switzerland</en>
+      </name>
+      <isoCode>CH</isoCode>
+    </countryOfOrigin>
+    <placeOfOrigin>Worb BE</placeOfOrigin>
+    <dateOfBirth>1936-11-21</dateOfBirth>
+    <bornIn>Bern BE</bornIn>
+    <informationAboutDeath>
+      <selectType>dateOfDeath</selectType>
+    </informationAboutDeath>
+    <dateOfDeath>2026-06-10</dateOfDeath>
+    <residence>
+      <selectType>switzerland</selectType>
+    </residence>
+    <addressSwitzerland>
+      <street>Mitteldorfstrasse</street>
+      <houseNumber>7A</houseNumber>
+      <swissZipCode>3072</swissZipCode>
+      <town>Ostermundigen</town>
+    </addressSwitzerland>
+    <furtherInformationTestator>Sohn des Schmutz Ernst Rudolf und der Frieda, verwitwet</furtherInformationTestator>
+  </testator>
+  <probate>&lt;p>Der Verstorbene hat letztwillige Verfügungen vom 26. Oktober 1987 und 8. Oktober 2024 hinterlassen. Die Eröffnung an unbekannte Erben und Erbinnen erfolgt durch vorliegende Publikation im Sinne von Art. 558 ZGB&lt;/p>&lt;p>Auflage bei der Gemeindeverwaltung, Schiessplatzweg 1, 3072 Ostermundigen. Einsprachen sind innert Monatsfrist seit der dritten Publikation an den Gemeinderat Ostermundigen, Schiessplatzweg 1, 3072 Ostermundigen, zu richten.&lt;/p></probate>
+  <monthsAfterPublication>1</monthsAfterPublication>
+  <entryDeadline>2026-08-31</entryDeadline>
+  <registrationOffice>Gemeinde Ostermundigen - Präsidiales
+Schiessplatzweg 1 
+3072 Ostermundigen</registrationOffice>
+</content>
+</TE-BE10:publication>
