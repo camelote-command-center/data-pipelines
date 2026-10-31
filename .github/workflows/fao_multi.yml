@@ -26,7 +26,7 @@ on:
 
 jobs:
   check-freshness:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Playwright 1.58 has no chromium for ubuntu-latest (26.04)
     outputs:
       should-run: ${{ steps.gate.outputs.should-run }}
     steps:
@@ -66,7 +66,7 @@ jobs:
   resolve-matrix:
     needs: check-freshness
     if: needs.check-freshness.outputs.should-run == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Playwright 1.58 has no chromium for ubuntu-latest (26.04)
     outputs:
       rubriques: ${{ steps.set.outputs.rubriques }}
     steps:
@@ -80,7 +80,7 @@ jobs:
 
   fetch:
     needs: resolve-matrix
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Playwright 1.58 has no chromium for ubuntu-latest (26.04)
     timeout-minutes: 60
     strategy:
       fail-fast: false
@@ -119,7 +119,7 @@ jobs:
   patch-success:
     needs: fetch
     if: success()
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Playwright 1.58 has no chromium for ubuntu-latest (26.04)
     steps:
       - name: PATCH last_acquired_at on success
         run: |
@@ -134,7 +134,7 @@ jobs:
   patch-failure:
     needs: fetch
     if: failure()
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Playwright 1.58 has no chromium for ubuntu-latest (26.04)
     steps:
       - name: PATCH last_error on failure
         run: |

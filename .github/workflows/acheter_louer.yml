@@ -9,7 +9,7 @@ on:
 
 jobs:
   fetch:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Playwright 1.58 has no chromium for ubuntu-latest (26.04)
     timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
