@@ -15,7 +15,7 @@ on:
 
 jobs:
   check-freshness:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Playwright 1.58 has no chromium for ubuntu-latest (26.04)
     outputs:
       should-run: ${{ steps.gate.outputs.should-run }}
     steps:
@@ -57,7 +57,7 @@ jobs:
   fetch:
     needs: check-freshness
     if: needs.check-freshness.outputs.should-run == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # Playwright 1.58 has no chromium for ubuntu-latest (26.04)
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
