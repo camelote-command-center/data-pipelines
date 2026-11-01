@@ -38,7 +38,7 @@ SYNC_STARTED_AT = datetime.now(timezone.utc).isoformat()
 
 # Add repo root to path so we can import shared/
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
-from shared.supabase_client import batch_upsert
+from shared.supabase_client import _dedupe_on_conflict_key, batch_upsert
 from shared.sitg_arcgis import fetch_all_features
 
 # ──────────────────────────────────────────────────────────────
@@ -48,6 +48,8 @@ from shared.sitg_arcgis import fetch_all_features
 #   url:              ArcGIS FeatureServer URL
 #   table:            Target table name in lamap_db
 #   conflict_column:  Column with UNIQUE constraint for upsert
+#   dedupe_columns:   Optional source columns that make up conflict_column, for
+#                     when conflict_column is GENERATED and so absent from records
 #   field_renames:    Optional dict to rename API fields → table columns
 # ──────────────────────────────────────────────────────────────
 
@@ -101,7 +103,10 @@ DATASETS = [
         "table": "ge_cad_batiments",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/cad_batiment_horsol/FeatureServer/0",
-        "conflict_column": "objectid",
+        # business_key = no_comm || '/' || no_batiment (GENERATED, UNIQUE). SITG
+        # renumbered ~all objectids in Oct 2026, so objectid is not an identity.
+        "conflict_column": "business_key",
+        "dedupe_columns": "no_comm,no_batiment",
         "field_renames": {
             "shape__area": "shape_area",
             "shape__length": "shape_len",
@@ -113,7 +118,10 @@ DATASETS = [
         "table": "ge_cad_batiments_souterrains",
         "source": "arcgis",
         "url": "https://vector.sitg.ge.ch/arcgis/rest/services/Hosted/cad_batiment_sousol/FeatureServer/0",
-        "conflict_column": "objectid",
+        # business_key = no_comm || '/' || no_batiment (GENERATED, UNIQUE). SITG
+        # renumbered ~all objectids in Oct 2026, so objectid is not an identity.
+        "conflict_column": "business_key",
+        "dedupe_columns": "no_comm,no_batiment",
         "field_renames": {
             "shape__area": "shape_area",
             "shape__length": "shape_len",
@@ -355,6 +363,12 @@ def process_destination(
             for k in all_keys:
                 r.setdefault(k, None)
 
+        # Dedupe here rather than leaving it to batch_upsert: a GENERATED conflict
+        # key is not in the records, so it has to collapse on the columns the key
+        # is built from; and len(work_records) is then what should land.
+        work_records, _ = _dedupe_on_conflict_key(
+            work_records, ds.get("dedupe_columns") or conflict, table)
+
         # Row count BEFORE
         rows_before = get_row_count(dest_url, dest_key, dest_schema, table)
         print(f"  Rows before: {rows_before or 'unknown'}")
@@ -386,6 +400,9 @@ def process_destination(
 
         if upserted == 0:
             print("    ERROR: Zero rows upserted!")
+            all_ok = False
+        elif upserted < len(work_records):
+            print(f"    ERROR: {len(work_records) - upserted:,} rows failed to upsert!")
             all_ok = False
 
         # Soft-delete reconciliation (opt-in per dataset).
