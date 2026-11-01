@@ -25,12 +25,18 @@ import { createClient } from '@supabase/supabase-js';
 const FORBES_API_BASE =
   'https://www.forbes.com/forbesapi/person/billionaires/2025/rank/true.json';
 
-const FORBES_FIELDS = [
+const FORBES_FIELD_LIST = [
   'uri', 'finalWorth', 'age', 'countryOfCitizenship', 'source',
   'qas', 'rank', 'status', 'category', 'person', 'personName',
   'industries', 'organization', 'gender', 'firstName', 'lastName',
   'squareImage', 'bios',
-].join(',');
+];
+const FORBES_FIELDS = FORBES_FIELD_LIST.join(',');
+
+// Columns written to forbes_person. The API returns fields we did not ask for
+// (finalWorthBillions appeared 2026-10-29 and failed every upsert for days), so
+// rows are built from this list, never by spreading the API object.
+const PERSON_COLUMNS = [...FORBES_FIELD_LIST, 'last_parsed_at'];
 
 const PAGE_SIZE = 50;
 const CONCURRENCY = 5; // parallel profile fetches
@@ -74,6 +80,15 @@ function sanitizeData(data: any): any {
     return result;
   }
   return data;
+}
+
+/** Keep only the columns forbes_person has */
+function pickColumns(row: Record<string, any>): Record<string, any> {
+  const result: Record<string, any> = {};
+  for (const col of PERSON_COLUMNS) {
+    if (col in row) result[col] = row[col];
+  }
+  return result;
 }
 
 /** Extract JSON-LD block from Forbes profile HTML */
@@ -137,6 +152,8 @@ async function run() {
 
   let totalProcessed = 0;
   let totalUpserted = 0;
+  let totalFailed = 0;
+  let pagesFailed = 0;
 
   // 2. Paginate through the list
   for (let offset = 0; offset < totalCount; offset += PAGE_SIZE) {
@@ -148,6 +165,7 @@ async function run() {
     const listResp = await fetch(url);
     if (!listResp.ok) {
       console.error(`  API error: ${listResp.status}`);
+      pagesFailed++;
       continue;
     }
 
@@ -164,7 +182,7 @@ async function run() {
           const sanitized = sanitizeData(person);
           const jsonLdWorth = await fetchProfileNetWorth(sanitized.uri);
 
-          return {
+          return pickColumns({
             ...sanitized,
             person: JSON.stringify(sanitized.person),
             qas: JSON.stringify(sanitized.qas),
@@ -173,7 +191,7 @@ async function run() {
             // Use JSON-LD net worth if available, otherwise API value * 1M
             finalWorth: jsonLdWorth || (sanitized.finalWorth ?? 0) * 1_000_000,
             last_parsed_at: new Date().toISOString(),
-          };
+          });
         }),
       );
       enrichedPersons.push(...results);
@@ -194,6 +212,7 @@ async function run() {
           .upsert(person, { onConflict: 'uri' });
         if (singleErr) {
           console.error(`    Failed ${person.uri}: ${singleErr.message}`);
+          totalFailed++;
         } else {
           totalUpserted++;
         }
@@ -210,6 +229,14 @@ async function run() {
   console.log(`\n=== Done ===`);
   console.log(`Processed: ${totalProcessed}`);
   console.log(`Upserted:  ${totalUpserted}`);
+  console.log(`Failed:    ${totalFailed} persons, ${pagesFailed} pages`);
+
+  // Fail loud: the workflow stamps last_acquired_at on a green run, so a run
+  // that saved nothing must not exit 0.
+  if (totalFailed > 0 || pagesFailed > 0 || totalUpserted === 0) {
+    console.error('Forbes run incomplete: failing so monitoring sees it.');
+    process.exit(1);
+  }
   process.exit(0);
 }
 
