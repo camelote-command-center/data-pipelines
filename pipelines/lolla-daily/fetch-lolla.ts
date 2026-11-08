@@ -678,13 +678,23 @@ async function main() {
       adUrls = adUrls.filter(() => Math.random() < SEED_SAMPLE_RATE);
       console.log(`  Seed mode: sampling ${adUrls.length} ads (~80%)`);
     } else {
-      // Daily mode: check which ads we already have
-      const { data: existingIds } = await xoxo
-        .schema('bronze')
-        .from('lolla_ads')
-        .select('lolla_id');
-
-      const existingSet = new Set((existingIds || []).map((r: any) => r.lolla_id));
+      // Daily mode: check which ads we already have. Paged: PostgREST returns at
+      // most 1000 rows per request, and with ~4.8k ads stored an unpaged select
+      // made ~3.8k known ads look new, so the same 500 were re-scraped and
+      // re-billed on DeepSeek every day (2026-11-08).
+      const existingSet = new Set<number>();
+      for (let from = 0; ; from += 1000) {
+        const { data: page, error } = await xoxo
+          .schema('bronze')
+          .from('lolla_ads')
+          .select('lolla_id')
+          .order('lolla_id')
+          .range(from, from + 999);
+        if (error) throw new Error(`Failed to read existing lolla_ids: ${error.message}`);
+        for (const r of page || []) existingSet.add((r as any).lolla_id);
+        if (!page || page.length < 1000) break;
+      }
+      console.log(`  Already stored: ${existingSet.size} ads`);
       const newAds = adUrls.filter((a) => !existingSet.has(a.lollaId));
 
       // Also re-scrape a random 10% of existing ads to catch updates (location changes)
