@@ -46,6 +46,12 @@ DEEPSEEK_URL           = "https://api.deepseek.com/chat/completions"
 # retire 2026-07-24 — do not pin them. Env-overridable for future bumps.
 DEEPSEEK_MODEL         = os.getenv("DEEPSEEK_MODEL", "deepseek-v4-flash")
 DEEPSEEK_CONCURRENCY   = int(os.getenv("DEEPSEEK_CONCURRENCY", "8"))
+# Wall-clock budget for a DeepSeek backfill run, counted from script start. The
+# workflow is killed at 60 min; stopping at 50 leaves room for the last writes.
+# The pending pool (~300k rows) is far larger than one run, so each run does a
+# slice and the next run picks up what is still pending.
+CLASSIFY_MAX_MINUTES   = float(os.getenv("CLASSIFY_MAX_MINUTES", "50"))
+_RUN_STARTED           = time.monotonic()
 
 # Run mode. 'backfill' (default) writes classifications. 'validate' is a no-write
 # A/B: classify a sample with DeepSeek AND Sonnet, report agreement, write nothing.
@@ -281,28 +287,23 @@ def classify_one_deepseek(item, max_retries=4):
 
 def run_deepseek(sb, items, write=True):
     """Classify items via DeepSeek with bounded concurrency. When write=False,
-    returns the classifications without persisting (used for the pre-run sample)."""
+    returns the classifications without persisting (used for the pre-run sample).
+
+    When write=True, each classification is persisted as soon as it arrives and
+    the run stops submitting once CLASSIFY_MAX_MINUTES is reached. (It used to
+    classify every pending item first and persist at the end; with ~300k pending
+    the workflow was killed at 60 min every day and nothing was ever written,
+    so the same rows were re-billed on DeepSeek daily.)"""
     results = []   # list of (item, classification|None)
-
-    with ThreadPoolExecutor(max_workers=DEEPSEEK_CONCURRENCY) as ex:
-        futs = {ex.submit(classify_one_deepseek, it): it for it in items}
-        done = 0
-        for fut in as_completed(futs):
-            it = futs[fut]
-            results.append((it, fut.result()))
-            done += 1
-            if done % 25 == 0:
-                print(f"  classified {done}/{len(items)}", flush=True)
-
-    if not write:
-        return results
-
-    # Persist sequentially (single supabase client; trigger disabled).
     success = review = errors = 0
     err_details = []
-    for it, classification in results:
+    deadline = _RUN_STARTED + CLASSIFY_MAX_MINUTES * 60
+    stopped_early = False
+
+    def persist(it, classification):
+        nonlocal success, review, errors
         if not classification:
-            errors += 1; err_details.append({'id': it['id'], 'error': 'no classification'}); continue
+            errors += 1; err_details.append({'id': it['id'], 'error': 'no classification'}); return
         try:
             write_back(sb, it['kind'], it['schema'], it['id'], classification)
             success += 1
@@ -311,6 +312,42 @@ def run_deepseek(sb, items, write=True):
         except Exception as e:
             errors += 1; err_details.append({'id': it['id'], 'error': str(e)[:300]})
 
+    # Submit a small window at a time (not all items up front) so stopping at the
+    # deadline wastes at most one window of in-flight calls.
+    window = DEEPSEEK_CONCURRENCY * 2
+    queue = iter(items)
+    done = 0
+    with ThreadPoolExecutor(max_workers=DEEPSEEK_CONCURRENCY) as ex:
+        futs = {}
+        while True:
+            while len(futs) < window and not stopped_early:
+                if write and time.monotonic() >= deadline:
+                    stopped_early = True
+                    break
+                it = next(queue, None)
+                if it is None:
+                    break
+                futs[ex.submit(classify_one_deepseek, it)] = it
+            if not futs:
+                break
+            fut = next(as_completed(futs))
+            it = futs.pop(fut)
+            classification = fut.result()
+            if write:
+                # Persist sequentially from this thread (single supabase client).
+                persist(it, classification)
+            else:
+                results.append((it, classification))
+            done += 1
+            if done % 25 == 0:
+                print(f"  classified {done}/{len(items)}", flush=True)
+
+    if not write:
+        return results
+
+    if stopped_early:
+        print(f"\nTime budget of {CLASSIFY_MAX_MINUTES:g} min reached after {done} items; "
+              f"{len(items) - done} stay pending for the next run.")
     print("\n=== DeepSeek ingestion complete ===")
     print(f"Succeeded: {success}  (to review queue: {review})")
     print(f"Errors: {errors}")
