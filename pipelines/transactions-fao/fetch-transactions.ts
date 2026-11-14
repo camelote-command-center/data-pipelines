@@ -318,7 +318,7 @@ Rules:
 - A COP lot carries two suffixes: in "23/3009-1-1" the parcelle is 23/3009, the PPE feuillet is 1 and the COP lot is 1. Put those in "Building ID", "Feuillet number" and "COP lot number" — never leave a suffix on "Building ID"
 - Parts COP are usually small numbers like 1/2 or 1/3
 - Pourmille number must be extracted only from expressions following "sur", like: sur 22/1000 or sur 6,692/1000
-- PPE indicator is "Yes" only when the text shows a PPE lot: the word "PPE" (e.g. "PPE Meyrin, 33/15242-118 sur 49/1000") or a share in thousandths ("sur 37.1/1000"). Otherwise "No". A plain house, a whole building, land, a DDP or an ordinary co-ownership share ("COP Hermance, 28/1881-2 sur 1/2 du B-F") is "No"
+- PPE indicator is "Yes" only when the text shows a PPE lot: the word "PPE" (e.g. "PPE Meyrin, 33/15242-118 sur 49/1000") or a PPE unit number ("4.06 appartement", "1.43 box", "UE 2.05 appartement"). Otherwise "No". A plain house, a whole building, land, a DDP or an ordinary co-ownership share ("COP Hermance, 28/1881-2 sur 1/2 du B-F", "COP Meyrin, 33/14346-91 sur 3/1000 du B-F") is "No"
 - Cumulative pourmille PPE and Pourmille number only hold shares in thousandths; never put a co-ownership share like 1/2 there
 - Premises example: "Type": "appartement", "Details": "2.01"
 `;
