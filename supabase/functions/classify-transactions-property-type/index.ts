@@ -133,7 +133,8 @@ Return ONLY the JSON object. No prose before or after.
 - confidence ≥ 0.85 only when one signal is unambiguous (e.g. "villa", "immeuble locatif", "place de parc N°", "PPE", explicit single-family house language).
 - confidence 0.6–0.84 for indirect inference (commune type + price range + buyer profile).
 - confidence < 0.6 means "other" or your best guess with low certainty.
-- If the only structures on a parcel are utility installations (SIG, water, gas, electricity, transformer, cabine technique) or there are NO buildings at all → "land", not "other".
+- If the only structures on a parcel are utility installations (SIG, water, gas, electricity, transformer, cabine technique), or the structured building list is present but empty, or the text says the plot is unbuilt (non bâti, terrain, sans bâtiment) → "land", not "other".
+- When building data is unknown and the text gives no use for the plot, answer "other" (confidence < 0.6) — do NOT guess "land" or "parking" from the price alone.
 - If a parcel has MULTIPLE buildings of different uses, classify by the building with the LARGEST surface_m2 (e.g., 289m² house + 73m² multi-logement + garages → "house", because the 289m² house dominates). Only use "other" when no single building dominates AND no use category fits.
 - Reserve "other" for genuinely uncategorizable cases (e.g., chapels, monuments, hangars not fitting commercial, fractional shares without context). When in doubt between "other" and any concrete category, prefer the concrete category and lower confidence to <0.6.
 
@@ -166,7 +167,7 @@ function buildUserMessage(r: CandidateRow): string {
   const text = (r.transaction_text ?? "").slice(0, 1500);
   const buildingsHint = r.buildings_raw
     ? `buildings (structured): ${JSON.stringify(r.buildings_raw).slice(0, 600)}`
-    : "buildings (structured): none";
+    : "buildings (structured): unknown — no building data (this does NOT mean the plot is unbuilt)";
   return [
     `Transaction ID: ${r.transaction_id}`,
     `Canton: ${r.canton_code ?? "?"}  Commune: ${r.commune ?? "?"}`,
