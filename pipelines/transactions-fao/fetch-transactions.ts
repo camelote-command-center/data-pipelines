@@ -39,6 +39,7 @@ import { createFaoSession } from '../_shared/fao-session.js';
 import { cleanSwissPrice, validateParsedPrice, priceGate, type UnextractedPrice } from './price.js';
 import { normalizeOwners, makeLocalityMatcher, type OwnerFlag } from './owners.js';
 import { isValidBuildingId, normalizeBuildingIds } from './buildings.js';
+import { decidePpe } from './ppe.js';
 
 /**
  * Swiss locality names (silver_ch.ref_communes canonical + aliases, already accent-stripped
@@ -304,7 +305,7 @@ Analyze this transaction text and return the data strictly in the following JSON
       ]
     }
   ],
-  "PPE indicator": "Yes",
+  "PPE indicator": "Yes or No",
   "cumulative_pourmille_ppe": "Cumulative pourmille PPE"
 }
 
@@ -317,6 +318,8 @@ Rules:
 - A COP lot carries two suffixes: in "23/3009-1-1" the parcelle is 23/3009, the PPE feuillet is 1 and the COP lot is 1. Put those in "Building ID", "Feuillet number" and "COP lot number" — never leave a suffix on "Building ID"
 - Parts COP are usually small numbers like 1/2 or 1/3
 - Pourmille number must be extracted only from expressions following "sur", like: sur 22/1000 or sur 6,692/1000
+- PPE indicator is "Yes" only when the text shows a PPE lot: the word "PPE" (e.g. "PPE Meyrin, 33/15242-118 sur 49/1000") or a share in thousandths ("sur 37.1/1000"). Otherwise "No". A plain house, a whole building, land, a DDP or an ordinary co-ownership share ("COP Hermance, 28/1881-2 sur 1/2 du B-F") is "No"
+- Cumulative pourmille PPE and Pourmille number only hold shares in thousandths; never put a co-ownership share like 1/2 there
 - Premises example: "Type": "appartement", "Details": "2.01"
 `;
 
@@ -646,6 +649,7 @@ async function main() {
   // Owners whose whole name is a locality (phantom / swap / truncated public body). Non-empty => red.
   const flaggedOwners: (OwnerFlag & { affaire: string })[] = [];
   let ownerSplits = 0;
+  let ppeOverrides = 0;
   const localityNames = await loadLocalityNames();
   const isLocality = makeLocalityMatcher(localityNames ?? []);
   if (localityNames) console.log(`  Loaded ${localityNames.length} locality names for owner normalization`);
@@ -811,6 +815,12 @@ async function main() {
         });
       }
 
+      const ppe = decidePpe(raw.details, formatted.ppe_indicator, formatted.cumulative_pourmille_ppe);
+      if (ppe.overridden) {
+        ppeOverrides++;
+        console.log(`  ~ PPE ${affaireNumber}: model said "${formatted.ppe_indicator ?? ''}", notice text says ${ppe.ppe_indicator}`);
+      }
+
       // Build record — DO NOT supply type_clean_list (trigger handles it)
       const record: Record<string, unknown> = {
         affaire_number: affaireNumber,
@@ -830,8 +840,9 @@ async function main() {
         buildings: formatted.buildings
           ? (typeof formatted.buildings === 'string' ? formatted.buildings : JSON.stringify(formatted.buildings))
           : null,
-        ppe_indicator: formatted.ppe_indicator || null,
-        cumulative_pourmille_ppe: formatted.cumulative_pourmille_ppe || null,
+        // PPE is decided from the notice text, not from the model's answer (ppe.ts, 2026-11-14).
+        ppe_indicator: ppe.ppe_indicator,
+        cumulative_pourmille_ppe: ppe.cumulative_pourmille_ppe,
         transaction: raw.details,
       };
 
@@ -951,6 +962,7 @@ async function main() {
   console.log(`  Unparseable publication dates:   ${unparseableDates.length}`);
   console.log(`  Prices in text not extracted:    ${unextractedPrices.length}`);
   console.log(`  Owner domiciles split off name:  ${ownerSplits}`);
+  console.log(`  PPE flag corrected from text:    ${ppeOverrides}`);
   console.log(`  Owners that are only a locality: ${flaggedOwners.length}`);
   console.log(`  Rows upserted to DB:             ${totalUpserted}`);
   console.log(`  Rows with null affaire:          ${nullAffaireCount}`);
