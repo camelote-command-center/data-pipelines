@@ -10,8 +10,19 @@
 //   {
 //     "target_canton": "GE",   // filter; default = all NULLs
 //     "limit": 50,             // batch size; default 50, max 200
-//     "dry_run": false         // if true, classify and return but do NOT write
+//     "dry_run": false,        // if true, classify and return but do NOT write
+//     "transaction_ids": [...] // reclassify these rows (max 200) and OVERWRITE
+//                              // their existing llm row; ignores target_canton
 //   }
+//
+// PPE guard (owner rule, 2026-11-14): a sale is PPE only when the notice text
+// says so (word « PPE » or a PPE unit number like « 4.06 appartement ») or the
+// plot is in the PPE register and the text doesn't sell the whole plot. The
+// gold rules already type all of those "apartment", so a row reaching this
+// classifier may only be "apartment" when ppe_indicator/LDTR is true or the text
+// carries that evidence. Otherwise the model is asked once more with a note,
+// and a second "apartment" becomes "other". COP (copropriété ordinaire) and
+// B-F (bien-fonds) are never apartment by themselves.
 //
 // Idempotency: rows already present in silver_ch.transactions_property_type_llm
 // are excluded by the query. Inserts use ON CONFLICT (transaction_id) DO NOTHING
@@ -40,6 +51,23 @@ const ALLOWED_TYPES = [
 ] as const;
 type PropertyType = typeof ALLOWED_TYPES[number];
 const ALLOWED_SET = new Set<string>(ALLOWED_TYPES);
+
+// Same evidence rule as gold_ch.core_transactions and pipelines/transactions-fao/ppe.ts.
+const PPE_UNITS =
+  "appartement|studio|attique|duplex|triplex|loft|box|parking|place|garage|cave|grenier|bureaux?|local|locaux|arcade|dépôt|depot|chambre|hall|magasin|atelier|cabinet|salle|restaurant|réduit";
+const PPE_EVIDENCE = new RegExp(
+  `\\bPPE\\b|\\bUE\\s*\\d|(?<![\\d.])\\d{1,2}\\.\\d{2,3}\\s+(?:partie\\s+)?(?:${PPE_UNITS})(?![\\p{L}])`,
+  "iu",
+);
+
+export function apartmentAllowed(r: Pick<CandidateRow, "ppe_indicator" | "is_ldtr" | "transaction_text">): boolean {
+  return r.ppe_indicator === true || r.is_ldtr === true || PPE_EVIDENCE.test(r.transaction_text ?? "");
+}
+
+const GUARD_NOTE =
+  "Note: this text has NO PPE evidence (no word « PPE », no PPE unit number) and PPE indicator is false. " +
+  "So this is NOT an apartment: the whole plot (B-F) or an ordinary co-ownership share (COP) of it is sold. " +
+  "Choose the type of what stands on the plot (house, building, commercial, parking, land, …). Return JSON only.";
 
 const DEFAULT_LIMIT = 50;
 const MAX_LIMIT = 200;
@@ -81,7 +109,7 @@ Respond with a single JSON object: { "property_type": <one of the 10 keys>, "con
 Return ONLY the JSON object. No prose before or after.
 
 # VOCABULARY (canonical, exactly these 11 keys)
-- apartment      → single residential unit in a multi-unit building (PPE/copropriété/appartement/studio/attique/loft/duplex). LDTR units count as apartment.
+- apartment      → single PPE unit (appartement/studio/attique/loft/duplex en PPE). LDTR units count as apartment. ONLY when the text says « PPE » or names a PPE unit number (e.g. « 4.06 appartement », « UE 2.05 »), or PPE indicator / LDTR is true.
 - house          → detached/semi-detached single-family or two-family house (maison individuelle, villa, chalet, maison mitoyenne, maison jumelle).
 - building       → entire multi-family building sold as a whole (immeuble locatif, immeuble de rendement, multi-family ≥3 units, no PPE split).
 - commercial     → office/retail/industrial/hospitality (bureau, arcade, local commercial, restaurant, hôtel, hangar, usine, atelier, dépôt). Includes industrial use.
@@ -89,17 +117,19 @@ Return ONLY the JSON object. No prose before or after.
 - land           → unbuilt parcel / building plot (terrain à bâtir, parcelle non bâtie, terrain vierge, bois et forêt non agricole).
 - agricultural   → agricultural land or rural farm property (terrain agricole, exploitation agricole, ferme).
 - secondary      → secondary residence / résidence secondaire (only when explicitly flagged; otherwise treat as apartment or house based on form).
-- shared         → fractional / time-share / co-living arrangement (rare; only when text explicitly indicates shared/fractional ownership beyond a normal PPE split).
+- shared         → fractional / time-share / co-living arrangement (rare; only when text explicitly indicates time-share or co-living). A COP share is NOT "shared": classify it by what stands on the plot.
 - DDP            → droit distinct et permanent / droit de superficie (building right: you own the building, not the land beneath it). Output as uppercase "DDP". Use only when the text explicitly references a DDP / droit de superficie.
 - other          → anything that does not fit any of the above (e.g. mixed-use without dominant component, undetermined). Use sparingly.
 
 # DECISION GUIDANCE
-- The CASE rules upstream already caught explicit PPE / LDTR / villa / immeuble locatif / typology hints. Rows reaching you are AMBIGUOUS — use the free-text and price/surface signals.
+- The CASE rules upstream already caught every PPE sale (word PPE or a PPE unit number in the text, or the plot is in the PPE register) plus LDTR / villa / immeuble locatif / typology hints. Rows reaching you are AMBIGUOUS and, unless PPE indicator is true, they are NOT PPE units — do not answer "apartment" for them.
+- "B-F" in transaction_text means "bien-fonds": the WHOLE plot is sold (with whatever stands on it). Classify by the buildings on the plot: house, building, commercial, parking, land…
+- "COP" / "copropriété" / "part de copropriété" / a fraction like « 1/2 » or « 283/1000 » of a B-F means an ordinary co-ownership share of the whole plot (copropriété ordinaire), NOT a PPE unit. Classify by what stands on the plot, never "apartment".
+- A /1000 share or a "PPE pourmille" number alone is NOT evidence of PPE (it is often a COP share).
 - Price-range heuristic for Geneva (cross-check, not deciding):
   parking ≪ 200k; apartment 500k–3M; house 1M–8M; building 5M–50M+; commercial wide.
-- "B-F" in transaction_text means "bâtiment / feuillet" (a PPE-style sub-lot reference) — leans apartment if combined with a single building reference.
 - If multiple buildings on one parcel and no PPE indicator → likely "building".
-- If you genuinely cannot tell, prefer "apartment" for urban Geneva achats with price in the 500k–3M range and a building reference; otherwise "other".
+- If you genuinely cannot tell, classify by the dominant building on the plot (see below); otherwise "other" with confidence < 0.6. Never fall back to "apartment".
 - confidence ≥ 0.85 only when one signal is unambiguous (e.g. "villa", "immeuble locatif", "place de parc N°", "PPE", explicit single-family house language).
 - confidence 0.6–0.84 for indirect inference (commune type + price range + buyer profile).
 - confidence < 0.6 means "other" or your best guess with low certainty.
@@ -114,8 +144,11 @@ text: "Achat. Anciens: X. Nouveaux: Y. Place de parc n°12, sous-sol, parcelle 1
 text: "Achat. Maison individuelle avec terrain, 6 pièces"
 → {"property_type":"house","confidence":0.95,"reasoning":"Maison individuelle clearly stated."}
 
-text: "Achat. B-F Genève-Cité, 21/235ème. PPE."
-→ {"property_type":"apartment","confidence":0.94,"reasoning":"PPE share (235ème) on a single B-F indicates an apartment unit."}
+text: "Achat. Parcelle 2345 B-F, PPE, lot 4.06 appartement, 52/1000."
+→ {"property_type":"apartment","confidence":0.94,"reasoning":"PPE explicitly stated with unit number 4.06 appartement."}
+
+text: "Achat. 1/2 COP de la parcelle 3456 B-F de Vernier. Bâtiment: habitation un logement."
+→ {"property_type":"house","confidence":0.8,"reasoning":"Ordinary co-ownership share (COP) of a whole plot with a single-family house; not PPE."}
 
 text: "Achat. Immeuble de rendement, 8 appartements + 2 arcades"
 → {"property_type":"building","confidence":0.94,"reasoning":"Whole multi-family income building."}
@@ -139,7 +172,7 @@ function buildUserMessage(r: CandidateRow): string {
     `Canton: ${r.canton_code ?? "?"}  Commune: ${r.commune ?? "?"}`,
     `Type: ${r.transaction_type ?? "?"}  Source: ${r.source_table ?? "?"}`,
     `Price (CHF): ${r.price ?? "?"}  Surface (m²): ${r.surface_m2 ?? "?"}`,
-    `PPE indicator: ${r.ppe_indicator}  PPE pourmille: ${r.ppe_pourmille_raw ?? "none"}  LDTR: ${r.is_ldtr}`,
+    `PPE indicator: ${r.ppe_indicator}  LDTR: ${r.is_ldtr}  Share (‰, not PPE evidence — may be a COP share): ${r.ppe_pourmille_raw ?? "none"}`,
     `Address: ${r.address ?? "?"}`,
     buildingsHint,
     `---`,
@@ -226,6 +259,11 @@ Deno.serve(async (req) => {
   const targetCanton = typeof body.target_canton === "string" && body.target_canton.length > 0
     ? body.target_canton : null;
   const dryRun = body.dry_run === true;
+  const ids = Array.isArray(body.transaction_ids)
+    ? (body.transaction_ids as unknown[]).filter((x): x is string => typeof x === "string" && x.length > 0)
+    : [];
+  const reclassify = ids.length > 0;
+  if (ids.length > MAX_LIMIT) return jsonResp({ ok: false, error: `transaction_ids: max ${MAX_LIMIT}` }, 400);
   let limit = Number(body.limit ?? DEFAULT_LIMIT);
   if (!Number.isFinite(limit) || limit <= 0) limit = DEFAULT_LIMIT;
   if (limit > MAX_LIMIT) limit = MAX_LIMIT;
@@ -239,21 +277,25 @@ Deno.serve(async (req) => {
   // function self-paginating across concurrent invocations: each call always gets
   // the next un-classified rows, regardless of how many have already landed.
 
-  const { data: candidates, error: candErr } = await supabase
-    .schema("silver_ch")
-    .rpc("next_unclassified_transactions", {
-      p_canton: targetCanton,
-      p_limit: limit,
-    });
+  // Reclassify mode: the listed rows, whatever their current llm row
+  // (silver_ch.transactions_by_ids returns the same columns).
+  const { data: candidates, error: candErr } = reclassify
+    ? await supabase.schema("silver_ch").rpc("transactions_by_ids", { p_ids: ids })
+    : await supabase
+      .schema("silver_ch")
+      .rpc("next_unclassified_transactions", {
+        p_canton: targetCanton,
+        p_limit: limit,
+      });
   if (candErr) return jsonResp({ ok: false, error: `candidate fetch: ${candErr.message}` }, 500);
 
-  const todo = ((candidates ?? []) as CandidateRow[]).slice(0, limit);
+  const todo = ((candidates ?? []) as CandidateRow[]).slice(0, reclassify ? MAX_LIMIT : limit);
   if (todo.length === 0) {
     return jsonResp({ ok: true, classified: 0, skipped: 0, errors: 0, exhausted: true, target_canton: targetCanton, message: "no NULL candidates remain for the given filter" });
   }
 
   const systemPrompt = buildSystemPrompt();
-  const results: Array<{ transaction_id: string; result: LLMResult | null; hash: string }> = [];
+  const results: Array<{ transaction_id: string; result: LLMResult | null; hash: string; guarded: boolean }> = [];
 
   // Parallel calls with bounded concurrency. DeepSeek tolerates parallelism well;
   // 8 in-flight keeps throughput high while staying within typical RL budgets.
@@ -268,11 +310,19 @@ Deno.serve(async (req) => {
       const userMsg = buildUserMessage(r);
       const hash = await sha256Hex(`${MODEL}|${r.transaction_id}|${userMsg}`);
       try {
-        const out = await callDeepSeek(systemPrompt, userMsg);
-        results.push({ transaction_id: r.transaction_id, result: out, hash });
+        let out = await callDeepSeek(systemPrompt, userMsg);
+        let guarded = false;
+        if (out?.property_type === "apartment" && !apartmentAllowed(r)) {
+          guarded = true;
+          const retry = await callDeepSeek(systemPrompt, `${userMsg}\n${GUARD_NOTE}`);
+          out = retry && retry.property_type !== "apartment"
+            ? { ...retry, reasoning: `guard retry: ${retry.reasoning}` }
+            : { property_type: "other", confidence: 0.3, reasoning: "guard: model said apartment without PPE evidence" };
+        }
+        results.push({ transaction_id: r.transaction_id, result: out, hash, guarded });
       } catch (err) {
         console.error("classify err for", r.transaction_id, err);
-        results.push({ transaction_id: r.transaction_id, result: null, hash });
+        results.push({ transaction_id: r.transaction_id, result: null, hash, guarded: false });
       }
     }
   }
@@ -280,16 +330,22 @@ Deno.serve(async (req) => {
 
   const ok = results.filter((x) => x.result !== null);
   const failed = results.length - ok.length;
+  const guardedCount = results.filter((x) => x.guarded).length;
+  const dist: Record<string, number> = {};
+  for (const x of ok) dist[x.result!.property_type] = (dist[x.result!.property_type] ?? 0) + 1;
 
   if (dryRun) {
     return jsonResp({
       ok: true,
       dry_run: true,
+      reclassify,
       target_canton: targetCanton,
       requested: todo.length,
       classified: ok.length,
       errors: failed,
-      sample: results.slice(0, 10).map((x) => ({
+      guarded: guardedCount,
+      distribution: dist,
+      results: results.map((x) => ({
         transaction_id: x.transaction_id,
         property_type: x.result?.property_type ?? null,
         confidence: x.result?.confidence ?? null,
@@ -309,23 +365,22 @@ Deno.serve(async (req) => {
     reasoning: x.result!.reasoning,
     model: MODEL,
     input_text_hash: x.hash,
+    ...(reclassify ? { classified_at: new Date().toISOString() } : {}),
   }));
 
   const { error: insErr } = await supabase
     .schema("silver_ch")
     .from("transactions_property_type_llm")
-    .upsert(rows, { onConflict: "transaction_id", ignoreDuplicates: true });
+    .upsert(rows, { onConflict: "transaction_id", ignoreDuplicates: !reclassify });
 
   if (insErr) {
     return jsonResp({ ok: false, error: `insert: ${insErr.message}`, attempted: rows.length }, 500);
   }
 
-  // Distribution summary for observability.
-  const dist: Record<string, number> = {};
-  for (const r of rows) dist[r.property_type] = (dist[r.property_type] ?? 0) + 1;
-
   return jsonResp({
     ok: true,
+    reclassify,
+    guarded: guardedCount,
     target_canton: targetCanton,
     requested: todo.length,
     classified: rows.length,
