@@ -100,6 +100,8 @@ jobs:
         # never dropped; street words that are also communes ("Rue", "Port") are never
         # a domicile. Mirrors silver_ch.apply_entity_merge_decisions() on re-LLM.
         run: cd pipelines/transactions-fao && npx tsx owners.test.ts
+      - name: PPE flag regression tests (no network)
+        run: cd pipelines/transactions-fao && npx tsx ppe.test.ts
       - name: Install Playwright browsers
         run: cd pipelines/transactions-fao && npx playwright install chromium --with-deps
       - name: Fetch FAO Transactions
